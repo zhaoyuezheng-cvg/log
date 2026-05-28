@@ -2,6 +2,9 @@
 date = '2026-05-28T08:28:05Z'
 draft = false
 title = 'Hugo发文全流程'
+description = "Hugo发文全流程"
+categories = ["技术","工具" ]   # 大分类：技术/工具/生活/学习/博客
+tags = ["Hugo", "VSCode", "Git"] # 自定义标签
 +++
 
 Hugo 发文 → 本地预览 → 提交到 GitHub 的完整流程。

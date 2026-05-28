@@ -2,6 +2,9 @@
 date = '2026-05-28T09:31:05Z'
 draft = false
 title = 'VsCode一键发文'
+description = "VsCode一键发文"
+categories = ["技术","工具" ]   # 大分类：技术/工具/生活/学习/博客
+tags = ["Hugo", "VSCode", "Git"] # 自定义标签
 +++
 
 VS Code 配合「GitHub 插件 + Markdown 插件 + 一点配置」完整流程
