@@ -1,4 +1,4 @@
-baseURL = 'blog.zhaoyuezheng.workers.dev'
+baseURL = 'https://azlog.org/'
 locale = 'zh-cn'
-title = 'My New Hugo Project'
+title = 'az技术笔记'
 theme = "PaperMod"
