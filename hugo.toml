@@ -1,4 +1,4 @@
-baseURL = 'https://blog-96n.pages.dev/'
+baseURL = 'https://azlog.org/'
 locale = 'zh-cn'
-title = 'zz技术笔记'
+title = 'AZ技术笔记'
 theme = "PaperMod"
