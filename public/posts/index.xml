@@ -1,4 +1,50 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on AZ技术笔记</title><link>https://azlog.org/posts/</link><description>Recent content in Posts on AZ技术笔记</description><generator>Hugo</generator><language>en</language><lastBuildDate>Thu, 28 May 2026 08:28:05 +0000</lastBuildDate><atom:link href="https://azlog.org/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Hugo发文全流程</title><link>https://azlog.org/posts/hugo%E5%8F%91%E6%96%87%E5%85%A8%E6%B5%81%E7%A8%8B/</link><pubDate>Thu, 28 May 2026 08:28:05 +0000</pubDate><guid>https://azlog.org/posts/hugo%E5%8F%91%E6%96%87%E5%85%A8%E6%B5%81%E7%A8%8B/</guid><description>&lt;p&gt;Hugo 发文 → 本地预览 → 提交到 GitHub 的完整流程。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on AZ技术笔记</title><link>https://azlog.org/posts/</link><description>Recent content in Posts on AZ技术笔记</description><generator>Hugo</generator><language>en</language><lastBuildDate>Thu, 28 May 2026 09:31:05 +0000</lastBuildDate><atom:link href="https://azlog.org/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>VsCode一键发文</title><link>https://azlog.org/posts/vscode%E4%B8%80%E9%94%AE%E5%8F%91%E6%96%87/</link><pubDate>Thu, 28 May 2026 09:31:05 +0000</pubDate><guid>https://azlog.org/posts/vscode%E4%B8%80%E9%94%AE%E5%8F%91%E6%96%87/</guid><description>&lt;p&gt;VS Code 配合「GitHub 插件 + Markdown 插件 + 一点配置」完整流程&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="一先把插件配齐你已有确认一下"&gt;一、先把插件配齐（你已有，确认一下）&lt;/h2&gt;
+&lt;p&gt;打开扩展面板 &lt;code&gt;Ctrl+Shift+X&lt;/code&gt;，确保安装并启用：&lt;/p&gt;
+&lt;h3 id="-必须"&gt;✅ 必须&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;GitHub（官方）&lt;/strong&gt;&lt;br&gt;
+用来在左侧直接看到 Git 变更、提交、同步（push/pull）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Markdown All in One&lt;/strong&gt;&lt;br&gt;
+快捷键加粗/斜体/标题、自动列表、TOC、预览增强。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Markdown Preview Github Styling&lt;/strong&gt;（可选但强烈推荐）&lt;br&gt;
+预览样式和 GitHub 一致，所见即所得。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="-加分hugo-更爽"&gt;✅ 加分（Hugo 更爽）&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Hugo Snippets&lt;/strong&gt;：一键插入 Hugo 文章头模板（front matter）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;PowerShell（微软）&lt;/strong&gt;：在 VS Code 里直接跑 Hugo 命令、脚本。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id="二vs-code-内新建-hugo-文章一键模板"&gt;二、VS Code 内「新建 Hugo 文章」一键模板&lt;/h2&gt;
+&lt;p&gt;不用每次手写 front matter，用**用户代码片段（Snippet）**一键生成：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;VS Code → &lt;code&gt;Ctrl+Shift+P&lt;/code&gt; → 输入 &lt;code&gt;Preferences: Configure User Snippets&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;选 &lt;code&gt;markdown.json&lt;/code&gt;（全局）或当前工作区&lt;/li&gt;
+&lt;li&gt;粘贴下面内容并保存：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-json" data-lang="json"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;#34;Hugo Post&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;#34;prefix&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;hugopost&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;#34;body&amp;#34;&lt;/span&gt;: [
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;---&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;title: \&amp;#34;${1:文章标题}\&amp;#34;&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;date: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE&amp;#34;&lt;/span&gt;&lt;span style="color:#960050;background-color:#1e0010"&gt;T$CURRENT_HOUR:$CURRENT_MIN:&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;00&lt;/span&gt;&lt;span style="color:#960050;background-color:#1e0010"&gt;+&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;08&lt;/span&gt;&lt;span style="color:#960050;background-color:#1e0010"&gt;:&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;00&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;draft: false&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;description: \&amp;#34;${2:简介}\&amp;#34;&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;tags: [\&amp;#34;${3:标签1}\&amp;#34;, \&amp;#34;${4:标签2}\&amp;#34;]&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;categories: [\&amp;#34;${5:分类}\&amp;#34;]&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;---&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;## 一、${6:开头}&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;${7:正文内容...}&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ],
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;#34;description&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;Hugo 文章模板&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;使用：&lt;/strong&gt;&lt;/p&gt;</description></item><item><title>Hugo发文全流程</title><link>https://azlog.org/posts/hugo%E5%8F%91%E6%96%87%E5%85%A8%E6%B5%81%E7%A8%8B/</link><pubDate>Thu, 28 May 2026 08:28:05 +0000</pubDate><guid>https://azlog.org/posts/hugo%E5%8F%91%E6%96%87%E5%85%A8%E6%B5%81%E7%A8%8B/</guid><description>&lt;p&gt;Hugo 发文 → 本地预览 → 提交到 GitHub 的完整流程。&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id="一基础配置仅需做一次"&gt;一、基础配置（仅需做一次）&lt;/h2&gt;
 &lt;h3 id="1-本地-hugo-环境确认"&gt;1. 本地 Hugo 环境确认&lt;/h3&gt;
@@ -241,7 +287,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 5. 提交到 Git 并推送&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git add .
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git commit -m &lt;span style="color:#e6db74"&gt;&amp;#34;xxx&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git commit -m &lt;span style="color:#e6db74"&gt;&amp;#34;发表新文章&amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git push
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
 &lt;h2 id="六模块--主题管理常用"&gt;六、模块 &amp;amp; 主题管理（常用）&lt;/h2&gt;

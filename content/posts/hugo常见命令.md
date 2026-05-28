@@ -82,7 +82,7 @@ hugo --minify
 
 # 5. 提交到 Git 并推送
 git add .
-git commit -m "xxx"
+git commit -m "发表新文章"
 git push
 ```
 
