@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Git常见命令 | My New Hugo Project</title>
+<meta name="keywords" content="">
+<meta name="description" content="
+一、初始化 &amp; 克隆（第一次用）
+# 1. 本地新建 git 仓库
+git init
+
+# 2. 克隆远程仓库到本地（最常用）
+git clone https://github.com/xxx/xxx.git
+
+# 3. 查看远程仓库地址
+git remote -v
+
+# 4. 添加远程仓库（本地关联远程）
+git remote add origin 仓库地址
+
+二、日常提交（改代码→上传本地）
+# 1. 查看状态（哪些文件改了、新增了）
+git status
+
+# 2. 把所有修改加入暂存区（最常用）
+git add .
+
+# 3. 提交到本地仓库，带说明（必须写清楚）
+git commit -m &#34;feat: 新增文章/修复bug&#34;
+
+# 4. 快捷：已跟踪文件直接提交（跳过 add）
+git commit -am &#34;fix: 修复首页样式&#34;
+
+三、同步远程（本地 ↔ GitHub）
+# 1. 拉取远程最新代码（避免冲突，必做）
+git pull origin main
+
+# 2. 推送本地到远程（第一次要 -u）
+git push -u origin main
+
+# 之后直接
+git push
+
+# 3. 强制推送（覆盖远程，谨慎！）
+git push --force
+
+四、分支管理（多人协作/多版本）
+# 查看本地分支
+git branch
+
+# 查看本地&#43;远程所有分支
+git branch -a
+
+# 创建分支
+git branch dev
+
+# 切换分支（旧版）
+git checkout dev
+
+# 创建并切换（推荐）
+git checkout -b dev
+# 新版更直观
+git switch -c dev
+
+# 合并 dev 到 main
+git checkout main
+git merge dev
+
+# 删除本地分支
+git branch -d dev
+
+# 删除远程分支
+git push origin --delete dev
+
+五、查看日志 &amp; 对比
+# 完整提交日志
+git log
+
+# 简洁版（一行一个，推荐）
+git log --oneline
+
+# 最近 n 条
+git log --oneline -5
+
+# 看具体文件改动
+git diff 文件名
+
+# 看暂存区和仓库差异
+git diff --staged
+
+六、撤销 &amp; 回退（改错了怎么办）
+# 1. 撤销工作区修改（未 add）
+git restore 文件名
+
+# 2. 撤销暂存（add 了但没 commit）
+git restore --staged 文件名
+
+# 3. 撤销最后一次提交（保留修改）
+git reset --soft HEAD~1
+
+# 4. 彻底回退（危险！丢代码）
+git reset --hard HEAD~1
+
+# 5. 安全撤销某次提交（生成新提交，不改历史）
+git revert 提交id
+
+七、标签（版本发布用）
+# 打标签
+git tag v1.0
+
+# 推送标签到远程
+git push origin v1.0
+
+# 删除本地标签
+git tag -d v1.0
+
+# 删除远程标签
+git push origin --delete v1.0
+
+八、日常工作流（你用 Hugo/GitHub Pages）
+# 写新文章后
+hugo --minify
+
+git add .
+git commit -m &#34;新增文章：xxx&#34;
+git pull origin main   # 先拉，避免冲突
+git push
+">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/posts/git%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.89ca4972ab5e6aaa05e9a0dae0c4bb64b26585bc79e36f5cf33614eea0283abe.css" integrity="sha256-icpJcqteaqoF6aDa4MS7ZLJlhbx5429c8zYU7qAoOr4=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/git%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="My New Hugo Project (Alt + H)">My New Hugo Project</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu" class="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Git常见命令
+    </h1>
+    <div class="post-meta">
+
+<span title='2026-05-28 10:40:36 +0800 CST'>May 28, 2026</span>
+
+</div>
+  </header> 
+  <div class="post-content md-content"><hr>
+<h2 id="一初始化--克隆第一次用">一、初始化 &amp; 克隆（第一次用）<a hidden class="anchor" aria-hidden="true" href="#一初始化--克隆第一次用">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 1. 本地新建 git 仓库</span>
+</span></span><span style="display:flex;"><span>git init
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 2. 克隆远程仓库到本地（最常用）</span>
+</span></span><span style="display:flex;"><span>git clone https://github.com/xxx/xxx.git
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 3. 查看远程仓库地址</span>
+</span></span><span style="display:flex;"><span>git remote -v
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 4. 添加远程仓库（本地关联远程）</span>
+</span></span><span style="display:flex;"><span>git remote add origin 仓库地址
+</span></span></code></pre></div><hr>
+<h2 id="二日常提交改代码上传本地">二、日常提交（改代码→上传本地）<a hidden class="anchor" aria-hidden="true" href="#二日常提交改代码上传本地">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 1. 查看状态（哪些文件改了、新增了）</span>
+</span></span><span style="display:flex;"><span>git status
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 2. 把所有修改加入暂存区（最常用）</span>
+</span></span><span style="display:flex;"><span>git add .
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 3. 提交到本地仓库，带说明（必须写清楚）</span>
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;feat: 新增文章/修复bug&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 4. 快捷：已跟踪文件直接提交（跳过 add）</span>
+</span></span><span style="display:flex;"><span>git commit -am <span style="color:#e6db74">&#34;fix: 修复首页样式&#34;</span>
+</span></span></code></pre></div><hr>
+<h2 id="三同步远程本地--github">三、同步远程（本地 ↔ GitHub）<a hidden class="anchor" aria-hidden="true" href="#三同步远程本地--github">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 1. 拉取远程最新代码（避免冲突，必做）</span>
+</span></span><span style="display:flex;"><span>git pull origin main
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 2. 推送本地到远程（第一次要 -u）</span>
+</span></span><span style="display:flex;"><span>git push -u origin main
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 之后直接</span>
+</span></span><span style="display:flex;"><span>git push
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 3. 强制推送（覆盖远程，谨慎！）</span>
+</span></span><span style="display:flex;"><span>git push --force
+</span></span></code></pre></div><hr>
+<h2 id="四分支管理多人协作多版本">四、分支管理（多人协作/多版本）<a hidden class="anchor" aria-hidden="true" href="#四分支管理多人协作多版本">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 查看本地分支</span>
+</span></span><span style="display:flex;"><span>git branch
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 查看本地+远程所有分支</span>
+</span></span><span style="display:flex;"><span>git branch -a
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 创建分支</span>
+</span></span><span style="display:flex;"><span>git branch dev
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 切换分支（旧版）</span>
+</span></span><span style="display:flex;"><span>git checkout dev
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 创建并切换（推荐）</span>
+</span></span><span style="display:flex;"><span>git checkout -b dev
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 新版更直观</span>
+</span></span><span style="display:flex;"><span>git switch -c dev
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 合并 dev 到 main</span>
+</span></span><span style="display:flex;"><span>git checkout main
+</span></span><span style="display:flex;"><span>git merge dev
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 删除本地分支</span>
+</span></span><span style="display:flex;"><span>git branch -d dev
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 删除远程分支</span>
+</span></span><span style="display:flex;"><span>git push origin --delete dev
+</span></span></code></pre></div><hr>
+<h2 id="五查看日志--对比">五、查看日志 &amp; 对比<a hidden class="anchor" aria-hidden="true" href="#五查看日志--对比">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 完整提交日志</span>
+</span></span><span style="display:flex;"><span>git log
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 简洁版（一行一个，推荐）</span>
+</span></span><span style="display:flex;"><span>git log --oneline
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 最近 n 条</span>
+</span></span><span style="display:flex;"><span>git log --oneline -5
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 看具体文件改动</span>
+</span></span><span style="display:flex;"><span>git diff 文件名
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 看暂存区和仓库差异</span>
+</span></span><span style="display:flex;"><span>git diff --staged
+</span></span></code></pre></div><hr>
+<h2 id="六撤销--回退改错了怎么办">六、撤销 &amp; 回退（改错了怎么办）<a hidden class="anchor" aria-hidden="true" href="#六撤销--回退改错了怎么办">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 1. 撤销工作区修改（未 add）</span>
+</span></span><span style="display:flex;"><span>git restore 文件名
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 2. 撤销暂存（add 了但没 commit）</span>
+</span></span><span style="display:flex;"><span>git restore --staged 文件名
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 3. 撤销最后一次提交（保留修改）</span>
+</span></span><span style="display:flex;"><span>git reset --soft HEAD~1
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 4. 彻底回退（危险！丢代码）</span>
+</span></span><span style="display:flex;"><span>git reset --hard HEAD~1
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 5. 安全撤销某次提交（生成新提交，不改历史）</span>
+</span></span><span style="display:flex;"><span>git revert 提交id
+</span></span></code></pre></div><hr>
+<h2 id="七标签版本发布用">七、标签（版本发布用）<a hidden class="anchor" aria-hidden="true" href="#七标签版本发布用">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 打标签</span>
+</span></span><span style="display:flex;"><span>git tag v1.0
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 推送标签到远程</span>
+</span></span><span style="display:flex;"><span>git push origin v1.0
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 删除本地标签</span>
+</span></span><span style="display:flex;"><span>git tag -d v1.0
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 删除远程标签</span>
+</span></span><span style="display:flex;"><span>git push origin --delete v1.0
+</span></span></code></pre></div><hr>
+<h2 id="八日常工作流你用-hugogithub-pages">八、日常工作流（你用 Hugo/GitHub Pages）<a hidden class="anchor" aria-hidden="true" href="#八日常工作流你用-hugogithub-pages">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 写新文章后</span>
+</span></span><span style="display:flex;"><span>hugo --minify
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git add .
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;新增文章：xxx&#34;</span>
+</span></span><span style="display:flex;"><span>git pull origin main   <span style="color:#75715e"># 先拉，避免冲突</span>
+</span></span><span style="display:flex;"><span>git push
+</span></span></code></pre></div>
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">My New Hugo Project</a></span> · 
+
+    
+    
+    <span>
+        Powered by
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var toplink = document.getElementById("top-link");
+    window.onscroll = function () {
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
+        } else {
+            toplink.classList.add("hidden");
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

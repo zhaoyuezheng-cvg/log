@@ -101,6 +101,50 @@
     </nav>
 </header>
 <main class="main"> 
+
+<article class="first-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Git常见命令
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p> 一、初始化 &amp; 克隆（第一次用） # 1. 本地新建 git 仓库 git init # 2. 克隆远程仓库到本地（最常用） git clone https://github.com/xxx/xxx.git # 3. 查看远程仓库地址 git remote -v # 4. 添加远程仓库（本地关联远程） git remote add origin 仓库地址 二、日常提交（改代码→上传本地） # 1. 查看状态（哪些文件改了、新增了） git status # 2. 把所有修改加入暂存区（最常用） git add . # 3. 提交到本地仓库，带说明（必须写清楚） git commit -m &#34;feat: 新增文章/修复bug&#34; # 4. 快捷：已跟踪文件直接提交（跳过 add） git commit -am &#34;fix: 修复首页样式&#34; 三、同步远程（本地 ↔ GitHub） # 1. 拉取远程最新代码（避免冲突，必做） git pull origin main # 2. 推送本地到远程（第一次要 -u） git push -u origin main # 之后直接 git push # 3. 强制推送（覆盖远程，谨慎！） git push --force 四、分支管理（多人协作/多版本） # 查看本地分支 git branch # 查看本地&#43;远程所有分支 git branch -a # 创建分支 git branch dev # 切换分支（旧版） git checkout dev # 创建并切换（推荐） git checkout -b dev # 新版更直观 git switch -c dev # 合并 dev 到 main git checkout main git merge dev # 删除本地分支 git branch -d dev # 删除远程分支 git push origin --delete dev 五、查看日志 &amp; 对比 # 完整提交日志 git log # 简洁版（一行一个，推荐） git log --oneline # 最近 n 条 git log --oneline -5 # 看具体文件改动 git diff 文件名 # 看暂存区和仓库差异 git diff --staged 六、撤销 &amp; 回退（改错了怎么办） # 1. 撤销工作区修改（未 add） git restore 文件名 # 2. 撤销暂存（add 了但没 commit） git restore --staged 文件名 # 3. 撤销最后一次提交（保留修改） git reset --soft HEAD~1 # 4. 彻底回退（危险！丢代码） git reset --hard HEAD~1 # 5. 安全撤销某次提交（生成新提交，不改历史） git revert 提交id 七、标签（版本发布用） # 打标签 git tag v1.0 # 推送标签到远程 git push origin v1.0 # 删除本地标签 git tag -d v1.0 # 删除远程标签 git push origin --delete v1.0 八、日常工作流（你用 Hugo/GitHub Pages） # 写新文章后 hugo --minify git add . git commit -m &#34;新增文章：xxx&#34; git pull origin main # 先拉，避免冲突 git push </p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2026-05-28 10:40:36 +0800 CST'>May 28, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to Git常见命令" href="http://localhost:1313/posts/git%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hugo常见命令
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>一份精简、实用的 Hugo 命令速查。
+一、项目创建 &amp; 初始化 # 1. 新建站点（在当前目录下创建 myblog 文件夹） hugo new site myblog # 2. 进入项目目录 cd myblog # 3. 初始化主题模块（新版 Hugo 推荐） hugo mod init github.com/你的用户名/你的仓库名 二、写文章（最常用） # 新建一篇文章（自动生成 frontmatter，draft=true 草稿） hugo new posts/第一篇文章.md # 新建页面（如 about、contact） hugo new about.md 三、本地预览（开发） # 启动本地服务器，默认 http://localhost:1313，热更新 hugo server # 🔥 常用：预览包含草稿（draft=true）的文章 hugo server -D # 自定义端口（如 8080） hugo server --port 8080 # 绑定到所有网卡（手机/局域网访问） hugo server --bind 0.0.0.0 四、构建发布（生产） # 构建静态文件到 public/（默认，不含草稿） hugo # 🔥 生产环境压缩（HTML/CSS/JS 最小化，推荐） hugo --minify # 构建并包含草稿（临时用） hugo -D # 指定输出目录（默认 public） hugo -d ./dist 五、日常工作流（你用 GitHub Pages） # 1. 写新文章 hugo new posts/xxx.md # 2. 本地预览 hugo server -D # 3. 确认后，把草稿改为正式：把 md 文件里 draft = false # 4. 构建生产文件 hugo --minify # 5. 提交到 Git 并推送 git add . git commit -m &#34;xxx&#34; git push 六、模块 &amp; 主题管理（常用） # 拉取主题/模块更新 hugo mod get -u # 清理模块缓存（解决依赖报错） hugo mod clean --all # 整理 go.mod（删除无用依赖） hugo mod tidy 七、排错 &amp; 信息 # 查看版本 hugo version # 查看帮助 hugo help hugo server --help # 列出所有草稿 hugo list drafts # 清空 public 再构建（避免旧文件残留） rm -rf public &amp;&amp; hugo --minify 八、常用参数速查表 -D / --buildDrafts：包含草稿 --minify：压缩代码（生产必加） --port 端口：自定义端口 -v：详细日志（排错用） </p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2026-05-28 10:36:40 +0800 CST'>May 28, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to Hugo常见命令" href="http://localhost:1313/posts/hugo%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hello
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Hello HugoHello HugoHello HugoHello Hugo
+</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2026-05-27 17:00:45 +0800 CST'>May 27, 2026</span></footer>
+  <a class="entry-link" aria-label="post link to Hello" href="http://localhost:1313/posts/hello/"></a>
+</article>
     </main>
     
 <footer class="footer">
