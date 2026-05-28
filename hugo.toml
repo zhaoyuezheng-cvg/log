@@ -1,4 +1,4 @@
-baseURL = 'blog.zhaoyuezheng.workers.dev'
+baseURL = 'https://blog-96n.pages.dev/'
 locale = 'zh-cn'
 title = 'My New Hugo Project'
 theme = "PaperMod"
