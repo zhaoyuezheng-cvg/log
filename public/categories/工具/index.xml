@@ -1,1 +1,173 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>工具 on 我的博客</title><link>https://azlog.org/categories/%E5%B7%A5%E5%85%B7/</link><description>Recent content in 工具 on 我的博客</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Thu, 28 May 2026 09:31:05 +0000</lastBuildDate><atom:link href="https://azlog.org/categories/%E5%B7%A5%E5%85%B7/index.xml" rel="self" type="application/rss+xml"/><item><title>VsCode一键发文</title><link>https://azlog.org/posts/vscode%E4%B8%80%E9%94%AE%E5%8F%91%E6%96%87/</link><pubDate>Thu, 28 May 2026 09:31:05 +0000</pubDate><guid>https://azlog.org/posts/vscode%E4%B8%80%E9%94%AE%E5%8F%91%E6%96%87/</guid><description>VsCode一键发文</description></item><item><title>Hugo发文全流程</title><link>https://azlog.org/posts/hugo%E5%8F%91%E6%96%87%E5%85%A8%E6%B5%81%E7%A8%8B/</link><pubDate>Thu, 28 May 2026 08:28:05 +0000</pubDate><guid>https://azlog.org/posts/hugo%E5%8F%91%E6%96%87%E5%85%A8%E6%B5%81%E7%A8%8B/</guid><description>Hugo发文全流程</description></item><item><title>Git常见命令</title><link>https://azlog.org/posts/git%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/</link><pubDate>Thu, 28 May 2026 10:40:36 +0800</pubDate><guid>https://azlog.org/posts/git%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/</guid><description>Git常见命令</description></item><item><title>Hugo常见命令</title><link>https://azlog.org/posts/hugo%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/</link><pubDate>Thu, 28 May 2026 10:36:40 +0800</pubDate><guid>https://azlog.org/posts/hugo%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/</guid><description>hugo常见命令</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>工具 on 我的博客</title><link>https://azlog.org/categories/%E5%B7%A5%E5%85%B7/</link><description>Recent content in 工具 on 我的博客</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Fri, 29 May 2026 12:00:00 +0800</lastBuildDate><atom:link href="https://azlog.org/categories/%E5%B7%A5%E5%85%B7/index.xml" rel="self" type="application/rss+xml"/><item><title>「错题宝」—— 初中生智能错题管理App 详细方案（mimo版）</title><link>https://azlog.org/posts/%E9%94%99%E9%A2%98%E5%AE%9D-%E5%88%9D%E4%B8%AD%E7%94%9F%E6%99%BA%E8%83%BD%E9%94%99%E9%A2%98%E7%AE%A1%E7%90%86app-%E8%AF%A6%E7%BB%86%E6%96%B9%E6%A1%88mimo%E7%89%88/</link><pubDate>Fri, 29 May 2026 12:00:00 +0800</pubDate><guid>https://azlog.org/posts/%E9%94%99%E9%A2%98%E5%AE%9D-%E5%88%9D%E4%B8%AD%E7%94%9F%E6%99%BA%E8%83%BD%E9%94%99%E9%A2%98%E7%AE%A1%E7%90%86app-%E8%AF%A6%E7%BB%86%E6%96%B9%E6%A1%88mimo%E7%89%88/</guid><description>&lt;h1 id="错题宝-初中生智能错题管理app-详细方案"&gt;「错题宝」—— 初中生智能错题管理App 详细方案&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h2 id="一项目总览"&gt;一、项目总览&lt;/h2&gt;
+&lt;h3 id="11-项目定位"&gt;1.1 项目定位&lt;/h3&gt;
+&lt;p&gt;一款面向初中生的&lt;strong&gt;错题管理 + AI 辅助学习&lt;/strong&gt;工具，覆盖语文、英语、数学及小四门（历史、地理、生物、道德与法治），核心目标：&lt;strong&gt;记录 → 理解 → 巩固 → 提分&lt;/strong&gt;。&lt;/p&gt;
+&lt;h3 id="12-核心用户画像"&gt;1.2 核心用户画像&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;角色&lt;/th&gt;
+&lt;th&gt;使用场景&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;学生（儿子）&lt;/td&gt;
+&lt;td&gt;日常记录错题、查看复习、与AI互动&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;家长（你）&lt;/td&gt;
+&lt;td&gt;后台管理、查看学习数据、补充内容&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id="13-整体功能矩阵"&gt;1.3 整体功能矩阵&lt;/h3&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;┌─────────────────────────────────────────────────────┐
+│ 错题宝 App │
+├──────────┬──────────┬──────────┬─────────────────────┤
+│ 语文 │ 英语 │ 数学 │ 小四门(4科) │
+├──────────┼──────────┼──────────┼─────────────────────┤
+│ 字词读音 │ 错词本 │ 错题录入 │ 拍照录入 │
+│ 混淆字词 │ 易错短语 │ 解法记录 │ 答案整理 │
+│ 文学常识 │ 句型归纳 │ AI解题 │ AI整理答案 │
+│ 古文基础 │ 错题集 │ 拍照识别 │ 拍照识别 │
+│ 拍照输入 │ 语音输入 │ │ │
+│ AI矫正 │ AI扩展 │ │ │
+├──────────┴──────────┴──────────┴─────────────────────┤
+│ 通用能力：拍照OCR / 语音STT / AI对话 │
+│ 学习管理：艾宾浩斯复习 / 统计分析 / 搜索 │
+│ 后台管理：内容管理 / 用户管理 / 数据统计 │
+└─────────────────────────────────────────────────────┘
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;h2 id="二技术架构方案"&gt;二、技术架构方案&lt;/h2&gt;
+&lt;h3 id="21-推荐技术栈"&gt;2.1 推荐技术栈&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;考虑到你是个人开发者、买了云服务器、孩子用手机，推荐&lt;strong&gt;最务实&lt;/strong&gt;的方案：&lt;/p&gt;</description></item><item><title>从方案生成看豆包和mimo的区别</title><link>https://azlog.org/posts/%E4%BB%8E%E6%96%B9%E6%A1%88%E7%94%9F%E6%88%90%E7%9C%8B%E8%B1%86%E5%8C%85%E5%92%8Cmimo%E7%9A%84%E5%8C%BA%E5%88%AB/</link><pubDate>Fri, 29 May 2026 12:00:00 +0800</pubDate><guid>https://azlog.org/posts/%E4%BB%8E%E6%96%B9%E6%A1%88%E7%94%9F%E6%88%90%E7%9C%8B%E8%B1%86%E5%8C%85%E5%92%8Cmimo%E7%9A%84%E5%8C%BA%E5%88%AB/</guid><description>&lt;h1 id="从方案生成看豆包和-mimo-的区别"&gt;从方案生成看豆包和 mimo 的区别&lt;/h1&gt;
+&lt;p&gt;本文介绍 Hugo 文章的 Markdown 格式，并以“从方案生成看豆包和 mimo 的区别”为主题示例。&lt;/p&gt;
+&lt;h2 id="1-文章结构"&gt;1. 文章结构&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;front matter（YAML/TOML/JSON）&lt;/li&gt;
+&lt;li&gt;正文 Markdown 内容&lt;/li&gt;
+&lt;li&gt;支持标题、列表、代码块、链接等&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="2-示例内容"&gt;2. 示例内容&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;豆包&lt;/code&gt; 和 &lt;code&gt;mimo&lt;/code&gt; 在方案生成中的差异主要体现在：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;方案表达方式&lt;/li&gt;
+&lt;li&gt;数据流与控制流&lt;/li&gt;
+&lt;li&gt;可读性与扩展性&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="3-结论"&gt;3. 结论&lt;/h2&gt;
+&lt;p&gt;合理使用 Hugo 的 Markdown 文章格式，可以增强内容的结构化和 SEO 性能。&lt;/p&gt;</description></item><item><title>初一全科易错点及错题整理AI学习APP详细开发方案（豆包版）</title><link>https://azlog.org/posts/%E5%88%9D%E4%B8%80%E5%85%A8%E7%A7%91%E6%98%93%E9%94%99%E7%82%B9%E5%8F%8A%E9%94%99%E9%A2%98%E6%95%B4%E7%90%86ai%E5%AD%A6%E4%B9%A0app%E8%AF%A6%E7%BB%86%E5%BC%80%E5%8F%91%E6%96%B9%E6%A1%88%E8%B1%86%E5%8C%85%E7%89%88/</link><pubDate>Fri, 29 May 2026 12:00:00 +0800</pubDate><guid>https://azlog.org/posts/%E5%88%9D%E4%B8%80%E5%85%A8%E7%A7%91%E6%98%93%E9%94%99%E7%82%B9%E5%8F%8A%E9%94%99%E9%A2%98%E6%95%B4%E7%90%86ai%E5%AD%A6%E4%B9%A0app%E8%AF%A6%E7%BB%86%E5%BC%80%E5%8F%91%E6%96%B9%E6%A1%88%E8%B1%86%E5%8C%85%E7%89%88/</guid><description>&lt;h1 id="初一全科易错点及错题整理ai学习app详细开发方案"&gt;初一全科易错点及错题整理AI学习APP详细开发方案&lt;/h1&gt;
+&lt;h2 id="一项目整体概述"&gt;一、项目整体概述&lt;/h2&gt;
+&lt;h3 id="11-项目背景与核心痛点"&gt;1.1 项目背景与核心痛点&lt;/h3&gt;
+&lt;p&gt;用户孩子为初一学生，整体成绩良好，但存在学科基础短板：语文基础字词、文学常识掌握不扎实；英语单词、短语、句型高频出错；数、政史地生（小四门）错题无系统化整理、复盘效率低。同时家长已购置云服务器，可自主部署项目，无需依赖第三方平台，数据安全可控。&lt;/p&gt;
+&lt;p&gt;当前传统错题本、笔记工具痛点：手动录入繁琐、无法智能纠错、无知识点拓展、无法针对性沉淀个人易错题库、缺乏适配初一同步教材的专属学习辅助能力。&lt;/p&gt;
+&lt;h3 id="12-项目定位"&gt;1.2 项目定位&lt;/h3&gt;
+&lt;p&gt;一款&lt;strong&gt;初中生专属AI全科易错点&amp;amp;amp;错题管理APP&lt;/strong&gt;，聚焦初一同步学习，主打拍照录入、语音录入、AI智能纠错/解析/整理，分学科沉淀个人易错知识库，搭配家长后台管理功能，轻量化、无娱乐干扰，纯学习工具属性，适配初中生日常查漏补缺。&lt;/p&gt;
+&lt;h3 id="13-部署基础"&gt;1.3 部署基础&lt;/h3&gt;
+&lt;p&gt;依托用户自有云服务器部署，搭载移动端APP（手机端）+ Web后台管理系统，数据本地云端存储，独立管控，安全稳定。&lt;/p&gt;
+&lt;h2 id="二整体架构设计适配私有云服务器"&gt;二、整体架构设计（适配私有云服务器）&lt;/h2&gt;
+&lt;h3 id="21-系统整体架构"&gt;2.1 系统整体架构&lt;/h3&gt;
+&lt;p&gt;采用「前端APP + 后端服务 + AI能力接口 + 云服务器数据库 + 管理后台」五层架构，轻量化部署，适配个人云服务器配置，不占用过高资源。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;移动端前端&lt;/strong&gt;：安卓APP（适配安卓手机、安卓平板），面向学生使用，承载所有录入、查询、学习、复盘功能&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;后端服务&lt;/strong&gt;：部署于用户自有云服务器，负责数据接收、存储、逻辑处理、接口调度&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;AI能力层&lt;/strong&gt;：对接通用AI接口，实现OCR拍照识别、语音识别、错题解析、知识点纠错、内容拓展&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;数据库层&lt;/strong&gt;：云服务器自建数据库，存储学生易错知识点、错题、学习记录、用户数据&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;后台管理端&lt;/strong&gt;：Web网页端，家长可登录，查看学习数据、管理题库、查看薄弱点&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="22-核心核心优势"&gt;2.2 核心核心优势&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;私有化部署：自有云服务器，孩子学习数据不泄露，完全自主可控&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;学科精准适配：完全贴合初一语数英、小四门考点，摒弃无用功能&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;多方式录入：拍照、语音、手动三种录入方式，解决录入繁琐问题&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;AI智能赋能：纠错、解析、拓展、整理一体化，精准弥补基础短板&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;专属知识库：沉淀个人易错题库，针对性复盘，精准提分&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="三分学科详细功能设计核心业务功能"&gt;三、分学科详细功能设计（核心业务功能）&lt;/h2&gt;
+&lt;p&gt;严格按照家长需求，分语文、英语、数学、小四门四大模块定制功能，完全匹配初一学习短板。&lt;/p&gt;
+&lt;h3 id="31-语文模块针对性解决基础薄弱问题"&gt;3.1 语文模块（针对性解决基础薄弱问题）&lt;/h3&gt;
+&lt;p&gt;核心定位：专攻&lt;strong&gt;易错字词读音、易混字词短语、文学常识、古文基础&lt;/strong&gt;四大薄弱点&lt;/p&gt;
+&lt;h4 id="311-录入方式"&gt;3.1.1 录入方式&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;拍照录入&lt;/strong&gt;：拍摄试卷、课本、笔记中的易错字词、古文、文学知识点，AI自动识别文字，去除杂质、筛选有效知识点&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;手动录入&lt;/strong&gt;：自主输入记错的字音、字形、短语、文学常识、古文实词虚词&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id="312-ai核心能力"&gt;3.1.2 AI核心能力&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;AI智能矫正&lt;/strong&gt;：自动纠正错误读音、错字、别字、误用短语，标注错误原因（如：形近字混淆、多音字误读、搭配不当）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;AI知识点拓展&lt;/strong&gt;：针对录入知识点，自动拓展同类易错点、近义词、反义词、固定搭配、教材同步考点&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;古文专项解析&lt;/strong&gt;：针对录入的古文字词、句式、翻译，AI补充注释、古今异义、词类活用、重点翻译、课文出处&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;文学常识整理&lt;/strong&gt;：零散录入的文学常识，AI自动分类整理（作者、朝代、作品、文体、主旨）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id="313-数据沉淀功能"&gt;3.1.3 数据沉淀功能&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;自动分类归档：字音易错库、字形易错库、短语误用库、文学常识库、古文基础库&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;支持错题/易错点复盘、随机抽查、错题重做、重点标记&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="32-英语模块解决单词句型高频出错问题"&gt;3.2 英语模块（解决单词、句型高频出错问题）&lt;/h3&gt;
+&lt;p&gt;核心定位：专攻&lt;strong&gt;易错单词、短语、易错句型、英语错题&lt;/strong&gt;，支持多维度智能录入与拓展&lt;/p&gt;
+&lt;h4 id="321-录入方式三大录入模式"&gt;3.2.1 录入方式（三大录入模式）&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;拍照录入&lt;/strong&gt;：拍摄英语错题、单词默写错题、短语造句错题，AI精准识别英文内容&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;语音识别录入&lt;/strong&gt;：口语朗读易错单词、句型，系统语音转文字，自动记录录入内容，适配口语纠错、记忆场景&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;手动录入&lt;/strong&gt;：自主记录拼写错误、搭配错误、句型误用知识点&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id="322-ai核心能力"&gt;3.2.2 AI核心能力&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;AI纠错矫正&lt;/strong&gt;：纠正单词拼写错误、短语搭配错误、语法句型错误，标注错误语法点&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;AI智能拓展&lt;/strong&gt;：自动拓展单词词性、复数、过去式、固定搭配、同义替换、初一必考句型、同类易错语法&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;错题解析&lt;/strong&gt;：针对英语单选题、完形、填空等错题，AI给出详细解析、考点、易错提醒&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id="323-数据沉淀功能"&gt;3.2.3 数据沉淀功能&lt;/h4&gt;
+&lt;p&gt;自动归档：易错单词库、易错短语库、易错句型库、英语错题集，支持单词听写、句型默写、错题复盘&lt;/p&gt;</description></item><item><title>VsCode一键发文</title><link>https://azlog.org/posts/vscode%E4%B8%80%E9%94%AE%E5%8F%91%E6%96%87/</link><pubDate>Thu, 28 May 2026 09:31:05 +0000</pubDate><guid>https://azlog.org/posts/vscode%E4%B8%80%E9%94%AE%E5%8F%91%E6%96%87/</guid><description>VsCode一键发文</description></item><item><title>Hugo发文全流程</title><link>https://azlog.org/posts/hugo%E5%8F%91%E6%96%87%E5%85%A8%E6%B5%81%E7%A8%8B/</link><pubDate>Thu, 28 May 2026 08:28:05 +0000</pubDate><guid>https://azlog.org/posts/hugo%E5%8F%91%E6%96%87%E5%85%A8%E6%B5%81%E7%A8%8B/</guid><description>Hugo发文全流程</description></item><item><title>Git常见命令</title><link>https://azlog.org/posts/git%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/</link><pubDate>Thu, 28 May 2026 10:40:36 +0800</pubDate><guid>https://azlog.org/posts/git%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/</guid><description>Git常见命令</description></item><item><title>Hugo常见命令</title><link>https://azlog.org/posts/hugo%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/</link><pubDate>Thu, 28 May 2026 10:36:40 +0800</pubDate><guid>https://azlog.org/posts/hugo%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/</guid><description>hugo常见命令</description></item></channel></rss>
