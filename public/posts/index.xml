@@ -249,4 +249,38 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id="323-数据沉淀功能"&gt;3.2.3 数据沉淀功能&lt;/h4&gt;
-&lt;p&gt;自动归档：易错单词库、易错短语库、易错句型库、英语错题集，支持单词听写、句型默写、错题复盘&lt;/p&gt;</description></item><item><title>VsCode一键发文</title><link>https://azlog.org/posts/vscode%E4%B8%80%E9%94%AE%E5%8F%91%E6%96%87/</link><pubDate>Thu, 28 May 2026 09:31:05 +0000</pubDate><guid>https://azlog.org/posts/vscode%E4%B8%80%E9%94%AE%E5%8F%91%E6%96%87/</guid><description>VsCode一键发文</description></item><item><title>Hugo发文全流程</title><link>https://azlog.org/posts/hugo%E5%8F%91%E6%96%87%E5%85%A8%E6%B5%81%E7%A8%8B/</link><pubDate>Thu, 28 May 2026 08:28:05 +0000</pubDate><guid>https://azlog.org/posts/hugo%E5%8F%91%E6%96%87%E5%85%A8%E6%B5%81%E7%A8%8B/</guid><description>Hugo发文全流程</description></item><item><title>Git常见命令</title><link>https://azlog.org/posts/git%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/</link><pubDate>Thu, 28 May 2026 10:40:36 +0800</pubDate><guid>https://azlog.org/posts/git%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/</guid><description>Git常见命令</description></item><item><title>Hugo常见命令</title><link>https://azlog.org/posts/hugo%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/</link><pubDate>Thu, 28 May 2026 10:36:40 +0800</pubDate><guid>https://azlog.org/posts/hugo%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/</guid><description>hugo常见命令</description></item><item><title>Hello</title><link>https://azlog.org/posts/hello/</link><pubDate>Wed, 27 May 2026 17:00:45 +0800</pubDate><guid>https://azlog.org/posts/hello/</guid><description>&lt;p&gt;Hello HugoHello HugoHello HugoHello Hugo&lt;/p&gt;</description></item></channel></rss>
+&lt;p&gt;自动归档：易错单词库、易错短语库、易错句型库、英语错题集，支持单词听写、句型默写、错题复盘&lt;/p&gt;</description></item><item><title>VsCode一键发文</title><link>https://azlog.org/posts/vscode%E4%B8%80%E9%94%AE%E5%8F%91%E6%96%87/</link><pubDate>Thu, 28 May 2026 09:31:05 +0000</pubDate><guid>https://azlog.org/posts/vscode%E4%B8%80%E9%94%AE%E5%8F%91%E6%96%87/</guid><description>VsCode一键发文</description></item><item><title>Hugo发文全流程</title><link>https://azlog.org/posts/hugo%E5%8F%91%E6%96%87%E5%85%A8%E6%B5%81%E7%A8%8B/</link><pubDate>Thu, 28 May 2026 08:28:05 +0000</pubDate><guid>https://azlog.org/posts/hugo%E5%8F%91%E6%96%87%E5%85%A8%E6%B5%81%E7%A8%8B/</guid><description>Hugo发文全流程</description></item><item><title>Git常见命令</title><link>https://azlog.org/posts/git%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/</link><pubDate>Thu, 28 May 2026 10:40:36 +0800</pubDate><guid>https://azlog.org/posts/git%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/</guid><description>Git常见命令</description></item><item><title>Hugo常见命令</title><link>https://azlog.org/posts/hugo%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/</link><pubDate>Thu, 28 May 2026 10:36:40 +0800</pubDate><guid>https://azlog.org/posts/hugo%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/</guid><description>hugo常见命令</description></item><item><title>Hello</title><link>https://azlog.org/posts/hello/</link><pubDate>Wed, 27 May 2026 17:00:45 +0800</pubDate><guid>https://azlog.org/posts/hello/</guid><description>&lt;p&gt;Hello HugoHello HugoHello HugoHello Hugo&lt;/p&gt;</description></item><item><title/><link>https://azlog.org/posts/cloudflare+imgbed%E5%9B%BE%E5%BA%8A%E4%BF%9D%E5%A7%86%E7%BA%A7%E7%9A%84%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://azlog.org/posts/cloudflare+imgbed%E5%9B%BE%E5%BA%8A%E4%BF%9D%E5%A7%86%E7%BA%A7%E7%9A%84%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</guid><description>&lt;p&gt;&lt;strong&gt;CloudFlare-ImgBed&lt;/strong&gt;是非常流行的免费开源图床方案。不仅完全免费，而且无需购买服务器，非常适合个人博客、笔记或日常分享使用。&lt;/p&gt;
+&lt;p&gt;下面一份保姆级的搭建教程，只需几分钟就能拥有属于自己的永久免费图床。&lt;/p&gt;
+&lt;h3 id="-准备工作"&gt;🛠️ 准备工作&lt;/h3&gt;
+&lt;p&gt;在开始之前，请提前准备好以下 3 个免费账号：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Cloudflare 账号&lt;/strong&gt;：用于托管图床程序和存储图片。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;GitHub 账号&lt;/strong&gt;：用于获取开源的图床项目代码。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;一个域名&lt;/strong&gt;（可选）：如果你希望图片链接更好看、更稳定，建议准备一个域名并托管到 Cloudflare；如果没有，也可以直接使用 Cloudflare 赠送的免费二级域名（&lt;code&gt;.pages.dev&lt;/code&gt;）。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h3 id="-第一步fork-开源项目到-github"&gt;🚀 第一步：Fork 开源项目到 GitHub&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;打开 CloudFlare-ImgBed 的 GitHub 仓库页面：&lt;code&gt;https://github.com/MarSeventh/CloudFlare-ImgBed&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;点击右上角的 &lt;strong&gt;Fork&lt;/strong&gt; 按钮，将这个项目复刻（复制）一份到你自己的 GitHub 仓库中。&lt;/li&gt;
+&lt;li&gt;在弹出的页面中保持默认设置，直接点击 &lt;strong&gt;Create fork&lt;/strong&gt; 即可。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h3 id="-第二步在-cloudflare-中创建-pages-项目"&gt;☁️ 第二步：在 Cloudflare 中创建 Pages 项目&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;登录 Cloudflare 后台，在左侧菜单找到 &lt;strong&gt;计算和 AI (Workers &amp;amp; Pages)&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;点击 &lt;strong&gt;创建应用程序 (Create application)&lt;/strong&gt;，然后选择 &lt;strong&gt;Pages&lt;/strong&gt; 标签页，点击 &lt;strong&gt;连接到 Git (Connect to Git)&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;授权并选择你刚刚 Fork 的 &lt;code&gt;CloudFlare-ImgBed&lt;/code&gt; 仓库，点击 &lt;strong&gt;开始设置 (Begin setup)&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;在项目配置页面进行如下设置：
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;项目名称&lt;/strong&gt;：可以随意填写（例如 &lt;code&gt;my-imgbed&lt;/code&gt;）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;框架预设 (Framework preset)&lt;/strong&gt;：选择 &lt;strong&gt;无 (None)&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;构建命令 (Build command)&lt;/strong&gt;：填入 &lt;code&gt;npm install&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;构建输出目录&lt;/strong&gt;：/frontend-dist（很多教程这个地方让留空是不对的，输出目录不对，无法通过域名正常访问图床的）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;点击 &lt;strong&gt;保存并部署 (Save and Deploy)&lt;/strong&gt;。等待几分钟后，Cloudflare 会自动完成项目的初次部署。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h3 id="-第三步创建并绑定-kv-数据库与-r2-存储"&gt;💾 第三步：创建并绑定 KV 数据库与 R2 存储&lt;/h3&gt;
+&lt;p&gt;为了让图床能正常保存设置和存储图片，我们需要配置两个核心服务：&lt;/p&gt;</description></item></channel></rss>
