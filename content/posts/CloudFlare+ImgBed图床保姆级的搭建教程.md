@@ -1,3 +1,12 @@
++++
+date = '2026-06-01T04:10:17Z'
+draft = true
+title = 'CloudFlare+ImgBed图床保姆级的搭建教程'
+description = "CloudFlare+ImgBed图床保姆级的搭建教程"
+categories = ["技术","工具" ]   # 大分类：技术/工具/生活/学习/博客
+tags = [ "CloudFlare", "Git"] # 自定义标签
++++
+
  **CloudFlare-ImgBed**是非常流行的免费开源图床方案。不仅完全免费，而且无需购买服务器，非常适合个人博客、笔记或日常分享使用。
 
 下面一份保姆级的搭建教程，只需几分钟就能拥有属于自己的永久免费图床。
