@@ -1,6 +1,6 @@
 baseURL = "https://azlog.org"
 languageCode = "zh-CN"
-title = "我的博客"
+title = "Az日志"
 theme = "PaperMod"
 paginate = 10
 enableRobotsTXT = true
@@ -56,7 +56,7 @@ showToc = true
 TocOpen = false
 
 [params.homeInfoParams]
-title = "欢迎来到我的博客"
+title = "欢迎来到AZ日志"
 content = "记录技术与生活"
 
 [[params.socialIcons]]
