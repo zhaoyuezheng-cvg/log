@@ -1,10 +1,16 @@
-+++
-title= "从方案生成看豆包和mimo的区别"
-date='2026-05-29T14:00:00+08:00'
-draft= false
-tags= ["技术", "方案生成", "豆包", "mimo"]
-categories = ["技术","工具" ]  
-+++
+---
+categories:
+- 技术
+- 工具
+date: '2026-05-29T14:00:00+08:00'
+draft: false
+tags:
+- 技术
+- 方案生成
+- 豆包
+- mimo
+title: 从方案生成看豆包和mimo的区别
+---
 
 
 [豆包方案](https://azlog.org/posts/%E5%88%9D%E4%B8%80%E5%85%A8%E7%A7%91%E6%98%93%E9%94%99%E7%82%B9%E5%8F%8A%E9%94%99%E9%A2%98%E6%95%B4%E7%90%86ai%E5%AD%A6%E4%B9%A0app%E8%AF%A6%E7%BB%86%E5%BC%80%E5%8F%91%E6%96%B9%E6%A1%88%E8%B1%86%E5%8C%85%E7%89%88/)

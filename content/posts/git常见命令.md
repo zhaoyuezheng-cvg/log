@@ -1,11 +1,16 @@
-+++
-date = '2026-05-28T10:40:36+08:00'
-draft = false
-title = 'Git常见命令'
-description = "Git常见命令"
-categories = ["技术","工具" ]   # 大分类：技术/工具/生活/学习/博客
-tags = ["Hugo", "VSCode", "Git"] # 自定义标签
-+++
+---
+categories:
+- 技术
+- 工具
+date: '2026-05-28T10:40:36+08:00'
+description: Git常见命令
+draft: false
+tags:
+- Hugo
+- VSCode
+- Git
+title: Git常见命令
+---
 
 ---
 

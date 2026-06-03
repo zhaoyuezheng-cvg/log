@@ -2,19 +2,35 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Hugo 一键发布",
+      "label": "Hugo: New Post",
       "type": "shell",
-      "command": "powershell",
-      "args": [
-        "-ExecutionPolicy", "Bypass",
-        "-File", "${workspaceFolder}/deploy.ps1",
-        "-commitMessage", "post: VSCode 一键发布"
-      ],
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      },
-      "problemMatcher": []
+      "command": "hugo new posts/${input:postName}.md && code content/posts/${input:postName}.md",
+      "problemMatcher": [],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "Hugo: Build & Deploy",
+      "type": "shell",
+      "command": "hugo -D && git add . && git commit -m \"Site updated: $(date '+%Y-%m-%d %H:%M:%S')\" && git push",
+      "problemMatcher": [],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "id": "postName",
+      "type": "promptString",
+      "description": "Enter the new post name (e.g., my-first-post)"
     }
   ]
 }

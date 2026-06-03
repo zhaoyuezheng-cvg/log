@@ -1,11 +1,14 @@
-+++
-title= "初一分级阅读 + App 组合清单"
-date= '2026-06-03T15:00:00+08:00'
-draft= false
-description="初一适合的分级阅读 + App 组合清单"
-tags= ["英语", "学习"]
-categories= ["学习"]
-+++
+---
+categories:
+- 学习
+date: '2026-06-03T15:00:00+08:00'
+description: 初一适合的分级阅读 + App 组合清单
+draft: false
+tags:
+- 英语
+- 学习
+title: 初一分级阅读 + App 组合清单
+---
 
 
 ---

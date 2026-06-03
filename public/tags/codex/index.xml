@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Codex on Az日志</title>
+    <link>https://azlog.org/tags/codex/</link>
+    <description>Recent content in Codex on Az日志</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 03 Jun 2026 08:37:42 +0000</lastBuildDate>
+    <atom:link href="https://azlog.org/tags/codex/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Codex、opencode使用对比</title>
+      <link>https://azlog.org/posts/codexopencode%E4%BD%BF%E7%94%A8%E5%AF%B9%E6%AF%94/</link>
+      <pubDate>Wed, 03 Jun 2026 08:37:42 +0000</pubDate>
+      <guid>https://azlog.org/posts/codexopencode%E4%BD%BF%E7%94%A8%E5%AF%B9%E6%AF%94/</guid>
+      <description>&lt;h2 id=&#34;正文开始&#34;&gt;正文开始&lt;/h2&gt;
+&lt;p&gt;实际使用角度对比。&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;维度&lt;/th&gt;
+          &lt;th&gt;Codex&lt;/th&gt;
+          &lt;th&gt;OpenCode&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;定位&lt;/td&gt;
+          &lt;td&gt;OpenAI 官方 AI 编程代理&lt;/td&gt;
+          &lt;td&gt;社区驱动开源 AI 编程代理&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;开源&lt;/td&gt;
+          &lt;td&gt;是&lt;/td&gt;
+          &lt;td&gt;是&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;模型支持&lt;/td&gt;
+          &lt;td&gt;OpenAI 模型为主&lt;/td&gt;
+          &lt;td&gt;支持 OpenAI、Claude、Gemini、本地模型等&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;多模型切换&lt;/td&gt;
+          &lt;td&gt;较弱&lt;/td&gt;
+          &lt;td&gt;很强&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;安装&lt;/td&gt;
+          &lt;td&gt;简单&lt;/td&gt;
+          &lt;td&gt;简单&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Agent 能力&lt;/td&gt;
+          &lt;td&gt;很强&lt;/td&gt;
+          &lt;td&gt;很强&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;CI/CD&lt;/td&gt;
+          &lt;td&gt;原生支持&lt;/td&gt;
+          &lt;td&gt;一般&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Code Review&lt;/td&gt;
+          &lt;td&gt;内置&lt;/td&gt;
+          &lt;td&gt;需要自行配置&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Sandbox 安全隔离&lt;/td&gt;
+          &lt;td&gt;强&lt;/td&gt;
+          &lt;td&gt;有但相对灵活&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;企业支持&lt;/td&gt;
+          &lt;td&gt;有&lt;/td&gt;
+          &lt;td&gt;无官方企业支持&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;学习成本&lt;/td&gt;
+          &lt;td&gt;低&lt;/td&gt;
+          &lt;td&gt;中等&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;可玩性&lt;/td&gt;
+          &lt;td&gt;中&lt;/td&gt;
+          &lt;td&gt;高&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;([AI Magicx][1])&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;1-codex-的优势&#34;&gt;1. Codex 的优势&lt;/h2&gt;
+&lt;h3 id=&#34;官方模型调优&#34;&gt;官方模型调优&lt;/h3&gt;
+&lt;p&gt;Codex 本质上是 OpenAI 自己的 Agent 框架。&lt;/p&gt;
+&lt;p&gt;它的优势不只是模型，而是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Prompt 设计&lt;/li&gt;
+&lt;li&gt;Tool 调用&lt;/li&gt;
+&lt;li&gt;文件搜索&lt;/li&gt;
+&lt;li&gt;修改策略&lt;/li&gt;
+&lt;li&gt;审批流程&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;都是针对 GPT-Codex 优化的。([Reddit][2])&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

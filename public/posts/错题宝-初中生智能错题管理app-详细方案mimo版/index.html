@@ -1,7 +1,16 @@
-<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>「错题宝」—— 初中生智能错题管理App 详细方案（mimo版） | Az日志</title><meta name=keywords content="技术,方案生成,豆包,mimo"><meta name=description content="
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>「错题宝」—— 初中生智能错题管理App 详细方案（mimo版） | Az日志</title>
+<meta name="keywords" content="技术, 方案生成, 豆包, mimo">
+<meta name="description" content="
 一、项目总览
 1.1 项目定位
-一款面向初中生的错题管理 + AI 辅助学习工具，覆盖语文、英语、数学及小四门（历史、地理、生物、道德与法治），核心目标：记录 → 理解 → 巩固 → 提分。
+一款面向初中生的错题管理 &#43; AI 辅助学习工具，覆盖语文、英语、数学及小四门（历史、地理、生物、道德与法治），核心目标：记录 → 理解 → 巩固 → 提分。
 1.2 核心用户画像
 
   
@@ -42,14 +51,315 @@
 二、技术架构方案
 2.1 推荐技术栈
 
-考虑到你是个人开发者、买了云服务器、孩子用手机，推荐最务实的方案："><meta name=author content="azheng"><link rel=canonical href=https://azlog.org/posts/%E9%94%99%E9%A2%98%E5%AE%9D-%E5%88%9D%E4%B8%AD%E7%94%9F%E6%99%BA%E8%83%BD%E9%94%99%E9%A2%98%E7%AE%A1%E7%90%86app-%E8%AF%A6%E7%BB%86%E6%96%B9%E6%A1%88mimo%E7%89%88/><link crossorigin=anonymous href=/assets/css/stylesheet.1d4346839295915e219dee6c6b7d8512a8a4a8e692c435a57effb2398a6e371e.css integrity="sha256-HUNGg5KVkV4hne5sa32FEqikqOaSxDWlfv+yOYpuNx4=" rel="preload stylesheet" as=style><link rel=icon href=https://azlog.org/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://azlog.org/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://azlog.org/favicon-32x32.png><link rel=apple-touch-icon href=https://azlog.org/apple-touch-icon.png><link rel=mask-icon href=https://azlog.org/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://azlog.org/posts/%E9%94%99%E9%A2%98%E5%AE%9D-%E5%88%9D%E4%B8%AD%E7%94%9F%E6%99%BA%E8%83%BD%E9%94%99%E9%A2%98%E7%AE%A1%E7%90%86app-%E8%AF%A6%E7%BB%86%E6%96%B9%E6%A1%88mimo%E7%89%88/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><meta property="og:url" content="https://azlog.org/posts/%E9%94%99%E9%A2%98%E5%AE%9D-%E5%88%9D%E4%B8%AD%E7%94%9F%E6%99%BA%E8%83%BD%E9%94%99%E9%A2%98%E7%AE%A1%E7%90%86app-%E8%AF%A6%E7%BB%86%E6%96%B9%E6%A1%88mimo%E7%89%88/"><meta property="og:site_name" content="Az日志"><meta property="og:title" content="「错题宝」—— 初中生智能错题管理App 详细方案（mimo版）"><meta property="og:description" content="一、项目总览 1.1 项目定位 一款面向初中生的错题管理 + AI 辅助学习工具，覆盖语文、英语、数学及小四门（历史、地理、生物、道德与法治），核心目标：记录 → 理解 → 巩固 → 提分。
-1.2 核心用户画像 角色 使用场景 学生（儿子） 日常记录错题、查看复习、与AI互动 家长（你） 后台管理、查看学习数据、补充内容 1.3 整体功能矩阵 ┌─────────────────────────────────────────────────────┐│ 错题宝 App │├──────────┬──────────┬──────────┬─────────────────────┤│ 语文 │ 英语 │ 数学 │ 小四门(4科) │├──────────┼──────────┼──────────┼─────────────────────┤│ 字词读音 │ 错词本 │ 错题录入 │ 拍照录入 ││ 混淆字词 │ 易错短语 │ 解法记录 │ 答案整理 ││ 文学常识 │ 句型归纳 │ AI解题 │ AI整理答案 ││ 古文基础 │ 错题集 │ 拍照识别 │ 拍照识别 ││ 拍照输入 │ 语音输入 │ │ ││ AI矫正 │ AI扩展 │ │ │├──────────┴──────────┴──────────┴─────────────────────┤│ 通用能力：拍照OCR / 语音STT / AI对话 ││ 学习管理：艾宾浩斯复习 / 统计分析 / 搜索 ││ 后台管理：内容管理 / 用户管理 / 数据统计 │└─────────────────────────────────────────────────────┘ 二、技术架构方案 2.1 推荐技术栈 考虑到你是个人开发者、买了云服务器、孩子用手机，推荐最务实的方案："><meta property="og:locale" content="zh_CN"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2026-05-29T12:00:00+08:00"><meta property="article:modified_time" content="2026-05-29T12:00:00+08:00"><meta property="article:tag" content="技术"><meta property="article:tag" content="方案生成"><meta property="article:tag" content="豆包"><meta property="article:tag" content="Mimo"><meta name=twitter:card content="summary"><meta name=twitter:title content="「错题宝」—— 初中生智能错题管理App 详细方案（mimo版）"><meta name=twitter:description content="一、项目总览 1.1 项目定位 一款面向初中生的错题管理 + AI 辅助学习工具，覆盖语文、英语、数学及小四门（历史、地理、生物、道德与法治），核心目标：记录 → 理解 → 巩固 → 提分。
-1.2 核心用户画像 角色 使用场景 学生（儿子） 日常记录错题、查看复习、与AI互动 家长（你） 后台管理、查看学习数据、补充内容 1.3 整体功能矩阵 ┌─────────────────────────────────────────────────────┐│ 错题宝 App │├──────────┬──────────┬──────────┬─────────────────────┤│ 语文 │ 英语 │ 数学 │ 小四门(4科) │├──────────┼──────────┼──────────┼─────────────────────┤│ 字词读音 │ 错词本 │ 错题录入 │ 拍照录入 ││ 混淆字词 │ 易错短语 │ 解法记录 │ 答案整理 ││ 文学常识 │ 句型归纳 │ AI解题 │ AI整理答案 ││ 古文基础 │ 错题集 │ 拍照识别 │ 拍照识别 ││ 拍照输入 │ 语音输入 │ │ ││ AI矫正 │ AI扩展 │ │ │├──────────┴──────────┴──────────┴─────────────────────┤│ 通用能力：拍照OCR / 语音STT / AI对话 ││ 学习管理：艾宾浩斯复习 / 统计分析 / 搜索 ││ 后台管理：内容管理 / 用户管理 / 数据统计 │└─────────────────────────────────────────────────────┘ 二、技术架构方案 2.1 推荐技术栈 考虑到你是个人开发者、买了云服务器、孩子用手机，推荐最务实的方案："><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://azlog.org/posts/"},{"@type":"ListItem","position":2,"name":"「错题宝」—— 初中生智能错题管理App 详细方案（mimo版）","item":"https://azlog.org/posts/%E9%94%99%E9%A2%98%E5%AE%9D-%E5%88%9D%E4%B8%AD%E7%94%9F%E6%99%BA%E8%83%BD%E9%94%99%E9%A2%98%E7%AE%A1%E7%90%86app-%E8%AF%A6%E7%BB%86%E6%96%B9%E6%A1%88mimo%E7%89%88/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"「错题宝」—— 初中生智能错题管理App 详细方案（mimo版）","name":"「错题宝」—— 初中生智能错题管理App 详细方案（mimo版）","description":" 一、项目总览 1.1 项目定位 一款面向初中生的错题管理 + AI 辅助学习工具，覆盖语文、英语、数学及小四门（历史、地理、生物、道德与法治），核心目标：记录 → 理解 → 巩固 → 提分。\n1.2 核心用户画像 角色 使用场景 学生（儿子） 日常记录错题、查看复习、与AI互动 家长（你） 后台管理、查看学习数据、补充内容 1.3 整体功能矩阵 ┌─────────────────────────────────────────────────────┐\r│ 错题宝 App │\r├──────────┬──────────┬──────────┬─────────────────────┤\r│ 语文 │ 英语 │ 数学 │ 小四门(4科) │\r├──────────┼──────────┼──────────┼─────────────────────┤\r│ 字词读音 │ 错词本 │ 错题录入 │ 拍照录入 │\r│ 混淆字词 │ 易错短语 │ 解法记录 │ 答案整理 │\r│ 文学常识 │ 句型归纳 │ AI解题 │ AI整理答案 │\r│ 古文基础 │ 错题集 │ 拍照识别 │ 拍照识别 │\r│ 拍照输入 │ 语音输入 │ │ │\r│ AI矫正 │ AI扩展 │ │ │\r├──────────┴──────────┴──────────┴─────────────────────┤\r│ 通用能力：拍照OCR / 语音STT / AI对话 │\r│ 学习管理：艾宾浩斯复习 / 统计分析 / 搜索 │\r│ 后台管理：内容管理 / 用户管理 / 数据统计 │\r└─────────────────────────────────────────────────────┘ 二、技术架构方案 2.1 推荐技术栈 考虑到你是个人开发者、买了云服务器、孩子用手机，推荐最务实的方案：\n","keywords":["技术","方案生成","豆包","mimo"],"articleBody":" 一、项目总览 1.1 项目定位 一款面向初中生的错题管理 + AI 辅助学习工具，覆盖语文、英语、数学及小四门（历史、地理、生物、道德与法治），核心目标：记录 → 理解 → 巩固 → 提分。\n1.2 核心用户画像 角色 使用场景 学生（儿子） 日常记录错题、查看复习、与AI互动 家长（你） 后台管理、查看学习数据、补充内容 1.3 整体功能矩阵 ┌─────────────────────────────────────────────────────┐\r│ 错题宝 App │\r├──────────┬──────────┬──────────┬─────────────────────┤\r│ 语文 │ 英语 │ 数学 │ 小四门(4科) │\r├──────────┼──────────┼──────────┼─────────────────────┤\r│ 字词读音 │ 错词本 │ 错题录入 │ 拍照录入 │\r│ 混淆字词 │ 易错短语 │ 解法记录 │ 答案整理 │\r│ 文学常识 │ 句型归纳 │ AI解题 │ AI整理答案 │\r│ 古文基础 │ 错题集 │ 拍照识别 │ 拍照识别 │\r│ 拍照输入 │ 语音输入 │ │ │\r│ AI矫正 │ AI扩展 │ │ │\r├──────────┴──────────┴──────────┴─────────────────────┤\r│ 通用能力：拍照OCR / 语音STT / AI对话 │\r│ 学习管理：艾宾浩斯复习 / 统计分析 / 搜索 │\r│ 后台管理：内容管理 / 用户管理 / 数据统计 │\r└─────────────────────────────────────────────────────┘ 二、技术架构方案 2.1 推荐技术栈 考虑到你是个人开发者、买了云服务器、孩子用手机，推荐最务实的方案：\n层级 技术选型 理由 前端（移动端） Flutter（推荐）或 uni-app 一套代码同时出 Android + iOS；uni-app 如果你更熟悉 Vue 后端服务 Python + FastAPI 生态好、AI库丰富、异步性能强、开发快 数据库 MySQL 8.0 + Redis MySQL 存业务数据，Redis 做缓存和复习提醒队列 文件存储 阿里云OSS / 本地存储 存储拍照图片、音频文件 AI能力 通义千问API / DeepSeek API 国内稳定、中文能力强、价格便宜 OCR识别 百度OCR API / 通义千问视觉模型 拍照识别文字 语音识别 讯飞语音 / 阿里云语音 中英文语音转文字 后台管理 Vue3 + Element Plus 功能完善的管理后台 服务器 你的云服务器（推荐2核4G起步） 个人使用足够 2.2 系统架构图 ┌──────────────┐\r│ 手机App │\r│ (Flutter) │\r└──────┬───────┘\r│ HTTPS\r┌──────▼───────┐\r│ Nginx │ 反向代理 + 静态资源\r│ 80/443 │\r└──────┬───────┘\r│\r┌────────────┼────────────┐\r│ │ │\r┌──────▼──────┐ ┌──▼────┐ ┌────▼─────┐\r│ FastAPI后端 │ │ Vue3 │ │ WebSocket│\r│ (业务API) │ │管理后台│ │ (实时推送) │\r│ :8000 │ │ :3000 │ │ :8001 │\r└──────┬──────┘ └──┬────┘ └────┬─────┘\r│ │ │\r┌──────▼────────────▼───────────▼─────┐\r│ MySQL + Redis │\r│ 数据持久化 + 缓存 │\r└──────────────┬──────────────────────┘\r│\r┌──────────────┼──────────────────┐\r│ │ │\r┌────▼────┐ ┌─────▼─────┐ ┌───────▼──────┐\r│ AI API │ │ OCR API │ │ 语音 API │\r│通义/DeepSeek│ │ 百度OCR │ │ 讯飞/阿里 │\r└─────────┘ └───────────┘ └──────────────┘ 2.3 目录结构 cuoti-bao/\r├── backend/ # Python FastAPI 后端\r│ ├── app/\r│ │ ├── __init__.py\r│ │ ├── main.py # 应用入口\r│ │ ├── config.py # 配置文件\r│ │ ├── database.py # 数据库连接\r│ │ ├── models/ # 数据模型\r│ │ │ ├── user.py\r│ │ │ ├── chinese.py\r│ │ │ ├── english.py\r│ │ │ ├── math.py\r│ │ │ ├── general.py # 小四门\r│ │ │ └── review.py # 复习计划\r│ │ ├── api/ # API路由\r│ │ │ ├── auth.py\r│ │ │ ├── chinese.py\r│ │ │ ├── english.py\r│ │ │ ├── math.py\r│ │ │ ├── general.py\r│ │ │ ├── ai_chat.py\r│ │ │ ├── ocr.py\r│ │ │ ├── voice.py\r│ │ │ └── stats.py\r│ │ ├── services/ # 业务逻辑\r│ │ │ ├── ai_service.py\r│ │ │ ├── ocr_service.py\r│ │ │ ├── voice_service.py\r│ │ │ └── review_service.py\r│ │ └── schemas/ # Pydantic数据校验\r│ ├── requirements.txt\r│ └── Dockerfile\r│\r├── admin/ # Vue3 管理后台\r│ ├── src/\r│ │ ├── views/\r│ │ ├── components/\r│ │ └── api/\r│ └── package.json\r│\r├── mobile/ # Flutter 移动端\r│ ├── lib/\r│ │ ├── pages/\r│ │ ├── widgets/\r│ │ ├── services/\r│ │ └── models/\r│ └── pubspec.yaml\r│\r└── deploy/ # 部署脚本\r├── docker-compose.yml\r└── nginx.conf 三、数据库设计 3.1 核心数据模型 -- ============================================ -- 用户表 -- ============================================ CREATE TABLE users ( id BIGINT PRIMARY KEY AUTO_INCREMENT, username VARCHAR(50) NOT NULL UNIQUE, password_hash VARCHAR(255) NOT NULL, role ENUM('admin', 'student') DEFAULT 'student', nickname VARCHAR(50), grade VARCHAR(20) DEFAULT '初一', avatar_url VARCHAR(500), created_at DATETIME DEFAULT CURRENT_TIMESTAMP, updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP ); -- ============================================ -- 学科表 -- ============================================ CREATE TABLE subjects ( id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(20) NOT NULL, -- '语文','英语','数学','历史','地理','生物','道法' category ENUM('main', 'minor') DEFAULT 'main', -- 主科/小四门 icon VARCHAR(50), sort_order INT DEFAULT 0 ); -- ============================================ -- 错题/知识点总表（统一入口） -- ============================================ CREATE TABLE error_entries ( id BIGINT PRIMARY KEY AUTO_INCREMENT, user_id BIGINT NOT NULL, subject_id INT NOT NULL, entry_type VARCHAR(30) NOT NULL, -- 细分类型，见下方枚举 title VARCHAR(200), -- 标题/摘要 content TEXT, -- 主要内容 answer TEXT, -- 正确答案/解析 source VARCHAR(50), -- 来源：'期中考试','课后练习','课堂听写' difficulty TINYINT DEFAULT 3, -- 1-5难度 importance TINYINT DEFAULT 3, -- 1-5重要度 photo_urls JSON, -- 拍照图片URL列表 ai_analysis TEXT, -- AI分析内容 is_mastered BOOLEAN DEFAULT FALSE, -- 是否已掌握 mastered_at DATETIME, review_count INT DEFAULT 0, -- 复习次数 next_review_at DATETIME, -- 下次复习时间（艾宾浩斯） created_at DATETIME DEFAULT CURRENT_TIMESTAMP, updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, FOREIGN KEY (user_id) REFERENCES users(id), FOREIGN KEY (subject_id) REFERENCES subjects(id), INDEX idx_user_subject (user_id, subject_id), INDEX idx_next_review (user_id, next_review_at), INDEX idx_entry_type (subject_id, entry_type) ); -- entry_type 枚举说明： -- 语文: 'pronunciation'(字词读音), 'confusing_words'(混淆字词), -- 'literature'(文学常识), 'classical_chinese'(古文基础), 'reading'(阅读理解) -- 英语: 'vocabulary'(单词), 'phrase'(短语), 'sentence_pattern'(句型), 'error_question'(错题) -- 数学: 'error_question'(错题), 'concept'(概念题) -- 小四门: 'error_question'(错题), 'knowledge_point'(知识点) -- ============================================ -- 标签表（多维度分类检索） -- ============================================ CREATE TABLE tags ( id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(50) NOT NULL, subject_id INT, color VARCHAR(20) DEFAULT '#4A90D9', FOREIGN KEY (subject_id) REFERENCES subjects(id) ); CREATE TABLE entry_tags ( entry_id BIGINT NOT NULL, tag_id INT NOT NULL, PRIMARY KEY (entry_id, tag_id), FOREIGN KEY (entry_id) REFERENCES error_entries(id) ON DELETE CASCADE, FOREIGN KEY (tag_id) REFERENCES tags(id) ON DELETE CASCADE ); -- ============================================ -- AI对话记录表 -- ============================================ CREATE TABLE ai_conversations ( id BIGINT PRIMARY KEY AUTO_INCREMENT, user_id BIGINT NOT NULL, entry_id BIGINT, -- 关联的错题（可为空） subject_id INT, role ENUM('user', 'assistant') NOT NULL, content TEXT NOT NULL, tokens_used INT DEFAULT 0, created_at DATETIME DEFAULT CURRENT_TIMESTAMP, FOREIGN KEY (user_id) REFERENCES users(id), FOREIGN KEY (entry_id) REFERENCES error_entries(id) ON DELETE SET NULL, INDEX idx_user_entry (user_id, entry_id) ); -- ============================================ -- 复习计划表（艾宾浩斯遗忘曲线） -- ============================================ CREATE TABLE review_schedules ( id BIGINT PRIMARY KEY AUTO_INCREMENT, user_id BIGINT NOT NULL, entry_id BIGINT NOT NULL, review_stage TINYINT DEFAULT 0, -- 0-7 对应 8次复习 scheduled_at DATETIME NOT NULL, -- 计划复习时间 completed_at DATETIME, -- 实际完成时间 result ENUM('forgot', 'vague', 'remembered'), -- 复习结果 created_at DATETIME DEFAULT CURRENT_TIMESTAMP, FOREIGN KEY (user_id) REFERENCES users(id), FOREIGN KEY (entry_id) REFERENCES error_entries(id) ON DELETE CASCADE, INDEX idx_user_schedule (user_id, scheduled_at) ); -- ============================================ -- 学习统计表（每日汇总） -- ============================================ CREATE TABLE daily_stats ( id BIGINT PRIMARY KEY AUTO_INCREMENT, user_id BIGINT NOT NULL, stat_date DATE NOT NULL, subject_id INT, new_entries INT DEFAULT 0, -- 新增条目数 reviewed_entries INT DEFAULT 0, -- 复习条目数 mastered_entries INT DEFAULT 0, -- 掌握条目数 ai_queries INT DEFAULT 0, -- AI查询次数 study_minutes INT DEFAULT 0, -- 学习时长(分钟) FOREIGN KEY (user_id) REFERENCES users(id), UNIQUE KEY uk_user_date_subject (user_id, stat_date, subject_id) ); 3.2 数据库 ER 关系图 users ──────┬──────────────┐\r│ │\rerror_entries ──── entry_tags ──── tags\r│\r┌───────┼────────┐\r│ │ │\rai_conv review_schedule daily_stats 四、功能模块详细设计 4.1 语文模块 4.1.1 字词读音纠错 ┌─────────────────────────────────────────────────┐\r│ 📝 记录页面 │\r├─────────────────────────────────────────────────┤\r│ │\r│ 错误字词： [ 膝 盖 ] │\r│ 错误读音： [ qī gài ] 🎤 语音输入 │\r│ 正确读音： [ xī gài ] │\r│ 出错场景： [ 课堂听写 ▼] │\r│ 拍照记录： [📷 拍照/从相册选择] │\r│ │\r│ ── AI 智能扩展 ────────────────── │\r│ [🤖 点击获取AI讲解] │\r│ │\r│ AI回复示例： │\r│ 「膝」读 xī，易错读 qī。同类型的还有： │\r│ · 畸形(jī 不读 qí) │\r│ · 发酵(jiào 不读 xiào) │\r│ · 粗犷(guǎng 不读 kuàng) │\r│ 记忆技巧：月字旁的字多与身体有关... │\r│ │\r│ 标签：[易错读音] [月字旁] [+添加标签] │\r│ │\r│ [ 保 存 ] │\r└─────────────────────────────────────────────────┘ 4.1.2 混淆字词 ┌─────────────────────────────────────────────────┐\r│ 混淆字词记录 │\r├─────────────────────────────────────────────────┤\r│ │\r│ 易混词组： 「的 / 地 / 得」 │\r│ 造句错误： \"他高兴的跑了\" ← 应为\"地\" │\r│ 辨析规则： [记录区分方法...] │\r│ 拍照记录： [📷] │\r│ │\r│ [🤖 AI 辨析扩展] │\r│ → AI 生成更多例句、对比表格、记忆口诀 │\r│ │\r└─────────────────────────────────────────────────┘ 4.1.3 文学常识 \u0026 古文基础 ┌─────────────────────────────────────────────────┐\r│ 文学常识 / 古文基础 │\r├─────────────────────────────────────────────────┤\r│ │\r│ 分类选择：[文学常识 ▼] [古文基础 ▼] │\r│ │\r│ 知识点： 《岳阳楼记》作者及背景 │\r│ 内容： [范文希，字希文，北宋政治家...] │\r│ 关联课文：《岳阳楼记》八年级下册 │\r│ 拍照： [📷 拍摄课堂笔记/课本] │\r│ │\r│ [🤖 AI 延伸讲解] │\r│ → 作者生平、写作背景、同类作品对比 │\r│ │\r└─────────────────────────────────────────────────┘ 4.1.4 拍照输入流程 拍照/选图 → OCR识别文字 → 自动填充表单 → 人工校对 → AI分析 → 保存\r↓\r支持：课本截图、手写笔记、试卷错题 4.2 英语模块 4.2.1 易错单词本 ┌─────────────────────────────────────────────────┐\r│ 英语单词记录 │\r├─────────────────────────────────────────────────┤\r│ │\r│ 单词： [ beautiful ] │\r│ 错误拼写：[ beutiful ] 🎤 语音输入 │\r│ 音标： [ /ˈjuːtɪfl/ ] ← AI自动补全 │\r│ 词性： [ adj. ] │\r│ 中文释义：[ 美丽的 ] │\r│ 出错场景：[ 单元测试 ▼] │\r│ 拍照： [📷] │\r│ │\r│ [🤖 AI 扩展] │\r│ → 常见拼写错误模式、同根词、派生词、 │\r│ 记忆方法、例句、考试频率 │\r│ │\r│ ── AI 示例回复 ── │\r│ 「beautiful」常见错误： │\r│ 1. 漏掉 a → beutiful ✗ │\r│ 2. 记忆法：beau(美) + ti + ful(充满) │\r│ 3. 同根词：beauty, beautifully, beautify │\r│ 4. 考频：中考高频词 ⭐⭐⭐⭐⭐ │\r│ │\r└─────────────────────────────────────────────────┘ 4.2.2 易错短语 \u0026 句型 ┌─────────────────────────────────────────────────┐\r│ 短语/句型记录 │\r├─────────────────────────────────────────────────┤\r│ │\r│ 类型：[短语 ▼] [句型 ▼] │\r│ │\r│ 错误表达： \"I very like English\" │\r│ 正确表达： \"I like English very much\" │\r│ 错误原因： 中式英语，副词位置不对 │\r│ 拍照记录： [📷] │\r│ │\r│ [🤖 AI 扩展] │\r│ → 同类错误句型、正确结构归纳、 │\r│ 类似易错短语、考试例题 │\r│ │\r└─────────────────────────────────────────────────┘ 4.2.3 英语错题集 ┌─────────────────────────────────────────────────┐\r│ 英语错题 │\r├─────────────────────────────────────────────────┤\r│ │\r│ [📷 拍照录入整道题] │\r│ │\r│ 题目： [OCR自动识别/手动输入] │\r│ 我的答案：[ B ] │\r│ 正确答案：[ C ] │\r│ 知识点： [ 宾语从句语序 ] │\r│ 拍照解法：[📷] │\r│ │\r│ [🤖 AI 详细解析] │\r│ [🤖 生成同类练习题] │\r│ │\r└─────────────────────────────────────────────────┘ 4.2.4 语音识别输入 ┌──────────────────────────────────────────────┐\r│ 语音输入流程 │\r│ │\r│ [🎤 按住说话] → 语音转文字 → 填入对应输入框 │\r│ │\r│ 支持场景： │\r│ · 读出单词，自动识别拼写 │\r│ · 读出句子，自动转写 │\r│ · 听写后语音复查 │\r│ │\r│ 中英文混合识别，自动判断语种 │\r└──────────────────────────────────────────────┘ 4.3 数学模块 4.3.1 错题录入与AI解题 ┌─────────────────────────────────────────────────┐\r│ 数学错题 │\r├─────────────────────────────────────────────────┤\r│ │\r│ 章节：[一元一次方程 ▼] 来源：[月考 ▼] │\r│ │\r│ [📷 拍照题目] → OCR识别 │\r│ │\r│ 题目：已知 3x + 5 = 2x - 1，求x的值 │\r│ │\r│ 我的错误解法： │\r│ [📷 拍照/手动输入] │\r│ 3x + 5 = 2x - 1 │\r│ 3x + 2x = -1 - 5 ← 移项符号错误 │\r│ 5x = -6 │\r│ x = -6/5 │\r│ │\r│ 正确解法： │\r│ [📷 拍照/手动输入] │\r│ │\r│ [🤖 AI 详细讲解] │\r│ │\r│ ── AI 回复 ── │\r│ 📍 错误分析：移项时符号未变号 │\r│ 📍 正确步骤： │\r│ 3x + 5 = 2x - 1 │\r│ 3x - 2x = -1 - 5 ✓ │\r│ x = -6 │\r│ 📍 要点：移项必变号，这是方程的核心规则 │\r│ 📍 类似练习： │\r│ ① 5x - 3 = 3x + 7 │\r│ ② 4x + 2 = 2x - 8 │\r│ │\r│ [🤖 再出3道类似题] [🤖 换个方式讲解] │\r│ │\r└─────────────────────────────────────────────────┘ 4.4 小四门模块 4.4.1 统一错题录入 ┌─────────────────────────────────────────────────┐\r│ 小四门错题 [历史 ▼] [地理 ▼] [生物 ▼] [道法 ▼] │\r├─────────────────────────────────────────────────┤\r│ │\r│ [📷 拍照录入] │\r│ │\r│ 题目：[OCR识别/手动输入] │\r│ 我的答案：[ ] │\r│ 正确答案：[ ] │\r│ 拍照答案：[📷] │\r│ │\r│ [🤖 AI 整理标准答案] │\r│ [🤖 AI 归纳知识点] │\r│ │\r│ ── AI 回复（历史示例）── │\r│ 📍 答案：B. 鸦片战争（1840-1842） │\r│ 📍 知识点：中国近代史开端 │\r│ 📍 关联：《南京条约》—中国第一个不平等条约 │\r│ 📍 记忆：时间轴 1840→鸦片战争→近代史开端 │\r│ │\r└─────────────────────────────────────────────────┘ 4.5 通用能力模块 4.5.1 艾宾浩斯智能复习 复习间隔（艾宾浩斯遗忘曲线）：\r┌────────────────────────────────────────────┐\r│ 第1次复习：1天后 │\r│ 第2次复习：2天后 │\r│ 第3次复习：4天后 │\r│ 第4次复习：7天后 │\r│ 第5次复习：15天后 │\r│ 第6次复习：30天后 │\r│ 第7次复习：60天后 (可选) │\r└────────────────────────────────────────────┘\r复习页面：\r┌────────────────────────────────────────────┐\r│ 📅 今日待复习：12条 │\r│ │\r│ 语文(4) 英语(5) 数学(2) 历史(1) │\r│ │\r│ ┌──────────────────────────┐ │\r│ │ 膝盖(qī gài) → xī gài │ │\r│ │ │ │\r│ │ 记住了？ │ │\r│ │ [😰 忘了] [😐 模糊] [😊 记住] │ │\r│ └──────────────────────────┘ │\r│ │\r│ 记住→进入下一复习阶段 │\r│ 忘了→重置到第1阶段重新开始 │\r│ 模糊→维持当前阶段 │\r└────────────────────────────────────────────┘ 4.5.2 首页仪表盘 ┌─────────────────────────────────────────────────┐\r│ 早上好，同学 👋 📅 2025.05.29 │\r├─────────────────────────────────────────────────┤\r│ │\r│ ┌──── 今日待复习 ────┐ ┌──── 待掌握 ──────┐ │\r│ │ 12 条 │ │ 86 条 │ │\r│ └────────────────────┘ └──────────────────┘ │\r│ │\r│ ── 各科错题统计 ── │\r│ 语文 ████████░░ 45条 [进入] │\r│ 英语 ██████████ 52条 [进入] │\r│ 数学 █████░░░░░ 28条 [进入] │\r│ 历史 ██░░░░░░░░ 12条 [进入] │\r│ 地理 ███░░░░░░░ 15条 [进入] │\r│ 生物 ██░░░░░░░░ 10条 [进入] │\r│ 道法 █░░░░░░░░░ 8条 [进入] │\r│ │\r│ ── 本周学习曲线 ── │\r│ [折线图：新增/复习/掌握趋势] │\r│ │\r│ ── 快捷操作 ── │\r│ [📷 拍照录入] [🎤 语音输入] [🤖 AI问答] │\r│ │\r└─────────────────────────────────────────────────┘\r底部导航：[首页] [录入] [复习] [搜索] [我的] 4.5.3 全局搜索 支持：\r· 关键词搜索所有错题/知识点\r· 按学科筛选\r· 按标签筛选\r· 按时间范围筛选\r· 按掌握状态筛选\r· 按难度/重要度筛选 4.6 后台管理系统 ┌─────────────────────────────────────────────────────────────┐\r│ 错题宝 · 管理后台 │\r├───────────┬─────────────────────────────────────────────────┤\r│ 侧边栏 │ 内容区域 │\r│ │ │\r│ 📊 数据概览│ 各科错题统计图表 │\r│ │ 学习时长统计 │\r│ 📚 语文管理│ 复习完成率 │\r│ 📖 英语管理│ │\r│ 📐 数学管理│ │\r│ 📋 小四门 │ │\r│ │ 表格化管理所有错题/知识点 │\r│ 🏷️ 标签 │ 支持增删改查、批量导入 │\r│ │ 支持手动补充AI分析内容 │\r│ 🤖 AI管理 │ │\r│ │ AI接口配置 │\r│ 👤 用户 │ AI用量统计 │\r│ │ │\r│ ⚙️ 系统 │ 系统设置、备份、日志 │\r└───────────┴─────────────────────────────────────────────────┘ 后台管理功能清单 模块 功能 数据概览 错题总数/各科分布、学习天数、复习完成率、AI使用量、趋势图表 内容管理 各科错题CRUD、批量导入/导出、Excel导入、手动补充解析 标签管理 创建/编辑/删除标签、批量打标签 复习管理 查看复习计划、手动调整复习安排、复习统计 AI配置 API Key设置、Prompt模板管理、用量监控 数据统计 按学科/时间/知识点维度统计分析、薄弱知识点排行 系统管理 用户管理、数据备份/恢复、操作日志 五、AI 集成方案 5.1 AI 服务架构 # app/services/ai_service.py 核心设计 class AIService: \"\"\" AI 服务统一入口 支持多模型切换（通义千问/DeepSeek/其他） \"\"\" def __init__(self): self.client = OpenAI( api_key=settings.AI_API_KEY, base_url=settings.AI_BASE_URL # 兼容 OpenAI 接口的任何模型 ) # ---- 语文相关 ---- async def analyze_pronunciation(self, word: str, wrong_pinyin: str) -\u003e str: \"\"\"分析读音错误，扩展同类易错字\"\"\" prompt = f\"\"\"你是一位经验丰富的初中语文老师。 学生将「{word}」错误读成了「{wrong_pinyin}」。 请： 1. 给出正确读音 2. 解释为什么容易读错 3. 列出5个同类型的易错读音 4. 提供记忆技巧 5. 用一个包含该字的成语或诗句加深印象\"\"\" async def analyze_confusing_words(self, words: list, context: str) -\u003e str: \"\"\"分析混淆字词，提供辨析\"\"\" async def explain_literature(self, topic: str) -\u003e str: \"\"\"文学常识/古文讲解\"\"\" # ---- 英语相关 ---- async def analyze_vocabulary(self, word: str, error: str) -\u003e str: \"\"\"分析英语单词错误，扩展记忆\"\"\" async def analyze_sentence(self, wrong: str, correct: str) -\u003e str: \"\"\"分析句型/短语错误\"\"\" async def generate_similar_exercises(self, knowledge_point: str, count: int = 3) -\u003e str: \"\"\"根据知识点生成类似练习题\"\"\" # ---- 数学相关 ---- async def solve_math_problem(self, problem: str, student_answer: str = None) -\u003e str: \"\"\"数学题详细讲解\"\"\" prompt = f\"\"\"你是一位耐心的初中数学老师。 题目：{problem} {\"学生的错误答案：\" + student_answer if student_answer else \"\"} 请： 1. 分析题目考查的知识点 2. 给出详细的解题步骤 3. 如果学生答错了，指出错误原因 4. 总结解题关键点 5. 列出注意事项和常见陷阱\"\"\" # ---- 通用 ---- async def chat(self, messages: list, subject: str = None) -\u003e str: \"\"\"通用对话，可关联具体题目\"\"\" async def analyze_photo(self, image_base64: str, subject: str) -\u003e dict: \"\"\"图片内容识别与分析（使用视觉模型）\"\"\" 5.2 AI 调用流程 用户操作 → 前端请求 → 后端路由 → AI Service → AI API\r↓\r记录token用量\r↓\r结果存入 ai_conversations 表\r↓\r前端展示 + 可保存为错题笔记 5.3 Prompt 设计策略 # 系统提示词（按学科） PROMPTS = { \"语文\": \"\"\"你是一位资深的初中语文教师，善于用生动有趣的方式讲解语文知识。 要求： - 语言亲切自然，像在跟学生聊天 - 举的例子贴近初中生生活 - 涉及古文时，提供原文+翻译+赏析 - 知识点关联中考考点 - 适当使用口诀帮助记忆\"\"\", \"英语\": \"\"\"You are an experienced middle school English teacher who is bilingual. 要求： - 用中英结合的方式讲解 - 每个单词给出音标、词性、例句 - 拼写错误要分析错误规律 - 关联中考词汇大纲 - 提供记忆技巧（词根词缀法、联想法等）\"\"\", \"数学\": \"\"\"你是一位逻辑清晰的初中数学老师。 要求： - 每道题先分析考查的知识点 - 解题步骤要详细，每一步都说明为什么 - 如果学生做错了，先表扬做对的部分，再指出错误 - 最后总结解题方法和易错点 - 适当提供同类练习题\"\"\", \"小四门\": \"\"\"你是一位博学的初中综合学科老师，擅长帮助学生记忆知识点。 要求： - 答案简明扼要，重点突出 - 帮助构建知识框架和思维导图 - 提供记忆口诀和联想记忆法 - 关联中考常见考法\"\"\" } 5.4 推荐的 AI 模型选择 模型 优势 价格 推荐度 DeepSeek-V3 中文能力强、性价比极高 约1元/百万token ⭐⭐⭐⭐⭐ 通义千问-Max 阿里生态、视觉能力强 有免费额度 ⭐⭐⭐⭐ GLM-4-Flash 免费额度大 基本免费 ⭐⭐⭐⭐ 文心一言 百度生态、OCR能力强 按量计费 ⭐⭐⭐ 建议：主力用 DeepSeek，备用 通义千问。预算控制在每月20-50元以内。\n六、API 接口设计 6.1 接口总览 基础路径: /api/v1\r认证相关:\rPOST /auth/login # 登录\rPOST /auth/register # 注册(后台)\rPOST /auth/refresh # 刷新token\r语文模块:\rGET /chinese/entries # 获取列表(支持筛选分页)\rPOST /chinese/entries # 新增\rPUT /chinese/entries/{id} # 修改\rDELETE /chinese/entries/{id} # 删除\rPOST /chinese/entries/{id}/ai-analyze # AI分析\r英语模块:\rGET /english/entries # 获取列表\rPOST /english/entries # 新增\rPUT /english/entries/{id} # 修改\rDELETE /english/entries/{id} # 删除\rPOST /english/entries/{id}/ai-analyze # AI分析\rPOST /english/entries/{id}/ai-exercise # AI生成练习\r数学模块:\rGET /math/entries # 获取列表\rPOST /math/entries # 新增\rPUT /math/entries/{id} # 修改\rDELETE /math/entries/{id} # 删除\rPOST /math/entries/{id}/ai-solve # AI解题\r小四门:\rGET /general/entries # 获取列表(按学科筛选)\rPOST /general/entries # 新增\rPUT /general/entries/{id} # 修改\rDELETE /general/entries/{id} # 删除\rPOST /general/entries/{id}/ai-organize # AI整理\r通用功能:\rPOST /upload/image # 上传图片\rPOST /ocr/recognize # OCR识别\rPOST /voice/transcribe # 语音转文字\rPOST /ai/chat # AI通用对话\rGET /ai/history # AI对话历史\r复习系统:\rGET /review/today # 今日待复习\rPOST /review/{id}/complete # 完成复习\rGET /review/schedule # 复习日历\r统计分析:\rGET /stats/overview # 总览数据\rGET /stats/trend # 趋势图表\rGET /stats/weak-points # 薄弱知识点\rGET /stats/subject/{id} # 各科详细统计\r搜索:\rGET /search?q=\u0026subject=\u0026tag= # 全局搜索 6.2 请求/响应示例 // POST /api/v1/chinese/entries // 请求 { \"subject_id\": 1, \"entry_type\": \"pronunciation\", \"title\": \"膝盖读音\", \"content\": \"膝盖\", \"answer\": \"xī gài（不是qī gài）\", \"source\": \"课堂听写\", \"difficulty\": 3, \"importance\": 4, \"photo_urls\": [\"https://oss.xxx.com/img/001.jpg\"], \"tags\": [\"易错读音\", \"月字旁\"] } // 响应 { \"code\": 200, \"data\": { \"id\": 1001, \"title\": \"膝盖读音\", \"created_at\": \"2025-05-29T10:30:00\", \"next_review_at\": \"2025-05-30T08:00:00\" } } 七、开发计划 7.1 分阶段实施（建议 6-8 周完成 MVP） Phase 1 — 基础框架（第1-2周）\r━━━━━━━━━━━━━━━━━━━━━━━━━━━━\r✦ 搭建 FastAPI 后端项目\r✦ 数据库设计 + 建表\r✦ 用户认证（JWT）\r✦ 基础 CRUD 接口（各科错题）\r✦ Flutter 项目初始化\r✦ 登录页面 + 首页框架\rPhase 2 — 核心录入功能（第3-4周）\r━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\r✦ 各科错题录入页面（语文/英语/数学/小四门）\r✦ 图片上传 + OCR识别\r✦ 语音输入集成\r✦ 标签系统\r✦ 后台管理基础页面\rPhase 3 — AI 集成（第5-6周）\r━━━━━━━━━━━━━━━━━━━━━━━━━━━━\r✦ AI 服务接入（DeepSeek）\r✦ 语文AI分析（读音/混淆词/文学常识）\r✦ 英语AI扩展（单词/短语/句型）\r✦ 数学AI解题\r✦ 小四门AI整理\r✦ 对话历史记录\rPhase 4 — 复习 \u0026 统计（第7周）\r━━━━━━━━━━━━━━━━━━━━━━━━━━━━\r✦ 艾宾浩斯复习系统\r✦ 复习提醒（本地通知）\r✦ 学习统计图表\r✦ 全局搜索\r✦ 后台管理完善\rPhase 5 — 优化上线（第8周）\r━━━━━━━━━━━━━━━━━━━━━━━━━━━━\r✦ UI美化 + 动画\r✦ 性能优化\r✦ 数据备份方案\r✦ 打包部署\r✦ 使用培训（教孩子用） 7.2 每日开发建议 如果你每天能投入 2-3小时，按以上节奏可以完成。如果你开发经验不多，建议：\n第一个2周只搭后端，用 Postman 测试接口 第3-4周再开始写 App 前端 AI部分先用最简单的接入，后续再优化 prompt 八、部署方案 8.1 Docker Compose 一键部署 # docker-compose.yml version: '3.8' services: # 后端 API backend: build: ./backend ports: - \"8000:8000\" environment: - DATABASE_URL=mysql+pymysql://cuoti:password@db:3306/cuoti_bao - REDIS_URL=redis://redis:6379/0 - AI_API_KEY=your-api-key-here - AI_BASE_URL=https://api.deepseek.com - OSS_ENDPOINT=your-oss-endpoint depends_on: - db - redis restart: always # MySQL 数据库 db: image: mysql:8.0 ports: - \"3306:3306\" environment: - MYSQL_ROOT_PASSWORD=rootpassword - MYSQL_DATABASE=cuoti_bao - MYSQL_USER=cuoti - MYSQL_PASSWORD=password volumes: - mysql_data:/var/lib/mysql - ./deploy/init.sql:/docker-entrypoint-initdb.d/init.sql restart: always # Redis 缓存 redis: image: redis:7-alpine ports: - \"6379:6379\" restart: always # Nginx 反向代理 nginx: image: nginx:alpine ports: - \"80:80\" - \"443:443\" volumes: - ./deploy/nginx.conf:/etc/nginx/conf.d/default.conf - ./admin/dist:/usr/share/nginx/html/admin # 管理后台静态文件 depends_on: - backend restart: always volumes: mysql_data: 8.2 Nginx 配置 # deploy/nginx.conf server { listen 80; server_name your-domain.com; # 管理后台 location /admin { alias /usr/share/nginx/html/admin; try_files $uri $uri/ /admin/index.html; } # API 代理 location /api/ { proxy_pass http://backend:8000/api/; proxy_set_header Host $host; proxy_set_header X-Real-IP $remote_addr; proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; # SSE 流式响应支持（AI对话用） proxy_buffering off; proxy_cache off; proxy_read_timeout 120s; } # 上传文件大小限制 client_max_body_size 20M; } 8.3 服务器要求 项目 最低配置 推荐配置 CPU 2核 2核 内存 2GB 4GB 硬盘 40GB SSD 60GB SSD 带宽 3Mbps 5Mbps 系统 Ubuntu 22.04 / CentOS 8 Ubuntu 22.04 九、成本估算 项目 费用 说明 云服务器 已有 你已购买 AI API 20-50元/月 DeepSeek 价格很低 OCR API 0-10元/月 百度有免费额度 语音识别 0-10元/月 阿里云有免费额度 域名(可选) 60元/年 .com 域名 SSL证书 免费 Let’s Encrypt 合计 约20-70元/月 家庭使用非常经济 十、后续可扩展功能 当 MVP 版本运行稳定后，可以逐步添加：\n优先级 功能 说明 P1 错题组卷 从错题库随机抽题生成模拟试卷 P1 听写模式 App 念词语/单词，孩子听写，自动批改 P2 学习打卡 每日学习打卡、连续打卡统计、奖励机制 P2 知识图谱 可视化知识点之间的关联 P3 多设备同步 云端同步，换设备不丢数据 P3 家长推送 每日学习报告推送到微信（通过微信模板消息） P3 课本同步 按人教版教材章节归类知识点 ","wordCount":"2917","inLanguage":"en","datePublished":"2026-05-29T12:00:00+08:00","dateModified":"2026-05-29T12:00:00+08:00","author":{"@type":"Person","name":"azheng"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://azlog.org/posts/%E9%94%99%E9%A2%98%E5%AE%9D-%E5%88%9D%E4%B8%AD%E7%94%9F%E6%99%BA%E8%83%BD%E9%94%99%E9%A2%98%E7%AE%A1%E7%90%86app-%E8%AF%A6%E7%BB%86%E6%96%B9%E6%A1%88mimo%E7%89%88/"},"publisher":{"@type":"Organization","name":"Az日志","logo":{"@type":"ImageObject","url":"https://azlog.org/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=header-nav><div class=logo><a href=https://azlog.org/ accesskey=h title="Az日志 (Alt + H)">Az日志</a><div class=logo-switches><button id=theme-toggle class=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
-<svg class="moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-<svg class="sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu class=menu><li><a href=https://azlog.org/ title="🏠 首页"><span>🏠 首页</span></a></li><li><a href=https://azlog.org/categories/ title="📂 分类"><span>📂 分类</span></a></li><li><a href=https://azlog.org/tags/ title="🏷 标签"><span>🏷 标签</span></a></li><li><a href=https://azlog.org/archives/ title="📜 归档"><span>📜 归档</span></a></li><li><a href=https://azlog.org/about/ title="👤 关于"><span>👤 关于</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><nav class=breadcrumbs role=navigation aria-label=Breadcrumb><a href=/>Home</a>
-<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"/></svg>
-<a href=/posts/>Posts</a>
-<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"/></svg></nav><h1 class="post-title entry-hint-parent">「错题宝」—— 初中生智能错题管理App 详细方案（mimo版）</h1><div class=post-meta><span title='2026-05-29 12:00:00 +0800 +0800'>May 29, 2026</span>&nbsp;·&nbsp;<span>14 min</span>&nbsp;·&nbsp;<span>2917 words</span>&nbsp;·&nbsp;<span>azheng</span></div></header><details class=toc><summary accesskey=c title="(Alt + C)"><span class=title>Table of Contents</span></summary><div class=inner><nav id=TableOfContents><ul><li><a href=#一项目总览>一、项目总览</a><ul><li><a href=#11-项目定位>1.1 项目定位</a></li><li><a href=#12-核心用户画像>1.2 核心用户画像</a></li><li><a href=#13-整体功能矩阵>1.3 整体功能矩阵</a></li></ul></li><li><a href=#二技术架构方案>二、技术架构方案</a><ul><li><a href=#21-推荐技术栈>2.1 推荐技术栈</a></li><li><a href=#22-系统架构图>2.2 系统架构图</a></li><li><a href=#23-目录结构>2.3 目录结构</a></li></ul></li><li><a href=#三数据库设计>三、数据库设计</a><ul><li><a href=#31-核心数据模型>3.1 核心数据模型</a></li><li><a href=#32-数据库-er-关系图>3.2 数据库 ER 关系图</a></li></ul></li><li><a href=#四功能模块详细设计>四、功能模块详细设计</a><ul><li><a href=#41-语文模块>4.1 语文模块</a></li><li><a href=#42-英语模块>4.2 英语模块</a></li><li><a href=#43-数学模块>4.3 数学模块</a></li><li><a href=#44-小四门模块>4.4 小四门模块</a></li><li><a href=#45-通用能力模块>4.5 通用能力模块</a></li><li><a href=#46-后台管理系统>4.6 后台管理系统</a></li></ul></li><li><a href=#五ai-集成方案>五、AI 集成方案</a><ul><li><a href=#51-ai-服务架构>5.1 AI 服务架构</a></li><li><a href=#52-ai-调用流程>5.2 AI 调用流程</a></li><li><a href=#53-prompt-设计策略>5.3 Prompt 设计策略</a></li><li><a href=#54-推荐的-ai-模型选择>5.4 推荐的 AI 模型选择</a></li></ul></li><li><a href=#六api-接口设计>六、API 接口设计</a><ul><li><a href=#61-接口总览>6.1 接口总览</a></li><li><a href=#62-请求响应示例>6.2 请求/响应示例</a></li></ul></li><li><a href=#七开发计划>七、开发计划</a><ul><li><a href=#71-分阶段实施建议-6-8-周完成-mvp>7.1 分阶段实施（建议 6-8 周完成 MVP）</a></li><li><a href=#72-每日开发建议>7.2 每日开发建议</a></li></ul></li><li><a href=#八部署方案>八、部署方案</a><ul><li><a href=#81-docker-compose-一键部署>8.1 Docker Compose 一键部署</a></li><li><a href=#82-nginx-配置>8.2 Nginx 配置</a></li><li><a href=#83-服务器要求>8.3 服务器要求</a></li></ul></li><li><a href=#九成本估算>九、成本估算</a></li><li><a href=#十后续可扩展功能>十、后续可扩展功能</a></li></ul></nav></div></details><div class="post-content md-content"><hr><h2 id=一项目总览>一、项目总览<a hidden class=anchor aria-hidden=true href=#一项目总览>#</a></h2><h3 id=11-项目定位>1.1 项目定位<a hidden class=anchor aria-hidden=true href=#11-项目定位>#</a></h3><p>一款面向初中生的<strong>错题管理 + AI 辅助学习</strong>工具，覆盖语文、英语、数学及小四门（历史、地理、生物、道德与法治），核心目标：<strong>记录 → 理解 → 巩固 → 提分</strong>。</p><h3 id=12-核心用户画像>1.2 核心用户画像<a hidden class=anchor aria-hidden=true href=#12-核心用户画像>#</a></h3><table><thead><tr><th>角色</th><th>使用场景</th></tr></thead><tbody><tr><td>学生（儿子）</td><td>日常记录错题、查看复习、与AI互动</td></tr><tr><td>家长（你）</td><td>后台管理、查看学习数据、补充内容</td></tr></tbody></table><h3 id=13-整体功能矩阵>1.3 整体功能矩阵<a hidden class=anchor aria-hidden=true href=#13-整体功能矩阵>#</a></h3><pre tabindex=0><code>┌─────────────────────────────────────────────────────┐
+考虑到你是个人开发者、买了云服务器、孩子用手机，推荐最务实的方案：">
+<meta name="author" content="azheng">
+<link rel="canonical" href="https://azlog.org/posts/%E9%94%99%E9%A2%98%E5%AE%9D-%E5%88%9D%E4%B8%AD%E7%94%9F%E6%99%BA%E8%83%BD%E9%94%99%E9%A2%98%E7%AE%A1%E7%90%86app-%E8%AF%A6%E7%BB%86%E6%96%B9%E6%A1%88mimo%E7%89%88/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.1d4346839295915e219dee6c6b7d8512a8a4a8e692c435a57effb2398a6e371e.css" integrity="sha256-HUNGg5KVkV4hne5sa32FEqikqOaSxDWlfv&#43;yOYpuNx4=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://azlog.org/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://azlog.org/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://azlog.org/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://azlog.org/apple-touch-icon.png">
+<link rel="mask-icon" href="https://azlog.org/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://azlog.org/posts/%E9%94%99%E9%A2%98%E5%AE%9D-%E5%88%9D%E4%B8%AD%E7%94%9F%E6%99%BA%E8%83%BD%E9%94%99%E9%A2%98%E7%AE%A1%E7%90%86app-%E8%AF%A6%E7%BB%86%E6%96%B9%E6%A1%88mimo%E7%89%88/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://azlog.org/posts/%E9%94%99%E9%A2%98%E5%AE%9D-%E5%88%9D%E4%B8%AD%E7%94%9F%E6%99%BA%E8%83%BD%E9%94%99%E9%A2%98%E7%AE%A1%E7%90%86app-%E8%AF%A6%E7%BB%86%E6%96%B9%E6%A1%88mimo%E7%89%88/">
+  <meta property="og:site_name" content="Az日志">
+  <meta property="og:title" content="「错题宝」—— 初中生智能错题管理App 详细方案（mimo版）">
+  <meta property="og:description" content="一、项目总览 1.1 项目定位 一款面向初中生的错题管理 &#43; AI 辅助学习工具，覆盖语文、英语、数学及小四门（历史、地理、生物、道德与法治），核心目标：记录 → 理解 → 巩固 → 提分。
+1.2 核心用户画像 角色 使用场景 学生（儿子） 日常记录错题、查看复习、与AI互动 家长（你） 后台管理、查看学习数据、补充内容 1.3 整体功能矩阵 ┌─────────────────────────────────────────────────────┐│ 错题宝 App │├──────────┬──────────┬──────────┬─────────────────────┤│ 语文 │ 英语 │ 数学 │ 小四门(4科) │├──────────┼──────────┼──────────┼─────────────────────┤│ 字词读音 │ 错词本 │ 错题录入 │ 拍照录入 ││ 混淆字词 │ 易错短语 │ 解法记录 │ 答案整理 ││ 文学常识 │ 句型归纳 │ AI解题 │ AI整理答案 ││ 古文基础 │ 错题集 │ 拍照识别 │ 拍照识别 ││ 拍照输入 │ 语音输入 │ │ ││ AI矫正 │ AI扩展 │ │ │├──────────┴──────────┴──────────┴─────────────────────┤│ 通用能力：拍照OCR / 语音STT / AI对话 ││ 学习管理：艾宾浩斯复习 / 统计分析 / 搜索 ││ 后台管理：内容管理 / 用户管理 / 数据统计 │└─────────────────────────────────────────────────────┘ 二、技术架构方案 2.1 推荐技术栈 考虑到你是个人开发者、买了云服务器、孩子用手机，推荐最务实的方案：">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-05-29T12:00:00+08:00">
+    <meta property="article:modified_time" content="2026-05-29T12:00:00+08:00">
+    <meta property="article:tag" content="技术">
+    <meta property="article:tag" content="方案生成">
+    <meta property="article:tag" content="豆包">
+    <meta property="article:tag" content="Mimo">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="「错题宝」—— 初中生智能错题管理App 详细方案（mimo版）">
+  <meta name="twitter:description" content="一、项目总览 1.1 项目定位 一款面向初中生的错题管理 &#43; AI 辅助学习工具，覆盖语文、英语、数学及小四门（历史、地理、生物、道德与法治），核心目标：记录 → 理解 → 巩固 → 提分。
+1.2 核心用户画像 角色 使用场景 学生（儿子） 日常记录错题、查看复习、与AI互动 家长（你） 后台管理、查看学习数据、补充内容 1.3 整体功能矩阵 ┌─────────────────────────────────────────────────────┐│ 错题宝 App │├──────────┬──────────┬──────────┬─────────────────────┤│ 语文 │ 英语 │ 数学 │ 小四门(4科) │├──────────┼──────────┼──────────┼─────────────────────┤│ 字词读音 │ 错词本 │ 错题录入 │ 拍照录入 ││ 混淆字词 │ 易错短语 │ 解法记录 │ 答案整理 ││ 文学常识 │ 句型归纳 │ AI解题 │ AI整理答案 ││ 古文基础 │ 错题集 │ 拍照识别 │ 拍照识别 ││ 拍照输入 │ 语音输入 │ │ ││ AI矫正 │ AI扩展 │ │ │├──────────┴──────────┴──────────┴─────────────────────┤│ 通用能力：拍照OCR / 语音STT / AI对话 ││ 学习管理：艾宾浩斯复习 / 统计分析 / 搜索 ││ 后台管理：内容管理 / 用户管理 / 数据统计 │└─────────────────────────────────────────────────────┘ 二、技术架构方案 2.1 推荐技术栈 考虑到你是个人开发者、买了云服务器、孩子用手机，推荐最务实的方案：">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://azlog.org/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "「错题宝」—— 初中生智能错题管理App 详细方案（mimo版）",
+      "item": "https://azlog.org/posts/%E9%94%99%E9%A2%98%E5%AE%9D-%E5%88%9D%E4%B8%AD%E7%94%9F%E6%99%BA%E8%83%BD%E9%94%99%E9%A2%98%E7%AE%A1%E7%90%86app-%E8%AF%A6%E7%BB%86%E6%96%B9%E6%A1%88mimo%E7%89%88/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "「错题宝」—— 初中生智能错题管理App 详细方案（mimo版）",
+  "name": "「错题宝」—— 初中生智能错题管理App 详细方案（mimo版）",
+  "description": " 一、项目总览 1.1 项目定位 一款面向初中生的错题管理 + AI 辅助学习工具，覆盖语文、英语、数学及小四门（历史、地理、生物、道德与法治），核心目标：记录 → 理解 → 巩固 → 提分。\n1.2 核心用户画像 角色 使用场景 学生（儿子） 日常记录错题、查看复习、与AI互动 家长（你） 后台管理、查看学习数据、补充内容 1.3 整体功能矩阵 ┌─────────────────────────────────────────────────────┐\r│ 错题宝 App │\r├──────────┬──────────┬──────────┬─────────────────────┤\r│ 语文 │ 英语 │ 数学 │ 小四门(4科) │\r├──────────┼──────────┼──────────┼─────────────────────┤\r│ 字词读音 │ 错词本 │ 错题录入 │ 拍照录入 │\r│ 混淆字词 │ 易错短语 │ 解法记录 │ 答案整理 │\r│ 文学常识 │ 句型归纳 │ AI解题 │ AI整理答案 │\r│ 古文基础 │ 错题集 │ 拍照识别 │ 拍照识别 │\r│ 拍照输入 │ 语音输入 │ │ │\r│ AI矫正 │ AI扩展 │ │ │\r├──────────┴──────────┴──────────┴─────────────────────┤\r│ 通用能力：拍照OCR / 语音STT / AI对话 │\r│ 学习管理：艾宾浩斯复习 / 统计分析 / 搜索 │\r│ 后台管理：内容管理 / 用户管理 / 数据统计 │\r└─────────────────────────────────────────────────────┘ 二、技术架构方案 2.1 推荐技术栈 考虑到你是个人开发者、买了云服务器、孩子用手机，推荐最务实的方案：\n",
+  "keywords": [
+    "技术", "方案生成", "豆包", "mimo"
+  ],
+  "articleBody": " 一、项目总览 1.1 项目定位 一款面向初中生的错题管理 + AI 辅助学习工具，覆盖语文、英语、数学及小四门（历史、地理、生物、道德与法治），核心目标：记录 → 理解 → 巩固 → 提分。\n1.2 核心用户画像 角色 使用场景 学生（儿子） 日常记录错题、查看复习、与AI互动 家长（你） 后台管理、查看学习数据、补充内容 1.3 整体功能矩阵 ┌─────────────────────────────────────────────────────┐\r│ 错题宝 App │\r├──────────┬──────────┬──────────┬─────────────────────┤\r│ 语文 │ 英语 │ 数学 │ 小四门(4科) │\r├──────────┼──────────┼──────────┼─────────────────────┤\r│ 字词读音 │ 错词本 │ 错题录入 │ 拍照录入 │\r│ 混淆字词 │ 易错短语 │ 解法记录 │ 答案整理 │\r│ 文学常识 │ 句型归纳 │ AI解题 │ AI整理答案 │\r│ 古文基础 │ 错题集 │ 拍照识别 │ 拍照识别 │\r│ 拍照输入 │ 语音输入 │ │ │\r│ AI矫正 │ AI扩展 │ │ │\r├──────────┴──────────┴──────────┴─────────────────────┤\r│ 通用能力：拍照OCR / 语音STT / AI对话 │\r│ 学习管理：艾宾浩斯复习 / 统计分析 / 搜索 │\r│ 后台管理：内容管理 / 用户管理 / 数据统计 │\r└─────────────────────────────────────────────────────┘ 二、技术架构方案 2.1 推荐技术栈 考虑到你是个人开发者、买了云服务器、孩子用手机，推荐最务实的方案：\n层级 技术选型 理由 前端（移动端） Flutter（推荐）或 uni-app 一套代码同时出 Android + iOS；uni-app 如果你更熟悉 Vue 后端服务 Python + FastAPI 生态好、AI库丰富、异步性能强、开发快 数据库 MySQL 8.0 + Redis MySQL 存业务数据，Redis 做缓存和复习提醒队列 文件存储 阿里云OSS / 本地存储 存储拍照图片、音频文件 AI能力 通义千问API / DeepSeek API 国内稳定、中文能力强、价格便宜 OCR识别 百度OCR API / 通义千问视觉模型 拍照识别文字 语音识别 讯飞语音 / 阿里云语音 中英文语音转文字 后台管理 Vue3 + Element Plus 功能完善的管理后台 服务器 你的云服务器（推荐2核4G起步） 个人使用足够 2.2 系统架构图 ┌──────────────┐\r│ 手机App │\r│ (Flutter) │\r└──────┬───────┘\r│ HTTPS\r┌──────▼───────┐\r│ Nginx │ 反向代理 + 静态资源\r│ 80/443 │\r└──────┬───────┘\r│\r┌────────────┼────────────┐\r│ │ │\r┌──────▼──────┐ ┌──▼────┐ ┌────▼─────┐\r│ FastAPI后端 │ │ Vue3 │ │ WebSocket│\r│ (业务API) │ │管理后台│ │ (实时推送) │\r│ :8000 │ │ :3000 │ │ :8001 │\r└──────┬──────┘ └──┬────┘ └────┬─────┘\r│ │ │\r┌──────▼────────────▼───────────▼─────┐\r│ MySQL + Redis │\r│ 数据持久化 + 缓存 │\r└──────────────┬──────────────────────┘\r│\r┌──────────────┼──────────────────┐\r│ │ │\r┌────▼────┐ ┌─────▼─────┐ ┌───────▼──────┐\r│ AI API │ │ OCR API │ │ 语音 API │\r│通义/DeepSeek│ │ 百度OCR │ │ 讯飞/阿里 │\r└─────────┘ └───────────┘ └──────────────┘ 2.3 目录结构 cuoti-bao/\r├── backend/ # Python FastAPI 后端\r│ ├── app/\r│ │ ├── __init__.py\r│ │ ├── main.py # 应用入口\r│ │ ├── config.py # 配置文件\r│ │ ├── database.py # 数据库连接\r│ │ ├── models/ # 数据模型\r│ │ │ ├── user.py\r│ │ │ ├── chinese.py\r│ │ │ ├── english.py\r│ │ │ ├── math.py\r│ │ │ ├── general.py # 小四门\r│ │ │ └── review.py # 复习计划\r│ │ ├── api/ # API路由\r│ │ │ ├── auth.py\r│ │ │ ├── chinese.py\r│ │ │ ├── english.py\r│ │ │ ├── math.py\r│ │ │ ├── general.py\r│ │ │ ├── ai_chat.py\r│ │ │ ├── ocr.py\r│ │ │ ├── voice.py\r│ │ │ └── stats.py\r│ │ ├── services/ # 业务逻辑\r│ │ │ ├── ai_service.py\r│ │ │ ├── ocr_service.py\r│ │ │ ├── voice_service.py\r│ │ │ └── review_service.py\r│ │ └── schemas/ # Pydantic数据校验\r│ ├── requirements.txt\r│ └── Dockerfile\r│\r├── admin/ # Vue3 管理后台\r│ ├── src/\r│ │ ├── views/\r│ │ ├── components/\r│ │ └── api/\r│ └── package.json\r│\r├── mobile/ # Flutter 移动端\r│ ├── lib/\r│ │ ├── pages/\r│ │ ├── widgets/\r│ │ ├── services/\r│ │ └── models/\r│ └── pubspec.yaml\r│\r└── deploy/ # 部署脚本\r├── docker-compose.yml\r└── nginx.conf 三、数据库设计 3.1 核心数据模型 -- ============================================ -- 用户表 -- ============================================ CREATE TABLE users ( id BIGINT PRIMARY KEY AUTO_INCREMENT, username VARCHAR(50) NOT NULL UNIQUE, password_hash VARCHAR(255) NOT NULL, role ENUM('admin', 'student') DEFAULT 'student', nickname VARCHAR(50), grade VARCHAR(20) DEFAULT '初一', avatar_url VARCHAR(500), created_at DATETIME DEFAULT CURRENT_TIMESTAMP, updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP ); -- ============================================ -- 学科表 -- ============================================ CREATE TABLE subjects ( id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(20) NOT NULL, -- '语文','英语','数学','历史','地理','生物','道法' category ENUM('main', 'minor') DEFAULT 'main', -- 主科/小四门 icon VARCHAR(50), sort_order INT DEFAULT 0 ); -- ============================================ -- 错题/知识点总表（统一入口） -- ============================================ CREATE TABLE error_entries ( id BIGINT PRIMARY KEY AUTO_INCREMENT, user_id BIGINT NOT NULL, subject_id INT NOT NULL, entry_type VARCHAR(30) NOT NULL, -- 细分类型，见下方枚举 title VARCHAR(200), -- 标题/摘要 content TEXT, -- 主要内容 answer TEXT, -- 正确答案/解析 source VARCHAR(50), -- 来源：'期中考试','课后练习','课堂听写' difficulty TINYINT DEFAULT 3, -- 1-5难度 importance TINYINT DEFAULT 3, -- 1-5重要度 photo_urls JSON, -- 拍照图片URL列表 ai_analysis TEXT, -- AI分析内容 is_mastered BOOLEAN DEFAULT FALSE, -- 是否已掌握 mastered_at DATETIME, review_count INT DEFAULT 0, -- 复习次数 next_review_at DATETIME, -- 下次复习时间（艾宾浩斯） created_at DATETIME DEFAULT CURRENT_TIMESTAMP, updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, FOREIGN KEY (user_id) REFERENCES users(id), FOREIGN KEY (subject_id) REFERENCES subjects(id), INDEX idx_user_subject (user_id, subject_id), INDEX idx_next_review (user_id, next_review_at), INDEX idx_entry_type (subject_id, entry_type) ); -- entry_type 枚举说明： -- 语文: 'pronunciation'(字词读音), 'confusing_words'(混淆字词), -- 'literature'(文学常识), 'classical_chinese'(古文基础), 'reading'(阅读理解) -- 英语: 'vocabulary'(单词), 'phrase'(短语), 'sentence_pattern'(句型), 'error_question'(错题) -- 数学: 'error_question'(错题), 'concept'(概念题) -- 小四门: 'error_question'(错题), 'knowledge_point'(知识点) -- ============================================ -- 标签表（多维度分类检索） -- ============================================ CREATE TABLE tags ( id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(50) NOT NULL, subject_id INT, color VARCHAR(20) DEFAULT '#4A90D9', FOREIGN KEY (subject_id) REFERENCES subjects(id) ); CREATE TABLE entry_tags ( entry_id BIGINT NOT NULL, tag_id INT NOT NULL, PRIMARY KEY (entry_id, tag_id), FOREIGN KEY (entry_id) REFERENCES error_entries(id) ON DELETE CASCADE, FOREIGN KEY (tag_id) REFERENCES tags(id) ON DELETE CASCADE ); -- ============================================ -- AI对话记录表 -- ============================================ CREATE TABLE ai_conversations ( id BIGINT PRIMARY KEY AUTO_INCREMENT, user_id BIGINT NOT NULL, entry_id BIGINT, -- 关联的错题（可为空） subject_id INT, role ENUM('user', 'assistant') NOT NULL, content TEXT NOT NULL, tokens_used INT DEFAULT 0, created_at DATETIME DEFAULT CURRENT_TIMESTAMP, FOREIGN KEY (user_id) REFERENCES users(id), FOREIGN KEY (entry_id) REFERENCES error_entries(id) ON DELETE SET NULL, INDEX idx_user_entry (user_id, entry_id) ); -- ============================================ -- 复习计划表（艾宾浩斯遗忘曲线） -- ============================================ CREATE TABLE review_schedules ( id BIGINT PRIMARY KEY AUTO_INCREMENT, user_id BIGINT NOT NULL, entry_id BIGINT NOT NULL, review_stage TINYINT DEFAULT 0, -- 0-7 对应 8次复习 scheduled_at DATETIME NOT NULL, -- 计划复习时间 completed_at DATETIME, -- 实际完成时间 result ENUM('forgot', 'vague', 'remembered'), -- 复习结果 created_at DATETIME DEFAULT CURRENT_TIMESTAMP, FOREIGN KEY (user_id) REFERENCES users(id), FOREIGN KEY (entry_id) REFERENCES error_entries(id) ON DELETE CASCADE, INDEX idx_user_schedule (user_id, scheduled_at) ); -- ============================================ -- 学习统计表（每日汇总） -- ============================================ CREATE TABLE daily_stats ( id BIGINT PRIMARY KEY AUTO_INCREMENT, user_id BIGINT NOT NULL, stat_date DATE NOT NULL, subject_id INT, new_entries INT DEFAULT 0, -- 新增条目数 reviewed_entries INT DEFAULT 0, -- 复习条目数 mastered_entries INT DEFAULT 0, -- 掌握条目数 ai_queries INT DEFAULT 0, -- AI查询次数 study_minutes INT DEFAULT 0, -- 学习时长(分钟) FOREIGN KEY (user_id) REFERENCES users(id), UNIQUE KEY uk_user_date_subject (user_id, stat_date, subject_id) ); 3.2 数据库 ER 关系图 users ──────┬──────────────┐\r│ │\rerror_entries ──── entry_tags ──── tags\r│\r┌───────┼────────┐\r│ │ │\rai_conv review_schedule daily_stats 四、功能模块详细设计 4.1 语文模块 4.1.1 字词读音纠错 ┌─────────────────────────────────────────────────┐\r│ 📝 记录页面 │\r├─────────────────────────────────────────────────┤\r│ │\r│ 错误字词： [ 膝 盖 ] │\r│ 错误读音： [ qī gài ] 🎤 语音输入 │\r│ 正确读音： [ xī gài ] │\r│ 出错场景： [ 课堂听写 ▼] │\r│ 拍照记录： [📷 拍照/从相册选择] │\r│ │\r│ ── AI 智能扩展 ────────────────── │\r│ [🤖 点击获取AI讲解] │\r│ │\r│ AI回复示例： │\r│ 「膝」读 xī，易错读 qī。同类型的还有： │\r│ · 畸形(jī 不读 qí) │\r│ · 发酵(jiào 不读 xiào) │\r│ · 粗犷(guǎng 不读 kuàng) │\r│ 记忆技巧：月字旁的字多与身体有关... │\r│ │\r│ 标签：[易错读音] [月字旁] [+添加标签] │\r│ │\r│ [ 保 存 ] │\r└─────────────────────────────────────────────────┘ 4.1.2 混淆字词 ┌─────────────────────────────────────────────────┐\r│ 混淆字词记录 │\r├─────────────────────────────────────────────────┤\r│ │\r│ 易混词组： 「的 / 地 / 得」 │\r│ 造句错误： \"他高兴的跑了\" ← 应为\"地\" │\r│ 辨析规则： [记录区分方法...] │\r│ 拍照记录： [📷] │\r│ │\r│ [🤖 AI 辨析扩展] │\r│ → AI 生成更多例句、对比表格、记忆口诀 │\r│ │\r└─────────────────────────────────────────────────┘ 4.1.3 文学常识 \u0026 古文基础 ┌─────────────────────────────────────────────────┐\r│ 文学常识 / 古文基础 │\r├─────────────────────────────────────────────────┤\r│ │\r│ 分类选择：[文学常识 ▼] [古文基础 ▼] │\r│ │\r│ 知识点： 《岳阳楼记》作者及背景 │\r│ 内容： [范文希，字希文，北宋政治家...] │\r│ 关联课文：《岳阳楼记》八年级下册 │\r│ 拍照： [📷 拍摄课堂笔记/课本] │\r│ │\r│ [🤖 AI 延伸讲解] │\r│ → 作者生平、写作背景、同类作品对比 │\r│ │\r└─────────────────────────────────────────────────┘ 4.1.4 拍照输入流程 拍照/选图 → OCR识别文字 → 自动填充表单 → 人工校对 → AI分析 → 保存\r↓\r支持：课本截图、手写笔记、试卷错题 4.2 英语模块 4.2.1 易错单词本 ┌─────────────────────────────────────────────────┐\r│ 英语单词记录 │\r├─────────────────────────────────────────────────┤\r│ │\r│ 单词： [ beautiful ] │\r│ 错误拼写：[ beutiful ] 🎤 语音输入 │\r│ 音标： [ /ˈjuːtɪfl/ ] ← AI自动补全 │\r│ 词性： [ adj. ] │\r│ 中文释义：[ 美丽的 ] │\r│ 出错场景：[ 单元测试 ▼] │\r│ 拍照： [📷] │\r│ │\r│ [🤖 AI 扩展] │\r│ → 常见拼写错误模式、同根词、派生词、 │\r│ 记忆方法、例句、考试频率 │\r│ │\r│ ── AI 示例回复 ── │\r│ 「beautiful」常见错误： │\r│ 1. 漏掉 a → beutiful ✗ │\r│ 2. 记忆法：beau(美) + ti + ful(充满) │\r│ 3. 同根词：beauty, beautifully, beautify │\r│ 4. 考频：中考高频词 ⭐⭐⭐⭐⭐ │\r│ │\r└─────────────────────────────────────────────────┘ 4.2.2 易错短语 \u0026 句型 ┌─────────────────────────────────────────────────┐\r│ 短语/句型记录 │\r├─────────────────────────────────────────────────┤\r│ │\r│ 类型：[短语 ▼] [句型 ▼] │\r│ │\r│ 错误表达： \"I very like English\" │\r│ 正确表达： \"I like English very much\" │\r│ 错误原因： 中式英语，副词位置不对 │\r│ 拍照记录： [📷] │\r│ │\r│ [🤖 AI 扩展] │\r│ → 同类错误句型、正确结构归纳、 │\r│ 类似易错短语、考试例题 │\r│ │\r└─────────────────────────────────────────────────┘ 4.2.3 英语错题集 ┌─────────────────────────────────────────────────┐\r│ 英语错题 │\r├─────────────────────────────────────────────────┤\r│ │\r│ [📷 拍照录入整道题] │\r│ │\r│ 题目： [OCR自动识别/手动输入] │\r│ 我的答案：[ B ] │\r│ 正确答案：[ C ] │\r│ 知识点： [ 宾语从句语序 ] │\r│ 拍照解法：[📷] │\r│ │\r│ [🤖 AI 详细解析] │\r│ [🤖 生成同类练习题] │\r│ │\r└─────────────────────────────────────────────────┘ 4.2.4 语音识别输入 ┌──────────────────────────────────────────────┐\r│ 语音输入流程 │\r│ │\r│ [🎤 按住说话] → 语音转文字 → 填入对应输入框 │\r│ │\r│ 支持场景： │\r│ · 读出单词，自动识别拼写 │\r│ · 读出句子，自动转写 │\r│ · 听写后语音复查 │\r│ │\r│ 中英文混合识别，自动判断语种 │\r└──────────────────────────────────────────────┘ 4.3 数学模块 4.3.1 错题录入与AI解题 ┌─────────────────────────────────────────────────┐\r│ 数学错题 │\r├─────────────────────────────────────────────────┤\r│ │\r│ 章节：[一元一次方程 ▼] 来源：[月考 ▼] │\r│ │\r│ [📷 拍照题目] → OCR识别 │\r│ │\r│ 题目：已知 3x + 5 = 2x - 1，求x的值 │\r│ │\r│ 我的错误解法： │\r│ [📷 拍照/手动输入] │\r│ 3x + 5 = 2x - 1 │\r│ 3x + 2x = -1 - 5 ← 移项符号错误 │\r│ 5x = -6 │\r│ x = -6/5 │\r│ │\r│ 正确解法： │\r│ [📷 拍照/手动输入] │\r│ │\r│ [🤖 AI 详细讲解] │\r│ │\r│ ── AI 回复 ── │\r│ 📍 错误分析：移项时符号未变号 │\r│ 📍 正确步骤： │\r│ 3x + 5 = 2x - 1 │\r│ 3x - 2x = -1 - 5 ✓ │\r│ x = -6 │\r│ 📍 要点：移项必变号，这是方程的核心规则 │\r│ 📍 类似练习： │\r│ ① 5x - 3 = 3x + 7 │\r│ ② 4x + 2 = 2x - 8 │\r│ │\r│ [🤖 再出3道类似题] [🤖 换个方式讲解] │\r│ │\r└─────────────────────────────────────────────────┘ 4.4 小四门模块 4.4.1 统一错题录入 ┌─────────────────────────────────────────────────┐\r│ 小四门错题 [历史 ▼] [地理 ▼] [生物 ▼] [道法 ▼] │\r├─────────────────────────────────────────────────┤\r│ │\r│ [📷 拍照录入] │\r│ │\r│ 题目：[OCR识别/手动输入] │\r│ 我的答案：[ ] │\r│ 正确答案：[ ] │\r│ 拍照答案：[📷] │\r│ │\r│ [🤖 AI 整理标准答案] │\r│ [🤖 AI 归纳知识点] │\r│ │\r│ ── AI 回复（历史示例）── │\r│ 📍 答案：B. 鸦片战争（1840-1842） │\r│ 📍 知识点：中国近代史开端 │\r│ 📍 关联：《南京条约》—中国第一个不平等条约 │\r│ 📍 记忆：时间轴 1840→鸦片战争→近代史开端 │\r│ │\r└─────────────────────────────────────────────────┘ 4.5 通用能力模块 4.5.1 艾宾浩斯智能复习 复习间隔（艾宾浩斯遗忘曲线）：\r┌────────────────────────────────────────────┐\r│ 第1次复习：1天后 │\r│ 第2次复习：2天后 │\r│ 第3次复习：4天后 │\r│ 第4次复习：7天后 │\r│ 第5次复习：15天后 │\r│ 第6次复习：30天后 │\r│ 第7次复习：60天后 (可选) │\r└────────────────────────────────────────────┘\r复习页面：\r┌────────────────────────────────────────────┐\r│ 📅 今日待复习：12条 │\r│ │\r│ 语文(4) 英语(5) 数学(2) 历史(1) │\r│ │\r│ ┌──────────────────────────┐ │\r│ │ 膝盖(qī gài) → xī gài │ │\r│ │ │ │\r│ │ 记住了？ │ │\r│ │ [😰 忘了] [😐 模糊] [😊 记住] │ │\r│ └──────────────────────────┘ │\r│ │\r│ 记住→进入下一复习阶段 │\r│ 忘了→重置到第1阶段重新开始 │\r│ 模糊→维持当前阶段 │\r└────────────────────────────────────────────┘ 4.5.2 首页仪表盘 ┌─────────────────────────────────────────────────┐\r│ 早上好，同学 👋 📅 2025.05.29 │\r├─────────────────────────────────────────────────┤\r│ │\r│ ┌──── 今日待复习 ────┐ ┌──── 待掌握 ──────┐ │\r│ │ 12 条 │ │ 86 条 │ │\r│ └────────────────────┘ └──────────────────┘ │\r│ │\r│ ── 各科错题统计 ── │\r│ 语文 ████████░░ 45条 [进入] │\r│ 英语 ██████████ 52条 [进入] │\r│ 数学 █████░░░░░ 28条 [进入] │\r│ 历史 ██░░░░░░░░ 12条 [进入] │\r│ 地理 ███░░░░░░░ 15条 [进入] │\r│ 生物 ██░░░░░░░░ 10条 [进入] │\r│ 道法 █░░░░░░░░░ 8条 [进入] │\r│ │\r│ ── 本周学习曲线 ── │\r│ [折线图：新增/复习/掌握趋势] │\r│ │\r│ ── 快捷操作 ── │\r│ [📷 拍照录入] [🎤 语音输入] [🤖 AI问答] │\r│ │\r└─────────────────────────────────────────────────┘\r底部导航：[首页] [录入] [复习] [搜索] [我的] 4.5.3 全局搜索 支持：\r· 关键词搜索所有错题/知识点\r· 按学科筛选\r· 按标签筛选\r· 按时间范围筛选\r· 按掌握状态筛选\r· 按难度/重要度筛选 4.6 后台管理系统 ┌─────────────────────────────────────────────────────────────┐\r│ 错题宝 · 管理后台 │\r├───────────┬─────────────────────────────────────────────────┤\r│ 侧边栏 │ 内容区域 │\r│ │ │\r│ 📊 数据概览│ 各科错题统计图表 │\r│ │ 学习时长统计 │\r│ 📚 语文管理│ 复习完成率 │\r│ 📖 英语管理│ │\r│ 📐 数学管理│ │\r│ 📋 小四门 │ │\r│ │ 表格化管理所有错题/知识点 │\r│ 🏷️ 标签 │ 支持增删改查、批量导入 │\r│ │ 支持手动补充AI分析内容 │\r│ 🤖 AI管理 │ │\r│ │ AI接口配置 │\r│ 👤 用户 │ AI用量统计 │\r│ │ │\r│ ⚙️ 系统 │ 系统设置、备份、日志 │\r└───────────┴─────────────────────────────────────────────────┘ 后台管理功能清单 模块 功能 数据概览 错题总数/各科分布、学习天数、复习完成率、AI使用量、趋势图表 内容管理 各科错题CRUD、批量导入/导出、Excel导入、手动补充解析 标签管理 创建/编辑/删除标签、批量打标签 复习管理 查看复习计划、手动调整复习安排、复习统计 AI配置 API Key设置、Prompt模板管理、用量监控 数据统计 按学科/时间/知识点维度统计分析、薄弱知识点排行 系统管理 用户管理、数据备份/恢复、操作日志 五、AI 集成方案 5.1 AI 服务架构 # app/services/ai_service.py 核心设计 class AIService: \"\"\" AI 服务统一入口 支持多模型切换（通义千问/DeepSeek/其他） \"\"\" def __init__(self): self.client = OpenAI( api_key=settings.AI_API_KEY, base_url=settings.AI_BASE_URL # 兼容 OpenAI 接口的任何模型 ) # ---- 语文相关 ---- async def analyze_pronunciation(self, word: str, wrong_pinyin: str) -\u003e str: \"\"\"分析读音错误，扩展同类易错字\"\"\" prompt = f\"\"\"你是一位经验丰富的初中语文老师。 学生将「{word}」错误读成了「{wrong_pinyin}」。 请： 1. 给出正确读音 2. 解释为什么容易读错 3. 列出5个同类型的易错读音 4. 提供记忆技巧 5. 用一个包含该字的成语或诗句加深印象\"\"\" async def analyze_confusing_words(self, words: list, context: str) -\u003e str: \"\"\"分析混淆字词，提供辨析\"\"\" async def explain_literature(self, topic: str) -\u003e str: \"\"\"文学常识/古文讲解\"\"\" # ---- 英语相关 ---- async def analyze_vocabulary(self, word: str, error: str) -\u003e str: \"\"\"分析英语单词错误，扩展记忆\"\"\" async def analyze_sentence(self, wrong: str, correct: str) -\u003e str: \"\"\"分析句型/短语错误\"\"\" async def generate_similar_exercises(self, knowledge_point: str, count: int = 3) -\u003e str: \"\"\"根据知识点生成类似练习题\"\"\" # ---- 数学相关 ---- async def solve_math_problem(self, problem: str, student_answer: str = None) -\u003e str: \"\"\"数学题详细讲解\"\"\" prompt = f\"\"\"你是一位耐心的初中数学老师。 题目：{problem} {\"学生的错误答案：\" + student_answer if student_answer else \"\"} 请： 1. 分析题目考查的知识点 2. 给出详细的解题步骤 3. 如果学生答错了，指出错误原因 4. 总结解题关键点 5. 列出注意事项和常见陷阱\"\"\" # ---- 通用 ---- async def chat(self, messages: list, subject: str = None) -\u003e str: \"\"\"通用对话，可关联具体题目\"\"\" async def analyze_photo(self, image_base64: str, subject: str) -\u003e dict: \"\"\"图片内容识别与分析（使用视觉模型）\"\"\" 5.2 AI 调用流程 用户操作 → 前端请求 → 后端路由 → AI Service → AI API\r↓\r记录token用量\r↓\r结果存入 ai_conversations 表\r↓\r前端展示 + 可保存为错题笔记 5.3 Prompt 设计策略 # 系统提示词（按学科） PROMPTS = { \"语文\": \"\"\"你是一位资深的初中语文教师，善于用生动有趣的方式讲解语文知识。 要求： - 语言亲切自然，像在跟学生聊天 - 举的例子贴近初中生生活 - 涉及古文时，提供原文+翻译+赏析 - 知识点关联中考考点 - 适当使用口诀帮助记忆\"\"\", \"英语\": \"\"\"You are an experienced middle school English teacher who is bilingual. 要求： - 用中英结合的方式讲解 - 每个单词给出音标、词性、例句 - 拼写错误要分析错误规律 - 关联中考词汇大纲 - 提供记忆技巧（词根词缀法、联想法等）\"\"\", \"数学\": \"\"\"你是一位逻辑清晰的初中数学老师。 要求： - 每道题先分析考查的知识点 - 解题步骤要详细，每一步都说明为什么 - 如果学生做错了，先表扬做对的部分，再指出错误 - 最后总结解题方法和易错点 - 适当提供同类练习题\"\"\", \"小四门\": \"\"\"你是一位博学的初中综合学科老师，擅长帮助学生记忆知识点。 要求： - 答案简明扼要，重点突出 - 帮助构建知识框架和思维导图 - 提供记忆口诀和联想记忆法 - 关联中考常见考法\"\"\" } 5.4 推荐的 AI 模型选择 模型 优势 价格 推荐度 DeepSeek-V3 中文能力强、性价比极高 约1元/百万token ⭐⭐⭐⭐⭐ 通义千问-Max 阿里生态、视觉能力强 有免费额度 ⭐⭐⭐⭐ GLM-4-Flash 免费额度大 基本免费 ⭐⭐⭐⭐ 文心一言 百度生态、OCR能力强 按量计费 ⭐⭐⭐ 建议：主力用 DeepSeek，备用 通义千问。预算控制在每月20-50元以内。\n六、API 接口设计 6.1 接口总览 基础路径: /api/v1\r认证相关:\rPOST /auth/login # 登录\rPOST /auth/register # 注册(后台)\rPOST /auth/refresh # 刷新token\r语文模块:\rGET /chinese/entries # 获取列表(支持筛选分页)\rPOST /chinese/entries # 新增\rPUT /chinese/entries/{id} # 修改\rDELETE /chinese/entries/{id} # 删除\rPOST /chinese/entries/{id}/ai-analyze # AI分析\r英语模块:\rGET /english/entries # 获取列表\rPOST /english/entries # 新增\rPUT /english/entries/{id} # 修改\rDELETE /english/entries/{id} # 删除\rPOST /english/entries/{id}/ai-analyze # AI分析\rPOST /english/entries/{id}/ai-exercise # AI生成练习\r数学模块:\rGET /math/entries # 获取列表\rPOST /math/entries # 新增\rPUT /math/entries/{id} # 修改\rDELETE /math/entries/{id} # 删除\rPOST /math/entries/{id}/ai-solve # AI解题\r小四门:\rGET /general/entries # 获取列表(按学科筛选)\rPOST /general/entries # 新增\rPUT /general/entries/{id} # 修改\rDELETE /general/entries/{id} # 删除\rPOST /general/entries/{id}/ai-organize # AI整理\r通用功能:\rPOST /upload/image # 上传图片\rPOST /ocr/recognize # OCR识别\rPOST /voice/transcribe # 语音转文字\rPOST /ai/chat # AI通用对话\rGET /ai/history # AI对话历史\r复习系统:\rGET /review/today # 今日待复习\rPOST /review/{id}/complete # 完成复习\rGET /review/schedule # 复习日历\r统计分析:\rGET /stats/overview # 总览数据\rGET /stats/trend # 趋势图表\rGET /stats/weak-points # 薄弱知识点\rGET /stats/subject/{id} # 各科详细统计\r搜索:\rGET /search?q=\u0026subject=\u0026tag= # 全局搜索 6.2 请求/响应示例 // POST /api/v1/chinese/entries // 请求 { \"subject_id\": 1, \"entry_type\": \"pronunciation\", \"title\": \"膝盖读音\", \"content\": \"膝盖\", \"answer\": \"xī gài（不是qī gài）\", \"source\": \"课堂听写\", \"difficulty\": 3, \"importance\": 4, \"photo_urls\": [\"https://oss.xxx.com/img/001.jpg\"], \"tags\": [\"易错读音\", \"月字旁\"] } // 响应 { \"code\": 200, \"data\": { \"id\": 1001, \"title\": \"膝盖读音\", \"created_at\": \"2025-05-29T10:30:00\", \"next_review_at\": \"2025-05-30T08:00:00\" } } 七、开发计划 7.1 分阶段实施（建议 6-8 周完成 MVP） Phase 1 — 基础框架（第1-2周）\r━━━━━━━━━━━━━━━━━━━━━━━━━━━━\r✦ 搭建 FastAPI 后端项目\r✦ 数据库设计 + 建表\r✦ 用户认证（JWT）\r✦ 基础 CRUD 接口（各科错题）\r✦ Flutter 项目初始化\r✦ 登录页面 + 首页框架\rPhase 2 — 核心录入功能（第3-4周）\r━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\r✦ 各科错题录入页面（语文/英语/数学/小四门）\r✦ 图片上传 + OCR识别\r✦ 语音输入集成\r✦ 标签系统\r✦ 后台管理基础页面\rPhase 3 — AI 集成（第5-6周）\r━━━━━━━━━━━━━━━━━━━━━━━━━━━━\r✦ AI 服务接入（DeepSeek）\r✦ 语文AI分析（读音/混淆词/文学常识）\r✦ 英语AI扩展（单词/短语/句型）\r✦ 数学AI解题\r✦ 小四门AI整理\r✦ 对话历史记录\rPhase 4 — 复习 \u0026 统计（第7周）\r━━━━━━━━━━━━━━━━━━━━━━━━━━━━\r✦ 艾宾浩斯复习系统\r✦ 复习提醒（本地通知）\r✦ 学习统计图表\r✦ 全局搜索\r✦ 后台管理完善\rPhase 5 — 优化上线（第8周）\r━━━━━━━━━━━━━━━━━━━━━━━━━━━━\r✦ UI美化 + 动画\r✦ 性能优化\r✦ 数据备份方案\r✦ 打包部署\r✦ 使用培训（教孩子用） 7.2 每日开发建议 如果你每天能投入 2-3小时，按以上节奏可以完成。如果你开发经验不多，建议：\n第一个2周只搭后端，用 Postman 测试接口 第3-4周再开始写 App 前端 AI部分先用最简单的接入，后续再优化 prompt 八、部署方案 8.1 Docker Compose 一键部署 # docker-compose.yml version: '3.8' services: # 后端 API backend: build: ./backend ports: - \"8000:8000\" environment: - DATABASE_URL=mysql+pymysql://cuoti:password@db:3306/cuoti_bao - REDIS_URL=redis://redis:6379/0 - AI_API_KEY=your-api-key-here - AI_BASE_URL=https://api.deepseek.com - OSS_ENDPOINT=your-oss-endpoint depends_on: - db - redis restart: always # MySQL 数据库 db: image: mysql:8.0 ports: - \"3306:3306\" environment: - MYSQL_ROOT_PASSWORD=rootpassword - MYSQL_DATABASE=cuoti_bao - MYSQL_USER=cuoti - MYSQL_PASSWORD=password volumes: - mysql_data:/var/lib/mysql - ./deploy/init.sql:/docker-entrypoint-initdb.d/init.sql restart: always # Redis 缓存 redis: image: redis:7-alpine ports: - \"6379:6379\" restart: always # Nginx 反向代理 nginx: image: nginx:alpine ports: - \"80:80\" - \"443:443\" volumes: - ./deploy/nginx.conf:/etc/nginx/conf.d/default.conf - ./admin/dist:/usr/share/nginx/html/admin # 管理后台静态文件 depends_on: - backend restart: always volumes: mysql_data: 8.2 Nginx 配置 # deploy/nginx.conf server { listen 80; server_name your-domain.com; # 管理后台 location /admin { alias /usr/share/nginx/html/admin; try_files $uri $uri/ /admin/index.html; } # API 代理 location /api/ { proxy_pass http://backend:8000/api/; proxy_set_header Host $host; proxy_set_header X-Real-IP $remote_addr; proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; # SSE 流式响应支持（AI对话用） proxy_buffering off; proxy_cache off; proxy_read_timeout 120s; } # 上传文件大小限制 client_max_body_size 20M; } 8.3 服务器要求 项目 最低配置 推荐配置 CPU 2核 2核 内存 2GB 4GB 硬盘 40GB SSD 60GB SSD 带宽 3Mbps 5Mbps 系统 Ubuntu 22.04 / CentOS 8 Ubuntu 22.04 九、成本估算 项目 费用 说明 云服务器 已有 你已购买 AI API 20-50元/月 DeepSeek 价格很低 OCR API 0-10元/月 百度有免费额度 语音识别 0-10元/月 阿里云有免费额度 域名(可选) 60元/年 .com 域名 SSL证书 免费 Let’s Encrypt 合计 约20-70元/月 家庭使用非常经济 十、后续可扩展功能 当 MVP 版本运行稳定后，可以逐步添加：\n优先级 功能 说明 P1 错题组卷 从错题库随机抽题生成模拟试卷 P1 听写模式 App 念词语/单词，孩子听写，自动批改 P2 学习打卡 每日学习打卡、连续打卡统计、奖励机制 P2 知识图谱 可视化知识点之间的关联 P3 多设备同步 云端同步，换设备不丢数据 P3 家长推送 每日学习报告推送到微信（通过微信模板消息） P3 课本同步 按人教版教材章节归类知识点 ",
+  "wordCount" : "2917",
+  "inLanguage": "en",
+  "datePublished": "2026-05-29T12:00:00+08:00",
+  "dateModified": "2026-05-29T12:00:00+08:00",
+  "author":{
+    "@type": "Person",
+    "name": "azheng"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://azlog.org/posts/%E9%94%99%E9%A2%98%E5%AE%9D-%E5%88%9D%E4%B8%AD%E7%94%9F%E6%99%BA%E8%83%BD%E9%94%99%E9%A2%98%E7%AE%A1%E7%90%86app-%E8%AF%A6%E7%BB%86%E6%96%B9%E6%A1%88mimo%E7%89%88/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Az日志",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://azlog.org/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="https://azlog.org/" accesskey="h" title="Az日志 (Alt + H)">Az日志</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu" class="menu">
+            <li>
+                <a href="https://azlog.org/" title="🏠 首页">
+                    <span>🏠 首页</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://azlog.org/categories/" title="📂 分类">
+                    <span>📂 分类</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://azlog.org/tags/" title="🏷 标签">
+                    <span>🏷 标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://azlog.org/archives/" title="📜 归档">
+                    <span>📜 归档</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://azlog.org/about/" title="👤 关于">
+                    <span>👤 关于</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <a href="/posts/">Posts</a>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+        <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+</nav>
+    <h1 class="post-title entry-hint-parent">
+      「错题宝」—— 初中生智能错题管理App 详细方案（mimo版）
+    </h1>
+    <div class="post-meta">
+
+<span title='2026-05-29 12:00:00 +0800 +0800'>May 29, 2026</span>&nbsp;·&nbsp;<span>14 min</span>&nbsp;·&nbsp;<span>2917 words</span>&nbsp;·&nbsp;<span>azheng</span>
+
+</div>
+  </header> <details class="toc" >
+    <summary accesskey="c" title="(Alt + C)">
+        <span class="title">Table of Contents</span>
+    </summary>
+
+    <div class="inner"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#一项目总览">一、项目总览</a>
+      <ul>
+        <li><a href="#11-项目定位">1.1 项目定位</a></li>
+        <li><a href="#12-核心用户画像">1.2 核心用户画像</a></li>
+        <li><a href="#13-整体功能矩阵">1.3 整体功能矩阵</a></li>
+      </ul>
+    </li>
+    <li><a href="#二技术架构方案">二、技术架构方案</a>
+      <ul>
+        <li><a href="#21-推荐技术栈">2.1 推荐技术栈</a></li>
+        <li><a href="#22-系统架构图">2.2 系统架构图</a></li>
+        <li><a href="#23-目录结构">2.3 目录结构</a></li>
+      </ul>
+    </li>
+    <li><a href="#三数据库设计">三、数据库设计</a>
+      <ul>
+        <li><a href="#31-核心数据模型">3.1 核心数据模型</a></li>
+        <li><a href="#32-数据库-er-关系图">3.2 数据库 ER 关系图</a></li>
+      </ul>
+    </li>
+    <li><a href="#四功能模块详细设计">四、功能模块详细设计</a>
+      <ul>
+        <li><a href="#41-语文模块">4.1 语文模块</a></li>
+        <li><a href="#42-英语模块">4.2 英语模块</a></li>
+        <li><a href="#43-数学模块">4.3 数学模块</a></li>
+        <li><a href="#44-小四门模块">4.4 小四门模块</a></li>
+        <li><a href="#45-通用能力模块">4.5 通用能力模块</a></li>
+        <li><a href="#46-后台管理系统">4.6 后台管理系统</a></li>
+      </ul>
+    </li>
+    <li><a href="#五ai-集成方案">五、AI 集成方案</a>
+      <ul>
+        <li><a href="#51-ai-服务架构">5.1 AI 服务架构</a></li>
+        <li><a href="#52-ai-调用流程">5.2 AI 调用流程</a></li>
+        <li><a href="#53-prompt-设计策略">5.3 Prompt 设计策略</a></li>
+        <li><a href="#54-推荐的-ai-模型选择">5.4 推荐的 AI 模型选择</a></li>
+      </ul>
+    </li>
+    <li><a href="#六api-接口设计">六、API 接口设计</a>
+      <ul>
+        <li><a href="#61-接口总览">6.1 接口总览</a></li>
+        <li><a href="#62-请求响应示例">6.2 请求/响应示例</a></li>
+      </ul>
+    </li>
+    <li><a href="#七开发计划">七、开发计划</a>
+      <ul>
+        <li><a href="#71-分阶段实施建议-6-8-周完成-mvp">7.1 分阶段实施（建议 6-8 周完成 MVP）</a></li>
+        <li><a href="#72-每日开发建议">7.2 每日开发建议</a></li>
+      </ul>
+    </li>
+    <li><a href="#八部署方案">八、部署方案</a>
+      <ul>
+        <li><a href="#81-docker-compose-一键部署">8.1 Docker Compose 一键部署</a></li>
+        <li><a href="#82-nginx-配置">8.2 Nginx 配置</a></li>
+        <li><a href="#83-服务器要求">8.3 服务器要求</a></li>
+      </ul>
+    </li>
+    <li><a href="#九成本估算">九、成本估算</a></li>
+    <li><a href="#十后续可扩展功能">十、后续可扩展功能</a></li>
+  </ul>
+</nav>
+    </div>
+</details>
+
+  <div class="post-content md-content"><hr>
+<h2 id="一项目总览">一、项目总览<a hidden class="anchor" aria-hidden="true" href="#一项目总览">#</a></h2>
+<h3 id="11-项目定位">1.1 项目定位<a hidden class="anchor" aria-hidden="true" href="#11-项目定位">#</a></h3>
+<p>一款面向初中生的<strong>错题管理 + AI 辅助学习</strong>工具，覆盖语文、英语、数学及小四门（历史、地理、生物、道德与法治），核心目标：<strong>记录 → 理解 → 巩固 → 提分</strong>。</p>
+<h3 id="12-核心用户画像">1.2 核心用户画像<a hidden class="anchor" aria-hidden="true" href="#12-核心用户画像">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th>角色</th>
+          <th>使用场景</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>学生（儿子）</td>
+          <td>日常记录错题、查看复习、与AI互动</td>
+      </tr>
+      <tr>
+          <td>家长（你）</td>
+          <td>后台管理、查看学习数据、补充内容</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="13-整体功能矩阵">1.3 整体功能矩阵<a hidden class="anchor" aria-hidden="true" href="#13-整体功能矩阵">#</a></h3>
+<pre tabindex="0"><code>┌─────────────────────────────────────────────────────┐
 │                    错题宝 App                        │
 ├──────────┬──────────┬──────────┬─────────────────────┤
 │   语文   │   英语   │   数学   │    小四门(4科)      │
@@ -65,7 +375,70 @@
 │          学习管理：艾宾浩斯复习 / 统计分析 / 搜索       │
 │          后台管理：内容管理 / 用户管理 / 数据统计        │
 └─────────────────────────────────────────────────────┘
-</code></pre><hr><h2 id=二技术架构方案>二、技术架构方案<a hidden class=anchor aria-hidden=true href=#二技术架构方案>#</a></h2><h3 id=21-推荐技术栈>2.1 推荐技术栈<a hidden class=anchor aria-hidden=true href=#21-推荐技术栈>#</a></h3><blockquote><p>考虑到你是个人开发者、买了云服务器、孩子用手机，推荐<strong>最务实</strong>的方案：</p></blockquote><table><thead><tr><th>层级</th><th>技术选型</th><th>理由</th></tr></thead><tbody><tr><td><strong>前端（移动端）</strong></td><td>Flutter（推荐）或 uni-app</td><td>一套代码同时出 Android + iOS；uni-app 如果你更熟悉 Vue</td></tr><tr><td><strong>后端服务</strong></td><td>Python + FastAPI</td><td>生态好、AI库丰富、异步性能强、开发快</td></tr><tr><td><strong>数据库</strong></td><td>MySQL 8.0 + Redis</td><td>MySQL 存业务数据，Redis 做缓存和复习提醒队列</td></tr><tr><td><strong>文件存储</strong></td><td>阿里云OSS / 本地存储</td><td>存储拍照图片、音频文件</td></tr><tr><td><strong>AI能力</strong></td><td>通义千问API / DeepSeek API</td><td>国内稳定、中文能力强、价格便宜</td></tr><tr><td><strong>OCR识别</strong></td><td>百度OCR API / 通义千问视觉模型</td><td>拍照识别文字</td></tr><tr><td><strong>语音识别</strong></td><td>讯飞语音 / 阿里云语音</td><td>中英文语音转文字</td></tr><tr><td><strong>后台管理</strong></td><td>Vue3 + Element Plus</td><td>功能完善的管理后台</td></tr><tr><td><strong>服务器</strong></td><td>你的云服务器（推荐2核4G起步）</td><td>个人使用足够</td></tr></tbody></table><h3 id=22-系统架构图>2.2 系统架构图<a hidden class=anchor aria-hidden=true href=#22-系统架构图>#</a></h3><pre tabindex=0><code>                    ┌──────────────┐
+</code></pre><hr>
+<h2 id="二技术架构方案">二、技术架构方案<a hidden class="anchor" aria-hidden="true" href="#二技术架构方案">#</a></h2>
+<h3 id="21-推荐技术栈">2.1 推荐技术栈<a hidden class="anchor" aria-hidden="true" href="#21-推荐技术栈">#</a></h3>
+<blockquote>
+<p>考虑到你是个人开发者、买了云服务器、孩子用手机，推荐<strong>最务实</strong>的方案：</p>
+</blockquote>
+<table>
+  <thead>
+      <tr>
+          <th>层级</th>
+          <th>技术选型</th>
+          <th>理由</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>前端（移动端）</strong></td>
+          <td>Flutter（推荐）或 uni-app</td>
+          <td>一套代码同时出 Android + iOS；uni-app 如果你更熟悉 Vue</td>
+      </tr>
+      <tr>
+          <td><strong>后端服务</strong></td>
+          <td>Python + FastAPI</td>
+          <td>生态好、AI库丰富、异步性能强、开发快</td>
+      </tr>
+      <tr>
+          <td><strong>数据库</strong></td>
+          <td>MySQL 8.0 + Redis</td>
+          <td>MySQL 存业务数据，Redis 做缓存和复习提醒队列</td>
+      </tr>
+      <tr>
+          <td><strong>文件存储</strong></td>
+          <td>阿里云OSS / 本地存储</td>
+          <td>存储拍照图片、音频文件</td>
+      </tr>
+      <tr>
+          <td><strong>AI能力</strong></td>
+          <td>通义千问API / DeepSeek API</td>
+          <td>国内稳定、中文能力强、价格便宜</td>
+      </tr>
+      <tr>
+          <td><strong>OCR识别</strong></td>
+          <td>百度OCR API / 通义千问视觉模型</td>
+          <td>拍照识别文字</td>
+      </tr>
+      <tr>
+          <td><strong>语音识别</strong></td>
+          <td>讯飞语音 / 阿里云语音</td>
+          <td>中英文语音转文字</td>
+      </tr>
+      <tr>
+          <td><strong>后台管理</strong></td>
+          <td>Vue3 + Element Plus</td>
+          <td>功能完善的管理后台</td>
+      </tr>
+      <tr>
+          <td><strong>服务器</strong></td>
+          <td>你的云服务器（推荐2核4G起步）</td>
+          <td>个人使用足够</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="22-系统架构图">2.2 系统架构图<a hidden class="anchor" aria-hidden="true" href="#22-系统架构图">#</a></h3>
+<pre tabindex="0"><code>                    ┌──────────────┐
                     │   手机App    │
                     │  (Flutter)   │
                     └──────┬───────┘
@@ -94,7 +467,8 @@
   │ AI API  │   │  OCR API  │   │  语音 API    │
   │通义/DeepSeek│ │ 百度OCR   │   │  讯飞/阿里   │
   └─────────┘   └───────────┘   └──────────────┘
-</code></pre><h3 id=23-目录结构>2.3 目录结构<a hidden class=anchor aria-hidden=true href=#23-目录结构>#</a></h3><pre tabindex=0><code>cuoti-bao/
+</code></pre><h3 id="23-目录结构">2.3 目录结构<a hidden class="anchor" aria-hidden="true" href="#23-目录结构">#</a></h3>
+<pre tabindex="0"><code>cuoti-bao/
 ├── backend/                    # Python FastAPI 后端
 │   ├── app/
 │   │   ├── __init__.py
@@ -145,145 +519,153 @@
 └── deploy/                     # 部署脚本
     ├── docker-compose.yml
     └── nginx.conf
-</code></pre><hr><h2 id=三数据库设计>三、数据库设计<a hidden class=anchor aria-hidden=true href=#三数据库设计>#</a></h2><h3 id=31-核心数据模型>3.1 核心数据模型<a hidden class=anchor aria-hidden=true href=#31-核心数据模型>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-sql data-lang=sql><span style=display:flex><span><span style=color:#75715e>-- ============================================
-</span></span></span><span style=display:flex><span><span style=color:#75715e>-- 用户表
-</span></span></span><span style=display:flex><span><span style=color:#75715e>-- ============================================
-</span></span></span><span style=display:flex><span><span style=color:#66d9ef>CREATE</span> <span style=color:#66d9ef>TABLE</span> users (
-</span></span><span style=display:flex><span>    id BIGINT <span style=color:#66d9ef>PRIMARY</span> <span style=color:#66d9ef>KEY</span> AUTO_INCREMENT,
-</span></span><span style=display:flex><span>    username VARCHAR(<span style=color:#ae81ff>50</span>) <span style=color:#66d9ef>NOT</span> <span style=color:#66d9ef>NULL</span> <span style=color:#66d9ef>UNIQUE</span>,
-</span></span><span style=display:flex><span>    password_hash VARCHAR(<span style=color:#ae81ff>255</span>) <span style=color:#66d9ef>NOT</span> <span style=color:#66d9ef>NULL</span>,
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>role</span> ENUM(<span style=color:#e6db74>&#39;admin&#39;</span>, <span style=color:#e6db74>&#39;student&#39;</span>) <span style=color:#66d9ef>DEFAULT</span> <span style=color:#e6db74>&#39;student&#39;</span>,
-</span></span><span style=display:flex><span>    nickname VARCHAR(<span style=color:#ae81ff>50</span>),
-</span></span><span style=display:flex><span>    grade VARCHAR(<span style=color:#ae81ff>20</span>) <span style=color:#66d9ef>DEFAULT</span> <span style=color:#e6db74>&#39;初一&#39;</span>,
-</span></span><span style=display:flex><span>    avatar_url VARCHAR(<span style=color:#ae81ff>500</span>),
-</span></span><span style=display:flex><span>    created_at DATETIME <span style=color:#66d9ef>DEFAULT</span> <span style=color:#66d9ef>CURRENT_TIMESTAMP</span>,
-</span></span><span style=display:flex><span>    updated_at DATETIME <span style=color:#66d9ef>DEFAULT</span> <span style=color:#66d9ef>CURRENT_TIMESTAMP</span> <span style=color:#66d9ef>ON</span> <span style=color:#66d9ef>UPDATE</span> <span style=color:#66d9ef>CURRENT_TIMESTAMP</span>
-</span></span><span style=display:flex><span>);
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e>-- ============================================
-</span></span></span><span style=display:flex><span><span style=color:#75715e>-- 学科表
-</span></span></span><span style=display:flex><span><span style=color:#75715e>-- ============================================
-</span></span></span><span style=display:flex><span><span style=color:#66d9ef>CREATE</span> <span style=color:#66d9ef>TABLE</span> subjects (
-</span></span><span style=display:flex><span>    id INT <span style=color:#66d9ef>PRIMARY</span> <span style=color:#66d9ef>KEY</span> AUTO_INCREMENT,
-</span></span><span style=display:flex><span>    name VARCHAR(<span style=color:#ae81ff>20</span>) <span style=color:#66d9ef>NOT</span> <span style=color:#66d9ef>NULL</span>,          <span style=color:#75715e>-- &#39;语文&#39;,&#39;英语&#39;,&#39;数学&#39;,&#39;历史&#39;,&#39;地理&#39;,&#39;生物&#39;,&#39;道法&#39;
-</span></span></span><span style=display:flex><span>    category ENUM(<span style=color:#e6db74>&#39;main&#39;</span>, <span style=color:#e6db74>&#39;minor&#39;</span>) <span style=color:#66d9ef>DEFAULT</span> <span style=color:#e6db74>&#39;main&#39;</span>,  <span style=color:#75715e>-- 主科/小四门
-</span></span></span><span style=display:flex><span>    icon VARCHAR(<span style=color:#ae81ff>50</span>),
-</span></span><span style=display:flex><span>    sort_order INT <span style=color:#66d9ef>DEFAULT</span> <span style=color:#ae81ff>0</span>
-</span></span><span style=display:flex><span>);
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e>-- ============================================
-</span></span></span><span style=display:flex><span><span style=color:#75715e>-- 错题/知识点总表（统一入口）
-</span></span></span><span style=display:flex><span><span style=color:#75715e>-- ============================================
-</span></span></span><span style=display:flex><span><span style=color:#66d9ef>CREATE</span> <span style=color:#66d9ef>TABLE</span> error_entries (
-</span></span><span style=display:flex><span>    id BIGINT <span style=color:#66d9ef>PRIMARY</span> <span style=color:#66d9ef>KEY</span> AUTO_INCREMENT,
-</span></span><span style=display:flex><span>    user_id BIGINT <span style=color:#66d9ef>NOT</span> <span style=color:#66d9ef>NULL</span>,
-</span></span><span style=display:flex><span>    subject_id INT <span style=color:#66d9ef>NOT</span> <span style=color:#66d9ef>NULL</span>,
-</span></span><span style=display:flex><span>    entry_type VARCHAR(<span style=color:#ae81ff>30</span>) <span style=color:#66d9ef>NOT</span> <span style=color:#66d9ef>NULL</span>,    <span style=color:#75715e>-- 细分类型，见下方枚举
-</span></span></span><span style=display:flex><span>    title VARCHAR(<span style=color:#ae81ff>200</span>),                 <span style=color:#75715e>-- 标题/摘要
-</span></span></span><span style=display:flex><span>    content TEXT,                       <span style=color:#75715e>-- 主要内容
-</span></span></span><span style=display:flex><span>    answer TEXT,                        <span style=color:#75715e>-- 正确答案/解析
-</span></span></span><span style=display:flex><span>    <span style=color:#66d9ef>source</span> VARCHAR(<span style=color:#ae81ff>50</span>),                 <span style=color:#75715e>-- 来源：&#39;期中考试&#39;,&#39;课后练习&#39;,&#39;课堂听写&#39;
-</span></span></span><span style=display:flex><span>    difficulty TINYINT <span style=color:#66d9ef>DEFAULT</span> <span style=color:#ae81ff>3</span>,       <span style=color:#75715e>-- 1-5难度
-</span></span></span><span style=display:flex><span>    importance TINYINT <span style=color:#66d9ef>DEFAULT</span> <span style=color:#ae81ff>3</span>,       <span style=color:#75715e>-- 1-5重要度
-</span></span></span><span style=display:flex><span>    photo_urls JSON,                    <span style=color:#75715e>-- 拍照图片URL列表
-</span></span></span><span style=display:flex><span>    ai_analysis TEXT,                   <span style=color:#75715e>-- AI分析内容
-</span></span></span><span style=display:flex><span>    is_mastered BOOLEAN <span style=color:#66d9ef>DEFAULT</span> <span style=color:#66d9ef>FALSE</span>,  <span style=color:#75715e>-- 是否已掌握
-</span></span></span><span style=display:flex><span>    mastered_at DATETIME,
-</span></span><span style=display:flex><span>    review_count INT <span style=color:#66d9ef>DEFAULT</span> <span style=color:#ae81ff>0</span>,         <span style=color:#75715e>-- 复习次数
-</span></span></span><span style=display:flex><span>    next_review_at DATETIME,            <span style=color:#75715e>-- 下次复习时间（艾宾浩斯）
-</span></span></span><span style=display:flex><span>    created_at DATETIME <span style=color:#66d9ef>DEFAULT</span> <span style=color:#66d9ef>CURRENT_TIMESTAMP</span>,
-</span></span><span style=display:flex><span>    updated_at DATETIME <span style=color:#66d9ef>DEFAULT</span> <span style=color:#66d9ef>CURRENT_TIMESTAMP</span> <span style=color:#66d9ef>ON</span> <span style=color:#66d9ef>UPDATE</span> <span style=color:#66d9ef>CURRENT_TIMESTAMP</span>,
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>FOREIGN</span> <span style=color:#66d9ef>KEY</span> (user_id) <span style=color:#66d9ef>REFERENCES</span> users(id),
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>FOREIGN</span> <span style=color:#66d9ef>KEY</span> (subject_id) <span style=color:#66d9ef>REFERENCES</span> subjects(id),
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>INDEX</span> idx_user_subject (user_id, subject_id),
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>INDEX</span> idx_next_review (user_id, next_review_at),
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>INDEX</span> idx_entry_type (subject_id, entry_type)
-</span></span><span style=display:flex><span>);
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e>-- entry_type 枚举说明：
-</span></span></span><span style=display:flex><span><span style=color:#75715e>-- 语文: &#39;pronunciation&#39;(字词读音), &#39;confusing_words&#39;(混淆字词),
-</span></span></span><span style=display:flex><span><span style=color:#75715e>--        &#39;literature&#39;(文学常识), &#39;classical_chinese&#39;(古文基础), &#39;reading&#39;(阅读理解)
-</span></span></span><span style=display:flex><span><span style=color:#75715e>-- 英语: &#39;vocabulary&#39;(单词), &#39;phrase&#39;(短语), &#39;sentence_pattern&#39;(句型), &#39;error_question&#39;(错题)
-</span></span></span><span style=display:flex><span><span style=color:#75715e>-- 数学: &#39;error_question&#39;(错题), &#39;concept&#39;(概念题)
-</span></span></span><span style=display:flex><span><span style=color:#75715e>-- 小四门: &#39;error_question&#39;(错题), &#39;knowledge_point&#39;(知识点)
-</span></span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e>-- ============================================
-</span></span></span><span style=display:flex><span><span style=color:#75715e>-- 标签表（多维度分类检索）
-</span></span></span><span style=display:flex><span><span style=color:#75715e>-- ============================================
-</span></span></span><span style=display:flex><span><span style=color:#66d9ef>CREATE</span> <span style=color:#66d9ef>TABLE</span> tags (
-</span></span><span style=display:flex><span>    id INT <span style=color:#66d9ef>PRIMARY</span> <span style=color:#66d9ef>KEY</span> AUTO_INCREMENT,
-</span></span><span style=display:flex><span>    name VARCHAR(<span style=color:#ae81ff>50</span>) <span style=color:#66d9ef>NOT</span> <span style=color:#66d9ef>NULL</span>,
-</span></span><span style=display:flex><span>    subject_id INT,
-</span></span><span style=display:flex><span>    color VARCHAR(<span style=color:#ae81ff>20</span>) <span style=color:#66d9ef>DEFAULT</span> <span style=color:#e6db74>&#39;#4A90D9&#39;</span>,
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>FOREIGN</span> <span style=color:#66d9ef>KEY</span> (subject_id) <span style=color:#66d9ef>REFERENCES</span> subjects(id)
-</span></span><span style=display:flex><span>);
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>CREATE</span> <span style=color:#66d9ef>TABLE</span> entry_tags (
-</span></span><span style=display:flex><span>    entry_id BIGINT <span style=color:#66d9ef>NOT</span> <span style=color:#66d9ef>NULL</span>,
-</span></span><span style=display:flex><span>    tag_id INT <span style=color:#66d9ef>NOT</span> <span style=color:#66d9ef>NULL</span>,
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>PRIMARY</span> <span style=color:#66d9ef>KEY</span> (entry_id, tag_id),
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>FOREIGN</span> <span style=color:#66d9ef>KEY</span> (entry_id) <span style=color:#66d9ef>REFERENCES</span> error_entries(id) <span style=color:#66d9ef>ON</span> <span style=color:#66d9ef>DELETE</span> <span style=color:#66d9ef>CASCADE</span>,
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>FOREIGN</span> <span style=color:#66d9ef>KEY</span> (tag_id) <span style=color:#66d9ef>REFERENCES</span> tags(id) <span style=color:#66d9ef>ON</span> <span style=color:#66d9ef>DELETE</span> <span style=color:#66d9ef>CASCADE</span>
-</span></span><span style=display:flex><span>);
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e>-- ============================================
-</span></span></span><span style=display:flex><span><span style=color:#75715e>-- AI对话记录表
-</span></span></span><span style=display:flex><span><span style=color:#75715e>-- ============================================
-</span></span></span><span style=display:flex><span><span style=color:#66d9ef>CREATE</span> <span style=color:#66d9ef>TABLE</span> ai_conversations (
-</span></span><span style=display:flex><span>    id BIGINT <span style=color:#66d9ef>PRIMARY</span> <span style=color:#66d9ef>KEY</span> AUTO_INCREMENT,
-</span></span><span style=display:flex><span>    user_id BIGINT <span style=color:#66d9ef>NOT</span> <span style=color:#66d9ef>NULL</span>,
-</span></span><span style=display:flex><span>    entry_id BIGINT,                    <span style=color:#75715e>-- 关联的错题（可为空）
-</span></span></span><span style=display:flex><span>    subject_id INT,
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>role</span> ENUM(<span style=color:#e6db74>&#39;user&#39;</span>, <span style=color:#e6db74>&#39;assistant&#39;</span>) <span style=color:#66d9ef>NOT</span> <span style=color:#66d9ef>NULL</span>,
-</span></span><span style=display:flex><span>    content TEXT <span style=color:#66d9ef>NOT</span> <span style=color:#66d9ef>NULL</span>,
-</span></span><span style=display:flex><span>    tokens_used INT <span style=color:#66d9ef>DEFAULT</span> <span style=color:#ae81ff>0</span>,
-</span></span><span style=display:flex><span>    created_at DATETIME <span style=color:#66d9ef>DEFAULT</span> <span style=color:#66d9ef>CURRENT_TIMESTAMP</span>,
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>FOREIGN</span> <span style=color:#66d9ef>KEY</span> (user_id) <span style=color:#66d9ef>REFERENCES</span> users(id),
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>FOREIGN</span> <span style=color:#66d9ef>KEY</span> (entry_id) <span style=color:#66d9ef>REFERENCES</span> error_entries(id) <span style=color:#66d9ef>ON</span> <span style=color:#66d9ef>DELETE</span> <span style=color:#66d9ef>SET</span> <span style=color:#66d9ef>NULL</span>,
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>INDEX</span> idx_user_entry (user_id, entry_id)
-</span></span><span style=display:flex><span>);
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e>-- ============================================
-</span></span></span><span style=display:flex><span><span style=color:#75715e>-- 复习计划表（艾宾浩斯遗忘曲线）
-</span></span></span><span style=display:flex><span><span style=color:#75715e>-- ============================================
-</span></span></span><span style=display:flex><span><span style=color:#66d9ef>CREATE</span> <span style=color:#66d9ef>TABLE</span> review_schedules (
-</span></span><span style=display:flex><span>    id BIGINT <span style=color:#66d9ef>PRIMARY</span> <span style=color:#66d9ef>KEY</span> AUTO_INCREMENT,
-</span></span><span style=display:flex><span>    user_id BIGINT <span style=color:#66d9ef>NOT</span> <span style=color:#66d9ef>NULL</span>,
-</span></span><span style=display:flex><span>    entry_id BIGINT <span style=color:#66d9ef>NOT</span> <span style=color:#66d9ef>NULL</span>,
-</span></span><span style=display:flex><span>    review_stage TINYINT <span style=color:#66d9ef>DEFAULT</span> <span style=color:#ae81ff>0</span>,     <span style=color:#75715e>-- 0-7 对应 8次复习
-</span></span></span><span style=display:flex><span>    scheduled_at DATETIME <span style=color:#66d9ef>NOT</span> <span style=color:#66d9ef>NULL</span>,     <span style=color:#75715e>-- 计划复习时间
-</span></span></span><span style=display:flex><span>    completed_at DATETIME,              <span style=color:#75715e>-- 实际完成时间
-</span></span></span><span style=display:flex><span>    <span style=color:#66d9ef>result</span> ENUM(<span style=color:#e6db74>&#39;forgot&#39;</span>, <span style=color:#e6db74>&#39;vague&#39;</span>, <span style=color:#e6db74>&#39;remembered&#39;</span>),  <span style=color:#75715e>-- 复习结果
-</span></span></span><span style=display:flex><span>    created_at DATETIME <span style=color:#66d9ef>DEFAULT</span> <span style=color:#66d9ef>CURRENT_TIMESTAMP</span>,
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>FOREIGN</span> <span style=color:#66d9ef>KEY</span> (user_id) <span style=color:#66d9ef>REFERENCES</span> users(id),
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>FOREIGN</span> <span style=color:#66d9ef>KEY</span> (entry_id) <span style=color:#66d9ef>REFERENCES</span> error_entries(id) <span style=color:#66d9ef>ON</span> <span style=color:#66d9ef>DELETE</span> <span style=color:#66d9ef>CASCADE</span>,
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>INDEX</span> idx_user_schedule (user_id, scheduled_at)
-</span></span><span style=display:flex><span>);
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e>-- ============================================
-</span></span></span><span style=display:flex><span><span style=color:#75715e>-- 学习统计表（每日汇总）
-</span></span></span><span style=display:flex><span><span style=color:#75715e>-- ============================================
-</span></span></span><span style=display:flex><span><span style=color:#66d9ef>CREATE</span> <span style=color:#66d9ef>TABLE</span> daily_stats (
-</span></span><span style=display:flex><span>    id BIGINT <span style=color:#66d9ef>PRIMARY</span> <span style=color:#66d9ef>KEY</span> AUTO_INCREMENT,
-</span></span><span style=display:flex><span>    user_id BIGINT <span style=color:#66d9ef>NOT</span> <span style=color:#66d9ef>NULL</span>,
-</span></span><span style=display:flex><span>    stat_date DATE <span style=color:#66d9ef>NOT</span> <span style=color:#66d9ef>NULL</span>,
-</span></span><span style=display:flex><span>    subject_id INT,
-</span></span><span style=display:flex><span>    new_entries INT <span style=color:#66d9ef>DEFAULT</span> <span style=color:#ae81ff>0</span>,          <span style=color:#75715e>-- 新增条目数
-</span></span></span><span style=display:flex><span>    reviewed_entries INT <span style=color:#66d9ef>DEFAULT</span> <span style=color:#ae81ff>0</span>,     <span style=color:#75715e>-- 复习条目数
-</span></span></span><span style=display:flex><span>    mastered_entries INT <span style=color:#66d9ef>DEFAULT</span> <span style=color:#ae81ff>0</span>,     <span style=color:#75715e>-- 掌握条目数
-</span></span></span><span style=display:flex><span>    ai_queries INT <span style=color:#66d9ef>DEFAULT</span> <span style=color:#ae81ff>0</span>,          <span style=color:#75715e>-- AI查询次数
-</span></span></span><span style=display:flex><span>    study_minutes INT <span style=color:#66d9ef>DEFAULT</span> <span style=color:#ae81ff>0</span>,       <span style=color:#75715e>-- 学习时长(分钟)
-</span></span></span><span style=display:flex><span>    <span style=color:#66d9ef>FOREIGN</span> <span style=color:#66d9ef>KEY</span> (user_id) <span style=color:#66d9ef>REFERENCES</span> users(id),
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>UNIQUE</span> <span style=color:#66d9ef>KEY</span> uk_user_date_subject (user_id, stat_date, subject_id)
-</span></span><span style=display:flex><span>);
-</span></span></code></pre></div><h3 id=32-数据库-er-关系图>3.2 数据库 ER 关系图<a hidden class=anchor aria-hidden=true href=#32-数据库-er-关系图>#</a></h3><pre tabindex=0><code>users ──────┬──────────────┐
+</code></pre><hr>
+<h2 id="三数据库设计">三、数据库设计<a hidden class="anchor" aria-hidden="true" href="#三数据库设计">#</a></h2>
+<h3 id="31-核心数据模型">3.1 核心数据模型<a hidden class="anchor" aria-hidden="true" href="#31-核心数据模型">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- ============================================
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-- 用户表
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-- ============================================
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> users (
+</span></span><span style="display:flex;"><span>    id BIGINT <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span> AUTO_INCREMENT,
+</span></span><span style="display:flex;"><span>    username VARCHAR(<span style="color:#ae81ff">50</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span> <span style="color:#66d9ef">UNIQUE</span>,
+</span></span><span style="display:flex;"><span>    password_hash VARCHAR(<span style="color:#ae81ff">255</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">role</span> ENUM(<span style="color:#e6db74">&#39;admin&#39;</span>, <span style="color:#e6db74">&#39;student&#39;</span>) <span style="color:#66d9ef">DEFAULT</span> <span style="color:#e6db74">&#39;student&#39;</span>,
+</span></span><span style="display:flex;"><span>    nickname VARCHAR(<span style="color:#ae81ff">50</span>),
+</span></span><span style="display:flex;"><span>    grade VARCHAR(<span style="color:#ae81ff">20</span>) <span style="color:#66d9ef">DEFAULT</span> <span style="color:#e6db74">&#39;初一&#39;</span>,
+</span></span><span style="display:flex;"><span>    avatar_url VARCHAR(<span style="color:#ae81ff">500</span>),
+</span></span><span style="display:flex;"><span>    created_at DATETIME <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">CURRENT_TIMESTAMP</span>,
+</span></span><span style="display:flex;"><span>    updated_at DATETIME <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">CURRENT_TIMESTAMP</span> <span style="color:#66d9ef">ON</span> <span style="color:#66d9ef">UPDATE</span> <span style="color:#66d9ef">CURRENT_TIMESTAMP</span>
+</span></span><span style="display:flex;"><span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- ============================================
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-- 学科表
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-- ============================================
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> subjects (
+</span></span><span style="display:flex;"><span>    id INT <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span> AUTO_INCREMENT,
+</span></span><span style="display:flex;"><span>    name VARCHAR(<span style="color:#ae81ff">20</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,          <span style="color:#75715e">-- &#39;语文&#39;,&#39;英语&#39;,&#39;数学&#39;,&#39;历史&#39;,&#39;地理&#39;,&#39;生物&#39;,&#39;道法&#39;
+</span></span></span><span style="display:flex;"><span>    category ENUM(<span style="color:#e6db74">&#39;main&#39;</span>, <span style="color:#e6db74">&#39;minor&#39;</span>) <span style="color:#66d9ef">DEFAULT</span> <span style="color:#e6db74">&#39;main&#39;</span>,  <span style="color:#75715e">-- 主科/小四门
+</span></span></span><span style="display:flex;"><span>    icon VARCHAR(<span style="color:#ae81ff">50</span>),
+</span></span><span style="display:flex;"><span>    sort_order INT <span style="color:#66d9ef">DEFAULT</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- ============================================
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-- 错题/知识点总表（统一入口）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-- ============================================
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> error_entries (
+</span></span><span style="display:flex;"><span>    id BIGINT <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span> AUTO_INCREMENT,
+</span></span><span style="display:flex;"><span>    user_id BIGINT <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>    subject_id INT <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>    entry_type VARCHAR(<span style="color:#ae81ff">30</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,    <span style="color:#75715e">-- 细分类型，见下方枚举
+</span></span></span><span style="display:flex;"><span>    title VARCHAR(<span style="color:#ae81ff">200</span>),                 <span style="color:#75715e">-- 标题/摘要
+</span></span></span><span style="display:flex;"><span>    content TEXT,                       <span style="color:#75715e">-- 主要内容
+</span></span></span><span style="display:flex;"><span>    answer TEXT,                        <span style="color:#75715e">-- 正确答案/解析
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">source</span> VARCHAR(<span style="color:#ae81ff">50</span>),                 <span style="color:#75715e">-- 来源：&#39;期中考试&#39;,&#39;课后练习&#39;,&#39;课堂听写&#39;
+</span></span></span><span style="display:flex;"><span>    difficulty TINYINT <span style="color:#66d9ef">DEFAULT</span> <span style="color:#ae81ff">3</span>,       <span style="color:#75715e">-- 1-5难度
+</span></span></span><span style="display:flex;"><span>    importance TINYINT <span style="color:#66d9ef">DEFAULT</span> <span style="color:#ae81ff">3</span>,       <span style="color:#75715e">-- 1-5重要度
+</span></span></span><span style="display:flex;"><span>    photo_urls JSON,                    <span style="color:#75715e">-- 拍照图片URL列表
+</span></span></span><span style="display:flex;"><span>    ai_analysis TEXT,                   <span style="color:#75715e">-- AI分析内容
+</span></span></span><span style="display:flex;"><span>    is_mastered BOOLEAN <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">FALSE</span>,  <span style="color:#75715e">-- 是否已掌握
+</span></span></span><span style="display:flex;"><span>    mastered_at DATETIME,
+</span></span><span style="display:flex;"><span>    review_count INT <span style="color:#66d9ef">DEFAULT</span> <span style="color:#ae81ff">0</span>,         <span style="color:#75715e">-- 复习次数
+</span></span></span><span style="display:flex;"><span>    next_review_at DATETIME,            <span style="color:#75715e">-- 下次复习时间（艾宾浩斯）
+</span></span></span><span style="display:flex;"><span>    created_at DATETIME <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">CURRENT_TIMESTAMP</span>,
+</span></span><span style="display:flex;"><span>    updated_at DATETIME <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">CURRENT_TIMESTAMP</span> <span style="color:#66d9ef">ON</span> <span style="color:#66d9ef">UPDATE</span> <span style="color:#66d9ef">CURRENT_TIMESTAMP</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">FOREIGN</span> <span style="color:#66d9ef">KEY</span> (user_id) <span style="color:#66d9ef">REFERENCES</span> users(id),
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">FOREIGN</span> <span style="color:#66d9ef">KEY</span> (subject_id) <span style="color:#66d9ef">REFERENCES</span> subjects(id),
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">INDEX</span> idx_user_subject (user_id, subject_id),
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">INDEX</span> idx_next_review (user_id, next_review_at),
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">INDEX</span> idx_entry_type (subject_id, entry_type)
+</span></span><span style="display:flex;"><span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- entry_type 枚举说明：
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-- 语文: &#39;pronunciation&#39;(字词读音), &#39;confusing_words&#39;(混淆字词),
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">--        &#39;literature&#39;(文学常识), &#39;classical_chinese&#39;(古文基础), &#39;reading&#39;(阅读理解)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-- 英语: &#39;vocabulary&#39;(单词), &#39;phrase&#39;(短语), &#39;sentence_pattern&#39;(句型), &#39;error_question&#39;(错题)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-- 数学: &#39;error_question&#39;(错题), &#39;concept&#39;(概念题)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-- 小四门: &#39;error_question&#39;(错题), &#39;knowledge_point&#39;(知识点)
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- ============================================
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-- 标签表（多维度分类检索）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-- ============================================
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> tags (
+</span></span><span style="display:flex;"><span>    id INT <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span> AUTO_INCREMENT,
+</span></span><span style="display:flex;"><span>    name VARCHAR(<span style="color:#ae81ff">50</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>    subject_id INT,
+</span></span><span style="display:flex;"><span>    color VARCHAR(<span style="color:#ae81ff">20</span>) <span style="color:#66d9ef">DEFAULT</span> <span style="color:#e6db74">&#39;#4A90D9&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">FOREIGN</span> <span style="color:#66d9ef">KEY</span> (subject_id) <span style="color:#66d9ef">REFERENCES</span> subjects(id)
+</span></span><span style="display:flex;"><span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> entry_tags (
+</span></span><span style="display:flex;"><span>    entry_id BIGINT <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>    tag_id INT <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span> (entry_id, tag_id),
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">FOREIGN</span> <span style="color:#66d9ef">KEY</span> (entry_id) <span style="color:#66d9ef">REFERENCES</span> error_entries(id) <span style="color:#66d9ef">ON</span> <span style="color:#66d9ef">DELETE</span> <span style="color:#66d9ef">CASCADE</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">FOREIGN</span> <span style="color:#66d9ef">KEY</span> (tag_id) <span style="color:#66d9ef">REFERENCES</span> tags(id) <span style="color:#66d9ef">ON</span> <span style="color:#66d9ef">DELETE</span> <span style="color:#66d9ef">CASCADE</span>
+</span></span><span style="display:flex;"><span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- ============================================
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-- AI对话记录表
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-- ============================================
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> ai_conversations (
+</span></span><span style="display:flex;"><span>    id BIGINT <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span> AUTO_INCREMENT,
+</span></span><span style="display:flex;"><span>    user_id BIGINT <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>    entry_id BIGINT,                    <span style="color:#75715e">-- 关联的错题（可为空）
+</span></span></span><span style="display:flex;"><span>    subject_id INT,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">role</span> ENUM(<span style="color:#e6db74">&#39;user&#39;</span>, <span style="color:#e6db74">&#39;assistant&#39;</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>    content TEXT <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>    tokens_used INT <span style="color:#66d9ef">DEFAULT</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>    created_at DATETIME <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">CURRENT_TIMESTAMP</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">FOREIGN</span> <span style="color:#66d9ef">KEY</span> (user_id) <span style="color:#66d9ef">REFERENCES</span> users(id),
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">FOREIGN</span> <span style="color:#66d9ef">KEY</span> (entry_id) <span style="color:#66d9ef">REFERENCES</span> error_entries(id) <span style="color:#66d9ef">ON</span> <span style="color:#66d9ef">DELETE</span> <span style="color:#66d9ef">SET</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">INDEX</span> idx_user_entry (user_id, entry_id)
+</span></span><span style="display:flex;"><span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- ============================================
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-- 复习计划表（艾宾浩斯遗忘曲线）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-- ============================================
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> review_schedules (
+</span></span><span style="display:flex;"><span>    id BIGINT <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span> AUTO_INCREMENT,
+</span></span><span style="display:flex;"><span>    user_id BIGINT <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>    entry_id BIGINT <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>    review_stage TINYINT <span style="color:#66d9ef">DEFAULT</span> <span style="color:#ae81ff">0</span>,     <span style="color:#75715e">-- 0-7 对应 8次复习
+</span></span></span><span style="display:flex;"><span>    scheduled_at DATETIME <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,     <span style="color:#75715e">-- 计划复习时间
+</span></span></span><span style="display:flex;"><span>    completed_at DATETIME,              <span style="color:#75715e">-- 实际完成时间
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">result</span> ENUM(<span style="color:#e6db74">&#39;forgot&#39;</span>, <span style="color:#e6db74">&#39;vague&#39;</span>, <span style="color:#e6db74">&#39;remembered&#39;</span>),  <span style="color:#75715e">-- 复习结果
+</span></span></span><span style="display:flex;"><span>    created_at DATETIME <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">CURRENT_TIMESTAMP</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">FOREIGN</span> <span style="color:#66d9ef">KEY</span> (user_id) <span style="color:#66d9ef">REFERENCES</span> users(id),
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">FOREIGN</span> <span style="color:#66d9ef">KEY</span> (entry_id) <span style="color:#66d9ef">REFERENCES</span> error_entries(id) <span style="color:#66d9ef">ON</span> <span style="color:#66d9ef">DELETE</span> <span style="color:#66d9ef">CASCADE</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">INDEX</span> idx_user_schedule (user_id, scheduled_at)
+</span></span><span style="display:flex;"><span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- ============================================
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-- 学习统计表（每日汇总）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-- ============================================
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> daily_stats (
+</span></span><span style="display:flex;"><span>    id BIGINT <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span> AUTO_INCREMENT,
+</span></span><span style="display:flex;"><span>    user_id BIGINT <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>    stat_date DATE <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>    subject_id INT,
+</span></span><span style="display:flex;"><span>    new_entries INT <span style="color:#66d9ef">DEFAULT</span> <span style="color:#ae81ff">0</span>,          <span style="color:#75715e">-- 新增条目数
+</span></span></span><span style="display:flex;"><span>    reviewed_entries INT <span style="color:#66d9ef">DEFAULT</span> <span style="color:#ae81ff">0</span>,     <span style="color:#75715e">-- 复习条目数
+</span></span></span><span style="display:flex;"><span>    mastered_entries INT <span style="color:#66d9ef">DEFAULT</span> <span style="color:#ae81ff">0</span>,     <span style="color:#75715e">-- 掌握条目数
+</span></span></span><span style="display:flex;"><span>    ai_queries INT <span style="color:#66d9ef">DEFAULT</span> <span style="color:#ae81ff">0</span>,          <span style="color:#75715e">-- AI查询次数
+</span></span></span><span style="display:flex;"><span>    study_minutes INT <span style="color:#66d9ef">DEFAULT</span> <span style="color:#ae81ff">0</span>,       <span style="color:#75715e">-- 学习时长(分钟)
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">FOREIGN</span> <span style="color:#66d9ef">KEY</span> (user_id) <span style="color:#66d9ef">REFERENCES</span> users(id),
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">UNIQUE</span> <span style="color:#66d9ef">KEY</span> uk_user_date_subject (user_id, stat_date, subject_id)
+</span></span><span style="display:flex;"><span>);
+</span></span></code></pre></div><h3 id="32-数据库-er-关系图">3.2 数据库 ER 关系图<a hidden class="anchor" aria-hidden="true" href="#32-数据库-er-关系图">#</a></h3>
+<pre tabindex="0"><code>users ──────┬──────────────┐
             │              │
     error_entries ──── entry_tags ──── tags
             │
     ┌───────┼────────┐
     │       │        │
 ai_conv  review_schedule  daily_stats
-</code></pre><hr><h2 id=四功能模块详细设计>四、功能模块详细设计<a hidden class=anchor aria-hidden=true href=#四功能模块详细设计>#</a></h2><h3 id=41-语文模块>4.1 语文模块<a hidden class=anchor aria-hidden=true href=#41-语文模块>#</a></h3><h4 id=411-字词读音纠错>4.1.1 字词读音纠错<a hidden class=anchor aria-hidden=true href=#411-字词读音纠错>#</a></h4><pre tabindex=0><code>┌─────────────────────────────────────────────────┐
+</code></pre><hr>
+<h2 id="四功能模块详细设计">四、功能模块详细设计<a hidden class="anchor" aria-hidden="true" href="#四功能模块详细设计">#</a></h2>
+<h3 id="41-语文模块">4.1 语文模块<a hidden class="anchor" aria-hidden="true" href="#41-语文模块">#</a></h3>
+<h4 id="411-字词读音纠错">4.1.1 字词读音纠错<a hidden class="anchor" aria-hidden="true" href="#411-字词读音纠错">#</a></h4>
+<pre tabindex="0"><code>┌─────────────────────────────────────────────────┐
 │  📝 记录页面                                      │
 ├─────────────────────────────────────────────────┤
 │                                                  │
@@ -307,7 +689,8 @@ ai_conv  review_schedule  daily_stats
 │                                                  │
 │           [ 保  存 ]                              │
 └─────────────────────────────────────────────────┘
-</code></pre><h4 id=412-混淆字词>4.1.2 混淆字词<a hidden class=anchor aria-hidden=true href=#412-混淆字词>#</a></h4><pre tabindex=0><code>┌─────────────────────────────────────────────────┐
+</code></pre><h4 id="412-混淆字词">4.1.2 混淆字词<a hidden class="anchor" aria-hidden="true" href="#412-混淆字词">#</a></h4>
+<pre tabindex="0"><code>┌─────────────────────────────────────────────────┐
 │  混淆字词记录                                      │
 ├─────────────────────────────────────────────────┤
 │                                                  │
@@ -320,7 +703,8 @@ ai_conv  review_schedule  daily_stats
 │  → AI 生成更多例句、对比表格、记忆口诀              │
 │                                                  │
 └─────────────────────────────────────────────────┘
-</code></pre><h4 id=413-文学常识--古文基础>4.1.3 文学常识 & 古文基础<a hidden class=anchor aria-hidden=true href=#413-文学常识--古文基础>#</a></h4><pre tabindex=0><code>┌─────────────────────────────────────────────────┐
+</code></pre><h4 id="413-文学常识--古文基础">4.1.3 文学常识 &amp; 古文基础<a hidden class="anchor" aria-hidden="true" href="#413-文学常识--古文基础">#</a></h4>
+<pre tabindex="0"><code>┌─────────────────────────────────────────────────┐
 │  文学常识 / 古文基础                                │
 ├─────────────────────────────────────────────────┤
 │                                                  │
@@ -335,10 +719,14 @@ ai_conv  review_schedule  daily_stats
 │  → 作者生平、写作背景、同类作品对比                 │
 │                                                  │
 └─────────────────────────────────────────────────┘
-</code></pre><h4 id=414-拍照输入流程>4.1.4 拍照输入流程<a hidden class=anchor aria-hidden=true href=#414-拍照输入流程>#</a></h4><pre tabindex=0><code>拍照/选图 → OCR识别文字 → 自动填充表单 → 人工校对 → AI分析 → 保存
+</code></pre><h4 id="414-拍照输入流程">4.1.4 拍照输入流程<a hidden class="anchor" aria-hidden="true" href="#414-拍照输入流程">#</a></h4>
+<pre tabindex="0"><code>拍照/选图 → OCR识别文字 → 自动填充表单 → 人工校对 → AI分析 → 保存
                 ↓
          支持：课本截图、手写笔记、试卷错题
-</code></pre><hr><h3 id=42-英语模块>4.2 英语模块<a hidden class=anchor aria-hidden=true href=#42-英语模块>#</a></h3><h4 id=421-易错单词本>4.2.1 易错单词本<a hidden class=anchor aria-hidden=true href=#421-易错单词本>#</a></h4><pre tabindex=0><code>┌─────────────────────────────────────────────────┐
+</code></pre><hr>
+<h3 id="42-英语模块">4.2 英语模块<a hidden class="anchor" aria-hidden="true" href="#42-英语模块">#</a></h3>
+<h4 id="421-易错单词本">4.2.1 易错单词本<a hidden class="anchor" aria-hidden="true" href="#421-易错单词本">#</a></h4>
+<pre tabindex="0"><code>┌─────────────────────────────────────────────────┐
 │  英语单词记录                                      │
 ├─────────────────────────────────────────────────┤
 │                                                  │
@@ -362,7 +750,8 @@ ai_conv  review_schedule  daily_stats
 │   4. 考频：中考高频词 ⭐⭐⭐⭐⭐                     │
 │                                                  │
 └─────────────────────────────────────────────────┘
-</code></pre><h4 id=422-易错短语--句型>4.2.2 易错短语 & 句型<a hidden class=anchor aria-hidden=true href=#422-易错短语--句型>#</a></h4><pre tabindex=0><code>┌─────────────────────────────────────────────────┐
+</code></pre><h4 id="422-易错短语--句型">4.2.2 易错短语 &amp; 句型<a hidden class="anchor" aria-hidden="true" href="#422-易错短语--句型">#</a></h4>
+<pre tabindex="0"><code>┌─────────────────────────────────────────────────┐
 │  短语/句型记录                                     │
 ├─────────────────────────────────────────────────┤
 │                                                  │
@@ -378,7 +767,8 @@ ai_conv  review_schedule  daily_stats
 │    类似易错短语、考试例题                           │
 │                                                  │
 └─────────────────────────────────────────────────┘
-</code></pre><h4 id=423-英语错题集>4.2.3 英语错题集<a hidden class=anchor aria-hidden=true href=#423-英语错题集>#</a></h4><pre tabindex=0><code>┌─────────────────────────────────────────────────┐
+</code></pre><h4 id="423-英语错题集">4.2.3 英语错题集<a hidden class="anchor" aria-hidden="true" href="#423-英语错题集">#</a></h4>
+<pre tabindex="0"><code>┌─────────────────────────────────────────────────┐
 │  英语错题                                          │
 ├─────────────────────────────────────────────────┤
 │                                                  │
@@ -394,7 +784,8 @@ ai_conv  review_schedule  daily_stats
 │  [🤖 生成同类练习题]                               │
 │                                                  │
 └─────────────────────────────────────────────────┘
-</code></pre><h4 id=424-语音识别输入>4.2.4 语音识别输入<a hidden class=anchor aria-hidden=true href=#424-语音识别输入>#</a></h4><pre tabindex=0><code>┌──────────────────────────────────────────────┐
+</code></pre><h4 id="424-语音识别输入">4.2.4 语音识别输入<a hidden class="anchor" aria-hidden="true" href="#424-语音识别输入">#</a></h4>
+<pre tabindex="0"><code>┌──────────────────────────────────────────────┐
 │  语音输入流程                                   │
 │                                               │
 │  [🎤 按住说话] → 语音转文字 → 填入对应输入框     │
@@ -406,7 +797,10 @@ ai_conv  review_schedule  daily_stats
 │                                               │
 │  中英文混合识别，自动判断语种                     │
 └──────────────────────────────────────────────┘
-</code></pre><hr><h3 id=43-数学模块>4.3 数学模块<a hidden class=anchor aria-hidden=true href=#43-数学模块>#</a></h3><h4 id=431-错题录入与ai解题>4.3.1 错题录入与AI解题<a hidden class=anchor aria-hidden=true href=#431-错题录入与ai解题>#</a></h4><pre tabindex=0><code>┌─────────────────────────────────────────────────┐
+</code></pre><hr>
+<h3 id="43-数学模块">4.3 数学模块<a hidden class="anchor" aria-hidden="true" href="#43-数学模块">#</a></h3>
+<h4 id="431-错题录入与ai解题">4.3.1 错题录入与AI解题<a hidden class="anchor" aria-hidden="true" href="#431-错题录入与ai解题">#</a></h4>
+<pre tabindex="0"><code>┌─────────────────────────────────────────────────┐
 │  数学错题                                          │
 ├─────────────────────────────────────────────────┤
 │                                                  │
@@ -442,7 +836,10 @@ ai_conv  review_schedule  daily_stats
 │  [🤖 再出3道类似题]  [🤖 换个方式讲解]             │
 │                                                  │
 └─────────────────────────────────────────────────┘
-</code></pre><hr><h3 id=44-小四门模块>4.4 小四门模块<a hidden class=anchor aria-hidden=true href=#44-小四门模块>#</a></h3><h4 id=441-统一错题录入>4.4.1 统一错题录入<a hidden class=anchor aria-hidden=true href=#441-统一错题录入>#</a></h4><pre tabindex=0><code>┌─────────────────────────────────────────────────┐
+</code></pre><hr>
+<h3 id="44-小四门模块">4.4 小四门模块<a hidden class="anchor" aria-hidden="true" href="#44-小四门模块">#</a></h3>
+<h4 id="441-统一错题录入">4.4.1 统一错题录入<a hidden class="anchor" aria-hidden="true" href="#441-统一错题录入">#</a></h4>
+<pre tabindex="0"><code>┌─────────────────────────────────────────────────┐
 │  小四门错题  [历史 ▼] [地理 ▼] [生物 ▼] [道法 ▼]  │
 ├─────────────────────────────────────────────────┤
 │                                                  │
@@ -463,7 +860,10 @@ ai_conv  review_schedule  daily_stats
 │  📍 记忆：时间轴 1840→鸦片战争→近代史开端           │
 │                                                  │
 └─────────────────────────────────────────────────┘
-</code></pre><hr><h3 id=45-通用能力模块>4.5 通用能力模块<a hidden class=anchor aria-hidden=true href=#45-通用能力模块>#</a></h3><h4 id=451-艾宾浩斯智能复习>4.5.1 艾宾浩斯智能复习<a hidden class=anchor aria-hidden=true href=#451-艾宾浩斯智能复习>#</a></h4><pre tabindex=0><code>复习间隔（艾宾浩斯遗忘曲线）：
+</code></pre><hr>
+<h3 id="45-通用能力模块">4.5 通用能力模块<a hidden class="anchor" aria-hidden="true" href="#45-通用能力模块">#</a></h3>
+<h4 id="451-艾宾浩斯智能复习">4.5.1 艾宾浩斯智能复习<a hidden class="anchor" aria-hidden="true" href="#451-艾宾浩斯智能复习">#</a></h4>
+<pre tabindex="0"><code>复习间隔（艾宾浩斯遗忘曲线）：
 ┌────────────────────────────────────────────┐
 │  第1次复习：1天后                             │
 │  第2次复习：2天后                             │
@@ -491,7 +891,8 @@ ai_conv  review_schedule  daily_stats
 │  忘了→重置到第1阶段重新开始                   │
 │  模糊→维持当前阶段                           │
 └────────────────────────────────────────────┘
-</code></pre><h4 id=452-首页仪表盘>4.5.2 首页仪表盘<a hidden class=anchor aria-hidden=true href=#452-首页仪表盘>#</a></h4><pre tabindex=0><code>┌─────────────────────────────────────────────────┐
+</code></pre><h4 id="452-首页仪表盘">4.5.2 首页仪表盘<a hidden class="anchor" aria-hidden="true" href="#452-首页仪表盘">#</a></h4>
+<pre tabindex="0"><code>┌─────────────────────────────────────────────────┐
 │  早上好，同学 👋              📅 2025.05.29       │
 ├─────────────────────────────────────────────────┤
 │                                                  │
@@ -517,14 +918,17 @@ ai_conv  review_schedule  daily_stats
 └─────────────────────────────────────────────────┘
 
 底部导航：[首页] [录入] [复习] [搜索] [我的]
-</code></pre><h4 id=453-全局搜索>4.5.3 全局搜索<a hidden class=anchor aria-hidden=true href=#453-全局搜索>#</a></h4><pre tabindex=0><code>支持：
+</code></pre><h4 id="453-全局搜索">4.5.3 全局搜索<a hidden class="anchor" aria-hidden="true" href="#453-全局搜索">#</a></h4>
+<pre tabindex="0"><code>支持：
 · 关键词搜索所有错题/知识点
 · 按学科筛选
 · 按标签筛选
 · 按时间范围筛选
 · 按掌握状态筛选
 · 按难度/重要度筛选
-</code></pre><hr><h3 id=46-后台管理系统>4.6 后台管理系统<a hidden class=anchor aria-hidden=true href=#46-后台管理系统>#</a></h3><pre tabindex=0><code>┌─────────────────────────────────────────────────────────────┐
+</code></pre><hr>
+<h3 id="46-后台管理系统">4.6 后台管理系统<a hidden class="anchor" aria-hidden="true" href="#46-后台管理系统">#</a></h3>
+<pre tabindex="0"><code>┌─────────────────────────────────────────────────────────────┐
 │  错题宝 · 管理后台                                           │
 ├───────────┬─────────────────────────────────────────────────┤
 │  侧边栏    │  内容区域                                        │
@@ -544,109 +948,196 @@ ai_conv  review_schedule  daily_stats
 │           │                                                 │
 │  ⚙️ 系统  │  系统设置、备份、日志                              │
 └───────────┴─────────────────────────────────────────────────┘
-</code></pre><h4 id=后台管理功能清单>后台管理功能清单<a hidden class=anchor aria-hidden=true href=#后台管理功能清单>#</a></h4><table><thead><tr><th>模块</th><th>功能</th></tr></thead><tbody><tr><td>数据概览</td><td>错题总数/各科分布、学习天数、复习完成率、AI使用量、趋势图表</td></tr><tr><td>内容管理</td><td>各科错题CRUD、批量导入/导出、Excel导入、手动补充解析</td></tr><tr><td>标签管理</td><td>创建/编辑/删除标签、批量打标签</td></tr><tr><td>复习管理</td><td>查看复习计划、手动调整复习安排、复习统计</td></tr><tr><td>AI配置</td><td>API Key设置、Prompt模板管理、用量监控</td></tr><tr><td>数据统计</td><td>按学科/时间/知识点维度统计分析、薄弱知识点排行</td></tr><tr><td>系统管理</td><td>用户管理、数据备份/恢复、操作日志</td></tr></tbody></table><hr><h2 id=五ai-集成方案>五、AI 集成方案<a hidden class=anchor aria-hidden=true href=#五ai-集成方案>#</a></h2><h3 id=51-ai-服务架构>5.1 AI 服务架构<a hidden class=anchor aria-hidden=true href=#51-ai-服务架构>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#75715e># app/services/ai_service.py 核心设计</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>AIService</span>:
-</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;&#34;&#34;
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>    AI 服务统一入口
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>    支持多模型切换（通义千问/DeepSeek/其他）
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>    &#34;&#34;&#34;</span>
-</span></span><span style=display:flex><span>    
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>__init__</span>(self):
-</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>client <span style=color:#f92672>=</span> OpenAI(
-</span></span><span style=display:flex><span>            api_key<span style=color:#f92672>=</span>settings<span style=color:#f92672>.</span>AI_API_KEY,
-</span></span><span style=display:flex><span>            base_url<span style=color:#f92672>=</span>settings<span style=color:#f92672>.</span>AI_BASE_URL  <span style=color:#75715e># 兼容 OpenAI 接口的任何模型</span>
-</span></span><span style=display:flex><span>        )
-</span></span><span style=display:flex><span>    
-</span></span><span style=display:flex><span>    <span style=color:#75715e># ---- 语文相关 ----</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>async</span> <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>analyze_pronunciation</span>(self, word: str, wrong_pinyin: str) <span style=color:#f92672>-&gt;</span> str:
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;&#34;&#34;分析读音错误，扩展同类易错字&#34;&#34;&#34;</span>
-</span></span><span style=display:flex><span>        prompt <span style=color:#f92672>=</span> <span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;&#34;&#34;你是一位经验丰富的初中语文老师。
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>学生将「</span><span style=color:#e6db74>{</span>word<span style=color:#e6db74>}</span><span style=color:#e6db74>」错误读成了「</span><span style=color:#e6db74>{</span>wrong_pinyin<span style=color:#e6db74>}</span><span style=color:#e6db74>」。
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>请：
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>1. 给出正确读音
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>2. 解释为什么容易读错
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>3. 列出5个同类型的易错读音
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>4. 提供记忆技巧
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>5. 用一个包含该字的成语或诗句加深印象&#34;&#34;&#34;</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>async</span> <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>analyze_confusing_words</span>(self, words: list, context: str) <span style=color:#f92672>-&gt;</span> str:
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;&#34;&#34;分析混淆字词，提供辨析&#34;&#34;&#34;</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>async</span> <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>explain_literature</span>(self, topic: str) <span style=color:#f92672>-&gt;</span> str:
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;&#34;&#34;文学常识/古文讲解&#34;&#34;&#34;</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#75715e># ---- 英语相关 ----</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>async</span> <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>analyze_vocabulary</span>(self, word: str, error: str) <span style=color:#f92672>-&gt;</span> str:
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;&#34;&#34;分析英语单词错误，扩展记忆&#34;&#34;&#34;</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>async</span> <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>analyze_sentence</span>(self, wrong: str, correct: str) <span style=color:#f92672>-&gt;</span> str:
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;&#34;&#34;分析句型/短语错误&#34;&#34;&#34;</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>async</span> <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>generate_similar_exercises</span>(self, knowledge_point: str, count: int <span style=color:#f92672>=</span> <span style=color:#ae81ff>3</span>) <span style=color:#f92672>-&gt;</span> str:
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;&#34;&#34;根据知识点生成类似练习题&#34;&#34;&#34;</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#75715e># ---- 数学相关 ----</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>async</span> <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>solve_math_problem</span>(self, problem: str, student_answer: str <span style=color:#f92672>=</span> <span style=color:#66d9ef>None</span>) <span style=color:#f92672>-&gt;</span> str:
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;&#34;&#34;数学题详细讲解&#34;&#34;&#34;</span>
-</span></span><span style=display:flex><span>        prompt <span style=color:#f92672>=</span> <span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;&#34;&#34;你是一位耐心的初中数学老师。
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>题目：</span><span style=color:#e6db74>{</span>problem<span style=color:#e6db74>}</span><span style=color:#e6db74>
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>{</span><span style=color:#e6db74>&#34;学生的错误答案：&#34;</span> <span style=color:#f92672>+</span> student_answer <span style=color:#66d9ef>if</span> student_answer <span style=color:#66d9ef>else</span> <span style=color:#e6db74>&#34;&#34;</span><span style=color:#e6db74>}</span><span style=color:#e6db74>
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>请：
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>1. 分析题目考查的知识点
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>2. 给出详细的解题步骤
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>3. 如果学生答错了，指出错误原因
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>4. 总结解题关键点
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>5. 列出注意事项和常见陷阱&#34;&#34;&#34;</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#75715e># ---- 通用 ----</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>async</span> <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>chat</span>(self, messages: list, subject: str <span style=color:#f92672>=</span> <span style=color:#66d9ef>None</span>) <span style=color:#f92672>-&gt;</span> str:
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;&#34;&#34;通用对话，可关联具体题目&#34;&#34;&#34;</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>async</span> <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>analyze_photo</span>(self, image_base64: str, subject: str) <span style=color:#f92672>-&gt;</span> dict:
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;&#34;&#34;图片内容识别与分析（使用视觉模型）&#34;&#34;&#34;</span>
-</span></span></code></pre></div><h3 id=52-ai-调用流程>5.2 AI 调用流程<a hidden class=anchor aria-hidden=true href=#52-ai-调用流程>#</a></h3><pre tabindex=0><code>用户操作 → 前端请求 → 后端路由 → AI Service → AI API
+</code></pre><h4 id="后台管理功能清单">后台管理功能清单<a hidden class="anchor" aria-hidden="true" href="#后台管理功能清单">#</a></h4>
+<table>
+  <thead>
+      <tr>
+          <th>模块</th>
+          <th>功能</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>数据概览</td>
+          <td>错题总数/各科分布、学习天数、复习完成率、AI使用量、趋势图表</td>
+      </tr>
+      <tr>
+          <td>内容管理</td>
+          <td>各科错题CRUD、批量导入/导出、Excel导入、手动补充解析</td>
+      </tr>
+      <tr>
+          <td>标签管理</td>
+          <td>创建/编辑/删除标签、批量打标签</td>
+      </tr>
+      <tr>
+          <td>复习管理</td>
+          <td>查看复习计划、手动调整复习安排、复习统计</td>
+      </tr>
+      <tr>
+          <td>AI配置</td>
+          <td>API Key设置、Prompt模板管理、用量监控</td>
+      </tr>
+      <tr>
+          <td>数据统计</td>
+          <td>按学科/时间/知识点维度统计分析、薄弱知识点排行</td>
+      </tr>
+      <tr>
+          <td>系统管理</td>
+          <td>用户管理、数据备份/恢复、操作日志</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="五ai-集成方案">五、AI 集成方案<a hidden class="anchor" aria-hidden="true" href="#五ai-集成方案">#</a></h2>
+<h3 id="51-ai-服务架构">5.1 AI 服务架构<a hidden class="anchor" aria-hidden="true" href="#51-ai-服务架构">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># app/services/ai_service.py 核心设计</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AIService</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    AI 服务统一入口
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    支持多模型切换（通义千问/DeepSeek/其他）
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__init__</span>(self):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>client <span style="color:#f92672">=</span> OpenAI(
+</span></span><span style="display:flex;"><span>            api_key<span style="color:#f92672">=</span>settings<span style="color:#f92672">.</span>AI_API_KEY,
+</span></span><span style="display:flex;"><span>            base_url<span style="color:#f92672">=</span>settings<span style="color:#f92672">.</span>AI_BASE_URL  <span style="color:#75715e"># 兼容 OpenAI 接口的任何模型</span>
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># ---- 语文相关 ----</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">analyze_pronunciation</span>(self, word: str, wrong_pinyin: str) <span style="color:#f92672">-&gt;</span> str:
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;分析读音错误，扩展同类易错字&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        prompt <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&#34;&#34;你是一位经验丰富的初中语文老师。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">学生将「</span><span style="color:#e6db74">{</span>word<span style="color:#e6db74">}</span><span style="color:#e6db74">」错误读成了「</span><span style="color:#e6db74">{</span>wrong_pinyin<span style="color:#e6db74">}</span><span style="color:#e6db74">」。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">请：
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">1. 给出正确读音
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">2. 解释为什么容易读错
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">3. 列出5个同类型的易错读音
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">4. 提供记忆技巧
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">5. 用一个包含该字的成语或诗句加深印象&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">analyze_confusing_words</span>(self, words: list, context: str) <span style="color:#f92672">-&gt;</span> str:
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;分析混淆字词，提供辨析&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">explain_literature</span>(self, topic: str) <span style="color:#f92672">-&gt;</span> str:
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;文学常识/古文讲解&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># ---- 英语相关 ----</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">analyze_vocabulary</span>(self, word: str, error: str) <span style="color:#f92672">-&gt;</span> str:
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;分析英语单词错误，扩展记忆&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">analyze_sentence</span>(self, wrong: str, correct: str) <span style="color:#f92672">-&gt;</span> str:
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;分析句型/短语错误&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">generate_similar_exercises</span>(self, knowledge_point: str, count: int <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>) <span style="color:#f92672">-&gt;</span> str:
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;根据知识点生成类似练习题&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># ---- 数学相关 ----</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">solve_math_problem</span>(self, problem: str, student_answer: str <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>) <span style="color:#f92672">-&gt;</span> str:
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;数学题详细讲解&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        prompt <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&#34;&#34;你是一位耐心的初中数学老师。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">题目：</span><span style="color:#e6db74">{</span>problem<span style="color:#e6db74">}</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">{</span><span style="color:#e6db74">&#34;学生的错误答案：&#34;</span> <span style="color:#f92672">+</span> student_answer <span style="color:#66d9ef">if</span> student_answer <span style="color:#66d9ef">else</span> <span style="color:#e6db74">&#34;&#34;</span><span style="color:#e6db74">}</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">请：
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">1. 分析题目考查的知识点
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">2. 给出详细的解题步骤
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">3. 如果学生答错了，指出错误原因
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">4. 总结解题关键点
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">5. 列出注意事项和常见陷阱&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># ---- 通用 ----</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">chat</span>(self, messages: list, subject: str <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>) <span style="color:#f92672">-&gt;</span> str:
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;通用对话，可关联具体题目&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">analyze_photo</span>(self, image_base64: str, subject: str) <span style="color:#f92672">-&gt;</span> dict:
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;图片内容识别与分析（使用视觉模型）&#34;&#34;&#34;</span>
+</span></span></code></pre></div><h3 id="52-ai-调用流程">5.2 AI 调用流程<a hidden class="anchor" aria-hidden="true" href="#52-ai-调用流程">#</a></h3>
+<pre tabindex="0"><code>用户操作 → 前端请求 → 后端路由 → AI Service → AI API
                                          ↓
                                     记录token用量
                                          ↓
                               结果存入 ai_conversations 表
                                          ↓
                               前端展示 + 可保存为错题笔记
-</code></pre><h3 id=53-prompt-设计策略>5.3 Prompt 设计策略<a hidden class=anchor aria-hidden=true href=#53-prompt-设计策略>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#75715e># 系统提示词（按学科）</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>PROMPTS <span style=color:#f92672>=</span> {
-</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;语文&#34;</span>: <span style=color:#e6db74>&#34;&#34;&#34;你是一位资深的初中语文教师，善于用生动有趣的方式讲解语文知识。
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>要求：
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>- 语言亲切自然，像在跟学生聊天
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>- 举的例子贴近初中生生活
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>- 涉及古文时，提供原文+翻译+赏析
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>- 知识点关联中考考点
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>- 适当使用口诀帮助记忆&#34;&#34;&#34;</span>,
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;英语&#34;</span>: <span style=color:#e6db74>&#34;&#34;&#34;You are an experienced middle school English teacher who is bilingual.
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>要求：
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>- 用中英结合的方式讲解
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>- 每个单词给出音标、词性、例句
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>- 拼写错误要分析错误规律
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>- 关联中考词汇大纲
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>- 提供记忆技巧（词根词缀法、联想法等）&#34;&#34;&#34;</span>,
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;数学&#34;</span>: <span style=color:#e6db74>&#34;&#34;&#34;你是一位逻辑清晰的初中数学老师。
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>要求：
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>- 每道题先分析考查的知识点
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>- 解题步骤要详细，每一步都说明为什么
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>- 如果学生做错了，先表扬做对的部分，再指出错误
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>- 最后总结解题方法和易错点
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>- 适当提供同类练习题&#34;&#34;&#34;</span>,
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;小四门&#34;</span>: <span style=color:#e6db74>&#34;&#34;&#34;你是一位博学的初中综合学科老师，擅长帮助学生记忆知识点。
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>要求：
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>- 答案简明扼要，重点突出
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>- 帮助构建知识框架和思维导图
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>- 提供记忆口诀和联想记忆法
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>- 关联中考常见考法&#34;&#34;&#34;</span>
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><h3 id=54-推荐的-ai-模型选择>5.4 推荐的 AI 模型选择<a hidden class=anchor aria-hidden=true href=#54-推荐的-ai-模型选择>#</a></h3><table><thead><tr><th>模型</th><th>优势</th><th>价格</th><th>推荐度</th></tr></thead><tbody><tr><td><strong>DeepSeek-V3</strong></td><td>中文能力强、性价比极高</td><td>约1元/百万token</td><td>⭐⭐⭐⭐⭐</td></tr><tr><td><strong>通义千问-Max</strong></td><td>阿里生态、视觉能力强</td><td>有免费额度</td><td>⭐⭐⭐⭐</td></tr><tr><td><strong>GLM-4-Flash</strong></td><td>免费额度大</td><td>基本免费</td><td>⭐⭐⭐⭐</td></tr><tr><td><strong>文心一言</strong></td><td>百度生态、OCR能力强</td><td>按量计费</td><td>⭐⭐⭐</td></tr></tbody></table><blockquote><p>建议：主力用 DeepSeek，备用 通义千问。预算控制在<strong>每月20-50元</strong>以内。</p></blockquote><hr><h2 id=六api-接口设计>六、API 接口设计<a hidden class=anchor aria-hidden=true href=#六api-接口设计>#</a></h2><h3 id=61-接口总览>6.1 接口总览<a hidden class=anchor aria-hidden=true href=#61-接口总览>#</a></h3><pre tabindex=0><code>基础路径: /api/v1
+</code></pre><h3 id="53-prompt-设计策略">5.3 Prompt 设计策略<a hidden class="anchor" aria-hidden="true" href="#53-prompt-设计策略">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 系统提示词（按学科）</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>PROMPTS <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;语文&#34;</span>: <span style="color:#e6db74">&#34;&#34;&#34;你是一位资深的初中语文教师，善于用生动有趣的方式讲解语文知识。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">要求：
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- 语言亲切自然，像在跟学生聊天
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- 举的例子贴近初中生生活
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- 涉及古文时，提供原文+翻译+赏析
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- 知识点关联中考考点
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- 适当使用口诀帮助记忆&#34;&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;英语&#34;</span>: <span style="color:#e6db74">&#34;&#34;&#34;You are an experienced middle school English teacher who is bilingual.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">要求：
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- 用中英结合的方式讲解
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- 每个单词给出音标、词性、例句
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- 拼写错误要分析错误规律
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- 关联中考词汇大纲
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- 提供记忆技巧（词根词缀法、联想法等）&#34;&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;数学&#34;</span>: <span style="color:#e6db74">&#34;&#34;&#34;你是一位逻辑清晰的初中数学老师。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">要求：
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- 每道题先分析考查的知识点
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- 解题步骤要详细，每一步都说明为什么
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- 如果学生做错了，先表扬做对的部分，再指出错误
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- 最后总结解题方法和易错点
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- 适当提供同类练习题&#34;&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;小四门&#34;</span>: <span style="color:#e6db74">&#34;&#34;&#34;你是一位博学的初中综合学科老师，擅长帮助学生记忆知识点。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">要求：
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- 答案简明扼要，重点突出
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- 帮助构建知识框架和思维导图
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- 提供记忆口诀和联想记忆法
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- 关联中考常见考法&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="54-推荐的-ai-模型选择">5.4 推荐的 AI 模型选择<a hidden class="anchor" aria-hidden="true" href="#54-推荐的-ai-模型选择">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th>模型</th>
+          <th>优势</th>
+          <th>价格</th>
+          <th>推荐度</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>DeepSeek-V3</strong></td>
+          <td>中文能力强、性价比极高</td>
+          <td>约1元/百万token</td>
+          <td>⭐⭐⭐⭐⭐</td>
+      </tr>
+      <tr>
+          <td><strong>通义千问-Max</strong></td>
+          <td>阿里生态、视觉能力强</td>
+          <td>有免费额度</td>
+          <td>⭐⭐⭐⭐</td>
+      </tr>
+      <tr>
+          <td><strong>GLM-4-Flash</strong></td>
+          <td>免费额度大</td>
+          <td>基本免费</td>
+          <td>⭐⭐⭐⭐</td>
+      </tr>
+      <tr>
+          <td><strong>文心一言</strong></td>
+          <td>百度生态、OCR能力强</td>
+          <td>按量计费</td>
+          <td>⭐⭐⭐</td>
+      </tr>
+  </tbody>
+</table>
+<blockquote>
+<p>建议：主力用 DeepSeek，备用 通义千问。预算控制在<strong>每月20-50元</strong>以内。</p>
+</blockquote>
+<hr>
+<h2 id="六api-接口设计">六、API 接口设计<a hidden class="anchor" aria-hidden="true" href="#六api-接口设计">#</a></h2>
+<h3 id="61-接口总览">6.1 接口总览<a hidden class="anchor" aria-hidden="true" href="#61-接口总览">#</a></h3>
+<pre tabindex="0"><code>基础路径: /api/v1
 
 认证相关:
   POST   /auth/login              # 登录
@@ -702,32 +1193,36 @@ ai_conv  review_schedule  daily_stats
 
 搜索:
   GET    /search?q=&amp;subject=&amp;tag= # 全局搜索
-</code></pre><h3 id=62-请求响应示例>6.2 请求/响应示例<a hidden class=anchor aria-hidden=true href=#62-请求响应示例>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-json data-lang=json><span style=display:flex><span><span style=color:#75715e>// POST /api/v1/chinese/entries
-</span></span></span><span style=display:flex><span><span style=color:#75715e>// 请求
-</span></span></span><span style=display:flex><span>{
-</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;subject_id&#34;</span>: <span style=color:#ae81ff>1</span>,
-</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;entry_type&#34;</span>: <span style=color:#e6db74>&#34;pronunciation&#34;</span>,
-</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;title&#34;</span>: <span style=color:#e6db74>&#34;膝盖读音&#34;</span>,
-</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;content&#34;</span>: <span style=color:#e6db74>&#34;膝盖&#34;</span>,
-</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;answer&#34;</span>: <span style=color:#e6db74>&#34;xī gài（不是qī gài）&#34;</span>,
-</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;source&#34;</span>: <span style=color:#e6db74>&#34;课堂听写&#34;</span>,
-</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;difficulty&#34;</span>: <span style=color:#ae81ff>3</span>,
-</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;importance&#34;</span>: <span style=color:#ae81ff>4</span>,
-</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;photo_urls&#34;</span>: [<span style=color:#e6db74>&#34;https://oss.xxx.com/img/001.jpg&#34;</span>],
-</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;tags&#34;</span>: [<span style=color:#e6db74>&#34;易错读音&#34;</span>, <span style=color:#e6db74>&#34;月字旁&#34;</span>]
-</span></span><span style=display:flex><span>}
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e>// 响应
-</span></span></span><span style=display:flex><span>{
-</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;code&#34;</span>: <span style=color:#ae81ff>200</span>,
-</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;data&#34;</span>: {
-</span></span><span style=display:flex><span>        <span style=color:#f92672>&#34;id&#34;</span>: <span style=color:#ae81ff>1001</span>,
-</span></span><span style=display:flex><span>        <span style=color:#f92672>&#34;title&#34;</span>: <span style=color:#e6db74>&#34;膝盖读音&#34;</span>,
-</span></span><span style=display:flex><span>        <span style=color:#f92672>&#34;created_at&#34;</span>: <span style=color:#e6db74>&#34;2025-05-29T10:30:00&#34;</span>,
-</span></span><span style=display:flex><span>        <span style=color:#f92672>&#34;next_review_at&#34;</span>: <span style=color:#e6db74>&#34;2025-05-30T08:00:00&#34;</span>
-</span></span><span style=display:flex><span>    }
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><hr><h2 id=七开发计划>七、开发计划<a hidden class=anchor aria-hidden=true href=#七开发计划>#</a></h2><h3 id=71-分阶段实施建议-6-8-周完成-mvp>7.1 分阶段实施（建议 6-8 周完成 MVP）<a hidden class=anchor aria-hidden=true href=#71-分阶段实施建议-6-8-周完成-mvp>#</a></h3><pre tabindex=0><code>Phase 1 — 基础框架（第1-2周）
+</code></pre><h3 id="62-请求响应示例">6.2 请求/响应示例<a hidden class="anchor" aria-hidden="true" href="#62-请求响应示例">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#75715e">// POST /api/v1/chinese/entries
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 请求
+</span></span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;subject_id&#34;</span>: <span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;entry_type&#34;</span>: <span style="color:#e6db74">&#34;pronunciation&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;title&#34;</span>: <span style="color:#e6db74">&#34;膝盖读音&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;content&#34;</span>: <span style="color:#e6db74">&#34;膝盖&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;answer&#34;</span>: <span style="color:#e6db74">&#34;xī gài（不是qī gài）&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;source&#34;</span>: <span style="color:#e6db74">&#34;课堂听写&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;difficulty&#34;</span>: <span style="color:#ae81ff">3</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;importance&#34;</span>: <span style="color:#ae81ff">4</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;photo_urls&#34;</span>: [<span style="color:#e6db74">&#34;https://oss.xxx.com/img/001.jpg&#34;</span>],
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;tags&#34;</span>: [<span style="color:#e6db74">&#34;易错读音&#34;</span>, <span style="color:#e6db74">&#34;月字旁&#34;</span>]
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 响应
+</span></span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;code&#34;</span>: <span style="color:#ae81ff">200</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;data&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#ae81ff">1001</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;title&#34;</span>: <span style="color:#e6db74">&#34;膝盖读音&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;created_at&#34;</span>: <span style="color:#e6db74">&#34;2025-05-29T10:30:00&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;next_review_at&#34;</span>: <span style="color:#e6db74">&#34;2025-05-30T08:00:00&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><hr>
+<h2 id="七开发计划">七、开发计划<a hidden class="anchor" aria-hidden="true" href="#七开发计划">#</a></h2>
+<h3 id="71-分阶段实施建议-6-8-周完成-mvp">7.1 分阶段实施（建议 6-8 周完成 MVP）<a hidden class="anchor" aria-hidden="true" href="#71-分阶段实施建议-6-8-周完成-mvp">#</a></h3>
+<pre tabindex="0"><code>Phase 1 — 基础框架（第1-2周）
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ✦ 搭建 FastAPI 后端项目
 ✦ 数据库设计 + 建表
@@ -768,95 +1263,388 @@ Phase 5 — 优化上线（第8周）
 ✦ 数据备份方案
 ✦ 打包部署
 ✦ 使用培训（教孩子用）
-</code></pre><h3 id=72-每日开发建议>7.2 每日开发建议<a hidden class=anchor aria-hidden=true href=#72-每日开发建议>#</a></h3><blockquote><p>如果你每天能投入 <strong>2-3小时</strong>，按以上节奏可以完成。如果你开发经验不多，建议：</p><ul><li>第一个2周只搭后端，用 Postman 测试接口</li><li>第3-4周再开始写 App 前端</li><li>AI部分先用最简单的接入，后续再优化 prompt</li></ul></blockquote><hr><h2 id=八部署方案>八、部署方案<a hidden class=anchor aria-hidden=true href=#八部署方案>#</a></h2><h3 id=81-docker-compose-一键部署>8.1 Docker Compose 一键部署<a hidden class=anchor aria-hidden=true href=#81-docker-compose-一键部署>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#75715e># docker-compose.yml</span>
-</span></span><span style=display:flex><span><span style=color:#f92672>version</span>: <span style=color:#e6db74>&#39;3.8&#39;</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#f92672>services</span>:
-</span></span><span style=display:flex><span>  <span style=color:#75715e># 后端 API</span>
-</span></span><span style=display:flex><span>  <span style=color:#f92672>backend</span>:
-</span></span><span style=display:flex><span>    <span style=color:#f92672>build</span>: <span style=color:#ae81ff>./backend</span>
-</span></span><span style=display:flex><span>    <span style=color:#f92672>ports</span>:
-</span></span><span style=display:flex><span>      - <span style=color:#e6db74>&#34;8000:8000&#34;</span>
-</span></span><span style=display:flex><span>    <span style=color:#f92672>environment</span>:
-</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>DATABASE_URL=mysql+pymysql://cuoti:password@db:3306/cuoti_bao</span>
-</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>REDIS_URL=redis://redis:6379/0</span>
-</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>AI_API_KEY=your-api-key-here</span>
-</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>AI_BASE_URL=https://api.deepseek.com</span>
-</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>OSS_ENDPOINT=your-oss-endpoint</span>
-</span></span><span style=display:flex><span>    <span style=color:#f92672>depends_on</span>:
-</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>db</span>
-</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>redis</span>
-</span></span><span style=display:flex><span>    <span style=color:#f92672>restart</span>: <span style=color:#ae81ff>always</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#75715e># MySQL 数据库</span>
-</span></span><span style=display:flex><span>  <span style=color:#f92672>db</span>:
-</span></span><span style=display:flex><span>    <span style=color:#f92672>image</span>: <span style=color:#ae81ff>mysql:8.0</span>
-</span></span><span style=display:flex><span>    <span style=color:#f92672>ports</span>:
-</span></span><span style=display:flex><span>      - <span style=color:#e6db74>&#34;3306:3306&#34;</span>
-</span></span><span style=display:flex><span>    <span style=color:#f92672>environment</span>:
-</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>MYSQL_ROOT_PASSWORD=rootpassword</span>
-</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>MYSQL_DATABASE=cuoti_bao</span>
-</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>MYSQL_USER=cuoti</span>
-</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>MYSQL_PASSWORD=password</span>
-</span></span><span style=display:flex><span>    <span style=color:#f92672>volumes</span>:
-</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>mysql_data:/var/lib/mysql</span>
-</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>./deploy/init.sql:/docker-entrypoint-initdb.d/init.sql</span>
-</span></span><span style=display:flex><span>    <span style=color:#f92672>restart</span>: <span style=color:#ae81ff>always</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#75715e># Redis 缓存</span>
-</span></span><span style=display:flex><span>  <span style=color:#f92672>redis</span>:
-</span></span><span style=display:flex><span>    <span style=color:#f92672>image</span>: <span style=color:#ae81ff>redis:7-alpine</span>
-</span></span><span style=display:flex><span>    <span style=color:#f92672>ports</span>:
-</span></span><span style=display:flex><span>      - <span style=color:#e6db74>&#34;6379:6379&#34;</span>
-</span></span><span style=display:flex><span>    <span style=color:#f92672>restart</span>: <span style=color:#ae81ff>always</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#75715e># Nginx 反向代理</span>
-</span></span><span style=display:flex><span>  <span style=color:#f92672>nginx</span>:
-</span></span><span style=display:flex><span>    <span style=color:#f92672>image</span>: <span style=color:#ae81ff>nginx:alpine</span>
-</span></span><span style=display:flex><span>    <span style=color:#f92672>ports</span>:
-</span></span><span style=display:flex><span>      - <span style=color:#e6db74>&#34;80:80&#34;</span>
-</span></span><span style=display:flex><span>      - <span style=color:#e6db74>&#34;443:443&#34;</span>
-</span></span><span style=display:flex><span>    <span style=color:#f92672>volumes</span>:
-</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>./deploy/nginx.conf:/etc/nginx/conf.d/default.conf</span>
-</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>./admin/dist:/usr/share/nginx/html/admin </span> <span style=color:#75715e># 管理后台静态文件</span>
-</span></span><span style=display:flex><span>    <span style=color:#f92672>depends_on</span>:
-</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>backend</span>
-</span></span><span style=display:flex><span>    <span style=color:#f92672>restart</span>: <span style=color:#ae81ff>always</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#f92672>volumes</span>:
-</span></span><span style=display:flex><span>  <span style=color:#f92672>mysql_data</span>:
-</span></span></code></pre></div><h3 id=82-nginx-配置>8.2 Nginx 配置<a hidden class=anchor aria-hidden=true href=#82-nginx-配置>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-nginx data-lang=nginx><span style=display:flex><span><span style=color:#75715e># deploy/nginx.conf
-</span></span></span><span style=display:flex><span><span style=color:#66d9ef>server</span> {
-</span></span><span style=display:flex><span>    <span style=color:#f92672>listen</span> <span style=color:#ae81ff>80</span>;
-</span></span><span style=display:flex><span>    <span style=color:#f92672>server_name</span> <span style=color:#e6db74>your-domain.com</span>;
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#75715e># 管理后台
-</span></span></span><span style=display:flex><span>    <span style=color:#f92672>location</span> <span style=color:#e6db74>/admin</span> {
-</span></span><span style=display:flex><span>        <span style=color:#f92672>alias</span> <span style=color:#e6db74>/usr/share/nginx/html/admin</span>;
-</span></span><span style=display:flex><span>        <span style=color:#f92672>try_files</span> $uri $uri/ <span style=color:#e6db74>/admin/index.html</span>;
-</span></span><span style=display:flex><span>    }
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#75715e># API 代理
-</span></span></span><span style=display:flex><span>    <span style=color:#f92672>location</span> <span style=color:#e6db74>/api/</span> {
-</span></span><span style=display:flex><span>        <span style=color:#f92672>proxy_pass</span> <span style=color:#e6db74>http://backend:8000/api/</span>;
-</span></span><span style=display:flex><span>        <span style=color:#f92672>proxy_set_header</span> <span style=color:#e6db74>Host</span> $host;
-</span></span><span style=display:flex><span>        <span style=color:#f92672>proxy_set_header</span> <span style=color:#e6db74>X-Real-IP</span> $remote_addr;
-</span></span><span style=display:flex><span>        <span style=color:#f92672>proxy_set_header</span> <span style=color:#e6db74>X-Forwarded-For</span> $proxy_add_x_forwarded_for;
-</span></span><span style=display:flex><span>        
-</span></span><span style=display:flex><span>        <span style=color:#75715e># SSE 流式响应支持（AI对话用）
-</span></span></span><span style=display:flex><span>        <span style=color:#f92672>proxy_buffering</span> <span style=color:#66d9ef>off</span>;
-</span></span><span style=display:flex><span>        <span style=color:#f92672>proxy_cache</span> <span style=color:#66d9ef>off</span>;
-</span></span><span style=display:flex><span>        <span style=color:#f92672>proxy_read_timeout</span> <span style=color:#e6db74>120s</span>;
-</span></span><span style=display:flex><span>    }
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#75715e># 上传文件大小限制
-</span></span></span><span style=display:flex><span>    <span style=color:#f92672>client_max_body_size</span> <span style=color:#e6db74>20M</span>;
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><h3 id=83-服务器要求>8.3 服务器要求<a hidden class=anchor aria-hidden=true href=#83-服务器要求>#</a></h3><table><thead><tr><th>项目</th><th>最低配置</th><th>推荐配置</th></tr></thead><tbody><tr><td>CPU</td><td>2核</td><td>2核</td></tr><tr><td>内存</td><td>2GB</td><td>4GB</td></tr><tr><td>硬盘</td><td>40GB SSD</td><td>60GB SSD</td></tr><tr><td>带宽</td><td>3Mbps</td><td>5Mbps</td></tr><tr><td>系统</td><td>Ubuntu 22.04 / CentOS 8</td><td>Ubuntu 22.04</td></tr></tbody></table><hr><h2 id=九成本估算>九、成本估算<a hidden class=anchor aria-hidden=true href=#九成本估算>#</a></h2><table><thead><tr><th>项目</th><th>费用</th><th>说明</th></tr></thead><tbody><tr><td>云服务器</td><td>已有</td><td>你已购买</td></tr><tr><td>AI API</td><td>20-50元/月</td><td>DeepSeek 价格很低</td></tr><tr><td>OCR API</td><td>0-10元/月</td><td>百度有免费额度</td></tr><tr><td>语音识别</td><td>0-10元/月</td><td>阿里云有免费额度</td></tr><tr><td>域名(可选)</td><td>60元/年</td><td>.com 域名</td></tr><tr><td>SSL证书</td><td>免费</td><td>Let&rsquo;s Encrypt</td></tr><tr><td><strong>合计</strong></td><td><strong>约20-70元/月</strong></td><td>家庭使用非常经济</td></tr></tbody></table><hr><h2 id=十后续可扩展功能>十、后续可扩展功能<a hidden class=anchor aria-hidden=true href=#十后续可扩展功能>#</a></h2><p>当 MVP 版本运行稳定后，可以逐步添加：</p><table><thead><tr><th>优先级</th><th>功能</th><th>说明</th></tr></thead><tbody><tr><td>P1</td><td>错题组卷</td><td>从错题库随机抽题生成模拟试卷</td></tr><tr><td>P1</td><td>听写模式</td><td>App 念词语/单词，孩子听写，自动批改</td></tr><tr><td>P2</td><td>学习打卡</td><td>每日学习打卡、连续打卡统计、奖励机制</td></tr><tr><td>P2</td><td>知识图谱</td><td>可视化知识点之间的关联</td></tr><tr><td>P3</td><td>多设备同步</td><td>云端同步，换设备不丢数据</td></tr><tr><td>P3</td><td>家长推送</td><td>每日学习报告推送到微信（通过微信模板消息）</td></tr><tr><td>P3</td><td>课本同步</td><td>按人教版教材章节归类知识点</td></tr></tbody></table></div><footer class=post-footer><ul class=post-tags><li><a href=https://azlog.org/tags/%E6%8A%80%E6%9C%AF/>技术</a></li><li><a href=https://azlog.org/tags/%E6%96%B9%E6%A1%88%E7%94%9F%E6%88%90/>方案生成</a></li><li><a href=https://azlog.org/tags/%E8%B1%86%E5%8C%85/>豆包</a></li><li><a href=https://azlog.org/tags/mimo/>Mimo</a></li></ul><nav class=paginav><a class=prev href=https://azlog.org/posts/%E4%BB%8E%E6%96%B9%E6%A1%88%E7%94%9F%E6%88%90%E7%9C%8B%E8%B1%86%E5%8C%85%E5%92%8Cmimo%E7%9A%84%E5%8C%BA%E5%88%AB/><span class=title>« Prev</span>
-<span>从方案生成看豆包和mimo的区别</span>
-</a><a class=next href=https://azlog.org/posts/%E5%88%9D%E4%B8%80%E5%85%A8%E7%A7%91%E6%98%93%E9%94%99%E7%82%B9%E5%8F%8A%E9%94%99%E9%A2%98%E6%95%B4%E7%90%86ai%E5%AD%A6%E4%B9%A0app%E8%AF%A6%E7%BB%86%E5%BC%80%E5%8F%91%E6%96%B9%E6%A1%88%E8%B1%86%E5%8C%85%E7%89%88/><span class=title>Next »</span>
-<span>初一全科易错点及错题整理AI学习APP详细开发方案（豆包版）</span></a></nav></footer></article></main><footer class=footer><span>&copy; 2026 <a href=https://azlog.org/>Az日志</a></span> ·
-<span>Powered by
-<a href="https://gohugo.io/?utm_source=papermod" rel=noopener target=_blank>Hugo</a> &
-<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top id=top-link class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey=g><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up"><polyline points="17 11 12 6 7 11"/><polyline points="17 18 12 13 7 18"/></svg>
-</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var toplink=document.getElementById("top-link");window.onscroll=function(){const e=window.innerHeight;document.body.scrollTop>e||document.documentElement.scrollTop>e?toplink.classList.remove("hidden"):toplink.classList.add("hidden")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script><script>document.querySelectorAll("pre > code").forEach(e=>{const n=e.parentNode.parentNode,t=document.createElement("button");t.classList.add("copy-code"),t.innerHTML="copy";function s(){t.innerHTML="copied!",setTimeout(()=>{t.innerHTML="copy"},2e3)}t.addEventListener("click",t=>{if("clipboard"in navigator){navigator.clipboard.writeText(e.textContent),s();return}const n=document.createRange();n.selectNodeContents(e);const o=window.getSelection();o.removeAllRanges(),o.addRange(n);try{document.execCommand("copy"),s()}catch{}o.removeRange(n)}),n.classList.contains("highlight")?n.appendChild(t):n.parentNode.firstChild==n||(e.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?e.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(t):e.parentNode.appendChild(t))})</script></body></html>
+</code></pre><h3 id="72-每日开发建议">7.2 每日开发建议<a hidden class="anchor" aria-hidden="true" href="#72-每日开发建议">#</a></h3>
+<blockquote>
+<p>如果你每天能投入 <strong>2-3小时</strong>，按以上节奏可以完成。如果你开发经验不多，建议：</p>
+<ul>
+<li>第一个2周只搭后端，用 Postman 测试接口</li>
+<li>第3-4周再开始写 App 前端</li>
+<li>AI部分先用最简单的接入，后续再优化 prompt</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="八部署方案">八、部署方案<a hidden class="anchor" aria-hidden="true" href="#八部署方案">#</a></h2>
+<h3 id="81-docker-compose-一键部署">8.1 Docker Compose 一键部署<a hidden class="anchor" aria-hidden="true" href="#81-docker-compose-一键部署">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e"># docker-compose.yml</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;3.8&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">services</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># 后端 API</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">backend</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">build</span>: <span style="color:#ae81ff">./backend</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ports</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;8000:8000&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">environment</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">DATABASE_URL=mysql+pymysql://cuoti:password@db:3306/cuoti_bao</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">REDIS_URL=redis://redis:6379/0</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">AI_API_KEY=your-api-key-here</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">AI_BASE_URL=https://api.deepseek.com</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">OSS_ENDPOINT=your-oss-endpoint</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">depends_on</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">db</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">redis</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">always</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># MySQL 数据库</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">db</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">mysql:8.0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ports</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;3306:3306&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">environment</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">MYSQL_ROOT_PASSWORD=rootpassword</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">MYSQL_DATABASE=cuoti_bao</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">MYSQL_USER=cuoti</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">MYSQL_PASSWORD=password</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">mysql_data:/var/lib/mysql</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">./deploy/init.sql:/docker-entrypoint-initdb.d/init.sql</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">always</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Redis 缓存</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">redis</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">redis:7-alpine</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ports</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;6379:6379&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">always</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Nginx 反向代理</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">nginx</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">nginx:alpine</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ports</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;80:80&#34;</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;443:443&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">./deploy/nginx.conf:/etc/nginx/conf.d/default.conf</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">./admin/dist:/usr/share/nginx/html/admin </span> <span style="color:#75715e"># 管理后台静态文件</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">depends_on</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">backend</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">always</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">mysql_data</span>:
+</span></span></code></pre></div><h3 id="82-nginx-配置">8.2 Nginx 配置<a hidden class="anchor" aria-hidden="true" href="#82-nginx-配置">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-nginx" data-lang="nginx"><span style="display:flex;"><span><span style="color:#75715e"># deploy/nginx.conf
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">server</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">listen</span> <span style="color:#ae81ff">80</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">server_name</span> <span style="color:#e6db74">your-domain.com</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 管理后台
+</span></span></span><span style="display:flex;"><span>    <span style="color:#f92672">location</span> <span style="color:#e6db74">/admin</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">alias</span> <span style="color:#e6db74">/usr/share/nginx/html/admin</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">try_files</span> $uri $uri/ <span style="color:#e6db74">/admin/index.html</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># API 代理
+</span></span></span><span style="display:flex;"><span>    <span style="color:#f92672">location</span> <span style="color:#e6db74">/api/</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">proxy_pass</span> <span style="color:#e6db74">http://backend:8000/api/</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">proxy_set_header</span> <span style="color:#e6db74">Host</span> $host;
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">proxy_set_header</span> <span style="color:#e6db74">X-Real-IP</span> $remote_addr;
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">proxy_set_header</span> <span style="color:#e6db74">X-Forwarded-For</span> $proxy_add_x_forwarded_for;
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># SSE 流式响应支持（AI对话用）
+</span></span></span><span style="display:flex;"><span>        <span style="color:#f92672">proxy_buffering</span> <span style="color:#66d9ef">off</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">proxy_cache</span> <span style="color:#66d9ef">off</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">proxy_read_timeout</span> <span style="color:#e6db74">120s</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 上传文件大小限制
+</span></span></span><span style="display:flex;"><span>    <span style="color:#f92672">client_max_body_size</span> <span style="color:#e6db74">20M</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="83-服务器要求">8.3 服务器要求<a hidden class="anchor" aria-hidden="true" href="#83-服务器要求">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th>项目</th>
+          <th>最低配置</th>
+          <th>推荐配置</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>CPU</td>
+          <td>2核</td>
+          <td>2核</td>
+      </tr>
+      <tr>
+          <td>内存</td>
+          <td>2GB</td>
+          <td>4GB</td>
+      </tr>
+      <tr>
+          <td>硬盘</td>
+          <td>40GB SSD</td>
+          <td>60GB SSD</td>
+      </tr>
+      <tr>
+          <td>带宽</td>
+          <td>3Mbps</td>
+          <td>5Mbps</td>
+      </tr>
+      <tr>
+          <td>系统</td>
+          <td>Ubuntu 22.04 / CentOS 8</td>
+          <td>Ubuntu 22.04</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="九成本估算">九、成本估算<a hidden class="anchor" aria-hidden="true" href="#九成本估算">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th>项目</th>
+          <th>费用</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>云服务器</td>
+          <td>已有</td>
+          <td>你已购买</td>
+      </tr>
+      <tr>
+          <td>AI API</td>
+          <td>20-50元/月</td>
+          <td>DeepSeek 价格很低</td>
+      </tr>
+      <tr>
+          <td>OCR API</td>
+          <td>0-10元/月</td>
+          <td>百度有免费额度</td>
+      </tr>
+      <tr>
+          <td>语音识别</td>
+          <td>0-10元/月</td>
+          <td>阿里云有免费额度</td>
+      </tr>
+      <tr>
+          <td>域名(可选)</td>
+          <td>60元/年</td>
+          <td>.com 域名</td>
+      </tr>
+      <tr>
+          <td>SSL证书</td>
+          <td>免费</td>
+          <td>Let&rsquo;s Encrypt</td>
+      </tr>
+      <tr>
+          <td><strong>合计</strong></td>
+          <td><strong>约20-70元/月</strong></td>
+          <td>家庭使用非常经济</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="十后续可扩展功能">十、后续可扩展功能<a hidden class="anchor" aria-hidden="true" href="#十后续可扩展功能">#</a></h2>
+<p>当 MVP 版本运行稳定后，可以逐步添加：</p>
+<table>
+  <thead>
+      <tr>
+          <th>优先级</th>
+          <th>功能</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>P1</td>
+          <td>错题组卷</td>
+          <td>从错题库随机抽题生成模拟试卷</td>
+      </tr>
+      <tr>
+          <td>P1</td>
+          <td>听写模式</td>
+          <td>App 念词语/单词，孩子听写，自动批改</td>
+      </tr>
+      <tr>
+          <td>P2</td>
+          <td>学习打卡</td>
+          <td>每日学习打卡、连续打卡统计、奖励机制</td>
+      </tr>
+      <tr>
+          <td>P2</td>
+          <td>知识图谱</td>
+          <td>可视化知识点之间的关联</td>
+      </tr>
+      <tr>
+          <td>P3</td>
+          <td>多设备同步</td>
+          <td>云端同步，换设备不丢数据</td>
+      </tr>
+      <tr>
+          <td>P3</td>
+          <td>家长推送</td>
+          <td>每日学习报告推送到微信（通过微信模板消息）</td>
+      </tr>
+      <tr>
+          <td>P3</td>
+          <td>课本同步</td>
+          <td>按人教版教材章节归类知识点</td>
+      </tr>
+  </tbody>
+</table>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://azlog.org/tags/%E6%8A%80%E6%9C%AF/">技术</a></li>
+      <li><a href="https://azlog.org/tags/%E6%96%B9%E6%A1%88%E7%94%9F%E6%88%90/">方案生成</a></li>
+      <li><a href="https://azlog.org/tags/%E8%B1%86%E5%8C%85/">豆包</a></li>
+      <li><a href="https://azlog.org/tags/mimo/">Mimo</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://azlog.org/posts/%E4%BB%8E%E6%96%B9%E6%A1%88%E7%94%9F%E6%88%90%E7%9C%8B%E8%B1%86%E5%8C%85%E5%92%8Cmimo%E7%9A%84%E5%8C%BA%E5%88%AB/">
+    <span class="title">« Prev</span>
+    <span>从方案生成看豆包和mimo的区别</span>
+  </a>
+  <a class="next" href="https://azlog.org/posts/%E5%88%9D%E4%B8%80%E5%85%A8%E7%A7%91%E6%98%93%E9%94%99%E7%82%B9%E5%8F%8A%E9%94%99%E9%A2%98%E6%95%B4%E7%90%86ai%E5%AD%A6%E4%B9%A0app%E8%AF%A6%E7%BB%86%E5%BC%80%E5%8F%91%E6%96%B9%E6%A1%88%E8%B1%86%E5%8C%85%E7%89%88/">
+    <span class="title">Next »</span>
+    <span>初一全科易错点及错题整理AI学习APP详细开发方案（豆包版）</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://azlog.org/">Az日志</a></span> · 
+
+    
+    
+    <span>
+        Powered by
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var toplink = document.getElementById("top-link");
+    window.onscroll = function () {
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
+        } else {
+            toplink.classList.add("hidden");
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

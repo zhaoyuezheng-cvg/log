@@ -1,22 +1,290 @@
-<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>VSCode | Az日志</title><meta name=keywords content><meta name=description content="个人技术，感悟，关注AI,hugo --minifyHugo + GitHub 博客"><meta name=author content="azheng"><link rel=canonical href=https://azlog.org/tags/vscode/><link crossorigin=anonymous href=/assets/css/stylesheet.1d4346839295915e219dee6c6b7d8512a8a4a8e692c435a57effb2398a6e371e.css integrity="sha256-HUNGg5KVkV4hne5sa32FEqikqOaSxDWlfv+yOYpuNx4=" rel="preload stylesheet" as=style><link rel=icon href=https://azlog.org/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://azlog.org/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://azlog.org/favicon-32x32.png><link rel=apple-touch-icon href=https://azlog.org/apple-touch-icon.png><link rel=mask-icon href=https://azlog.org/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate type=application/rss+xml href=https://azlog.org/tags/vscode/index.xml title=rss><link rel=alternate hreflang=en href=https://azlog.org/tags/vscode/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><meta property="og:url" content="https://azlog.org/tags/vscode/"><meta property="og:site_name" content="Az日志"><meta property="og:title" content="VSCode"><meta property="og:description" content="个人技术，感悟，关注AI,hugo --minifyHugo + GitHub 博客"><meta property="og:locale" content="zh_CN"><meta property="og:type" content="website"><meta name=twitter:card content="summary"><meta name=twitter:title content="VSCode"><meta name=twitter:description content="个人技术，感悟，关注AI,hugo --minifyHugo + GitHub 博客"></head><body class=list id=top><header class=header><nav class=header-nav><div class=logo><a href=https://azlog.org/ accesskey=h title="Az日志 (Alt + H)">Az日志</a><div class=logo-switches><button id=theme-toggle class=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
-<svg class="moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-<svg class="sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu class=menu><li><a href=https://azlog.org/ title="🏠 首页"><span>🏠 首页</span></a></li><li><a href=https://azlog.org/categories/ title="📂 分类"><span>📂 分类</span></a></li><li><a href=https://azlog.org/tags/ title="🏷 标签"><span>🏷 标签</span></a></li><li><a href=https://azlog.org/archives/ title="📜 归档"><span>📜 归档</span></a></li><li><a href=https://azlog.org/about/ title="👤 关于"><span>👤 关于</span></a></li></ul></nav></header><main class=main><header class=page-header><nav class=breadcrumbs role=navigation aria-label=Breadcrumb><a href=/>Home</a>
-<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"/></svg>
-<a href=/tags/>Tags</a>
-<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"/></svg></nav><h1>VSCode</h1></header><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>VsCode一键发文</h2></header><div class=entry-content><p>VS Code 配合「GitHub 插件 + Markdown 插件 + 一点配置」完整流程
-一、先把插件配齐（你已有，确认一下） 打开扩展面板 Ctrl+Shift+X，确保安装并启用：
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>VSCode | Az日志</title>
+<meta name="keywords" content="">
+<meta name="description" content="个人技术，感悟，关注AI,hugo --minifyHugo &#43; GitHub 博客">
+<meta name="author" content="azheng">
+<link rel="canonical" href="https://azlog.org/tags/vscode/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.1d4346839295915e219dee6c6b7d8512a8a4a8e692c435a57effb2398a6e371e.css" integrity="sha256-HUNGg5KVkV4hne5sa32FEqikqOaSxDWlfv&#43;yOYpuNx4=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://azlog.org/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://azlog.org/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://azlog.org/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://azlog.org/apple-touch-icon.png">
+<link rel="mask-icon" href="https://azlog.org/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="https://azlog.org/tags/vscode/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="https://azlog.org/tags/vscode/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://azlog.org/tags/vscode/">
+  <meta property="og:site_name" content="Az日志">
+  <meta property="og:title" content="VSCode">
+  <meta property="og:description" content="个人技术，感悟，关注AI,hugo --minifyHugo &#43; GitHub 博客">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="website">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="VSCode">
+  <meta name="twitter:description" content="个人技术，感悟，关注AI,hugo --minifyHugo &#43; GitHub 博客">
+
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="https://azlog.org/" accesskey="h" title="Az日志 (Alt + H)">Az日志</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu" class="menu">
+            <li>
+                <a href="https://azlog.org/" title="🏠 首页">
+                    <span>🏠 首页</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://azlog.org/categories/" title="📂 分类">
+                    <span>📂 分类</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://azlog.org/tags/" title="🏷 标签">
+                    <span>🏷 标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://azlog.org/archives/" title="📜 归档">
+                    <span>📜 归档</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://azlog.org/about/" title="👤 关于">
+                    <span>👤 关于</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header"><nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <a href="/tags/">Tags</a>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+        <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+</nav>
+  <h1>
+    VSCode
+  </h1>
+</header>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">VsCode一键发文
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>VS Code 配合「GitHub 插件 &#43; Markdown 插件 &#43; 一点配置」完整流程
+一、先把插件配齐（你已有，确认一下） 打开扩展面板 Ctrl&#43;Shift&#43;X，确保安装并启用：
 ✅ 必须 GitHub（官方）
 用来在左侧直接看到 Git 变更、提交、同步（push/pull）。 Markdown All in One
 快捷键加粗/斜体/标题、自动列表、TOC、预览增强。 Markdown Preview Github Styling（可选但强烈推荐）
 预览样式和 GitHub 一致，所见即所得。 ✅ 加分（Hugo 更爽） Hugo Snippets：一键插入 Hugo 文章头模板（front matter）。 PowerShell（微软）：在 VS Code 里直接跑 Hugo 命令、脚本。 二、VS Code 内「新建 Hugo 文章」一键模板 不用每次手写 front matter，用**用户代码片段（Snippet）**一键生成：
-VS Code → Ctrl+Shift+P → 输入 Preferences: Configure User Snippets 选 markdown.json（全局）或当前工作区 粘贴下面内容并保存： { "Hugo Post": { "prefix": "hugopost", "body": [ "---", "title: \"${1:文章标题}\"", "date: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE"T$CURRENT_HOUR:$CURRENT_MIN:00+08:00"", "draft: false", "description: \"${2:简介}\"", "tags: [\"${3:标签1}\", \"${4:标签2}\"]", "categories: [\"${5:分类}\"]", "---", "", "## 一、${6:开头}", "", "${7:正文内容...}" ], "description": "Hugo 文章模板" } } 使用：
-...</p></div><footer class=entry-footer><span title='2026-05-28 09:31:05 +0000 UTC'>May 28, 2026</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>279 words</span>&nbsp;·&nbsp;<span>azheng</span></footer><a class=entry-link aria-label="post link to VsCode一键发文" href=https://azlog.org/posts/vscode%E4%B8%80%E9%94%AE%E5%8F%91%E6%96%87/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>Hugo发文全流程</h2></header><div class=entry-content><p>Hugo 发文 → 本地预览 → 提交到 GitHub 的完整流程。
+VS Code → Ctrl&#43;Shift&#43;P → 输入 Preferences: Configure User Snippets 选 markdown.json（全局）或当前工作区 粘贴下面内容并保存： { &#34;Hugo Post&#34;: { &#34;prefix&#34;: &#34;hugopost&#34;, &#34;body&#34;: [ &#34;---&#34;, &#34;title: \&#34;${1:文章标题}\&#34;&#34;, &#34;date: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE&#34;T$CURRENT_HOUR:$CURRENT_MIN:00&#43;08:00&#34;&#34;, &#34;draft: false&#34;, &#34;description: \&#34;${2:简介}\&#34;&#34;, &#34;tags: [\&#34;${3:标签1}\&#34;, \&#34;${4:标签2}\&#34;]&#34;, &#34;categories: [\&#34;${5:分类}\&#34;]&#34;, &#34;---&#34;, &#34;&#34;, &#34;## 一、${6:开头}&#34;, &#34;&#34;, &#34;${7:正文内容...}&#34; ], &#34;description&#34;: &#34;Hugo 文章模板&#34; } } 使用：
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2026-05-28 09:31:05 +0000 UTC'>May 28, 2026</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>279 words</span>&nbsp;·&nbsp;<span>azheng</span></footer>
+  <a class="entry-link" aria-label="post link to VsCode一键发文" href="https://azlog.org/posts/vscode%E4%B8%80%E9%94%AE%E5%8F%91%E6%96%87/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hugo发文全流程
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Hugo 发文 → 本地预览 → 提交到 GitHub 的完整流程。
 一、基础配置（仅需做一次） 1. 本地 Hugo 环境确认 在 D:\hugo\blog 目录下打开 PowerShell，执行：
 # 确认 Hugo 版本 hugo version # 确认 Git 状态 git status 看到版本号说明 Hugo 正常 看到 On branch main 说明 Git 已初始化并关联远程仓库 二、完整发文流程（日常重复用） 步骤 1：新建文章 # 新建文章（自动生成 .md 文件，默认 draft=true） hugo new content/posts/2026-05-28-我的新文章.md 文件路径：content/posts/2026-05-28-我的新文章.md
 步骤 2：编辑文章内容 打开 .md 文件，做两件事：
-写正文（Markdown 格式） 修改文章配置（关键） --- title: "我的新文章" # 文章标题 date: 2026-05-28T10:00:00+08:00 # 发布日期（建议用当天） draft: false # ✅ 必须改成 false，否则不会被构建 --- 这里写正文内容... 步骤 3：本地预览（确保效果正确） # 启动本地服务器，预览文章 hugo server -D 打开浏览器访问 http://localhost:1313 检查文章排版、样式、链接是否正常 预览无误后，按 Ctrl + C 关闭服务器 步骤 4：构建静态文件（生产环境） # 构建压缩后的静态文件到 public/ 目录 hugo --minify 此步骤会自动忽略 draft=true 的文章，只构建正式内容 生成的 public/ 目录就是可以直接部署的静态网站 步骤 5：提交并推送到 GitHub # 1. 添加所有修改到暂存区 git add . # 2. 提交修改（写清楚提交说明） git commit -m "post: 发布《我的新文章》" # 3. 推送到 GitHub git push 如果你配置了 Cloudflare Pages，推送后会自动触发构建，几分钟后网站就会更新 三、高频场景补充说明 场景1：临时预览草稿文章 如果你不想把文章改成 draft=false，只想本地预览：
-...</p></div><footer class=entry-footer><span title='2026-05-28 08:28:05 +0000 UTC'>May 28, 2026</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>244 words</span>&nbsp;·&nbsp;<span>azheng</span></footer><a class=entry-link aria-label="post link to Hugo发文全流程" href=https://azlog.org/posts/hugo%E5%8F%91%E6%96%87%E5%85%A8%E6%B5%81%E7%A8%8B/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>Git常见命令</h2></header><div class=entry-content><p>一、初始化 & 克隆（第一次用） # 1. 本地新建 git 仓库 git init # 2. 克隆远程仓库到本地（最常用） git clone https://github.com/xxx/xxx.git # 3. 查看远程仓库地址 git remote -v # 4. 添加远程仓库（本地关联远程） git remote add origin 仓库地址 二、日常提交（改代码→上传本地） # 1. 查看状态（哪些文件改了、新增了） git status # 2. 把所有修改加入暂存区（最常用） git add . # 3. 提交到本地仓库，带说明（必须写清楚） git commit -m "feat: 新增文章/修复bug" # 4. 快捷：已跟踪文件直接提交（跳过 add） git commit -am "fix: 修复首页样式" 三、同步远程（本地 ↔ GitHub） # 1. 拉取远程最新代码（避免冲突，必做） git pull origin main # 2. 推送本地到远程（第一次要 -u） git push -u origin main # 之后直接 git push # 3. 强制推送（覆盖远程，谨慎！） git push --force 四、分支管理（多人协作/多版本） # 查看本地分支 git branch # 查看本地+远程所有分支 git branch -a # 创建分支 git branch dev # 切换分支（旧版） git checkout dev # 创建并切换（推荐） git checkout -b dev # 新版更直观 git switch -c dev # 合并 dev 到 main git checkout main git merge dev # 删除本地分支 git branch -d dev # 删除远程分支 git push origin --delete dev 五、查看日志 & 对比 # 完整提交日志 git log # 简洁版（一行一个，推荐） git log --oneline # 最近 n 条 git log --oneline -5 # 看具体文件改动 git diff 文件名 # 看暂存区和仓库差异 git diff --staged 六、撤销 & 回退（改错了怎么办） # 1. 撤销工作区修改（未 add） git restore 文件名 # 2. 撤销暂存（add 了但没 commit） git restore --staged 文件名 # 3. 撤销最后一次提交（保留修改） git reset --soft HEAD~1 # 4. 彻底回退（危险！丢代码） git reset --hard HEAD~1 # 5. 安全撤销某次提交（生成新提交，不改历史） git revert 提交id 七、标签（版本发布用） # 打标签 git tag v1.0 # 推送标签到远程 git push origin v1.0 # 删除本地标签 git tag -d v1.0 # 删除远程标签 git push origin --delete v1.0 八、日常工作流（你用 Hugo/GitHub Pages） # 写新文章后 hugo --minify git add . git commit -m "新增文章：xxx" git pull origin main # 先拉，避免冲突 git push</p></div><footer class=entry-footer><span title='2026-05-28 10:40:36 +0800 +0800'>May 28, 2026</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>260 words</span>&nbsp;·&nbsp;<span>azheng</span></footer><a class=entry-link aria-label="post link to Git常见命令" href=https://azlog.org/posts/git%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/></a></article></main><footer class=footer><span>&copy; 2026 <a href=https://azlog.org/>Az日志</a></span> ·
-<span>Powered by
-<a href="https://gohugo.io/?utm_source=papermod" rel=noopener target=_blank>Hugo</a> &
-<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top id=top-link class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey=g><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up"><polyline points="17 11 12 6 7 11"/><polyline points="17 18 12 13 7 18"/></svg>
-</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var toplink=document.getElementById("top-link");window.onscroll=function(){const e=window.innerHeight;document.body.scrollTop>e||document.documentElement.scrollTop>e?toplink.classList.remove("hidden"):toplink.classList.add("hidden")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script></body></html>
+写正文（Markdown 格式） 修改文章配置（关键） --- title: &#34;我的新文章&#34; # 文章标题 date: 2026-05-28T10:00:00&#43;08:00 # 发布日期（建议用当天） draft: false # ✅ 必须改成 false，否则不会被构建 --- 这里写正文内容... 步骤 3：本地预览（确保效果正确） # 启动本地服务器，预览文章 hugo server -D 打开浏览器访问 http://localhost:1313 检查文章排版、样式、链接是否正常 预览无误后，按 Ctrl &#43; C 关闭服务器 步骤 4：构建静态文件（生产环境） # 构建压缩后的静态文件到 public/ 目录 hugo --minify 此步骤会自动忽略 draft=true 的文章，只构建正式内容 生成的 public/ 目录就是可以直接部署的静态网站 步骤 5：提交并推送到 GitHub # 1. 添加所有修改到暂存区 git add . # 2. 提交修改（写清楚提交说明） git commit -m &#34;post: 发布《我的新文章》&#34; # 3. 推送到 GitHub git push 如果你配置了 Cloudflare Pages，推送后会自动触发构建，几分钟后网站就会更新 三、高频场景补充说明 场景1：临时预览草稿文章 如果你不想把文章改成 draft=false，只想本地预览：
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2026-05-28 08:28:05 +0000 UTC'>May 28, 2026</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>244 words</span>&nbsp;·&nbsp;<span>azheng</span></footer>
+  <a class="entry-link" aria-label="post link to Hugo发文全流程" href="https://azlog.org/posts/hugo%E5%8F%91%E6%96%87%E5%85%A8%E6%B5%81%E7%A8%8B/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Git常见命令
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p> 一、初始化 &amp; 克隆（第一次用） # 1. 本地新建 git 仓库 git init # 2. 克隆远程仓库到本地（最常用） git clone https://github.com/xxx/xxx.git # 3. 查看远程仓库地址 git remote -v # 4. 添加远程仓库（本地关联远程） git remote add origin 仓库地址 二、日常提交（改代码→上传本地） # 1. 查看状态（哪些文件改了、新增了） git status # 2. 把所有修改加入暂存区（最常用） git add . # 3. 提交到本地仓库，带说明（必须写清楚） git commit -m &#34;feat: 新增文章/修复bug&#34; # 4. 快捷：已跟踪文件直接提交（跳过 add） git commit -am &#34;fix: 修复首页样式&#34; 三、同步远程（本地 ↔ GitHub） # 1. 拉取远程最新代码（避免冲突，必做） git pull origin main # 2. 推送本地到远程（第一次要 -u） git push -u origin main # 之后直接 git push # 3. 强制推送（覆盖远程，谨慎！） git push --force 四、分支管理（多人协作/多版本） # 查看本地分支 git branch # 查看本地&#43;远程所有分支 git branch -a # 创建分支 git branch dev # 切换分支（旧版） git checkout dev # 创建并切换（推荐） git checkout -b dev # 新版更直观 git switch -c dev # 合并 dev 到 main git checkout main git merge dev # 删除本地分支 git branch -d dev # 删除远程分支 git push origin --delete dev 五、查看日志 &amp; 对比 # 完整提交日志 git log # 简洁版（一行一个，推荐） git log --oneline # 最近 n 条 git log --oneline -5 # 看具体文件改动 git diff 文件名 # 看暂存区和仓库差异 git diff --staged 六、撤销 &amp; 回退（改错了怎么办） # 1. 撤销工作区修改（未 add） git restore 文件名 # 2. 撤销暂存（add 了但没 commit） git restore --staged 文件名 # 3. 撤销最后一次提交（保留修改） git reset --soft HEAD~1 # 4. 彻底回退（危险！丢代码） git reset --hard HEAD~1 # 5. 安全撤销某次提交（生成新提交，不改历史） git revert 提交id 七、标签（版本发布用） # 打标签 git tag v1.0 # 推送标签到远程 git push origin v1.0 # 删除本地标签 git tag -d v1.0 # 删除远程标签 git push origin --delete v1.0 八、日常工作流（你用 Hugo/GitHub Pages） # 写新文章后 hugo --minify git add . git commit -m &#34;新增文章：xxx&#34; git pull origin main # 先拉，避免冲突 git push </p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2026-05-28 10:40:36 +0800 +0800'>May 28, 2026</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>260 words</span>&nbsp;·&nbsp;<span>azheng</span></footer>
+  <a class="entry-link" aria-label="post link to Git常见命令" href="https://azlog.org/posts/git%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/"></a>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://azlog.org/">Az日志</a></span> · 
+
+    
+    
+    <span>
+        Powered by
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var toplink = document.getElementById("top-link");
+    window.onscroll = function () {
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
+        } else {
+            toplink.classList.add("hidden");
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

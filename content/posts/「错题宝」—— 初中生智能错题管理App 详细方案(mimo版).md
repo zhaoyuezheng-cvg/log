@@ -1,10 +1,16 @@
-+++
-title= "「错题宝」—— 初中生智能错题管理App 详细方案（mimo版）"
-date='2026-05-29T12:00:00+08:00'
-draft= false
-tags= ["技术", "方案生成", "豆包", "mimo"]
-categories = ["技术","工具" ]  
-+++
+---
+categories:
+- 技术
+- 工具
+date: '2026-05-29T12:00:00+08:00'
+draft: false
+tags:
+- 技术
+- 方案生成
+- 豆包
+- mimo
+title: 「错题宝」—— 初中生智能错题管理App 详细方案（mimo版）
+---
 
 
 

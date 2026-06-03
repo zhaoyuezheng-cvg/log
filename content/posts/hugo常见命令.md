@@ -1,11 +1,14 @@
-+++
-date = '2026-05-28T10:36:40+08:00'
-draft = false
-title = 'Hugo常见命令'
-description = "hugo常见命令"
-categories = ["技术","工具" ]   # 大分类：技术/工具/生活/学习/博客
-tags = ["Hugo"] # 自定义标签
-+++
+---
+categories:
+- 技术
+- 工具
+date: '2026-05-28T10:36:40+08:00'
+description: hugo常见命令
+draft: false
+tags:
+- Hugo
+title: Hugo常见命令
+---
 
 一份精简、实用的 Hugo 命令速查。
 
