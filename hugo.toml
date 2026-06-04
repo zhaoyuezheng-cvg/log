@@ -1,4 +1,4 @@
 baseURL = 'https://azlog.org/'
 locale = 'zh-cn'
-title = 'az技术笔记'
+title = 'AZ技术笔记'
 theme = "PaperMod"
