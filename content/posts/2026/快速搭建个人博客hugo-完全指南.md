@@ -16,7 +16,7 @@ summary: 本文详细介绍如何使用 Hugo 快速搭建一个静态博客，�
 description: 了解如何从零开始使用 Hugo 搭建个人博客。本文涵盖 Hugo 的安装、新站点的创建、主题的选择与配置、文章的撰写以及本地预览和最终部署。适合想要快速建立高效静态网站的开发者。
 slug: 快速搭建个人博客hugo-完全指南
 cover:
-  image: ''
+  image: 'https://img.azlog.org/file/1780617254842_fdcbb3155dd8128ce53e3d3af0c44e399d3b52e435636632d43873e77581a09c.png'
   alt: 快速搭建个人博客：Hugo 完全指南
   caption: 快速搭建个人博客：Hugo 完全指南
   relative: false
