@@ -1,8 +1,14 @@
-+++
-date = '2026-05-28T10:36:40+08:00'
-draft = false
-title = 'Hugo常见命令'
-+++
+---
+categories:
+- 技术
+- 工具
+date: '2026-05-28T10:36:40+08:00'
+description: hugo常见命令
+draft: false
+tags:
+- Hugo
+title: Hugo常见命令
+---
 
 一份精简、实用的 Hugo 命令速查。
 
@@ -82,7 +88,7 @@ hugo --minify
 
 # 5. 提交到 Git 并推送
 git add .
-git commit -m "xxx"
+git commit -m "发表新文章"
 git push
 ```
 

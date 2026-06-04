@@ -1,234 +1,82 @@
-<!DOCTYPE html>
-<html lang="en" dir="auto" data-theme="auto">
-
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
-<title>Posts | My New Hugo Project</title>
-<meta name="keywords" content="">
-<meta name="description" content="Posts - My New Hugo Project">
-<meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/posts/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.89ca4972ab5e6aaa05e9a0dae0c4bb64b26585bc79e36f5cf33614eea0283abe.css" integrity="sha256-icpJcqteaqoF6aDa4MS7ZLJlhbx5429c8zYU7qAoOr4=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
-<meta name="theme-color" content="#2e2e33">
-<meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/posts/index.xml" title="rss">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/">
-<noscript>
-    <style>
-        #theme-toggle,
-        .top-link {
-            display: none;
-        }
-
-    </style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: rgb(29, 30, 32);
-                --entry: rgb(46, 46, 51);
-                --primary: rgb(218, 218, 219);
-                --secondary: rgb(155, 156, 157);
-                --tertiary: rgb(65, 66, 68);
-                --content: rgb(196, 196, 197);
-                --code-block-bg: rgb(46, 46, 51);
-                --code-bg: rgb(55, 56, 62);
-                --border: rgb(51, 51, 51);
-                color-scheme: dark;
-            }
-
-            .list {
-                background: var(--theme);
-            }
-
-            .toc {
-                background: var(--entry);
-            }
-        }
-
-    </style>
-</noscript>
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.querySelector("html").dataset.theme = 'dark';
-    } else if (localStorage.getItem("pref-theme") === "light") {
-       document.querySelector("html").dataset.theme = 'light';
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.querySelector("html").dataset.theme = 'dark';
-    } else {
-        document.querySelector("html").dataset.theme = 'light';
-    }
-
-</script>
-</head>
-<body class="list" id="top">
-    <header class="header">
-    <nav class="header-nav">
-        <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="My New Hugo Project (Alt + H)">My New Hugo Project</a>
-            <div class="logo-switches">
-                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
-                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                </button>
-            </div>
-        </div>
-        <ul id="menu" class="menu">
-        </ul>
-    </nav>
-</header>
-<main class="main"> 
-<header class="page-header">
-  <h1>
-    Posts
-  </h1>
-</header>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Git常见命令
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p> 一、初始化 &amp; 克隆（第一次用） # 1. 本地新建 git 仓库 git init # 2. 克隆远程仓库到本地（最常用） git clone https://github.com/xxx/xxx.git # 3. 查看远程仓库地址 git remote -v # 4. 添加远程仓库（本地关联远程） git remote add origin 仓库地址 二、日常提交（改代码→上传本地） # 1. 查看状态（哪些文件改了、新增了） git status # 2. 把所有修改加入暂存区（最常用） git add . # 3. 提交到本地仓库，带说明（必须写清楚） git commit -m &#34;feat: 新增文章/修复bug&#34; # 4. 快捷：已跟踪文件直接提交（跳过 add） git commit -am &#34;fix: 修复首页样式&#34; 三、同步远程（本地 ↔ GitHub） # 1. 拉取远程最新代码（避免冲突，必做） git pull origin main # 2. 推送本地到远程（第一次要 -u） git push -u origin main # 之后直接 git push # 3. 强制推送（覆盖远程，谨慎！） git push --force 四、分支管理（多人协作/多版本） # 查看本地分支 git branch # 查看本地&#43;远程所有分支 git branch -a # 创建分支 git branch dev # 切换分支（旧版） git checkout dev # 创建并切换（推荐） git checkout -b dev # 新版更直观 git switch -c dev # 合并 dev 到 main git checkout main git merge dev # 删除本地分支 git branch -d dev # 删除远程分支 git push origin --delete dev 五、查看日志 &amp; 对比 # 完整提交日志 git log # 简洁版（一行一个，推荐） git log --oneline # 最近 n 条 git log --oneline -5 # 看具体文件改动 git diff 文件名 # 看暂存区和仓库差异 git diff --staged 六、撤销 &amp; 回退（改错了怎么办） # 1. 撤销工作区修改（未 add） git restore 文件名 # 2. 撤销暂存（add 了但没 commit） git restore --staged 文件名 # 3. 撤销最后一次提交（保留修改） git reset --soft HEAD~1 # 4. 彻底回退（危险！丢代码） git reset --hard HEAD~1 # 5. 安全撤销某次提交（生成新提交，不改历史） git revert 提交id 七、标签（版本发布用） # 打标签 git tag v1.0 # 推送标签到远程 git push origin v1.0 # 删除本地标签 git tag -d v1.0 # 删除远程标签 git push origin --delete v1.0 八、日常工作流（你用 Hugo/GitHub Pages） # 写新文章后 hugo --minify git add . git commit -m &#34;新增文章：xxx&#34; git pull origin main # 先拉，避免冲突 git push </p>
-  </div>
-  <footer class="entry-footer">
-
-<span title='2026-05-28 10:40:36 +0800 CST'>May 28, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to Git常见命令" href="http://localhost:1313/posts/git%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hugo常见命令
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>一份精简、实用的 Hugo 命令速查。
-一、项目创建 &amp; 初始化 # 1. 新建站点（在当前目录下创建 myblog 文件夹） hugo new site myblog # 2. 进入项目目录 cd myblog # 3. 初始化主题模块（新版 Hugo 推荐） hugo mod init github.com/你的用户名/你的仓库名 二、写文章（最常用） # 新建一篇文章（自动生成 frontmatter，draft=true 草稿） hugo new posts/第一篇文章.md # 新建页面（如 about、contact） hugo new about.md 三、本地预览（开发） # 启动本地服务器，默认 http://localhost:1313，热更新 hugo server # 🔥 常用：预览包含草稿（draft=true）的文章 hugo server -D # 自定义端口（如 8080） hugo server --port 8080 # 绑定到所有网卡（手机/局域网访问） hugo server --bind 0.0.0.0 四、构建发布（生产） # 构建静态文件到 public/（默认，不含草稿） hugo # 🔥 生产环境压缩（HTML/CSS/JS 最小化，推荐） hugo --minify # 构建并包含草稿（临时用） hugo -D # 指定输出目录（默认 public） hugo -d ./dist 五、日常工作流（你用 GitHub Pages） # 1. 写新文章 hugo new posts/xxx.md # 2. 本地预览 hugo server -D # 3. 确认后，把草稿改为正式：把 md 文件里 draft = false # 4. 构建生产文件 hugo --minify # 5. 提交到 Git 并推送 git add . git commit -m &#34;xxx&#34; git push 六、模块 &amp; 主题管理（常用） # 拉取主题/模块更新 hugo mod get -u # 清理模块缓存（解决依赖报错） hugo mod clean --all # 整理 go.mod（删除无用依赖） hugo mod tidy 七、排错 &amp; 信息 # 查看版本 hugo version # 查看帮助 hugo help hugo server --help # 列出所有草稿 hugo list drafts # 清空 public 再构建（避免旧文件残留） rm -rf public &amp;&amp; hugo --minify 八、常用参数速查表 -D / --buildDrafts：包含草稿 --minify：压缩代码（生产必加） --port 端口：自定义端口 -v：详细日志（排错用） </p>
-  </div>
-  <footer class="entry-footer">
-
-<span title='2026-05-28 10:36:40 +0800 CST'>May 28, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to Hugo常见命令" href="http://localhost:1313/posts/hugo%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hello
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Hello HugoHello HugoHello HugoHello Hugo
-</p>
-  </div>
-  <footer class="entry-footer">
-
-<span title='2026-05-27 17:00:45 +0800 CST'>May 27, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to Hello" href="http://localhost:1313/posts/hello/"></a>
-</article>
-    </main>
-    
-<footer class="footer">
-        <span>&copy; 2026 <a href="http://localhost:1313/">My New Hugo Project</a></span> · 
-
-    
-    
-    <span>
-        Powered by
-        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
-        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
-    </span>
-</footer>
-<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
-        <polyline points="17 11 12 6 7 11"></polyline>
-        <polyline points="17 18 12 13 7 18"></polyline>
-    </svg>
-</a>
-
-<script>
-    let menu = document.getElementById('menu');
-    if (menu) {
-        
-        const scrollPosition = localStorage.getItem("menu-scroll-position");
-        if (scrollPosition) {
-            menu.scrollLeft = parseInt(scrollPosition, 10);
-        }
-        
-        menu.onscroll = function () {
-            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
-        }
-    }
-
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            var id = this.getAttribute("href").substr(1);
-            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
-                    behavior: "smooth"
-                });
-            } else {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
-            }
-            if (id === "top") {
-                history.replaceState(null, null, " ");
-            } else {
-                history.pushState(null, null, `#${id}`);
-            }
-        });
-    });
-
-</script>
-<script>
-    var toplink = document.getElementById("top-link");
-    window.onscroll = function () {
-        const scrollThreshold = window.innerHeight;
-        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
-            toplink.classList.remove("hidden");
-        } else {
-            toplink.classList.add("hidden");
-        }
-    };
-
-</script>
-<script>
-    document.getElementById("theme-toggle").addEventListener("click", () => {
-        const html = document.querySelector("html");
-        if (html.dataset.theme === "dark") {
-            html.dataset.theme = 'light';
-            localStorage.setItem("pref-theme", 'light');
-        } else {
-            html.dataset.theme = 'dark';
-            localStorage.setItem("pref-theme", 'dark');
-        }
-    })
-
-</script>
-</body>
-
-</html>
+<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Posts | Az日志</title><meta name=keywords content><meta name=description content="Posts - Az日志"><meta name=author content="azheng"><link rel=canonical href=https://azlog.org/posts/><link crossorigin=anonymous href=/assets/css/stylesheet.1d4346839295915e219dee6c6b7d8512a8a4a8e692c435a57effb2398a6e371e.css integrity="sha256-HUNGg5KVkV4hne5sa32FEqikqOaSxDWlfv+yOYpuNx4=" rel="preload stylesheet" as=style><link rel=icon href=https://azlog.org/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://azlog.org/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://azlog.org/favicon-32x32.png><link rel=apple-touch-icon href=https://azlog.org/apple-touch-icon.png><link rel=mask-icon href=https://azlog.org/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate type=application/rss+xml href=https://azlog.org/posts/index.xml title=rss><link rel=alternate hreflang=en href=https://azlog.org/posts/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><meta property="og:url" content="https://azlog.org/posts/"><meta property="og:site_name" content="Az日志"><meta property="og:title" content="Posts"><meta property="og:description" content="个人技术，感悟，关注AI,hugo --minifyHugo + GitHub 博客"><meta property="og:locale" content="zh_CN"><meta property="og:type" content="website"><meta name=twitter:card content="summary"><meta name=twitter:title content="Posts"><meta name=twitter:description content="个人技术，感悟，关注AI,hugo --minifyHugo + GitHub 博客"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://azlog.org/posts/"}]}</script></head><body class=list id=top><header class=header><nav class=header-nav><div class=logo><a href=https://azlog.org/ accesskey=h title="Az日志 (Alt + H)">Az日志</a><div class=logo-switches><button id=theme-toggle class=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
+<svg class="moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+<svg class="sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu class=menu><li><a href=https://azlog.org/ title="🏠 首页"><span>🏠 首页</span></a></li><li><a href=https://azlog.org/categories/ title="📂 分类"><span>📂 分类</span></a></li><li><a href=https://azlog.org/tags/ title="🏷 标签"><span>🏷 标签</span></a></li><li><a href=https://azlog.org/archives/ title="📜 归档"><span>📜 归档</span></a></li><li><a href=https://azlog.org/about/ title="👤 关于"><span>👤 关于</span></a></li></ul></nav></header><main class=main><header class=page-header><nav class=breadcrumbs role=navigation aria-label=Breadcrumb><a href=/>Home</a>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"/></svg></nav><h1>Posts</h1></header><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>Codex、opencode使用对比</h2></header><div class=entry-content><p>正文开始 实际使用角度对比。
+维度 Codex OpenCode 定位 OpenAI 官方 AI 编程代理 社区驱动开源 AI 编程代理 开源 是 是 模型支持 OpenAI 模型为主 支持 OpenAI、Claude、Gemini、本地模型等 多模型切换 较弱 很强 安装 简单 简单 Agent 能力 很强 很强 CI/CD 原生支持 一般 Code Review 内置 需要自行配置 Sandbox 安全隔离 强 有但相对灵活 企业支持 有 无官方企业支持 学习成本 低 中等 可玩性 中 高 1. Codex 的优势 官方模型调优 Codex 本质上是 OpenAI 自己的 Agent 框架。
+它的优势不只是模型，而是：
+Prompt 设计 Tool 调用 文件搜索 修改策略 审批流程 都是针对 GPT-Codex 优化的。
+...</p></div><footer class=entry-footer><span title='2026-06-03 08:37:42 +0000 UTC'>June 3, 2026</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>247 words</span>&nbsp;·&nbsp;<span>az</span></footer><a class=entry-link aria-label="post link to Codex、opencode使用对比" href=https://azlog.org/posts/codexopencode%E4%BD%BF%E7%94%A8%E5%AF%B9%E6%AF%94/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>初一分级阅读 + App 组合清单</h2></header><div class=entry-content><p>阶段 1：入门阶段（巩固初中核心词汇，1500–2000词） 序号 分级读物 App/资源 特点 1 Oxford Bookworms Level 2–3 Oxford Owl / Kindle 短篇故事、童话、冒险，词汇量适中，配音频 2 Penguin Readers Level 2–3 Penguin Readers App / Kindle 冒险、侦探、科幻故事，简单语言，带词汇练习 3 Cambridge English Readers – Starter / Level 1–2 Cambridge Reader App 青少年生活题材，带练习和音频，词汇控制良好 4 Magic Tree House（魔法树屋系列） Audible / Epic! 历史+冒险+科普元素，语言易懂，趣味性强 建议使用方法：
+每天 15–20 分钟阅读 遇到生词直接点读或标记，App 会自动生成复习列表 读完一章后用英文复述一两句话 阶段 2：巩固阶段（词汇量扩展到2000–3000词） 序号 分级读物 / 原版书 App/资源 特点 1 Diary of a Wimpy Kid（小屁孩日记） Kindle / Epic! / Audible 校园幽默故事，句子简单，适合培养阅读习惯 2 Magic Tree House（Level 3–4） Audible / Epic! 更长故事，涉及历史、冒险，词汇稍难 3 Oxford Bookworms Level 3–4 Oxford Owl / Kindle 增加情节复杂度，拓展词汇量 4 Penguin Readers Level 3–4 Penguin Readers App 文本长度增加，带练习和音频 使用方法：
+...</p></div><footer class=entry-footer><span title='2026-06-03 15:00:00 +0800 +0800'>June 3, 2026</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>216 words</span>&nbsp;·&nbsp;<span>azheng</span></footer><a class=entry-link aria-label="post link to 初一分级阅读 + App 组合清单" href=https://azlog.org/posts/%E5%88%9D%E4%B8%80%E5%88%86%E7%BA%A7%E9%98%85%E8%AF%BB-+-app-%E7%BB%84%E5%90%88%E6%B8%85%E5%8D%95/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>CloudFlare+ImgBed图床保姆级的搭建教程</h2></header><div class=entry-content><p>CloudFlare-ImgBed是非常流行的免费开源图床方案。不仅完全免费，而且无需购买服务器，非常适合个人博客、笔记或日常分享使用。
+下面一份保姆级的搭建教程，只需几分钟就能拥有属于自己的永久免费图床。
+🛠️ 准备工作 在开始之前，请提前准备好以下 3 个免费账号：
+Cloudflare 账号：用于托管图床程序和存储图片。 GitHub 账号：用于获取开源的图床项目代码。 一个域名（可选）：如果你希望图片链接更好看、更稳定，建议准备一个域名并托管到 Cloudflare；如果没有，也可以直接使用 Cloudflare 赠送的免费二级域名（.pages.dev）。 🚀 第一步：Fork 开源项目到 GitHub 打开 CloudFlare-ImgBed 的 GitHub 仓库页面：https://github.com/MarSeventh/CloudFlare-ImgBed。 点击右上角的 Fork 按钮，将这个项目复刻（复制）一份到你自己的 GitHub 仓库中。 在弹出的页面中保持默认设置，直接点击 Create fork 即可。 ☁️ 第二步：在 Cloudflare 中创建 Pages 项目 登录 Cloudflare 后台，在左侧菜单找到 计算和 AI (Workers & Pages)。 点击 创建应用程序 (Create application)，然后选择 Pages 标签页，点击 连接到 Git (Connect to Git)。 授权并选择你刚刚 Fork 的 CloudFlare-ImgBed 仓库，点击 开始设置 (Begin setup)。 在项目配置页面进行如下设置： 项目名称：可以随意填写（例如 my-imgbed）。 框架预设 (Framework preset)：选择 无 (None)。 构建命令 (Build command)：填入 npm install。 构建输出目录：/frontend-dist（很多教程这个地方让留空是不对的，输出目录不对，无法通过域名正常访问图床的）。 点击 保存并部署 (Save and Deploy)。等待几分钟后，Cloudflare 会自动完成项目的初次部署。 💾 第三步：创建并绑定 KV 数据库与 R2 存储 为了让图床能正常保存设置和存储图片，我们需要配置两个核心服务：
+...</p></div><footer class=entry-footer><span title='2026-06-01 04:10:17 +0000 UTC'>June 1, 2026</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>214 words</span>&nbsp;·&nbsp;<span>azheng</span></footer><a class=entry-link aria-label="post link to CloudFlare+ImgBed图床保姆级的搭建教程" href=https://azlog.org/posts/cloudflare+imgbed%E5%9B%BE%E5%BA%8A%E4%BF%9D%E5%A7%86%E7%BA%A7%E7%9A%84%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>从方案生成看豆包和mimo的区别</h2></header><div class=entry-content><p>豆包方案 mimo方案
+一、整体差异：Mimo偏「工程化完整方案」，豆包偏「业务化落地方案」 📘 Mimo版：全栈、超详细、可直接开发的技术方案 篇幅：长（2920字）、结构完整、细节爆炸 视角：技术+产品双视角，从架构到代码、接口、部署全覆盖 目标：直接照着开发MVP，信息无遗漏 风格：专业、严谨、工程化、标准化 📗 豆包版：聚焦痛点、精简实用、家长视角的业务方案 篇幅：短（1560字）、结构简洁、重点突出 视角：业务+家长视角，围绕孩子初一学情、家长管控需求 目标：快速理解、快速落地核心功能，不纠结技术细节 风格：务实、通俗、场景化、结果导向 二、内容维度对比（优劣一目了然） 1. 结构完整性：Mimo完胜，豆包够用 ✅ Mimo：10大章节，从项目定位→技术架构→数据库→功能→AI→API→开发计划→部署→成本→扩展，完整全链路 ⚠️ 豆包：9大章节，缺技术栈、数据库设计、API接口、部署细节、成本估算，只讲核心业务 2. 技术深度：Mimo专业级，豆包轻量化 ✅ Mimo： 技术栈：Flutter、FastAPI、MySQL+Redis、OSS、AI模型选型对比 数据库：完整SQL建表语句+ER图（7张核心表） AI集成：完整Python服务代码、Prompt模板、调用流程、模型对比 开发：6-8周分阶段计划、每日开发建议 部署：Docker Compose、Nginx配置、服务器硬件要求 ⚠️ 豆包： 技术：只讲架构分层，无具体技术选型、无代码、无部署细节 AI：只讲能力清单，无模型选择、无Prompt、无调用逻辑 3. 功能细节：Mimo可视化强，豆包场景化强 ✅ Mimo： 每科功能配界面示意图（ASCII）+交互流程 通用功能：艾宾浩斯复习（间隔表）、首页仪表盘、全局搜索 后台：完整功能清单+界面布局 ⚠️ 豆包： 功能描述偏文字场景，无界面示例 聚焦初一学情痛点（语文基础、英语单词、错题整理） 强调家长管控、私有化、数据安全 4. 受众适配：Mimo偏开发者，豆包偏家长/产品 ✅ Mimo：给程序员看的方案，可直接对接开发 ✅ 豆包：给家长/非技术人员看的方案，易懂、聚焦需求 三、优劣总结 🏆 Mimo版优势（技术党首选） 信息完整度100%：可直接作为开发文档，无需额外补充 技术细节拉满：代码、SQL、配置、部署全有，降低开发门槛 标准化工程化：架构清晰、模块分明、扩展性强 AI方案成熟：模型对比、Prompt设计、服务代码完整 ⚠️ Mimo版劣势 篇幅过长：2920字，非技术人员阅读压力大 偏技术实现：业务痛点、家长视角弱 初一针对性弱：全科通用，未聚焦初一专属考点 🏆 豆包版优势（家长/业务优先） 极度精简：1560字，重点突出、易读易懂 痛点直击：精准匹配初一学生短板（语文基础、英语单词、错题整理） 家长视角强：私有化部署、数据安全、学习监管、报告导出 落地导向：三期迭代、快速上线核心功能 ⚠️ 豆包版劣势 技术细节缺失：无架构、无数据库、无接口、无部署，无法直接开发 功能细节粗糙：无界面设计、无交互流程、无AI具体实现 扩展性弱：未提及后续功能扩展、性能优化 四、结论：用途不同，选择不同 如果你是开发者/需要技术落地：选Mimo版——完整、专业、可直接开发 如果你是家长/只需要业务方案：选豆包版——精简、易懂、聚焦初一痛点</p></div><footer class=entry-footer><span title='2026-05-29 14:00:00 +0800 +0800'>May 29, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>80 words</span>&nbsp;·&nbsp;<span>azheng</span></footer><a class=entry-link aria-label="post link to 从方案生成看豆包和mimo的区别" href=https://azlog.org/posts/%E4%BB%8E%E6%96%B9%E6%A1%88%E7%94%9F%E6%88%90%E7%9C%8B%E8%B1%86%E5%8C%85%E5%92%8Cmimo%E7%9A%84%E5%8C%BA%E5%88%AB/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>「错题宝」—— 初中生智能错题管理App 详细方案（mimo版）</h2></header><div class=entry-content><p>一、项目总览 1.1 项目定位 一款面向初中生的错题管理 + AI 辅助学习工具，覆盖语文、英语、数学及小四门（历史、地理、生物、道德与法治），核心目标：记录 → 理解 → 巩固 → 提分。
+1.2 核心用户画像 角色 使用场景 学生（儿子） 日常记录错题、查看复习、与AI互动 家长（你） 后台管理、查看学习数据、补充内容 1.3 整体功能矩阵 ┌─────────────────────────────────────────────────────┐
+│ 错题宝 App │
+├──────────┬──────────┬──────────┬─────────────────────┤
+│ 语文 │ 英语 │ 数学 │ 小四门(4科) │
+├──────────┼──────────┼──────────┼─────────────────────┤
+│ 字词读音 │ 错词本 │ 错题录入 │ 拍照录入 │
+│ 混淆字词 │ 易错短语 │ 解法记录 │ 答案整理 │
+│ 文学常识 │ 句型归纳 │ AI解题 │ AI整理答案 │
+│ 古文基础 │ 错题集 │ 拍照识别 │ 拍照识别 │
+│ 拍照输入 │ 语音输入 │ │ │
+│ AI矫正 │ AI扩展 │ │ │
+├──────────┴──────────┴──────────┴─────────────────────┤
+│ 通用能力：拍照OCR / 语音STT / AI对话 │
+│ 学习管理：艾宾浩斯复习 / 统计分析 / 搜索 │
+│ 后台管理：内容管理 / 用户管理 / 数据统计 │
+└─────────────────────────────────────────────────────┘ 二、技术架构方案 2.1 推荐技术栈 考虑到你是个人开发者、买了云服务器、孩子用手机，推荐最务实的方案：
+...</p></div><footer class=entry-footer><span title='2026-05-29 12:00:00 +0800 +0800'>May 29, 2026</span>&nbsp;·&nbsp;<span>14 min</span>&nbsp;·&nbsp;<span>2917 words</span>&nbsp;·&nbsp;<span>azheng</span></footer><a class=entry-link aria-label="post link to 「错题宝」—— 初中生智能错题管理App 详细方案（mimo版）" href=https://azlog.org/posts/%E9%94%99%E9%A2%98%E5%AE%9D-%E5%88%9D%E4%B8%AD%E7%94%9F%E6%99%BA%E8%83%BD%E9%94%99%E9%A2%98%E7%AE%A1%E7%90%86app-%E8%AF%A6%E7%BB%86%E6%96%B9%E6%A1%88mimo%E7%89%88/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>初一全科易错点及错题整理AI学习APP详细开发方案（豆包版）</h2></header><div class=entry-content><p>一、项目整体概述 1.1 项目背景与核心痛点 用户孩子为初一学生，整体成绩良好，但存在学科基础短板：语文基础字词、文学常识掌握不扎实；英语单词、短语、句型高频出错；数、政史地生（小四门）错题无系统化整理、复盘效率低。同时家长已购置云服务器，可自主部署项目，无需依赖第三方平台，数据安全可控。
+当前传统错题本、笔记工具痛点：手动录入繁琐、无法智能纠错、无知识点拓展、无法针对性沉淀个人易错题库、缺乏适配初一同步教材的专属学习辅助能力。
+1.2 项目定位 一款初中生专属AI全科易错点&amp;amp;错题管理APP，聚焦初一同步学习，主打拍照录入、语音录入、AI智能纠错/解析/整理，分学科沉淀个人易错知识库，搭配家长后台管理功能，轻量化、无娱乐干扰，纯学习工具属性，适配初中生日常查漏补缺。
+1.3 部署基础 依托用户自有云服务器部署，搭载移动端APP（手机端）+ Web后台管理系统，数据本地云端存储，独立管控，安全稳定。
+二、整体架构设计（适配私有云服务器） 2.1 系统整体架构 采用「前端APP + 后端服务 + AI能力接口 + 云服务器数据库 + 管理后台」五层架构，轻量化部署，适配个人云服务器配置，不占用过高资源。
+移动端前端：安卓APP（适配安卓手机、安卓平板），面向学生使用，承载所有录入、查询、学习、复盘功能
+后端服务：部署于用户自有云服务器，负责数据接收、存储、逻辑处理、接口调度
+AI能力层：对接通用AI接口，实现OCR拍照识别、语音识别、错题解析、知识点纠错、内容拓展
+数据库层：云服务器自建数据库，存储学生易错知识点、错题、学习记录、用户数据
+后台管理端：Web网页端，家长可登录，查看学习数据、管理题库、查看薄弱点
+2.2 核心核心优势 私有化部署：自有云服务器，孩子学习数据不泄露，完全自主可控
+学科精准适配：完全贴合初一语数英、小四门考点，摒弃无用功能
+多方式录入：拍照、语音、手动三种录入方式，解决录入繁琐问题
+AI智能赋能：纠错、解析、拓展、整理一体化，精准弥补基础短板
+专属知识库：沉淀个人易错题库，针对性复盘，精准提分
+三、分学科详细功能设计（核心业务功能） 严格按照家长需求，分语文、英语、数学、小四门四大模块定制功能，完全匹配初一学习短板。
+3.1 语文模块（针对性解决基础薄弱问题） 核心定位：专攻易错字词读音、易混字词短语、文学常识、古文基础四大薄弱点
+3.1.1 录入方式 拍照录入：拍摄试卷、课本、笔记中的易错字词、古文、文学知识点，AI自动识别文字，去除杂质、筛选有效知识点
+手动录入：自主输入记错的字音、字形、短语、文学常识、古文实词虚词
+3.1.2 AI核心能力 AI智能矫正：自动纠正错误读音、错字、别字、误用短语，标注错误原因（如：形近字混淆、多音字误读、搭配不当）
+AI知识点拓展：针对录入知识点，自动拓展同类易错点、近义词、反义词、固定搭配、教材同步考点
+古文专项解析：针对录入的古文字词、句式、翻译，AI补充注释、古今异义、词类活用、重点翻译、课文出处
+文学常识整理：零散录入的文学常识，AI自动分类整理（作者、朝代、作品、文体、主旨）
+3.1.3 数据沉淀功能 自动分类归档：字音易错库、字形易错库、短语误用库、文学常识库、古文基础库
+支持错题/易错点复盘、随机抽查、错题重做、重点标记
+3.2 英语模块（解决单词、句型高频出错问题） 核心定位：专攻易错单词、短语、易错句型、英语错题，支持多维度智能录入与拓展
+3.2.1 录入方式（三大录入模式） 拍照录入：拍摄英语错题、单词默写错题、短语造句错题，AI精准识别英文内容
+语音识别录入：口语朗读易错单词、句型，系统语音转文字，自动记录录入内容，适配口语纠错、记忆场景
+手动录入：自主记录拼写错误、搭配错误、句型误用知识点
+3.2.2 AI核心能力 AI纠错矫正：纠正单词拼写错误、短语搭配错误、语法句型错误，标注错误语法点
+AI智能拓展：自动拓展单词词性、复数、过去式、固定搭配、同义替换、初一必考句型、同类易错语法
+错题解析：针对英语单选题、完形、填空等错题，AI给出详细解析、考点、易错提醒
+3.2.3 数据沉淀功能 自动归档：易错单词库、易错短语库、易错句型库、英语错题集，支持单词听写、句型默写、错题复盘
+...</p></div><footer class=entry-footer><span title='2026-05-29 12:00:00 +0800 +0800'>May 29, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>155 words</span>&nbsp;·&nbsp;<span>azheng</span></footer><a class=entry-link aria-label="post link to 初一全科易错点及错题整理AI学习APP详细开发方案（豆包版）" href=https://azlog.org/posts/%E5%88%9D%E4%B8%80%E5%85%A8%E7%A7%91%E6%98%93%E9%94%99%E7%82%B9%E5%8F%8A%E9%94%99%E9%A2%98%E6%95%B4%E7%90%86ai%E5%AD%A6%E4%B9%A0app%E8%AF%A6%E7%BB%86%E5%BC%80%E5%8F%91%E6%96%B9%E6%A1%88%E8%B1%86%E5%8C%85%E7%89%88/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>VsCode一键发文</h2></header><div class=entry-content><p>VS Code 配合「GitHub 插件 + Markdown 插件 + 一点配置」完整流程
+一、先把插件配齐（你已有，确认一下） 打开扩展面板 Ctrl+Shift+X，确保安装并启用：
+✅ 必须 GitHub（官方）
+用来在左侧直接看到 Git 变更、提交、同步（push/pull）。 Markdown All in One
+快捷键加粗/斜体/标题、自动列表、TOC、预览增强。 Markdown Preview Github Styling（可选但强烈推荐）
+预览样式和 GitHub 一致，所见即所得。 ✅ 加分（Hugo 更爽） Hugo Snippets：一键插入 Hugo 文章头模板（front matter）。 PowerShell（微软）：在 VS Code 里直接跑 Hugo 命令、脚本。 二、VS Code 内「新建 Hugo 文章」一键模板 不用每次手写 front matter，用**用户代码片段（Snippet）**一键生成：
+VS Code → Ctrl+Shift+P → 输入 Preferences: Configure User Snippets 选 markdown.json（全局）或当前工作区 粘贴下面内容并保存： { "Hugo Post": { "prefix": "hugopost", "body": [ "---", "title: \"${1:文章标题}\"", "date: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE"T$CURRENT_HOUR:$CURRENT_MIN:00+08:00"", "draft: false", "description: \"${2:简介}\"", "tags: [\"${3:标签1}\", \"${4:标签2}\"]", "categories: [\"${5:分类}\"]", "---", "", "## 一、${6:开头}", "", "${7:正文内容...}" ], "description": "Hugo 文章模板" } } 使用：
+...</p></div><footer class=entry-footer><span title='2026-05-28 09:31:05 +0000 UTC'>May 28, 2026</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>279 words</span>&nbsp;·&nbsp;<span>azheng</span></footer><a class=entry-link aria-label="post link to VsCode一键发文" href=https://azlog.org/posts/vscode%E4%B8%80%E9%94%AE%E5%8F%91%E6%96%87/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>Hugo发文全流程</h2></header><div class=entry-content><p>Hugo 发文 → 本地预览 → 提交到 GitHub 的完整流程。
+一、基础配置（仅需做一次） 1. 本地 Hugo 环境确认 在 D:\hugo\blog 目录下打开 PowerShell，执行：
+# 确认 Hugo 版本 hugo version # 确认 Git 状态 git status 看到版本号说明 Hugo 正常 看到 On branch main 说明 Git 已初始化并关联远程仓库 二、完整发文流程（日常重复用） 步骤 1：新建文章 # 新建文章（自动生成 .md 文件，默认 draft=true） hugo new content/posts/2026-05-28-我的新文章.md 文件路径：content/posts/2026-05-28-我的新文章.md
+步骤 2：编辑文章内容 打开 .md 文件，做两件事：
+写正文（Markdown 格式） 修改文章配置（关键） --- title: "我的新文章" # 文章标题 date: 2026-05-28T10:00:00+08:00 # 发布日期（建议用当天） draft: false # ✅ 必须改成 false，否则不会被构建 --- 这里写正文内容... 步骤 3：本地预览（确保效果正确） # 启动本地服务器，预览文章 hugo server -D 打开浏览器访问 http://localhost:1313 检查文章排版、样式、链接是否正常 预览无误后，按 Ctrl + C 关闭服务器 步骤 4：构建静态文件（生产环境） # 构建压缩后的静态文件到 public/ 目录 hugo --minify 此步骤会自动忽略 draft=true 的文章，只构建正式内容 生成的 public/ 目录就是可以直接部署的静态网站 步骤 5：提交并推送到 GitHub # 1. 添加所有修改到暂存区 git add . # 2. 提交修改（写清楚提交说明） git commit -m "post: 发布《我的新文章》" # 3. 推送到 GitHub git push 如果你配置了 Cloudflare Pages，推送后会自动触发构建，几分钟后网站就会更新 三、高频场景补充说明 场景1：临时预览草稿文章 如果你不想把文章改成 draft=false，只想本地预览：
+...</p></div><footer class=entry-footer><span title='2026-05-28 08:28:05 +0000 UTC'>May 28, 2026</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>244 words</span>&nbsp;·&nbsp;<span>azheng</span></footer><a class=entry-link aria-label="post link to Hugo发文全流程" href=https://azlog.org/posts/hugo%E5%8F%91%E6%96%87%E5%85%A8%E6%B5%81%E7%A8%8B/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>Git常见命令</h2></header><div class=entry-content><p>一、初始化 & 克隆（第一次用） # 1. 本地新建 git 仓库 git init # 2. 克隆远程仓库到本地（最常用） git clone https://github.com/xxx/xxx.git # 3. 查看远程仓库地址 git remote -v # 4. 添加远程仓库（本地关联远程） git remote add origin 仓库地址 二、日常提交（改代码→上传本地） # 1. 查看状态（哪些文件改了、新增了） git status # 2. 把所有修改加入暂存区（最常用） git add . # 3. 提交到本地仓库，带说明（必须写清楚） git commit -m "feat: 新增文章/修复bug" # 4. 快捷：已跟踪文件直接提交（跳过 add） git commit -am "fix: 修复首页样式" 三、同步远程（本地 ↔ GitHub） # 1. 拉取远程最新代码（避免冲突，必做） git pull origin main # 2. 推送本地到远程（第一次要 -u） git push -u origin main # 之后直接 git push # 3. 强制推送（覆盖远程，谨慎！） git push --force 四、分支管理（多人协作/多版本） # 查看本地分支 git branch # 查看本地+远程所有分支 git branch -a # 创建分支 git branch dev # 切换分支（旧版） git checkout dev # 创建并切换（推荐） git checkout -b dev # 新版更直观 git switch -c dev # 合并 dev 到 main git checkout main git merge dev # 删除本地分支 git branch -d dev # 删除远程分支 git push origin --delete dev 五、查看日志 & 对比 # 完整提交日志 git log # 简洁版（一行一个，推荐） git log --oneline # 最近 n 条 git log --oneline -5 # 看具体文件改动 git diff 文件名 # 看暂存区和仓库差异 git diff --staged 六、撤销 & 回退（改错了怎么办） # 1. 撤销工作区修改（未 add） git restore 文件名 # 2. 撤销暂存（add 了但没 commit） git restore --staged 文件名 # 3. 撤销最后一次提交（保留修改） git reset --soft HEAD~1 # 4. 彻底回退（危险！丢代码） git reset --hard HEAD~1 # 5. 安全撤销某次提交（生成新提交，不改历史） git revert 提交id 七、标签（版本发布用） # 打标签 git tag v1.0 # 推送标签到远程 git push origin v1.0 # 删除本地标签 git tag -d v1.0 # 删除远程标签 git push origin --delete v1.0 八、日常工作流（你用 Hugo/GitHub Pages） # 写新文章后 hugo --minify git add . git commit -m "新增文章：xxx" git pull origin main # 先拉，避免冲突 git push</p></div><footer class=entry-footer><span title='2026-05-28 10:40:36 +0800 +0800'>May 28, 2026</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>260 words</span>&nbsp;·&nbsp;<span>azheng</span></footer><a class=entry-link aria-label="post link to Git常见命令" href=https://azlog.org/posts/git%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>Hugo常见命令</h2></header><div class=entry-content><p>一份精简、实用的 Hugo 命令速查。
+一、项目创建 & 初始化 # 1. 新建站点（在当前目录下创建 myblog 文件夹） hugo new site myblog # 2. 进入项目目录 cd myblog # 3. 初始化主题模块（新版 Hugo 推荐） hugo mod init github.com/你的用户名/你的仓库名 二、写文章（最常用） # 新建一篇文章（自动生成 frontmatter，draft=true 草稿） hugo new posts/第一篇文章.md # 新建页面（如 about、contact） hugo new about.md 三、本地预览（开发） # 启动本地服务器，默认 http://localhost:1313，热更新 hugo server # 🔥 常用：预览包含草稿（draft=true）的文章 hugo server -D # 自定义端口（如 8080） hugo server --port 8080 # 绑定到所有网卡（手机/局域网访问） hugo server --bind 0.0.0.0 四、构建发布（生产） # 构建静态文件到 public/（默认，不含草稿） hugo # 🔥 生产环境压缩（HTML/CSS/JS 最小化，推荐） hugo --minify # 构建并包含草稿（临时用） hugo -D # 指定输出目录（默认 public） hugo -d ./dist 五、日常工作流（你用 GitHub Pages） # 1. 写新文章 hugo new posts/xxx.md # 2. 本地预览 hugo server -D # 3. 确认后，把草稿改为正式：把 md 文件里 draft = false # 4. 构建生产文件 hugo --minify # 5. 提交到 Git 并推送 git add . git commit -m "发表新文章" git push 六、模块 & 主题管理（常用） # 拉取主题/模块更新 hugo mod get -u # 清理模块缓存（解决依赖报错） hugo mod clean --all # 整理 go.mod（删除无用依赖） hugo mod tidy 七、排错 & 信息 # 查看版本 hugo version # 查看帮助 hugo help hugo server --help # 列出所有草稿 hugo list drafts # 清空 public 再构建（避免旧文件残留） rm -rf public && hugo --minify 八、常用参数速查表 -D / --buildDrafts：包含草稿 --minify：压缩代码（生产必加） --port 端口：自定义端口 -v：详细日志（排错用）</p></div><footer class=entry-footer><span title='2026-05-28 10:36:40 +0800 +0800'>May 28, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>189 words</span>&nbsp;·&nbsp;<span>azheng</span></footer><a class=entry-link aria-label="post link to Hugo常见命令" href=https://azlog.org/posts/hugo%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/></a></article><footer class=page-footer><nav class=pagination><a class=next href=https://azlog.org/posts/page/2/>Next&nbsp;&nbsp;»</a></nav></footer></main><footer class=footer><span>&copy; 2026 <a href=https://azlog.org/>Az日志</a></span> ·
+<span>Powered by
+<a href="https://gohugo.io/?utm_source=papermod" rel=noopener target=_blank>Hugo</a> &
+<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top id=top-link class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey=g><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up"><polyline points="17 11 12 6 7 11"/><polyline points="17 18 12 13 7 18"/></svg>
+</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var toplink=document.getElementById("top-link");window.onscroll=function(){const e=window.innerHeight;document.body.scrollTop>e||document.documentElement.scrollTop>e?toplink.classList.remove("hidden"):toplink.classList.add("hidden")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script></body></html>

@@ -1,0 +1,118 @@
+<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Codex、opencode使用对比 | Az日志</title><meta name=keywords content="技术,opencode,codex"><meta name=description content="正文开始
+实际使用角度对比。
+
+  
+      
+          维度
+          Codex
+          OpenCode
+      
+  
+  
+      
+          定位
+          OpenAI 官方 AI 编程代理
+          社区驱动开源 AI 编程代理
+      
+      
+          开源
+          是
+          是
+      
+      
+          模型支持
+          OpenAI 模型为主
+          支持 OpenAI、Claude、Gemini、本地模型等
+      
+      
+          多模型切换
+          较弱
+          很强
+      
+      
+          安装
+          简单
+          简单
+      
+      
+          Agent 能力
+          很强
+          很强
+      
+      
+          CI/CD
+          原生支持
+          一般
+      
+      
+          Code Review
+          内置
+          需要自行配置
+      
+      
+          Sandbox 安全隔离
+          强
+          有但相对灵活
+      
+      
+          企业支持
+          有
+          无官方企业支持
+      
+      
+          学习成本
+          低
+          中等
+      
+      
+          可玩性
+          中
+          高
+      
+  
+
+
+1. Codex 的优势
+官方模型调优
+Codex 本质上是 OpenAI 自己的 Agent 框架。
+它的优势不只是模型，而是：
+
+Prompt 设计
+Tool 调用
+文件搜索
+修改策略
+审批流程
+
+都是针对 GPT-Codex 优化的。"><meta name=author content="az"><link rel=canonical href=https://azlog.org/posts/codexopencode%E4%BD%BF%E7%94%A8%E5%AF%B9%E6%AF%94/><link crossorigin=anonymous href=/assets/css/stylesheet.1d4346839295915e219dee6c6b7d8512a8a4a8e692c435a57effb2398a6e371e.css integrity="sha256-HUNGg5KVkV4hne5sa32FEqikqOaSxDWlfv+yOYpuNx4=" rel="preload stylesheet" as=style><link rel=icon href=https://azlog.org/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://azlog.org/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://azlog.org/favicon-32x32.png><link rel=apple-touch-icon href=https://azlog.org/apple-touch-icon.png><link rel=mask-icon href=https://azlog.org/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://azlog.org/posts/codexopencode%E4%BD%BF%E7%94%A8%E5%AF%B9%E6%AF%94/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><meta property="og:url" content="https://azlog.org/posts/codexopencode%E4%BD%BF%E7%94%A8%E5%AF%B9%E6%AF%94/"><meta property="og:site_name" content="Az日志"><meta property="og:title" content="Codex、opencode使用对比"><meta property="og:description" content="正文开始 实际使用角度对比。
+维度 Codex OpenCode 定位 OpenAI 官方 AI 编程代理 社区驱动开源 AI 编程代理 开源 是 是 模型支持 OpenAI 模型为主 支持 OpenAI、Claude、Gemini、本地模型等 多模型切换 较弱 很强 安装 简单 简单 Agent 能力 很强 很强 CI/CD 原生支持 一般 Code Review 内置 需要自行配置 Sandbox 安全隔离 强 有但相对灵活 企业支持 有 无官方企业支持 学习成本 低 中等 可玩性 中 高 1. Codex 的优势 官方模型调优 Codex 本质上是 OpenAI 自己的 Agent 框架。
+它的优势不只是模型，而是：
+Prompt 设计 Tool 调用 文件搜索 修改策略 审批流程 都是针对 GPT-Codex 优化的。"><meta property="og:locale" content="zh_CN"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2026-06-03T08:37:42+00:00"><meta property="article:modified_time" content="2026-06-03T08:37:42+00:00"><meta property="article:tag" content="技术"><meta property="article:tag" content="Opencode"><meta property="article:tag" content="Codex"><meta name=twitter:card content="summary"><meta name=twitter:title content="Codex、opencode使用对比"><meta name=twitter:description content="正文开始 实际使用角度对比。
+维度 Codex OpenCode 定位 OpenAI 官方 AI 编程代理 社区驱动开源 AI 编程代理 开源 是 是 模型支持 OpenAI 模型为主 支持 OpenAI、Claude、Gemini、本地模型等 多模型切换 较弱 很强 安装 简单 简单 Agent 能力 很强 很强 CI/CD 原生支持 一般 Code Review 内置 需要自行配置 Sandbox 安全隔离 强 有但相对灵活 企业支持 有 无官方企业支持 学习成本 低 中等 可玩性 中 高 1. Codex 的优势 官方模型调优 Codex 本质上是 OpenAI 自己的 Agent 框架。
+它的优势不只是模型，而是：
+Prompt 设计 Tool 调用 文件搜索 修改策略 审批流程 都是针对 GPT-Codex 优化的。"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://azlog.org/posts/"},{"@type":"ListItem","position":2,"name":"Codex、opencode使用对比","item":"https://azlog.org/posts/codexopencode%E4%BD%BF%E7%94%A8%E5%AF%B9%E6%AF%94/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Codex、opencode使用对比","name":"Codex、opencode使用对比","description":"正文开始 实际使用角度对比。\n维度 Codex OpenCode 定位 OpenAI 官方 AI 编程代理 社区驱动开源 AI 编程代理 开源 是 是 模型支持 OpenAI 模型为主 支持 OpenAI、Claude、Gemini、本地模型等 多模型切换 较弱 很强 安装 简单 简单 Agent 能力 很强 很强 CI/CD 原生支持 一般 Code Review 内置 需要自行配置 Sandbox 安全隔离 强 有但相对灵活 企业支持 有 无官方企业支持 学习成本 低 中等 可玩性 中 高 1. Codex 的优势 官方模型调优 Codex 本质上是 OpenAI 自己的 Agent 框架。\n它的优势不只是模型，而是：\nPrompt 设计 Tool 调用 文件搜索 修改策略 审批流程 都是针对 GPT-Codex 优化的。\n","keywords":["技术","opencode","codex"],"articleBody":"正文开始 实际使用角度对比。\n维度 Codex OpenCode 定位 OpenAI 官方 AI 编程代理 社区驱动开源 AI 编程代理 开源 是 是 模型支持 OpenAI 模型为主 支持 OpenAI、Claude、Gemini、本地模型等 多模型切换 较弱 很强 安装 简单 简单 Agent 能力 很强 很强 CI/CD 原生支持 一般 Code Review 内置 需要自行配置 Sandbox 安全隔离 强 有但相对灵活 企业支持 有 无官方企业支持 学习成本 低 中等 可玩性 中 高 1. Codex 的优势 官方模型调优 Codex 本质上是 OpenAI 自己的 Agent 框架。\n它的优势不只是模型，而是：\nPrompt 设计 Tool 调用 文件搜索 修改策略 审批流程 都是针对 GPT-Codex 优化的。\n例如：\ncodex \"修复这个项目所有测试失败\" Codex 会：\n分析项目 找到测试 运行测试 修改代码 再次验证 整个流程比较稳定。\n长任务更稳定 很多开发者反馈：\n同样用 GPT 模型，\n短任务差异不大 长任务（几十个文件）Codex 更不容易跑偏 原因是 Agent 框架做了额外优化。\n安全机制更完善 Codex 提供：\n沙箱执行 权限审批 Git 集成 Code Review 对于生产环境项目比较友好。\n2. OpenCode 的优势 模型自由 这是 OpenCode 最大优势。\n你可以切换：\nOpenAI GPT Anthropic Claude Google Gemini 本地 Qwen 本地 DeepSeek Ollama 模型 而 Codex 基本绑定 OpenAI 生态。 成本更低 举例：\nOpenCode + DeepSeek 几乎可以做到极低成本。\nOpenCode + 本地Qwen 甚至接近免费。\n而 Codex 通常需要：\nChatGPT Plus Pro API 等方案支持。\n定制能力强 OpenCode 可以：\n自定义 Agent 自定义 Prompt 自定义 Workflow 自定义 MCP 很多高级用户会把它改造成自己的开发平台。\n3. 实际编码能力谁更强？ 很多人以为：\n工具 = 能力 其实不是。\n大部分情况下：\n模型 \u003e Agent框架 例如：\nGPT-5.5 Claude Opus Gemini Ultra 模型本身决定上限。\n但 Agent 框架决定：\n是否容易跑偏 是否会漏文件 是否自动验证 是否自动修Bug 所以：\n小项目 差距不大。\n例如：\n写一个 Flask API 写一个 React 页面 修一个函数 两者基本一样。\n大项目 Codex 往往更稳。\n例如：\n100个文件项目 重构模块 修复整个测试集 Codex 的执行链路通常更成熟。\n4. 适合什么人？ 选 Codex 如果你：\n使用 ChatGPT Plus / Pro 开发真实业务项目 希望少折腾 希望稳定 推荐 Codex。\n选 OpenCode 如果你：\n喜欢尝试各种模型 用 Claude 较多 用 DeepSeek / Qwen 想本地运行 关注成本 推荐 OpenCode。\n2026 年我的推荐 对于大多数独立开发者：\nOpenCode + Claude / GPT 是目前性价比最高的组合。\n对于企业项目或长期维护项目：\nCodex 整体工程化体验更完整，特别是在代码审查、权限控制和自动化流程方面。\n","wordCount":"247","inLanguage":"en","datePublished":"2026-06-03T08:37:42Z","dateModified":"2026-06-03T08:37:42Z","author":{"@type":"Person","name":"az"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://azlog.org/posts/codexopencode%E4%BD%BF%E7%94%A8%E5%AF%B9%E6%AF%94/"},"publisher":{"@type":"Organization","name":"Az日志","logo":{"@type":"ImageObject","url":"https://azlog.org/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=header-nav><div class=logo><a href=https://azlog.org/ accesskey=h title="Az日志 (Alt + H)">Az日志</a><div class=logo-switches><button id=theme-toggle class=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
+<svg class="moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+<svg class="sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu class=menu><li><a href=https://azlog.org/ title="🏠 首页"><span>🏠 首页</span></a></li><li><a href=https://azlog.org/categories/ title="📂 分类"><span>📂 分类</span></a></li><li><a href=https://azlog.org/tags/ title="🏷 标签"><span>🏷 标签</span></a></li><li><a href=https://azlog.org/archives/ title="📜 归档"><span>📜 归档</span></a></li><li><a href=https://azlog.org/about/ title="👤 关于"><span>👤 关于</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><nav class=breadcrumbs role=navigation aria-label=Breadcrumb><a href=/>Home</a>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"/></svg>
+<a href=/posts/>Posts</a>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"/></svg></nav><h1 class="post-title entry-hint-parent">Codex、opencode使用对比</h1><div class=post-meta><span title='2026-06-03 08:37:42 +0000 UTC'>June 3, 2026</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>247 words</span>&nbsp;·&nbsp;<span>az</span></div></header><details class=toc><summary accesskey=c title="(Alt + C)"><span class=title>Table of Contents</span></summary><div class=inner><nav id=TableOfContents><ul><li><a href=#正文开始>正文开始</a></li><li><a href=#1-codex-的优势>1. Codex 的优势</a><ul><li><a href=#官方模型调优>官方模型调优</a></li><li><a href=#长任务更稳定>长任务更稳定</a></li><li><a href=#安全机制更完善>安全机制更完善</a></li></ul></li><li><a href=#2-opencode-的优势>2. OpenCode 的优势</a><ul><li><a href=#模型自由>模型自由</a></li></ul></li><li><a href=#而-codex-基本绑定-openai-生态>而 Codex 基本绑定 OpenAI 生态。</a><ul><li><a href=#成本更低>成本更低</a></li><li><a href=#定制能力强>定制能力强</a></li></ul></li><li><a href=#3-实际编码能力谁更强>3. 实际编码能力谁更强？</a><ul><li><a href=#小项目>小项目</a></li><li><a href=#大项目>大项目</a></li></ul></li><li><a href=#4-适合什么人>4. 适合什么人？</a><ul><li><a href=#选-codex>选 Codex</a></li><li><a href=#选-opencode>选 OpenCode</a></li></ul></li><li><a href=#2026-年我的推荐>2026 年我的推荐</a></li></ul></nav></div></details><div class="post-content md-content"><h2 id=正文开始>正文开始<a hidden class=anchor aria-hidden=true href=#正文开始>#</a></h2><p>实际使用角度对比。</p><table><thead><tr><th>维度</th><th>Codex</th><th>OpenCode</th></tr></thead><tbody><tr><td>定位</td><td>OpenAI 官方 AI 编程代理</td><td>社区驱动开源 AI 编程代理</td></tr><tr><td>开源</td><td>是</td><td>是</td></tr><tr><td>模型支持</td><td>OpenAI 模型为主</td><td>支持 OpenAI、Claude、Gemini、本地模型等</td></tr><tr><td>多模型切换</td><td>较弱</td><td>很强</td></tr><tr><td>安装</td><td>简单</td><td>简单</td></tr><tr><td>Agent 能力</td><td>很强</td><td>很强</td></tr><tr><td>CI/CD</td><td>原生支持</td><td>一般</td></tr><tr><td>Code Review</td><td>内置</td><td>需要自行配置</td></tr><tr><td>Sandbox 安全隔离</td><td>强</td><td>有但相对灵活</td></tr><tr><td>企业支持</td><td>有</td><td>无官方企业支持</td></tr><tr><td>学习成本</td><td>低</td><td>中等</td></tr><tr><td>可玩性</td><td>中</td><td>高</td></tr></tbody></table><hr><h2 id=1-codex-的优势>1. Codex 的优势<a hidden class=anchor aria-hidden=true href=#1-codex-的优势>#</a></h2><h3 id=官方模型调优>官方模型调优<a hidden class=anchor aria-hidden=true href=#官方模型调优>#</a></h3><p>Codex 本质上是 OpenAI 自己的 Agent 框架。</p><p>它的优势不只是模型，而是：</p><ul><li>Prompt 设计</li><li>Tool 调用</li><li>文件搜索</li><li>修改策略</li><li>审批流程</li></ul><p>都是针对 GPT-Codex 优化的。</p><p>例如：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>codex <span style=color:#e6db74>&#34;修复这个项目所有测试失败&#34;</span>
+</span></span></code></pre></div><p>Codex 会：</p><ol><li>分析项目</li><li>找到测试</li><li>运行测试</li><li>修改代码</li><li>再次验证</li></ol><p>整个流程比较稳定。</p><hr><h3 id=长任务更稳定>长任务更稳定<a hidden class=anchor aria-hidden=true href=#长任务更稳定>#</a></h3><p>很多开发者反馈：</p><p>同样用 GPT 模型，</p><ul><li>短任务差异不大</li><li>长任务（几十个文件）Codex 更不容易跑偏</li></ul><p>原因是 Agent 框架做了额外优化。</p><hr><h3 id=安全机制更完善>安全机制更完善<a hidden class=anchor aria-hidden=true href=#安全机制更完善>#</a></h3><p>Codex 提供：</p><ul><li>沙箱执行</li><li>权限审批</li><li>Git 集成</li><li>Code Review</li></ul><p>对于生产环境项目比较友好。</p><hr><h2 id=2-opencode-的优势>2. OpenCode 的优势<a hidden class=anchor aria-hidden=true href=#2-opencode-的优势>#</a></h2><h3 id=模型自由>模型自由<a hidden class=anchor aria-hidden=true href=#模型自由>#</a></h3><p>这是 OpenCode 最大优势。</p><p>你可以切换：</p><ul><li>OpenAI GPT</li><li>Anthropic Claude</li><li>Google Gemini</li><li>本地 Qwen</li><li>本地 DeepSeek</li><li>Ollama 模型</li></ul><h2 id=而-codex-基本绑定-openai-生态>而 Codex 基本绑定 OpenAI 生态。<a hidden class=anchor aria-hidden=true href=#而-codex-基本绑定-openai-生态>#</a></h2><h3 id=成本更低>成本更低<a hidden class=anchor aria-hidden=true href=#成本更低>#</a></h3><p>举例：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>OpenCode + DeepSeek
+</span></span></code></pre></div><p>几乎可以做到极低成本。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>OpenCode + 本地Qwen
+</span></span></code></pre></div><p>甚至接近免费。</p><p>而 Codex 通常需要：</p><ul><li>ChatGPT Plus</li><li>Pro</li><li>API</li></ul><p>等方案支持。</p><hr><h3 id=定制能力强>定制能力强<a hidden class=anchor aria-hidden=true href=#定制能力强>#</a></h3><p>OpenCode 可以：</p><ul><li>自定义 Agent</li><li>自定义 Prompt</li><li>自定义 Workflow</li><li>自定义 MCP</li></ul><p>很多高级用户会把它改造成自己的开发平台。</p><hr><h2 id=3-实际编码能力谁更强>3. 实际编码能力谁更强？<a hidden class=anchor aria-hidden=true href=#3-实际编码能力谁更强>#</a></h2><p>很多人以为：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>工具 = 能力
+</span></span></code></pre></div><p>其实不是。</p><p>大部分情况下：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>模型 &gt; Agent框架
+</span></span></code></pre></div><p>例如：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>GPT-5.5
+</span></span><span style=display:flex><span>Claude Opus
+</span></span><span style=display:flex><span>Gemini Ultra
+</span></span></code></pre></div><p>模型本身决定上限。</p><p>但 Agent 框架决定：</p><ul><li>是否容易跑偏</li><li>是否会漏文件</li><li>是否自动验证</li><li>是否自动修Bug</li></ul><p>所以：</p><h3 id=小项目>小项目<a hidden class=anchor aria-hidden=true href=#小项目>#</a></h3><p>差距不大。</p><p>例如：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>写一个 Flask API
+</span></span><span style=display:flex><span>写一个 React 页面
+</span></span><span style=display:flex><span>修一个函数
+</span></span></code></pre></div><p>两者基本一样。</p><hr><h3 id=大项目>大项目<a hidden class=anchor aria-hidden=true href=#大项目>#</a></h3><p>Codex 往往更稳。</p><p>例如：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>100个文件项目
+</span></span><span style=display:flex><span>重构模块
+</span></span><span style=display:flex><span>修复整个测试集
+</span></span></code></pre></div><p>Codex 的执行链路通常更成熟。</p><hr><h2 id=4-适合什么人>4. 适合什么人？<a hidden class=anchor aria-hidden=true href=#4-适合什么人>#</a></h2><h3 id=选-codex>选 Codex<a hidden class=anchor aria-hidden=true href=#选-codex>#</a></h3><p>如果你：</p><ul><li>使用 ChatGPT Plus / Pro</li><li>开发真实业务项目</li><li>希望少折腾</li><li>希望稳定</li></ul><p>推荐 Codex。</p><hr><h3 id=选-opencode>选 OpenCode<a hidden class=anchor aria-hidden=true href=#选-opencode>#</a></h3><p>如果你：</p><ul><li>喜欢尝试各种模型</li><li>用 Claude 较多</li><li>用 DeepSeek / Qwen</li><li>想本地运行</li><li>关注成本</li></ul><p>推荐 OpenCode。</p><hr><h2 id=2026-年我的推荐>2026 年我的推荐<a hidden class=anchor aria-hidden=true href=#2026-年我的推荐>#</a></h2><p>对于大多数独立开发者：</p><p><strong>OpenCode + Claude / GPT</strong>
+是目前性价比最高的组合。</p><p>对于企业项目或长期维护项目：</p><p><strong>Codex</strong>
+整体工程化体验更完整，特别是在代码审查、权限控制和自动化流程方面。</p></div><footer class=post-footer><ul class=post-tags><li><a href=https://azlog.org/tags/%E6%8A%80%E6%9C%AF/>技术</a></li><li><a href=https://azlog.org/tags/opencode/>Opencode</a></li><li><a href=https://azlog.org/tags/codex/>Codex</a></li></ul><nav class=paginav><a class=next href=https://azlog.org/posts/%E5%88%9D%E4%B8%80%E5%88%86%E7%BA%A7%E9%98%85%E8%AF%BB-+-app-%E7%BB%84%E5%90%88%E6%B8%85%E5%8D%95/><span class=title>Next »</span>
+<span>初一分级阅读 + App 组合清单</span></a></nav></footer></article></main><footer class=footer><span>&copy; 2026 <a href=https://azlog.org/>Az日志</a></span> ·
+<span>Powered by
+<a href="https://gohugo.io/?utm_source=papermod" rel=noopener target=_blank>Hugo</a> &
+<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top id=top-link class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey=g><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up"><polyline points="17 11 12 6 7 11"/><polyline points="17 18 12 13 7 18"/></svg>
+</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var toplink=document.getElementById("top-link");window.onscroll=function(){const e=window.innerHeight;document.body.scrollTop>e||document.documentElement.scrollTop>e?toplink.classList.remove("hidden"):toplink.classList.add("hidden")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script><script>document.querySelectorAll("pre > code").forEach(e=>{const n=e.parentNode.parentNode,t=document.createElement("button");t.classList.add("copy-code"),t.innerHTML="copy";function s(){t.innerHTML="copied!",setTimeout(()=>{t.innerHTML="copy"},2e3)}t.addEventListener("click",t=>{if("clipboard"in navigator){navigator.clipboard.writeText(e.textContent),s();return}const n=document.createRange();n.selectNodeContents(e);const o=window.getSelection();o.removeAllRanges(),o.addRange(n);try{document.execCommand("copy"),s()}catch{}o.removeRange(n)}),n.classList.contains("highlight")?n.appendChild(t):n.parentNode.firstChild==n||(e.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?e.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(t):e.parentNode.appendChild(t))})</script></body></html>
