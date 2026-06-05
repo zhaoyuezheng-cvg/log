@@ -25,7 +25,7 @@ slug: ""                                     # 可设置自定义 URL
 
 # 封面和 OG 图片
 cover:
-  image: ""                                  # 封面图片 URL
+  image: "https://img.azlog.org/file/1780617854058_c03ac9b21281aad813e7a2bac074a9e511d9801c9dced2fffafae661298a6174.png"                                  # 封面图片 URL
   alt: ""                                    # 图片 alt
   caption: ""                                # 图片说明
 images: []                                   # OG 图片列表，可用于分享
