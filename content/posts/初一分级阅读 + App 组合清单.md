@@ -8,6 +8,12 @@ tags:
 - 英语
 - 学习
 title: 初一分级阅读 + App 组合清单
+# 封面和 OG 图片
+cover:
+  image: "https://img.azlog.org/file/1780618066553_0f8af334a119c9f61c354c536e2041a1355a609fdbd426c54bdbed0cb4c970e6.png"                                  # 封面图片 URL
+  alt: ""                                    # 图片 alt
+  caption: ""                                # 图片说明
+images: []
 ---
 
 
