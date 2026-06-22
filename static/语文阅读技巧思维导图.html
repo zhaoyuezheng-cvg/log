@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>初中语文阅读答题技巧 - 思维导图</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #0f172a;
+    color: #e2e8f0;
+    min-height: 100vh;
+    overflow-x: auto;
+  }
+
+  .header {
+    text-align: center;
+    padding: 40px 20px 20px;
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  }
+
+  .header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #60a5fa, #a78bfa, #f472b6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 8px;
+  }
+  .header p {
+    color: #94a3b8;
+    font-size: 14px;
+  }
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  /* 技巧卡片 */
+  .skill-card {
+    background: linear-gradient(145deg, #1e293b, #162032);
+    border-radius: 16px;
+    padding: 24px 24px 20px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(148, 163, 184, 0.1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .skill-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    border-radius: 16px 16px 0 0;
+  }
+
+  /* 不同技巧的渐变顶边 */
+  .skill-card.s1::before { background: linear-gradient(90deg, #ef4444, #f97316); }
+  .skill-card.s2::before { background: linear-gradient(90deg, #f97316, #eab308); }
+  .skill-card.s3::before { background: linear-gradient(90deg, #eab308, #84cc16); }
+  .skill-card.s4::before { background: linear-gradient(90deg, #22c55e, #14b8a6); }
+  .skill-card.s5::before { background: linear-gradient(90deg, #14b8a6, #06b6d4); }
+  .skill-card.s6::before { background: linear-gradient(90deg, #06b6d4, #3b82f6); }
+  .skill-card.s7::before { background: linear-gradient(90deg, #3b82f6, #8b5cf6); }
+  .skill-card.s8::before { background: linear-gradient(90deg, #8b5cf6, #a855f7); }
+  .skill-card.s9::before { background: linear-gradient(90deg, #a855f7, #d946ef); }
+  .skill-card.s10::before { background: linear-gradient(90deg, #d946ef, #ec4899); }
+  .skill-card.s11::before { background: linear-gradient(90deg, #ec4899, #f43f5e); }
+  .skill-card.s12::before { background: linear-gradient(90deg, #f43f5e, #ef4444); }
+  .skill-card.s13::before { background: linear-gradient(90deg, #ef4444, #f97316); }
+  .skill-card.s14::before { background: linear-gradient(90deg, #f97316, #eab308); }
+  .skill-card.s15::before { background: linear-gradient(90deg, #eab308, #84cc16); }
+  .skill-card.s16::before { background: linear-gradient(90deg, #22c55e, #14b8a6); }
+  .skill-card.s17::before { background: linear-gradient(90deg, #14b8a6, #06b6d4); }
+  .skill-card.s18::before { background: linear-gradient(90deg, #06b6d4, #3b82f6); }
+  .skill-card.s19::before { background: linear-gradient(90deg, #3b82f6, #8b5cf6); }
+  .skill-card.s20::before { background: linear-gradient(90deg, #8b5cf6, #a855f7); }
+  .skill-card.s21::before { background: linear-gradient(90deg, #a855f7, #ec4899); }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+
+  .skill-badge {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: #f1f5f9;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+    letter-spacing: 0.5px;
+  }
+
+  .skill-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #f1f5f9;
+    flex: 1;
+  }
+
+  .mind-map {
+    position: relative;
+    padding-left: 20px;
+  }
+
+  /* 核心节点 */
+  .core-node {
+    display: inline-block;
+    padding: 8px 20px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 15px;
+    color: #fff;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+  }
+
+  .core-red {
+    background: linear-gradient(135deg, #dc2626, #ef4444);
+  }
+  .core-blue {
+    background: linear-gradient(135deg, #2563eb, #3b82f6);
+  }
+  .core-green {
+    background: linear-gradient(135deg, #059669, #10b981);
+  }
+  .core-orange {
+    background: linear-gradient(135deg, #ea580c, #f97316);
+  }
+
+  /* 分支连接线 */
+  .branch {
+    position: relative;
+    padding-left: 24px;
+    margin-top: 10px;
+  }
+  .branch::before {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 0;
+    bottom: 12px;
+    width: 2px;
+    border-radius: 1px;
+  }
+  .branch.orange-line::before { background: #f97316; }
+  .branch.blue-line::before { background: #3b82f6; }
+  .branch.green-line::before { background: #10b981; }
+
+  .branch-item {
+    position: relative;
+    margin-bottom: 14px;
+    padding-left: 20px;
+  }
+  .branch-item::before {
+    content: '';
+    position: absolute;
+    left: -17px;
+    top: 50%;
+    width: 14px;
+    height: 2px;
+    border-radius: 1px;
+  }
+  .branch-item.orange-line::before { background: #f97316; }
+  .branch-item.blue-line::before { background: #3b82f6; }
+  .branch-item.green-line::before { background: #10b981; }
+
+  .label-tag {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+    margin-right: 8px;
+  }
+  .label-orange { background: #f97316; }
+  .label-blue { background: #3b82f6; }
+  .label-green { background: #10b981; }
+
+  .info-text {
+    color: #cbd5e1;
+    font-size: 13.5px;
+    line-height: 1.65;
+  }
+
+  .sub-list {
+    list-style: none;
+    margin-top: 8px;
+  }
+  .sub-list li {
+    position: relative;
+    padding: 8px 0 8px 22px;
+    font-size: 13px;
+    line-height: 1.7;
+    color: #94a3b8;
+    border-left: 1px solid rgba(148,163,184,0.15);
+    margin-left: 10px;
+  }
+  .sub-list li::before {
+    content: '';
+    position: absolute;
+    left: -4px;
+    top: 17px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #475569;
+  }
+
+  .sub-list li strong {
+    color: #e2e8f0;
+    font-weight: 600;
+  }
+
+  .num-circle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: rgba(99,102,241,0.2);
+    color: #818cf8;
+    font-size: 11px;
+    font-weight: 700;
+    margin-right: 6px;
+    flex-shrink: 0;
+  }
+
+  /* 页码标记 */
+  .page-mark {
+    text-align: center;
+    padding: 30px;
+    color: #334155;
+    font-size: 12px;
+  }
+
+  /* 响应式 */
+  @media (max-width: 768px) {
+    .header h1 { font-size: 22px; }
+    .skill-title { font-size: 15px; }
+    .container { padding: 10px; }
+    .skill-card { padding: 16px 16px 14px; }
+    .info-text, .sub-list li { font-size: 12.5px; }
+  }
+
+  /* 目录导航 */
+  .toc {
+    background: rgba(30,41,59,0.6);
+    border: 1px solid rgba(148,163,184,0.1);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 24px;
+  }
+  .toc h3 {
+    color: #f1f5f9;
+    font-size: 15px;
+    margin-bottom: 12px;
+  }
+  .toc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 6px;
+  }
+  .toc a {
+    color: #93c5fd;
+    text-decoration: none;
+    font-size: 13px;
+    padding: 4px 8px;
+    border-radius: 6px;
+    transition: all 0.2s;
+    display: block;
+  }
+  .toc a:hover {
+    background: rgba(147,197,253,0.1);
+    color: #bfdbfe;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>📖 初中语文阅读答题方法</h1>
+  <p>技巧点拨 · 记叙文阅读 · 全21个核心技巧思维导图</p>
+</div>
+
+<div class="container">
+  <!-- 目录 -->
+  <div class="toc">
+    <h3>📑 技巧导航（点击跳转）</h3>
+    <div class="toc-grid">
+      <a href="#s1">技巧1 理解概括文章内容</a>
+      <a href="#s2">技巧2 梳理分析故事情节及作用</a>
+      <a href="#s3">技巧3 理解并分析文章的主旨</a>
+      <a href="#s4">技巧4 分析特定语段的作用</a>
+      <a href="#s5">技巧5 分析标题的含义</a>
+      <a href="#s6">技巧6 分析标题的作用和妙处</a>
+      <a href="#s7">技巧7 分析文章的线索</a>
+      <a href="#s8">技巧8 分析文章的明暗线索及作用</a>
+      <a href="#s9">技巧9 分析概括人物形象</a>
+      <a href="#s10">技巧10 分析事物作用</a>
+      <a href="#s11">技巧11 分析记叙顺序及作用</a>
+      <a href="#s12">技巧12 分析表达方式及作用</a>
+      <a href="#s13">技巧13 分析人称的作用</a>
+      <a href="#s14">技巧14 分析表现手法及其作用</a>
+      <a href="#s15">技巧15 理解词语的含义及其表达效果</a>
+      <a href="#s16">技巧16 品析文章的语言风格</a>
+      <a href="#s17">技巧17 赏析句段</a>
+      <a href="#s18">技巧18 表达感悟、启示、观点、评价等</a>
+      <a href="#s19">技巧19 细节暗示或前后照应</a>
+      <a href="#s20">技巧20 详写和略写的作用</a>
+      <a href="#s21">技巧21 揣摩人物心理</a>
+    </div>
+  </div>
+
+  <!-- ==================== 技巧1 ==================== -->
+  <div class="skill-card s1" id="s1">
+    <div class="card-header">
+      <span class="skill-badge">技巧 1</span>
+      <span class="skill-title">理解概括文章内容</span>
+    </div>
+    <div class="mind-map">
+      <span class="core-node core-red">理解概括文章内容</span>
+
+      <div class="branch orange-line">
+        <div class="branch-item orange-line">
+          <span class="label-tag label-orange">提问关键信息</span>
+          <span class="info-text">内容、事件</span>
+        </div>
+      </div>
+
+      <div class="branch blue-line">
+        <div class="branch-item blue-line">
+          <span class="label-tag label-blue">答题思路</span>
+        </div>
+        <ul class="sub-list">
+          <li><span class="num-circle">①</span><strong>"六要素"综合法：</strong>根据六要素简述故事内容</li>
+          <li><span class="num-circle">②</span><strong>关键词句提炼法：</strong>提炼关键词句并扩充润色</li>
+          <li><span class="num-circle">③</span><strong>文题扩充法：</strong>把题目扩展成一句完整的话</li>
+          <li><span class="num-circle">④</span><strong>段意合并法：</strong>理清文章脉络，合并段意</li>
+        </ul>
+      </div>
+
+      <div class="branch green-line">
+        <div class="branch-item green-line">
+          <span class="label-tag label-green">答题技巧</span>
+        </div>
+        <ul class="sub-list">
+          <li><span class="num-circle">①</span>本文记叙了……的故事/……的原因是(在于)……</li>
+          <li><span class="num-circle">②</span>由（联系、根据）……可知……/从……可知……</li>
+          <li><span class="num-circle">③</span>本文记叙了……（人物）做的以下几件事：……</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 技巧2 ==================== -->
+  <div class="skill-card s2" id="s2">
+    <div class="card-header">
+      <span class="skill-badge">技巧 2</span>
+      <span class="skill-title">梳理分析故事情节及作用</span>
+    </div>
+    <div class="mind-map">
+      <span class="core-node core-red">梳理分析故事情节及作用</span>
+
+      <div class="branch orange-line">
+        <div class="branch-item orange-line">
+          <span class="label-tag label-orange">提问关键信息</span>
+          <span class="info-text">概括事件、段意、线索、情感变化</span>
+        </div>
+      </div>
+
+      <div class="branch blue-line">
+        <div class="branch-item blue-line">
+          <span class="label-tag label-blue">答题思路</span>
+        </div>
+        <ul class="sub-list">
+          <li><span class="num-circle">①</span><strong>结构连贯法：</strong>厘清文本的结构层次，按事件发展的顺序梳理</li>
+          <li><span class="num-circle">②</span><strong>场面连贯法：</strong>抓住事件场面的转换，对场面转换进行梳理</li>
+          <li><span class="num-circle">③</span><strong>线索连贯法：</strong>围绕线索概括情节</li>
+          <li><span class="num-circle">④</span><strong>细节连贯法：</strong>抓住细节，提炼、概括关键词句</li>
+        </ul>
+      </div>
+
+      <div class="branch green-line">
+        <div class="branch-item green-line">
+          <span class="label-tag label-green">答题技巧</span>
+        </div>
+        <ul class="sub-list">
+          <li><span class="num-circle">①</span>文章主要记叙了……件事，先写……，再写……，最后写……</li>
+          <li><span class="num-circle">②</span>……主要发生了（记叙了）……件事：一是……，二是……，三是……</li>
+          <li><span class="num-circle">③</span>……这一情节揭示了……/展现了……，使……这一人物形象……/强化了……/体现了……精神，增强了文章的……，使读者……</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 技巧3 ==================== -->
+  <div class="skill-card s3" id="s3">
+    <div class="card-header">
+      <span class="skill-badge">技巧 3</span>
+      <span class="skill-title">理解并分析文章的主旨</span>
+    </div>
+    <div class="mind-map">
+      <span class="core-node core-red">理解并分析文章的主旨</span>
+
+      <div class="branch orange-line">
+        <div class="branch-item orange-line">
+          <span class="label-tag label-orange">提问关键信息</span>
+          <span class="info-text">主旨、含义、作用、看法、体会</span>
+        </div>
+      </div>
+
+      <div class="branch blue-line">
+        <div class="branch-item blue-line">
+          <span class="label-tag label-blue">答题思路</span>
+        </div>
+        <ul class="sub-list">
+          <li><span class="num-circle">①</span><strong>巧妙抓住文题：</strong>通过题目给出的信息，捕捉到作者的倾向和所要表达的思想感情，得到文章的主旨</li>
+          <li><span class="num-circle">②</span><strong>捕捉关键语句：</strong>注意那些蕴含着作者观点、情感的抒情议论性的语句，它们往往是文章主旨的结晶</li>
+          <li><span class="num-circle">③</span><strong>分析综合归纳：</strong>将各段要点进行综合归纳</li>
+          <li><span class="num-circle">④</span><strong>赏析人物形象：</strong>从人物语言、行动等方面分析，归纳主旨</li>
+        </ul>
+      </div>
+
+      <div class="branch green-line">
+        <div class="branch-item green-line">
+          <span class="label-tag label-green">答题技巧</span>
+        </div>
+        <ul class="sub-list">
+          <li>本文（文章）记叙（描写、叙述、介绍、描述）了……（人或物）……的故事（事件、事迹、经过），表现（表达、反映、歌颂、揭露、批判、讽刺）了……的感情（现象、感悟）</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 技巧4 ==================== -->
+  <div class="skill-card s4" id="s4">
+    <div class="card-header">
+      <span class="skill-badge">技巧 4</span>
+      <span class="skill-title">分析特定语段的作用</span>
+    </div>
+    <div class="mind-map">
+      <span class="core-node core-red">分析特定语段的作用</span>
+
+      <div class="branch orange-line">
+        <div class="branch-item orange-line">
+          <span class="label-tag label-orange">提问关键信息</span>
+          <span class="info-text">某段、画线部分、作用</span>
+        </div>
+      </div>
+
+      <div class="branch blue-line">
+        <div class="branch-item blue-line">
+          <span class="label-tag label-blue">答题思路</span>
+        </div>
+        <ul class="sub-list">
+          <li><span class="num-circle"></span><strong>结构</strong></li>
+          <li style="margin-left:20px"><span class="num-circle">①</span>开头：总领全文、引出下文、首尾呼应</li>
+          <li style="margin-left:20px"><span class="num-circle">②</span>中间：承上启下、引出下文、照应文题</li>
+          <li style="margin-left:20px"><span class="num-circle">③</span>结尾：呼应前文、结构完整、引发思考</li>
+          <li><span class="num-circle"></span><strong>内容 —— </strong>交代背景，点明主旨，升华感情，深化主题，烘托人物形象，渲染气氛，抒发情感，补充说明，推动情节发展，等等</li>
+        </ul>
+      </div>
+
+      <div class="branch green-line">
+        <div class="branch-item green-line">
+          <span class="label-tag label-green">答题技巧</span>
+        </div>
+        <ul class="sub-list">
+          <li><span class="num-circle">①</span>写了……，表现了……</li>
+          <li><span class="num-circle">②</span>在内容上，描写（提到）了……/交代了……/营造了……氛围/表达了……情感/点明了……主旨/丰富了……/有……作用</li>
+          <li><span class="num-circle">③</span>在结构上，这段话（部分）在文章开头/中间/结尾，具有……的作用</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 技巧5 ==================== -->
+  <div class="skill-card s5" id="s5">
+    <div class="card-header">
+      <span class="skill-badge">技巧 5</span>
+      <span class="skill-title">分析标题的含义</span>
+    </div>
+    <div class="mind-map">
+      <span class="core-node core-red">分析标题的含义</span>
+
+      <div class="branch orange-line">
+        <div class="branch-item orange-line">
+          <span class="label-tag label-orange">提问关键信息</span>
+          <span class="info-text">标题、含义、内涵</span>
+        </div>
+      </div>
+
+      <div class="branch blue-line">
+        <div class="branch-item blue-line">
+          <span class="label-tag label-blue">答题思路</span>
+        </div>
+        <ul class="sub-list">
+          <li><span class="num-circle">①</span>分析标题的表层含义</li>
+          <li><span class="num-circle">②</span>分析标题的深层含义</li>
+        </ul>
+      </div>
+
+      <div class="branch green-line">
+        <div class="branch-item green-line">
+          <span class="label-tag label-green">答题技巧</span>
+        </div>
+        <ul class="sub-list">
+          <li><span class="num-circle">①</span>标题的表层含义是/从表面看……（本义、字面义、指代义），深层含义是/从深层理解……（从题目修辞义、象征义、情感态度、主旨等角度作答）</li>
+          <li><span class="num-circle">②</span>……（题目）是……的象征，象征着……</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 技巧6 ==================== -->
+  <div class="skill-card s6" id="s6">
+    <div class="card-header">
+      <span class="skill-badge">技巧 6</span>
+      <span class="skill-title">分析标题的作用和妙处</span>
+    </div>
+    <div class="mind-map">
+      <span class="core-node core-red">分析标题的作用和妙处</span>
+
+      <div class="branch orange-line">
+        <div class="branch-item orange-line">
+          <span class="label-tag label-orange">提问关键信息</span>
+          <span class="info-text">标题、作用、理由、妙处</span>
+        </div>
+      </div>
+
+      <div class="branch blue-line">
+        <div class="branch-item blue-line">
+          <span class="label-tag label-blue">答题思路</span>
+        </div>
+        <ul class="sub-list">
+          <li><span class="num-circle">①</span>审清题干，明确题干要求，考查标题作用</li>
+          <li><span class="num-circle">②</span>联系文本，分析标题修辞、内容、结构等方面</li>
+        </ul>
+      </div>
+
+      <div class="branch green-line">
+        <div class="branch-item green-line">
+          <span class="label-tag label-green">答题技巧</span>
+        </div>
+        <ul class="sub-list">
+          <li><span class="num-circle">①</span><strong>以人物为题：</strong>突出人物形象……的特点/概括故事情节/紧扣中心，突出主题</li>
+          <li><span class="num-circle">②</span><strong>以形象特征为题：</strong>铺陈情节，呼应细节/对比讽刺，强化效果</li>
+          <li><span class="num-circle">③</span><strong>以物象为题：</strong>表面写……，实际表现（隐含、比喻、象征）了……。……是线索/是事件的触发点，贯穿全文/概括故事情节/设置悬念，引发联想，吸引读者/寄托某种情感</li>
+          <li><span class="num-circle">④</span><strong>以事件为题：</strong>概括了……/突出……/设置悬念，激发读者的阅读兴趣</li>
+          <li><span class="num-circle">⑤</span><strong>以时间、地点、环境为题：</strong>点明故事发生的时间、地点，创设故事背景/渲染氛围，隐喻（象征）了……</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 技巧7 ==================== -->
+  <div class="skill-card s7" id="s7">
+    <div class="card-header">
+      <span class="skill-badge">技巧 7</span>
+      <span class="skill-title">分析文章的线索</span>
+    </div>
+    <div class="mind-map">
+      <span class="core-node core-red">分析文章的线索</span>
+
+      <div class="branch orange-line">
+        <div class="branch-item orange-line">
+          <span class="label-tag label-orange">提问关键信息</span>
+          <span class="info-text">情感变化、反复出现的事物、主要事件、作用</span>
+        </div>
+      </div>
+
+      <div class="branch blue-line">
+        <div class="branch-item blue-line">
+          <span class="label-tag label-blue">答题思路</span>
+        </div>
+        <ul class="sub-list">
+          <li><span class="num-circle">①</span>结合线索贯穿全文的作用去写(将什么串联起来)，使文章思路更加清楚，便于抒情</li>
+          <li><span class="num-circle">②</span>以物为线索的记叙文一般会采用托物言志或象征的手法，答题要围绕"物"的某些意志品质，作者对其态度变化以及情感寄托等方面归纳答题要点</li>
+        </ul>
+      </div>
+
+      <div class="branch green-line">
+        <div class="branch-item green-line">
+          <span class="label-tag label-green">答题技巧</span>
+        </div>
+        <ul class="sub-list">
+          <li><span class="num-circle">①</span>文章以……为线索，中间串写了"……""……"几件事，选材经典，脉络清晰，主旨鲜明</li>
+          <li><span class="num-circle">②</span>本文的线索是……/本文以……为线索，先写了……，然后写……，最后写……</li>
+          <li><span class="num-circle">③</span>……是本文的线索，在内容上，体现了……；在结构上，……使……，衬托（强化、突出）了……</li>
+          <li><span class="num-circle">④</span>文章写了"……""……""……"几件事，由此可知文章的线索是……</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 技巧8 ==================== -->
+  <div class="skill-card s8" id="s8">
+    <div class="card-header">
+      <span class="skill-badge">技巧 8</span>
+      <span class="skill-title">分析文章的明暗线索及作用</span>
+    </div>
+    <div class="mind-map">
+      <span class="core-node core-red">分析文章的明暗线索及作用</span>
+
+      <div class="branch orange-line">
+        <div class="branch-item orange-line">
+          <span class="label-tag label-orange">提问关键信息</span>
+          <span class="info-text">明线、暗线、作用</span>
+        </div>
+      </div>
+
+      <div class="branch blue-line">
+        <div class="branch-item blue-line">
+          <span class="label-tag label-blue">答题思路</span>
+        </div>
+        <ul class="sub-list">
+          <li><span class="num-circle">①</span>找到明线，概括文本内容</li>
+          <li><span class="num-circle">②</span>找到暗线，梳理暗示的情节</li>
+          <li><span class="num-circle">③</span>根据文本内容总结采用双线结构的好处</li>
+        </ul>
+      </div>
+
+      <div class="branch green-line">
+        <div class="branch-item green-line">
+          <span class="label-tag label-green">答题技巧</span>
+        </div>
+        <ul class="sub-list">
+          <li><span class="num-circle">①</span>小说（故事、文章）的明线是……，暗线是……</li>
+          <li><span class="num-circle">②</span>小说（故事、文章）以……为明线，写了……；以……为暗线，写了……。小说明暗线交织，使得情节的发展脉络清晰，也使小说的主题得到更深的挖掘</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 技巧9 ==================== -->
+  <div class="skill-card s9" id="s9">
+    <div class="card-header">
+      <span class="skill-badge">技巧 9</span>
+      <span class="skill-title">分析概括人物形象</span>
+    </div>
+    <div class="mind-map">
+      <span class="core-node core-red">分析概括人物形象</span>
+
+      <div class="branch orange-line">
+        <div class="branch-item orange-line">
+          <span class="label-tag label-orange">提问关键信息</span>
+          <span class="info-text">怎样的人、特点、概括形象</span>
+        </div>
+      </div>
+
+      <div class="branch blue-line">
+        <div class="branch-item blue-line">
+          <span class="label-tag label-blue">答题思路</span>
+        </div>
+        <ul class="sub-list">
+          <li><span class="num-circle">①</span>梳理文本中人物所做的事</li>
+          <li><span class="num-circle">②</span>分析文本中对人物的描写</li>
+          <li><span class="num-circle">③</span>寻找文中评价性的词语</li>
+          <li><span class="num-circle">④</span>结合人物相关信息具体分析</li>
+        </ul>
+      </div>
+
+      <div class="branch green-line">
+        <div class="branch-item green-line">
+          <span class="label-tag label-green">答题技巧</span>
+        </div>
+        <ul class="sub-list">
+          <li><span class="num-circle">①</span>文章（小说）运用了……，生动形象地描写了……（内容），表现了……的性格（心理）/突出（衬托）了……体现了……的品质（精神）</li>
+          <li><span class="num-circle">②</span>从（文中/故事中）……可以看出，……（人物）是一个……的人</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 技巧10 ==================== -->
+  <div class="skill-card s10" id="s10">
+    <div class="card-header">
+      <span class="skill-badge">技巧 10</span>
+      <span class="skill-title">分析事物作用</span>
+    </div>
+    <div class="mind-map">
+      <span class="core-node core-red">分析事物作用</span>
+
+      <div class="branch orange-line">
+        <div class="branch-item orange-line">
+          <span class="label-tag label-orange">提问关键信息</span>
+          <span class="info-text">事物、物象、作用、情节、人物塑造、主旨</span>
+        </div>
+      </div>
+
+      <div class="branch blue-line">
+        <div class="branch-item blue-line">
+          <span class="label-tag label-blue">答题思路</span>
+        </div>
+        <ul class="sub-list">
+          <li><span class="num-circle">①</span><strong>对情节的作用：</strong>内容上，推动情节的发展；串联起相关的情节；为下文做铺垫。结构上，使文章情节更加紧凑，首尾呼应</li>
+          <li><span class="num-circle">②</span><strong>对主要人物的作用：</strong>通过对物象的象征意义来凸显主要人物形象的特点，或者通过对物象的叙述和描写，从侧面衬托主要人物形象</li>
+          <li><span class="num-circle">③</span><strong>对环境的作用：</strong>若物象属于自然环境的一部分时，其作用是渲染气氛，奠定基调</li>
+          <li><span class="num-circle">④</span><strong>对主题的作用：</strong>升华文章的主题</li>
+        </ul>
+      </div>
+
+      <div class="branch green-line">
+        <div class="branch-item green-line">
+          <span class="label-tag label-green">答题技巧</span>
+        </div>
+        <ul class="sub-list">
+          <li>……这（几件/个）事（情节、物象、景物）暗示了/表现了/说明了/推动了/烘托了……(推动情节发展；刻画人物形象；营造气氛、环境；突出、深化主题)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 技巧11 ==================== -->
+  <div class="skill-card s11" id="s11">
+    <div class="card-header">
+      <span class="skill-badge">技巧 11</span>
+      <span class="skill-title">分析记叙顺序及作用</span>
+    </div>
+    <div class="mind-map">
+      <span class="core-node core-red">分析记叙顺序及作用</span>
+
+      <div class="branch orange-line">
+        <div class="branch-item orange-line">
+          <span class="label-tag label-orange">提问关键信息</span>
+          <span class="info-text">记叙顺序、作用、好处</span>
+        </div>
+      </div>
+
+      <div class="branch blue-line">
+        <div class="branch-item blue-line">
+          <span class="label-tag label-blue">答题思路</span>
+        </div>
+        <ul class="sub-list">
+          <li><span class="num-circle">①</span>理清时间。阅读文本，分清叙述类型</li>
+          <li><span class="num-circle">②</span>关注变动。要仔细分析事件的开端—发展—高潮—结局模式的变动</li>
+          <li><span class="num-circle">③</span>紧扣段落。阅读时应特别注意"倒""顺"之间的起讫点，认清那些起关键作用的词句和段落</li>
+        </ul>
+      </div>
+
+      <div class="branch green-line">
+        <div class="branch-item green-line">
+          <span class="label-tag label-green">答题技巧</span>
+        </div>
+        <ul class="sub-list">
+          <li><span class="num-circle">①</span>文章采用顺叙，先叙述……，后叙述……，使文章脉络清楚，给人鲜明的意象，便于读者理解</li>
+          <li><span class="num-circle">②</span>文章采用倒叙，先说……，后说……，避免平铺直叙，制造悬念，激发读者阅读兴趣；增强文章感染力，便于突出文章的主题</li>
+          <li><span class="num-circle">③</span>文章插叙了……，交代了故事背景/推动故事情节发展/为下文做铺垫（埋下伏笔）/突出了人物形象</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 技巧12 ==================== -->
+  <div class="skill-card s12" id="s12">
+    <div class="card-header">
+      <span class="skill-badge">技巧 12</span>
+      <span class="skill-title">分析表达方式及作用</span>
+    </div>
+    <div class="mind-map">
+      <span class="core-node core-red">分析表达方式及作用</span>
+
+      <div class="branch orange-line">
+        <div class="branch-item orange-line">
+          <span class="label-tag label-orange">提问关键信息</span>
+          <span class="info-text">表达方式、作用</span>
+        </div>
+      </div>
+
+      <div class="branch blue-line">
+        <div class="branch-item blue-line">
+          <span class="label-tag label-blue">答题思路</span>
+        </div>
+        <ul class="sub-list">
+          <li><span class="num-circle">①</span>明确五种表达方式（记叙、议论、说明、描写、抒情）具体分类及作用</li>
+          <li><span class="num-circle">②</span>确认所指定语段运用的表达方式，结合文章具体分析其作用</li>
+        </ul>
+      </div>
+
+      <div class="branch green-line">
+        <div class="branch-item green-line">
+          <span class="label-tag label-green">答题技巧</span>
+        </div>
+        <ul class="sub-list">
+          <li>此句运用了……（表达方式），描写了/写出了/渲染了……，表现出……，具有……效果（作用）</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 技巧13 ==================== -->
+  <div class="skill-card s13" id="s13">
+    <div class="card-header">
+      <span class="skill-badge">技巧 13</span>
+      <span class="skill-title">分析人称的作用</span>
+    </div>
+    <div class="mind-map">
+      <span class="core-node core-red">分析人称的作用</span>
+
+      <div class="branch orange-line">
+        <div class="branch-item orange-line">
+          <span class="label-tag label-orange">提问关键信息</span>
+          <span class="info-text">第一人称、第二人称、第三人称、作用、妙处</span>
+        </div>
+      </div>
+
+      <div class="branch blue-line">
+        <div class="branch-item blue-line">
+          <span class="label-tag label-blue">答题思路</span>
+        </div>
+        <ul class="sub-list">
+          <li><span class="num-circle">①</span><strong>第一人称：</strong>给人以身临其境之感，拉近作者与读者的距离，便于抒发情感和进行心理描写</li>
+          <li><span class="num-circle">②</span><strong>第二人称：</strong>便于直接对话，利于交流思想感情，增强亲切感，同时使抒情更加强烈感人</li>
+          <li><span class="num-circle">③</span><strong>第三人称：</strong>不受时空限制，能够自由灵活地叙述故事情节</li>
+        </ul>
+      </div>
+
+      <div class="branch green-line">
+        <div class="branch-item green-line">
+          <span class="label-tag label-green">答题技巧</span>
+        </div>
+        <ul class="sub-list">
+          <li>文章（句子、段落、小说）以……（人称）来写，通过……的视角，使……，具有……（作用、好处）/有利于……/可以使文章（故事）……</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 技巧14 ==================== -->
+  <div class="skill-card s14" id="s14">
+    <div class="card-header">
+      <span class="skill-badge">技巧 14</span>
+      <span class="skill-title">分析表现手法及其作用</span>
+    </div>
+    <div class="mind-map">
+      <span class="core-node core-red">分析表现手法及其作用</span>
+
+      <div class="branch orange-line">
+        <div class="branch-item orange-line">
+          <span class="label-tag label-orange">提问关键信息</span>
+          <span class="info-text">表现手法、效果、作用、技巧</span>
+        </div>
+      </div>
+
+      <div class="branch blue-line">
+        <div class="branch-item blue-line">
+          <span class="label-tag label-blue">答题思路</span>
+        </div>
+        <ul class="sub-list">
+          <li><span class="num-circle">①</span><strong>从文章谋篇（结构的安排）的角度分析：</strong>铺垫（小说称伏笔）、照应、先抑后扬、设置悬念等</li>
+          <li><span class="num-circle">②</span><strong>从全篇对题材的处理角度分析：</strong>主要有借景抒情、托物言志、以小见大、虚实结合等</li>
+          <li><span class="num-circle">③</span><strong>从语言运用的角度分析：</strong>主要从常见的几种修辞手法入手，如比喻、拟人、排比等；也可从语言风格及具体词、句（句式）的运用特点入手</li>
+          <li><span class="num-circle">④</span><strong>从局部具体运用的写作技巧的角度分析：</strong>主要有对比、衬托、渲染、联想、各种描写的方法和角度（如视觉、听觉）等</li>
+        </ul>
+      </div>
+
+      <div class="branch green-line">
+        <div class="branch-item green-line">
+          <span class="label-tag label-green">答题技巧</span>
+        </div>
+        <ul class="sub-list">
+          <li>采用……的表现手法，描写了/写出了/点明了/说明了……，表现出/暗示了/突出了……，起到了……的作用/能够……/使……</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 技巧15 ==================== -->
+  <div class="skill-card s15" id="s15">
+    <div class="card-header">
+      <span class="skill-badge">技巧 15</span>
+      <span class="skill-title">理解词语的含义及其表达效果</span>
+    </div>
+    <div class="mind-map">
+      <span class="core-node core-red">理解词语的含义及其表达效果</span>
+
+      <div class="branch orange-line">
+        <div class="branch-item orange-line">
+          <span class="label-tag label-orange">提问关键信息</span>
+          <span class="info-text">含义、作用、效果、情感、是否矛盾、能否删除</span>
+        </div>
+      </div>
+
+      <div class="branch blue-line">
+        <div class="branch-item blue-line">
+          <span class="label-tag label-blue">答题思路</span>
+        </div>
+        <ul class="sub-list">
+          <li><span class="num-circle">①</span>理解词语的词性和表层含义，分析其深层含义</li>
+          <li><span class="num-circle">②</span>分析词语在内容上的作用</li>
+          <li><span class="num-circle">③</span>分析词语在结构上的作用</li>
+          <li><span class="num-circle">④</span>分析词语在语言表达上的作用</li>
+        </ul>
+      </div>
+
+      <div class="branch green-line">
+        <div class="branch-item green-line">
+          <span class="label-tag label-green">答题技巧</span>
+        </div>
+        <ul class="sub-list">
+          <li><span class="num-circle">①</span>……（词语）的意思是……，描写（表现、突出、强调）了……（人物、事物）……性格（心理、特点），表达（抒发、流露、表现、突出、说明了）……</li>
+          <li><span class="num-circle">②</span>……(词语)是……(词性)，描绘出……/与……相呼应/增强了文章（语言）的……/营造出……的氛围/表现出……</li>
+          <li><span class="num-circle">③</span>……（词语）的意思是……，在文中指……，表现了/（文中借此）表达了（告诉我们）……</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 技巧16 ==================== -->
+  <div class="skill-card s16" id="s16">
+    <div class="card-header">
+      <span class="skill-badge">技巧 16</span>
+      <span class="skill-title">品析文章的语言风格</span>
+    </div>
+    <div class="mind-map">
+      <span class="core-node core-red">品析文章的语言风格</span>
+
+      <div class="branch orange-line">
+        <div class="branch-item orange-line">
+          <span class="label-tag label-orange">提问关键信息</span>
+          <span class="info-text">画线句子、加点词语、语言特色</span>
+        </div>
+      </div>
+
+      <div class="branch blue-line">
+        <div class="branch-item blue-line">
+          <span class="label-tag label-blue">答题思路</span>
+        </div>
+        <ul class="sub-list">
+          <li><span class="num-circle">①</span>反复阅读所给的文章、段落或语句，然后根据常见的语言特点，结合具体语句，判断并概括出所体现出的语言风格特点</li>
+          <li><span class="num-circle">②</span>根据题干要求，结合文章的内容具体分析这种语言风格特点，并表明其表达效果</li>
+        </ul>
+      </div>
+
+      <div class="branch green-line">
+        <div class="branch-item green-line">
+          <span class="label-tag label-green">答题技巧</span>
+        </div>
+        <ul class="sub-list">
+          <li>这篇文章语言风格……（自然朴素、生动优美、幽默风趣等），如"……"（摘录文章中的相关句子），它……（具体分析语言风格）/文章用……的语言描绘了……营造了……的氛围</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 技巧17 ==================== -->
+  <div class="skill-card s17" id="s17">
+    <div class="card-header">
+      <span class="skill-badge">技巧 17</span>
+      <span class="skill-title">赏析句段</span>
+    </div>
+    <div class="mind-map">
+      <span class="core-node core-red">赏析句段</span>
+
+      <div class="branch orange-line">
+        <div class="branch-item orange-line">
+          <span class="label-tag label-orange">提问关键信息</span>
+          <span class="info-text">赏析、表达效果、作用、修辞手法、词语运用</span>
+        </div>
+      </div>
+
+      <div class="branch blue-line">
+        <div class="branch-item blue-line">
+          <span class="label-tag label-blue">答题思路</span>
+        </div>
+        <ul class="sub-list">
+          <li><span class="num-circle">①</span>从富有表现力的词语入手</li>
+          <li><span class="num-circle">②</span>从句子的表现手法入手</li>
+          <li><span class="num-circle">③</span>从句子的内容和所蕴含的哲理入手</li>
+        </ul>
+      </div>
+
+      <div class="branch green-line">
+        <div class="branch-item green-line">
+          <span class="label-tag label-green">答题技巧</span>
+        </div>
+        <ul class="sub-list">
+          <li><span class="num-circle">①</span>这句（段）话的表层含义是……/表面上看……，深层含义是……/实际上是……，运用了/表现了/揭示了……，表达了……情感</li>
+          <li><span class="num-circle">②</span>这句（段）话运用了……的修辞手法/描写方法/艺术手法/表达方式，写出/渲染/突出/表现了……气氛/特点/情感/形象/品质，揭示了……道理/表达了……主题（思想感情）/为下文……埋下伏笔/推动故事情节发展</li>
+          <li><span class="num-circle">③</span>这句（段）话通过对……的（细致、生动、形象）描写，表达（渲染、烘托）了……/为……做铺垫</li>
+          <li><span class="num-circle">④</span>这句（段）话以……的形式，写出了/描绘出……，表达了/表现了/引出……</li>
+          <li><span class="num-circle">⑤</span>这句（段）话从……方面……，衬托出……</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 技巧18 ==================== -->
+  <div class="skill-card s18" id="s18">
+    <div class="card-header">
+      <span class="skill-badge">技巧 18</span>
+      <span class="skill-title">表达感悟、启示、观点、评价等</span>
+    </div>
+    <div class="mind-map">
+      <span class="core-node core-red">表达感悟、启示、观点、评价等</span>
+
+      <div class="branch orange-line">
+        <div class="branch-item orange-line">
+          <span class="label-tag label-orange">提问关键信息</span>
+          <span class="info-text">感受、启示、观点、评价、想法</span>
+        </div>
+      </div>
+
+      <div class="branch blue-line">
+        <div class="branch-item blue-line">
+          <span class="label-tag label-blue">答题思路</span>
+        </div>
+        <ul class="sub-list">
+          <li>抓住关键语句，联系生活实际</li>
+        </ul>
+      </div>
+
+      <div class="branch green-line">
+        <div class="branch-item green-line">
+          <span class="label-tag label-green">答题技巧</span>
+        </div>
+        <ul class="sub-list">
+          <li><span class="num-circle">①</span><strong>感受启发类：</strong>文章中/小说中/故事中……，在生活中……，引发我们思考……</li>
+          <li><span class="num-circle">②</span><strong>质疑探究类：</strong>我认为……。因为……，由此可知……</li>
+          <li><span class="num-circle">③</span><strong>综合应用类：</strong>据……可知……，所以……</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 技巧19 ==================== -->
+  <div class="skill-card s19" id="s19">
+    <div class="card-header">
+      <span class="skill-badge">技巧 19</span>
+      <span class="skill-title">细节暗示或前后照应</span>
+    </div>
+    <div class="mind-map">
+      <span class="core-node core-red">细节暗示或前后照应</span>
+
+      <div class="branch orange-line">
+        <div class="branch-item orange-line">
+          <span class="label-tag label-orange">提问关键信息</span>
+          <span class="info-text">细节、作用、照应、反复出现、强调</span>
+        </div>
+      </div>
+
+      <div class="branch blue-line">
+        <div class="branch-item blue-line">
+          <span class="label-tag label-blue">答题思路</span>
+        </div>
+        <ul class="sub-list">
+          <li><span class="num-circle">①</span>从人物形象的刻画角度解读</li>
+          <li><span class="num-circle">②</span>分主次人物、事件，分详略去找</li>
+          <li><span class="num-circle">③</span>找前后照应的语句，找上下文与之类似的语句</li>
+        </ul>
+      </div>
+
+      <div class="branch green-line">
+        <div class="branch-item green-line">
+          <span class="label-tag label-green">答题技巧</span>
+        </div>
+        <ul class="sub-list">
+          <li><span class="num-circle">①</span>交代故事发生的时间、地点及人物活动的空间，渲染……的环境气氛/烘托人物……的情感/预示人物……的命运/表现人物……的性格特点/推动故事情节的发展/揭示文章主题，使文章结构更加严谨</li>
+          <li><span class="num-circle">②</span>(通过)……这些细节描写，暗示了/表现出……，使文章/故事……</li>
+          <li><span class="num-circle">③</span>……和……是前后照应，这种照应可以……/突出了/展示了……</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 技巧20 ==================== -->
+  <div class="skill-card s20" id="s20">
+    <div class="card-header">
+      <span class="skill-badge">技巧 20</span>
+      <span class="skill-title">详写和略写的作用</span>
+    </div>
+    <div class="mind-map">
+      <span class="core-node core-red">详写和略写的作用</span>
+
+      <div class="branch orange-line">
+        <div class="branch-item orange-line">
+          <span class="label-tag label-orange">提问关键信息</span>
+          <span class="info-text">详写、略写、作用、详略安排的好处</span>
+        </div>
+      </div>
+
+      <div class="branch blue-line">
+        <div class="branch-item blue-line">
+          <span class="label-tag label-blue">答题思路</span>
+        </div>
+        <ul class="sub-list">
+          <li><span class="num-circle">①</span>从事件本身入手：一般开头、结局略写，发展、高潮详写</li>
+          <li><span class="num-circle">②</span>从描写方法入手：正面描写详写，侧面描写略写</li>
+          <li><span class="num-circle">③</span>从结构入手：总写部分略写，分写部分详写</li>
+        </ul>
+      </div>
+
+      <div class="branch green-line">
+        <div class="branch-item green-line">
+          <span class="label-tag label-green">答题技巧</span>
+        </div>
+        <ul class="sub-list">
+          <li><span class="num-circle">①</span>详写……，突出/显示出……(人/物),丰富了……人物形象/特点，深化文章主旨，抒发了……的情感/引发读者思考……</li>
+          <li><span class="num-circle">②</span>略写……，补充事实，增强了故事的真实可信度，同时使故事内容更加完整，使文章内容更丰富</li>
+          <li><span class="num-circle">③</span>详写……，叙事节奏缓慢；略写……，叙事节奏较快。二者结合，使情节张弛有度</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 技巧21 ==================== -->
+  <div class="skill-card s21" id="s21">
+    <div class="card-header">
+      <span class="skill-badge">技巧 21</span>
+      <span class="skill-title">揣摩人物心理</span>
+    </div>
+    <div class="mind-map">
+      <span class="core-node core-red">揣摩人物心理</span>
+
+      <div class="branch orange-line">
+        <div class="branch-item orange-line">
+          <span class="label-tag label-orange">提问关键信息</span>
+          <span class="info-text">发挥想象、描述人物心情、以第一人称描写"我"的心理活动</span>
+        </div>
+      </div>
+
+      <div class="branch blue-line">
+        <div class="branch-item blue-line">
+          <span class="label-tag label-blue">答题思路</span>
+        </div>
+        <ul class="sub-list">
+          <li><span class="num-circle">①</span><strong>从人物描写的角度分析：</strong>抓住人物的语言、动作、神态、心理的句子，分析揣摩人物的心理，根据具体的语境分析，表现了人物当时是怎样的心理状况，如感动、欣喜、伤心、难过、自豪、急切等</li>
+          <li><span class="num-circle">②</span><strong>从关键词句的角度分析：</strong>抓住动词和形容词等，结合情节发展分析人物的心理活动，抓住修饰、限制性词语，分析人物在具体环境中的心理变化过程</li>
+          <li><span class="num-circle">③</span><strong>选择适当方法进行描述或补写。</strong>一般用第一人称，以内心独白的方式直接描写人物的心理</li>
+          <li><span class="num-circle">④</span>补写完之后，还要将所补写的内容代入原文，看是否符合人物的年龄、身份、性格特点，能否满足体现故事情节的要求</li>
+        </ul>
+      </div>
+
+      <div class="branch green-line">
+        <div class="branch-item green-line">
+          <span class="label-tag label-green">答题技巧</span>
+        </div>
+        <ul class="sub-list">
+          <li><span class="num-circle">①</span>句子通过……描写，写出/反映/表现/刻画了……（人物）……（心理、情感）/由……到……的心理（情感）变化过程，表达了……</li>
+          <li><span class="num-circle">②</span>作者通过……，……地描写了……画面，流露出/表达了……</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-mark">—— 完 —— 共 21 个阅读技巧</div>
+</div>
+
+</body>
+</html>
