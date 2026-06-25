@@ -2,7 +2,7 @@
 title: 科技巨头的分工协作：开放生态 vs 垂直整合
 date: '2026-06-25T10:13:58+08:00'
 lastmod: '2026-06-25T10:13:58+08:00'
-draft: false
+draft: false 
 tags:
 - 科技巨头
 - 分工协作
