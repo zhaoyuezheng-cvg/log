@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中考现代文阅读考点方法速记 - 思维导图</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  :root {
+    --bg-dark: #0d1117;
+    --bg-card: #161b22;
+    --bg-hover: #1c2333;
+    --border-color: #30363d;
+    --text-primary: #e6edf3;
+    --text-secondary: #8b949e;
+    --accent-green: #238636;
+    --accent-blue: #58a6ff;
+    --accent-orange: #d29922;
+    --accent-purple: #a371f7;
+    --accent-red: #f85149;
+    --accent-cyan: #39d353;
+  }
+  
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg-dark);
+    color: var(--text-primary);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .header {
+    text-align: center;
+    padding: 30px 20px 20px;
+    background: linear-gradient(135deg, #1a1f2e 0%, #0d1117 50%, #1a1520 100%);
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--accent-green), var(--accent-cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 8px;
+  }
+  
+  .header .subtitle {
+    font-size: 14px;
+    color: var(--text-secondary);
+  }
+
+  .nav-bar {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px 20px;
+    flex-wrap: wrap;
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  
+  .nav-btn {
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 1px solid var(--border-color);
+    background: transparent;
+    color: var(--text-secondary);
+  }
+  
+  .nav-btn:hover { background: var(--bg-hover); color: var(--text-primary); }
+  .nav-btn.active { 
+    background: var(--accent-green); 
+    color: white; 
+    border-color: var(--accent-green);
+  }
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  /* 思维导图根节点 */
+  .mindmap-root {
+    text-align: center;
+    margin: 20px auto 40px;
+    max-width: 600px;
+  }
+  
+  .root-node {
+    display: inline-block;
+    padding: 18px 40px;
+    border-radius: 16px;
+    font-size: 22px;
+    font-weight: 700;
+    color: white;
+    background: linear-gradient(135deg, #1a6b3c, #238636);
+    box-shadow: 0 4px 24px rgba(35,134,54,0.3);
+    position: relative;
+  }
+  
+  .root-node::after {
+    content: '';
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    width: 2px;
+    height: 25px;
+    background: var(--border-color);
+  }
+
+  /* 主板块 */
+  .section {
+    margin-bottom: 40px;
+    opacity: 1;
+    animation: fadeInUp 0.4s ease-out;
+  }
+  
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    padding: 14px 20px;
+    border-radius: 12px;
+    border-left: 4px solid;
+  }
+  
+  .section-header h2 {
+    font-size: 18px;
+    font-weight: 700;
+  }
+  
+  .section-header .badge {
+    font-size: 12px;
+    padding: 2px 10px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.1);
+    color: var(--text-secondary);
+  }
+
+  /* 卡片网格 */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 16px;
+  }
+
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.2s;
+  }
+  
+  .card:hover {
+    border-color: var(--accent-green);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  }
+
+  .card-title {
+    padding: 12px 16px;
+    font-weight: 600;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .card-title .tag {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 8px;
+    font-weight: 500;
+  }
+  
+  .tag-green { background: rgba(35,134,54,0.2); color: #7ee787; }
+  .tag-blue { background: rgba(88,166,255,0.15); color: var(--accent-blue); }
+  .tag-orange { background: rgba(210,153,34,0.2); color: #e3b341; }
+  .tag-purple { background: rgba(163,113,247,0.2); color: #d2a8ff; }
+  .tag-red { background: rgba(248,81,73,0.2); color: #ff7b72; }
+  .tag-cyan { background: rgba(57,211,83,0.15); color: var(--accent-cyan); }
+
+  .card-body {
+    padding: 16px;
+  }
+
+  /* 子节点样式 */
+  .sub-node {
+    margin-bottom: 12px;
+  }
+  
+  .sub-node:last-child { margin-bottom: 0; }
+
+  .node-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent-blue);
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  
+  .node-label::before {
+    content: '▸';
+    font-size: 10px;
+    color: var(--accent-green);
+  }
+
+  .node-content {
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    padding-left: 14px;
+    border-left: 2px solid var(--border-color);
+  }
+  
+  .node-content strong {
+    color: var(--text-primary);
+  }
+  
+  .node-content code {
+    background: rgba(88,166,255,0.1);
+    color: var(--accent-blue);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-family: "Consolas", monospace;
+  }
+  
+  .highlight-box {
+    background: rgba(35,134,54,0.08);
+    border: 1px dashed rgba(35,134,54,0.3);
+    border-radius: 8px;
+    padding: 10px 12px;
+    margin-top: 8px;
+    font-size: 12.5px;
+    line-height: 1.7;
+  }
+  
+  .formula-box {
+    background: rgba(88,166,255,0.06);
+    border-left: 3px solid var(--accent-blue);
+    border-radius: 0 8px 8px 0;
+    padding: 10px 12px;
+    margin-top: 6px;
+    font-size: 12.5px;
+    line-height: 1.7;
+  }
+
+  /* 列表项 */
+  .list-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 6px;
+    font-size: 13px;
+  }
+  
+  .list-item .num {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 6px;
+    background: rgba(35,134,54,0.15);
+    color: var(--accent-cyan);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  /* 四步法特殊布局 */
+  .four-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 14px;
+    margin-top: 16px;
+  }
+  
+  .step-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 16px;
+    position: relative;
+    transition: all 0.2s;
+  }
+  
+  .step-card:hover {
+    border-color: var(--accent-blue);
+  }
+  
+  .step-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    font-weight: 800;
+    font-size: 15px;
+    margin-bottom: 10px;
+    color: white;
+  }
+  
+  .step-1 .step-num { background: linear-gradient(135deg, #238636, #2ea043); }
+  .step-2 .step-num { background: linear-gradient(135deg, #0969da, #218bff); }
+  .step-3 .step-num { background: linear-gradient(135deg, #9e4700, #d29922); }
+  .step-4 .step-num { background: linear-gradient(135deg, #8957e5, #a371f7); }
+  
+  .step-title {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  
+  .step-desc {
+    font-size: 13px;
+    line-height: 1.75;
+    color: var(--text-secondary);
+  }
+
+  /* 折叠面板 */
+  .collapsible-header {
+    cursor: pointer;
+    user-select: none;
+  }
+  
+  .collapse-icon {
+    transition: transform 0.2s;
+    display: inline-block;
+    font-size: 10px;
+  }
+  
+  .collapsed .collapse-icon { transform: rotate(-90deg); }
+  .collapsed .card-body { display: none; }
+
+  /* 底部信息 */
+  .footer {
+    text-align: center;
+    padding: 30px;
+    color: var(--text-secondary);
+    font-size: 13px;
+    border-top: 1px solid var(--border-color);
+    margin-top: 40px;
+  }
+
+  @media (max-width: 768px) {
+    .card-grid { grid-template-columns: 1fr; }
+    .header h1 { font-size: 22px; }
+    .four-steps { grid-template-columns: 1fr; }
+    .nav-bar { justify-content: flex-start; overflow-x: auto; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>📚 中考现代文阅读考点方法速记</h1>
+  <div class="subtitle">全15页 · 完整思维导图 · 尽量不删减原内容</div>
+</div>
+
+<div class="nav-bar" id="navbar"></div>
+
+<div class="container">
+
+<!-- ==================== 解题总思路 ==================== -->
+<div class="section" id="sec-intro">
+  <div class="mindmap-root">
+    <div class="root-node">🎯 中考现代文阅读解题思路</div>
+  </div>
+
+  <div style="background:var(--bg-card); border:1px solid var(--border-color); border-radius:16px; padding:24px; margin-bottom:30px;">
+    <div style="font-size:14px;color:var(--text-secondary);margin-bottom:16px;line-height:1.8;">
+      在作答现代文阅读理解题时，通常行之有效的方法是<strong style="color:var(--accent-green)">先大致浏览一遍文章</strong>，对文章写了什么、怎么写的、为什么写有大致了解，然后再去做题。在做题时，虽然文体不同、考点不同，但解题路径基本一致。
+    </div>
+    
+    <div class="four-steps">
+      <div class="step-card step-1">
+        <div class="step-num">①</div>
+        <div class="step-title">审清题意</div>
+        <div class="step-desc">
+          关注题干中的范围限制、任务指向，审清具体考查哪个考点/考向，是针对全文还是某段/某几段设问，是概括作答还是结合具体内容分析作答等
+        </div>
+      </div>
+      
+      <div class="step-card step-2">
+        <div class="step-num">②</div>
+        <div class="step-title">带题回读</div>
+        <div class="step-desc">
+          围绕题干考点/考向、答题范围的指向，回到文中去圈画关键信息，提取有效信息：<br>
+          <strong>1.</strong> 概括事件类：找出出现的人物、发生的事件、事件结果等<br>
+          <strong>2.</strong> 理解类：结合上下文相关内容，分析表层、深层含义等<br>
+          <strong>3.</strong> 写法分析类：找使用了对应写法的句子，看写了什么、想表达什么<br>
+          <strong>4.</strong> 赏析类：在文中找对应句子并分析用词特点、写作手法，体会表达效果<br>
+          <strong>5.</strong> 拓展表达类：找出对应内容，分析作者为什么这样写，联系生活实际思考
+        </div>
+      </div>
+      
+      <div class="step-card step-3">
+        <div class="step-num">③</div>
+        <div class="step-title">回顾方法</div>
+        <div class="step-desc">
+          回顾与题干考点相关的文体知识、对应考点/考向的答题模板、答案语言组织特点等
+        </div>
+      </div>
+      
+      <div class="step-card step-4">
+        <div class="step-num">④</div>
+        <div class="step-title">组织答案</div>
+        <div class="step-desc">
+          对提取到的有效信息进行归类、提炼，按照一定的格式组织答案。<strong>注意分值和采分点</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ==================== 专题一：记叙文阅读 ==================== -->
+<div class="section" id="sec-narrative">
+  <div class="section-header" style="border-color:#238636;background:rgba(35,134,54,0.05);">
+    <h2>📖 专题一 · 记叙文阅读</h2>
+    <span class="badge">叙事散文 / 抒情散文 / 小说</span>
+  </div>
+
+  <!-- 考点1：内容理解与概括 -->
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-title"><span class="tag tag-green">考点1</span> 内容理解与概括 <span class="badge">269考</span></div>
+      <div class="card-body">
+        <div class="sub-node">
+          <div class="node-label">考向1 概括文章内容 <span class="tag tag-green">62考</span></div>
+          <div class="node-content">
+            <div class="highlight-box">
+              <strong>常见问法：</strong><br>
+              问法1：试用一两个词语概括三味书屋的生活，并结合课文说说你的依据。（《从百草园到三味书屋》）<br>
+              问法2：统观全文，文中写了老佟头哪几件事？请简要概括。（2024吉林）
+            </div>
+            <div class="formula-box">
+              <strong>📌 背公式：</strong><br>
+              ① <code>人物+时间+地点+事件</code>（用简洁的话语概括）<br>
+              ② <code>事件1+事件2+事件3</code><br>
+              <strong>套模板：</strong><br>
+              ① 人物在……时间/地点，做了……事（怎么做），结果……<br>
+              ②（关键词语）文章主要围绕……写了……事
+            </div>
+          </div>
+        </div>
+        
+        <div class="sub-node">
+          <div class="node-label">考向2 文意辨析选择 <span class="tag tag-orange">70考</span></div>
+          <div class="node-content">
+            <div class="highlight-box">
+              <strong>常见问法：</strong><br>
+              问法1：下列关于文章的理解和分析，不正确的一项是（ ）（2024山东潍坊）<br>
+              问法2：下列对文章的理解或赏析正确的两项是（ ）（2024湖南长沙）
+            </div>
+            <div class="formula-box">
+              <strong>📌 背公式：</strong><code>锁定原文对应内容+比较辨析+判断正误</code><br><br>
+              <strong>技巧点拨：</strong><br>
+              首先，审读题干，明确题目要求选择正确项还是错误项，选择一项还是几项；<br>
+              其次，阅读选项内容，回归文章，找出与选项相对应的句子/段落，对比分析文章与选项的表述；<br>
+              最后，根据对比结果确定答案，根据题干要求选出对应的答案
+            </div>
+          </div>
+        </div>
+
+        <div class="sub-node">
+          <div class="node-label">考向3 厘清文章思路 <span class="tag tag-blue">92考</span></div>
+          <div class="node-content">
+            <div class="highlight-box">
+              <strong>常见问法：</strong><br>
+              问法1：文章写了夏天的许多事、物，请根据行文脉络将下面的内容补充完整。（2024江苏连云港）<br>
+              问法2：请按照时间线索，梳理文章内容。（2024四川遂宁）
+            </div>
+            <div class="formula-box">
+              <strong>📌 背公式：</strong><code>时间+地点+人物+事件</code><br>
+              <strong>套模板：</strong><code>文章分别从……，讲述了……</code><br><br>
+              <strong>技巧点拨：</strong><br>
+              首先，审读题干，明确是否有人物、事物、段落、角度的限定，题干要求填空、简答、填表还是补全思维导图等作答形式；<br>
+              其次，根据已有信息，锁定答题区域，圈画、提取关键信息；<br>
+              最后，总结信息，进行作答
+            </div>
+          </div>
+        </div>
+
+        <div class="sub-node">
+          <div class="node-label">考向4 原因分析 <span class="tag tag-purple">45考</span></div>
+          <div class="node-content">
+            <div class="highlight-box">
+              <strong>常见问法：</strong><br>
+              问法1：阅读课文中作者与藤野先生交往的部分，说说为什么他"在我的眼里和心里是伟大的"。（《藤野先生》）<br>
+              问法2：为什么说零丁洋"是不同凡响的海，是凝聚着浩然正气的海"？请结合全文加以分析。（2024广东）
+            </div>
+            <div class="formula-box">
+              <strong>📌 背公式：</strong><code>定要点（分点作答）+内容分析</code><br>
+              <strong>套模板：</strong><code>××的原因是……，突出了……（分析角度有关键词句/具体事例/人物形象/作者情感等）</code><br><br>
+              <strong>技巧点拨：</strong><br>
+              首先，根据题干信息及关键词定位相关段落，标记出事件的起因、经过、结果；<br>
+              其次，联系上下文，围绕"结果"关键句提取信息，可从内容、情感、主旨角度进行具体分析，探究原因；<br>
+              最后，根据要点，分点作答
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 考点2：词句理解与赏析 -->
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-title"><span class="tag tag-blue">考点2</span> 词句理解与赏析 <span class="badge">370考 ⭐高频</span></div>
+      <div class="card-body">
+        <div class="sub-node">
+          <div class="node-label">考向1 词语理解 <span class="tag tag-green">43考</span></div>
+          <div class="node-content">
+            <div class="highlight-box">
+              <strong>常见问法：</strong><br>
+              问法1：但到憎恶她的时候——例如知道了谋死我那隐鼠的却是她的时候，就叫她阿长。（为什么要用"憎恶""谋死"这样的词语呢？）（《阿长与〈山海经〉》）<br>
+              问法2：请理解第⑨段中加点词语"灿灿"的含义。（2024黑龙江齐齐哈尔）
+            </div>
+            <div class="formula-box">
+              <strong>📌 背公式：</strong><code>表层含义+深层含义+表达效果/情感</code><br>
+              <strong>套模板：</strong>"××"一词原指……（表层含义），在语境中指……（深层含义），写出了……，表达了……情感
+            </div>
+          </div>
+        </div>
+        
+        <div class="sub-node">
+          <div class="node-label">考向2 词语赏析 <span class="tag tag-orange">73考</span></div>
+          <div class="node-content">
+            <div class="highlight-box">
+              <strong>常见问法：</strong><br>
+              问法1：品析下列句子中加点词的表达效果。（2024甘肃）<br>
+              问法2：请赏析第④段画线句中加点动词的妙处。（2023四川广安）
+            </div>
+            <div class="formula-box">
+              <strong>📌 背公式：</strong><code>含义+词性/手法/感情色彩+表达效果</code><br>
+              <strong>套模板：</strong>"××"一词原指……（本义），在这里指……（语境义），运用了……手法，写出了……/表达了……的情感
+            </div>
+          </div>
+        </div>
+        
+        <div class="sub-node">
+          <div class="node-label">考向3 句子理解 <span class="tag tag-purple">80考</span></div>
+          <div class="node-content">
+            <div class="highlight-box">
+              <strong>常见问法：</strong><br>
+              课文最后一段写道："如果稼先再次选择他的人生的话，他仍会走他已走过的道路。这是他的性格与品质。"结合课文，说说你对这段话的理解。（《邓稼先》）
+            </div>
+            <div class="formula-box">
+              <strong>📌 背公式：</strong><code>表层含义+深层含义+手法+主旨/情感</code><br>
+              <strong>套模板：</strong>这句话的表层含义是……，深层含义是……，运用了……的手法，表达了……的主旨/抒发了……的情感
+            </div>
+          </div>
+        </div>
+        
+        <div class="sub-node">
+          <div class="node-label">考向4 句子赏析 <span class="tag tag-red">167考 🔥最热</span></div>
+          <div class="node-content">
+            <div class="highlight-box">
+              <strong>常见问法：</strong><br>
+              问法1：品味下列语句，体会句中拟人手法的表达效果。（《济南的冬天》）<br>
+              问法2：请结合文章内容，从修辞手法角度赏析第③段画线的句子。（2024天津）
+            </div>
+            <div class="formula-box">
+              <strong>📌 背公式：</strong><code>选角度+明内容+析效果+品情感</code><br>
+              <strong>套模板：</strong>这句话运用了……写作手法/句式/词语/标点符号，生动形象地写出了……，有……的表达效果，抒发了……的情感
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 考点3：句段作用 -->
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-title"><span class="tag tag-orange">考点3</span> 句段作用</div>
+      <div class="card-body">
+        <div class="sub-node">
+          <div class="node-label">不同位置句/段的常见作用</div>
+          <div class="node-content">
+            <div class="highlight-box">
+              <strong>⚠️ 关键：先看位置，再从内容和结构两方面分析</strong>
+            </div>
+            <div class="list-item"><div class="num">首</div><div><strong>开头段/句：</strong>开篇点题/总领全文/设置悬念/引出下文/奠定感情基调/为下文做铺垫/照应标题/吸引读者阅读兴趣</div></div>
+            <div class="list-item"><div class="num">中</div><div><strong>中间段/句：</strong>承上启下/承接上文……引出下文……/推动情节发展/为下文做铺垫/埋伏笔/照应上文</div></div>
+            <div class="list-item"><div class="num">尾</div><div><strong>结尾段/句：</strong>总结全文/点明中心/深化主题/升华主旨/首尾呼应/照应前文/引人深思/留有余味</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 考点4：写作技巧 -->
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-title"><span class="tag tag-purple">考点4</span> 写作技巧</div>
+      <div class="card-body">
+        <div class="sub-node">
+          <div class="node-label">考向1 表达方式及作用</div>
+          <div class="node-content">
+            <strong>常见表达方式（5种）：</strong>
+            <div class="list-item"><div class="num">1</div><div><strong>记叙：</strong>交代清楚事件的来龙去脉（六要素）</div></div>
+            <div class="list-item"><div class="num">2</div><div><strong>描写：</strong>生动形象地描绘人物/景物/场面特征</div></div>
+            <div class="list-item"><div class="num">3</div><div><strong>说明：</strong>客观介绍事物的特征、性质等</div></div>
+            <div class="list-item"><div class="num">4</div><div><strong>抒情：</strong>直接或间接抒发作者的思想感情</div></div>
+            <div class="list-item"><div class="num">5</div><div><strong>议论：</strong>表明观点态度，揭示文章主旨</div></div>
+          </div>
+        </div>
+        
+        <div class="sub-node">
+          <div class="node-label">考向2 表现手法及作用</div>
+          <div class="node-content">
+            <strong>常见表现手法表达效果（7种）：</strong>
+            <div class="list-item"><div class="num">1</div><div><strong>衬托（正衬/反衬）：</strong>突出主体事物的特点</div></div>
+            <div class="list-item"><div class="num">2</div><div><strong>对比：</strong>突出双方特点，使形象更鲜明</div></div>
+            <div class="list-item"><div class="num">3</div><div><strong>欲扬先抑：</strong>使情节曲折多变，形成波澜</div></div>
+            <div class="list-item"><div class="num">4</div><div><strong>象征：</strong>含蓄深刻地表达思想感情</div></div>
+            <div class="list-item"><div class="num">5</div><div><strong>托物言志：</strong>借助某种事物寄托情志</div></div>
+            <div class="list-item"><div class="num">6</div><div><strong>借景抒情：</strong>通过描写景物抒发情感</div></div>
+            <div class="list-item"><div class="num">7</div><div><strong>联想想象：</strong>丰富内容，增强感染力</div></div>
+          </div>
+        </div>
+
+        <div class="sub-node">
+          <div class="node-label">考向3 常见修辞手法及作用（12种）</div>
+          <div class="node-content">
+            <div class="list-item"><div class="num">1</div><div><strong>比喻：</strong>生动形象地写出……的特征，表现了……</div></div>
+            <div class="list-item"><div class="num">2</div><div><strong>拟人：</strong>赋予事物以人的情感，生动活泼，富有情趣</div></div>
+            <div class="list-item"><div class="num">3</div><div><strong>排比：</strong>增强气势，强调……，节奏感强</div></div>
+            <div class="list-item"><div class="num">4</div><div><strong>反复：</strong>强调某种情感或意思</div></div>
+            <div class="list-item"><div class="num">5</div><div><strong>夸张：</strong>突出……特征，给读者留下深刻印象</div></div>
+            <div class="list-item"><div class="num">6</div><div><strong>设问：</strong>引起注意和思考</div></div>
+            <div class="list-item"><div class="num">7</div><div><strong>反问：</strong>加强语气，强调肯定的意思</div></div>
+            <div class="list-item"><div class="num">8</div><div><strong>对偶：</strong>整齐对称，音韵和谐</div></div>
+            <div class="list-item"><div class="num">9</div><div><strong>反语：</strong>表示讽刺否定</div></div>
+            <div class="list-item"><div class="num">10</div><div><strong>引用：</strong>增加文采，增强说服力</div></div>
+            <div class="list-item"><div class="num">11</div><div><strong>借代：</strong>以简代繁，以实代虚</div></div>
+            <div class="list-item"><div class="num">12</div><div><strong>通感：</strong>化抽象为具体，调动多种感官</div></div>
+          </div>
+        </div>
+
+        <div class="sub-node">
+          <div class="node-label">考向4 文章线索及作用</div>
+          <div class="node-content">
+            <strong>常见行文线索及其作用（6种）：</strong>
+            <div class="list-item"><div class="num">1</div><div><strong>物线：</strong>贯穿全文，使结构严谨</div></div>
+            <div class="list-item"><div class="num">2</div><div><strong>事线：</strong>以事件发展为线索</div></div>
+            <div class="list-item"><div class="num">3</div><div><strong>情线：</strong>以情感变化为线索</div></div>
+            <div class="list-item"><div class="num">4</div><div><strong>时线：</strong>以时间为线索</div></div>
+            <div class="list-item"><div class="num">5</div><div><strong>地线：</strong>以地点转换为线索</div></div>
+            <div class="list-item"><div class="num">6</div><div><strong>人线：</strong>以人物活动为线索</div></div>
+          </div>
+        </div>
+
+        <div class="sub-node">
+          <div class="node-label">考向5 全文语言品析</div>
+          <div class="node-content">
+            <div class="formula-box">
+              从用词、句式、修辞等多角度综合品味语言特色，关注语言的准确性、生动性、形象性、口语化等特点。
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 考点5：人物形象 -->
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-title"><span class="tag tag-green">考点5</span> 人物形象分析</div>
+      <div class="card-body">
+        <div class="sub-node">
+          <div class="node-content">
+            <div class="formula-box">
+              <strong>📌 答题方法：</strong><br>
+              ① 找出直接描写人物的语言、动作、神态、心理等的语句；<br>
+              ② 找出侧面烘托的语句（他人评价/环境烘托）；<br>
+              ③ 分析人物身份、职业、经历等背景因素；<br>
+              ④ 用恰当的形容词概括人物品质/性格特征；<br>
+              ⑤ 结合具体事例佐证
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 考点6：环境描写 -->
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-title"><span class="tag tag-blue">考点6</span> 环境描写</div>
+      <div class="card-body">
+        <div class="sub-node">
+          <div class="node-label">常见自然环境描写及作用（4种）</div>
+          <div class="node-content">
+            <div class="list-item"><div class="num">1</div><div><strong>渲染气氛：</strong>营造特定氛围，烘托人物心情</div></div>
+            <div class="list-item"><div class="num">2</div><div><strong>推动情节：</strong>为下文情节发展做铺垫</div></div>
+            <div class="list-item"><div class="num">3</div><div><strong>烘托人物：</strong>暗示人物性格/命运/心理</div></div>
+            <div class="list-item"><div class="num">4</div><div><strong>深化主旨：</strong>象征意义，暗示主题</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 考点7：把握情感主旨 -->
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-title"><span class="tag tag-orange">考点7</span> 把握情感、主旨 <span class="badge">43考</span></div>
+      <div class="card-body">
+        <div class="sub-node">
+          <div class="node-label">考向1 把握人物/作者情感 <span class="tag tag-green">10考</span></div>
+          <div class="node-content">
+            <div class="highlight-box">
+              <strong>常见问法：</strong><br>
+              问法1：在这篇文章中，"我"对父亲的情感态度有怎样的变化？这种变化的原因是什么？（《背影》）<br>
+              问法2：文章表达了"我"的哪些情感？（2024吉林长春）
+            </div>
+            <div class="formula-box">
+              <strong>📌 背公式：</strong><code>事件+人物/作者情感</code><br>
+              <strong>套模板：</strong><code>文章通过描写……（内容），表达了人物/作者的……情感</code><br><br>
+              <strong>技巧点拨：</strong><br>
+              首先，审读题干，明确题干要求，分析文章人物/作者的情感；<br>
+              其次，定位至相关语段，找出体现人物/作者情感的关键词句（抒情句、议论句或反复出现的词句），或联系上下文对比前后情感变化的关键词句；<br>
+              最后，结合关键词句分析人物/作者的情感
+            </div>
+          </div>
+        </div>
+        
+        <div class="sub-node">
+          <div class="node-label">考向2 主旨理解与探究 <span class="tag tag-purple">33考</span></div>
+          <div class="node-content">
+            <div class="highlight-box">
+              <strong>常见问法：</strong><br>
+              问法1：红军翻越老山界克服了哪些困难？这体现了红军什么样的精神？结合具体内容，做简要分析。（《老山界》）<br>
+              问法2：读完这篇文章，也许你会联想到这些词语：童年、故乡、记忆……请结合全文内容，选择其中一个词语谈谈你对主题的理解。（2023甘肃兰州）
+            </div>
+            <div class="formula-box">
+              <strong>📌 背公式：</strong><code>（手法/选择）+内容+主旨情感</code><br>
+              <strong>套模板：</strong>文章（运用……手法/符合……主题）记叙/描写/刻画……的故事/景物/形象，表达/赞美/揭示了……的思想/精神/道理/特点，抒发了……的情感
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 考点8：文章标题 -->
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-title"><span class="tag tag-purple">考点8</span> 文章标题</div>
+      <div class="card-body">
+        <div class="sub-node">
+          <div class="node-label">三大题型</div>
+          <div class="node-content">
+            <div class="list-item"><div class="num">1</div><div><strong>标题含义：</strong>表层义 + 深层义（象征义/双关义）</div></div>
+            <div class="list-item"><div class="num">2</div><div><strong>标题作用：</strong>①作为线索贯穿全文 ②点明写作对象/主要内容 ③揭示/暗示主旨 ④设置悬念引起兴趣 ⑤交代故事发生的环境/背景 ⑥运用修辞，新颖独特</div></div>
+            <div class="list-item"><div class="num">3</div><div><strong>拟写/替换标题：</strong>紧扣文章内容、主旨，简洁新颖，有文学色彩</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 考点9：拓展探究 -->
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-title"><span class="tag tag-red">考点9</span> 拓展探究 <span class="badge">95考</span></div>
+      <div class="card-body">
+        <div class="sub-node">
+          <div class="node-label">考向1 谈感悟、启示 <span class="tag tag-green">26考</span></div>
+          <div class="node-content">
+            <div class="highlight-box">
+              <strong>常见问法：</strong><br>
+              文章结尾处写到："父亲知道，过上年两年，又一批新树苗将在这里郁郁葱葱地长起来。这看似贫瘠的土地，总是会在春秋轮回之间，给劳作的人们以希望和馈赠。"对此，你有哪些感悟？（中考设问：2023湖南怀化）
+            </div>
+            <div class="formula-box">
+              <strong>📌 背公式：</strong><code>感悟/启示+理由+总结</code><br>
+              <strong>套模板：</strong><code>从文中我明白了……，因为……（结合文章或自身实际），我们应该……</code>
+            </div>
+          </div>
+        </div>
+        
+        <div class="sub-node">
+          <div class="node-label">考向2 谈看法 <span class="tag tag-orange">57考</span></div>
+          <div class="node-content">
+            <div class="highlight-box">
+              <strong>常见问法：</strong><br>
+              关于选文主题的讨论，甲关注第⑤段"我坚持用农家肥，追求绿色生态和纯天然味道"一句，乙关注第⑩段"活动活动筋骨，享受自然幽雅、清新恬静的田园意境"一句。你更倾向于哪种看法？请说明理由。（中考设问：2023辽宁营口）
+            </div>
+            <div class="formula-box">
+              <strong>📌 背公式：</strong><code>看法/评价+理由</code><br>
+              <strong>套模板：</strong><code>我认为……（正确/不正确），因为……，所以……/针对……，我们应该……</code><br><br>
+              <strong>技巧点拨：</strong><br>
+              首先，明确题干要求，并针对话题选择恰当的角度，从文章中寻找能够支撑自己观点的具体内容，包括情节细节、人物的语言或行为、作者的观点、看法等；<br>
+              其次，联系生活实际，表明自己的观点和态度；<br>
+              最后，列举生活实例，阐明自己的观点
+            </div>
+          </div>
+        </div>
+        
+        <div class="sub-node">
+          <div class="node-label">考向3 比较探究 <span class="tag tag-blue">12考</span></div>
+          <div class="node-content">
+            <div class="highlight-box">
+              <strong>常见问法：</strong><br>
+              很多作家都写过回忆母亲的文章，比如邹韬奋《我的母亲》、老舍《我的母亲》等。找来进行比较阅读，看看不同作者笔下的母亲形象、文章的写作手法、作品的语言风格等方面各有什么不同。（教材设问：《回忆我的母亲》）
+            </div>
+            <div class="formula-box">
+              <strong>📌 背公式：</strong><code>（从特定角度）比较分析探究的对象</code><br>
+              <strong>套模板：</strong><code>文章1+具体事例……，文章2+具体事例……，二者在……方面（特定角度）有……不同/相同点</code><br><br>
+              <strong>技巧点拨：</strong><br>
+              首先，审清题干要求，明确题干中要求比较探究的对象（如课内文章、链接材料等），以及有无指定的探究角度；<br>
+              其次，明确文章与所给材料之间的逻辑关系，以文章的主题和思想感情为依托，看材料是再次强化文章中心，还是对文章主题的补充，并为此寻找支撑点，如事实、道理等；<br>
+              最后，总结答案，用简洁流畅的语言组织答案
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 小说专项 -->
+  <div class="card-grid" style="margin-top:24px;">
+    <div class="card" style="grid-column:1/-1;">
+      <div class="card-title"><span class="tag tag-cyan">📕 小说专项</span> 核心考点</div>
+      <div class="card-body">
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px;">
+          
+          <div class="sub-node">
+            <div class="node-label">小说·考点1 情节梳理</div>
+            <div class="node-content">
+              <div class="highlight-box">
+                <strong>常见结构方式：</strong><br>
+                ① 顺叙：按时间先后顺序叙述<br>
+                ② 倒叙：先交代结局再回溯经过<br>
+                ③ 插叙：在叙述中插入另一段往事<br>
+                ④ 补叙：对前面内容补充说明
+              </div>
+            </div>
+          </div>
+          
+          <div class="sub-node">
+            <div class="node-label">小说·考点2 人物形象</div>
+            <div class="node-content">
+              关注人物的言行举止、外貌描写、心理刻画，以及他人的评价和环境的烘托作用。
+            </div>
+          </div>
+          
+          <div class="sub-node">
+            <div class="node-label">小说·考点3 记叙人称及作用</div>
+            <div class="node-content">
+              <div class="list-item"><div class="num">1</div><div><strong>第一人称（我）：</strong>真实亲切，便于直接抒情</div></div>
+              <div class="list-item"><div class="num">2</div><div><strong>第二人称（你）：</strong>拉近距离，便于对话交流</div></div>
+              <div class="list-item"><div class="num">3</div><div><div><strong>第三人称（他/她）：</strong>自由灵活，不受时空限制</div></div></div>
+            </div>
+          </div>
+          
+          <div class="sub-node">
+            <div class="node-label">小说·考点4 情节安排及作用</div>
+            <div class="node-content">
+              关注伏笔、铺垫、悬念、转折、巧合等手法的使用，以及它们对塑造人物、表现主旨的作用。
+            </div>
+          </div>
+          
+          <div class="sub-node">
+            <div class="node-label">小说·考点5 环境描写及作用</div>
+            <div class="node-content">
+              自然环境与社会环境描写相结合，关注其对情节推动、氛围营造、人物塑造、主题暗示等方面的作用。
+            </div>
+          </div>
+          
+          <div class="sub-node">
+            <div class="node-label">文章结构方式</div>
+            <div class="node-content">
+              <div class="list-item"><div class="num">1</div><div><strong>总分式：</strong>总—分、分—总、总—分—总</div></div>
+              <div class="list-item"><div class="num">2</div><div><strong>对照式：</strong>前后对照/正反对比</div></div>
+              <div class="list-item"><div class="num">3</div><div><strong>递进式：</strong>层层深入，由浅到深</div></div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 朗读技巧 -->
+  <div class="card-grid" style="margin-top:24px;">
+    <div class="card" style="grid-column:1/-1;">
+      <div class="card-title"><span class="tag tag-cyan">🎙️</span> 朗读技巧及其作用</div>
+      <div class="card-body">
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px;">
+          <div class="sub-node">
+            <div class="node-label">1. 重音</div>
+            <div class="node-content">
+              <strong>① 判断方法：</strong>分析句子所要表达的重点，重读能体现作者情感、起强调作用的词语。不能确定重音时，需联系上下文，将词语放在特定的语言环境中加以分析，如在并列性、对比性、递进性、转折性、比喻性的语境中，朗读时要重读。<br>
+              <strong>② 作用：</strong>突出重点内容，增强表现力。
+            </div>
+          </div>
+          
+          <div class="sub-node">
+            <div class="node-label">2. 停顿</div>
+            <div class="node-content">
+              <strong>① 判断方法：</strong>参考标点符号，确定句与句之间停顿的长短（句号/问号/感叹号＞分号＞逗号＞顿号）；根据语法关系停顿（主谓之间停顿，动宾之间停顿，定语、状语、补语和中心语之间要停顿）。<br>
+              <strong>② 作用：</strong>划分语句结构，增强语言的节奏感和层次感，给予听众思考时间。
+            </div>
+          </div>
+          
+          <div class="sub-node">
+            <div class="node-label">3. 朗读情感</div>
+            <div class="node-content">
+              <strong>① 判断方法：</strong>结合具体内容、主旨情感、语言风格确定朗读情感（常见语言风格：质朴、华丽、平实、典雅、直白、含蓄、简洁、繁复、幽默风趣、清新自然等）。<br>
+              <strong>② 作用：</strong>传递情绪态度，增强朗读的感染力和表现力。
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 微写作 -->
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-title"><span class="tag tag-red">✍️ 考点7</span> 微写作</div>
+      <div class="card-body">
+        <div class="node-content">
+          结合文本内容进行仿写、续写、评论、推荐语撰写等，要求语言通顺、符合情境、紧扣文本主旨。
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end 专题一 -->
+
+</div><!-- end container -->
+
+<div class="footer">
+  📚 中考现代文阅读考点方法速记 · 思维导图版 · 共15页完整内容整理<br>
+  <span style="color:var(--text-secondary);font-size:12px;">涵盖记叙文阅读全部核心考点：内容理解概括、词句理解赏析、句段作用、写作技巧、人物形象、环境描写、情感主旨、文章标题、拓展探究、小说专项、朗读技巧、微写作</span>
+</div>
+
+<script>
+// 导航功能
+const sections = [
+  { id: 'sec-intro', label: '🧭 解题思路', color: 'var(--accent-green)' },
+  { id: 'sec-narrative', label: '📖 记叙文阅读', color: 'var(--accent-blue)' },
+];
+
+const nav = document.getElementById('navbar');
+sections.forEach((s, i) => {
+  const btn = document.createElement('button');
+  btn.className = 'nav-btn' + (i === 0 ? ' active' : '');
+  btn.textContent = s.label;
+  btn.onclick = () => {
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(s.id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+  nav.appendChild(btn);
+});
+
+// 平滑滚动监听
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const idx = sections.findIndex(s => s.id === entry.target.id);
+      if (idx >= 0) {
+        document.querySelectorAll('.nav-btn').forEach((b, i) => b.classList.toggle('active', i === idx));
+      }
+    }
+  });
+}, { threshold: 0.2 });
+
+sections.forEach(s => {
+  const el = document.getElementById(s.id);
+  if (el) observer.observe(el);
+});
+</script>
+
+</body>
+</html>
