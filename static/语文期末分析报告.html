@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>赵家艺语文期末试卷分析报告与暑期提升计划</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: #f5f7fa;
+            padding: 20px;
+        }
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+        h1 {
+            font-size: 28px;
+            color: #1a237e;
+            text-align: center;
+            margin-bottom: 8px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+        .summary-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin-bottom: 30px;
+        }
+        .card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .card.warning { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .card.success { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .card.info { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+        .card .value {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+        .card .label { font-size: 14px; opacity: 0.95; }
+        h2 {
+            color: #1a237e;
+            font-size: 20px;
+            margin: 35px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e0e6ed;
+        }
+        h3 {
+            color: #283593;
+            font-size: 17px;
+            margin: 25px 0 10px 0;
+        }
+        .highlight {
+            background: #fff3cd;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+            color: #856404;
+        }
+        .danger {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        .success-bg {
+            background: #d4edda;
+            color: #155724;
+        }
+        .chart-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin: 20px 0;
+        }
+        .chart-box {
+            background: #fafbfc;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #e0e6ed;
+        }
+        .chart-box canvas { max-height: 260px; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 14px;
+        }
+        th, td {
+            border: 1px solid #e0e6ed;
+            padding: 10px 12px;
+            text-align: left;
+        }
+        th {
+            background: #f0f3f8;
+            color: #1a237e;
+            font-weight: 600;
+        }
+        td.score { text-align: center; font-weight: bold; }
+        .low { color: #d32f2f; }
+        .mid { color: #f57c00; }
+        .high { color: #388e3c; }
+        .analysis-box {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 16px 20px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .analysis-box h4 {
+            color: #1a237e;
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+        .analysis-box p, .analysis-box ul {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 6px;
+        }
+        .analysis-box ul { padding-left: 20px; }
+        .analysis-box li { margin-bottom: 4px; }
+        .plan-phase {
+            background: #fff;
+            border: 1px solid #e0e6ed;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .plan-phase h3 {
+            margin-top: 0;
+            color: #1a237e;
+        }
+        .plan-phase .date-range {
+            color: #666;
+            font-size: 13px;
+            margin-bottom: 12px;
+            display: block;
+        }
+        .daily-schedule {
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: 10px;
+            font-size: 14px;
+            margin: 15px 0;
+        }
+        .daily-schedule .time {
+            font-weight: bold;
+            color: #667eea;
+        }
+        .daily-schedule .task {
+            background: #f8f9fa;
+            padding: 8px 12px;
+            border-radius: 6px;
+        }
+        .tips {
+            background: #e8f4f8;
+            border-left: 4px solid #0288d1;
+            padding: 16px 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+            font-size: 14px;
+        }
+        .footer {
+            text-align: center;
+            color: #999;
+            font-size: 12px;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e6ed;
+        }
+        @media (max-width: 768px) {
+            .chart-row { grid-template-columns: 1fr; }
+            .container { padding: 20px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>赵家艺语文期末试卷分析报告</h1>
+        <p class="subtitle">2025-2026 学年度第二学期期末质量检测 · 六年级/初一衔接</p>
+
+        <div class="summary-cards">
+            <div class="card warning">
+                <div class="value">63</div>
+                <div class="label">卷面总分 / 100</div>
+            </div>
+            <div class="card">
+                <div class="value">14</div>
+                <div class="label">客观题得分</div>
+            </div>
+            <div class="card">
+                <div class="value">49</div>
+                <div class="label">主观题得分（含作文）</div>
+            </div>
+            <div class="card info">
+                <div class="value">26</div>
+                <div class="label">作文得分 / 40</div>
+            </div>
+        </div>
+
+        <h2>一、总体画像</h2>
+        <p>本次试卷满分 100 分，赵家艺同学得分 <span class="highlight">63 分</span>，处于班级中下游。从卷面看：</p>
+        <ul style="margin-left: 20px; margin-top: 10px;">
+            <li><strong>基础记忆题</strong>（古诗文默写、名著填空）掌握较好，基本没有失分；</li>
+            <li><strong>客观选择题</strong>有 2 题左右错误，说明审题或文本细节理解存在漏洞；</li>
+            <li><strong>说明文阅读</strong>是最大失分板块，4 道题仅得 1 分；</li>
+            <li><strong>记叙文阅读</strong>能得部分分数，但语言赏析、信息筛选不够精准；</li>
+            <li><strong>作文</strong> 26/40，题材普通、表达平淡、缺乏细节打磨。</li>
+        </ul>
+
+        <h2>二、得分分布</h2>
+        <div class="chart-row">
+            <div class="chart-box">
+                <canvas id="scoreChart"></canvas>
+            </div>
+            <div class="chart-box">
+                <canvas id="lossChart"></canvas>
+            </div>
+        </div>
+
+        <h2>三、逐题诊断与失分原因</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>题号</th>
+                    <th>考查内容</th>
+                    <th>分值</th>
+                    <th>得分</th>
+                    <th>失分原因</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Q1-Q4</td>
+                    <td>基础知识选择题</td>
+                    <td class="score">约 11</td>
+                    <td class="score">14（合计客观）</td>
+                    <td>客观题共约 16 分，得 14 分，错 2 题左右</td>
+                </tr>
+                <tr>
+                    <td>Q5</td>
+                    <td>古诗文默写</td>
+                    <td class="score">5</td>
+                    <td class="score high">5</td>
+                    <td>✅ 背诵扎实，书写基本正确</td>
+                </tr>
+                <tr>
+                    <td>Q6</td>
+                    <td>名著填空（《骑鹅旅行记》）</td>
+                    <td class="score">4</td>
+                    <td class="score high">4</td>
+                    <td>✅ 名著内容熟悉</td>
+                </tr>
+                <tr>
+                    <td>Q7</td>
+                    <td>古诗鉴赏选择题</td>
+                    <td class="score">2</td>
+                    <td class="score">-</td>
+                    <td>选对 C，但可能其他选择有失误</td>
+                </tr>
+                <tr>
+                    <td>Q8</td>
+                    <td>“春江正渺茫”情景交融分析</td>
+                    <td class="score">3</td>
+                    <td class="score low">1</td>
+                    <td>只答出“乐景衬哀情”，缺少对“景”与“情”如何交融的具体拆解</td>
+                </tr>
+                <tr>
+                    <td>Q9</td>
+                    <td>文言文字词辨析</td>
+                    <td class="score">2</td>
+                    <td class="score">-</td>
+                    <td>纳入客观题统计</td>
+                </tr>
+                <tr>
+                    <td>Q10</td>
+                    <td>文言文语气词理解</td>
+                    <td class="score">2</td>
+                    <td class="score">-</td>
+                    <td>纳入客观题统计</td>
+                </tr>
+                <tr>
+                    <td>Q11</td>
+                    <td>“为是其智弗若与？”翻译</td>
+                    <td class="score">2</td>
+                    <td class="score low">1</td>
+                    <td>“为是”“弗若”等关键词翻译不准确，句式理解不到位</td>
+                </tr>
+                <tr>
+                    <td>Q12</td>
+                    <td>文言文断句</td>
+                    <td class="score">2</td>
+                    <td class="score high">2</td>
+                    <td>✅ 语感尚可，断句正确</td>
+                </tr>
+                <tr>
+                    <td>Q13</td>
+                    <td>文言文对比阅读（规律方法）</td>
+                    <td class="score">3</td>
+                    <td class="score mid">2</td>
+                    <td>能联系文本，但总结“规律”的能力不够，答题术语化不足</td>
+                </tr>
+                <tr>
+                    <td>Q14</td>
+                    <td>说明文思路概括</td>
+                    <td class="score">3</td>
+                    <td class="score low">1</td>
+                    <td>概括过于空泛，只写“太阳重要性”“努力奋斗”等，没有按段落层次梳理</td>
+                </tr>
+                <tr>
+                    <td>Q15</td>
+                    <td>说明文语言/写法分析选择题</td>
+                    <td class="score">2</td>
+                    <td class="score low">0</td>
+                    <td>对说明方法、段落结构判断不清</td>
+                </tr>
+                <tr>
+                    <td>Q16</td>
+                    <td>说明文段落还原</td>
+                    <td class="score">4</td>
+                    <td class="score low">0</td>
+                    <td>严重失分：没有理解段落内容与上下文的逻辑关系</td>
+                </tr>
+                <tr>
+                    <td>Q17</td>
+                    <td>说明文信息提取（为何探日）</td>
+                    <td class="score">3</td>
+                    <td class="score low">0</td>
+                    <td>严重失分：脱离原文，凭感觉作答，没有从文本中找依据</td>
+                </tr>
+                <tr>
+                    <td>Q18</td>
+                    <td>记叙文信息筛选（今昔对比表）</td>
+                    <td class="score">3</td>
+                    <td class="score mid">2</td>
+                    <td>基本能提取信息，但“作者情感态度”概括不够准确</td>
+                </tr>
+                <tr>
+                    <td>Q19</td>
+                    <td>记叙文语言赏析</td>
+                    <td class="score">3</td>
+                    <td class="score low">1</td>
+                    <td>只解释了词语意思，没有分析表达效果和情感</td>
+                </tr>
+                <tr>
+                    <td>Q20</td>
+                    <td>记叙文句子比较</td>
+                    <td class="score">3</td>
+                    <td class="score mid">2</td>
+                    <td>能判断“不能替换”，但分析理由不够深入、规范</td>
+                </tr>
+                <tr>
+                    <td>Q21</td>
+                    <td>记叙文感悟（“墙上的风筝”）</td>
+                    <td class="score">3</td>
+                    <td class="score mid">2</td>
+                    <td>理解基本到位，但语言表达零散，缺少层次</td>
+                </tr>
+                <tr>
+                    <td>Q22</td>
+                    <td>作文《我，不一样了》</td>
+                    <td class="score">40</td>
+                    <td class="score mid">26</td>
+                    <td>选材老套（同桌帮学数学）、细节描写不足、语言平淡、卷面有涂改</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>四、核心短板总结</h2>
+
+        <div class="analysis-box">
+            <h4>1. 说明文阅读几乎“全军覆没”（失分 11 分左右）</h4>
+            <p>说明文《探日——一场赓续两千余年的追逐》考查的是概括、结构、信息提取、段落还原。赵家艺在这类题上暴露出：</p>
+            <ul>
+                <li>不会“分层概括”：看到长段落就抓不住核心观点；</li>
+                <li>不会“回原文找依据”：Q17 答案完全脱离文本；</li>
+                <li>不会分析说明顺序和段落逻辑：Q16 段落还原无从下手。</li>
+            </ul>
+        </div>
+
+        <div class="analysis-box">
+            <h4>2. 古诗词鉴赏只停留在“翻译”层面</h4>
+            <p>Q8 要求分析“情景交融”，孩子只答出“春水涨、侧面写离别、乐景衬哀情”。但“情景交融”要求具体说明：写了什么景（春江浩渺、烟波迷茫）、营造了什么氛围（渺茫、惆怅）、寄托了什么情（送别友人的不舍与担忧）。答案缺少这种由景到情的逐步推导。</p>
+        </div>
+
+        <div class="analysis-box">
+            <h4>3. 文言文翻译“关键词”把握不准</h4>
+            <p>“为是其智弗若与？”一句，孩子翻译成“是他的智力不如那个专心的人吗？”基本意思对，但“为是”没有译出“难道是因为”，语气词“与”也未处理，所以扣 1 分。文言文翻译要做到“字字落实、字字对应”。</p>
+        </div>
+
+        <div class="analysis-box">
+            <h4>4. 记叙文语言赏析题答题不规范</h4>
+            <p>Q19 赏析“飘过一条条小巷，飘进我东躲西藏的耳朵里”，标准答法应包含：①词语含义；②修辞/动词运用；③表达效果；④情感。孩子只解释了“东躲西藏”的意思，缺少后面三步，导致只能得 1 分。</p>
+        </div>
+
+        <div class="analysis-box">
+            <h4>5. 作文题材陈旧、细节单薄、卷面有涂改</h4>
+            <p>作文《我，不一样了》写了“同桌帮我学数学，让我找回自信”。这个题材非常常见，且文中多处：</p>
+            <ul>
+                <li>语言口语化：“你每天都提前写完作业”“到了自习课时”；</li>
+                <li>细节不足：没有具体描写一道难题、一次失败、一个眼神；</li>
+                <li>结构单一：平铺直叙，缺少波澜；</li>
+                <li>卷面涂改：影响观感，容易扣分。</li>
+            </ul>
+        </div>
+
+        <div class="analysis-box">
+            <h4>6. 书写与卷面亟需改善</h4>
+            <p>答题卡字迹偏小、部分连笔、有多处涂改。在主观题评分中，卷面直接影响“印象分”，尤其是作文和阅读题。练字必须纳入暑期计划。</p>
+        </div>
+
+        <h2>五、暑期语文提升总目标</h2>
+        <p>暑假约 8 周，建议每天投入语文学习 <span class="highlight">1.5 小时</span>。通过系统性训练，争取下学期语文成绩稳定在 <span class="highlight">80 分以上</span>，重点实现四个突破：</p>
+        <ol style="margin-left: 20px; margin-top: 10px;">
+            <li><strong>说明文阅读</strong>：从“几乎不得分”提升到“每套题得分率 70% 以上”；</li>
+            <li><strong>古诗词鉴赏</strong>：掌握“景—境—情”三步答题模板；</li>
+            <li><strong>文言文翻译</strong>：做到字字落实、重点虚词实词过关；</li>
+            <li><strong>作文</strong>：积累 3-5 个优质素材，提升细节描写与卷面。</li>
+        </ol>
+
+        <h2>六、暑期三阶段提升计划</h2>
+
+        <div class="plan-phase">
+            <h3>第一阶段：基础补漏（7 月上旬—7 月中旬）</h3>
+            <span class="date-range">约 2 周 · 每天 1.5 小时</span>
+            <p><strong>核心任务：</strong>把初一（六年级）语文的古诗文、字词、文言文基础打牢。</p>
+            <ul>
+                <li><strong>早读 30 分钟</strong>：背诵初一上下册必背古诗文，重点默写易错字（如“罔”“殆”“濯清涟”等）。</li>
+                <li><strong>文言文 30 分钟</strong>：逐篇翻译课内文言文，整理 120 个常见实词、18 个虚词用法。</li>
+                <li><strong>字词基础 20 分钟</strong>：复习错别字、成语、病句类型，每天做 10 道选择题。</li>
+                <li><strong>名著阅读 10 分钟</strong>：继续读《朝花夕拾》《西游记》《骆驼祥子》等，梳理人物、情节。</li>
+            </ul>
+            <p><strong>阶段检测：</strong>默写全对率 90% 以上；文言文翻译能做到“字字对应”。</p>
+        </div>
+
+        <div class="plan-phase">
+            <h3>第二阶段：阅读专项突破（7 月下旬—8 月中旬）</h3>
+            <span class="date-range">约 3 周 · 每天 1.5 小时</span>
+            <p><strong>核心任务：</strong>针对失分最严重的说明文、记叙文、古诗词鉴赏进行专项训练。</p>
+            <ul>
+                <li><strong>说明文专题（重点）</strong>：
+                    <ul>
+                        <li>每天精做 1 篇说明文，限时 15 分钟；</li>
+                        <li>学会“分层概括”：用横线标出每段中心句；</li>
+                        <li>掌握段落还原题技巧：先看段落内容，再读上下文“过渡句”；</li>
+                        <li>训练“回原文找依据”：所有答案必须能在文中找到对应句子。</li>
+                    </ul>
+                </li>
+                <li><strong>记叙文专题</strong>：
+                    <ul>
+                        <li>每天 1 篇记叙文，重点练“语言赏析题”“句子比较题”“主旨感悟题”；</li>
+                        <li>背诵答题模板：手法 + 内容 + 效果 + 情感。</li>
+                    </ul>
+                </li>
+                <li><strong>古诗词鉴赏专题</strong>：
+                    <ul>
+                        <li>每天 1 首，按“写了什么景—营造什么境—表达什么情”三步作答；</li>
+                        <li>积累常见意象：柳（离别）、月（思乡）、雁（书信）、杜鹃（悲苦）等。</li>
+                    </ul>
+                </li>
+            </ul>
+            <p><strong>阶段检测：</strong>说明文得分率达到 70%；记叙文语言赏析题能稳定得 2-3 分。</p>
+        </div>
+
+        <div class="plan-phase">
+            <h3>第三阶段：作文与综合模拟（8 月中旬—8 月底）</h3>
+            <span class="date-range">约 2-3 周 · 每天 1.5 小时</span>
+            <p><strong>核心任务：</strong>提升作文，进行综合训练。</p>
+            <ul>
+                <li><strong>作文素材积累</strong>：整理 3-5 个“成长类”真实素材，避免“同桌帮学数学”这类俗套题材。</li>
+                <li><strong>作文升格训练</strong>：每周写 2 篇作文，写完后对照范文修改，重点加细节描写和心理描写。</li>
+                <li><strong>练字</strong>：每天 15 分钟楷书练字，使用作文格纸，控制字大小、间距。</li>
+                <li><strong>综合模拟</strong>：每 3 天做 1 套完整语文试卷，限时训练，培养时间分配能力。</li>
+            </ul>
+            <p><strong>阶段检测：</strong>作文能稳定拿到 32 分以上；整套试卷能在 90 分钟内完成。</p>
+        </div>
+
+        <h2>七、每日时间安排参考（可灵活调整）</h2>
+        <div class="daily-schedule">
+            <div class="time">7:30-8:00</div>
+            <div class="task">早读：古诗文背诵 + 文言文朗读</div>
+            <div class="time">9:00-9:30</div>
+            <div class="task">阅读专项：1 篇说明文/记叙文 + 对答案改错</div>
+            <div class="time">9:30-10:00</div>
+            <div class="task">错题整理：把错题按“题型”归类到错题本</div>
+            <div class="time">15:00-15:30</div>
+            <div class="task">作文训练：积累素材 / 写作文 / 修改作文</div>
+            <div class="time">15:30-15:45</div>
+            <div class="task">练字：楷书作文格，重点写规范字</div>
+            <div class="time">20:00-20:20</div>
+            <div class="task">睡前复习：当天背诵内容 + 错题回顾</div>
+        </div>
+
+        <h2>八、给家长的配合建议</h2>
+        <div class="tips">
+            <ol style="margin-left: 20px;">
+                <li><strong>固定学习时段：</strong>语文需要语感积累，最好每天固定时间，避免三天打鱼两天晒网。</li>
+                <li><strong>重视“改错”：</strong>不是做完题就结束，要让孩子说出“为什么错”“正确答案怎么来的”。</li>
+                <li><strong>监督练字：</strong>卷面分很“玄学”但很重要，可以买作文格练字纸，每天 15 分钟。</li>
+                <li><strong>鼓励阅读：</strong>每天 30 分钟课外阅读（散文、名家短篇小说），培养语感和素材积累。</li>
+                <li><strong>避免过度补课：</strong>暑假重点是“补能力”而非“刷题量”，建议精选 10-15 篇阅读精做，而非泛泛做几十篇。</li>
+            </ol>
+        </div>
+
+        <h2>九、预期效果</h2>
+        <p>如果孩子能按此计划执行，暑假结束时有望达到以下水平：</p>
+        <ul style="margin-left: 20px; margin-top: 10px;">
+            <li>古诗文默写、文言文基础题基本不丢分；</li>
+            <li>说明文阅读从“几乎不得分”提升到“得 70% 以上”；</li>
+            <li>记叙文阅读语言赏析、主旨感悟能规范作答；</li>
+            <li>作文达到 32 分以上，题材新颖、细节丰富、卷面整洁。</li>
+        </ul>
+        <p style="margin-top: 15px; font-weight: bold; color: #1a237e;">按此提升，下学期语文成绩稳定在 80 分以上是非常有希望的。</p>
+
+        <div class="footer">
+            本报告由 WorkBuddy AI 生成 · 仅基于本次试卷与答题卡分析 · 建议结合学校老师意见调整
+        </div>
+    </div>
+
+    <script>
+        // 得分分布饼图
+        const ctx1 = document.getElementById('scoreChart').getContext('2d');
+        new Chart(ctx1, {
+            type: 'doughnut',
+            data: {
+                labels: ['客观题', '主观非作文', '作文'],
+                datasets: [{
+                    data: [14, 23, 26],
+                    backgroundColor: ['#667eea', '#43e97b', '#f5576c'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: { display: true, text: '63 分得分构成' },
+                    legend: { position: 'bottom' }
+                }
+            }
+        });
+
+        // 失分重点条形图
+        const ctx2 = document.getElementById('lossChart').getContext('2d');
+        new Chart(ctx2, {
+            type: 'bar',
+            data: {
+                labels: ['说明文（Q14-Q17）', '作文（Q22）', '古诗词鉴赏（Q8）', '记叙文语言赏析（Q19）', '文言文翻译（Q11）', '记叙文感悟（Q21）'],
+                datasets: [{
+                    label: '失分',
+                    data: [11, 14, 2, 2, 1, 1],
+                    backgroundColor: ['#d32f2f', '#f57c00', '#f57c00', '#f57c00', '#f57c00', '#f57c00'],
+                    borderRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                indexAxis: 'y',
+                plugins: {
+                    title: { display: true, text: '主要失分板块' },
+                    legend: { display: false }
+                },
+                scales: {
+                    x: { beginAtZero: true, max: 15 }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
