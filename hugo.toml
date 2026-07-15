@@ -54,14 +54,13 @@ ShowWordCount = true
 UseHugoToc = true
 showToc = true
 TocOpen = false
+[[params.socialIcons]]
+name = "github"
+url = "https://github.com/zhaoyuezheng"
 
 [params.homeInfoParams]
 title = "欢迎来到AZ日志"
 content = "记录技术与生活"
-
-[[params.socialIcons]]
-name = "github"
-url = "https://github.com/zhaoyuezheng"
 
 [markup.goldmark.renderer]
 unsafe = true
