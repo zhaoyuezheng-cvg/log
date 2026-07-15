@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>初二暑假40天规范字提升计划（考试书写能力强化版）</title>
+<style>
+  @page {
+    size: A4;
+    margin: 12mm 12mm 12mm 12mm;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body {
+    font-family: "Microsoft YaHei", "微软雅黑", "SimSun", serif;
+    color: #1a1a1a;
+    font-size: 11.3pt;
+    line-height: 1.7;
+    background: #fff;
+  }
+
+  /* ===== 封面标题 ===== */
+  .header {
+    text-align: center;
+    padding: 18px 0 20px;
+    border-bottom: 3px solid #c0392b;
+    margin-bottom: 18px;
+  }
+  .header .main-title {
+    font-size: 23pt;
+    font-weight: 800;
+    color: #c0392b;
+    letter-spacing: 2px;
+    line-height: 1.25;
+  }
+  .header .sub-title {
+    margin-top: 6px;
+    font-size: 11pt;
+    color: #555;
+    letter-spacing: 4px;
+  }
+  .header .meta {
+    margin-top: 10px;
+    display: inline-flex;
+    gap: 26px;
+    font-size: 10pt;
+    color: #444;
+  }
+  .header .meta b { color: #c0392b; }
+
+  /* ===== 章节标题 ===== */
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 13.5pt;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(90deg, #c0392b 0%, #e07b6a 100%);
+    padding: 6px 12px;
+    border-radius: 5px;
+    margin: 15px 0 9px;
+  }
+  .section-title .num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px; height: 22px;
+    background: #fff;
+    color: #c0392b;
+    border-radius: 50%;
+    font-size: 11pt;
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+  h2.section-title { page-break-after: avoid; }
+
+  /* ===== 目标网格 ===== */
+  .goal-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .goal-item {
+    background: #fdf3f1;
+    border-left: 4px solid #c0392b;
+    padding: 8px 12px;
+    border-radius: 0 5px 5px 0;
+    font-size: 10.5pt;
+  }
+  .goal-item .g-num { color: #c0392b; font-weight: 800; margin-right: 5px; }
+
+  /* ===== 时间安排 banner ===== */
+  .time-banner {
+    background: #fff6e9;
+    border: 1.5px dashed #e39a3b;
+    border-radius: 6px;
+    padding: 9px 14px;
+    font-size: 11pt;
+    text-align: center;
+    color: #333;
+  }
+  .time-banner b { color: #d17c1a; font-size: 12pt; }
+
+  /* ===== 阶段卡片 ===== */
+  .stage {
+    border: 1.5px solid #e3e3e3;
+    border-radius: 7px;
+    margin-bottom: 11px;
+    overflow: hidden;
+    page-break-inside: avoid;
+  }
+  .stage-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 12px;
+    color: #fff;
+    font-weight: 700;
+  }
+  .stage-head .st-name { font-size: 12pt; }
+  .stage-head .st-days {
+    margin-left: auto;
+    background: rgba(255,255,255,0.28);
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 9.5pt;
+  }
+  .stage-1 .stage-head { background: #2980b9; }
+  .stage-2 .stage-head { background: #27ae60; }
+  .stage-3 .stage-head { background: #8e44ad; }
+  .stage-4 .stage-head { background: #d35400; }
+  .stage-5 .stage-head { background: #16a085; }
+  .stage-goal {
+    background: #f7f9fa;
+    padding: 6px 12px;
+    font-size: 10pt;
+    color: #444;
+    border-bottom: 1px solid #eee;
+  }
+  .stage-goal b { color: #222; }
+  .stage-body { padding: 8px 12px; }
+  .task { margin-bottom: 8px; }
+  .task:last-child { margin-bottom: 0; }
+  .task-title {
+    font-weight: 700;
+    color: #c0392b;
+    font-size: 10.6pt;
+    margin-bottom: 3px;
+  }
+  .stage-1 .task-title { color: #2980b9; }
+  .stage-2 .task-title { color: #27ae60; }
+  .stage-3 .task-title { color: #8e44ad; }
+  .stage-4 .task-title { color: #d35400; }
+  .stage-5 .task-title { color: #16a085; }
+  .task ul { list-style: none; padding-left: 4px; }
+  .task ul li {
+    position: relative;
+    padding-left: 15px;
+    margin-bottom: 2px;
+    font-size: 10.2pt;
+  }
+  .task ul li::before {
+    content: "▸";
+    position: absolute; left: 0;
+    color: #999;
+  }
+  .task ul li ul { margin-top: 2px; }
+  .task ul li ul li { font-size: 9.8pt; color: #555; }
+  .task ul li ul li::before { content: "·"; font-weight: 800; }
+  .mark { list-style: none; padding-left: 4px; }
+  .mark > li { position: relative; padding-left: 16px; margin-bottom: 2px; font-size: 10pt; }
+  .mark > li::before { content: "■"; position: absolute; left: 0; color: #c0392b; font-size: 8.5pt; top: 2px; }
+
+  /* ===== 每日流程时间线 ===== */
+  .routine {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+  .routine-step {
+    border: 1.5px solid #e3e3e3;
+    border-radius: 6px;
+    padding: 8px;
+    text-align: center;
+    background: #fafafa;
+  }
+  .routine-step .r-time {
+    display: inline-block;
+    background: #c0392b;
+    color: #fff;
+    font-weight: 700;
+    font-size: 10pt;
+    padding: 2px 10px;
+    border-radius: 12px;
+    margin-bottom: 5px;
+  }
+  .routine-step .r-title { font-weight: 700; font-size: 10pt; margin-bottom: 3px; }
+  .routine-step .r-desc { font-size: 9.2pt; color: #666; line-height: 1.4; }
+
+  /* ===== 通用列表卡片 ===== */
+  .info-box {
+    background: #f9f9f9;
+    border: 1px solid #ececec;
+    border-radius: 6px;
+    padding: 9px 14px;
+  }
+  .info-box ol { padding-left: 20px; }
+  .info-box ol li { margin-bottom: 4px; font-size: 10.4pt; }
+  .info-box ol li b { color: #c0392b; }
+  .info-box ul.sub { list-style: none; padding-left: 8px; margin-top: 2px; }
+  .info-box ul.sub li { font-size: 9.8pt; color: #555; padding-left: 14px; position: relative; margin-bottom: 1px; }
+  .info-box ul.sub li::before { content: "○"; position: absolute; left: 0; font-size: 7pt; top: 3px; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+  /* ===== 备注/结语 ===== */
+  .note {
+    margin-top: 14px;
+    background: #fdf3f1;
+    border-radius: 7px;
+    padding: 10px 16px;
+    font-size: 10pt;
+    color: #555;
+    border-left: 4px solid #c0392b;
+  }
+  .footer-sign {
+    text-align: center;
+    margin-top: 12px;
+    font-size: 11pt;
+    color: #c0392b;
+    font-weight: 700;
+  }
+  .footer-sign .designer { display:block; margin-top:4px; font-size: 9.5pt; color:#888; font-weight: 400; }
+
+  /* ===== 亮点整合说明高亮框 ===== */
+  .highlight-box {
+    background: #fff6e9;
+    border: 1.5px dashed #e39a3b;
+    border-radius: 6px;
+    padding: 10px 14px;
+  }
+  .highlight-box ol { padding-left: 20px; }
+  .highlight-box ol li { margin-bottom: 4px; font-size: 10.4pt; }
+  .highlight-box ol li b { color: #d17c1a; }
+
+  .avoid-break { page-break-inside: avoid; }
+</style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="main-title">初二暑假40天规范字提升计划</div>
+    <div class="sub-title">考 试 书 写 能 力 强 化 版</div>
+    <div class="meta">
+      <span>⏱ 周期：<b>40天 / 6周</b></span>
+      <span>✍ 每日：<b>45-60分钟</b></span>
+      <span>🎯 目标：<b>规范 · 提速 · 卷面</b></span>
+    </div>
+  </div>
+
+  <!-- 一、计划目标 -->
+  <h2 class="section-title"><span class="num">一</span>计划目标</h2>
+  <div class="goal-grid">
+    <div class="goal-item"><span class="g-num">1</span>考试卷面提升：书写工整、清晰，符合阅卷要求，避免因书写扣分。</div>
+    <div class="goal-item"><span class="g-num">2</span>书写速度提升：在工整前提下，保持日常及考试书写速度。</div>
+    <div class="goal-item"><span class="g-num">3</span>规范性强化：掌握结构、笔画规范，尤其针对考试高频字。</div>
+    <div class="goal-item"><span class="g-num">4</span>学科应用能力：语文作文、数学步骤、英语书写等场景的规范书写迁移。</div>
+  </div>
+
+  <!-- 二、时间安排 -->
+  <h2 class="section-title"><span class="num">二</span>时间安排</h2>
+  <div class="time-banner">
+    共 <b>40天</b>（6周），每周按 <b>5天</b> 练习，<b>2天</b> 休息或灵活调整；每日训练 <b>45-60分钟</b>
+  </div>
+
+  <!-- 三、阶段划分 -->
+  <h2 class="section-title"><span class="num">三</span>阶段划分与具体内容（结合考试能力训练）</h2>
+
+  <div class="stage stage-1">
+    <div class="stage-head"><span class="st-name">阶段一 · 动作矫正与基础巩固</span><span class="st-days">第1-5天</span></div>
+    <div class="stage-goal"><b>目标：</b>纠正书写姿势、基础笔画与简单字规范，建立稳定动作习惯。</div>
+    <div class="stage-body">
+      <div class="task">
+        <div class="task-title">每日训练（45-60分钟）</div>
+        <ul>
+          <li>动作矫正（10分钟）：检查并固定坐姿、握笔姿势（三指执笔法）、手腕支撑、眼睛距离；使用视频记录姿势，每日对比调整。</li>
+          <li>基础笔画专项（20分钟）：每日3-4个核心笔画（横、竖、撇、捺、点、提），每个笔画写20遍，慢写感受力度变化（如横画起笔轻、行笔重、收笔轻）。</li>
+          <li>简单独体字（20分钟）：练习重心稳定的字（如人、大、小、山、水、中），重点在结构对称、笔画定位准确。</li>
+          <li>AI辅助反馈（可选）：用手机拍照上传笔画练习，使用ChatGPT或AI书法工具分析结构、笔画问题，生成改进建议。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="stage stage-2">
+    <div class="stage-head"><span class="st-name">阶段二 · 结构拆解与高频字训练</span><span class="st-days">第6-15天</span></div>
+    <div class="stage-goal"><b>目标：</b>掌握汉字结构规律，重点突破考试高频字。</div>
+    <div class="stage-body">
+      <div class="task">
+        <div class="task-title">每日训练</div>
+        <ul>
+          <li>结构分析（10分钟）：观察字帖中左右、上下、包围结构字的比例（如"谢"左中右比例，"雷"上下结构重心）。</li>
+          <li>高频字专项（20分钟）：分四类练习：
+            <ul class="mark">
+              <li>作文高频词（我们、因为、所以、梦想、成长等）。</li>
+              <li>阅读理解高频词（表达、作用、人物、环境等）。</li>
+              <li>数学高频词（证明、解、设、已知、结论等）。</li>
+              <li>英语字母规范：26个字母重新练习，确保工整。</li>
+            </ul>
+          </li>
+          <li>训练流程：观察→描红→临写→闭眼回忆→默写→组词语（如"谢谢、感谢"）。</li>
+          <li>AI错字库建立：每日记录5-10个最差字，输入AI系统生成次日重点练习清单。</li>
+        </ul>
+      </div>
+      <div class="task">
+        <div class="task-title">每日最后10分钟</div>
+        <ul>
+          <li>抄写课文段落（100-150字），要求结构清晰、速度适中。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="stage stage-3">
+    <div class="stage-head"><span class="st-name">阶段三 · 整段书写与学科专项</span><span class="st-days">第16-25天</span></div>
+    <div class="stage-goal"><b>目标：</b>提升段落书写工整度与学科场景应用能力。</div>
+    <div class="stage-body">
+      <div class="task">
+        <div class="task-title">学科专项训练</div>
+        <ul>
+          <li>语文：抄写300字课文段落，重点练习标点符号规范、段落排版整齐。</li>
+          <li>数学：书写解题步骤（如"解：设x为……，因为……，所以……"），注意等号对齐、数字清晰。</li>
+          <li>英语：书写80词作文，确保字母大小一致、单词间距合理。</li>
+        </ul>
+      </div>
+      <div class="task">
+        <div class="task-title">速度与工整平衡训练</div>
+        <ul>
+          <li>设置计时任务（如15分钟抄写200字），逐步提升速度同时保持工整。</li>
+          <li>使用AI评分系统分析段落的结构、重心、间距问题，针对性改进。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="stage stage-4">
+    <div class="stage-head"><span class="st-name">阶段四 · 模拟考试与综合强化</span><span class="st-days">第26-35天</span></div>
+    <div class="stage-goal"><b>目标：</b>模拟考试场景，实战训练书写稳定性与速度。</div>
+    <div class="stage-body">
+      <div class="task">
+        <div class="task-title">每日模拟</div>
+        <ul>
+          <li>语文模拟：15分钟抄写500字课文，20分钟完成300字作文（规范书写）。</li>
+          <li>数学模拟：限时完成一页计算题步骤书写（注意公式对齐、符号清晰）。</li>
+          <li>英语模拟：20分钟内书写100词短文，检查字母与单词规范性。</li>
+        </ul>
+      </div>
+      <div class="task">
+        <div class="task-title">AI反馈与调整</div>
+        <ul>
+          <li>每日拍照上传练习，AI生成评分报告（结构、速度、整洁度），标记最差5个字，次日强化练习。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="stage stage-5">
+    <div class="stage-head"><span class="st-name">阶段五 · 成果验收与习惯固化</span><span class="st-days">第36-40天</span></div>
+    <div class="stage-goal"><b>目标：</b>检验成果，固化习惯，为初三及中考奠定基础。</div>
+    <div class="stage-body">
+      <div class="task">
+        <div class="task-title">综合测试</div>
+        <ul>
+          <li>模拟考试卷面书写（含语文作文、数学解题、英语作文），对比第1天与第40天成果。</li>
+          <li>家长与孩子共同复盘进步，制作"书写成长对比图"。</li>
+        </ul>
+      </div>
+      <div class="task">
+        <div class="task-title">习惯固化</div>
+        <ul>
+          <li>每日作业前5分钟练习高频易错字，将练字标准迁移至日常书写。</li>
+          <li>设立"卷面分奖励机制"，定期抽查作业卷面，给予正向反馈。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 四、每日固定流程 -->
+  <h2 class="section-title"><span class="num">四</span>每日固定流程（参考模板）</h2>
+  <div class="time-banner" style="margin-bottom:9px;">
+    每天固定 <b>45-60分钟</b>（建议分时段进行，如早晚各30分钟）
+  </div>
+  <div class="routine">
+    <div class="routine-step">
+      <div class="r-time">10分钟</div>
+      <div class="r-title">动作矫正</div>
+      <div class="r-desc">坐姿、握笔、手腕支撑检查<br>视频记录对比</div>
+    </div>
+    <div class="routine-step">
+      <div class="r-time">20-30分钟</div>
+      <div class="r-title">核心训练</div>
+      <div class="r-desc">按阶段任务练习笔画、结构、考试高频字</div>
+    </div>
+    <div class="routine-step">
+      <div class="r-time">10分钟</div>
+      <div class="r-title">AI反馈</div>
+      <div class="r-desc">拍照上传，AI评分并<br>更新错字库</div>
+    </div>
+    <div class="routine-step">
+      <div class="r-time">10分钟</div>
+      <div class="r-title">学科应用</div>
+      <div class="r-desc">抄写课文段落 /<br>学科书写练习</div>
+    </div>
+  </div>
+
+  <!-- 五、工具与资源推荐 -->
+  <h2 class="section-title"><span class="num">五</span>工具与资源推荐</h2>
+  <div class="two-col">
+    <div class="info-box">
+      <ol>
+        <li><b>字帖：</b>田英章《规范字》、荆霄鹏《中学生同步字帖》（贴近教材）。</li>
+      </ol>
+    </div>
+    <div class="info-box">
+      <ol>
+        <li><b>AI工具：</b>ChatGPT（图片分析功能）、墨趣书法APP（结构评分）、自研AI练字系统（生成个性化错字库与训练计划）。</li>
+      </ol>
+    </div>
+    <div class="info-box">
+      <ol>
+        <li><b>记录工具：</b>A5错字本、书写成长记录册。</li>
+      </ol>
+    </div>
+    <div class="info-box">
+      <ol>
+        <li><b>辅助：</b>计时器（速度训练）、手机支架（姿势视频记录）。</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- 六、关键策略与注意事项 -->
+  <h2 class="section-title"><span class="num">六</span>关键策略与注意事项</h2>
+  <div class="info-box">
+    <ol>
+      <li><b>聚焦考试高频字：</b>避免冷门字，优先练习学科核心词汇。</li>
+      <li><b>AI闭环训练：</b>练习→AI评分→问题反馈→针对性改进。</li>
+      <li><b>疲劳控制：</b>每日训练不超过1小时，分时段进行（如早晚各30分钟）。</li>
+      <li><b>正向激励：</b>设立"卷面进步奖"，将练字与考试成绩提升关联。</li>
+      <li><b>习惯迁移：</b>日常作业要求"像练字一样书写"，逐步固化规范。</li>
+    </ol>
+  </div>
+
+  <!-- 七、预期成果 -->
+  <h2 class="section-title"><span class="num">七</span>预期成果</h2>
+  <div class="goal-grid" style="grid-template-columns:1fr 1fr 1fr;">
+    <div class="goal-item"><span class="g-num">1</span>卷面提升：老师阅卷第一眼清晰、舒适，减少因书写导致的扣分。</div>
+    <div class="goal-item"><span class="g-num">2</span>速度与工整平衡：考试场景下书写速度不下降，字迹稳定。</div>
+    <div class="goal-item"><span class="g-num">3</span>长期习惯：养成"提笔即规范"的书写意识，为初三及中考奠定基础。</div>
+  </div>
+
+  <!-- 八、亮点整合说明 -->
+  <h2 class="section-title"><span class="num">八</span>亮点整合说明</h2>
+  <div class="highlight-box">
+    <ol>
+      <li><b>考试能力贯穿全阶段：</b>从动作到结构，均以"考试书写"为目标设计训练内容。</li>
+      <li><b>AI技术深度融合：</b>引入AI评分、错字库生成、个性化训练计划，提升效率。</li>
+      <li><b>学科专项训练：</b>分科目（语文/数学/英语）设计书写任务，精准匹配考试场景。</li>
+      <li><b>数据化反馈：</b>通过AI与记录工具，形成"练习→反馈→改进"闭环。</li>
+      <li><b>习惯固化机制：</b>将练字标准迁移至日常作业，避免"练字工整，作业潦草"。</li>
+    </ol>
+  </div>
+
+  <div class="note avoid-break">
+    <b>备注：</b>本计划可根据孩子实际进度调整，核心是"以考促练"，将书写训练与学科需求深度融合。40天是起点，后续需持续巩固。
+  </div>
+
+  <div class="footer-sign avoid-break">
+    祝孩子书写进步，学业有成！🌟
+    <span class="designer">—— 您的考试书写能力提升计划设计师</span>
+  </div>
+
+</body>
+</html>
