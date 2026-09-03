@@ -1,0 +1,3002 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>走进文言文（六、七年级用）· 文本整理稿</title>
+<style>
+  :root{
+    --paper:#fbf7ee;
+    --paper-2:#f3ecdf;
+    --ink:#2b2b2b;
+    --ink-soft:#5a5347;
+    --accent:#9e2b25;        /* 朱砂红 */
+    --accent-soft:#c98a4b;   /* 赭石 */
+    --line:#e3d8c4;
+    --card:#fffdf8;
+    --note-bg:#faf3e4;
+    --shadow:0 2px 10px rgba(80,60,30,.08);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:"Noto Serif SC","Songti SC",STSong,"SimSun",serif;
+    line-height:1.9;font-size:17px;
+  }
+  /* 侧边导航 */
+  #sidebar{
+    position:fixed;top:0;left:0;width:230px;height:100vh;overflow-y:auto;
+    background:linear-gradient(180deg,#f3e9d4,#efe2c9);
+    border-right:1px solid var(--line);padding:20px 14px;
+  }
+  #sidebar h1{font-size:16px;color:var(--accent);margin:0 0 4px;line-height:1.4;}
+  #sidebar .sub{font-size:12px;color:var(--ink-soft);margin-bottom:14px;}
+  #sidebar .unit{font-weight:700;color:var(--accent-soft);margin:14px 0 4px;font-size:14px;}
+  #sidebar a{
+    display:block;color:var(--ink-soft);text-decoration:none;font-size:13.5px;
+    padding:5px 8px;border-radius:6px;transition:.15s;
+  }
+  #sidebar a:hover{background:#fff6e6;color:var(--accent);}
+  #sidebar a.active{background:#fff;color:var(--accent);font-weight:700;box-shadow:var(--shadow);}
+  #toggleNav{display:none;}
+
+  /* 主体 */
+  #main{margin-left:230px;padding:40px 28px 80px;max-width:880px;}
+  .doc-title{
+    text-align:center;margin:0 0 6px;font-size:26px;color:var(--accent);letter-spacing:4px;
+  }
+  .doc-desc{text-align:center;color:var(--ink-soft);font-size:13px;margin-bottom:30px;}
+  .unit-block{margin-bottom:46px;}
+  .unit-head{
+    text-align:center;font-size:21px;color:#fff;background:var(--accent);
+    padding:8px 0;border-radius:8px;letter-spacing:6px;box-shadow:var(--shadow);
+  }
+  .sec-label{
+    text-align:center;display:inline-block;width:100%;font-size:18px;color:var(--accent);
+    letter-spacing:8px;font-weight:700;margin:26px 0 8px;
+  }
+  .article{
+    background:var(--card);border:1px solid var(--line);border-radius:10px;
+    padding:22px 26px;margin:14px 0;box-shadow:var(--shadow);
+  }
+  .article h3{
+    text-align:center;font-size:19px;color:var(--accent);margin:4px 0 14px;letter-spacing:2px;
+  }
+  .body-text{text-indent:2em;margin:8px 0;}
+  .attrib{text-align:right;font-size:13px;color:var(--ink-soft);font-style:italic;margin-top:6px;}
+
+  /* 版块块 */
+  .block{
+    border-left:4px solid var(--accent-soft);background:var(--note-bg);
+    border-radius:0 8px 8px 0;padding:12px 18px;margin:18px 0;
+  }
+  .block .b-title{font-weight:700;color:var(--accent);margin-bottom:8px;font-size:16px;letter-spacing:1px;}
+  .block p{margin:6px 0;text-indent:0;}
+  .block .b-list{margin:4px 0;padding-left:1.4em;text-indent:0;}
+  .block .b-list li{margin:5px 0;}
+
+  .ex-item{margin:9px 0;}
+  .ex-item .q{font-weight:600;}
+  .blank{display:inline-block;min-width:90px;border-bottom:1px solid var(--ink-soft);}
+
+  .page-tag{
+    text-align:center;color:#b9ad94;font-size:12px;margin:30px 0 6px;letter-spacing:2px;
+  }
+  hr.soft{border:none;border-top:1px dashed var(--line);margin:18px 0;}
+
+  @media (max-width:820px){
+    #sidebar{transform:translateX(-100%);transition:.25s;z-index:20;box-shadow:2px 0 12px rgba(0,0,0,.15);}
+    #sidebar.open{transform:translateX(0);}
+    #main{margin-left:0;padding:64px 16px 60px;}
+    #toggleNav{
+      display:block;position:fixed;top:12px;left:12px;z-index:30;
+      background:var(--accent);color:#fff;border:none;border-radius:8px;
+      padding:8px 12px;font-size:14px;box-shadow:var(--shadow);cursor:pointer;
+    }
+  }
+  /* 打印 */
+  @media print{
+    #sidebar,#toggleNav{display:none!important;}
+    #main{margin-left:0;max-width:none;padding:0;}
+    body{background:#fff;font-size:14px;line-height:1.7;}
+    .unit-head{background:var(--accent)!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .article,.block{box-shadow:none;}
+  }
+
+  /* 可折叠分组侧边栏 */
+  #sidebar details.nav-unit{margin:8px 0;border-radius:8px;}
+  #sidebar details.nav-unit>summary{
+    cursor:pointer;list-style:none;user-select:none;
+    font-weight:700;color:var(--accent-soft);font-size:14px;
+    padding:6px 8px;background:rgba(255,255,255,.4);border-radius:6px;letter-spacing:1px;
+  }
+  #sidebar details.nav-unit>summary::-webkit-details-marker{display:none;}
+  #sidebar details.nav-unit>summary::before{content:"\25B8  ";font-size:11px;color:var(--accent-soft);}
+  #sidebar details.nav-unit[open]>summary::before{content:"\25BE  ";}
+  #sidebar details.nav-unit a{padding-left:20px;font-size:13px;}
+  /* sec-head/sec-body 兜底(若存在) */
+  .sec-head{font-weight:700;color:var(--accent);margin:14px 0 6px;font-size:16px;letter-spacing:1px;}
+  .sec-body{margin:6px 0;}
+
+</style>
+</head>
+<body>
+
+<button id="toggleNav" onclick="document.getElementById('sidebar').classList.toggle('open')">☰ 目录</button>
+
+<nav id="sidebar">
+<h1>走进文言文</h1>
+<div class="sub">六、七年级用 · 文本整理稿（38 单元 · 226 篇）</div>
+<details class="nav-unit" open><summary>第一单元</summary>
+<a href="#a1">· 黄琬聪慧（阅读）</a>
+<a href="#a2">· 1．杨修啖酪</a>
+<a href="#a3">· 2．王戎识李</a>
+<a href="#a4">· 3．诸葛恪添驴</a>
+<a href="#a5">· 4．谢道韫咏絮</a>
+<a href="#a6">· 5．曹冲称象</a>
+</details>
+<details class="nav-unit" open><summary>第二单元</summary>
+<a href="#a7">· 陆绩怀橘（阅读）</a>
+<a href="#a8">· 1．黄香温席</a>
+<a href="#a9">· 2．陈遗贮焦饭</a>
+<a href="#a10">· 3．哑孝子</a>
+<a href="#a11">· 4．郑人买履</a>
+<a href="#a12">· 5．鲁人锯竿入城</a>
+</details>
+<details class="nav-unit" open><summary>第三单元</summary>
+<a href="#a13">· 文徵明习字（阅读）</a>
+<a href="#a14">· 1．智永退笔冢</a>
+<a href="#a15">· 2．一箧磨穴砚</a>
+<a href="#a16">· 3．王羲之书六角扇</a>
+<a href="#a17">· 4．掩耳盗铃</a>
+<a href="#a18">· 5．红毛毡</a>
+</details>
+<details class="nav-unit" open><summary>第四单元</summary>
+<a href="#a19">· "辨钟"辨盗（阅读）</a>
+<a href="#a20">· 1．盲子窃钱案</a>
+<a href="#a21">· 2．张佐治遇蛙</a>
+<a href="#a22">· 3．茨菰见真情</a>
+<a href="#a23">· 4．蜜中鼠屎案</a>
+<a href="#a24">· 5．谜语一则</a>
+</details>
+<details class="nav-unit" open><summary>第五单元</summary>
+<a href="#a25">· 鹦鹉灭火（阅读）</a>
+<a href="#a26">· 1．鲊救婢</a>
+<a href="#a27">· 2．二鹊救友</a>
+<a href="#a28">· 3．知恩图报</a>
+<a href="#a29">· 4．蝙蝠</a>
+<a href="#a30">· 5．杀驼破瓮</a>
+</details>
+<details class="nav-unit" open><summary>第六单元</summary>
+<a href="#a31">· 鼠画逼真（阅读）</a>
+<a href="#a32">· 1．虎画</a>
+<a href="#a33">· 2．正午牡丹</a>
+<a href="#a34">· 3．朱元璋画像</a>
+<a href="#a35">· 4．苏东坡画扇</a>
+<a href="#a36">· 5．铁杵磨针</a>
+</details>
+<details class="nav-unit" open><summary>第七单元</summary>
+<a href="#a37">· 范仲淹有志于天下（阅读）</a>
+<a href="#a38">· 1. 食粥心安</a>
+<a href="#a39">· 2. 鉴真东渡日本</a>
+<a href="#a40">· 3. 年少志存高远</a>
+<a href="#a41">· 4. 陈蕃有大志</a>
+<a href="#a42">· 5. 画龙点睛</a>
+</details>
+<details class="nav-unit" open><summary>第八单元</summary>
+<a href="#a43">· 包惊儿笃于友谊（阅读）</a>
+<a href="#a44">· 1. 黄仙囊济友</a>
+<a href="#a45">· 2. 刘氏善举</a>
+<a href="#a46">· 3. 李氏之友</a>
+<a href="#a47">· 4. 田真兄弟</a>
+<a href="#a48">· 5. 张用良不杀蜂</a>
+</details>
+<details class="nav-unit" open><summary>第九单元</summary>
+<a href="#a49">· 放驴破案（阅读）</a>
+<a href="#a50">· 1. 赛跑定案</a>
+<a href="#a51">· 2. 拷打羊皮露真相</a>
+<a href="#a52">· 3. 钱若断鹅</a>
+<a href="#a53">· 4. 欧阳晔破案</a>
+<a href="#a54">· 5. 螳螂杀蛇</a>
+</details>
+<details class="nav-unit" open><summary>第十单元</summary>
+<a href="#a55">· 伯乐爱马（阅读）</a>
+<a href="#a56">· 1. 人有卖骏马者</a>
+<a href="#a57">· 2. "的卢"救主</a>
+<a href="#a58">· 3. 马啮盗</a>
+<a href="#a59">· 4. 主行思爱马</a>
+<a href="#a60">· 5. 齐人援金</a>
+</details>
+<details class="nav-unit" open><summary>第十一单元</summary>
+<a href="#a61">· 瞎蝾（阅读）</a>
+<a href="#a62">· 1. 乌鸦喜谈</a>
+<a href="#a63">· 2. 粤令好谈</a>
+<a href="#a64">· 3. 子产受骗</a>
+<a href="#a65">· 4. 狮子王与豺</a>
+<a href="#a66">· 5. 燕人返国</a>
+</details>
+<details class="nav-unit" open><summary>第十二单元</summary>
+<a href="#a67">· 林逋养鹤（阅读）</a>
+<a href="#a68">· 1. 鹤亦知人意</a>
+<a href="#a69">· 2. 明义法师之鸠</a>
+<a href="#a70">· 3. 鹿亦有智</a>
+<a href="#a71">· 4. 喜嗔之人</a>
+<a href="#a72">· 5. 艾子邻人卖犬</a>
+</details>
+<details class="nav-unit" open><summary>第十三单元</summary>
+<a href="#a73">· 道士救虎（阅读）</a>
+<a href="#a74">· 1. 越人道上遇狗</a>
+<a href="#a75">· 2. 张五不复猎</a>
+<a href="#a76">· 3. 蝮救蛇获珠</a>
+<a href="#a77">· 4. 华隆因犬获救</a>
+<a href="#a78">· 5. 齐人有好猎者</a>
+</details>
+<details class="nav-unit" open><summary>第十四单元</summary>
+<a href="#a79">· 韩信受辱（阅读）</a>
+<a href="#a80">· 1. 韩信始为布衣时</a>
+<a href="#a81">· 2. 天下有大勇者</a>
+<a href="#a82">· 3. 韩信善歌</a>
+<a href="#a83">· 4. 冯相与和相</a>
+<a href="#a84">· 5. 南方多没人</a>
+</details>
+<details class="nav-unit" open><summary>第十五单元</summary>
+<a href="#a85">· 子罕弗受玉（阅读）</a>
+<a href="#a86">· 1. 公孙仪不受鱼</a>
+<a href="#a87">· 2. 杨震"四知"</a>
+<a href="#a88">· 3. 迁公修屋</a>
+</details>
+<details class="nav-unit" open><summary>第十六单元</summary>
+<a href="#a89">· 樊重种梓漆（阅读）</a>
+<a href="#a90">· 1. 一生之计在于勤</a>
+<a href="#a91">· 2. 张薄与"七录斋"</a>
+<a href="#a92">· 3. 用力多者收功远</a>
+<a href="#a93">· 4. 为者常成</a>
+<a href="#a94">· 5. 望梅止渴</a>
+</details>
+<details class="nav-unit" open><summary>第十七单元</summary>
+<a href="#a95">· 刘庭式娶盲女（阅读）</a>
+<a href="#a96">· 1. 韩云门与盲女偕老</a>
+<a href="#a97">· 2. 孙泰</a>
+<a href="#a98">· 3. 二犬情深</a>
+<a href="#a99">· 4. 为官要清廉</a>
+<a href="#a100">· 5. 义犬报火警</a>
+</details>
+<details class="nav-unit" open><summary>第十八单元</summary>
+<a href="#a101">· 曾子杀彘（阅读）</a>
+<a href="#a102">· 1. 陈谏议教子</a>
+<a href="#a103">· 2. 陈万年教子</a>
+<a href="#a104">· 3. 卞庄子刺虎</a>
+<a href="#a105">· 4. 势利鬼吴生</a>
+<a href="#a106">· 5. 偷鸡贼的托词</a>
+</details>
+<details class="nav-unit" open><summary>第十九单元</summary>
+<a href="#a107">· 宋濂苦学（阅读）</a>
+<a href="#a108">· 1. 葛洪苦学</a>
+<a href="#a109">· 2. 王冕僧寺夜读</a>
+<a href="#a110">· 3. 欧阳修家数</a>
+<a href="#a111">· 4. 司马光幼时</a>
+<a href="#a112">· 5. 程门立雪</a>
+</details>
+<details class="nav-unit" open><summary>第二十单元</summary>
+<a href="#a113">· 项羽不肯竟学（阅读）</a>
+<a href="#a114">· 1. 赵某复子</a>
+<a href="#a115">· 2. 高凤笃学</a>
+<a href="#a116">· 3. 王充市肆博览</a>
+<a href="#a117">· 4. 赵伯公肥大</a>
+<a href="#a118">· 5. 燕人返国</a>
+</details>
+<details class="nav-unit" open><summary>第二十一单元</summary>
+<a href="#a121">· 鲁侯养鸟（阅读）</a>
+<a href="#a122">· 1．揠苗助长</a>
+<a href="#a123">· 2．砚眼</a>
+<a href="#a124">· 3．农夫耕田</a>
+<a href="#a125">· 4．稚犬</a>
+<a href="#a126">· 5．鹬鸟中计</a>
+</details>
+<details class="nav-unit" open><summary>第二十二单元</summary>
+<a href="#a127">· 镜喻（阅读）</a>
+<a href="#a128">· 1．枭将东徒</a>
+<a href="#a129">· 2．世无良猫</a>
+<a href="#a130">· 3．河豚之死</a>
+<a href="#a131">· 4．刻舟求剑</a>
+<a href="#a132">· 5．鹬蚌相争</a>
+</details>
+<details class="nav-unit" open><summary>第二十三单元</summary>
+<a href="#a133">· 陈在衡呼鬼（阅读）</a>
+<a href="#a134">· 1．曹竹虚族兄遇鬼</a>
+<a href="#a135">· 2．疑鬼</a>
+<a href="#a136">· 3．畏鬼致盗</a>
+<a href="#a137">· 4．畏影恶迹</a>
+<a href="#a138">· 5．鸲鹆噪虎</a>
+</details>
+<details class="nav-unit" open><summary>第二十四单元</summary>
+<a href="#a139">· 孟母三迁（阅读）</a>
+<a href="#a140">· 1．孟母戒子</a>
+<a href="#a141">· 2．孟母不欺子</a>
+<a href="#a142">· 3．秦西巴纵鹿</a>
+<a href="#a143">· 4．屠夫杀狼</a>
+<a href="#a144">· 5．郢书燕说</a>
+</details>
+<details class="nav-unit" open><summary>第二十五单元</summary>
+<a href="#a145">· 陶母责子（阅读）</a>
+<a href="#a146">· 1．陶侃尝出游</a>
+<a href="#a147">· 2．木屑竹头</a>
+<a href="#a148">· 3．墨子怒耕柱子</a>
+<a href="#a149">· 4．李存审诫子</a>
+<a href="#a150">· 5．芒山盗临刑</a>
+</details>
+<details class="nav-unit" open><summary>第二十六单元</summary>
+<a href="#a151">· 欧阳修论作文（阅读）</a>
+<a href="#a152">· 1．读书与作文</a>
+<a href="#a153">· 2．卖瓜减字</a>
+<a href="#a154">· 3．修改一法</a>
+<a href="#a155">· 4．歧路亡羊</a>
+<a href="#a156">· 5．二叟钓鱼</a>
+</details>
+<details class="nav-unit" open><summary>第二十七单元</summary>
+<a href="#a157">· 关羽刮骨疗毒（阅读）</a>
+<a href="#a158">· 1．张飞横矛当阳桥</a>
+<a href="#a159">· 2．次非斩蛟</a>
+<a href="#a160">· 3．溺鼠</a>
+<a href="#a161">· 4．鸡感恩</a>
+<a href="#a162">· 5．猫儿索食</a>
+</details>
+<details class="nav-unit" open><summary>第二十八单元</summary>
+<a href="#a163">· 顾况戏白居易（阅读）</a>
+<a href="#a164">· 1．刘道真戏婢</a>
+<a href="#a165">· 2．唐明皇赐名</a>
+<a href="#a166">· 3．偷鸭求骂</a>
+<a href="#a167">· 4．何梅谷之妻</a>
+<a href="#a168">· 5．庸医</a>
+</details>
+<details class="nav-unit" open><summary>第二十九单元</summary>
+<a href="#a169">· 老马识途（阅读）</a>
+<a href="#a170">· 1．马诉冤</a>
+<a href="#a171">· 2．楚人有担山鸡者</a>
+<a href="#a172">· 3．某甲夜暴疾</a>
+<a href="#a173">· 4．濡泽之蛇</a>
+<a href="#a174">· 5．盗牛者强辩</a>
+</details>
+<details class="nav-unit" open><summary>第三十单元</summary>
+<a href="#a175">· 王烈义行（阅读）</a>
+<a href="#a176">· 1．于令仪诲人</a>
+<a href="#a177">· 2．乡人藏虱</a>
+<a href="#a178">· 3．别字秀才</a>
+<a href="#a179">· 4．画鬼易</a>
+<a href="#a180">· 5．吹牛</a>
+</details>
+<details class="nav-unit" open><summary>第三十一单元</summary>
+<a href="#a181">· 老妪斗辽敌（阅读）</a>
+<a href="#a182">· 1．巾帼潘将军</a>
+<a href="#a183">· 2．擒贼</a>
+<a href="#a184">· 3．吕某刺虎</a>
+<a href="#a185">· 4．笼中鹦鹉</a>
+<a href="#a186">· 5．攘痒</a>
+</details>
+<details class="nav-unit" open><summary>第三十二单元</summary>
+<a href="#a187">· 子路见孔子（阅读）</a>
+<a href="#a188">· 1．孙权吕蒙读书</a>
+<a href="#a189">· 2．响遏行云</a>
+<a href="#a190">· 3．王元章砍种像</a>
+<a href="#a191">· 4．空中楼阁</a>
+<a href="#a192">· 5．熊与坎中人</a>
+</details>
+<details class="nav-unit" open><summary>第三十三单元</summary>
+<a href="#a193">· 任末好学勤记（阅读）</a>
+<a href="#a194">· 1．蛇衔草</a>
+<a href="#a195">· 2．智大破案</a>
+<a href="#a196">· 3．神针道人</a>
+<a href="#a197">· 4．杨务廉有巧思</a>
+<a href="#a198">· 5．多言何益</a>
+</details>
+<details class="nav-unit" open><summary>第三十四单元</summary>
+<a href="#a199">· 盲人摸象（阅读）</a>
+<a href="#a200">· 1．盲子道溪</a>
+<a href="#a201">· 2．众盲触象</a>
+<a href="#a202">· 3．木刻钟馗</a>
+<a href="#a203">· 4．商鞅立木</a>
+<a href="#a204">· 5．阿柴折箭</a>
+</details>
+<details class="nav-unit" open><summary>第三十五单元</summary>
+<a href="#a205">· 匡衡凿壁借光（阅读）</a>
+<a href="#a206">· 1．承宫拾薪苦学</a>
+<a href="#a207">· 2．蔡侯纸</a>
+<a href="#a208">· 3．牧竖拾金</a>
+<a href="#a209">· 4．解铃系铃</a>
+<a href="#a210">· 5．认“真”</a>
+</details>
+<details class="nav-unit" open><summary>第三十六单元</summary>
+<a href="#a211">· 旋风（阅读）</a>
+<a href="#a212">· 1．地震</a>
+<a href="#a213">· 2．多忧者</a>
+<a href="#a214">· 3．穿井得一人</a>
+<a href="#a215">· 4．不识自家</a>
+<a href="#a216">· 5．两丐</a>
+</details>
+<details class="nav-unit" open><summary>第三十七单元</summary>
+<a href="#a217">· 楚鼠毁庐（阅读）</a>
+<a href="#a218">· 1．汉断棘</a>
+<a href="#a219">· 2．宾卑聚自杀</a>
+<a href="#a220">· 3．齐之好勇者</a>
+<a href="#a221">· 4．引婴儿投江</a>
+<a href="#a222">· 5．楚人不识姜</a>
+</details>
+<details class="nav-unit" open><summary>第三十八单元</summary>
+<a href="#a223">· 南岐人之瘿（阅读）</a>
+<a href="#a224">· 1．狂泉</a>
+<a href="#a225">· 2．鼠技虎名</a>
+<a href="#a226">· 3．北人不识菱者</a>
+<a href="#a227">· 4．病忘者</a>
+<a href="#a228">· 5．斗牛而废耕</a>
+</details>
+</nav>
+
+<main id="main">
+  <h2 class="doc-title">走 进 文 言 文</h2>
+  <div class="doc-desc">六、七年级用 · 文本整理稿（据图像型 PDF 逐页 OCR 并校订）</div>
+
+  <!-- ============ 第一单元 ============ -->
+  <section class="unit-block">
+    <div class="unit-head">第 一 单 元</div>
+    <div class="sec-label">阅 读</div>
+
+    <!-- 1 黄琬聪慧 -->
+    <article class="article" id="a1">
+      <h3>黄琬聪慧</h3>
+      <p class="body-text">黄琬①早而辩慧②。祖父琼，初为魏郡③太守。建和元年正月日食④，京师不见而琼以状闻⑤。太后诏⑥问所食多少，琼思其对而未知所况⑦。琬年七岁，在傍，曰："何不言日食之余，如月之初？"琼大惊，即以其言应诏，而深奇爱之。</p>
+      <div class="attrib">（节选自《后汉书·黄琬传》）</div>
+
+      <div class="block">
+        <div class="b-title">【注释】</div>
+        <p>①黄琬：东汉人。　②辩慧：能说会道且聪明伶俐。　③魏郡：古郡名。　④食：同"蚀"。　⑤京师不见而琼以状闻：京城里看不到日食而黄琼把日食的情况报告朝廷，让他们知道。　⑥诏：皇帝的命令。　⑦未知所况：不知道如何来描述。</p>
+      </div>
+
+      <div class="block">
+        <div class="b-title">【文言知识】</div>
+        <p>1．释"应"。上文"以其言应诏"中的"应"，指回答，句意为用黄琬的话回答太后所问。又，"听者不应"，意为听的人不回答；"无以应"，意为没什么可以用来回应的；"应曰'有是'"，意为回答说有这件事。</p>
+        <p>2．"奇爱之"的语法现象。上文末了说黄琼对孙子黄琬"奇爱之"。"奇爱之"即"奇之"、"爱之"。"爱之"可理解为喜爱他，而"奇之"不能理解为奇怪他或奇异他，在文中要解释为"认为……有奇才"或"认为……与众不同"，因此"奇爱之"要解释为黄琼认为孙子与众不同因而极喜爱他。又，"其人相貌非凡，众人奇之"，意为那人面貌不平常，大家认为他与众不同；"是处山如刀削，游人奇之"，意为这里的山如刀削一般，旅游的人认为它奇特。</p>
+      </div>
+
+      <div class="block">
+        <div class="b-title">【文化常识】</div>
+        <p>1．古代纪年方法。古代纪年的方法有多种，用皇帝年号来纪年是其中之一。上文所说的"建和"是汉桓帝刘志的年号，"建和元年"即公元147年。比如"开元"，那是唐玄宗李隆基的年号，"开元十年"即公元723年。又如"康熙八年"，"康熙"是清圣祖爱新觉罗玄烨的年号，"康熙八年"即公元1669年。这种纪年方法可通过查阅辞书获得相应的公元纪年。</p>
+        <p>2．太后。上文有"太后诏问所食多少"，太后是皇帝的母亲。我国历史上好几个皇帝幼年登基，因此由他的母亲执掌朝政大权，史称太后临朝，或叫垂帘听政。皇帝的父亲如果还活着，称作太上皇。皇帝的祖母称作太皇太后，皇帝的祖父称作太上太皇。</p>
+      </div>
+
+      <div class="block">
+        <div class="b-title">【译文】</div>
+        <p>黄琬年幼时就聪明伶俐、能说会道。祖父黄琼，早年任魏郡太守。建和元年正月里出现日食，京城（洛阳）看不见（日食），黄琼把当地所见报告朝廷。太后下令问日食多少，黄琼思考如何回复太后，可不知道怎样来描述（日食的情况）。黄琬当时七岁，在祖父身旁，说："何不说日食后余下的太阳，好像一弯新月？"黄琼大为惊讶，立刻用黄琬的话回答太后的询问，于是特别喜爱这小孙子并认为他与众不同。</p>
+      </div>
+    </article>
+
+    <div class="sec-label">训 练</div>
+
+    <!-- 2 杨修啖酪 -->
+    <article class="article" id="a2">
+      <h3>1．杨修啖酪</h3>
+      <p class="body-text">人饷魏武①一杯酪②。魏武啖少许，盖头上题"合"字，以示众。众莫之解。次至杨修③，修便啖，曰："公教人啖一口也，复何疑？"</p>
+      <div class="block">
+        <div class="b-title">【注释】</div>
+        <p>①魏武：指魏武帝曹操。　②酪：牛、羊等的乳制品。　③杨修：曹操的谋士。</p>
+      </div>
+      <div class="block">
+        <div class="b-title">【训练】</div>
+        <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+        <p>①人饷魏武一杯酪　<span class="blank"></span>　②魏武啖少许　<span class="blank"></span><br>③盖头上题"合"字　<span class="blank"></span>　④次至杨修　<span class="blank"></span></p>
+        <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+        <p>①以示众　<span class="blank"></span>　②众莫之解　<span class="blank"></span>　③复何疑？　<span class="blank"></span></p>
+        <p class="ex-item"><span class="q">（3）杨修为什么敢吃？</span> <span class="blank"></span></p>
+      </div>
+    </article>
+
+    <!-- 3 王戎识李 -->
+    <article class="article" id="a3">
+      <h3>2．王戎识李</h3>
+      <p class="body-text">王戎①七岁，尝与诸小儿游。看道边李树多子折枝，诸儿竞走取之，唯王戎不动。人问之，答曰："树在道旁而多子，此必苦李。"取之，信然。</p>
+      <div class="block">
+        <div class="b-title">【注释】</div>
+        <p>①王戎（róng）：晋朝人。</p>
+      </div>
+      <div class="block">
+        <div class="b-title">【训练】</div>
+        <p class="ex-item"><span class="q">（1）解释下列句子中加点的词</span></p>
+        <p>①尝与诸小儿游　<span class="blank"></span>　②诸儿竞走取之　<span class="blank"></span>　③唯王戎不动　<span class="blank"></span></p>
+        <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+        <p>①李树多子折枝　<span class="blank"></span>　②取之，信然　<span class="blank"></span></p>
+        <p class="ex-item"><span class="q">（3）为什么"树在道旁而多子，此必苦李"？</span> <span class="blank"></span></p>
+      </div>
+    </article>
+
+    <!-- 4 诸葛恪添驴 -->
+    <article class="article" id="a4">
+      <h3>3．诸葛恪添驴</h3>
+      <p class="body-text">诸葛恪（kè）字元逊，诸葛亮兄瑾①之长子也。恪父瑾面长似驴②。一日，孙权大会群臣，使人牵一驴入，以纸题其面曰：诸葛子瑜。恪跪曰："乞请笔益两字。"因听与笔。恪续其下曰："之驴。"举坐欢笑。权乃以驴赐恪。</p>
+      <div class="block">
+        <div class="b-title">【注释】</div>
+        <p>①瑾：指诸葛瑾，他是诸葛亮的兄长。　②面长似驴：意为面孔狭长像驴子的面孔。</p>
+      </div>
+      <div class="block">
+        <div class="b-title">【训练】</div>
+        <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+        <p>①孙权大会群臣　<span class="blank"></span>　②以纸题其面　<span class="blank"></span>　③因听与笔　<span class="blank"></span>　④举坐欢笑　<span class="blank"></span></p>
+        <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+        <p>①乞请笔益两字　<span class="blank"></span></p>
+        <p class="ex-item"><span class="q">（3）成语"运筹帷幄"的意思是</span> <span class="blank"></span>。</p>
+      </div>
+    </article>
+
+    <!-- 5 谢道韫咏絮 -->
+    <article class="article" id="a5">
+      <h3>4．谢道韫咏絮</h3>
+      <p class="body-text">晋名将谢安，寒雪日内集①，与儿女辈讲论文义。俄而雪骤，公欣然曰："白雪纷纷何所似？"兄子胡儿曰："撒盐空中差可拟②。"兄女道韫（yùn）曰："未若柳絮因风起。"公大笑乐。</p>
+      <div class="block">
+        <div class="b-title">【注释】</div>
+        <p>①内集：将家中子女集合起来。　②差可拟：大约可比拟。</p>
+      </div>
+      <div class="block">
+        <div class="b-title">【训练】</div>
+        <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+        <p>①与儿女辈讲论文义　<span class="blank"></span>　②俄而雪骤　<span class="blank"></span>　③未若柳絮因风起　<span class="blank"></span></p>
+        <p class="ex-item"><span class="q">（2）"兄子"、"兄女"按现代人的说法是</span> <span class="blank"></span> 与 <span class="blank"></span>。</p>
+        <p class="ex-item"><span class="q">（3）胡儿的比喻为什么不好？</span> <span class="blank"></span></p>
+        <p class="ex-item"><span class="q">（4）填空：古语有"星星之火，</span> <span class="blank"></span>"。</p>
+      </div>
+    </article>
+
+    <!-- 6 曹冲称象 -->
+    <article class="article" id="a6">
+      <h3>5．曹冲称象</h3>
+      <p class="body-text">曹冲①生五六岁，智意②所及，有若成人。时孙权③尝致巨象，太祖④欲知其斤重，访之群下，咸莫能出其理。冲曰："置象大船之上，而刻其水痕所至，称物以载之，则校可知。"太祖悦，即施行焉。</p>
+      <div class="block">
+        <div class="b-title">【注释】</div>
+        <p>①曹冲：曹操的儿子。　②智意：知识与判断能力。　③孙权：吴国君主。　④太祖：指曹操。</p>
+      </div>
+      <div class="block">
+        <div class="b-title">【训练】</div>
+        <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+        <p>①曹冲生五六岁　<span class="blank"></span>　②智意所及　<span class="blank"></span>　③时孙权尝致巨象　<span class="blank"></span>　④则校可知　<span class="blank"></span>　⑤即施行焉　<span class="blank"></span></p>
+        <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+        <p>①访之群下，咸莫能出其理　<span class="blank"></span>　②称物以载之　<span class="blank"></span></p>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 第二单元 ============ -->
+  <section class="unit-block">
+    <div class="unit-head">第 二 单 元</div>
+    <div class="sec-label">阅 读</div>
+
+    <!-- 7 陆绩怀橘 -->
+    <article class="article" id="a7">
+      <h3>陆绩怀橘</h3>
+      <p class="body-text">绩①年六岁，于九江②见袁术③。术出橘，绩怀三枚；去，拜辞④随地。术谓曰："陆郎作宾客而怀橘乎？"绩跪答曰："欲归遗母。"术大奇之⑤。</p>
+      <div class="attrib">（节选自《三国志·吴志》）</div>
+      <div class="block">
+        <div class="b-title">【注释】</div>
+        <p>①绩：陆绩，三国时吴国著名学者。　②九江：古地名，今江西九江市。　③袁术：当时的大豪强。　④辞：告别。　⑤奇之：认为陆绩与众不同。</p>
+      </div>
+      <div class="block">
+        <div class="b-title">【文言知识】</div>
+        <p>1．释"遗"。"遗"在古文中有两个读音，一读yí，指遗失、遗忘、遗漏等；二读wèi。上文"欲归遗母"中的"遗"，读wèi，指送或赠予，句意为想回去后送给母亲吃。又，"故人遗我鱼"，意为老朋友送给我鱼；"天寒，以裘遗之"，意为天冷，把一件皮衣赠送给他。</p>
+        <p>2．两个"怀"的用法。"怀"指胸怀，属名词。上文"怀三枚"及"怀橘"，如果直接理解为胸怀三枚及胸怀橘，都不通。其实，"怀"在句中是活用为动词，指"胸怀里藏着"，这样便容易理解了。"怀三枚"，意为在胸怀里藏着三只橘子；"怀橘"，意为胸怀里藏着橘子。</p>
+      </div>
+      <div class="block">
+        <div class="b-title">【启发与借鉴】</div>
+        <p>孝心是从小养成的。陆绩六岁时便知道要把甘甜的橘子带回去给母亲尝尝，在他幼小的心灵里已埋下孝的种子。孝道是中华民族的传统美德，关心父母、爱护父母直至赡养父母，既是小辈的责任与义务，也是一种高尚的道德。这种道德观要从小培养。</p>
+      </div>
+      <div class="block">
+        <div class="b-title">【译文】</div>
+        <p>陆绩六岁时，在九江见到袁术。袁术拿出橘子（招待），陆绩把三只（橘子）藏进胸怀；临走，弯腰告辞时（橘子）掉在地上。袁术对他说："陆郎做宾客还要在胸怀里藏橘子吗？"陆绩跪下去回答说："想回去送给母亲尝尝。"袁术认为陆绩跟其他小孩大不一样。</p>
+      </div>
+    </article>
+
+    <div class="sec-label">训 练</div>
+
+    <!-- 8 黄香温席 -->
+    <article class="article" id="a8">
+      <h3>1．黄香温席</h3>
+      <p class="body-text">昔汉时黄香，江夏①人也。年方九岁，知事亲之理。每当夏日炎热，则扇父母之帷帐②，令枕席清凉，蚊蚋③远避，以待亲之安寝；至于冬日严寒，则以身暖其亲之席，以待亲之暖卧。于是名播京师，号曰："天下无双，江夏黄香"。</p>
+      <div class="block">
+        <div class="b-title">【注释】</div>
+        <p>①江夏：古地名，在今湖北境内。　②帷帐：帐子。　③蚋（ruì）：吸人血的小虫。</p>
+      </div>
+      <div class="block">
+        <div class="b-title">【训练】</div>
+        <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+        <p>①年方九岁　<span class="blank"></span>　②令枕席清凉　<span class="blank"></span>　③以待亲之安寝　<span class="blank"></span><br>④至于冬日严寒　<span class="blank"></span>　⑤于是名播京师　<span class="blank"></span></p>
+        <p class="ex-item"><span class="q">（2）上文中还有一个属词类活用的词，请找出。</span> <span class="blank"></span></p>
+        <p class="ex-item"><span class="q">（3）用现代汉语翻译下面句子</span></p>
+        <p>则以身暖其亲之席（qīn）　<span class="blank"></span></p>
+        <p class="ex-item"><span class="q">（4）成语"惟妙惟肖"中的"肖"，解释为</span> <span class="blank"></span>；<span class="q">这个成语的意思是</span> <span class="blank"></span>。</p>
+      </div>
+    </article>
+
+    <!-- 9 陈遗贮焦饭 -->
+    <article class="article" id="a9">
+      <h3>2．陈遗贮焦饭</h3>
+      <p class="body-text">陈遗至孝。母喜食釜底焦饭。遗作郡主簿①，恒备一囊，每煮食，辄贮焦饭，归而遗母。后值孙恩掠郡，郡守袁山松即日出征。时遗已聚敛得数斗②焦饭，未及归家，遂携而从军。与孙恩战，败，军人溃散，遁入山泽，无以为粮，有饥馁而死者。遗独以焦饭得活，时人以为至孝之报也。</p>
+      <div class="block">
+        <div class="b-title">【注释】</div>
+        <p>①主簿：县令的属官，负责文书及印章等。　②斗：旧时量器。</p>
+      </div>
+      <div class="block">
+        <div class="b-title">【训练】</div>
+        <p class="ex-item"><span class="q">（1）解释下列句子中加点的词</span></p>
+        <p>①陈遗至孝　<span class="blank"></span>　②母喜食釜（fǔ）底焦饭　<span class="blank"></span>　③辄贮焦饭　<span class="blank"></span><br>④归而遗母　<span class="blank"></span>　⑤时遗已聚敛得数斗饭　<span class="blank"></span>　⑥遁入山泽　<span class="blank"></span>　⑦有饥馁而死者　<span class="blank"></span></p>
+        <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+        <p>①恒备一囊　<span class="blank"></span>　②后值孙恩掠郡　<span class="blank"></span>　③无以为粮　<span class="blank"></span></p>
+      </div>
+    </article>
+
+    <!-- 10 哑孝子 -->
+    <article class="article" id="a10">
+      <h3>3．哑孝子</h3>
+      <p class="body-text">崔长生，生而哑，性至孝；人呼"哑孝子"。孝子既哑，左手复挛，佣工养其父母。后乡里大饥①，孝子行乞于外，人悯之，遗②以糟糠，受而纳诸箪，自掘野草以食。归则扶其跛父病母于茅檐下，尽倾箪中物敬父母，父母赖以活。一日，途见故纸，中有遗金③，守待失者而不得。月余，未见有求者，乃易猪饲之。猪蕃息④，遂为父母备棺。孝子待人，诚而信。父母先后卒，哭之恸，棺葬于野，后不知孝子所之。</p>
+      <div class="block">
+        <div class="b-title">【注释】</div>
+        <p>①饥：灾荒。　②遗：送给。　③金：银子。　④蕃息：繁殖。</p>
+      </div>
+      <div class="block">
+        <div class="b-title">【训练】</div>
+        <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+        <p>①性至孝　<span class="blank"></span>　②左手复挛（luán）　<span class="blank"></span>　③人悯之　<span class="blank"></span>　④父母赖以活　<span class="blank"></span><br>⑤乃易猪饲之　<span class="blank"></span>　⑥父母先后卒　<span class="blank"></span>　⑦哭之恸　<span class="blank"></span>　⑧后不知孝子所之　<span class="blank"></span></p>
+        <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+        <p>①受而纳诸箪　<span class="blank"></span>　②诚而信　<span class="blank"></span></p>
+        <p class="ex-item"><span class="q">（3）哑孝子的"孝"体现在哪里？请从上文中找出原句。</span> <span class="blank"></span></p>
+      </div>
+    </article>
+
+    <!-- 11 郑人买履 -->
+    <article class="article" id="a11">
+      <h3>4．郑人买履</h3>
+      <p class="body-text">郑①人有欲买履者，先自度其足，而置之其坐，至之市而忘操之。已得履，乃曰："吾忘持其度。"反归取之。及反，市罢，遂不得履。人曰："何不试之以足？"曰："宁信度，无自信也。"</p>
+      <div class="block">
+        <div class="b-title">【注释】</div>
+        <p>①郑：郑国。</p>
+      </div>
+      <div class="block">
+        <div class="b-title">【训练】</div>
+        <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+        <p>①先自度其足　<span class="blank"></span>　②已得履，乃曰　<span class="blank"></span>　③反归取之　<span class="blank"></span></p>
+        <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+        <p>①至之市而忘操之　<span class="blank"></span>　②及反，市罢　<span class="blank"></span>　③何不试之以足　<span class="blank"></span>　④宁信度，无自信也　<span class="blank"></span></p>
+      </div>
+    </article>
+
+    <!-- 12 鲁人锯竿入城 -->
+    <article class="article" id="a12">
+      <h3>5．鲁人锯竿入城</h3>
+      <p class="body-text">鲁①有执长竿入城门者，初竖执之，不可入。横执之，亦不可入。计无所出。俄有老父②至，曰："吾非圣人③，但见事多矣，何不以锯中截而入。"遂依而截之。世之愚，莫之及也。</p>
+      <div class="block">
+        <div class="b-title">【注释】</div>
+        <p>①鲁：鲁国。　②老父：老人。　③圣人：才智超人的人。</p>
+      </div>
+      <div class="block">
+        <div class="b-title">【训练】</div>
+        <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+        <p>①鲁有执长竿入城门者　<span class="blank"></span>　②横执之，亦不可入　<span class="blank"></span>　③俄有老父至　<span class="blank"></span>　④但见事多矣　<span class="blank"></span></p>
+        <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+        <p>①计无所出　<span class="blank"></span>　②何不以锯中截之　<span class="blank"></span>　③世之愚，莫之及也　<span class="blank"></span></p>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 第三单元 ============ -->
+  <section class="unit-block">
+    <div class="unit-head">第 三 单 元</div>
+    <div class="sec-label">阅 读</div>
+
+    <!-- 13 文徵明习字 -->
+    <article class="article" id="a13">
+      <h3>文徵明习字</h3>
+      <p class="body-text">文徵明临写①《千字文》②，日以十本为率③，书遂大进。平生于书，未尝苟且④，或答人简札⑤，少不当意，必再三易之不厌，故愈老而愈益精妙。</p>
+      <div class="attrib">（节选自《书林纪事》）</div>
+      <div class="block">
+        <div class="b-title">【注释】</div>
+        <p>①临写：临摹。　②《千字文》：旧时初学者的启蒙读本。　③率(lǜ)：标准。　④苟且：马虎。　⑤简札：书信。</p>
+      </div>
+      <div class="block">
+        <div class="b-title">【文言知识】</div>
+        <p>1．释"少"。"少"指不多，古今相同。但上文"少不当意"中的"少"，是指稍微，句意为稍微不满意。又，"少休"，意为稍微休息一下；"女子少饰则美"，意为女子稍微修饰一下就显出美貌；"少习乃不肯宽学"，意为稍微练习一下便不肯学到底。</p>
+        <p>2．释"易"。"易"解释为容易，这是大家都知道的。上文"必再三易之不厌"中的"易"，指"改换"、"更换"，句意为一定要两次三次改动它而不觉得厌烦。又《弈喻》："辄易易置之。"其中的"易"也指改换。成语有"移风易俗"，意为改变风俗。它又指"交换"，如"以百钱易之"，意为用一百个铜钱买下它；"以牛易马"，意为用牛调换马。</p>
+      </div>
+      <div class="block">
+        <div class="b-title">【文化常识】</div>
+        <p>文徵明简介。文徵明是明朝著名书画家，名璧，字徵明，号衡山居士，长洲（今江苏吴县）人，与祝允明、唐寅、徐祯卿合称"吴中四才子"。他工于行书与草书，擅画山水，笔墨苍润秀雅。他的学生甚多，形成"吴门派"。</p>
+      </div>
+      <div class="block">
+        <div class="b-title">【启发与借鉴】</div>
+        <p>功夫不负有心人。文徵明习字，每天要写一万字，按此计算，一个月写三十万字，一年则要写三百多万字。如此大的训练量，且能长久坚持，其精神可嘉。俗话说"一分耕耘，一分收获"，汗水流得多，收获也会大。</p>
+      </div>
+    </article>
+
+    <div class="sec-label">训 练</div>
+
+    <!-- 14 智永退笔冢 -->
+    <article class="article" id="a14">
+      <h3>1．智永退笔冢</h3>
+      <p class="body-text">永公①住吴兴②永欣寺，积年学书，后有秃笔头十瓮③，每瓮皆数石④。人来觅书，并请题额者如市，所居户限⑤为之穿穴，乃用铁叶裹之，人谓"铁门限"。后取笔头瘗⑥之，号为"退笔冢"。</p>
+      <div class="block">
+        <div class="b-title">【注释】</div>
+        <p>①永公：即智永；公，对人的敬称。他是陈、隋间著名书法家。　②吴兴：古地名，今浙江湖州。　③瓮(wèng)：口小腹大的容器。　④石：旧时重量单位。　⑤户限：门槛。　⑥瘗(yì)：埋。</p>
+      </div>
+      <div class="block">
+        <div class="b-title">【训练】</div>
+        <p class="ex-item"><span class="q">（1）解释下列句子中加点的词</span></p>
+        <p>①人来觅书　<span class="blank"></span>　②所居户限为之穿穴　<span class="blank"></span>　③乃用铁叶裹之　<span class="blank"></span>　④号为"退笔冢"　<span class="blank"></span></p>
+        <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+        <p>并请题额者如市　<span class="blank"></span></p>
+        <p class="ex-item"><span class="q">（3）"后有秃笔头十瓮"中的"秃笔头"是指</span> <span class="blank"></span></p>
+        <p class="ex-item"><span class="q">（4）《文徵明习字》与《智永退笔冢》这两则故事告诉我们什么道理？</span> <span class="blank"></span></p>
+      </div>
+    </article>
+
+    <!-- 15 一箧磨穴砚 -->
+    <article class="article" id="a15">
+      <h3>2．一箧磨穴砚</h3>
+      <p class="body-text">古人有学书于人者，自以为艺成，辞而去。师曰："吾有一箧①物，不欲付他人，愿托置于某山下。"其人受之，因其封题②不甚密，乃启而视之，皆磨穴之砚也，数十枚，方知师夙用者。顿觉羞愧，乃反而学，至精其艺。</p>
+      <div class="block">
+        <div class="b-title">【注释】</div>
+        <p>①箧(qiè)：竹箱。　②封题：封条与封条上的字。</p>
+      </div>
+      <div class="block">
+        <div class="b-title">【训练】</div>
+        <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+        <p>①古人有学书于人者　<span class="blank"></span>　②不欲付他人　<span class="blank"></span>　③乃启而视之　<span class="blank"></span><br>④皆磨穴之砚也　<span class="blank"></span>　⑤方知师夙用者　<span class="blank"></span>　⑥乃反而学　<span class="blank"></span></p>
+        <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+        <p>①愿托置于某山下　<span class="blank"></span>　②至精其艺　<span class="blank"></span></p>
+        <p class="ex-item"><span class="q">（3）成语"一无是处"中的"一"、"是"，分别解释为</span> <span class="blank"></span> 与 <span class="blank"></span>；这个成语的意思是 <span class="blank"></span>。</p>
+      </div>
+    </article>
+
+    <!-- 16 王羲之书六角扇 -->
+    <article class="article" id="a16">
+      <h3>3．王羲之书六角扇</h3>
+      <p class="body-text">王羲之，东晋之大书法家也。尝在蕺山①见一老姥，持六角扇卖之。羲之书其扇，各为五字。姥初有愠色。羲之因谓姥曰："但言王右军②书，以求百钱耳。"姥如其言，人竞买之。他日，姥复见羲之，求其书之。羲之笑而不答。</p>
+      <div class="block">
+        <div class="b-title">【注释】</div>
+        <p>①蕺(jí)山：古地名，今浙江绍兴市。　②王右军：即王羲之，因其曾任右军将军而得名。</p>
+      </div>
+      <div class="block">
+        <div class="b-title">【训练】</div>
+        <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+        <p>①见一老姥　<span class="blank"></span>　②姥初有愠色　<span class="blank"></span>　③但言王右军书　<span class="blank"></span>　④人竞买之　<span class="blank"></span></p>
+        <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+        <p>①羲之因谓姥曰　<span class="blank"></span>　②求其书之　<span class="blank"></span></p>
+        <p class="ex-item"><span class="q">（3）除了王羲之外，请再写出我国古代至少两位大书法家。①</span> <span class="blank"></span> ；② <span class="blank"></span></p>
+      </div>
+    </article>
+
+    <!-- 17 掩耳盗铃 -->
+    <article class="article" id="a17">
+      <h3>4．掩耳盗铃</h3>
+      <p class="body-text">有得钟①者，欲负而走，则钟大不可负，以锤毁之，钟况然②有声。恐人闻之而夺己也，遽掩其耳。</p>
+      <div class="block">
+        <div class="b-title">【注释】</div>
+        <p>①钟：古代的一种乐器。　②况然："况"地；况，象声词。</p>
+      </div>
+      <div class="block">
+        <div class="b-title">【训练】</div>
+        <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+        <p>①则钟大不可负　<span class="blank"></span>　②以锤毁之　<span class="blank"></span>　③遽掩其耳　<span class="blank"></span></p>
+        <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+        <p>欲负而走　<span class="blank"></span></p>
+        <p class="ex-item"><span class="q">（3）"掩耳盗钟"现已演变为成语</span> <span class="blank"></span> ；<span class="q">比喻</span> <span class="blank"></span>。</p>
+      </div>
+    </article>
+
+    <!-- 18 红毛毡 -->
+    <article class="article" id="a18">
+      <h3>5．红毛毡</h3>
+      <p class="body-text">红毛国①，旧许与中国相贸易。边帅见其众，不许登岸。红毛人固请赐一毡地足矣。帅思一毡所容无几，许之。其人置毡岸上，但容二人，纳之容四五人。且拉且登，顷刻毡大亩许，已数百人矣。短刃并发，出于不意，被掠数里而去。</p>
+      <div class="block">
+        <div class="b-title">【注释】</div>
+        <p>①红毛国：明、清时有些人称英国、荷兰国为"红毛国"。</p>
+      </div>
+      <div class="block">
+        <div class="b-title">【训练】</div>
+        <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+        <p>①红毛人固请赐一毡足矣　<span class="blank"></span>　②但容二人　<span class="blank"></span>　③且拉且登　<span class="blank"></span>　④短刃并发　<span class="blank"></span></p>
+        <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+        <p>边帅思一毡所容无几　<span class="blank"></span></p>
+        <p class="ex-item"><span class="q">（3）上文"不许登岸"中的"许"，解释为</span> <span class="blank"></span>；"顷刻毡大亩许"中的"许"，解释为 <span class="blank"></span>。</p>
+        <p class="ex-item"><span class="q">（4）"其人置毡岸上"中省略了介词</span> <span class="blank"></span>。</p>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 第四单元 ============ -->
+  <section class="unit-block">
+    <div class="unit-head">第 四 单 元</div>
+    <div class="sec-label">阅 读</div>
+
+    <!-- 19 "辨钟"辨盗 -->
+    <article class="article" id="a19">
+      <h3>"辨钟"辨盗</h3>
+      <p class="body-text">陈述古密直①，曾知建州浦城县②。富民失物，捕得数人，莫知③的为盗者。述古绐④曰："某寺有一钟，至灵，能辨盗。"使人迎置后阁⑤祠⑥之。引囚立钟前，谕⑦曰："不为盗者摸之无声，为盗者则有声。"述古自率同职祷钟甚肃，祭讫以帷围之。乃阴使人以墨涂钟，良久，引囚逐一以手入帷摸之。出而验其手，皆有墨，一囚独无墨，乃见真盗——恐钟有声，不敢摸者。讯之即服。</p>
+      <div class="attrib">（节选自沈括《梦溪笔谈》）</div>
+      <div class="block">
+        <div class="b-title">【注释】</div>
+        <p>①陈述古密直：陈述古字密直。　②知建州浦城县：任建州浦城县知县；知县，县令。　③的：确实。　④绐(dài)：欺骗。　⑤后阁：指县衙门后面的楼阁。　⑥祠：供奉。　⑦谕：告诉。</p>
+      </div>
+      <div class="block">
+        <div class="b-title">【文言知识】</div>
+        <p>1．释"至"。上文"某寺有一钟，至灵"中的"至"，指极、非常，句意为某寺庙中有一口钟，极其神灵。又，"此处山至高水至深"，意为这里的山极天水极深；"子者，父母至爱也"，意为子女是父母极喜爱的人。又，"至宝"指极珍贵的宝物；"至友"指极好的朋友；"至理"指极好的道理；"至高无上"指极高而没再超过的了。</p>
+        <p>2．释"讫"。上文"祭讫以帷围之"中的"讫"，指完毕，句意为祭祀完毕后用帘幕围住它。又，"言讫而去"，意为说完就离开；"麦收未讫，风骤至"，意为麦子还没收完，风突然吹来。"讫"又通"迄"，指"始终"："百计延医讫，迄无济"，意为千方百计请医生治疗，始终没用。</p>
+      </div>
+      <div class="block">
+        <div class="b-title">【启发与借鉴】</div>
+        <p>心理战。陈述古用心理战的方法，盗窃案终于真相大白。心理战不仅在破案中常用，就是在各类体育比赛中也常见。比如赛前教练的放言，往往是恐吓或麻痹对方，球迷的助威也是一种心理战的战术。</p>
+      </div>
+    </article>
+
+    <div class="sec-label">训 练</div>
+
+    <!-- 20 盲子窃钱案 -->
+    <article class="article" id="a20">
+      <h3>1．盲子窃钱案</h3>
+      <p class="body-text">有瞽①者与贩者同宿旅店，窃贩者钱五千，次晨相哄鸣于官。官即提讯，问贩者钱有无记认②，贩者曰："此乃日用之物，有何记号！"问瞽者，对曰："有记，吾钱系字③对字、背对背穿成。"对之良是。贩者不服。官命瞽者伸手，则两掌青黑，铜痕宛然，其为摸索一夕而穿无疑。乃责瞽者，而令贩者取钱去。</p>
+      <div class="block">
+        <div class="b-title">【注释】</div>
+        <p>①瞽(gǔ)：盲。　②记认：记号。　③字：有文字的一面。</p>
+      </div>
+      <div class="block">
+        <div class="b-title">【训练】</div>
+        <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+        <p>①吾钱系字对字　<span class="blank"></span>　②铜痕宛然　<span class="blank"></span>　③其为摸索一夕而穿无疑　<span class="blank"></span></p>
+        <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+        <p>①次晨相哄鸣于官　<span class="blank"></span>　②对之良是　<span class="blank"></span></p>
+      </div>
+    </article>
+
+    <!-- 21 张佐治遇蛙 -->
+    <article class="article" id="a21">
+      <h3>2．张佐治遇蛙</h3>
+      <p class="body-text">金华①郡守②张佐治至一处，见蛙无数，夹道鸣噪，皆昂首若有诉。佐治异之，下车步视，而蛙皆踊跃为前导。至田间，三尸叠焉。公有力，手挈二尸起，其下一尸微动，以汤灌之，未几复苏。曰："我商也，道见二人肩两筐适市，皆蛙也，购以放生。二人复曰：'此皆浅水，虽放，后必为人所获；前有清渊，乃放生池也。'吾从之至此，不意挥斤，遂被害。二人随我后不远，腰缠百金，必为二人诱至此，并杀而夺金也。"张佐治至郡，急令捕之，不日人金俱获。一讯即吐实，罪死，所夺之金归商。</p>
+      <div class="block">
+        <div class="b-title">【注释】</div>
+        <p>①金华：古地名，今浙江金华市。　②郡守：郡的长官。</p>
+      </div>
+      <div class="block">
+        <div class="b-title">【训练】</div>
+        <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+        <p>①而蛙皆踊跃为前导　<span class="blank"></span>　②三尸叠焉　<span class="blank"></span>　③手挈二尸起　<span class="blank"></span><br>④以汤灌之　<span class="blank"></span>　⑤前有清渊　<span class="blank"></span>　⑥吾从之至此，不意挥斤　<span class="blank"></span>　⑦并杀而夺金也　<span class="blank"></span></p>
+        <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+        <p>①未几复苏　<span class="blank"></span>　②道见二人肩两筐适市　<span class="blank"></span>　③不日人金俱获　<span class="blank"></span></p>
+      </div>
+    </article>
+
+    <!-- 22 茨菰见真情 -->
+    <article class="article" id="a22">
+      <h3>3．茨菰见真情</h3>
+      <p class="body-text">张举，吴①人也，为句章②令。邑有妻杀夫者，因放火烧舍，称"火烧夫死"。夫家疑之，讼于官。妻不服。举③乃取猪二口：一杀之，一活之，而积薪焚之，活者口中无灰，杀者口中无灰。因验尸，口果无灰也，鞫④之服罪。</p>
+      <div class="block">
+        <div class="b-title">【注释】</div>
+        <p>①吴：即吴地，今江苏苏州一带。　②句章：古地名。　③举：指张举。　④鞫(jū)：审讯。</p>
+      </div>
+      <div class="block">
+        <div class="b-title">【训练】</div>
+        <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+        <p>①为句章令　<span class="blank"></span>　②邑有妻杀夫者　<span class="blank"></span>　③称"火烧夫死"　<span class="blank"></span></p>
+        <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+        <p>讼于官　<span class="blank"></span></p>
+        <p class="ex-item"><span class="q">（3）为什么"口中无灰"便断定是谋杀？</span> <span class="blank"></span></p>
+      </div>
+    </article>
+
+    <!-- 23 蜜中鼠屎案 -->
+    <article class="article" id="a23">
+      <h3>4．蜜中鼠屎案</h3>
+      <p class="body-text">孙亮①出②西苑，方食生梅，使黄门③至宫中藏取蜜渍梅。蜜中有鼠屎。召问藏吏，藏吏叩头。亮问吏曰："黄门从汝求蜜耶？"曰："向求，实不敢与。"黄门不服，侍中④刁玄、张邠(bīn)启："黄门、藏吏辞语不同，请付狱⑤推尽⑥。"亮曰："此易知耳。"令破鼠矢⑦，矢里燥。亮大笑谓玄、邠曰："若矢先在蜜中，中外当俱湿；今外湿里燥，必是黄门所为。"黄门首服⑧，左右莫不惊悚。</p>
+      <div class="block">
+        <div class="b-title">【注释】</div>
+        <p>①孙亮：吴国皇帝。　②出：路过。　③黄门：太监。　④侍中：官职名称。　⑤狱：司法机关。　⑥推尽：彻底查问。　⑦矢：同"屎"。　⑧首服：自认服罪。</p>
+      </div>
+      <div class="block">
+        <div class="b-title">【训练】</div>
+        <p class="ex-item"><span class="q">（1）解释下列句子中加点的词</span></p>
+        <p>①孙亮出西苑　<span class="blank"></span>　②至宫中藏取蜜渍梅　<span class="blank"></span>　③侍中刁玄、张邠启　<span class="blank"></span></p>
+        <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+        <p>①向求，实不敢与　<span class="blank"></span>　②左右莫不惊悚　<span class="blank"></span></p>
+        <p class="ex-item"><span class="q">（3）太监为什么要陷害藏吏？（用文中原句回答）</span> <span class="blank"></span></p>
+      </div>
+    </article>
+
+    <!-- 24 谜语一则 -->
+    <article class="article" id="a24">
+      <h3>5．谜语一则</h3>
+      <p class="body-text">王荆公①戏作谜语："画时圆，写时方；冬时短，夏时长。"吉甫②解云："东海有一鱼，无头亦无尾，更除脊梁骨，便是这个谜。"</p>
+      <div class="block">
+        <div class="b-title">【注释】</div>
+        <p>①王荆公：即王安石，曾封荆国公，故称。　②吉甫：吕吉甫。</p>
+      </div>
+      <div class="block">
+        <div class="b-title">【训练】</div>
+        <p class="ex-item"><span class="q">（1）解释下列句子中加点的词</span></p>
+        <p>①王荆公戏作谜语　<span class="blank"></span>　②更除脊梁骨　<span class="blank"></span></p>
+        <p class="ex-item"><span class="q">（2）这个谜语的谜底是</span> <span class="blank"></span></p>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 第五单元 ============ -->
+  <section class="unit-block">
+    <div class="unit-head">第 五 单 元</div>
+    <div class="sec-label">阅 读</div>
+
+    <!-- 25 鹦鹉灭火 -->
+    <article class="article" id="a25">
+      <h3>鹦鹉灭火</h3>
+      <p class="body-text">有鹦鹉飞集他山①，山中禽兽辄相贵重②。鹦鹉自念：虽乐，不可久也，便去③。后数日，山中大火，鹦鹉遥见，便入水濡羽④，飞而洒之。天神言："汝虽有志⑤，意何足云也⑥？"对曰："虽知不能，然吾侨居⑦是山，禽兽善行⑧，皆为兄弟，不忍见⑨耳！"天神嘉感，即为灭火。</p>
+      <div class="attrib">（节选自《太平广记》）</div>
+      <div class="block">
+        <div class="b-title">【注释】</div>
+        <p>①他山：别的山头；指不是自己常居的山头。　②相贵重：尊敬它，看重它；相，表示一方对另一方有所动作。　③去：离开。　④濡(rú)羽：沾湿羽毛。　⑤志：愿望；指灭火的心意。　⑥意何足云也：你的心意哪值得说呢？　⑦侨居：寄住。　⑧善行：善良的行为。　⑨见：看见它们受灾之苦。</p>
+      </div>
+      <div class="block">
+        <div class="b-title">【文言知识】</div>
+        <p>1．释"集"。"集"的本义是鸟躲在树上，因此它有"栖"、"躲"的含义。上文"鹦鹉飞集他山"中的"集"，即指栖，句意为有只鹦鹉飞栖在别的山头上。又，《岳阳楼记》："沙鸥翔集"，意为沙鸥有的飞翔有的栖息。又，"众鸟集于林"，意为很多鸟栖息在林子里；"北雁集于此"，意为北方的大雁栖息在这儿。它又指聚集。如"集百余人于郊"，意为一百多人聚集在郊外。</p>
+        <p>2．释"嘉"。上文"天神嘉感"中的"嘉"，指赞扬，句意为天神赞扬鹦鹉的行为并受到感动。又，"帝嘉其诚，赐黄金百两"，意为皇帝赞扬他的忠诚，赏赐给他黄金一百两；"拾金而不昧，众人嘉之"，意为拾到钱财不私自占有，大家都赞扬他。</p>
+      </div>
+      <div class="block">
+        <div class="b-title">【启发与借鉴】</div>
+        <p>善良的心意。鹦鹉沾湿自己的羽毛后，在大火上洒下几滴水，这对于扑灭火灾来说当然无济于事，但其精神可嘉。一个人的能力有大小，但只要有仁爱之心，就是一个高尚的人。更何况鹦鹉曾得到他山禽兽的关爱。记得上世纪90年代，广州有个女孩得了恶病，治疗费用需30万元。家长急得走投无路。市工会领导得知后，发动职工每人捐1元，于是没几天，30万元捐款便汇集而成。1元钱是小数目，但捐献者的心意是高尚的、值得称赞的。</p>
+      </div>
+      <div class="block">
+        <div class="b-title">【译文】</div>
+        <p>有只鹦鹉飞到别的山头上住下，那里的禽兽都敬重它。鹦鹉自思：（在这里）虽然很愉快，（但是）不能久留，便离开了。几天以后，那山中发生大火，鹦鹉遥遥望见，就飞到有水的地方把自己的羽毛沾湿了，然后飞去洒在火上。天神说："你虽然有好（的）意愿，（但这几滴水）对你的心意来说能称得上什么呢？"（鹦鹉）回答说："虽然明知不可能（灭火），然而我曾寄住在那山中，禽兽的行为很善良，都成了我的兄弟，不忍心见到它们受灾之苦！"天神赞扬它的行为并深受感动，就帮助（鹦鹉）灭火。</p>
+      </div>
+    </article>
+
+    <div class="sec-label">训 练</div>
+
+    <!-- 26 鲊救婢 -->
+    <article class="article" id="a26">
+      <h3>1．鲊救婢</h3>
+      <p class="body-text">高怀中，业鳝面于扬州①小东门，日杀鳝以千数。一婢②悯之，每夜窃部分缸中鳝从后门投诸河。如是累年。一日面店被焚，婢仓皇出逃，为火所伤，困于河滨。夜深入睡，比醒而痛减，伤亦愈。视之，有河中污泥敷于伤处，而周③有鳝之行迹，始知向所放生之鳝来救也。高怀中感其异，遂为之罢业。及拆锅，下有洞，生鳝无数盘其中，悉纵之于河。</p>
+      <div class="block">
+        <div class="b-title">【注释】</div>
+        <p>①扬州：今江苏扬州市。　②婢：侍女；此指女佣。　③周：四周。</p>
+      </div>
+      <div class="block">
+        <div class="b-title">【训练】</div>
+        <p class="ex-item"><span class="q">（1）解释下列句子中加点的词</span></p>
+        <p>①业鳝面于扬州小东门　<span class="blank"></span>　②一婢悯之　<span class="blank"></span>　③每夜窃部分缸中鳝从后门投诸河　<span class="blank"></span><br>④困于河滨　<span class="blank"></span>　⑤比醒而痛减　<span class="blank"></span>　⑥始知向所放生之鳝来救也　<span class="blank"></span></p>
+        <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+        <p>①如是累年　<span class="blank"></span>　②高怀中感其异　<span class="blank"></span>　③悉纵之于河　<span class="blank"></span></p>
+        <p class="ex-item"><span class="q">（3）选择：上文"日杀鳝以千数"中的"以千数"是指：</span><br>　　①一千余；②近一千余；③数千余；④一万余</p>
+      </div>
+    </article>
+
+    <!-- 27 二鹊救友 -->
+    <article class="article" id="a27">
+      <h3>2．二鹊救友</h3>
+      <p class="body-text">某氏园中，有古木，鹊巢其上，鹈雏将出。一日，鹈徊翔其上，悲鸣不已。顷之，有群鹈鸣渐近，集古木上，忽有二鹊对鸣，若相语状，俄而扬去。未几，一鹈①横空而来，"咯咯"作声，二鹊亦尾其后。群鹈见而噪，若有所诉。鹈又"咯咯"作声，似允所请。鹈于古木上盘旋三匝②，遂俯冲鹈巢，衔一赤蛇吞之。群鹈喧舞，似庆且谢也。盖二鹊招鹈援友也。</p>
+      <div class="block">
+        <div class="b-title">【注释】</div>
+        <p>①鹈(guàn)：一种凶猛的鸟。　②匝(zā)：周。</p>
+      </div>
+      <div class="block">
+        <div class="b-title">【训练】</div>
+        <p class="ex-item"><span class="q">（1）解释下列句子中加点的词</span></p>
+        <p>①鹈雏将出　<span class="blank"></span>　②悲鸣不已　<span class="blank"></span>　③集古木上　<span class="blank"></span><br>④"咯咯"作声　<span class="blank"></span>　⑤遂俯冲鹈巢　<span class="blank"></span>　⑥盖二鹊招鹈援友也　<span class="blank"></span></p>
+        <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+        <p>①鹊巢其上　<span class="blank"></span>　②若相语状　<span class="blank"></span></p>
+        <p class="ex-item"><span class="q">（3）从上文中写出与"顷之"意思相近的词：</span> <span class="blank"></span> 、 <span class="blank"></span></p>
+      </div>
+    </article>
+
+    <!-- 28 知恩图报 -->
+    <article class="article" id="a28">
+      <h3>3．知恩图报</h3>
+      <p class="body-text">秦穆公①尝出而亡其骏马，自往求之，见人已杀其马，方共食其肉。穆公谓曰："是吾骏马也。"诸人皆惧而起。穆公曰："吾闻食骏马肉不饮酒者杀人②。"即饮之酒。杀马者皆惭而去。居三年，晋攻秦穆公，围之。往时食马者相谓曰："可以出死报食马得酒之恩矣。"遂溃围，穆公卒得以解难，胜晋，获惠公③以归。</p>
+      <div class="block">
+        <div class="b-title">【注释】</div>
+        <p>①秦穆公：秦国国君。　②杀人：指会有杀人的念头。　③惠公：晋国国君。</p>
+      </div>
+      <div class="block">
+        <div class="b-title">【训练】</div>
+        <p class="ex-item"><span class="q">（1）解释下列句子中加点的词</span></p>
+        <p>①秦穆公尝出而亡其骏马　<span class="blank"></span>　②方共食其肉　<span class="blank"></span>　③是吾骏马也　<span class="blank"></span><br>④居三年　<span class="blank"></span>　⑤遂溃围　<span class="blank"></span>　⑥穆公卒得以解难　<span class="blank"></span></p>
+        <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+        <p>即饮之酒　<span class="blank"></span></p>
+        <p class="ex-item"><span class="q">（3）题目中"知恩图报"的"图"，解释为</span> <span class="blank"></span></p>
+      </div>
+    </article>
+
+    <!-- 29 蝙蝠 -->
+    <article class="article" id="a29">
+      <h3>4．蝙蝠</h3>
+      <p class="body-text">凤凰①寿，百鸟朝贺。唯蝙蝠不至。凤责之曰："汝居吾下，何倨傲乎？"蝠曰："吾有足，属于兽，贺汝何以？"一日，麒麟②诞，蝠亦不至。麟亦责之。蝠曰："吾有翼，属于禽，何以贺与？"麟凤相会，语及蝙蝠之事，互相慨叹曰："如今世上恶薄③，偏生此等不禽不兽之徒，真乃无奈他何！"</p>
+      <div class="block">
+        <div class="b-title">【注释】</div>
+        <p>①凤凰：传说中的禽类之王。　②麒麟：传说中的兽类之王。　③恶薄：风气恶劣。</p>
+      </div>
+      <div class="block">
+        <div class="b-title">【训练】</div>
+        <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+        <p>①百鸟朝贺　<span class="blank"></span>　②唯蝙蝠不至　<span class="blank"></span>　③麒麟诞　<span class="blank"></span><br>④何以贺与　<span class="blank"></span>　⑤语及蝙蝠之事　<span class="blank"></span>　⑥偏生此等不禽不兽之徒　<span class="blank"></span></p>
+        <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+        <p>①汝居吾下，何倨傲乎？　<span class="blank"></span>　②贺汝何以？　<span class="blank"></span>　③真乃无奈他何！　<span class="blank"></span></p>
+      </div>
+    </article>
+
+    <!-- 30 杀驼破瓮 -->
+    <article class="article" id="a30">
+      <h3>5．杀驼破瓮</h3>
+      <p class="body-text">曩有一人，先瓮①中盛谷。骆驼入头瓮中食谷，首不得出。既不得出，其人患之。有一老父②来诳之曰："女莫愁，吾教女出。女当斩头，自能出之。"即用其语，以刀斩头。既杀驼，复破瓮。如此痴人，世人所笑。</p>
+      <div class="block">
+        <div class="b-title">【注释】</div>
+        <p>①瓮(wèng)：一种口小腹大的盛器。　②老父：老人。</p>
+      </div>
+      <div class="block">
+        <div class="b-title">【训练】</div>
+        <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+        <p>①曩有一人　<span class="blank"></span>　②即用其语　<span class="blank"></span></p>
+        <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+        <p>①其人患之　<span class="blank"></span>　②吾教女出　<span class="blank"></span>　③既杀驼，复破瓮　<span class="blank"></span>　④世人所笑　<span class="blank"></span></p>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ 第六单元 ============ -->
+  <section class="unit-block">
+    <div class="unit-head">第 六 单 元</div>
+    <div class="sec-label">阅 读</div>
+
+    <!-- 31 鼠画逼真 -->
+    <article class="article" id="a31">
+      <h3>鼠画逼真</h3>
+      <p class="body-text">东安①一士人善画，作鼠一轴②，献之邑令③。令初不知爱，漫悬于壁。且而过之，轴必坠地，屡悬屡坠。令怪之，黎明物色④，轴在地面猫蹲其旁。逮举轴，则跟跗⑤逐之。以试群猫，莫不然者。于是始知其画为逼真。</p>
+      <div class="attrib">（节选自曾敏行《独醒杂志》）</div>
+      <div class="block">
+        <div class="b-title">【注释】</div>
+        <p>①东安：古地名。　②轴：此指装裱成卷轴的画。　③邑令：县官。　④物色：察看。　⑤跟跗(liáng qiāng)：跌跌撞撞。</p>
+      </div>
+      <div class="block">
+        <div class="b-title">【文言知识】</div>
+        <p>1．释"士"。上文"东安一士人善画"中的"士"，指读书人。古代有四种职业：士、农、工、商。"士"排在第一位。所谓"士大夫"，泛指有地位的读书人。"士林"即知识界、学术界；"士民"即士，又有"仕"，它指做官。所谓"入仕"即进入官场。</p>
+        <p>2．释"逮"。上文"逮举轴，则跟跗逐之"中的"逮"，指等到，句意为等到举起画轴，猫便跌跌撞撞地追逐它。在这个意义上，它同"及"，因此上文又可写成"及举轴"。又，"逮至丰年，百姓熙熙而乐"，意为等到了丰收年成，百姓便过着欢乐的生活；"不逮彼言，其人已勃然而起"，意为没等到他开口，那人便生气地站起来了。</p>
+      </div>
+      <div class="block">
+        <div class="b-title">【启发与借鉴】</div>
+        <p>侧面描写。要说东安士人画的老鼠如何逼真，很难正面直接说清，因此上文作者运用侧面描写手法——猫见鼠轴必跟跗逐之来表达，手法极为高明。大家一定还记得乐府民歌《陌上桑》，其中对罗敷的美貌也用了侧面描写："行者见罗敷，下担持髭须（放下担子捋胡须）；少年见罗敷，脱帽着帩头（脱下帽子，下意识把帽整理一下）。耕者忘其耕，锄者忘其锄"，意为众人见了罗敷都看她的美貌，忘记了干活。这就是侧面描写的效果。</p>
+      </div>
+    </article>
+
+    <div class="sec-label">训 练</div>
+
+    <!-- 32 虎画 -->
+    <article class="article" id="a32">
+      <h3>1．虎画</h3>
+      <p class="body-text">予友人人工画虎，其室四壁咸虎画：或蹲或扑，或吼或奔，或孥幼或独行，形态各异，皆毕肖。吾尝乞得一轴①，高二尺奇②，宽二尺许。其二虎，雌雄各一。雄者踞于石，昂首远视，张口若呼啸状；雌者伏于侧，足前伸，神情怡然。旁有奇石三四，似助威也。余县诸东壁，爱甚。</p>
+      <div class="block">
+        <div class="b-title">【注释】</div>
+        <p>①轴：装成卷轴形的字画。　②奇：超过一点。</p>
+      </div>
+      <div class="block">
+        <div class="b-title">【训练】</div>
+        <p class="ex-item"><span class="q">（1）解释下列句子中加点的词</span></p>
+        <p>①予友人人工画虎　<span class="blank"></span>　②其室四壁咸虎画　<span class="blank"></span>　③或蹲或扑　<span class="blank"></span><br>④或孥幼或独行　<span class="blank"></span>　⑤吾尝乞得一轴　<span class="blank"></span>　⑥宽二尺许　<span class="blank"></span>　⑦雄者踞于石　<span class="blank"></span>　⑧神情怡然　<span class="blank"></span></p>
+        <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+        <p>①皆毕肖　<span class="blank"></span>　②余县诸东壁，爱甚　<span class="blank"></span></p>
+      </div>
+    </article>
+
+    <!-- 33 正午牡丹 -->
+    <article class="article" id="a33">
+      <h3>2．正午牡丹</h3>
+      <p class="body-text">欧阳公①尝得一古画牡丹丛，其下有一猫，未识精粗。丞相正肃吴公②与欧阳公姻家，一见曰："此正午牡丹也。何以明之？其花披哆③而色燥，此日中之花也；猫眼黑暗如线，此正午猫眼也。有带露花，则房④敛而色泽；猫眼早暮则睛圆，日渐中狭长，正午则如一线。"此善求古人笔意也。</p>
+      <div class="block">
+        <div class="b-title">【注释】</div>
+        <p>①欧阳公：即北宋文学家欧阳修；公，对人的尊称。　②正肃吴公：即吴育，他谥号为正肃。　③披哆(chǐ)：萎靡无力。　④房：花心。</p>
+      </div>
+      <div class="block">
+        <div class="b-title">【训练】</div>
+        <p class="ex-item"><span class="q">（1）解释下列句子中加点的词</span></p>
+        <p>①欧阳公尝得一古画牡丹丛　<span class="blank"></span>　②未识精粗　<span class="blank"></span>　③与欧阳公姻家　<span class="blank"></span>　④有带露花，则房敛而色泽　<span class="blank"></span></p>
+        <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+        <p>①何以明之　<span class="blank"></span>　②此善求古人笔意也　<span class="blank"></span></p>
+      </div>
+    </article>
+
+    <!-- 34 朱元璋画像 -->
+    <article class="article" id="a34">
+      <h3>3．朱元璋画像</h3>
+      <p class="body-text">明太祖朱元璋尝集画工写御容①，多不称旨。有笔意逼真者，自以为必见赏，及进览，亦然。一工探知上意，稍稍于形似之外，加穆穆②之容以进。上览之，其喜，乃命写数本以赐诸王③。盖上之意早有，而它工不能知也。</p>
+      <div class="block">
+        <div class="b-title">【注释】</div>
+        <p>①御容：皇帝的容貌。　②穆穆：雍容端庄的样子。　③诸王：各诸王。</p>
+      </div>
+      <div class="block">
+        <div class="b-title">【训练】</div>
+        <p class="ex-item"><span class="q">（1）解释下列句子中加点的词</span></p>
+        <p>①集画工写御容　<span class="blank"></span>　②自以为必见赏　<span class="blank"></span>　③及进览，亦然　<span class="blank"></span>　④盖上之意早有　<span class="blank"></span>　⑤而它工不能知也　<span class="blank"></span></p>
+        <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+        <p>①多不称旨　<span class="blank"></span>　②一工探知上意　<span class="blank"></span></p>
+      </div>
+    </article>
+
+    <!-- 35 苏东坡画扇 -->
+    <article class="article" id="a35">
+      <h3>4．苏东坡画扇</h3>
+      <p class="body-text">东坡官钱塘①日，有人诉负钱二万不偿者。公②呼而诘之，云："吾家以制扇为业，适父死，而又自今春以来，连雨天寒，所制扇不售③，非故负之也。"公熟视久之，曰："姑取汝所制扇来，吾当为汝发市④也。"须臾扇至，公取二十扇，就判笔⑤行行书草圣⑥及枯木竹石，顷刻而成，即付之曰："出外速偿所负资也。"其人抱扇而涕下。始逾府门，人以千钱竞购一扇，立尽。</p>
+      <div class="block">
+        <div class="b-title">【注释】</div>
+        <p>①钱塘：古地名，今浙江杭州市。　②公：对苏东坡的尊称。　③不售：卖不出去。　④发市：开市。　⑤判笔：公文用笔。　⑥草圣：草书。</p>
+      </div>
+      <div class="block">
+        <div class="b-title">【训练】</div>
+        <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+        <p>①公呼而诘之　<span class="blank"></span>　②迨父死　<span class="blank"></span>　③公熟视久之　<span class="blank"></span>　④须臾扇至　<span class="blank"></span>　⑤其人抱扇而涕下　<span class="blank"></span>　⑥始逾府门　<span class="blank"></span>　⑦人以千钱竞购一扇　<span class="blank"></span></p>
+        <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+        <p>①有人诉负钱二万不偿者　<span class="blank"></span>　②非故负之也　<span class="blank"></span></p>
+      </div>
+    </article>
+
+    <!-- 36 铁杵磨针 -->
+    <article class="article" id="a36">
+      <h3>5．铁杵磨针</h3>
+      <p class="body-text">磨针溪，在眉州①象耳山下。世传李太白读书山中，未成，弃去。过小溪，逢老媪，方磨铁杵②，问之，曰："欲作针。"太白感其意，还卒业。媪自言姓武。今溪旁有武氏岩。</p>
+      <div class="block">
+        <div class="b-title">【注释】</div>
+        <p>①眉州：古地名，今四川眉山。　②铁杵(chǔ)：铁棒。</p>
+      </div>
+      <div class="block">
+        <div class="b-title">【训练】</div>
+        <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+        <p>①过小溪，逢老媪(ǎo)　<span class="blank"></span>　②方磨铁杵　<span class="blank"></span>　③今溪旁有武氏岩　<span class="blank"></span></p>
+        <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+        <p>①太白感其意　<span class="blank"></span>　②还卒业　<span class="blank"></span></p>
+        <p class="ex-item"><span class="q">（3）李白为什么又叫李太白？</span> <span class="blank"></span></p>
+      </div>
+    </article>
+  </section>
+
+<section class="unit-block" data="unit=七">
+  <div class="unit-head">第 七 单 元</div>
+  <article class="article" id="a37">
+    <h3>范仲淹有志于天下（阅读）</h3>
+    <p class="body-text">范仲淹二岁而孤，母贫无依,再适①长山②朱氏。既长③，知其世家①，感泣<br>辞母，去之③南都@人学舍。昼夜苦学，五年未尝解衣就寝①。或夜昏怠，以水<br>沃面③。往往馕粥③不充，日@始食；遂大通六经の之旨，慨然有志于天下。常<br>自诵日：“当先天下之忧而忧，后天下之乐而乐。”<br>（节选自《宋名臣言行录》）<br>走进文言文（六、七年级用）<br>院等。书院常邀请著名学者前往讲学，是研习儒家经典的场所。<br>2.范仲淹简介。范仲淹是北宋著名的政治家、文学家。他曾任参知政事（相当于副宰<br>相），主张建立严密的任官制度，注重农桑，整顿武备，推行法制，减轻谣役。他曾任驻守西北<br>抗击西夏的将领，敌人称之为“小范老子”，几乎闻名丧胆。他在《渔家傲》诗中写道：“浊酒一<br>杯家万里，燕然未勒归无计。羌管悠悠霜满地。人不乐，将军白发征夫泪。”多么悲壮的诗<br>篇！他的《岳阳楼记》更是传世名作。</p>
+<div class="block"><div class="b-title">【注释】</div><p>①适：嫁。②长山：古地名。　③既长：长大后；既，已经。　④世家：家世。　③之：到，往。<br>③南都：指应天府，今河南商丘。②就寝：上床睡觉。③沃面：洗脸。?馕（zhan)粥：稠粥。<br>日（zé）：日偏西。①六经：指《诗》、《书》、《礼》、《易》、《乐》、《春秋》六部儒家经典著作。<br>①南都书舍：即南都书院。②（ji)：腌菜。③留守：官职名称。④大人：指自已的父亲。</p></div>
+<div class="block"><div class="b-title">【文言知识】</div><p>1．释“孤”。现代汉语中的“孤”，是指失去父母的孩子，即孤儿。而古代多指失去父亲<br>的孩子。上文“范仲淹二岁而孤”，接下来又写“母贫无依”，可见他母亲还在世，故能“再适长<br>山朱氏”。又，“欧阳修早孤”，也是说欧阳修小时候就没了父亲。当然，父母双亡的孩子同样<br>称"孤”。<br>2．释“旨”。上文“遂大通六经之旨”中的“旨”，指意旨、意思，句意为就精通六经的含<br>义。又“要旨”指主要意思；“宗旨”指根本意思。它又指皇帝的命令，如“圣”“奉旨”。也<br>指上级的命令或长辈的意思，如“尊旨”“钧旨”。</p></div>
+<div class="block"><div class="b-title">【文化常识】</div><p>1．话说“书院”。上文说范仲淹离家“之南都入学舍”，他进的是南都书院。书院的名称<br>开始出现在唐朝，它的性质是校订儒家经典著作，征集各种散的书稿等。唐人李勃隐居读<br>书于庐山白鹿洞，到南唐时有人利用遗址改建为学馆，招徒研习儒学，至宋朝初年改为白鹿<br>书院。此后书院盛行，除范仲淹就读的南都书院外，著名的还有嵩山书院、睢阳书院、岳麓书</p></div>
+<div class="block"><div class="b-title">【启发与借鉴】</div><p>苦读。有人间：天底下最苦的是什么事？一位著名的学者回答是“读书”。读书要眼到、<br>手到、心到，读书要专心致志，读了书还要灵活运用，这怎么能不苦呢？如果是家庭条件困难<br>的少年，读书则更苦。范仲淹苦读成才可谓典型例子。</p></div>
+<div class="block"><div class="b-title">【译文】</div><p>范仲淹两岁时失去了父亲，母亲贫困无依无靠，（只得）再嫁给长山地方姓朱的人。（范<br>仲淹)长大后，知道自己的身世，感动得掉下眼泪，辞别母亲，离家到南都书院求学。他白天<br>黑夜勤奋学习，五年之中未尝脱下衣服睡觉。有时夜里昏沉沉地十分疲劳，就用冷水洗脸。<br>常常连稠粥也供应不上，太阳偏西才吃饭，终于精通“六经”的内容，感慨地有志于为天下（百<br>姓效力）。经常自已朗声说：“要在天下人忧愁之前先忧愁，在天下人安乐之后才安乐。”<br>1.食粥心安<br>范仲淹家贫,就学于南都书舍①，日煮粥一釜,经夜遂凝，以刀画为四，早晚<br>取其二,断②数十茎啖之。留守③有子同学,归告其父,馈以佳肴。范置之,既<br>而悉败矣。留守子日：“大人④闻汝清苦，遗以食物，何为不食？”范日：“非不感厚<br>意，盖食粥安之已久，今享盛馕，后日能复啖此粥乎？”</p></div>
+<div class="block"><div class="b-title">【训练】</div><p>（1）解释下列句子中加点的词<br>①日煮粥一釜</p></div>
+  </article>
+  <article class="article" id="a38">
+    <h3>1. 食粥心安</h3>
+    <div class="block"><div class="b-title">【注释】</div><p>①南都书舍：即南都书院。②（ji)：腌菜。③留守：官职名称。④大人：指自已的父亲。</p></div>
+<div class="block"><div class="b-title">【译文】</div><p>范仲淹家贫,就学于南都书舍①，日煮粥一釜,经夜遂凝，以刀画为四，早晚<br>取其二,断②数十茎啖之。留守③有子同学,归告其父,馈以佳肴。范置之,既<br>而悉败矣。留守子日：“大人④闻汝清苦，遗以食物，何为不食？”范日：“非不感厚<br>意，盖食粥安之已久，今享盛馕，后日能复啖此粥乎？”</p></div>
+<div class="block"><div class="b-title">【训练】</div><p>（1）解释下列句子中加点的词<br>①日煮粥一釜</p></div>
+  </article>
+  <article class="article" id="a39">
+    <h3>2. 鉴真东渡日本</h3>
+    <p class="body-text">唐高僧①鉴真，本姓淳于，扬州江阳②人，年十四出家为僧。稍长，遍游长<br>安、洛阳,寻问名师,专研戒律③。天宝元年④,应日僧普照辈延,东渡日本。然<br>东海风骤浪高，或船覆，或粮匮，或失向，历十二载，五渡未成。其时僧目盲，唯<br>志不渝。天宝十二年,竟至日，翌年于奈良东建戒台，授戒法。</p>
+<div class="block"><div class="b-title">【注释】</div><p>①高僧：有名望的和尚。②江阳：古县名，今属江苏扬州市。③戒律：指佛教的清规戒律。<br>④天宝元年：公元742年；“天宝”是唐玄宗的年号。③奈良：日本城市名。</p></div>
+<div class="block"><div class="b-title">【训练】</div><p>（1）解释下列句子中加点的词<br>①稍长，遍游长安、洛阳<br>②然东海风骤浪高<br>③或船覆<br>④或粮匮<br>③竞至日<br>③翌年于奈良东建戒台<br>（2）用现代汉语翻译下面句子<br>①应日僧普照辈延<br>②唯志不渝</p></div>
+  </article>
+  <article class="article" id="a40">
+    <h3>3. 年少志存高远</h3>
+    <p class="body-text">昔有一少年，家贫甚，伐薪自食，夜则映月以览。邻村有富者，衣锦食肉，恒<br>炫于众。一日富者出猎，左右持弓，鹰犬罗后①，途与少年遇。富者众辱之，日：<br>“尔贫如此，尚不及吾之鹰犬。”少年不应。富者复日：“尔随吾后，与鹰犬同逐狐<br>兔，先得者赏尔！”少年作色②日：“吾虽家徒壁立，然志存高远，非若等鼠类可<br>比！”左右欲殿之，少年目斥之：“尔辈亦鹰犬也！”不顾而去。</p>
+<div class="block"><div class="b-title">【注释】</div><p>①罗后：跟随在后面。②作色：改变了脸色。</p></div>
+  </article>
+  <article class="article" id="a41">
+    <h3>4. 陈蕃有大志</h3>
+    <p class="body-text">“孺子何不洒扫以待宾客？”蕃日：“大丈夫处世，当扫除天下，安事一室乎？”勤知<br>其有清世志，甚奇之。</p>
+<div class="block"><div class="b-title">【注释】</div><p>①陈蕃：东汉人。②郡：古代行政区域名称。</p></div>
+<div class="block"><div class="b-title">【训练】</div><p>陈蕃①年十五，尝闲处一室，而庭宇芜秽。父友同郡?薛勤来候之，谓蕃日：</p></div>
+  </article>
+  <article class="article" id="a42">
+    <h3>5. 画龙点睛</h3>
+    <div class="block"><div class="b-title">【注释】</div><p>①张僧(you)：南朝时梁人。②金陵：今江苏南京市。</p></div>
+<div class="block"><div class="b-title">【训练】</div><p>张僧①于金陵安乐寺，画四龙于壁，不点睛。每日：“点之即飞去。”人以<br>为诞,因点其一。须史,雷电破壁，一龙乘云上天,不点晴者皆在。<br>（1）解释下列各句中加点的词<br>①每日<br>②须史，雷电破壁<br>（2）用现代汉语翻译下面句子<br>人以为诞</p></div>
+  </article>
+</section>
+
+<section class="unit-block" data="unit=八">
+  <div class="unit-head">第 八 单 元</div>
+  <article class="article" id="a43">
+    <h3>包惊儿笃于友谊（阅读）</h3>
+    <p class="body-text">第几单元<br>包惊几①笃于友谊，与吴东湖善，吴卒，抚③其家甚至③。后方女嫁，闻吴女<br>将适人，贫不能理装④，即以其女之具③赠之，已女后一载始嫁。时论③称之。<br>（节选自王障《今世说》）<br>来包惊几正当要把女儿出嫁时，听说吴东湖的女儿也将嫁人，（可是吴东湖家)贫困得无法办<br>理嫁妆，便把自已女儿的嫁妆赠送给吴的女儿，而自已女儿延后一年才嫁。当时的人在议论<br>这事时都称赞包惊几。<br>1.黄仙囊济友<br>泰州①守田雪（kan）居官廉，黄仙裳与周旋②，绝不干③以私。后田落<br>职④,在州不得去。黄自汝宁③归,囊中但有二十金③。乃先至田寓，分其半以<br>赠。后语人日：“是日吾先至家，则家中需金甚呕，不得分以赠田矣。”</p>
+<div class="block"><div class="b-title">【注释】</div><p>①包惊几：清朝人，名捷，字惊几。②抚：照顾。③至：周到。④理装：备办嫁妆。①查<br>(lian）具：嫁妆。时论：当时人议论（这件事）。<br>③干：求。④落职：免官。<br>①泰州：古地名，今江苏泰州市。②周旋：交往。<br>③汝宁：古地<br>名，今河南汝南县。<br>金：银子。</p></div>
+<div class="block"><div class="b-title">【文言知识】</div><p>1.释“笃”。上文“包惊几笃于友谊”中的“笃”，指“重”“看重”，句意为包惊几对友谊很看<br>重。文，“友人病笃”，意为友人病重。它又指专心，如“笃学”指专心学习；“笃志”指专心致志。<br>2.释“适”。上文“闻吴女将适人”中的“适”，指出嫁，句意为听说昊东湖的女儿将要嫁<br>人。这个义项要特别注意。又，“其女二十始适”，意为他的女儿二十罗才嫁人；“女习武，三<br>十而不适”，意为那女子喜欢练习武功，三十岁还没嫁人。“再适”是指再嫁，即女子第二次嫁<br>人。如“其母贫，子幼，惟有再适”，意为她母亲贫困，孩子又小，只得再嫁。</p></div>
+<div class="block"><div class="b-title">【启发与借鉴】</div><p>友谊。人生在世，或多或少有几个朋友。没朋友的人像一只失群的大雁在空中婴孤<br>鸣。择友要慎重，对待朋友要真心。《红楼梦》中说：“万两黄金容易得，知心一个也难求。”鲁<br>迅说：“人生得一知已足矣，斯世当以同怀（同胞）视之。”马克思说：“友谊需要忠诚去播种，用<br>热情去灌溉，用原则去培养，用谅解去护理。”巴金说：“友情在我过去的生活里就像一盏明<br>到帮助，谁就应该在平日播种友谊。”真心的友谊是永远流消的温泉，是万年不衰的长青树！</p></div>
+<div class="block"><div class="b-title">【译文】</div><p>包惊几对友谊十分看重，他跟吴东湖友好，吴东湖死后，十分周到地照顾吴的家庭。后</p></div>
+<div class="block"><div class="b-title">【训练】</div><p>（1）解释下列句子中加点的词<br>①泰州守田雪居官廉<br>②在州不得去<br>③衰中但有二十金<br>④则家中需金巫<br>（2）用现代汉语翻译下面句子<br>①绝不干以私<br>②分其半以赠<br>2.刘氏善举<br>刘氏者,某乡寡妇也。育一儿，昼则疾耕于田亩，夜则纺织于烛下，竟年如<br>是。邻有贫乏者,刘氏辑以斗升①相济。偶有无衣者,刘氏以已之衣遗之。乡里<br>咸称其善。然儿不解，心有憾。母诚之，日：“与人为善，乃为人之本，谁无缓急</p></div>
+  </article>
+  <article class="article" id="a44">
+    <h3>1. 黄仙囊济友</h3>
+    <p class="body-text">泰州①守田雪（kan）居官廉，黄仙裳与周旋②，绝不干③以私。后田落<br>职④,在州不得去。黄自汝宁③归,囊中但有二十金③。乃先至田寓，分其半以<br>赠。后语人日：“是日吾先至家，则家中需金甚呕，不得分以赠田矣。”</p>
+<div class="block"><div class="b-title">【注释】</div><p>③干：求。④落职：免官。<br>①泰州：古地名，今江苏泰州市。②周旋：交往。<br>③汝宁：古地<br>名，今河南汝南县。<br>金：银子。</p></div>
+  </article>
+  <article class="article" id="a45">
+    <h3>2. 刘氏善举</h3>
+    <p class="body-text">走进文言文（六、七年级用）<br>之事。”母卒三年，刘家大火，屋舍衣物殆②尽，乡邻给衣物，且为之伐木建第，皆<br>念刘氏之情也。时刘儿方悟母之善举也。</p>
+<div class="block"><div class="b-title">【注释】</div><p>②殆（dai）：几乎。<br>①斗升：旧时量器；此指一斗一升。</p></div>
+<div class="block"><div class="b-title">【训练】</div><p>刘氏者,某乡寡妇也。育一儿，昼则疾耕于田亩，夜则纺织于烛下，竟年如<br>是。邻有贫乏者,刘氏辑以斗升①相济。偶有无衣者,刘氏以已之衣遗之。乡里<br>咸称其善。然儿不解，心有憾。母诚之，日：“与人为善，乃为人之本，谁无缓急</p></div>
+  </article>
+  <article class="article" id="a46">
+    <h3>3. 李氏之友</h3>
+    <div class="block"><div class="b-title">【注释】</div><p>①二鼓：即二更，约今之晚上10时左右。②灸：针灸。</p></div>
+<div class="block"><div class="b-title">【训练】</div><p>黄生，乃李氏少时之友也。越十年，二人遇于途。李氏要至其家，杀鸡作<br>食。二鼓①许，黄生腹痛,汗大若珠。李氏夫妇恐甚，欲延医治之。黄生固止之，<br>以为旧疾复作，无妨。李不听，即去。时值暴雨，漫天乌黑，山道崎岖，路滑难<br>行。逾半夜，携医归。医灸②之，少时即愈。黄生日：“汝为吾苦矣，何以报？”李<br>氏夫妇日：“汝为我友，当悉心以待，何报之有？”翌日天朗，黄生辞行。<br>（1）解释下列句子中加点的词<br>①越十年<br>②李氏要至其家<br>③二鼓许</p></div>
+  </article>
+  <article class="article" id="a47">
+    <h3>4. 田真兄弟</h3>
+    <p class="body-text">京兆田真兄弟三人，共议分财。生资②皆平均,唯堂前一株紫荆树，,共议<br>欲破三片。翌日就截之，其树即枯死，状如火然。真往见之，大，谓诸弟白：<br>“树本同株，闻将分所，故，是人不如木也。”因悲不自胜，不复解树。树应声<br>荣茂，兄弟相感，遂和睦如初。</p>
+<div class="block"><div class="b-title">【注释】</div><p>①京兆：京城地区。②生资：生活资料。</p></div>
+<div class="block"><div class="b-title">【训练】</div><p>（1）解释下列句子中加点的词<br>①唯堂前一株紫荆树<br>②大烤<br>③谓诸弟日<br>④因悲不自胜<br>（2）用现代汉语翻译下面句子<br>①翌日就截之<br>②状如火然<br>③树本同株，闻将分所，故樵粹，是人不如木也<br>④树应声荣茂</p></div>
+  </article>
+  <article class="article" id="a48">
+    <h3>5. 张用良不杀蜂</h3>
+    <p class="body-text">太仓①张用良，幼时揭蜂窝，尝为蜂螯，故恶之。后见蜂则百计千方扑杀<br>之。一日薄暮，见一飞虫，投于蛛网，竭力而不得去。蛛逮束缚之，甚急。忽一<br>蜂来螯蛛。蜂又数含水湿虫，久之得脱去。张用良因感其义，自是不复杀蜂。</p>
+<div class="block"><div class="b-title">【注释】</div><p>①太仓：古地名，今江苏太仓市。②鳖(shi)：刺。</p></div>
+<div class="block"><div class="b-title">【训练】</div><p>（1）解释下列句子中加点的词<br>①故恶之<br>②一日薄暮<br>③蛛迹束缚之，甚急<br>④蜂又数含水湿虫<br>自是不复杀蜂<br>（2）用现代汉语翻译下面句子<br>①竭力而不得去<br>②张用良因感其义</p></div>
+  </article>
+</section>
+
+<section class="unit-block" data="unit=九">
+  <div class="unit-head">第 九 单 元</div>
+  <article class="article" id="a49">
+    <h3>放驴破案（阅读）</h3>
+    <p class="body-text">唐张鹫(zhuo)为河阳①尉。有客驴，缰断,并②鞍失之。三日访③不获，诣县<br>告。鹫推穷④甚急，乃夜放驴出而藏其鞍。鹫日：“此可知也。”遂令不袜饲驴③，<br>去譬③放之。驴寻向昨夜喂处，乃搜索其家，于草积下得之。人服其智。<br>（节选自《折狱龟鉴》）</p>
+<div class="block"><div class="b-title">【注释】</div><p>①河阳：古县名，今河南境内。②并：连同。③访：查讯。④推穷：彻底追查。③不袜饲<br>驴：不给驴喂饲料；袜，草料。③譬（pei)：缰绳。</p></div>
+<div class="block"><div class="b-title">【文言知识】</div><p>释“”。上文“谐县告”中的“谐”，指到，句意为失驴的人到官府报告。又，《桃花源记》：<br>“及郡下，谐太守，说如此。”其中“谐”本指“到”，此处灵活解释为拜见。又，“自县谐京”，意为<br>从县里到京城；“指友人家宴爲”，意为到朋友家参加宴会。</p></div>
+<div class="block"><div class="b-title">【文化常识】</div><p>话说“尉”。上文说到“张鹫为河阳尉”，意为张鹫做河阳县的县尉。县尉负责地方治安<br>及征兵等工作。有人失窃了驴子，告状到县衡，县尉理应负责破案。在县令下，除了尉之外，<br>还有丞，或称县丞，主管文书、仓库及监狱等。</p></div>
+<div class="block"><div class="b-title">【译文】</div><p>唐朝的张鹫任河阳县县尉。有人的驴子缰绳断了，连同驴鞍一块儿失踪了。经过三<br>天寻访仍没找到，（于是）到县衙门报告。张紧急地要彻底追查，（小偷）便在夜间把驴<br>子放出来，可仍把驴鞍藏着。张鹫说：“这下可以知道了。”就下令不给驴喂饲料，除去缰<br>绳把驴子放了。驴子寻向昨夜喂它的地方，于是搜那家，在草堆下找到了驴鞍。人们佩<br>服他的智谋。</p></div>
+  </article>
+  <article class="article" id="a50">
+    <h3>1. 赛跑定案</h3>
+    <p class="body-text">有老姥遇劫于路，唱贼①。路人为逐禽之。贼反诬路人。时已昏黑，莫知其<br>熟是，乃俱送之。融?见而笑日：“此易知耳，可二人并走，先出凤阳门③者非<br>贼。”既而还人，融正色谓后出者：“汝真贼也，何诬人乎？”贼遂服。盖因贼若<br>善走，必不被禽，故知不善走者贼也。</p>
+<div class="block"><div class="b-title">【注释】</div><p>①唱贼：呼喊捉强盗。②融：指融。③凤阳门：城门名。</p></div>
+  </article>
+  <article class="article" id="a51">
+    <h3>2. 拷打羊皮露真相</h3>
+    <div class="block"><div class="b-title">【训练】</div><p>人有负盐与负薪者，二人同释重担，息于树阴下。少时，且行，二人争一羊<br>皮，各言为已藉肩之物。久未果，遂讼于宫官。时雍州刺史①李惠，谓其群下②日：<br>“拷此羊皮可知主乎？”群下咸无对者。惠遣争者出，令人置羊皮席上，以杖击<br>之，见少盐屑，惠日：“知其实矣！”使争者视之，负薪者乃服罪。</p></div>
+  </article>
+  <article class="article" id="a52">
+    <h3>3. 钱若断鹅</h3>
+    <div class="block"><div class="b-title">【注释】</div><p>①万历：明神宗的年号。②公：指钱若。</p></div>
+<div class="block"><div class="b-title">【训练】</div><p>明万历①中，钱若（geng）守临江，有异政。有乡人持一鹅入市，寄店中后<br>他往。还，索鹅，店主赖之，云：“群鹅我鹅也。”乡人不平，讼于官。公②令人取店<br>中鹅，计四只，各以一纸，给笔砚，分四处，令其供状。人莫不之。食顷，使人<br>问鹅供状不？答日：“未。”又顷，下堂视之，日：“状已供矣。”守指一鹅日：“此乡<br>人鹅。众人怪之，守日：“乡人鹅食草，粪色青；店鹅食谷粟，粪色黄。”店主服罪。<br>（1）解释下列句子中加点的词<br>①还,索鹅<br>②食项，使人问鹅供状不<br>③令其供状<br>（2）用现代汉语翻译下面句子<br>①钱若廣守临江有异政</p></div>
+  </article>
+  <article class="article" id="a53">
+    <h3>4. 欧阳晔破案</h3>
+    <p class="body-text">欧阳哗①治鄂州②。民有争舟而相殴致死者，狱久不决。哗自临其狱，坐囚<br>于庭中,去其楷而饮食之。食,悉劳③而还之狱。独留一人于庭，留者色变<br>而煌顾。晔日：“杀人者汝也！”囚伴为不知所以。哗日：“吾观食者皆以右手持<br>箸①，而汝独以左。今死者伤在右肋，非汝而谁？"囚无以对。</p>
+<div class="block"><div class="b-title">【注释】</div><p>①欧阳哗(yé)：复姓欧阳，名晔。<br>②鄂州：古州名，今湖北境内。<br>③劳：安慰。<br>④箸(zhu):<br>筷子。</p></div>
+  </article>
+  <article class="article" id="a54">
+    <h3>5. 螳螂杀蛇</h3>
+    
+  </article>
+</section>
+
+<section class="unit-block" data="unit=十">
+  <div class="unit-head">第 十 单 元</div>
+  <article class="article" id="a55">
+    <h3>伯乐爱马（阅读）</h3>
+    <p class="body-text">骥①服盐车上太行，滬汁洒地，白汗交流③，中坂迁延③，负不能上。伯<br>乐遭之，下车攀而哭之，解纶③衣以幕之。骥于是俯而喷，仰而，声造于天，<br>忻?伯乐之知己也。<br>（节选自《初潭集》）</p>
+<div class="block"><div class="b-title">【注释】</div><p>①骥(ji）：千里马。②服：拉。③（心)汁洒地，白汗交流：滬汁，嘴里吐出的白沫；白汗交流，即<br>汗流決背。④中坂：半山坡。③迁延：挣扎。③纶(zhu)：麻的一种。析：同“欣”，欣幸。</p></div>
+<div class="block"><div class="b-title">【译文】</div><p>(有匹）千里马拉着盐车上太行山，（累得)口吐白沫，汗流決背。（到)半山坡，费了好大<br>工夫挣扎，拉着车还是上不去。（这时）伯乐遇到了它，就跳下车抚着（千里马）痛哭，（并且）<br>脱下麻衣披在千里马身上。（那）千里马于是低下头来喷气，抬起头来长啸，声音达到天空，<br>（它）欣幸伯乐了解它！</p></div>
+  </article>
+  <article class="article" id="a56">
+    <h3>1. 人有卖骏马者</h3>
+    <p class="body-text">人有卖骏马者，比三旦立市，人莫之知。往见伯乐，日：“臣有骏马，欲卖之，<br>比三且立于市，人莫与言。愿子还の而视之，去而顾之，臣请献一朝之贾。”伯<br>乐乃还而视之，去而顾之，一旦而马价十倍。</p>
+<div class="block"><div class="b-title">【注释】</div><p>①还：同“环”。②一朝之贾(jia)：一天的价值。<br>①樊城：古县名，今湖北境内。②荆州：古州名，今湖北一带。③刺史：州的长官叫“刺史”。<br>④如：往，到。</p></div>
+<div class="block"><div class="b-title">【训练】</div><p>（1）解释下列各句中加点的词<br>①比三旦立市<br>②去而顾之<br>（2）用现代汉语翻译下面句子<br>①人莫之知<br>②人莫与言<br>（3）这则寓言说明什么？<br>（4）成语“矢口否认”中的“矢”，解释为<br>；这个成语的意思是<br>2.“的卢”救主<br>刘备屯兵樊城①，时荆州刺史③刘表礼爲，然不甚信用。表尝延备赴宴，其<br>下蔡等欲因取备。备觉之，伴如④厕，潜遁去。其所乘马名“的卢”。备骑“的<br>卢”走堕城西檀溪水，溺不能出。备呕日：“的卢，的卢！今日危矣！可努力！”<br>“的卢”乃一踊三丈，遂得以过水。</p></div>
+  </article>
+  <article class="article" id="a57">
+    <h3>2. "的卢"救主</h3>
+    
+  </article>
+  <article class="article" id="a58">
+    <h3>3. 马啮盗</h3>
+    <div class="block"><div class="b-title">【注释】</div><p>①毋（w山）庸：不需要。②医：古人男女盘在头上的发髻。</p></div>
+<div class="block"><div class="b-title">【训练】</div><p>董熙载应友人延，至其家豪饮。自午及薄暮，已酪醉矣。友人留其宿，熙<br>载日：“毋庸①，吾尚可乘马返家。”时月黑风骤，未几醉而堕马，僵仆道边，马缰持<br>于手。忽有盗过，自喜日：“天赞我也！”遂尽解其衣，又欲盗其马。方俯身执缰，<br>马邃啮其髻②，竭力挣扎而不得去。待熙载醉醒，尽复取所失物，马乃纵盗。<br>（1）解释下列句子中加点的词<br>①董熙载应友人延<br>②自午及薄暮<br>③时月黑风骤<br>④未几醉而堕马<br>方俯身执缓<br>③竭力挣扎而不得去<br>（2）用现代汉语翻译下面句子<br>①天赞我也<br>②马遮啮其馨<br>③马乃纵盗</p></div>
+  </article>
+  <article class="article" id="a59">
+    <h3>4. 主行思爱马</h3>
+    <p class="body-text">有富民王行思，尝养一马，甚爱之，饲甚于他马。一日乘往本郡の，值夏<br>暴涨。舟子先济马，回舟以迎行思，至中流，风骤起船覆。其马自岸跃人骇浪，<br>接其主，苍茫②之中，免沉溺。</p>
+<div class="block"><div class="b-title">【注释】</div><p>①本郡：本地；郡，古代行政区域。②苍范：旷远无边，此处指开阔的水面。</p></div>
+  </article>
+  <article class="article" id="a60">
+    <h3>5. 齐人援金</h3>
+    <div class="block"><div class="b-title">【注释】</div><p>①素(yu)：出售。 ②(jué):抢。</p></div>
+<div class="block"><div class="b-title">【训练】</div><p>昔齐人有欲金者,清旦衣冠而之市，适①金者之所,因③其金而去。吏<br>捕得之，问日：“人皆在焉，子人之金何？”对日：“取金之时，不见人，徒见金。”<br>（1）解释下列各句中加点的词<br>①适粥金者之所<br>②因搜人之金而去<br>③人皆在需</p></div>
+  </article>
+</section>
+
+<section class="unit-block" data="unit=十一">
+  <div class="unit-head">第 十一 单 元</div>
+  <article class="article" id="a61">
+    <h3>瞎蝾（阅读）</h3>
+    <p class="body-text">兽有探①，小而善缘?，利爪。虎首痒，辑使揉爬搔之。久而成穴，虎殊快，<br>不觉也。探徐取其脑啖③之，而以其余奉③虎。虎谓其忠，益爱近之。久之，虎<br>脑空，痛发，迹③，则已走避高木。虎跳跟@大吼，乃死。<br>（节选自《古今谭概》）</p>
+<div class="block"><div class="b-title">【注释】</div><p>①揉(nao)：猿类动物。②缘：顺物而爬。③唢：吃。④奉：恭敬地献上。③迹：沿着足迹<br>寻找。跳跟(liang）：跳跃。</p></div>
+<div class="block"><div class="b-title">【文言知识】</div><p>1.释“快”与“慢”。现代汉语中的“快”与“慢”，多指速度方面的事，而古文中的“快”与<br>“慢”多指人的心理活动。上文“虎殊快”中的“快”，指畅快，句意为老虎很畅快。又，“使快弹<br>数曲”，意为让她畅快地弹几个曲子；“酒人快”，意为酒喝得痛快，人也畅快。“慢”在古文<br>中指轻忽、怠慢。如《出师表》：“若无兴德之言，则责攸之、祎、允等之慢，以彰其。”其中<br>“慢”即指轻忽、慢。又，“刘邦素慢”，意为刘邦一向对人傲慢无礼。<br>2.释“徐”。“徐”指慢慢地或渐渐地。上文“徐取其脑啖之”中的“徐”，即指渐渐地，<br>句意为渐渐地取老虎的脑髓来吃。又，“天雨，骑徐进”，意为天下雨，骑兵慢慢地前进；“吾<br>行也不徐不疾”，意为我走路既不慢又不快。</p></div>
+<div class="block"><div class="b-title">【启发与借鉴】</div><p>奉承背后的阴谋。老虎轻信揉的奉承，结果害了自已。这虽然是寓言，但给人的启发不<br>小。社会上有些人，为了达到不可告人的目的，往往先用奉承、谄媚的手段笼络人，然后得寸<br>进尺，把对方拉下水。古语有“信言不美，美言不信”，意为诚实的话不动听，动听的话不诚<br>实。凡花言巧语者大抵藏有卑部的目的。</p></div>
+  </article>
+  <article class="article" id="a62">
+    <h3>1. 乌鸦喜谈</h3>
+    <div class="block"><div class="b-title">【注释】</div><p>①粤西桂林：广西桂林。②风：风范，风格。③嘱嘱(wai wai)：象声词，乌鸦叫声。</p></div>
+<div class="block"><div class="b-title">【译文】</div><p>粤西桂林①，近有荒村，多树木，上多栖乌鸦。一犬翘首枝头，乌鸦食其上。<br>犬欲缘木上之，恨无何，伏地喃喃，仰视注目以待，颂日：“乌兄，久慕高风?，未亲<br>雅教，素仰雅曲，如赐一曲，尤慰平生，心亦足矣。”鸦听之，喜不自胜，伸腰展翅，<br>嘱嘱③数声，食尽堕犬口中。犬日：“雅曲已聆，心愿已足，蒙赐佳味，终身铭德。”<br>鸦日：“非闻曲之为，乃欲吾口中食耶！悔之莫及。</p></div>
+<div class="block"><div class="b-title">【训练】</div><p>（1）解释下列句子中加点的词<br>①上多栖乌鸦<br>②犬欲缘木上之<br>③伏地喃喃<br>③久慕高风<br>③雅曲已聆<br>①终身铭德<br>（2）用现代汉语翻译下面句子<br>①恨无何<br>②未亲雅教，素仰雅曲</p></div>
+  </article>
+  <article class="article" id="a63">
+    <h3>2. 粤令好谈</h3>
+    
+  </article>
+  <article class="article" id="a64">
+    <h3>3. 子产受骗</h3>
+    
+  </article>
+  <article class="article" id="a65">
+    <h3>4. 狮子王与豺</h3>
+    
+  </article>
+  <article class="article" id="a66">
+    <h3>5. 燕人返国</h3>
+    <p class="body-text">囊有狮子王，于深山一豺，将食之。豺日：“请为王月送二鹿以自赎。”狮<br>子王悦。豺以时而进，已亦得狸、兔自存。期年，鹿尽，豺无可送者。狮子王<br>遇豺，日“汝杀众生亦多矣！今次至汝，汝其①图之！”豺无以对，遂为狮所食。</p>
+<div class="block"><div class="b-title">【注释】</div><p>①其：作语气副词用，相当于“还是”。</p></div>
+<div class="block"><div class="b-title">【训练】</div><p>（1）解释下列各句中加点的词<br>①于深山搜一豺<br>②己亦得狸、免自存<br>③汝杀众生亦多矣<br>④遂为狮所食<br>（2）用现代汉语翻译下面句子<br>①豺射以时而进<br>②今次至汝，汝其图之<br>③豺无以对<br>（3）用4个字概括豺的行为<br>（4）选择：上文中的“期年”是指：①不到年；②一年；③一年多；④好几年<br>（5）成语“置若罔闻”中的“罔”，解释为<br>；这个成语的意思是</p></div>
+  </article>
+</section>
+
+<section class="unit-block" data="unit=十二">
+  <div class="unit-head">第 十二 单 元</div>
+  <article class="article" id="a67">
+    <h3>林逋养鹤（阅读）</h3>
+    <p class="body-text">林汇养鹤<br>林隐居杭州孤山，常畜①两鹤。纵之则飞人云霄，盘旋久之，复人笼中。<br>常泛小艇，游西湖诸寺。有客至通所居，则一童子出，应门③延客坐，为开笼<br>纵鹤。良久，通必①小船而归。盖尝以鹤飞为验①也。<br>（节选自沈括《梦溪笔谈》）</p>
+<div class="block"><div class="b-title">【注释】</div><p>①畜：养。②泛：划船。③应门：开门。④樟(zhao)：划。③盖：大概。③尝：同“常”。<br>①验：验证。</p></div>
+<div class="block"><div class="b-title">【文言知识】</div><p>1.释“之”的一个特殊义项。“之”的作用及义项较多，这里只谈它作为音节助词的作<br>用。上文“盘旋久之”中的“之”，仅作音节助词用，无义，句意为盘旋了很久。又，《曹论<br>战》：“公将鼓之”，邸公将鼓，意为庄公准备击鼓（进军）。又，“顷之，雨骤下”，意为一会儿，雨<br>急促地落下来了，其中“之”也作音节助词用，无义。<br>2.释“延”。上文“应门延客坐”中的“延”，指请或邀请，句意为开门请客人入坐。又，<br>《桃花源记》：“余人各复延至其家。”意为其余的人各家邀请他去作客。又，“主人延客入”，意<br>为主人请客人进去；“延医治之”，意为请医生给他医治。</p></div>
+<div class="block"><div class="b-title">【文化常识】</div><p>林简介。林遭是北宋诗人，字君复，钱塘（今浙江杭州市）人。隐居西湖孤山，栽梅养<br>鹤，终身不仕，也不婚娶，世称“梅妻鹤子”。他的诗风格淡远，内容大多反映他的隐居生活与<br>闲适心情。“疏影横斜水清浅，暗香浮动月黄昏”（《山园小梅》)两句最为著名。</p></div>
+<div class="block"><div class="b-title">【译文】</div><p>林隐居在杭州孤山，经常养两只鹤。放了它就飞人云霄，久久地在天空盘旋，后又进<br>人笼子中。林通常划着小艇，游览西湖边的众寺庙。（如果）有客人到林通家，一一个童仆便出</p></div>
+  </article>
+  <article class="article" id="a68">
+    <h3>1. 鹤亦知人意</h3>
+    <p class="body-text">卢仁畜二鹤,甚驯。后一创死，一哀鸣不食。卢仁勉力饲之，乃食。一旦，<br>鹤鸣绕卢侧。卢日：“尔欲去，吾不尔羁也。”鹤乃振翅云际，再三而去。卢<br>老病无子,后三年，归卧乡间，晚秋萧索①，曳③杖林间，忽见一鹤盘空，鸣声凄<br>切。卢日：“若非我侣也？果是，即下之。”鹤竟翩翩而下，投于卢怀中，以喙牵<br>衣,旋舞不释。卢遂引之归。卢视之如赤子③，鹤亦知人意，侍卢若亲人。后卢<br>仁卒，鹤终不食而死，族人葬之墓左。</p>
+<div class="block"><div class="b-title">【注释】</div><p>①萧索：清冷寂寞的样子。②曳(ye)：拉拖；此指挂着。③赤子：婴儿。</p></div>
+  </article>
+  <article class="article" id="a69">
+    <h3>2. 明义法师之鸠</h3>
+    <div class="block"><div class="b-title">【训练】</div><p>浙江盐官县庆善寺明义法师①，屏居②乡里。一日晨起，行径中，见鸠③雏堕</p></div>
+  </article>
+  <article class="article" id="a70">
+    <h3>3. 鹿亦有智</h3>
+    <div class="block"><div class="b-title">【注释】</div><p>①秋祭：在秋天祭祀天地。②旬日：十天。</p></div>
+<div class="block"><div class="b-title">【训练】</div><p>博山李氏者，以伐薪为生。一日，于山坳得一鹿仔，携家喂养。鹿稍长，甚<br>驯，见人则呦呦鸣。其家户外皆山，鹿出，至暮必归。时值秋祭①，例用鹿。官府<br>督猎者急，限期送上，然旬日②间无所获，乃向李氏求之，李氏不与。猎者固请。<br>李氏迟疑日：“待吾虑之。”是夜鹿去，遂不归。李氏深悔之。</p></div>
+  </article>
+  <article class="article" id="a71">
+    <h3>4. 喜嗔之人</h3>
+    <div class="block"><div class="b-title">【注释】</div><p>①嗔(chen):生气。<br>②仓促：急躁。<br>③患(hui):恼怒。</p></div>
+<div class="block"><div class="b-title">【训练】</div><p>昔有众坐于屋中，赞一外人德行殊好，唯有二过：一者喜嗔①，二者作事仓<br>促。尔时，此人适过门外，闻是语，便嗔患③，即人其屋，禽彼道已过恶之人，以<br>手扑打。傍人日：“何故打人？”其人答日：“吾何时喜、仓促？此人者道我喜嗔<br>患、作事仓促，是故打之。”傍人日：“汝今之相即时现验，云何讳之？”<br>（1）解释下列各句中加点的词<br>①唯有二过<br>②赞一外人德行殊好<br>③尔时，此人适过门外<br>汝今之相即时现验，云何讳之<br>（2）用现代汉语翻译下面句子<br>①禽彼道己过恶之人<br>②汝今之相即时现验<br>（3）成语有“过目不忘”“过犹不及”“将功补过”，分别解释其中的“过”：①</p></div>
+  </article>
+  <article class="article" id="a72">
+    <h3>5. 艾子邻人卖犬</h3>
+    <p class="body-text">艾子①晨饭毕，逍遥②于门，见其邻肩两犬而西。艾子呼而问之日：“子担犬<br>安之？”邻人日：“诸屠。”艾子日：“是吠犬也，乌屠？”邻人指犬而斥日：“此畜<br>生，昨夜贼横行，惧而不一声，今日门辟，不能择人而吠，伤及佳客，是以欲杀<br>之。”艾子日：“善！”</p>
+<div class="block"><div class="b-title">【注释】</div><p>①艾子：作者虚构的人物。②道遥：悠闲。</p></div>
+<div class="block"><div class="b-title">【训练】</div><p>（1）解释下列各句中加点的词<br>①见其邻肩两犬而西<br>②邻人指犬而斥日<br>③惧而嗪不一声<br>④今日门辟<br>③是以欲杀之<br>③艾子日：“善！”<br>（2）用现代汉语翻译下面句子<br>①子担犬安之？<br>②粥诸屠<br>③是吠犬也，乌屠？</p></div>
+  </article>
+</section>
+
+<section class="unit-block" data="unit=十三">
+  <div class="unit-head">第 十三 单 元</div>
+  <article class="article" id="a73">
+    <h3>道士救虎（阅读）</h3>
+    <p class="body-text">一夕，山水大出，漂室庐①，塞溪而下。人骑木乘②屋，号呼求救者声相连<br>也。道士具大舟，笠③，立水浒①,督善水者绳以侯③，人至即投木、索③引<br>之の,所存活者甚众。平旦,有兽身没波涛中，而浮其首左右盼,若求救者。道士<br>日：“是亦有生③，必速救之。”舟者③应言@往，以木接上之，乃①虎也。始则朦朦<br>然?坐而?其毛，比及岸，则膛目视道士，跃而之仆地。舟人奔救，道士<br>得不死而重伤為。<br>（节选自刘基《郁离子》）</p>
+<div class="block"><div class="b-title">【注释】</div><p>①漂室庐：使房屋漂起来；意为大水冲走了房屋。②乘：登上。③蓑笠：亲自穿上蓑衣戴着竹<br>笠。 ④水浒：水边。 ③侯(si):等候。 ③索：细绳子。 ①引之:拉落水的人。 ③生：生命。<br>?舟者:船夫。（<br>应言：用话答应。①乃：原来是。②曦曦(méng méng)然：昏昏沉沉的样子。<br>? (shi):。<br>@膛(cheng)目:瞪大眼。  (jue):抓。</p></div>
+<div class="block"><div class="b-title">【文言知识】</div><p>1.释“具”。上文“道士具大舟”中的“具”，是指备、准备，句意为道士准备了大船。又，<br>孟浩然《过故人庄》诗：“故人具鸡，邀我至田家。”又，“具以待”，意为准备了菜肴而等待；<br>“楚具千骑欲袭吴”，意为楚国准备了一千骑兵打算偷袭吴国；“主人不为礼，食宿皆不具”，意<br>为主人不给脸面，住的吃的都不给准备。<br>2.释“及”。上文“比及岸，则目视道士”中的“及”，指到，句意为等到了岸上，就瞪大<br>眼睛看着道士。“及”的本义是后面的人赶上前面的人，因此有达到、到的含义。又，“及河，<br>舟已行矣”，意为到了河边，船已经驶走了；“使者已去，追不及”，意为使者已离开，没追赶上。<br>成语有“望尘莫及”，意为望着马车卷起的尘土而追赶不上，比喻别人的知识技能比自已好，</p></div>
+  </article>
+  <article class="article" id="a74">
+    <h3>1. 越人道上遇狗</h3>
+    <div class="block"><div class="b-title">【文化常识】</div><p>士）。道教是汉民族固有的宗教，源于古代的巫术，由东汉的张道陵倡导，凡入道者须交五斗米，<br>故初称“五斗米道”。道教徒称张道陵为“天师”，故民间有“张天师”之说。道教奉老子（李耳）为教<br>祖，称“太上老君”。道教主张炼丹修仙，祈求长生不老。道教与佛教、儒教合称为“三教”。<br>2.“平旦”及其他。上文有“平旦，有兽身没波涛中”，“平旦”是一个时间段，约3时至5<br>时。古人把一昼夜分为十二个时间段：“半夜”又称子夜、中夜、宵分，相当于今之23时至1<br>“日入”“黄昏”、“人定”。</p></div>
+<div class="block"><div class="b-title">【译文】</div><p>一天晚上，山洪暴发，漂起了房屋，塞满山涧而下。人们有的骑在木头上，有的登上屋<br>顶，呼喊求救的声音接连不断。（有个）道士准备了大船，亲自穿上蓑衣戴上竹笠，站在水边，<br>督促擅长游泳的人（拿着）绳子等待，（如果有）人漂下来，立刻投下木棍、绳子拉他们上船，救<br>活了很多人。天亮时，有只野兽身子沉没在波涛中，而头浮出水面左顾右盼，好像在求救。<br>道士说：“这也有生命，必定要赶快救它。”船夫答应后前往，用木棍把它拉上来，原来是一只<br>老虎。它开始时昏昏沉沉地坐在船上舔它的毛。等到了岸上，便瞪大眼睛町着道士，（突然）<br>跳起来抓住道士，并把他扑倒在地。船夫奔过来救助，道士虽然没死，然而已受重伤。<br>1.越人道上遇狗<br>越人道上遇狗。狗下首掉尾人言日：“我善猎，与若中分。”越人喜，引而俱<br>归，食以粱肉，待之礼以人。狗得盛礼，日益锯，猎得兽，必尽啖乃已。或越人</p></div>
+  </article>
+  <article class="article" id="a75">
+    <h3>2. 张五不复猎</h3>
+    <div class="block"><div class="b-title">【注释】</div><p>①休宁县：古县名，今安徽境内。</p></div>
+<div class="block"><div class="b-title">【训练】</div><p>休宁县①有村民张五，以猎为生。张尝逐一母鹿。鹿将二仔行，不能速，遂<br>为张五所及。母鹿度不可免，顾旁有浮土，乃引二仔下，拥土覆之，而身投于张<br>五网中。值张母出户，遥望见，遂奔至网所，具以所见告子。即破网出鹿，并二<br>仔亦纵之。张母日：“人有母子之情，畜亦有之。吾不忍母死仔孤，故破网纵<br>仔。”张五闻之，心感动爲。由是焚网，永不复猎。<br>（1）解释下列各句中加点的词<br>①尝逐一母鹿</p></div>
+  </article>
+  <article class="article" id="a76">
+    <h3>3. 蝮救蛇获珠</h3>
+    <p class="body-text">昔隋侯因使人齐②，路行深水沙边，见一小蛇，于热沙中宛转③，头上出血。<br>隋侯哀之，下马以鞭拔人水中。一夕，梦见一山儿持珠来，见隋侯，且拜且日：<br>“囊蒙大恩，救护得生，今以珠酬，请勿却。”及旦，见一珠在床侧，璀璨夺目，世称<br>“隋侯珠”，乃稀世之珍也。</p>
+<div class="block"><div class="b-title">【注释】</div><p>①荫侯：分封在荫地的一个诸侯国君。<br>③宛转：指身子扭曲，显得痛苦的样子。<br>②齐:齐国。</p></div>
+<div class="block"><div class="b-title">【训练】</div><p>（1）解释下列各句中加点的词<br>①因使入齐<br>②隋侯衰之<br>③且拜且日<br>④今以珠酬请勿却<br>（2）用现代汉语翻译下面句子<br>①襄蒙大恩</p></div>
+  </article>
+  <article class="article" id="a77">
+    <h3>4. 华隆因犬获救</h3>
+    <p class="body-text">华隆好猎，畜一犬，号日“的尾”，每出必从。一日，隆至江边，为大蛇围绕周<br>身。犬遂奋而咋①蛇，蛇死爲。而隆僵仆于地，不省人事。犬疾走至家，吠不<br>止。举家怪之，因随犬往，见隆闷绝委②地。车载归家，二日乃苏。隆未苏之间，<br>犬终日不食。如此爱怜，如同亲戚為。</p>
+<div class="block"><div class="b-title">【注释】</div><p>①咋(zé)：咬。②委：倒。</p></div>
+  </article>
+  <article class="article" id="a78">
+    <h3>5. 齐人有好猎者</h3>
+    <div class="block"><div class="b-title">【训练】</div><p>齐の人有好猎者，旷日持久，而不得兽。入则愧其家室，出则愧其知友乡里。<br>唯其所以不得之故，则狗恶也。欲得良狗，则家贫无以。于是还疾耕，疾耕则家<br>富，家富则有以求良狗，良狗则数得兽矣。狩猎之获，常逾人矣。非独猎也，百<br>事也尽然。</p></div>
+  </article>
+</section>
+
+<section class="unit-block" data="unit=十四">
+  <div class="unit-head">第 十四 单 元</div>
+  <article class="article" id="a79">
+    <h3>韩信受辱（阅读）</h3>
+    <p class="body-text">韩信受厚<br>准阴①屠中少年有悔信者，日：“若虽长大，好带刀剑，中情②耳。”众③辱之<br>日：“信能死①，刺我；不能死，出我祷下③。”于是信孰视之，晚出祷下，蒲伏。<br>一市人皆笑信，以为。<br>（节选自《史记·淮阴侯列传》）</p>
+<div class="block"><div class="b-title">【注释】</div><p>①淮阴：古地名，今江苏淮准安市。②中情：内心。③众：当着众人面前。④能死：敢死。<br>③出我下：从我裤档里钻过去；，同“裤”。③晚：同“俯”。①蒲伏：匍匐。</p></div>
+<div class="block"><div class="b-title">【文言知识】</div><p>1.释“敦视”。上文“于是信敦视之”中的“敦”，同熟，解释为反复、仔细；“敦视”意为反复<br>地看，句意为于是韩信反复地看对方。又，“敦视之，乃不速之客”，意为仔细地打量了对方，原<br>来是没邀请而上门的客人。成语有“熟视无赌”，意为经常看到却当作没见。“熟思”指反复考。<br>2.释“一”。上文“一市人皆笑”中的“一市人”不是指一个市民。“一”指整个、全，句意<br>消散。成语有“一无是处”，意为全没好的地方。</p></div>
+<div class="block"><div class="b-title">【文化常识】</div><p>韩信简介。韩信是汉初杰出的将领，刘邦称帝的重要功臣。他少年贫困，过着流浪的生<br>活。在秦末农民大起义中，他先投奔项羽，后归刘邦，在萧何的极力推荐下，被任命为大将<br>军。在楚（项羽一方）、汉（刘邦一方）战争时，刘邦采纳他的策略，攻占关中，并很快向东发<br>展，占领了黄河下游广大地区。之后率军与刘邦会合，在垓下（今安徽灵壁县南)击败项羽。<br>汉朝建立后被封为楚王，后有人告发他谋反，降为准阴侯。</p></div>
+<div class="block"><div class="b-title">【译文】</div><p>准阴宰杀牲口的市场中，有个年轻人侮厚韩信，说：“你虽然又高又大，喜欢带刀佩剑，</p></div>
+  </article>
+  <article class="article" id="a80">
+    <h3>1. 韩信始为布衣时</h3>
+    <p class="body-text">韩信者，淮阴人也。始为布衣时，贫，无行①，不得推择为吏；又不能治生商<br>贾，常从人乞食，人多厌之者。尝从下乡亭长③乞食，数月，亭长妻患之，乃晨<br>炊床食。食时信往，不为真食。信怒，竞绝去。数年后，信封准阴侯，见下乡亭<br>长，赐百钱，日：“公，小人也，为德不卒。”</p>
+<div class="block"><div class="b-title">【注释】</div><p>①无行：没突出的品行。②治生商贾（gu)：做买卖谋生。③下乡亭长：下乡地方的享长。下乡，<br>准阴县的属乡；亭长，古代十里一享，设亭长，负责地方治安等。</p></div>
+  </article>
+  <article class="article" id="a81">
+    <h3>2. 天下有大勇者</h3>
+    <div class="block"><div class="b-title">【训练】</div><p>古之所谓豪杰之士，必有过人之节、人情所不能忍者。匹夫见辱，拔剑而<br>起，挺身而斗，此不足为勇也。天下有大勇者，卒然①临之而不惊，无故加之而不</p></div>
+  </article>
+  <article class="article" id="a82">
+    <h3>3. 韩信善歌</h3>
+    <div class="block"><div class="b-title">【注释】</div><p>①雍门：齐国的一座城门。②（li)：中梁。<br>③逆旅：客栈。④曼声：拖长声调。①里：乡<br>里。 ③扑(bian):拍掌。</p></div>
+<div class="block"><div class="b-title">【训练】</div><p>昔韩娥东之齐，匮粮，过雍门①，歌乞食。既去，而余音绕梁②，三日不<br>绝。左右以其人弗去。过逆旅③，逆旅主人辱之，韩娥因曼声④哀哭，十里老幼<br>悲愁，垂涕相对，三日不食。逮追而谢之。娥还，复为曼声长歌，十里老幼喜跃<br>扑③舞，弗能自禁，忘向之悲也。<br>（1）解释下列各句中加点的词<br>①昔韩娥东之齐，匮粮<br>②粥歌气食<br>③既去<br>①弗能自禁<br>（2）用现代汉语翻译下面句子<br>①左右以其人弗去<br>②忘向之悲也<br>（3）成语“余音绕梁”的出典就在上文，这个成语现用来形容</p></div>
+  </article>
+  <article class="article" id="a83">
+    <h3>4. 冯相与和相</h3>
+    <p class="body-text">冯相与和相俱为朝①中重臣。一日，和相谓冯相日：“公靴新买，其直几何？”<br>冯举其左足示之，日：“九百钱②。”和性急，顾谓小吏云：“吾靴何以耗一千八百<br>钱？”因垢小更，疑其有贪。既而冯徐举其右足日：“此亦九百。”左右哄堂大笑。</p>
+<div class="block"><div class="b-title">【注释】</div><p>①朝：朝廷。②钱：指铜钱。</p></div>
+  </article>
+  <article class="article" id="a84">
+    <h3>5. 南方多没人</h3>
+    <div class="block"><div class="b-title">【注释】</div><p>①没(mo)：潜水。</p></div>
+<div class="block"><div class="b-title">【训练】</div><p>南方多没①人，日与水居也，七岁而能涉，十岁而能浮，十五而能没矣。夫没<br>者岂苟然哉？必将有得于水之道者。日与水居，则十五而得其道。生不识水，<br>则虽壮，见舟而畏之。故北方之勇者，问于没人而求其所以没，以其言试之河，<br>未有不溺者也。</p></div>
+  </article>
+</section>
+
+<section class="unit-block" data="unit=十五">
+  <div class="unit-head">第 十五 单 元</div>
+  <article class="article" id="a85">
+    <h3>子罕弗受玉（阅读）</h3>
+    <p class="body-text">子案弗受玉<br>宋人或得玉，献诸子罕②，子罕弗受。献玉者日“以示玉人③，玉人以为宝<br>也，故敢献之。”子罕日：“我以不贪为宝，尔以玉为宝；若以与我，皆丧宝也，不若<br>人有其宝④。”<br>（节选自《左传》）</p>
+<div class="block"><div class="b-title">【注释】</div><p>①或：有人。②子罕：宋国国相。③玉人：雕琢玉器的工匠。④人有其宝：各人持有自已的<br>珍宝。</p></div>
+<div class="block"><div class="b-title">【文言知识】</div><p>释“诸”。上文“献诸子罕”中的“诸”，相当于“之于”，它是“之”和“于”两个词的合音和合<br>义。这种现象在古文中叫兼词。故献诸子罕”应按“献之于子罕”理解，句意为向子罕献玉，<br>或把玉献给子罕。又，“间诸众”，应按“问之于众”理解，句意为向众人问这件事；又，“投诸<br>河”，应按“投之于河”理解，句意为把它扔进河里。</p></div>
+<div class="block"><div class="b-title">【文化常识】</div><p>古人爱玉。玉是温润而有光泽的美石。在金银稀少的时代，玉被古人视为珍品。玉可<br>雕琢成器物，如杯、盏、盘等，还可镶嵌在其他物件上作饰品。帝王的印章大多由贵重的玉琢<br>成，称为玉玺。古人把玉雕琢成各种形状的小饰件挂在腰间，走路时饰件互相碰撞，发出悦<br>耳的叮咚声。妇女用的玉镯、玉戒指及玉馨更是常见。</p></div>
+<div class="block"><div class="b-title">【译文】</div><p>宋国有个人得到了一块玉，把它献给（国相)子罕。子罕不接受。献玉的人说：“（我已<br>珍宝，你把玉作为珍宝；如果（把玉）给我，（我们两人）都丧失了珍宝，还不如各人持有自已的<br>珍宝。”</p></div>
+  </article>
+  <article class="article" id="a86">
+    <h3>1. 公孙仪不受鱼</h3>
+    <p class="body-text">公孙仪相鲁而嗜鱼，一国尽争买鱼而献之。公孙仪不受。其弟子②谏日：<br>“夫子嗜鱼而不受者，何也？”对日：“夫唯嗜鱼，故不受也。夫即受鱼，必有下人<br>之色；有下人之色，将枉于法；枉于法，则免于相，虽嗜鱼，彼必不能长给我鱼，我<br>又不能自给鱼。既无③受鱼而不免相，虽嗜鱼，我能长自给鱼。”</p>
+<div class="block"><div class="b-title">【注释】</div><p>①公孙仪：复姓公孙，名仪。②弟子：学生。③既无：若不。</p></div>
+  </article>
+  <article class="article" id="a87">
+    <h3>2. 杨震"四知"</h3>
+    <div class="block"><div class="b-title">【训练】</div><p>杨震①迁东莱太守。当之郡，道经昌邑，故所举王密为昌邑令，谒见，至夜<br>怀金十斤以遗震。震日：“故人③知君，君不知故人，何也？”密日：“暮夜无知者。”<br>震日：“天知，神知，我知，子知。何谓无知？”密愧而出。性公廉，不受私谒。子<br>孙常蔬食步行，故旧长者④或欲令治产业，震不肯，日：“使后世称为清白吏子孙，<br>以此遗之，不亦厚乎？”</p></div>
+  </article>
+  <article class="article" id="a88">
+    <h3>3. 迁公修屋</h3>
+    <div class="block"><div class="b-title">【注释】</div><p>①迁氏：姓迁的人。这是作者虚构的人物。迁，迁腐。②适：嫁。③雨兆：下雨的征兆。</p></div>
+<div class="block"><div class="b-title">【训练】</div><p>有迁氏①者，世称迁公，性吝嵩。篱败不修，瓦裂不。一日，夜半暴雨，屋<br>漏如注，妻子东藏西匿，仍半身淋漓。妻且号且诉，诘日：“吾适尔，因汝家富，<br>不意乃受此累。汝何以为父？何以为夫？”迁公无奈。旦日，延人治屋。然自后<br>二月，天晴月朗，不见雨兆③。迁公叹日：“适治，即不雨，岂不徒耗资财！”<br>（1）解释下列各句中加点的词<br>①瓦裂不茸<br>②夜半暴雨<br>③妻子东藏西匿<br>④妻且号且话<br>③不意乃受此累</p></div>
+  </article>
+</section>
+
+<section class="unit-block" data="unit=十六">
+  <div class="unit-head">第 十六 单 元</div>
+  <article class="article" id="a89">
+    <h3>樊重种梓漆（阅读）</h3>
+    <p class="body-text">第十亢单元<br>樊重欲作器物，先种梓①漆，时人之。然积以岁月，皆得其用。向之笑者，<br>咸来求假為。此种植之不可已也。谚日：“一年之计，莫如树谷；十年之计，莫<br>如树木。”此之谓也。<br>（节选自《齐民要术》）</p>
+<div class="block"><div class="b-title">【注释】</div><p>①梓(zi)：树木名，其质地坚硬。②假：借。</p></div>
+<div class="block"><div class="b-title">【文言知识】</div><p>1.释“向”。上文“向之笑者”中的“向”，指早先。“向”表示过去时，可指“刚才”、“早<br>先”、“从前”等，离去时间的长短，要视上下文而定。樊重从种梓漆到能派上用处，至少要十<br>年，所以“向之笑者”可译成早先（或从前嘲笑他的人。又，《捕蛇者说》：“向吾不为斯役，则<br>久已病矣。”其中“向”也可理解为早先或从前。又，“向为何声？”意为刚才是什么声音？<br>2.“此之谓”的语法现象。上文末了有“此之谓也”，这是一个宾语前置的倒置句式，应<br>按“谓此”理解，句意为说的就是这个道理。“之”作为宾语“此”前置的标志，无义。又，“仁爱<br>之谓也”，意为说的就是仁爱之心。</p></div>
+<div class="block"><div class="b-title">【译文】</div><p>樊重想做器物，开始种梓树与漆树，当时的人都讥笑他（不知何年何月才成）。然而积累<br>了好多年月，（以前栽种的梓漆)都能派上用处了。早先讥笑他的人，都来向他求助借用。这</p></div>
+  </article>
+  <article class="article" id="a90">
+    <h3>1. 一生之计在于勤</h3>
+    <p class="body-text">治生①之道,莫尚乎勤。故邵子②云：“一日之计在于晨，一岁之计在于春，<br>一生之计在于勤。”言虽近而旨则远。无如人之常情，恶劳而好逸，甘食愉衣，<br>玩日④岁。以之为农，则不能深耕而易；以之为工，则不能计日而见功；以<br>之为商，则不能乘时而趋利；以之为士，则不能笃志力行。徒然食息于天地之<br>间，是一蠹耳！夫天地之化，日新则不蔽，故户枢不③，流水不腐，诚不欲其常<br>安也。人之心与力，何独不然？劳则思，逸则忘，物情也。大禹之圣，且惜寸阴，<br>陶侃①之贤，且惜分阴，又况圣贤不若彼者乎？</p>
+<div class="block"><div class="b-title">【注释】</div><p>①治生：谋生。②邵子：即邵雍，宋朝人。③无如：可惜。④媽(kai)：荒废。③易瓣：把杂<br>草除尽。户枢不蠹：门轴因经常转动而不生蛙虫。<br>陶侃：东晋政治家，他认为要爱惜每一寸<br>光阴。</p></div>
+<div class="block"><div class="b-title">【训练】</div><p>（1）解释下列各句中加点的词<br>①恶劳而好逸<br>②则不能计日见功<br>③以之为士，则不能笃志力行<br>④徒然食息于天地之间<br>③是一囊耳<br>③夫天地之化，日新则不<br>①劳则思，逸则忘，物之情也<br>③又况圣贤不若彼者乎？<br>（2）用现代汉语翻译下面句子<br>①莫尚乎勤</p></div>
+  </article>
+  <article class="article" id="a91">
+    <h3>2. 张薄与"七录斋"</h3>
+    <p class="body-text">张溥①幼嗜学，所读书必手抄。抄已，朗诵一过即焚之；又抄，如是者六七始<br>已。右手握管处指掌成茧。冬日手皲，日沃汤数次。后名读书之斋日“七录”。<br>溥诗文敏捷，四方征索者，不起草，对客挥毫，俄顷立就，以故名高一时。</p>
+<div class="block"><div class="b-title">【注释】</div><p>①张溥（pu）：明朝著名文学家。</p></div>
+  </article>
+  <article class="article" id="a92">
+    <h3>3. 用力多者收功远</h3>
+    <div class="block"><div class="b-title">【训练】</div><p>司马温公①幼时，患记问不若人。群居讲习，众兄弟既成诵，游息矣；独下惟<br>绝编②，追③能倍讽乃止。用力多者收功远，其所精通，乃终身不忘也。温公尝</p></div>
+  </article>
+  <article class="article" id="a93">
+    <h3>4. 为者常成</h3>
+    <div class="block"><div class="b-title">【注释】</div><p>①梁丘据：齐国大夫。</p></div>
+<div class="block"><div class="b-title">【训练】</div><p>梁丘据①谓晏子日：“吾至死不及夫子矣。”晏子日：“婴闻之：为者常成，行者<br>常至。婴非有异于人也，常为而不置，常行而不休而已矣。”<br>（1）上文“婴闻之”中的“婴”是指谁？<br>（2）解释下列句子中加点的词<br>①吾至死不及夫子矣<br>②为者常成<br>③常为而不置<br>④常行而不休而已类<br>（3）用现代汉语翻译下面句子<br>①行者常至<br>②婴非有异于人也</p></div>
+  </article>
+  <article class="article" id="a94">
+    <h3>5. 望梅止渴</h3>
+    <p class="body-text">魏武①行役失汲道，三军②皆渴，乃令日：“前有大梅林，饶子，甘酸可以解<br>渴。”士卒闻之，口皆出水，乘此得及前源。</p>
+<div class="block"><div class="b-title">【注释】</div><p>①魏武：指魏武帝曹操。②三军：全军。</p></div>
+<div class="block"><div class="b-title">【训练】</div><p>（1）解释下列各句中加点的词<br>①乃令日<br>②饶子<br>（2）用现代汉语翻译下面句子<br>①魏武行役失汲道<br>②乘此得及前源<br>（3）成语“望梅止渴”比喻</p></div>
+  </article>
+</section>
+
+<section class="unit-block" data="unit=十七">
+  <div class="unit-head">第 十七 单 元</div>
+  <article class="article" id="a95">
+    <h3>刘庭式娶盲女（阅读）</h3>
+    <p class="body-text">刘庭式婴盲女<br>齐人刘庭式未及第①时，议娶其乡人之女，既成约②而未纳币③也。庭式及<br>第，其女以疾，两目皆盲。女家射耕，贫甚，不敢复言。或④劝纳其幼女。庭式笑<br>日“吾心已许久。虽盲，岂负吾初心哉！”卒娶盲女，与之偕老③。<br>（节选自《能改斋漫录》）</p>
+<div class="block"><div class="b-title">【注释】</div><p>①未及第：没考上科举；科举考试中未获得名次。②成约：约定婚姻关系。③纳币送聘礼。<br>④或：有人。③偕老：共同生活到老。</p></div>
+<div class="block"><div class="b-title">【文言知识】</div><p>1．释“既”。“既”的本义是人吃饱了，因此它含有“已经”“完成”、“………之后”等义项。<br>上文“既成约”中的“既”，指已经，句意为已经约定婚姻关系。又，“既死即埋”，意为人已经死<br>了便立即埋葬；“士卒既渡”，意为士卒渡过河后。成语有“既往不”，意为已经过去了的事<br>便不再责备；“既来之，则安之”，本义为远方的人已经来了，就要让他们安定下来，现也用于<br>挽留客人或安慰疾病缠身的人。</p></div>
+<div class="block"><div class="b-title">【文化常识】</div><p>“齐人”及其他。“齐”本是春秋战国时诸侯国国名，在今山东境内。秦始皇统一天下后<br>齐国已不存在，但习惯上后人仍把山东称为“齐”，把山东人称为“齐人”。上文“齐人刘庭<br>式”，是指山东人刘庭式。又，“楚人”是指生活在湖北、湖南一带的人；“晋人”是指生活在山<br>西一带的人；“吴人”是指江浙一带的人。</p></div>
+<div class="block"><div class="b-title">【译文】</div><p>山东人刘庭式未考中科举时，（父母)商量（准备)娶他同乡人的女儿，后来双方已说<br>定（婚事），但尚未送聘礼。刘庭式考中了科举，那女子因为疾病，两眼瞎了。女家是种田<br>人，很贫穷，不敢再提（婚姻的事）。有人劝（刘庭式）娶对方的小女儿。刘庭式笑着说：</p></div>
+  </article>
+  <article class="article" id="a96">
+    <h3>1. 韩云门与盲女偕老</h3>
+    <p class="body-text">项城①韩云门，名媚，聘②戚氏女，未几，两自失明。戚谓韩郎年少能文，必<br>成远器，而配以盲女，非偶也，欲毁婚而终女子于家。韩之父母将许之，云门毅<br>然不可，如礼迎娶以归。戚不得已，瘘以美婢③。云门日：“人情见则欲动，不若<br>无见，以全我居室之好。”遂遣婢还。后于壬子①出为教谕③。挚妇偕行，伉俪无<br>间。豫人称其笃行，以为宋之刘庭式再现于今。</p>
+<div class="block"><div class="b-title">【注释】</div><p>①项城：古地名，今河南商丘市。②聘：约定婚姻关系。③腰(ying)以美婢：把一个漂亮的侍女<br>作陪嫁。<br>④王子：指王子年，即清康熙十一年。‘教谕：掌管教育、祭礼的官吏。</p></div>
+<div class="block"><div class="b-title">【训练】</div><p>（1）解释下列句子中加点的词<br>①聘戚氏女<br>②戚谓韩郎年少能文<br>③必成远器<br>④非偶也<br>③如礼迎娶以归<br>③遂遗婢还<br>①豫人称其笃行<br>（2）用现代汉语翻译下面句子<br>①人情见则欲动<br>②以全我居室之好<br>③挚妇偕行，优俪无间</p></div>
+  </article>
+  <article class="article" id="a97">
+    <h3>2. 孙泰</h3>
+    <p class="body-text">孙泰者，山阳人也，少师皇甫颖，操守颇有古贤之风の。泰妻即姨妹②也。<br>先是，姨老矣，以二子③为托，：“其长损一目④，汝可取女弟。”姨卒，泰取其<br>姊。或诘之，泰日：“其人有废疾，非泰不可适③。”众皆服泰之义。泰尝于市遇铁<br>灯台，市之，而命洗刷，却银也，泰呕往还之。</p>
+<div class="block"><div class="b-title">【注释】</div><p>①古贤之风：古代贤人的风格。②姨妹：表妹。③子：女儿。④损一目：一只眼瞎了。<br>?女弟：妹妹。?适：嫁</p></div>
+  </article>
+  <article class="article" id="a98">
+    <h3>3. 二犬情深</h3>
+    <div class="block"><div class="b-title">【训练】</div><p>咸溪县①童镛家,畜二犬，一白一花，共出一母。性狡荟②，解人意。日则嬉<br>戏，夜则守门。后白者候目盲，不能进牢自食。主人以草藉檐外卧之。花者衔<br>饭吐而饲之。夜则卧其侧，几二年余。及白者死，埋诸山麓。花犬乃朝夕往，至</p></div>
+  </article>
+  <article class="article" id="a99">
+    <h3>4. 为官要清廉</h3>
+    
+  </article>
+  <article class="article" id="a100">
+    <h3>5. 义犬报火警</h3>
+    <p class="body-text">城之东,民家畜一犬,甚嬴。一夕，邻火卒发,延及民家。民正熟,犬<br>连不觉。起曳其被，寝犹如故。复踞床以口附民耳大，民始惊。视烟已满<br>室，急呼妻女出，室尽矣。民遂谓所亲日：“吾家贫，犬食恒不饱，不谓今日能<br>免我四人于难也。彼日厚享其人之食，而不顾其患难者，其视犬为何如耶？”</p>
+<div class="block"><div class="b-title">【注释】</div><p>①赢（léi)：瘦弱。②卒（cu）：同“猝”，突然。</p></div>
+<div class="block"><div class="b-title">【训练】</div><p>（1）解释下列各句中加点的词<br>①邻火卒发，延及民家<br>②起其被<br>③复踞床以口附民耳大<br>④犬食恒不饱<br>（2）用现代汉语翻译下面句子<br>①室尽爆矣<br>②彼日厚享其人之食，而不顾其患难者，其视犬为何如邪？<br>（3）成语“笑逐颜开”中的“逐”，解释为<br>_；这个成语的意思是</p></div>
+  </article>
+</section>
+
+<section class="unit-block" data="unit=十八">
+  <div class="unit-head">第 十八 单 元</div>
+  <article class="article" id="a101">
+    <h3>曾子杀彘（阅读）</h3>
+    <p class="body-text">走进文言文（六、七年级用）<br>一任老师，这是谁都承认的事实。做父母的不仅要言教，更要身教。曾子杀猪，是用身教教<br>育孩子诚实不欺。杀猪是小事，诚实是大事。</p>
+<div class="block"><div class="b-title">【注释】</div><p>①陈谏议：即陈省华，官至谏议大夫；子尧估、尧叟、尧咨，均为北宋名臣。②贵臣：重臣。</p></div>
+<div class="block"><div class="b-title">【译文】</div><p>曾子的妻子到市场上去，她的儿子哭着跟着她。他的母亲说：“你回去，等会儿回来给你<br>杀猪。”（曾子的）妻子到市场后回来，曾子要抓猪杀它。妻子阻止他说：“（我）只不过跟小孩<br>开个玩笑罢了。”曾子说：“小孩子是不可以跟他开玩笑的，小孩子还没有判断是非的能力，等<br>着向父母亲学习，听从父母亲的教育。如今你欺骗他，这是教育儿子欺骗，母亲欺骗儿子，儿<br>子不信任母亲，这不是用来教育好儿子的方法。”（于是曾子与妻子决定)马上杀猪烧肉。<br>1.陈谏议教子<br>宋陈谏议①家有劣马，性暴，不可驭，蹄啮伤人多矣。一日，谏议人既，不见<br>是马，因语仆：“彼马何以不见？”仆言为陈尧咨售之贾人矣。尧咨者，陈谏议之<br>子也。谏议邃召子，日：“汝为贵臣②，家中左右尚不能制，贾人安能畜之？是移<br>祸于人也！”急命人追贾人取马，而偿其直，戒仆养之终老。</p></div>
+<div class="block"><div class="b-title">【训练】</div><p>（1）解释下列句子中加点的词<br>①不可驭<br>②蹄啮伤人多矣<br>③一日，谏议入魔<br>④因诺仆<br>彼马何以不见<br>③速议遮召子<br>①家中左右尚不能制<br>（2）用现代汉语翻译下面句子<br>①贾人安能畜之？</p></div>
+  </article>
+  <article class="article" id="a102">
+    <h3>1. 陈谏议教子</h3>
+    <div class="block"><div class="b-title">【注释】</div><p>①陈谏议：即陈省华，官至谏议大夫；子尧估、尧叟、尧咨，均为北宋名臣。②贵臣：重臣。</p></div>
+<div class="block"><div class="b-title">【译文】</div><p>宋陈谏议①家有劣马，性暴，不可驭，蹄啮伤人多矣。一日，谏议人既，不见<br>是马，因语仆：“彼马何以不见？”仆言为陈尧咨售之贾人矣。尧咨者，陈谏议之<br>子也。谏议邃召子，日：“汝为贵臣②，家中左右尚不能制，贾人安能畜之？是移<br>祸于人也！”急命人追贾人取马，而偿其直，戒仆养之终老。</p></div>
+<div class="block"><div class="b-title">【训练】</div><p>（1）解释下列句子中加点的词<br>①不可驭<br>②蹄啮伤人多矣<br>③一日，谏议入魔<br>④因诺仆<br>彼马何以不见<br>③速议遮召子<br>①家中左右尚不能制<br>（2）用现代汉语翻译下面句子<br>①贾人安能畜之？</p></div>
+  </article>
+  <article class="article" id="a103">
+    <h3>2. 陈万年教子</h3>
+    <p class="body-text">陈万年①乃朝中重臣也，尝病，召其子咸②告诫于床下，语至三更，咸睡，头<br>触屏风③。万年大怒，欲杖之，日：“乃公①教诫女，女反睡，不听吾言，何也？”咸<br>即头谢，日：“具晓所言，大要③教咸也。”万年乃不敢复言。</p>
+<div class="block"><div class="b-title">【注释】</div><p>①陈万年：东汉人。②咸：指陈威。③屏风：室内挡风或用以障蔽的用具。④乃公：你父亲。<br>③大要：主要。</p></div>
+  </article>
+  <article class="article" id="a104">
+    <h3>3. 卞庄子刺虎</h3>
+    <div class="block"><div class="b-title">【注释】</div><p>①馆竖子：旅店里的仆人。②须：等待。</p></div>
+<div class="block"><div class="b-title">【训练】</div><p>卡庄子欲刺虎，馆竖子①止之，日：“两虎方且食牛，食甘必斗，斗则大者伤小<br>者毙，若从伤而刺之，一举必有双虎之名。”卡庄子然之，立须②之。旋两虎果斗，<br>大者伤小者死。下庄子从伤者而刺之，一举果有双虎之功。</p></div>
+  </article>
+  <article class="article" id="a105">
+    <h3>4. 势利鬼吴生</h3>
+    <div class="block"><div class="b-title">【注释】</div><p>①广席：盛大宴会。②张伯起：即张凤翼，字伯起，明朝著名戏曲家。</p></div>
+<div class="block"><div class="b-title">【训练】</div><p>有吴生者，老而趋势。偶赴广席①，见布衣者后至，略酬其揖，意色殊傲。已<br>而见主人恭甚，私询之，乃张伯起②也。更欲殷勤致礼，张笑日：“适已领过半揖，<br>但乞补还，勿复为劳。”<br>（1）解释下列各句中加点的词<br>①已而见主人恭甚<br>②私询之<br>③乃张伯起也<br>④更欲殷勤致礼<br>（2）用现代汉语翻译下面句子<br>①略酬其择，意色殊傲<br>②适已领过半择，但气补还<br>（3）上文“老而趋势”中的“趋势”，可用成语<br>表示。</p></div>
+  </article>
+  <article class="article" id="a106">
+    <h3>5. 偷鸡贼的托词</h3>
+    <p class="body-text">今有人日(räng)①其邻之鸡者,或告之日：“是非君子②之道。"日：“请损<br>之,月一鸡,以待来年,然后已。”如知其非义③,斯速已矣,何待来年？.</p>
+<div class="block"><div class="b-title">【注释】</div><p>①(rang)：偷。②君子：旧指品德高尚的人。③义：此指道德。</p></div>
+<div class="block"><div class="b-title">【训练】</div><p>（1）解释下列各句中加点的词<br>①或告之日<br>②请损之<br>③然后已<br>（2）用现代汉语翻译下面句子<br>如知其非义，斯速已矣，何待来年？<br>（3）偷鸡贼辩解的实质是什么？<br>（4）成语“一丘之貉”中的“貉”,读音是<br>；这个成语现在比喻</p></div>
+  </article>
+</section>
+
+<section class="unit-block" data="unit=十九">
+  <div class="unit-head">第 十九 单 元</div>
+  <article class="article" id="a107">
+    <h3>宋濂苦学（阅读）</h3>
+    <p class="body-text">宋瀛苦学<br>余①幼时即嗜学，家贫无以致②书以观。每假借于藏书之家，手自?笔录，计<br>日以还。天大寒，砚冰坚，手指不可屈伸，弗之怠，录毕走送之，不敢稍逾约，是<br>以人多以书假余，余因得遍观群书。<br>（节选自宋濂《送东阳马生序》）</p>
+<div class="block"><div class="b-title">【注释】</div><p>①余：我；宋濂自称。②致：弄到；此指买。③自：亲自。</p></div>
+<div class="block"><div class="b-title">【文言知识】</div><p>1、释“走”。上文“录毕走送之”中的“走”，指跑、奔，句意为抄录完毕奔着送还给别人。<br>又，“一日走八十里乃及”，意为一天奔跑八十里才赶上；“士卒走逐之”，意为士兵急奔追赶敌<br>人。成语“走马看花”，意为骑在奔跑的马上看花，比喻观察不仔细，路得印象。又，“走投无<br>路”，意为奔投没门路。<br>2.释“假”，上文有“假借于藏书之家”与“人多以书假余”，其中两个“假”均指借。“假<br>书”即借书。又，“假资抵债”，意为借了钱抵当债务。现代汉语中仍经常用到它，如“假某某<br>大厅开会”，其中“假”即借。<br>3.“弗之怠”的理解。“弗之怠”亦可写成“勿之怠”。这是一个倒置句，应按“弗怠之”理<br>解，意为勿放松抄录的事。又，“弗我忘”，意为勿要忘记我；“弗之救”，意为不救助他。</p></div>
+  </article>
+  <article class="article" id="a108">
+    <h3>1. 葛洪苦学</h3>
+    <div class="block"><div class="b-title">【注释】</div><p>①葛洪：东晋人，研究炼丹术，似今之化学家。②丹阳：古地名，今江苏丹阳市。③禽落：篱芭。<br>④榛(zhen)：杂乱的草木。</p></div>
+<div class="block"><div class="b-title">【译文】</div><p>葛洪①，丹阳②人，贫无童仆，篱落③不茸，常披榛①出门，排草人室。遭<br>火，所藏典籍尽。乃负笈徒步，不远千里，假书抄写。卖薪买纸，然火披览。</p></div>
+  </article>
+  <article class="article" id="a109">
+    <h3>2. 王冕僧寺夜读</h3>
+    <div class="block"><div class="b-title">【训练】</div><p>王冕者，诸暨①人。七八岁时，父命牧牛陇上，窃人学舍，听诸生诵书。听<br>已，鞭默记。暮归，忘其牛。父怒挞之，已而复如初。母日：“儿痴③如此，不听<br>其所为。”冕因去依僧寺以居。夜潜出，坐佛膝上，执策映长明灯③读之，琅琅达</p></div>
+  </article>
+  <article class="article" id="a110">
+    <h3>3. 欧阳修家数</h3>
+    <div class="block"><div class="b-title">【注释】</div><p>①获(di)：芦苇类的植物。<br>②间里：乡里。③士人家：读书人家。④赋：文体的一种。</p></div>
+<div class="block"><div class="b-title">【训练】</div><p>欧阳修四岁而孤，家贫无资，母以获荻①画地，教以书字，多诵古人篇章，使<br>学为诗。及稍长，而家无书读，就间里②士人家③假而读之，或因而抄录。抄录<br>未毕，而已能诵其文，以至尽夜忘寝食，唯读书是务。自幼所作诗赋④文字，下<br>笔已如成人。<br>（1）解释下列句子中加点的词<br>①欧阳修四岁而孤<br>②母以获画地</p></div>
+  </article>
+  <article class="article" id="a111">
+    <h3>4. 司马光幼时</h3>
+    <p class="body-text">司马光の生七岁，凛然如成人，闻讲《左氏春秋》③，爱之，退为家人讲，即了<br>其大旨。自是手不释卷，至不知饥渴寒暑。群众戏于庭，一儿登瓮④，足跌③没<br>水中，众皆弃去，光持石击瓮破之，水进，儿得活。</p>
+<div class="block"><div class="b-title">【注释】</div><p>①司马光：北宋著名政治家、史学家。②漂然：严肃庄重的样子。③《左氏春秋》：由左丘明给《春<br>秋》作注的一部史书。④瓮(weng)：一种口小腹大的盛器。足跌：失足。③进(beng)：水涌出。</p></div>
+  </article>
+  <article class="article" id="a112">
+    <h3>5. 程门立雪</h3>
+    <div class="block"><div class="b-title">【训练】</div><p>杨时见程颐①于洛②，时盖年四十矣。一日见颐，颐膜坐，时与游③侍立不</p></div>
+  </article>
+</section>
+
+<section class="unit-block" data="unit=二十">
+  <div class="unit-head">第 二十 单 元</div>
+  <article class="article" id="a113">
+    <h3>项羽不肯竟学（阅读）</h3>
+    <p class="body-text">项狗不肯竟学<br>项籍少时,学书①不成，去,学剑，又不成。项梁②怒之。籍日：“书，足以③记<br>名姓而已。剑，一人敌，不足学，学万人敌。”于是项梁乃教籍兵法。籍大喜，略<br>知其意，又不肯竟学④。<br>（节选自《史记·项羽本纪》）</p>
+<div class="block"><div class="b-title">【注释】</div><p>①书：认字写字。②项梁：项籍的叔父。③足以：只要用来。④竟学：学到底。</p></div>
+<div class="block"><div class="b-title">【文言知识】</div><p>释“敌”。上文“一人敌”与“万人敌”中的“敌”，指“对付”、“匹敌”。项籍认为学剑只能对<br>付一个人，不值得学习，要学习对付万人的本领。又，“兵寡不敌”，意为兵力少对付不了对<br>方；“世上无敌”，意为世上没有可跟他匹敌的。</p></div>
+<div class="block"><div class="b-title">【启发与借鉴】</div><p>知识就是力量。在秦末的楚汉相争中，楚霸王项羽有四五十万军队，正所谓人多势众，<br>而汉王刘邦只有十来万人马。然而最终刘邦战胜了项羽，建立了汉朝。项羽失败的主要原<br>因之一，是他有勇无谋，处处被动。“无谋”正是“不肯竟学”的结果。读书能使人增长见识，<br>读书能使人变得聪明，无知识的勇敢者只不过是个鲁莽的武夫罢了。</p></div>
+  </article>
+  <article class="article" id="a114">
+    <h3>1. 赵某复子</h3>
+    <div class="block"><div class="b-title">【译文】</div><p>赵某者,吴の人也。家富多藏,有子三。三子皆不学无术,恃父多金,朝夕挥<br>霍。有一叟相劝，曰：“尔之子，俱游手好闲，一旦尔殁，将何以自食？当戒之从<br>学，而后自立！”赵某勿之听，恣子放荡。寻赵某卒，其家财竭。三子者，或乞食<br>于街市，或盗窃于邻人，或饿仆于路侧。人日：“此乃自食恶果也。”然岂非其父<br>之计浅也<br>[注释<br>①吴：今江苏苏州一带。</p></div>
+<div class="block"><div class="b-title">【训练】</div><p>（1）解释下列各句中加点的词<br>①三子皆不学无术<br>②特父多金<br>③一旦尔殁<br>④当戒之从学<br>恣子放荡<br>③其家财竭<br>①或饿仆于路侧<br>③此乃自食恶果也<br>（2）用现代汉语翻译下面句子<br>① 有一叟相劝<br>②将何以自食</p></div>
+  </article>
+  <article class="article" id="a115">
+    <h3>2. 高凤笃学</h3>
+    <p class="body-text">高凤の,字文通,家以农亩为业。妻常②之田,曝麦于庭，令凤护鸡。时天暴<br>雨，凤持竿诵经③，不觉潦水④流麦。妻还怪问，乃省。</p>
+<div class="block"><div class="b-title">【注释】</div><p>②常：同“尝”，曾经。<br>④濠水：雨后地上积水。<br>①高凤：汉朝人。<br>③经：指儒家经典著作。</p></div>
+  </article>
+  <article class="article" id="a116">
+    <h3>3. 王充市肆博览</h3>
+    <div class="block"><div class="b-title">【注释】</div><p>①王充：东汉著名唯物主义学者。②太学：当时最高学府。③班彪：当时著名学者。<br>④不守<br>章句：不死抠经学字句。</p></div>
+<div class="block"><div class="b-title">【训练】</div><p>王充①孤，乡里称孝。后至京师,受业太学②，师事班彪③。好博览而不守章<br>句①。家贫无书，常游洛阳市肆,阅所卖书，一见辑能诵忆。日久,遂博通百家之言。<br>（1）解释下列各句中加点的词<br>① 乡里称孝<br>②常游洛阳市肆<br>③遂通百家之言</p></div>
+  </article>
+  <article class="article" id="a117">
+    <h3>4. 赵伯公肥大</h3>
+    <p class="body-text">赵伯公肥大，夏日醉卧，孙儿缘其肚上戏，因以李子内其脐中，累七八枚。<br>既醉了①不觉。数日后，乃知痛。李大烂，汁出，以为脐穴，惧死，乃命妻子处<br>分②家事,乃泣谓家人日：“我肠烂且死。”明日李核出，乃知孙儿所内李子也。</p>
+<div class="block"><div class="b-title">【注释】</div><p>了·一点也…·。②处分安排。</p></div>
+  </article>
+  <article class="article" id="a118">
+    <h3>5. 燕人返国</h3>
+    <div class="block"><div class="b-title">【训练】</div><p>燕人生于燕，长于楚，及老而还本国。过晋国，同行者逛之，指城日：“此燕</p></div>
+  </article>
+</section>
+
+<section class="unit-block">
+  <div class="unit-head">第 二十一 单 元</div>
+  <div class="sec-label">阅 读</div>
+  <article class="article" id="a121">
+    <h3>鲁侯养鸟（阅读）</h3>
+    <p class="body-text">昔者海鸟止于鲁郊①。鲁侯御而筋之于庙②，奏《九韶》③以为乐，具太牢④以为膳。鸟乃③眩视忧悲,不敢食一①,不敢饮一杯,三日而死。此以已养③养鸟也，非以鸟养养鸟也。</p>
+    <div class="attrib">（节选自《庄子》）</div>
+    <div class="block"><div class="b-title">【注释】</div><p>①鲁郊：鲁国的郊外。②鲁侯御而筋（shang)之于庙：鲁国国君迎接它，并在祖庙里向它敬酒。③《九韶》：相传是舜的乐曲。④太牢：有牛、羊、猪三牲的链席。③乃：却。③眩视：眼睛发花。①（luan)：切碎的肉块。③已养：供养自已的方法。③鸟养：喂养鸟的方法。</p></div>
+    <div class="block"><div class="b-title">【文言知识】</div><p>1.释“昔”。上文“昔者海鸟止于鲁郊”中的“昔”，指从前，句意为从前有只海鸟停在鲁国的郊外。又，“昔吾父微时为农”，意为从前我父亲地位低微时是种田人；“昔也洪水滔天”，意为从前洪水淹没大地。“昔”与“囊”是同义词，上文两个例句可说成“囊吾父微时为农”、“囊也洪水沼天”。“向”的一个义项也同“昔”与“襄”，故“昔吾父微时为农”，也可说成“向吾父微时为农”。2．释“已”“已”“已”。这是三个不同的字。“已”指自己，上文“此以己养养鸟也”中的“已”，即为自已，句意为这是用供养自已的方法来喂养海鸟。“已”在古文中多作“停止”“已经”“………之后”解释。如“学不可以已”，意为学习是不能停止的。又，“食已”指吃毕。“已”是十二地支中的第六位：子、丑、寅、卯、辰、已、午、未、申、酉、戌、亥，如“已时出行”。</p></div>
+    <div class="block"><div class="b-title">【文化常识】</div><p>说“庙”。秦朝以前的庙是指祖庙，或称“太庙”。上文提到的“鲁侯御而筋之于庙”中的“庙”，即为太庙，它与佛教传入中国后出现的寺庙不同。在太庙里安放着祖宗的神位。凡国家遇到重大的祭祀、庆典或出征、授爵等，都在太庙里举行。太庙前有明堂，故有“庙堂”一词。《岳阳楼记》中说：“居庙堂之高则忧其民，处江湖之远则忧其君。”“庙堂”也指朝廷。在明堂后有按祖先生前摆放的器物，以供纪念。【自发与借鉴】鲁侯犯的是主观主义毛病，怎么可以“以已养养鸟”呢？但是在现实生活中不乏这种事例。如小孩子天性好动，可不少家长硬要迫使他们整天坐下来看书写字；任意开山伐木会使水土流失，可不少长官硬要山民垦荒种地；学生不喜欢说教的道德教育，可教师滔滔不绝于教条。主观主义者不仅办不好事，而宜会把事情弄糟搞坏。</p></div>
+    <div class="block"><div class="b-title">【译文】</div><p>从前有只海鸟停留在鲁国国都的郊外。鲁侯(派人)迎接它，并在祖庙里向它敬酒，演奏《九韶》让它娱乐，准备了牛、羊、猪让它进食。鸟却眼晴发花，显出忧伤的样子，不敢吃一块肉，不敢喝一杯水，三天后便死了。这是因为（鲁侯)用供养自已的方法去养鸟，而不是用养鸟的方法去养海鸟。</p></div>
+  </article>
+  <div class="sec-label">训 练</div>
+  <article class="article" id="a122">
+    <h3>1．揠苗助长</h3>
+    <p class="body-text">宋人有闵①其苗之不长而②之者，芒芒然③归，谓其人日：“今日病矣！余助苗长矣！其子趋而视之,苗则稿矣。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①闵(min)：担忧。②(ya)：拔。③芒芒然：疲劳的样子。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①其子趋而视之　②苗则稿矣</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>①今日病矣　②谓其人日</p>
+    <p class="ex-item"><span class="q">（3）宋人与《鲁侯养鸟》中的鲁侯犯了什么错误？</span></p>
+    </div>
+  </article>
+  <article class="article" id="a123">
+    <h3>2．砚眼</h3>
+    <p class="body-text">明有陆庐峰者，于京城待用①。尝于市遇一佳砚，议价未定。既还邸②，使仆往,以一金易归。仆持砚归,公其不类。仆坚称其是。公日：“向观砚有③眼，今何无之？”答曰：“吾嫌其微凸，路值石工，幸有余银，令磨而平之。”公甚婉惜。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①待用：等待(朝廷)任用。②邸(di)：官办的旅店。③（qu yu)：俗称"八哥”。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①既还邸　②仆坚称其是　③向观砚有眼　④路值石工</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>①以一金易归　②公诉其不类　③令磨而平之　来概括。</p>
+    <p class="ex-item"><span class="q">（3）仆人的错误可用一个成语</span></p>
+    </div>
+  </article>
+  <article class="article" id="a124">
+    <h3>3．农夫耕田</h3>
+    <p class="body-text">农夫耕于田，数息①而后一锄。行者见而晒之，曰：“甚矣，农夫之惰也！数者解衣下田，一息而数锄，一锄尽一身之力。未及移时，气竭汗雨，,喘喘焉不能作声,且仆于田,谓农夫日：“今而后知耕田之难也。”农夫白：“非耕难，乃子之术谬也！人之处事亦然，欲速则不达也。”行者服而退。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>：①息:呼吸。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①行者见而晒之　②此田竞月不成　③气竭汗雨　④人之处事亦然　③行者服而退</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>① 甚矣，农夫之惰也　②予莫知所以耕，子可示我耕之术乎？　③未及移时，喘喘离不能作声，且仆于田　④乃子之术谬也</p>
+    <p class="ex-item"><span class="q">（3）“欲速则不达"意为</span></p>
+    <p class="ex-item"><span class="q">（4）这则寓言告诉人们什么道理？</span></p>
+    </div>
+  </article>
+  <article class="article" id="a125">
+    <h3>4．稚犬</h3>
+    <p class="body-text">某村赵氏,犬生三子,甫①二月,随母行。一虎呼啸出林,疾奔母犬。母犬召子伏身下。然一子已为虎所噬。赵氏呼邻里壮丁,持矛逐之。二稚犬奔衔虎尾，虎带之走。犬为荆棘挂胸，皮毛殆②尽,终不肯脱。虎因尾为稚犬累，掉③尾不得脱，行渐迟。众人呐喊而前,追及，毙于众人刀下。憶！稚犬亦勇矣。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①甫(fu):刚刚,才。②殆(dai):几乎。③掉:摆动。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）两只小犬十分勇敢，表现在什么地方？请用文中原句回答。</span></p>
+    <p class="ex-item"><span class="q">（2）解释下列各句中加点的词</span></p>
+    <p>①疾奔母犬　②母犬驱召子伏身下　③赵氏呼邻里壮丁　④持矛逐之　虎因尾为稚犬累　③众人呐喊而前　①追及，毙于众人刀下。嘻</p>
+    <p class="ex-item"><span class="q">（3）用现代汉语翻译下面句子</span></p>
+    <p>然一子已为虎所噬</p>
+    <p class="ex-item"><span class="q">（4）成语“防微杜渐”中的“杜”，解释为</span></p>
+    <p>；这个成语的意思是</p>
+    </div>
+  </article>
+  <article class="article" id="a126">
+    <h3>5．鹬鸟中计</h3>
+    <p class="body-text">人有鱼池，苦群①窃啄食之，乃束草为人：披、戴笠、持竿，植之池中以慢之。群初回翔②不敢即下，已渐审视，下啄。久之，时飞止笠上，恬不为惊。人有见者，窃去人③，自披、戴笠，而立池中，仍下啄，飞止如故。人随手执其足，鹊不能脱。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①(yi)：俗称“水老鸦”,喜食鱼。②回翔：盘旋飞翔。③垒人：草人。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句子中加点的词</span></p>
+    <p>①乃束草为人　②群初回翔不敢即下　③已渐审视　④恬不为惊　③窃去垒人　③人随手执其足</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子：</span></p>
+    <p>植之池中以慢之</p>
+    <p class="ex-item"><span class="q">（3）成语“矫枉过正”中的“矫”、“枉”，分别解释为</span></p>
+    <p>，这个成语的意思</p>
+    </div>
+  </article>
+</section>
+<section class="unit-block">
+  <div class="unit-head">第 二十二 单 元</div>
+  <div class="sec-label">阅 读</div>
+  <article class="article" id="a127">
+    <h3>镜喻（阅读）</h3>
+    <p class="body-text">客①有任目②而恶镜者，曰：“是好苦我。吾自有目，乌用镜为③？”久之，视世称美人，鲜当意者；而不知已面之黑子,泰然谓美莫己若④。左右匿③笑,客终不悟。悲夫!</p>
+    <div class="attrib">（节选自钱大昕《潜研堂文集》）</div>
+    <div class="block"><div class="b-title">【注释】</div><p>①客：人②任目：信任自己的眼睛。③乌用镜为：为什么要用镜子呢？为，呢。④莫已若：即“莫若己”。③匿：暗暗地。</p></div>
+    <div class="block"><div class="b-title">【文言知识】</div><p>1.释“鲜”。上文“鲜当意者”中的“鲜”，指少，句意为很少有满意的。又，“自傲者鲜有不败”，意为骄傲自大的人很少有不失败的；“路坎珂，鲜有人行”，意为道路高低不乎，很少有人行走。成语“寡廉鲜耻”，意为极少有廉耻，即不懂得廉耻的人。2.释“夫”。“夫”除作名词（如“匹夫”、“丈夫”）外，多作语气词或代词用。上文“悲夫”中的“夫”，即为句末语气词，表感叹，相当于“啊”。又，“世有国而不惜身者，信夫”，意为世上有为国牺牲而不各惜生命的人，确实啊！它又可置于句首作发语词，无义。如“夫日月不息·.”，意为太阳月亮不停地运转。作为代词，可代人、事、物，相当于“那”。如《岳阳楼记》：“予观夫巴陵胜状，在洞庭一湖。”【启发与循鉴】不要过于自信。这则寓言告诉人们不要过于自信。自信本身是好的，但过于自信就不好。上述寓言中说的那个“客”，就是因过于自信，结果闹出了笑话。自已的缺点往往不易发觉，需要朋友或周围的人指出，所谓“旁观者清”，说的就是这个道理。如果只相信自已，那么缺点永远存在，不仅存在，而且会发展得严重。</p></div>
+    <div class="block"><div class="b-title">【译文】</div><p>有个人只相信自已的眼睛而讨厌镜子，说：“这镜子使我好苦。我自已有眼睛，为什么要用镜子呢？”时间长了，看世上被称为美人的，很少有满意的；然而不知道自已脸上的黑斑，心安理得地认为别人总没自已漂亮。周围的人暗笑，那人始终不醒悟。可悲啊！</p></div>
+  </article>
+  <div class="sec-label">训 练</div>
+  <article class="article" id="a128">
+    <h3>1．枭将东徒</h3>
+    <p class="body-text">枭①逢鸠②。鸠曰：“子将安之？”枭日：“我将东徙。”鸠日：“何故？”枭日：“乡人皆恶我鸣，以故东。”鸠日：“子能更鸣可矣；不能更鸣，东徙犹恶子之声。”</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①枭(xiao):猫头鹰。·②鸠：斑鸠鸟。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列句子中加点的词</span></p>
+    <p>①我将东徙　②乡人皆恶我鸣　③子能更鸣可矣　④东徙犹恶子之声</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>子将安之</p>
+    <p class="ex-item"><span class="q">（3）这寓言说明什么道理？</span></p>
+    </div>
+  </article>
+  <article class="article" id="a129">
+    <h3>2．世无良猫</h3>
+    <p class="body-text">某①恶鼠，破家求良猫。養以腥膏，眠以毡毯②。猫既饱且安，率不捕鼠，甚者与鼠嬉，鼠以故益暴。某怒，逐之，遂不复畜猫，以为天下无良猫也。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①某：某个人；有个人。②毡毯：毯子。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>　①某恶鼠　②鼠以故益暴　③ 某怒,逐之　①遂不复畜猫</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>①養以腥膏　②猫既饱且安，率不捕鼠</p>
+    </div>
+  </article>
+  <article class="article" id="a130">
+    <h3>3．河豚之死</h3>
+    <p class="body-text">河之鱼，有豚（tun)其名者，游于桥间，而触其柱，不知远去。怒其柱之触已也，则张颊竖鳍①，鼓腹而浮于水，久之莫动。飞鸢过而之，碟③其腹而食之。好游而不知止，因游而触物，不知罪已，妄肆其念，至于腹而死，可悲也夫！</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①鳍（qi)：此指鱼颔下两侧的鳍。②鸢(yuan)：老鹰。③碟(zhé)：此指撕裂。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①不知远去　②则张颊竖鳍　③飞鸢过而之</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>①有豚其名者　②不知罪己　③妄肆其您</p>
+    <p class="ex-item"><span class="q">（3）河豚的错误在哪里？请用原文句子回答。</span></p>
+    <p class="ex-item"><span class="q">（4）成语“衣冠楚楚”中的“楚楚”，解释为</span></p>
+    <p>；这个成语的意思是</p>
+    </div>
+  </article>
+  <article class="article" id="a131">
+    <h3>4．刻舟求剑</h3>
+    <p class="body-text">楚人有涉①江者,其剑自舟中坠于水，邃契其舟，日“是吾剑之所从坠。”舟止，从其所契者入水求之。舟已行矣，而剑不行②,求剑若此,不亦惑乎？</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①涉：本指徒步过河，此指渡。②行：此指移动。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①其剑自舟中坠于水　②从其所契者入水求之　③求剑若此，不亦惑乎</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>①遵契其舟　②是吾剑之所从坠</p>
+    <p class="ex-item"><span class="q">（3）成语刻舟求剑”比喻</span></p>
+    </div>
+  </article>
+  <article class="article" id="a132">
+    <h3>5．鹬蚌相争</h3>
+    <p class="body-text">方出曝，而①啄其肉，蚌合而钳其喙。日：“今日不雨，明日不雨，即有死蚌。”蚌亦谓日：“今日不出，明日不出，即有死。”两者不肯相舍，渔者得而并禽之。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①(yu)：一种长嘴灰背栖息于水泽间的爱吃小鱼的鸟。②钳(qian)：夹住。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）上文“不雨”,应解释为</span></p>
+    <p>；“雨”本为名词，但在这句话中它作　用。</p>
+    <p class="ex-item"><span class="q">（2）“今日不出，明日不出”是指什么“不出”？</span></p>
+    <p>，这个字的读音是</p>
+    <p class="ex-item"><span class="q">（3）上文中的“禽”，不是指禽兽的“禽”，而是</span></p>
+    <p>的通假字，意思是</p>
+    <p class="ex-item"><span class="q">（4）解释下列各句中加点的词</span></p>
+    <p>①蚌亦谓鹅日　②两者不肯相舍</p>
+    <p class="ex-item"><span class="q">（5）用现代汉语翻译下面句子</span></p>
+    <p>①蚌方出曝　②渔者得而并禽之</p>
+    </div>
+  </article>
+</section>
+<section class="unit-block">
+  <div class="unit-head">第 二十三 单 元</div>
+  <div class="sec-label">阅 读</div>
+  <article class="article" id="a133">
+    <h3>陈在衡呼鬼（阅读）</h3>
+    <p class="body-text">陈在衡先生，和葛有风趣，年六十余。暮行郊野间，见二人笼灯①前行，就火②吸烟。久而不燕③。其一人问日：“君过首七④未耶？”陈其语，漫日：“未乎？”鬼日：“非也！鬼实畏人。”陈日：“人何足畏？”日：“畏③。”陈即长吸而之。二鬼退至三步外，张目怒陈日：“汝非鬼耶？”陈笑日：“实不汝欺，吾乃与鬼相近之人耳！”再蟀之，各缩其半，三之而灭。</p>
+    <div class="attrib">（节选自《阅微草堂笔记》）</div>
+    <div class="block"><div class="b-title">【注释】</div><p>①笼灯：提着灯笼。②就火：靠近灯笼点火。③（ruo）：点燃。④首七：旧称人死后第一个七天。③信：确实，真的。③哮(cui)：吹气。</p></div>
+    <div class="block"><div class="b-title">【文言知识】</div><p>1.释“漫”。上文“陈其语，漫目”中的“漫”，是指随意，句意为陈在衡对他的话感到惊，便随意回答。又，“漫步溪上”，意为在小溪边随意走走；“漫悬于壁”，意为随意挂在墙上；“漫谈”指随意谈论。2.文言中的判断词。现代汉语中多用“是”表示判断。如“那是船”、“他是教师”，而文言中除了用“是”表判断（这种情况不多）外，大多用另外三种形式表示：一、用“为”表判断。上文“陈悟为鬼”中的“为”，即相当于“是”，句意为陈在衡意识到是鬼。又，“吾为尔父”，意为我是你父亲。二、用“乃”作判断。上文“吾乃与鬼相近之人耳”，意为我是跟鬼相近的人。又，“此乃常事耳”，意为这是平常的事。三、用“者”或“…者，………也”表判断。如，“岳飞者，宋之良将”，意为岳飞是宋朝优秀的将领。也可写成“岳飞者，宋之良将也”。【启发与错鉴】不怕鬼。世上没有鬼，它是愚味的人编造出来的，因此不可怕。但世上另有一批鬼，那是赌鬼、色鬼、吸毒鬼、贪污鬼、敲诈鬼，他们躲在阴暗的角落里干着不可告人的坏事。这批人其实也并不可怕，只要有像陈在衡先生那样的正义之气，一吹再吹，就可把他们消灭光！</p></div>
+    <div class="block"><div class="b-title">【译文】</div><p>陈在衡先生，和谌而又风趣，六十多岁。（有天)晚上走在郊外荒野中，看见两个人提着灯笼在前面走，（他就）凑上灯笼点火吸烟，好久没点燃。其中一个人问道：“你过了第一个未完，所以阴火点不燃。”陈在衡醒悟到那是鬼，假装问：“世上的人说人怕鬼，真的吗？”鬼说：“不对！其实是鬼怕人。”陈在衡说：“人又有什么可怕的？”（鬼）说“怕（人)吹气。”陈在衡立刻深深地吸了一口气吹他们。两只鬼退到三步之外，瞪着眼朝陈在衡大怒，说：“你不是鬼吧？”陈在衡笑道：“实在不欺骗你们，我是跟鬼相近的人！”再吹他们，两只鬼缩掉一半，第三次吹过去就消失了。</p></div>
+  </article>
+  <div class="sec-label">训 练</div>
+  <article class="article" id="a134">
+    <h3>1．曹竹虚族兄遇鬼</h3>
+    <p class="body-text">曹竹虚言：其族兄①自歙②往扬州，途经友人家。时盛夏，延坐书屋，甚轩爽,暮欲下榻其中。友人日：“是有魅，夜不可居。”曹强居之。夜半,有物自门隙蠕蠕③人，薄如夹纸。入室后，渐开展，作人形，乃女子也。曹殊不畏。忽披发吐舌，作缢鬼状。曹笑日：“犹是发，但稍乱；犹是舌，但稍长。亦何足畏！”忽自摘其首置案上。曹又笑日：“有首尚不足畏，况无首耶？”鬼技穷，候然灭。又归途再宿。夜半，门隙又蠕动。甫①露其首,鞭唾：“又此败兴物耶？"竟不人。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①族兄：堂兄。②歙(she)：古地名，今安徽境内。③蠕蠕：小虫爬动的样子。④甫：刚。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①延坐书屋　②是有魅，夜不可居　③乃女子也　④曹殊不畏　　③但稍乱　③又归途再宿　①甫露其首，睡日　③竞不入</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>①暮欲下榻其中　②作死状　③鬼技穷，條然灭</p>
+    </div>
+  </article>
+  <article class="article" id="a135">
+    <h3>2．疑鬼</h3>
+    <p class="body-text">毛氏①者，越②人也。值雨夜行，左顾右盼，心悸爲。忽一人自后及，言未具伞，乞假之而同行。毛氏无奈，强应之。二人默然良久。毛氏疑为鬼，至桥上，遂挤堕河中，狂走而去。未几，天微明，有售饼者启门,往投爲。店主问其所以，日遇鬼。之，又有一人至肆,浑身淋漓，自言为鬼推随河中。两人相视，哑然失笑。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①毛氏：姓毛的人。②越：今浙江一带。【调练】（1）解释下列各句中加点的词①值雨夜行②心悸需③忽一人自后及④强应之③二人默然良久③未几，天微明有售饼者启门③店主问其所以又有一人至肆（2）用现代汉语翻译下面句子①言未具伞，乞假之而同行②速狂走而去</p></div>
+  </article>
+  <article class="article" id="a136">
+    <h3>3．畏鬼致盗</h3>
+    <p class="body-text">荆①人有畏鬼者，闻稿叶之落与蛇鼠之行,莫不以为鬼也。盗知之，于是宵潜其垣②，作鬼音。，弗敢皖也。若是者四五，然后入其室，空其藏爲。或逛之日：“鬼实取之也。”中心惑而阴然之。无何,其宅果有鬼。纵物出于盗而以为鬼窃之,弗信有人盗也。《郁离子》③日·“…谗④不自来,因疑而来;间③不自来，乘隙而人。由其明之先蔽也。”</p>
+    <div class="block"><div class="b-title">【注释】</div><p>②垣(yuan)：墙壁下。③《郁离子》：明朝刘基撰。①荆：楚国。?间：④谗(chan)：逸言。挑拨离间。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①于是宵潜其垣　②或逛之日　③由其明之先蔽也</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>①莫不以为鬼也　②喘，弗敢晚也　③空其藏　④纵物出于盗而以为鬼窃之</p>
+    <p class="ex-item"><span class="q">（3）题目“畏鬼致盗”中的“致”解释为</span></p>
+    </div>
+  </article>
+  <article class="article" id="a137">
+    <h3>4．畏影恶迹</h3>
+    <p class="body-text">人有畏影恶迹而去之走者。举足愈数而迹愈多；走愈疾而影不离身。自以为尚迟,疾走不休,绝力①而死。不知处阴②以休影,处静以息迹，愚亦甚矣。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①绝力：用尽力气。②阴：阴暗的地方。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①举足愈数而迹愈多　②走愈疾而影不离身　③自以为尚迟　④处静以息迹</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>人有畏影恶迹而去之走者</p>
+    <p class="ex-item"><span class="q">（3）成语“口诛笔伐”的意思是</span></p>
+    </div>
+  </article>
+  <article class="article" id="a138">
+    <h3>5．鸲鹆噪虎</h3>
+    <p class="body-text">女几之上，鹊所巢。有虎出于朴橄(su)①。鹊集而噪之。②闻之,亦集而噪之。③见而问之日：“虎行地者也，其如子何哉而噪之也？”鹊日：“是啸而生风，吾畏其颠吾巢，故噪而去之。”问于。无以对。笑日：“鹊之巢木末也，畏风，故忌虎；尔穴居者也，何以噪为？”</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①朴橄(su)：树名，此指树丛。②（quyi)：俗称"八哥”。③鹑(piqu)：鸟名。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①集而噪之　②吾畏其颠吾巢　③鸽无以对　④之巢木末也　③故忌虎</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>①其如子何哉而噪之也　②是啸而生风　③噪而去之</p>
+    <p class="ex-item"><span class="q">（3）填空</span></p>
+    <p>古语有“精诚所至，</p>
+    </div>
+  </article>
+</section>
+<section class="unit-block">
+  <div class="unit-head">第 二十四 单 元</div>
+  <div class="sec-label">阅 读</div>
+  <article class="article" id="a139">
+    <h3>孟母三迁（阅读）</h3>
+    <p class="body-text">孟子幼时，其舍近墓，常嬉为墓间之事。其母日：“此非所以处子也。”遂迁居市旁。孟子又嬉为贾人①衡卖②之事。母日：“此又非所以处吾子也。”复徙居学宫③之旁。孟子乃嬉为设豆④揖让进退5之事。其母日：“此可以处吾子矣。"遂居爲。</p>
+    <div class="attrib">（节选自《列女传》）</div>
+    <div class="block"><div class="b-title">【注释】</div><p>①贾（gi)人：商人。②衔(xian)卖：边喊边卖。③学宫：私塾学校。④(zu)豆：古代祭祀用的两种盛器；此指祭祀仪式。③揖（yT)让进退：打拱作揖、进退朝堂等古代礼仪。③為：于之；在那里。</p></div>
+    <div class="block"><div class="b-title">【文言知识】</div><p>1，释“所以”。“所以”常用来表示原因，如“吾所以去京者不愿为任也”，意为我离开京城的原因是不想做官。这种用法古今相同。但古文中的“所以”还可指用来………，上文“此非所以处子也”，意为这不是用来安顿儿子的地方。又，上文“此又非所以处吾子也”中的“所以”，也指用来····。又，“师者所以传道受业解惑也”，意为教师的职责是传授道理、知识和解答疑难问题；“车者所以载人也”，意为车子是用来让人乘坐的。2.释“迁”与“徒”。上文有“迁”与“徙”，它们在文中的含义相同。“遂迁居市旁”，意为就搬迁到市场旁居住；“复徙居学宫之旁”，意为又搬迁到学校旁居住。又，“一年二迁，亦已累矣”，意为一年中两次搬家，也已经够劳累了；“自杭徙京已三载”，意为从杭州搬家到京城已三年了。当然“迁”与“徒”它们还另有各自的解释，此处从略。</p></div>
+    <div class="block"><div class="b-title">【文化常识】</div><p>让进退。“让”是古代宾主相见的礼节，即打拱谦让。“打拱”是两手相合，上身微俯。这种礼节，相当于今之握手见面。“进退”是指走上前与后退。古代臣子见君主要趋行，意为小步快走，以示敬意，退要后退几步然后转身出走。上文说孟子模仿学官里的学生学习让进退，即学习礼仪，懂得如何做官。今人的礼节虽不似古人那样繁复，但同事相见或拜望尊者乃至上级领导，也要讲究礼节，莽撞无礼是缺乏修养的表现。</p></div>
+    <div class="block"><div class="b-title">【启发与借鉴】</div><p>环境移人。孟母三迁的故事几乎家喻户晓。它说明环境能移人。如今不少家长，为了孩子的教育与成长，也会为了选择一个宜人的学习环境而煞费苦心。青少年的品性尚未定型，往往因为耳目染而改变，作为家长是不能不慎重考虑这个问题的。</p></div>
+    <div class="block"><div class="b-title">【译文】</div><p>孟子小时候，他住的地方靠近坟墓，（于是）经常玩丧葬之类的游戏。他母亲说：“这里不适宜用来安顿我儿子。”就迁居到市场旁边。孟子又模仿商人沿街叫卖。母亲说：“这里还是不适宜用来让我儿子住下。”又迁居到学校的旁边。孟子便学习（陪侍国君）祭祀祖宗的仪式及进退朝堂的规矩。他母亲说：“这里可以让我儿子住下来了。”于是就在那里住下。</p></div>
+  </article>
+  <div class="sec-label">训 练</div>
+  <article class="article" id="a140">
+    <h3>1．孟母戒子</h3>
+    <p class="body-text">孟子少时，诵，其母方织。孟子辙然①中止，乃复进。其母知其谊②也，呼而问之：“何为中止？”对日“有所失，复得。”其母引刀裂其织，以此戒之。自是之后，孟子不复谊矣。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①较(chuo)然：停止的样子。②谊(xuan)：因分心而遗忘。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①其母方织　②乃复进　③其母引刀裂其织　④以此戒之　自是之后</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>有所失，复得</p>
+    <p class="ex-item"><span class="q">（3）孟母“裂其织”与孟子“然中止”有什么关系？</span></p>
+    </div>
+  </article>
+  <article class="article" id="a141">
+    <h3>2．孟母不欺子</h3>
+    <p class="body-text">孟子少时，东家杀豚①。孟子问其母日：“东家杀豚何为？”母日：“欲啖女。”其母自悔而言日：“吾怀妊是子，席不正不坐，割③不正不食，胎教之也。今适有知而欺之，是教子不信也。”乃买东家豚肉以食之，明不欺也。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①豚(tun)：小猪。②妊(rén)：孕。③割：切肉。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①吾怀妊是子　②席不正不坐　③是教子不信也</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>①欲唢女　②今适有知而欺之　③明不欺也</p>
+    </div>
+  </article>
+  <article class="article" id="a142">
+    <h3>3．秦西巴纵鹿</h3>
+    <p class="body-text">鲁①贵人孟孙，猎得魔②，使秦西巴持归。其母随而鸣，秦西巴见其哀，纵而与之。魔随母而去。孟孙怒日：“吾猎得魔，尔纵之，何也？”秦西巴日：“但不忍耳。”孟孙逐秦西巴。居一年，召以太子傅③。左右日：“夫秦西巴有罪于君，今以为太子傅，何也？"孟孙日：“夫秦西巴以一魔而不忍，又安能亏④吾子乎？”</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①鲁：指鲁国。②魔（ni)：小鹿。③太子傅：太子的老师；太子是君位的继承人。④亏：伤害。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>　①孟孙逐秦西巴　②居一年，召以太子傅</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>①纵而与之　②但不忍耳</p>
+    <p class="ex-item"><span class="q">（3）“今以为太子傅”中省略了介词宾语，补充完整后的句子是</span></p>
+    <p class="ex-item"><span class="q">（4）成语“明察秋毫”中的秋毫”，是指</span></p>
+    <p>;这个成语比喻</p>
+    </div>
+  </article>
+  <article class="article" id="a143">
+    <h3>4．屠夫杀狼</h3>
+    <p class="body-text">一屠暮行，为狼所逼。道旁有夜耕者所遗行室の。奔人伏焉。狼自苦②中探爪人。屠急捉之，令不可去，顾③无计可以死之，唯有小刀不盈寸，遂割破爪下皮，以吹豕之法吹之①。极力吹移时，觉狼不甚动，方缚以带。出视，则狼胀如牛，股③直不能屈，口张不得合。遂负之以归。非屠乌③能作此谋也。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①行室：搭建在野外的临时房子。②苦（shan）：用草编织的席子。此指挂在窗户上的遮风挡雨的草帘。③顾：只是。以吹家之法吹之豕，同“猪”；旧时宰猪后要在皮下吹气，使猪膨胀。③股：大腿。?乌：怎么。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①道旁有夜耕者所遗行室　②奔入伏离　③令不可去　④极力吹移时　③遂负之以归</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>①为狼所逼　②唯有小刀不盈寸　③方缚以带</p>
+    <p class="ex-item"><span class="q">（3）成语“迥然不同”中的“迥”，解释为</span></p>
+    <p>；这个成语的意思是</p>
+    </div>
+  </article>
+  <article class="article" id="a144">
+    <h3>5．郢书燕说</h3>
+    <p class="body-text">①人有遗燕相国书者。夜书，火不明，因谓持烛者日：“举烛。”云②而过书举烛。举烛，非书意也。燕相受而说③之，日：“举烛者，尚④明也；尚明者，举贤而任之。”燕相白王，王大悦，国以治。治则治矣，非书意也。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①郢：楚国国都。②云：一边说?说：同“悦”。④尚·推崇。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①郢人有遗燕相国书者　②燕相受而说之　③燕相白王　；②“夜书”中的　“书”，解释为　;③“非书意”中“书”，解释为</p>
+    <p class="ex-item"><span class="q">（3）用现代汉语翻译下面句子</span></p>
+    <p>①云而过书举烛　②举烛，非书意也</p>
+    <p class="ex-item"><span class="q">（4）成语“郢书燕说”出典即在上文，这个成语比喻</span></p>
+    </div>
+  </article>
+</section>
+<section class="unit-block">
+  <div class="unit-head">第 二十五 单 元</div>
+  <div class="sec-label">阅 读</div>
+  <article class="article" id="a145">
+    <h3>陶母责子（阅读）</h3>
+    <p class="body-text">陶公①少时作鱼梁吏，尝以③饷④母。母封付使，反书责侃日：“汝为吏，以官物见，非唯不益，乃增吾忧也。”</p>
+    <div class="attrib">（节选自刘义庆《世说新语》）</div>
+    <div class="block"><div class="b-title">【注释】</div><p>①陶公：即陶侃，东晋著名政治家、军事家；公，对人的尊称。②鱼梁吏：管理河道及渔业的小官。③(gan)鲜(zha)：一坛糟鱼。④饷(xiang)：以食物赠送。付使：交还给送来的人。③反书：回信。</p></div>
+    <div class="block"><div class="b-title">【文言知识】</div><p>1.释“见”。“见”指看见，众所周知。但它还有一个很特殊的义项，可用来指代“我”。上文“以官物见”中的“见”，即相当于“我”，句意为用官家的财物赠送我。又，“以书见赠”，意为把书赠送给我；“汝之见爱，吾甚幸”，意为你爱我，我十分荣幸。它又相当于“被”，如“见弃”，既可理解为抛弃我，也可理解为被抛弃。2．释“非唯·乃…”。这是古文中的种固定句式，相当于“不仅··反而而且)·….”。上文“非唯不益，乃增吾忧也”，句意为不仅没有好处，反而增添了我的忧愁。又，“竟年伏案读书，非唯无益，乃有害于身”，意为整年伏在书桌上阅读，不仅没好处，反而有害于健康。又，“嗜酒者，非唯损财，乃伤身”，意为爱好喝酒，不仅花费钱财，而且有害身体。</p></div>
+    <div class="block"><div class="b-title">【启发与借鉴】</div><p>教子有方。东晋的陶侃一生正直廉明，这跟他母亲的教育有关。从上文可见，即使一坛并不值钱的糟鱼，陶母不仅不接受，而且回信批评儿子：因为这是公物。公与私在陶母看来是泾渭分明的事，假公济私不仅害了公，还害了私。可如今乱了套，假公济私者大有人在，借公款大吃大喝者有之，借纳税人的钱出国游荡者有之。据报载，每逢新学年开学，尤其是重点中学新生报到，校门口的公车比比皆是。这些为人父母的及为人子女的，坐公家的小车进校，竟不以为耻，反以为荣。他们跟一千七百多年前陶母的思想修养有天壤之别！</p></div>
+    <div class="block"><div class="b-title">【译文】</div><p>陶侃年轻时做管理河道及渔业的官吏，曾经把一坛糟鱼送给母亲。母亲把这坛鱼封好交还给使者，（并且）回信责备陶侃说：“你做官，把官家的东西送给我，不仅没好处，反而增添了我的忧愁。”</p></div>
+  </article>
+  <div class="sec-label">训 练</div>
+  <article class="article" id="a146">
+    <h3>1．陶侃尝出游</h3>
+    <p class="body-text">陶侃尝出游①，见人持一把未熟稻，侃问“用此何为？”人云：“行道所见，聊取之耳。”侃作色大怒日：“汝不田，而贼人稻！”执而鞭之。是以百姓勤于农耕，家给人足。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①游：巡视。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①见人持一把未熟稻　②聊取之耳　③侃作色大怒日　④家给人足</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>汝不田，而贼人稻</p>
+    </div>
+  </article>
+  <article class="article" id="a147">
+    <h3>2．木屑竹头</h3>
+    <p class="body-text">尝造船,其木屑竹头の，侃皆令籍③而掌之。人咸不解所以。后正会①,积雪始晴，厅事③前余雪犹湿，乃以木屑布地。及桓温③伐蜀，又以侃所贮竹头作钉装船。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①竹头：指废弃的竹根。④正会：农历正月初一。③厅事：官②侃：指陶侃。③籍：登记。府办公的厅堂。①装：装配。③桓温：东晋大将。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①侃皆令籍而掌之　②乃以木屑布地　③及桓温伐蜀　④又以侃所购竹头作钉装船</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>人咸不解所以</p>
+    </div>
+  </article>
+  <article class="article" id="a148">
+    <h3>3．墨子怒耕柱子</h3>
+    <p class="body-text">墨子怒耕柱子①。耕柱子日：“我无愈于人乎？”墨子日：“我将上太行，以骥与牛驾，子将谁策？”耕柱子日：“将策骥也。”墨子日：“何故策骥也？”耕柱子日：“骥足以策。”墨子日：“我亦以子为足以策，故怒之。”耕柱子悟。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①墨子：即墨翟，战国时墨家学派的创始人。②耕柱子：墨子的学生。③太行：即太行山。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①以骥与牛驾　②骥足以策　③耕柱子悟</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>①我无愈于人乎？　②子将策谁？　③我亦以子为足以策，故怒之</p>
+    <p class="ex-item"><span class="q">（3）成语“天涯海角”中的“涯”，解释为</span></p>
+    <p>；这个成语的意思是</p>
+    </div>
+  </article>
+  <article class="article" id="a149">
+    <h3>4．李存审诫子</h3>
+    <p class="body-text">李存审①出于寒微，常诫诸子日：“尔父少提一剑去乡里②，四十年间，位至将相，其间万死一生者非，破骨出簇③者几百余。”因授以所出簇，命藏之，日：“尔曹生于膏梁，当知尔父起家如此也。”诸子皆诺。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>李存审：五代时人。②乡里：此指家乡。③（zUu)：箭头。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①尔父少提一剑去乡里　②破骨出者几百余　③尔曹生于膏梁　④诸子皆诺　；“微”指</p>
+    <p class="ex-item"><span class="q">（2）上文“出于寒微”中的“寒”指</span></p>
+    <p class="ex-item"><span class="q">（3）上文生于膏梁”中的“膏”指</span></p>
+    <p>_；“梁”指　；“膏粱”合在一起应理解为</p>
+    <p class="ex-item"><span class="q">（4）用现代汉语翻译下面句子</span></p>
+    <p>其间万死一生者非一</p>
+    <p class="ex-item"><span class="q">（5）填空：古语有“化于戈为</span></p>
+    </div>
+  </article>
+  <article class="article" id="a150">
+    <h3>5．芒山盗临刑</h3>
+    <p class="body-text">乳，死且无憾。”母岭之，与之乳。不意盗啮断乳头，流血满地，母死。行刑者日：“尔何毒耶？”盗因告行刑者日：“吾少也，盗一菜一薪，吾母见而喜之，以至不检，遂有今日，故恨而杀之。”</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①宣和：宋徽宗年号。②芒山：古地名，今河南境内。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①芒山有盗临刑　②母来与之诀　③不意盗啮断乳头　④行刑者日　?盗一莱一薪　③以至不检</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>①死且无憾　②尔何毒耶</p>
+    </div>
+  </article>
+</section>
+<section class="unit-block">
+  <div class="unit-head">第 二十六 单 元</div>
+  <div class="sec-label">阅 读</div>
+  <article class="article" id="a151">
+    <h3>欧阳修论作文（阅读）</h3>
+    <p class="body-text">顷岁①孙莘老识欧阳文忠公③，尝乘间以文字问之。云：“无它术，唯勤读书而多为之，自工；世人患作文字少，又懒读书，每一篇出，即求过人，如此少有至者。疵病不必待人指摘，多作自能见之。”</p>
+    <div class="attrib">（选自《东坡志林》）</div>
+    <div class="block"><div class="b-title">【注释】</div><p>①顷岁：近年。②孙莘(xin)老：孙觉，字莘老。③欧阳文忠公：欧阳修。④患：弊病。③疵(ci）：小毛病，引申为缺点。③指摘：批评，挑剔。</p></div>
+    <div class="block"><div class="b-title">【文言知识】</div><p>1.释“间”。“间”本指日光或月光射进门缝，因此它有隙”“空档”的含义。上文“尝乘间以文字问之”中的“间”，即指空隙，句意为曾经乘着空闲的时候问欧阳修怎样写文章。又，“从门间窥之”，意为从门缝里悄悄地看；“石有间，匍匐入”，意为石头中有空隙，人爬着进去。所谓间谍，从字面上理解是钻空子收集情报的人。2.释“工”。“工”指工作、工人，这是容易理解的。上文“自工”中的“工”，指好，全句意为没其他办法，只有勤奋读书而多写作，自然会好的。它又指“擅长”。“工书”即擅长书法；“工画”即擅长绘画。成语“异曲同工”，意为曲调虽不一样，但同样好（或美妙）。</p></div>
+    <div class="block"><div class="b-title">【文化常识】</div><p>古人的“谥（shi)号”。上文说的欧阳文忠公，即北宋文学家欧阳修，字永叔，号醉翁、六一居士。“文忠”是他的谥号。所谓谥号，是朝廷对某些人生前品性行为及业绩的评价，有贬之分。欧阳修生前文章写得好，又忠于宋王朝，故谥号为“文忠”，世称欧阳文忠公。又，唐代的韩愈，他是古文运动的首倡者，死后谥号为“文”，世称韩文公。</p></div>
+    <div class="block"><div class="b-title">【启发与借鉴】</div><p>欧阳修认为要文章写得好，必须勤读书多写作。这种见解十分正确。多读书就能积累丰富的词语，学习名家的选材、组材等；多写就会熟能生巧。不读书又不肯多写，作文的水平怎么能提高呢？</p></div>
+    <div class="block"><div class="b-title">【译文】</div><p>近年来孙莘老认识了欧阳修，曾经乘机问他怎么把文章写好。（欧阳修)说：“没其他方法，只有勤奋读书加上多写文章，（这样)自然而然会好的；世上一般人的弊病是写的文章太少，又懒于读书，每写出一篇（文章），便要求超过别人，像这样很少有达到（目的）的。（文章）缺点不必等别人来批评、挑剔，（只要)多做，自已就能察觉它的。”</p></div>
+  </article>
+  <div class="sec-label">训 练</div>
+  <article class="article" id="a152">
+    <h3>1．读书与作文</h3>
+    <p class="body-text">读书如销铜，聚铜入炉，大①扇之，不销不止，极用费力。作文如铸器，铜既销矣，随模铸器，一冶②即成。只要识模，全不费力。所谓劳于读书、逸于作文者此也。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①（bei)：古代皮制的鼓风器。②冶：此指冶炼，即使金属熔化后铸器。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①读书如销铜　②作文如铸器　③铜既销类　④随模铸器</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>所谓劳于读书、逸于作文者此也</p>
+    </div>
+  </article>
+  <article class="article" id="a153">
+    <h3>2．卖瓜减字</h3>
+    <p class="body-text">有一田父①，植瓜数亩，遇丰年，担而售之。于板书日：此瓜出售。一秀才过，白：““此"字重复，宜去，但留‘瓜出售’即可。”田父然之。既而，又一秀才见之，曰：“众皆见尔瓜，‘瓜'字可去。”田父即去“瓜”字。俄顷，又一秀才来，日：“瓜置于市，非售而何？‘售”字赘②也。”田父然。适旁有一老父，日：“直非书不可。”</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①田父:种田人。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①于板书日　②但留“瓜出售”即可　③“售”字赞（zhui)也　④田父烤然　③直非书不可</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>①田父然之　②瓜置于市，非售而何？</p>
+    <p class="ex-item"><span class="q">（3）这则故事告诉我们什么道理？</span></p>
+    <p class="ex-item"><span class="q">（4）成语“声情并茂”中的“并”，解释为</span></p>
+    <p>；这个成语的意思是</p>
+    </div>
+  </article>
+  <article class="article" id="a154">
+    <h3>3．修改一法</h3>
+    <p class="body-text">近闻吾乡朱梅崖①先生，每一一文就，必粘之于壁，逐日熟视，去十余字。旬日以后，至万无可去，而后脱稿示人。此皆后学者所法也。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①朱梅崖：清朝人。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①每一文就　②去十余字　③此皆后学者所法也　</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>①逐日熟视　②而后脱稿示人　)：①三天;②十天；③二十天;④一个月</p>
+    <p class="ex-item"><span class="q">（3）选择：上文“旬日以后”中的"旬日”是指（</span></p>
+    </div>
+  </article>
+  <article class="article" id="a155">
+    <h3>4．歧路亡羊</h3>
+    <p class="body-text">杨子①之邻人亡羊。既率其党，又请杨子之竖③追之。杨子日：“嘻，亡一羊，何追者之众？"邻人日：“多歧路。”既反，问：“获羊乎？"日：“亡之矣？”日：“奚亡之？"日：“歧路之中又有歧焉，吾不知所之，所以反也。”杨子戚然变容，不言者移时④，不笑者竟日。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>④移时：多时。①杨子：杨朱。②党:亲友。③竖：僮仆。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①杨子之邻人亡羊　②既反　③杨子威然变容　④不笑者竞日</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>①何追者之众？　②奚亡之?　③吾不知所之　；这个成语的意思是</p>
+    <p class="ex-item"><span class="q">（3）成语“不分皂白”中的“皂”，解释为</span></p>
+    </div>
+  </article>
+  <article class="article" id="a156">
+    <h3>5．二叟钓鱼</h3>
+    <p class="body-text">有二叟分石而钓。其甲得鱼至多且易取，乙竟日亡所获也，乃投竿问甲日：“食饵①同，钓之水亦同，何得失之异耶？”甲日：“吾方下钓时，但知有我而不知有鱼，目不瞬，神②不变，鱼忘其为我，故易取也。子意乎鱼，目乎鱼，神变则鱼逝矣，奚其获？”乙如其教，连取数鱼。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①食饵(ér)：放在鱼钩上的食物。②神：神色、神态。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p>1.解释下列各句中加点的词　①有二叟(sou)分石而钓　②其甲得鱼至多且易取　③乃投竿问甲日　④目不瞬　③子意乎鱼　③神变则鱼逝矣　①乙如其教　2.用现代汉语翻译下面句子　①乙竟日亡所获也　②何得失之异耶？　③鱼忘其为我　3．成语“安然无恙”中的“无恙”，解释为　；这个成语的意思是</p>
+    </div>
+  </article>
+</section>
+<section class="unit-block">
+  <div class="unit-head">第 二十七 单 元</div>
+  <div class="sec-label">阅 读</div>
+  <article class="article" id="a157">
+    <h3>关羽刮骨疗毒（阅读）</h3>
+    <p class="body-text">羽①尝为流矢②所中，贯③其左臂，后创虽愈，每至阴雨，骨常疼痛。医日：“矢簇④有毒，毒入于骨，当破臂作③创，刮骨去毒，然后此患乃除耳。”羽便伸臂令医劈之。时羽适请诸将饮食相对，臂血流离③，盈于盘器，而羽割炙引酒，言笑自若。</p>
+    <div class="attrib">（节选自《三国志·关羽传》）</div>
+    <div class="block"><div class="b-title">【注释】</div><p>①羽：指关羽；三国时蜀国大将。②流矢：乱箭。③贯：穿透。④（zU)：金属箭头。?作：打开。?流离：淋漓。</p></div>
+    <div class="block"><div class="b-title">【文言知识】</div><p>1.释“创”。上文“后创虽愈”及“破臂作创”中的“创”，均指伤口。“创”在古文中多作“伤”解。又，“受创”指受伤；“重创”指重伤；“创”指伤口。它还指开创。如，“创业”指开创基业。又，“雨葬乃去”，意为雨停了之后才离开；“学乃知不足”，意为学习之后才知道不够。它还可作“就”、“是”等用。如，“言已乃笑”，意为说完就笑起来了；“吾乃楚人也”，意为我是楚地人。</p></div>
+    <div class="block"><div class="b-title">【文化常识】</div><p>志》。南朝时裴松之又为它作了详细的注解，因此更具体完备。明人罗贯中根据《三国志》及裴松之注引的故事，再加部分虚构，写成小说《三国演义》。故后人说《三国演义》中的情节是七分真三分假。这是两部不同的书，不能混淆。</p></div>
+    <div class="block"><div class="b-title">【译文】</div><p>关羽曾经被乱箭击中，穿透他的左手臂，后来伤口虽然痊愈了，（但是)每到阴雨（天），骨头里常疼痛。医生说：“金属的箭头上有毒，毒性深入到骨头，必须开手臂打开伤口，把骨头上的毒性除去，这样之后病才能根除。”关羽便伸出手臂让医生开它。当时关羽正宴请各位将令，（他）手臂上的血不断滴下，盘子里盛满了血，可他仍吃烤肉饮酒，谈笑自若。</p></div>
+  </article>
+  <div class="sec-label">训 练</div>
+  <article class="article" id="a158">
+    <h3>1．张飞横矛当阳桥</h3>
+    <p class="body-text">先主①背曹公?，依刘表。表卒，曹公犯荆州③，先主奔江南④。曹公追之，一日一夜，及于当阳之长阪③。先主闻曹公猝至，弃妻子走，使飞将二十骑拒后。飞据水断桥③，目横矛日：“张翼德在此，可来共决死！”敌皆无敢近者。故遂得免。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①先主：指刘备。②曹公：指曹操。③荆州：故州名，今湖北一带。江南：指长江中游的南部地区。③当阳之长阪(ban)：即当阳县的长阪坡(地方）。③据水断桥：凭着水道在桥头拦截敌人。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①表卒　②及于当阳之长阪　③先主闻曹公猝至　④目横矛日</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>弃妻子走，使飞将二十骑拒后</p>
+    <p class="ex-item"><span class="q">（3）上文“张翼德在此”中的张翼德是谁？</span></p>
+    <p class="ex-item"><span class="q">（4）上文“故遂得免”的主语是</span></p>
+    <p>；“免”指</p>
+    </div>
+  </article>
+  <article class="article" id="a159">
+    <h3>2．次非斩蛟</h3>
+    <p class="body-text">荆①有次非者，得宝剑于干遂③。还反涉江，至于中流，有两蛟③夹绕其船。臂③祛衣③，拔宝剑日：“此江中之腐肉朽骨也。弃剑以全众，余奚爱焉？”于是赴江刺蛟，杀之而复上船。舟中之人皆得活。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①荆：楚国。④舟②干遂：吴国地名；吴国当时出产名剑。③蛟：传说中生活在水中的龙。③祛(qu)衣：脱掉外衣。人：船工。③镶臂：抒起袖子。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①还反涉江　②至于中流　③于是赴江刺蛟　④杀之而复上船</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>①未之见也　②余美爱需？</p>
+    <p class="ex-item"><span class="q">（3）次非的行为可用成语</span></p>
+    <p>来概括。</p>
+    </div>
+  </article>
+  <article class="article" id="a160">
+    <h3>3．溺鼠</h3>
+    <p class="body-text">鼠好夜窃粟。有人置粟于益，鼠恣啮，且呼群类入爲。月余，粟且尽，主人患之。人教以术②，乃以糠易粟，浮水面。是夜，鼠复来，欣欣然人，不意咸溺死。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①益（ang）：一种口小腹大的盛器。②术：方法。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①鼠恣啮　②是夜，鼠复来，欣欣然入　③不意成溺死　；②“粟且尽”中的　“且”，解释为</p>
+    <p class="ex-item"><span class="q">（3）用现代汉语翻译下面句子</span></p>
+    <p>①主人患之　②乃以糠易栗</p>
+    <p class="ex-item"><span class="q">（4）成语“不以为然”中的"然”，解释为</span></p>
+    <p>；这个成语的意思是</p>
+    </div>
+  </article>
+  <article class="article" id="a161">
+    <h3>4．鸡感恩</h3>
+    <p class="body-text">有旅者夜行值雨，遂赴友人家投宿為。友人见不速之客，甚喜，将杀鸡遇之。旅人鸡，伴言茹①素，遂不杀鸡。夜宿至三更②，忽闻鸡鸣甚急，以为黄鼠狼来也，邃起逐之。俄而墙倒，适在客房。主人惊而起，以为客毙矣，举烛而索，客乃在鸡笼旁。盖鸡感恩，促其起床也。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①茹(r)：吃。②三更：相当于今之半夜时分。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①有旅者夜行值雨　②将杀鸡遇之　③伴言茹素　④遮起逐之　③适在客房　③以为客毙类</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>举烛而索，客乃在鸡笼旁</p>
+    <p class="ex-item"><span class="q">（3）成语“不速之客”中的“速”，解释为</span></p>
+    <p>；这个成语的意思是</p>
+    </div>
+  </article>
+  <article class="article" id="a162">
+    <h3>5．猫儿索食</h3>
+    <p class="body-text">猫生儿，稍大。猫儿问母：“当何所食？”母日：“人自教女。”猫儿夜至他家，隐瓮器の间。有人见已，而相约日：“酥乳②肉等，须覆盖，鸡雏高举，莫之食。”猫儿审听，即知：鸡酥乳与肉，皆是我食也。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①瓮(weng)器：陶制的各种盛器；瓮，一种口小腹大的盛器。②酥(su)乳：泛指各种油腻的乳制品。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①猫生儿，稍大　②有人见已　③鸡维高举　④猫儿审听</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>①当何所食？　②人自教女</p>
+    <p class="ex-item"><span class="q">（3）“隐瓮器间”中，省略了介词</span></p>
+    <p class="ex-item"><span class="q">（4）题目“猫儿索食”中的“索”，解释为</span></p>
+    </div>
+  </article>
+</section>
+<section class="unit-block">
+  <div class="unit-head">第 二十八 单 元</div>
+  <div class="sec-label">阅 读</div>
+  <article class="article" id="a163">
+    <h3>顾况戏白居易（阅读）</h3>
+    <p class="body-text">乐天①初举，名未振，以歌诗投顾况②。况戏之日：“长安③物贵，居大不易④。”及读至《原上草》，云：“野火烧不尽，春风吹又生。”日“有句如此，居亦何难？老夫前言戏之耳。”</p>
+    <div class="attrib">（节选自《古今诗话》）</div>
+    <div class="block"><div class="b-title">【注释】</div><p>①乐天：即白居易，字乐天。②顾况：当时著名诗人。③长安：唐朝都城，今陕西西安市。④居大不易：住在这里是很不容易的；与白居易名字含义相反。</p></div>
+    <div class="block"><div class="b-title">【文言知识】</div><p>1.释“振”。上文“名未振”中的“振”，同“震”，句意为名声还没使人震动，或名声还不响。“振”是个多义词：它指“振作”，如“振奋精神”；“振笔疾书”指挥动笔迅速书写；“振衣”指整衣，抖衣去尘；“振振有辞”指说话理直气壮；“振旅”指整顿军队；“振臂”指挥动手臂。2.释“亦”。“亦”在古文中多指“也”、“又”。上文“居亦何难”，意为住在这儿又有什么难呢？又，《论语·学而》：“学而时习之，不亦说乎？”又，“此亦人之常情”；又，“吾亦愿从”，意为我也愿意跟随。</p></div>
+    <div class="block"><div class="b-title">【文化常识】</div><p>唐朝的科举。科举从隋、唐开始，但那时的科举与明清时期不同。唐代科举分文举与武举两种。白居易参加的是文举，上文说“乐天初举”，意为白居易初次参加科举考试。文举考辞赋与文章，及格的称进士，有资格做官。上文说的《原上草》，即《赋得原上草送别》，是白居易科举时作诗的题目。原诗共八句：离离原上草，一岁一枯荣。野火烧不尽，春风吹又生。远芳侵古道，晴翠接荒城。又送王孙去，姜姜满别情。武举考骑射、举重等，合格者可出任校官或领兵。</p></div>
+    <div class="block"><div class="b-title">【译文】</div><p>白居易开始参加科举考试，名声还不响，他把诗歌送给顾况。顾况跟他开玩笑说：“长安城里物价昂贵，（在这儿）住下很不容易。”等读到《原上草》，其中写道：“野火烧不尽，春风吹又生。”（顾况）说：“有这样（好的）诗句，住在这里又有什么难呢？我刚才说的是开玩笑罢了。”</p></div>
+  </article>
+  <div class="sec-label">训 练</div>
+  <article class="article" id="a164">
+    <h3>1．刘道真戏婢</h3>
+    <p class="body-text">刘道真遭乱①，于河侧为人牵船，见一老操橹②，道真嘲之日：“女子何不调机弄籽③？因甚傍河操橹？"女答日：“丈夫何不跨马挥鞭？因甚傍河牵船？”又尝与人共饭素盘草舍中，见一将两小儿过，并着青衣，嘲之日：“青羊引双羔。”妇人日：“两猪共一槽。”道真无语以对。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①遭乱：遇到社会动乱。②操檐：用槽摇船。③调机弄（zhu）：指在织布机上织布；，织布用的梭子。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①丈夫何不跨马挥鞭　②又尝与人共饭素盘草舍中　③见一姐将两小儿过</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>①并着青衣　②道真无语以对</p>
+    <p class="ex-item"><span class="q">（3）上文“两猪共-一槽”是用来嘲讽</span></p>
+    </div>
+  </article>
+  <article class="article" id="a165">
+    <h3>2．唐明皇赐名</h3>
+    <p class="body-text">贺知章有高名，告老归里，明皇嘉重之。将行泣涕，上问何所欲，日：“臣有男未有定名①，幸陛下赐之，以得归乡之荣。”上日：“为人之道莫胜于信，孚者，信也，卿之子宜名孚。”贺再拜③而受命為。久而悟之，日：“上何我也，孚乃爪下为子，岂非呼我儿为爪子也？”</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①定名：正式的名字。②陆下：皇上。③再拜：拜了两次。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①明皇嘉重之　②将行泣沸　③幸陛下赐之　④久而悟之　③上何谁我也</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下列句子</span></p>
+    <p>①上问何所欲　②为人之道莫胜于信</p>
+    </div>
+  </article>
+  <article class="article" id="a166">
+    <h3>3．偷鸭求骂</h3>
+    <p class="body-text">邑西①白家庄居民，盗邻鸭烹之。至夜，觉肤痒。天明视之，茸生鸭毛，触之则痛。大惧，无术可医。夜梦一人告之日：“汝病乃天罚，须得失者骂，毛乃可落。”而邻翁素雅量，生平失物，未尝征③于声色。某诡告翁日：“鸭乃某甲所盗，彼深畏骂，骂之亦可警将来。”翁笑日：“谁有闲气骂恶人！”卒不骂。某盗窘，因实告邻翁。翁乃骂，其病愈。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①邑西：县的西部。②茸（qi）：重重叠叠。③征：表露。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①盗邻鸭杰之　②未尝征于声色　③某告翁日　①卒不骂　　某盗窘</p>
+    <p class="ex-item"><span class="q">（2）比较：分别解释下列各句中的“乃”：①汝病乃天罚</span></p>
+    <p>②毛乃可落　④翁乃骂　③鸭乃某甲所盗</p>
+    <p class="ex-item"><span class="q">（3）用现代汉语翻译下面句子</span></p>
+    <p>①无术可医　②邻翁素雅量</p>
+    </div>
+  </article>
+  <article class="article" id="a167">
+    <h3>4．何梅谷之妻</h3>
+    <p class="body-text">何梅谷，鄱阳人也。其妻垂老，好佛事，自旦至夕，必口念“观音菩萨”千遍。何梅谷以儒学闻于时，止之则弗从，忽止又恐贻笑士人②，进退狼颁。一日，呼妻至再三，随夜随呼勿辙。妻怒日：“何噪若是耶？”梅谷徐答日：“仅呼半日，汝即怒我，观音一日被尔呼千遍，安得不怒汝耶？”妻顿悟，遂止。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①鄱阳：古地名，在今江西境内。②贻笑士人：给读书人留下笑柄。【调练】（1）解释下列各句中加点的词①其妻垂老②自旦至夕③止之则弗从④随夜随呼勿辙梅谷徐答日安得不怒汝耶①妻顿悟（2）上文“何梅谷以儒学闻于时”中的“儒学”是指；翻译这句话（3）用现代汉语翻译下面句子何噪若是耶（4）成语“见异思迁”中的“迁”，解释为；这个成语的意思是</p></div>
+  </article>
+  <article class="article" id="a168">
+    <h3>5．庸医</h3>
+    <p class="body-text">有医者，自称善外科。一裨将①阵回，中流矢②，深人膜③内，延使治，乃持剪剪去管，跪而请谢。神将日：“在膜内须驱治。”医日：“此内科事，不意并责我。”</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①神(pi)将：副将。②流矢：乱箭。③膜：肌肉。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①一神将阵回　②延使治　③乃持剪剪去管　④跪而请谢</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>①链在膜内须函治　②不意并责我</p>
+    </div>
+  </article>
+</section>
+<section class="unit-block">
+  <div class="unit-head">第 二十九 单 元</div>
+  <div class="sec-label">阅 读</div>
+  <article class="article" id="a169">
+    <h3>老马识途（阅读）</h3>
+    <p class="body-text">管仲、隔朋①从桓公伐孤竹②，春往冬返，迷惑失道。管仲日：“老马之智可用也。”乃放老马而随之，遂得道。行山中无水，朋日：“蚁冬居山之阳，夏居山之阴,蚁壤③一寸而仞有水。”乃掘地，遂得水。</p>
+    <div class="attrib">（选自《韩非子》）</div>
+    <div class="block"><div class="b-title">【注释】</div><p>①管仲、(xi)朋：两人都是齐桓公的大臣。②孤竹：指孤竹国，在今河北卢龙。③蚁壤：蚁封，即蚁穴周围防雨水的高出地面的浮土。</p></div>
+    <div class="block"><div class="b-title">【相关知识】</div><p>1.释“阳”与“阴”。这两个词有很多义项，这里仅说山与水的阴、阳。山的南面叫阳，山的北面叫阴。上文“蚁冬居山之阳，夏居山之北”，意为蚂蚁冬天住在山的南面，夏天住在山的北面。因此陕西华阳县当在华山之南，华阴县当在华山之北，衡阳县当在衡山之南。水的阴、阳，正与山的阴、阳相反。水之南边叫阴，因此江苏的江阴市当在长江的南岸，淮阴也当在淮河的南岸，而汉阳市当在汉水的北边。但古今河道有变迁，城市有兴废，所以山南山北及水南水北的城市，有些已名不副实。2.“寸”、“初”及其他。古代10分为1寸，10寸为1尺，8尺为1仞，10尺为1丈，16尺为1导。上文说“一寸而仞有水”，意为蚁壤高一寸，那么地下八尺的地方便有水。《愚公移约的说法，并非实指。</p></div>
+    <div class="block"><div class="b-title">【译文】</div><p>管仲、朋跟随齐桓公讨伐孤竹国，春天出征冬天返回，（可是返回途中）迷失了道路。管仲说：“老马的智慧可以利用。”于是放任老马（行走）而（人）紧跟着它，便找到了道路。（有一次军队)行走在山中找不到水源，朋说：“蚂蚁冬天居住在山的南面，夏天居住在山的北面，蚁封高一寸，它下面一仞的地方便有水。”于是（在蚁封一寸处)掘地，就找到了水源。</p></div>
+  </article>
+  <div class="sec-label">训 练</div>
+  <article class="article" id="a170">
+    <h3>1．马诉冤</h3>
+    <p class="body-text">刘承节奉命赴任，自浙至赣，但与一子一仆乘马而行。至贵溪①，午驻逆旅②，逢数客亦投宿。刘筐中银可百两，为客所窥。诸客皆盗也。是夜盗操杖人室。刘本从军，有臂力，挥刀断其一臂，众惧遁散。刘促子与仆起，速去，然于贵溪城外高冈下，又与盗遇，虽与拒斗，而众寡不敌，并子仆死焉。所乘马蹈③于道。适主簿④出，马迎之车前，屈足如拜。主簿怪之，日：“是必有冤诉。”遂随马行，至高冈，马仁立不前，见满地血迹，三户仆地，肢体尚暖。主簿督人访捕，不竟日而盗悉禽。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①贵溪：古地名，今江西境内。②逆旅：旅店。③蹈（zhizhu)：来回走动。④主簿：县令的属官，负责文书印章。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列句子中加点的词</span></p>
+    <p>①刘承节奉命赴任　②但与一子一仆乘马而行　③众惧通散　④而众寡不敌　③适主筹出　③马位立不前</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>①刘筐中银可百两，为客所窥　②主薄怪之　③不竟日而盗悉禽</p>
+    <p class="ex-item"><span class="q">（3）上文“自浙至赣”中的“赣”，是指</span></p>
+    <p>(地方）</p>
+    <p class="ex-item"><span class="q">（4）上文“虽与拒斗”中，在“与”字后省略了</span></p>
+    <p></p>
+    </div>
+  </article>
+  <article class="article" id="a171">
+    <h3>2．楚人有担山鸡者</h3>
+    <p class="body-text">楚人有担山鸡者，路人问日：“何鸟也？”担者欺之日：“凤凰也。”路人日：“我闻有凤凰久矣，今真见之，汝卖之乎？”日：“然。”乃酬千金①，弗与；请加倍，乃与之。方将献楚王，经宿而鸟死。路人不湟②惜其金，唯帐不得以献耳。国人传之，咸以为真凤而贵，宜欲献之，遂闻于楚王。王感其欲献已也，召而厚赐之，过买凤之直十倍矣。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①金：古代货币单位。②湟（huang）：忧虑。【调练】（1）解释下列各句中加点的词①日:“然。”②乃酬千金③方将献楚王④经宿而鸟死③咸以为真风而贵③召而厚赐之①过买凤之直十倍（2）用现代汉语翻译下面句子①唯帐不得以献耳②遂闻于楚王</p></div>
+  </article>
+  <article class="article" id="a172">
+    <h3>3．某甲夜暴疾</h3>
+    <p class="body-text">某甲夜暴疾，命门人①钻火②。其夜阴，不得火，催之急，门人忿然日：“君责人亦大无道理，今暗如漆，何以不把火照我？我当得觅钻火具，然后易得耳。”孔文举③闻之日：“责人当以其方也。”</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①门人：仆人。②钻火：用铁片击石取火。③孔文举：即孔融。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①某甲夜暴疾　②其夜阴膜　③门人念然日　君责人亦大无道理</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>责人当以其方也</p>
+    <p class="ex-item"><span class="q">（3）理解：谁“责人”错了？为什么？</span></p>
+    </div>
+  </article>
+  <article class="article" id="a173">
+    <h3>4．濡泽之蛇</h3>
+    <p class="body-text">泽①阔,蛇将徙。有小蛇谓大蛇日：“子行而我随之，人以为蛇之行者耳，必有杀子者；不如相衔，负我以行，人以我为神君③也。”乃相衔以越公道④。人皆避之，日：“神君也。”</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①泽：生长水草的地方。②蛇之行者：出行的蛇。③神君：有神灵的东西。④公道：大路。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①泽酒，蛇将徙　②子行而我随之　③乃相衔以越公道</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>负我以行</p>
+    <p class="ex-item"><span class="q">（3）上文两处出现相衔”，其中的“相”如何理解？</span></p>
+    <p class="ex-item"><span class="q">（4）成语“目不暇接”中的“暇”，解释为</span></p>
+    <p>；这个成语的意思是　</p>
+    </div>
+  </article>
+  <article class="article" id="a174">
+    <h3>5．盗牛者强辩</h3>
+    <p class="body-text">有盗牛而被羁者，熟识者过而问日：“女何事？”答云：“悔气①撞出来的。向在街上闲走，见地上草绳一条，以为有用，拾得之耳。”问日：“然则罪何以至此？”复对云：“绳头还有一小小牛儿。”旁观者日：“是盗牛者也，由自取，何强辩为？"</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①悔气：倒霉的运气。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①有盗牛而被羁者　②女何事　③向在街上闲走　④拾得之耳　③复对云</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>①然则罪何以至此　②是盗牛者也，答由自取，何强辩为</p>
+    </div>
+  </article>
+</section>
+<section class="unit-block">
+  <div class="unit-head">第 三十 单 元</div>
+  <div class="sec-label">阅 读</div>
+  <article class="article" id="a175">
+    <h3>王烈义行（阅读）</h3>
+    <p class="body-text">王烈字彦方,太原人也。少师事①陈②，以义行称③。乡里有盗牛者，主得之，盗请罪白：“刑戮是甘，乞不使王彦方知也。”烈闻而使人谢之，遗布一端①。或问其故,烈日：“盗惧吾闻其过，是有耻恶之心。既怀耻恶，必能改善，故以此激③之。”后有老父遗剑于路，行道一人见而守之，至暮，老父还，寻得剑，怪而问其姓名，以事告烈。烈使推求③，乃先盗牛者也。</p>
+    <div class="attrib">（节选自《后汉书·王烈传》）</div>
+    <div class="block"><div class="b-title">【注释】</div><p>①师事：拜…···为师。②陈：即陈实；，同“实”。③以义行称：凭做好事而受人称赞。④端：匹。 ③激：激励。 ③推求：判断寻找。</p></div>
+    <div class="block"><div class="b-title">【文言知识】</div><p>1.．“是”的一个特殊作用。上文“刑戮是甘”中的“是”，它仅仅起到语法作用，即把宾语“刑”置于动词“甘”之前，没有这个“是”，“刑戮甘”便不成句子。我们应按“甘刑”理解，意为甘心情愿受杀戮。又，“唯利是图”中的“是”，也起宾语前置作用，应按“唯图利”理解，意为只贪图好处。又，“唯命是从”，意为只从命令。2.释“遗”。上文有两个“遗”，读音与解释均不同。“遗布一端”中的“遗”，读wei（也可读yi)，指赠送，意为王烈赠送给小偷一匹布。又，“遗母甘食”，意为送给母亲好吃的食品。上文“有老父遗剑于路”中的“遗”，读yi，指遗失。</p></div>
+    <div class="block"><div class="b-title">【启发与借鉴】</div><p>要善解人意。对小偷，人们常有怨恨之情。可王烈从小偷的一句“刑戮是甘，乞不使王彦方知也”中体会到此人有知耻之心，事实证明后来此人不仅不偷窃，还能拾金不味。对有了错误的人，我们不要一味指责，更不能看死他，要分析他犯错误的原因及其事后的态度，尽可能与人为善，让人有改过的机会。</p></div>
+    <div class="block"><div class="b-title">【译文】</div><p>王烈字彦方，太原人。年轻时拜陈为师，凭做好事受人称赞。乡里有个偷牛贼，失主抓住了他，小偷认罪说：“（我）甘愿受刑罚甚至杀头，请不要让王彦方知道（这件事）。”王烈听说后叫人去感谢他，（并且)送给他一匹布。有人问王烈为什么要这样做，王烈说：“小偷怕我听到他的过错，这（表明）有耻恶之心。既然怀有耻恶之心，定能改恶从善，所以用这种方法来激励他。”以后有个老人在路上丢失了一把剑，走在路上的一个人看守着剑，直到晚上，老人回过来，找到了剑。（老人)感到奇怪，问那人姓名，又把这事报告王烈。王烈派人判断寻找，原来是早先的那个偷牛人（拾到的）。</p></div>
+  </article>
+  <div class="sec-label">训 练</div>
+  <article class="article" id="a176">
+    <h3>1．于令仪诲人</h3>
+    <p class="body-text">于令仪者，市井の人也，长厚②不性物，晚年家颇丰富。一夕，盗人其家,诸子擒之，乃邻舍之子也。令仪日：“汝素寡悔③，何苦而为盗耶？”日：“迫于贫耳。”问其所欲，日：“得十千④足以衣食。”如其欲与之。既去，复呼之，盗大恐，谓日：“尔贫甚，夜负十千以归,恐为人所诘，留之，至明日使去③。”盗大感愧，卒为良民。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①市井：做买卖。②长厚：年长而厚道。③寡悔：很少有噢悔；意为很少做错事。④十千：指十千铜钱。③使去：拿走。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列句子中加点的词</span></p>
+    <p>①长厚不件物　②晚年家颇丰富　③盗入其家　④汝素赛悔　③既去，复呼之　③夜负十千以归　①卒为良民</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>①迫于贫耳　②如其欲与之　③恐为人所语</p>
+    <p class="ex-item"><span class="q">（3）成语“待人接物”中的“物”，是指</span></p>
+    </div>
+  </article>
+  <article class="article" id="a177">
+    <h3>2．乡人藏虱</h3>
+    <p class="body-text">乡人某者①，偶坐树下，扪得一虱②，片纸裹之，塞树孔中而去。后二三年，复经其处，忽忆之，视孔中裹宛然。发而验之，虱薄如麸③。置掌中审顾之。少顷，掌中奇痒，而虱腹渐盈矣。置之而归。痒处核起，肿数日，死爲。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①某者：有个某姓的人。②虱(shi)：虱子，它专吸人或动物的血。③瑟(fu)：瑟子，指小麦磨成粉筛过后剩下的麦皮和碎屑。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①得一虱　②发而验之　③少项，掌中奇痒　而虱腹渐盈类　肿数日，死爲</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>①视孔中裹宛然　②置掌中审顾之　③痒处核起</p>
+    </div>
+  </article>
+  <article class="article" id="a178">
+    <h3>3．别字秀才</h3>
+    <p class="body-text">一秀才嗜书，而别字良多。一日，读《水浒》，适友人造访①，见而问之日：“君②读何书？”答日：“《水许》。”友人怪之，日：“书亦多矣，《水许》一书未之见也。”又日：“书中所载，均为何人？”秀才日：“有一李达，手持大爹二柄，有万夫不当之男。”友人又问：“更有何人？”“有和尚鲁智沉。”友人然，既而哑然失笑。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①造访：来访。②君：你。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①别字良多　②适友人造访　③书亦多矣　④更有何人　③友人然　③既而哑然失笑</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>① 友人怪之　②《水许》一书未之见也　(3）①“李达”应为　②“鲁智沉”应为</p>
+    </div>
+  </article>
+  <article class="article" id="a179">
+    <h3>4．画鬼易</h3>
+    <p class="body-text">客有为齐王①画者，齐王问日：“画孰最难者？”日：“犬马最难。”日：“敦易者？”日：“鬼魅③最易。夫犬马，人之所知也，旦暮罄③于前，不可类之；鬼魅无形者,故易之也。”</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①齐王：齐国国王。②魅(mei)：魅也是鬼。③馨(qing)：出现。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①画敦最难者　②夫犬马　旦著馨于前　④不可类之</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>①夫犬马，人之所知也　鬼魅无形者，故易之也</p>
+    </div>
+  </article>
+  <article class="article" id="a180">
+    <h3>5．吹牛</h3>
+    <p class="body-text">京师①选将军，群聚以观。有人出，首如斗②，足如箕③，其力士也。其时山东一人日：“此辈未足魁伟，吾乡一巨人，立则头顶栋。”山西一人日：“吾乡一巨人更在上，坐则头顶梁。”既而一人日：“此皆未之奇，吾乡有一巨人，开口时上唇抵栋，下唇搭地。”旁有难者日：“然则身何居乎？”众咸晒之。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①京师：京城。②斗：旧时容器名称。③箕：蓄箕；一种农具。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①立则头顶栋　②既而一人日　③旁有难之者　④众咸晒之</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>①此辈未足魁伟　②此皆未之奇　③然则身何居乎</p>
+    </div>
+  </article>
+</section>
+<section class="unit-block">
+  <div class="unit-head">第 三十一 单 元</div>
+  <div class="sec-label">阅 读</div>
+  <article class="article" id="a181">
+    <h3>老妪斗辽敌（阅读）</h3>
+    <p class="body-text">端拱①中，有独止店上②。会一虏③至，系马于门，持弓矢，坐定，啊汲水。持岳趋井,悬而复止。因胡语呼虏为王，且告虏日：“短不能及③也，老力惫，王可自取。”虏因系弓秒の，俯而汲焉。自后推虏堕井，跨马谐郡③。马之介甲③具焉，鞭之后复悬一猪首。常山民吏观而壮之?。</p>
+    <div class="attrib">（节选自王禹侮《唐河店传》）</div>
+    <div class="block"><div class="b-title">【注释】</div><p>①端拱(gong)：宋太宗的年号。②有（yu)独止店上：有个老妇人独自住在唐河店上；唐河店，今河北唐县东北，古为边防重镇。③虏：此指辽兵。④(geng)岳（fou)：绳子与瓦罐。因：用。③及：达到(井水)。①弓秒（miao)：弓的尾端。③谐郡：前往郡府（报告）。?介甲：指马上的护甲。猪首：此比拟敌人的头颅。①常山：指常山郡；唐河店属常山郡。壮之：认为老的行为是壮举。</p></div>
+    <div class="block"><div class="b-title">【文言知识】</div><p>1.释“会”。上文“会一虏至”中的“会”，指适逢。又，“会雨，道不通”，意为适逢下雨，道路不通；“会友人疾，不得去”，意为适逢友人有病，不能离去。它又指会集。如，《岳阳楼记》：“迁客骚人，多会于此。”2.释“趋”。上文“姬持岳趋井”中的“趋”，指小步快跑，句意为老妇人拿了绳子与瓦坛小步跑向井边。又，“趋见君王”，意为小步快跑拜见国君；“推靡趋而入室”，意为推开大门小步急走进入室内。古文中“步”指慢走，“行”指一般的走，“趋”指小步快跑，“走”指奔跑。</p></div>
+    <div class="block"><div class="b-title">【译文】</div><p>（宋朝)端拱年间，有个老妇独住在唐河店上。适逢一辽兵到来，在门口拴了马，手里拿着弓箭，坐定后，唤老妇去打水。老妇拿了绳子与瓦坛急着走到井边，往井中挂却又停住了。用胡语呼叫那辽兵为“王”，而且告诉辽兵说：“绳子太短达不到井水，我老妇年纪大了，精力疲惫，你大王可自己来打水。”那辽兵于是把绳子的一端系在弓的尾部，弯下身子打水。老妇从后面把他推落到井中，（然后)骑着(辽兵的)马到郡太守处（报告)。马的披甲都在，马鞭后还挂着比拟敌人头颅的一只猪头。常山郡的百姓与官吏见了都认为老妇的行为是壮举。</p></div>
+  </article>
+  <div class="sec-label">训 练</div>
+  <article class="article" id="a182">
+    <h3>1．巾帼潘将军</h3>
+    <p class="body-text">大眼①妻潘氏，善骑射，自谐省大眼。至于攻阵游猎之际，大眼令妻潘戎装，或齐战场，或并驱林。及至还营，同坐幕下，对诸僚佐③，言笑自得，时指之谓人日：“此潘将军也。”</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①大眼：指杨大眼将军。②巍(biao)：马嚼子；此指骑马。③僚佐：同僚及助手；僚，官员。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①大眼令妻潘氏戎装　②或齐战场　③及至还营，同坐幕下</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>①自谐省大眼　②至于攻阵游猎之际　③或并驱林整</p>
+    <p class="ex-item"><span class="q">（3）填空：谚语有“币帼不让</span></p>
+    </div>
+  </article>
+  <article class="article" id="a183">
+    <h3>2．擒贼</h3>
+    <p class="body-text">周氏夫妇，以渔为生，日出没风波。一日，二豪贼相谓日：“伺周之市，但留其妇时，吾可其金也。”于是窥周出。周既去，二豪贼持刀近船。周畜一犬，见之，狂。妇闻声而出。二贼跃上船，出刃胁之。犬啮贼，以故贼不得脱身。妇乘其无备，推堕一贼河中。一贼为犬所啮，痛甚。妇举刀欲劈之，贼色挠①，跪而谢。是时夫方归，见状，即缚二豪贼至官。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①色挠：脸上显出屈服的样子。②伺(si)：等候。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①二豪贼相谓日　②伺周之市　③但留其妇时　）吾可搜其金也　于是窥周出　③跪而谢　是时夫方归　①即缚二豪贼至官</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>①以渔为生，日出没风波　②一贼为犬所啮</p>
+    <p class="ex-item"><span class="q">（3）成语“鉴貌辨辩色”中的“鉴”解释为</span></p>
+    <p>；这个成语的意思是</p>
+    </div>
+  </article>
+  <article class="article" id="a184">
+    <h3>3．吕某刺虎</h3>
+    <p class="body-text">吕某自谓勇夫，好带刀剑，扬言万夫莫当。一日，南山有虎驰来，一村皆惊，闭户不敢出。吕某日：“第一虎耳，何惧之！吾即缚之！”遂持剑而出。俄见虎，距百步许。虎大吼，耽耽相向。吕则两股战栗，顾左右无人，还走，五色无主①。少顷，村民启户出，见其仆地，不省人事。急治之，良久乃醒。人日：“虎安在？”吕乃日：“为我所逐矣！”众人相视而嘻。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①五色无主：形容惊慌失措的脸色。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①万夫莫当　②第一虎耳　③俄见虎，距百步许　④顾左右无人，还走　村民启户出　③见其仆地，不省人事　①良久乃醒</p>
+    <p class="ex-item"><span class="q">（2）上文有两个“相”：①“耽耽相向”中的“相”，指代</span></p>
+    <p>；②“众人相视而嘻”中的　“相”，解释</p>
+    <p class="ex-item"><span class="q">（3）上文有两个“乃”：①“良久乃醒”中的“乃”，解释为</span></p>
+    <p>；②“吕乃日”中的“乃”　解释为</p>
+    </div>
+  </article>
+  <article class="article" id="a185">
+    <h3>4．笼中鹦鹉</h3>
+    <p class="body-text">富商有段姓者，畜①一鹦鹉,甚慧，能迎客与诵诗。段剪其两翅,置于雕笼中。熙宁②六年，段忽系狱。及归，问鹦鹉日：“吾半年在狱，身不由已，极其怨苦。女在家有人喂饲，何其乐邪！”鹦鹉日：“君半年在狱，早已不堪；吾多年在笼，何乐可言？"段大感悟，即日放之。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①畜：养。②熙宁：宋神宗年号。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）这则寓言告诉我们什么道理？</span></p>
+    <p class="ex-item"><span class="q">（2）解释下列各句中加点的词</span></p>
+    <p>①段忽系狱　②女在家有人喂饲　③早已不堪　④即日放之　</p>
+    <p class="ex-item"><span class="q">（3）用现代汉语翻译下面句子</span></p>
+    <p>何其乐邪！</p>
+    <p class="ex-item"><span class="q">（4）填空：古语有“梅花香自</span></p>
+    </div>
+  </article>
+  <article class="article" id="a186">
+    <h3>5．攘痒</h3>
+    <p class="body-text">向有人痒，令其子索之，三索而弗中①。又令其妻索之,五索而五弗中。其人勃然而怒：“知吾者妻也，而胡难我？”乃自引手，一索而痒绝。何者？痒者，人之所自知也，他人莫之知。犹心患，人何以知之？</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①弗中(zhong)：此指没播到痒处。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>① 向有人痒　②令其子索之　③其人勃然而怒　④乃自引手</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>①而胡难我　②他人莫之知　③犹心患，人何以知之</p>
+    </div>
+  </article>
+</section>
+<section class="unit-block">
+  <div class="unit-head">第 三十二 单 元</div>
+  <div class="sec-label">阅 读</div>
+  <article class="article" id="a187">
+    <h3>子路见孔子（阅读）</h3>
+    <p class="body-text">子路见孔子。子日：“汝何好乐①？”对日：“好长剑。”孔子日：“吾非此之问也。徒请以子之能③，而加之以学问，岂可及乎？”子路日：“南山有竹，不揉④自直,斩而用之,达于犀革③。以此言之，何学之有？”孔子日：“③而羽之，而砺之①，其入不亦深乎？”子路再拜日：“敬受教。”</p>
+    <div class="attrib">（节选自《孔子家语》）</div>
+    <div class="block"><div class="b-title">【注释】</div><p>①好乐：喜爱。②徒：只是，仅仅。③能：才能。④揉（rou)：用人力使物体变形。③达于犀革：射进犀牛的皮。③(gua)：箭的末端；此指给箭的末端做一番加工。②簇而砺之：安装上箭头并把它磨得锋利。</p></div>
+    <div class="block"><div class="b-title">【文言知识】</div><p>1.释“以”。“以”这个词的用法与解释很多且灵活，它既可作动词用，又可作介词或连词用。上文“徒请以子之能”中的“以”，指凭着，句意为只是请凭着你现在的才能。又，上文“而加之以学”中的“以”，指“把”，句意为再把学问加在你身上。又，上文“以此言之”中的“以”，也指凭着，句意为凭这来说，有什么可学的呢？又，“既食以行”，其中“以”作连词用，相当于“而”，句意为吃完饭出发。又，“子以我师，吾有愧”，其中“以”作动词用，相当于“认为”，句意为你认为我是你的老师，我感到惭愧。2.释“再”。上文“子路再拜”中的“再”，指两次，表示极敬重。现代汉语中的“再”，仅表示重复，五次、十次哪怕百次，均可用再”，而古文中的“再”，只指第二次或两次。如古人说“再会”，那指是第二次见面。又，《曹刻论战》：“一鼓作气，再而衰，三而竭。”“再而衰”，意为第二次击鼓进军士气就会衰落。</p></div>
+    <div class="block"><div class="b-title">【启发与借鉴】</div><p>循循善诱。孔子是我国古代伟大的教育家，他的学生有三千人，其中突出的有七十二人。《论语·子罕》中说：“夫子循循然善诱人。”意为孔子善于有步骤地进行教导。从上文看，子路原是个粗野的人，他不想学习，认为学习没什么用，而孔子循着他的比喻，也用比喻教育他，结果子路心悦诚服。开导别人要有耐心，而且方法要巧妙。人们常说没有教不好的学生，只有不会教的老师，看来是有一定道理的。</p></div>
+    <div class="block"><div class="b-title">【译文】</div><p>那事。只是凭你的能力，再加上好学多问，（有谁）能比得上呢？”子路说：“南山上有竹，不需加工，本身就生得笔直，砍下来作为箭，可以射进犀牛的皮。凭这来说，有什么需要学习的不是射入得更深吗？”子路（听了很受启发）拜了又拜说：“（我）接受你的教导。”</p></div>
+  </article>
+  <div class="sec-label">训 练</div>
+  <article class="article" id="a188">
+    <h3>1．孙权吕蒙读书</h3>
+    <p class="body-text">孙权谓吕蒙日：“卿今当途掌事①，不可不学！”蒙辞以军中多务。权日：“孤岂欲卿治经为博士③邪！但当涉猎，见往事耳。卿言多务，若孤？孤常读书，自以为大有所益。”蒙乃始就学。及鲁肃过寻阳④，与蒙论议，大惊日：“卿今者才略，非复吴下阿蒙③！”蒙日：“士别三日，即当刮目相待，大兄何见事之晚乎！”</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①当途掌事：意为身居要职掌握重权。②治经：研究儒家经典。③博士：官职名称。寻阳：古地名，今江西九江市。③非复吴下阿蒙：不再是当年吴地(粗鲁的)阿蒙了。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①卿今当途掌事　②孤岂欲卿治经为博士邪　③及鲁肃过寻阳</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>①蒙辞以军中多务　②卿言多务，敦若孤</p>
+    <p class="ex-item"><span class="q">（3）上文“刮目相待”已成成语，它的意思是</span></p>
+    </div>
+  </article>
+  <article class="article" id="a189">
+    <h3>2．响遏行云</h3>
+    <p class="body-text">薛谭学讴于秦青，未穷青之技，自谓尽之，遂辞归。秦青勿止，饯于郊衢，抚节①悲歌②，声振林木，响遏行云。薛谭乃谢求反，终身不敢言归。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①抚节：按着节拍。②悲歌：歌声雄壮。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①薛谭学讴于秦青　②自谓尽之　③响遇行云</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>①饯于郊衢　②薛谭乃谢求反</p>
+    <p class="ex-item"><span class="q">（3）成语“响遏行云”形容</span></p>
+    </div>
+  </article>
+  <article class="article" id="a190">
+    <h3>3．王元章砍种像</h3>
+    <p class="body-text">绍兴①王元章②，国初③名士，所居与一神庙切近，炊缺薪，则所神像炊之。一邻家事神甚谨。遇元章毁像，刻木补之。如是者三四。然元章家人岁无恙，而邻之妻(nu)时病。一日，召巫降神，诘神云：“彼屡毁神，神不责;吾不复补像，而庙遂废。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①绍兴：今浙江绍兴市。②王元章：即王冕，他字元章。③国初：元朝初年。④所（zhuo）：砍。巫：装神弄鬼的巫婆。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①所居与一神庙切近　②轭刻木补之　③然元章家人岁无恙　④而邻之妻挚时病　彼屡毁神　①巫者作怒日</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>①一邻家事神甚谨　②吾为新之</p>
+    </div>
+  </article>
+  <article class="article" id="a191">
+    <h3>4．空中楼阁</h3>
+    <p class="body-text">昔有富人，痴无所知。至余①富家，见三重楼，高广严丽，心慕之，即念：吾有资，益造斯楼？乃召工匠，嘱以如是。翌日，工匠经地垒砖，日人而息。富人见之，怪而问：“欲作何等？”匠日：“先作底重。”富人日：“吾不欲下重之屋。”匠日：“何有不作下重而为第三重者？”富人固言欲如是。时人闻人，毋不之。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①余别的。②经：丈量。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①高广严丽　②翌日，工匠经地垒砖　③怪而问</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>①富人固言欲如是　②毋不哦之</p>
+    <p class="ex-item"><span class="q">（3）成语“空中楼阁”比喻</span></p>
+    </div>
+  </article>
+  <article class="article" id="a192">
+    <h3>5．熊与坎中人</h3>
+    <p class="body-text">有人人山射鹿，忽堕一坎内，见熊子数头。须奥，有大熊人，以为必害己。良久，大熊出果分与诸子。末后作一份与此人。此人铵久，冒死之。每旦，熊母觅食反，分果与之，此人赖以支命。后熊子稍大，其母一一负而出。子既出矣，此人自分①必死坎中，而熊母复还，人坐人边。人解其意，便抱熊足，熊即跃出，遂不得死。鸣呼，人言禽兽无义，然顾斯熊，安得言无情哉！</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①分：估计。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①忽堕一坎内　②须史(yu),有大熊入　③良久，大熊出果分与诸子　④此人铵久　③冒死啖之　③后熊子稍大　①其母一一负而出　子既出矣</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>①轭分果与之　②然顾斯熊，安得言无情哉</p>
+    <p class="ex-item"><span class="q">（3）与“须”相同或相近的词还有：①</span></p>
+    </div>
+  </article>
+</section>
+<section class="unit-block">
+  <div class="unit-head">第 三十三 单 元</div>
+  <div class="sec-label">阅 读</div>
+  <article class="article" id="a193">
+    <h3>任末好学勤记（阅读）</h3>
+    <p class="body-text">任末①年十四，学无常师②，负笈③不远险阻。每言人而不学，则何以成。或依林木之下，编茅为庵③，削荆为笔，刻树汁为墨；夜则映星望月②，暗则缚③麻嵩以自照。观书有合意者，题其衣裳，以记其事。门徒悦其勤学，更以净衣易之。非圣人之言不观。临终日：“夫人好学，虽死若存；不学者虽存，谓之行尸走肉耳。”</p>
+    <div class="attrib">（节选自王嘉《拾遗记》）</div>
+    <div class="block"><div class="b-title">【注释】</div><p>①任末：东汉人。②常师：固定的老师。③：竹做的书箱①不远：不怕路途遥远。③而：如果。③庵：小草屋。①映星望月：指在星月下读书。③缚：束。门徒：学生。夫：句首语气词，无义。①行户走肉：活着的死人；比喻庸碌无能之人。</p></div>
+    <div class="block"><div class="b-title">【文言知识】</div><p>1.释“题”。上文“观书有合意者，题其衣裳”中的“题”，是指写，句意为看书有心得体会时，便写在他的衣裳上。又，“游者于其旁题诗”，意为旅游的人在它的旁边写几句诗；“题其铭于东壁”，意为把座右铭写在东面墙壁上；“题于沪上”，意为上面的话是在上海写的。2.释“更”。上文“更以净衣易之”中的“更”,指轮流，句意为轮流把干净的衣服跟他交换。又，“数十人更戌”，意为数十个士卒轮流守边防；“日月更新”，意为太阳和月亮轮流出现使气象一新。它又指“再”，如王之《登鹳雀楼》诗：“欲穷千里目，更上一层楼。”它又指改，如“更改”，“更动”。</p></div>
+    <div class="block"><div class="b-title">【启发与借鉴】</div><p>1.不动笔墨不读书。任末读书“有合意者，题其衣裳”，即随时把读书心得记下来，这是学习的好方法。革命前辈徐特立（毛泽东同志的老师）说过：“不动笔墨不读书”。古往今来凡有成就的学者，都十分重视笔记。元末明初的学者陶宗仪更有趣，他在耕作休息时把所见所闻随手写在树叶上，然后存放在坛子里，十年中积有数十坛，最后筛选编成《耕录》。毛泽东年轻时读近十万字的《伦理学原理》，在书上竟写了一万二千多字的心得体会。他的“读书录”、“选抄本”、“摘录本”足有一大网篮。2.读有益的书。任末“非圣人之言不观”，意为他只读有益的书。当然由于时代局限，他所说的“圣人之言”是指儒家经典著作。但书一定要选有益的读，这是真理。诗人减克家说：“读过一本好书，像交了一个益友。”德国诗人歌德说过：“读本好书，就是和许多高尚的人谈话。”俄国文学批评家别林斯基说：“阅读一本不适合自已阅读的书，比不阅读还要坏。”英国小说家菲尔丁说得更深刻：“不好的书也像不好的朋友一样，可能会把你我害。”读好书而得益的例子不胜枚举，然而因读坏书而走上歧路的也屡见不鲜。</p></div>
+    <div class="block"><div class="b-title">【译文】</div><p>任末十四岁，求学没固定的老师，背着书箱不怕路途遥远与险阻（去寻师）。他常常说人如果不学习，凭什么去获得成就。有时他在竹林树林附近，编扎茅草成为小屋，削荆条作为笔，刻出树汁作为墨；晚上在月亮星光（下读书），黑夜便点燃捆扎的麻蒿来照亮自已（读书）。看书有体会时，（把心得）写在衣裳上，用来记录那些体会。学生们羡慕他勤奋学习，轮流把干净的衣服跟他交换（以便看到他写的心得）。（任末）只读儒家圣人的著作。（他）临死时告说：“人（应该)爱好学习，就算死了也依然像活着；不肯学习的人虽然活着，也不过叫做活着的死人罢了。”</p></div>
+  </article>
+  <div class="sec-label">训 练</div>
+  <article class="article" id="a194">
+    <h3>1．蛇衔草</h3>
+    <p class="body-text">有田父耕地，值见创蛇爲。顷之，有一蛇衔草着创口上，竟日创蛇走。田父取其余叶治创，皆验。本不知草名，乡人因以蛇衔名之。古人云：蛇衔草能续已断之指如故。非妄言也。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①田父：种田老人。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①囊有田父耕地　　②有一蛇衔草着创口上　③皆验　④非妄言也</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>①值见创蛇需　②竞日创蛇走　③乡人因以蛇衔名之　④蛇衔草能续已断之指如故</p>
+    </div>
+  </article>
+  <article class="article" id="a195">
+    <h3>2．智大破案</h3>
+    <p class="body-text">去杭州百里许,有一古刹①,香火颇旺。一夕,有盗逾墙而人。犬吠，僧觉。盗劈僧首，立仆。遂越②货而亡。翌日，二小僧人室见之，呀甚。乃谐官讼，其犬亦从。途经一酒肆，见五六徒狂饮，犬位足不前，僧怪之。俄而犬跃入肆，啮一徒不置。僧疑为盗,缚而送官。吏审之,果然。盖犬亦有智也。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①刹(cha)：寺庙。②越：抢夺。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①香火颇旺　②有盗逾墙而入　③犬吠，僧觉　④遂越货而亡　?途经一酒肆　③盖犬亦有智也</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>①乃谐官讼　②犬位足不前，僧怪之　③齿一徒不置</p>
+    </div>
+  </article>
+  <article class="article" id="a196">
+    <h3>3．神针道人</h3>
+    <p class="body-text">凌云①北游太山②，古庙前值病人，气垂绝。云嵯叹久之。一道人忽日：“汝欲生之乎？”日：“然。”道人针其左股立苏。回：“此人毒气内侵，非死也，毒散自生耳。”因授云针术，治病无不效。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①凌云：人名。②太山：即泰山。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①古庙前值病人　②气垂绝　③日:“然。”　④道人针其左股立苏　③毒散自生耳　③因授云针术</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>①云叹久之　②汝欲生之乎</p>
+    </div>
+  </article>
+  <article class="article" id="a197">
+    <h3>4．杨务廉有巧思</h3>
+    <p class="body-text">杨务廉①甚有巧思，尝于沁州②市内刻木作僧，手执一碗，自能行乞。碗中投钱③，关键忽发，自然作声云：“布施④。”市人竞观，欲其作声，施者日盈数千。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①杨务廉：唐朝人。②沁(qin)州：古地名，今山西境内。③钱：指铜钱。④布施：施舍。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①手执一碗　②自能行气　③自然作声云　④市人竞观</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>①尝于沁州市内刻木作僧　②关键忽发　③施者日盈数千</p>
+    </div>
+  </article>
+  <article class="article" id="a198">
+    <h3>5．多言何益</h3>
+    <p class="body-text">子禽①问日“多言有益乎？”墨子②日：“虾蛙蝇，日夜恒鸣，口干舌蔽，然而莫之听。今观晨鸡，以时而鸣，天下振动。多言何益，唯其言之时也。”</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①子禽：墨子的学生。②墨子：墨翟。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①日夜恒鸣　②口干舌散　③以时而鸣</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>①然而莫之听　②唯其言之时也</p>
+    <p class="ex-item"><span class="q">（3）成语“口若悬河”中的“悬”，解释为</span></p>
+    <p>；这个成语的意思是</p>
+    </div>
+  </article>
+</section>
+<section class="unit-block">
+  <div class="unit-head">第 三十四 单 元</div>
+  <div class="sec-label">阅 读</div>
+  <article class="article" id="a199">
+    <h3>盲人摸象（阅读）</h3>
+    <p class="body-text">昔印度有警者四，相友善。然各自命?为智者，人亦因以智者目之。一日，四警者立谈道左，有声楚③然而至，询诸人，知其为象也。其一人：“象之继而至象前，扪其体以测其形。四警者：一长而伟，立于象侧，扪其身，上下左右，摩挛殆遍，觉坦然一片也。一短而小，9象之足。第三人握象鼻。第四人仅触象齿。既而各举象之形以相告。长而伟者日：“象之形如墙，广而平，岸然而高者也。”短小者进而斥之日：“象之体若树干。汝以为墙，不亦谬乎！”第三人日：“象之形，非墙非树，有类水管。”第四人前致词：“汝三人何其各遥已见，而比拟不伦也！夫象，其润如玉，触手可爱，直一长挺?耳。”四馨争辩，纷嗽?不已，旁观者皆大笑。</p>
+    <div class="attrib">（节选自《百喻经》）</div>
+    <div class="block"><div class="b-title">【注释】</div><p>①替(gu)者：盲人。②自命：自以为。③(qiong)：象声词；此指脚步声。④诸：之于。向：早先。③徒：仅仅。①实验：实际体验。③摩掌：抚摸。③挝：同“抚”，抚摸。岸然：高大的样子。①伦：类似，像。②挺：木棍子。纷啵(nao)：争论。</p></div>
+    <div class="block"><div class="b-title">【文言知识】</div><p>1.释“吾辈”及其他。上文“吾辈向者徒事测”中的“吾辈”指我们，句意为我们早先仅仅主观猜想。“辈”在古文中指“这一类”，也可理解为人称复数。又，“汝辈”指你们；“彼辈”指他们。“吾辈”又可说成“吾属”、“吾曹”，均指我们。同样，“汝属”、“彼属”、“汝曹”、“彼曹”即指你们、他们。2.释“类”。上文“有类水管”中的“类”，指类似、好像，句意为好像水管。又，“其身似狼，其首类狸”，意为它的身体似狼，它的头好像狸；“其子不类父”，意为他的儿子不像父亲。3.释“直”。上文“直一长挺耳”中的“直”，指只不过，句意为只不过一根长长的木棍子罢了。又，“其人直一莽夫耳”，意为那人只不过是一个鲁葬的汉子罢了；“其值直百文”，它的价值仅仅一百个铜钳。4.释“殆”。上文“摩擎殆遍”中的“殆”，指几乎、差不多，句意为几乎周遍抚摸过了。又，“时年大饥，粮殆尽”，意为当时大饥荒，粮食几乎吃尽；“战三日，弹药殆尽”，意为三天激战，弹药差不多用完了。它还指“危险”，如“知彼知已，百战不”，“不殆”指没危险，引申为不失败。</p></div>
+    <div class="block"><div class="b-title">【启发与借鉴】</div><p>认识片面。“盲人摸象”或“瞎子摸象”已成成语，意为由于只了解事物的局部，产生了认识上的片面性。人们在评论一个人、一部电视剧或一种社会现象，往往因为只看到局部而下结论，便造成了片面性。要避免这种现象，唯一的办法是多观察，多了解，不要轻易下结论。有人说外国的教育好，中国不行，这就是片面的见解：他去过国外吗？去过多少国家？全面考察过他们的教育吗？反之，他对中国的教育做过全面的调查吗？仅仅凭零碎的材料是不能下此结论的。</p></div>
+    <div class="block"><div class="b-title">【译文】</div><p>从前印度有四个盲人，互相友好。然而每人都自以为是聪明人，别人也因而视他们为聪明人。一天，四个盲人在道旁站着谈话，（忽然）有“楚楚楚”的声音传来，向别人打听，知道那是象（来了）。其中一个人说：“象的形状到底像什么，我们早先仅仅凭主观猜想，今天可实际体验而知道了。”其他三人都说：“好的。”于是他们相继来到象前，摸象的身体后推测它的形象。四个盲人：一个长得高而魁梧，站在象的侧面，抚摸象的身子，上下左右，几乎摸遍，觉得一片平坦。一个生得矮小，摸着象的脚。第三个握住象的鼻子。第四个触到了象的牙齿。事情过后各人把象的形状说出来告诉对方。那个高而魁梧的人说：“象的形状大概如墙壁，宽阔而平坦，样子很高大。”那个矮小的人驳斥他说：“象的形体仿佛树干。你认为像墙壁，不说：“你们三个人为什么要各自坚持自已的意见，且比拟不伦不类！至于说到象，它润滑得如玉，手摸上去很可爱，只不过是一根长长的木棍罢了。”四个盲人不停地争辩，旁观的人都大笑。</p></div>
+  </article>
+  <div class="sec-label">训 练</div>
+  <article class="article" id="a200">
+    <h3>1．盲子道溪</h3>
+    <p class="body-text">有盲子道滴溪。桥上失坠，两手攀循，蜕握固，自分③失手必堕深渊已④。过者告日：“毋怖，第放下即实地也。”盲子不信，握长号。久之，力惫，失手坠地。乃自晒日：“嘻！蚤知为实地，何久自苦耶！”</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①橘(shun)：栏杆上的横木。②藐就：小心谨慎地。③自分：自己估计。④已：同矣”。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①就蜕握固　②册怖，第放下即实地也　③力意　④乃自咽日</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>①有盲子道酒(hé)溪　②握长号</p>
+    <p class="ex-item"><span class="q">（3）上文除了“已”同“矣”外，还有一个通假字，它是</span></p>
+    <p>；这个成语的意</p>
+    <p class="ex-item"><span class="q">（4）成语“毫发不爽”中的“毫”与“爽”，分别解释为</span></p>
+    <p>思是</p>
+    </div>
+  </article>
+  <article class="article" id="a201">
+    <h3>2．众盲触象</h3>
+    <p class="body-text">有王告大臣，汝牵一象来示盲者。时众盲各以手触。大王唤众盲问之：“汝见象类何物？”触其牙者，言象如萝①根；触其耳者，言如箕?；触其脚者，言如白③；触其脊者，言如床；触其腹者，言如瓮；触其尾者，言如绳。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①萝：萝卜。②箕：蕃箕，一种农业用具。③白(jid)：指春米用的石白。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①汝牵一象来示盲者　②言如食</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>汝见象类何物？</p>
+    <p class="ex-item"><span class="q">（3）成语“瞎子摸象”比喻</span></p>
+    <p></p>
+    </div>
+  </article>
+  <article class="article" id="a202">
+    <h3>3．木刻钟馗</h3>
+    <p class="body-text">宋庆历①中，有一术士②，姓李，多巧思。尝木刻一舞钟道③，高三尺许，右手持铁简。以香饵置钟左手中，鼠缘手取食，则左手扼鼠，右手以简毙之。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①庆历：宋仁宗年号。②术士：有法术的人。③钟道（kui)：传说中能捉鬼的人。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①宋庆历中　②高三尺许　③以香饵置钟道左手中</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>①鼠缘手取食　②则左手鼠，右手以简毙之</p>
+    <p class="ex-item"><span class="q">（3）填空：古语有“道高一尺，</span></p>
+    </div>
+  </article>
+  <article class="article" id="a203">
+    <h3>4．商鞅立木</h3>
+    <p class="body-text">商鞅变法之令既具，未布，恐民之不信已，乃立三丈之木于国都市①之南门，募民有能徙置北门者，予十金。民怪之,莫敢徙。复日：“能徙者予五十金。”有一人徙之，予五十金，以明不欺。卒下令。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①市：贸易市场。②金：古代货币单位。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①商变法之令既具　②募民有能徙置北门者　③予五十金　④卒下令</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>①民怪之，莫敢徙　②以明不欺</p>
+    </div>
+  </article>
+  <article class="article" id="a204">
+    <h3>5．阿柴折箭</h3>
+    <p class="body-text">吐谷浑の阿柴有子二十人。病笃，命诸子各献一箭。取一箭授其弟慕利延，使折之。利延折之；又取十九箭使折之，利延不能折。阿柴喻之日：“汝曹知之乎？孤者易折，众所难摧。戮力②同心，社稷可固。”言毕而卒。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①吐谷浑：我国古代西部的一个少数民族。②戮（心）力：尽力。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①病笃　②取一箭授其弟蒸利延　③阿柴喻之日　④众所难摧</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>①汝曹知之乎　②义力同心，社稷可固　③言毕而卒</p>
+    </div>
+  </article>
+</section>
+<section class="unit-block">
+  <div class="unit-head">第 三十五 单 元</div>
+  <div class="sec-label">阅 读</div>
+  <article class="article" id="a205">
+    <h3>匡衡凿壁借光（阅读）</h3>
+    <p class="body-text">匡衡①勤学而无烛，邻舍有烛而不逮?。衡乃穿壁以引其光，以书映光而读之。邑人大姓③文不识①，家富多书，衡乃与其佣作③而不求偿③。主人怪①问衡。衡日：“愿得主人书遍读之。”主人感叹，资给③以书，遂成大学③。</p>
+    <div class="attrib">（节选自《西京杂记》）</div>
+    <div class="block"><div class="b-title">【注释】</div><p>①匡衡：汉朝人，官至丞相。②逮：此指照射不到。③大姓：大户人家。④文不识。姓文，名不识。③佣作：做雇工。③偿：报酬。①怪：感到奇怪。③资给：借给。?大学：大学问家。</p></div>
+    <div class="block"><div class="b-title">【文言知识】</div><p>释“邑”。“邑”旧指县。“邑令”或“邑宰”就是县官。上文“邑人大姓文不识”中的“邑人”，即同县的人。又，“邑有王姓者”，意为县里有户姓王的人；“邑人大恐”，意为县里的人十分恐慌。又，《桃花源记》“率邑人来此绝境。”“邑”又可指当地的。因此“邑人大姓文不识”，亦可理解为当地有个大户人家叫文不识；“邑人大恐”，亦可理解为当地人十分恐慌。</p></div>
+    <div class="block"><div class="b-title">【启发与借鉴】</div><p>创造学习条件。学习是需要一定条件的，匡衡没有学习条件，他便主动创造。白天要耕作，晚上读书没有蜡烛，于是他便凿壁借光；没有很多书可看，又买不起，他就给富人家打工不求报酬，而代以借书。因此最终成了知识渊博的人。如今也有学习条件困难的人：没书就到图书馆去阅读；交不起学费就利用假日给人打工挣点钱补贴；买不起电脑就节衣缩食点滴积累。总之，条件是可以创造的，关键在于要有努力学习的决心。</p></div>
+    <div class="block"><div class="b-title">【译文】</div><p>匡衡勤奋学习可是家中没蜡烛，邻居有烛然而（烛光）透不进来。匡衡便在墙壁上凿个小洞把烛光引进家来，把书映着烛光而读。当地有大户人家姓文名不识，家庭富裕有很多藏书，匡衡便给他做雇工而不要求报酬。主人感到奇怪，问匡衡。匡衡说：“希望得主人家的藏书而广泛地读它。”主人感慨，把书借给（他），（后来压衡）就成了大学问家。</p></div>
+  </article>
+  <div class="sec-label">训 练</div>
+  <article class="article" id="a206">
+    <h3>1．承宫拾薪苦学</h3>
+    <p class="body-text">承宫少孤，年八岁，为人牧豕の。乡里徐子盛者，以《春秋经》②授诸生数百人。宫过息庐下，乐其业，因就听经，遂留请门下，为诸生拾薪，执苦数年，勤学不较。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①家：同“猪”。②《春秋经》：孔子编写的一部以鲁国为中心的历史。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①承宫少孤　②以《春秋经》授诸生数百人　③宫过息庐下</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>①乐其业，因就听经　②执苦数年，勤学不毂</p>
+    </div>
+  </article>
+  <article class="article" id="a207">
+    <h3>2．蔡侯纸</h3>
+    <p class="body-text">自古书契①，多编以竹简，其用?帛者谓之纸。贵而简重，并不便于人。伦③乃造意④，用树肤、麻头及蔽布、鱼网以为纸。元兴元年③，奏上之。帝善其能，自是莫不从用焉。故天下咸称“蔡侯纸”。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①契（qi)：合同、文书等凭证。②嫌(jian)：细密的绢。③伦：蔡伦，东汉人，太监，封为龙亭侯，故亦称蔡侯”。④造意：设想。③元兴元年：公元105年；元兴是汉和帝的年号。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①其用缘帛者谓之纸　②并不便于人　③用树肤、麻头及散布、鱼网以为纸　④故天下成称“蔡侯纸”</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>①多编以竹简　②继贵而简重　③奏上之　④帝善其能，自是莫不从用焉</p>
+    <p class="ex-item"><span class="q">（3）上文“鱼网以为纸”中，省略了介词宾语</span></p>
+    </div>
+  </article>
+  <article class="article" id="a208">
+    <h3>3．牧竖拾金</h3>
+    <p class="body-text">有牧竖①，蔽衣蓬首赤足，日驱牛羊牧冈间，讴而乐，意惬甚，牧亦善。一日，拾遗金一饼③，内衣领中。自是歌声渐歇，牛羊亦时逸，心患失金，斯乃为金所累也。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①牧竖：牧童。②一饼：块。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①散衣蓬首赤足　②而乐　③内衣领中　④自是歌声渐歇　③牛羊亦时逸</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>① 意惬甚　②心患失金，斯乃为金所累也</p>
+    </div>
+  </article>
+  <article class="article" id="a209">
+    <h3>4．解铃系铃</h3>
+    <p class="body-text">金陵①清凉泰钦法灯禅师②，性豪逸，不事事。众易之。法眼③独器重。眼一日问众：“虎项金铃，是谁解得？”众无对。师③适至，眼举前语问，师日：“系者解得。”眼日：“汝辈轻渠不得。”</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①金陵：古地名，今江苏南京市。②禅师：对僧人的尊称。③法眼：僧人名。④师：指法灯禅师。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①众易之　②众无对　③师适至　①眼举前语问</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>①性豪逸，不事事　②是谁解得　③汝萃轻渠不得</p>
+    <p class="ex-item"><span class="q">（3）填空：成语有“解铃还需</span></p>
+    </div>
+  </article>
+  <article class="article" id="a210">
+    <h3>5．认“真”</h3>
+    <p class="body-text">艾子游于郊外，弟子①通、执二人从。渴甚，使执子乞浆于田舍。有老父②倚门观书，执子揖而请。老父指卷中“真”字问日：“识此字，馈尔浆。”执子日：“真字也。”老父怒，不与。执子返以告。艾子日：“执子未达，通也当往。”通子见老父，老父如前示之。通子日：“此直、“八”两字也。”老父喜，出家酿之美者与之。艾子饮而甘之，日：“通也，智哉！使复如执之认‘真，一勺水吾且不得吞矣！”</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①弟子：学生。②老父：老人。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①执子揖而请　②执子未达　③老父如前示之　④一勺水吾且不得吞矣</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>①使执子乞浆于田舍　②出家酿之美者与之　③艾子饮而甘之</p>
+    <p class="ex-item"><span class="q">（3）这则寓言的含义是</span></p>
+    </div>
+  </article>
+</section>
+<section class="unit-block">
+  <div class="unit-head">第 三十六 单 元</div>
+  <div class="sec-label">阅 读</div>
+  <article class="article" id="a211">
+    <h3>旋风（阅读）</h3>
+    <p class="body-text">熙宁九年，恩州武城县①有旋风自东南来，望之插天②如羊角，大木尽拔。俄顷，旋风卷入云霄中。既而③渐近，乃经县城，官舍民居略尽③，悉卷入云中。县令儿女奴婢卷去复坠地，死伤者数人，民间死伤亡失者不可胜③计。县城悉为丘墟。</p>
+    <div class="attrib">（节选自沈括《梦溪笔谈》）</div>
+    <div class="block"><div class="b-title">【注释】</div><p>①恩州武城县：在今山东境内；恩州，古地名。②插天：直上天空。③既而：不久。④略尽：几乎全部倒。③胜：尽。丘墟：废。</p></div>
+    <div class="block"><div class="b-title">【文言知识】</div><p>1.释“俄顷”及其他。上文“俄顷，旋风卷入云霄中”中的“俄”，指一会儿，句意为一会儿，旋风卷入极高的天空中。又，杜甫《茅屋为秋风所破歌》诗：“俄顷风定云墨色，秋天漠漠东南来”。与“俄”、“顷”义近的还有“须哭”、“旋”等。如，“须更，旋风卷入云霄中”，又，“旋见黑云升空”，意为一会儿看到黑云升入天空。2.释“悉”及其他。上文“悉卷入云中”及悉为丘墟”中两个“悉”，均指都、全。又，“悉得救”，意为全部获救；“天寒，牛羊悉饿死”，意为天寒冷，牛羊都饿死了。与“悉”义近的有皆、咸、均等。如“皆卷入云中”、“咸为丘墟”、“均饿死”。</p></div>
+    <div class="block"><div class="b-title">【文化常识】</div><p>说“奴婢”。上文提到“奴婢”。奴婢是仆役的统称，男的称“奴”，女的为“婢”。男的从事耕地、驾车、卫戌等重体力劳动，女的则从事纺织、家庭杂务或侍奉主人。奴婢分官奴与私奴两种，来源大致有三个渠道：一是犯罪人家的子女，他们生活无着落，或抵父母之罪，沦为官府中的仆人；二是战争中的俘虏；三是社会上穷苦的人。奴婢是社会最底层的群体，他们如同牛马，任主人使唤甚至杀义。</p></div>
+    <div class="block"><div class="b-title">【译文】</div><p>（宋神宗）熙宁九年，恩州武城县有旋风从东南袭来，远远看它像羊角直插天空，大树全部被拔起。一会儿，旋风卷到云霄中。不久又渐近（地面），接着经过武城县城，官府民居几乎全部倒，并被卷人云中。县官的儿女及奴婢卷上天又坠落地，死伤好几个人，百姓中死伤失踪的人不计其数。县城全部成了废墟。</p></div>
+  </article>
+  <div class="sec-label">训 练</div>
+  <article class="article" id="a212">
+    <h3>1．地震</h3>
+    <p class="body-text">康熙の七年六月十七日戌刻，地大震。余适客稷下③，方与表兄李笃之对烛饮。忽闻有声如雷，自东南来，向西北去。众骇异，不解其故。俄而几案④摆簸，酒杯倾覆；屋梁橡柱，错折有声，相顾失色。久之，方知地震，各疾趋出。见楼阁房舍仆而复起；墙倾屋塌之声，与儿蹄女号，喧如鼎沸。人眩晕不能立，坐地上，随地转侧。河水倾波丈余，鸡鸣犬吠满城中。逾一时许，始稍定。视街上，则男女裸聚，竞相告语，并忘其未衣也。后闻某处井倾厌③，不可汲；某家楼台南北易向；栖霞山裂；沂(yi)水陷穴，广数亩。此真非常之奇变也。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①康熙：清朝皇帝爱新觉罗玄烨的年号。②戌刻：下午九时到十一时之间。③稷（ji）下：古地名，今山东临淄以北。④几案：桌子。错折：拔隼、折断。③：同“侧”。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①众骇异　②各疾趋出　③见楼阁房舍仆而复起　④竞相告语　不可没　③某家楼台南北易向</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>①余适客稷下　②逾一时许，始稍定　③此真非常之奇变也</p>
+    <p class="ex-item"><span class="q">（3）上文“男女裸聚”及“并忘其未衣也”的描写，说明众人</span></p>
+    </div>
+  </article>
+  <article class="article" id="a213">
+    <h3>2．多忧者</h3>
+    <p class="body-text">沈屯子①偕友入市，闻谈者言：“杨文广②围困柳州城中，内乏粮饷，外阻援兵。”整然诵叹不已。友曳之归。日夜念不置，日：“文广围困至此，何由得解？”从此成疾。家人劝之排迥郊外，以纤其意。又忽见道上有负竹人市者，则又念日：“竹末甚锐，衢上行人必有受者。”归而益忧。夫世之多忧者类此也。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①沈屯子：作者虚构的人物。②杨文广：杨家将故事中的人物。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①沈屯子偕友入市　②友曳之归　③日夜念不置　④从此恺恺成疾　③ 以纤(shu)其意　?衡上行人必有受义(qiang)者　夫世之多忧者类此也</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>①内乏粮饱，外阻援兵　②何由得解？</p>
+    </div>
+  </article>
+  <article class="article" id="a214">
+    <h3>3．穿井得一人</h3>
+    <p class="body-text">宋①之丁氏，家无井，而出汲，常一人居外。及其家穿②井，告人日“吾穿井得一人。”有闻而传之者：“丁氏穿井得一人。”国人道之，闻之于宋君。宋君令人问诸丁氏。丁氏对日：“得一人之使,非得一人于井中也。”</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①宋;宋国。 ②穿:开凿。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①宋之丁氏，家无井，而出汲　②有闻而传之者　③宋君令人问诸丁氏　④丁氏对日</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>①闻之于宋君　②得一人之使，非得一人于井中也</p>
+    <p class="ex-item"><span class="q">（3）成语“以讹传”的意思</span></p>
+    </div>
+  </article>
+  <article class="article" id="a215">
+    <h3>4．不识自家</h3>
+    <p class="body-text">有愚者，常于户外县履为志。一日出门，及午，忽暴雨，其妻收履。至薄暮，愚者归，不见履，日：“吾家徙乎？”不进。妻见而怪之，日：“是汝家，何不入？”愚者日：“毋①履，非吾室。”妻日：“汝何以不识吾？”愚者熟视，乃悟。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①毋：同"无”。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①衰有患者　②及午，忽暴雨　③至薄暮　④患愚者熟视</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>①常于户外县履为志　②妻见而怪之　走进文文（六、七年级用）</p>
+    <p class="ex-item"><span class="q">（3）成语“皮开肉绽”中的“绽”，解释为</span></p>
+    <p>这个成语的意思是</p>
+    </div>
+  </article>
+  <article class="article" id="a216">
+    <h3>5．两丐</h3>
+    <p class="body-text">新市有齐馨者①，行乞衢中。人弗之避，轭念骂日：“汝眼瞎耶？”市人以其暂，多不较。嗣②有梁③者，性尤庆①，亦行乞衢中。遭之，相触而③。梁固不知彼亦馨也，乃起而念骂日：“汝眼亦瞎耶？”两馨相，市人谢之。意！己周人亦周，而语责无已者，何以异于是？</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①新市有齐警（gu)者：新市那地方有个山东来的盲人；警，盲人。②嗣（si)：接着。③梁：此指大梁，今河南开封市。④戾：暴躁。?踊（zhi)：纤倒。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①行乞衢中　②轭念骂日　③市人以其替，多不较　④两警相话　③市人仙之</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>①人弗之避　②梁固不知彼亦也　③意！己人亦周，而责无已者，何以异于是</p>
+    </div>
+  </article>
+</section>
+<section class="unit-block">
+  <div class="unit-head">第 三十七 单 元</div>
+  <div class="sec-label">阅 读</div>
+  <article class="article" id="a217">
+    <h3>楚鼠毁庐（阅读）</h3>
+    <p class="body-text">越西①有独居男子，结茨以为庐，力耕以为食，蔽③粟盐酪具无仰于人。尝③患鼠，昼则累累然行，夜则鸣啮至旦。男子积憾の之，目不得膜。男子怒，持火四焚之，鼠死庐亦毁。次日酒解，帐帐③无所归。龙门子③之。男子日：“人不可积憾哉！予初怒鼠甚，见鼠不见庐也，不知祸至于此。”</p>
+    <div class="attrib">（节选自宋廉《龙门子凝道记》）</div>
+    <div class="block"><div class="b-title">【注释】</div><p>①越西：浙江西部。②结茨(ci)：编织茅草。③蔽(shu)：豆类。④酪(iao)：牛、羊、马的乳汁做成的食品。③尝：常。③累累然：接连不断地。①憾：恨。③帐帐(changchang)：失意的样子。?喧(yan)：对别人的不幸表示慰问。</p></div>
+    <div class="block"><div class="b-title">【文言知识】</div><p>1.释“以为”。上文“结茨以为庐”及“力耕以为食”中的“以为”，均应理解为“以（之)为”，前句意为编织茅草把它作为住舍，后句意为努力耕作把它作为生存条件。又，“其人嗜书以为生”，意为那人爱好书并把它作为生活的必须；“某孤，邻人以为子”，意为某人从小没父亲，邻居把他作为儿子看待。“以为”又指认为。如，“天嗨，人皆以为雨”，意为天色昏暗，人们都认为要下雨了。2.释“无所”。上文“帐帐无所归”中的“无所”，指没有什么，句意为失意地感到没有什么地方可归宿。又，“家贫，无所生”，意为家庭贫困，没什么可以生存的；“其年已老，故无所求”，意为他年已老，所以没什么追求。“有所”则相反。如“少年，欲有所为”，意为年纪还轻，想有所作为。【启发与循鉴】鲁莽从事要不得。做任何事情都要有理智支配，若喜怒哀乐失去了理智，就会干出傻事，不仅害人而且害己。上文说的那个“男子”，因恼怒老鼠而一把火把屋子也烧毁了，实在有点荒唐。生活中常有这类蛮事，因一句刺耳的话竟与对方动手，因一时的气恼而摔东西·所以人要学会克制，懂得三思而行。</p></div>
+    <div class="block"><div class="b-title">【译文】</div><p>都不靠别人。（可是）常忧愁鼠害，白天（老鼠）接连不断地行走，到晚上又叫又咬直到天亮。该男子对老鼠积恨，眼睛没法闭一会儿。男子（喝醉酒后）光火了，拿着火把在屋内四面燃烧，老鼠被烧死，可房屋也烧毁了。第二天酒醒了，内心（无限）失意，没归宿的地方。龙门子安慰他。那男子说：“人不可以积根啊！我开始时十分怨恨老鼠，只见老鼠而不见住屋，没估计后果会到这种地步！”</p></div>
+  </article>
+  <div class="sec-label">训 练</div>
+  <article class="article" id="a218">
+    <h3>1．汉断棘</h3>
+    <p class="body-text">终南之山①有棘满径，骨柔而刺密。触之者恒胶结②不可解，不受伤不已。人畏其刺，咸迁其途避之。一人义形于色，寒③裳而人，欲节节③而断之。孰知左断于指，而右曳于臂，下钩其裙，上牵其袖，惫已甚。君子日：“斯人之疾恶是，疾之而不以其道,苟持斧,求其本而艾③之，何棘不去？”</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①终南之山：即终南山，在今陕西境内。②胶结：粘住。③塞（qian)：擦起。④节节：一段路一段路。 艾(yi):砍,割。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①终南之山有棘满径　②骨柔而刺密　③触之者恒胶结不可解　①不受伤不已　敦知左断于指，而右曳(yi)于臂　③苟持斧，求其本而艾之</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>　①咸迁其途避之　②一人义形于色　③斯人之疾恶是也，疾之而不以其道</p>
+    </div>
+  </article>
+  <article class="article" id="a219">
+    <h3>2．宾卑聚自杀</h3>
+    <p class="body-text">齐庄公①时,有士日宾卑聚。梦有壮士,新素履,墨剑囊。从而斥之,唾其面。宾卑聚惕然而，徒梦也，终夜坐不自快。明白，召其友告之日：“吾少好勇，年且六十而无所挫辱，今夜辱，吾将索其形。期得之，则可；不得，将死之。”每朝与其友俱立乎③衢。三日不得,却而自殁①。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①齐庄公：齐国国君。②士：勇士③乎：同“于”。④殁（mo）：死。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①从而斥之　②惕然而瘩　③徒梦也　④终夜坐不自快　③吾少好勇　③年且六十而无所挫辱　①吾将索其形　③却而自</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>①新素履，墨剑衰　②期得之，则可　③每朝与其友俱立乎衢</p>
+    </div>
+  </article>
+  <article class="article" id="a220">
+    <h3>3．齐之好勇者</h3>
+    <p class="body-text">齐之好勇者，一人居东郭，一人居西郭，卒①然相遇于途，日：“益相饮乎？”饮数行②，日：“姑③求肉乎？”一人日：“子，肉也；我，肉也。尚胡求肉为？”于是具染①已，因抽刀割已肉而啖，至死而止。勇若此，不若无勇。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①卒：同“猝”,突然。②行(xing)：遍。③姑：姑且，暂且。④染酱。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①一人居东郭　②子,肉也　③于是具染已　④因抽刀割己肉而</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>①益相饮乎？　②尚胡求肉为？　③勇若此，不若无勇</p>
+    </div>
+  </article>
+  <article class="article" id="a221">
+    <h3>4．引婴儿投江</h3>
+    <p class="body-text">有过于江上者，见人方引婴儿欲投之江中。婴儿啼。人问其故，日：“此其父善游。”一一其父虽善游,其子岂邃善游哉？以此任物①,亦必。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①任物：对待事物。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①见人方引婴儿欲投之江中　②人问其故　③以此任物，亦必悖矣</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>其子岂遂善游哉</p>
+    <p class="ex-item"><span class="q">（3）成语“自以为是”中的是”，解释为</span></p>
+    </div>
+  </article>
+  <article class="article" id="a222">
+    <h3>5．楚人不识姜</h3>
+    <p class="body-text">楚①人有生而不识姜者，日：“此从树上结成。”或日：“从土里生成。”其人固执已见，日：“请与子以十人为质，以所乘驴为赌③。”已而遍问十人，皆日：“土里出也。”其人哑然失色，日：“驴则付汝，姜还树生。”</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①楚：楚国；也可指今湖北、湖南。③赌：赌注。②质：见证。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①或日　②驴则付汝</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>其人哑然失色</p>
+    <p class="ex-item"><span class="q">（3）“固执已见”的意思是</span></p>
+    <p class="ex-item"><span class="q">（4）这则笑话用来讽刺</span></p>
+    </div>
+  </article>
+</section>
+<section class="unit-block">
+  <div class="unit-head">第 三十八 单 元</div>
+  <div class="sec-label">阅 读</div>
+  <article class="article" id="a223">
+    <h3>南岐人之瘿（阅读）</h3>
+    <p class="body-text">南岐在秦蜀の山谷中，其水甘而不良，凡饮之者辄病瘦②，故其地之民无一人无瘦者。及见外方人③至，则群小④妇人聚观而笑之日：“异哉，人之颈也！焦③而不吾类③！”外方人日：“尔之垒然①凸出于颈者，瘦病之也，不求善药去尔病，反以吾颈为焦耶？”笑者日：“吾乡之人皆然，為用去乎哉！”终莫知其为丑。</p>
+    <div class="attrib">（，（节选自《贤奕编》）</div>
+    <div class="block"><div class="b-title">【注释】</div><p>①秦蜀：今陕西、四川交界处。②瘦(ying)：颈上生囊状瘤子，即颈瘤病。③外方人：外地人。④群小：小孩子们。③焦：细瘦。③类：似，像。①垒然：高起的样子。</p></div>
+    <div class="block"><div class="b-title">【文言知识】</div><p>1.释“”。“”指往往、总是、就。上文“凡饮之者辄病瘦”，意为凡是喝那水的总会生颈瘤病。又，“读后记矣”，意为阅读后就能记住了；“天雨辄滚”，意为天一下雨水就满起来；“人不予怒”，意为人们不给他就要发怒。成语有“动得”，意为只要有行动总会受到责备，形容指责过多。2.释“焉”。上文有“需用去乎哉”，其中“為”指何必，句意为何必要除去呢！古语有“杀鸡焉用牛刀”，意为杀鸡何必用牛刀，比喻做小事不必花大力气。又，“不入虎穴需得虎子”，其中“需”指“怎么”、“哪能”，意为不进入老虎的巢穴怎么能抓到虎仔，比喻不冒点险怎么能有收获。3.主谓倒置句。无论古汉语还是现代汉语，一般都是主谓结构，即主语在前，谓语在后，但有时为了强调谓语，亦可将谓语置于主语之前，这就是主谓倒置现象。如上文“异哉，人之颈也”，“异哉”是谓语，可它置于主语“人之颈”之前，阅读时应按“人之颈，异哉”来理解，句意为那人的头颈奇怪啊！又，《愚公移山》：“甚矣，汝之不惠！”应按“汝之不惠，甚矣”来理解。又，《去私》：“善哉，祁黄羊之论！”应按“祁黄羊之论，善哉”来理解。</p></div>
+    <div class="block"><div class="b-title">【启发与借鉴】</div><p>偏见害人。南歧人明明自已生了颈瘤病，却嘲笑外方人的头颈不正常，这纯属偏见。为什么会造成偏见的？因为眼光狭窄，孤陋寡闻。南歧人是可以谅解的，因他们世代生活在山谷中。生活在现代都市的人也常会有偏见，大抵是不读书，不学习，圃于自已的小天地，于是这也看不惯，那也不顺眼。偏见会造成判断失误，甚至是非颠倒。</p></div>
+    <div class="block"><div class="b-title">【译文】</div><p>：南岐在秦蜀山谷之中，那里的水甘甜却不好，凡是喝那水的人总要生颈瘤病，所以那里的百姓没一个不生颈瘤病的。等到看见了外地人到来，小孩子们及妇女就聚拢来嘲笑外地人，说：“那人的头颈奇怪啊！瘦细而不像我们！”外地人说：“你们的头颈高凸出来，是生颈瘤的，何必要除去它呢！”南岐人)始终不觉得他们的丑相。</p></div>
+  </article>
+  <div class="sec-label">训 练</div>
+  <article class="article" id="a224">
+    <h3>1．狂泉</h3>
+    <p class="body-text">昔有一国，国中一水，号日“狂泉”。国人饮此水，无不狂。唯国君穿井而汲，独得无恙。国人既并狂，反谓国主不狂为狂，于是聚谋，共执国主，疗其狂疾，火艾①针药，莫不毕具。国主不任其苦，于是到泉所酌水饮之，饮毕便狂。君臣大小,其狂若一,众乃欢然。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①火艾：用艾蓬火熏。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①唯国君穿井而汲　②国人既并狂　③共执国主　④国主不任其苦</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>①独得无患　②莫不毕具</p>
+    <p class="ex-item"><span class="q">（3）《狂泉》与《南岐人之瘦》中讲的故事类似，这些人的思想错误是</span></p>
+    </div>
+  </article>
+  <article class="article" id="a225">
+    <h3>2．鼠技虎名</h3>
+    <p class="body-text">楚の人谓虎为“老虫”，姑苏②人谓鼠为“老鼠”。余官长洲③，以事至娄东。灭烛就寝，忽闻碗碟有声。余问故，阎童答日：“老虫。”余楚人也，不胜吴俗相传耳。乎！鼠冒老虫之名，致余惊鳄欲走，良足发笑。然今关下冒虚名骇世俗者不寡矣！至于挟鼠技而冒虎名，立民上者，皆鼠辈也，天下事不可不大忧耶？</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①楚：今湖北、湖南一带。②姑苏：苏州。④娄东：今江苏太③长洲：古地名，今苏州吴县。仓。③阎(hun)童：守门的小伙子。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①.余官长洲　②以事至娄东　③灭烛就瘦　④不胜惊号　③非他兽　③童谓吴俗相传耳　①至于换鼠技而冒虎名　③皆鼠辈也</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>①城中安得有此兽　②然今天下冒虚名骇世俗者不赛矣</p>
+    <p class="ex-item"><span class="q">（3）这则寓言是讽刺</span></p>
+    <p></p>
+    </div>
+  </article>
+  <article class="article" id="a226">
+    <h3>3．北人不识菱者</h3>
+    <p class="body-text">北人生而不识菱①者，仕于南方，席上啖菱,并壳人口。或日：“啖菱须去壳。”其人自护所短，日：“我非不知，并壳者欲以清热也。”答：“前山后山，何地不有！”</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①菱：俗称“菱角”。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①或日　②其人自护其短</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>①仕于南方　②席上菱，并壳入口</p>
+    </div>
+  </article>
+  <article class="article" id="a227">
+    <h3>4．病忘者</h3>
+    <p class="body-text">齐①有病忘者,行则忘止，卧则忘起。其妻患之,谓日：“闻艾子多知,能愈子之疾，盏往治之？”其人日：“善。”于是乘马挟弓矢而行。未一舍，内逼③，下马而便焉。矢植于土，马系于树。便，左顾而赌其矢，日：“危乎！流矢奚自？几中予！”右顾而睹其马，喜日：“虽受虚惊，乃得一马。”引马反向而行。须奥抵家，個门外，日：“此何人居？岂艾子所寓也？”其妻适见之，知其又忘矣，斥之。其人帐然①日：“娘子素非相识，何故出语伤人？”</p>
+    <div class="block"><div class="b-title">【注释】</div><p>①齐：齐国；也可指山东。②一舍：古代三十里为“一舍”。③内逼：肚里发胀；指急着要大便。④帐然：范然的样子。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①闻艾子多知　能愈子之疾　引马反向而行　须史抵家　岂艾子之所寓也　其妻适见之　③斥之　③娘子素非相识</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>① 盘往治之　②危乎！流失美自？几中予</p>
+    </div>
+  </article>
+  <article class="article" id="a228">
+    <h3>5．斗牛而废耕</h3>
+    <p class="body-text">卫懿公①好禽兽，见抵牛②而说之，禄其牧人如中士③。宁子谏日：“岂可！牛之用于耕而不在。抵其牛，耕必废。耕,国之本也,其可废乎？臣闻之,君人者不以欲妨民。”弗听。于是卫牛之抵者,贾十倍于耕牛,牧牛者皆释耕而教抵,农官弗能禁。</p>
+    <div class="block"><div class="b-title">【注释】</div><p>① 卫懿(yi)公：卫国国君。②抵(di)牛斗牛。③中士：官职名称，仅次于大夫。</p></div>
+    <div class="block"><div class="b-title">【训练】</div>
+    <p class="ex-item"><span class="q">（1）解释下列各句中加点的词</span></p>
+    <p>①见牛而说之　②禄其牧人如中士　③宁子谏日　④ 臣之　③.牧牛者皆释耕而教抵</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>①耕,国之本,其可废乎?　②君人者不以欲妨民　③贾十倍于耕牛</p>
+    </div>
+  </article>
+</section>
+
+  <hr class="soft">
+  <p class="attrib" style="text-align:center;">— 全文完 · 涵盖三十八个单元 226 篇 · 第一～第六单元逐页人工校订，第七～第三十八单元基于 OCR 整理 —</p>
+</main>
+
+<script>
+  const links = document.querySelectorAll('#sidebar a');
+  const articles = [...document.querySelectorAll('.article[id]')];
+  function openUnitOf(id){
+    const link = document.querySelector('#sidebar a[href="#'+id+'"]');
+    if(link){ const d=link.closest('details'); if(d) d.open=true; }
+  }
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const id = e.target.id;
+        links.forEach(l=>l.classList.toggle('active', l.getAttribute('href')==='#'+id));
+      }
+    });
+  },{rootMargin:'-40% 0px -50% 0px'});
+  articles.forEach(a=>obs.observe(a));
+  // 点击目录时自动展开所在单元
+  links.forEach(a=>a.addEventListener('click',()=>{const d=a.closest('details');if(d)d.open=true;}));
+  // 通过 #hash 直接定位时展开对应单元
+  if(location.hash){ const el=document.querySelector(location.hash); if(el) openUnitOf(el.id); }
+</script>
+</body>
+</html>
