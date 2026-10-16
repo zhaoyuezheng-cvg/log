@@ -103,13 +103,166 @@
   #sidebar details.nav-unit[open]>summary::before{content:"\25BE  ";}
   #sidebar details.nav-unit a{padding-left:20px;font-size:13px;}
 
+
+  /* ============ v2 增强：工具栏/折叠/答案/暗色/打印 ============ */
+  :root{ --bar-h:52px; }
+  #toolbar{
+    position:fixed;top:0;left:230px;right:0;height:var(--bar-h);z-index:18;
+    display:flex;align-items:center;gap:8px;padding:0 14px;
+    background:linear-gradient(180deg,#f8f1e2,#f0e4cb);
+    border-bottom:1px solid var(--line);box-shadow:0 1px 6px rgba(80,60,30,.10);
+  }
+  #progress{position:fixed;top:var(--bar-h);left:230px;right:0;height:3px;z-index:19;background:rgba(0,0,0,.05);}
+  #progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent-soft),var(--accent));transition:width .12s;}
+  #main{padding-top:calc(var(--bar-h) + 26px)!important;}
+  @media (max-width:820px){
+    #toolbar{left:0;padding-left:58px;}
+    #progress{left:0;}
+  }
+  .tbtn{
+    border:1px solid var(--line);background:#fffdf6;color:var(--ink);
+    border-radius:8px;padding:5px 10px;font-size:13px;cursor:pointer;line-height:1.4;
+    font-family:inherit;transition:.15s;white-space:nowrap;
+  }
+  .tbtn:hover{background:#fff;border-color:var(--accent-soft);color:var(--accent);}
+  .tbtn.on{background:var(--accent);border-color:var(--accent);color:#fff;}
+  #searchBox{
+    flex:1;max-width:280px;border:1px solid var(--line);border-radius:8px;
+    padding:6px 10px;font-size:13px;background:#fffdf6;color:var(--ink);font-family:inherit;
+  }
+  #searchBox:focus{outline:none;border-color:var(--accent-soft);}
+  #searchHit{font-size:12px;color:var(--ink-soft);white-space:nowrap;}
+  /* 折叠 */
+  .b-title{cursor:pointer;user-select:none;position:relative;padding-right:18px;}
+  .b-title::after{content:"▾";position:absolute;right:0;top:0;font-size:12px;color:var(--accent-soft);}
+  .b-title.folded::after{content:"▸";}
+  .b-folded{display:none;}
+  @media print{.b-folded{display:block!important;}}
+  /* 增补 */
+  .zengbu{
+    margin-top:8px;padding:8px 12px;background:#fbf3e2;border-left:3px solid var(--accent-soft);
+    border-radius:0 6px 6px 0;
+  }
+  .zengbu .zb-toggle{
+    display:inline-block;font-size:12.5px;font-weight:700;color:var(--accent);
+    cursor:pointer;user-select:none;border-bottom:1px dashed var(--accent-soft);
+  }
+  .zengbu .zb-body{margin-top:6px;}
+  .zengbu.folded .zb-body{display:none;}
+  .zengbu b{color:var(--accent);}
+  /* 参考答案 */
+  .ans-block{
+    margin:14px 0 4px;border:1px dashed #b9c9a8;border-radius:8px;background:#f6faf1;
+  }
+  .ans-block .b-title{color:#3d6b34;margin-bottom:0;}
+  .ans-block .b-title::after{color:#7ba069;}
+  .ans-block .ans-body{padding:4px 14px 10px;}
+  .ans-block dl{margin:6px 0;}
+  .ans-block dt{font-weight:700;color:#3d6b34;margin-top:10px;font-size:14.5px;}
+  .ans-block dd{margin:3px 0 3px 1.2em;}
+  .ans-block .ans-src{font-size:12px;color:#8a9a7d;margin-top:8px;}
+  .ans-block .ans-book{color:#2f5d27;font-weight:700;}
+  .ans-block .ans-trans{background:#fff;border:1px solid #dce8d0;border-radius:6px;padding:6px 10px;margin-top:6px;}
+  .ans-block .ans-self{color:#9a7b2d;font-size:13px;}
+  /* 已读 / 收藏 标记 */
+  .read-mark{font-size:11px;color:#7ba069;margin-left:4px;}
+  .fav-mark{color:#c9821f;margin-left:3px;}
+  #sidebar a.done{opacity:.55;}
+  #sidebar a.done::before{content:"✓ ";color:#7ba069;}
+  #sidebar a.faved{font-weight:700;}
+  #sidebar a.faved::after{content:" ★";color:#c9821f;}
+  /* 页内篇目工具条 */
+  .art-tools{display:flex;gap:6px;justify-content:flex-end;margin:-4px 0 8px;}
+  .art-tools .tbtn{font-size:12px;padding:3px 8px;}
+  /* 返回顶部 */
+  #backTop{
+    position:fixed;right:22px;bottom:26px;z-index:25;display:none;
+    background:var(--accent);color:#fff;border:none;border-radius:10px;
+    padding:10px 14px;font-size:14px;cursor:pointer;box-shadow:0 3px 12px rgba(120,40,30,.3);
+  }
+  /* 暗色（屏幕端偏好） */
+  body.dark{
+    --paper:#17140f;--paper-2:#1f1a14;--ink:#e8ddc8;--ink-soft:#a99c83;
+    --accent:#e0685c;--accent-soft:#d9a45c;--line:#3b3325;--card:#211b13;
+    --note-bg:#241d14;--shadow:0 2px 10px rgba(0,0,0,.4);
+  }
+  body.dark #toolbar{background:linear-gradient(180deg,#221b12,#1a150e);}
+  body.dark #searchBox{background:#191409;color:var(--ink);}
+  body.dark .tbtn{background:#221b12;color:var(--ink);}
+  body.dark .zengbu{background:#262015;}
+  body.dark .ans-block{background:#1c2416;border-color:#3f5334;}
+  body.dark .ans-block .ans-trans{background:#141d10;border-color:#33422a;}
+  body.dark .ans-block dt{color:#8fbf7e;}
+  body.dark #sidebar{background:linear-gradient(180deg,#221b12,#1a150e);}
+  body.dark #backTop{background:#8d3a30;}
+  /* 阅读观感微调 */
+  .article{transition:box-shadow .2s;}
+  .article:hover{box-shadow:0 4px 16px rgba(120,80,40,.13);}
+  .ex-item .q{color:var(--accent);}
+  h3{break-after:avoid;}
+  .body-text{break-inside:auto;}
+  ::selection{background:var(--accent-soft);color:#fff;}
+  /* 单元头吸顶，长文滚动时定位清晰 */
+  .unit-head{position:sticky;top:calc(var(--bar-h) + 3px);z-index:6;}
+  @media (max-width:820px){ .unit-head{top:calc(var(--bar-h) + 3px);} }
+  @media print{ .unit-head{position:static;} }
+  /* 打印：A4 满页、展开全部、隐藏交互 */
+  @media print{
+    #toolbar,#progress,#backTop,.art-tools,.zengbu .zb-toggle,.ans-block .b-title::after{display:none!important;}
+    #main{margin-left:0!important;max-width:none!important;padding:0!important;}
+    body{background:#fff;font-size:13.5px;line-height:1.75;}
+    .unit-head{background:var(--accent)!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .article{box-shadow:none;break-inside:auto;}
+    .block,.ans-block,.zengbu{box-shadow:none;break-inside:avoid;}
+    .zengbu,.ans-block{border:1px solid #999;}
+    .zengbu.folded .zb-body,.b-folded{display:block!important;}
+    .article .block p,.article p.attrib{orphans:3;widows:3;}
+  }
+  /* 窄屏工具栏：可横向滚动，不挤压 */
+  @media (max-width:900px){
+    #toolbar{overflow-x:auto;gap:6px;}
+    #toolbar .tbtn{flex:0 0 auto;padding:5px 8px;font-size:12.5px;}
+    #searchBox{flex:0 0 130px;}
+    #searchHit{display:none;}
+  }
+
+  /* ============ v3 显示增强 ============ */
+  /* 参考答案块：更清晰的分区与行距 */
+  .ans-block{
+    border:1px solid #cfe0bd;border-left:4px solid #7ba069;
+    border-radius:0 8px 8px 0;background:#f7fbf2;margin:16px 0 4px;
+  }
+  .ans-block .b-title{color:#2f5d27;margin-bottom:2px;}
+  .ans-block .ans-body{padding:6px 16px 12px;}
+  .ans-block dt{font-weight:700;color:#2f5d27;margin-top:12px;padding-bottom:3px;border-bottom:1px dashed #dbe8cc;}
+  .ans-block dd{margin:5px 0 5px 0;line-height:1.9;}
+  .ans-block .ans-src{margin-top:8px;padding-top:6px;border-top:1px dashed #dbe8cc;font-size:12px;}
+  /* 侧栏：单元展开/折叠工具 */
+  #sidebar .nav-tools{display:flex;gap:6px;margin:6px 0 10px;}
+  #sidebar .nav-tools button{
+    flex:1;border:1px solid var(--line);background:#fffdf6;color:var(--ink-soft);
+    border-radius:6px;font-size:12px;padding:4px 0;cursor:pointer;font-family:inherit;transition:.15s;
+  }
+  #sidebar .nav-tools button:hover{color:var(--accent);border-color:var(--accent-soft);background:#fff;}
+  /* 篇目工具条里的答案按钮 */
+  .art-tools .tbtn.ans-on{background:#3d6b34;border-color:#3d6b34;color:#fff;}
+  body.dark .ans-block{background:#1b2415;border-color:#3a4d30;border-left-color:#6da05c;}
+  body.dark .ans-block dt{color:#8fbf7e;border-bottom-color:#31422a;}
+  body.dark .ans-block .ans-src{border-top-color:#31422a;}
+  body.dark #sidebar .nav-tools button{background:#221b12;color:var(--ink-soft);}
+  @media print{
+    .ans-block{border:1px solid #b7c9a4!important;background:#fff!important;}
+    .ans-block dt{color:#264a1f;}
+    .ans-block dd{font-size:12.5px;line-height:1.7;}
+    .ans-block .b-title::after,.ans-block .ans-src{display:none!important;}
+  }
 </style>
 </head>
 <body data-page-node-id="7zy678UJkxBQU3qxO4PFIO">
 <button id="toggleNav" onclick="document.getElementById('sidebar').classList.toggle('open')" data-page-node-id="JgY5jW65E5rJs1BZU19Cnz">☰ 目录</button>
 <nav id="sidebar" data-page-node-id="5iwl1Aw2JJPwcknqblSUDG">
 <h1 data-page-node-id="UKAGGmjR4xwCeF16y5aXsr">走进文言文</h1>
-<div class="sub" data-page-node-id="lMAgMkY9YewhFuYHGfHGPO">九年级用 · 文本整理稿（38 单元 · 228 篇）</div>
+<div class="sub" data-page-node-id="lMAgMkY9YewhFuYHGfHGPO">九年级用 · 阅读增强版（38 单元 · 228 篇）<br>词语增补 · 训练答案 · 可检索</div>
 <details class="nav-unit" open data-page-node-id="NmU5Ft3A6eMAqOhRe8XgeS"><summary data-page-node-id="ps1CbcHURWLVCJ6pV6Lnwn">第 一 单元</summary>
 <a href="#a1" data-page-node-id="kh2hzIizObWmHwgVTFFRpA">· 华佗治病（阅读）</a>
 <a href="#a2" data-page-node-id="2TuBFaANjSYvIS3zp1DGgA">· 华佗巧治</a>
@@ -417,7 +570,7 @@
 </nav>
 <main id="main" data-page-node-id="fHvEACWPC0G5vI0PFex4ep">
   <h2 class="doc-title" data-page-node-id="Po31qG51eHo05JwbMB9KaH">走 进 文 言 文</h2>
-  <div class="doc-desc" data-page-node-id="gnh7NM4PBC5LCZoBDBNMeR">九年级用 · 据图像型 PDF 逐页 OCR 整理（含阅读与训练，已逐字校对并增补词语注释）</div>
+  <div class="doc-desc" data-page-node-id="gnh7NM4PBC5LCZoBDBNMeR">九年级用 · 据图像型 PDF 逐页 OCR 并校订 · 点击【注释】/【译文】/【增补】/【参考答案】可折叠 · 支持搜索、深色模式与朗读</div>
 <section class="unit-block" data-page-node-id="rXtaDtG4oTrHfghQOmBBfC">
   <div class="unit-head" data-page-node-id="59L559LaLOgIx39FTcS3y5">第 一 单 元</div>
   <div class="sec-label" data-page-node-id="GGslsMddfiEKqAI55VWZdm">阅 读</div>
@@ -714,7 +867,9 @@
     <div class="block" data-page-node-id="8rGwKEM5E1GrOyDDymbFCE"><div class="b-title" data-page-node-id="gHFk4dbstUvJHMHySEW0xT">【注释】</div><p data-page-node-id="e9LgYJNsEt9HpypJwDwzUr">①闽：福建省。②倭：旧时称日本。③酋长：头领。④锭(ding)：抛锚。<br data-page-node-id="RHjDEbou3lYRrt2ClvHKki">【增补】诸：兼词“之于、之乎”或代词“众”。固：副词：本来、坚决；通“故”。将：副词：将要；动词：率领。会：副词：恰逢、正赶上。甚：副词：很、非常。皆：副词：都、全。好：动词：喜爱（hào）；形容词：美好。奇：意动用法：以……为奇。</p></div>
     <div class="block" data-page-node-id="K0nZcPAEifThNfVueTPuuJ"><div class="b-title" data-page-node-id="Q9yDEaRImvDqxDDu1yE4Jb">【训练】</div>
     <p class="ex-item" data-page-node-id="BpUU0GjjPzzlxZS1ASPzMo"><span class="q" data-page-node-id="zCWGlDYYodaAd7MPQitzWK">（1）解释下列各句中加点的词</span></p>
-    <p data-page-node-id="LfFMBRKfWKBTA2NCocen49">①薄省城大掠　②舟中贼可五十人　③同执者男女十余人　④贼舟百艘许　③长年乘间谓同执者日　③贼还,将抵国　①今幸东北风厉　③选劝酒　长年固善舟　①长年为贼得，快入舟　②长年时时伴为好语以媚贼　③不吾备也　④诚能醉贼</p>
+    <p data-page-node-id="LfFMBRKfWKBTA2NCocen49">①薄省城大掠　②舟中贼可五十人　③同执者男女十余人　④贼舟百艘许　⑤长年乘间谓同执者曰　⑥贼还，将抵国　⑦今幸东北风厉　⑧选勤酒　⑨长年固善舟</p>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>①长年为贼得，挟入舟　②长年时时佯为好语以媚贼　③不吾备也　④诚能醉贼</p>
     </div>
   </article>
 </section>
@@ -2776,12 +2931,14 @@
   <article class="article" id="a186" data-page-node-id="2UfRtoHmdiTdBrugbsE9zo">
     <h3 data-page-node-id="oy5yVSUFTYGBdB5HEvonRA">无赖仗势</h3>
     <p class="body-text" data-page-node-id="kzttZRlkDV1AYdJPWyDisG">其邑无赖甚多,或窃人牛马,或劫人财货，或当面索直，众患之。尝有人讼于官,令曰："无奈何也，以其为首之父为郡守。"由是,益肆虐,无所不为。众怒而不敢言。无何,郡守坐贿而黜,举乡沸腾,缚其为首者示众,余则闻风鼠窜。或曰：天赞百姓也。</p>
-    <div class="block" data-page-node-id="l1xEWZjCYkxGlcZIThzF94"><div class="b-title" data-page-node-id="PEaDSv0o0LQDTi93wWZoLs">【注释】</div><p data-page-node-id="Ec1jCuJqpdOv8eUFYxOIyh">①（chu)：罢官。<br data-page-node-id="hy67DERCja4x1Itmh6vBBG">【增补】何：疑问代词：什么、为什么、怎么。所：助词，与动词组成“所＋动”结构。是：指示代词：这、此。或：代词：有的人；副词：有时、或许。尝：副词：曾经。益：副词：更加；名词：利益。甚：副词：很、非常。直：副词：径直、只；通“值”。</p></div>
+    <div class="block" data-page-node-id="l1xEWZjCYkxGlcZIThzF94"><div class="b-title" data-page-node-id="PEaDSv0o0LQDTi93wWZoLs">【注释】</div><p data-page-node-id="Ec1jCuJqpdOv8eUFYxOIyh">①黜（chù)：罢官（被免职）。<br data-page-node-id="hy67DERCja4x1Itmh6vBBG">【增补】何：疑问代词：什么、为什么、怎么。所：助词，与动词组成“所＋动”结构。是：指示代词：这、此。或：代词：有的人；副词：有时、或许。尝：副词：曾经。益：副词：更加；名词：利益。甚：副词：很、非常。直：副词：径直、只；通“值”。</p></div>
     <div class="block" data-page-node-id="kvRGjCew72rKAZPy3NAjzQ"><div class="b-title" data-page-node-id="HD4FiHxIos97cHrKYAhrrI">【训练】</div>
     <p class="ex-item" data-page-node-id="SiTSwCl0QTxZJnJrvWySDu"><span class="q" data-page-node-id="6UMqLPFTGTbjPMQ0MgGguK">（1）解释下列各句中加点的词</span></p>
     <p data-page-node-id="dBuUeRLWIfsN7x51YgXmBp">①其邑无赖甚多　②或窃人牛马　（）　③或当面索直　④举乡沸腾　③天赞百姓也</p>
-    </div>
-    <div class="block" data-page-node-id="n85pIYIaSrIG3eLP50HXHo"><div class="b-title" data-page-node-id="GqSlfEHb0pFmIsmbmHlhdZ">【注释】</div><p data-page-node-id="s7e4jwP0skWmZYZqMXtj9G">（2）用现代汉语翻译下面句子①众惠之②尝有人讼于官③由是，益肆虐④无何，郡守坐贿而（3）成语"恶贯满盈"的意思是【封】<br data-page-node-id="SnGdb4Xhmp9G44GuRevrGd">【增补】何：疑问代词：什么、为什么、怎么。所：助词，与动词组成“所＋动”结构。是：指示代词：这、此。或：代词：有的人；副词：有时、或许。尝：副词：曾经。益：副词：更加；名词：利益。甚：副词：很、非常。直：副词：径直、只；通“值”。</p></div>
+    <p class="ex-item"><span class="q">（2）用现代汉语翻译下面句子</span></p>
+    <p>①众惠之　<span class="blank"></span>　②尝有人讼于官　<span class="blank"></span>　③由是，益肆虐　<span class="blank"></span>　④无何，郡守坐贿而　<span class="blank"></span></p>
+    <p class="ex-item"><span class="q">（3）成语"恶贯满盈"的意思是</span></p></div>
+    
   </article>
 </section>
 <section class="unit-block" data-page-node-id="ye1IdCJ7jSJFkG0ENPqPYM">
@@ -3326,6 +3483,9 @@
 </section>
   <hr class="soft" data-page-node-id="vHc9IeEEKFYSDrffkI9Dgj">
   <p class="attrib" style="text-align:center;" data-page-node-id="KLM4nSFIanNhejNC62jtsa">— 全文已逐字校对、增补词语注释，供初中语文文言文学习使用 —</p>
+
+  <hr class="soft">
+  <p class="attrib" style="text-align:center;">— 全文完 · 三十八个单元 228 篇 · 已据教材原书参考答案（PDF 第 231～256 页）逐篇核对补入 · 答案出自原书 OCR，若有个别识读差异请以教材为准 —</p>
 </main>
 <script>
   const links=[...document.querySelectorAll('#sidebar a')];
@@ -3340,6 +3500,510 @@
   articles.forEach(a=>obs.observe(a));
   links.forEach(a=>a.addEventListener('click',()=>{const d=a.closest('details');if(d)d.open=true;}));
   if(location.hash){const el=document.querySelector(location.hash);if(el)openUnitOf(el.id);}
+</script>
+<script>
+/* ===== 教材原书参考答案：由 PDF 参考答案区 OCR + 逐页高清核对 （p231–p257，4.5× 高清重跑） ===== */
+window.ANSWERS = {"a2":["①不多久；离去；信②使者（派去的人）；追","①便多接受他的财物却不给（他）治病②郡守极其愤怒之后，吐出几升黑血病便好了","针对病情下药；针对问题用有效的方法解决"],"a3":["①同“悦”②你③正④随③已","皇上本想用假话使解缙感到为难","生男孩"],"a4":["①近，接连②灾荒③接连不断④下","①不久魏地向皇帝报告，（那里）不见了二千顷谷子②人们对这种现象都感到奇怪","是龙卷风（旋风）造成的"],"a5":["①有人②减少③停止","①这不是君子（指品德高尚的人）的行为②如果知道那事不合道义，就赶快停止，为什么要等到明年？"],"a6":["①姓②等到；凿首③劳力","①家中无井，而外出灌溉及打水②国家里的人传说这件事，被宋君听到了这件事"],"a8":["①从前②到③远④只；罢了⑤简陋⑥友好⑦结束","只要开门就行","①人②只有③学生，子弟④步行白白地","①贵府②玉趾③屈尊①贱寓②澈寓"],"a9":["①等候②向上爬③一一地④同“否”?常（","官府的差役就（把他）捆绑后送到官府","一整天","被眼前细小的事物所蒙蔽而看不到全局"],"a10":["①触犯②用竹鞭打人","①整个郡都把灯说成火②恰遇上元节张灯，（郡里的）差役在集市上贴出布告","②","有权势的人可以胡作非为，而小百姓不能做正常的事"],"a11":["①饥荒②遮掩；袖子管③同“捧”","①聆敖在路旁摆了个食摊②我因为不吃“噬来之食”，才到了这地步③（黔敖）跟上去向他道款","饿者","带有悔厚性的恩赐"],"a12":["①","①裁，插（作动词用）②不，同无”","①（你）一定要好好地侍奉（魏王）周围的人②你虽然善于在魏王面前确立自己的权势，可是想赶走你的人很多，你一定十分危险了"],"a14":["①那里②宿③立刻！④认为人睡","①雁群借此睡觉②像这样接连三次四次","一网打尽"],"a15":["①拉②着③拴住④头；踩③一下子（形容快速）","①有的用画有图画的竹竿绑在小腿上高五六尺的②有的翻身倒立，到纲上便停住，竟没有失手跌落的③扎紧","叠罗汉","皇帝住宿或游乐的楼屋"],"a16":["①妒忌②渐浙地③突然④一会儿③经过","想超过牛","不衡量自己的实力"],"a17":["①拷打；讯问②全③寻找④完整","①如今实在不能忍受了②按照（狐）的话寻找它，果然不错③时时不免有这类（冤枉）的事，可怎能处处有孤（来帮助澄清）④所以做官二十多年，审讯案件从来不用刑讯逼供求（实情）"],"a18":["①店铺②远；近③极④仁慈③长官","①之后用开水浇它的身体②其他的都充军守边防，并且刻石永远禁止","开水；防守坚固"],"a20":["①年轻时②路过③遇；故意④你③反复③弯下身子","①当众悔辱他②从我裤档里钻过去③整个市场上的人都嘲笑（韩信），认为（他）胆"],"a21":["①扩大②皇帝到某处去③划④跟随","①要写“之”有什么作用呢？②之乎者也，帮助得了什么事？","明白：正确而深刻的认识和见解"],"a22":["①了②为什么③告诉","①自身没（地方）寄托②又有为他的担优而优愁的人","不必要的或无根据的忧虑"],"a23":["①敬仰；拜访②别处③将","①有个书生因为囊萤夜读而在乡里出了名②乡里人对这事感到奇怪③谁去拜访他","放下窗帘埋头读书","用虚名来炫耀自已"],"a24":["①靠近；劫掠②约③抓④左右③空隙③到①幸亏大③轮流③本","①王长年被敌人俘虏，扶持进入船中②王长年时时假装说出好言好语用来讨好敌人③不防备我们④如果能使敌人醉倒"],"a26":["①哭②回答③报答④等到","①刚才我看见了两头蛇，恐怕会离开母亲而死②蛇如今在哪儿？③还没开始治国可全国的人已相信（他）是个有仁义的人"],"a27":["①发②死③袋子：送④问","您替我办完丧事，余下的银子送给你","十天","①对朋友忠诚②不贪224.安考荟案"],"a28":["①姓②小，末了③请④消除，痊愈③偷偷地；看③停，痊愈","①辞退医生让他离去②这是好医生，为什么治她的病而不痊愈③看见他的女儿举起汤药翻倒在床下④把前面的药竭力要她吃下"],"a29":["①做太守②水盛大的样子③停④我：改③大③问①点头","①写成后，把它给李泰伯看②李泰伯读了一遍又一遍1③一定会在世上闻名名④几乎要跪下来拜谢","①“风\"是平声，读起来响亮；②“风”可指风范、榜样；③“风”含有流传之意"],"a30":["①侥幸②违背③责问1④感概③符合，贴近③左右","①如今所任用的大多是迁腐的儒生及平庸的官更②做国君难，做大臣的也不容易","简明扼要"],"a32":["①突出②及③极④是","①功劳多但不自夸②交亲认为他与众不同","③"],"a33":["①已②杀③将④洼地电③活埋③绞","①我守住我的气节，直到死②我有什么可怕的","①却②是③就④是"],"a34":["①友好②学生③那人④这③不对③决断","①分离后上路②这恐怕不能算是亲爱亲密吧？","①只②只有③人④白白地"],"a35":["①暴露②你；案件③办的④已经；损害③同“悦”","①这是把（我）不守信用让天下人见到②法律是国家用来向天下人公布的最大信用③如果顺从（自己）的感情而违背法律，我替皇"],"a36":["①靠着；矮桌②火烧得旺③恰巧④希望⑤第二次突然⑥改变脸色","①你有什么话要说，（我）会认真听取②为什么不马上把这事告诉我","批评子子，此人迁腐而不看场合"],"a38":["①有人②一会儿③还","①跟早先一样自已织布②他的母亲害怕了，扔下梭子翻过墙头逃跑","谣言一再传播，人们便误以为是真的了"],"a39":["①背，驼②要求：索取③同“值”，代价④打","等待卖出柴然后靠它吃②你还不背（放过我），我只有死了","卖炭翁；手把文书口称敕","官逼民反"],"a40":["①攻打②规劝③打湿④早晨③伸长③撤去","这三类动物都力求想要获得眼前的利益，却不考虑到它们后面存在的灾难","比喻目光短浅，一心图谋侵害别人，却不知道自已正被别人算计着"],"a41":["①批评，规劝②缺点③过错","①一定在众人之中批评规劝我②尹绰是个品德高尚的人！（能够）当面批评指责而不当面奉承","过失","尹绰好，他能当面直言批评"],"a42":["①极②等候③急走④更加⑤逃跑⑥原来是","①于是吹出虎叫的声音来使驱惊吓②黑听到声音便来寻求它的同伴","（猎人）则又为黑（鸣）","谬误；把本来就错误的话又妄传开去"],"a44":["①联直②增恨③这样（指写小词）④立刻③表情严肃","①看他的事业哪会只做这样的事②何况他自己做这样的事呢？③不如远离花言巧语的坏人④吕惠卿认为（这是在）批评他，从此更加限王安国不和睦","g；招致；因为说话耿直便招来了灾难"],"a45":["送②凭借，依靠③求取④即使?已经③给","①喜欢喝酒②有个行为卑劣的要人","字画","堵塞；在坏思想、坏作风或坏事刚冒头时，就加以制止，不使其发展"],"a46":["①客惜告②设③告诉④几案，一种低矮的小桌子③最终","①女婿故意不让（她）回娘家②那么整天可以侍奉母亲③而且调动我（的官职）犹如振动枯黄的树叶（那样容易）④十天（后）才回家"],"a47":["①返；渡②江中间③跳入","①没见到这情况②我为什么要各惜这宝剑呢","见义勇为"],"a48":["①述说一②同情③规劝倚仗③是③打发走③泪","①庞相寿因犯贪污罪被解职（坐，既可理解为犯罪，又可解释为因为）②想听从（他）回去任职③不能单偏祖熟悉的人"],"a50":["①定②面对着③一一斥责，数落④受伤节③不要","①却摸着脚说：“敌人击中我的脚趾！”（②张良硬要请刘邦巡视并慰问军队，用来使士卒安心"],"a51":["①失去父亲卡②划③向：借④有时⑤不久","①教（他）写字②等到渐渐长大③只致力于读书","①夜以继日（或日以继夜）②废疫忘食"],"a52":["①近来：（向皇帝）报告②对照检查③治④你们","①想让臣下把内心的话全部说出来②有时半夜才人睡③以符合我的心意","努力勤奋不松解"],"a53":["①提炼②卖③担任将领④割","①用它来游说吴王②有的因此（受到了）封赏","因为有了不龟手之药","①替②做③做"],"a54":["①同时#②害③同“捧”④增补③肯定；那个","①没（有人）说好②效果都没达到，你为什么惟独肯定自已而认为我不对呢？③你认为这两人哪一个值得尊敬④所以我认为自己的见解是对的而认为你的观点不正确进文言文（九年级用）"],"a56":["①只②儒家经典著作③专心、④大概；尤其；罢了","①大概从未有一会儿放下书本②背诵的声音，琅琅地在远近都听得到","答应，许诺；一旦许诺就价值千金，比喻说话算数，守信用"],"a57":["①盼附；田坝②偷偷地③打④不久⑤书⑥到⑦凶恶⑧收","①听完，就默默记住②为什么不听任他所想要做的③王冕于是离家靠着僧寺而住下王冕是小孩子，内心平静得好像没看见","认为与众不同（属意动用法）"],"a58":["①借②完毕；奔着③因此","①没办法买书来阅读②勿松懈抄录的事③不敢稍微超过约定（归还的日期）","苦寒来"],"a59":["①转过身背对着②恢复③此指头巾","①改用别的棋局来试验他②众人对他的记忆力感到惊呀③他硬记及默记（的能力）竟这样（好）"],"a60":["①爱好②笔管③命名：书房④笔","①像这样每天六七次才停止.②每天用热水洗好几次③一会儿立刻完成，因此名声在当时高出一般人"],"a62":["①因：到②子女③同情","在这时小女儿缇紫被父亲的话刺伤②如今犯法要受刑（坐，犯法）③没什么路可走","查考；没根据的话"],"a63":["①鞭赶②不久③离（家）④我，古代女子自称③回答","①为他驾车者的妻子从门缝里悄悄地看②自已做齐国国相，名声在诸侯各国显要③常常故意把自已放在别人之下④晏子感到奇怪而问他"],"a64":["①失去父亲；嫁②召③有人归附④同情③死","①年轻时在蜀国做官②晋武帝派人再三催促他（上路）③他的话诚愿而且凄凉"],"a65":["①同“娶”②将③侍奉：抛下④当地⑤归，此指嫁⑥照顾终于⑦估量⑧于","①你侍奉我的母亲如同自己的母亲②立即邀请母亲回自已家","担当；不辞劳苦，不怕埋怨"],"a66":["①将②早③听从④停③慢慢地③省悟","①何梅谷凭（精通）儒家学识在当时出了名②为什么像这般吵闹呢？③怎能不生你的气呢？","①将②低下③流传下去"],"a68":["①全部；前往②地位低微③多次；打架④因此③平民③立刻①拉任命","①难道会跟一个普通的百姓结怨？②你也饱尝了我狠毒的拳头","（勒）遵召（阳)与（之）饮"],"a69":["①超过②抓住③问④押送","①这时候秭归恰巧有百姓被人杀害②始终没办法自已说明（杖的来历）","①名词贸易市场②动词，买","③"],"a70":["①险要②遇③同“值”，价值④一会儿","①时间接近晚上②数千车辆，排列拥挤在后面","欺骗；你欺骗我，我欺诈你，指互相欺诈"],"a71":["①批评②确定；写③好④放任；坏③走上前③回头","①跟随的人都为这事而感到苦恼②钟弱翁跟手下官员围着（匾额）站立③让和尚用梯子（把它）取下","颜真卿封鲁国公","好，美妙；曲调虽不同，但一样美妙"],"a72":["①寄住②早先③经过④仆人们③间","①龚自珍空闲的时候就在树下轻轻地吟诗②大概说说笑笑极为欢畅","唐朝，因唐朝皇帝姓李，故称李唐"],"a74":["①死②完成③多次④跟随","①汉和帝下令叫班昭前往东观藏书楼继续完成它②命令皇后及众嫔妃对班昭像老师一样求教","班固"],"a75":["①只有②劝③活命④希望③指代妇人③后代③告状③（理）缺","①哀求着告诉邻居，没有入能阻止他（的暴行）②事情被发觉，把妇人关押起来"],"a76":["①刚，正②被③凶狠；竞④向；高低下③醒","①借（此）维持生活②凭什么要非法经过百姓的田地，毁坏百姓的麦子？"],"a77":["①问②送给③左右④很③妇人③同捧”②约","①有个喜欢多事的人想偷看他的究竟，便跟着他的足迹走②等候母亲端起饭碗，就开始唱歌、表演小孩嬉戏，用来使母亲开心③同情并给他吃的（东西）","之；将以（之）遗之"],"a78":["①养②跟随③急；奔④才；醒","①被大蛇全身缠绕②全家对这件事感到奇怪","用车子（载）","亲属与戚属","知道；昏迷状态，失去了知觉"],"a80":["①老头儿②别的；郡太守③有时；终","①会稽郡很太平（治，太平）②年老时遇到政治清明，如今听说要抛下我们离去了（见，指代我们）③父老们辛苦了","官更不扰民"],"a81":["①调升②经商③那①赶③拜见③道漱","①名声已响，然而地位还不高②县令沈充起身散步③远近的人早就听说褚季野的名字④再杀（牛、羊等）作为菜肴③县令沈充送褚季野至县境"],"a82":["①死②做官；只有③黑了④概括","即使用千言万语赞扬他，能胜过这评论吗？","①","明；海青天"],"a83":["①更加1②回答③利用④吸③背，此指拉","①凭什么上缴的税赋增加三倍？②在春天排成木排通过河道把它出售③百姓因而劳累了","耕作与整休相结合；或不能过分让百姓劳累"],"a84":["①到②城③有人④颈；似③同“腰”","①（人的）样子，未必（是这样）②而说我像失去主人的狗，对啊！对啊！","鲁；儒家"],"a86":["①做宰相②提升③脸：慢慢地④调升③一向；讨厌；给予（提升）③答谢①终于；听从","①把处理天下大事作为自已的责任②第二天，再报这件事。皇上大怒，把他的奏章撕破并能够因为（你的）喜或怒而独断事情"],"a87":["①第二天②是③菜肴④好；坏","①宋瀛一一地把实情回答②确实是这样，你没欺骗我③宋只举出那些好人回答"],"a88":["①案件②不多时③遵守","①呈报（武则天）构成他的罪名②他早先要陷害你置你于死地，如今你反而使他解脱（罪名）③怎么可以因私人（的恩想）去危害公（法）？"],"a89":["①交往②配方③正要：拒绝④因为③使","①适逢那个有道术的人病重不值得把（它）托付（给他）③放进范仲淹怀里（内，同“纳”）④应该把（它）归还给你","成家立业"],"a90":["①紧紧地②她","携带妻与子女奔着离开丑人","不知道人家好在哪里，自己又没条件而胡乱学样"],"a92":["①向皇帝报告②查看③是","盔甲兵器等武装设备，确实不可少，然而隋场帝的武装设备难道少吗，最终丢失了天下","使百姓太平"],"a93":["①攻占②希望③杀","对江州久攻不下很愤怒","石针，即后代的针灸","反衬曹彬的善良"],"a94":["①有人②笑③多；劳役④逼迫③哪里；呢③从此","①所以没有空闲时间来顾及廉耻了②使役减轻，使赋税减少","大门","野外没偷盗的人"],"a95":["①就；失去②派③只有","①可以使衣服帽子端正②如果喜欢（他）而又了解他的缺点③除去奸邪决不犹豫"],"a96":["①只是；罢了②从更加：器重","①皇帝为他建住宅②没有什么用来安家的","孙武（孙子）；吴起"],"a98":["①遇②十分悲伤③担忧④慰问有丧事的人家⑤你⑥穿⑦甩动","①身体瘦得只剩骨头②偷偷地把绸缎被子盖在他身上③四面八方（的人以你）为榜样（是，无义）④从此以后一百天左右时间里没有宾客上门"],"a99":["①繁殖②附和也④同样：同类","①老天对于人民（的恩惠）深厚②不像你所说的③仅仅因为智力与体力的大小而制服对方","驳斥","自然界的各种声音；各种声音都没了，形容十分安静"],"a100":["①赞扬②早先③学习","①凭什么履行政务？②对富贵的人用道德来教育他们③放任他所干的，时间长了便更加尊敬（他）④不知你父亲效法我，还是我效法你父亲（抑，还是）"],"a101":["①出身②已经；地位高③同“汝”，你们","银匠家中出了宰相，正是好事，有什么可耻！","感到羞耻","说明家庭败落"],"a102":["①有人②正当③用④烤③承认③找来①审理③十分害怕","像周兴说的用火围着烤","比喻用某人整人的办法来整他自已，或所谓“以其人之道还治其人之身”"],"a104":["①高傲；陡②一会儿失","求学问的人","普追湿润","①超过限量就满出来②接受九州的水而不会满出来"],"a105":["①松懈②季","就用白色丝布做的袋子装了数十只萤火虫用来照亮了读书（练，白色丝布）","①晚上接着白天（工作）②白天接着晚上（工作）"],"a106":["①有的；少②停止（因困难或自满而停止）","①心理因素不同（造成的）②教的人应发扬（学生的)优点而补救（他的）缺点","教与学互相促进；教师与学生互相推动教学"],"a107":["①用尽②咬③狡猬","上坡后，那狼已经咬了一块肉走了","古代重量单位，一钧钩为三十斤；一根头发悬挂三万斤重量，形容极其危险"],"a108":["①成②背着；四周；拜见③仲永","①父亲对这一现象感到异常②当地的人认为仲永奇特③渐渐把他的父亲当作宾客④父亲认为这样做有利可图","文采；内容（道理）"],"a110":["①担任长官②拒绝③救济；借贷④有人③等候","①公事之余往往与文人饮酒吟诗②（上级）有责备我来担当这事","①","平易近人","使·***活命"],"a111":["①选②住宅③极悲伤④门⑤不成材⑥怎能，难道","①苏东坡用尽积蓄仅仅能够偿还房价②③最终不索取她的卖房款"],"a112":["①夹②依靠③回答④离去","①这计谋不是我所能办得到的②凿深这护城河，筑高这城墙③那么这就可行了"],"a113":["①第二次②力求③案件④达到，成全⑤制订⑥只要；正直俸禄","①出卖棺材的人希望每年有瘟疫，不是对人有怨恨，（而是）对出售棺材有好处罢了②那么干坏事的与作假的自然会停止③皇帝下命令按照王瑾的建议办","深重苛刻"],"a114":["①我：鲁哀侯自称②规劝③讨厌，厌恶④将","①我接受但不实行②我喜欢但不亲近（他们）③这便在宫内听不到意见，在宫外没人辅佐我我","醒悟；启发人深刻思考并有所醒悟"],"a116":["①老妇人②接济③前往④答谢","①一行受到唐玄宗极好的待遇，他的话（唐玄宗）都听从②不多久，适逢王老太的儿子杀人（但）案件还未上报③一行跟上去向她道，（可是王老太）始终头也不回","公私分明","借公家的名义达到私人的目的"],"a117":["①处，此指在那里处理政务②开垦③富裕④饥饿③这","①这是你不奉承行贿我周围的人以求（他们帮助②没有人伪装欺骗国君③力求全部（讲出）他们的真实情况","①","③","毁"],"a118":["①升调②菜肴③第二天；速捕","很高兴地叙说从前的友好交往","①给（他）②是","自知苏章将法办他","州；郡"],"a119":["①反复，仔细②提升③忘④同情⑤偷任用；免⑥离开","①我在心里把它藏了三十年，不把它告诉别人②怎敢推荐小愉强盗做官呢？","没做官"],"a120":["①县令；差役②宜官府③十分悲伤④违背","①都面目可怕地对着她，不再像早先那样（相，指代她）②这帮人没良心，这是他们的本性","打瞌睡"],"a122":["①相同②往往③门④不久③迅速","①为害很厉害②众人都说猫胆怯，认为是无能的东西③口咬头颈","猫避几上·鼠亦下"],"a123":["①指代益生②同“返”","①放任老鼠吃（粟）而不管②越人便用水更换粟③等到夜间又呼唤同类一只接一只进入益中"],"a124":["①同“悦”②有人③一下子④假装⑤奔⑥等候⑦希望⑧不多久","①商陵君喂养它并使它温顺②就跟着（商陵君）把它视为神灵③夜里穿透墙壁而逃亡④痛惜不停","奔；骑在奔驰的马上看花，形容观察所得印象肤浅"],"a125":["①担忧②有人③头领④披③窗③它①之于③快走","①见到它都害怕而且丢了魂②野猪在田里糟踢（庄稼）③野猪逃到草丛中中④（楚人）不听从，向前，被驳抓住而且把它吃了","①尚且②将"],"a126":["①器重；威胁②排挤③表面；友好","①凡是才能、名望、功劳胜过自已的（右，上）②用甜言蜜语给人听（啖，吃））","口甜心毒","①干②凌③破④蜜走进文音文（九年级用）"],"a128":["①卖②献，送③购④很③信：推荐③死","①不是累赞吗？②只会使（子孙）争夺财产成为不仁不义（的人）累了③我曾经把地位太高作为优惧，怎么可以再跟贫寒的读书人争夺官位"],"a129":["①奔逃②拉开③肯定","楚王的箭停在弓上，不知道射什么是好","奋斗的目标若太多，则会一事无成","条理；混乱而没有条理"],"a130":["①受到②派游③尽④安放文③原来是","①后来有一个人也（遭到）如此（结果）②县令听说这件事③轮子上排列着锋利的刀，闪亮如霜","踏上；翻倒；车轮碾过的痕迹；不吸取失败教训，又走上失败的老路"],"a131":["①我②拒绝③杀","①因为错误地听从了（下级的报告而）判人死刑②没听说过（这种事）","推卸；自己应负的责任，不能推卸给旁人"],"a132":["①重②使·.··安定③尽④献出皇帝的命令③侍奉","①把诸葛亮从成都召去，把死后的事托付（给他）②直到死","皇位继承人"],"a134":["①边境②断③饥饿④只有⑤遇⑥前往⑦到，靠近","①就伪装成粮车三百辆②几乎全被杀死及活捉，其余的逃跑了","靠近当地获得原材料"],"a135":["①认为②原来是③再等到","①射中石头箭头全部进入石缝里②季广也最终把老虎射死了","《出塞》；秦时明月汉时关，万里长征人未还。但使龙城飞将在，不教胡马度阴山"],"a136":["①假装②斜眼看；好的③乘机④带领（余军）1","①单于一向听说李广有才能②抓住李广后一定要让他活着送给单于③把李广放在两马之间","①因为②顺着③按照④依靠"],"a137":["①为.效力②终于","①吴起在这时候想成名②用来表明不依附齐国","①动词②名词","之；鲁卒以（之)为将"],"a138":["①敌人②靠近③是④熟悉倚仗③终；施展","①骑马射箭超过一般人②这只是赶他们逃跑署了③土兵解下甲衣稍事休息、","①靠近②减轻"],"a140":["①告诚②加上③大概④抑制；骄（娇）气","①又制订轮流守边防的规定，想要他们习惯在山川地带的艰苦生活，远离对妻子儿女的留恋之情②都不允许租用车子与人力，一概必须自已背粮","军营外，即平民","古代长度名称，8寸；形容距离很近"],"a141":["①继，即②适逢③限定时间；抓获④追踪⑤罪案；已准备好⑥清楚⑦回头看⑧同“纳”，插入⑨难道，怎么","①京城市场店铺间有个乞讨而要不到东西的人②第二天桌报（皇上）使（皇上）听到③再对这事复查（一遍）","表明这刀是他让人用的，即故意杀人，用意为考验官更是否以实情上报"],"a142":["①称王（作动词用）②到；敲③众；退④从此","①自已多次分辩，才放下②坐着车跟他一同回去③说陈王从前的情况④专门胡说，使（你的）威信减少"],"a143":["①刻②洞，孔③扎④同情③不久","①只等待元军迫近湖州城②塞材望已经不知到哪里去了","①我，指代寒材望②同“现”，露出③拜见④我，指代贺知章","不是；他“先一日出城迎拜”元军走进文盲文（九年级用）"],"a144":["①旧，时间长②薇③古朴：典雅④写字③小口尝一点胆量值得","只是用手抚摸闻它的香味，欣赏它的光泽","笔、墨、纸、砚"],"a146":["①人；砍削②听从③毕④总是","不超过一个月，（重元寺阁的）柱子都直了","使·..··直","形容费力小而收效大"],"a147":["①只；完毕②按照③躲④同“服”，佩服","担心那塔移动。","欺侮；凭着自已强大就欺悔弱小的"],"a148":["①惊的样子②从此","①齐已于是带着所写的诗前往拜访他②读书人中把郑谷作为齐已的一字师”","满；满天的谎话，即极大的说言"],"a149":["①配方②取③这；我","①有个在中山做官的人②用鲁国的酒泡浸中山国酒糟","好的老师，有益的朋友"],"a150":["①已经②将③全④袋：书信③开饥饿","①有犬在身旁走来走去②犬就从水洞里出去","喜悦；忧优愁"],"a152":["①攻下②县官③认为④们：这③这里③最终；完好","①死在战场，总还比死在床上好②就带领军队离去","不为瓦全"],"a153":["①侍奉，为...·效力②同汝”，你③使·.·混乱④声讨","①不知道齐闵王逃到哪儿去了②你不知道齐王在哪儿，你还要回来干什么？","形容父母盼望子女归来的切心情"],"a154":["①杀②娶③责骂④言辞","①意气激昂有男子汉的气概②又无礼地欺人（指纳她为妾）","州的长官叫\"刺史”"],"a155":["①活②恰逢③背着胜任③","①他早先的仆人有很多财产②两人都不能背着扛着（克，能）③你们的祖父为后代人考虑，怎会料到这种情形","五谷不分"],"a156":["①晒②拍③大腿","①如今却摆动尾巴而争斗，错了②姓杜的笑着认为牧童的话是对的","④","②③"],"a158":["①才②等候；终③靠近；一向④跳③遗撼③大概；常常①吓退","①于是每夜扛着木棍拿着绳子，悄悄地行走在荒坟之间②还没到那里，已经像火星一样消失了","靠近；既不靠近（亲近）也不疏远，形容跟对方的关系一般"],"a159":["①这②只；是③有的","①那些人虽然活着，跟已死的鬼有什么两样呢？②没想过这事③只有一点点距离，或只有一点点差别"],"a160":["①残忍；给，赏赐②杀；罪过③给，同“与”","①既然这样，那么功效将达到什么地步？②有罪过而不惩罚③即使灭亡不也是应该的吗？","有过则罪，有功才赏","兴盛的样子；形容兴致很高"],"a161":["①请②爵③众","①认为（那是）狗肉汤汁面吃得很香甜寸②这是未曾懂得乐曲的人③把它给别人看，人们认为是石头","自已没鉴别能力，于是人云亦云，随大流"],"a162":["①回答②国君③用尽","①它之所以灭亡的原因是什么？②凭骄的国君管理困苦的百姓（③不灭亡从没这种事情","用尽军队溢施武力，形容好战"],"a164":["①强大②称③抵抗④跌倒","岳飞告诚步兵，用麻绳扎住大刀进入阵地，不要仰视，只管砍（敌人的）马脚","宋","百战不"],"a165":["①攻打②回答","①故意先把他的女儿嫁给胡国国君为妻，用来讨得他的欢心②胡国，是我们亲密得像兄弟一样的邻国③认为郑国亲近自已","内心；内心毫无触动"],"a166":["①都②最终③拒绝（劝告）④同“无”③走开","①国人责备他包②我只知道除去他的病害罢了","做事不能只有好的动机而不管后果","责备；埋怨天，责怪别人"],"a167":["①擅长②有时③深沟④左右③从此；更加","①准备了干粮②如同对付强敌一般","锣"],"a168":["①你②后来，不久③宴席；吃④连同1③祖护；缺点","①在南方做官②都因为不知道的缘故","顽固地坚持自已的见解"],"a170":["①神色，表情②讥笑③遭遇","①于是省下自已（的炙）送给他（吃）②后来问他什么原因（要帮助自己），原来是接受过烤肉的人","相助","因恩德来报别人曾给自己的恩惠（","当涌泉相报"],"a171":["①刚；到②说；赠（此指贴））③接受④超过","①世上的人说做将领的不怕贪污②推辞了就会（让他们）怀疑而且生气，怎么办？③廉洁的品行始终不改变"],"a172":["①拜访②柴草③改不久同“熄”，烧④早先⑤省悟","要不是这样将有火灾②终究不会发生火灾","使·*.*弯曲；防止灾难在未发生前"],"a173":["①下令②捕；夜③同返”","①从老师家学习（完）回去②不知道这么晚了③用鞭打书生来建立威信，恐怕不是治理的根本办法"],"a174":["①违背②积③不久④等到；全，都⑤总是⑥经商⑦机会","①可你做事相反，忽视了稻粱的本性，那怎么能有所收获？②没有不像那人所说的有收获","不听忠告"],"a176":["①周围亲近的大臣②造③奢侈；本④资金；准备（好了）③体会③充足","①使百姓困苦而对自己有利的缘故②如果放纵欲望而不停止，那么危险与灭亡马上就会到来","看到秦朝（灭亡的教训)便停止了","后车之鉴"],"a177":["①火烧②能③消失④死③终于","①过了不满一个月②本性所沉溺（于酒），无法自我控制","入要有自我控制精神","①指代酒酉②指代爵指代爵④助词，无义","恶习或弊端发展到难以革除的地步"],"a178":["①穿；破旧②送；给他③拒绝④是③给；做视","①先生不是向别人要求（得来的）②为什么不接受③不傲视（轻视）我④曾参的话足够用来保全他的气节"],"a179":["①已经，..之后②住③派；送④告诚③打开（信）","①希望转交给家属②等候刘烨会见同僚时（把这封信）呈上③皇帝很感动并（产生了）同情，就调（丁谓）到雷州","②"],"a180":["①荒②发出#③派；挡④故意③他；旺③欺悔①只","①不要毁坏我的面孔，否则将给你灾难②你为什么不把灾难施加给搬移你的人？③我只不过用空话侗吓（你）罢了"],"a182":["①一同#②缺乏③拉④停⑤内心忧郁⑥探望⑦放松","①外面的援兵被阻隔②世上多忧愁而危害自已的，就像这人一样","见识少的人自己瞎着急"],"a183":["①在那儿②晚上③弯下身子④鬼③等到③断","①转过身奔跑②难道不是可悲的吗"],"a184":["①不平常②住宅③是的④已经⑤停⑥约借害怕⑦同返”少","①腰里挂着剑，手拎袋子②张枯认为行的③才领悟到被人欺骗了","深；竭力、深沉地思索"],"a185":["①承受②堵住③水冲破堤防排水；通","①走在路上（只能）互相用目光（表达思想感情）②堵住百姓的嘴巴比堵住水流更危险","（卫巫）以（之）告（王），（王）则杀之；卫巫把监视到王的人报告周厉王，厉王便杀死他们","堵住百姓的嘴巴，后果极危险"],"a186":["①县，当地②有的③索取；钱财④全③助","①众人对这些人感到忧虑②曾经有人向官府告状③从此，更加放肆地残害（百姓）④没多久，郡守因受贿而被撤职只","罪恶极多，就像穿铜钱一样，已经穿满了一根绳子"],"a188":["①不久②打官司】③赠送，此指贿赂想到③你暂且","①一个官更因贪污而获罪②这官吏本性贪婪，没法改变这恶习","因发暂过手不接人钱财"],"a189":["①京城②总是；有效验③前往：悄悄地看④满已经③竞；是","①戴原礼心中对此事感到奇怪，问他什么缘故②喉，如今没本领的医生胡说（自已）熟悉古医方，大多连锡和场都分不清","空闲；招呼接待忙得没空闲"],"a190":["①设置②是③届从，奉承","赵高用法律惩罚他们I","故意颠倒黑白、混淆是非"],"a191":["①一同②这③使出来④全部","①不要让世间像长夜一样黑暗②众猴子按照它的话，互相抓住","①同\"现”②看见","办不到的事"],"a192":["①在那里②急③往下看","①就把这事让官府知道（即报告官府）②张升命令下属官吏集合邻里，前往那井检验是否是她的丈夫（就，前往）③逮捕（那妇人）并交给专职官吏审问"],"a194":["①你，实践②这；不一致","①你不能管好自已，怎么能治理国家？","治理国家担任政务","言行一致","①这里里②怎么③何必④在那里"],"a195":["①同“悦”②认真；推荐","①问他治国的关键问题②没有官府得到了适合的人选而国家治理不好的③这话可以说语盲简要而道理深刻","言简意"],"a196":["①选②识别厂③只要④少，","①在这时候停在水边的船有儿千艘（于是，在这时）②船像这样多怎么能选择呢？③听从了（送的人的话）便找到了官船④大概也把百姓看作“官民”吧？","①破②困苦","抓里子","做官的不爱惜百姓","少；经常见到并不是少数"],"a197":["①梢②离；根部③多少","用解直角三角形方法计算；竹还高4.55尺"],"a198":["①庄重②看，回头看③就④同“捧”③一会儿③受这样；那么","①踩着（大王）神像而离去②为什么不加祸而斥罚他③悔厚没有比这更厉害了④前面的那个人已经不相信（有神鬼）了，又怎么能嫁祸给他呢？走进文窗文（九年级用"],"a200":["①商人②之乎③他；客惜④触犯③搬迁③比是的","①跟胡人（剖身藏珠）可笑有什么两样呢？②也像这样③我盼望你们合力辅助我，希望免得被人嘲笑"],"a201":["①财物②抓取③当衣服穿（作动词用）④当器物用⑤完，后⑥讥笑⑦暗中","①店主追上去（向他）索取钱款②天下的财物都好像自已所固有的③你好好地给我，我如果富贵了会偿还给你④难道不是比他们好吗？③有什么可讥笑的","迷住贪图名与利的欲望迷住了心窍"],"a202":["①哪②同\"值”，价格③身体","①有个在朝廷中做官的人家里藏着古镜（鉴，镜）②这两个人的话看似庸俗，然而很实在","之，将以（之)献吕蒙正","千万住宅","人不该奢求，应过淡泊的生活"],"a203":["①从前厂②下棋：丽棋子③明白④更加③最终","有人说：“这不是靶子和棋子的过错，何不也反过来想想自已呢（益，何不）","把失败归罪于他人，而全没有自我责备思想的人","这样，指形成；预防事故在未形成之前"],"a204":["①直径②藏③全④立刻⑤不久偷⑥察看","①邻人暗中想获得那宝玉②不如恢复到原来样子，③这是怪物的征兆，赶快抛弃它，灾难可消除④我们从未见过这么好的宝玉"],"a206":["①砍柴②近③一同④一下子⑤追⑥草丛⑦咬渐渐地；苏醒","①老虎在地上，稍微休息②章华一边呼喊一边奔跑","突然冲出"],"a207":["①锋利②向上爬③掐④咬；的样子⑤突出的，最好的#⑥争着⑦只；吸把·看作神⑧体质逃⑨到⑩最终","①贩卖东西的人从这里经过②练习老虎发怒④让人看到后不怀疑（是人干的）③回去跟邻居们商量对付的办法","假冒权势而掠夺百姓钱财的坏人"],"a208":["①边境②直接③熟悉④愤怒⑤一下子⑥后","①人们拾取后回去，抛弃那些劣质的（石）②也有（玉）蕴藏在石中的，把它雕琢成器物，可卖得很高的价钱","猿来往往很多（如穿梭一般）"],"a209":["①使温顺②聪邀③等候④完；断","①母猿估计不能活了，把乳汁洒在树上，让猿子吃②猿子尚且知道有母，不吝惜它的生命，何况人呢？③他们跟猿子相比还在它下面了","人应孝顺父母","金属器血相撞击的声音；才能较出众的人"],"a210":["①带领②巡到③全部；背着④早先；假使③不久；达到","①瘦弱的士兵被人马践踏②只是想出的计谋稍微晚一点","我们"],"a212":["①结束；朝会②应当③超过④回去；穿上③我，古代妇女自称","①谁触犯了皇上？②每次在朝廷上直盲批评悔厚我③我听说过国君圣明，那么大臣就会忠心"],"a213":["①怀疑②愉③抓住④鞭打③不③你","①曾经跟楚国国相饮酒，不久楚相的璧玉不见了②怎么会受这悔厚呢？③张仪做了秦国国相后","因为只要有舌，便可游说","①"],"a214":["①率②争；奔；丝织品总称③杀；离去④险要；关口","①让萧何担任丞相②以及百姓所痛恨（的事）","用车子装着"],"a215":["①邀请②答谢寸③同时；要求","①一个副将从前线撤回，被乱箭击中②箭头还在肌肤内必须立刻医治","松懈，引申为破绽、漏洞；形容叫人找不到任何破绽"],"a216":["①倚仗②放纵；横行不法③皇帝下命令④听从③老妇人","①只要不停地回头看我，我会救你，不让你流放去边地②皇帝长大了，难道还要依靠（你的）乳汁吗？","网：门前可用网捕捉鸟雀，形容门庭冷落"],"a218":["①经②轮到③对；泪④你③告诉","有人说你要造反，有这件事吗？","刀；箭","①"],"a219":["①住②拜访③满④一下子","①好好地处理事情，不要让后人嘲笑你愚套啊②以后最终被宋孝武帝所杀","比地位低微的平民；比喻有权势的大臣"],"a220":["①拿起②已经③你④了解","可以把一条（竹席）给我吗？","再没有别的东西，或除此外空无所有"],"a221":["①还；在②前往，到；住宅","①很视曹操的为人，不跟操交往②宗世林因后来触犯曹操的心意而被疏远，地位与他的品德不相称","高尚独立的志向"],"a222":["①逃跑包②你③同“悦”④刚才","①话说完，农夫不听从②有个粗陋的人刚为孔子办事","禾","吾之西海","两手捧起；形容满脸堆笑的样子"],"a224":["①年轻②检点③抢劫④多③你扔掉","①事事都安排得妥当百②戴渊虽然干着被别人瞧不起的事，然而神情还是不同于一般人③言辞犀利不平常④陆机更加器重他，双方决定结交，陆机写信推荐他"],"a225":["①祈祷②脏③老头④突然","①怎能使禾苗苏醒呢？②如果不相信我的话③大概是龙凿通这口井用来报答（农夫）"],"a226":["①宠②一向③倚仗④关押⑤们⑥最终","①罗程辜负了皇上，罪该万死②然而我们爱他天下无双的技艺","③"],"a227":["①做官②贫穷③速捕④流泪：告别5忧伤：神情","①王经没有听从（母亲）②既有（对母亲的）孝又有（对国家的）忠，有什么对不起的呢"],"a228":["①都；重②死③完全④找来","①王子散一向爱好弹琴，便径直进去②琴弦已调试不准③于是悲痛欲死，好久（不能平静）","失去；表示看到遗物，悼念死者的悲痛心情"]};
+</script>
+
+<script>
+/* ================= v2 增强交互 =================
+ * 1) 每篇在原【增补】基础上追加“特异词”（不重复、不雷同）
+ * 2) 训练题自动生成【参考答案】（原书 ANSWERS 优先，其次从注释/译文推导）
+ * 3) 工具栏：搜索 / 展开折叠 / 字号 / 深色 / 收藏 / 打印 / 朗读 / 进度
+ */
+(function(){
+'use strict';
+/* ---------- 通用虚词（每篇都有，仅作少量保底） ---------- */
+var UNIVERSAL = '之其而以及于为乃则与者也乎矣哉耳';
+/* ---------- 虚词/活用/通假释义表 ---------- */
+var XU = {
+ '之':'代词/助词/动词“到”，随文而释','其':'代词（他、它、他们的）或语气词','而':'连词：表并列、承接、转折、修饰',
+ '以':'介词（用、拿、凭、因为）或连词','于':'介词：在、到、向、比、被','为':'介词“替、给、被”或动词“做、是”',
+ '乃':'副词：于是、才、竟然','则':'连词：就、那么、却、如果','且':'副词：将要、暂且；连词：并且、况且',
+ '与':'介词“和、同”；动词“给、赞同”','因':'介词：凭借、顺着；连词：于是、因为','何':'疑问代词：什么、为什么、怎么',
+ '孰':'疑问代词：谁、哪一个','安':'疑问副词：怎么、哪里','奚':'疑问词：什么、为什么、哪里',
+ '焉':'兼词“于此”或语气词','诸':'兼词“之于、之乎”或代词“众”','所':'助词，与动词组成“所＋动”结构',
+ '相':'副词：互相；或偏指一方','见':'动词：看见、拜见；表被动“被”','者':'助词：“……的人（事、物）”',
+ '也':'语气词：表判断、肯定或停顿','乎':'介词“于”或语气词“吗、呢”','矣':'语气词，表已然（“了”）',
+ '哉':'语气词，表感叹','耳':'语气词，表限止（“罢了”）','若':'代词“你”；连词“如果”','尔':'代词“你、这样”',
+ '夫':'句首发语词；指示代词“那”','斯':'指示代词：这、此','是':'指示代词：这、此','云':'动词：说',
+ '然':'代词“这样”；形容词尾“……的样子”','或':'代词：有的人；副词：或许','莫':'否定代词：没有人',
+ '盖':'副词：大概、原来','固':'副词：本来','遂':'副词：于是、就','既':'副词：已经','尝':'副词：曾经',
+ '方':'副词：正、正在；名词：方圆','将':'副词：将要；动词：率领','辄':'副词：总是、就','亟':'副词：屡次、急切',
+ '俄':'副词：不久','寻':'副词：不久；动词：寻找','会':'副词：恰逢','但':'副词：只、仅','唯':'副词：只',
+ '独':'副词：独自、难道','犹':'副词：还、尚且','益':'副词：更加','愈':'副词：更加','甚':'副词：很、非常',
+ '皆':'副词：都、全','悉':'副词：全、都','俱':'副词：一同、全都','咸':'副词：都、全','毕':'副词：全、都',
+ '卒':'副词：终于','竟':'副词：终于','徒':'副词：白白地','特':'副词：只','直':'副词：径直',
+ '少':'副词：稍微；形容词：年少','好':'动词：喜爱（hào）','衣':'名词作动词：穿（yì）','冠':'名词作动词：戴帽（guàn）',
+ '雨':'名词作动词：下雨（yù）','腰':'名词作动词：腰缠、腰佩','目':'名词作动词：看','策':'名词作动词：用鞭驱赶',
+ '耻':'意动用法：以……为耻','怪':'意动用法：以……为怪','奇':'意动用法：以……为奇','反':'通“返”：返回',
+ '亡':'通“无”；动词：逃跑','说':'通“悦”：高兴','知':'通“智”：聪明','内':'通“纳”：接纳','要':'通“邀”：邀请',
+ '属':'通“嘱”：嘱咐','女':'通“汝”：你','不':'通“否”：表疑问','被':'通“披”：穿、盖'
+};
+/* 原书参考答案预留槽：ANSWERS[aN] = {book:[...原书答案条目...]}，注入后优先展示 */
+var ANSWERS = (window.ANSWERS = window.ANSWERS || {});
+
+function $(s,c){return (c||document).querySelector(s);}
+function $$(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s));}
+function han(s){return (s||'').replace(/[^\u4e00-\u9fff]/g,'');}
+function txt(el){return el?el.textContent.replace(/\s+/g,' ').trim():'';}
+
+/* 解析 “词：释” 段（兼容①序号、全角空格、分号、句号分隔） */
+function parsePairs(text){
+  var out=[], parts=(text||'').split(/([。；;\n①-⑩]|　+)/);
+  for(var k=0;k<parts.length;k+=2){
+    var seg=parts[k]||'', sep=parts[k+1]||'';
+    var i=seg.indexOf('：'); if(i<0) i=seg.indexOf(':');
+    var prev=(k>=2?(parts[k-1]||''):'');
+    if(i<1 && (k===0 || prev==='。')){
+      /* 个别条目以「，」代「：」，如「筈，书箱」「之，往」 */
+      var j=seg.indexOf('，');
+      if(j>0 && han(seg.slice(0,j)) && han(seg.slice(0,j)).length<=4) i=j;
+    }
+    if(i<1){
+      /* 无词头的续写片段：并回上一条释义，不再丢弃 */
+      var frag=seg.trim();
+      if(frag && out.length) out[out.length-1].d += (k>=2?prev:sep) + frag;
+      continue;
+    }
+    var w=han(seg.slice(0,i)); var d=seg.slice(i+1).trim();
+    if(w && w.length<=6 && d) out.push({w:w,d:d});
+  }
+  return out;
+}
+
+/* ---- 每篇处理 ---- */
+function processArticle(art){
+  var id = art.id || '';
+  var bodyEl = $('p.body-text', art);
+  var body = txt(bodyEl);
+  /* 注释块 */
+  var noteBlk=null;
+  $$('.block',art).forEach(function(b){
+    var t=txt($('.b-title',b));
+    if(t.indexOf('注释')>=0 && !noteBlk) noteBlk=b;
+  });
+  var noteText='', zengText='';
+  if(noteBlk){
+    var np=$('p',noteBlk); var html=np?np.innerHTML:'';
+    var parts=html.split('【增补】');
+    noteText=parts[0].replace(/<br\s*\/?>/gi,' ').replace(/<[^>]+>/g,'');
+    zengText=parts.length>1?parts[1].replace(/<[^>]+>/g,''):'';
+  }
+  /* 已有词集合（注释 + 增补），用于去重 */
+  var used={};
+  parsePairs(noteText).forEach(function(p){used[p.w]=1;});
+  var existing=[];
+  parsePairs(zengText).forEach(function(p){ if(!used[p.w]){used[p.w]=1; existing.push(p);} });
+
+  /* 1) 补充特异词（特异优先、万能保底≤3、不重复） */
+  var spec=[],uni=[];
+  Object.keys(XU).forEach(function(w){
+    if(body.indexOf(w)<0) return;
+    if(used[w]) return;
+    (UNIVERSAL.indexOf(w)>=0?uni:spec).push({w:w,d:XU[w]});
+  });
+  var add=spec.slice(0,6);
+  var need=9-add.length;
+  if(need>0) add=add.concat(uni.slice(0,Math.min(3,need)));
+  var allExist=existing.concat(add);
+  if(allExist.length){
+    var zHtml='<b>【增补】</b>'+allExist.map(function(p){return p.w+'：'+p.d+'。';}).join('');
+    var zb=document.createElement('div');
+    zb.className='zengbu folded';
+    zb.innerHTML='<span class="zb-toggle">💡 词语增补（'+allExist.length+' 词，点击展开）</span><div class="zb-body">'+zHtml+'</div>';
+    if(noteBlk && np){
+      /* 还原注释 HTML 到纯段落，增补改为可折叠块 */
+      np.innerHTML=parts[0].trim();
+      np.parentNode.insertBefore(zb, np.nextSibling);
+    } else {
+      /* 本篇无【注释】块：增补块直接插在正文之后 */
+      var anchor=bodyEl||art.querySelector('h3');
+      if(anchor && anchor.parentNode) anchor.parentNode.insertBefore(zb, anchor.nextSibling);
+      else art.appendChild(zb);
+    }
+  }
+
+  /* 2) 训练参考答案 */
+  var trBlk=null;
+  $$('.block',art).forEach(function(b){
+    var t=txt($('.b-title',b));
+    if(t.indexOf('训练')>=0) trBlk=b;
+  });
+  var trBox = trBlk || art;
+  if($('.ans-block',trBox)) return;
+  var qs=[], cur=null;
+  Array.prototype.forEach.call(trBox.childNodes,function(ch){
+    var isEl=(ch.nodeType===1);
+    var t=(ch.textContent||'').replace(/\s+/g,' ').trim();
+    if(!t) return;
+    var qEl=isEl && ch.classList && ch.classList.contains('ex-item') ? ($('.q',ch)||ch) : null;
+    if(qEl || /^（\d+）/.test(t)){
+      var marks=(t.match(/（\d+）/g)||[]).length;
+      if(!qEl && marks>1){
+        /* 裸文本行含多题（(1)…(2)…）：按「（N）」切分为独立题目 */
+        t.split(/（\d+）/).forEach(function(s){
+          s=s.trim(); if(s) qs.push({q:s,lines:[s]});
+        });
+        cur=null;
+      } else {
+        cur={q:t.replace(/^（\d+）/,'').trim(),lines:[]}; qs.push(cur);
+      }
+    } else if(cur && t){
+      cur.lines.push(t);
+    }
+  });
+  if(!qs.length) return;
+  var ywBlk=null;
+  $$('.block',art).forEach(function(b){ if(!ywBlk && txt($('.b-title',b)).indexOf('译文')>=0) ywBlk=b; });
+  var trans=txt($('p',ywBlk));
+  var bookAns=ANSWERS[id];
+  /* 支持两种注入结构：ANSWERS[aN] 为对象（key=题号/题目前缀）或数组（按题序） */
+  function getBook(item, idx){
+    if(!bookAns) return null;
+    if(Array.isArray(bookAns)) return bookAns[idx];
+    return bookAns[item.q.slice(0,6)] || bookAns[String(idx+1)];
+  }
+  var dl=document.createElement('dl');
+  var hintBlk=null;
+  $$('.block',art).forEach(function(b){ if(!hintBlk && txt($('.b-title',b)).indexOf('启发')>=0) hintBlk=b; });
+  var hint=txt($('p',hintBlk)).split(/[。！？]/)[0];
+  qs.forEach(function(item, qi){
+    var prompt=item.q+' '+item.lines.join(' ');
+    var dt=document.createElement('dt'); dt.textContent=item.q.length>42?(item.q.slice(0,42)+'…'):item.q; dl.appendChild(dt);
+    var dd=document.createElement('dd');
+    var isEx=/解释|加点/.test(prompt), isTr=/翻译/.test(prompt);
+    var book=getBook(item, qi);
+    if(book){
+      dd.innerHTML='<span class="ans-book">（教材原书）</span>'+book;
+    } else if(isEx){
+      var all={};
+      parsePairs(noteText).concat(allExist).forEach(function(p){all[p.w]=p.d;});
+      var qtext=item.lines.join(' ')||prompt;
+      var cands=Object.keys(all).filter(function(w){
+        return qtext.indexOf(w)>=0 && !(w.length===1 && UNIVERSAL.indexOf(w)>=0);
+      });
+      cands.sort(function(a,b){
+        if(a.length!==b.length) return b.length-a.length;   /* 长词优先（更具体，少噪声） */
+        return qtext.indexOf(a)-qtext.indexOf(b);           /* 同长度按出现顺序 */
+      });
+      cands=cands.slice(0,10);
+      dd.innerHTML=cands.length
+        ? cands.map(function(w){return '· '+w+'：'+all[w];}).join('<br>')
+        : '<span class="ans-self">本题请结合上方【注释】【增补】作答。</span>';
+    } else if(isTr){
+      dd.innerHTML=trans
+        ? '<div class="ans-trans">'+trans+'</div>'
+        : '<span class="ans-self">本文无【译文】版块，请参考【注释】理解。</span>';
+    } else {
+      dd.innerHTML='<span class="ans-self">自测题'+(hint?('，参考思路：'+hint+(hint.length>28?'……':'')):'')+'</span>';
+    }
+    dl.appendChild(dd);
+  });
+  var wrap=document.createElement('div');
+  wrap.className='ans-block block';
+  var src=bookAns?'<div class="ans-src">本页含教材原书参考答案</div>':'<div class="ans-src">※ 由注释/译文整理，供自测核对</div>';
+  wrap.innerHTML='<div class="b-title folded">【参考答案】</div><div class="ans-body b-folded"></div>'+src;
+  $('.ans-body',wrap).appendChild(dl);
+  trBox.appendChild(wrap);
+}
+
+/* ---- 折叠 ---- */
+function bindFold(){
+  $$('.article .block').forEach(function(b){
+    var bt=$('.b-title',b); if(!bt || bt.dataset.bound) return;
+    bt.dataset.bound='1';
+    if(/训练|注释/.test(txt(bt))){/*记录，但不折叠训练*/}
+    bt.addEventListener('click',function(){
+      $$(':scope > *:not(.b-title)',b).forEach(function(el){el.classList.toggle('b-folded');});
+      bt.classList.toggle('folded');
+    });
+  });
+  document.addEventListener('click',function(e){
+    var tg=e.target.closest && e.target.closest('.zb-toggle');
+    if(tg){ var z=tg.closest('.zengbu'); z.classList.toggle('folded');
+      var n=tg.parentNode.querySelectorAll('.zb-body dt, .zb-body b').length;
+      tg.textContent=(z.classList.contains('folded')?'💡 词语增补（点击展开）':'💡 词语增补（点击收起）');
+      e.stopPropagation();
+    }
+  });
+}
+
+/* ---- 工具栏 ---- */
+function buildToolbar(){
+  var bar=document.createElement('div'); bar.id='toolbar';
+  bar.innerHTML=
+    '<input id="searchBox" placeholder="🔍 搜索篇名/关键词">'+
+    '<span id="searchHit"></span>'+
+    '<button class="tbtn" id="btnExpand" title="展开所有版块">展开</button>'+
+    '<button class="tbtn" id="btnCollapse" title="折叠所有版块">折叠</button>'+
+    '<button class="tbtn" id="btnFontMinus" title="减小字号">A-</button>'+
+    '<button class="tbtn" id="btnFontPlus" title="增大字号">A+</button>'+
+    '<button class="tbtn" id="btnTheme" title="深/浅色">深色</button>'+
+    '<button class="tbtn" id="btnFavOnly" title="只看收藏">收藏</button>'+
+    '<button class="tbtn" id="btnAudit" title="核对侧栏与正文标题是否一致">⚠ 核对</button>'+
+    '<button class="tbtn" id="btnPrint">打印</button>';
+  document.body.insertBefore(bar,document.body.firstChild);
+  var pr=document.createElement('div'); pr.id='progress'; pr.innerHTML='<i></i>';
+  document.body.insertBefore(pr,bar.nextSibling);
+  var top=document.createElement('button'); top.id='backTop'; top.textContent='↑ 顶部';
+  document.body.appendChild(top);
+  top.onclick=function(){scrollTo({top:0,behavior:'smooth'});};
+}
+function bindToolbar(){
+  var sb=$('#searchBox'); var IDX=[];
+  $$('.article[id]').forEach(function(a){ IDX.push({id:a.id,t:(a.textContent||'')}); });
+  sb.addEventListener('input',function(){
+    var q=sb.value.trim(), n=0, hit={};
+    if(q) IDX.forEach(function(it){ if(it.t.indexOf(q)>=0) hit[it.id]=1; });
+    $$('#sidebar a').forEach(function(a){
+      var id=(a.getAttribute('href')||'').slice(1);
+      var ok=!q || a.textContent.indexOf(q)>=0 || hit[id];
+      a.style.display=ok?'':'none'; if(ok&&q)n++;
+      var d=a.closest('details'); if(d&&q&&ok) d.open=true;
+    });
+    $('#searchHit').textContent=q?('命中 '+n+' 篇'):'';
+  });
+  sb.addEventListener('keydown',function(e){
+    if(e.key==='Enter'){
+      var first=$$('#sidebar a').filter(function(a){return a.style.display!=='none'&&a.getAttribute('href');})[0];
+      if(first) location.hash=first.getAttribute('href');
+    }
+  });
+  $('#btnExpand').onclick=function(){
+    $$('.article .block').forEach(function(b){
+      $$(':scope > *:not(.b-title)',b).forEach(function(el){el.classList.remove('b-folded');});
+      $('.b-title',b).classList.remove('folded');
+    });
+    $$('.zengbu').forEach(function(z){z.classList.remove('folded');});
+  };
+  $('#btnCollapse').onclick=function(){
+    $$('.article .block').forEach(function(b){
+      var bt=$('.b-title',b); if(/训练/.test(txt(bt)))return;
+      $$(':scope > *:not(.b-title)',b).forEach(function(el){el.classList.add('b-folded');});
+      bt.classList.add('folded');
+    });
+    $$('.zengbu').forEach(function(z){z.classList.add('folded');});
+  };
+  function setFont(px){document.documentElement.style.fontSize=px+'px';localStorage.setItem('wy_font',px);}
+  $('#btnFontPlus').onclick=function(){var c=parseInt(localStorage.getItem('wy_font')||'17',10);setFont(Math.min(22,c+2));};
+  $('#btnFontMinus').onclick=function(){var c=parseInt(localStorage.getItem('wy_font')||'17',10);setFont(Math.max(14,c-2));};
+  var tb=$('#btnTheme');
+  function setTheme(d){document.body.classList.toggle('dark',d);tb.textContent=d?'浅色':'深色';tb.classList.toggle('on',d);localStorage.setItem('wy_theme',d?'dark':'light');}
+  tb.onclick=function(){setTheme(!document.body.classList.contains('dark'));};
+  var _th=localStorage.getItem('wy_theme');
+  if(_th==='dark') setTheme(true);
+  else if(!_th && window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches) setTheme(true);
+  if(localStorage.getItem('wy_font')) document.documentElement.style.fontSize=localStorage.getItem('wy_font')+'px';
+  $('#btnPrint').onclick=function(){print();};
+  $('#btnAudit').onclick=function(){
+    var bad=[], miss=[];
+    function norm(s){return (s||'').replace(/^·\s*/,'').replace(/^\d+[．.]\s*/,'').replace(/（阅读）/g,'').replace(/\s/g,'');}
+    function hasBlock(a,kw){return $$('.b-title',a).some(function(b){return txt(b).indexOf(kw)>=0;});}
+    $$('#sidebar a').forEach(function(a){
+      var id=(a.getAttribute('href')||'').slice(1);
+      var art=document.getElementById(id); if(!art) return;
+      var h3=art.querySelector('h3'); if(!h3) return;
+      var side=(a.textContent||'').trim(), real=(h3.textContent||'').trim();
+      if(norm(side)!==norm(real)) bad.push('· '+side+'   →   '+real+'   (#'+id+')');
+    });
+    $$('.article[id]').forEach(function(a){
+      var h3=a.querySelector('h3'); var title=(h3?h3.textContent:'').trim();
+      var isReading=/（阅读）/.test(title);
+      var lack=[];
+      if(!hasBlock(a,'注释')) lack.push('注释'+(a.querySelector('.zengbu')?'（仅自动增补）':''));
+      if(!isReading && !hasBlock(a,'训练') && !/（\d+）/.test(a.textContent.replace(/\s/g,''))) lack.push('训练题');
+      if(!hasBlock(a,'译文') && isReading) lack.push('译文');
+      if(lack.length) miss.push('· '+title+'   缺：'+lack.join('、')+'   (#'+a.id+')');
+    });
+    var msg=[];
+    msg.push('【标题不一致】'+(bad.length?bad.length+' 处':'无'));
+    if(bad.length) msg.push(bad.slice(0,40).join('\n')+(bad.length>40?'\n… 其余 '+(bad.length-40)+' 处':''));
+    msg.push('');
+    msg.push('【缺版块】'+(miss.length?miss.length+' 篇':'无'));
+    if(miss.length) msg.push(miss.slice(0,40).join('\n')+(miss.length>40?'\n… 其余 '+(miss.length-40)+' 篇':''));
+    alert(msg.join('\n'));
+  };
+  var favBtn=$('#btnFavOnly'), favOnly=false;
+  favBtn.onclick=function(){favOnly=!favOnly;favBtn.classList.toggle('on',favOnly);
+    var M=JSON.parse(localStorage.getItem('wy_favs')||'{}');
+    $$('.article').forEach(function(a){ if(favOnly){a.style.display=(M[a.id]?'':'none');} else a.style.display=''; });
+  };
+}
+
+/* ---- 收藏 / 已读 / 篇目工具 / 朗读 ---- */
+function favKey(id){return 'fav_'+id;}
+function bindArticleTools(){
+  var FAV=JSON.parse(localStorage.getItem('wy_favs')||'{}');
+  $$('.article[id]').forEach(function(a){
+    var id=a.id;
+    var bar=document.createElement('div'); bar.className='art-tools';
+    var fav=document.createElement('button'); fav.className='tbtn'; fav.textContent=FAV[id]?'★ 已收藏':'☆ 收藏';
+    var rd=document.createElement('button'); rd.className='tbtn'; rd.textContent='🔊 朗读';
+    bar.appendChild(fav); bar.appendChild(rd);
+    a.insertBefore(bar,a.firstChild);
+    fav.onclick=function(){FAV[id]=!FAV[id];localStorage.setItem('wy_favs',JSON.stringify(FAV));
+      fav.textContent=FAV[id]?'★ 已收藏':'☆ 收藏';
+      var l=document.querySelector('#sidebar a[href="#'+id+'"]'); if(l)l.classList.toggle('faved',!!FAV[id]);};
+    if(FAV[id]){fav.textContent='★ 已收藏';var l0=document.querySelector('#sidebar a[href="#'+id+'"]'); if(l0)l0.classList.add('faved');}
+    rd.onclick=function(){
+      var synth=window.speechSynthesis; if(!synth) return alert('当前浏览器不支持朗读');
+      if(synth.speaking||synth.pending){ synth.cancel(); rd.textContent='🔊 朗读'; return; }
+      var body=$('p.body-text',a); if(!body) return;
+      var clean=body.textContent.replace(/[①-⑩]/g,'');
+      var sents=clean.match(/[^。！？；]+[。！？；]?/g)||[clean];
+      var chunks=[], buf='';
+      sents.forEach(function(s){ if((buf+s).length>90){ if(buf)chunks.push(buf); buf=s; } else { buf+=s; } });
+      if(buf) chunks.push(buf);
+      rd.textContent='⏹ 停止';
+      chunks.forEach(function(ck,idx){
+        var u=new SpeechSynthesisUtterance(ck);
+        u.lang='zh-CN'; u.rate=0.9;
+        if(idx===chunks.length-1) u.onend=function(){rd.textContent='🔊 朗读';};
+        synth.speak(u);
+      });
+    };
+  });
+  var links=$$('#sidebar a');
+  /* 已读标记（视口内停留 1.2 秒即记已读） */
+  var READ=JSON.parse(localStorage.getItem('wy_read')||'{}');
+  function markRead(id){
+    if(READ[id]) return; READ[id]=1;
+    localStorage.setItem('wy_read',JSON.stringify(READ));
+    var l=document.querySelector('#sidebar a[href="#'+id+'"]'); if(l) l.classList.add('done');
+  }
+  links.forEach(function(l){ var h=(l.getAttribute('href')||'').slice(1); if(READ[h]) l.classList.add('done'); });
+  if('IntersectionObserver' in window){
+    var timers={};
+    var rdObs=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        var id=e.target.id;
+        if(e.isIntersecting){ timers[id]=setTimeout(function(){markRead(id);},1200); }
+        else if(timers[id]){ clearTimeout(timers[id]); }
+      });
+    },{threshold:0.3});
+    $$('.article[id]').forEach(function(a){rdObs.observe(a);});
+  }
+  window.addEventListener('scroll',function(){
+    var h=document.documentElement;
+    var p=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;
+    $('#progress i').style.width=p+'%';
+    $('#backTop').style.display=h.scrollTop>600?'block':'none';
+  },{passive:true});
+}
+
+/* ---- 启动 ---- */
+$$('.article').forEach(processArticle);
+bindFold();
+buildToolbar();
+bindToolbar();
+bindArticleTools();
+})();
+</script>
+<script>
+/* ================= v3 显示增强 =================
+ * 1) 答案文本按 ①②③ 分行，长答案更易读
+ * 2) 工具栏「显示答案 / 收起答案」全局开关
+ * 3) 侧栏「展开单元 / 折叠单元」
+ * 4) 每篇工具条加「答案」快捷开关；移动端点击目录后自动收起侧栏
+ */
+(function(){
+'use strict';
+function $(s,c){return (c||document).querySelector(s);}
+function $$(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s));}
+
+/* 1) 答案分行 */
+$$('.ans-block dd').forEach(function(dd){
+  if(dd.dataset.fmt) return;
+  dd.dataset.fmt='1';
+  var h=dd.innerHTML;
+  h=h.replace(/([^>])([②③④⑤⑥⑦⑧⑨⑩])/g,'$1<br>$2');
+  dd.innerHTML=h;
+});
+
+/* 2) 全局答案开关 */
+function setAllAns(on){
+  $$('.ans-block').forEach(function(b){
+    var t=$('.b-title',b);
+    var kids=$$(':scope > *:not(.b-title)',b);
+    if(on){b.classList.remove('folded'); if(t)t.classList.remove('folded'); kids.forEach(function(e){e.classList.remove('b-folded');});}
+    else {b.classList.add('folded'); if(t)t.classList.add('folded'); kids.forEach(function(e){e.classList.add('b-folded');});}
+    var btn=$('.ans-toggle',b);
+    if(btn) btn.textContent=on?'收起答案':'显示答案';
+  });
+}
+var bar=$('#toolbar'), pr=$('#btnPrint');
+if(bar && pr){
+  var sa=document.createElement('button');
+  sa.className='tbtn'; sa.id='btnAnsAll'; sa.textContent='显示答案'; sa.title='展开/收起全部参考答案';
+  bar.insertBefore(sa,pr);
+  var on=false;
+  sa.onclick=function(){on=!on; sa.classList.toggle('on',on); sa.textContent=on?'收起答案':'显示答案'; setAllAns(on);};
+}
+
+/* 3) 侧栏单元工具 + 移动端自动收起 */
+var sb=$('#sidebar');
+if(sb){
+  var tools=document.createElement('div'); tools.className='nav-tools';
+  var be=document.createElement('button'); be.textContent='展开单元';
+  var bc=document.createElement('button'); bc.textContent='折叠单元';
+  tools.appendChild(be); tools.appendChild(bc);
+  var sub=$('#sidebar .sub');
+  if(sub) sub.insertAdjacentElement('afterend',tools); else sb.insertBefore(tools,sb.firstChild);
+  be.onclick=function(){$$('#sidebar details.nav-unit').forEach(function(d){d.open=true;});};
+  bc.onclick=function(){$$('#sidebar details.nav-unit').forEach(function(d){d.open=false;});};
+  $$('#sidebar a').forEach(function(a){
+    a.addEventListener('click',function(){ if(window.innerWidth<=820) sb.classList.remove('open'); });
+  });
+}
+
+/* 4) 每篇工具条加「答案」按钮 */
+$$('.article[id]').forEach(function(art){
+  var tools=$('.art-tools',art); if(!tools) return;
+  var btn=document.createElement('button');
+  btn.className='tbtn ans-toggle'; btn.textContent='显示答案';
+  tools.insertBefore(btn,tools.firstChild);
+  btn.onclick=function(){
+    var blk=$('.ans-block',art); if(!blk) return;
+    var on=blk.classList.contains('folded');
+    var t=$('.b-title',blk);
+    var kids=$$(':scope > *:not(.b-title)',blk);
+    if(on){blk.classList.remove('folded'); if(t)t.classList.remove('folded'); kids.forEach(function(e){e.classList.remove('b-folded');});}
+    else {blk.classList.add('folded'); if(t)t.classList.add('folded'); kids.forEach(function(e){e.classList.add('b-folded');});}
+    btn.textContent=on?'收起答案':'显示答案';
+    btn.classList.toggle('ans-on',on);
+  };
+});
+
+/* 5) 个别篇目教材未收录训练题：仍展示原书对应答案，避免信息缺失 */
+$$('.article[id]').forEach(function(art){
+  if($('.ans-block',art)) return;
+  var ans=(window.ANSWERS||{})[art.id];
+  if(!ans || !ans.length) return;
+  var dl=document.createElement('dl');
+  ans.forEach(function(t,i){
+    var dt=document.createElement('dt'); dt.textContent='（'+(i+1)+'）'; dl.appendChild(dt);
+    var dd=document.createElement('dd');
+    dd.innerHTML='<span class="ans-book">（教材原书）</span>'+t;
+    dl.appendChild(dd);
+  });
+  var wrap=document.createElement('div');
+  wrap.className='ans-block block';
+  wrap.innerHTML='<div class="b-title folded">【参考答案】</div><div class="ans-body b-folded"></div>'+
+    '<div class="ans-src">本课正文未附训练题，此处列出教材原书对应答案</div>';
+  $('.ans-body',wrap).appendChild(dl);
+  art.appendChild(wrap);
+  dd_fmt(wrap);
+});
+
+function dd_fmt(scope){
+  $$('.ans-block dd',scope).forEach(function(dd){
+    if(dd.dataset.fmt) return; dd.dataset.fmt='1';
+    dd.innerHTML=dd.innerHTML.replace(/([^>])([②③④⑤⑥⑦⑧⑨⑩])/g,'$1<br>$2');
+  });
+}
+})();
 </script>
 </body>
 </html>
