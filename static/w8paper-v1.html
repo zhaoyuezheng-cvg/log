@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>遇·见 | 七年级语文「8周培优」全卷讲评与解析</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='34' fill='%23F1E9D6' stroke='%23B0453A' stroke-width='3'/%3E%3Cpath d='M30 62 q10 -20 20 0 q10 -20 20 0' stroke='%233F5B66' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3Ccircle cx='50' cy='40' r='5' fill='%233F5B66'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap">
+<style>
+:root{
+  --paper:#F5F0E4;
+  --paper-2:#EFE7D5;
+  --card:#FBF8F0;
+  --ink:#28333B;
+  --ink-soft:#55606A;
+  --ink-faint:#8A8F96;
+  --accent:#B0453A;
+  --accent-deep:#8F3429;
+  --accent-soft:rgba(176,69,58,.09);
+  --teal:#3F5B66;
+  --teal-soft:rgba(63,91,102,.09);
+  --gold:#9A7B3F;
+  --line:#DCD3C0;
+  --moon:#EFE9DA;
+  --white:#FFFFFF;
+  --shadow:0 1px 2px rgba(40,51,59,.04),0 10px 30px -18px rgba(40,51,59,.18);
+  --serif:'Noto Serif SC',Georgia,'Songti SC','SimSun',serif;
+  --sans:'Noto Sans SC','PingFang SC','Microsoft YaHei',system-ui,-apple-system,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:var(--sans);
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.8;
+  font-size:16px;
+  letter-spacing:.01em;
+  overflow-x:hidden;
+}
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:radial-gradient(circle at 12% 8%,rgba(154,123,63,.05),transparent 40%),radial-gradient(circle at 88% 90%,rgba(63,91,102,.05),transparent 45%);
+}
+.wrap{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:0 22px}
+::selection{background:var(--accent);color:#fff}
+
+/* ===== 首屏 Hero ===== */
+.hero{
+  position:relative;min-height:96vh;display:flex;align-items:center;justify-content:center;
+  overflow:hidden;text-align:center;background:
+   radial-gradient(1200px 600px at 50% 110%, rgba(63,91,102,.16), transparent 60%),
+   linear-gradient(180deg,#202c36 0%, #2d3b45 52%, #3a4751 100%);
+  color:#EDE7D6;isolation:isolate;
+}
+.hero::after{content:"";position:absolute;inset:0;z-index:0;background:radial-gradient(70% 50% at 50% 0%,rgba(238,228,208,.10),transparent 70%)}
+.ink-wash{position:absolute;inset:-10%;z-index:0;filter:blur(2px);opacity:.55;
+  background:
+   radial-gradient(45% 30% at 22% 26%, rgba(190,205,210,.22), transparent 70%),
+   radial-gradient(38% 26% at 78% 66%, rgba(150,170,180,.18), transparent 70%),
+   radial-gradient(30% 22% at 55% 18%, rgba(200,214,220,.16), transparent 70%);
+  animation:drift 26s ease-in-out infinite alternate;
+}
+@keyframes drift{from{transform:translate(0,0) scale(1)}to{transform:translate(-2.5%,2%) scale(1.06)}}
+.moon{
+  position:absolute;top:12%;right:12%;width:150px;height:150px;border-radius:50%;z-index:1;
+  background:radial-gradient(circle at 38% 34%,#FBF6E9,#EFE6CE 58%,#D8CDB2);
+  box-shadow:0 0 60px 18px rgba(238,228,200,.35),0 0 130px 50px rgba(238,228,200,.16);
+  animation:moonRise 2.6s cubic-bezier(.2,.7,.3,1) both;
+}
+.moon::after{content:"";position:absolute;inset:0;border-radius:50%;
+  background:radial-gradient(circle at 62% 66%,rgba(190,180,150,.32),transparent 42%),
+             radial-gradient(circle at 40% 30%,rgba(190,180,150,.22),transparent 40%);}
+@keyframes moonRise{from{transform:translateY(70px);opacity:0}to{transform:translateY(0);opacity:1}}
+.halo{position:absolute;top:10%;right:9%;width:210px;height:210px;border-radius:50%;z-index:0;
+  border:1px solid rgba(238,228,200,.18);animation:pulse 5s ease-in-out infinite}
+.halo::before{content:"";position:absolute;inset:26px;border-radius:50%;border:1px solid rgba(238,228,200,.14);animation:pulse 5s ease-in-out 1.2s infinite}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:.7}50%{transform:scale(1.08);opacity:1}}
+.star{position:absolute;width:2px;height:2px;border-radius:50%;background:#EFE9DA;opacity:0;animation:twinkle var(--t,4s) ease-in-out var(--d,0s) infinite;z-index:1}
+@keyframes twinkle{0%,100%{opacity:0}50%{opacity:.9}}
+.float-chars{position:absolute;inset:0;z-index:1;pointer-events:none}
+.fchar{position:absolute;font-family:var(--serif);color:rgba(237,231,214,.16);font-weight:700;line-height:1;
+  animation:floatY var(--f,9s) ease-in-out var(--d,0s) infinite}
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-26px)}}
+.hero-inner{position:relative;z-index:2;padding:110px 20px 80px;max-width:860px}
+.hero-eyebrow{font-size:13px;letter-spacing:.55em;color:#C9C0A6;text-transform:none;margin-bottom:26px;opacity:0;animation:fadeUp 1s .3s both}
+.hero-title{font-family:var(--serif);font-weight:900;font-size:clamp(38px,8.4vw,72px);line-height:1.22;letter-spacing:.06em;opacity:0;animation:fadeUp 1s .55s both}
+.hero-title .huai{color:#E7BEA2}
+.hero-sub{font-size:clamp(15px,2.6vw,19px);color:#C9C5B6;margin-top:20px;letter-spacing:.08em;opacity:0;animation:fadeUp 1s .8s both}
+.hero-poem{margin-top:34px;font-family:var(--serif);font-size:clamp(14px,2.4vw,17px);color:#AEB2A4;line-height:2.1;opacity:0;animation:fadeUp 1s 1.05s both}
+.hero-poem b{color:#D6C99A;font-weight:600}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+.hero-scroll{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:2;color:#AEB2A4;font-size:12px;letter-spacing:.4em;opacity:0;animation:fadeUp 1s 1.6s both;cursor:pointer;border:none;background:none;font-family:var(--sans)}
+.hero-scroll:hover{color:#E7BEA2}
+.seal{position:absolute;z-index:2;left:9%;bottom:16%;width:74px;height:74px;border:2px solid var(--accent);color:#D67A6A;
+  display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:14px;font-weight:700;letter-spacing:.1em;
+  border-radius:10px;opacity:0;animation:fadeUp 1s 1.35s both;transform:rotate(-6deg);background:rgba(176,69,58,.05)}
+.seal span{writing-mode:vertical-rl}
+@media(max-width:640px){.moon{top:9%;right:8%;width:96px;height:96px}.halo{top:7%;right:5%;width:140px;height:140px}.seal{left:6%;bottom:14%;width:60px;height:60px;font-size:12px}}
+
+/* ===== 顶部导航 ===== */
+.nav{position:sticky;top:0;z-index:50;background:rgba(245,240,228,.92);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line)}
+.nav-inner{max-width:1080px;margin:0 auto;padding:0 22px;display:flex;align-items:center;gap:14px;height:60px}
+.nav-brand{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:700;font-size:17px;color:var(--ink);white-space:nowrap}
+.nav-brand svg{width:22px;height:22px}
+.nav-tags{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;flex:1}
+.nav-tags::-webkit-scrollbar{display:none}
+.nav-tags a{flex:0 0 auto;font-size:13px;color:var(--ink-soft);text-decoration:none;padding:5px 12px;border-radius:20px;border:1px solid transparent;white-space:nowrap}
+.nav-tags a:hover{color:var(--accent);border-color:var(--accent)}
+.nav-tags a.on{color:#fff;background:var(--ink);border-color:var(--ink)}
+@media(min-width:768px){.nav-tags a{font-size:14px;padding:6px 15px}}
+
+/* ===== 通用板块 ===== */
+.sec{padding:56px 0 30px}
+.sec-head{margin-bottom:26px}
+.sec-kicker{font-size:12px;letter-spacing:.35em;color:var(--gold);margin-bottom:10px;font-weight:500}
+.sec-title{font-family:var(--serif);font-weight:900;font-size:clamp(24px,4.4vw,34px);line-height:1.35}
+.sec-desc{color:var(--ink-soft);margin-top:12px;font-size:15px;max-width:760px}
+
+/* 卷面概览 */
+.overview-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:8px}
+.ov-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;position:relative;overflow:hidden;box-shadow:var(--shadow)}
+.ov-card .no{position:absolute;top:-16px;right:8px;font-family:var(--serif);font-size:64px;font-weight:900;color:var(--paper-2);line-height:1;pointer-events:none}
+.ov-card h4{font-family:var(--serif);font-size:16px;font-weight:700;margin-bottom:6px}
+.ov-card p{font-size:13px;color:var(--ink-soft)}
+.ov-card .pts{display:inline-block;margin-top:8px;font-size:12px;color:var(--accent);background:var(--accent-soft);border-radius:12px;padding:2px 10px;font-weight:600}
+.ov-note{margin-top:16px;font-size:13.5px;color:var(--ink-soft);background:var(--paper-2);border-left:3px solid var(--gold);padding:10px 14px;border-radius:0 10px 10px 0}
+@media(min-width:700px){.overview-grid{grid-template-columns:repeat(3,1fr)}}
+
+/* ===== 题目卡片 ===== */
+.qcard{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);margin-bottom:28px;overflow:hidden}
+.qhead{display:flex;align-items:flex-start;gap:16px;padding:22px 22px 18px;border-bottom:1px dashed var(--line)}
+.qno{flex:0 0 auto;width:54px;height:54px;border-radius:50%;background:var(--ink);color:#EDE7D6;display:flex;align-items:center;justify-content:center;
+  font-family:var(--serif);font-weight:900;font-size:20px;letter-spacing:.02em}
+.qno.teal{background:var(--teal)}.qno.gold{background:var(--gold)}
+.qheadtxt{flex:1;min-width:0}
+.qmeta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:6px}
+.qtag{font-size:11.5px;font-weight:600;padding:2px 10px;border-radius:12px;letter-spacing:.06em}
+.qtag.red{background:var(--accent-soft);color:var(--accent)}
+.qtag.teal{background:var(--teal-soft);color:var(--teal)}
+.qtag.gold{background:rgba(154,123,63,.12);color:var(--gold)}
+.qpts{font-size:12px;color:var(--ink-faint)}
+.qhead h3{font-family:var(--serif);font-size:clamp(17px,3vw,21px);line-height:1.45;font-weight:700}
+.qbody{padding:20px 22px 24px}
+.qtxt{font-size:15.5px;color:var(--ink);line-height:1.9}
+.qtxt .passage{font-family:var(--serif);background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:10px 0;color:#3a454e;line-height:2}
+.blank{display:inline-block;min-width:56px;border-bottom:2px solid var(--accent);margin:0 3px;position:relative;height:22px;vertical-align:middle}
+.poem-block{font-family:var(--serif);text-align:center;line-height:2.3;color:#3a454e;margin:12px 0;font-size:15.5px}
+.poem-block .title{font-weight:700;font-size:17px;color:var(--ink)}
+.poem-block .anno{font-family:var(--sans);font-size:12.5px;color:var(--ink-faint)}
+table{width:100%;border-collapse:collapse;margin:14px 0;table-layout:fixed}
+th,td{border:1px solid var(--line);padding:10px 12px;font-size:14px;vertical-align:top;text-align:left}
+th{background:var(--paper-2);font-weight:700;font-family:var(--serif);color:#33404a}
+td .tag{display:inline-block;font-size:11.5px;color:var(--teal);background:var(--teal-soft);border-radius:10px;padding:1px 8px;margin:2px 2px 2px 0}
+.tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:12px;margin:14px 0}
+.tscroll table{margin:0;min-width:620px}
+@media(max-width:600px){th,td{padding:8px 8px;font-size:13px}}
+ol,ul{padding-left:22px;margin:8px 0}
+.qtxt li{margin:5px 0}
+.opt{display:flex;gap:14px;flex-wrap:wrap;margin:8px 0}
+.opt span{font-size:14px;background:var(--paper);border:1px solid var(--line);padding:3px 12px;border-radius:8px}
+
+/* 答案交互 */
+.answer-box{border:1px solid var(--accent);border-radius:12px;overflow:hidden;margin-top:18px;background:var(--white)}
+.answer-bar{display:flex;align-items:center;gap:10px;width:100%;padding:13px 16px;background:var(--accent-soft);border:none;cursor:pointer;
+  font-family:var(--sans);font-size:14.5px;font-weight:600;color:var(--accent-deep);text-align:left}
+.answer-bar:hover{background:rgba(176,69,58,.14)}
+.answer-bar .arr{margin-left:auto;transition:transform .3s;font-size:12px}
+.answer-body{display:none;padding:18px 20px}
+.answer-body.open{display:block}
+.ans{background:#F6F3EC;border-left:3px solid var(--accent);padding:12px 16px;border-radius:0 10px 10px 0;margin-bottom:12px}
+.ans b{color:var(--accent-deep)}
+.ans-fill{font-family:var(--serif);font-weight:700;color:var(--accent-deep)}
+.jx{font-size:14.5px;color:#33404a;line-height:1.95}
+.jx .k{display:block;font-weight:700;color:var(--teal);margin:12px 0 4px}
+.jx .k:first-child{margin-top:0}
+.jx .answord{color:var(--accent-deep);font-weight:600}
+.jx .note{display:block;font-size:12.5px;color:var(--ink-faint);margin-top:6px;background:var(--paper);border-left:2px solid var(--gold);padding:6px 12px}
+
+/* 古诗 / 文言 模块 */
+.lit-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 4px}
+.lit-tab{font-size:13.5px;padding:7px 16px;border-radius:20px;border:1px solid var(--line);background:var(--card);color:var(--ink-soft);cursor:pointer;font-family:var(--sans);font-weight:500}
+.lit-tab.on{background:var(--ink);color:#EDE7D6;border-color:var(--ink)}
+.lit-panel{display:none}
+.lit-panel.on{display:block;animation:fadeIn .4s}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.guide{font-family:var(--serif);background:linear-gradient(180deg,#f1ead8,#efe7d5);border:1px solid #dccfae;border-radius:14px;padding:22px 24px;margin:16px 0;position:relative;overflow:hidden}
+.guide::before{content:"古";position:absolute;top:-22px;left:14px;font-family:var(--serif);font-size:120px;font-weight:900;color:rgba(154,123,63,.10);line-height:1}
+.guide h5{font-size:16px;font-weight:700;color:var(--gold);margin-bottom:8px;letter-spacing:.12em}
+.guide .poem-title{text-align:center;font-size:19px;font-weight:700;letter-spacing:.2em;margin-bottom:4px;color:var(--ink)}
+.guide .poem-auth{text-align:center;font-size:13px;color:var(--ink-faint);margin-bottom:14px}
+.guide .poem-text{text-align:center;font-family:var(--serif);line-height:2.4;font-size:16px;color:#39434c}
+.ciku{border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:14px 0}
+.ciku th{background:#e7e0cf;font-family:var(--serif)}
+.ciku td:first-child{font-weight:700;color:var(--teal);white-space:nowrap;width:30%}
+.ciku .w{font-family:var(--serif);color:var(--accent-deep);font-weight:600}
+.trans{margin:10px 0;font-size:14.5px;line-height:2;color:#33404a}
+.trans .zh{display:block;font-family:var(--serif);color:#39434c}
+.yr{background:var(--white);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:0 12px 12px 0;padding:16px 20px;margin-top:14px;font-size:14.5px;line-height:2;color:#33404a}
+
+/* 图表 */
+.chart-box{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:14px;margin:14px 0}
+.chart-title{font-family:var(--serif);font-weight:700;text-align:center;font-size:16px;color:var(--ink);margin-bottom:4px}
+.chart-sub{text-align:center;font-size:12px;color:var(--ink-faint);margin-bottom:6px}
+#motivationChart{width:100%;height:340px}
+
+/* 作文 */
+.zuowen{background:linear-gradient(180deg,#f7f3ea,#f1eadc);border:1px solid var(--line);border-radius:16px;padding:26px 24px;margin-top:8px;position:relative;overflow:hidden}
+.zuowen::after{content:"文";position:absolute;bottom:-30px;right:10px;font-family:var(--serif);font-size:150px;font-weight:900;color:rgba(154,123,63,.08);line-height:1;pointer-events:none}
+.zuowen h4{font-family:var(--serif);font-size:18px;font-weight:700;margin-bottom:10px;color:var(--ink)}
+.zuowen .pro{margin:8px 0;padding-left:2px}
+.zuowen .pro b{color:var(--accent-deep)}
+
+/* 校对 */
+.jd-row{display:flex;gap:14px;padding:14px 0;border-bottom:1px dashed var(--line);font-size:14.5px}
+.jd-row:last-child{border-bottom:none}
+.jd-no{flex:0 0 auto;width:30px;height:30px;border-radius:50%;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px}
+.jd-body{flex:1;min-width:0}
+.jd-body b{color:var(--accent-deep)}
+.jd-body .type{display:inline-block;font-size:11px;color:#fff;background:var(--teal);border-radius:10px;padding:1px 9px;margin-right:8px;vertical-align:1px}
+.jd-body .type.warn{background:var(--gold)}
+
+/* 页脚 */
+.footer{position:relative;z-index:1;background:var(--ink);color:#B9B9AE;padding:40px 0 30px;margin-top:40px}
+.footer .wrap{display:flex;flex-direction:column;gap:8px;align-items:center;text-align:center;font-size:13px}
+.footer b{color:#EDE7D6;font-family:var(--serif);letter-spacing:.2em}
+.to-top{position:fixed;right:20px;bottom:22px;z-index:60;width:46px;height:46px;border-radius:50%;background:var(--accent);color:#fff;border:none;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(176,69,58,.4);opacity:0;pointer-events:none;transition:opacity .3s}
+.to-top.show{opacity:1;pointer-events:auto}
+.to-top:hover{background:var(--accent-deep)}
+.divider{height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent);margin:8px 0 26px}
+
+@media(prefers-reduced-motion:reduce){
+  .hero *,.halo,.star,.fchar,.ink-wash{animation:none!important;opacity:1!important;transform:none!important}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== 首屏 ===== -->
+<header class="hero" id="top">
+  <div class="ink-wash"></div>
+  <div class="halo"></div>
+  <div class="moon"></div>
+  <div class="float-chars" id="fchars"></div>
+  <div class="seal"><span>八周</span></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">七年级语文 · 期中专题培优卷</div>
+    <h1 class="hero-title"><span class="huai">遇见</span> · 全卷讲评与解析</h1>
+    <p class="hero-sub">清秋风物 · 经典诗文 · 朝花旧事 · 霜月清辉 · 求知之学 · 魏晋风流</p>
+    <div class="hero-poem">少年入新程，世间贵相逢。<b>愿你提笔，赴一场文字之约。</b></div>
+  </div>
+  <button class="hero-scroll" onclick="document.getElementById('overview').scrollIntoView()">往下卷 · 展卷 ▾</button>
+</header>
+
+<!-- ===== 导航 ===== -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#B0453A" stroke-width="1.6"><circle cx="12" cy="12" r="8"/><path d="M7 15 q2.5 -5 5 0 q2.5 -5 5 0" stroke-linecap="round"/></svg>
+      遇见·讲评
+    </div>
+    <div class="nav-tags" id="navTags">
+      <a href="#overview" class="on">卷面</a>
+      <a href="#q1">① 字词</a>
+      <a href="#q2">② 古诗文</a>
+      <a href="#q3">③ 名著</a>
+      <a href="#q4">④ 阅读</a>
+      <a href="#q5">⑤ 非连</a>
+      <a href="#q6">⑥ 文言</a>
+      <a href="#q7">⑦ 作文</a>
+      <a href="#jiaodui">校对</a>
+    </div>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <!-- ===== 卷面概览 ===== -->
+  <section class="sec" id="overview">
+    <div class="sec-head">
+      <div class="sec-kicker">卷一 · 卷面总览</div>
+      <h2 class="sec-title">一份试卷，七处风景，总分 120 分</h2>
+      <p class="sec-desc">全卷以「遇见」为主线：从字词仿写出发，历经古诗文、名著、散文、非连续性文本与文言对比阅读，终以一篇 60 分作文收束。点击下方章节即可进入逐题讲评。</p>
+    </div>
+    <div class="overview-grid">
+      <div class="ov-card"><div class="no">1</div><h4>字词积累 · 仿写</h4><p>江南秋景语段，考拼音、错别字与句式仿写</p><span class="pts">10 分</span></div>
+      <div class="ov-card"><div class="no">2</div><h4>古诗文默写 · 赏析</h4><p>默写名句 + 课外古诗《送春》赏析</p><span class="pts">10 分</span></div>
+      <div class="ov-card"><div class="no">3</div><h4>名著《朝花夕拾》</h4><p>人物识别 + 插图方案选择</p><span class="pts">10 分</span></div>
+      <div class="ov-card"><div class="no">4</div><h4>散文《深冬月照》</h4><p>字音字义、朗读、联想想象、图文设计</p><span class="pts">10 分</span></div>
+      <div class="ov-card"><div class="no">5</div><h4>非连续文本</h4><p>学习动机 · 记忆策略 · 综合运用</p><span class="pts">10 分</span></div>
+      <div class="ov-card"><div class="no">6</div><h4>文言对比《世说新语》</h4><p>词义、断句、虚词、人物品析</p><span class="pts">10 分</span></div>
+      <div class="ov-card"><div class="no">7</div><h4>作文《遇见____》</h4><p>半命题作文，补题 + 写作</p><span class="pts">60 分</span></div>
+      <div class="ov-card"><div class="no">附</div><h4>课外古诗 · 文言文</h4><p>《送春》与两则《世说新语》均附词语解析与全文翻译</p><span class="pts">附：详解</span></div>
+    </div>
+    <div class="ov-note">小贴士：第②、⑥题中的课外古诗与文言文，页面单独提供「词语解析 · 全文翻译」面板；第⑤题内置学习动机倒U型曲线交互图，可拖动查看。</div>
+    <div class="divider"></div>
+  </section>
+
+  <!-- ===== 题1 ===== -->
+  <section class="sec" id="q1">
+    <div class="qcard">
+      <div class="qhead">
+        <div class="qno">1</div>
+        <div class="qheadtxt">
+          <div class="qmeta"><span class="qtag red">基础 · 字词</span><span class="qpts">10 分</span></div>
+          <h3>遇清秋 · 品物候之美 —— 字词积累与仿写实践</h3>
+        </div>
+      </div>
+      <div class="qbody">
+        <div class="qtxt">
+          <p>班级摘抄江南秋景语段，请你参与字词积累与仿写实践。</p>
+          <div class="passage">江南的秋，是一首细腻温婉的诗，是一幅淡雅恬静的画，是一段悠长缠绵的曲。当北国的秋风已带着几分<span class="ans-fill">潇瑟</span>与沁凉时，江南的秋却如同一位（duān）庄的女子，缓缓步入人们的视野，以她独有的方式，诉说着季节的更迭与岁月的静（mì）。不同于北国的金黄与火红，江南的秋，更多的是一种柔和与渐变。稻田里，金黄色的稻穗低垂着头，仿佛是大地母亲最得意的作品，沉甸甸地诉说着丰收的喜悦。</div>
+          <p><b>（1）根据拼音写出相应的汉字</b></p>
+          <p>①（duān）<span class="blank"></span> 庄　② 静（mì）<span class="blank"></span></p>
+          <p><b>（2）在文中画横线的句中找出一个错别字，将其改正。</b></p>
+          <p><span class="blank"></span> 改为 <span class="blank"></span></p>
+          <p><b>（3）仿写句子</b>：江南的秋，是一首细腻温婉的诗，是一幅淡雅恬静的画，是一段悠长缠绵的曲，是<span class="blank"></span>。</p>
+        </div>
+
+        <div class="answer-box">
+          <button class="answer-bar" onclick="toggleAns(this)">查看答案与解析 <span class="arr">▾</span></button>
+          <div class="answer-body">
+            <div class="ans"><b>答案：</b>（1）①<span class="ans-fill">端</span>庄　②静<span class="ans-fill">谧</span>；（2）<span class="ans-fill">潇</span> 改为 <span class="ans-fill">萧</span>；（3）示例：是<span class="ans-fill">一缕温柔缱绻的风</span> / 是<span class="ans-fill">一抹柔和明净的月光</span>。</div>
+            <div class="jx">
+              <span class="k">逐题解析</span>
+              <span class="answord">（1）辨音写字。</span>duān zhuāng →「端庄」，形容举止、仪态庄重，注意「端」的左部是「立」，不是「山」；jìng mì →「静谧」，安静之意，「谧」字易写成「密」，「密」指事物距离近、细密，「谧」专指安静无声，二音同形异义，须据语境辨析。
+              <span class="k">（2）找错别字</span>
+              画横线句为「潇瑟」→ 正字为「<span class="ans-fill">萧瑟</span>」。「萧瑟」形容环境萧条冷清（秋风萧瑟，洪波涌起）；「潇」常用于「潇洒、潇潇（雨声）」，不能与「瑟」组词表达萧条之意，属同音形近致误。原卷在此处有意设置错字作为考点。
+              <span class="k">（3）仿写</span>
+              句式结构须与原句一致：<b>「是 + 数量词 + 两字叠韵修饰语（ABAB式/双音词）+ 的 + 名词」</b>，且所选意象须贴合「江南之秋」温婉、淡雅、柔和的意境。示例中「风」「月光」均为柔美之物，修饰语「温柔缱绻」「柔和明净」呼应秋的宁静淡远。
+              <span class="note">仿写要点：①句式整齐（是…的诗/画/曲/…）；②意象贴合；③修饰语与整体风格统一，避免突兀色彩词。</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 题2 ===== -->
+  <section class="sec" id="q2">
+    <div class="qcard">
+      <div class="qhead">
+        <div class="qno teal">2</div>
+        <div class="qheadtxt">
+          <div class="qmeta"><span class="qtag teal">古诗文 · 默写与赏析</span><span class="qpts">10 分</span></div>
+          <h3>遇经典 · 诵诗韵悠长 —— 七上古诗文整理与课外古诗《送春》</h3>
+        </div>
+      </div>
+      <div class="qbody">
+        <div class="qtxt">
+          <p>小语同学对七上古诗文进行整理，请你帮他完成摘抄本。</p>
+          <div class="tscroll"><table>
+            <colgroup><col style="width:20%"><col style="width:40%"><col style="width:40%"></colgroup>
+            <tr><th>策略</th><th>诗句</th><th>收获</th></tr>
+            <tr><td>〇看标题</td><td>（1）我寄愁心与明月，<span class="blank" style="min-width:140px"></span>。——李白《闻王昌龄左迁龙标遥有此寄》</td><td>标题常点明时间/地点，概括事件，蕴含情感。</td></tr>
+            <tr><td>〇抓意象</td><td>（2）<span class="blank"></span>，<span class="blank"></span>。——王湾《次北固山下》</td><td>（5）古人常借助意象「雁」来表达 <span class="blank"></span> 情感。</td></tr>
+            <tr><td>〇明手法</td><td>（3）<span class="blank"></span>，<span class="blank"></span>，古道西风瘦马。——马致远《天净沙·秋思》</td><td>对比衬托，抒发羁旅愁思。</td></tr>
+            <tr><td>〇明手法</td><td>（4）日月之行，若出其中；<span class="blank"></span>，若出其里。——曹操《观沧海》</td><td>（6）展开想象，彰显 <span class="blank"></span>。</td></tr>
+          </table></div>
+          <p><b>【拓展运用】</b>阅读课外古诗《送春》。</p>
+          <div class="poem-block">
+            <div class="title">送春</div>
+            <div class="poem-auth">〔宋〕王令</div>
+            三月残花落更开，小檐日日燕飞来。<br>
+            子规夜半犹啼血，不信东风唤不回。<br>
+            <div class="anno">【注释】①子规：杜鹃的别称。「啼血」：蜀国望帝杜宇死后化为杜鹃，暮春日夜悲鸣至口中滴血，其声凄切，借以倾诉悲苦哀怨。②东风：春风。</div>
+          </div>
+          <p><b>（7）</b>诗歌一、二句点明暮春时节的意象是 <span class="blank"></span>。</p>
+          <p><b>（8）</b>请运用以上读诗策略（至少两种），结合诗歌内容分析作者的情感。</p>
+        </div>
+
+        <div class="answer-box">
+          <button class="answer-bar" onclick="toggleAns(this)">查看答案与解析 <span class="arr">▾</span></button>
+          <div class="answer-body">
+            <div class="ans"><b>答案：</b>（1）<span class="ans-fill">随君直到夜郎西</span>；（2）<span class="ans-fill">乡书何处达</span>，<span class="ans-fill">归雁洛阳边</span>；（3）<span class="ans-fill">枯藤老树昏鸦</span>，<span class="ans-fill">小桥流水人家</span>；（4）<span class="ans-fill">星汉灿烂</span>；（5）<span class="ans-fill">思乡（思念家乡、思念亲人）</span>；（6）<span class="ans-fill">诗人博大的胸襟与豪迈的气概（开阔的心胸、统一天下的雄心）</span>；（7）<span class="ans-fill">残花（落花）与燕子（飞燕）</span>；（8）见下方详解。</div>
+            <div class="jx">
+              <span class="k">默写批注</span>
+              <span class="answord">（1）</span>「我寄愁心与明月，随君直到夜郎西」——李白听闻好友王昌龄被贬龙标，托明月送愁心。「君」指王昌龄，「夜郎西」点被贬之地，易误写「随风/随朋」，须记「随君直到」。
+              <span class="answord">（2）</span>「乡书何处达？归雁洛阳边」——王湾于北固山下泊舟，见北归大雁，借「雁」寄托乡书、抒发思乡。注意「达」「归」的写法。
+              <span class="answord">（3）</span>「枯藤老树昏鸦，小桥流水人家」——九个意象叠加，前两句萧瑟与温馨对比，反衬游子羁旅孤愁。
+              <span class="answord">（4）</span>「星汉灿烂，若出其里」——曹操观沧海，日月星辰皆若出于大海之中，虚写想象之景。
+              <span class="k">（5）（6）意象与手法的收获</span>
+              「雁」是思乡意象的经典代表：大雁秋日南飞、春日北归，有固定迁徙规律，故古人以「归雁」「雁字」寄托对家乡、亲人的思念。曹操「日月」「星汉」句是虚实结合、大胆想象的典范，突出其吞吐宇宙、气概豪迈的胸襟，暗示统一天下的雄心。
+              <span class="k">（7）意象捕捉</span>
+              一二句「<span class="ans-fill">残花</span>（落更开）」「<span class="ans-fill">燕子</span>（燕飞来）」——「残花」点明暮春（三月花谢），「燕子」是春日常见候鸟，二者共同点出暮春时节。
+              <span class="k">（8）情感分析（两种策略）</span>
+              示例：运用<b>「看标题」</b>与<b>「抓意象 · 明手法」</b>两种策略。题目「送春」直点送别春天的主题。诗歌先写「残花落更开、小檐燕飞来」，花败又开、燕去复来，暮春将去而春意犹存，透出对春光的不舍；后两句「子规夜半犹啼血」以<b>拟人</b>写杜鹃竭力悲鸣挽留春光，「不信东风唤不回」更将春风当作可唤回的对象，语气坚定。诗人借杜鹃的执着，既表达了<b>对美好春光的深情留恋与珍惜</b>，又展现出<b>顽强进取、乐观自信——坚信美好事物必将重来、春天定会再返</b>的积极情怀。此诗中的杜鹃一反传统「悲怨」之意，带有积极、坚定的力量。
+              <span class="note">读诗策略小结：看标题（定主题）→ 抓意象（悟情感）→ 明手法（析技巧）→ 炼字词（品语言），答题时至少选用两种并落到具体诗句上。</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 课外古诗 词语解析 + 翻译 -->
+        <div class="lit-tabs">
+          <button class="lit-tab on" onclick="switchTab(this,'songchun','yuan')">原文</button>
+          <button class="lit-tab" onclick="switchTab(this,'songchun','ciyu')">词语解析</button>
+          <button class="lit-tab" onclick="switchTab(this,'songchun','fanyi')">全文翻译</button>
+          <button class="lit-tab" onclick="switchTab(this,'songchun','shangxi')">赏析</button>
+        </div>
+        <div class="guide" id="songchun-yuan">
+          <h5>课外古诗 · 全文</h5>
+          <div class="poem-title">送春</div>
+          <div class="poem-auth">〔宋〕王令</div>
+          <div class="poem-text">三月残花落更开，<br>小檐日日燕飞来。<br>子规夜半犹啼血，<br>不信东风唤不回。</div>
+        </div>
+        <div class="lit-panel" id="songchun-ciyu">
+          <div class="ciku">
+            <div class="tscroll"><table>
+              <colgroup><col style="width:22%"><col style="width:38%"><col style="width:40%"></colgroup>
+              <tr><th>词语</th><th>释义</th><th>语境说明</th></tr>
+              <tr><td>残花</td><td>凋谢将尽的花</td><td>点明暮春，春光将去</td></tr>
+              <tr><td>落更开</td><td>（花）落而又重开</td><td>「更」，再、又；残败中见新生</td></tr>
+              <tr><td>小檐</td><td>低矮的屋檐</td><td>农家屋舍，生活气息</td></tr>
+              <tr><td>日日</td><td>每一天</td><td>燕来频仍，春意犹存</td></tr>
+              <tr><td>子规</td><td>杜鹃鸟</td><td>其声凄切，暮春常啼</td></tr>
+              <tr><td>啼血</td><td>悲鸣至口中滴血</td><td>传说，极言用力之深、情之切</td></tr>
+              <tr><td>犹</td><td>仍然、还在</td><td>「夜半犹啼」见执着不舍</td></tr>
+              <tr><td>东风</td><td>春风</td><td>此处借指春天</td></tr>
+              <tr><td>唤不回</td><td>唤不回来</td><td>「不信…唤不回」= 坚信能唤回，语气坚定</td></tr>
+            </table></div>
+          </div>
+        </div>
+        <div class="lit-panel" id="songchun-fanyi">
+          <div class="trans">
+            <span class="zh">暮春三月，凋残的花朵落了又再度开放；低矮的屋檐下，燕子日日飞来飞去。</span>
+            <span class="zh">杜鹃鸟深夜里仍在悲鸣，几乎啼出血来——它始终不相信，春风唤不回来春天。</span>
+            <span class="note" style="display:block;font-size:12.5px;color:var(--ink-faint);margin-top:8px">译文直译与意译结合：「落更开」作「落了又开」；「不信东风唤不回」译出「坚信春天可以唤回」的坚定语气，以贴合诗人乐观自信的情怀。</span>
+          </div>
+        </div>
+        <div class="lit-panel" id="songchun-shangxi">
+          <div class="trans">
+            <span class="k" style="display:block;font-weight:700;color:var(--teal);margin-bottom:6px">主旨与手法</span>
+            <span class="zh">这是一首暮春写景抒怀七绝。前两句写景：残花落而复开、燕子日日飞来，花败又开、燕去又还，春光徘徊将去而未去，透出对春光的眷恋；后两句抒情：以拟人手法，写杜鹃夜半啼血、不信东风唤不回，把「春」当作可唤回的对象。</span>
+            <span class="zh">全诗借杜鹃的执着啼鸣，表达<b>珍惜美好春光、惜时惜春</b>之情，更传递出<b>顽强进取、执着追求、乐观自信</b>——坚信美好定能唤回、春天必将重来的积极信念。此诗之杜鹃一反传统「悲怨」寓意，颇具力量。</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 题3 ===== -->
+  <section class="sec" id="q3">
+    <div class="qcard">
+      <div class="qhead">
+        <div class="qno gold">3</div>
+        <div class="qheadtxt">
+          <div class="qmeta"><span class="qtag gold">名著 · 朝花夕拾</span><span class="qpts">10 分</span></div>
+          <h3>遇故人 · 拾朝花碎影 —— 《朝花夕拾》主题读书会</h3>
+        </div>
+      </div>
+      <div class="qbody">
+        <div class="qtxt">
+          <p>名著阅读小组开展「《朝花夕拾》主题读书会」，请你运用积累的知识，完成下列任务。</p>
+          <div class="tscroll"><table>
+            <colgroup><col style="width:33%"><col style="width:33%"><col style="width:34%"></colgroup>
+            <tr>
+              <td class="passage" style="border:1px solid var(--line);margin:0;background:var(--paper);border-radius:0">【语段一】我忐忑着，拿了书来了。他使我同坐在堂中央的桌子前，教我一句一句地读下去。我担着心，一句一句地读下去。两句一行，大约读了二三十行罢，他说：——「给我读熟。背不出，就不准去看会。」他说完，便站起来，走进房里去了。</td>
+              <td class="passage" style="border:1px solid var(--line);margin:0;background:var(--paper);border-radius:0">【语段二】第二天醒得特别早，一醒就要坐起来。她却立刻伸出臂膊，一把将我按住。我惊异地看她时，只见她惶急地看着我。她又有所要求似的，摇着我的肩。我忽而记得了——「阿妈，恭喜……」「恭喜恭喜！大家恭喜！真聪明！恭喜恭喜！」她于是十分欢喜似的，笑将起来，同时将一点冰冷的东西，塞在我的嘴里。</td>
+              <td class="passage" style="border:1px solid var(--line);margin:0;background:var(--paper);border-radius:0">【语段三】一回是我已经十多岁了，和几个孩子比赛打旋子，看谁旋得多。她就从旁计着数，说道：「好，八十二个了！再旋一个，八十三！好，八十四！……」但正在旋着的阿祥，忽然跌倒了，阿祥的婶母也恰恰走进来。她便接着说道：「你看，不是跌了么？不听我的话。我叫你不要旋，不要旋……」</td>
+            </tr>
+          </table></div>
+          <p><b>（1）</b>写出语段对应的人物。<br>语段一中的「他」是 <span class="blank"></span>；语段二中的「她」是 <span class="blank"></span>；语段三中的「她」是 <span class="blank"></span>。</p>
+          <p><b>（2）</b>同学们想将一幅菊花图作为插图放在书中，选出你认为最适合的方案并简述理由。<br>
+            <span class="opt"><span>A．印在《藤野先生》的标题旁</span><span>B．印在《范爱农》的结尾处</span><span>C．印在《从百草园到三味书屋》的「百草园」部分</span></span>
+          </p>
+        </div>
+
+        <div class="answer-box">
+          <button class="answer-bar" onclick="toggleAns(this)">查看答案与解析 <span class="arr">▾</span></button>
+          <div class="answer-body">
+            <div class="ans"><b>答案：</b>（1）语段一「他」＝<span class="ans-fill">父亲</span>；语段二「她」＝<span class="ans-fill">长妈妈（阿长）</span>；语段三「她」＝<span class="ans-fill">衍太太</span>。（2）<span class="ans-fill">B．印在《范爱农》的结尾处</span>。</div>
+            <div class="jx">
+              <span class="k">（1）人物识别</span>
+              <span class="answord">语段一</span>出自《五猖会》：父亲在「我」兴高采烈要去看五猖会前，责令「背不出，就不准去看会」，扼杀了孩子的兴致。「他」＝<b>父亲</b>（鲁迅的父亲周伯宜）。
+              <span class="answord">语段二</span>出自《阿长与〈山海经〉》：新年清晨，长妈妈逼「我」说「恭喜」，并把福橘塞进「我」嘴里，以此祈福。「她」＝<b>长妈妈（阿长）</b>。
+              <span class="answord">语段三</span>出自《琐记》：衍太太怂恿孩子比赛打旋子、在旁计数，阿祥跌倒后她却反口推责「我叫你不要旋」。「她」＝<b>衍太太</b>，是鲁迅笔下的负面人物。
+              <span class="k">（2）插图方案</span>
+              选 <b>B</b>。理由：菊花在中国文化中象征<b>高洁、傲霜独立、坚贞不屈</b>。范爱农正直孤傲、愤世嫉俗、不同流合污，恰与菊花品格相合；同时菊花又常用于<b>寄托哀思、悼念逝者</b>，而范爱农最终溺水身故，结局凄凉。将菊花图印在《范爱农》结尾处，既以「傲霜菊」喻其高洁人格，又以「奠菊」寄予深切哀悼，图文相得益彰。
+              <span class="note">另两支排除：A 项《藤野先生》写日本解剖学教授的质朴正直，与菊花意象关联弱；C 项「百草园」重在童年趣味与草木生机，菊花无特定寓意，均不如 B 契合。</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 题4 ===== -->
+  <section class="sec" id="q4">
+    <div class="qcard">
+      <div class="qhead">
+        <div class="qno">4</div>
+        <div class="qheadtxt">
+          <div class="qmeta"><span class="qtag red">现代文 · 散文</span><span class="qpts">10 分</span></div>
+          <h3>遇清辉 · 共月下行舟 —— 散文《深冬月照》（许冬林）</h3>
+        </div>
+      </div>
+      <div class="qbody">
+        <div class="qtxt">
+          <p>班级开展「最是月明处」主题活动。阅读散文《深冬月照》作答。</p>
+          <div class="passage" style="max-height:340px;overflow-y:auto">
+            <b style="font-family:var(--serif)">深冬月照 · 许冬林</b><br><br>
+            ①母亲将我叫起来，朦朦胧胧中，我穿好衣服。<br>
+            ②我们起大早准备去江对岸的荻港街上，母亲要卖东西也买东西。那时我大约才十岁上下吧。<br>
+            ③洗脸后，打开门，泼洗脸水，才发现外面天上地下一片莹白。月亮高得很，被月光照彻的夜气，扑面是柔软的寒。洗脸水泼在空旷的泥地上，蜿蜒流淌，似乎怕冷一般，仿佛听见它们“嘶嘶”的叫声——地上的蒙蒙白光似乎被水吃掉了，倏忽间，墨色的水印子里，又灼灼耀着月光。<br>
+            ④从我家到渡口，我们要翻越两道江堤，然后过渡。母亲怕赶不上早班船，所以早早把我喊起来，陪她月下赶渡。<br>
+            ⑤我们热热吃了出门，走在小江堤上，母亲走在后面，我在前面，那是冬天的凌晨三四点。月亮庄严坐在天上，像看家的祖母，把万物看得规规矩矩悄无声息。星子如同一朵一朵晚秋的小菊，开在蓝色的薄雾里。江堤两旁的小树，叶子几乎谢尽，冷冽的月光下，细弱的枝柯上也都罩着一层茸茸的白，我伸手一碰，都是霜。我脚下的草坡上，枯草稀疏，都躬身在白霜里。小河无声，以月光为衣，低低地沉睡。我和母亲，走过静寂小河，走出静寂村庄，像走在梦中。我们的脚下，是月光，也是细细碎碎的白霜。<br>
+            ⑥月光下的路，似乎都是平的。<br>
+            ⑦我看看天顶的月亮，看看脚下的路，觉得我和母亲走在霜地上，也像走在月亮上。<br>
+            ⑧不出十分钟，我们就上了大江堤。江堤上的风，似乎腰身宽大到猎猎撞人，却也不见树头摇动，想来是我们行走中错把迎面的寒气当成了风。月光倒更是亮堂，无遮无拦，仿佛有铺不完的银粉，到处播撒。<br>
+            ⑨蜿蜒长堤，除了我们，无有人影。四野阔寂，人间不像人间。只有我的脸，冰凉柔软，这是落了月色也落了晨霜的脸。我和母亲走在月照之下，走在无边的霜气里，像两粒小小的纽扣，又小又结实又透明。<br>
+            ⑩也没有蛙鸣，没有虫唱，连喜欢夜飞的乌鸦，影子也不见。这江村的声音都被月光舔干净了，或者是被晨霜给密密缝紧了出不来。<br>
+            ⑪只有我的足音，连着母亲的足音。我们的足音把连天连地的月光，踩出了许多窟窿。我心里感到抱歉，可是一回头，身后月光圆融清透如初。<br>
+            ⑫人世之初，也许未必是盘古开天辟地，未必是伏羲女娲造了各色族人，也许还是如我们这般：一个年轻美丽的母亲，荷载两筐衣食种子，身边跟着一个小女孩。大路平阔，她们一路走来，天地澄澈，十方岑寂。<br>
+            ⑬我遥看我的月光，我的江堤，我的晨霜。一刻仿佛千万年，千万年在此凝结为一刻。<br>
+            ⑭月照之下，万物似乎都被抽去了重量。林木、村舍、长堤……它们立在大地上，像立在宣纸上，而无人的江堤上，母亲的影子小小，我的影子小小，我们也在宣纸上。<br>
+            ⑮月光把世界变轻了。<br>
+            ⑯我们且走且停，月亮且走且停。偶一抬头看，它依然又高又远，像用繁霜在不断锻铸敲打，洁白清冷。我忽想起妈妈教过的童谣，此间吟来真应景。“月亮粑粑跟我走，我到南京讨笆斗，季季刀子割韭菜，萝卜干子喝烧酒。”南京在我们江对岸的下游，此时江水拍打古城，月光笼罩古城，像一首古诗，是那般遥远而悠扬的存在。笆斗是一种柳条编的圆底容器，可盛放谷物等粮食。那时不懂为什么要到南京去讨笆斗，我家的杂物间就有笆斗啊。笆斗不盛粮食时，我和弟弟常常爬进去，坐在里面像不倒翁似地摇晃，我想，发大水时，我可以坐着它漂浮，像远古洪水神话里的葫芦。<br>
+            ⑰童谣里，去南京，就像我们此刻去荻港，也许讨笆斗不过是个由头，真真是想赶一个人头攒动热闹喧哗的早市。
+          </div>
+          <p><b>（1）</b>为⑫段中的「荷」选读音，为「载」选字义。</p>
+          <table>
+            <colgroup><col style="width:50%"><col style="width:50%"></colgroup>
+            <tr><td>荷1 hé：①莲　②（hé）姓。</td><td>荷2 hè：①背或扛　②承当　③负担</td></tr>
+          </table>
+          <p>①荷 <span class="blank"></span>（A．hé　B．hè）　②载 <span class="blank"></span>（A．年　B．记载　C．装载　D．充满）</p>
+          <p><b>（2）朗读设计</b>：为画线句选择需读重音的字词并说明理由。<br>「这江村的声音都被月光舔干净了，或者是被晨霜给密密缝紧了出不来。」</p>
+          <p><b>（3）</b>同学们发现文中有许多联想和想象，请摘录一句并分析其妙处。</p>
+          <p><b>（4）画中月</b>：同学将为本文配上一幅月下行进图。<br>
+            · 地上景：静立的林木、蜿蜒的长堤、①<span class="blank"></span>（再选填一处地上景物）<br>
+            · 空中月：②选择最恰当的月（A．B．C．）<br>
+            · 景中人：③画中人物的大小（A．大　B．小）<br>
+            · ④你想表现怎样的整体画面感？<br>
+          </p>
+          <p><b>（5）</b>月下行进时「我」会是什么表情？结合文章选择并阐述理由。<br><span class="opt"><span>A．悠然自得</span><span>B．闷闷不乐</span><span>C．眉开眼笑</span><span>D．其他</span></span></p>
+          <p><b>（6）诗中月</b>：文中「江水拍打古城，月光笼罩古城，像一首古诗」，作者可能联想到以下哪句诗？<br><span class="opt"><span>A．峨眉山月半轮秋，影入平羌江水流</span><span>B．回乐烽前沙似雪，受降城外月如霜</span></span></p>
+        </div>
+
+        <div class="answer-box">
+          <button class="answer-bar" onclick="toggleAns(this)">查看答案与解析 <span class="arr">▾</span></button>
+          <div class="answer-body">
+            <div class="ans"><b>答案：</b>（1）①<span class="ans-fill">B（hè）</span>　②<span class="ans-fill">C（装载）</span>；（2）重读「<span class="ans-fill">舔</span>」「<span class="ans-fill">密密缝</span>」等动词；（3）示例：摘「月亮庄严坐在天上，像看家的祖母……」；（4）①例：覆霜的枯草坡／沉睡的小河／罩着白霜的小树　②选「高远、圆润、莹白清冷」之月　③<span class="ans-fill">B．小</span>　④整体画面感见解析；（5）<span class="ans-fill">A．悠然自得</span>；（6）<span class="ans-fill">A</span>。</div>
+            <div class="jx">
+              <span class="k">（1）字音字义</span>
+              「荷载两筐衣食种子」：「荷」读 <b>hè</b>，作动词「背、扛」义（荷2义项①），故选 B；「载」作「装载、承载」义，读 zài，选 <b>C</b>。句意是母亲背（荷）着、载着两筐衣物与食物种子。
+              <span class="k">（2）朗读重音</span>
+              重读「<b>舔</b>」「<b>缝</b>」（或「密密」）。「舔干净」「密密缝紧」是拟人化的动词，生动写出月光、晨霜仿佛把江村所有声响轻柔地收走、严严实实地封存起来。重读它们，能强化「万籁俱寂」的静谧氛围，突显夜之安宁与作者的沉浸。
+              <span class="k">（3）联想与想象</span>
+              示例一：「月亮庄严坐在天上，像看家的祖母，把万物看得规规矩矩悄无声息。」妙处：以「看家的祖母」作喻，赋予月亮人的情态与温情，化静为动，既写出月亮高悬、笼罩万物、令一切归于静谧，又暗含母亲在侧的安宁与安全感。
+              示例二：「我和母亲走在霜地上，也像走在月亮上。」妙处：由「霜地」联想到「月亮」，虚实交织，将月下行走写得如梦似幻，营造出澄澈、空灵的美感，表现心境的轻盈与美好。
+              <span class="k">（4）画中月</span>
+              ①可补「<b>覆着白霜的枯草坡</b>」「<b>沉睡的小河</b>」「<b>枝柯罩着茸茸白霜的小树</b>」等原文景物。
+              ②选「高远、圆润、莹白清冷」的月（与「月亮高得很」「又高又远」「月光圆融清透」「洁白清冷」相应）。
+              ③人物应画得 <b>小（B）</b>：原文「像两粒小小的纽扣」，人物极小，方能衬托天地之辽阔、月夜空旷静谧，突显人在自然中的渺小而安然。
+              ④整体画面感：<b>宁静澄澈、空阔清冷、朦胧悠远</b>。天地一片莹白，月光如水银铺洒，万物被「抽去重量」、如立宣纸之上；一望无垠的霜堤间，两个小小身影缓缓前行，如诗如画，静美而悠远，带古典水墨的意境。
+              <span class="k">（5）表情</span>
+              选 <b>A．悠然自得</b>。作者与母亲月下赶渡，沉浸于莹白澄澈的月色与霜气之中，内心安宁恬淡：「觉得我和母亲走在霜地上，也像走在月亮上」「月光把世界变轻了」——由景物之静美而生出安然、享受的心境，故表情应是悠然自得的。
+              <span class="k">（6）诗中月</span>
+              选 <b>A</b>。文中是「<b>江水</b>拍打古城、月光笼罩古城」，为江畔水乡、江月相映之景；A 句「影入平羌江水流」正是写月光映入江中、随水而流的画面，意境契合。B 句「回乐烽前沙似雪，受降城外月如霜」写边塞大漠、沙白如雪的月夜，与江南水乡、江水明月的情境不符。
+              <span class="note">温馨提示：第（4）小题中的月亮图片（A/B/C）在原文档中未随卷呈现，作答时需结合文中对月亮的描写（高远、圆润、莹白清冷）来推断，详见「校对」栏。</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 题5 ===== -->
+  <section class="sec" id="q5">
+    <div class="qcard">
+      <div class="qhead">
+        <div class="qno teal">5</div>
+        <div class="qheadtxt">
+          <div class="qmeta"><span class="qtag teal">非连续性文本</span><span class="qpts">10 分</span></div>
+          <h3>遇自我 · 探学习之钥 —— 学习动机 · 记忆方法专题探究</h3>
+        </div>
+      </div>
+      <div class="qbody">
+        <div class="qtxt">
+          <p>学习探究小组搜集有关学习动机、记忆方法的材料，请你参与专题探究。</p>
+          <p><b>材料一（节选）</b>：学习动机是指引发与维持学生学习行为并使之指向一定学业目标的动力倾向……直接动机与学习活动本身直接关联（如因喜欢音乐而享受学音乐）；间接动机与社会意义相联系（如为获表扬、奖励而学）。一般说来，直接动机更能持久激励学生。最早对学习动机与学习效率关系进行研究的是心理学家<b>耶克斯和多德森</b>，研究表明二者关系呈<b>倒U型曲线</b>（见下图）。</p>
+          <p><b>材料二（节选）</b>：学习策略包括——整体学习与部分学习、记忆术（位置记忆法、缩简与编歌诀、谐音联想法）、及时复习、过度学习（学习程度以 150% 为佳）、利用元认知监控调节自己的学习。</p>
+          <p><b>材料三</b>：七年级（1）班「一日学习小结」精选：<br>
+            甲同学：汤老师讲「一元一次方程」我觉得有意思，听得很认真；放学做作业不太顺手，便先翻笔记复习再做题，就轻松多了。<br>
+            乙同学：韩老师竟要求明天就流利背诵《春》全文。晚上我拿出书背，课文有点长，背诵起来好难呀。又是一个充实而「愉快」的夜晚！
+          </p>
+          <p><b>（1）</b>下列对材料相关内容的理解，正确的一项是（<span class="blank"></span>）<br>
+            A．为了中考体育拿满分，虽然辛苦仍努力训练，属于直接动机。<br>
+            B．过度识记，指达到一次完全正确再现后仍继续识记的策略，有利于对识记材料的保持。<br>
+            C．据艾宾浩斯观点，若用 10 分钟背会《观沧海》，为加深记忆最好再多背 10 分钟。<br>
+            D．艾宾浩斯遗忘曲线表明遗忘进程不均衡，因遗忘「先慢后快」，故复习宜及时进行。
+          </p>
+          <p><b>（2）</b>阅读材料一中的倒U型曲线图，说说面对不同难易任务，学习动机与效率的关系（图见下方交互图）。</p>
+          <table>
+            <colgroup><col style="width:52%"><col style="width:48%"></colgroup>
+            <tr><td>结论一：面对困难或复杂的任务，动机水平处于 <span class="blank"></span>（偏低 / 中等 / 较高）时效率最好</td><td>结论二：面对容易或简单的任务，动机水平处于 <span class="blank"></span>（偏低 / 中等 / 较高）时效率最好</td></tr>
+            <tr><td colspan="2">结论三：面对难易适中的任务，动机水平处于 <span class="blank"></span>（偏低 / 中等 / 较高）时效率最好</td></tr>
+          </table>
+          <p><b>（3）</b>假如你是语文课代表，请结合材料三中乙同学的「一日学习小结」，从材料二中选取两条合适的学习策略，帮助他把《春》背熟。</p>
+        </div>
+
+        <!-- 倒U曲线交互图 -->
+        <div class="chart-box">
+          <div class="chart-title">耶克斯—多德森定律 · 学习动机与效率的倒U型关系</div>
+          <div class="chart-sub">示意曲线（演示三档任务难度的最佳动机区间，可拖动查看）</div>
+          <div id="motivationChart"></div>
+        </div>
+
+        <div class="answer-box">
+          <button class="answer-bar" onclick="toggleAns(this)">查看答案与解析 <span class="arr">▾</span></button>
+          <div class="answer-body">
+            <div class="ans"><b>答案：</b>（1）<span class="ans-fill">B</span>；（2）困难任务→<span class="ans-fill">偏低</span>；容易任务→<span class="ans-fill">较高</span>；难易适中→<span class="ans-fill">中等</span>；（3）两条策略：<span class="ans-fill">部分学习法（分段背诵）</span> + <span class="ans-fill">及时复习／过度学习</span>。</div>
+            <div class="jx">
+              <span class="k">（1）判断题</span>
+              <b>A 错</b>：为「中考体育拿满分」而努力，目标是外部的升学结果，属<b>间接动机</b>，非对体育本身的直接兴趣。
+              <b>B 对</b>：与材料二「过度学习／过度识记」定义一致，正确。
+              <b>C 错</b>：过度学习以 150% 为佳——10 分钟背会，再多背约 10×50%＝5 分钟为宜，而非再多 10 分钟（等于 200%，过犹不及）。
+              <b>D 错</b>：艾宾浩斯遗忘曲线表明遗忘「<b>先快后慢</b>」，不是「先慢后快」，因果与方向均反。
+              <span class="k">（2）倒U型曲线</span>
+              依耶克斯—多德森定律：任务越难，所需动机（唤醒水平）越低，效率才越高；任务越易，则需较高动机水平；难易适中任务对应中等动机。故：困难→<b>偏低</b>，容易→<b>较高</b>，适中→<b>中等</b>。可对照上方交互图观察三档「最佳点」的位置差异。
+              <span class="k">（3）帮乙同学背《春》</span>
+              乙同学的核心困难是「课文太长、难背」。选取两条策略：
+              <b>① 部分学习法（分段学习）</b>——把《春》按春草图、春花图、春风春雨图、迎春图等段分解，逐段背熟再串连综合，化整为零、降低单次记忆负担。
+              <b>② 及时复习／过度学习</b>——背熟后趁热再多读几遍（以 150% 为宜），并按艾宾浩斯规律在睡前、次日、隔日及时复习，对抗遗忘。
+              <span class="note">亦可选用记忆术（缩简编歌诀、位置记忆法、谐音联想），把每段内容编成易记口诀，此处仅需「两条」，选最有针对性即可。</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 题6 ===== -->
+  <section class="sec" id="q6">
+    <div class="qcard">
+      <div class="qhead">
+        <div class="qno gold">6</div>
+        <div class="qheadtxt">
+          <div class="qmeta"><span class="qtag gold">文言文 · 对比阅读</span><span class="qpts">10 分</span></div>
+          <h3>遇魏晋 · 见名士襟怀 —— 《世说新语·任诞》两则</h3>
+        </div>
+      </div>
+      <div class="qbody">
+        <div class="qtxt">
+          <p>阅读下面两则文言材料，完成任务。</p>
+          <div class="passage">
+            <b style="font-family:var(--serif)">【甲】</b><br>
+            罗友作荆州从事①，桓宣武为王车骑②集别③。友进，坐良久，辞出。宣武曰：「卿向欲咨事，何以便去？」答曰：「友闻白羊肉美，一生未曾得吃，故冒求前耳，无事可咨。今已饱，不复须驻。」了无惭色。<br>
+            <span style="font-size:12.5px;color:var(--ink-faint)">（《世说新语·任诞》）</span>
+          </div>
+          <div class="passage">
+            <b style="font-family:var(--serif)">【乙】</b><br>
+            王子猷居山阴，夜大雪，眠觉，开室，命酌酒。四望皎然因起彷徨④咏左思《招隐》诗。忽忆戴安道⑤，时戴在剡⑥，即便夜乘小船就之。经宿方至，造门不前而返。人问其故，王曰：「吾本乘兴而行，兴尽而返，何必见戴？」<br>
+            <span style="font-size:12.5px;color:var(--ink-faint)">（《世说新语·任诞》）</span>
+          </div>
+          <p style="font-size:12.5px;color:var(--ink-faint)">【注释】①从事：州府属官。②王车骑：指王洽。③集别：设宴送行。④彷徨：同「徘徊」。⑤戴安道：东晋人，博学多才，善弹琴，性高洁，终身隐居不仕。⑥剡（shàn）：古县名，在今浙江东部，含嵊州、新昌。</p>
+          <p><b>（1）</b>按提示方法解释文言词义。</p>
+          <div class="tscroll"><table>
+            <colgroup><col style="width:24%"><col style="width:38%"><col style="width:38%"></colgroup>
+            <tr><th>文言词汇</th><th>方法</th><th>解释</th></tr>
+            <tr><td>了无惭色</td><td>查找字典法：①结束　②明白　③完全　④清楚</td><td><span class="blank"></span>（填序号）</td></tr>
+            <tr><td>经宿方至</td><td>语境推测法：联系上下文</td><td><span class="blank"></span></td></tr>
+            <tr><td>人问其故</td><td>联系成语法：无缘无故</td><td><span class="blank"></span></td></tr>
+          </table></div>
+          <p><b>（2）</b>乙文画波浪线部分有两处需断句，从 A—D 中选出正确的两处。<br>四望（A）皎然（B）因起彷徨（C）咏左思（D）《招隐》诗。</p>
+          <p><b>（3）</b>细品画横线句中加点虚词「即」的作用。<br>句子：即便夜乘小船就之。</p>
+          <p><b>（4）</b>两篇短文均出自《世说新语·任诞》，小语对两位人物的言行很不解。请结合甲、乙两文与助读材料，帮小语解惑。</p>
+          <div class="passage">
+            <b style="font-family:var(--serif)">【助读材料一】</b>一代人物，百年风尚（一定时期内大家共同崇尚的风气与习惯）。——吕叔湘《笔记文选读〈世说新语〉》<br>
+            <b style="font-family:var(--serif)">【助读材料二】</b>魏晋时期任诞为何成为「流行病」？一是受《庄》《老》及玄学思想影响，强调张扬个性而享受人生；一是魏晋社会篡弑相继，正直之士朝不保夕，引发「叛逆」与任诞。——《蒋凡讲世说新语》
+          </div>
+        </div>
+
+        <div class="answer-box">
+          <button class="answer-bar" onclick="toggleAns(this)">查看答案与解析 <span class="arr">▾</span></button>
+          <div class="answer-body">
+            <div class="ans"><b>答案：</b>（1）了＝<span class="ans-fill">③（完全）</span>；方＝<span class="ans-fill">才</span>；故＝<span class="ans-fill">原因、缘故</span>。（2）断句在 <span class="ans-fill">B</span> 与 <span class="ans-fill">C</span> 两处。（3）见解析。（4）见解析。</div>
+            <div class="jx">
+              <span class="k">（1）词义</span>
+              「了无惭色」：用字典法，「了」在此作「完全」讲，与「无」连用表「完全没有」，故选 <b>③</b>。
+              「经宿方至」：语境推测——「经宿」（经过一夜）之后才到，「方」＝<b>才</b>，强调耗时之久、路途之遥。
+              「人问其故」：联系成语「无缘无故」，「故」＝<b>原因、缘故</b>。
+              <span class="k">（2）断句</span>
+              句子为：「四望皎然（B），因起彷徨（C），咏左思《招隐》诗。」——「四望皎然」写环视所见（句子完整）；「因起彷徨」写于是起身徘徊（承上）；「咏左思《招隐》诗」写吟咏（另起）。故断在 <b>B、C</b> 两处。
+              <span class="k">（3）虚词「即」</span>
+              「即」＝<b>就、立刻</b>，作副词，紧承「忽忆戴安道」。王子猷雪夜忽然想起友人，便当机立断、毫不犹豫地连夜乘小船前往。一个「即」字，生动写出他「想就去做」的率性果决，突出其随兴所至、不受世俗礼法拘束的<b>任诞（任性洒脱）</b>性格，也为后文「造门不前而返」埋下伏笔。
+              <span class="k">（4）人物言行解惑</span>
+              <b>甲文罗友</b>：听说桓宣武宴上的白羊肉鲜美，便不顾礼数主动入席蹭吃，吃饱就走，还坦言「无事可咨」，了无惭色。这是把「吃一口白羊肉」的率真欲望放在客套虚礼之上，<b>毫不掩饰、不加矫饰、我行我素</b>。
+              <b>乙文王子猷</b>：雪夜想起戴安道，乘兴连夜乘船造访，到门口却「兴尽而返」，不见其人。他看重的不是「见到戴」这一结果，而是<b>「乘兴而行」的过程本身</b>，兴之所至、尽兴即返，旷达超脱。
+              结合助读材料：魏晋名士受《庄子》《老子》玄学影响，追求<b>张扬个性、享受人生</b>；加之时代动荡、正直之士朝不保夕，遂以「任诞」对抗礼法、宣泄情绪，形成一代风尚。罗友、王子猷的言行，正是这种<b>率真自然、超脱功利、追求精神自由</b>的魏晋风度的缩影——他们不为世俗目的所累，行止由心，展现了中国古代士人独特的人格之美。
+            </div>
+          </div>
+        </div>
+
+        <!-- 甲文 词语解析 + 翻译 -->
+        <div class="lit-tabs">
+          <button class="lit-tab on" onclick="switchTab(this,'jia','yuan')">甲文原文</button>
+          <button class="lit-tab" onclick="switchTab(this,'jia','ciyu')">词语解析</button>
+          <button class="lit-tab" onclick="switchTab(this,'jia','fanyi')">全文翻译</button>
+        </div>
+        <div class="guide" id="jia-yuan">
+          <h5>文言文【甲】· 全文</h5>
+          <div class="poem-text" style="text-align:left;line-height:2.3;font-size:15.5px">
+            罗友作荆州从事，桓宣武为王车骑集别。友进，坐良久，辞出。宣武曰：「卿向欲咨事，何以便去？」答曰：「友闻白羊肉美，一生未曾得吃，故冒求前耳，无事可咨。今已饱，不复须驻。」了无惭色。
+          </div>
+        </div>
+        <div class="lit-panel" id="jia-ciyu">
+          <div class="ciku">
+            <div class="tscroll"><table>
+              <colgroup><col style="width:22%"><col style="width:38%"><col style="width:40%"></colgroup>
+              <tr><th>词语</th><th>释义</th><th>语境说明</th></tr>
+              <tr><td>作</td><td>担任、充任</td><td>「作荆州从事」＝担任荆州从事</td></tr>
+              <tr><td>从事</td><td>官职名，州府属官</td><td>罗友之职</td></tr>
+              <tr><td>集别</td><td>设宴送行</td><td>集＝聚会设宴，别＝送别</td></tr>
+              <tr><td>进</td><td>进入、入内</td><td>「友进」＝罗友走进来</td></tr>
+              <tr><td>良久</td><td>很久</td><td>「坐良久」＝坐了很久</td></tr>
+              <tr><td>辞出</td><td>告辞退出</td><td>辞＝告辞</td></tr>
+              <tr><td>卿</td><td>你（敬称）</td><td>桓宣武对罗友之称</td></tr>
+              <tr><td>向</td><td>先前、刚才</td><td>「卿向欲咨事」＝你刚才想咨询事情</td></tr>
+              <tr><td>咨事</td><td>咨询（请教）事情</td><td>咨＝咨询</td></tr>
+              <tr><td>何以</td><td>为什么、凭什么</td><td>「何以便去」＝为何就这样离开</td></tr>
+              <tr><td>便</td><td>就</td><td>表顺承</td></tr>
+              <tr><td>闻</td><td>听说</td><td>「友闻白羊肉美」</td></tr>
+              <tr><td>美</td><td>鲜美、味道好</td><td>形容词</td></tr>
+              <tr><td>冒求</td><td>冒昧地求取</td><td>「冒求前耳」＝冒昧前来而已</td></tr>
+              <tr><td>耳</td><td>罢了</td><td>语气词，表仅此而已</td></tr>
+              <tr><td>已饱</td><td>已经吃饱</td><td>已＝已经</td></tr>
+              <tr><td>复</td><td>再</td><td>「不复须驻」＝不再需要停留</td></tr>
+              <tr><td>须驻</td><td>需要停留</td><td>须＝需要；驻＝停留</td></tr>
+              <tr><td>了无</td><td>完全没有</td><td>了＝完全；无＝没有</td></tr>
+              <tr><td>惭色</td><td>羞愧的神色</td><td>色＝神色、表情</td></tr>
+            </table></div>
+          </div>
+        </div>
+        <div class="lit-panel" id="jia-fanyi">
+          <div class="trans">
+            <span class="zh">罗友担任荆州从事时，桓宣武（桓温）为王车骑（王洽）设宴送行。罗友走进来，坐了很久，然后告辞退出。</span>
+            <span class="zh">桓宣武说：「你刚才想咨询事情，为什么就这样走了呢？」罗友回答说：「我听说白羊肉味道鲜美，一辈子都没吃过，所以冒昧前来罢了，并没有什么事情要咨询。现在已经吃饱了，不再需要停留了。」（说这话时）脸上完全没有羞愧的神色。</span>
+            <span class="note" style="display:block;font-size:12.5px;color:var(--ink-faint);margin-top:8px">「了无惭色」置于句末，是全文的点睛之笔——罗友坦然自若，坦率到近乎「没心没肺」，恰是魏晋任诞的典型神态。</span>
+          </div>
+        </div>
+
+        <!-- 乙文 词语解析 + 翻译 -->
+        <div class="lit-tabs" style="margin-top:22px">
+          <button class="lit-tab on" onclick="switchTab(this,'yi','yuan')">乙文原文</button>
+          <button class="lit-tab" onclick="switchTab(this,'yi','ciyu')">词语解析</button>
+          <button class="lit-tab" onclick="switchTab(this,'yi','fanyi')">全文翻译</button>
+        </div>
+        <div class="guide" id="yi-yuan">
+          <h5>文言文【乙】· 全文</h5>
+          <div class="poem-text" style="text-align:left;line-height:2.3;font-size:15.5px">
+            王子猷居山阴，夜大雪，眠觉，开室，命酌酒。四望皎然，因起彷徨，咏左思《招隐》诗。忽忆戴安道，时戴在剡，即便夜乘小船就之。经宿方至，造门不前而返。人问其故，王曰：「吾本乘兴而行，兴尽而返，何必见戴？」
+          </div>
+        </div>
+        <div class="lit-panel" id="yi-ciyu">
+          <div class="ciku">
+            <div class="tscroll"><table>
+              <colgroup><col style="width:22%"><col style="width:38%"><col style="width:40%"></colgroup>
+              <tr><th>词语</th><th>释义</th><th>语境说明</th></tr>
+              <tr><td>居</td><td>居住</td><td>「居山阴」＝住在山阴</td></tr>
+              <tr><td>夜大雪</td><td>夜里下大雪</td><td>「雪」名作动：降雪</td></tr>
+              <tr><td>眠觉</td><td>睡醒</td><td>觉（jué）＝醒来；眠＝睡觉</td></tr>
+              <tr><td>开室</td><td>打开房门</td><td>室＝房间、房屋</td></tr>
+              <tr><td>命</td><td>命令、让</td><td>「命酌酒」＝让人斟酒</td></tr>
+              <tr><td>酌酒</td><td>斟酒、饮酒</td><td>酌＝斟、倒</td></tr>
+              <tr><td>四望</td><td>向四面望去</td><td>四＝四周</td></tr>
+              <tr><td>皎然</td><td>洁白明亮的样子</td><td>皎＝洁白；然＝……的样子</td></tr>
+              <tr><td>因</td><td>于是、就</td><td>表承接</td></tr>
+              <tr><td>彷徨</td><td>同「徘徊」，来回走动</td><td>异体/通假</td></tr>
+              <tr><td>咏</td><td>吟咏、吟诵</td><td>「咏左思《招隐》诗」</td></tr>
+              <tr><td>忽忆</td><td>忽然想起</td><td>忆＝想起、思念</td></tr>
+              <tr><td>时</td><td>当时</td><td>「时戴在剡」＝当时戴在剡县</td></tr>
+              <tr><td>即便</td><td>就、立刻</td><td>即＝就，便＝就</td></tr>
+              <tr><td>就</td><td>到……去、前往拜访</td><td>「就之」＝到（戴）那里去</td></tr>
+              <tr><td>之</td><td>他（代戴安道）</td><td>代词</td></tr>
+              <tr><td>经宿</td><td>经过一整夜</td><td>宿（xiǔ）＝夜</td></tr>
+              <tr><td>方至</td><td>才到达</td><td>方＝才；至＝到</td></tr>
+              <tr><td>造门</td><td>到门口</td><td>造＝到、前往</td></tr>
+              <tr><td>不前</td><td>不进去</td><td>前＝上前、进入</td></tr>
+              <tr><td>而返</td><td>就返回了</td><td>而＝就；返＝返回</td></tr>
+              <tr><td>故</td><td>原因、缘故</td><td>「人问其故」</td></tr>
+              <tr><td>乘兴</td><td>趁着兴致</td><td>乘＝趁着、凭借</td></tr>
+              <tr><td>兴尽</td><td>兴致尽了</td><td>尽＝完、尽</td></tr>
+              <tr><td>何必</td><td>何必一定要</td><td>表反问</td></tr>
+            </table></div>
+          </div>
+        </div>
+        <div class="lit-panel" id="yi-fanyi">
+          <div class="trans">
+            <span class="zh">王子猷（王徽之）住在山阴，一天夜里下起大雪。他一觉醒来，打开房门，让人斟上酒。四下一望，一片洁白明亮，（他）于是起身徘徊，吟咏左思的《招隐》诗。</span>
+            <span class="zh">（他）忽然想起戴安道，当时戴安道在剡县，就当夜乘坐小船前往拜访他。经过一整夜才到达，（可是）到了门口却不进去就返回了。</span>
+            <span class="zh">有人问他原因，王子猷说：「我本来是乘着兴致前去的，兴致尽了就返回，何必一定要见到戴安道呢？」</span>
+            <span class="note" style="display:block;font-size:12.5px;color:var(--ink-faint);margin-top:8px">「吾本乘兴而行，兴尽而返，何必见戴」是千古名句，集中体现魏晋名士重过程、重兴会、不拘泥于结果的任诞风度。</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 题7 ===== -->
+  <section class="sec" id="q7">
+    <div class="qcard">
+      <div class="qhead">
+        <div class="qno">7</div>
+        <div class="qheadtxt">
+          <div class="qmeta"><span class="qtag red">写作 · 半命题作文</span><span class="qpts">60 分</span></div>
+          <h3>遇韶华 · 书相逢篇章 —— 作文《遇见____》</h3>
+        </div>
+      </div>
+      <div class="qbody">
+        <div class="qtxt">
+          <p>校刊「文学园地」栏目开展征文活动，请你投稿。</p>
+          <div class="passage">
+            世间万般，皆是遇见。我们于清秋风物间遇见江南的温婉，于古典诗文中遇见千古的情思；于朝花旧事里遇见人间百态，于霜月清辉下遇见岁月静美；于求索求知中遇见成长的力量，于魏晋风流里遇见名士的襟怀。<br>
+            在刚刚开启的初中新旅程中，你也一定拥有属于自己的遇见，或是一个人、一处风景，或是一段往事、一份感悟。请以「<b>遇见____</b>」为题，写一篇文章。
+          </div>
+          <p>要求：（1）请先将题目补充完整，再写作；（2）文章不少于 500 字；（3）文中不要出现含有考生信息的人名、校名、地名等。</p>
+        </div>
+
+        <div class="zuowen">
+          <h4>写作指导</h4>
+          <div class="pro"><b>① 补题先行 · 一题立骨</b>：半命题「遇见____」核心在补出的宾语。宜具体、可感、有画面——如「遇见那个清晨」「遇见一株老槐树」「遇见更好的自己」「遇见一场雪」「遇见一位故人」「遇见不完美的我」。忌空泛（「遇见美好」）、忌俗套（「遇见友谊」）。补题即定主题，是全文之眼。</div>
+          <div class="pro"><b>② 切准「遇见」的特质</b>：关键在于「遇」的那一刻——初见的情境、内心的触动与转变。要写出「遇」之前如何、遇之时所见所感、遇之后带来怎样的成长或领悟，形成一条清晰的情感/认知线索，而非泛泛叙述相识。</div>
+          <div class="pro"><b>③ 细节为王 · 以事传情</b>：用 1–2 个鲜明场景、细腻的细节（动作、神态、景物、心理）来承载情感，避免空洞抒情。可仿卷中《深冬月照》之笔：以月光、晨霜、足音等物象渲染氛围，让画面自己说话。</div>
+          <div class="pro"><b>④ 首尾呼应 · 卒章显志</b>：开篇点题、结尾升华，回扣「遇见」的意义——遇见某某，让我懂得了什么、成为了怎样的人。语言追求含蓄隽永，句式有节奏，切忌堆砌辞藻、无病呻吟。</div>
+          <div class="pro"><b>⑤ 扣紧要求</b>：不少于 500 字；不出现真实人名、校名、地名；书写工整，段落分明。</div>
+          <div class="pro" style="margin-top:12px;border-top:1px dashed var(--line);padding-top:10px"><b>参考思路（示例，非唯一）</b>：<br>「遇见那个清晨」——写初一时某个清晨独自早起，遇见晨光、晨雾与菜市场的喧闹，从「怕早起」到懂得生活的热气与人间的温柔；或「遇见一座山」——假期登山，途中疲惫欲返，最终登顶遇见云海，悟得坚持的意义。立意要落到「我」的成长与感悟上。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 校对 ===== -->
+  <section class="sec" id="jiaodui">
+    <div class="sec-head">
+      <div class="sec-kicker">附 · 卷面校对</div>
+      <h2 class="sec-title">原卷校对说明</h2>
+      <p class="sec-desc">以下为对原文档的核对结果，供教师命题修订与答题参考。</p>
+    </div>
+    <div class="qcard" style="padding:8px 22px">
+      <div class="jd-row"><div class="jd-no">1</div><div class="jd-body"><span class="type warn">编序</span>第④题「朗读设计」之后，「同学们朗读时发现文中有许多联想和想象，请你摘录一句，并分析其妙处」一题<b>缺少小题序号</b>，致下文直接从（2）跳到（4）。建议在本题前补标「（3）」，并顺延（4）（5）（6）。</div></div>
+      <div class="jd-row"><div class="jd-no">2</div><div class="jd-body"><span class="type warn">编序</span>第⑤题第（2）小题之后，「假如你是七年级（1）班的语文课代表……帮助他把课文《春》背熟」一题<b>未标（3）</b>，建议补标「（3）」或与（2）合并。</div></div>
+      <div class="jd-row"><div class="jd-no">3</div><div class="jd-body"><span class="type">缺图</span>第④题（4）「为这幅图选择最恰当的月：②_____ A．B．C．」中的<b>月亮图片（A/B/C）未随文档呈现</b>，答题与判分时无法比对。需补充配图，或改为文字描述（如「高远明亮／圆润如盘／清冷如霜」）供选择。</div></div>
+      <div class="jd-row"><div class="jd-no">4</div><div class="jd-body"><span class="type">关联</span>第②题「〇抓意象」栏中，<b>（2）王湾诗句与（5）「雁」的意象填空相互关联</b>（「归雁洛阳边」恰是借雁思乡），答题时两空一体、互为印证；设问跨栏对应，需引导学生注意。</div></div>
+      <div class="jd-row"><div class="jd-no">5</div><div class="jd-body"><span class="type">辨析</span>第①题语段中「潇瑟」系<b>有意设置的错别字考点</b>（正字为「萧瑟」），并非排版失误，判分时勿视作笔误。</div></div>
+      <div class="jd-row"><div class="jd-no">6</div><div class="jd-body"><span class="type">核实</span>第②题〈送春〉、第⑥题两则《世说新语》均经核对无误；「荷」（hè，背/扛）、「载」（装载）读音义项符合《古汉语常用字字典》等工具书释义。</div></div>
+    </div>
+    <div class="divider"></div>
+  </section>
+
+</main>
+
+<!-- ===== 页脚 ===== -->
+<footer class="footer">
+  <div class="wrap">
+    <div><b>遇 · 见</b>　七年级语文「8周培优」全卷讲评</div>
+    <div>题面取自原卷 · 答案与解析由讲解整理 · 课外古诗与文言文均附词语解析与全文翻译</div>
+    <div style="font-size:12px;opacity:.6">本页为学习辅助材料，观点与网络公开资料核验一致</div>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="返回顶部">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<script>
+/* 生成漂浮诗句字符 */
+(function(){
+  var chars=['遇','清','秋','诗','月','故','人','相','逢','文','脉','风','雪','思','乡','明','月','韶','华'];
+  var box=document.getElementById('fchars');
+  for(var i=0;i<18;i++){
+    var s=document.createElement('span');
+    s.className='fchar';
+    s.textContent=chars[Math.floor(Math.random()*chars.length)];
+    s.style.left=(Math.random()*92+4)+'%';
+    s.style.top=(Math.random()*86+6)+'%';
+    s.style.fontSize=(Math.random()*22+16)+'px';
+    s.style.setProperty('--f',(Math.random()*5+8)+'s');
+    s.style.setProperty('--d',(Math.random()*4)+'s');
+    box.appendChild(s);
+  }
+  /* 星星 */
+  for(var j=0;j<26;j++){
+    var st=document.createElement('span');
+    st.className='star';
+    st.style.left=(Math.random()*100)+'%';
+    st.style.top=(Math.random()*70)+'%';
+    st.style.setProperty('--t',(Math.random()*3+3)+'s');
+    st.style.setProperty('--d',(Math.random()*5)+'s');
+    box.appendChild(st);
+  }
+})();
+
+/* 答案折叠 */
+function toggleAns(btn){
+  var body=btn.parentElement.querySelector('.answer-body');
+  var open=body.classList.toggle('open');
+  btn.querySelector('.arr').textContent=open?'▴':'▾';
+}
+
+/* 古诗/文言 页签切换 */
+function switchTab(tab,group,panel){
+  var wrap=tab.parentElement;
+  var tabs=wrap.querySelectorAll('.lit-tab');
+  for(var i=0;i<tabs.length;i++){tabs[i].classList.remove('on');}
+  tab.classList.add('on');
+  var ids=['yuan','ciyu','fanyi','shangxi'];
+  for(var k=0;k<ids.length;k++){
+    var el=document.getElementById(group+'-'+ids[k]);
+    if(el){el.classList.toggle('on',ids[k]===panel);}
+  }
+}
+
+/* 导航高亮 */
+(function(){
+  var links=document.querySelectorAll('.nav-tags a');
+  var map={};
+  for(var i=0;i<links.length;i++){
+    var id=links[i].getAttribute('href').slice(1);
+    map[id]=links[i];
+  }
+  var onScroll=function(){
+    var pos=window.scrollY+120;
+    var cur='overview';
+    for(var key in map){
+      var el=document.getElementById(key);
+      if(el&&el.offsetTop<=pos){cur=key;}
+    }
+    for(var k in map){map[k].classList.toggle('on',k===cur);}
+    var tp=document.getElementById('toTop');
+    tp.classList.toggle('show',window.scrollY>600);
+  };
+  window.addEventListener('scroll',onScroll,{passive:true});
+  onScroll();
+})();
+
+/* 学习动机倒U型曲线（ECharts，含 CDN 多源加载与静态降级） */
+function __loadEcharts(list,i){
+  if(window.echarts){if(window.__initMotivationChart)window.__initMotivationChart();return;}
+  if(i>=list.length){if(window.__initMotivationChart)window.__initMotivationChart();return;}
+  var s=document.createElement('script');
+  s.src=list[i];
+  s.onload=function(){if(window.__initMotivationChart)window.__initMotivationChart();};
+  s.onerror=function(){__loadEcharts(list,i+1);};
+  document.head.appendChild(s);
+}
+window.__initMotivationChart=function(){
+  var el=document.getElementById('motivationChart');
+  if(!el)return;
+  if(typeof echarts!=='undefined'){
+    var mk=function(a,b,c,color){return {name:a,type:'line',smooth:true,symbolSize:7,lineWidth:2.5,
+      data:[[0.2,b*0.45],[1,a*0.6],[1.9,a],[3.2,a*0.72],[4.4,c*0.95],[5.2,c*0.6],[6,c*0.32]],
+      itemStyle:{color:color},lineStyle:{color:color,width:2.6},areaStyle:color?{color:color,opacity:.06}:null};};
+    var option={
+      backgroundColor:'transparent',
+      grid:{left:46,right:22,top:34,bottom:44,containLabel:true},
+      tooltip:{trigger:'axis',triggerOn:'click',confine:true,
+        formatter:function(p){var lines=['<b>'+p[0].name+'</b> 任务'];for(var i=0;i<p.length;i++){lines.push(p[i].seriesName+'：效率 '+Math.round(p[i].value[1]*100)/100);}return lines.join('<br/>');}},
+      legend:{data:['困难任务','难易适中','容易任务'],top:2,left:'center',textStyle:{fontSize:12,color:'#55606A'}},
+      xAxis:{type:'category',data:['动机低','较低','适中','较高','高'],name:'学习动机水平',nameLocation:'middle',nameGap:28,nameTextStyle:{fontSize:12,color:'#55606A'},
+        axisLine:{lineStyle:{color:'#9AA0A6'}},axisLabel:{color:'#55606A',fontSize:11}},
+      yAxis:{type:'value',name:'学习效率',nameTextStyle:{fontSize:12,color:'#55606A'},max:1.1,
+        axisLabel:{color:'#55606A',fontSize:11},splitLine:{lineStyle:{color:'#E5DECC',type:'dashed'}}},
+      series:[
+        mk(1,0.55,0.45,'#B0453A'),
+        mk(0.88,0.8,0.7,'#3F5B66'),
+        mk(0.7,1.0,0.55,'#9A7B3F')
+      ]
+    };
+    var chart=echarts.init(el);
+    chart.setOption(option);
+    window.addEventListener('resize',function(){chart.resize();});
+  }else{
+    el.innerHTML='<svg viewBox="0 0 560 300" role="img" aria-label="学习动机与效率倒U型曲线示意" style="width:100%;height:auto;max-width:560px;display:block;margin:0 auto">'
+      +'<line x1="50" y1="20" x2="50" y2="242" stroke="#9AA0A6" stroke-width="1"/><line x1="50" y1="242" x2="540" y2="242" stroke="#9AA0A6" stroke-width="1"/>'
+      +'<line x1="50" y1="75" x2="540" y2="75" stroke="#E5DECC" stroke-width="1" stroke-dasharray="3 4"/>'
+      +'<line x1="50" y1="130" x2="540" y2="130" stroke="#E5DECC" stroke-width="1" stroke-dasharray="3 4"/>'
+      +'<line x1="50" y1="185" x2="540" y2="185" stroke="#E5DECC" stroke-width="1" stroke-dasharray="3 4"/>'
+      +'<text x="30" y="250" font-size="11" fill="#55606A">低</text><text x="258" y="250" font-size="11" fill="#55606A">中</text><text x="498" y="250" font-size="11" fill="#55606A">高</text>'
+      +'<text x="296" y="286" font-size="12" fill="#55606A" text-anchor="middle">学习动机水平</text>'
+      +'<text x="16" y="130" font-size="12" fill="#55606A" text-anchor="middle" transform="rotate(-90 16 130)">学习效率</text>'
+      +'<path d="M50 240 Q 140 120 230 240" stroke="#B0453A" stroke-width="2.4" fill="none"/><circle cx="140" cy="180" r="4" fill="#B0453A"/>'
+      +'<path d="M150 240 Q 265 60 380 240" stroke="#3F5B66" stroke-width="2.4" fill="none"/><circle cx="265" cy="150" r="4" fill="#3F5B66"/>'
+      +'<path d="M300 240 Q 390 110 490 240" stroke="#9A7B3F" stroke-width="2.4" fill="none"/><circle cx="392" cy="175" r="4" fill="#9A7B3F"/>'
+      +'<g font-size="11" fill="#55606A"><line x1="55" y1="22" x2="80" y2="22" stroke="#B0453A" stroke-width="3"/><text x="85" y="26">困难任务</text>'
+      +'<line x1="205" y1="22" x2="230" y2="22" stroke="#3F5B66" stroke-width="3"/><text x="235" y="26">难易适中</text>'
+      +'<line x1="345" y1="22" x2="370" y2="22" stroke="#9A7B3F" stroke-width="3"/><text x="375" y="26">容易任务</text></g></svg>'
+      +'<p style="font-size:12.5px;color:var(--ink-faint);text-align:center;margin:8px 0 2px">静态示意（图表库不可用时的降级图）· 峰值即最佳动机：困难→偏低，适中→中等，容易→较高</p>';
+  }
+};
+__loadEcharts(['https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js','https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js'],0);
+</script>
+
+</main>
+</body>
+</html>
