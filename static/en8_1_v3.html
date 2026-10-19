@@ -257,11 +257,18 @@
   }
   @media print{
     .toolbar,#pop{display:none!important}
+    .spk{display:none!important}
     body{background:#fff}
     section.card{box-shadow:none;break-inside:avoid}
     .w{border-bottom:1px solid #d97706;background:none}
     body:not(.showall) .gloss{display:inline;color:#0d9488}
   }
+  .spk{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border:none;border-radius:50%;
+    background:var(--brand-soft);color:var(--brand);cursor:pointer;font-size:.95rem;line-height:1;transition:.15s;flex:0 0 auto}
+  .spk:hover{background:var(--brand);color:#fff;transform:scale(1.08)}
+  .spk:active{transform:scale(.94)}
+  .pw .spk{margin-left:auto;align-self:center}
+  .hw .spk{margin-left:auto}
 </style>
 </head>
 <body>
@@ -642,7 +649,7 @@ const JILEI_C = [
 ];
 
 /* ================= 渲染 ================= */
-function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");}
 
 /* 选项一览 */
 const og = document.getElementById("optGrid");
@@ -672,7 +679,7 @@ renderAns(document.getElementById("ansC"), ANS_C);
 function renderJilei(box, arr){
   arr.forEach(o=>{
     const d=document.createElement("div"); d.className="qb";
-    d.innerHTML = `<div class="q">${esc(o.q)}</div><div class="a">${o.a.replace(/<u>/g,'<u>')}</div>`+
+    d.innerHTML = `<div class="q">${esc(o.q)}</div><div class="a">${o.a}</div>`+
       (o.note?`<div class="nt" style="font-size:.85rem;color:var(--muted);margin-top:5px">${o.note}</div>`:"");
     box.appendChild(d);
   });
@@ -693,7 +700,7 @@ const vocabBox = document.getElementById("vocabBox");
     const c=document.createElement("div"); c.className="vcard";
     c.innerHTML = `<div class="hw"><span class="en">${esc(v.en)}</span>`+
       (v.ph?`<span class="ph">${esc(v.ph)}</span>`:"")+
-      `<span class="pos">${esc(v.pos)}</span></div>`+
+      `<span class="pos">${esc(v.pos)}</span><button class="spk" type="button" data-word="${esc(v.en)}" title="点击发音" aria-label="发音">🔊</button></div>`+
       `<div class="cn">${esc(v.cn)}</div>`+
       `<div class="nt">${esc(v.note)}</div>`+
       `<div class="ex">e.g. ${esc(v.ex)}<span class="ecn">${esc(v.exCn)}</span></div>`;
@@ -721,7 +728,7 @@ function openPop(el){
   closePop();
   cur=el; el.classList.add("active");
   pop.innerHTML =
-    `<div class="pw">${esc(d.en)}${d.ph?`<span class="pph">${esc(d.ph)}</span>`:""}<span class="pos">${esc(d.pos)}</span></div>`+
+    `<div class="pw">${esc(d.en)}${d.ph?`<span class="pph">${esc(d.ph)}</span>`:""}<span class="pos">${esc(d.pos)}</span><button class="spk" type="button" data-word="${esc(d.en)}" title="点击发音" aria-label="发音">🔊</button></div>`+
     `<div class="pcn">${esc(d.cn)}</div>`+
     `<div class="pnote">${esc(d.note)}</div>`+
     `<div class="pex"><b>例：</b> ${esc(d.ex)}<span class="cn">${esc(d.exCn)}</span></div>`;
@@ -764,6 +771,23 @@ btnTheme.addEventListener("click",()=>{
   const on=document.body.classList.toggle("dark");
   btnTheme.textContent = on ? "☀️ 日间" : "🌙 夜间";
 });
+
+/* 点击发音（Web Speech API，纯前端，无需联网） */
+function speak(text){
+  if(!('speechSynthesis' in window)){
+    alert('当前浏览器不支持语音朗读，请用 Chrome / Edge / Safari 打开本页。');
+    return;
+  }
+  const u=new SpeechSynthesisUtterance(text);
+  u.lang='en-US'; u.rate=0.92; u.pitch=1;
+  window.speechSynthesis.cancel();
+  window.speechSynthesis.speak(u);
+}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('.spk');
+  if(b){ e.stopPropagation(); speak(b.dataset.word); }
+});
+
 </script>
 </body>
 </html>
