@@ -28,6 +28,7 @@ title: About
 
 ## 语文培优
 
+- [第八周语文培优](/w8paper-v1.html)
 - [第七周语文培优](/w7paper.html)
 
 ## 英语培优
