@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>8-1 培优题 · 全解全析（划线生词带音标 · 汇总含例句）</title>
+<style>
+  :root{
+    --primary:#5b6ef5;
+    --primary-dark:#3f4fd6;
+    --accent:#ff8a5b;
+    --green:#12b886;
+    --green-bg:#e8f9f2;
+    --bg:#eef1f9;
+    --card:#ffffff;
+    --text:#242b3d;
+    --muted:#6b7488;
+    --line:#e4e8f3;
+    --radius:16px;
+    --shadow:0 6px 24px rgba(70,90,160,.08);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei","Segoe UI",sans-serif;
+    background:linear-gradient(180deg,#e9edf9 0%,#f6f8ff 320px,#f8fafd 100%);
+    color:var(--text);
+    line-height:1.9;
+    font-size:16px;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+
+  /* ---------- 顶部 ---------- */
+  .hero{
+    background:linear-gradient(135deg,#5b6ef5 0%,#7c5cf5 50%,#9b5cf0 100%);
+    color:#fff;padding:38px 20px 30px;
+    border-radius:0 0 28px 28px;
+    box-shadow:0 12px 34px rgba(91,110,245,.28);
+  }
+  .hero-inner{max-width:900px;margin:0 auto;}
+  .hero h1{margin:0 0 6px;font-size:26px;letter-spacing:.5px;}
+  .hero p{margin:0;opacity:.92;font-size:14.5px;letter-spacing:.6px;}
+  .hero-actions{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap;}
+  .hero-actions button{
+    border:none;background:rgba(255,255,255,.18);color:#fff;
+    padding:8px 18px;border-radius:999px;font-size:14px;cursor:pointer;
+    backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.35);
+    transition:.22s;font-family:inherit;
+  }
+  .hero-actions button:hover{background:rgba(255,255,255,.32);transform:translateY(-1px);}
+
+  /* ---------- 导航 ---------- */
+  .tabs{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,255,255,.86);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+    display:flex;justify-content:center;gap:6px;
+    padding:10px 12px;overflow-x:auto;
+  }
+  .tabs a{
+    white-space:nowrap;padding:7px 16px;border-radius:999px;
+    font-size:14.5px;color:var(--muted);transition:.2s;
+  }
+  .tabs a:hover{background:#eef1ff;color:var(--primary-dark);}
+
+  /* ---------- 主体 ---------- */
+  main{max-width:900px;margin:0 auto;padding:26px 16px 60px;}
+  .card{
+    background:var(--card);border-radius:var(--radius);
+    box-shadow:var(--shadow);padding:26px 24px 22px;
+    margin-bottom:28px;border:1px solid rgba(255,255,255,.8);
+  }
+  .card h2{
+    font-size:20px;margin:0 0 4px;display:flex;align-items:center;gap:10px;
+  }
+  .card h2::before{
+    content:"";width:6px;height:22px;border-radius:4px;
+    background:linear-gradient(180deg,var(--primary),#9b5cf0);
+  }
+  .meta{
+    font-size:13px;color:var(--muted);background:#f4f6fd;
+    border-radius:10px;padding:8px 14px;margin:12px 0 18px;line-height:1.8;
+  }
+  .passage{
+    background:#fbfcff;border:1px dashed #d9e0f5;
+    border-radius:12px;padding:18px 20px;margin:0 0 20px;text-align:justify;
+  }
+  .gap{
+    display:inline-block;min-width:56px;text-align:center;
+    color:var(--primary-dark);font-weight:700;
+    border-bottom:2px solid var(--primary);margin:0 3px;line-height:1.3;
+  }
+  .hint{font-size:13px;color:var(--muted);margin:-6px 0 16px;}
+  .hint b{color:var(--accent);}
+
+  /* ---------- 文中划线生词 ---------- */
+  .word-inline{
+    position:relative;
+    border-bottom:2px dotted var(--primary);
+    cursor:pointer;
+    transition:background .15s;
+    padding:0 1px;border-radius:3px;
+  }
+  .word-inline:hover{background:#eef1ff;}
+  .word-inline.active{background:#fff3cd;border-bottom-color:var(--accent);}
+  .word-inline .tip{
+    position:absolute;
+    left:50%;transform:translateX(-50%);
+    top:calc(100% + 7px);
+    background:#242b3d;color:#fff;
+    font-size:12.5px;line-height:1.6;
+    padding:7px 13px;border-radius:9px;
+    width:max-content;max-width:250px;
+    white-space:normal;
+    opacity:0;pointer-events:none;
+    transition:opacity .15s;
+    z-index:40;
+    box-shadow:0 6px 18px rgba(0,0,0,.22);
+    font-weight:400;text-align:left;
+  }
+  .word-inline .tip::before{
+    content:"";position:absolute;
+    left:50%;top:-5px;transform:translateX(-50%);
+    border-left:6px solid transparent;
+    border-right:6px solid transparent;
+    border-bottom:6px solid #242b3d;
+  }
+  .word-inline.active .tip{opacity:1;}
+  .word-inline .tip-ph{
+    display:block;color:#a7b4ee;font-style:italic;
+    font-size:12px;letter-spacing:.2px;margin-bottom:2px;
+  }
+  .word-inline .tip-cn{display:block;}
+
+  .inline-tip{
+    font-size:13px;color:#7b86a3;margin:-4px 0 14px;
+    background:#f8faff;border-radius:8px;padding:6px 12px;
+    display:inline-block;
+  }
+  .inline-tip .u{border-bottom:2px dotted var(--primary);padding:0 1px;}
+
+  /* ---------- 题目 ---------- */
+  .q{
+    border:1px solid var(--line);border-radius:12px;
+    margin-bottom:10px;overflow:hidden;transition:.22s;background:#fff;
+  }
+  .q:hover{border-color:#c9d3f7;box-shadow:0 3px 12px rgba(91,110,245,.08);}
+  .q-head{
+    width:100%;display:flex;align-items:flex-start;gap:12px;
+    padding:12px 16px;background:transparent;border:none;
+    text-align:left;font-size:15.5px;font-family:inherit;
+    color:var(--text);cursor:pointer;line-height:1.7;
+  }
+  .q-num{
+    flex:0 0 auto;width:26px;height:26px;border-radius:50%;
+    background:#eef1ff;color:var(--primary-dark);
+    font-size:13.5px;font-weight:700;
+    display:flex;align-items:center;justify-content:center;margin-top:2px;
+  }
+  .q-text{flex:1;}
+  .chev{flex:0 0 auto;color:#b7c0dc;font-size:13px;transition:transform .28s;margin-top:4px;}
+  .q.open .chev{transform:rotate(180deg);color:var(--primary);}
+  .q-body{
+    display:grid;grid-template-rows:0fr;
+    transition:grid-template-rows .3s ease;background:#fbfcff;
+  }
+  .q.open .q-body{grid-template-rows:1fr;}
+  .q-body > div{overflow:hidden;}
+  .q-inner{padding:0 16px 16px 54px;}
+  .ans{
+    display:inline-block;background:var(--green-bg);color:#0b8a63;
+    font-weight:700;border-radius:8px;padding:3px 12px;
+    font-size:14.5px;margin:12px 0 8px;
+  }
+  .exp{margin:0;font-size:14.5px;color:#3c4560;line-height:1.85;}
+  .exp em{font-style:normal;background:#fff3cd;padding:0 4px;border-radius:4px;}
+  .exp .k{color:var(--primary-dark);font-weight:600;}
+
+  /* ---------- 小标题 ---------- */
+  h3.sub{
+    font-size:16px;margin:26px 0 12px;color:var(--primary-dark);
+    display:flex;align-items:center;gap:8px;
+  }
+  h3.sub::before{content:"✦";color:var(--accent);font-size:13px;}
+
+  /* ---------- 词汇表 ---------- */
+  .word-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(min(290px,100%),1fr));
+    gap:12px;margin-bottom:8px;
+  }
+  .word{
+    background:#f8faff;border:1px solid #e6ebfa;border-radius:10px;
+    padding:10px 14px;font-size:14.5px;transition:.2s;
+  }
+  .word:hover{background:#eef2ff;border-color:#ccd8fa;}
+  .word .en{font-weight:700;color:var(--primary-dark);}
+  .word .ph{color:#9aa3bb;font-size:12.5px;margin-left:5px;font-style:italic;}
+  .word .cn{display:block;color:#4a5470;font-size:14px;}
+  .word .eg{
+    display:block;margin-top:6px;padding-left:9px;
+    border-left:2px solid #d7e0fb;
+    font-size:13px;color:#5c6785;line-height:1.7;
+  }
+  .word .eg i{font-style:normal;display:block;color:#98a1ba;font-size:12.5px;}
+
+  /* ---------- 翻译题 ---------- */
+  .trans{
+    background:#f8faff;border-left:4px solid var(--primary);
+    border-radius:0 10px 10px 0;padding:12px 16px;
+    margin-bottom:10px;font-size:15px;
+  }
+  .trans .no{display:inline-block;color:var(--accent);font-weight:700;margin-right:6px;}
+  .trans .key{color:var(--green);font-weight:700;border-bottom:2px solid #b6ecd9;}
+  .trans .q-en{color:#4a5470;}
+
+  footer{text-align:center;color:#98a1ba;font-size:13px;padding:20px 16px 40px;}
+
+  @media (max-width:560px){
+    .hero h1{font-size:21px;}
+    .card{padding:20px 16px;}
+    .q-inner{padding-left:16px;}
+    body{font-size:15.5px;}
+    .passage{padding:14px;}
+    .word-inline .tip{max-width:190px;font-size:12px;}
+  }
+  @media print{
+    .tabs,.hero-actions{display:none;}
+    .q-body{grid-template-rows:1fr !important;}
+    .card{box-shadow:none;border:1px solid #ddd;}
+    .word-inline .tip{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <h1>8-1 培优题 · 全解全析</h1>
+    <p>完形填空 · 语法填空 · 阅读表达 · 文中划线生词（含音标）点击可查</p>
+    <div class="hero-actions">
+      <button id="expandAll">展开全部答案</button>
+      <button id="collapseAll">收起全部答案</button>
+    </div>
+  </div>
+</header>
+
+<nav class="tabs">
+  <a href="#cloze">三、完形填空</a>
+  <a href="#grammar">四、语法填空</a>
+  <a href="#reading">五、阅读表达</a>
+  <a href="#words">词汇汇总</a>
+</nav>
+
+<main>
+
+  <!-- ================= 完形填空 ================= -->
+  <section class="card" id="cloze">
+    <h2>三、完形填空</h2>
+    <div class="meta">
+      主题：人与社会——跨文化沟通　｜　语篇类型：记叙文　｜　词数：180　｜　难度：★★★★☆　｜　建议用时：8′
+    </div>
+
+    <p class="inline-tip">✏️ 文中<span class="u">划线</span>的单词/短语，点击即可查看<b>音标 + 释义</b>。</p>
+
+    <p class="passage">
+      A group of
+      <span class="word-inline" data-ph="/ˌɪntəˈnæʃnəl ˈstjuːdnts/" data-cn="国际学生；留学生">international students</span>
+      studying in Zibo
+      <span class="word-inline" data-ph="/tʊk ə trɪp/" data-cn="去旅行">took a trip</span> to
+      <span class="word-inline" data-ph="/ˈdɪstrɪkt/" data-cn="n. 区；地区">Zhoucun district</span> in Zibo.
+      <span class="gap">1</span> went there to
+      <span class="word-inline" data-ph="/ɪkˈsplɔː(r)/" data-cn="v. 探索；探究">explore</span> the district's special culture and food made by
+      <span class="word-inline" data-ph="/ˈləʊkl/" data-cn="adj. 当地的；本地的">local</span> people.
+      <br><br>
+      The students visited many <span class="gap">2</span> in Zhoucun. They went to the Zhoucun Pancake(烧饼) Museum,
+      a <span class="word-inline" data-ph="/ˌvedʒəˈteəriən/" data-cn="adj. 素食的；n. 素食者">vegetarian</span>(素食) restaurant called Yibaisui, and the Zhiyin Tea House.
+      At the Zhoucun Pancake Museum, students <span class="gap">3</span> the history of Zhoucun pancakes over the past hundred years.
+      And they <span class="word-inline" data-ph="/teɪstɪd/" data-cn="v. 品尝（过去式）">tasted</span> the thin and <span class="gap">4</span> pancakes.
+      Then, they went to the Yibaisui vegetarian <span class="gap">5</span> for lunch and ate vegetarian meat
+      <span class="word-inline" data-ph="/ˈprɒdʌkts/" data-cn="n. 产品；制品（复数）">products</span>.
+      One student said they were
+      <span class="word-inline" data-ph="/ðə seɪm æz/" data-cn="和……一样">the same as</span> the
+      <span class="gap">6</span> meat. And he thought they were
+      <span class="word-inline" data-cn="不仅……而且……（并列连词）">not only delicious but also</span> good
+      <span class="gap">7</span> <span class="word-inline" data-ph="/helθ/" data-cn="n. 健康（be good for 对……有益）">health</span>.
+      They <span class="gap">8</span> their love for vegetarian food.
+      <span class="word-inline" data-ph="/ət ði end əv/" data-cn="在……的末尾／结尾">At the end of</span> the trip, they
+      <span class="gap">9</span> the tea at Zhiyin Tea House.
+      <br><br>
+      The <span class="gap">10</span> lets students see and feel the
+      <span class="word-inline" data-ph="/trəˈdɪʃənl/" data-cn="adj. 传统的">traditional</span> Chinese food and tea
+      <span class="word-inline" data-ph="/ˈkʌltʃə(r)/" data-cn="n. 文化">culture</span> in Zhoucun district. Students want to go there again.
+    </p>
+
+    <p class="hint">💡 点击每道题即可展开<b>答案与解析</b>。</p>
+
+    <div class="q">
+      <button class="q-head"><span class="q-num">1</span><span class="q-text">A. We　　B. They　　C. He</span><span class="chev">▼</span></button>
+      <div class="q-body"><div><div class="q-inner">
+        <span class="ans">答案：B</span>
+        <p class="exp">主语是 <span class="k">A group of international students</span>（一群留学生），是复数，指“这些学生”，故用 <em>They</em>。We 指“我们”，He 指“他”，均与语境不符。</p>
+      </div></div></div>
+    </div>
+
+    <div class="q">
+      <button class="q-head"><span class="q-num">2</span><span class="q-text">A. parks　　B. cities　　C. places</span><span class="chev">▼</span></button>
+      <div class="q-body"><div><div class="q-inner">
+        <span class="ans">答案：C</span>
+        <p class="exp">下文列举了烧饼博物馆、素食餐厅、知饮茶舍等，都是“地方”，故用 <em>places</em>（地方）。parks（公园）和 cities（城市）范围与语境不符，且 Zhoucun 只是一个 district（区）。</p>
+      </div></div></div>
+    </div>
+
+    <div class="q">
+      <button class="q-head"><span class="q-num">3</span><span class="q-text">A. learnt about　　B. cared about　　C. thought about</span><span class="chev">▼</span></button>
+      <div class="q-body"><div><div class="q-inner">
+        <span class="ans">答案：A</span>
+        <p class="exp"><span class="k">learn about</span> 意为“了解；学习关于……的知识”，符合“学生了解周村烧饼百年历史”之意。care about 意为“关心；在乎”，think about 意为“思考；考虑”，均不合语境。</p>
+      </div></div></div>
+    </div>
+
+    <div class="q">
+      <button class="q-head"><span class="q-num">4</span><span class="q-text">A. delicious　　B. true　　C. fun</span><span class="chev">▼</span></button>
+      <div class="q-body"><div><div class="q-inner">
+        <span class="ans">答案：A</span>
+        <p class="exp">此处修饰食物，意为“薄而美味的烧饼”，用 <em>delicious</em>（美味的）。true 意为“真实的”，fun 意为“有趣的”，都不能形容食物的味道。</p>
+      </div></div></div>
+    </div>
+
+    <div class="q">
+      <button class="q-head"><span class="q-num">5</span><span class="q-text">A. station　　B. hotel　　C. restaurant</span><span class="chev">▼</span></button>
+      <div class="q-body"><div><div class="q-inner">
+        <span class="ans">答案：C</span>
+        <p class="exp">上文提到 “a vegetarian restaurant called Yibaisui”，此处是去这家素食<em>餐厅</em>吃午饭，用 restaurant。station（车站）、hotel（旅馆）均不符合“for lunch / ate”的语境。</p>
+      </div></div></div>
+    </div>
+
+    <div class="q">
+      <button class="q-head"><span class="q-num">6</span><span class="q-text">A. clean　　B. real　　C. beautiful</span><span class="chev">▼</span></button>
+      <div class="q-body"><div><div class="q-inner">
+        <span class="ans">答案：B</span>
+        <p class="exp">句意：一名学生说它们（素肉）和<em>真正的</em>肉一样。<span class="k">real meat</span> 意为“真肉”，与前面的 vegetarian meat products（素肉制品）形成对比。clean（干净的）、beautiful（漂亮的）不合逻辑。</p>
+      </div></div></div>
+    </div>
+
+    <div class="q">
+      <button class="q-head"><span class="q-num">7</span><span class="q-text">A. for　　B. of　　C. about</span><span class="chev">▼</span></button>
+      <div class="q-body"><div><div class="q-inner">
+        <span class="ans">答案：A</span>
+        <p class="exp">固定搭配 <span class="k">be good for</span> 意为“对……有益”，be good for health 即“对健康有益”。注意区分：be good at（擅长）、be good with（善于应付）。</p>
+      </div></div></div>
+    </div>
+
+    <div class="q">
+      <button class="q-head"><span class="q-num">8</span><span class="q-text">A. showed　　B. lost　　C. stopped</span><span class="chev">▼</span></button>
+      <div class="q-body"><div><div class="q-inner">
+        <span class="ans">答案：A</span>
+        <p class="exp"><span class="k">show one's love for…</span> 意为“表达对……的喜爱”，show 的过去式为 showed。lose（丢失）、stop（停止）与 love 搭配不通。</p>
+      </div></div></div>
+    </div>
+
+    <div class="q">
+      <button class="q-head"><span class="q-num">9</span><span class="q-text">A. spent　　B. enjoyed　　C. asked</span><span class="chev">▼</span></button>
+      <div class="q-body"><div><div class="q-inner">
+        <span class="ans">答案：B</span>
+        <p class="exp"><span class="k">enjoy the tea</span> 意为“品茶；享受茶”，符合旅程结尾在知饮茶舍品茶的语境。spend 常用 spend time/money on sth；ask 意为“问”，均不合适。</p>
+      </div></div></div>
+    </div>
+
+    <div class="q">
+      <button class="q-head"><span class="q-num">10</span><span class="q-text">A. job　　B. problem　　C. activity</span><span class="chev">▼</span></button>
+      <div class="q-body"><div><div class="q-inner">
+        <span class="ans">答案：C</span>
+        <p class="exp">全文讲的是一次参观体验<span class="k">活动</span>，故用 <em>activity</em>。job（工作）、problem（问题）均与“让学生看到、感受到传统文化”的主语不搭配。</p>
+      </div></div></div>
+    </div>
+
+    <h3 class="sub">拓展小技 · 答案</h3>
+
+    <div class="trans"><span class="no">1.</span> international students —— <span class="key">国际学生；留学生</span></div>
+    <div class="trans"><span class="no">2.</span> 在……末尾 —— <span class="key">at the end of</span></div>
+    <div class="trans"><span class="no">3.</span> <span class="q-en">人们热爱大自然。</span> People <span class="key">love</span> nature.</div>
+    <div class="trans"><span class="no">4.</span> <span class="q-en">不仅彼得，而且他的父亲也喜欢运动。</span><br>
+      <span class="key">Not only</span> Peter <span class="key">but also</span> his father <span class="key">likes</span> sports.<br>
+      <span style="font-size:13.5px;color:#8a93ab;">提示：not only…but also… 连接两个主语时，谓语动词遵循“就近原则”，与 his father 保持一致，用第三人称单数 likes / enjoys。</span>
+    </div>
+  </section>
+
+  <!-- ================= 语法填空 ================= -->
+  <section class="card" id="grammar">
+    <h2>四、语法填空</h2>
+    <div class="meta">
+      主题：人与社会——劳动实践　｜　语篇类型：记叙文　｜　词数：221　｜　难度：★★★☆☆　｜　建议用时：7′
+    </div>
+
+    <p class="inline-tip">✏️ 文中<span class="u">划线</span>的单词/短语，点击即可查看<b>音标 + 释义</b>。</p>
+
+    <p class="passage">
+      <span class="word-inline" data-ph="/ɒn ə wɔːm sprɪŋ deɪ/" data-cn="在一个温暖的春日">On a warm spring day</span>,
+      the sun shone brightly. Tom sat <span class="gap">1.</span> a tree and began writing his diary. He wrote, “Today, my friends and I
+      <span class="gap">2.</span> (explore) the forest. Deep in the woods, we discovered an
+      <span class="word-inline" data-ph="/ˈeɪnʃənt/" data-cn="adj. 古老的；古代的">ancient</span> tree whose
+      <span class="gap">3.</span> (branch) seemed like pages of history, and it was
+      <span class="word-inline" data-ph="/ˈtelɪŋ ˈstɔːriz əv ðə pɑːst/" data-cn="讲述过去的故事">telling stories of the past</span>.”
+      <br><br>
+      Tom's grandfather <span class="gap">4.</span> (teach) him how to
+      <span class="word-inline" data-ph="/aɪˈdentɪfaɪ/" data-cn="v. 识别；辨认">identify</span>(识别) the age of trees by their
+      <span class="word-inline" data-ph="/rɪŋz/" data-cn="n. 圈；年轮（复数）">rings</span>(圈). He touched the
+      <span class="word-inline" data-ph="/bɑːk/" data-cn="n. 树皮">bark</span>, feeling the
+      <span class="word-inline" data-ph="/ˈpæsɪdʒ/" data-cn="n.（时间的）流逝；通道">passage</span> of time through nature. After a day's
+      <span class="word-inline" data-ph="/ədˈventʃə(r)/" data-cn="n. 冒险；奇遇">adventure</span>, they
+      <span class="gap">5.</span> (fill) their backpacks with
+      <span class="gap">6.</span> (fresh) flowers and
+      <span class="word-inline" data-ph="/siːdz/" data-cn="n. 种子（复数）">seeds</span>.
+      <br><br>
+      Back home, Tom
+      <span class="word-inline" data-ph="/juːzd ðiːz siːdz tə plɑːnt/" data-cn="用某物做某事（use sth to do sth）">used these seeds to plant</span>
+      a small garden. He knew they would
+      <span class="word-inline" data-ph="/ɡrəʊ ʌp/" data-cn="长大；成长">grow up</span> in the sun and rain. He believed these seeds of nature would bring
+      <span class="gap">7.</span> (he) more
+      <span class="word-inline" data-ph="/səˈpraɪzɪz/" data-cn="n. 惊喜；意外的事（复数）">surprises</span> in the future. He wrote about this
+      <span class="word-inline" data-ph="/ɪkˈspɪəriəns/" data-cn="n. 经历；经验">experience</span>
+      <span class="gap">8.</span> (happy).
+      <br><br>
+      On <span class="gap">9.</span> last page of his diary, Tom noted, “Today, I not only used my eyes to see
+      <span class="gap">10.</span> also used my heart to feel.” He closed the diary,
+      <span class="word-inline" data-ph="/ˈlʊkɪŋ ˈfɔːwəd tə/" data-cn="期待做某事（look forward to doing sth）">looking forward to</span>
+      his next forest adventure.
+    </p>
+
+    <p class="hint">💡 点击每道题即可展开<b>答案与解析</b>。</p>
+
+    <div class="q">
+      <button class="q-head"><span class="q-num">1</span><span class="q-text">Tom sat ______ a tree.</span><span class="chev">▼</span></button>
+      <div class="q-body"><div><div class="q-inner">
+        <span class="ans">答案：under</span>
+        <p class="exp">句意：Tom 坐在<em>树</em>下开始写日记。“在树下”用介词 <span class="k">under</span>（在……下面）。</p>
+      </div></div></div>
+    </div>
+
+    <div class="q">
+      <button class="q-head"><span class="q-num">2</span><span class="q-text">my friends and I ______ (explore) the forest</span><span class="chev">▼</span></button>
+      <div class="q-body"><div><div class="q-inner">
+        <span class="ans">答案：explored</span>
+        <p class="exp">日记记录的是当天已经发生的事，全文为一般过去时（shone, began, wrote, discovered 等），故用 explore 的过去式 <em>explored</em>。</p>
+      </div></div></div>
+    </div>
+
+    <div class="q">
+      <button class="q-head"><span class="q-num">3</span><span class="q-text">an ancient tree whose ______ (branch) seemed like pages of history</span><span class="chev">▼</span></button>
+      <div class="q-body"><div><div class="q-inner">
+        <span class="ans">答案：branches</span>
+        <p class="exp">whose 引导定语从句修饰 an ancient tree，树的树枝不止一根，且谓语为 seemed（复数形式对应复数主语），故用复数 <em>branches</em>。</p>
+      </div></div></div>
+    </div>
+
+    <div class="q">
+      <button class="q-head"><span class="q-num">4</span><span class="q-text">Tom's grandfather ______ (teach) him</span><span class="chev">▼</span></button>
+      <div class="q-body"><div><div class="q-inner">
+        <span class="ans">答案：taught</span>
+        <p class="exp">爷爷教他识别树龄是过去发生的事，用一般过去时，teach 的过去式为 <em>taught</em>（不规则变化）。</p>
+      </div></div></div>
+    </div>
+
+    <div class="q">
+      <button class="q-head"><span class="q-num">5</span><span class="q-text">they ______ (fill) their backpacks with…</span><span class="chev">▼</span></button>
+      <div class="q-body"><div><div class="q-inner">
+        <span class="ans">答案：filled</span>
+        <p class="exp">考查固定搭配 <span class="k">fill…with…</span>（用……装满……），此处叙述过去的动作，用过去式 <em>filled</em>。</p>
+      </div></div></div>
+    </div>
+
+    <div class="q">
+      <button class="q-head"><span class="q-num">6</span><span class="q-text">______ (fresh) flowers and seeds</span><span class="chev">▼</span></button>
+      <div class="q-body"><div><div class="q-inner">
+        <span class="ans">答案：fresh</span>
+        <p class="exp">修饰名词 flowers and seeds 需要用形容词，fresh 本身就是形容词，用原形即可（无比较级语境）。</p>
+      </div></div></div>
+    </div>
+
+    <div class="q">
+      <button class="q-head"><span class="q-num">7</span><span class="q-text">would bring ______ (he) more surprises</span><span class="chev">▼</span></button>
+      <div class="q-body"><div><div class="q-inner">
+        <span class="ans">答案：him</span>
+        <p class="exp">bring sb. sth.（给某人带来某物），动词后作宾语要用宾格，he 的宾格是 <em>him</em>。</p>
+      </div></div></div>
+    </div>
+
+    <div class="q">
+      <button class="q-head"><span class="q-num">8</span><span class="q-text">He wrote about this experience ______ (happy).</span><span class="chev">▼</span></button>
+      <div class="q-body"><div><div class="q-inner">
+        <span class="ans">答案：happily</span>
+        <p class="exp">修饰动词 wrote，要用副词，happy 的副词形式为 <em>happily</em>（变 y 为 i 加 -ly）。</p>
+      </div></div></div>
+    </div>
+
+    <div class="q">
+      <button class="q-head"><span class="q-num">9</span><span class="q-text">On ______ last page of his diary</span><span class="chev">▼</span></button>
+      <div class="q-body"><div><div class="q-inner">
+        <span class="ans">答案：the</span>
+        <p class="exp">序数词 last 前要用定冠词 <em>the</em>，the last page 意为“最后一页”。</p>
+      </div></div></div>
+    </div>
+
+    <div class="q">
+      <button class="q-head"><span class="q-num">10</span><span class="q-text">I not only used my eyes to see ______ also used my heart to feel.</span><span class="chev">▼</span></button>
+      <div class="q-body"><div><div class="q-inner">
+        <span class="ans">答案：but</span>
+        <p class="exp">考查固定搭配 <span class="k">not only…but also…</span>（不仅……而且……），前后连接两个并列谓语。</p>
+      </div></div></div>
+    </div>
+
+    <h3 class="sub">积累小技 · 答案</h3>
+
+    <div class="trans"><span class="no">1.</span> tell stories of the past —— <span class="key">讲述过去的故事</span></div>
+    <div class="trans"><span class="no">2.</span> look forward to doing sth —— <span class="key">期待做某事</span></div>
+    <div class="trans"><span class="no">3.</span> 长大；成长 —— <span class="key">grow up</span></div>
+    <div class="trans"><span class="no">4.</span> 用……装满…… —— <span class="key">fill… with…</span></div>
+    <div class="trans"><span class="no">5.</span> 在一个温暖的春日 —— <span class="key">on a warm spring day</span></div>
+    <div class="trans"><span class="no">6.</span> 仿写（use sth to do sth）<br>
+      <span class="q-en">我们用词典来查阅新的英语单词。</span><br>
+      → <span class="key">We use dictionaries to look up new English words.</span>
+    </div>
+  </section>
+
+  <!-- ================= 阅读表达 ================= -->
+  <section class="card" id="reading">
+    <h2>五、阅读表达</h2>
+    <div class="meta">
+      主题：人与自我——做人与做事　｜　语篇类型：记叙文　｜　词数：219　｜　难度：★★★☆☆　｜　建议用时：7′
+    </div>
+
+    <p class="inline-tip">✏️ 文中<span class="u">划线</span>的单词/短语，点击即可查看<b>音标 + 释义</b>。</p>
+
+    <p class="passage">
+      In 1989, a huge
+      <span class="word-inline" data-ph="/ˈɜːθkweɪk/" data-cn="n. 地震">earthquake</span>
+      <span class="word-inline" data-ph="/hɪt/" data-cn="v. 袭击；撞击（过去式仍为 hit）">hit</span>
+      a small town suddenly. After it happened, a father
+      <span class="word-inline" data-ph="/rʌʃt/" data-cn="v. 冲；奔（过去式）">rushed</span> to his son's school, only to discover that all the buildings fell down. The father remembered his
+      <span class="word-inline" data-ph="/ˈprɒmɪs/" data-cn="n. 承诺；v. 答应">promise</span> to his son: “
+      <span class="word-inline" data-ph="/nəʊ ˈmætə wɒt/" data-cn="无论发生什么；不管怎样">No matter what</span> happens, I'll always
+      <span class="word-inline" data-ph="/bi ðeə fə juː/" data-cn="支持／陪伴某人">be there for you</span>!” With
+      <span class="word-inline" data-ph="/tɪəz/" data-cn="n. 眼泪（复数）">tears</span> in his eyes, he started to
+      <span class="word-inline" data-ph="/dɪɡ/" data-cn="v. 挖；掘">dig</span>(挖) through the
+      <span class="word-inline" data-ph="/ˈruːɪnz/" data-cn="n. 废墟（in ruins 成为废墟）">ruins</span>(废墟).
+      <br><br>
+      As he was digging, other parents tried to stop him, saying, “It's too late. They're all gone.” The father asked, “Will you help me now?” But no one answered, so he
+      <span class="word-inline" data-ph="/kept ˈdɪɡɪŋ/" data-cn="keep doing sth. 一直做某事">kept digging</span> alone.
+      <br><br>
+      <span class="word-inline" data-ph="/ˈfaɪəfaɪtəz/" data-cn="n. 消防员（复数）">Firefighters</span> and police came, telling him it was
+      <span class="word-inline" data-ph="/ˈdeɪndʒərəs/" data-cn="adj. 危险的">dangerous</span>, but he asked, “Will you help me now?” No one helped, so he dug alone.
+      <br><br>
+      He dug for 8 hours… 12 hours… 24 hours… 36 hours… Then, after 38 hours of digging, he pulled back a large stone and heard his son's
+      <span class="word-inline" data-ph="/vɔɪs/" data-cn="n. 嗓音；说话声">voice</span>.
+      <br><br>
+      He <span class="word-inline" data-ph="/skriːmd/" data-cn="v. 尖叫；大声喊（过去式）">screamed</span> his son's name, “Tom!”
+      <br><br>
+      He heard back, “Dad?! It's me, Dad! And 14 other kids here. I told them not to worry. I told them that if you were
+      <span class="word-inline" data-ph="/əˈlaɪv/" data-cn="adj. 活着的">alive</span>, you'd
+      <span class="word-inline" data-ph="/seɪv/" data-cn="v. 救；拯救；节省">save</span> me. And when you saved me, they'd be saved.”
+      <br><br>
+      “Come out, my boy!”
+      <br><br>
+      “No, Dad! Let the other kids out first, because I know you'll save me! No matter what happens, I know you'll always be there for me!”
+    </p>
+
+    <p class="hint">💡 点击每道题即可展开<b>参考答案与解析</b>。（原卷中第 3 题缺失，此处按原编号呈现。）</p>
+
+    <div class="q">
+      <button class="q-head"><span class="q-num">1</span><span class="q-text">Where did the father go at once after the earthquake?</span><span class="chev">▼</span></button>
+      <div class="q-body"><div><div class="q-inner">
+        <span class="ans">参考答案：He rushed to his son's school.</span>
+        <p class="exp">细节题。定位第一段第二句 “After it happened, a father <em>rushed to his son's school</em>…”，at once 与 rushed 对应。注意用完整句子作答，时态与原文一致用一般过去时。</p>
+      </div></div></div>
+    </div>
+
+    <div class="q">
+      <button class="q-head"><span class="q-num">2</span><span class="q-text">What did the father do to save his son?</span><span class="chev">▼</span></button>
+      <div class="q-body"><div><div class="q-inner">
+        <span class="ans">参考答案：He dug through the ruins alone with his hands for 38 hours.</span>
+        <p class="exp">细节归纳题。文中反复出现 “he started to dig through the ruins”“he kept digging alone”“he dug alone”“after 38 hours of digging”，概括成一句即可。答题要点：dig through the ruins / alone / 38 hours。</p>
+      </div></div></div>
+    </div>
+
+    <div class="q">
+      <button class="q-head"><span class="q-num">4</span><span class="q-text">When did the father hear his son's voice?</span><span class="chev">▼</span></button>
+      <div class="q-body"><div><div class="q-inner">
+        <span class="ans">参考答案：After 38 hours of digging, when he pulled back a large stone.</span>
+        <p class="exp">细节题。定位第四段最后一句 “Then, <em>after 38 hours of digging</em>, he pulled back a large stone and heard his son's voice.” 用 when 引导的时间状语从句或 after 短语作答均可。</p>
+      </div></div></div>
+    </div>
+
+    <div class="q">
+      <button class="q-head"><span class="q-num">5</span><span class="q-text">（新考法·开放性设问）What can you learn from the father and the son?</span><span class="chev">▼</span></button>
+      <div class="q-body"><div><div class="q-inner">
+        <span class="ans">参考答案（言之成理即可）</span>
+        <p class="exp">
+          ① I learned that we should always keep our promise. （要信守承诺）<br>
+          ② I learned that we should never give up hope, no matter how hard it is. （永不放弃希望）<br>
+          ③ Love and trust between family members can work miracles. （爱与信任能创造奇迹）<br>
+          ④ The son thought of others first, and we should learn to be selfless. （先人后己、无私）<br>
+          <span style="color:#8a93ab;font-size:13.5px;">开放性题答题技巧：先亮观点（I learned that…），再用文中的情节作支撑（如父亲坚守承诺挖了 38 小时、儿子相信父亲一定会来救他），最后可加一句自己的感受。</span>
+        </p>
+      </div></div></div>
+    </div>
+  </section>
+
+  <!-- ================= 词汇汇总 ================= -->
+  <section class="card" id="words">
+    <h2>生词 · 生短语汇总（七年级水平）</h2>
+    <p class="inline-tip" style="display:block;">包含<b>音标</b>与<b>例句</b>，便于复习与仿写。</p>
+
+    <h3 class="sub">三、完形填空</h3>
+    <div class="word-grid">
+      <div class="word"><span class="en">international</span><span class="ph">/ˌɪntəˈnæʃnəl/</span>
+        <span class="cn">adj. 国际的</span>
+        <span class="eg">Many international students come to study in China.<i>许多留学生来中国学习。</i></span></div>
+
+      <div class="word"><span class="en">district</span><span class="ph">/ˈdɪstrɪkt/</span>
+        <span class="cn">n. 区；地区</span>
+        <span class="eg">Zhoucun is a famous district in Zibo.<i>周村是淄博一个著名的区。</i></span></div>
+
+      <div class="word"><span class="en">explore</span><span class="ph">/ɪkˈsplɔː(r)/</span>
+        <span class="cn">v. 探索；探究</span>
+        <span class="eg">We explored the old town on foot.<i>我们步行探索了这座老城。</i></span></div>
+
+      <div class="word"><span class="en">local</span><span class="ph">/ˈləʊkl/</span>
+        <span class="cn">adj. 当地的；本地的</span>
+        <span class="eg">The local people are very friendly.<i>当地人非常友好。</i></span></div>
+
+      <div class="word"><span class="en">vegetarian</span><span class="ph">/ˌvedʒəˈteəriən/</span>
+        <span class="cn">adj. 素食的；n. 素食者</span>
+        <span class="eg">My aunt is a vegetarian; she never eats meat.<i>我阿姨是素食者，她从不吃肉。</i></span></div>
+
+      <div class="word"><span class="en">pancake</span><span class="ph">/ˈpænkeɪk/</span>
+        <span class="cn">n. 薄饼；煎饼（此处指烧饼）</span>
+        <span class="eg">I had a pancake for breakfast.<i>我早餐吃了一个煎饼。</i></span></div>
+
+      <div class="word"><span class="en">taste</span><span class="ph">/teɪst/</span>
+        <span class="cn">v. 品尝；n. 味道</span>
+        <span class="eg">Would you like to taste the soup?<i>你想尝尝这汤吗？</i></span></div>
+
+      <div class="word"><span class="en">product</span><span class="ph">/ˈprɒdʌkt/</span>
+        <span class="cn">n. 产品；制品</span>
+        <span class="eg">These products are made in China.<i>这些产品是中国制造的。</i></span></div>
+
+      <div class="word"><span class="en">delicious</span><span class="ph">/dɪˈlɪʃəs/</span>
+        <span class="cn">adj. 美味的；可口的</span>
+        <span class="eg">The noodles are really delicious.<i>这面条真好吃。</i></span></div>
+
+      <div class="word"><span class="en">health</span><span class="ph">/helθ/</span>
+        <span class="cn">n. 健康</span>
+        <span class="eg">Eating vegetables is good for your health.<i>吃蔬菜对健康有益。</i></span></div>
+
+      <div class="word"><span class="en">traditional</span><span class="ph">/trəˈdɪʃənl/</span>
+        <span class="cn">adj. 传统的</span>
+        <span class="eg">Dumplings are a traditional Chinese food.<i>饺子是中国的传统食物。</i></span></div>
+
+      <div class="word"><span class="en">culture</span><span class="ph">/ˈkʌltʃə(r)/</span>
+        <span class="cn">n. 文化</span>
+        <span class="eg">I am interested in Chinese tea culture.<i>我对中国茶文化很感兴趣。</i></span></div>
+
+      <div class="word"><span class="en">activity</span><span class="ph">/ækˈtɪvəti/</span>
+        <span class="cn">n. 活动</span>
+        <span class="eg">We have many after-school activities.<i>我们有很多课外活动。</i></span></div>
+
+      <div class="word"><span class="en">learn about</span><span class="ph">/lɜːn əˈbaʊt/</span>
+        <span class="cn">了解；学习关于……的知识</span>
+        <span class="eg">We can learn about history from books.<i>我们可以从书本了解历史。</i></span></div>
+
+      <div class="word"><span class="en">be good for</span><span class="ph">/bi ɡʊd fə/</span>
+        <span class="cn">对……有益</span>
+        <span class="eg">Doing exercise is good for your body.<i>锻炼对身体有益。</i></span></div>
+
+      <div class="word"><span class="en">at the end of</span><span class="ph">/ət ði end əv/</span>
+        <span class="cn">在……的末尾／结尾</span>
+        <span class="eg">There is a shop at the end of the street.<i>街道尽头有一家商店。</i></span></div>
+
+      <div class="word"><span class="en">take a trip</span><span class="ph">/teɪk ə trɪp/</span>
+        <span class="cn">去旅行</span>
+        <span class="eg">We took a trip to the mountains last week.<i>上周我们去山里旅行了。</i></span></div>
+
+      <div class="word"><span class="en">be the same as</span><span class="ph">/bi ðə seɪm æz/</span>
+        <span class="cn">和……一样</span>
+        <span class="eg">My bag is the same as yours.<i>我的包和你的一样。</i></span></div>
+
+      <div class="word"><span class="en">show one's love for</span><span class="ph">/ʃəʊ wʌnz lʌv fə/</span>
+        <span class="cn">表达对……的喜爱</span>
+        <span class="eg">He showed his love for music by playing the piano.<i>他通过弹钢琴表达对音乐的热爱。</i></span></div>
+
+      <div class="word"><span class="en">not only… but also…</span><span class="ph">/nɒt ˈəʊnli … bʌt ˈɔːlsəʊ/</span>
+        <span class="cn">不仅……而且……</span>
+        <span class="eg">She is not only clever but also hard-working.<i>她不仅聪明而且勤奋。</i></span></div>
+    </div>
+
+    <h3 class="sub">四、语法填空</h3>
+    <div class="word-grid">
+      <div class="word"><span class="en">ancient</span><span class="ph">/ˈeɪnʃənt/</span>
+        <span class="cn">adj. 古老的；古代的</span>
+        <span class="eg">This is an ancient city with a long history.<i>这是一座历史悠久的古城。</i></span></div>
+
+      <div class="word"><span class="en">branch</span><span class="ph">/brɑːntʃ/</span>
+        <span class="cn">n. 树枝；分支</span>
+        <span class="eg">A bird is singing on the branch.<i>一只鸟在树枝上唱歌。</i></span></div>
+
+      <div class="word"><span class="en">identify</span><span class="ph">/aɪˈdentɪfaɪ/</span>
+        <span class="cn">v. 识别；辨认</span>
+        <span class="eg">Can you identify the tree by its leaves?<i>你能通过叶子辨认这棵树吗？</i></span></div>
+
+      <div class="word"><span class="en">bark</span><span class="ph">/bɑːk/</span>
+        <span class="cn">n. 树皮；v.（狗）叫</span>
+        <span class="eg">The bark of the tree is very thick.<i>这棵树的树皮很厚。</i></span></div>
+
+      <div class="word"><span class="en">passage</span><span class="ph">/ˈpæsɪdʒ/</span>
+        <span class="cn">n.（时间的）流逝；通道</span>
+        <span class="eg">We can feel the passage of time in this old town.<i>在这座老城里我们能感受到时间的流逝。</i></span></div>
+
+      <div class="word"><span class="en">adventure</span><span class="ph">/ədˈventʃə(r)/</span>
+        <span class="cn">n. 冒险；奇遇</span>
+        <span class="eg">The trip to the forest was a great adventure.<i>这次森林之旅是一次很棒的冒险。</i></span></div>
+
+      <div class="word"><span class="en">seed</span><span class="ph">/siːd/</span>
+        <span class="cn">n. 种子</span>
+        <span class="eg">She planted some seeds in the garden.<i>她在花园里种了一些种子。</i></span></div>
+
+      <div class="word"><span class="en">fresh</span><span class="ph">/freʃ/</span>
+        <span class="cn">adj. 新鲜的</span>
+        <span class="eg">The vegetables here are very fresh.<i>这里的蔬菜很新鲜。</i></span></div>
+
+      <div class="word"><span class="en">surprise</span><span class="ph">/səˈpraɪz/</span>
+        <span class="cn">n. 惊喜；意外的事</span>
+        <span class="eg">The gift was a big surprise to me.<i>这份礼物对我来说是个大惊喜。</i></span></div>
+
+      <div class="word"><span class="en">experience</span><span class="ph">/ɪkˈspɪəriəns/</span>
+        <span class="cn">n. 经历；经验</span>
+        <span class="eg">The trip was an unforgettable experience.<i>这次旅行是一次难忘的经历。</i></span></div>
+
+      <div class="word"><span class="en">ring</span><span class="ph">/rɪŋ/</span>
+        <span class="cn">n. 圈；年轮；戒指</span>
+        <span class="eg">You can tell the age of a tree by its rings.<i>你可以通过年轮判断树的年龄。</i></span></div>
+
+      <div class="word"><span class="en">look forward to doing sth</span><span class="ph">/lʊk ˈfɔːwəd tə/</span>
+        <span class="cn">期待做某事（to 为介词）</span>
+        <span class="eg">I look forward to seeing you again.<i>我期待再次见到你。</i></span></div>
+
+      <div class="word"><span class="en">fill… with…</span><span class="ph">/fɪl … wɪð/</span>
+        <span class="cn">用……装满……</span>
+        <span class="eg">He filled the bottle with water.<i>他把瓶子装满了水。</i></span></div>
+
+      <div class="word"><span class="en">grow up</span><span class="ph">/ɡrəʊ ʌp/</span>
+        <span class="cn">长大；成长</span>
+        <span class="eg">I want to be a doctor when I grow up.<i>我长大后想当医生。</i></span></div>
+
+      <div class="word"><span class="en">tell stories of the past</span><span class="ph">/tel ˈstɔːriz əv ðə pɑːst/</span>
+        <span class="cn">讲述过去的故事</span>
+        <span class="eg">My grandpa often tells stories of the past.<i>我爷爷经常讲过去的故事。</i></span></div>
+
+      <div class="word"><span class="en">on a warm spring day</span><span class="ph">/ɒn ə wɔːm sprɪŋ deɪ/</span>
+        <span class="cn">在一个温暖的春日</span>
+        <span class="eg">We went for a walk on a warm spring day.<i>在一个温暖的春日我们去散步了。</i></span></div>
+
+      <div class="word"><span class="en">use sth to do sth</span><span class="ph">/juːz … tə duː/</span>
+        <span class="cn">用某物做某事</span>
+        <span class="eg">We use dictionaries to look up new words.<i>我们用词典查新单词。</i></span></div>
+    </div>
+
+    <h3 class="sub">五、阅读表达</h3>
+    <div class="word-grid">
+      <div class="word"><span class="en">earthquake</span><span class="ph">/ˈɜːθkweɪk/</span>
+        <span class="cn">n. 地震</span>
+        <span class="eg">A big earthquake hit the town in 1989.<i>1989年一场大地震袭击了这座小镇。</i></span></div>
+
+      <div class="word"><span class="en">hit</span><span class="ph">/hɪt/</span>
+        <span class="cn">v. 袭击；撞击（过去式仍为 hit）</span>
+        <span class="eg">A typhoon hit the coastal city last night.<i>昨晚台风袭击了这座沿海城市。</i></span></div>
+
+      <div class="word"><span class="en">rush</span><span class="ph">/rʌʃ/</span>
+        <span class="cn">v. 冲；奔</span>
+        <span class="eg">He rushed out of the room.<i>他冲出了房间。</i></span></div>
+
+      <div class="word"><span class="en">promise</span><span class="ph">/ˈprɒmɪs/</span>
+        <span class="cn">n. 承诺；v. 答应</span>
+        <span class="eg">He always keeps his promise.<i>他总是信守承诺。</i></span></div>
+
+      <div class="word"><span class="en">tear</span><span class="ph">/tɪə/</span>
+        <span class="cn">n. 眼泪（常用复数 tears）</span>
+        <span class="eg">She read the letter with tears in her eyes.<i>她含着泪读这封信。</i></span></div>
+
+      <div class="word"><span class="en">dig</span><span class="ph">/dɪɡ/</span>
+        <span class="cn">v. 挖；掘</span>
+        <span class="eg">They are digging a hole in the garden.<i>他们正在花园里挖洞。</i></span></div>
+
+      <div class="word"><span class="en">ruins</span><span class="ph">/ˈruːɪnz/</span>
+        <span class="cn">n. 废墟（in ruins 成为废墟）</span>
+        <span class="eg">The city is in ruins after the war.<i>战后这座城市成了废墟。</i></span></div>
+
+      <div class="word"><span class="en">firefighter</span><span class="ph">/ˈfaɪəfaɪtə(r)/</span>
+        <span class="cn">n. 消防员</span>
+        <span class="eg">The firefighters saved three people from the fire.<i>消防员从火灾中救出三个人。</i></span></div>
+
+      <div class="word"><span class="en">dangerous</span><span class="ph">/ˈdeɪndʒərəs/</span>
+        <span class="cn">adj. 危险的</span>
+        <span class="eg">It is dangerous to play in the street.<i>在街上玩耍很危险。</i></span></div>
+
+      <div class="word"><span class="en">voice</span><span class="ph">/vɔɪs/</span>
+        <span class="cn">n. 嗓音；说话声</span>
+        <span class="eg">She has a beautiful voice.<i>她的嗓音很美。</i></span></div>
+
+      <div class="word"><span class="en">scream</span><span class="ph">/skriːm/</span>
+        <span class="cn">v. 尖叫；大声喊</span>
+        <span class="eg">The boy screamed for help.<i>男孩大声呼救。</i></span></div>
+
+      <div class="word"><span class="en">alive</span><span class="ph">/əˈlaɪv/</span>
+        <span class="cn">adj. 活着的</span>
+        <span class="eg">The little dog is still alive.<i>那只小狗还活着。</i></span></div>
+
+      <div class="word"><span class="en">save</span><span class="ph">/seɪv/</span>
+        <span class="cn">v. 救；拯救；节省</span>
+        <span class="eg">The doctor saved the boy's life.<i>医生救了男孩的命。</i></span></div>
+
+      <div class="word"><span class="en">no matter what</span><span class="ph">/nəʊ ˈmætə wɒt/</span>
+        <span class="cn">无论发生什么；不管怎样</span>
+        <span class="eg">No matter what happens, I will help you.<i>无论发生什么，我都会帮你。</i></span></div>
+
+      <div class="word"><span class="en">be there for sb.</span><span class="ph">/bi ðeə fə/</span>
+        <span class="cn">支持／陪伴某人</span>
+        <span class="eg">I will always be there for you.<i>我会一直支持你。</i></span></div>
+
+      <div class="word"><span class="en">keep doing sth</span><span class="ph">/kiːp ˈduːɪŋ/</span>
+        <span class="cn">一直做某事；不断做某事</span>
+        <span class="eg">He kept digging for 38 hours.<i>他连续挖了38个小时。</i></span></div>
+    </div>
+
+    <h3 class="sub">易混辨析</h3>
+    <div class="trans">
+      <span class="no">①</span> <span class="key">sound / voice / noise</span><br>
+      sound 泛指各种“声音”；voice 常指人的“嗓音”（如 his son's voice）；noise 指“噪音”。<br>
+      <span style="color:#7b86a3;font-size:13.5px;">例：Light travels faster than <i>sound</i>. / She has a sweet <i>voice</i>. / Don't make so much <i>noise</i>.</span>
+    </div>
+    <div class="trans">
+      <span class="no">②</span> <span class="key">remember to do / remember doing</span><br>
+      remember to do sth 记得去做某事（还没做）；remember doing sth 记得做过某事（已经做了）。<br>
+      <span style="color:#7b86a3;font-size:13.5px;">例：Remember <i>to close</i> the door when you leave. / I remember <i>seeing</i> him before.</span>
+    </div>
+    <div class="trans">
+      <span class="no">③</span> <span class="key">hit / strike</span><br>
+      都可表示自然灾害“袭击”。hit 的过去式仍为 hit；strike 的过去式为 struck。<br>
+      <span style="color:#7b86a3;font-size:13.5px;">例：A typhoon <i>struck</i> the coastal city. / A big earthquake <i>hit</i> the town.</span>
+    </div>
+  </section>
+
+</main>
+
+<footer>8-1 培优题 · 全解全析　|　点击题目展开答案，点击文中划线词查看音标与释义</footer>
+
+<script>
+  /* ---------- 为文中划线生词自动生成 tooltip（音标 + 释义） ---------- */
+  document.querySelectorAll('.word-inline').forEach(function (el) {
+    var ph = el.getAttribute('data-ph') || '';
+    var cn = el.getAttribute('data-cn') || '';
+
+    var tip = document.createElement('span');
+    tip.className = 'tip';
+
+    if (ph) {
+      var phEl = document.createElement('span');
+      phEl.className = 'tip-ph';
+      phEl.textContent = ph;
+      tip.appendChild(phEl);
+    }
+
+    var cnEl = document.createElement('span');
+    cnEl.className = 'tip-cn';
+    cnEl.textContent = cn;
+    tip.appendChild(cnEl);
+
+    el.appendChild(tip);
+  });
+
+  /* ---------- 题目展开 / 收起 ---------- */
+  document.querySelectorAll('.q-head').forEach(function (head) {
+    head.addEventListener('click', function () {
+      head.parentElement.classList.toggle('open');
+    });
+  });
+
+  document.getElementById('expandAll').addEventListener('click', function () {
+    document.querySelectorAll('.q').forEach(function (q) { q.classList.add('open'); });
+  });
+
+  document.getElementById('collapseAll').addEventListener('click', function () {
+    document.querySelectorAll('.q').forEach(function (q) { q.classList.remove('open'); });
+  });
+
+  document.querySelectorAll('.q-head').forEach(function (head) {
+    head.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        head.parentElement.classList.toggle('open');
+      }
+    });
+  });
+
+  /* ---------- 划线生词：点击显示 / 关闭释义 ---------- */
+  document.querySelectorAll('.word-inline').forEach(function (el) {
+    el.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var wasActive = this.classList.contains('active');
+      document.querySelectorAll('.word-inline.active').forEach(function (x) {
+        x.classList.remove('active');
+      });
+      if (!wasActive) {
+        this.classList.add('active');
+      }
+    });
+  });
+
+  /* 点击页面其他位置关闭释义 */
+  document.addEventListener('click', function () {
+    document.querySelectorAll('.word-inline.active').forEach(function (x) {
+      x.classList.remove('active');
+    });
+  });
+
+  /* 按 Esc 关闭释义 */
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.word-inline.active').forEach(function (x) {
+        x.classList.remove('active');
+      });
+    }
+  });
+</script>
+</body>
+</html>
