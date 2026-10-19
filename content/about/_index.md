@@ -32,7 +32,7 @@ title: About
 
 ## 英语培优
 
-- [8周1培优v1](/en8_1.html)  [v2](/en8_1_v2.html)
+- [8周1培优v1](/en8_1.html)  [v2](/en8_1_v2.html)  [v3](/en8_1_v3.html)
 - [英语不规则动词](/irregular-verbs.html)
 
 ## 作文范文
