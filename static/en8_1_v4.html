@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>七年级上册英语培优题 · 互动讲解（Unit 3 A Day to Remember）</title>
+<style>
+  :root{
+    --acc:#6c5ce7; --acc2:#8a7bf0; --accbg:rgba(108,92,231,.08);
+    --ok:#0a7a4b; --okbg:#e8f7ee; --ink:#2b2d33; --sub:#6b7280;
+    --card:#ffffff; --bg:#f5f6fb; --line:#e6e6f0;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Segoe UI","Microsoft YaHei","PingFang SC",sans-serif;line-height:1.75}
+  .wrap{max-width:960px;margin:0 auto;padding:0 16px 80px}
+  header.hero{background:linear-gradient(135deg,#6c5ce7 0%,#8e7bf5 60%,#a29bfa 100%);
+    color:#fff;padding:38px 20px 30px;text-align:center}
+  header.hero h1{margin:0 0 8px;font-size:26px;letter-spacing:1px}
+  header.hero p{margin:4px 0;opacity:.92;font-size:14px}
+  nav.top{position:sticky;top:0;z-index:50;background:#ffffffee;backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;justify-content:center;gap:4px;padding:8px}
+  nav.top a{color:var(--acc);text-decoration:none;font-size:14px;font-weight:600;
+    padding:6px 14px;border-radius:999px}
+  nav.top a:hover{background:var(--accbg)}
+  section{margin-top:34px}
+  .sec-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+  .sec-head .no{background:var(--acc);color:#fff;border-radius:10px;padding:2px 12px;font-weight:700;font-size:18px}
+  .sec-head h2{margin:0;font-size:21px}
+  .meta{color:var(--sub);font-size:13px;margin:6px 0 14px}
+  .meta b{color:var(--ink)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:20px 22px;box-shadow:0 2px 10px rgba(60,60,120,.06)}
+  .passage p{margin:0 0 14px;text-align:justify;font-size:16.5px}
+  .tipbar{background:var(--accbg);border:1px dashed var(--acc2);border-radius:10px;
+    padding:8px 14px;font-size:13px;color:#4c3fb8;margin-bottom:16px}
+  /* 生词下划线 */
+  .voc{border-bottom:2px dashed var(--acc2);background:var(--accbg);border-radius:3px;
+    padding:0 2px;cursor:pointer;transition:background .15s}
+  .voc:hover{background:rgba(108,92,231,.2)}
+  /* 空格 */
+  .blank{display:inline-block;min-width:2.4em;text-align:center;border-bottom:2px solid #555;
+    margin:0 3px;cursor:pointer;font-weight:700;color:#9aa0a6;padding:0 4px}
+  .blank .ans{display:none;color:var(--ok)}
+  .blank.on{border-bottom-color:var(--ok);background:var(--okbg)}
+  .blank.on .ans{display:inline}
+  .blank.on .no{font-size:.68em;vertical-align:super;color:#9aa0a6;margin-right:2px}
+  /* 选项 */
+  .opts{margin-top:16px;display:grid;gap:6px}
+  .opt-row{display:grid;grid-template-columns:64px 1fr 1fr 1fr;gap:8px;font-size:15.5px}
+  .opt-row .qno{font-weight:700;color:var(--sub)}
+  .show-ans .opt-row .c{color:var(--ok);font-weight:800}
+  .show-ans .opt-row .c::after{content:" ✔";font-size:.8em}
+  .btnrow{margin:14px 0 4px;display:flex;gap:10px;flex-wrap:wrap}
+  button.btn{border:none;background:var(--acc);color:#fff;border-radius:999px;
+    padding:8px 20px;font-size:14px;font-weight:600;cursor:pointer}
+  button.btn:hover{background:#5a4bd4}
+  button.btn.ghost{background:#fff;color:var(--acc);border:1.5px solid var(--acc)}
+  details{margin-top:14px;border:1px solid var(--line);border-radius:10px;background:#fbfbff}
+  details summary{cursor:pointer;padding:10px 16px;font-weight:700;color:var(--acc);font-size:15px}
+  details[open] summary{border-bottom:1px solid var(--line)}
+  details .in{padding:12px 18px}
+  details ol{margin:0;padding-left:22px}
+  details li{margin-bottom:10px}
+  details li b.answ{color:var(--ok)}
+  .qa{margin-top:12px;border:1px solid var(--line);border-radius:10px;background:#fbfbff}
+  .qa summary{font-weight:600;color:var(--ink)}
+  .qa .ref{color:var(--ok);font-weight:700}
+  .qa .why{color:var(--sub);font-size:14px}
+  /* 积累小筏 */
+  .raft{background:#f3f0ff;border:1px solid #ddd6fe;border-radius:14px;padding:16px 20px;margin-top:16px}
+  .raft h3{margin:0 0 8px;color:#5b21b6;font-size:16px}
+  .raft ul{margin:6px 0;padding-left:22px}
+  .raft li{margin-bottom:6px}
+  .know{display:grid;gap:10px;margin-top:16px}
+  .know .k{background:#fff;border:1px solid var(--line);border-left:4px solid var(--acc);
+    border-radius:10px;padding:10px 14px;font-size:14.5px}
+  .know .k b{color:var(--acc)}
+  /* 生词汇总 */
+  .vgroup h3{color:var(--acc);border-left:4px solid var(--acc);padding-left:10px;margin:26px 0 12px;font-size:17px}
+  .vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:12px}
+  .vcard{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:14px}
+  .vcard .vt{font-size:16px;font-weight:800;color:var(--acc)}
+  .vcard .vp{font-size:12px;color:#fff;background:var(--acc2);border-radius:6px;padding:1px 7px;margin-left:6px;font-weight:600;vertical-align:2px}
+  .vcard .vm{font-weight:700;margin:4px 0}
+  .vcard .vu{color:var(--sub)}
+  .vcard .ve{font-style:italic;margin-top:6px;color:#374151}
+  .vcard .vc{color:var(--sub);font-size:13px}
+  /* 弹层 */
+  #pop{position:fixed;z-index:99;display:none;max-width:340px;background:#fff;border:1px solid var(--acc2);
+    border-radius:12px;box-shadow:0 10px 30px rgba(50,40,120,.25);padding:14px 16px;font-size:14px}
+  #pop .pt{font-size:16px;font-weight:800;color:var(--acc);padding-right:22px}
+  #pop .pm{font-weight:700;margin:2px 0}
+  #pop .pu{color:var(--sub)}
+  #pop .pe{font-style:italic;margin-top:6px;color:#374151}
+  #pop .pc{color:var(--sub);font-size:13px}
+  #popx{position:absolute;top:6px;right:8px;border:none;background:none;font-size:16px;color:#999;cursor:pointer}
+  footer{margin-top:50px;text-align:center;color:var(--sub);font-size:13px}
+  @media (max-width:640px){.opt-row{grid-template-columns:1fr;gap:2px}.opt-row .qno{margin-top:6px}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <h1>七年级上册英语培优题 · 互动讲解</h1>
+  <p>初中英语话题阅读 ｜ 七年级上册 ｜ Unit 3 A Day to Remember（P28–P30）</p>
+  <p>完形填空 · 语法填空 · 阅读表达 · 积累小筏 · 生词短语全解析</p>
+</header>
+<nav class="top">
+  <a href="#sec1">三、完形填空</a>
+  <a href="#sec2">四、语法填空</a>
+  <a href="#sec3">五、阅读表达</a>
+  <a href="#sec4">生词短语汇总</a>
+</nav>
+<div class="wrap">
+
+<div class="tipbar">使用说明：英文文章中<b>紫色虚线下划线</b>的词语是超出七年级上册词汇范围的生词 / 生短语，<b>点击</b>即可查看释义、用法和例句；题号空格<b>点击</b>可显示 / 隐藏答案；每节另有「显示本节答案」按钮和逐题详解。</div>
+
+<!-- ============ 三、完形填空 ============ -->
+<section id="sec1">
+  <div class="sec-head"><span class="no">三</span><h2>完形填空</h2></div>
+  <div class="meta">主题：<b>人与社会——跨文化沟通</b> ｜ 语篇类型：记叙文 ｜ 词数：180 ｜ 难度：★★★ ｜ 建议用时：8′</div>
+  <div class="card" id="card1">
+    <div class="passage">
+      <p>A group of <span class="voc" data-id="international">international</span> students studying in Zibo <span class="voc" data-id="take-a-trip">took a trip</span> to Zhoucun <span class="voc" data-id="district">district</span> in Zibo. <span class="blank" data-q="1"><span class="no">1</span><span class="ans">They</span></span> went there to <span class="voc" data-id="explore">explore</span> the district's special <span class="voc" data-id="culture">culture</span> and food made by <span class="voc" data-id="local">local</span> people.</p>
+      <p>The students visited many <span class="blank" data-q="2"><span class="no">2</span><span class="ans">places</span></span> in Zhoucun. They went to the Zhoucun <span class="voc" data-id="pancake">Pancake</span>(烧饼) <span class="voc" data-id="museum">Museum</span>, a <span class="voc" data-id="vegetarian">vegetarian</span>(素食) restaurant called Yibaisui, and the Zhiyin Tea House. At the Zhoucun Pancake Museum, students <span class="blank" data-q="3"><span class="no">3</span><span class="ans">learnt about</span></span> the history of Zhoucun pancakes over the <span class="voc" data-id="past">past</span> hundred years. And they <span class="voc" data-id="taste">tasted</span> the <span class="voc" data-id="thin">thin</span> and <span class="blank" data-q="4"><span class="no">4</span><span class="ans"><span class="voc" data-id="delicious">delicious</span></span></span> pancakes. Then, they went to the Yibaisui vegetarian <span class="blank" data-q="5"><span class="no">5</span><span class="ans">restaurant</span></span> for lunch and ate vegetarian meat <span class="voc" data-id="product">products</span>. One student said they were the same as the <span class="blank" data-q="6"><span class="no">6</span><span class="ans">real</span></span> meat. And he thought they were <span class="voc" data-id="not-only">not only</span> delicious <span class="voc" data-id="not-only">but also</span> <span class="voc" data-id="be-good-for">good <span class="blank" data-q="7"><span class="no">7</span><span class="ans">for</span></span> health</span>. They <span class="blank" data-q="8"><span class="no">8</span><span class="ans">showed</span></span> their love for vegetarian food. <span class="voc" data-id="at-the-end-of">At the end of</span> the trip, they <span class="blank" data-q="9"><span class="no">9</span><span class="ans">enjoyed</span></span> the tea at Zhiyin Tea House.</p>
+      <p>The <span class="blank" data-q="10"><span class="no">10</span><span class="ans"><span class="voc" data-id="activity">activity</span></span></span> lets students see and feel the <span class="voc" data-id="traditional">traditional</span> Chinese food and tea culture in Zhoucun district. Students want to go there again.</p>
+    </div>
+    <div class="opts">
+      <div class="opt-row"><span class="qno">( ) 1.</span><span>A. We</span><span class="c">B. They</span><span>C. He</span></div>
+      <div class="opt-row"><span class="qno">( ) 2.</span><span>A. parks</span><span>B. cities</span><span class="c">C. places</span></div>
+      <div class="opt-row"><span class="qno">( ) 3.</span><span class="c">A. learnt about</span><span>B. cared about</span><span>C. thought about</span></div>
+      <div class="opt-row"><span class="qno">( ) 4.</span><span class="c">A. delicious</span><span>B. true</span><span>C. fun</span></div>
+      <div class="opt-row"><span class="qno">( ) 5.</span><span>A. station</span><span>B. hotel</span><span class="c">C. restaurant</span></div>
+      <div class="opt-row"><span class="qno">( ) 6.</span><span>A. clean</span><span class="c">B. real</span><span>C. beautiful</span></div>
+      <div class="opt-row"><span class="qno">( ) 7.</span><span class="c">A. for</span><span>B. of</span><span>C. about</span></div>
+      <div class="opt-row"><span class="qno">( ) 8.</span><span class="c">A. showed</span><span>B. lost</span><span>C. stopped</span></div>
+      <div class="opt-row"><span class="qno">( ) 9.</span><span>A. spent</span><span class="c">B. enjoyed</span><span>C. asked</span></div>
+      <div class="opt-row"><span class="qno">( ) 10.</span><span>A. job</span><span>B. problem</span><span class="c">C. activity</span></div>
+    </div>
+    <div class="btnrow"><button class="btn" onclick="toggleSec('card1',this)">显示本节答案</button></div>
+    <details>
+      <summary>逐题详解（1–10）</summary>
+      <div class="in"><ol>
+        <li><b class="answ">B（They）</b>。上句主语是 A group of international students（一群国际学生），为复数第三人称，此处用 They 指代"他们（学生们）"；We"我们"、He"他"人称不符。</li>
+        <li><b class="answ">C（places）</b>。下文列举了烧饼博物馆、素食餐馆、茶馆三个"地方"，故填 visited many places"参观了许多地方"；周村只是一个区，parks"公园"、cities"城市"都不符合。</li>
+        <li><b class="answ">A（learnt about）</b>。在博物馆里，学生们"了解到"周村烧饼百年来的历史。learnt about 了解、学习关于……；cared about 关心；thought about 考虑。</li>
+        <li><b class="answ">A（delicious）</b>。与 thin 并列修饰 pancakes，且与动词 tasted（品尝）呼应：又薄又"美味的"烧饼；true 真实的、fun 有趣的都不能形容食物味道。</li>
+        <li><b class="answ">C（restaurant）</b>。前文已交代 Yibaisui 是 a vegetarian restaurant（一家素食餐馆），此处 for lunch 去吃午饭，自然是去这家素食"餐馆"；station 车站、hotel 旅馆不符。</li>
+        <li><b class="answ">B（real）</b>。素肉制品吃起来和"真正的"肉一样：the same as the real meat；clean 干净的、beautiful 美丽的不合语义。</li>
+        <li><b class="answ">A（for）</b>。固定搭配 be good for"对……有益"，be good for health 对健康有益；反义为 be bad for。</li>
+        <li><b class="answ">A（showed）</b>。他们"表达、展示"了对素食的喜爱：showed their love for...；lost 丢失、stopped 停止都不合句意。</li>
+        <li><b class="answ">B（enjoyed）</b>。在知音茶馆"品饮、享受"了茶：enjoyed the tea；spent 花费（时间/金钱）、asked 询问不能与 tea 这样搭配。</li>
+        <li><b class="answ">C（activity）</b>。这次"活动"（指整趟研学旅行）让学生看到并感受到中国传统饮食与茶文化；job 工作、problem 问题不符。</li>
+      </ol></div>
+    </details>
+    <div class="raft">
+      <h3>积累小筏（P28）</h3>
+      <ul>
+        <li>短语互译 1. international students → <b>国际学生</b></li>
+        <li>短语互译 2. 在……末尾 → <b>at the end of...</b></li>
+        <li>完成句子 3. 人们热爱大自然。People <b>show their love for</b> nature.（show one's love for 表达对……的喜爱）</li>
+        <li>完成句子 4. 不仅彼得，而且他的父亲也喜欢运动。<b>Not only</b> Peter <b>but also</b> his father <b>likes</b> sports.（not only...but also... 连接两个主语时谓语遵循"就近原则"，与 his father 一致用三单 likes）</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 四、语法填空 ============ -->
+<section id="sec2">
+  <div class="sec-head"><span class="no">四</span><h2>语法填空</h2></div>
+  <div class="meta">主题：<b>人与社会——劳动实践</b> ｜ 语篇类型：记叙文 ｜ 词数：221 ｜ 难度：★★★ ｜ 建议用时：7′</div>
+  <div class="card" id="card2">
+    <div class="passage">
+      <p>On a warm spring day, the sun shone <span class="voc" data-id="brightly">brightly</span>. Tom sat <span class="blank" data-q="1"><span class="no">1</span><span class="ans">under</span></span> a tree and began writing his <span class="voc" data-id="diary">diary</span>. He wrote, "Today, my friends and I <span class="blank" data-q="2"><span class="no">2</span><span class="ans">explored</span></span> (explore) the <span class="voc" data-id="forest">forest</span>. Deep in the woods, we <span class="voc" data-id="discover">discovered</span> an <span class="voc" data-id="ancient">ancient</span> tree whose <span class="blank" data-q="3"><span class="no">3</span><span class="ans"><span class="voc" data-id="branch">branches</span></span></span> (branch) <span class="voc" data-id="seem">seemed</span> like pages of history, and it was <span class="voc" data-id="tell-stories-past">telling stories of the past</span>."</p>
+      <p>Tom's grandfather <span class="blank" data-q="4"><span class="no">4</span><span class="ans">taught</span></span> (teach) him how to identify(识别) the age of trees by their rings(圈). He touched the <span class="voc" data-id="bark">bark</span>, feeling the passage of time through nature. After a day's <span class="voc" data-id="adventure">adventure</span>, they <span class="blank" data-q="5"><span class="no">5</span><span class="ans">filled</span></span> <span class="voc" data-id="fill-with">(fill) their backpacks with</span> <span class="blank" data-q="6"><span class="no">6</span><span class="ans">fresh</span></span> (fresh) flowers and <span class="voc" data-id="seed">seeds</span>.</p>
+      <p>Back home, Tom used these seeds to <span class="voc" data-id="plant">plant</span> a small garden. He knew they would <span class="voc" data-id="grow-up">grow up</span> in the sun and rain. He believed these seeds of nature would bring <span class="blank" data-q="7"><span class="no">7</span><span class="ans">him</span></span> (he) more <span class="voc" data-id="surprise">surprises</span> <span class="voc" data-id="in-the-future">in the future</span>. He wrote about this <span class="voc" data-id="experience">experience</span> <span class="blank" data-q="8"><span class="no">8</span><span class="ans">happily</span></span> (happy).</p>
+      <p>On <span class="blank" data-q="9"><span class="no">9</span><span class="ans">the</span></span> last page of his diary, Tom <span class="voc" data-id="note">noted</span>, "Today, I not only used my eyes to see <span class="blank" data-q="10"><span class="no">10</span><span class="ans">but</span></span> also used my heart to feel." He closed the diary, <span class="voc" data-id="look-forward-to">looking forward to</span> his next forest adventure.</p>
+    </div>
+    <div class="btnrow"><button class="btn" onclick="toggleSec('card2',this)">显示本节答案</button></div>
+    <details>
+      <summary>逐题详解（1–10）</summary>
+      <div class="in"><ol>
+        <li><b class="answ">under</b>。"坐在树下"：sat under a tree，填介词 under（在……下面）。</li>
+        <li><b class="answ">explored</b>。日记记述的是已经发生的探险，全文为过去时态（He wrote...），故用一般过去时 explored。</li>
+        <li><b class="answ">branches</b>。whose 后接名词作定语；古树的树枝不止一根，且后文 seemed like pages（像一页页历史）提示复数，故填 branches。</li>
+        <li><b class="answ">taught</b>。叙述爷爷过去教他的动作，teach 的过去式为 taught。</li>
+        <li><b class="answ">filled</b>。过去发生的事用一般过去时；fill...with... 用……装满……，fill 的过去式为 filled。</li>
+        <li><b class="answ">fresh</b>。修饰名词 flowers and seeds 作定语，用形容词原形 fresh（新鲜的）；不要误改成副词 freshly。</li>
+        <li><b class="answ">him</b>。bring sb sth 中动词后接人称代词宾格，he 的宾格是 him。</li>
+        <li><b class="answ">happily</b>。修饰动词 wrote 用副词；happy 变 y 为 i 加 -ly → happily。</li>
+        <li><b class="answ">the</b>。特指日记的"最后一页"，last 前用定冠词 the：on the last page。</li>
+        <li><b class="answ">but</b>。not only... but also... "不仅……而且……"固定搭配，连接 used my eyes 与 used my heart。</li>
+      </ol></div>
+    </details>
+    <div class="raft">
+      <h3>积累小筏（P29）</h3>
+      <ul>
+        <li>短语互译 1. tell stories of the past → <b>讲述过去的故事</b></li>
+        <li>短语互译 2. look forward to doing sth → <b>期待做某事</b></li>
+        <li>短语互译 3. 长大；成长 → <b>grow up</b></li>
+        <li>短语互译 4. 用……装满…… → <b>fill... with...</b></li>
+        <li>短语互译 5. 在一个温暖的春日 → <b>on a warm spring day</b>（具体某一天用介词 on）</li>
+        <li>仿写句子 6.（我们用词典来查阅新的英语单词。）→ <b>We use dictionaries to look up new English words.</b>（use sth to do sth 用某物做某事；look up 查阅；dictionary 用复数 dictionaries）</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 五、阅读表达 ============ -->
+<section id="sec3">
+  <div class="sec-head"><span class="no">五</span><h2>阅读表达</h2></div>
+  <div class="meta">主题：<b>人与自我——做人与做事</b> ｜ 语篇类型：记叙文 ｜ 词数：219 ｜ 难度：★★☆ ｜ 建议用时：7′</div>
+  <div class="card" id="card3">
+    <div class="passage">
+      <p>In 1989, a <span class="voc" data-id="huge">huge</span> <span class="voc" data-id="earthquake">earthquake</span> <span class="voc" data-id="hit">hit</span> a small town <span class="voc" data-id="suddenly">suddenly</span>. After it happened, a father <span class="voc" data-id="rush">rushed</span> to his son's school, <span class="voc" data-id="only-to">only to discover</span> that all the buildings <span class="voc" data-id="fall-down">fell down</span>. The father <span class="voc" data-id="remember">remembered</span> his <span class="voc" data-id="promise">promise</span> to his son: "<span class="voc" data-id="no-matter-what">No matter what</span> happens, I'll always be there for you!" With <span class="voc" data-id="tear">tears</span> in his eyes, he started to <span class="voc" data-id="dig">dig</span>(挖) through the <span class="voc" data-id="ruins">ruins</span>(废墟).</p>
+      <p>As he was digging, other parents tried to stop him, saying, "It's too late. They're all gone." The father asked, "Will you help me now?" But no one answered, so he <span class="voc" data-id="keep-doing">kept digging</span> <span class="voc" data-id="alone">alone</span>.</p>
+      <p><span class="voc" data-id="firefighter">Firefighters</span> and <span class="voc" data-id="police">police</span> came, telling him it was <span class="voc" data-id="dangerous">dangerous</span>, but he asked, "Will you help me now?" No one helped, so he dug alone.</p>
+      <p>He dug for 8 hours... 12 hours... 24 hours... 36 hours... Then, after 38 hours of digging, he <span class="voc" data-id="pull">pulled</span> back a large <span class="voc" data-id="stone">stone</span> and heard his son's <span class="voc" data-id="voice">voice</span>.</p>
+      <p>He <span class="voc" data-id="scream">screamed</span> his son's name, "Tom!"</p>
+      <p>He heard back, "Dad!? It's me, Dad! And 14 other kids here. I told them not to worry. I told them that if you were <span class="voc" data-id="alive">alive</span>, you'd <span class="voc" data-id="save">save</span> me. And when you saved me, they'd be saved."</p>
+      <p>"Come out, my boy!"</p>
+      <p>"No, Dad! Let the other kids out first, because I know you'll save me! <span class="voc" data-id="no-matter-what">No matter what</span> happens, I know you'll always be there for me!"</p>
+    </div>
+    <details class="qa"><summary>1. Where did the father go <span class="voc" data-id="at-once">at once</span> after the earthquake?（点击查看答案）</summary>
+      <div class="in"><div class="ref">He went to his son's school. / The father rushed to his son's school at once.</div>
+      <div class="why">解析：由第一段 "a father rushed to his son's school" 可知，地震后父亲立刻赶到儿子的学校。at once 立刻、马上。</div></div>
+    </details>
+    <details class="qa"><summary>2. What did the father do to save his son?</summary>
+      <div class="in"><div class="ref">He dug through the ruins (for 38 hours) alone. / He kept digging through the ruins.</div>
+      <div class="why">解析：第一段末 "he started to dig through the ruins"，第四段 "after 38 hours of digging"，说明他靠不停地挖废墟救儿子。</div></div>
+    </details>
+    <details class="qa"><summary>3. Who helped the father save his son?</summary>
+      <div class="in"><div class="ref">No one (helped him). / Nobody. He saved his son alone.</div>
+      <div class="why">解析：第二、三段中其他家长、消防员和警察都没有帮忙（"no one answered" "No one helped"），所以他独自挖救儿子。</div></div>
+    </details>
+    <details class="qa"><summary>4. When did the father hear his son's voice?</summary>
+      <div class="in"><div class="ref">After 38 hours of digging. / He heard his son's voice after 38 hours of digging.</div>
+      <div class="why">解析：第四段 "Then, after 38 hours of digging, he pulled back a large stone and heard his son's voice."</div></div>
+    </details>
+    <details class="qa"><summary>5.（新考法·开放性设问）What can you learn from the father and the son?</summary>
+      <div class="in"><div class="ref">示例：We should always keep our promises. / Love and trust between family members are very important. / Never give up when we face difficulties.</div>
+      <div class="why">解析：开放题，围绕"父亲信守承诺、绝不放弃"与"儿子对父亲的信任、先人后己"作答即可，如：我们要信守承诺；家人之间的爱与信任能创造奇迹；遇到困难不要放弃。</div></div>
+    </details>
+    <div class="raft">
+      <h3>积累小筏（P30）· 课文知识卡</h3>
+      <div class="know">
+        <div class="k"><b>hit</b> v. "打击；碰撞"，文中 "a huge earthquake hit a small town" 表示"袭击；侵袭"，过去式仍为 hit。类似表示自然灾害侵袭的词有 strike（过去式 struck），如 "A typhoon struck the coastal city."（台风袭击了这座沿海城市。）</div>
+        <div class="k"><b>remember</b> v. "记得；想起"。remember to do sth 记得去做某事（未做）；remember doing sth 记得做过某事（已做）。如 "Remember to close the door when you leave."（离开时记得关门。）"I remember seeing him before."（我记得以前见过他。）</div>
+        <div class="k"><b>ruins</b> n. ruin 的复数形式，表示"废墟"；in ruins 意为"成为废墟；破败不堪"，如 "The old building is in ruins."（这座旧建筑已成废墟。）ruin 也可作动词，表示"毁坏；破坏"。</div>
+        <div class="k"><b>voice</b> n. "声音"，常指人的嗓音；区别于 sound（泛指各种声音）和 noise（噪音）。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 生词短语汇总 ============ -->
+<section id="sec4">
+  <div class="sec-head"><span class="no">附</span><h2>生词 · 生短语汇总（按七年级上册词汇水平筛选）</h2></div>
+  <div class="meta">共 63 条，与文中下划线一一对应；点击文中下划线亦可弹出同一张卡片内容。</div>
+  <div id="vsum"></div>
+</section>
+
+<footer>七年级上册英语培优题互动讲解 · 供学习自用 ｜ 答案与解析已对照原文逐题校对</footer>
+</div>
+
+<div id="pop"><button id="popx" title="关闭">×</button>
+  <div class="pt"></div><div class="pm"></div><div class="pu"></div><div class="pe"></div><div class="pc"></div>
+</div>
+
+<script>
+const V = {
+"international":{s:1,t:"international",p:"adj.",m:"国际的",u:"常修饰人、比赛、组织等；international students 国际学生。",e:"Many international students study in China.",c:"许多国际学生在中国学习。"},
+"take-a-trip":{s:1,t:"take a trip",p:"短语",m:"去旅行",u:"take a trip to + 地点 去某地旅行；过去式为 took a trip。",e:"We took a trip to Beijing last summer.",c:"去年夏天我们去北京旅行了。"},
+"district":{s:1,t:"district",p:"n.",m:"区；地区",u:"指城市的行政区或特定区域；Zhoucun district 周村区。",e:"This district is famous for its food.",c:"这个地区以美食闻名。"},
+"explore":{s:1,t:"explore",p:"v.",m:"探索；探究",u:"指到某处了解、寻访；名词为 exploration。",e:"The children went to explore the old cave.",c:"孩子们去探索那个古老的山洞。"},
+"culture":{s:1,t:"culture",p:"n.",m:"文化",u:"traditional Chinese culture 中国传统文化；food and tea culture 饮食与茶文化。",e:"I want to learn about Chinese culture.",c:"我想了解中国文化。"},
+"local":{s:1,t:"local",p:"adj.",m:"当地的；本地的",u:"local people 当地人；local food 当地食物。",e:"We tried some local food in Xi'an.",c:"我们在西安品尝了一些当地食物。"},
+"vegetarian":{s:1,t:"vegetarian",p:"adj. / n.",m:"素食的；素食者",u:"课文注“素食”；vegetarian restaurant 素食餐馆；vegetarian food 素食。",e:"She is a vegetarian and never eats meat.",c:"她是素食者，从不吃肉。"},
+"pancake":{s:1,t:"pancake",p:"n.",m:"薄饼；（文中指周村烧饼）",u:"课文注“烧饼”，指烙制的饼类食物。",e:"My mother makes pancakes for breakfast.",c:"妈妈做薄饼当早餐。"},
+"museum":{s:1,t:"museum",p:"n.",m:"博物馆",u:"the Palace Museum 故宫博物院；science museum 科学博物馆。",e:"We visited the science museum yesterday.",c:"我们昨天参观了科学博物馆。"},
+"past":{s:1,t:"past",p:"adj. / n.",m:"过去的；过去",u:"over the past hundred years 在过去的一百年里；in the past 在过去。",e:"In the past, people wrote letters to friends.",c:"过去，人们写信给朋友。"},
+"taste":{s:1,t:"taste",p:"v. / n.",m:"品尝；尝起来；味道",u:"作系动词后接形容词：taste delicious 尝起来美味；过去式 tasted。",e:"The soup tastes really good.",c:"这汤尝起来真不错。"},
+"thin":{s:1,t:"thin",p:"adj.",m:"薄的；瘦的",u:"指物时反义词为 thick（厚的）；指人时表示“瘦的”。",e:"He is tall and thin.",c:"他又高又瘦。"},
+"delicious":{s:1,t:"delicious",p:"adj.",m:"美味的；可口的",u:"形容食物，近义词 tasty。",e:"The noodles were delicious.",c:"面条很美味。"},
+"product":{s:1,t:"product",p:"n.",m:"产品；制品",u:"常用复数 products；meat products 肉制品。",e:"This shop sells local farm products.",c:"这家店卖当地的农产品。"},
+"be-good-for":{s:1,t:"be good for",p:"短语",m:"对……有益",u:"反义为 be bad for 对……有害；文中 good __7__ health 即 be good for health（第7题填 for）。",e:"Running is good for our health.",c:"跑步对我们的健康有益。"},
+"not-only":{s:1,t:"not only... but also...",p:"短语",m:"不仅……而且……",u:"连接两个并列成分；连接主语时谓语动词遵循“就近原则”（与靠近的主语一致）。",e:"Not only Tom but also I am a student.",c:"不仅汤姆，我也是学生。"},
+"at-the-end-of":{s:1,t:"at the end of",p:"短语",m:"在……末尾；在……结束时",u:"反义为 at the beginning of 在……开始；at the end of the trip 在旅行结束时。",e:"At the end of the book, there is a surprise.",c:"这本书的结尾有一个惊喜。"},
+"traditional":{s:1,t:"traditional",p:"adj.",m:"传统的",u:"名词为 tradition；traditional Chinese food 中国传统食物。",e:"Dumplings are a traditional Chinese food.",c:"饺子是一种中国传统食物。"},
+"activity":{s:1,t:"activity",p:"n.",m:"活动",u:"复数 activities；after-school activities 课后活动；文中指这次研学旅行活动。",e:"Our class has many fun activities.",c:"我们班有许多有趣的活动。"},
+"brightly":{s:2,t:"brightly",p:"adv.",m:"明亮地；灿烂地",u:"由形容词 bright 加 -ly 构成；the sun shone brightly 阳光灿烂地照耀。",e:"The stars shine brightly at night.",c:"夜晚星星明亮地闪烁。"},
+"diary":{s:2,t:"diary",p:"n.",m:"日记",u:"write / keep a diary 写日记；复数 diaries。",e:"She keeps a diary in English.",c:"她用英语写日记。"},
+"forest":{s:2,t:"forest",p:"n.",m:"森林",u:"范围比 woods（树林）大；deep in the forest 在森林深处。",e:"Many animals live in the forest.",c:"许多动物生活在森林里。"},
+"discover":{s:2,t:"discover",p:"v.",m:"发现",u:"指发现原本存在却未被知晓的事物；名词为 discovery。",e:"Scientists discovered a new star.",c:"科学家们发现了一颗新星。"},
+"ancient":{s:2,t:"ancient",p:"adj.",m:"古代的；古老的",u:"反义词 modern 现代的；an ancient tree 一棵古树。",e:"This is an ancient city with a long history.",c:"这是一座历史悠久的古城。"},
+"branch":{s:2,t:"branch",p:"n.",m:"树枝；分支",u:"复数 branches；tree branches 树枝。",e:"A bird is singing on the branch.",c:"一只鸟在树枝上歌唱。"},
+"seem":{s:2,t:"seem",p:"v.",m:"似乎；好像",u:"seem like + 名词 似乎像……；seem + 形容词 似乎……。",e:"He seems very happy today.",c:"他今天似乎很开心。"},
+"tell-stories-past":{s:2,t:"tell stories of the past",p:"短语",m:"讲述过去的故事",u:"story 的复数为 stories；of 表示“……的”；文中 was telling stories of the past 正在讲述过去的故事。",e:"Grandpa likes telling stories of the past.",c:"爷爷喜欢讲过去的故事。"},
+"bark":{s:2,t:"bark",p:"n.",m:"树皮",u:"不可数名词；tree bark 树皮；touch the bark 触摸树皮。",e:"The bark protects the tree.",c:"树皮保护着大树。"},
+"adventure":{s:2,t:"adventure",p:"n.",m:"冒险；奇遇",u:"a day's adventure 一天的探险；forest adventure 森林探险。",e:"Reading this book is like an adventure.",c:"读这本书就像一次冒险。"},
+"fill-with":{s:2,t:"fill... with...",p:"短语",m:"用……装满……",u:"fill A with B 用B装满A；被动 be filled with = be full of；文中 filled their backpacks with flowers（第5题填 filled）。",e:"She filled the glass with water.",c:"她把杯子装满了水。"},
+"seed":{s:2,t:"seed",p:"n.",m:"种子",u:"flower seeds 花种；plant seeds 播种。",e:"The birds are eating seeds on the ground.",c:"鸟儿正在地上吃种子。"},
+"plant":{s:2,t:"plant",p:"v. / n.",m:"种植；植物",u:"plant trees 种树；plant a small garden 开辟一个小花园。",e:"We plant trees in March every year.",c:"我们每年三月种树。"},
+"grow-up":{s:2,t:"grow up",p:"短语",m:"长大；成长",u:"既可指人长大，也可指植物生长；grow up in the sun and rain 在阳光雨露中成长。",e:"I want to be a teacher when I grow up.",c:"我长大后想当老师。"},
+"surprise":{s:2,t:"surprise",p:"n. / v.",m:"惊喜；使惊讶",u:"bring sb surprises 给某人带来惊喜；to one's surprise 令某人惊讶的是。",e:"The gift was a big surprise for me.",c:"这份礼物对我来说是个大惊喜。"},
+"in-the-future":{s:2,t:"in the future",p:"短语",m:"在将来",u:"反义为 in the past 在过去；常与一般将来时连用。",e:"Robots will do more work in the future.",c:"将来机器人会做更多工作。"},
+"experience":{s:2,t:"experience",p:"n.",m:"经历；经验",u:"作“经历”讲时是可数名词；this experience 这次经历。",e:"The trip was a wonderful experience.",c:"这次旅行是一段美妙的经历。"},
+"note":{s:2,t:"note",p:"v. / n.",m:"记录下；笔记",u:"Tom noted 汤姆记录下；note the important words 记下重点词。",e:"Please note the important words in your notebook.",c:"请把重点词记在笔记本上。"},
+"look-forward-to":{s:2,t:"look forward to",p:"短语",m:"期待；盼望（to 是介词）",u:"后接名词或 doing：look forward to doing sth 期待做某事；文中 looking forward to his next adventure 期待下一次探险。",e:"I look forward to hearing from you.",c:"我期待收到你的来信。"},
+"huge":{s:3,t:"huge",p:"adj.",m:"巨大的",u:"程度比 big 大，相当于 very big；a huge earthquake 一场大地震。",e:"There is a huge tree in front of my house.",c:"我家门前有一棵大树。"},
+"earthquake":{s:3,t:"earthquake",p:"n.",m:"地震",u:"由 earth（大地）+ quake（震动）构成。",e:"Many houses fell in the earthquake.",c:"许多房屋在地震中倒塌。"},
+"hit":{s:3,t:"hit",p:"v.",m:"袭击；打击；碰撞",u:"过去式仍为 hit；文中 a huge earthquake hit a small town 地震袭击小镇；近义词 strike（过去式 struck）。",e:"A typhoon struck the coastal city.",c:"台风袭击了这座沿海城市。"},
+"suddenly":{s:3,t:"suddenly",p:"adv.",m:"突然地",u:"由形容词 sudden 加 -ly 构成；常放句首或动词前。",e:"Suddenly, it began to rain.",c:"突然，下起雨来。"},
+"rush":{s:3,t:"rush",p:"v.",m:"冲；奔",u:"rush to + 地点 冲向某地；过去式 rushed。",e:"He rushed to the station but missed the train.",c:"他冲到车站，但还是错过了火车。"},
+"only-to":{s:3,t:"only to do",p:"结构",m:"结果却……（表意外结果）",u:"only to discover that... 结果却发现……；表示出乎意料的结果。",e:"He hurried home, only to find no one there.",c:"他匆忙赶回家，结果发现没人在。"},
+"fall-down":{s:3,t:"fall down",p:"短语",m:"倒塌；跌倒",u:"过去式 fell down；buildings fell down 楼房倒塌。",e:"The old tree fell down in the storm.",c:"那棵老树在暴风雨中倒下了。"},
+"remember":{s:3,t:"remember",p:"v.",m:"记得；想起",u:"remember to do sth 记得去做某事（未做）；remember doing sth 记得做过某事（已做）。",e:"Remember to close the door when you leave.",c:"离开时记得关门。"},
+"promise":{s:3,t:"promise",p:"n. / v.",m:"承诺；许诺",u:"keep one's promise 信守承诺；promise to do sth 承诺做某事。",e:"He kept his promise and came on time.",c:"他信守承诺，准时来了。"},
+"no-matter-what":{s:3,t:"no matter what",p:"短语",m:"无论什么；不管发生什么",u:"引导让步状语从句，相当于 whatever；No matter what happens 无论发生什么。",e:"No matter what happens, stay calm.",c:"无论发生什么，都要保持冷静。"},
+"tear":{s:3,t:"tear",p:"n.",m:"眼泪",u:"常用复数 tears；with tears in his eyes 他眼含泪水。",e:"Tears ran down her face.",c:"泪水从她脸上流下。"},
+"dig":{s:3,t:"dig",p:"v.",m:"挖；掘",u:"课文注“挖”；过去式 dug；dig through the ruins 挖穿废墟；keep digging 不停地挖。",e:"The dog is digging a hole in the garden.",c:"狗正在花园里挖洞。"},
+"ruins":{s:3,t:"ruins",p:"n.",m:"废墟",u:"ruin 的复数；in ruins 成为废墟；ruin 作动词表示“毁坏”。",e:"The old building is in ruins.",c:"这座旧建筑已成废墟。"},
+"keep-doing":{s:3,t:"keep doing",p:"短语",m:"持续做某事；不停地做",u:"keep + doing 表示动作持续；kept digging 不停地挖。",e:"Keep trying and you will succeed.",c:"坚持尝试，你就会成功。"},
+"alone":{s:3,t:"alone",p:"adv. / adj.",m:"独自；单独",u:"强调客观上“独自一人”；区别于 lonely（主观上感到孤独）。",e:"The old man lives alone but never feels lonely.",c:"老人独自居住，但从不感到孤独。"},
+"firefighter":{s:3,t:"firefighter",p:"n.",m:"消防员",u:"fire（火）+ fighter（战士）；复数 firefighters。",e:"Firefighters work day and night to keep us safe.",c:"消防员日夜工作保护我们的安全。"},
+"police":{s:3,t:"police",p:"n.",m:"警察；警方",u:"集合名词，指警察群体；firefighters and police 消防员和警察。",e:"The police helped the lost child find his mother.",c:"警察帮助走失的孩子找到了妈妈。"},
+"dangerous":{s:3,t:"dangerous",p:"adj.",m:"危险的",u:"名词为 danger；It is dangerous to do sth 做某事是危险的。",e:"It's dangerous to swim in the river.",c:"在河里游泳很危险。"},
+"pull":{s:3,t:"pull",p:"v.",m:"拉；拖",u:"反义词 push（推）；pull back a large stone 搬开一块大石头。",e:"Help me pull this heavy box, please.",c:"请帮我拉一下这个重箱子。"},
+"stone":{s:3,t:"stone",p:"n.",m:"石头",u:"可数名词；a large stone 一块大石头。",e:"He threw a stone into the lake.",c:"他把一块石头扔进湖里。"},
+"voice":{s:3,t:"voice",p:"n.",m:"（人的）声音；嗓音",u:"指人的嗓音；sound 泛指各种声音；noise 指噪音。",e:"I heard a familiar voice on the phone.",c:"我在电话里听到一个熟悉的声音。"},
+"scream":{s:3,t:"scream",p:"v.",m:"尖叫；大喊",u:"比 shout 声音更大，多因恐惧、激动等。",e:"She screamed when she saw the snake.",c:"她看到蛇时尖叫起来。"},
+"alive":{s:3,t:"alive",p:"adj.",m:"活着的",u:"常作表语或后置定语；if you were alive 如果你还活着。",e:"The fish is still alive.",c:"这条鱼还活着。"},
+"save":{s:3,t:"save",p:"v.",m:"救；节省；保存",u:"save sb 救某人；save money 省钱；you'd save me 你会来救我。",e:"The doctors saved the boy's life.",c:"医生们救了那个男孩的命。"},
+"at-once":{s:3,t:"at once",p:"短语",m:"立刻；马上",u:"同义 right away / immediately；第1题 Where did the father go at once... 父亲立刻去了哪里。",e:"Please come to my office at once.",c:"请立刻到我办公室来。"}
+};
+/* 弹层 */
+const pop = document.getElementById('pop');
+function showPop(span){
+  const d = V[span.dataset.id]; if(!d) return;
+  pop.querySelector('.pt').textContent = d.t;
+  pop.querySelector('.pm').textContent = d.p + ' ' + d.m;
+  pop.querySelector('.pu').textContent = '用法：' + d.u;
+  pop.querySelector('.pe').textContent = '例句：' + d.e;
+  pop.querySelector('.pc').textContent = '翻译：' + d.c;
+  pop.style.display = 'block';
+  const r = span.getBoundingClientRect(), w = pop.offsetWidth, h = pop.offsetHeight;
+  let left = Math.min(Math.max(8, r.left), window.innerWidth - w - 8);
+  let top = r.bottom + 8;
+  if (top + h > window.innerHeight - 8) top = Math.max(8, r.top - h - 8);
+  pop.style.left = left + 'px'; pop.style.top = top + 'px';
+}
+document.addEventListener('click', function(ev){
+  const v = ev.target.closest('.voc');
+  if (v){ ev.stopPropagation(); showPop(v); return; }
+  const b = ev.target.closest('.blank');
+  if (b){ ev.stopPropagation(); b.classList.toggle('on'); pop.style.display='none'; return; }
+  if (!ev.target.closest('#pop')) pop.style.display = 'none';
+});
+document.getElementById('popx').onclick = function(){ pop.style.display='none'; };
+window.addEventListener('scroll', function(){ pop.style.display='none'; }, {passive:true});
+/* 整节答案开关 */
+function toggleSec(id, btn){
+  const card = document.getElementById(id);
+  const on = card.classList.toggle('show-ans');
+  card.querySelectorAll('.blank').forEach(function(b){ b.classList.toggle('on', on); });
+  btn.textContent = on ? '隐藏本节答案' : '显示本节答案';
+}
+/* 汇总卡片 */
+(function(){
+  const groups = {1:'完形填空篇（P28）', 2:'语法填空篇（P29）', 3:'阅读表达篇（P30）'};
+  let html = '';
+  for (const g of [1,2,3]){
+    html += '<div class="vgroup"><h3>' + groups[g] + '</h3><div class="vgrid">';
+    for (const k in V){ const d = V[k]; if (d.s !== g) continue;
+      html += '<div class="vcard"><div class="vt">' + d.t + '<span class="vp">' + d.p + '</span></div>'
+        + '<div class="vm">' + d.m + '</div><div class="vu">' + d.u + '</div>'
+        + '<div class="ve">' + d.e + '</div><div class="vc">' + d.c + '</div></div>';
+    }
+    html += '</div></div>';
+  }
+  document.getElementById('vsum').innerHTML = html;
+})();
+</script>
+</body>
+</html>
