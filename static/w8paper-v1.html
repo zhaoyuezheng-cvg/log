@@ -112,7 +112,7 @@ body::before{
 @media(min-width:768px){.nav-tags a{font-size:14px;padding:6px 15px}}
 
 /* ===== 通用板块 ===== */
-.sec{padding:56px 0 30px}
+.sec{padding:56px 0 30px;scroll-margin-top:76px}
 .sec-head{margin-bottom:26px}
 .sec-kicker{font-size:12px;letter-spacing:.35em;color:var(--gold);margin-bottom:10px;font-weight:500}
 .sec-title{font-family:var(--serif);font-weight:900;font-size:clamp(24px,4.4vw,34px);line-height:1.35}
@@ -120,7 +120,10 @@ body::before{
 
 /* 卷面概览 */
 .overview-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:8px}
-.ov-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;position:relative;overflow:hidden;box-shadow:var(--shadow)}
+.ov-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;position:relative;overflow:hidden;box-shadow:var(--shadow);cursor:pointer;transition:transform .2s,border-color .2s,box-shadow .2s}
+.ov-card:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 16px 36px -20px rgba(40,51,59,.32)}
+.ov-card:active{transform:translateY(-1px)}
+.ov-card:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .ov-card .no{position:absolute;top:-16px;right:8px;font-family:var(--serif);font-size:64px;font-weight:900;color:var(--paper-2);line-height:1;pointer-events:none}
 .ov-card h4{font-family:var(--serif);font-size:16px;font-weight:700;margin-bottom:6px}
 .ov-card p{font-size:13px;color:var(--ink-soft)}
@@ -285,14 +288,14 @@ ol,ul{padding-left:22px;margin:8px 0}
       <p class="sec-desc">全卷以「遇见」为主线：从字词仿写出发，历经古诗文、名著、散文、非连续性文本与文言对比阅读，终以一篇 60 分作文收束。点击下方章节即可进入逐题讲评。</p>
     </div>
     <div class="overview-grid">
-      <div class="ov-card"><div class="no">1</div><h4>字词积累 · 仿写</h4><p>江南秋景语段，考拼音、错别字与句式仿写</p><span class="pts">10 分</span></div>
-      <div class="ov-card"><div class="no">2</div><h4>古诗文默写 · 赏析</h4><p>默写名句 + 课外古诗《送春》赏析</p><span class="pts">10 分</span></div>
-      <div class="ov-card"><div class="no">3</div><h4>名著《朝花夕拾》</h4><p>人物识别 + 插图方案选择</p><span class="pts">10 分</span></div>
-      <div class="ov-card"><div class="no">4</div><h4>散文《深冬月照》</h4><p>字音字义、朗读、联想想象、图文设计</p><span class="pts">10 分</span></div>
-      <div class="ov-card"><div class="no">5</div><h4>非连续文本</h4><p>学习动机 · 记忆策略 · 综合运用</p><span class="pts">10 分</span></div>
-      <div class="ov-card"><div class="no">6</div><h4>文言对比《世说新语》</h4><p>词义、断句、虚词、人物品析</p><span class="pts">10 分</span></div>
-      <div class="ov-card"><div class="no">7</div><h4>作文《遇见____》</h4><p>半命题作文，补题 + 写作</p><span class="pts">60 分</span></div>
-      <div class="ov-card"><div class="no">附</div><h4>课外古诗 · 文言文</h4><p>《送春》与两则《世说新语》均附词语解析与全文翻译</p><span class="pts">附：详解</span></div>
+      <div class="ov-card" data-target="q1"><div class="no">1</div><h4>字词积累 · 仿写</h4><p>江南秋景语段，考拼音、错别字与句式仿写</p><span class="pts">10 分</span></div>
+      <div class="ov-card" data-target="q2"><div class="no">2</div><h4>古诗文默写 · 赏析</h4><p>默写名句 + 课外古诗《送春》赏析</p><span class="pts">10 分</span></div>
+      <div class="ov-card" data-target="q3"><div class="no">3</div><h4>名著《朝花夕拾》</h4><p>人物识别 + 插图方案选择</p><span class="pts">10 分</span></div>
+      <div class="ov-card" data-target="q4"><div class="no">4</div><h4>散文《深冬月照》</h4><p>字音字义、朗读、联想想象、图文设计</p><span class="pts">10 分</span></div>
+      <div class="ov-card" data-target="q5"><div class="no">5</div><h4>非连续文本</h4><p>学习动机 · 记忆策略 · 综合运用</p><span class="pts">10 分</span></div>
+      <div class="ov-card" data-target="q6"><div class="no">6</div><h4>文言对比《世说新语》</h4><p>词义、断句、虚词、人物品析</p><span class="pts">10 分</span></div>
+      <div class="ov-card" data-target="q7"><div class="no">7</div><h4>作文《遇见____》</h4><p>半命题作文，补题 + 写作</p><span class="pts">60 分</span></div>
+      <div class="ov-card" data-target="q2"><div class="no">附</div><h4>课外古诗 · 文言文</h4><p>《送春》与两则《世说新语》均附词语解析与全文翻译</p><span class="pts">附：详解</span></div>
     </div>
     <div class="ov-note">小贴士：第②、⑥题中的课外古诗与文言文，页面单独提供「词语解析 · 全文翻译」面板；第⑤题内置学习动机倒U型曲线交互图，可拖动查看。</div>
     <div class="divider"></div>
@@ -912,13 +915,21 @@ function switchTab(tab,group,panel){
   }
 }
 
-/* 导航高亮 */
+/* 导航高亮 + JS 平滑跳转（规避 overflow-x:hidden 破坏原生锚点跳转） */
 (function(){
   var links=document.querySelectorAll('.nav-tags a');
   var map={};
   for(var i=0;i<links.length;i++){
     var id=links[i].getAttribute('href').slice(1);
     map[id]=links[i];
+    (function(link){
+      link.addEventListener('click',function(ev){
+        ev.preventDefault();
+        var t=document.getElementById(link.getAttribute('href').slice(1));
+        if(t){t.scrollIntoView({behavior:'smooth',block:'start'});}
+        if(history.replaceState){history.replaceState(null,'','#'+link.getAttribute('href').slice(1));}
+      });
+    })(links[i]);
   }
   var onScroll=function(){
     var pos=window.scrollY+120;
@@ -933,6 +944,23 @@ function switchTab(tab,group,panel){
   };
   window.addEventListener('scroll',onScroll,{passive:true});
   onScroll();
+
+  /* 卷面总览章节卡片 → 点击跳转 */
+  var cards=document.querySelectorAll('.ov-card');
+  for(var c=0;c<cards.length;c++){
+    (function(card){
+      var go=function(){
+        var t=document.getElementById(card.getAttribute('data-target'));
+        if(t){t.scrollIntoView({behavior:'smooth',block:'start'});}
+      };
+      card.addEventListener('click',go);
+      card.setAttribute('role','button');
+      card.setAttribute('tabindex','0');
+      card.addEventListener('keydown',function(ev){
+        if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();go();}
+      });
+    })(cards[c]);
+  }
 })();
 
 /* 学习动机倒U型曲线（ECharts，含 CDN 多源加载与静态降级） */
@@ -995,3 +1023,4 @@ __loadEcharts(['https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js',
 </main>
 </body>
 </html>
+<!-- （注：内容由AI生成） -->
