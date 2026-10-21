@@ -1,510 +1,926 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>英语阅读与练习 - 传统文化与时文阅读</title>
-    <style>
-        :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --bg-color: #f4f7f6;
-            --card-bg: #ffffff;
-            --vocab-color: #e67e22;
-            --vocab-bg: #fdf3e8;
-            --text-color: #333;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.8;
-            color: var(--text-color);
-            background-color: var(--bg-color);
-            margin: 0;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        h1 {
-            text-align: center;
-            color: var(--primary-color);
-            border-bottom: 3px solid var(--secondary-color);
-            padding-bottom: 10px;
-            margin-bottom: 30px;
-        }
-
-        h2 {
-            color: var(--secondary-color);
-            border-left: 5px solid var(--secondary-color);
-            padding-left: 10px;
-            margin-top: 40px;
-        }
-
-        .card {
-            background: var(--card-bg);
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            padding: 25px;
-            margin-bottom: 25px;
-        }
-
-        .passage {
-            font-size: 16px;
-            margin-bottom: 20px;
-            text-align: justify;
-        }
-
-        /* 交互式词汇样式 */
-        .vocab {
-            color: var(--vocab-color);
-            border-bottom: 2px dashed var(--vocab-color);
-            cursor: pointer;
-            position: relative;
-            display: inline-block;
-            font-weight: bold;
-        }
-
-        .vocab:hover {
-            background-color: var(--vocab-bg);
-        }
-
-        .vocab-content {
-            display: none;
-            position: absolute;
-            bottom: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 15px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            width: 300px;
-            z-index: 10;
-            font-size: 14px;
-            color: var(--text-color);
-            text-align: left;
-            font-weight: normal;
-            line-height: 1.5;
-            margin-bottom: 5px;
-        }
-
-        .vocab-content::after {
-            content: '';
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            margin-left: -5px;
-            border-width: 5px;
-            border-style: solid;
-            border-color: #fff transparent transparent transparent;
-        }
-
-        .vocab-content.active {
-            display: block;
-        }
-
-        .vocab-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 8px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 5px;
-        }
-
-        .vocab-word {
-            font-size: 16px;
-            font-weight: bold;
-            color: var(--primary-color);
-        }
-
-        .audio-btn {
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-            color: var(--secondary-color);
-            padding: 0;
-            transition: transform 0.2s;
-        }
-
-        .audio-btn:hover {
-            transform: scale(1.2);
-        }
-
-        .vocab-meaning {
-            color: #555;
-            margin-bottom: 5px;
-        }
-
-        .vocab-example {
-            font-style: italic;
-            color: #666;
-            font-size: 13px;
-        }
-
-        /* 题目与答案样式 */
-        .question {
-            margin-bottom: 15px;
-            font-weight: bold;
-        }
-
-        .answer {
-            color: #27ae60;
-            background-color: #eafaf1;
-            padding: 10px;
-            border-radius: 5px;
-            margin-top: 5px;
-            margin-bottom: 15px;
-            border-left: 4px solid #27ae60;
-        }
-
-        .explanation {
-            color: #8e44ad;
-            font-size: 14px;
-            margin-top: 5px;
-        }
-
-        /* 选项样式 */
-        .options {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-top: 10px;
-        }
-
-        .options div {
-            background: #f9f9f9;
-            padding: 5px 10px;
-            border-radius: 4px;
-        }
-
-        /* 汇总表样式 */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        th, td {
-            border: 1px solid #ddd;
-            padding: 12px;
-            text-align: left;
-        }
-
-        th {
-            background-color: var(--primary-color);
-            color: white;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>课时6 传统文化与时文阅读 - 完整解答与词汇解析</title>
+<style>
+  :root {
+    --primary: #2c5f8a;
+    --primary-light: #4a90c4;
+    --accent: #e8734a;
+    --bg: #f5f7fa;
+    --card-bg: #ffffff;
+    --text: #2c3e50;
+    --text-light: #5a6a7a;
+    --border: #dce3eb;
+    --success: #27ae60;
+    --word-bg: #fff3e0;
+    --tooltip-bg: #2c3e50;
+    --shadow: 0 2px 12px rgba(0,0,0,0.08);
+    --shadow-hover: 0 4px 20px rgba(0,0,0,0.12);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+    font-size: 16px;
+  }
+  .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+  
+  .header {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    color: white;
+    padding: 40px 30px;
+    border-radius: 16px;
+    margin-bottom: 30px;
+    box-shadow: var(--shadow);
+    text-align: center;
+  }
+  .header h1 { font-size: 28px; margin-bottom: 8px; letter-spacing: 2px; }
+  .header p { font-size: 15px; opacity: 0.9; }
+  
+  .section-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 25px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    transition: box-shadow 0.3s;
+  }
+  .section-card:hover { box-shadow: var(--shadow-hover); }
+  .section-title {
+    font-size: 20px;
+    color: var(--primary);
+    border-bottom: 3px solid var(--primary-light);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-title .icon { font-size: 24px; }
+  
+  .passage {
+    background: #f8fafc;
+    border-left: 4px solid var(--primary-light);
+    padding: 20px;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 20px;
+    font-size: 15px;
+    line-height: 2;
+  }
+  .passage p { margin-bottom: 12px; }
+  .passage p:last-child { margin-bottom: 0; }
+  
+  .vocab-word {
+    color: var(--accent);
+    text-decoration: underline;
+    text-decoration-style: wavy;
+    text-underline-offset: 3px;
+    cursor: pointer;
+    position: relative;
+    font-weight: 500;
+    transition: all 0.2s;
+    background: var(--word-bg);
+    padding: 1px 4px;
+    border-radius: 4px;
+  }
+  .vocab-word:hover {
+    background: #ffe8d0;
+    color: #d35a2e;
+  }
+  
+  .vocab-tooltip {
+    display: none;
+    position: fixed;
+    background: var(--tooltip-bg);
+    color: white;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    max-width: 380px;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    line-height: 1.6;
+    pointer-events: none;
+    animation: fadeIn 0.2s;
+  }
+  .vocab-tooltip.active { display: block; }
+  .vocab-tooltip .word { font-size: 16px; font-weight: bold; color: #ffd700; margin-bottom: 4px; }
+  .vocab-tooltip .phonetic { color: #aaa; font-size: 13px; margin-bottom: 6px; }
+  .vocab-tooltip .meaning { margin-bottom: 6px; }
+  .vocab-tooltip .example { color: #bbb; font-style: italic; font-size: 13px; border-left: 2px solid #ffd700; padding-left: 8px; margin-top: 6px; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+  
+  .question {
+    background: #f0f5fa;
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border: 1px solid var(--border);
+  }
+  .question p { margin-bottom: 8px; }
+  .question .q-text { font-weight: 600; color: var(--text); }
+  .answer {
+    background: #e8f5e9;
+    border-left: 4px solid var(--success);
+    padding: 12px 16px;
+    border-radius: 0 6px 6px 0;
+    margin-top: 10px;
+  }
+  .answer .label { font-weight: bold; color: var(--success); margin-right: 8px; }
+  .answer p { margin-bottom: 6px; }
+  .answer p:last-child { margin-bottom: 0; }
+  .explanation {
+    background: #fff8e1;
+    border-left: 4px solid #ffc107;
+    padding: 12px 16px;
+    border-radius: 0 6px 6px 0;
+    margin-top: 8px;
+    font-size: 14px;
+    color: var(--text-light);
+  }
+  .explanation .label { font-weight: bold; color: #e6a800; margin-right: 8px; }
+  
+  .options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 10px 0;
+  }
+  .option {
+    background: #e3f2fd;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 14px;
+    border: 1px solid #bbdefb;
+  }
+  
+  .answer-key {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 15px 0;
+  }
+  .answer-key-item {
+    background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: bold;
+    color: var(--success);
+    font-size: 15px;
+    border: 1px solid #a5d6a7;
+  }
+  
+  .vocab-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    font-size: 14px;
+  }
+  .vocab-table th {
+    background: var(--primary);
+    color: white;
+    padding: 12px 15px;
+    text-align: left;
+    font-weight: 600;
+  }
+  .vocab-table th:first-child { border-radius: 8px 0 0 0; }
+  .vocab-table th:last-child { border-radius: 0 8px 0 0; }
+  .vocab-table td {
+    padding: 10px 15px;
+    border-bottom: 1px solid var(--border);
+  }
+  .vocab-table tr:nth-child(even) { background: #f8fafc; }
+  .vocab-table tr:hover { background: #e3f2fd; }
+  .vocab-table .word-col { font-weight: bold; color: var(--accent); font-size: 15px; }
+  .vocab-table .pos { color: var(--text-light); font-size: 13px; margin-right: 6px; }
+  
+  .footer {
+    text-align: center;
+    padding: 30px;
+    color: var(--text-light);
+    font-size: 14px;
+  }
+  
+  @media (max-width: 600px) {
+    .container { padding: 12px; }
+    .header { padding: 25px 15px; }
+    .header h1 { font-size: 22px; }
+    .section-card { padding: 20px; }
+    .passage { padding: 15px; }
+    .vocab-table { font-size: 13px; }
+    .vocab-table th, .vocab-table td { padding: 8px 10px; }
+  }
+  
+  @media print {
+    .vocab-tooltip { display: none !important; }
+    .vocab-word { background: none; color: var(--text); }
+    body { background: white; }
+    .section-card { box-shadow: none; border: 1px solid #ccc; }
+  }
+</style>
 </head>
 <body>
 
 <div class="container">
+  <div class="header">
     <h1>课时6 传统文化与时文阅读</h1>
+    <p>完整解答 &bull; 详细解析 &bull; 七年级生词词汇表</p>
+  </div>
 
-    <!-- 第一部分：阅读表达 -->
-    <h2>Ⅰ 阅读表达</h2>
-    <div class="card">
-        <div class="passage">
-            <p>Many traditional woodcut prints (版画) are black and white or simple in color, but <span class="vocab" onclick="toggleVocab(this)">reduction woodcut <span class="vocab-content"><div class="vocab-header"><span class="vocab-word">reduction woodcut</span><button class="audio-btn" onclick="speak('reduction woodcut', event)">🔊</button></div><div class="vocab-meaning">n. 绝版木刻</div><div class="vocab-example">The <b>reduction woodcut</b> became an intangible cultural heritage in 2009.</div></span></span> (绝版木刻) prints can show rich colors.</p>
-            
-            <p>The reduction woodcut uses one piece of wood to make a colorful artwork. The artist cuts (刻) and prints (印刷) different <span class="vocab" onclick="toggleVocab(this)">layers <span class="vocab-content"><div class="vocab-header"><span class="vocab-word">layer</span><button class="audio-btn" onclick="speak('layer', event)">🔊</button></div><div class="vocab-meaning">n. 层</div><div class="vocab-example">The artist cuts different <b>layers</b> one by one on the wood.</div></span></span> (层) one by one on the wood. The reduction woodcut became an <span class="vocab" onclick="toggleVocab(this)">intangible cultural heritage <span class="vocab-content"><div class="vocab-header"><span class="vocab-word">intangible cultural heritage</span><button class="audio-btn" onclick="speak('intangible cultural heritage', event)">🔊</button></div><div class="vocab-meaning">n. 非物质文化遗产</div><div class="vocab-example">It is our duty to protect the <b>intangible cultural heritage</b>.</div></span></span> (非物质文化遗产) in Pu'er, Yunnan, in 2009.</p>
+  <div class="vocab-tooltip" id="vocabTooltip"></div>
 
-            <p><strong>Master's story</strong></p>
-            <p>Leng Guangmian, born in 1985, is a reduction woodcut artist. Leng started learning it in 2003. He said that making reduction woodcut prints is just like an <span class="vocab" onclick="toggleVocab(this)">adventure <span class="vocab-content"><div class="vocab-header"><span class="vocab-word">adventure</span><button class="audio-btn" onclick="speak('adventure', event)">🔊</button></div><div class="vocab-meaning">n. 冒险；奇遇</div><div class="vocab-example">Making reduction woodcut prints is just like an <b>adventure</b>.</div></span></span> (奇遇). "Every time we cut on the wood and then print, we never know what it will be like in the end."</p>
-
-            <p>Leng wants his artwork to show both great <span class="vocab" onclick="toggleVocab(this)">woodcutting skills <span class="vocab-content"><div class="vocab-header"><span class="vocab-word">woodcutting skills</span><button class="audio-btn" onclick="speak('woodcutting skills', event)">🔊</button></div><div class="vocab-meaning">n. 木刻技巧</div><div class="vocab-example">He has great <b>woodcutting skills</b>.</div></span></span> (技巧) and the culture and life in Pu'er. "For my works, there are two <span class="vocab" onclick="toggleVocab(this)">themes <span class="vocab-content"><div class="vocab-header"><span class="vocab-word">theme</span><button class="audio-btn" onclick="speak('theme', event)">🔊</button></div><div class="vocab-meaning">n. 主题</div><div class="vocab-example">The <b>theme</b> of his artwork is the Tea Horse Road.</div></span></span> (主题): Tea Horse Road (茶马古道), because Pu'er is one of the starting places of that road; and <span class="vocab" onclick="toggleVocab(this)">disappearing <span class="vocab-content"><div class="vocab-header"><span class="vocab-word">disappearing</span><button class="audio-btn" onclick="speak('disappearing', event)">🔊</button></div><div class="vocab-meaning">adj. 消失中的</div><div class="vocab-example">He wants to record the <b>disappearing</b> villages.</div></span></span> villages," Leng said. "Many old villages in Pu'er need <span class="vocab" onclick="toggleVocab(this)">rebuilding <span class="vocab-content"><div class="vocab-header"><span class="vocab-word">rebuilding</span><button class="audio-btn" onclick="speak('rebuilding', event)">🔊</button></div><div class="vocab-meaning">n. 重建</div><div class="vocab-example">The old villages need <b>rebuilding</b>.</div></span></span>, so I want to make people remember their beauty (记住它们的美) before they are gone."</p>
-        </div>
-
-        <div class="question">1. What makes reduction woodcut prints different?</div>
-        <div class="answer">They can show rich colors. (或者：They use one piece of wood to make a colorful artwork.)</div>
-        <div class="explanation">解析：根据第一段“but reduction woodcut prints can show rich colors.”可知，绝版木刻的独特之处在于能展现丰富的色彩。</div>
-
-        <div class="question">2. How old was Leng when he started learning the reduction woodcut?</div>
-        <div class="answer">18 years old.</div>
-        <div class="explanation">解析：根据第二段“Leng Guangmian, born in 1985... Leng started learning it in 2003.”可知，2003 - 1985 = 18岁。</div>
-
-        <div class="question">3. Why does Leng see making reduction woodcuts as an adventure?</div>
-        <div class="answer">Because every time they cut on the wood and then print, they never know what it will be like in the end.</div>
-        <div class="explanation">解析：根据第二段冷光冕的原话“Every time we cut on the wood and then print, we never know what it will be like in the end.”可知。</div>
-
-        <div class="question">4. What does Leng want to show with his artwork?</div>
-        <div class="answer">He wants his artwork to show both great woodcutting skills and the culture and life in Pu'er.</div>
-        <div class="explanation">解析：根据第三段第一句“Leng wants his artwork to show both great woodcutting skills (技巧) and the culture and life in Pu'er.”可知。</div>
-
-        <div class="question">5. What are the two main themes of Leng Guangmian's works?</div>
-        <div class="answer">Tea Horse Road and disappearing villages.</div>
-        <div class="explanation">解析：根据第三段“there are two themes: Tea Horse Road... and disappearing villages”可知。</div>
+  <!-- Part 1 -->
+  <div class="section-card">
+    <div class="section-title"><span class="icon">&#9733;</span> 一、阅读表达</div>
+    
+    <div class="passage">
+      <p>Many traditional <span class="vocab-word" data-word="woodcut">woodcut</span> prints are black and white or simple in color, but <span class="vocab-word" data-word="reduction woodcut">reduction woodcut</span> prints can show rich colors.</p>
+      <p>The <span class="vocab-word" data-word="reduction woodcut">reduction woodcut</span> uses one piece of wood to make a colorful artwork. The artist cuts and prints different <span class="vocab-word" data-word="layer">layers</span> one by one on the wood. The <span class="vocab-word" data-word="reduction woodcut">reduction woodcut</span> became an <span class="vocab-word" data-word="intangible cultural heritage">intangible cultural heritage</span> in Pu'er, Yunnan, in 2009.</p>
+      <p><strong>Master's story</strong></p>
+      <p>Leng Guangmian, born in 1985, is a <span class="vocab-word" data-word="reduction woodcut">reduction woodcut</span> artist. Leng started learning it in 2003. He said that making <span class="vocab-word" data-word="reduction woodcut">reduction woodcut</span> prints is just like an <span class="vocab-word" data-word="adventure">adventure</span>. "Every time we cut on the wood and then print, we never know what it will be like in the end."</p>
+      <p>Leng wants his artwork to show both great <span class="vocab-word" data-word="woodcutting skills">woodcutting skills</span> and the culture and life in Pu'er. "For my works, there are two <span class="vocab-word" data-word="theme">themes</span>: Tea Horse Road, because Pu'er is one of the starting places of that road; and <span class="vocab-word" data-word="disappearing">disappearing</span> villages," Leng said. "Many old villages in Pu'er need rebuilding, so I want to make people <span class="vocab-word" data-word="remember their beauty">remember their beauty</span> before they are gone."</p>
     </div>
 
-    <!-- 第二部分：完形填空 -->
-    <h2>Ⅱ 完形填空</h2>
-    <div class="card">
-        <div class="passage">
-            <p>We have many <span class="vocab" onclick="toggleVocab(this)">festivals <span class="vocab-content"><div class="vocab-header"><span class="vocab-word">festival</span><button class="audio-btn" onclick="speak('festival', event)">🔊</button></div><div class="vocab-meaning">n. 节日</div><div class="vocab-example">The Spring <b>Festival</b> is our Chinese people's special festival.</div></span></span> all the year round. The Spring Festival is our Chinese people's special <u>1</u>. It is in January or February.</p>
-
-            <p>There are twelve different <u>2</u> names for each Chinese year. They are mouse, ox (牛), tiger, rabbit, chicken, dragon... It is the year of horse in 2026.</p>
-
-            <p>Before the Spring Festival, people are busy <u>3</u> shopping and cleaning their houses. Every family prepares <u>4</u> kinds of food and drinks. On the eve of the festival, there is always a big family dinner. People <u>5</u> eating jiaozi. It means "reunion (团聚)" and "good luck". After dinner all the family <u>6</u> to welcome the new year. We often <u>7</u> TV and play games.</p>
-
-            <p>On the <u>8</u> day of the lunar new year, people get up early. Young people <u>9</u> their new clothes and greet their parents. Then each child gets money as a new year gift. On the third day of the lunar new year, people go to <u>10</u> their <span class="vocab" onclick="toggleVocab(this)">relatives <span class="vocab-content"><div class="vocab-header"><span class="vocab-word">relative</span><button class="audio-btn" onclick="speak('relative', event)">🔊</button></div><div class="vocab-meaning">n. 亲戚</div><div class="vocab-example">People go to visit their <b>relatives</b> and friends.</div></span></span> (亲戚) and friends. They say "Happy new year" and give the best wishes to each other. Everyone has a good time.</p>
-        </div>
-
-        <div class="options">
-            <div>1. A. spring &nbsp; B. festival &nbsp; C. season &nbsp; D. month</div>
-            <div>2. A. wish &nbsp; B. luck &nbsp; C. fun &nbsp; D. animal</div>
-            <div>3. A. taking &nbsp; B. going &nbsp; C. building &nbsp; D. making</div>
-            <div>4. A. some &nbsp; B. any &nbsp; C. all &nbsp; D. most</div>
-            <div>5. A. want &nbsp; B. ask &nbsp; C. like &nbsp; D. wish</div>
-            <div>6. A. stay up &nbsp; B. put up &nbsp; C. put away &nbsp; D. put on</div>
-            <div>7. A. look &nbsp; B. watch &nbsp; C. wash &nbsp; D. buy</div>
-            <div>8. A. last &nbsp; B. first &nbsp; C. third &nbsp; D. second</div>
-            <div>9. A. wear &nbsp; B. bring &nbsp; C. see &nbsp; D. take</div>
-            <div>10. A. get &nbsp; B. close &nbsp; C. enjoy &nbsp; D. visit</div>
-        </div>
-
-        <div class="answer" style="margin-top: 20px;">
-            <strong>答案：</strong>1. B &nbsp; 2. D &nbsp; 3. B &nbsp; 4. C &nbsp; 5. C &nbsp; 6. A &nbsp; 7. B &nbsp; 8. B &nbsp; 9. A &nbsp; 10. D
-        </div>
-        
-        <div class="explanation">
-            <strong>解析：</strong><br>
-            1. B. 根据句意“春节是我们中国人特殊的节日”，选 festival。<br>
-            2. D. 根据后文“mouse, ox, tiger...”可知是十二生肖动物的名字，选 animal。<br>
-            3. B. go shopping 是固定搭配，意为“去购物”。<br>
-            4. C. all kinds of 是固定搭配，意为“各种各样的”。<br>
-            5. C. like doing sth. 意为“喜欢做某事”，人们喜欢吃饺子。<br>
-            6. A. stay up 意为“熬夜”，大年夜全家熬夜迎接新年。<br>
-            7. B. watch TV 是固定搭配，意为“看电视”。<br>
-            8. B. 根据常识和后文“people get up early”可知是大年初一，选 first。<br>
-            9. A. wear new clothes 意为“穿新衣服”。<br>
-            10. D. visit relatives 意为“走亲戚/拜访亲戚”。
-        </div>
+    <div class="question">
+      <p class="q-text">1. What makes reduction woodcut prints different?</p>
+      <div class="answer">
+        <span class="label">【答案】</span>
+        <p>They can show rich colors. / Reduction woodcut prints can show rich colors, while traditional woodcut prints are black and white or simple in color.</p>
+      </div>
+      <div class="explanation">
+        <span class="label">【解析】</span>
+        <p>根据第一段"but reduction woodcut prints can show rich colors"可知，绝版木刻与传统木刻的区别在于能展现丰富的色彩。回答时注意用完整句子，主语可用They指代reduction woodcut prints。</p>
+      </div>
     </div>
 
-    <!-- 第三部分：语法填空 -->
-    <h2>Ⅲ 语法填空</h2>
-    <div class="card">
-        <div class="passage">
-            <p>Michael Platte, <u>1</u> 12-year-old boy, is from the USA. He likes making cupcakes. His grandma is his teacher. Now he's good at making all kinds of cupcakes. He always makes <u>2</u> (health) cupcakes on Sunday afternoon and takes some to his classmates the next morning. They say the cupcakes <u>3</u> (be) good.</p>
-
-            <p>One day, Michael sees a boy <u>4</u> (stand) in front of a cake store for about 30 minutes. He is from a <span class="vocab" onclick="toggleVocab(this)">shelter <span class="vocab-content"><div class="vocab-header"><span class="vocab-word">shelter</span><button class="audio-btn" onclick="speak('shelter', event)">🔊</button></div><div class="vocab-meaning">n. 收容所；避难所</div><div class="vocab-example">He is a <b>homeless</b> boy from a <b>shelter</b>.</div></span></span> (收容所). He stands there and watches a big cake. The boy loves it, <u>5</u> he doesn't have money. Michael <u>6</u> wants to help the <span class="vocab" onclick="toggleVocab(this)">homeless <span class="vocab-content"><div class="vocab-header"><span class="vocab-word">homeless</span><button class="audio-btn" onclick="speak('homeless', event)">🔊</button></div><div class="vocab-meaning">adj. 无家可归的</div><div class="vocab-example">Michael wants to help the <b>homeless</b> kids.</div></span></span> kids like the boy. Then with the help of his family, Michael has a small cupcake store—Michael's Desserts. When Michael <u>7</u> (sell) one cupcake, he gives $0.5 to the shelter. And every week he gives about $15 to it. It's not much money. But <u>8</u> (he) small act (行为) of kindness can <span class="vocab" onclick="toggleVocab(this)">make a big difference <span class="vocab-content"><div class="vocab-header"><span class="vocab-word">make a big difference</span><button class="audio-btn" onclick="speak('make a big difference', event)">🔊</button></div><div class="vocab-meaning">产生很大的影响</div><div class="vocab-example">His small act of kindness can <b>make a big difference</b> to those children.</div></span></span> to those <u>9</u> (child).</p>
-        </div>
-
-        <div class="answer">
-            <strong>答案：</strong>1. a &nbsp; 2. healthy &nbsp; 3. are &nbsp; 4. standing &nbsp; 5. but &nbsp; 6. also &nbsp; 7. sells &nbsp; 8. his &nbsp; 9. acts &nbsp; 10. children
-        </div>
-        
-        <div class="explanation">
-            <strong>解析：</strong><br>
-            1. a. 泛指一个12岁的男孩，且 12 (twelve) 以辅音音素开头，用不定冠词 a。<br>
-            2. healthy. 修饰名词 cupcakes 需用形容词，health 的形容词是 healthy。<br>
-            3. are. 主语 the cupcakes 是复数，be 动词用 are。<br>
-            4. standing. see sb. doing sth. 看见某人正在做某事，用现在分词。<br>
-            5. but. 前后句意转折（喜欢蛋糕但没钱），用 but。<br>
-            6. also. 表示“也”，用于肯定句中，放在实义动词之前。<br>
-            7. sells. 主语 Michael 是第三人称单数，一般现在时用 sells。<br>
-            8. his. 修饰名词 act，用形容词性物主代词 his。<br>
-            9. acts. 结合语境，此处应填名词复数 acts（善举）。<br>
-            10. children. those 后接可数名词复数，child 的复数是 children。
-        </div>
+    <div class="question">
+      <p class="q-text">2. How old was Leng when he started learning the reduction woodcut?</p>
+      <div class="answer">
+        <span class="label">【答案】</span>
+        <p>He was 18 (years old). / He was eighteen.</p>
+      </div>
+      <div class="explanation">
+        <span class="label">【解析】</span>
+        <p>根据"Leng Guangmian, born in 1985"和"Leng started learning it in 2003"，2003 - 1985 = 18岁。注意题目问的是"when he started"时的年龄，要用过去式was。</p>
+      </div>
     </div>
 
-    <!-- 第四部分：阅读六选五 -->
-    <h2>Ⅳ 阅读六选五</h2>
-    <div class="card">
-        <div class="passage">
-            <p>In the new movie <em>Zootopia 2</em>, our favorite team is back! Bunny Judy Hopps and fox Nick Wilde love working together. But their jobs aren't always easy. <u>1</u></p>
-
-            <p>"<u>2</u>" Nick asks. "Of course!" Judy answers. But they need to show it is true.</p>
-
-            <p>A new task gives them a chance. <u>3</u> He <span class="vocab" onclick="toggleVocab(this)">ran away <span class="vocab-content"><div class="vocab-header"><span class="vocab-word">run away</span><button class="audio-btn" onclick="speak('run away', event)">🔊</button></div><div class="vocab-meaning">逃跑</div><div class="vocab-example">Why did Gary <b>run away</b>?</div></span></span>. This takes them to new parts of Zootopia. They find out the city isn't just for <span class="vocab" onclick="toggleVocab(this)">mammals <span class="vocab-content"><div class="vocab-header"><span class="vocab-word">mammal</span><button class="audio-btn" onclick="speak('mammal', event)">🔊</button></div><div class="vocab-meaning">n. 哺乳动物</div><div class="vocab-example">The city isn't just for <b>mammals</b>.</div></span></span> (哺乳动物). <span class="vocab" onclick="toggleVocab(this)">Reptiles <span class="vocab-content"><div class="vocab-header"><span class="vocab-word">reptile</span><button class="audio-btn" onclick="speak('reptile', event)">🔊</button></div><div class="vocab-meaning">n. 爬行动物</div><div class="vocab-example"><b>Reptiles</b> like Gary live here too.</div></span></span> (爬行动物) like Gary live here too, but other animals see them differently.</p>
-
-            <p>People here often think snakes are <span class="vocab" onclick="toggleVocab(this)">scary <span class="vocab-content"><div class="vocab-header"><span class="vocab-word">scary</span><button class="audio-btn" onclick="speak('scary', event)">🔊</button></div><div class="vocab-meaning">adj. 可怕的</div><div class="vocab-example">People here often think snakes are <b>scary</b>.</div></span></span>. Judy and Nick soon learn more about Gary. "<u>4</u> I have to make things right," Gary says.</p>
-
-            <p>Why did Gary run away? <u>5</u> You can find out in the new movie.</p>
-        </div>
-
-        <div class="options" style="grid-template-columns: 1fr;">
-            <div>A. They often have problems, and sometimes the bad guys run off.</div>
-            <div>B. What <span class="vocab" onclick="toggleVocab(this)">secret <span class="vocab-content"><div class="vocab-header"><span class="vocab-word">secret</span><button class="audio-btn" onclick="speak('secret', event)">🔊</button></div><div class="vocab-meaning">n. 秘密</div><div class="vocab-example">What <b>secret</b> is in the city?</div></span></span> (秘密) is in the city?</div>
-            <div>C. Do you think we make a good team?</div>
-            <div>D. He is a clever <span class="vocab" onclick="toggleVocab(this)">officer <span class="vocab-content"><div class="vocab-header"><span class="vocab-word">officer</span><button class="audio-btn" onclick="speak('officer', event)">🔊</button></div><div class="vocab-meaning">n. 警官；军官</div><div class="vocab-example">He is a clever <b>officer</b>.</div></span></span> who works hard every day.</div>
-            <div>E. They have to catch a snake called Gary.</div>
-            <div>F. Snakes aren't bad guys.</div>
-        </div>
-
-        <div class="answer" style="margin-top: 20px;">
-            <strong>答案：</strong>1. A &nbsp; 2. C &nbsp; 3. E &nbsp; 4. F &nbsp; 5. B
-        </div>
-
-        <div class="explanation">
-            <strong>解析：</strong><br>
-            1. A. 前文说“他们的工作并不总是容易的”，A选项（他们经常遇到问题，有时坏人会逃跑）解释了工作不易的原因，衔接自然。<br>
-            2. C. 后文尼克问，朱迪回答“当然”，C选项（你认为我们是一个好团队吗？）是一个问句，符合语境。<br>
-            3. E. 前文提到“一项新任务给了他们一个机会”，E选项（他们必须抓住一条叫加里的蛇）说明了任务的内容，且后文紧接“他逃跑了”。<br>
-            4. F. 前文说“人们通常认为蛇很可怕”，加里说“我必须把事情做对”，F选项（蛇不是坏家伙）符合加里为自己正名的语境。<br>
-            5. B. 前文问“加里为什么逃跑？”，B选项（城市里有什么秘密？）提出新悬念，引导观众去电影中寻找答案。
-        </div>
+    <div class="question">
+      <p class="q-text">3. Why does Leng see making reduction woodcuts as an adventure?</p>
+      <div class="answer">
+        <span class="label">【答案】</span>
+        <p>Because every time he cuts on the wood and then prints, he never knows what it will be like in the end.</p>
+      </div>
+      <div class="explanation">
+        <span class="label">【解析】</span>
+        <p>根据原文"we never know what it will be like in the end"可知，每次刻完印刷后都不知道最终效果会怎样，这种不确定性就是"冒险/奇遇"的感觉。回答Why开头的问题用Because引导原因状语从句。</p>
+      </div>
     </div>
 
-    <!-- 词汇汇总 -->
-    <h2>📚 核心生词与短语汇总 (七年级拓展)</h2>
-    <div class="card">
-        <table>
-            <thead>
-                <tr>
-                    <th>单词/短语</th>
-                    <th>词性及释义</th>
-                    <th>例句</th>
-                    <th>朗读</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>reduction woodcut</strong></td>
-                    <td>n. 绝版木刻</td>
-                    <td>The <b>reduction woodcut</b> can show rich colors.</td>
-                    <td><button class="audio-btn" onclick="speak('The reduction woodcut can show rich colors.', event)">🔊</button></td>
-                </tr>
-                <tr>
-                    <td><strong>layer</strong></td>
-                    <td>n. 层</td>
-                    <td>The artist cuts different <b>layers</b> on the wood.</td>
-                    <td><button class="audio-btn" onclick="speak('The artist cuts different layers on the wood.', event)">🔊</button></td>
-                </tr>
-                <tr>
-                    <td><strong>intangible cultural heritage</strong></td>
-                    <td>n. 非物质文化遗产</td>
-                    <td>We should protect the <b>intangible cultural heritage</b>.</td>
-                    <td><button class="audio-btn" onclick="speak('We should protect the intangible cultural heritage.', event)">🔊</button></td>
-                </tr>
-                <tr>
-                    <td><strong>adventure</strong></td>
-                    <td>n. 冒险；奇遇</td>
-                    <td>Learning a new skill is like an <b>adventure</b>.</td>
-                    <td><button class="audio-btn" onclick="speak('Learning a new skill is like an adventure.', event)">🔊</button></td>
-                </tr>
-                <tr>
-                    <td><strong>theme</strong></td>
-                    <td>n. 主题</td>
-                    <td>What is the <b>theme</b> of this party?</td>
-                    <td><button class="audio-btn" onclick="speak('What is the theme of this party?', event)">🔊</button></td>
-                </tr>
-                <tr>
-                    <td><strong>disappearing / rebuilding</strong></td>
-                    <td>adj. 消失中的 / n. 重建</td>
-                    <td>Many old villages need <b>rebuilding</b>.</td>
-                    <td><button class="audio-btn" onclick="speak('Many old villages need rebuilding.', event)">🔊</button></td>
-                </tr>
-                <tr>
-                    <td><strong>relative</strong></td>
-                    <td>n. 亲戚</td>
-                    <td>We visit our <b>relatives</b> during the Spring Festival.</td>
-                    <td><button class="audio-btn" onclick="speak('We visit our relatives during the Spring Festival.', event)">🔊</button></td>
-                </tr>
-                <tr>
-                    <td><strong>shelter / homeless</strong></td>
-                    <td>n. 收容所 / adj. 无家可归的</td>
-                    <td>He wants to help the <b>homeless</b> kids from the <b>shelter</b>.</td>
-                    <td><button class="audio-btn" onclick="speak('He wants to help the homeless kids from the shelter.', event)">🔊</button></td>
-                </tr>
-                <tr>
-                    <td><strong>make a big difference</strong></td>
-                    <td>产生很大的影响</td>
-                    <td>Your small help can <b>make a big difference</b>.</td>
-                    <td><button class="audio-btn" onclick="speak('Your small help can make a big difference.', event)">🔊</button></td>
-                </tr>
-                <tr>
-                    <td><strong>mammal / reptile</strong></td>
-                    <td>n. 哺乳动物 / 爬行动物</td>
-                    <td><b>Mammals</b> and <b>reptiles</b> live in the city.</td>
-                    <td><button class="audio-btn" onclick="speak('Mammals and reptiles live in the city.', event)">🔊</button></td>
-                </tr>
-                <tr>
-                    <td><strong>run away / secret / officer</strong></td>
-                    <td>逃跑 / 秘密 / 警官</td>
-                    <td>The bad guy <b>ran away</b>, but the <b>officer</b> found his <b>secret</b>.</td>
-                    <td><button class="audio-btn" onclick="speak('The bad guy ran away, but the officer found his secret.', event)">🔊</button></td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="question">
+      <p class="q-text">4. What does Leng want to show with his artwork?</p>
+      <div class="answer">
+        <span class="label">【答案】</span>
+        <p>He wants to show both great woodcutting skills and the culture and life in Pu'er.</p>
+      </div>
+      <div class="explanation">
+        <span class="label">【解析】</span>
+        <p>根据原文"Leng wants his artwork to show both great woodcutting skills and the culture and life in Pu'er"直接提取答案。注意both...and...结构表示"既...又..."。</p>
+      </div>
     </div>
 
+    <div class="question">
+      <p class="q-text">5. What are the two main themes of Leng Guangmian's works?</p>
+      <div class="answer">
+        <span class="label">【答案】</span>
+        <p>Tea Horse Road and disappearing villages.</p>
+      </div>
+      <div class="explanation">
+        <span class="label">【解析】</span>
+        <p>根据原文"there are two themes: Tea Horse Road... and disappearing villages"直接提取。注意themes是复数形式，因为有两个主题。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Part 2 -->
+  <div class="section-card">
+    <div class="section-title"><span class="icon">&#9733;</span> 二、完形填空</div>
+    
+    <div class="passage">
+      <p>We have many festivals all the <span class="vocab-word" data-word="year round">year round</span>. The Spring Festival is our Chinese people's special __1__. It is in January or February.</p>
+      <p>There are twelve different __2__ names for each Chinese year. They are mouse, ox, tiger, rabbit, chicken, dragon... It is the year of horse in 2026.</p>
+      <p>Before the Spring Festival, people are busy __3__ shopping and cleaning their houses. Every family prepares __4__ kinds of food and drinks. On the <span class="vocab-word" data-word="eve">eve</span> of the festival, there is always a big family dinner. People __5__ eating jiaozi. It means "reunion" and "good luck". After dinner all the family __6__ to welcome the new year. We often __7__ TV and play games. On the __8__ day of the lunar new year, people get up early. Young people __9__ their new clothes and greet their parents. Then each child gets money as a new year gift. On the third day of the lunar new year, people go to __10__ their relatives and friends. They say "Happy new year" and give the best wishes to each other. Everyone has a good time.</p>
+    </div>
+
+    <div class="options">
+      <span class="option">1. A. spring &nbsp; B. festival &nbsp; C. season &nbsp; D. month</span>
+      <span class="option">2. A. wish &nbsp; B. luck &nbsp; C. fun &nbsp; D. animal</span>
+      <span class="option">3. A. taking &nbsp; B. going &nbsp; C. building &nbsp; D. making</span>
+      <span class="option">4. A. some &nbsp; B. any &nbsp; C. all &nbsp; D. most</span>
+      <span class="option">5. A. want &nbsp; B. ask &nbsp; C. like &nbsp; D. wish</span>
+      <span class="option">6. A. stay up &nbsp; B. put up &nbsp; C. put away &nbsp; D. put on</span>
+      <span class="option">7. A. look &nbsp; B. watch &nbsp; C. wash &nbsp; D. buy</span>
+      <span class="option">8. A. last &nbsp; B. first &nbsp; C. third &nbsp; D. second</span>
+      <span class="option">9. A. wear &nbsp; B. bring &nbsp; C. see &nbsp; D. take</span>
+      <span class="option">10. A. get &nbsp; B. close &nbsp; C. enjoy &nbsp; D. visit</span>
+    </div>
+
+    <div class="answer-key">
+      <span class="answer-key-item">1. B</span>
+      <span class="answer-key-item">2. D</span>
+      <span class="answer-key-item">3. B</span>
+      <span class="answer-key-item">4. C</span>
+      <span class="answer-key-item">5. C</span>
+      <span class="answer-key-item">6. A</span>
+      <span class="answer-key-item">7. B</span>
+      <span class="answer-key-item">8. B</span>
+      <span class="answer-key-item">9. A</span>
+      <span class="answer-key-item">10. D</span>
+    </div>
+
+    <div class="question">
+      <p class="q-text">1. B. festival</p>
+      <div class="explanation">
+        <span class="label">【解析】</span>
+        <p>句意：春节是我们中国人的特殊节日。festival意为"节日"，符合语境。spring春天、season季节、month月份均不如festival贴切。</p>
+      </div>
+    </div>
+    <div class="question">
+      <p class="q-text">2. D. animal</p>
+      <div class="explanation">
+        <span class="label">【解析】</span>
+        <p>句意：每个中国年有十二个不同的动物名称。后文列举了mouse(鼠)、ox(牛)、tiger(虎)等，这些都是动物，所以选animal(动物)。</p>
+      </div>
+    </div>
+    <div class="question">
+      <p class="q-text">3. B. going</p>
+      <div class="explanation">
+        <span class="label">【解析】</span>
+        <p>be busy doing sth. 忙于做某事。go shopping意为"去购物"，是固定搭配。people are busy going shopping意为"人们忙于去购物"。</p>
+      </div>
+    </div>
+    <div class="question">
+      <p class="q-text">4. C. all</p>
+      <div class="explanation">
+        <span class="label">【解析】</span>
+        <p>all kinds of意为"各种各样的"，是固定搭配。句意：每个家庭准备各种各样的食物和饮料。</p>
+      </div>
+    </div>
+    <div class="question">
+      <p class="q-text">5. C. like</p>
+      <div class="explanation">
+        <span class="label">【解析】</span>
+        <p>句意：人们喜欢吃饺子。like doing sth. 喜欢做某事。want后通常接to do，ask和wish不符合语境。</p>
+      </div>
+    </div>
+    <div class="question">
+      <p class="q-text">6. A. stay up</p>
+      <div class="explanation">
+        <span class="label">【解析】</span>
+        <p>stay up意为"熬夜"，符合春节守岁的习俗。put up(举起/搭建)、put away(收拾)、put on(穿上)均不符合语境。</p>
+      </div>
+    </div>
+    <div class="question">
+      <p class="q-text">7. B. watch</p>
+      <div class="explanation">
+        <span class="label">【解析】</span>
+        <p>watch TV意为"看电视"，是固定搭配。look后需加at才能接宾语，wash(洗)和buy(买)不符合语境。</p>
+      </div>
+    </div>
+    <div class="question">
+      <p class="q-text">8. B. first</p>
+      <div class="explanation">
+        <span class="label">【解析】</span>
+        <p>the first day of the lunar new year意为"农历新年第一天"即正月初一。后文提到"the third day"第三天，形成对比。</p>
+      </div>
+    </div>
+    <div class="question">
+      <p class="q-text">9. A. wear</p>
+      <div class="explanation">
+        <span class="label">【解析】</span>
+        <p>wear意为"穿/戴"，表示穿着的状态。句意：年轻人穿上他们的新衣服给父母拜年。put on强调穿的动作，但此处强调的是穿上新衣的状态。</p>
+      </div>
+    </div>
+    <div class="question">
+      <p class="q-text">10. D. visit</p>
+      <div class="explanation">
+        <span class="label">【解析】</span>
+        <p>visit意为"拜访/看望"。go to visit their relatives and friends意为"去拜访亲戚朋友"，符合春节走亲访友的习俗。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Part 3 -->
+  <div class="section-card">
+    <div class="section-title"><span class="icon">&#9733;</span> 三、语法填空</div>
+    
+    <div class="passage">
+      <p>Michael Platte, __1__ 12-year-old boy, is from the USA. He likes making <span class="vocab-word" data-word="cupcake">cupcakes</span>. His grandma is his teacher. Now he's good __2__ making all kinds of cupcakes. He always makes __3__ (health) cupcakes on Sunday afternoon and takes some to his classmates the next morning. They say the cupcakes __4__ (be) good.</p>
+      <p>One day, Michael sees a boy __5__ (stand) in front of a cake store for about 30 minutes. He is from a <span class="vocab-word" data-word="shelter">shelter</span>. He stands there and watches a big cake. The boy loves it, __6__ he doesn't have money. Michael __7__ wants to help the <span class="vocab-word" data-word="homeless">homeless</span> kids like the boy. Then with the help of his family, Michael has a small cupcake store — Michael's Desserts. When Michael __8__ (sell) one cupcake, he gives $0.5 to the shelter. And every week he gives about $15 to it. It's not much money. But __9__ (he) small act of <span class="vocab-word" data-word="kindness">kindness</span> can make a big <span class="vocab-word" data-word="difference">difference</span> to those __10__ (child).</p>
+    </div>
+
+    <div class="answer-key">
+      <span class="answer-key-item">1. a</span>
+      <span class="answer-key-item">2. at</span>
+      <span class="answer-key-item">3. healthy</span>
+      <span class="answer-key-item">4. are</span>
+      <span class="answer-key-item">5. standing</span>
+      <span class="answer-key-item">6. but</span>
+      <span class="answer-key-item">7. also</span>
+      <span class="answer-key-item">8. sells</span>
+      <span class="answer-key-item">9. his</span>
+      <span class="answer-key-item">10. children</span>
+    </div>
+
+    <div class="question">
+      <p class="q-text">1. a</p>
+      <div class="explanation">
+        <span class="label">【解析】</span>
+        <p>此处表示"一个12岁的男孩"，用不定冠词。12-year-old以辅音音素开头，用a而非an。注意12-year-old是复合形容词，year用单数。</p>
+      </div>
+    </div>
+    <div class="question">
+      <p class="q-text">2. at</p>
+      <div class="explanation">
+        <span class="label">【解析】</span>
+        <p>be good at意为"擅长做某事"，是固定搭配。后接动词-ing形式，即be good at doing sth.</p>
+      </div>
+    </div>
+    <div class="question">
+      <p class="q-text">3. healthy</p>
+      <div class="explanation">
+        <span class="label">【解析】</span>
+        <p>此处需要形容词修饰名词cupcakes。health是名词"健康"，其形容词形式为healthy(健康的)。句意：他总是做健康的纸杯蛋糕。</p>
+      </div>
+    </div>
+    <div class="question">
+      <p class="q-text">4. are</p>
+      <div class="explanation">
+        <span class="label">【解析】</span>
+        <p>主语the cupcakes是复数，且全文时态为一般现在时，所以be动词用are。句意：他们说这些纸杯蛋糕很好吃。</p>
+      </div>
+    </div>
+    <div class="question">
+      <p class="q-text">5. standing</p>
+      <div class="explanation">
+        <span class="label">【解析】</span>
+        <p>see sb. doing sth. 看见某人正在做某事，强调动作正在进行。句意：Michael看见一个男孩正站在蛋糕店前大约30分钟。</p>
+      </div>
+    </div>
+    <div class="question">
+      <p class="q-text">6. but</p>
+      <div class="explanation">
+        <span class="label">【解析】</span>
+        <p>前后句构成转折关系："男孩很喜欢它，但是他没有钱"。but表示转折，意为"但是"。</p>
+      </div>
+    </div>
+    <div class="question">
+      <p class="q-text">7. also</p>
+      <div class="explanation">
+        <span class="label">【解析】</span>
+        <p>also意为"也"，用于肯定句中，放在实义动词之前、be动词之后。句意：Michael也想帮助像那个男孩一样的无家可归的孩子。</p>
+      </div>
+    </div>
+    <div class="question">
+      <p class="q-text">8. sells</p>
+      <div class="explanation">
+        <span class="label">【解析】</span>
+        <p>When引导的时间状语从句，主语Michael是第三人称单数，时态为一般现在时，所以动词用第三人称单数形式sells。</p>
+      </div>
+    </div>
+    <div class="question">
+      <p class="q-text">9. his</p>
+      <div class="explanation">
+        <span class="label">【解析】</span>
+        <p>此处需要形容词性物主代词修饰名词act。he的形容词性物主代词是his(他的)。句意：但他小小的善举能对那些孩子们产生很大的影响。</p>
+      </div>
+    </div>
+    <div class="question">
+      <p class="q-text">10. children</p>
+      <div class="explanation">
+        <span class="label">【解析】</span>
+        <p>those(那些)后接可数名词复数。child的复数形式是不规则变化children。句意：但他小小的善举能对那些孩子们产生很大的影响。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Part 4 -->
+  <div class="section-card">
+    <div class="section-title"><span class="icon">&#9733;</span> 四、阅读六选五</div>
+    
+    <div class="passage">
+      <p>In the new movie Zootopia 2, our favorite team is back! Bunny Judy Hopps and fox Nick Wilde love working together. But their jobs aren't always easy. __1__</p>
+      <p>"__2__," Nick asks. "Of course!" Judy answers. But they need to show it is true.</p>
+      <p>A new task gives them a chance. __3__ He ran away. This takes them to new parts of Zootopia. They find out the city isn't just for mammals. Reptiles like Gary live here too, but other animals see them differently.</p>
+      <p>People here often think snakes are scary. Judy and Nick soon learn more about Gary. "__4__," Gary says.</p>
+      <p>Why did Gary run away? __5__ You can find out in the new movie.</p>
+    </div>
+
+    <div class="options" style="flex-direction: column;">
+      <div class="option" style="width: 100%;">A. They often have problems, and sometimes the bad guys run off.</div>
+      <div class="option" style="width: 100%;">B. What secret is in the city?</div>
+      <div class="option" style="width: 100%;">C. Do you think we make a good team?</div>
+      <div class="option" style="width: 100%;">D. He is a clever officer who works hard every day.</div>
+      <div class="option" style="width: 100%;">E. They have to catch a snake called Gary.</div>
+      <div class="option" style="width: 100%;">F. Snakes aren't bad guys.</div>
+    </div>
+
+    <div class="answer-key">
+      <span class="answer-key-item">1. A</span>
+      <span class="answer-key-item">2. C</span>
+      <span class="answer-key-item">3. E</span>
+      <span class="answer-key-item">4. F</span>
+      <span class="answer-key-item">5. B</span>
+    </div>
+
+    <div class="question">
+      <p class="q-text">1. A</p>
+      <div class="explanation">
+        <span class="label">【解析】</span>
+        <p>前文说"But their jobs aren't always easy"(他们的工作并不总是轻松的)，A选项"They often have problems, and sometimes the bad guys run off"(他们经常遇到问题，有时坏人还会逃跑)是对此的进一步解释，逻辑连贯。</p>
+      </div>
+    </div>
+    <div class="question">
+      <p class="q-text">2. C</p>
+      <div class="explanation">
+        <span class="label">【解析】</span>
+        <p>Nick问了一个问题，Judy回答"Of course!"(当然！)，说明Nick问的是一般疑问句。C选项"Do you think we make a good team?"(你觉得我们是好搭档吗？)符合语境，后文"But they need to show it is true"(但他们需要证明这是真的)也呼应了这一点。</p>
+      </div>
+    </div>
+    <div class="question">
+      <p class="q-text">3. E</p>
+      <div class="explanation">
+        <span class="label">【解析】</span>
+        <p>前文说"A new task gives them a chance"(一个新任务给了他们机会)，E选项"They have to catch a snake called Gary"(他们必须抓住一条叫Gary的蛇)说明了新任务的内容。后文"He ran away"(他逃跑了)中的He指代Gary，衔接自然。</p>
+      </div>
+    </div>
+    <div class="question">
+      <p class="q-text">4. F</p>
+      <div class="explanation">
+        <span class="label">【解析】</span>
+        <p>前文提到"People here often think snakes are scary"(这里的人们经常认为蛇是可怕的)，F选项"Snakes aren't bad guys"(蛇不是坏人)是Gary说的话，用来反驳人们的偏见，逻辑通顺。</p>
+      </div>
+    </div>
+    <div class="question">
+      <p class="q-text">5. B</p>
+      <div class="explanation">
+        <span class="label">【解析】</span>
+        <p>前文问"Why did Gary run away?"(Gary为什么逃跑？)，B选项"What secret is in the city?"(城市里有什么秘密？)作为悬念引出下文"You can find out in the new movie"(你可以在新电影中找到答案)，起到吸引观众的作用。D选项为多余选项。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vocabulary Summary -->
+  <div class="section-card">
+    <div class="section-title"><span class="icon">&#9733;</span> 七年级生词与生短语汇总</div>
+    <p style="color: var(--text-light); margin-bottom: 15px;">以下词汇和短语是根据七年级英语词汇水平识别出的生词，包含词性、中文释义、详细解析及例句。在上方原文中点击橙色下划线词汇也可查看释义。</p>
+    
+    <table class="vocab-table">
+      <thead>
+        <tr>
+          <th style="width:5%;">序号</th>
+          <th style="width:18%;">单词/短语</th>
+          <th style="width:8%;">词性</th>
+          <th style="width:20%;">中文释义</th>
+          <th style="width:25%;">解析</th>
+          <th style="width:24%;">例句</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td class="word-col">woodcut</td>
+          <td><span class="pos">n.</span></td>
+          <td>版画</td>
+          <td>一种艺术形式，用刀在木板或铜板上刻制图像后印刷出来</td>
+          <td>She bought a beautiful woodcut from the art shop.</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td class="word-col">reduction woodcut</td>
+          <td><span class="pos">n.</span></td>
+          <td>绝版木刻</td>
+          <td>一种特殊的木刻技法，在一块板上依次刻印不同颜色，每印一次就"绝"一层版</td>
+          <td>Reduction woodcut is a traditional Chinese art.</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td class="word-col">intangible</td>
+          <td><span class="pos">adj.</span></td>
+          <td>无形的；非遗的</td>
+          <td>来自intangible cultural heritage(非物质文化遗产)，指无法触摸到的文化传统</td>
+          <td>Calligraphy is an intangible cultural heritage.</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td class="word-col">heritage</td>
+          <td><span class="pos">n.</span></td>
+          <td>遗产；传统</td>
+          <td>指祖先传下来的文化、建筑等有价值的东西</td>
+          <td>The Great Wall is part of our cultural heritage.</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td class="word-col">adventure</td>
+          <td><span class="pos">n.</span></td>
+          <td>冒险；奇遇</td>
+          <td>指令人兴奋且不寻常的经历</td>
+          <td>Reading books is a great adventure for me.</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td class="word-col">layer</td>
+          <td><span class="pos">n.</span></td>
+          <td>层；层次</td>
+          <td>指叠加在一起的薄层，复数为layers</td>
+          <td>There are three layers of the cake.</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td class="word-col">theme</td>
+          <td><span class="pos">n.</span></td>
+          <td>主题；题材</td>
+          <td>指作品讨论或围绕的中心思想，复数为themes</td>
+          <td>The theme of this essay is friendship.</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td class="word-col">disappear</td>
+          <td><span class="pos">v.</span></td>
+          <td>消失；不见</td>
+          <td>disappear的现在分词disappearing作形容词用，意为"正在消失的"</td>
+          <td>Some old traditions are disappearing fast.</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td class="word-col">year round</td>
+          <td><span class="pos">phr.</span></td>
+          <td>全年；一年到头</td>
+          <td>相当于all year long，表示整年都如此</td>
+          <td>The park is open year round.</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td class="word-col">lunar</td>
+          <td><span class="pos">adj.</span></td>
+          <td>农历的；月亮的</td>
+          <td>lunar new year指"农历新年"即春节</td>
+          <td>We celebrate the Lunar New Year in spring.</td>
+        </tr>
+        <tr>
+          <td>11</td>
+          <td class="word-col">stay up</td>
+          <td><span class="pos">phr.</span></td>
+          <td>熬夜；不睡觉</td>
+          <td>stay up late/late at night 熬夜到很晚</td>
+          <td>Don't stay up too late before exams.</td>
+        </tr>
+        <tr>
+          <td>12</td>
+          <td class="word-col">all kinds of</td>
+          <td><span class="pos">phr.</span></td>
+          <td>各种各样的</td>
+          <td>相当于all sorts of，后接可数名词复数或不可数名词</td>
+          <td>There are all kinds of flowers in the garden.</td>
+        </tr>
+        <tr>
+          <td>13</td>
+          <td class="word-col">on the eve of</td>
+          <td><span class="pos">phr.</span></td>
+          <td>在...前夕；在...之前</td>
+          <td>eve指"前夜"，常用于节日前夕</td>
+          <td>People prepare food on the eve of Spring Festival.</td>
+        </tr>
+        <tr>
+          <td>14</td>
+          <td class="word-col">reunion</td>
+          <td><span class="pos">n.</span></td>
+          <td>团聚；重聚</td>
+          <td>指亲人朋友分开后重新相聚</td>
+          <td>The Spring Festival is a time for family reunion.</td>
+        </tr>
+        <tr>
+          <td>15</td>
+          <td class="word-col">cupcake</td>
+          <td><span class="pos">n.</span></td>
+          <td>纸杯蛋糕</td>
+          <td>一种小型蛋糕，通常在纸杯中烘烤</td>
+          <td>She baked chocolate cupcakes for the party.</td>
+        </tr>
+        <tr>
+          <td>16</td>
+          <td class="word-col">shelter</td>
+          <td><span class="pos">n.</span></td>
+          <td>收容所；庇护所</td>
+          <td>指为无家可归者或动物提供住所的地方</td>
+          <td>The dog was found at an animal shelter.</td>
+        </tr>
+        <tr>
+          <td>17</td>
+          <td class="word-col">homeless</td>
+          <td><span class="pos">adj.</span></td>
+          <td>无家可归的</td>
+          <td>home(家) + less(无...的) = 无家可归的</td>
+          <td>We should help homeless people.</td>
+        </tr>
+        <tr>
+          <td>18</td>
+          <td class="word-col">kindness</td>
+          <td><span class="pos">n.</span></td>
+          <td>善良；善行</td>
+          <td>kind(善良的) + ness(名词后缀) = 善良</td>
+          <td>Thank you for your kindness.</td>
+        </tr>
+        <tr>
+          <td>19</td>
+          <td class="word-col">make a difference</td>
+          <td><span class="pos">phr.</span></td>
+          <td>产生影响；起作用</td>
+          <td>指某人的行为对某事产生重要影响或改变</td>
+          <td>Small acts of kindness can make a difference.</td>
+        </tr>
+        <tr>
+          <td>20</td>
+          <td class="word-col">mammal</td>
+          <td><span class="pos">n.</span></td>
+          <td>哺乳动物</td>
+          <td>指用乳腺哺育幼崽的动物，如猫、狗、人等</td>
+          <td>Dolphins are mammals, not fish.</td>
+        </tr>
+        <tr>
+          <td>21</td>
+          <td class="word-col">reptile</td>
+          <td><span class="pos">n.</span></td>
+          <td>爬行动物</td>
+          <td>指蛇、蜥蜴、龟等冷血动物</td>
+          <td>Snakes and lizards are reptiles.</td>
+        </tr>
+        <tr>
+          <td>22</td>
+          <td class="word-col">scary</td>
+          <td><span class="pos">adj.</span></td>
+          <td>可怕的；吓人的</td>
+          <td>相当于scary/frightening，形容令人害怕的事物</td>
+          <td>I don't like scary movies.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="footer">
+    <p>课时6 传统文化与时文阅读 — 完整解答与词汇解析</p>
+    <p style="margin-top:5px; font-size:13px;">提示：点击原文中的橙色下划线词汇可查看释义与例句</p>
+  </div>
 </div>
 
 <script>
-    // 控制生词弹窗显示与隐藏
-    function toggleVocab(element) {
-        const content = element.querySelector('.vocab-content');
-        
-        // 关闭其他所有打开的弹窗
-        const allContents = document.querySelectorAll('.vocab-content');
-        allContents.forEach(item => {
-            if (item !== content) {
-                item.classList.remove('active');
-            }
-        });
-
-        // 切换当前弹窗状态
-        content.classList.toggle('active');
-        
-        // 阻止事件冒泡，防止点击弹窗内部时关闭
-        content.onclick = function(e) {
-            e.stopPropagation();
-        };
+document.addEventListener('DOMContentLoaded', function() {
+  const tooltip = document.getElementById('vocabTooltip');
+  const vocabData = {
+    'woodcut': {
+      phonetic: '/ˈwʊdˌkʌt/',
+      meaning: 'n. 版画；木刻',
+      example: 'She bought a beautiful woodcut from the art shop. (她从艺术商店买了一幅漂亮的版画。)'
+    },
+    'reduction woodcut': {
+      phonetic: '/rɪˈdʌkʃn ˈwʊdˌkʌt/',
+      meaning: 'n. 绝版木刻（一种在一块板上依次刻印不同颜色的木刻技法）',
+      example: 'Reduction woodcut became an intangible cultural heritage in 2009. (绝版木刻在2009年成为非物质文化遗产。)'
+    },
+    'intangible cultural heritage': {
+      phonetic: '/ˈɪntændʒəbl ˈkʌltʃərəl ˈherɪtɪdʒ/',
+      meaning: 'n. 非物质文化遗产',
+      example: 'Paper cutting is an important intangible cultural heritage. (剪纸是一项重要的非物质文化遗产。)'
+    },
+    'adventure': {
+      phonetic: '/ədˈventʃər/',
+      meaning: 'n. 冒险；奇遇',
+      example: 'Reading books is a great adventure for children. (阅读对孩子们来说是一场伟大的冒险。)'
+    },
+    'layer': {
+      phonetic: '/ˈleɪər/',
+      meaning: 'n. 层；层次 (复数layers)',
+      example: 'There are three layers of paint on the wall. (墙上有三层油漆。)'
+    },
+    'theme': {
+      phonetic: '/θiːm/',
+      meaning: 'n. 主题；题材 (复数themes)',
+      example: 'The theme of today\'s class is traditional culture. (今天课的主题是传统文化。)'
+    },
+    'disappearing': {
+      phonetic: '/ˌdɪsəˈpɪərɪŋ/',
+      meaning: 'v. 消失 (disappear的现在分词)，作形容词意为"正在消失的"',
+      example: 'Many old traditions are disappearing. (许多古老的传统正在消失。)'
+    },
+    'remember their beauty': {
+      phonetic: '/rɪˈmembər ðeər ˈbjuːti/',
+      meaning: 'phr. 记住它们的美',
+      example: 'I want to remember their beauty forever. (我想永远记住它们的美。)'
+    },
+    'year round': {
+      phonetic: '/jɪr raʊnd/',
+      meaning: 'phr. 全年；一年到头',
+      example: 'The supermarket is open year round. (这家超市全年营业。)'
+    },
+    'eve': {
+      phonetic: '/iːv/',
+      meaning: 'n. 前夕；前夜',
+      example: 'On the eve of Spring Festival, families get together. (在春节前夕，家人们会聚在一起。)'
+    },
+    'cupcake': {
+      phonetic: '/ˈkʌpˌkeɪk/',
+      meaning: 'n. 纸杯蛋糕',
+      example: 'My sister likes making cupcakes very much. (我姐姐非常喜欢做纸杯蛋糕。)'
+    },
+    'shelter': {
+      phonetic: '/ˈʃeltər/',
+      meaning: 'n. 收容所；庇护所',
+      example: 'The shelter provides food and beds for homeless dogs. (收容所为无家可归的狗提供食物和床。)'
+    },
+    'homeless': {
+      phonetic: '/ˈhoʊmləs/',
+      meaning: 'adj. 无家可归的',
+      example: 'We should try to help homeless people. (我们应该尽力帮助无家可归的人。)'
+    },
+    'kindness': {
+      phonetic: '/ˈkaɪndnəs/',
+      meaning: 'n. 善良；善行',
+      example: 'Her kindness touched everyone in the room. (她的善良感动了房间里的每个人。)'
+    },
+    'difference': {
+      phonetic: '/ˈdɪfərəns/',
+      meaning: 'n. 差异；影响 (make a difference意为"产生影响")',
+      example: 'Reading books can make a big difference to your life. (读书可以对你的生活产生很大的影响。)'
+    },
+    'mammal': {
+      phonetic: '/ˈmæməl/',
+      meaning: 'n. 哺乳动物 (复数mammals)',
+      example: 'Whales are mammals, not fish. (鲸鱼是哺乳动物，不是鱼。)'
+    },
+    'reptile': {
+      phonetic: '/ˈreptlaɪl/',
+      meaning: 'n. 爬行动物 (复数reptiles)',
+      example: 'Snakes and lizards are reptiles. (蛇和蜥蜴都是爬行动物。)'
+    },
+    'scary': {
+      phonetic: '/ˈskeəri/',
+      meaning: 'adj. 可怕的；吓人的',
+      example: 'I don\'t like scary movies because they make me afraid. (我不喜欢恐怖电影因为它们让我害怕。)'
+    },
+    'woodcutting skills': {
+      phonetic: '/ˈwʊdˌkʌtɪŋ skɪlz/',
+      meaning: 'phr. 雕刻技巧；木刻技艺',
+      example: 'The artist showed great woodcutting skills in his work. (这位艺术家在他的作品中展示了高超的木刻技艺。)'
     }
+  };
 
-    // 点击页面其他区域关闭弹窗
-    document.addEventListener('click', function() {
-        const allContents = document.querySelectorAll('.vocab-content');
-        allContents.forEach(item => {
-            item.classList.remove('active');
-        });
+  document.querySelectorAll('.vocab-word').forEach(function(wordEl) {
+    wordEl.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      const wordKey = this.getAttribute('data-word');
+      const data = vocabData[wordKey];
+      
+      if (data) {
+        tooltip.innerHTML = 
+          '<div class="word">' + wordKey + '</div>' +
+          '<div class="phonetic">' + data.phonetic + '</div>' +
+          '<div class="meaning">' + data.meaning + '</div>' +
+          '<div class="example">' + data.example + '</div>';
+        
+        tooltip.classList.add('active');
+        
+        const rect = wordEl.getBoundingClientRect();
+        let top = rect.bottom + window.scrollY + 8;
+        let left = rect.left + window.scrollX;
+        
+        const tooltipRect = tooltip.getBoundingClientRect();
+        if (left + tooltipRect.width > window.innerWidth - 20) {
+          left = window.innerWidth - tooltipRect.width - 20;
+        }
+        if (left < 10) left = 10;
+        
+        tooltip.style.top = top + 'px';
+        tooltip.style.left = left + 'px';
+      }
     });
+  });
 
-    // 在线语音朗读功能
-    function speak(text, event) {
-        // 阻止事件冒泡，避免触发其他点击事件
-        if(event) {
-            event.stopPropagation();
-        }
-        
-        if ('speechSynthesis' in window) {
-            // 停止当前正在播放的语音
-            window.speechSynthesis.cancel();
-            
-            const utterance = new SpeechSynthesisUtterance(text);
-            utterance.lang = 'en-US'; // 设置为美式英语
-            utterance.rate = 0.9; // 稍微放慢语速，便于学习
-            
-            // 选择英语发音的语音包
-            const voices = window.speechSynthesis.getVoices();
-            const enVoice = voices.find(voice => voice.lang.includes('en-US') || voice.lang.includes('en-GB'));
-            if (enVoice) {
-                utterance.voice = enVoice;
-            }
-            
-            window.speechSynthesis.speak(utterance);
-        } else {
-            alert("您的浏览器不支持语音朗读功能，请使用最新版的 Chrome、Edge 或 Safari 浏览器。");
-        }
-    }
+  document.addEventListener('click', function() {
+    tooltip.classList.remove('active');
+  });
 
-    // 预加载语音包（部分浏览器需要）
-    window.speechSynthesis.onvoiceschanged = function() {
-        window.speechSynthesis.getVoices();
-    };
+  window.addEventListener('scroll', function() {
+    tooltip.classList.remove('active');
+  });
+});
 </script>
 
 </body>
