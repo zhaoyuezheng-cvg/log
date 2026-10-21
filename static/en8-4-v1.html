@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>7年级英语 · 8-4 培优题 精读精讲</title>
+<style>
+  :root{
+    --bg:#eef1f8;--bg2:#e6ebf5;--card:#ffffff;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;
+    --line:#e5e7eb;--brand:#4f46e5;--brand-2:#0d9488;--brand-soft:rgba(79,70,229,.08);
+    --accent:#f59e0b;--accent-soft:#fef3c7;--ok:#16a34a;--ok-soft:rgba(22,163,74,.10);--rose:#e11d48;
+    --shadow:0 10px 30px rgba(30,41,59,.10);--shadow-sm:0 4px 14px rgba(30,41,59,.08);--radius:18px;
+    --font:"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",system-ui,-apple-system,sans-serif;
+  }
+  body.dark{
+    --bg:#0f172a;--bg2:#0b1220;--card:#131c31;--ink:#e5edf7;--ink2:#cbd5e1;--muted:#94a3b8;
+    --line:#243049;--brand:#818cf8;--brand-2:#2dd4bf;--brand-soft:rgba(129,140,248,.14);
+    --accent:#fbbf24;--accent-soft:rgba(251,191,36,.16);--ok:#4ade80;--ok-soft:rgba(74,222,128,.12);
+    --rose:#fb7185;--shadow:0 10px 30px rgba(0,0,0,.45);--shadow-sm:0 4px 14px rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:var(--font);color:var(--ink);
+    background:radial-gradient(1100px 500px at 12% -10%, rgba(79,70,229,.16), transparent 60%),
+      radial-gradient(900px 480px at 100% 0%, rgba(13,148,136,.14), transparent 55%),
+      linear-gradient(180deg,var(--bg),var(--bg2));
+    min-height:100vh;line-height:1.75;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 18px 60px}
+  header.hero{position:relative;overflow:hidden;border-radius:0 0 30px 30px;
+    background:linear-gradient(135deg,#4f46e5 0%,#6d28d9 45%,#0d9488 100%);color:#fff;
+    padding:42px 26px 34px;margin-bottom:22px;box-shadow:var(--shadow);}
+  header.hero::after{content:"";position:absolute;inset:0;opacity:.35;
+    background-image:radial-gradient(rgba(255,255,255,.35) 1px,transparent 1px);
+    background-size:22px 22px;mask-image:linear-gradient(180deg,rgba(0,0,0,.6),transparent 75%);}
+  .hero-in{position:relative;z-index:2;max-width:1080px;margin:0 auto}
+  .kicker{display:inline-flex;align-items:center;gap:8px;font-size:.82rem;letter-spacing:.12em;
+    text-transform:uppercase;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);
+    padding:6px 14px;border-radius:999px;backdrop-filter:blur(6px)}
+  h1{margin:16px 0 8px;font-size:clamp(1.5rem,4vw,2.15rem);line-height:1.3;letter-spacing:.01em}
+  h1 .sub{display:block;font-size:.55em;font-weight:500;opacity:.9;margin-top:8px;letter-spacing:.02em}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+  .chip{font-size:.78rem;padding:5px 12px;border-radius:999px;background:rgba(255,255,255,.16);
+    border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(6px)}
+  .hero-note{margin-top:16px;font-size:.85rem;opacity:.9;max-width:760px;line-height:1.7}
+  .toolbar{position:sticky;top:0;z-index:60;display:flex;flex-wrap:wrap;gap:8px;align-items:center;
+    padding:10px 12px;margin:0 0 20px;border-radius:14px;
+    background:color-mix(in srgb,var(--card) 88%,transparent);
+    border:1px solid var(--line);box-shadow:var(--shadow-sm);backdrop-filter:blur(10px);}
+  .toolbar .grow{flex:1}
+  .tool-btn{font-family:inherit;font-size:.82rem;font-weight:600;color:var(--ink);
+    background:var(--brand-soft);border:1px solid transparent;border-radius:10px;
+    padding:8px 13px;cursor:pointer;transition:.18s;display:inline-flex;align-items:center;gap:6px;}
+  .tool-btn:hover{transform:translateY(-1px);box-shadow:var(--shadow-sm)}
+  .tool-btn.on{background:var(--brand);color:#fff}
+  .tool-btn.ghost{background:transparent;border-color:var(--line)}
+  .navlinks{display:flex;gap:6px;flex-wrap:wrap}
+  .navlinks a{font-size:.82rem;font-weight:600;text-decoration:none;color:var(--brand);
+    padding:7px 11px;border-radius:9px;border:1px solid var(--line);background:transparent;transition:.18s;white-space:nowrap}
+  .navlinks a:hover{background:var(--brand-soft)}
+  section.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);padding:26px 26px 30px;margin-bottom:26px;position:relative;overflow:hidden;
+    animation:rise .5s ease both;}
+  @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  section.card::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;
+    background:linear-gradient(90deg,var(--brand),var(--brand-2))}
+  .sec-head{display:flex;align-items:flex-start;gap:14px;flex-wrap:wrap;margin-bottom:6px}
+  .sec-no{flex:0 0 auto;width:44px;height:44px;border-radius:13px;display:grid;place-items:center;
+    font-weight:800;font-size:1.15rem;color:#fff;background:linear-gradient(135deg,var(--brand),var(--brand-2));
+    box-shadow:0 6px 16px rgba(79,70,229,.35)}
+  .sec-title{margin:0;font-size:1.3rem}
+  .sec-title small{display:block;font-weight:500;color:var(--muted);font-size:.8rem;margin-top:3px}
+  .sec-meta{display:flex;flex-wrap:wrap;gap:7px;margin:14px 0 4px}
+  .badge{font-size:.75rem;font-weight:600;padding:4px 11px;border-radius:999px;
+    background:var(--brand-soft);color:var(--brand);border:1px solid transparent}
+  .badge.warm{background:var(--accent-soft);color:#b45309}
+  .badge.gray{background:color-mix(in srgb,var(--muted) 14%,transparent);color:var(--muted)}
+  .badge.ok{background:var(--ok-soft);color:var(--ok)}
+  .lead{color:var(--muted);font-size:.92rem;margin:10px 0 18px}
+  .passage{background:linear-gradient(180deg,color-mix(in srgb,var(--brand) 5%,var(--card)),var(--card));
+    border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:8px 0 18px;
+    font-size:1.06rem;line-height:2.05;letter-spacing:.005em;}
+  .passage p{margin:0 0 14px}
+  .passage p:last-child{margin-bottom:0}
+  .passage .tag{font-size:.72em;color:var(--muted);vertical-align:super}
+  .passage .h{font-weight:800;color:var(--brand)}
+  .passage .sign{color:var(--muted);font-size:.95rem}
+  .w{position:relative;cursor:pointer;color:inherit;border-radius:3px;padding:0 1px;
+    border-bottom:2px solid var(--accent);background:linear-gradient(transparent 60%,var(--accent-soft) 60%);
+    transition:.15s;white-space:nowrap;}
+  .w:hover{filter:brightness(.96);box-shadow:0 2px 0 -1px var(--accent)}
+  .w.active{background:var(--accent);color:#3b2a04;border-bottom-color:#b45309}
+  .gloss{display:none}
+  body.showall .gloss{display:inline;font-size:.8em;color:var(--brand-2);font-weight:600;
+    padding:0 3px;border-bottom:0;white-space:normal}
+  .blank{display:inline-block;min-width:2.4em;text-align:center;font-weight:800;color:var(--brand);
+    background:var(--brand-soft);border-bottom:2px solid var(--brand);border-radius:6px 6px 3px 3px;
+    padding:0 8px;margin:0 2px;cursor:pointer;transition:.15s;font-size:.94em;}
+  .blank:hover{background:color-mix(in srgb,var(--brand) 18%,transparent)}
+  .blank b{font-weight:800}
+  .blank i{display:none;font-style:normal;color:var(--ok);font-weight:800}
+  .blank.open{background:var(--ok-soft);border-bottom-color:var(--ok);color:var(--ok)}
+  .blank.open b{display:none}
+  .blank.open i{display:inline}
+  body.showans .blank{background:var(--ok-soft);border-bottom-color:var(--ok);color:var(--ok)}
+  body.showans .blank b{display:none}
+  body.showans .blank i{display:inline}
+  #pop{position:absolute;z-index:200;width:min(330px,88vw);background:var(--card);
+    border:1px solid var(--line);border-top:4px solid var(--accent);border-radius:14px;
+    box-shadow:0 18px 45px rgba(15,23,42,.28);padding:14px 16px;display:none;}
+  #pop.show{display:block;animation:pop .18s ease}
+  @keyframes pop{from{opacity:0;transform:translateY(6px) scale(.98)}to{opacity:1;transform:none}}
+  #pop .pw{font-size:1.12rem;font-weight:800;color:var(--ink);display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+  #pop .pph{font-size:.82rem;color:var(--brand-2);font-weight:600}
+  #pop .pcn{margin-top:7px;font-size:1rem;font-weight:700;color:var(--brand)}
+  #pop .pnote{margin-top:7px;font-size:.86rem;color:var(--muted);line-height:1.65}
+  #pop .pex{margin-top:10px;padding-top:9px;border-top:1px dashed var(--line);font-size:.9rem}
+  #pop .pex b{color:var(--brand-2)}
+  #pop .pex .cn{color:var(--muted);font-size:.85rem;display:block;margin-top:3px}
+  .pos{display:inline-block;font-size:.72rem;font-weight:700;color:#fff;background:var(--brand-2);
+    border-radius:6px;padding:2px 8px;margin-left:2px}
+  .qstem{font-weight:700;color:var(--ink);margin:2px 0 6px;font-size:1.02rem}
+  .qopts{margin:2px 0 0;padding-left:2px;color:var(--muted);font-size:.92rem}
+  .qopts div{margin:3px 0}
+  .qopts .picked{color:var(--ok);font-weight:800}
+  h3.ans-h{margin:26px 0 12px;font-size:1.05rem;display:flex;align-items:center;gap:9px}
+  h3.ans-h::before{content:"";width:10px;height:10px;border-radius:3px;background:var(--ok);display:inline-block}
+  .ans-list{display:grid;gap:10px}
+  .ans-item{border:1px solid var(--line);border-left:4px solid var(--ok);border-radius:12px;
+    padding:12px 15px;background:color-mix(in srgb,var(--ok) 4%,var(--card))}
+  .ans-item .top{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+  .ans-item .num{font-weight:800;color:var(--ok)}
+  .ans-item .key{font-weight:800;font-size:1.05rem;color:var(--ink);background:var(--ok-soft);
+    padding:1px 10px;border-radius:7px}
+  .ans-item .kt{font-size:.72rem;font-weight:700;color:#fff;background:var(--brand);border-radius:6px;padding:2px 8px}
+  .ans-item ul{margin:8px 0 0;padding-left:20px;color:var(--muted);font-size:.9rem}
+  .ans-item ul li{margin:3px 0}
+  .ans-item .sent{font-size:.92rem;color:var(--ink2);margin-top:6px}
+  .vgroup{margin-top:18px}
+  .vgroup > h3{margin:0 0 10px;font-size:1.02rem;color:var(--brand);display:flex;gap:9px;align-items:center}
+  .vgroup > h3 .dot{width:9px;height:9px;border-radius:50%;background:var(--brand-2)}
+  .vcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px}
+  .vcard{border:1px solid var(--line);border-radius:13px;padding:13px 15px;background:var(--card);
+    box-shadow:var(--shadow-sm);transition:.18s;position:relative;overflow:hidden}
+  .vcard::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--accent)}
+  .vcard:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+  .vcard .hw{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+  .vcard .en{font-weight:800;font-size:1.04rem;color:var(--ink)}
+  .vcard .ph{font-size:.8rem;color:var(--brand-2);font-weight:600}
+  .vcard .cn{margin-top:5px;font-weight:700;color:var(--brand);font-size:.98rem}
+  .vcard .nt{margin-top:5px;font-size:.84rem;color:var(--muted);line-height:1.6}
+  .vcard .ex{margin-top:8px;font-size:.88rem;border-top:1px dashed var(--line);padding-top:8px}
+  .vcard .ex .ecn{display:block;color:var(--muted);font-size:.82rem;margin-top:2px}
+  .callout{border:1px dashed var(--accent);background:var(--accent-soft);border-radius:12px;
+    padding:12px 15px;font-size:.9rem;color:#92400e;margin:12px 0}
+  body.dark .callout{color:#fcd34d}
+  details.more{margin-top:14px;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  details.more>summary{cursor:pointer;padding:11px 15px;font-weight:700;color:var(--brand);
+    background:var(--brand-soft);list-style:none;display:flex;justify-content:space-between;align-items:center}
+  details.more>summary::-webkit-details-marker{display:none}
+  details.more>summary::after{content:"▾";transition:.2s;font-size:.9em}
+  details.more[open]>summary::after{transform:rotate(180deg)}
+  details.more .body{padding:14px 16px;font-size:.95rem;line-height:1.9;color:var(--ink2)}
+  details.more .body p{margin:0 0 10px}
+  footer{text-align:center;color:var(--muted);font-size:.82rem;padding:26px 10px 10px;line-height:1.8}
+  kbd{background:var(--brand-soft);border-radius:5px;padding:1px 6px;font-size:.8em;font-weight:700;color:var(--brand)}
+  header.hero kbd{background:rgba(255,255,255,.22);color:#fff;border:1px solid rgba(255,255,255,.45);white-space:nowrap}
+  @media (max-width:560px){
+    section.card{padding:18px 15px 22px}
+    .passage{padding:15px 14px;font-size:1rem;line-height:1.95}
+    header.hero{padding:30px 18px 26px;border-radius:0 0 22px 22px}
+    .vcards{grid-template-columns:1fr}
+    .sec-no{width:38px;height:38px;font-size:1rem}
+  }
+  @media print{
+    .toolbar,#pop{display:none!important}.spk{display:none!important}body{background:#fff}
+    section.card{box-shadow:none;break-inside:avoid}
+    .w{border-bottom:1px solid #d97706;background:none}
+    body:not(.showall) .gloss{display:inline;color:#0d9488}
+  }
+  .spk{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border:none;border-radius:50%;
+    background:var(--brand-soft);color:var(--brand);cursor:pointer;font-size:.95rem;line-height:1;transition:.15s;flex:0 0 auto}
+  .spk:hover{background:var(--brand);color:#fff;transform:scale(1.08)}
+  .spk:active{transform:scale(.94)}
+  .pw .spk{margin-left:auto;align-self:center}.hw .spk{margin-left:auto}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-in">
+    <span class="kicker">✦ 初中英语 · 话题阅读精讲</span>
+    <h1>8-4 培优题 · 精读精讲
+      <span class="sub">七年级英语 · 完形 / 语法 / 阅读 / 作文 · 生词短语全解</span>
+    </h1>
+    <div class="hero-meta">
+      <span class="chip">5 个大题</span>
+      <span class="chip">20 题 + 10 空 + 9 简答</span>
+      <span class="chip">60+ 生词短语</span>
+      <span class="chip">含答案 · 逐题解析 · 例句</span>
+    </div>
+    <p class="hero-note">
+      页面把每篇语篇中的<b>生词与生短语</b>用<span style="border-bottom:2px solid #fbbf24;background:linear-gradient(transparent 60%,rgba(254,243,199,.55) 60%)">黄线下划线</span>标出——<b>点击任意划线词</b>即可弹出释义、读音、用法与例句；也可用上方按钮 <kbd>显示全部释义</kbd> 一键对照阅读。<b>点击文中序号</b>可直观显示答案。
+    </p>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="toolbar">
+    <div class="navlinks">
+      <a href="#cloze">一 · 完形填空</a>
+      <a href="#grammar">二 · 语法填空</a>
+      <a href="#shortread">三 · 阅读短文</a>
+      <a href="#rcA">四 · 阅读理解</a>
+      <a href="#writing">五 · 作文</a>
+      <a href="#vocab">生词汇总</a>
+    </div>
+    <span class="grow"></span>
+    <button class="tool-btn" id="btnAllWords" type="button">👁 显示全部释义</button>
+    <button class="tool-btn ghost" id="btnAllAns" type="button">✅ 显示全部答案</button>
+    <button class="tool-btn ghost" id="btnTheme" type="button">🌙 夜间</button>
+  </div>
+
+  <!-- ============ 一、完形填空 ============ -->
+  <section class="card" id="cloze">
+    <div class="sec-head">
+      <div class="sec-no">一</div>
+      <div><h2 class="sec-title">完形填空 <small>从每小题所给的 A、B、C、D 四个选项中选出一个最佳选项。</small></h2></div>
+    </div>
+    <div class="sec-meta">
+      <span class="badge">主题：人与社会——家庭生活</span>
+      <span class="badge gray">体裁：应用文（书信）</span>
+      <span class="badge gray">词数：约 150</span>
+      <span class="badge warm">难度 ★★☆☆☆</span>
+      <span class="badge ok">答案见下</span>
+    </div>
+
+    <article class="passage" id="passageCloze">
+      <p class="sign">Dear Lucy,</p>
+      <p>It’s eight o’clock in the <span class="blank" data-n="1"><b>1</b><i>evening</i></span> in Beijing now. What <span class="blank" data-n="2"><b>2</b><i>time</i></span> is it in your city London? Now let me <span class="w" data-k="tellabout">tell you about</span> what my family are doing now. I have a big family <span class="w" data-k="familywith">with</span> six people. They are my <span class="w" data-k="grandparent">grandparents</span>, my parents, my sister Lingling and me.</p>
+      <p>My grandfather and my father are studying. They are <span class="blank" data-n="3"><b>3</b><i>playing</i></span> chess there. My grandmother is in the <span class="w" data-k="livingroom">living room</span>. She is watching TV. What about my mother? She is sitting at the desk. She’s <span class="blank" data-n="4"><b>4</b><i>working on</i></span> her work <span class="w" data-k="ontheinternet">on the internet</span>. She also likes shopping <span class="blank" data-n="5"><b>5</b><i>online</i></span>. And my sister? She is <span class="blank" data-n="6"><b>6</b><i>calling</i></span> <span class="w" data-k="onthephone">on the phone</span>. Actually, she’s <span class="w" data-k="talkabout">talking about</span> <span class="blank" data-n="7"><b>7</b><i>a few</i></span> maths problems with her friend. She always <span class="w" data-k="workhard">works hard at</span> her lessons.</p>
+      <p>What am I doing? Of course, I am <span class="blank" data-n="8"><b>8</b><i>writing to</i></span> you. What a happy family I have got! What are your family doing now? Please <span class="w" data-k="writeback">write back</span> soon.</p>
+      <p class="sign">Yours,<br>Zhao Li</p>
+    </article>
+
+    <details class="more">
+      <summary>📖 参考译文（点击展开）</summary>
+      <div class="body">
+        <p>亲爱的露西：现在是北京晚上八点。你的城市伦敦现在几点？现在让我告诉你我家人都正在做什么。我有一个六口之家。他们是我的祖父母、父母、姐姐玲玲和我。</p>
+        <p>我爷爷和我爸爸正在学习。他们正在那里下棋。我奶奶在客厅。她正在看电视。我妈妈呢？她正坐在书桌旁，在网上忙她的工作。她也喜欢网上购物。那我姐姐呢？她正在通电话。其实，她正和朋友讨论几道数学题。她学习总是很努力。</p>
+        <p>我正在做什么？我当然是在给你写信。我有一个多么幸福的家庭啊！你的家人现在在做什么？请尽快回信。</p>
+        <p class="sign">你的，赵丽</p>
+      </div>
+    </details>
+
+    <h3 class="ans-h">题目与选项</h3>
+    <div class="ans-list" id="qCloze"></div>
+    <h3 class="ans-h">答案与详解</h3>
+    <div class="ans-list" id="ansCloze"></div>
+  </section>
+
+  <!-- ============ 二、语法填空 ============ -->
+  <section class="card" id="grammar">
+    <div class="sec-head">
+      <div class="sec-no">二</div>
+      <div><h2 class="sec-title">语法填空 <small>阅读短文，在空白处填入适当单词或括号内单词的正确形式。</small></h2></div>
+    </div>
+    <div class="sec-meta">
+      <span class="badge">主题：人与社会——人际交往</span>
+      <span class="badge gray">体裁：记叙文</span>
+      <span class="badge gray">词数：约 140</span>
+      <span class="badge warm">难度 ★★★☆☆</span>
+      <span class="badge ok">答案见下</span>
+    </div>
+
+    <article class="passage" id="passageGrammar">
+      <p>“Look! The girl <span class="blank" data-n="1"><b>1</b><i>is wearing</i></span> (wear) a funny dress!” Lily said to her friend Nancy <span class="w" data-k="onone'sway">on their way to</span> school by bike. She <span class="w" data-k="laughat">laughed</span> loudly. Nancy <span class="w" data-k="remind">reminded</span> Lily that it wasn’t <span class="w" data-k="polite">polite</span> <span class="blank" data-n="2"><b>2</b><i>to say</i></span> (say) so. However, Lily <span class="w" data-k="keepdoing">kept laughing</span>.</p>
+      <p><span class="blank" data-n="3"><b>3</b><i>Suddenly</i></span> (sudden), Lily <span class="w" data-k="losecontrol">lost control of</span> her bike. Her bike hit Nancy’s bike. They both fell, and Lily hurt her foot <span class="w" data-k="badly">badly</span>. Their schoolbags, bottles and lunch boxes <span class="w" data-k="getoutof">got out of</span> the bike baskets and <span class="blank" data-n="4"><b>4</b><i>rolled</i></span> (roll) everywhere.</p>
+      <p>A girl nearby <span class="w" data-k="rushto">rushed to</span> help. “Are you okay?” she asked. Seeing Lily’s foot, she added, “Let me push your bike to school and take you to the <span class="w" data-k="schoolclinic">school clinic</span>.” She also helped Lily and Nancy <span class="w" data-k="pickup">pick up</span> <span class="blank" data-n="5"><b>5</b><i>their</i></span> (they) things. Lily and Nancy were very <span class="blank" data-k="thankful" data-n="6"><b>6</b><i>thankful</i></span> (thank) to the girl.</p>
+      <p>When Lily looked at the girl, she realized the girl was the one she had laughed at. Her face turned red. “I’m sorry,” she said to the girl. “I laughed at you <span class="blank" data-n="7"><b>7</b><i>but</i></span> you still decided to help me.”</p>
+      <p>The girl smiled and said, “It’s okay. Just <span class="w" data-k="bekindto">be kind to</span> <span class="blank" data-n="8"><b>8</b><i>others</i></span> (other) next time.”</p>
+      <p>Lily learned something important from <span class="blank" data-n="9"><b>9</b><i>her</i></span> (she) experience. She should <span class="w" data-k="respect">respect</span> <span class="blank" data-k="stranger" data-n="10"><b>10</b><i>strangers</i></span> (strange) and shouldn’t laugh at others.</p>
+    </article>
+
+    <details class="more">
+      <summary>📖 参考译文（点击展开）</summary>
+      <div class="body">
+        <p>“看！那个女孩穿着一条滑稽的裙子！”莉莉在和朋友南希骑车上学的路上大声说。她大声笑了起来。南希提醒莉莉这样说不礼貌。然而，莉莉一直笑个不停。</p>
+        <p>突然，莉莉失去了对自行车的控制。她的车撞上了南希的车。两人都摔倒了，莉莉的脚伤得很重。她们的书包、水瓶和饭盒从车篮里掉了出来，滚得到处都是。</p>
+        <p>附近的一个女孩冲过来帮忙。“你还好吗？”她问。看到莉莉的脚，她又说：“让我把你的车推到学校，带你去校医室吧。”她还帮莉莉和南希捡起她们的东西。莉莉和南希非常感激这个女孩。</p>
+        <p>当莉莉看着这个女孩时，她意识到这正是自己嘲笑过的那个人。她的脸红了。“对不起，”她对女孩说，“我嘲笑你，可你还是决定帮我。”</p>
+        <p>女孩微笑着说：“没关系。下次对别人友善一点就好。”</p>
+        <p>莉莉从这次经历中学到了重要的东西。她应该尊重陌生人，不该嘲笑别人。</p>
+      </div>
+    </details>
+
+    <h3 class="ans-h">答案与详解</h3>
+    <div class="ans-list" id="ansGrammar"></div>
+  </section>
+
+  <!-- ============ 三、阅读短文 ============ -->
+  <section class="card" id="shortread">
+    <div class="sec-head">
+      <div class="sec-no">三</div>
+      <div><h2 class="sec-title">阅读短文 · 宁波博物馆 <small>阅读短文，根据要求回答下面各小题。</small></h2></div>
+    </div>
+    <div class="sec-meta">
+      <span class="badge">主题：人与社会——文化场馆</span>
+      <span class="badge gray">体裁：说明文</span>
+      <span class="badge gray">词数：约 130</span>
+      <span class="badge warm">难度 ★★☆☆☆</span>
+      <span class="badge ok">答案见下</span>
+    </div>
+
+    <article class="passage" id="passageShort">
+      <p><span class="w" data-k="museum">Ningbo Museum</span> is in the city of Ningbo, Zhejiang. More people know the museum after it <span class="w" data-k="appear">appeared</span> in the TV series <i>Three-Body</i> (《三体》).</p>
+      <p>Ningbo Museum <span class="w" data-k="looklike">looks like</span> mountains. But if you see it in the sky, it looks like a large boat. It is one of the <span class="w" data-k="symbol">symbols</span> of the city.</p>
+      <p>The museum isn’t very old. It <span class="w" data-k="opento">opened to visitors</span> on December 5th, 2008. In the museum, you can <span class="w" data-k="learnabout">learn about</span> the <span class="w" data-k="culture">culture</span>, history and art of Ningbo. The museum has a <span class="w" data-k="collection">collection of</span> more than 60,000 <span class="w" data-k="exhibit">exhibits</span><span class="tag">（展品）</span>. If you want to learn about Ningbo, just start from Ningbo Museum.</p>
+      <p>Ningbo Museum is open from Tuesday to Sunday. Visitors can stay in it between 9:00 am and 5:00 pm. But after 4:00 pm, they can’t go into the museum.</p>
+      <p><span class="w" data-k="acrossfrom">Across from</span> the museum is the Yinzhou Park. It is a popular place in Ningbo, too. With its trees, flowers and water, the park is a place for people to <span class="w" data-k="relax">relax</span>. It’s a good idea to visit the park after leaving Ningbo Museum.</p>
+    </article>
+
+    <details class="more">
+      <summary>📖 参考译文（点击展开）</summary>
+      <div class="body">
+        <p>宁波博物馆位于浙江省宁波市。自从它出现在电视剧《三体》中后，更多人知道了这座博物馆。</p>
+        <p>宁波博物馆看起来像群山。但从空中看，它像一艘大船。它是这座城市的象征之一。</p>
+        <p>这座博物馆不算很古老。它于 2008 年 12 月 5 日对游客开放。在博物馆里，你可以了解宁波的文化、历史和艺术。馆藏展品超过 6 万件。想了解宁波，就从宁波博物馆开始吧。</p>
+        <p>宁波博物馆从周二到周日开放。游客可以在上午 9 点到下午 5 点之间停留。但下午 4 点以后就不能进入了。</p>
+        <p>博物馆对面是鄞州公园。它在宁波也很受欢迎。这里有树、有花、有水，是人们放松的好去处。离开宁波博物馆后去公园走走是个好主意。</p>
+      </div>
+    </details>
+
+    <h3 class="ans-h">答案与详解</h3>
+    <div class="ans-list" id="ansShort"></div>
+  </section>
+
+  <!-- ============ 四、阅读理解 A ============ -->
+  <section class="card" id="rcA">
+    <div class="sec-head">
+      <div class="sec-no">A</div>
+      <div><h2 class="sec-title">阅读理解 A · 春节 <small>从每小题所给的 A、B、C、D 四个选项中选出一个最佳选项。</small></h2></div>
+    </div>
+    <div class="sec-meta">
+      <span class="badge">主题：人与社会——节日习俗</span>
+      <span class="badge gray">体裁：说明文</span>
+      <span class="badge gray">词数：约 130</span>
+      <span class="badge warm">难度 ★★☆☆☆</span>
+      <span class="badge ok">答案见下</span>
+    </div>
+
+    <article class="passage" id="passageRcA">
+      <p><span class="w" data-k="springfestival">The Spring Festival</span> is coming <span class="w" data-k="intwoweeks">in two weeks</span>. Li Tong’s family are <span class="w" data-k="getreadyfor">getting ready for</span> it. Her father is shopping <span class="w" data-k="atthemarket">at the market</span>. He will buy vegetables, meat and many other things. Li Tong’s mother takes her to the <span class="w" data-k="clothesstore">clothes store</span>. She will buy new clothes for the family. Li Tong likes a new skirt. She is <span class="w" data-k="tryon">trying it on</span> now. How beautiful she looks! The skirt is 150 yuan.</p>
+      <p>Where is Li Tong’s brother? He is watching a football game on TV at home. What is Li Tong’s sister doing? She is cleaning rooms.</p>
+      <p>Do you know these <span class="w" data-k="custom">customs</span><span class="tag">（习俗）</span> of the Spring Festival?</p>
+      <p class="h">☆ <span class="w" data-k="paste">Paste</span> Spring Festival couplets<span class="tag">（贴春联）</span><br>
+      ☆ Wear new clothes.<br>
+      ☆ Eat dumplings<br>
+      ☆ Get <span class="w" data-k="luckymoney">lucky money</span>.<br>
+      ☆ <span class="w" data-k="visitrelatives">Visit relatives</span><span class="tag">（亲戚）</span> and friends</p>
+    </article>
+
+    <details class="more">
+      <summary>📖 参考译文（点击展开）</summary>
+      <div class="body">
+        <p>还有两周就是春节了。李彤一家正在为此做准备。她爸爸正在市场采购，他会买蔬菜、肉类和许多其他东西。李彤的妈妈带她去服装店，要给全家买新衣服。李彤看中一条新裙子，现在正在试穿。她看起来多美啊！这条裙子 150 元。</p>
+        <p>李彤的哥哥在哪？他正在家里看电视上的足球赛。李彤的姐姐在做什么？她正在打扫房间。</p>
+        <p>你知道春节的这些习俗吗？贴春联、穿新衣、吃饺子、收压岁钱、走亲访友。</p>
+      </div>
+    </details>
+
+    <h3 class="ans-h">题目与选项</h3>
+    <div class="ans-list" id="qRcA"></div>
+    <h3 class="ans-h">答案与详解</h3>
+    <div class="ans-list" id="ansRcA"></div>
+  </section>
+
+  <!-- ============ 四、阅读理解 B ============ -->
+  <section class="card" id="rcB">
+    <div class="sec-head">
+      <div class="sec-no">B</div>
+      <div><h2 class="sec-title">阅读理解 B · 《疯狂动物城2》 <small>从每小题所给的 A、B、C、D 四个选项中选出一个最佳选项。</small></h2></div>
+    </div>
+    <div class="sec-meta">
+      <span class="badge">主题：人与社会——影视作品</span>
+      <span class="badge gray">体裁：说明文</span>
+      <span class="badge gray">词数：约 170</span>
+      <span class="badge warm">难度 ★★★☆☆</span>
+      <span class="badge ok">答案见下</span>
+    </div>
+
+    <article class="passage" id="passageRcB">
+      <p><i>Zootopia 2</i> <span class="w" data-k="comeout">came out</span> on November 26th, 2025. Many kids are very <span class="w" data-k="beexcitedabout">excited about</span> it. Judy (a <span class="w" data-k="clever">clever</span> rabbit) and Nick (a <span class="w" data-k="smart">smart</span> fox) are back. They are good <span class="w" data-k="partner">partners</span> and work as <span class="w" data-k="policeofficer">police officers</span>. The slow <span class="w" data-k="sloth">sloth</span><span class="tag">（树懒）</span> named Flash also comes back. It still <span class="w" data-k="amuse">amuses</span> with slow words and fast driving.</p>
+      <p>In this new story, Judy and Nick meet a new strange <span class="w" data-k="reptile">reptile</span><span class="tag">（爬行动物）</span> — Gary, a snake. Gary’s coming brings a big problem to Zootopia. They find a long-time secret and have to work quietly to <span class="w" data-k="solve">solve</span> it. The film’s pictures are much better than the first film’s. The animals’ hair and <span class="w" data-k="scales">scales</span><span class="tag">（鳞片）</span> look very real. You can watch it in many ways, like 3D.</p>
+      <p>For Chinese fans, there are surprises. Some famous Chinese <span class="w" data-k="voiceactor">voice actors</span><span class="tag">（配音演员）</span> join in. There is a 3-minute special part about “Panda Lane (熊猫巷)” with Chinese style. Zhou Shen sings the Chinese version of the <span class="w" data-k="themesong">theme song</span>, which sounds great.</p>
+      <p><i>Zootopia 2</i> is <span class="w" data-k="befitfor">fit for</span> all ages. It tells a story about <span class="w" data-k="friendship">friendship</span> and <span class="w" data-k="courage">courage</span><span class="tag">（勇气）</span>. After watching it, you’ll feel warm and full of <span class="w" data-k="positiveenergy">positive energy</span><span class="tag">（正能量）</span>. It will be a nice experience and you can go to the cinema with your family to enjoy this wonderful <span class="w" data-k="adventure">adventure</span> and share happy moments with your family members.</p>
+    </article>
+
+    <details class="more">
+      <summary>📖 参考译文（点击展开）</summary>
+      <div class="body">
+        <p>《疯狂动物城 2》于 2025 年 11 月 26 日上映。许多孩子都为之兴奋。朱迪（一只聪明的兔子）和尼克（一只机灵的狐狸）回来了。他们是好搭档，担任警官。名叫“闪电”的慢吞吞树懒也回来了，它依然用慢悠悠的话语和飞快的车速逗乐大家。</p>
+        <p>在这个新故事里，朱迪和尼克遇到了一个新的奇异爬行动物——一条叫盖里的蛇。盖里的到来给动物城带来了大麻烦。他们发现了一个长久的秘密，不得不悄悄地去解决它。电影的画面比第一部好多了，动物的毛发和鳞片看起来非常逼真。你可以用多种方式观看，比如 3D。</p>
+        <p>对中国影迷来说还有惊喜。一些著名的中国配音演员加盟。片中有一段 3 分钟、中国风的“熊猫巷”特别片段。周深演唱了中文版主题曲，非常好听。</p>
+        <p>《疯狂动物城 2》适合所有年龄。它讲述了一个关于友谊和勇气的故事。看完后你会感到温暖、充满正能量。这将是一次美好的体验，你可以和家人一起去电影院，享受这场精彩冒险，与家人分享快乐时光。</p>
+      </div>
+    </details>
+
+    <h3 class="ans-h">题目与选项</h3>
+    <div class="ans-list" id="qRcB"></div>
+    <h3 class="ans-h">答案与详解</h3>
+    <div class="ans-list" id="ansRcB"></div>
+  </section>
+
+  <!-- ============ 四、阅读理解 C ============ -->
+  <section class="card" id="rcC">
+    <div class="sec-head">
+      <div class="sec-no">C</div>
+      <div><h2 class="sec-title">阅读理解 C · Maya 的研学之旅 <small>从每小题所给的 A、B、C、D 四个选项中选出一个最佳选项。</small></h2></div>
+    </div>
+    <div class="sec-meta">
+      <span class="badge">主题：人与自然——环保研学</span>
+      <span class="badge gray">体裁：记叙文</span>
+      <span class="badge gray">词数：约 150</span>
+      <span class="badge warm">难度 ★★★☆☆</span>
+      <span class="badge ok">答案见下</span>
+    </div>
+
+    <article class="passage" id="passageRcC">
+      <p>It was a cold Monday morning, but for Maya and the other seventy-four students, it was a good day to <span class="w" data-k="goonatrip">go on a trip</span> to the Lower Wapato Creek<span class="tag">（小溪）</span>. It is home to many kinds of trees and <span class="w" data-k="salmon">salmon</span><span class="tag">（鲑鱼）</span>.</p>
+      <p>Why did those students take the trip to the creek? It was because of a letter from Maya. In her letter, Maya said, “I like salmon. To help them, I want to plant trees at the Lower Wapato Creek <span class="w" data-k="habitat">Habitat</span><span class="tag">（栖息地）</span>.”</p>
+      <p>After reading Maya’s letter, her teacher Lauren helped <span class="w" data-k="makecometrue">make her wish come true</span>. At first, the students <span class="w" data-k="planttrees">planted trees</span> along the creek. It was difficult but interesting for them. Then a <span class="w" data-k="biologist">biologist</span><span class="tag">（生物学家）</span> took them to visit salmon. She gave them a lesson about salmon.</p>
+      <p>Maya felt very happy to take the great trip. She learned a lot about salmon and planted trees to help them. “I want to show those trees we planted to my friends and parents,” she said happily.</p>
+    </article>
+
+    <details class="more">
+      <summary>📖 参考译文（点击展开）</summary>
+      <div class="body">
+        <p>那是一个寒冷的周一早晨，但对 Maya 和另外七十四个学生来说，却是去小瓦帕托溪研学的好日子。这里是多种树木和鲑鱼的家园。</p>
+        <p>这些学生为什么去小溪研学？是因为 Maya 的一封信。在信中 Maya 说：“我喜欢鲑鱼。为了帮助它们，我想在小瓦帕托溪栖息地种树。”</p>
+        <p>读了 Maya 的信后，她的老师 Lauren 帮她实现了愿望。起初，学生们沿着小溪种树。这对他们来说既困难又有趣。然后一位生物学家带他们去看鲑鱼，给他们上了一堂关于鲑鱼的课。</p>
+        <p>Maya 为这次美好的旅行感到很开心。她学到了很多关于鲑鱼的知识，还种了树来帮助它们。“我想把我们种的那些树指给我的朋友和父母看，”她高兴地说。</p>
+      </div>
+    </details>
+
+    <h3 class="ans-h">题目与选项</h3>
+    <div class="ans-list" id="qRcC"></div>
+    <h3 class="ans-h">答案与详解</h3>
+    <div class="ans-list" id="ansRcC"></div>
+  </section>
+
+  <!-- ============ 五、作文 ============ -->
+  <section class="card" id="writing">
+    <div class="sec-head">
+      <div class="sec-no">五</div>
+      <div><h2 class="sec-title">书面表达 · My School Trip to Qufu <small>根据提示写一篇英语短文，介绍一次曲阜研学之旅。</small></h2></div>
+    </div>
+    <div class="sec-meta">
+      <span class="badge">主题：人与社会——研学旅行</span>
+      <span class="badge gray">体裁：记叙文</span>
+      <span class="badge gray">建议词数：80—100</span>
+      <span class="badge warm">难度 ★★★☆☆</span>
+      <span class="badge ok">范文见下</span>
+    </div>
+
+    <div class="callout">
+      ✍️ <b>写作要点</b>：①去哪儿 ②什么时候去 ③和谁去 ④做了/看到/吃了什么 ⑤感受如何 ⑥学到了什么。<br>
+      📌 <b>参考词汇</b>：the Three Kong Sites 三孔｜the statue of Confucius 孔子像｜Confucius Museum 孔子博物馆｜traditional culture 传统文化｜Qufu Normal University 曲阜师范大学｜campfire party 篝火晚会｜unforgettable 难忘的。
+    </div>
+
+    <article class="passage" id="passageWriting">
+      <p class="h">My School Trip to Qufu</p>
+      <p>Last term, I <span class="w" data-k="goonatrip">went on a school trip</span> to <span class="w" data-k="qufu">Qufu</span> with my teachers and classmates. It was a wonderful three-day trip and really <span class="w" data-k="unforgettable">unforgettable</span>.</p>
+      <p>On the first day, we visited the <span class="w" data-k="statue">statue of Confucius</span>. We listened to his stories and learned about his great thoughts.</p>
+      <p>On the second day, we visited the <span class="w" data-k="threekong">Three Kong Sites</span>. We saw many <span class="w" data-k="ancient">ancient</span> buildings and experienced <span class="w" data-k="traditional">traditional culture</span> there. In the evening, we had a <span class="w" data-k="campfire">campfire party</span>. We sang and danced happily. We were so excited.</p>
+      <p>On the third day, we visited Confucius Museum. A <span class="w" data-k="guide">guide</span> <span class="w" data-k="showaround">showed us around</span> and we saw many old works. Also, we visited Qufu Normal University. We walked around the <span class="w" data-k="campus">campus</span> and felt its wonderful school life. It <span class="w" data-k="encourage">encouraged</span> me to study hard to <span class="w" data-k="getinto">get into</span> a good university in the future.</p>
+      <p><span class="w" data-k="allinall">All in all</span>, I learned much about Chinese <span class="w" data-k="traditional">traditional</span> culture from this trip. It was truly a <span class="w" data-k="meaningful">meaningful</span> trip. It was a day to remember.</p>
+    </article>
+
+    <details class="more">
+      <summary>📖 范文译文（点击展开）</summary>
+      <div class="body">
+        <p><b>我的曲阜研学之旅</b></p>
+        <p>上学期，我和老师、同学们一起去曲阜研学。那是一次精彩的三天之旅，真的很难忘。</p>
+        <p>第一天，我们参观了孔子像。我们听了他的故事，了解了他伟大的思想。</p>
+        <p>第二天，我们参观了三孔。我们在那里看到了许多古建筑，体验了传统文化。晚上，我们开了篝火晚会，开心地唱歌跳舞，特别兴奋。</p>
+        <p>第三天，我们参观了孔子博物馆。一位导游带我们参观，我们看到了许多古老的作品。我们还参观了曲阜师范大学，在校园里散步，感受美好的校园生活。这激励我努力学习，将来考上一所好大学。</p>
+        <p>总之，我从这次旅行中学到了很多中国传统文化。这真是一次有意义的旅行。这是一个值得铭记的日子。</p>
+      </div>
+    </details>
+
+    <h3 class="ans-h">写作点拨</h3>
+    <div class="ans-list" id="ansWriting"></div>
+  </section>
+
+  <!-- ============ 生词汇总 ============ -->
+  <section class="card" id="vocab">
+    <div class="sec-head">
+      <div class="sec-no">✦</div>
+      <div><h2 class="sec-title">生词与短语汇总 <small>按七年级英语词汇水平整理 · 每条含音标、释义、用法与例句。</small></h2></div>
+    </div>
+    <p class="lead">以下生词与短语均已在正文用黄线标出，点击可查看释义与例句；这里按大题分组集中复习，右侧 <b>🔊</b> 按钮可朗读发音。</p>
+    <div id="vocabBox"></div>
+  </section>
+
+  <footer>
+    8-4 培优题 · 精读精讲｜七年级英语 · 完形 / 语法 / 阅读 / 作文<br>
+    纯前端单文件 · 无需联网 · 支持发音、暗色与打印｜生成日期 2026-10-21
+  </footer>
+
+</div>
+
+<div id="pop"></div>
+
+<script>
+/* ================= 生词数据 ================= */
+const VOCAB = [
+/* ---- 一、完形填空 ---- */
+{k:"tellabout",g:"A",en:"tell sb about sth",ph:"",pos:"短语",cn:"告诉某人关于某事",note:"tell sb about sth = tell sb sth；tell 后必须接人。",ex:"Please tell me about your school life.",exCn:"请告诉我你的学校生活。"},
+{k:"familywith",g:"A",en:"a family with ...",ph:"",pos:"短语",cn:"一个有……口人的家庭",note:"with 表示“有、带有”，a family with six people 一个六口之家。",ex:"He has a family with five people.",exCn:"他有一个五口之家。"},
+{k:"grandparent",g:"A",en:"grandparent",ph:"/ˈɡrænpeərənt/",pos:"n.",cn:"祖父（母）；外祖父（母）",note:"grandfather/grandmother 的统称；grandparents 复数指祖父母/外祖父母。",ex:"My grandparents live in the countryside.",exCn:"我的祖父母住在乡下。"},
+{k:"livingroom",g:"A",en:"living room",ph:"",pos:"短语",cn:"客厅；起居室",note:"in the living room 在客厅；bedroom 卧室，kitchen 厨房。",ex:"We watch TV in the living room.",exCn:"我们在客厅看电视。"},
+{k:"ontheinternet",g:"A",en:"on the internet",ph:"",pos:"短语",cn:"在网上",note:"surf the internet 上网；注意介词用 on。",ex:"You can find the answer on the internet.",exCn:"你可以在网上找到答案。"},
+{k:"onthephone",g:"A",en:"on the phone",ph:"",pos:"短语",cn:"在通电话；通过电话",note:"talk/speak on the phone 通电话；answer the phone 接电话。",ex:"My mother is on the phone now.",exCn:"我妈妈正在通电话。"},
+{k:"talkabout",g:"A",en:"talk about",ph:"",pos:"短语",cn:"谈论；讨论",note:"talk about sth/sb 谈论某事/某人；talk with sb 与某人交谈。",ex:"They are talking about the film.",exCn:"他们正在谈论那部电影。"},
+{k:"workhard",g:"A",en:"work hard at",ph:"",pos:"短语",cn:"努力学习；在……上下功夫",note:"hard work 努力（n.）；hard-working 勤奋的（adj.）。",ex:"She works hard at her lessons.",exCn:"她学习很努力。"},
+{k:"writeback",g:"A",en:"write back",ph:"",pos:"短语",cn:"回信",note:"write (a letter) back to sb 给某人回信；write to sb 给某人写信。",ex:"Please write back to me soon.",exCn:"请尽快给我回信。"},
+
+/* ---- 二、语法填空 ---- */
+{k:"onone'sway",g:"B",en:"on one’s way to",ph:"",pos:"短语",cn:"在某人去……的路上",note:"on one’s way to + 地点（名词）；on one’s way home（副词前不加 to）。",ex:"I met her on my way to school.",exCn:"我在上学路上遇到了她。"},
+{k:"laughat",g:"B",en:"laugh at",ph:"",pos:"短语",cn:"嘲笑；因……发笑",note:"laugh at sb 嘲笑某人（含贬义）；laugh loudly 大声笑。",ex:"Don’t laugh at others’ mistakes.",exCn:"不要嘲笑别人的错误。"},
+{k:"remind",g:"B",en:"remind",ph:"/rɪˈmaɪnd/",pos:"v.",cn:"提醒",note:"remind sb to do 提醒某人做；remind sb that... 提醒某人……",ex:"Please remind me to close the door.",exCn:"请提醒我关门。"},
+{k:"polite",g:"B",en:"polite",ph:"/pəˈlaɪt/",pos:"adj.",cn:"礼貌的；有教养的",note:"it is polite to do sth 做某事是有礼貌的；反义 impolite。",ex:"It is polite to say “thank you”.",exCn:"说“谢谢”是有礼貌的。"},
+{k:"keepdoing",g:"B",en:"keep doing",ph:"",pos:"短语",cn:"继续做；一直做",note:"keep doing sth 强调动作持续；keep sb doing 让某人一直做。",ex:"He kept laughing after hearing the joke.",exCn:"听到笑话后他一直笑。"},
+{k:"losecontrol",g:"B",en:"lose control of",ph:"",pos:"短语",cn:"失去对……的控制",note:"lose control of sth 失去对某物的控制；take control of 控制。",ex:"The driver lost control of the car.",exCn:"司机失去了对汽车的控制。"},
+{k:"badly",g:"B",en:"badly",ph:"/ˈbædli/",pos:"adv.",cn:"严重地；非常（不好地）",note:"hurt badly 伤得很重；bad（adj.）→ badly（adv.）。",ex:"He was badly hurt in the accident.",exCn:"他在事故中受了重伤。"},
+{k:"getoutof",g:"B",en:"get out of",ph:"",pos:"短语",cn:"从……出来；掉落",note:"get out of + 地点“从……出来”；反义 get into 进入。",ex:"The books got out of the bag.",exCn:"书从书包里掉了出来。"},
+{k:"rushto",g:"B",en:"rush to",ph:"",pos:"短语",cn:"匆忙去；冲向",note:"rush to do sth 匆忙做某事；rush to + 地点 冲向某地。",ex:"She rushed to help the old man.",exCn:"她冲过去帮助那位老人。"},
+{k:"schoolclinic",g:"B",en:"school clinic",ph:"",pos:"短语",cn:"校医室；学校医务室",note:"clinic 诊所；see a doctor 看医生。",ex:"He went to the school clinic at once.",exCn:"他立刻去了校医室。"},
+{k:"pickup",g:"B",en:"pick up",ph:"",pos:"短语",cn:"捡起；拾起",note:"pick up sth = pick sth up（代词放中间）；还有“接某人、学会”等义。",ex:"Please pick up the pen on the floor.",exCn:"请捡起地上的钢笔。"},
+{k:"thankful",g:"B",en:"be thankful to",ph:"",pos:"短语",cn:"对……感激",note:"thank（v.）→ thankful（adj.）；be thankful to sb for sth 因某事感激某人。",ex:"I am thankful to you for your help.",exCn:"感谢你的帮助。"},
+{k:"bekindto",g:"B",en:"be kind to",ph:"",pos:"短语",cn:"对……友善；对……和蔼",note:"be kind/friendly to sb 对某人友善；kind 还有“种类”之意。",ex:"We should be kind to animals.",exCn:"我们应该善待动物。"},
+{k:"respect",g:"B",en:"respect",ph:"/rɪˈspekt/",pos:"v.",cn:"尊重；尊敬",note:"respect sb 尊重某人；也可作名词“尊重”。",ex:"We should respect the old.",exCn:"我们应该尊重老人。"},
+{k:"stranger",g:"B",en:"stranger",ph:"/ˈstreɪndʒə(r)/",pos:"n.",cn:"陌生人",note:"strange（adj. 奇怪的/陌生的）→ stranger（n. 陌生人）。复数 strangers。",ex:"Don’t talk to strangers on the way.",exCn:"路上不要和陌生人说话。"},
+
+/* ---- 三、阅读短文（宁波博物馆） ---- */
+{k:"museum",g:"C",en:"museum",ph:"/mjuˈziːəm/",pos:"n.",cn:"博物馆",note:"可数名词；visit a museum 参观博物馆；the science museum 科技馆。",ex:"We visited the museum last Sunday.",exCn:"上周日我们参观了博物馆。"},
+{k:"appear",g:"C",en:"appear",ph:"/əˈpɪə(r)/",pos:"v.",cn:"出现；露面",note:"反义 disappear 消失；appear in 在……中出现。",ex:"He appeared in the TV show.",exCn:"他在那档电视节目中出现了。"},
+{k:"looklike",g:"C",en:"look like",ph:"",pos:"短语",cn:"看起来像",note:"look like = be like（外貌上像）；seem like 似乎像。",ex:"The cloud looks like a sheep.",exCn:"那朵云看起来像一只绵羊。"},
+{k:"symbol",g:"C",en:"symbol",ph:"/ˈsɪmbl/",pos:"n.",cn:"象征；标志",note:"可数名词；a symbol of ……的象征。",ex:"The panda is a symbol of China.",exCn:"熊猫是中国的象征。"},
+{k:"opento",g:"C",en:"open to visitors",ph:"",pos:"短语",cn:"对游客开放",note:"be open to 对……开放；open 还可作动词“打开”。",ex:"The park is open to visitors all year.",exCn:"这座公园全年对游客开放。"},
+{k:"learnabout",g:"C",en:"learn about",ph:"",pos:"短语",cn:"了解；学习关于……",note:"learn about sth 了解某事；learn from 向……学习。",ex:"We learned about Chinese history.",exCn:"我们了解了中国历史。"},
+{k:"culture",g:"C",en:"culture",ph:"/ˈkʌltʃə(r)/",pos:"n.",cn:"文化",note:"cultural（adj. 文化的）；traditional culture 传统文化。",ex:"Chinese culture is very rich.",exCn:"中国文化非常丰富。"},
+{k:"collection",g:"C",en:"a collection of",ph:"",pos:"短语",cn:"一批收藏；一系列的",note:"a collection of + 复数名词“一批……的收藏”。",ex:"He has a collection of stamps.",exCn:"他有一批邮票收藏。"},
+{k:"exhibit",g:"C",en:"exhibit",ph:"/ɪɡˈzɪbɪt/",pos:"n.",cn:"展品；展览",note:"可数名词，复数 exhibits；exhibition n. 展览会。",ex:"There are many exhibits in the museum.",exCn:"博物馆里有许多展品。"},
+{k:"acrossfrom",g:"C",en:"across from",ph:"",pos:"短语",cn:"在……对面",note:"= opposite；across from the museum 在博物馆对面。",ex:"The bank is across from the school.",exCn:"银行在学校的对面。"},
+{k:"relax",g:"C",en:"relax",ph:"/rɪˈlæks/",pos:"v.",cn:"放松；休息",note:"relaxed（adj. 感到放松的，修饰人）；relaxing（adj. 令人放松的，修饰物）。",ex:"Music can help you relax.",exCn:"音乐能帮你放松。"},
+
+/* ---- 四、阅读理解（A/B/C） ---- */
+{k:"springfestival",g:"D",en:"the Spring Festival",ph:"",pos:"短语",cn:"春节",note:"= Chinese New Year；at the Spring Festival 在春节期间。",ex:"The Spring Festival is very important in China.",exCn:"春节在中国非常重要。"},
+{k:"intwoweeks",g:"D",en:"in two weeks",ph:"",pos:"短语",cn:"两周之后",note:"“in + 时间段”表将来“……之后”；对 in... 提问用 how soon。",ex:"We will leave in two days.",exCn:"我们两天后出发。"},
+{k:"getreadyfor",g:"D",en:"get ready for",ph:"",pos:"短语",cn:"为……做准备",note:"= be ready for；get ready to do 准备做某事。",ex:"We are getting ready for the exam.",exCn:"我们正在为考试做准备。"},
+{k:"atthemarket",g:"D",en:"at the market",ph:"",pos:"短语",cn:"在市场上；在集市",note:"go to the market 去市场；market 市场、集市。",ex:"My father is shopping at the market.",exCn:"我爸爸正在市场购物。"},
+{k:"clothesstore",g:"D",en:"clothes store",ph:"",pos:"短语",cn:"服装店",note:"store 商店；book store 书店。",ex:"She bought a dress at the clothes store.",exCn:"她在服装店买了一条连衣裙。"},
+{k:"tryon",g:"D",en:"try on",ph:"",pos:"短语",cn:"试穿",note:"try sth on = try on sth（代词放中间）；try on the coat 试穿外套。",ex:"I want to try on the shoes.",exCn:"我想试穿这双鞋。"},
+{k:"custom",g:"D",en:"custom",ph:"/ˈkʌstəm/",pos:"n.",cn:"习俗；风俗",note:"可数名词，复数 customs；customer 则是“顾客”。",ex:"Eating dumplings is a custom at the Spring Festival.",exCn:"吃饺子是春节的一个习俗。"},
+{k:"paste",g:"D",en:"paste",ph:"/peɪst/",pos:"v.",cn:"粘贴",note:"paste sth on... 把某物贴在……上；paste couplets 贴春联。",ex:"We paste couplets on the door.",exCn:"我们把春联贴在门上。"},
+{k:"luckymoney",g:"D",en:"lucky money",ph:"",pos:"短语",cn:"压岁钱；红包",note:"get lucky money 收压岁钱；lucky 幸运的。",ex:"Children get lucky money at the Spring Festival.",exCn:"孩子们在春节收压岁钱。"},
+{k:"visitrelatives",g:"D",en:"visit relatives and friends",ph:"",pos:"短语",cn:"走亲访友",note:"relative 亲戚；visit sb 拜访某人。",ex:"We visit relatives and friends during the holiday.",exCn:"节日期间我们走亲访友。"},
+{k:"comeout",g:"D",en:"come out",ph:"",pos:"短语",cn:"（电影、书）出版；上映",note:"come out 还有“出来、开花、真相大白”之意。",ex:"The new film came out last week.",exCn:"这部新电影上周上映了。"},
+{k:"beexcitedabout",g:"D",en:"be excited about",ph:"",pos:"短语",cn:"对……感到兴奋",note:"excited 修饰人，exciting 修饰物；be excited about sth/doing。",ex:"The kids are excited about the trip.",exCn:"孩子们对这次旅行很兴奋。"},
+{k:"clever",g:"D",en:"clever",ph:"/ˈklevə(r)/",pos:"adj.",cn:"聪明的；机灵的",note:"= smart / bright；clever 指头脑灵活。",ex:"She is a clever girl.",exCn:"她是一个聪明的女孩。"},
+{k:"smart",g:"D",en:"smart",ph:"/smɑːt/",pos:"adj.",cn:"聪明的；机灵的",note:"= clever / bright；smart 还可指“时髦的、智能的”。",ex:"Nick is a smart fox.",exCn:"尼克是一只机灵的狐狸。"},
+{k:"partner",g:"D",en:"partner",ph:"/ˈpɑːtnə(r)/",pos:"n.",cn:"搭档；伙伴",note:"可数名词；partner 还有“合伙人、伴侣”之意。",ex:"They are good partners in the game.",exCn:"他们是游戏里的好搭档。"},
+{k:"policeofficer",g:"D",en:"police officer",ph:"",pos:"短语",cn:"警官；警察",note:"police 集合名词（复数概念）；a police officer 一名警官。",ex:"My dream is to be a police officer.",exCn:"我的梦想是当一名警官。"},
+{k:"sloth",g:"D",en:"sloth",ph:"/sləʊθ/",pos:"n.",cn:"树懒",note:"可数名词，复数 sloths；也指“懒惰”。",ex:"The sloth moves very slowly.",exCn:"树懒行动很慢。"},
+{k:"amuse",g:"D",en:"amuse",ph:"/əˈmjuːz/",pos:"v.",cn:"逗乐；使开心",note:"amusing（adj. 有趣的）；amusement（n. 娱乐）。",ex:"His jokes amused the children.",exCn:"他的笑话把孩子们逗乐了。"},
+{k:"reptile",g:"D",en:"reptile",ph:"/ˈreptaɪl/",pos:"n.",cn:"爬行动物",note:"可数名词；如 snake 蛇、crocodile 鳄鱼等。",ex:"A snake is a kind of reptile.",exCn:"蛇是一种爬行动物。"},
+{k:"solve",g:"D",en:"solve",ph:"/sɒlv/",pos:"v.",cn:"解决；解答",note:"solve the problem 解决问题；solution（n. 解决办法）。",ex:"We should solve the problem together.",exCn:"我们应该一起解决这个问题。"},
+{k:"scales",g:"D",en:"scales",ph:"/skeɪlz/",pos:"n.",cn:"鳞片；鳞",note:"scale 的复数形式；鱼、蛇、蜥蜴等身上的鳞。",ex:"Fish are covered with scales.",exCn:"鱼身上覆盖着鳞片。"},
+{k:"voiceactor",g:"D",en:"voice actor",ph:"",pos:"短语",cn:"配音演员",note:"voice 嗓音；actor 演员。",ex:"She wants to be a voice actor.",exCn:"她想成为一名配音演员。"},
+{k:"themesong",g:"D",en:"theme song",ph:"",pos:"短语",cn:"主题曲",note:"theme 主题；the theme song of ... ……的主题曲。",ex:"The theme song of the film is great.",exCn:"这部电影的主题曲很棒。"},
+{k:"befitfor",g:"D",en:"be fit for",ph:"",pos:"短语",cn:"适合",note:"= be suitable for；fit 作动词“适合、合身”。",ex:"This book is fit for children.",exCn:"这本书适合儿童阅读。"},
+{k:"friendship",g:"D",en:"friendship",ph:"/ˈfrendʃɪp/",pos:"n.",cn:"友谊；友情",note:"friend（n.）+ -ship（名词后缀）；friendship 友谊。",ex:"Their friendship is very strong.",exCn:"他们的友谊很牢固。"},
+{k:"courage",g:"D",en:"courage",ph:"/ˈkʌrɪdʒ/",pos:"n.",cn:"勇气",note:"have the courage to do 有勇气做；encourage 鼓励（en-使动）。",ex:"It takes courage to speak out.",exCn:"大声说出来需要勇气。"},
+{k:"positiveenergy",g:"D",en:"positive energy",ph:"",pos:"短语",cn:"正能量",note:"positive 积极的；energy 能量、精力。",ex:"The film is full of positive energy.",exCn:"这部电影充满正能量。"},
+{k:"adventure",g:"D",en:"adventure",ph:"/ədˈventʃə(r)/",pos:"n.",cn:"冒险；奇遇",note:"可数名词；adventurous（adj. 爱冒险的）。",ex:"The trip was a wonderful adventure.",exCn:"这次旅行是一次精彩的冒险。"},
+{k:"goonatrip",g:"D",en:"go on a trip to",ph:"",pos:"短语",cn:"去……旅行/研学",note:"= take a trip to；trip 多指短途旅行。",ex:"We went on a trip to Qufu.",exCn:"我们去曲阜研学了。"},
+{k:"salmon",g:"D",en:"salmon",ph:"/ˈsæmən/",pos:"n.",cn:"鲑鱼；三文鱼",note:"单复数同形；salmon 是一种洄游鱼类。",ex:"Salmon swim back to the river to lay eggs.",exCn:"鲑鱼洄游到河里产卵。"},
+{k:"habitat",g:"D",en:"habitat",ph:"/ˈhæbɪtæt/",pos:"n.",cn:"栖息地",note:"可数名词；指动植物的自然栖息环境。",ex:"The forest is the habitat of birds.",exCn:"森林是鸟类的栖息地。"},
+{k:"makecometrue",g:"D",en:"make one’s wish come true",ph:"",pos:"短语",cn:"实现某人的愿望",note:"come true（愿望）实现；make sth come true 使某事实现。",ex:"Study hard to make your dream come true.",exCn:"努力学习，让你的梦想成真。"},
+{k:"planttrees",g:"D",en:"plant trees",ph:"",pos:"短语",cn:"植树",note:"plant 作动词“种植”，作名词“植物、工厂”。",ex:"We plant trees every spring.",exCn:"我们每年春天植树。"},
+{k:"biologist",g:"D",en:"biologist",ph:"/baɪˈɒlədʒɪst/",pos:"n.",cn:"生物学家",note:"biology（n. 生物学）→ biologist（n. 人）。",ex:"The biologist gave us a lesson on fish.",exCn:"那位生物学家给我们上了一堂关于鱼的课。"},
+
+/* ---- 五、作文（曲阜研学） ---- */
+{k:"qufu",g:"E",en:"Qufu",ph:"/ˈtʃuːfuː/",pos:"n.",cn:"曲阜（山东济宁下辖县级市）",note:"孔子故里，著名研学目的地。",ex:"Qufu is the hometown of Confucius.",exCn:"曲阜是孔子的故乡。"},
+{k:"unforgettable",g:"E",en:"unforgettable",ph:"/ˌʌnfəˈɡetəbl/",pos:"adj.",cn:"难忘的",note:"un-（否定）+ forget（忘）+ -able（能……的）→ 难忘的。",ex:"It was an unforgettable experience.",exCn:"那是一次难忘的经历。"},
+{k:"statue",g:"E",en:"statue of Confucius",ph:"/ˈstætʃuː/",pos:"短语",cn:"孔子像",note:"statue 雕像；the statue of ... ……的雕像。",ex:"We took a photo at the statue of Confucius.",exCn:"我们在孔子像前拍了照。"},
+{k:"threekong",g:"E",en:"the Three Kong Sites",ph:"",pos:"短语",cn:"三孔（孔庙、孔府、孔林）",note:"指曲阜纪念孔子的三处古迹：孔庙、孔府、孔林。",ex:"The Three Kong Sites are famous in China.",exCn:"三孔在中国很有名。"},
+{k:"ancient",g:"E",en:"ancient",ph:"/ˈeɪnʃənt/",pos:"adj.",cn:"古代的；古老的",note:"ancient buildings 古建筑；ancient history 古代史。",ex:"We saw many ancient buildings.",exCn:"我们看到了许多古建筑。"},
+{k:"traditional",g:"E",en:"traditional culture",ph:"/trəˈdɪʃənl/",pos:"短语",cn:"传统文化",note:"tradition（n. 传统）→ traditional（adj. 传统的）。",ex:"We should learn traditional culture.",exCn:"我们应该学习传统文化。"},
+{k:"campfire",g:"E",en:"campfire party",ph:"",pos:"短语",cn:"篝火晚会",note:"campfire 篝火；camp 露营。",ex:"We had a campfire party at night.",exCn:"晚上我们开了篝火晚会。"},
+{k:"guide",g:"E",en:"guide",ph:"/ɡaɪd/",pos:"n.",cn:"导游；向导",note:"可数名词；a tour guide 导游；guide 还可作动词“引导”。",ex:"The guide showed us around the museum.",exCn:"导游带我们参观了博物馆。"},
+{k:"showaround",g:"E",en:"show sb around",ph:"",pos:"短语",cn:"带某人参观",note:"show sb around + 地点 带某人参观某地。",ex:"Let me show you around our school.",exCn:"让我带你参观我们学校。"},
+{k:"campus",g:"E",en:"campus",ph:"/ˈkæmpəs/",pos:"n.",cn:"校园",note:"on (the) campus 在校园里；多指大学校园。",ex:"The university campus is beautiful.",exCn:"这所大学的校园很美。"},
+{k:"encourage",g:"E",en:"encourage",ph:"/ɪnˈkʌrɪdʒ/",pos:"v.",cn:"鼓励",note:"en-（使）+ courage（勇气）→ 使有勇气，鼓励；encourage sb to do 鼓励某人做。",ex:"My teacher encouraged me to study hard.",exCn:"老师鼓励我努力学习。"},
+{k:"getinto",g:"E",en:"get into",ph:"",pos:"短语",cn:"进入；考上",note:"get into a university 考上大学；get into trouble 陷入麻烦。",ex:"She got into a good university.",exCn:"她考上了一所好大学。"},
+{k:"allinall",g:"E",en:"all in all",ph:"",pos:"短语",cn:"总之；总的来说",note:"用于总结，放句首，后接逗号。",ex:"All in all, it was a great day.",exCn:"总之，这是美好的一天。"},
+{k:"meaningful",g:"E",en:"meaningful",ph:"/ˈmiːnɪŋfl/",pos:"adj.",cn:"有意义的",note:"meaning（n. 意义）→ meaningful（adj.）；反义 meaningless。",ex:"We had a meaningful discussion.",exCn:"我们进行了一次有意义的讨论。"}
+];
+const V={}; VOCAB.forEach(o=>V[o.k]=o);
+
+const GROUP_NAME={
+  A:"一、完形填空（赵丽的家书）",
+  B:"二、语法填空（莉莉的经历）",
+  C:"三、阅读短文（宁波博物馆）",
+  D:"四、阅读理解（春节 / 动物城2 / 研学）",
+  E:"五、书面表达（曲阜研学）"
+};
+
+/* ================= 题目数据 ================= */
+const Q_CLOZE=[
+ {n:1,q:"1. A. midnight  B. afternoon  C. noon  D. evening",opts:["midnight","afternoon","noon","evening"],ans:3},
+ {n:2,q:"2. A. time  B. colour  C. kind  D. sport",opts:["time","colour","kind","sport"],ans:0},
+ {n:3,q:"3. A. how  B. which  C. what  D. when",opts:["how","which","what","when"],ans:2},
+ {n:4,q:"4. A. in  B. by  C. from  D. with",opts:["in","by","from","with"],ans:3},
+ {n:5,q:"5. A. driving  B. playing  C. taking  D. sending",opts:["driving","playing","taking","sending"],ans:1},
+ {n:6,q:"6. A. working on  B. turning on  C. working out  D. putting on",opts:["working on","turning on","working out","putting on"],ans:0},
+ {n:7,q:"7. A. in the shop  B. online  C. in the street  D. in the market",opts:["in the shop","online","in the street","in the market"],ans:1},
+ {n:8,q:"8. A. leaving  B. choosing  C. eating  D. calling",opts:["leaving","choosing","eating","calling"],ans:3},
+ {n:9,q:"9. A. a little  B. little  C. a few  D. few",opts:["a little","little","a few","few"],ans:2},
+ {n:10,q:"10. A. writing to  B. working with  C. walking to  D. reading for",opts:["writing to","working with","walking to","reading for"],ans:0}
+];
+const Q_RCA=[
+ {n:1,q:"When will the Spring Festival come?",opts:["In two days.","In two weeks.","In two months.","In two years."],ans:1},
+ {n:2,q:"What is Li Tong’s father doing?",opts:["Watching TV.","Cleaning rooms.","Shopping at the market.","Taking Li Tong to the clothes store."],ans:2},
+ {n:3,q:"Which of the following is NOT mentioned as a custom of the Spring Festival in the passage?",opts:["Paste Spring Festival couplets.","Wear new clothes.","Fly kites.","Eat dumplings."],ans:2},
+ {n:4,q:"Which of the following is TRUE according to the passage?",opts:["Li Tong’s brother is playing games.","Li Tong’s sister is washing clothes.","Chinese people don’t visit their friends during the Spring Festival.","Chinese people eat dumplings during the Spring Festival."],ans:3},
+ {n:5,q:"This passage is ______.",opts:["about the Spring Festival","about a picnic","about a shopping list","about club members"],ans:0}
+];
+const Q_RCB=[
+ {n:6,q:"When did Zootopia 2 come out?",opts:["November 25th.","November 26th.","December 25th.","December 26th."],ans:1},
+ {n:7,q:"What kind of animal is Gary?",opts:["A bird.","A snake.","A dog.","A frog."],ans:1},
+ {n:8,q:"Who sings the Chinese version of the theme song of Zootopia 2?",opts:["Zhang Jie.","Wang Yuan.","Zhou Shen.","Lu Han."],ans:2},
+ {n:9,q:"What does Zootopia 2 mainly talk about?",opts:["The history of Zootopia.","The daily work of police officers.","An adventure about friendship and courage.","The secret of reptiles."],ans:2}
+];
+const Q_RCC=[
+ {n:10,q:"How many students went on the trip?",opts:["72.","73.","74.","75."],ans:3},
+ {n:11,q:"Why did Maya want to plant trees?",opts:["Because of a letter.","Because she wanted to help salmon.","Because of her teacher.","Because she wanted to give a lesson."],ans:1},
+ {n:12,q:"Who is Lauren?",opts:["Maya’s teacher.","Maya’s friend.","Maya’s doctor.","Maya’s parent."],ans:0},
+ {n:13,q:"What does the underlined word “them” in Paragraph 3 refer to?",opts:["The parents.","The girls.","The students.","The salmon."],ans:2},
+ {n:14,q:"What is the best title?",opts:["Maya and her family.","Maya’s school trip.","How to plant trees.","How to give a lesson."],ans:1}
+];
+
+/* ================= 答案与详解 ================= */
+const ANS_CLOZE=[
+ {n:1,key:"D. evening",tag:"名词辨析",sent:"It’s eight o’clock in the __1__ in Beijing now.",
+  ana:["eight o’clock 对应一天中的某个时段。midnight（午夜）是 12 点、noon（正午）是 12 点、afternoon（下午）指 1—6 点，都不合 8 点。",
+   "evening（晚上）指 6—9 点，“eight o’clock in the evening”即晚上八点，符合写信情境。"]},
+ {n:2,key:"A. time",tag:"固定句型",sent:"What __2__ is it in your city London?",
+  ana:["询问时间用固定句型 What time is it?（现在几点了？）。",
+   "colour（颜色）、kind（种类）、sport（运动）都不能与“in Beijing now”对应问点。"]},
+ {n:3,key:"C. what",tag:"宾语从句",sent:"let me tell you __3__ my family are doing now.",
+  ana:["tell you 后接宾语从句，从句中 doing 缺宾语，用 what 引导并作宾语（what my family are doing“我家人正在做什么”）。",
+   "how（怎样）、which（哪个）、when（何时）都不能作 doing 的宾语。"]},
+ {n:4,key:"D. with",tag:"介词",sent:"I have a big family __4__ six people.",
+  ana:["with 表示“带有、拥有”，a family with six people 意为“一个六口之家”。",
+   "in / by / from 都不能表示家庭成员人数。"]},
+ {n:5,key:"B. playing",tag:"固定搭配",sent:"They are __5__ chess there.",
+  ana:["play chess 下国际象棋，是固定搭配，且此处用现在进行时 are playing。",
+   "drive / take / send 都不能与 chess 搭配。"]},
+ {n:6,key:"A. working on",tag:"动词短语",sent:"She’s __6__ her work on the internet.",
+  ana:["work on 表示“从事、忙于（某项工作）”，She’s working on her work“她正在忙她的工作”。",
+   "turn on 打开、work out 锻炼/解出、put on 穿上，都不能接“her work”表“做工作”。"]},
+ {n:7,key:"B. online",tag:"副词/语境",sent:"She also likes shopping __7__.",
+  ana:["前一句说她在互联网上工作，此处承接语境“她也喜欢网上购物（shopping online）”。",
+   "in the shop / in the street / in the market 与前文“on the internet”衔接不当。"]},
+ {n:8,key:"D. calling",tag:"动词辨析",sent:"She is __8__ on the phone.",
+  ana:["后一句“she’s talking about maths problems with her friend”说明她在打电话，call on the phone 打电话。",
+   "leaving（离开）、choosing（选择）、eating（吃）都与“talking on the phone”不符。"]},
+ {n:9,key:"C. a few",tag:"限定词",sent:"she’s talking about __9__ maths problems",
+  ana:["maths problems 是可数名词复数，排除 a little / little（修饰不可数名词）。",
+   "a few 表肯定“一些”，few 表否定“几乎没有”。她努力学习、讨论题目，应是“一些数学题”，用 a few。"]},
+ {n:10,key:"A. writing to",tag:"动词短语",sent:"Of course, I am __10__ you.",
+  ana:["本文是一封信，结尾问“你家人在做什么？请尽快回信”，可见“我正在给你写信”，write to sb 给某人写信。",
+   "work with（和……一起工作）、walk to（走向）、read for（为……读）都不符写信语境。"]}
+];
+const ANS_GRAMMAR=[
+ {n:1,key:"is wearing",tag:"时态/现在进行时",sent:"The girl __1__ (wear) a funny dress!",
+  ana:["Look! 提示动作正在发生，用现在进行时 be + doing；主语 The girl 是单数，be 用 is。",
+   "故填 is wearing（穿着）。"]},
+ {n:2,key:"to say",tag:"非谓语/不定式",sent:"it wasn’t polite __2__ (say) so",
+  ana:["固定句型 It is/was + adj. + to do sth（做某事是……的）。",
+   "故填 to say；it 是形式主语，真正主语是后面的不定式。"]},
+ {n:3,key:"Suddenly",tag:"词性转换/副词",sent:"__3__ (sudden), Lily lost control of her bike.",
+  ana:["修饰整个句子要用副词，sudden（adj.）→ suddenly（adv. 突然地）。",
+   "句首首字母大写，填 Suddenly。"]},
+ {n:4,key:"rolled",tag:"时态/一般过去时",sent:"...got out of the bike baskets and __4__ (roll) everywhere.",
+  ana:["and 连接两个并列谓语，前一个 got 是过去式，故 roll 也用过去式 rolled。",
+   "句意：书包、水瓶、饭盒从车篮里掉出来，滚得到处都是。"]},
+ {n:5,key:"their",tag:"代词/物主代词",sent:"pick up __5__ (they) things",
+  ana:["修饰名词 things 要用形容词性物主代词 their（她们的）。",
+   "they（主格）不能作定语；them（宾格）也不能作定语。"]},
+ {n:6,key:"thankful",tag:"词性转换/形容词",sent:"Lily and Nancy were very __6__ (thank) to the girl.",
+  ana:["were 后作表语用形容词，thank（v. 感谢）→ thankful（adj. 感激的）。",
+   "be thankful to sb 意为“感激某人”。"]},
+ {n:7,key:"but",tag:"连词/转折",sent:"I laughed at you __7__ you still decided to help me.",
+  ana:["前句“我嘲笑你”与后句“你还是决定帮我”是转折关系，用连词 but（但是）。",
+   "although/though 虽表转折，但其引导的从句应放在主句前（Although I laughed at you, you still...），此处结构应用 but。"]},
+ {n:8,key:"others",tag:"代词",sent:"be kind to __8__ (other) next time",
+  ana:["空后无名词，需用名词性代词 others（别人），= other people。",
+   "other 作定语须接名词；the others 特指其余全部，语境不符。"]},
+ {n:9,key:"her",tag:"代词/物主代词",sent:"from __9__ (she) experience",
+  ana:["修饰名词 experience 用形容词性物主代词 her（她的）。",
+   "she 是主格，不能作定语。"]},
+ {n:10,key:"strangers",tag:"词性转换/名词",sent:"respect __10__ (strange) and shouldn’t laugh at others.",
+  ana:["respect 是及物动词，后接名词作宾语；strange（adj.）→ stranger（n. 陌生人）。",
+   "与 others 并列，表泛指，用复数 strangers。"]}
+];
+const ANS_SHORT=[
+ {n:1,key:"It looks like a large boat.",tag:"细节理解",sent:"What does Ningbo Museum look like when you see it in the sky?",
+  ana:["定位第二段：“But if you see it in the sky, it looks like a large boat.”（但从空中看，它像一艘大船。）",
+   "问题问“从空中看像什么”，直接用原文作答：It looks like a large boat."]},
+ {n:2,key:"On December 5th, 2008.",tag:"细节理解",sent:"When did the museum open to visitors?",
+  ana:["定位第三段：“It opened to visitors on December 5th, 2008.”（它于 2008 年 12 月 5 日对游客开放。）",
+   "问时间，答 On December 5th, 2008."]},
+ {n:3,key:"The culture, history and art of Ningbo.",tag:"细节理解",sent:"What can you learn about in the museum?",
+  ana:["定位第三段：“you can learn about the culture, history and art of Ningbo.”（你可以了解宁波的文化、历史和艺术。）",
+   "答：宁波的文化、历史和艺术。"]},
+ {n:4,key:"On Monday.",tag:"推理判断",sent:"On which day can’t people visit the museum?",
+  ana:["定位第四段：“Ningbo Museum is open from Tuesday to Sunday.”（从周二到周日开放。）",
+   "开放日为周二至周日，故不能参观的是周一（Monday）。这需要一步推理。"]},
+ {n:5,key:"It’s across from Ningbo Museum.",tag:"细节理解",sent:"Where is the Yinzhou Park?",
+  ana:["定位第五段：“Across from the museum is the Yinzhou Park.”（博物馆对面是鄞州公园。）",
+   "答：它在宁波博物馆对面。"]}
+];
+const ANS_RCA=[
+ {n:1,key:"B",tag:"细节理解",sent:"When will the Spring Festival come?",
+  ana:["定位首句：“The Spring Festival is coming in two weeks.”（春节两周后就要到了。）",
+   "in two weeks = 两周之后，故选 B。"]},
+ {n:2,key:"C",tag:"细节理解",sent:"What is Li Tong’s father doing?",
+  ana:["定位第一段：“Her father is shopping at the market.”（她爸爸正在市场采购。）",
+   "故选 C. Shopping at the market."]},
+ {n:3,key:"C",tag:"细节理解（选非）",sent:"Which is NOT mentioned as a custom of the Spring Festival?",
+  ana:["定位文中列出的习俗：贴春联、穿新衣、吃饺子、收压岁钱、走亲访友。",
+   "Fly kites（放风筝）不在其中，故选 C。注意题目问的是 NOT mentioned（未被提到）。"]},
+ {n:4,key:"D",tag:"细节理解（判断正误）",sent:"Which of the following is TRUE?",
+  ana:["A 错：哥哥在看足球赛（watching），不是玩游戏（playing）；B 错：姐姐在打扫房间（cleaning），不是洗衣服。",
+   "C 错：走亲访友是春节习俗之一，人们是会拜访朋友的；D 对：文中明确列出“Eat dumplings（吃饺子）”。"]},
+ {n:5,key:"A",tag:"主旨大意",sent:"This passage is ______.",
+  ana:["文章既写了李彤一家为春节做准备，又列举了春节习俗，中心话题是“春节”。",
+   "B（野餐）、C（购物清单）、D（俱乐部成员）都只是片段或无关。"]}
+];
+const ANS_RCB=[
+ {n:6,key:"B",tag:"细节理解",sent:"When did Zootopia 2 come out?",
+  ana:["定位首句：“Zootopia 2 came out on November 26th, 2025.”（《疯狂动物城 2》于 2025 年 11 月 26 日上映。）",
+   "故选 B. November 26th."]},
+ {n:7,key:"B",tag:"细节理解",sent:"What kind of animal is Gary?",
+  ana:["定位第二段：“a new strange reptile — Gary, a snake.”（一个奇异的爬行动物——盖里，一条蛇。）",
+   "故选 B. A snake."]},
+ {n:8,key:"C",tag:"细节理解",sent:"Who sings the Chinese version of the theme song?",
+  ana:["定位第三段：“Zhou Shen sings the Chinese version of the theme song.”（周深演唱了中文版主题曲。）",
+   "故选 C. Zhou Shen."]},
+ {n:9,key:"C",tag:"主旨大意",sent:"What does Zootopia 2 mainly talk about?",
+  ana:["定位末段：“It tells a story about friendship and courage.”（它讲述了一个关于友谊和勇气的故事。）",
+   "C“关于友谊与勇气的冒险”是对全文主旨的准确概括。A、B、D 都只是片中细节。"]}
+];
+const ANS_RCC=[
+ {n:10,key:"D",tag:"细节计算",sent:"How many students went on the trip?",
+  ana:["定位第一段：“for Maya and the other seventy-four students”（对 Maya 和另外 74 个学生来说）。",
+   "Maya 1 人 + 另外 74 人 = 75 人，故选 D. 75。注意不能只看文中的数字 74。"]},
+ {n:11,key:"B",tag:"细节理解",sent:"Why did Maya want to plant trees?",
+  ana:["定位第二段 Maya 的话：“I like salmon. To help them, I want to plant trees...”（我喜欢鲑鱼，为了帮助它们，我想种树。）",
+   "种树是为了帮助鲑鱼，故选 B。A“因为一封信”是学生去研学的原因，不是 Maya 种树的目的。"]},
+ {n:12,key:"A",tag:"细节理解",sent:"Who is Lauren?",
+  ana:["定位第三段：“her teacher Lauren helped make her wish come true.”（她的老师 Lauren 帮她实现了愿望。）",
+   "Lauren 是 Maya 的老师，故选 A。"]},
+ {n:13,key:"C",tag:"词义猜测/指代",sent:"What does “them” in Paragraph 3 refer to?",
+  ana:["第三段：“a biologist took them to visit salmon. She gave them a lesson about salmon.”（一位生物学家带他们去参观鲑鱼，给他们上了一课。）",
+   "“took/gave” 的对象是参加研学的学生们，故 them 指代 the students，选 C。"]},
+ {n:14,key:"B",tag:"标题归纳",sent:"What is the best title?",
+  ana:["全文围绕 Maya 促成的一次溪边研学之旅展开（写信、种树、了解鲑鱼），B“Maya 的研学之旅”最贴切。",
+   "A“Maya 和她的家人”、C“如何种树”、D“如何上课”都过窄或偏离主旨。"]}
+];
+const ANS_WRITING=[
+ {n:1,key:"结构清晰",tag:"篇章结构",sent:"三段式（或按天分段）时间线索",
+  ana:["范文按“总—分—总”展开：开头点题（去曲阜、三天、难忘）→ 按 Day 1 / Day 2 / Day 3 分述所见所做 → 结尾总结收获与感受。",
+   "按时间顺序记叙，条理清晰，便于阅卷老师抓取要点。"]},
+ {n:2,key:"要点齐全",tag:"覆盖题干",sent:"回应 6 个写作问题",
+  ana:["Where→Qufu；When→last term；Whom→teachers and classmates；What→visited statue / Three Kong Sites / museum / university, had campfire party；How→wonderful, unforgettable, excited；Learned→traditional culture。",
+   "六个问题逐一覆盖，不遗漏要点是得高分的关键。"]},
+ {n:3,key:"好词好句",tag:"语言亮点",sent:"加分表达",
+  ana:["it was a wonderful three-day trip and really unforgettable（总起，含复合形容词 three-day）；",
+   "It encouraged me to study hard to get into a good university（表感悟）；",
+   "All in all（总之）作总结连接词；It was truly a meaningful trip / It was a day to remember（结尾点题）。"]},
+ {n:4,key:"时态与人称",tag:"语法提醒",sent:"一般过去时 + 第一人称",
+  ana:["记叙过去的旅行，全文用一般过去时（went, visited, saw, had, learned...）；",
+   "用第一人称 I/we 写作，符合“个人经历”类作文要求；注意动词过去式的正确拼写。"]}
+];
+
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");}
+
+function renderQ(box, arr){
+  arr.forEach(o=>{
+    const d=document.createElement("div"); d.className="ans-item";
+    const opts=o.opts.map((t,i)=>`<div${i===o.ans?' class="picked"':''}>${"ABCD"[i]}. ${esc(t)}</div>`).join("");
+    d.innerHTML = `<div class="top"><span class="num">${o.n}.</span><span class="kt">第 ${o.n} 题</span></div>`+
+      `<div class="qstem">${esc(o.q)}</div><div class="qopts">${opts}</div>`;
+    box.appendChild(d);
+  });
+}
+renderQ(document.getElementById("qCloze"), Q_CLOZE);
+renderQ(document.getElementById("qRcA"), Q_RCA);
+renderQ(document.getElementById("qRcB"), Q_RCB);
+renderQ(document.getElementById("qRcC"), Q_RCC);
+
+function renderAns(box, arr){
+  arr.forEach(o=>{
+    const d=document.createElement("div"); d.className="ans-item";
+    d.innerHTML = `<div class="top"><span class="num">${o.n}.</span><span class="key">${esc(o.key)}</span><span class="kt">${esc(o.tag)}</span></div>`+
+      `<div class="sent">📌 ${esc(o.sent)}</div>`+
+      `<ul>${o.ana.map(a=>`<li>${esc(a)}</li>`).join("")}</ul>`;
+    box.appendChild(d);
+  });
+}
+renderAns(document.getElementById("ansCloze"), ANS_CLOZE);
+renderAns(document.getElementById("ansGrammar"), ANS_GRAMMAR);
+renderAns(document.getElementById("ansShort"), ANS_SHORT);
+renderAns(document.getElementById("ansRcA"), ANS_RCA);
+renderAns(document.getElementById("ansRcB"), ANS_RCB);
+renderAns(document.getElementById("ansRcC"), ANS_RCC);
+renderAns(document.getElementById("ansWriting"), ANS_WRITING);
+
+/* 生词汇总（按大题分组） */
+const vocabBox = document.getElementById("vocabBox");
+["A","B","C","D","E"].forEach(g=>{
+  const wrap=document.createElement("div"); wrap.className="vgroup";
+  const h=document.createElement("h3"); h.innerHTML=`<span class="dot"></span>${GROUP_NAME[g]}`;
+  wrap.appendChild(h);
+  const cards=document.createElement("div"); cards.className="vcards";
+  VOCAB.filter(v=>v.g===g).forEach(v=>{
+    const c=document.createElement("div"); c.className="vcard";
+    c.innerHTML = `<div class="hw"><span class="en">${esc(v.en)}</span>`+
+      (v.ph?`<span class="ph">${esc(v.ph)}</span>`:"")+
+      `<span class="pos">${esc(v.pos)}</span><button class="spk" type="button" data-word="${esc(v.en)}" title="点击发音" aria-label="发音">🔊</button></div>`+
+      `<div class="cn">${esc(v.cn)}</div>`+
+      `<div class="nt">${esc(v.note)}</div>`+
+      `<div class="ex">e.g. ${esc(v.ex)}<span class="ecn">${esc(v.exCn)}</span></div>`;
+    cards.appendChild(c);
+  });
+  wrap.appendChild(cards);
+  vocabBox.appendChild(wrap);
+});
+
+/* ================= 交互：划线词弹出 / 内联对照 ================= */
+const words = [...document.querySelectorAll(".w")];
+words.forEach(w=>{
+  const d=V[w.dataset.k]; if(!d) return;
+  const g=document.createElement("span"); g.className="gloss"; g.textContent="（"+d.cn+"）";
+  w.after(g);
+});
+
+const pop=document.getElementById("pop");
+let cur=null;
+function closePop(){ pop.classList.remove("show"); if(cur) cur.classList.remove("active"); cur=null; }
+function openPop(el){
+  const d=V[el.dataset.k]; if(!d) return;
+  if(cur===el){ closePop(); return; }
+  closePop();
+  cur=el; el.classList.add("active");
+  pop.innerHTML =
+    `<div class="pw">${esc(d.en)}${d.ph?`<span class="pph">${esc(d.ph)}</span>`:""}<span class="pos">${esc(d.pos)}</span><button class="spk" type="button" data-word="${esc(d.en)}" title="点击发音" aria-label="发音">🔊</button></div>`+
+    `<div class="pcn">${esc(d.cn)}</div>`+
+    `<div class="pnote">${esc(d.note)}</div>`+
+    `<div class="pex"><b>例：</b> ${esc(d.ex)}<span class="cn">${esc(d.exCn)}</span></div>`;
+  pop.classList.add("show");
+  const r=el.getBoundingClientRect();
+  const pw=pop.offsetWidth, ph=pop.offsetHeight;
+  let left=r.left + r.width/2 - pw/2 + window.scrollX;
+  left=Math.max(12+window.scrollX, Math.min(left, window.scrollX + document.documentElement.clientWidth - pw - 12));
+  let top=r.top + window.scrollY - ph - 12;
+  if(top < window.scrollY + 8){ top = r.bottom + window.scrollY + 12; }
+  pop.style.left=left+"px"; pop.style.top=top+"px";
+}
+words.forEach(w=>w.addEventListener("click",e=>{e.stopPropagation();openPop(w);}));
+document.addEventListener("click",e=>{ if(!pop.contains(e.target)) closePop(); });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape") closePop(); });
+window.addEventListener("scroll",closePop,{passive:true});
+window.addEventListener("resize",closePop);
+
+document.querySelectorAll(".blank").forEach(b=>{
+  b.addEventListener("click",e=>{e.stopPropagation(); b.classList.toggle("open");});
+});
+
+const btnAllWords=document.getElementById("btnAllWords");
+btnAllWords.addEventListener("click",()=>{
+  const on=document.body.classList.toggle("showall");
+  btnAllWords.classList.toggle("on",on);
+  btnAllWords.textContent = on ? "🙈 隐藏全部释义" : "👁 显示全部释义";
+  if(on) closePop();
+});
+const btnAllAns=document.getElementById("btnAllAns");
+btnAllAns.addEventListener("click",()=>{
+  const on=document.body.classList.toggle("showans");
+  btnAllAns.classList.toggle("on",on);
+  btnAllAns.textContent = on ? "🔒 隐藏全部答案" : "✅ 显示全部答案";
+});
+const btnTheme=document.getElementById("btnTheme");
+btnTheme.addEventListener("click",()=>{
+  const on=document.body.classList.toggle("dark");
+  btnTheme.textContent = on ? "☀️ 日间" : "🌙 夜间";
+});
+
+function speak(text){
+  if(!('speechSynthesis' in window)){
+    alert('当前浏览器不支持语音朗读，请用 Chrome / Edge / Safari 打开本页。');
+    return;
+  }
+  const u=new SpeechSynthesisUtterance(text);
+  u.lang='en-US'; u.rate=0.92; u.pitch=1;
+  window.speechSynthesis.cancel();
+  window.speechSynthesis.speak(u);
+}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('.spk');
+  if(b){ e.stopPropagation(); speak(b.dataset.word); }
+});
+</script>
+</body>
+</html>
