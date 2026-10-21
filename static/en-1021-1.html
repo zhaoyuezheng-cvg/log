@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>7年级英语 · 8-5 培优题 精读精讲（课时6 传统文化与时文阅读）</title>
+<style>
+  :root{
+    --bg:#eef1f8;--bg2:#e6ebf5;--card:#ffffff;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;
+    --line:#e5e7eb;--brand:#4f46e5;--brand-2:#0d9488;--brand-soft:rgba(79,70,229,.08);
+    --accent:#f59e0b;--accent-soft:#fef3c7;--ok:#16a34a;--ok-soft:rgba(22,163,74,.10);--rose:#e11d48;
+    --shadow:0 10px 30px rgba(30,41,59,.10);--shadow-sm:0 4px 14px rgba(30,41,59,.08);--radius:18px;
+    --font:"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",system-ui,-apple-system,sans-serif;
+  }
+  body.dark{
+    --bg:#0f172a;--bg2:#0b1220;--card:#131c31;--ink:#e5edf7;--ink2:#cbd5e1;--muted:#94a3b8;
+    --line:#243049;--brand:#818cf8;--brand-2:#2dd4bf;--brand-soft:rgba(129,140,248,.14);
+    --accent:#fbbf24;--accent-soft:rgba(251,191,36,.16);--ok:#4ade80;--ok-soft:rgba(74,222,128,.12);
+    --rose:#fb7185;--shadow:0 10px 30px rgba(0,0,0,.45);--shadow-sm:0 4px 14px rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:var(--font);color:var(--ink);
+    background:radial-gradient(1100px 500px at 12% -10%, rgba(79,70,229,.16), transparent 60%),
+      radial-gradient(900px 480px at 100% 0%, rgba(13,148,136,.14), transparent 55%),
+      linear-gradient(180deg,var(--bg),var(--bg2));
+    min-height:100vh;line-height:1.75;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 18px 60px}
+  header.hero{position:relative;overflow:hidden;border-radius:0 0 30px 30px;
+    background:linear-gradient(135deg,#4f46e5 0%,#6d28d9 45%,#0d9488 100%);color:#fff;
+    padding:42px 26px 34px;margin-bottom:22px;box-shadow:var(--shadow);}
+  header.hero::after{content:"";position:absolute;inset:0;opacity:.35;
+    background-image:radial-gradient(rgba(255,255,255,.35) 1px,transparent 1px);
+    background-size:22px 22px;mask-image:linear-gradient(180deg,rgba(0,0,0,.6),transparent 75%);}
+  .hero-in{position:relative;z-index:2;max-width:1080px;margin:0 auto}
+  .kicker{display:inline-flex;align-items:center;gap:8px;font-size:.82rem;letter-spacing:.12em;
+    text-transform:uppercase;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);
+    padding:6px 14px;border-radius:999px;backdrop-filter:blur(6px)}
+  h1{margin:16px 0 8px;font-size:clamp(1.5rem,4vw,2.15rem);line-height:1.3;letter-spacing:.01em}
+  h1 .sub{display:block;font-size:.55em;font-weight:500;opacity:.9;margin-top:8px;letter-spacing:.02em}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+  .chip{font-size:.78rem;padding:5px 12px;border-radius:999px;background:rgba(255,255,255,.16);
+    border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(6px)}
+  .hero-note{margin-top:16px;font-size:.85rem;opacity:.9;max-width:760px;line-height:1.7}
+  .toolbar{position:sticky;top:0;z-index:60;display:flex;flex-wrap:wrap;gap:8px;align-items:center;
+    padding:10px 12px;margin:0 0 20px;border-radius:14px;
+    background:color-mix(in srgb,var(--card) 88%,transparent);
+    border:1px solid var(--line);box-shadow:var(--shadow-sm);backdrop-filter:blur(10px);}
+  .toolbar .grow{flex:1}
+  .tool-btn{font-family:inherit;font-size:.82rem;font-weight:600;color:var(--ink);
+    background:var(--brand-soft);border:1px solid transparent;border-radius:10px;
+    padding:8px 13px;cursor:pointer;transition:.18s;display:inline-flex;align-items:center;gap:6px;}
+  .tool-btn:hover{transform:translateY(-1px);box-shadow:var(--shadow-sm)}
+  .tool-btn.on{background:var(--brand);color:#fff}
+  .tool-btn.ghost{background:transparent;border-color:var(--line)}
+  .navlinks{display:flex;gap:6px;flex-wrap:wrap}
+  .navlinks a{font-size:.82rem;font-weight:600;text-decoration:none;color:var(--brand);
+    padding:7px 11px;border-radius:9px;border:1px solid var(--line);background:transparent;transition:.18s;white-space:nowrap}
+  .navlinks a:hover{background:var(--brand-soft)}
+  section.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);padding:26px 26px 30px;margin-bottom:26px;position:relative;overflow:hidden;
+    animation:rise .5s ease both;}
+  @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  section.card::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;
+    background:linear-gradient(90deg,var(--brand),var(--brand-2))}
+  .sec-head{display:flex;align-items:flex-start;gap:14px;flex-wrap:wrap;margin-bottom:6px}
+  .sec-no{flex:0 0 auto;width:44px;height:44px;border-radius:13px;display:grid;place-items:center;
+    font-weight:800;font-size:1.15rem;color:#fff;background:linear-gradient(135deg,var(--brand),var(--brand-2));
+    box-shadow:0 6px 16px rgba(79,70,229,.35)}
+  .sec-title{margin:0;font-size:1.3rem}
+  .sec-title small{display:block;font-weight:500;color:var(--muted);font-size:.8rem;margin-top:3px}
+  .sec-meta{display:flex;flex-wrap:wrap;gap:7px;margin:14px 0 4px}
+  .badge{font-size:.75rem;font-weight:600;padding:4px 11px;border-radius:999px;
+    background:var(--brand-soft);color:var(--brand);border:1px solid transparent}
+  .badge.warm{background:var(--accent-soft);color:#b45309}
+  .badge.gray{background:color-mix(in srgb,var(--muted) 14%,transparent);color:var(--muted)}
+  .badge.ok{background:var(--ok-soft);color:var(--ok)}
+  .lead{color:var(--muted);font-size:.92rem;margin:10px 0 18px}
+  .passage{background:linear-gradient(180deg,color-mix(in srgb,var(--brand) 5%,var(--card)),var(--card));
+    border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:8px 0 18px;
+    font-size:1.06rem;line-height:2.05;letter-spacing:.005em;}
+  .passage p{margin:0 0 14px}
+  .passage p:last-child{margin-bottom:0}
+  .passage .tag{font-size:.72em;color:var(--muted);vertical-align:super}
+  .passage .h{font-weight:800;color:var(--brand)}
+  .w{position:relative;cursor:pointer;color:inherit;border-radius:3px;padding:0 1px;
+    border-bottom:2px solid var(--accent);background:linear-gradient(transparent 60%,var(--accent-soft) 60%);
+    transition:.15s;white-space:nowrap;}
+  .w:hover{filter:brightness(.96);box-shadow:0 2px 0 -1px var(--accent)}
+  .w.active{background:var(--accent);color:#3b2a04;border-bottom-color:#b45309}
+  .gloss{display:none}
+  body.showall .gloss{display:inline;font-size:.8em;color:var(--brand-2);font-weight:600;
+    padding:0 3px;border-bottom:0;white-space:normal}
+  .blank{display:inline-block;min-width:2.4em;text-align:center;font-weight:800;color:var(--brand);
+    background:var(--brand-soft);border-bottom:2px solid var(--brand);border-radius:6px 6px 3px 3px;
+    padding:0 8px;margin:0 2px;cursor:pointer;transition:.15s;font-size:.94em;}
+  .blank:hover{background:color-mix(in srgb,var(--brand) 18%,transparent)}
+  .blank b{font-weight:800}
+  .blank i{display:none;font-style:normal;color:var(--ok);font-weight:800}
+  .blank.open{background:var(--ok-soft);border-bottom-color:var(--ok);color:var(--ok)}
+  .blank.open b{display:none}
+  .blank.open i{display:inline}
+  body.showans .blank{background:var(--ok-soft);border-bottom-color:var(--ok);color:var(--ok)}
+  body.showans .blank b{display:none}
+  body.showans .blank i{display:inline}
+  #pop{position:absolute;z-index:200;width:min(330px,88vw);background:var(--card);
+    border:1px solid var(--line);border-top:4px solid var(--accent);border-radius:14px;
+    box-shadow:0 18px 45px rgba(15,23,42,.28);padding:14px 16px;display:none;}
+  #pop.show{display:block;animation:pop .18s ease}
+  @keyframes pop{from{opacity:0;transform:translateY(6px) scale(.98)}to{opacity:1;transform:none}}
+  #pop .pw{font-size:1.12rem;font-weight:800;color:var(--ink);display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+  #pop .pph{font-size:.82rem;color:var(--brand-2);font-weight:600}
+  #pop .pcn{margin-top:7px;font-size:1rem;font-weight:700;color:var(--brand)}
+  #pop .pnote{margin-top:7px;font-size:.86rem;color:var(--muted);line-height:1.65}
+  #pop .pex{margin-top:10px;padding-top:9px;border-top:1px dashed var(--line);font-size:.9rem}
+  #pop .pex b{color:var(--brand-2)}
+  #pop .pex .cn{color:var(--muted);font-size:.85rem;display:block;margin-top:3px}
+  .pos{display:inline-block;font-size:.72rem;font-weight:700;color:#fff;background:var(--brand-2);
+    border-radius:6px;padding:2px 8px;margin-left:2px}
+  .qstem{font-weight:700;color:var(--ink);margin:2px 0 6px;font-size:1.02rem}
+  .qopts{margin:2px 0 0;padding-left:2px;color:var(--muted);font-size:.92rem}
+  .qopts div{margin:3px 0}
+  .qopts .picked{color:var(--ok);font-weight:800}
+  h3.ans-h{margin:26px 0 12px;font-size:1.05rem;display:flex;align-items:center;gap:9px}
+  h3.ans-h::before{content:"";width:10px;height:10px;border-radius:3px;background:var(--ok);display:inline-block}
+  .ans-list{display:grid;gap:10px}
+  .ans-item{border:1px solid var(--line);border-left:4px solid var(--ok);border-radius:12px;
+    padding:12px 15px;background:color-mix(in srgb,var(--ok) 4%,var(--card))}
+  .ans-item .top{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+  .ans-item .num{font-weight:800;color:var(--ok)}
+  .ans-item .key{font-weight:800;font-size:1.05rem;color:var(--ink);background:var(--ok-soft);
+    padding:1px 10px;border-radius:7px}
+  .ans-item .kt{font-size:.72rem;font-weight:700;color:#fff;background:var(--brand);border-radius:6px;padding:2px 8px}
+  .ans-item ul{margin:8px 0 0;padding-left:20px;color:var(--muted);font-size:.9rem}
+  .ans-item ul li{margin:3px 0}
+  .ans-item .sent{font-size:.92rem;color:var(--ink2);margin-top:6px}
+  .vgroup{margin-top:18px}
+  .vgroup > h3{margin:0 0 10px;font-size:1.02rem;color:var(--brand);display:flex;gap:9px;align-items:center}
+  .vgroup > h3 .dot{width:9px;height:9px;border-radius:50%;background:var(--brand-2)}
+  .vcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px}
+  .vcard{border:1px solid var(--line);border-radius:13px;padding:13px 15px;background:var(--card);
+    box-shadow:var(--shadow-sm);transition:.18s;position:relative;overflow:hidden}
+  .vcard::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--accent)}
+  .vcard:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+  .vcard .hw{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+  .vcard .en{font-weight:800;font-size:1.04rem;color:var(--ink)}
+  .vcard .ph{font-size:.8rem;color:var(--brand-2);font-weight:600}
+  .vcard .cn{margin-top:5px;font-weight:700;color:var(--brand);font-size:.98rem}
+  .vcard .nt{margin-top:5px;font-size:.84rem;color:var(--muted);line-height:1.6}
+  .vcard .ex{margin-top:8px;font-size:.88rem;border-top:1px dashed var(--line);padding-top:8px}
+  .vcard .ex .ecn{display:block;color:var(--muted);font-size:.82rem;margin-top:2px}
+  .callout{border:1px dashed var(--accent);background:var(--accent-soft);border-radius:12px;
+    padding:12px 15px;font-size:.9rem;color:#92400e;margin:12px 0;line-height:1.9}
+  body.dark .callout{color:#fcd34d}
+  details.more{margin-top:14px;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  details.more>summary{cursor:pointer;padding:11px 15px;font-weight:700;color:var(--brand);
+    background:var(--brand-soft);list-style:none;display:flex;justify-content:space-between;align-items:center}
+  details.more>summary::-webkit-details-marker{display:none}
+  details.more>summary::after{content:"▾";transition:.2s;font-size:.9em}
+  details.more[open]>summary::after{transform:rotate(180deg)}
+  details.more .body{padding:14px 16px;font-size:.95rem;line-height:1.9;color:var(--ink2)}
+  details.more .body p{margin:0 0 10px}
+  footer{text-align:center;color:var(--muted);font-size:.82rem;padding:26px 10px 10px;line-height:1.8}
+  kbd{background:var(--brand-soft);border-radius:5px;padding:1px 6px;font-size:.8em;font-weight:700;color:var(--brand)}
+  header.hero kbd{background:rgba(255,255,255,.22);color:#fff;border:1px solid rgba(255,255,255,.45);white-space:nowrap}
+  @media (max-width:560px){
+    section.card{padding:18px 15px 22px}
+    .passage{padding:15px 14px;font-size:1rem;line-height:1.95}
+    header.hero{padding:30px 18px 26px;border-radius:0 0 22px 22px}
+    .vcards{grid-template-columns:1fr}
+    .sec-no{width:38px;height:38px;font-size:1rem}
+  }
+  @media print{
+    .toolbar,#pop{display:none!important}.spk{display:none!important}body{background:#fff}
+    section.card{box-shadow:none;break-inside:avoid}
+    .w{border-bottom:1px solid #d97706;background:none}
+    body:not(.showall) .gloss{display:inline;color:#0d9488}
+  }
+  .spk{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border:none;border-radius:50%;
+    background:var(--brand-soft);color:var(--brand);cursor:pointer;font-size:.95rem;line-height:1;transition:.15s;flex:0 0 auto}
+  .spk:hover{background:var(--brand);color:#fff;transform:scale(1.08)}
+  .spk:active{transform:scale(.94)}
+  .pw .spk{margin-left:auto;align-self:center}.hw .spk{margin-left:auto}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-in">
+    <span class="kicker">✦ 初中英语 · 话题阅读精讲</span>
+    <h1>8-5 培优题 · 精读精讲
+      <span class="sub">课时6 传统文化与时文阅读 · 阅读表达 / 完形 / 语法 / 七选五 · 生词短语全解</span>
+    </h1>
+    <div class="hero-meta">
+      <span class="chip">4 个板块</span>
+      <span class="chip">10 题 + 20 空 + 5 简答</span>
+      <span class="chip">65+ 生词短语</span>
+      <span class="chip">含答案 · 逐题解析 · 例句</span>
+    </div>
+    <p class="hero-note">
+      页面把每篇语篇中的<b>生词与生短语</b>用<span style="border-bottom:2px solid #fbbf24;background:linear-gradient(transparent 60%,rgba(254,243,199,.55) 60%)">黄线下划线</span>标出——<b>点击任意划线词</b>即可弹出释义、读音、用法与例句；也可用上方按钮 <kbd>显示全部释义</kbd> 一键对照阅读。<b>点击文中序号</b>可直观显示答案。
+    </p>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="toolbar">
+    <div class="navlinks">
+      <a href="#readExp">一 · 阅读表达</a>
+      <a href="#cloze">二 · 完形填空</a>
+      <a href="#grammar">三 · 语法填空</a>
+      <a href="#choose5">四 · 七选五</a>
+      <a href="#vocab">生词汇总</a>
+    </div>
+    <span class="grow"></span>
+    <button class="tool-btn" id="btnAllWords" type="button">👁 显示全部释义</button>
+    <button class="tool-btn ghost" id="btnAllAns" type="button">✅ 显示全部答案</button>
+    <button class="tool-btn ghost" id="btnTheme" type="button">🌙 夜间</button>
+  </div>
+
+  <!-- ============ 一、阅读表达 ============ -->
+  <section class="card" id="readExp">
+    <div class="sec-head">
+      <div class="sec-no">一</div>
+      <div><h2 class="sec-title">阅读表达 · 绝版木刻 <small>阅读下面短文，完成短文后的问题。</small></h2></div>
+    </div>
+    <div class="sec-meta">
+      <span class="badge">主题：人与社会——传统文化</span>
+      <span class="badge gray">体裁：说明文 + 记叙</span>
+      <span class="badge gray">词数：约 160</span>
+      <span class="badge warm">难度 ★★★☆☆</span>
+      <span class="badge ok">答案见下</span>
+    </div>
+
+    <article class="passage" id="passageExp">
+      <p>Many <span class="w" data-k="woodcutprints">traditional woodcut prints</span><span class="tag">（版画）</span> are <span class="w" data-k="bw">black and white</span> or simple in color, but <span class="w" data-k="reductionwoodcut">reduction woodcut</span><span class="tag">（绝版木刻）</span> prints can show <span class="w" data-k="richcolors">rich colors</span>.</p>
+      <p>The reduction woodcut uses one piece of wood to make a <span class="w" data-k="colorfulartwork">colorful artwork</span>.</p>
+      <p>The <span class="w" data-k="artist">artist</span> <span class="w" data-k="cutsprints">cuts and prints</span><span class="tag">（刻、印刷）</span> different <span class="w" data-k="layers">layers</span><span class="tag">（层）</span> <span class="w" data-k="onebyone">one by one</span> on the wood. The reduction woodcut became an <span class="w" data-k="heritage">intangible cultural heritage</span><span class="tag">（非物质文化遗产）</span> in Pu’er, Yunnan, in 2009.</p>
+      <p class="h">Master’s story</p>
+      <p>Leng Guangmian, born in 1985, is a reduction woodcut artist. Leng started learning it in 2003. He said that making reduction woodcut prints is just like an <span class="w" data-k="adventure">adventure</span><span class="tag">（奇遇）</span>. “Every time we cut on the wood and then print, we never know what it will be like <span class="w" data-k="intheend">in the end</span>.”</p>
+      <p>Leng wants his artwork to show both great <span class="w" data-k="woodcuttingskills">woodcutting skills</span><span class="tag">（技巧）</span> and the culture and life in Pu’er. “For my works, there are two <span class="w" data-k="theme">themes</span><span class="tag">（主题）</span>: <span class="w" data-k="teahorseroad">Tea Horse Road</span><span class="tag">（茶马古道）</span>, because Pu’er is one of the <span class="w" data-k="startingplaces">starting places</span> of that road; and <span class="w" data-k="disappearingvillages">disappearing villages</span> in Pu’er,” Leng said. “Many old villages in Pu’er need <span class="w" data-k="rebuilding">rebuilding</span>, so I want to make people <span class="w" data-k="rememberbeauty">remember their beauty</span><span class="tag">（记住它们的美）</span> before they are gone.”</p>
+    </article>
+
+    <details class="more">
+      <summary>📖 参考译文（点击展开）</summary>
+      <div class="body">
+        <p>许多传统版画是黑白的或色彩简单，但绝版木刻版画却能呈现丰富的色彩。</p>
+        <p>绝版木刻用一块木头制作出一件色彩丰富的艺术品。</p>
+        <p>艺术家在木头上一层一层地刻与印。2009 年，绝版木刻在云南普洱成为非物质文化遗产。</p>
+        <p class="h">大师的故事</p>
+        <p>冷广冕，1985 年出生，是一位绝版木刻艺术家。他 2003 年开始学习这门技艺。他说，制作绝版木刻版画就像一场奇遇。“每次我们在木头上刻、然后印，我们永远不知道最后会是什么样子。”</p>
+        <p>冷广冕希望他的作品既能展现精湛的木刻技巧，又能呈现普洱的文化与生活。“我的作品有两个主题：茶马古道，因为普洱是这条古道的起点之一；还有普洱正在消失的村庄，”冷广冕说，“普洱许多老村庄需要重建，所以我想让人们在它们消失之前记住它们的美。”</p>
+      </div>
+    </details>
+
+    <h3 class="ans-h">答案与详解</h3>
+    <div class="ans-list" id="ansExp"></div>
+  </section>
+
+  <!-- ============ 二、完形填空 ============ -->
+  <section class="card" id="cloze">
+    <div class="sec-head">
+      <div class="sec-no">二</div>
+      <div><h2 class="sec-title">完形填空 · 春节 <small>从每小题所给的 A、B、C、D 四个选项中选出可填入空白处的最佳选项。</small></h2></div>
+    </div>
+    <div class="sec-meta">
+      <span class="badge">主题：人与社会——节日习俗</span>
+      <span class="badge gray">体裁：说明文</span>
+      <span class="badge gray">词数：约 140</span>
+      <span class="badge warm">难度 ★★☆☆☆</span>
+      <span class="badge ok">答案见下</span>
+    </div>
+
+    <article class="passage" id="passageCloze">
+      <p>We have many <span class="w" data-k="festival">festivals</span> <span class="w" data-k="alltheyearround">all the year round</span>. The <span class="w" data-k="springfestival">Spring Festival</span> is our Chinese people’s special <span class="blank" data-n="1"><b>1</b><i>festival</i></span>. It is in January or February.</p>
+      <p>There are twelve different <span class="blank" data-n="2"><b>2</b><i>animal</i></span> names for each Chinese year. They are mouse, ox<span class="tag">（牛）</span>, tiger, rabbit, chicken, dragon... It is the year of horse in 2026.</p>
+      <p>Before the Spring Festival, people are <span class="w" data-k="busygoing">busy</span> <span class="blank" data-n="3"><b>3</b><i>going</i></span> shopping and <span class="w" data-k="cleanhouses">cleaning their houses</span>. Every family <span class="w" data-k="prepare">prepares</span> <span class="blank" data-n="4"><b>4</b><i>all</i></span> kinds of food and drinks. On the <span class="w" data-k="eveof">eve of</span> the festival, there is always a big <span class="w" data-k="familydinner">family dinner</span>. People <span class="blank" data-n="5"><b>5</b><i>like</i></span> eating <span class="w" data-k="jiaozi">jiaozi</span>. It means “<span class="w" data-k="reunion">reunion</span><span class="tag">（团聚）</span>” and “<span class="w" data-k="goodluck">good luck</span>”. After dinner all the family <span class="blank" data-n="6"><b>6</b><i>stay up</i></span> to <span class="w" data-k="welcome">welcome</span> the new year. We often <span class="blank" data-n="7"><b>7</b><i>watch</i></span> TV and <span class="w" data-k="playgames">play games</span>.</p>
+      <p>On the <span class="blank" data-n="8"><b>8</b><i>first</i></span> day of the <span class="w" data-k="lunarnewyear">lunar new year</span>, people <span class="w" data-k="getupearly">get up early</span>. Young people <span class="blank" data-n="9"><b>9</b><i>wear</i></span> their new clothes and <span class="w" data-k="greet">greet</span> their parents. Then each child gets money as a <span class="w" data-k="newyeargift">new year gift</span>. On the third day of the lunar new year, people go to <span class="blank" data-n="10"><b>10</b><i>visit</i></span> their <span class="w" data-k="relatives">relatives</span><span class="tag">（亲戚）</span> and friends. They say “Happy new year” and <span class="w" data-k="bestwishes">give the best wishes</span> to each other. Everyone has a good time.</p>
+    </article>
+
+    <details class="more">
+      <summary>📖 参考译文（点击展开）</summary>
+      <div class="body">
+        <p>一年到头我们有许多节日。春节是我们中国人的特殊节日，在一月或二月。</p>
+        <p>每个中国年都有十二个不同的生肖名，如鼠、牛、虎、兔、鸡、龙…… 2026 年是马年。</p>
+        <p>春节前，人们忙于购物和打扫房子。每家都准备各种各样的食物和饮料。除夕夜，总有一顿丰盛的家庭聚餐。人们喜欢吃饺子，它意味着“团聚”和“好运”。晚饭后，全家一起熬夜守岁迎接新年。我们常常看电视、玩游戏。</p>
+        <p>农历新年的第一天，人们起得早。年轻人穿上新衣，向父母问好。然后每个孩子都会得到压岁钱作为新年礼物。农历新年的第三天，人们去走亲访友。他们互道“新年好”，送上最美好的祝福。大家都玩得很开心。</p>
+      </div>
+    </details>
+
+    <h3 class="ans-h">题目与选项</h3>
+    <div class="ans-list" id="qCloze"></div>
+    <h3 class="ans-h">答案与详解</h3>
+    <div class="ans-list" id="ansCloze"></div>
+  </section>
+
+  <!-- ============ 三、语法填空 ============ -->
+  <section class="card" id="grammar">
+    <div class="sec-head">
+      <div class="sec-no">三</div>
+      <div><h2 class="sec-title">语法填空 · Michael 的纸杯蛋糕 <small>在空白处填入一个适当的单词或括号内单词的正确形式。</small></h2></div>
+    </div>
+    <div class="sec-meta">
+      <span class="badge">主题：人与社会——爱心善举</span>
+      <span class="badge gray">体裁：记叙文</span>
+      <span class="badge gray">词数：约 130</span>
+      <span class="badge warm">难度 ★★★☆☆</span>
+      <span class="badge ok">答案见下</span>
+    </div>
+
+    <article class="passage" id="passageGrammar">
+      <p>Michael Plattee, a <span class="blank" data-k="yearold" data-n="1"><b>1</b><i>year-old</i></span> (year) old boy, is from the USA. He likes making <span class="w" data-k="cupcake">cupcakes</span>. His <span class="w" data-k="grandma">grandma</span> is his teacher. Now he’s <span class="w" data-k="begoodat">good</span> <span class="blank" data-k="begoodat" data-n="2"><b>2</b><i>at</i></span> making <span class="w" data-k="allkindsof">all kinds of</span> cupcakes. He always makes <span class="blank" data-n="3"><b>3</b><i>healthy</i></span> (health) cupcakes on Sunday afternoon and takes some to his <span class="w" data-k="classmates">classmates</span> the next morning. They say the cupcakes <span class="blank" data-n="4"><b>4</b><i>are</i></span> (be) good.</p>
+      <p>One day, Michael sees a boy <span class="blank" data-n="5"><b>5</b><i>standing</i></span> (stand) <span class="w" data-k="infrontof">in front of</span> a cake store for about 30 minutes. He is from a <span class="w" data-k="shelter">shelter</span><span class="tag">（收容所）</span>. He stands there and watches a big cake. The boy loves it, <span class="blank" data-n="6"><b>6</b><i>but</i></span> he doesn’t have money. Michael <span class="blank" data-k="also" data-n="7"><b>7</b><i>also</i></span> can’t wait to help the <span class="w" data-k="homeless">homeless</span> kids like the boy. <span class="w" data-k="withthehelpof">With the help of</span> his family, he has a small cupcake shop—Michael’s Desserts. When Michael <span class="blank" data-n="8"><b>8</b><i>sells</i></span> (sell) one cupcake, he gives $0.5 to the shelter. And every week he gives about $15 to it. It’s not much money. But <span class="blank" data-n="9"><b>9</b><i>his</i></span> (he) small act<span class="tag">（行为）</span> of <span class="w" data-k="kindness">kindness</span> can <span class="w" data-k="makeadifference">make a big difference</span> to those <span class="blank" data-n="10"><b>10</b><i>children</i></span> (child).</p>
+    </article>
+
+    <details class="more">
+      <summary>📖 参考译文（点击展开）</summary>
+      <div class="body">
+        <p>迈克尔·普拉提，一个 12 岁的男孩，来自美国。他喜欢做纸杯蛋糕，他的奶奶是他的老师。现在他擅长做各种各样的纸杯蛋糕。他总是在周日下午做健康的纸杯蛋糕，第二天早上带一些给同学。同学们都说蛋糕很好吃。</p>
+        <p>一天，迈克尔看到一个男孩在一家蛋糕店前站了大约 30 分钟。男孩来自一个收容所。他站在那里，看着一个大蛋糕。男孩很喜欢它，却没有钱。迈克尔也迫不及待地想帮助像这个男孩一样的无家可归的孩子。在家人的帮助下，他开了一家小纸杯蛋糕店——迈克尔甜点屋。每当迈克尔卖出一个纸杯蛋糕，他就捐 0.5 美元给收容所；每周他大约捐 15 美元。钱不多，但他小小的善举却能给那些孩子带来巨大的改变。</p>
+      </div>
+    </details>
+
+    <h3 class="ans-h">答案与详解</h3>
+    <div class="ans-list" id="ansGrammar"></div>
+  </section>
+
+  <!-- ============ 四、阅读七选五 ============ -->
+  <section class="card" id="choose5">
+    <div class="sec-head">
+      <div class="sec-no">四</div>
+      <div><h2 class="sec-title">阅读七选五 · 《疯狂动物城2》 <small>从选项中选出可填入空白处的最佳选项，有一项为多余选项。</small></h2></div>
+    </div>
+    <div class="sec-meta">
+      <span class="badge">主题：人与社会——影视作品</span>
+      <span class="badge gray">体裁：说明文</span>
+      <span class="badge gray">词数：约 110</span>
+      <span class="badge warm">难度 ★★★☆☆</span>
+      <span class="badge ok">答案见下</span>
+    </div>
+
+    <article class="passage" id="passage75">
+      <p>In the new movie <i>Zootopia 2</i>, our <span class="w" data-k="favoriteteam">favorite team</span> is back! <span class="w" data-k="bunny">Bunny</span> Judy Hopps and Nick Wilde love <span class="w" data-k="worktogether">working together</span>. But their <span class="w" data-k="jobs">jobs</span> aren’t always easy. <span class="blank" data-n="1"><b>1</b><i>C</i></span> “?” Nick asks. “Of course!” Judy answers. But they need to <span class="w" data-k="showtrue">show it is true</span>.</p>
+      <p>A new <span class="w" data-k="task">task</span> gives them a <span class="w" data-k="chance">chance</span>. <span class="blank" data-n="2"><b>2</b><i>E</i></span> <span class="blank" data-n="3"><b>3</b><i>A</i></span> He run away. This takes them to new parts of Zootopia. They find out the city isn’t just for <span class="w" data-k="mammals">mammals</span><span class="tag">（哺乳动物）</span>. <span class="w" data-k="reptiles">Reptiles</span><span class="tag">（爬行动物）</span> like Gary live here too, but other animals see them differently.</p>
+      <p>People here often think <span class="w" data-k="snakes">snakes</span> are <span class="w" data-k="scary">scary</span>. Judy and Nick soon <span class="w" data-k="learnabout">learn more about</span> Gary. “<span class="blank" data-n="4"><b>4</b><i>F</i></span> I have to <span class="w" data-k="makethingsright">make things right</span>,” Gary says.</p>
+      <p>Why did Gary run away? <span class="blank" data-n="5"><b>5</b><i>B</i></span> You can find out in the new movie.</p>
+    </article>
+
+    <div class="callout">
+      📌 备选句子（A—F，有一项多余）：<br>
+      <b>A.</b> They often have problems, and sometimes the bad guys run off.<br>
+      <b>B.</b> What secret<span class="tag">（秘密）</span> is in the city?<br>
+      <b>C.</b> Do you think we make a good team?<br>
+      <b>D.</b> He is a clever officer who works hard every day.<br>
+      <b>E.</b> They have to catch a snake called Gary.<br>
+      <b>F.</b> Snakes aren’t bad guys.
+    </div>
+
+    <details class="more">
+      <summary>📖 参考译文（点击展开）</summary>
+      <div class="body">
+        <p>在新电影《疯狂动物城 2》里，我们最爱的搭档回来了！兔子朱迪·霍普斯和尼克·王尔德热爱合作共事。但他们的工作并不总是轻松。<b>（1）“你觉得我们是一个好搭档吗？”</b>尼克问。“当然！”朱迪回答。但他们需要用行动证明这一点。</p>
+        <p>一项新任务给了他们机会。<b>（2）他们必须抓住一条叫盖里的蛇。</b><b>（3）他们常常遇到麻烦，有时坏家伙还会溜走。</b>他（盖里）逃跑了。这带他们去了动物城的新区域。他们发现这座城市不只是属于哺乳动物，像盖里这样的爬行动物也住在这里，但其他动物却用不同的眼光看待它们。</p>
+        <p>这里的人常常觉得蛇很可怕。朱迪和尼克很快对盖里有了更多了解。<b>（4）“蛇不是坏人。</b>我必须把事情纠正过来，”盖里说。</p>
+        <p>盖里为什么要逃跑？<b>（5）这座城市里藏着什么秘密？</b>你可以在新电影里找到答案。</p>
+        <p style="font-size:.85rem;color:var(--muted)">（注：多余选项为 D「He is a clever officer who works hard every day.」——文中无对应语境。）</p>
+      </div>
+    </details>
+
+    <h3 class="ans-h">答案与详解</h3>
+    <div class="ans-list" id="ans75"></div>
+  </section>
+
+  <!-- ============ 生词汇总 ============ -->
+  <section class="card" id="vocab">
+    <div class="sec-head">
+      <div class="sec-no">✦</div>
+      <div><h2 class="sec-title">生词与短语汇总 <small>按七年级英语词汇水平整理 · 每条含音标、释义、用法与例句。</small></h2></div>
+    </div>
+    <p class="lead">以下生词与短语均已在正文用黄线标出，点击可查看释义与例句；这里按板块分组集中复习，右侧 <b>🔊</b> 按钮可朗读发音。</p>
+    <div id="vocabBox"></div>
+  </section>
+
+  <footer>
+    8-5 培优题 · 精读精讲｜课时6 传统文化与时文阅读<br>
+    纯前端单文件 · 无需联网 · 支持发音、暗色与打印｜生成日期 2026-10-21
+  </footer>
+
+</div>
+
+<div id="pop"></div>
+
+<script>
+/* ================= 生词数据 ================= */
+const VOCAB = [
+/* ---- 一、阅读表达（绝版木刻） ---- */
+{k:"woodcutprints",g:"A",en:"woodcut prints",ph:"",pos:"短语",cn:"版画；木刻版画",note:"woodcut 木刻；print 版画、印刷品。traditional woodcut prints 传统版画。",ex:"The artist made some woodcut prints.",exCn:"这位艺术家制作了一些版画。"},
+{k:"bw",g:"A",en:"black and white",ph:"",pos:"短语",cn:"黑白的",note:"指颜色只有黑与白；反义 in color 彩色的。",ex:"This is a black and white photo.",exCn:"这是一张黑白照片。"},
+{k:"reductionwoodcut",g:"A",en:"reduction woodcut",ph:"",pos:"短语",cn:"绝版木刻",note:"reduction 有“减、绝版”之意；绝版木刻是云南普洱的传统版画技艺。",ex:"Reduction woodcut can show rich colors.",exCn:"绝版木刻能呈现丰富的色彩。"},
+{k:"richcolors",g:"A",en:"rich colors",ph:"",pos:"短语",cn:"丰富的色彩",note:"rich 在此指“丰富、多彩”，而非“富有”。",ex:"The painting is full of rich colors.",exCn:"这幅画色彩丰富。"},
+{k:"colorfulartwork",g:"A",en:"colorful artwork",ph:"",pos:"短语",cn:"色彩丰富的艺术品",note:"colorful 色彩丰富的；artwork 艺术品、美术作品。",ex:"She created a colorful artwork.",exCn:"她创作了一件色彩丰富的艺术品。"},
+{k:"artist",g:"A",en:"artist",ph:"/ˈɑːtɪst/",pos:"n.",cn:"艺术家；画家",note:"art（n. 艺术）+ -ist（人）；如 scientist 科学家。",ex:"The artist uses one piece of wood.",exCn:"这位艺术家用一块木头。"},
+{k:"cutsprints",g:"A",en:"cut and print",ph:"",pos:"短语",cn:"刻与印",note:"cut 刻、剪；print 印刷。版画工艺为“刻版”后“印刷”。",ex:"The artist cuts and prints the wood.",exCn:"艺术家在木头上刻与印。"},
+{k:"layers",g:"A",en:"layers",ph:"/ˈleɪəz/",pos:"n.",cn:"层；层次",note:"layer 的复数；different layers 不同的层。",ex:"The cake has three layers.",exCn:"这个蛋糕有三层。"},
+{k:"onebyone",g:"A",en:"one by one",ph:"",pos:"短语",cn:"一个接一个地；逐层地",note:"作状语，表示“逐一、依次”。",ex:"The students came in one by one.",exCn:"学生们一个接一个地走进来。"},
+{k:"heritage",g:"A",en:"intangible cultural heritage",ph:"",pos:"短语",cn:"非物质文化遗产",note:"intangible 无形的；cultural 文化的；heritage 遗产。",ex:"Kunqu Opera is an intangible cultural heritage.",exCn:"昆曲是一项非物质文化遗产。"},
+{k:"adventure",g:"A",en:"adventure",ph:"/ədˈventʃə(r)/",pos:"n.",cn:"奇遇；冒险",note:"可数名词；adventurous（adj. 爱冒险的）。",ex:"Life is like an adventure.",exCn:"生活就像一场奇遇。"},
+{k:"intheend",g:"A",en:"in the end",ph:"",pos:"短语",cn:"最后；最终",note:"= at last / finally；反义 at first 起初。",ex:"In the end, we succeeded.",exCn:"最后我们成功了。"},
+{k:"woodcuttingskills",g:"A",en:"woodcutting skills",ph:"",pos:"短语",cn:"木刻技巧",note:"woodcutting 木刻；skill 技巧、技能（可数）。",ex:"He has great woodcutting skills.",exCn:"他有精湛的木刻技巧。"},
+{k:"theme",g:"A",en:"theme",ph:"/θiːm/",pos:"n.",cn:"主题",note:"可数名词；the theme of ... ……的主题。",ex:"The theme of the talk is friendship.",exCn:"这次谈话的主题是友谊。"},
+{k:"teahorseroad",g:"A",en:"Tea Horse Road",ph:"",pos:"短语",cn:"茶马古道",note:"中国西南地区的古代商贸通道，普洱是其起点之一。",ex:"The Tea Horse Road is very old.",exCn:"茶马古道历史悠久。"},
+{k:"startingplaces",g:"A",en:"starting places",ph:"",pos:"短语",cn:"起点；出发地",note:"starting place 出发点；start from 从……出发。",ex:"Pu’er is one of the starting places of the road.",exCn:"普洱是这条古道的起点之一。"},
+{k:"disappearingvillages",g:"A",en:"disappearing villages",ph:"",pos:"短语",cn:"正在消失的村庄",note:"disappear（v. 消失）→ disappearing（adj. 正在消失的）。",ex:"He wants to save the disappearing villages.",exCn:"他想留住那些正在消失的村庄。"},
+{k:"rebuilding",g:"A",en:"rebuilding",ph:"/ˌriːˈbɪldɪŋ/",pos:"n./v.-ing",cn:"重建",note:"re-（再、重新）+ building（建造）；need rebuilding 需要重建。",ex:"The old village needs rebuilding.",exCn:"这个老村庄需要重建。"},
+{k:"rememberbeauty",g:"A",en:"remember their beauty",ph:"",pos:"短语",cn:"记住它们的美",note:"remember 记住；beauty 美（不可数）。",ex:"I want to remember the beauty of the town.",exCn:"我想记住这座小镇的美。"},
+
+/* ---- 二、完形填空（春节） ---- */
+{k:"festival",g:"B",en:"festival",ph:"/ˈfestɪvl/",pos:"n.",cn:"节日",note:"可数名词；traditional festival 传统节日；形容词 festive。",ex:"The Spring Festival is a big festival.",exCn:"春节是一个盛大的节日。"},
+{k:"alltheyearround",g:"B",en:"all the year round",ph:"",pos:"短语",cn:"一年到头；全年",note:"= all year round，表示“一整年、全年”。",ex:"It is warm here all the year round.",exCn:"这里一年到头都很暖和。"},
+{k:"springfestival",g:"B",en:"the Spring Festival",ph:"",pos:"短语",cn:"春节",note:"= Chinese New Year；at the Spring Festival 在春节期间。",ex:"We eat dumplings at the Spring Festival.",exCn:"春节我们吃饺子。"},
+{k:"busygoing",g:"B",en:"be busy doing",ph:"",pos:"短语",cn:"忙于做某事",note:"be busy (in) doing sth；be busy with sth 忙于某事。",ex:"She is busy going shopping.",exCn:"她正忙着去购物。"},
+{k:"cleanhouses",g:"B",en:"clean the house",ph:"",pos:"短语",cn:"打扫房子",note:"clean 作动词“打扫”；春节前有扫尘的习俗。",ex:"We clean the house before the festival.",exCn:"节前我们打扫房子。"},
+{k:"prepare",g:"B",en:"prepare",ph:"/prɪˈpeə(r)/",pos:"v.",cn:"准备",note:"prepare sth 准备某事；prepare for 为……做准备。",ex:"We prepare food for the party.",exCn:"我们为聚会准备食物。"},
+{k:"eveof",g:"B",en:"on the eve of",ph:"",pos:"短语",cn:"在……的前夕",note:"eve 前夜、前夕；on the eve of the festival 在节日前夕。",ex:"On the eve of the Spring Festival, we have a big dinner.",exCn:"除夕夜我们吃丰盛的晚餐。"},
+{k:"familydinner",g:"B",en:"family dinner",ph:"",pos:"短语",cn:"家庭聚餐；团圆饭",note:"family dinner 指全家团聚的正餐。",ex:"We have a big family dinner at the festival.",exCn:"节日里我们吃团圆饭。"},
+{k:"jiaozi",g:"B",en:"jiaozi",ph:"/ˈdʒaʊzi/",pos:"n.",cn:"饺子",note:"中文借词“饺子”；英文也常说 dumplings。",ex:"We eat jiaozi on New Year’s Eve.",exCn:"除夕我们吃饺子。"},
+{k:"reunion",g:"B",en:"reunion",ph:"/riːˈjuːniən/",pos:"n.",cn:"团聚；重聚",note:"re-（再）+ union（联合）→ 再相聚；family reunion 合家团聚。",ex:"The festival is a time for family reunion.",exCn:"节日是家人团聚的时刻。"},
+{k:"goodluck",g:"B",en:"good luck",ph:"",pos:"短语",cn:"好运",note:"不可数名词；Good luck to you! 祝你好运！",ex:"I wish you good luck.",exCn:"祝你好运。"},
+{k:"welcome",g:"B",en:"welcome",ph:"/ˈwelkəm/",pos:"v.",cn:"迎接；欢迎",note:"welcome the new year 迎接新年；welcome to 欢迎来到。",ex:"We welcome the new year together.",exCn:"我们一起迎接新年。"},
+{k:"playgames",g:"B",en:"play games",ph:"",pos:"短语",cn:"玩游戏",note:"play + 球类/游戏；play games 玩游戏。",ex:"We often play games after dinner.",exCn:"我们常在饭后玩游戏。"},
+{k:"lunarnewyear",g:"B",en:"lunar new year",ph:"",pos:"短语",cn:"农历新年",note:"lunar 农历的；the lunar new year 农历新年。",ex:"The lunar new year is in January or February.",exCn:"农历新年在一月或二月。"},
+{k:"getupearly",g:"B",en:"get up early",ph:"",pos:"短语",cn:"早起",note:"get up 起床；early 早地。",ex:"I get up early every day.",exCn:"我每天早起。"},
+{k:"greet",g:"B",en:"greet",ph:"/ɡriːt/",pos:"v.",cn:"问候；向……问好",note:"greet sb 向某人问好；greeting n. 问候。",ex:"She greets her parents every morning.",exCn:"她每天早上向父母问好。"},
+{k:"newyeargift",g:"B",en:"new year gift",ph:"",pos:"短语",cn:"新年礼物",note:"gift = present 礼物；new year gift 新年礼物（如压岁钱）。",ex:"The child got a new year gift.",exCn:"孩子得到了一份新年礼物。"},
+{k:"relatives",g:"B",en:"relatives",ph:"/ˈrelətɪvz/",pos:"n.",cn:"亲戚",note:"relative 的复数；visit relatives 走亲访友。",ex:"We visit relatives during the holiday.",exCn:"假期我们走亲访友。"},
+{k:"bestwishes",g:"B",en:"give the best wishes",ph:"",pos:"短语",cn:"致以最美好的祝福",note:"wish 可数名词“祝愿”，常用复数 wishes。",ex:"They give the best wishes to each other.",exCn:"他们互致最美好的祝福。"},
+
+/* ---- 三、语法填空（Michael 的纸杯蛋糕） ---- */
+{k:"yearold",g:"C",en:"year-old",ph:"",pos:"复合形容词",cn:"……岁的",note:"构成“数词-year-old”作定语，如 a 12-year-old boy 一个12岁的男孩；作表语则用 12 years old。",ex:"He is a 12-year-old boy.",exCn:"他是一个 12 岁的男孩。"},
+{k:"cupcake",g:"C",en:"cupcake",ph:"/ˈkʌpkeɪk/",pos:"n.",cn:"纸杯蛋糕",note:"可数名词；cup（杯子）+ cake（蛋糕）。",ex:"She likes making cupcakes.",exCn:"她喜欢做纸杯蛋糕。"},
+{k:"grandma",g:"C",en:"grandma",ph:"/ˈɡrænmɑː/",pos:"n.",cn:"奶奶；外婆",note:"口语，= grandmother。",ex:"My grandma is kind.",exCn:"我的奶奶很慈祥。"},
+{k:"begoodat",g:"C",en:"be good at",ph:"",pos:"短语",cn:"擅长",note:"= do well in；be good at + 名词/doing sth。",ex:"He is good at making cakes.",exCn:"他擅长做蛋糕。"},
+{k:"also",g:"C",en:"also",ph:"/ˈɔːlsəʊ/",pos:"adv.",cn:"也；而且",note:"置于行为动词前、情态/助动词后（如 can also）；肯定句中用 also，否定句多用 either。",ex:"She likes cakes, and she also likes fruit.",exCn:"她喜欢蛋糕，也喜欢水果。"},
+{k:"allkindsof",g:"C",en:"all kinds of",ph:"",pos:"短语",cn:"各种各样的",note:"= various kinds of；a kind of 一种。",ex:"There are all kinds of cakes.",exCn:"有各种各样的蛋糕。"},
+{k:"classmates",g:"C",en:"classmates",ph:"/ˈklɑːsmeɪts/",pos:"n.",cn:"同班同学",note:"class（班级）+ mate（伙伴）；复数 classmates。",ex:"He shares cakes with his classmates.",exCn:"他和同学分享蛋糕。"},
+{k:"infrontof",g:"C",en:"in front of",ph:"",pos:"短语",cn:"在……前面",note:"in front of 在（外部的）前面；in the front of 在（内部的）前部。",ex:"He stands in front of the store.",exCn:"他站在商店前面。"},
+{k:"shelter",g:"C",en:"shelter",ph:"/ˈʃeltə(r)/",pos:"n.",cn:"收容所；庇护所",note:"可数名词；a homeless shelter 无家可归者收容所。",ex:"The boy is from a shelter.",exCn:"这个男孩来自一个收容所。"},
+{k:"homeless",g:"C",en:"homeless",ph:"/ˈhəʊmləs/",pos:"adj.",cn:"无家可归的",note:"home（家）+ -less（无……的）；the homeless 无家可归者。",ex:"He wants to help homeless kids.",exCn:"他想帮助无家可归的孩子。"},
+{k:"withthehelpof",g:"C",en:"with the help of",ph:"",pos:"短语",cn:"在……的帮助下",note:"= with one’s help；with the help of sb 在某人的帮助下。",ex:"He finished it with the help of his family.",exCn:"在家人的帮助下他完成了这件事。"},
+{k:"kindness",g:"C",en:"kindness",ph:"/ˈkaɪndnəs/",pos:"n.",cn:"善良；善举",note:"kind（adj. 善良的）+ -ness（名词后缀）；不可数名词。",ex:"Small acts of kindness can help a lot.",exCn:"小小的善举能帮上大忙。"},
+{k:"makeadifference",g:"C",en:"make a big difference",ph:"",pos:"短语",cn:"产生重大影响；起重要作用",note:"make a difference (to ...) 对……有影响。",ex:"Your help can make a big difference.",exCn:"你的帮助能带来很大的改变。"},
+
+/* ---- 四、阅读七选五（疯狂动物城2） ---- */
+{k:"favoriteteam",g:"D",en:"favorite team",ph:"",pos:"短语",cn:"最喜欢的团队/搭档",note:"favorite 最喜爱的；team 团队、队伍。",ex:"They are my favorite team.",exCn:"他们是我最喜欢的搭档。"},
+{k:"bunny",g:"D",en:"bunny",ph:"/ˈbʌni/",pos:"n.",cn:"小兔子",note:"儿语/昵称，= rabbit；Bunny Judy 兔子朱迪。",ex:"The bunny is very cute.",exCn:"这只小兔子很可爱。"},
+{k:"worktogether",g:"D",en:"work together",ph:"",pos:"短语",cn:"一起合作",note:"together 一起；work together 合作共事。",ex:"They work together as partners.",exCn:"他们作为搭档一起合作。"},
+{k:"jobs",g:"D",en:"jobs",ph:"/dʒɒbz/",pos:"n.",cn:"工作；职业",note:"job 可数名词“一份工作”；work 不可数“工作”。",ex:"Police officers have hard jobs.",exCn:"警官的工作很辛苦。"},
+{k:"showtrue",g:"D",en:"show it is true",ph:"",pos:"短语",cn:"证明这是真的",note:"show 证明、表明；it is true 这是真的。",ex:"They need to show it is true.",exCn:"他们需要证明这是真的。"},
+{k:"task",g:"D",en:"task",ph:"/tɑːsk/",pos:"n.",cn:"任务",note:"可数名词；do a task 做任务。",ex:"A new task gives them a chance.",exCn:"一项新任务给了他们机会。"},
+{k:"chance",g:"D",en:"chance",ph:"/tʃɑːns/",pos:"n.",cn:"机会",note:"可数名词；give sb a chance 给某人一次机会。",ex:"This is a good chance to learn.",exCn:"这是一个学习的好机会。"},
+{k:"mammals",g:"D",en:"mammals",ph:"/ˈmæmlz/",pos:"n.",cn:"哺乳动物",note:"mammal 的复数；哺乳动物用乳汁哺育幼崽。",ex:"Cats and dogs are mammals.",exCn:"猫和狗是哺乳动物。"},
+{k:"reptiles",g:"D",en:"reptiles",ph:"/ˈreptaɪlz/",pos:"n.",cn:"爬行动物",note:"reptile 的复数；如 snakes、lizards 等。",ex:"Snakes are reptiles.",exCn:"蛇是爬行动物。"},
+{k:"snakes",g:"D",en:"snakes",ph:"/sneɪks/",pos:"n.",cn:"蛇",note:"snake 的复数；Gary 是一条蛇。",ex:"Some people are afraid of snakes.",exCn:"有些人怕蛇。"},
+{k:"scary",g:"D",en:"scary",ph:"/ˈskeəri/",pos:"adj.",cn:"吓人的；可怕的",note:"scare（v. 惊吓）→ scary（adj. 修饰物）/ scared（adj. 修饰人）。",ex:"The snake looks scary.",exCn:"这条蛇看起来很吓人。"},
+{k:"learnabout",g:"D",en:"learn about",ph:"",pos:"短语",cn:"了解；得知",note:"learn about sth 了解某事；learn from 向……学习。",ex:"They learn more about Gary.",exCn:"他们对盖里有了更多了解。"},
+{k:"makethingsright",g:"D",en:"make things right",ph:"",pos:"短语",cn:"把事情纠正过来；挽回局面",note:"make + 宾语 + 形容词“使……处于某状态”。",ex:"I want to make things right.",exCn:"我想把事情纠正过来。"}
+];
+const V={}; VOCAB.forEach(o=>V[o.k]=o);
+
+const GROUP_NAME={
+  A:"一、阅读表达（绝版木刻）",
+  B:"二、完形填空（春节）",
+  C:"三、语法填空（Michael 的纸杯蛋糕）",
+  D:"四、阅读七选五（疯狂动物城2）"
+};
+
+/* ================= 题目数据 ================= */
+const Q_CLOZE=[
+ {n:1,q:"1. A. spring  B. festival  C. season  D. month",opts:["spring","festival","season","month"],ans:1},
+ {n:2,q:"2. A. wish  B. luck  C. fun  D. animal",opts:["wish","luck","fun","animal"],ans:3},
+ {n:3,q:"3. A. taking  B. going  C. any  D. all",opts:["taking","going","any","all"],ans:1},
+ {n:4,q:"4. A. some  B. any  C. all  D. most",opts:["some","any","all","most"],ans:2},
+ {n:5,q:"5. A. want  B. ask  C. like  D. wish",opts:["want","ask","like","wish"],ans:2},
+ {n:6,q:"6. A. stay up  B. put up  C. put away  D. put on",opts:["stay up","put up","put away","put on"],ans:0},
+ {n:7,q:"7. A. look  B. watch  C. wash  D. buy",opts:["look","watch","wash","buy"],ans:1},
+ {n:8,q:"8. A. last  B. first  C. third  D. second",opts:["last","first","third","second"],ans:1},
+ {n:9,q:"9. A. wear  B. bring  C. see  D. take",opts:["wear","bring","see","take"],ans:0},
+ {n:10,q:"10. A. get  B. close  C. enjoy  D. visit",opts:["get","close","enjoy","visit"],ans:3}
+];
+
+/* ================= 答案与详解 ================= */
+const ANS_EXP=[
+ {n:1,key:"They can show rich colors.",tag:"细节理解",sent:"What makes reduction woodcut prints different?",
+  ana:["定位首段：“Many traditional woodcut prints are black and white or simple in color, but reduction woodcut prints can show rich colors.”（许多传统版画是黑白或色彩简单，但绝版木刻能呈现丰富色彩。）",
+   "对比点在于“能呈现丰富的色彩”，这是绝版木刻区别于传统版画之处。"]},
+ {n:2,key:"He was 18 (years old).",tag:"细节计算",sent:"How old was Leng when he started learning the reduction woodcut?",
+  ana:["定位：“Leng Guangmian, born in 1985... Leng started learning it in 2003.”（1985 年出生，2003 年开始学。）",
+   "2003 - 1985 = 18，故他当时 18 岁。注意需用出生年与开始学年相减。"]},
+ {n:3,key:"Because they never know what it will be like in the end.",tag:"细节理解",sent:"Why does Leng see making reduction woodcuts as an adventure?",
+  ana:["定位：“He said that making reduction woodcut prints is just like an adventure. ‘Every time we cut on the wood and then print, we never know what it will be like in the end.’”",
+   "原因即“每次刻印前都不知道最终效果会怎样”，这种不可预知性让他觉得像一场冒险/奇遇。"]},
+ {n:4,key:"Both great woodcutting skills and the culture and life in Pu’er.",tag:"细节理解",sent:"What does Leng want to show with his artwork?",
+  ana:["定位：“Leng wants his artwork to show both great woodcutting skills and the culture and life in Pu’er.”（他想让作品既展现精湛木刻技巧，又呈现普洱的文化与生活。）",
+   "用 both ... and ... 连接两个并列内容，作答时两者都要写全。"]},
+ {n:5,key:"Tea Horse Road and disappearing villages in Pu’er.",tag:"细节理解",sent:"What are the two main themes of Leng Guangmian’s works?",
+  ana:["定位：“For my works, there are two themes: Tea Horse Road ... and disappearing villages in Pu’er.”（作品有两个主题：茶马古道，以及普洱正在消失的村庄。）",
+   "两个主题都要答出，注意 the two main themes 对应文中 the two themes。"]}
+];
+const ANS_CLOZE=[
+ {n:1,key:"B. festival",tag:"名词辨析",sent:"The Spring Festival is our Chinese people’s special __1__.",
+  ana:["句意：春节是我们中国人的特殊“节日”。festival（节日）符合。",
+   "spring（春天）、season（季节）、month（月份）都不能准确表达“春节”作为节日的含义。"]},
+ {n:2,key:"D. animal",tag:"名词辨析",sent:"There are twelve different __2__ names for each Chinese year.",
+  ana:["下文列举 mouse, ox, tiger, rabbit, chicken, dragon 等生肖动物，故是“十二个不同的动物名”。选 animal。",
+   "wish（愿望）、luck（运气）、fun（乐趣）都与生肖动物无关。"]},
+ {n:3,key:"B. going",tag:"固定搭配",sent:"people are busy __3__ shopping",
+  ana:["固定搭配 be busy doing sth（忙于做某事），此处 go shopping（去购物）是固定短语，故填 going。",
+   "taking/any/all 都不能与 shopping 搭配成“购物”之意。"]},
+ {n:4,key:"C. all",tag:"限定词/固定搭配",sent:"prepares __4__ kinds of food and drinks",
+  ana:["固定搭配 all kinds of（各种各样的），句意为“每家都准备各种各样的食物和饮料”。",
+   "some kinds of（一些）、most kinds of（大多数）不如 all kinds of 贴合春节置办丰盛年货的语境；any 常用于疑问/否定。"]},
+ {n:5,key:"C. like",tag:"动词辨析",sent:"People __5__ eating jiaozi.",
+  ana:["句意：人们“喜欢”吃饺子。like doing sth（喜欢做某事）。",
+   "want/ask/wish 后一般不直接接 doing 表“喜欢”；want to do（想要做），wish to do（希望做）。"]},
+ {n:6,key:"A. stay up",tag:"动词短语",sent:"After dinner all the family __6__ to welcome the new year.",
+  ana:["句意：晚饭后全家“熬夜守岁”迎接新年。stay up（熬夜、不睡）符合除夕守岁的习俗。",
+   "put up（张贴、搭建）、put away（收好）、put on（穿上）都不合“守岁迎接新年”之意。"]},
+ {n:7,key:"B. watch",tag:"固定搭配",sent:"We often __7__ TV",
+  ana:["固定搭配 watch TV（看电视）。", "look（看）需接 at；wash（洗）、buy（买）与 TV 不搭配。"]},
+ {n:8,key:"B. first",tag:"序数词/语境",sent:"On the __8__ day of the lunar new year, people get up early.",
+  ana:["下文说“穿上新衣、向父母问好、孩子得压岁钱”，这是大年初一（第一天）的习俗。故填 first。",
+   "second（第二）、third（第三）、last（最后）都与“拜年、给压岁钱”的时间不符。"]},
+ {n:9,key:"A. wear",tag:"动词辨析",sent:"Young people __9__ their new clothes",
+  ana:["句意：年轻人“穿上/穿着”新衣。wear（穿、戴着）表状态。",
+   "bring（带来）、see（看见）、take（带走）都不能与“新衣”搭配表达“穿”。"]},
+ {n:10,key:"D. visit",tag:"动词辨析",sent:"people go to __10__ their relatives and friends",
+  ana:["固定搭配 visit relatives and friends（走亲访友），句意为“人们去走亲访友”。",
+   "get（得到）、close（关闭）、enjoy（享受）都不能与“亲戚朋友”搭配表达拜访。"]}
+];
+const ANS_GRAMMAR=[
+ {n:1,key:"year-old",tag:"词形/复合形容词",sent:"a __1__ (year) old boy",
+  ana:["此处作定语修饰 boy，须用复合形容词“数词-year-old”，即（12）year-old，表示“……岁的”。",
+   "注意：作定语时用“数词-year-old”（中间有连字符、名词用单数）；作表语则用“数字 years old”（如 He is 12 years old）。"]},
+ {n:2,key:"at",tag:"固定搭配",sent:"he’s good __2__ making all kinds of cupcakes",
+  ana:["固定搭配 be good at + 名词/doing sth（擅长做某事）。故填 at，be good at making 即“擅长做”。"]},
+ {n:3,key:"healthy",tag:"词性转换/形容词",sent:"makes __3__ (health) cupcakes",
+  ana:["修饰名词 cupcakes 要用形容词，health（n. 健康）→ healthy（adj. 健康的）。"]},
+ {n:4,key:"are",tag:"主谓一致",sent:"the cupcakes __4__ (be) good",
+  ana:["主语 the cupcakes 是复数，且为一般现在时，be 动词用 are。"]},
+ {n:5,key:"standing",tag:"非谓语/现在分词",sent:"sees a boy __5__ (stand) in front of a cake store",
+  ana:["固定结构 see sb doing sth（看见某人正在做某事）。此处指“看到一个男孩正站在店前（站了约30分钟）”，强调动作正在进行，故用 standing。",
+   "比较：see sb do sth 表示看见动作全过程；此处有“for about 30 minutes”强调持续，用 doing 更贴切。"]},
+ {n:6,key:"but",tag:"连词/转折",sent:"The boy loves it, __6__ he doesn’t have money.",
+  ana:["前句“男孩很喜欢它”与后句“他没钱”是转折关系，故用连词 but（但是）。"]},
+ {n:7,key:"also",tag:"副词",sent:"Michael __7__ can’t wait to help",
+  ana:["句意：迈克尔“也”迫不及待想帮助这些无家可归的孩子。also（也）置于行为动词前、情态/助动词后，此处位于 can’t 前表示“也”。",
+   "该空无提示词，填副词 also，承接上文男孩的处境，表示迈克尔同样急切地想帮忙。"]},
+ {n:8,key:"sells",tag:"时态/主谓一致",sent:"When Michael __8__ (sell) one cupcake",
+  ana:["When 引导时间状语从句，主句“he gives $0.5”为一般现在时，从句也用一般现在时；主语 Michael 是第三人称单数，故 sell 变 sells。"]},
+ {n:9,key:"his",tag:"代词/物主代词",sent:"But __9__ (he) small act of kindness",
+  ana:["修饰名词 small act 要用形容词性物主代词 his（他的）。"]},
+ {n:10,key:"children",tag:"名词复数",sent:"make a big difference to those __10__ (child)",
+  ana:["those（那些）后接可数名词复数；child 的复数为 children（不规则变化）。"]}
+];
+const ANS_75=[
+ {n:1,key:"C",tag:"语篇衔接",sent:"But their jobs aren’t always easy. __1__ “?” Nick asks. “Of course!” Judy answers.",
+  ana:["空后是 Nick 的问句、Judy 回答“Of course!”，可见空处是一个一般疑问句，且与“是否是好搭档”相关。",
+   "C“Do you think we make a good team?”（你觉得我们是一个好搭档吗？）承接“their jobs aren’t always easy”，又与“Of course!”呼应，符合。",
+   "其余选项都不是能引出“Of course!”的一般疑问句。"]},
+ {n:2,key:"E",tag:"语篇衔接",sent:"A new task gives them a chance. __2__",
+  ana:["前句“A new task gives them a chance”（新任务给他们机会），空处应说明“任务”是什么。",
+   "E“They have to catch a snake called Gary.”（他们必须抓住一条叫盖里的蛇）正点明任务内容，衔接自然。"]},
+ {n:3,key:"A",tag:"语篇衔接",sent:"__3__ He run away.",
+  ana:["空后“He run away”（他逃跑了），说明“坏家伙跑了”。A“They often have problems, and sometimes the bad guys run off.”（他们常遇麻烦，有时坏家伙会溜走）与“跑掉”呼应，衔接合理。",
+   "A 概述“坏家伙会跑”，下文 Gary“run away”正是具体体现。"]},
+ {n:4,key:"F",tag:"语篇衔接",sent:"“__4__ I have to make things right,” Gary says.",
+  ana:["这是 Gary 的话，结合上文“人们觉得蛇很可怕”，Gary 应是在为自己/蛇正名。",
+   "F“Snakes aren’t bad guys.”（蛇不是坏人）正好反驳“蛇可怕”的偏见，与“I have to make things right”（我要把事情纠正过来）连贯。"]},
+ {n:5,key:"B",tag:"语篇衔接/设问",sent:"Why did Gary run away? __5__ You can find out in the new movie.",
+  ana:["空后“You can find out in the new movie”（你能在新电影里找到答案），说明空处是一个待解的疑问。",
+   "B“What secret is in the city?”（这座城市藏着什么秘密？）以设问引出“去电影里找答案”，衔接自然。",
+   "多余选项为 D“He is a clever officer who works hard every day.”，文中无对应语境，故不选。"]}
+];
+
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");}
+
+function renderQ(box, arr){
+  arr.forEach(o=>{
+    const d=document.createElement("div"); d.className="ans-item";
+    const opts=o.opts.map((t,i)=>`<div${i===o.ans?' class="picked"':''}>${"ABCD"[i]}. ${esc(t)}</div>`).join("");
+    d.innerHTML = `<div class="top"><span class="num">${o.n}.</span><span class="kt">第 ${o.n} 题</span></div>`+
+      `<div class="qstem">${esc(o.q)}</div><div class="qopts">${opts}</div>`;
+    box.appendChild(d);
+  });
+}
+renderQ(document.getElementById("qCloze"), Q_CLOZE);
+
+function renderAns(box, arr){
+  arr.forEach(o=>{
+    const d=document.createElement("div"); d.className="ans-item";
+    d.innerHTML = `<div class="top"><span class="num">${o.n}.</span><span class="key">${esc(o.key)}</span><span class="kt">${esc(o.tag)}</span></div>`+
+      `<div class="sent">📌 ${esc(o.sent)}</div>`+
+      `<ul>${o.ana.map(a=>`<li>${esc(a)}</li>`).join("")}</ul>`;
+    box.appendChild(d);
+  });
+}
+renderAns(document.getElementById("ansExp"), ANS_EXP);
+renderAns(document.getElementById("ansCloze"), ANS_CLOZE);
+renderAns(document.getElementById("ansGrammar"), ANS_GRAMMAR);
+renderAns(document.getElementById("ans75"), ANS_75);
+
+/* 生词汇总（按板块分组） */
+const vocabBox = document.getElementById("vocabBox");
+["A","B","C","D"].forEach(g=>{
+  const wrap=document.createElement("div"); wrap.className="vgroup";
+  const h=document.createElement("h3"); h.innerHTML=`<span class="dot"></span>${GROUP_NAME[g]}`;
+  wrap.appendChild(h);
+  const cards=document.createElement("div"); cards.className="vcards";
+  VOCAB.filter(v=>v.g===g).forEach(v=>{
+    const c=document.createElement("div"); c.className="vcard";
+    c.innerHTML = `<div class="hw"><span class="en">${esc(v.en)}</span>`+
+      (v.ph?`<span class="ph">${esc(v.ph)}</span>`:"")+
+      `<span class="pos">${esc(v.pos)}</span><button class="spk" type="button" data-word="${esc(v.en)}" title="点击发音" aria-label="发音">🔊</button></div>`+
+      `<div class="cn">${esc(v.cn)}</div>`+
+      `<div class="nt">${esc(v.note)}</div>`+
+      `<div class="ex">e.g. ${esc(v.ex)}<span class="ecn">${esc(v.exCn)}</span></div>`;
+    cards.appendChild(c);
+  });
+  wrap.appendChild(cards);
+  vocabBox.appendChild(wrap);
+});
+
+/* ================= 交互：划线词弹出 / 内联对照 ================= */
+const words = [...document.querySelectorAll(".w")];
+words.forEach(w=>{
+  const d=V[w.dataset.k]; if(!d) return;
+  const g=document.createElement("span"); g.className="gloss"; g.textContent="（"+d.cn+"）";
+  w.after(g);
+});
+
+const pop=document.getElementById("pop");
+let cur=null;
+function closePop(){ pop.classList.remove("show"); if(cur) cur.classList.remove("active"); cur=null; }
+function openPop(el){
+  const d=V[el.dataset.k]; if(!d) return;
+  if(cur===el){ closePop(); return; }
+  closePop();
+  cur=el; el.classList.add("active");
+  pop.innerHTML =
+    `<div class="pw">${esc(d.en)}${d.ph?`<span class="pph">${esc(d.ph)}</span>`:""}<span class="pos">${esc(d.pos)}</span><button class="spk" type="button" data-word="${esc(d.en)}" title="点击发音" aria-label="发音">🔊</button></div>`+
+    `<div class="pcn">${esc(d.cn)}</div>`+
+    `<div class="pnote">${esc(d.note)}</div>`+
+    `<div class="pex"><b>例：</b> ${esc(d.ex)}<span class="cn">${esc(d.exCn)}</span></div>`;
+  pop.classList.add("show");
+  const r=el.getBoundingClientRect();
+  const pw=pop.offsetWidth, ph=pop.offsetHeight;
+  let left=r.left + r.width/2 - pw/2 + window.scrollX;
+  left=Math.max(12+window.scrollX, Math.min(left, window.scrollX + document.documentElement.clientWidth - pw - 12));
+  let top=r.top + window.scrollY - ph - 12;
+  if(top < window.scrollY + 8){ top = r.bottom + window.scrollY + 12; }
+  pop.style.left=left+"px"; pop.style.top=top+"px";
+}
+words.forEach(w=>w.addEventListener("click",e=>{e.stopPropagation();openPop(w);}));
+document.addEventListener("click",e=>{ if(!pop.contains(e.target)) closePop(); });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape") closePop(); });
+window.addEventListener("scroll",closePop,{passive:true});
+window.addEventListener("resize",closePop);
+
+document.querySelectorAll(".blank").forEach(b=>{
+  b.addEventListener("click",e=>{e.stopPropagation(); b.classList.toggle("open");});
+});
+
+const btnAllWords=document.getElementById("btnAllWords");
+btnAllWords.addEventListener("click",()=>{
+  const on=document.body.classList.toggle("showall");
+  btnAllWords.classList.toggle("on",on);
+  btnAllWords.textContent = on ? "🙈 隐藏全部释义" : "👁 显示全部释义";
+  if(on) closePop();
+});
+const btnAllAns=document.getElementById("btnAllAns");
+btnAllAns.addEventListener("click",()=>{
+  const on=document.body.classList.toggle("showans");
+  btnAllAns.classList.toggle("on",on);
+  btnAllAns.textContent = on ? "🔒 隐藏全部答案" : "✅ 显示全部答案";
+});
+const btnTheme=document.getElementById("btnTheme");
+btnTheme.addEventListener("click",()=>{
+  const on=document.body.classList.toggle("dark");
+  btnTheme.textContent = on ? "☀️ 日间" : "🌙 夜间";
+});
+
+function speak(text){
+  if(!('speechSynthesis' in window)){
+    alert('当前浏览器不支持语音朗读，请用 Chrome / Edge / Safari 打开本页。');
+    return;
+  }
+  const u=new SpeechSynthesisUtterance(text);
+  u.lang='en-US'; u.rate=0.92; u.pitch=1;
+  window.speechSynthesis.cancel();
+  window.speechSynthesis.speak(u);
+}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('.spk');
+  if(b){ e.stopPropagation(); speak(b.dataset.word); }
+});
+</script>
+</body>
+</html>
