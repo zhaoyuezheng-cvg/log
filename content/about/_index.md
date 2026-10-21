@@ -34,7 +34,7 @@ title: About
 ## 英语培优
 
 -  [8周3培优v1](/en8-3.html)  [v2](/en8-3-v2.html)  [v3](/en8-3-v3.html)
--  [8周4培优v1](/en8-4-v1.html)
+-  [8周4培优v1](/en8-4-v1.html)  [11月21作业](/en-1121.html)
 - [8周1培优v1](/en8_1.html)  [v2](/en8_1_v2.html)  [v3](/en8_1_v3.html)  [v4](/en8_1_v4.html)
 - [英语不规则动词](/irregular-verbs.html)
 <!--  8周3培优html生成工具分别为 v1:mimo claw在线；v2：opencode ds4.1f；v3：Hermes openrouter -->
