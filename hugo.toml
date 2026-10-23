@@ -60,6 +60,9 @@ ShowWordCount = true
 UseHugoToc = true
 showToc = true
 TocOpen = false
+mainSections = ["posts"]
+ShowAllPagesInArchive = true
+
 [[params.socialIcons]]
 name = "github"
 url = "https://github.com/zhaoyuezheng"
