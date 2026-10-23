@@ -30,7 +30,8 @@ title: About
 
 - [第八周语文培优v1](/w8paper-v1.html)  [v2](/w8paper-v2.html) [v3](/w8paper-v3.html)
 - [第七周语文培优](/w7paper.html)
-
+- [容易写错、读错的字和多音字](/appendix-chars.html)
+  
 ## 英语培优
 
 - [8周5培优v1](/en8-5-1.html)  [v2](/en8-5-2.html)  [v3](/en8-5-3.html)  [v4](/en8-5-4.html)
@@ -39,8 +40,9 @@ title: About
 - [8周1培优v1](/en8_1.html)  [v2](/en8_1_v2.html)  [v3](/en8_1_v3.html)  [v4](/en8_1_v4.html)
 - [英语不规则动词](/irregular-verbs.html)
 
+<!--  8周5培优html生成工具分别为 v1:workbuddy+mimo；v2：mimo claw；v3：opencode ds4.1f ；v4：couzi claw；-->
 <!--  8周3培优html生成工具分别为 v1:mimo claw在线；v2：opencode ds4.1f；v3：Hermes openrouter -->
-<!--  8周5培优html生成工具分别为 v1:mimo claw在线；v2：opencode ds4.1f；v3：Hermes openrouter -->
+
 
 ## 作文范文
 
