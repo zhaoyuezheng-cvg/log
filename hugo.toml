@@ -25,7 +25,7 @@ weight = 2
 
 [[menu.main]]
 identifier = "resources"
-name = "📚 学习资料"
+name = "📚 资料"
 url = "/resources/"
 weight = 3
 
