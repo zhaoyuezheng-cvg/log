@@ -17,10 +17,10 @@ title: About
 
 好好写东西，少折腾代码。共勉！
 
-## 学习资料与独立页面
+## 资料
 
 已将静态页面按用途整理，方便查找：
 
-- [学习资料总览](/resources/)
+- [资料总览](/resources/)
 - [大模型运作原理可视化](/other/llm.html)
 - [高性价比人生指南](/other/how-to-live-better.html)
