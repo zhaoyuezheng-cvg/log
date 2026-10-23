@@ -1,0 +1,1313 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>8-5 英语培优 · 精讲（七选五 · 阅读简答 · 语法填空）</title>
+<style>
+  :root{
+    --paper:#faf7f1;
+    --card:#ffffff;
+    --ink:#1e1c19;
+    --ink-2:#3c3833;
+    --muted:#7a7268;
+    --line:#e8dfd1;
+    --accent:#16695c;
+    --accent-2:#0f4f45;
+    --accent-soft:#e7f2ef;
+    --warm:#b4542c;
+    --warm-soft:#fbeee6;
+    --gold:#a8842d;
+    --shadow:0 1px 2px rgba(60,45,25,.05),0 8px 28px rgba(60,45,25,.07);
+    --radius:16px;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,"Times New Roman",serif;
+    --sans:-apple-system,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    --cn-serif:"Songti SC","Noto Serif SC","Source Han Serif SC","STSong",SimSun,serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:
+      radial-gradient(1200px 600px at 12% -8%,#fffdf8 0%,rgba(255,253,248,0) 60%),
+      radial-gradient(900px 500px at 92% 4%,#f2f8f5 0%,rgba(242,248,245,0) 55%),
+      var(--paper);
+    color:var(--ink);font-family:var(--sans);
+    font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--accent);text-decoration:none}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;overflow:hidden;padding:54px 0 34px;border-bottom:1px solid var(--line)}
+  .hero::after{
+    content:"";position:absolute;inset:auto -120px -160px auto;width:420px;height:420px;border-radius:50%;
+    background:radial-gradient(circle at 30% 30%,rgba(22,105,92,.10),rgba(22,105,92,0) 68%);
+  }
+  .kicker{
+    display:inline-flex;align-items:center;gap:9px;font-size:12.5px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--accent);font-weight:700;
+    background:var(--accent-soft);border:1px solid #cfe5df;padding:6px 14px;border-radius:999px;
+  }
+  .kicker::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent)}
+  h1{
+    font-family:var(--cn-serif);font-size:clamp(30px,4.6vw,46px);line-height:1.24;
+    margin:20px 0 12px;letter-spacing:.01em;font-weight:700;
+  }
+  h1 em{font-style:normal;color:var(--warm)}
+  .lede{max-width:680px;color:var(--ink-2);font-size:16.5px;margin:0 0 26px}
+  .lede b{color:var(--ink)}
+  .stats{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:6px}
+  .stat{
+    background:#fff;border:1px solid var(--line);border-radius:12px;padding:9px 15px;
+    box-shadow:0 1px 0 rgba(255,255,255,.6);font-size:13.5px;color:var(--muted)
+  }
+  .stat b{color:var(--ink);font-size:15px;margin-right:5px;font-family:var(--serif)}
+
+  /* ---------- NAV ---------- */
+  .nav{position:sticky;top:0;z-index:40;background:rgba(250,247,241,.86);
+    backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid var(--line)}
+  .nav .wrap{display:flex;align-items:center;gap:6px;height:56px;overflow-x:auto;scrollbar-width:none}
+  .nav .wrap::-webkit-scrollbar{display:none}
+  .nav a{
+    white-space:nowrap;font-size:13.5px;color:var(--ink-2);padding:7px 13px;border-radius:999px;
+    border:1px solid transparent;transition:.18s
+  }
+  .nav a:hover{background:#fff;border-color:var(--line);color:var(--accent)}
+  .nav .spacer{flex:1}
+  .btn{
+    font:inherit;font-size:13px;cursor:pointer;border:1px solid var(--line);background:#fff;
+    color:var(--ink-2);padding:7px 15px;border-radius:999px;transition:.18s;white-space:nowrap;
+    display:inline-flex;align-items:center;gap:7px
+  }
+  .btn:hover{border-color:var(--accent);color:var(--accent);box-shadow:0 2px 10px rgba(22,105,92,.12)}
+  .btn[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+  .dot{width:7px;height:7px;border-radius:50%;background:currentColor;opacity:.55}
+
+  /* ---------- SECTIONS ---------- */
+  main{padding:46px 0 90px}
+  .paper{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);padding:38px 40px 34px;margin-bottom:34px;position:relative;overflow:hidden;scroll-margin-top:74px
+  }
+  .paper::before{content:"";position:absolute;left:0;top:0;height:4px;width:100%;
+    background:linear-gradient(90deg,var(--accent),#3ea38d 45%,var(--warm))}
+  .sec-head{margin-bottom:24px}
+  .sec-head.row{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap}
+  .tag{
+    font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--warm);
+    font-weight:700;background:var(--warm-soft);padding:5px 12px;border-radius:6px;display:inline-block
+  }
+  h2{font-family:var(--serif);font-size:27px;margin:14px 0 6px;line-height:1.3;letter-spacing:-.01em}
+  h2 small{font-family:var(--cn-serif);font-size:15px;color:var(--muted);font-weight:400;margin-left:10px}
+  .meta{font-size:13px;color:var(--muted);margin:0;letter-spacing:.02em}
+
+  /* ---------- PASSAGE ---------- */
+  .passage{
+    font-family:var(--serif);font-size:17.5px;line-height:2.02;color:#241f1a;
+    letter-spacing:.006em;margin:26px 0 8px
+  }
+  .passage p{margin:0 0 17px;text-indent:1.6em}
+  .passage p.noind{text-indent:0}
+  .passage .sign{text-indent:0;margin-top:-6px}
+  .uline{font-style:normal;border-bottom:2px solid var(--warm);padding-bottom:1px}
+
+  /* ---------- VOCAB SPAN ---------- */
+  .v{
+    cursor:pointer;padding:0 1px;border-radius:2px;
+    text-decoration-line:underline;text-decoration-style:dotted;text-decoration-thickness:1.5px;
+    text-underline-offset:3px;text-decoration-color:rgba(180,84,44,.62);
+    background:linear-gradient(transparent 66%,rgba(180,84,44,.11) 66%);
+    transition:background .18s,text-decoration-color .18s,color .18s;
+  }
+  .v:hover{background:var(--warm-soft);text-decoration-color:var(--warm);color:#000}
+  .v:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .v.on{background:#f6e2d5;text-decoration-style:solid;text-decoration-color:var(--warm);text-decoration-thickness:2px}
+  .v.ph{
+    text-decoration-style:dashed;text-decoration-color:rgba(22,105,92,.6);
+    background:linear-gradient(transparent 66%,rgba(22,105,92,.10) 66%);
+  }
+  .v.ph:hover{background:var(--accent-soft);text-decoration-color:var(--accent)}
+  .v.ph.on{background:#dceee9;text-decoration-style:solid;text-decoration-color:var(--accent)}
+
+  /* legend */
+  .legend{display:flex;flex-wrap:wrap;gap:16px;align-items:center;
+    font-size:12.6px;color:var(--muted);margin:0 0 4px;padding:11px 15px;
+    background:#fcfaf6;border:1px dashed var(--line);border-radius:10px}
+  .legend span{display:inline-flex;align-items:center;gap:7px}
+  .sw{display:inline-block;width:26px;height:13px;border-radius:3px;position:relative}
+  .sw.w{background:linear-gradient(transparent 58%,rgba(180,84,44,.18) 58%);border-bottom:2px dotted rgba(180,84,44,.7)}
+  .sw.p{background:linear-gradient(transparent 58%,rgba(22,105,92,.16) 58%);border-bottom:2px dashed rgba(22,105,92,.7)}
+
+  /* ---------- GAP ---------- */
+  .gap{
+    display:inline-grid;place-items:center;min-width:1.6em;height:1.45em;padding:0 .34em;margin:0 .2em;
+    border-radius:6px;background:#fffdf9;border:1px solid #ded2bf;box-shadow:inset 0 -2px 0 rgba(180,84,44,.22);
+    color:var(--warm);font-family:var(--sans);font-size:.72em;font-weight:700;vertical-align:.18em;line-height:1
+  }
+
+  /* ---------- TRANSLATION / RESTORE ---------- */
+  details.trans{margin:26px 0 6px;border:1px solid var(--line);border-radius:12px;background:#fcfaf6;overflow:hidden}
+  details.trans>summary{
+    cursor:pointer;padding:13px 18px;font-size:14px;font-weight:600;color:var(--accent-2);
+    list-style:none;display:flex;align-items:center;gap:10px;user-select:none
+  }
+  details.trans>summary::-webkit-details-marker{display:none}
+  details.trans>summary::before{content:"▸";font-size:12px;color:var(--accent);transition:.2s}
+  details.trans[open]>summary::before{transform:rotate(90deg)}
+  details.trans>summary:hover{background:#f6f2ea}
+  details.trans .hint{margin-left:auto;font-weight:400;font-size:12px;color:var(--muted);letter-spacing:.02em}
+  .trans-body{padding:6px 22px 20px;font-family:var(--cn-serif);font-size:15px;line-height:1.95;color:var(--ink-2);
+    border-top:1px solid var(--line);background:#fff}
+  .trans-body p{margin:14px 0 0}
+  .trans-body.en{font-family:var(--serif);font-size:16px;line-height:1.95;color:#2a241e}
+  .trans-body.en p{text-indent:0}
+
+  /* ---------- ANALYSIS ---------- */
+  .analysis{margin-top:30px;border-top:1px solid var(--line);padding-top:24px}
+  .a-title{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700;margin:0 0 16px}
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+  .box{background:#fcfaf6;border:1px solid var(--line);border-radius:12px;padding:15px 18px;font-size:14px;line-height:1.85;color:var(--ink-2)}
+  .box h4{margin:0 0 8px;font-family:var(--cn-serif);font-size:14.5px;color:var(--accent-2);font-weight:700}
+  .box ol,.box ul{margin:0;padding-left:19px}
+  .box li{margin:5px 0}
+  .box li b{color:var(--warm);font-weight:700}
+  .box code{font-family:var(--serif);background:#f3ece0;padding:1px 5px;border-radius:4px;font-size:13.4px;color:#6b4a20}
+  .box.wide{grid-column:1 / -1}
+  .sen{font-family:var(--serif);color:#2b2620}
+  .sen i{font-style:normal;color:var(--warm);font-weight:600}
+
+  /* ---------- QUESTIONS ---------- */
+  .qs{margin-top:30px;border-top:1px solid var(--line);padding-top:26px}
+  .qs-title{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700;margin:0 0 18px}
+  .q{border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin-bottom:16px;background:#fff;transition:.2s}
+  .q:hover{box-shadow:0 4px 18px rgba(60,45,25,.06);border-color:#ded3c2}
+  .q.mini{padding:15px 18px}
+  .q.mini .stem{margin-bottom:6px}
+  .q.mini .ans{margin-top:8px;padding-top:10px}
+  .stem{font-family:var(--serif);font-size:16.4px;line-height:1.7;margin:0 0 14px;display:flex;gap:11px;align-items:flex-start}
+  .num{
+    flex:0 0 auto;width:24px;height:24px;border-radius:7px;background:var(--accent-soft);color:var(--accent-2);
+    font-family:var(--sans);font-size:12.5px;font-weight:700;display:grid;place-items:center;margin-top:2px
+  }
+  .opts{list-style:none;margin:0;padding:0 0 0 35px;display:grid;grid-template-columns:1fr 1fr;gap:7px 22px}
+  .opts.one{grid-template-columns:1fr}
+  .opts li{
+    font-family:var(--serif);font-size:15.6px;color:var(--ink-2);display:flex;gap:9px;align-items:flex-start;
+    padding:4px 8px;border-radius:8px;line-height:1.6
+  }
+  .lt{
+    flex:0 0 auto;width:19px;height:19px;border-radius:50%;border:1px solid #d8cdbd;color:var(--muted);
+    font-family:var(--sans);font-size:11px;display:grid;place-items:center;margin-top:3px;font-weight:600
+  }
+  .opts li.right{background:#eff8f4;color:#12483f}
+  .opts li.right .lt{background:var(--accent);border-color:var(--accent);color:#fff}
+
+  .ans{margin-top:16px;padding-top:15px;border-top:1px dashed #e3d8c8;transition:filter .25s}
+  .badge{
+    display:inline-flex;align-items:center;gap:6px;background:var(--accent);color:#fff;
+    font-size:12.5px;font-weight:700;padding:4px 12px;border-radius:999px;letter-spacing:.05em;
+    font-family:var(--sans)
+  }
+  .ana{margin-top:11px;font-size:14.4px;line-height:1.85;color:var(--ink-2)}
+  .ana p{margin:0 0 7px}
+  .ana b{color:var(--accent-2);font-weight:700;margin-right:6px}
+  .ana em{font-style:normal;background:linear-gradient(transparent 62%,#fdf0c9 62%);padding:0 2px;color:#4a3b12}
+  .ana .quote{
+    font-family:var(--serif);font-size:14.2px;color:#5b5348;border-left:3px solid #e2d3be;
+    padding:2px 0 2px 12px;margin:6px 0 8px;font-style:italic
+  }
+  .ana .why{color:#7a6a5c}
+  .ana .why b{color:var(--warm)}
+
+  body.quiz .opts li.right{background:transparent;color:var(--ink-2)}
+  body.quiz .opts li.right .lt{background:none;border-color:#d8cdbd;color:var(--muted)}
+  body.quiz .ans{filter:blur(6px);cursor:pointer}
+  body.quiz .ans:hover{filter:blur(3px)}
+  body.quiz .ans.open{filter:none;cursor:default}
+
+  /* ---------- BLANK CHIP ---------- */
+  .blank{
+    display:inline-block;vertical-align:baseline;font-family:var(--sans);font-size:.86em;background:var(--accent-soft);color:#11483f;
+    border-bottom:1px dashed rgba(22,105,92,.6);border-radius:4px;padding:1px 6px;margin:0 2px;
+    white-space:normal;line-height:1.5;text-indent:0
+  }
+  .blank::before{
+    content:attr(data-n);display:inline-grid;place-items:center;width:16px;height:16px;border-radius:50%;
+    background:var(--accent);color:#fff;font-size:10px;font-weight:700;margin-right:5px;vertical-align:1px;text-indent:0
+  }
+  .blank b{color:var(--warm);margin-right:3px}
+  .fill{
+    font-family:var(--serif);font-weight:700;color:var(--accent-2);background:var(--accent-soft);
+    padding:1px 9px;border-radius:5px;font-size:15px
+  }
+
+  .keybar{
+    display:flex;flex-wrap:wrap;gap:9px;margin:22px 0 4px;padding:14px 16px;background:#fcfaf6;
+    border:1px solid var(--line);border-radius:12px
+  }
+  .keybar .k{font-family:var(--serif);font-size:15px;color:var(--ink-2);background:#fff;border:1px solid var(--line);
+    border-radius:8px;padding:3px 11px}
+  .keybar .k b{color:var(--warm);margin-left:5px}
+
+  .tip{
+    margin-top:22px;padding:15px 18px;border-radius:12px;background:#fdf8ec;border:1px solid #f0e2c0;
+    font-size:14px;color:#5f4c1f;line-height:1.8
+  }
+  .tip b{color:#8a6a17}
+  .tip::before{content:"💡";margin-right:7px}
+
+  /* ---------- READ ALL ---------- */
+  .readall{
+    font:inherit;font-size:12.5px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:7px;
+    background:var(--accent-soft);color:var(--accent-2);border:1px solid #cfe5df;border-radius:999px;
+    padding:7px 14px;transition:.16s;white-space:nowrap;flex:0 0 auto;margin-top:16px
+  }
+  .readall:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .readall.speaking{background:var(--accent);color:#fff;border-color:var(--accent);animation:pulse 1.6s ease-out infinite}
+  .readall svg{width:13px;height:13px}
+  .no-speech .readall{display:none}
+
+  /* ---------- VOCAB SUMMARY ---------- */
+  .vocab-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:14px;margin-bottom:8px}
+  .chips{display:flex;gap:7px;flex-wrap:wrap}
+  .chip{
+    font:inherit;font-size:12.5px;cursor:pointer;border:1px solid var(--line);background:#fff;
+    color:var(--muted);padding:5px 13px;border-radius:999px;transition:.16s
+  }
+  .chip:hover{color:var(--accent);border-color:#c8ddd8}
+  .chip.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+  table{width:100%;border-collapse:collapse;margin-top:16px;font-size:14px}
+  thead th{
+    text-align:left;font-size:11.6px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);
+    font-weight:700;padding:0 12px 9px;border-bottom:1.5px solid var(--line);white-space:nowrap
+  }
+  tbody td{padding:11px 12px;border-bottom:1px solid #f0e9dd;vertical-align:top;line-height:1.65}
+  tbody tr:hover{background:#fdfbf6}
+  .td-w{min-width:152px}
+  .td-w b{font-family:var(--serif);font-size:15.4px;letter-spacing:.01em;color:#1c1814}
+  .td-w em{display:block;font-style:normal;font-size:11.5px;color:var(--warm);margin-top:2px;letter-spacing:.02em}
+  .td-ph{font-family:var(--serif);color:#6a6053;white-space:nowrap;font-size:13.6px}
+  .td-pos{color:var(--accent);font-size:12.5px;white-space:nowrap;font-style:italic}
+  .td-cn{color:var(--ink-2);min-width:110px}
+  .td-ex{font-family:var(--serif);font-size:14px;color:#332e28}
+  .td-ex span{display:block;font-family:var(--cn-serif);font-size:13px;color:var(--muted);margin-top:3px}
+  tr.hide{display:none}
+  .srcTag{
+    display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.06em;color:#fff;background:#b9ac96;
+    border-radius:4px;padding:1px 5px;margin-right:7px;vertical-align:2px;font-family:var(--sans)
+  }
+  .srcTag.w{background:#5c7ea8}.srcTag.g{background:#8a6aa8}.srcTag.n{background:#4a8f7e}
+  .srcTag.a{background:#a8842d}.srcTag.b{background:#a95c3c}.srcTag.c{background:#6f8a4a}
+  .srcTag.x{background:#5c7ea8}.srcTag.j{background:#8a6aa8}.srcTag.f{background:#4a8f7e}
+
+  /* ---------- NOTES ---------- */
+  .note-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+  .note{background:#fcfaf6;border:1px solid var(--line);border-radius:12px;padding:16px 18px;font-size:14px;line-height:1.8;color:var(--ink-2)}
+  .note h4{margin:0 0 6px;font-size:14.5px;color:var(--accent-2);font-family:var(--cn-serif)}
+  .note code{font-family:var(--serif);background:#f3ece0;padding:1px 5px;border-radius:4px;font-size:13.5px;color:#6b4a20}
+  .note.warn{background:#fdf6f2;border-color:#f0d9cd}
+  .note.warn h4{color:var(--warm)}
+
+  /* ---------- POPOVER ---------- */
+  #pop{
+    position:fixed;z-index:200;width:322px;max-width:calc(100vw - 24px);background:#fff;
+    border:1px solid #e3d8c8;border-radius:14px;box-shadow:0 18px 50px rgba(50,38,22,.18),0 2px 8px rgba(50,38,22,.08);
+    padding:15px 17px 14px;animation:pop .16s ease-out;
+  }
+  @keyframes pop{from{transform:translateY(6px) scale(.985)}to{transform:none}}
+  #pop[hidden]{display:none}
+  #pop::after{
+    content:"";position:absolute;width:10px;height:10px;background:#fff;border-left:1px solid #e3d8c8;
+    border-top:1px solid #e3d8c8;transform:rotate(45deg);bottom:-6px;left:calc(50% - 5px)
+  }
+  #pop.up::after{bottom:auto;top:-6px;transform:rotate(225deg)}
+  .p-head{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;margin-bottom:3px}
+  .p-w{font-family:var(--serif);font-size:19px;font-weight:700;letter-spacing:.01em;color:#161310}
+  .p-pos{font-size:11.5px;color:var(--accent);font-style:italic;font-weight:600;letter-spacing:.05em}
+  .p-ph{font-family:var(--serif);font-size:13.4px;color:#8a7f6f;letter-spacing:.03em;margin-bottom:9px}
+  .p-cn{font-size:15px;color:#22201c;font-weight:600;line-height:1.6;margin-bottom:11px}
+  .p-ex{
+    font-family:var(--serif);font-size:14px;color:#3a342c;line-height:1.65;padding-left:11px;
+    border-left:2.5px solid #ecdfcc
+  }
+  .p-ex span{display:block;font-family:var(--cn-serif);font-size:12.8px;color:#8a8175;margin-top:3px}
+
+  /* ---------- SPEAKER ---------- */
+  .spk{
+    display:inline-grid;place-items:center;width:22px;height:22px;padding:0;
+    border:1px solid #ded2bf;background:#fff;color:var(--accent);border-radius:50%;
+    cursor:pointer;vertical-align:-4px;transition:.16s;flex:0 0 auto
+  }
+  .spk:hover{background:var(--accent-soft);border-color:#bcd8d1;color:var(--accent-2)}
+  .spk:active{transform:scale(.92)}
+  .spk:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .spk.speaking{background:var(--accent);border-color:var(--accent);color:#fff;animation:pulse 1.1s ease-out infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(22,105,92,.42)}70%{box-shadow:0 0 0 6px rgba(22,105,92,0)}100%{box-shadow:0 0 0 0 rgba(22,105,92,0)}}
+  .p-head .spk{margin-left:auto;align-self:center}
+  .p-ex .spk{width:20px;height:20px;margin-left:6px;vertical-align:-4px}
+  .td-w .spk{margin-left:6px;vertical-align:-2px}
+  .td-ex .spk{margin-left:5px;vertical-align:-3px;width:19px;height:19px}
+  .no-speech .spk{display:none}
+  #pop.sheet{left:12px!important;right:12px;bottom:12px;top:auto!important;width:auto;max-width:none;
+    border-radius:16px;box-shadow:0 -8px 40px rgba(50,38,22,.2)}
+  #pop.sheet::after{display:none}
+
+  footer{text-align:center;font-size:12.5px;color:#a39a8c;padding:0 0 60px}
+
+  @media(max-width:760px){
+    .paper{padding:26px 20px 24px;border-radius:14px}
+    .passage{font-size:16.5px;line-height:1.95}
+    .opts{grid-template-columns:1fr;padding-left:0}
+    .note-grid,.split{grid-template-columns:1fr}
+    .hero{padding:38px 0 26px}
+    th.c-ph,td.c-ph{display:none}
+    .td-w{min-width:104px}
+    .td-cn{min-width:78px}
+    .nav .spacer{display:none}
+    .btn{font-size:12px;padding:6px 11px}
+    .readall{margin-top:0}
+  }
+  @media(max-width:520px){
+    th.c-pos,td.c-pos{display:none}
+    .srcTag{display:none}
+    .trans-body{padding:4px 15px 16px}
+  }
+  @media print{
+    body{background:#fff}
+    .nav,#pop,.legend,.readall{display:none!important}
+    .paper{box-shadow:none;border-color:#ccc;break-inside:avoid}
+    details.trans{border-color:#ccc}
+    details.trans>summary{background:#f4f4f4}
+    .v{background:none!important}
+    .spk{display:none!important}
+    .q{break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="kicker">八年级 · 英语培优 · 8-5 精讲</span>
+    <h1>英语培优精讲 <em>8-5</em></h1>
+    <p class="lede">
+      七选五（阅读还原）· 阅读简答 · 语法填空，均为 <b>2025 年中考真题</b>。
+      每篇先读<b>英文原文</b>，再看<b>中文译文与逐段解析</b>（段落大意 / 重点句型 / 语法要点），最后对照<b>逐题精解</b>；
+      文中<span style="border-bottom:2px dotted var(--warm)">下划线</span>处为七年级水平生词与生短语，<b>点击即可查看释义与例句</b>，点喇叭可朗读。
+    </p>
+    <div class="stats">
+      <span class="stat"><b>3</b>大题 · <b>3</b>篇语篇</span>
+      <span class="stat"><b>20</b>道小题</span>
+      <span class="stat"><b id="statV">0</b>个生词 / 生短语</span>
+      <span class="stat"><b>约 800</b>词阅读量</span>
+    </div>
+  </div>
+</header>
+
+<nav class="nav">
+  <div class="wrap">
+    <a href="#x">七选五</a>
+    <a href="#j">阅读简答</a>
+    <a href="#f">语法填空</a>
+    <a href="#words">生词表</a>
+    <a href="#phrases">生短语表</a>
+    <a href="#notes">校对说明</a>
+    <span class="spacer"></span>
+    <button class="btn" id="quizBtn" aria-pressed="false"><span class="dot"></span>自测模式</button>
+  </div>
+</nav>
+
+<main>
+<div class="wrap">
+
+  <p class="legend">
+    <span><i class="sw w"></i>点线 = 生词</span>
+    <span><i class="sw p"></i>虚线 = 生短语</span>
+    <span><svg viewBox="0 0 24 24" width="12" height="12" aria-hidden="true" style="color:var(--accent)"><path fill="currentColor" d="M3 9v6h4l5 4V5L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 7.97v8.06A4.5 4.5 0 0 0 16.5 12zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>点喇叭听单词 / 例句 / 整篇朗读</span>
+    <span>再次点击词可收起；右上「自测模式」可先把答案遮住</span>
+  </p>
+
+  <!-- ============ 一、七选五 ============ -->
+  <section class="paper" id="x">
+    <div class="sec-head row">
+      <div>
+        <span class="tag">专题 22 · 阅读理解 考点 5 · 阅读还原（1）</span>
+        <h2>少用塑料，从小事做起 <small>七选五 · 2025·江西·中考真题 · 5 空</small></h2>
+        <p class="meta">说明文 · 约 260 词 · 难度 ★★★☆☆ · 考点：段首总起句 / 代词指代 / 逻辑衔接 / 原词复现</p>
+      </div>
+      <button class="readall" data-t="txt-x"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 9v6h4l5 4V5L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 7.97v8.06A4.5 4.5 0 0 0 16.5 12zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>朗读全文</button>
+    </div>
+
+    <div class="passage">
+      <p>Plastic <span class="v" data-k="pollution" tabindex="0">pollution</span> is a <span class="v" data-k="serious" tabindex="0">serious</span> problem, and it's getting worse. Plastic can stay for a long time. Scientists are trying to <span class="v" data-k="create" tabindex="0">create</span> plastic that <span class="v ph" data-k="break-down" tabindex="0">breaks down</span> quickly, but the best way for now is to use less plastic. <span class="blank" data-n="1"></span></p>
+      <p><b>Stop using plastic bags.</b> <span class="v" data-k="instead" tabindex="0">Instead</span>, take your own <span class="v" data-k="reusable" tabindex="0">reusable</span> shopping bag to the store. Every year, people use <span class="v ph" data-k="tons-of" tabindex="0">tons of</span> plastic bags <span class="v" data-k="worldwide" tabindex="0">worldwide</span>. Some countries try to stop using plastic bags. <span class="blank" data-n="2"></span></p>
+      <p><b>Say no to the <span class="v" data-k="straw" tabindex="0">straw</span> (吸管).</b> A study showed that around 8.3 <span class="v" data-k="billion" tabindex="0">billion</span> plastic straws <span class="v" data-k="cover" tabindex="0">cover</span> the world's beaches. So when you <span class="v" data-k="order" tabindex="0">order</span> a drink, say no to the straw, or bring your own reusable one.</p>
+      <p><span class="blank" data-n="3"></span> Carry a reusable water bottle with you. Around the world, nearly a million plastic bottles are <span class="v ph" data-k="throw-away" tabindex="0">thrown away</span> every minute. The problem is <span class="v ph" data-k="so-that" tabindex="0">so</span> bad <span class="v ph" data-k="so-that" tabindex="0">that</span> in some countries, stores <span class="v ph" data-k="be-allowed-to" tabindex="0">aren't allowed to</span> sell <span class="v ph" data-k="bottled-water" tabindex="0">bottled water</span> any more.</p>
+      <p><b><span class="v" data-k="avoid" tabindex="0">Avoid</span> plastic <span class="v" data-k="packaging" tabindex="0">packaging</span> (包装).</b> <span class="blank" data-n="4"></span> It's almost everywhere. But there is something you can do, too: avoid fruit or vegetables <span class="v" data-k="pack" tabindex="0">packed</span> in plastic.</p>
+      <p><b><span class="v" data-k="recycle" tabindex="0">Recycle</span> what you can.</b> You can't recycle all plastic things. <span class="blank" data-n="5"></span> For example, you can recycle bottles and milk or juice bags. In some countries, machines take the bottles and <span class="v ph" data-k="give-back" tabindex="0">give a little money back</span> for each bottle.</p>
+    </div>
+
+    <div class="box" style="margin-top:16px">
+      <h4>选项 · 从下面七个句子中选出五个还原到原文</h4>
+      <ul class="opts one" style="padding-left:4px;margin-top:4px">
+        <li><span class="lt">A</span><span>They are fresh.</span></li>
+        <li><span class="lt">B</span><span>Don't buy bottled water.</span></li>
+        <li><span class="lt">C</span><span>Bottled water is expensive.</span></li>
+        <li><span class="lt">D</span><span>But it is possible to start small.</span></li>
+        <li><span class="lt">E</span><span>Here are five tips that can help you.</span></li>
+        <li><span class="lt">F</span><span>Other countries make customers pay for them.</span></li>
+        <li><span class="lt">G</span><span>Most things you buy come in plastic packaging.</span></li>
+      </ul>
+    </div>
+
+    <div class="keybar">
+      <span class="k">1 <b>E</b></span><span class="k">2 <b>F</b></span><span class="k">3 <b>B</b></span><span class="k">4 <b>G</b></span><span class="k">5 <b>D</b></span>
+    </div>
+
+    <details class="trans">
+      <summary>完整还原<span class="hint">点击展开 · 可点「朗读全文」整篇跟读</span></summary>
+      <div class="trans-body en" id="txt-x">
+        <p>Plastic pollution is a serious problem, and it's getting worse. Plastic can stay for a long time. Scientists are trying to create plastic that breaks down quickly, but the best way for now is to use less plastic. <span class="blank" data-n="1"><b>E</b> Here are five tips that can help you.</span></p>
+        <p>Stop using plastic bags. Instead, take your own reusable shopping bag to the store. Every year, people use tons of plastic bags worldwide. Some countries try to stop using plastic bags. <span class="blank" data-n="2"><b>F</b> Other countries make customers pay for them.</span></p>
+        <p>Say no to the straw. A study showed that around 8.3 billion plastic straws cover the world's beaches. So when you order a drink, say no to the straw, or bring your own reusable one.</p>
+        <p><span class="blank" data-n="3"><b>B</b> Don't buy bottled water.</span> Carry a reusable water bottle with you. Around the world, nearly a million plastic bottles are thrown away every minute. The problem is so bad that in some countries, stores aren't allowed to sell bottled water any more.</p>
+        <p>Avoid plastic packaging. <span class="blank" data-n="4"><b>G</b> Most things you buy come in plastic packaging.</span> It's almost everywhere. But there is something you can do, too: avoid fruit or vegetables packed in plastic.</p>
+        <p>Recycle what you can. You can't recycle all plastic things. <span class="blank" data-n="5"><b>D</b> But it is possible to start small.</span> For example, you can recycle bottles and milk or juice bags. In some countries, machines take the bottles and give a little money back for each bottle.</p>
+      </div>
+    </details>
+
+    <details class="trans">
+      <summary>参考译文</summary>
+      <div class="trans-body">
+        <p>塑料污染是一个严重的问题，而且正变得越来越糟。塑料可以存留很长时间。科学家们正试图研制能快速分解的塑料，但目前最好的办法是少用塑料。__1__</p>
+        <p>停止使用塑料袋。相反，带上你自己的可重复使用的购物袋去商店。全世界每年要消耗大量的塑料袋。一些国家试图停用塑料袋。__2__</p>
+        <p>对吸管说不。一项研究表明，约有 83 亿根塑料吸管覆盖着世界各地的海滩。所以当你点饮料时，请对吸管说不，或者带上你自己的可重复使用的吸管。</p>
+        <p>__3__ 随身携带一个可重复使用的水瓶。在世界各地，几乎每分钟就有一百万个塑料瓶被扔掉。问题严重到在一些国家，商店已不被允许销售瓶装水了。</p>
+        <p>避免塑料包装。__4__ 它几乎无处不在。但你也有一件能做的事：避免购买用塑料包装的水果和蔬菜。</p>
+        <p>回收你能回收的东西。你无法回收所有塑料制品。__5__ 例如，你可以回收瓶子以及牛奶袋和果汁袋。在一些国家，机器会收走瓶子，并为每个瓶子退还一点钱。</p>
+      </div>
+    </details>
+
+    <div class="analysis">
+      <p class="a-title">逐段解析 · 段落大意 / 重点句型 / 语法要点</p>
+      <div class="split">
+        <div class="box">
+          <h4>段落大意</h4>
+          <ol>
+            <li><b>第 1 段</b>：提出问题——塑料污染日益严重，目前最好的办法是<b>少用塑料</b>，末句引出下文五条建议（总起）。</li>
+            <li><b>第 2 段</b>：建议一——停用塑料袋，自带可重复使用的购物袋；一些国家禁用，另一些国家让顾客付费。</li>
+            <li><b>第 3 段</b>：建议二——拒绝吸管（全球海滩约有 83 亿根塑料吸管）。</li>
+            <li><b>第 4 段</b>：建议三——不买瓶装水，自带水瓶（每分钟约 100 万个塑料瓶被扔掉）。</li>
+            <li><b>第 5 段</b>：建议四——避免塑料包装，尤其是不买塑料包装的果蔬。</li>
+            <li><b>第 6 段</b>：建议五——尽可能回收（瓶子、牛奶袋、果汁袋；有的国家退钱鼓励回收）。</li>
+          </ol>
+        </div>
+        <div class="box">
+          <h4>重点句型</h4>
+          <ul>
+            <li><span class="sen">Scientists are trying to create plastic <i>that</i> breaks down quickly.</span>（that 引导定语从句）</li>
+            <li><span class="sen">The problem is <i>so</i> bad <i>that</i> ... stores aren't allowed to sell bottled water any more.</span>（so ... that ... 结果状语从句）</li>
+            <li><span class="sen">Other countries make customers pay for them.</span>（make sb do sth）</li>
+            <li><span class="sen">But there is something you can do, too: avoid fruit or vegetables packed in plastic.</span>（packed 过去分词作后置定语）</li>
+            <li><span class="sen">For example, you can recycle bottles and milk or juice bags.</span></li>
+          </ul>
+        </div>
+        <div class="box wide">
+          <h4>语法要点</h4>
+          <ul>
+            <li><b>祈使句开段</b>：五条建议均以祈使句领起——<code>Stop using plastic bags.</code> / <code>Say no to the straw.</code> / <code>Carry a reusable water bottle.</code> / <code>Avoid plastic packaging.</code> / <code>Recycle what you can.</code> 注意 <code>stop / avoid</code> 后接<b>动名词</b> doing。</li>
+            <li><b>that 引导定语从句</b>：<code>plastic that breaks down quickly</code>，先行词 plastic 指物，that 在从句中作主语。</li>
+            <li><b>so ... that ...</b>：<code>so bad that ...</code>「如此……以至于……」，that 后接结果从句。</li>
+            <li><b>被动语态</b>：<code>aren't allowed to do</code>（不被允许做……），是 allow sb to do sth 的被动式；<code>are thrown away</code>（被扔掉）。</li>
+            <li><b>过去分词作定语</b>：<code>vegetables packed in plastic</code> = vegetables <b>which are</b> packed in plastic，表被动。</li>
+            <li><b>数词表达</b>：<code>8.3 billion</code> 读作 eight point three billion（83 亿）；<code>a million</code>（一百万）。</li>
+            <li><b>指代与复现</b>：第 2 空 <code>them</code> 指代前句 plastic bags；第 4 空后句 <code>It's almost everywhere</code> 的 it 指代 packaging——七选五高频线索。</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tip"><b>七选五解题三步</b>　① 先通读选项，划出关键词（five tips / Other countries / But / packaging / bottled water）；② 看空格<b>位置</b>：段首多为<b>总起句</b>（第 1、3 空），段中多为<b>承上启下</b>（第 2、4、5 空）；③ 代入后<b>复读全段</b>，检查代词（them / it）与原词复现（packaging、bottled water）。<b>干扰项</b>：A（fresh 在原文无处复现）、C（expensive 在原文无处复现），均与上下文无衔接，直接排除。</div>
+    </div>
+
+    <div class="qs">
+      <p class="qs-title">Questions · 逐空精解</p>
+
+      <div class="q mini">
+        <p class="stem"><span class="num">1</span><span>首段末尾：... the best way for now is to use less plastic. <b>__1__</b></span></p>
+        <div class="ans">
+          <span class="badge">答案 E</span>
+          <div class="ana">
+            <p><b>考点</b>段首总起句</p>
+            <p><b>解析</b>首段先讲塑料污染严重、最好少用塑料，空格位于段末，下文紧接着五条<b>并列的建议</b>（Stop... / Say no... / Carry... / Avoid... / Recycle...）。<em>Here are five tips that can help you.</em>（这里有五条能帮到你的建议）正好<b>承上启下</b>，总领全文。</p>
+            <p class="why"><b>验证</b>下文恰好五个自然段、五条建议，与 five tips 数量吻合。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="q mini">
+        <p class="stem"><span class="num">2</span><span>第 2 段末尾：Some countries try to stop using plastic bags. <b>__2__</b></span></p>
+        <div class="ans">
+          <span class="badge">答案 F</span>
+          <div class="ana">
+            <p><b>考点</b>逻辑衔接 + 代词指代</p>
+            <p><b>解析</b>前句说「<b>一些</b>国家试图停用塑料袋」，<em>Other countries make customers pay for them.</em>（<b>另一些</b>国家让顾客为它们付费）——<code>Some ... Other ...</code> 是典型搭配；<code>them</code> 回指前句的 <b>plastic bags</b>。</p>
+            <p class="why"><b>验证</b>「停用」与「付费」都是治理塑料袋的手段，语义连贯。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="q mini">
+        <p class="stem"><span class="num">3</span><span>第 4 段段首：<b>__3__</b> Carry a reusable water bottle with you.</span></p>
+        <div class="ans">
+          <span class="badge">答案 B</span>
+          <div class="ana">
+            <p><b>考点</b>段首祈使句 + 反推</p>
+            <p><b>解析</b>空格在段首，后文是「随身带可重复使用的水瓶」「商店不被允许卖瓶装水」，可反推本段主题是<b>不买瓶装水</b>：<em>Don't buy bottled water.</em> 与后文 bottled water <b>原词复现</b>。</p>
+            <p class="why"><b>排除</b>C「瓶装水很贵」——原文从未提价格，expensive 无处复现。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="q mini">
+        <p class="stem"><span class="num">4</span><span>第 5 段段中：Avoid plastic packaging. <b>__4__</b> It's almost everywhere.</span></p>
+        <div class="ans">
+          <span class="badge">答案 G</span>
+          <div class="ana">
+            <p><b>考点</b>代词指代 + 原词复现</p>
+            <p><b>解析</b>空格后一句 <em>It's almost everywhere.</em>（它几乎无处不在）——it 需要一个<b>单数指代对象</b>。G 项 <em>Most things you buy come in plastic packaging.</em>（你买的大多数东西都有塑料包装）中的 <b>packaging</b> 与段首原词复现，it 正指 packaging。</p>
+            <p class="why"><b>验证</b>「大多数东西都有包装 → 它无处不在 → 但你可以避免买塑料包装的果蔬」，逻辑链完整。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="q mini">
+        <p class="stem"><span class="num">5</span><span>第 6 段段中：You can't recycle all plastic things. <b>__5__</b> For example, you can recycle bottles ...</span></p>
+        <div class="ans">
+          <span class="badge">答案 D</span>
+          <div class="ana">
+            <p><b>考点</b>转折连词 + 举例验证</p>
+            <p><b>解析</b>前句「你<b>无法</b>回收所有塑料制品」语气受挫，空格后 <em>For example</em> 开始举例（可以回收瓶子、牛奶袋）。D 项 <em>But it is possible to start small.</em>（但从小事做起是可能的）——<code>But</code> 与前句构成<b>转折</b>，「从小事做起」又正好被 For example 的例子印证。</p>
+            <p class="why"><b>排除</b>A「They are fresh.」——fresh（新鲜的）在原文无处复现，且 they 无指代对象；A、C 为干扰项。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 二、阅读简答 ============ -->
+  <section class="paper" id="j">
+    <div class="sec-head row">
+      <div>
+        <span class="tag">专题 22 · 阅读理解 考点 5 · 阅读还原（2）</span>
+        <h2>退休学中文的 Jeff <small>阅读简答 · 2025·湖南·中考真题 · 5 问</small></h2>
+        <p class="meta">记叙文 · 约 300 词 · 难度 ★★★☆☆ · 题型：根据短文回答问题 + 翻译画线部分</p>
+      </div>
+      <button class="readall" data-t="txt-j"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 9v6h4l5 4V5L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 7.97v8.06A4.5 4.5 0 0 0 16.5 12zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>朗读全文</button>
+    </div>
+
+    <div class="box" style="margin-top:6px">
+      <h4>题目要求</h4>
+      <p>阅读下面短文，根据短文内容回答问题或翻译画线部分。（第 11—14 题回答问题，第 15 题将画线句译成中文。）</p>
+    </div>
+
+    <div class="passage" id="txt-j">
+      <p>My name is Jeff. I like learning <span class="v" data-k="foreign" tabindex="0">foreign</span> languages. When I <span class="v" data-k="retire" tabindex="0">retired</span> (退休) in 2018, I could speak three foreign languages. At that time, my biggest wish was to learn a new one.</p>
+      <p>Later, I watched a <span class="v" data-k="program" tabindex="0">program</span> about Chinese culture on TV. I was so interested in it that I made the <span class="v" data-k="decision" tabindex="0">decision</span> to learn Chinese. I found a cultural center in the north of London <span class="v ph" data-k="by-chance" tabindex="0">by chance</span>. It <span class="v" data-k="offer" tabindex="0">offered</span> Chinese language <span class="v" data-k="course" tabindex="0">courses</span> fit for me. In March 2019, I began to learn. To <span class="v" data-k="attend" tabindex="0">attend</span> the classes, I left my home at 5 a.m. every Saturday and drove 3 hours to the cultural center. But this didn't stop me. After class, I <span class="v" data-k="practice" tabindex="0">practiced</span> a lot. Through learning, I <span class="v ph" data-k="develop-a-love-for" tabindex="0">developed a love for</span> Chinese <span class="v" data-k="poem" tabindex="0">poems</span> and joined in activities like Chinese poetry readings. I <span class="v" data-k="increasingly" tabindex="0">increasingly</span> dreamed of visiting China.</p>
+      <p>My Chinese teacher Mr. Liu always <span class="v" data-k="mention" tabindex="0">mentioned</span> "<em class="uline">It's better to travel ten thousand miles than to read ten thousand books</em>". He suggested that I should <span class="v ph" data-k="take-part-in" tabindex="0">take part in</span> a <span class="v ph" data-k="study-tour" tabindex="0">study tour</span> in China. So in August 2024, I visited Xi'an with my classmates of the cultural center. During the trip, as the student best at Chinese among us, I tried to act as an <span class="v" data-k="interpreter" tabindex="0">interpreter</span> (口译员). I helped my classmates in many ways like <span class="v ph" data-k="ask-the-way" tabindex="0">asking the way</span> and shopping in Chinese. This experience <span class="v" data-k="encourage" tabindex="0">encouraged</span> me to study further.</p>
+      <p>The British often say "Learning is a lifelong <span class="v" data-k="pursuit" tabindex="0">pursuit</span> (追求)", which means "<span class="v ph" data-k="never-too-late" tabindex="0">It is never too late to learn</span>". I will <span class="v ph" data-k="keep-on" tabindex="0">keep on</span> learning Chinese, hoping to be a <span class="v" data-k="lifelong" tabindex="0">lifelong</span> learner. I believe that learning Chinese will bring even more <span class="v" data-k="possibility" tabindex="0">possibilities</span> to my life.</p>
+    </div>
+
+    <details class="trans">
+      <summary>参考译文</summary>
+      <div class="trans-body">
+        <p>我叫 Jeff。我喜欢学习外语。2018 年退休时，我已经会说三门外语了。那时，我最大的愿望就是再学一门新的。</p>
+        <p>后来，我在电视上看了一个关于中国文化的节目。我对它非常感兴趣，于是决定学习中文。我偶然在伦敦北部找到了一个文化中心。它提供适合我的中文课程。2019 年 3 月，我开始学习。为了上这些课，我每周六凌晨 5 点就出门，开车 3 个小时去文化中心。但这并没有让我退缩。课后我大量练习。通过学习，我逐渐爱上了中文诗，还参加了中文诗歌朗诵等活动。我越来越梦想着去中国看看。</p>
+        <p>我的中文老师刘老师常说「<span class="uline">读万卷书，不如行万里路</span>」。他建议我参加一次在中国的研学游。于是在 2024 年 8 月，我和文化中心的同学们一起游览了西安。旅途中，作为我们中间中文最好的学生，我尽力担任口译员。我用中文帮同学们问路、购物，在许多方面帮了他们。这段经历激励我进一步学习。</p>
+        <p>英国人常说「学习是一生的追求」，意思是「活到老学到老」。我会坚持学习中文，希望成为一名终身学习者。我相信，学习中文会给我的人生带来更多的可能。</p>
+      </div>
+    </details>
+
+    <div class="analysis">
+      <p class="a-title">逐段解析 · 段落大意 / 重点句型 / 语法要点</p>
+      <div class="split">
+        <div class="box">
+          <h4>段落大意</h4>
+          <ol>
+            <li><b>第 1 段</b>：自我介绍——Jeff 喜欢外语，2018 年退休时已会三门外语，最大的愿望是再学一门。</li>
+            <li><b>第 2 段</b>：学中文的起因与坚持——因电视节目产生兴趣，2019 年 3 月入学；每周六凌晨 5 点出发、开车 3 小时上课；爱上中文诗，越来越想去中国。</li>
+            <li><b>第 3 段</b>：研学之旅——刘老师引用名言并建议研学游；2024 年 8 月游西安，担任口译员帮助同学，经历激励他继续深造。</li>
+            <li><b>第 4 段</b>：升华——引英国谚语「学无止境」，表示坚持学中文、做终身学习者，相信中文带来更多可能。</li>
+          </ol>
+        </div>
+        <div class="box">
+          <h4>重点句型</h4>
+          <ul>
+            <li><span class="sen">I was <i>so</i> interested in it <i>that</i> I made the decision to learn Chinese.</span>（so ... that ...）</li>
+            <li><span class="sen"><i>To attend the classes</i>, I left my home at 5 a.m. every Saturday.</span>（不定式作目的状语）</li>
+            <li><span class="sen">He suggested that I should take part in a study tour in China.</span>（suggest + that 从句）</li>
+            <li><span class="sen"><i>It's better to travel ten thousand miles than to read ten thousand books.</i></span>（画线句，第 15 题）</li>
+            <li><span class="sen">Learning is a lifelong pursuit, <i>which</i> means "It is never too late to learn".</span>（which 引导非限制性定语从句）</li>
+          </ul>
+        </div>
+        <div class="box wide">
+          <h4>语法要点</h4>
+          <ul>
+            <li><b>so ... that ... 结果状语从句</b>：<code>so interested that I made the decision ...</code>「如此感兴趣，以至于……」。</li>
+            <li><b>make a decision to do = decide to do</b>：decision 是 decide 的名词形式，中考高频转换。</li>
+            <li><b>不定式作目的状语</b>：<code>To attend the classes, I left my home at 5 a.m.</code> 不定式置于句首，用逗号隔开。</li>
+            <li><b>suggest that sb (should) do</b>：<code>He suggested that I should take part in ...</code> 从句用<b>虚拟语气</b>（should + 动词原形，should 常可省略）。</li>
+            <li><b>which 引导非限制性定语从句</b>：<code>..., which means "It is never too late to learn".</code> which 指代前面整句「学习是一生的追求」。</li>
+            <li><b>形容词短语作后置定语</b>：<code>the student best at Chinese among us</code> = the student <b>who is</b> best at Chinese among us。</li>
+            <li><b>现在分词作伴随状语</b>：<code>I will keep on learning Chinese, hoping to be a lifelong learner.</code> hoping 的逻辑主语是 I。</li>
+            <li><b>比较句型 It's better to do A than to do B</b>：做 A 比做 B 更好——第 15 题翻译考点。</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tip"><b>简答题得分要点</b>　① 用<b>完整句子</b>或<b>关键短语</b>作答均可，但时态、人称要与原文一致（问 When 用过去时间作答）；② Who 题答<b>人物</b>，不要答成事件；③ 开放题（What do you think of ... / What will you try ...）要<b>先亮观点、再给理由</b>，依据必须能在原文找到（如「凌晨 5 点出发、开车 3 小时」→ hard-working / persistent）；④ 翻译题按「<b>直译意译结合</b>」处理谚语，先译准比较结构，再润色成中文习惯表达。</div>
+    </div>
+
+    <div class="qs">
+      <p class="qs-title">Questions · 参考答案与定位</p>
+
+      <div class="q mini">
+        <p class="stem"><span class="num">11</span><span>When did Jeff begin to learn Chinese?</span></p>
+        <div class="ans">
+          <span class="badge">参考答案</span>
+          <div class="ana">
+            <p><b>答案</b>In March 2019.</p>
+            <p><b>定位</b>第 2 段：<span class="quote">In March 2019, I began to learn.</span></p>
+            <p class="why"><b>提示</b>问时间，答<b>时间状语</b>即可；注意区分 2018（退休）、2019 年 3 月（开始学中文）、2024 年 8 月（游西安）三个时间，不要混答。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="q mini">
+        <p class="stem"><span class="num">12</span><span>Who suggested a study tour in China?</span></p>
+        <div class="ans">
+          <span class="badge">参考答案</span>
+          <div class="ana">
+            <p><b>答案</b>His Chinese teacher Mr. Liu.（或 Mr. Liu.）</p>
+            <p><b>定位</b>第 3 段：<span class="quote">My Chinese teacher Mr. Liu always mentioned ... He suggested that I should take part in a study tour in China.</span></p>
+            <p class="why"><b>提示</b>问人物答人物；<code>He</code> 回指前句的 Mr. Liu，指代题要往前找。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="q mini">
+        <p class="stem"><span class="num">13</span><span>What do you think of Jeff?</span></p>
+        <div class="ans">
+          <span class="badge">参考答案（开放题）</span>
+          <div class="ana">
+            <p><b>示例</b>He is hard-working and persistent.（或 warm-hearted / full of love for learning.）</p>
+            <p><b>依据</b>第 2 段：<span class="quote">I left my home at 5 a.m. every Saturday and drove 3 hours to the cultural center. But this didn't stop me.</span>——凌晨 5 点出发、开车 3 小时、风雨无阻，可见他<b>勤奋、有毅力</b>；主动当口译员帮同学，可见他<b>热心</b>。</p>
+            <p class="why"><b>提示</b>开放题：答出<b>一种品质</b>并<b>言之有理</b>（能从原文找到依据）即可得分；只写形容词不给理由易被扣分。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="q mini">
+        <p class="stem"><span class="num">14</span><span>What new things will you try after reading Jeff's story? Why?</span></p>
+        <div class="ans">
+          <span class="badge">参考答案（开放题）</span>
+          <div class="ana">
+            <p><b>示例</b>I will try learning painting, because it can help me see the beauty around us.</p>
+            <p><b>思路</b>先答「<b>什么</b>」（try learning ...），再答「<b>为什么</b>」（because ...），两点缺一不可；理由要合乎情理，最好与「坚持学习、终身学习」的主题呼应。</p>
+            <p class="why"><b>提示</b>人称用第一人称 I；时态用 will do；不要照抄 Jeff 的经历，要写「你自己的新尝试」。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="q mini">
+        <p class="stem"><span class="num">15</span><span>将短文中画线部分翻译成中文。</span></p>
+        <div class="ans">
+          <span class="badge">参考答案</span>
+          <div class="ana">
+            <p><b>答案</b>读万卷书，不如行万里路。（或：行万里路胜过读万卷书。）</p>
+            <p><b>解析</b>画线句 <em>It's better to travel ten thousand miles than to read ten thousand books</em> 是<b>比较句型</b> It's better to do A than to do B（做 A 比做 B 更好）。直译为「旅行一万英里比读一万本书更好」，按中文习惯润色为「读万卷书，不如行万里路」。</p>
+            <p class="why"><b>易错</b>把比较方向译反（译成「读万卷书胜过行万里路」）；ten thousand 漏译「万」。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 三、语法填空 ============ -->
+  <section class="paper" id="f">
+    <div class="sec-head row">
+      <div>
+        <span class="tag">专题 22 · 阅读理解 考点 5 · 阅读还原（3）</span>
+        <h2>外教眼中的中国礼仪 <small>语法填空 · 2025·吉林长春·中考真题 · 10 空</small></h2>
+        <p class="meta">记叙文 · 约 230 词 · 难度 ★★★☆☆ · 考点：词性转换 / 介词 / 被动语态 / 定语从句 / 时态 / 否定前缀 / 名词复数 / 物主代词</p>
+      </div>
+      <button class="readall" data-t="txt-f"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 9v6h4l5 4V5L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 7.97v8.06A4.5 4.5 0 0 0 16.5 12zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>朗读全文</button>
+    </div>
+
+    <div class="passage">
+      <p>China is a country of <span class="v" data-k="etiquette" tabindex="0">etiquette</span> (礼仪). I'm working here as a foreign teacher and I'm leaving soon. I <span class="blank" data-n="1"></span> (real) have a deep <span class="v" data-k="understanding" tabindex="0">understanding</span> of Chinese culture and society.</p>
+      <p>Everything was new to me when I first arrived <span class="blank" data-n="2"></span> China. As for <span class="v" data-k="seat" tabindex="0">seats</span> at the table, Chinese people have their own culture. Once, I <span class="blank" data-n="3"></span> (invite) to a big dinner at a restaurant. Before the dinner, someone showed me to take the seat <span class="blank" data-n="4"></span> was ready for the most important person. It <span class="v" data-k="face" tabindex="0">faced</span> the door.</p>
+      <p>I found another <span class="blank" data-n="5"></span> (interest) thing. Chinese people like giving <span class="v" data-k="gift" tabindex="0">gifts</span> <span class="v ph" data-k="in-pairs" tabindex="0">in pairs</span>. Last month, I <span class="blank" data-n="6"></span> (have) a party with three friends in my home. They each brought two gifts. I <span class="v ph" data-k="cant-wait-to" tabindex="0">couldn't wait to</span> open them, <span class="blank" data-n="7"></span> one of my friends <span class="v ph" data-k="remind-not-to" tabindex="0">reminded</span> me <span class="v ph" data-k="remind-not-to" tabindex="0">not to</span> do that <span class="v ph" data-k="right-away" tabindex="0">right away</span>. He thought it was <span class="blank" data-n="8"></span> (polite) to open gifts <span class="v ph" data-k="in-front-of" tabindex="0">in front of</span> the givers.</p>
+      <p>These are <span class="v" data-k="amazing" tabindex="0">amazing</span> <span class="blank" data-n="9"></span> (day) of <span class="v" data-k="cultural" tabindex="0">cultural</span> <span class="v" data-k="experience" tabindex="0">experiences</span>. I believe my stay in China will not be <span class="blank" data-n="10"></span> last time. I <span class="v ph" data-k="expect-to" tabindex="0">expect to</span> come to China again.</p>
+    </div>
+
+    <div class="keybar">
+      <span class="k">1 <b>really</b></span><span class="k">2 <b>in</b></span><span class="k">3 <b>was invited</b></span><span class="k">4 <b>which / that</b></span><span class="k">5 <b>interesting</b></span>
+      <span class="k">6 <b>had</b></span><span class="k">7 <b>but</b></span><span class="k">8 <b>impolite</b></span><span class="k">9 <b>days</b></span><span class="k">10 <b>my</b></span>
+    </div>
+
+    <details class="trans">
+      <summary>完整填空还原<span class="hint">点击展开 · 可整篇朗读</span></summary>
+      <div class="trans-body en" id="txt-f">
+        <p>China is a country of etiquette. I'm working here as a foreign teacher and I'm leaving soon. I <span class="blank" data-n="1"><b>really</b></span> have a deep understanding of Chinese culture and society.</p>
+        <p>Everything was new to me when I first arrived <span class="blank" data-n="2"><b>in</b></span> China. As for seats at the table, Chinese people have their own culture. Once, I <span class="blank" data-n="3"><b>was invited</b></span> to a big dinner at a restaurant. Before the dinner, someone showed me to take the seat <span class="blank" data-n="4"><b>which</b></span> was ready for the most important person. It faced the door.</p>
+        <p>I found another <span class="blank" data-n="5"><b>interesting</b></span> thing. Chinese people like giving gifts in pairs. Last month, I <span class="blank" data-n="6"><b>had</b></span> a party with three friends in my home. They each brought two gifts. I couldn't wait to open them, <span class="blank" data-n="7"><b>but</b></span> one of my friends reminded me not to do that right away. He thought it was <span class="blank" data-n="8"><b>impolite</b></span> to open gifts in front of the givers.</p>
+        <p>These are amazing <span class="blank" data-n="9"><b>days</b></span> of cultural experiences. I believe my stay in China will not be <span class="blank" data-n="10"><b>my</b></span> last time. I expect to come to China again.</p>
+      </div>
+    </details>
+
+    <details class="trans">
+      <summary>参考译文</summary>
+      <div class="trans-body">
+        <p>中国是一个礼仪之邦。我在这里做外教，而且很快就要离开了。我真的对中国文化和社会有了深入的了解。</p>
+        <p>刚到中国时，一切对我来说都是新鲜的。至于餐桌上的座位，中国人有自己独特的文化。有一次，我应邀参加一家饭店的盛大晚宴。开饭前，有人把我领到那个为最重要的人准备好的座位上。那个座位正对着门。</p>
+        <p>我还发现了另一件有趣的事。中国人喜欢成双成对地送礼物。上个月，我和三个朋友在我家聚会。他们每人带来了两份礼物。我迫不及待地想打开它们，但一位朋友提醒我不要马上拆。他认为当着送礼人的面拆礼物是不礼貌的。</p>
+        <p>这些是充满奇妙文化体验的日子。我相信我在中国的这段时光不会是最后一次。我期待再次来到中国。</p>
+      </div>
+    </details>
+
+    <div class="analysis">
+      <p class="a-title">逐段解析 · 段落大意 / 重点句型 / 语法要点</p>
+      <div class="split">
+        <div class="box">
+          <h4>段落大意</h4>
+          <ol>
+            <li><b>第 1 段</b>：总起——中国是礼仪之邦；作者是在华外教、即将离任，自认对中国文化和社会有深入了解。</li>
+            <li><b>第 2 段</b>：座位文化——初到中国一切新鲜；一次赴宴，被让到为最重要的人准备的、正对门的座位。</li>
+            <li><b>第 3 段</b>：送礼文化——中国人喜欢成双送礼；作者想马上拆礼物，被朋友提醒「当面拆不礼貌」。</li>
+            <li><b>第 4 段</b>：总结——这些是奇妙的文化体验日；相信不会是最后一次来中国，期待再来。</li>
+          </ol>
+        </div>
+        <div class="box">
+          <h4>重点句型</h4>
+          <ul>
+            <li><span class="sen">I'm working here <i>as</i> a foreign teacher.</span>（work as 以……身份工作）</li>
+            <li><span class="sen">Everything was new to me <i>when</i> I first arrived in China.</span>（when 时间状语从句）</li>
+            <li><span class="sen">Someone showed me to take the seat <i>which</i> was ready for the most important person.</span>（定语从句）</li>
+            <li><span class="sen">I couldn't wait to open them, <i>but</i> one of my friends reminded me not to do that right away.</span></li>
+            <li><span class="sen">I believe my stay in China will not be my last time.</span></li>
+          </ul>
+        </div>
+        <div class="box wide">
+          <h4>语法要点（对应 10 空）</h4>
+          <ul>
+            <li><b>副词修饰动词</b>（第 1 空）：<code>really have</code>，real → really，修饰动词 have。</li>
+            <li><b>arrive 介词搭配</b>（第 2 空）：<code>arrive in + 大地点</code>（China），<code>arrive at + 小地点</code>（车站、学校）。</li>
+            <li><b>一般过去时被动语态</b>（第 3 空）：<code>I was invited to a big dinner</code>，「我<b>被</b>邀请」，主语 I 是动作承受者。</li>
+            <li><b>定语从句</b>（第 4 空）：<code>the seat which/that was ready ...</code> 先行词 the seat 指物，从句缺<b>主语</b>，用 which 或 that。</li>
+            <li><b>another + adj. + 单数名词</b>（第 5 空）：<code>another interesting thing</code>，interest → interesting（修饰物）。</li>
+            <li><b>时态一致</b>（第 6 空）：<code>Last month</code> 是一般过去时标志 → have 的过去式 had。</li>
+            <li><b>连词表转折</b>（第 7 空）：「想马上拆」与「被提醒不要拆」语义相反 → but。</li>
+            <li><b>否定前缀</b>（第 8 空）：被提醒<b>不要</b>当面拆 → 不礼貌，polite → <code>im</code>polite（im- 用于 p 前）。</li>
+            <li><b>名词复数</b>（第 9 空）：<code>These are amazing days</code>，these 与 are 提示复数 → days。</li>
+            <li><b>形容词性物主代词</b>（第 10 空）：<code>my last time</code>，名词短语前用 my，不能用 me / mine。</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tip"><b>语法填空四步法</b>　① 看括号里给的是什么词（动词 / 名词 / 形容词 / 代词）；② 找句中<b>提示词</b>（Last month → 过去时；these → 复数；Once → 过去时）；③ 判断<b>句子成分缺什么</b>（缺状语→副词；缺定语→形容词或物主代词；缺关系词→定语从句；无提示词→介词 / 连词 / 冠词 / 代词）；④ 变形后<b>回读全句</b>，检查主谓一致与拼写（was invited 别漏 was；impolite 别拼成 unpolite）。</div>
+    </div>
+
+    <div class="qs">
+      <p class="qs-title">Questions · 逐空精解</p>
+
+      <div class="q mini">
+        <p class="stem"><span class="num">1</span><span>I ______ (real) have a deep understanding of Chinese culture and society.</span></p>
+        <div class="ans">
+          <span class="badge">答案 really</span>
+          <div class="ana">
+            <p><b>考点</b>形容词变副词</p>
+            <p><b>解析</b>空格修饰动词 <code>have</code>，需要副词作状语：<code>real + ly → really</code>（真正地、确实）。</p>
+            <p class="why"><b>易错</b>保留形容词 real（形容词不能修饰动词）；拼写漏 l。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="q mini">
+        <p class="stem"><span class="num">2</span><span>Everything was new to me when I first arrived ______ China.</span></p>
+        <div class="ans">
+          <span class="badge">答案 in</span>
+          <div class="ana">
+            <p><b>考点</b>arrive 的介词搭配</p>
+            <p><b>解析</b><code>arrive in + 大地点</code>（国家、城市），<code>arrive at + 小地点</code>。China 是国家，故用 <code>in</code>。</p>
+            <p class="why"><b>辨析</b>reach 及物（reach China，不加介词）；get to + 地点。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="q mini">
+        <p class="stem"><span class="num">3</span><span>Once, I ______ (invite) to a big dinner at a restaurant.</span></p>
+        <div class="ans">
+          <span class="badge">答案 was invited</span>
+          <div class="ana">
+            <p><b>考点</b>一般过去时的被动语态</p>
+            <p><b>解析</b>主语 I 与 invite 是<b>被动关系</b>（我<b>被</b>邀请），且 <code>Once</code>（有一次）提示过去，故用 <code>was invited</code>（was + 过去分词）。</p>
+            <p class="why"><b>易错</b>只写 invited（缺 be 动词，不是被动谓语）；写成 am invited（时态错误）。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="q mini">
+        <p class="stem"><span class="num">4</span><span>... someone showed me to take the seat ______ was ready for the most important person.</span></p>
+        <div class="ans">
+          <span class="badge">答案 which（或 that）</span>
+          <div class="ana">
+            <p><b>考点</b>定语从句关系词</p>
+            <p><b>解析</b>先行词 <code>the seat</code> 指物，从句 <code>___ was ready ...</code> 缺<b>主语</b>，故用 <code>which</code> 或 <code>that</code> 引导定语从句。</p>
+            <p class="why"><b>易错</b>用 what（what 不能引导定语从句）；用 whose / where（从句缺的是主语，不是定语或地点）。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="q mini">
+        <p class="stem"><span class="num">5</span><span>I found another ______ (interest) thing.</span></p>
+        <div class="ans">
+          <span class="badge">答案 interesting</span>
+          <div class="ana">
+            <p><b>考点</b>词性转换 + -ing / -ed 形容词辨析</p>
+            <p><b>解析</b>空格修饰名词 <code>thing</code>，需要形容词作定语：interest → <code>interesting</code>（令人感兴趣的，修饰<b>物</b>）。</p>
+            <p class="why"><b>辨析</b>interested（人感到有趣，常用于 be interested in）；修饰 thing 用 interesting。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="q mini">
+        <p class="stem"><span class="num">6</span><span>Last month, I ______ (have) a party with three friends in my home.</span></p>
+        <div class="ans">
+          <span class="badge">答案 had</span>
+          <div class="ana">
+            <p><b>考点</b>一般过去时</p>
+            <p><b>解析</b>时间状语 <code>Last month</code> 是一般过去时的标志词，have 的过去式为不规则变化 <code>had</code>。</p>
+            <p class="why"><b>易错</b>写成 have / has（忽略 Last month）；拼写写成 haved。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="q mini">
+        <p class="stem"><span class="num">7</span><span>I couldn't wait to open them, ______ one of my friends reminded me not to do that right away.</span></p>
+        <div class="ans">
+          <span class="badge">答案 but</span>
+          <div class="ana">
+            <p><b>考点</b>并列连词表转折</p>
+            <p><b>解析</b>前半句「我迫不及待想拆」，后半句「朋友提醒我<b>不要</b>马上拆」，语义相反，用 <code>but</code> 连接两个并列分句。</p>
+            <p class="why"><b>排除</b>and 表顺承、so 表结果、or 表选择，均不合逻辑。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="q mini">
+        <p class="stem"><span class="num">8</span><span>He thought it was ______ (polite) to open gifts in front of the givers.</span></p>
+        <div class="ans">
+          <span class="badge">答案 impolite</span>
+          <div class="ana">
+            <p><b>考点</b>否定前缀 + 语境推理</p>
+            <p><b>解析</b>上句朋友提醒「<b>不要</b>当面拆礼物」，可见当面拆是<b>不礼貌</b>的：polite 加否定前缀 <code>im-</code> → <code>impolite</code>。</p>
+            <p class="why"><b>易错</b>写成 polite（与提醒的语境矛盾）；前缀误用 un-（polite 的否定前缀是 im-）。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="q mini">
+        <p class="stem"><span class="num">9</span><span>These are amazing ______ (day) of cultural experiences.</span></p>
+        <div class="ans">
+          <span class="badge">答案 days</span>
+          <div class="ana">
+            <p><b>考点</b>名词复数</p>
+            <p><b>解析</b>主语是 <code>These</code>，谓语是 <code>are</code>，都提示复数；且「一段日子」用复数，day → <code>days</code>。</p>
+            <p class="why"><b>易错</b>写成 day（与 these / are 不一致）。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="q mini">
+        <p class="stem"><span class="num">10</span><span>I believe my stay in China will not be ______ last time.</span></p>
+        <div class="ans">
+          <span class="badge">答案 my</span>
+          <div class="ana">
+            <p><b>考点</b>形容词性物主代词</p>
+            <p><b>解析</b>空格修饰名词短语 <code>last time</code>，需要形容词性物主代词作定语：<code>my last time</code>（我的最后一次）。</p>
+            <p class="why"><b>易错</b>写成 me（宾格不能作定语）或 mine（名词性物主代词，后面不能再接名词）。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 生词表 ============ -->
+  <section class="paper" id="words">
+    <div class="vocab-head">
+      <div>
+        <span class="tag">词汇积累 · 一</span>
+        <h2 style="margin-bottom:2px">生词表 <small>Words</small></h2>
+        <p class="meta">按七年级水平筛选，共 <b id="wcount">0</b> 个；音标以英式为主，点喇叭可听发音</p>
+      </div>
+      <div class="chips" data-target="wtable">
+        <button class="chip on" data-s="all">全部</button>
+        <button class="chip" data-s="X">七选五</button>
+        <button class="chip" data-s="J">简答</button>
+        <button class="chip" data-s="F">语法</button>
+      </div>
+    </div>
+    <table>
+      <thead><tr><th>单词</th><th class="c-ph">音标</th><th class="c-pos">词性</th><th>释义</th><th>例句 / 译文</th></tr></thead>
+      <tbody id="wtable"></tbody>
+    </table>
+  </section>
+
+  <!-- ============ 生短语表 ============ -->
+  <section class="paper" id="phrases">
+    <div class="vocab-head">
+      <div>
+        <span class="tag">词汇积累 · 二</span>
+        <h2 style="margin-bottom:2px">生短语表 <small>Phrases &amp; Collocations</small></h2>
+        <p class="meta">共 <b id="pcount">0</b> 条，均为中考高频搭配，例句可直接背用</p>
+      </div>
+      <div class="chips" data-target="ptable">
+        <button class="chip on" data-s="all">全部</button>
+        <button class="chip" data-s="X">七选五</button>
+        <button class="chip" data-s="J">简答</button>
+        <button class="chip" data-s="F">语法</button>
+      </div>
+    </div>
+    <table>
+      <thead><tr><th>短语</th><th class="c-ph">音标</th><th>释义</th><th>例句 / 译文</th></tr></thead>
+      <tbody id="ptable"></tbody>
+    </table>
+  </section>
+
+  <!-- ============ 校对说明 ============ -->
+  <section class="paper" id="notes">
+    <div class="sec-head">
+      <span class="tag">校对 · 说明</span>
+      <h2>答案汇总 · 排版差异 · 使用说明</h2>
+      <p class="meta">逐页核对原卷（共 3 页）后整理的差异与提示</p>
+    </div>
+    <div class="note-grid">
+      <div class="note">
+        <h4>① 全卷答案</h4>
+        <p>七选五：<code>1 E　2 F　3 B　4 G　5 D</code></p>
+        <p>阅读简答：<code>11 In March 2019.　12 His Chinese teacher Mr. Liu.　13 开放题（品质 + 依据）　14 开放题（什么 + 为什么）　15 读万卷书，不如行万里路。</code></p>
+        <p>语法填空：<code>1 really　2 in　3 was invited　4 which（或 that）　5 interesting　6 had　7 but　8 impolite　9 days　10 my</code></p>
+      </div>
+      <div class="note warn">
+        <h4>② 原卷印刷问题（已在讲义中订正）</h4>
+        <p>① 第 2 页印作 <code>... take part in a study tour in China So in August 2024 ...</code>，<code>China</code> 后<b>缺句号</b>，本讲义已订正为 <code>China. So in August 2024 ...</code>。<br>
+           ② 第 2 页顶部的小节编号与标题被扫描<b>裁切</b>（不可见），本讲义补标为「（2）阅读简答」。<br>
+           ③ 第 3 页顶部的标题 / 编号同样不可见，本讲义补标为「（3）语法填空」；题干说明「阅读下面短文，在空白处填入 1 个适当的单词或括号内单词的正确形式」按原卷保留。</p>
+      </div>
+      <div class="note">
+        <h4>③ 内容完整性</h4>
+        <p>本卷 PDF 共 <b>3 页</b>，含 <b>三大题</b>：七选五（5 空）、阅读简答（5 问，含 1 句翻译）、语法填空（10 空）。<b>所有篇目正文、选项与题目完整</b>，无缺页。</p>
+        <p>七选五第 1 空所在段末句 <code>the best way for now is to use less plastic</code> 与选项 E 的 five tips 呼应，是全文总起句，务必先定下这一空再解其余。</p>
+      </div>
+      <div class="note">
+        <h4>④ 怎么用这份讲义</h4>
+        <p>建议顺序：<b>① 裸读原文</b>（遇划线词先猜义，点击验证，点喇叭听英式发音）→ <b>② 先做题</b> → <b>③ 对照逐段解析</b>回原文找依据 → <b>④ 用「自测模式」二刷</b>（答案自动模糊，点一下才显示）→ <b>⑤ 背词汇表</b>（可按大题筛选，只背本篇的词）。</p>
+        <p>每篇右上角「朗读全文」可整篇跟读（再点一次停止）；打印时按 <code>Ctrl + P</code>，划线底色与喇叭会自动隐藏，答案与译文照常保留。</p>
+      </div>
+    </div>
+  </section>
+
+</div>
+</main>
+
+<footer>8-5 英语培优 · 精讲　|　3 大题 · 3 篇语篇 · 20 小题 · <span id="statF">0</span> 个生词短语</footer>
+
+<div id="pop" hidden></div>
+
+<script>
+const DICT = {
+/* ================= 生词 · 七选五 ================= */
+pollution:{t:"词",ph:"/pəˈluːʃn/",pos:"n.",cn:"污染",ex:"Plastic pollution is a serious problem.",cnx:"塑料污染是一个严重的问题。",s:"X",note:"air pollution 空气污染"},
+serious:{t:"词",ph:"/ˈsɪəriəs/",pos:"adj.",cn:"严重的；认真的",ex:"The problem is getting serious.",cnx:"问题越来越严重。",s:"X"},
+create:{t:"词",ph:"/kriˈeɪt/",pos:"v.",cn:"创造；创建；研制",ex:"Scientists want to create a new material.",cnx:"科学家想研制一种新材料。",s:"X"},
+reusable:{t:"词",ph:"/ˌriːˈjuːzəbl/",pos:"adj.",cn:"可重复使用的",ex:"Take a reusable bag when you go shopping.",cnx:"购物时带上可重复使用的袋子。",s:"X",note:"re-（再）+ use + -able"},
+instead:{t:"词",ph:"/ɪnˈsted/",pos:"adv.",cn:"代替；反而；却",ex:"I don't like coffee. I'll have tea instead.",cnx:"我不喜欢咖啡，我要喝茶代替。",s:"X",note:"常置于句首或句末"},
+worldwide:{t:"词",ph:"/ˈwɜːldwaɪd/",pos:"adv. / adj.",cn:"在全世界；全世界的",ex:"The song is popular worldwide.",cnx:"这首歌在全世界都很流行。",s:"X"},
+straw:{t:"词",ph:"/strɔː/",pos:"n.",cn:"吸管；稻草",ex:"Please give me a straw for the drink.",cnx:"请给我的饮料配一根吸管。",s:"X"},
+billion:{t:"词",ph:"/ˈbɪljən/",pos:"num.",cn:"十亿",ex:"The country has over a billion people.",cnx:"这个国家有十亿多人口。",s:"X",note:"8.3 billion 读作 eight point three billion"},
+cover:{t:"词",ph:"/ˈkʌvə(r)/",pos:"v. / n.",cn:"覆盖；封面；报道",ex:"Snow covered the fields.",cnx:"雪覆盖了田野。",s:"X"},
+order:{t:"词",ph:"/ˈɔːdə(r)/",pos:"v. / n.",cn:"点（菜 / 饮料）；订购；命令",ex:"Would you like to order a drink?",cnx:"你想点杯喝的吗？",s:"X"},
+packaging:{t:"词",ph:"/ˈpækɪdʒɪŋ/",pos:"n.",cn:"包装（材料）",ex:"The toy has too much packaging.",cnx:"这个玩具的包装太多了。",s:"X",note:"pack v. 包装 + -ing"},
+avoid:{t:"词",ph:"/əˈvɔɪd/",pos:"v.",cn:"避免；避开",ex:"Avoid eating too much sugar.",cnx:"避免吃太多糖。",s:"X",note:"avoid doing sth 后接动名词"},
+pack:{t:"词",ph:"/pæk/",pos:"v. / n.",cn:"包装；打包",ex:"Fruit is often packed in plastic.",cnx:"水果常被用塑料包装。",s:"X",note:"packed 过去分词作定语表被动"},
+recycle:{t:"词",ph:"/ˌriːˈsaɪkl/",pos:"v.",cn:"回收利用；再利用",ex:"We recycle bottles and paper at school.",cnx:"我们在学校回收瓶子和纸张。",s:"X",note:"re- + cycle 循环"},
+tip:{t:"词",ph:"/tɪp/",pos:"n.",cn:"建议；小贴士；小费",ex:"Here are five tips for learning English.",cnx:"这里有五条学英语的建议。",s:"X",note:"选项词"},
+possible:{t:"词",ph:"/ˈpɒsəbl/",pos:"adj.",cn:"可能的",ex:"It is possible to finish the work today.",cnx:"今天完成这项工作是可能的。",s:"X",note:"选项词；as ... as possible 尽可能"},
+customer:{t:"词",ph:"/ˈkʌstəmə(r)/",pos:"n.",cn:"顾客；客户",ex:"The shop has many customers every day.",cnx:"这家商店每天有很多顾客。",s:"X",note:"选项词；custom 习俗"},
+fresh:{t:"词",ph:"/freʃ/",pos:"adj.",cn:"新鲜的；清新的",ex:"The vegetables in the market are fresh.",cnx:"市场上的蔬菜很新鲜。",s:"X",note:"选项词"},
+expensive:{t:"词",ph:"/ɪkˈspensɪv/",pos:"adj.",cn:"昂贵的",ex:"The car is too expensive for me.",cnx:"这辆车对我来说太贵了。",s:"X",note:"选项词；反义词 cheap"},
+
+/* ================= 生词 · 阅读简答 ================= */
+foreign:{t:"词",ph:"/ˈfɒrən/",pos:"adj.",cn:"外国的",ex:"She can speak two foreign languages.",cnx:"她会说两门外语。",s:"J"},
+retire:{t:"词",ph:"/rɪˈtaɪə(r)/",pos:"v.",cn:"退休",ex:"My father retired at the age of 60.",cnx:"我父亲 60 岁时退休了。",s:"J",note:"文中 retired 为过去式"},
+program:{t:"词",ph:"/ˈprəʊɡræm/",pos:"n.",cn:"节目；程序；计划",ex:"I watched a program about Chinese culture.",cnx:"我看了一个关于中国文化的节目。",s:"J"},
+decision:{t:"词",ph:"/dɪˈsɪʒn/",pos:"n.",cn:"决定",ex:"He made a decision to study hard.",cnx:"他下定决心努力学习。",s:"J",note:"make a decision to do = decide to do"},
+offer:{t:"词",ph:"/ˈɒfə(r)/",pos:"v. / n.",cn:"提供；主动提出",ex:"The center offers Chinese courses.",cnx:"这个中心提供中文课程。",s:"J",note:"offer sb sth / offer sth to sb"},
+course:{t:"词",ph:"/kɔːs/",pos:"n.",cn:"课程；一道菜",ex:"I take an online English course.",cnx:"我上一门线上英语课。",s:"J"},
+attend:{t:"词",ph:"/əˈtend/",pos:"v.",cn:"出席；参加；上（学 / 课）",ex:"He attended the meeting yesterday.",cnx:"他昨天出席了会议。",s:"J"},
+practice:{t:"词",ph:"/ˈpræktɪs/",pos:"v. / n.",cn:"练习",ex:"She practices the piano every day.",cnx:"她每天练钢琴。",s:"J",note:"文中 practiced 为过去式"},
+develop:{t:"词",ph:"/dɪˈveləp/",pos:"v.",cn:"培养；发展；开发",ex:"He developed an interest in music.",cnx:"他培养出了对音乐的兴趣。",s:"J"},
+poem:{t:"词",ph:"/ˈpəʊəm/",pos:"n.",cn:"诗；韵文",ex:"Li Bai wrote many famous poems.",cnx:"李白写了许多著名的诗。",s:"J",note:"poetry 诗歌（总称，不可数）"},
+increasingly:{t:"词",ph:"/ɪnˈkriːsɪŋli/",pos:"adv.",cn:"越来越多地；日益",ex:"He became increasingly interested in art.",cnx:"他对艺术越来越感兴趣。",s:"J",note:"increasing + ly"},
+mention:{t:"词",ph:"/ˈmenʃn/",pos:"v. / n.",cn:"提到；说起",ex:"She mentioned the plan to me.",cnx:"她向我提到了这个计划。",s:"J"},
+interpreter:{t:"词",ph:"/ɪnˈtɜːprɪtə(r)/",pos:"n.",cn:"口译员",ex:"He acted as an interpreter at the meeting.",cnx:"他在会上担任口译员。",s:"J",note:"interpret v. 口译；translate 笔译"},
+encourage:{t:"词",ph:"/ɪnˈkʌrɪdʒ/",pos:"v.",cn:"鼓励；激励",ex:"The teacher encouraged me to try again.",cnx:"老师鼓励我再试一次。",s:"J",note:"encourage sb to do sth"},
+pursuit:{t:"词",ph:"/pəˈsjuːt/",pos:"n.",cn:"追求；追赶",ex:"Learning is a lifelong pursuit.",cnx:"学习是一种终身的追求。",s:"J",note:"pursue v. 追求"},
+lifelong:{t:"词",ph:"/ˈlaɪflɒŋ/",pos:"adj.",cn:"终身的；毕生的",ex:"Reading is a lifelong habit.",cnx:"阅读是一种终身的习惯。",s:"J",note:"life + long"},
+possibility:{t:"词",ph:"/ˌpɒsəˈbɪləti/",pos:"n.",cn:"可能性；可能的事",ex:"Learning brings more possibilities.",cnx:"学习带来更多可能。",s:"J",note:"possible 的名词形式"},
+
+/* ================= 生词 · 语法填空 ================= */
+etiquette:{t:"词",ph:"/ˈetɪket/",pos:"n.",cn:"礼仪；礼节",ex:"China is a country of etiquette.",cnx:"中国是一个礼仪之邦。",s:"F"},
+understanding:{t:"词",ph:"/ˌʌndəˈstændɪŋ/",pos:"n.",cn:"理解；了解",ex:"He has a deep understanding of history.",cnx:"他对历史有深入的了解。",s:"F",note:"have a deep understanding of 对……有深入了解"},
+seat:{t:"词",ph:"/siːt/",pos:"n. / v.",cn:"座位；使就座",ex:"Please take your seat.",cnx:"请入座。",s:"F"},
+invite:{t:"词",ph:"/ɪnˈvaɪt/",pos:"v.",cn:"邀请",ex:"They invited me to dinner.",cnx:"他们邀请我吃晚饭。",s:"F",note:"被动式：be invited to ..."},
+face:{t:"词",ph:"/feɪs/",pos:"v. / n.",cn:"面向；脸",ex:"The window faces the door.",cnx:"窗户正对着门。",s:"F"},
+gift:{t:"词",ph:"/ɡɪft/",pos:"n.",cn:"礼物；天赋",ex:"She gave me a birthday gift.",cnx:"她送了我一份生日礼物。",s:"F",note:"= present"},
+impolite:{t:"词",ph:"/ˌɪmpəˈlaɪt/",pos:"adj.",cn:"不礼貌的",ex:"It is impolite to open gifts right away.",cnx:"马上拆礼物是不礼貌的。",s:"F",note:"im-（否定前缀）+ polite"},
+amazing:{t:"词",ph:"/əˈmeɪzɪŋ/",pos:"adj.",cn:"令人惊奇的；了不起的",ex:"What an amazing day!",cnx:"多么了不起的一天！",s:"F",note:"amazed（人）感到惊奇 / amazing（物）令人惊奇"},
+cultural:{t:"词",ph:"/ˈkʌltʃərəl/",pos:"adj.",cn:"文化的",ex:"We visited a cultural center.",cnx:"我们参观了一个文化中心。",s:"F",note:"culture n. 文化"},
+experience:{t:"词",ph:"/ɪkˈspɪəriəns/",pos:"n. / v.",cn:"经历；经验；体验",ex:"The trip was an amazing experience.",cnx:"这次旅行是一次奇妙的经历。",s:"F",note:"表“经历”可数，表“经验”不可数"},
+expect:{t:"词",ph:"/ɪkˈspekt/",pos:"v.",cn:"期待；预料",ex:"I expect to see you soon.",cnx:"我期待很快见到你。",s:"F",note:"expect to do sth"},
+
+/* ================= 生短语 · 七选五 ================= */
+"break-down":{t:"短语",disp:"break down",ph:"/breɪk daʊn/",pos:"短语",cn:"分解；（机器）出故障",ex:"Plastic takes years to break down.",cnx:"塑料需要很多年才能分解。",s:"X"},
+"tons-of":{t:"短语",disp:"tons of",ph:"/tʌnz ɒv/",pos:"短语",cn:"大量的；许多",ex:"Tons of plastic bags are used every year.",cnx:"每年要用掉大量的塑料袋。",s:"X",note:"= lots of"},
+"throw-away":{t:"短语",disp:"throw away",ph:"/θrəʊ əˈweɪ/",pos:"短语",cn:"扔掉；丢弃",ex:"Don't throw away the bottles.",cnx:"不要把瓶子扔掉。",s:"X",note:"代词放中间：throw it away"},
+"say-no-to":{t:"短语",disp:"say no to",ph:"/seɪ nəʊ tuː/",pos:"短语",cn:"对……说不；拒绝",ex:"Say no to the straw when you order a drink.",cnx:"点饮料时对吸管说不。",s:"X",note:"反义：say yes to"},
+"be-allowed-to":{t:"短语",disp:"be allowed to do sth",ph:"/əˈlaʊd/",pos:"短语",cn:"被允许做某事",ex:"Stores aren't allowed to sell bottled water.",cnx:"商店不被允许销售瓶装水。",s:"X",note:"allow sb to do 的被动式"},
+"bottled-water":{t:"短语",disp:"bottled water",ph:"/ˈbɒtld ˈwɔːtə(r)/",pos:"短语",cn:"瓶装水",ex:"Bottled water is sold in stores.",cnx:"商店里卖瓶装水。",s:"X"},
+"give-back":{t:"短语",disp:"give ... back",ph:"/ɡɪv bæk/",pos:"短语",cn:"归还；退回",ex:"The machines give a little money back for each bottle.",cnx:"机器为每个瓶子退还一点钱。",s:"X",say:"give back"},
+"so-that":{t:"短语",disp:"so ... that ...",ph:"/səʊ ðæt/",pos:"句型",cn:"如此……以至于……",ex:"The problem is so bad that stores can't sell bottled water.",cnx:"问题严重到商店不能卖瓶装水。",s:"X",say:"so that",note:"that 后接结果状语从句"},
+
+/* ================= 生短语 · 阅读简答 ================= */
+"by-chance":{t:"短语",disp:"by chance",ph:"/baɪ tʃɑːns/",pos:"短语",cn:"偶然；碰巧",ex:"I found the center by chance.",cnx:"我偶然发现了这个中心。",s:"J",note:"= by accident"},
+"develop-a-love-for":{t:"短语",disp:"develop a love for",ph:"/dɪˈveləp ə lʌv fɔː(r)/",pos:"短语",cn:"培养对……的热爱",ex:"She developed a love for Chinese poems.",cnx:"她培养出了对中国诗歌的热爱。",s:"J"},
+"take-part-in":{t:"短语",disp:"take part in",ph:"/teɪk pɑːt ɪn/",pos:"短语",cn:"参加（活动）",ex:"He took part in a study tour.",cnx:"他参加了一次研学游。",s:"J",note:"= join in；take an active part in 积极参加"},
+"study-tour":{t:"短语",disp:"study tour",ph:"/ˈstʌdi tʊə(r)/",pos:"短语",cn:"研学游；游学",ex:"The school organizes a study tour every year.",cnx:"学校每年组织一次研学游。",s:"J"},
+"act-as":{t:"短语",disp:"act as",ph:"/ækt æz/",pos:"短语",cn:"充当；担任",ex:"He acted as an interpreter.",cnx:"他担任口译员。",s:"J"},
+"ask-the-way":{t:"短语",disp:"ask the way",ph:"/ɑːsk ðə weɪ/",pos:"短语",cn:"问路",ex:"I helped him ask the way in Chinese.",cnx:"我用中文帮他问路。",s:"J"},
+"keep-on":{t:"短语",disp:"keep on doing",ph:"/kiːp ɒn/",pos:"短语",cn:"继续；坚持做",ex:"I will keep on learning Chinese.",cnx:"我会坚持学中文。",s:"J",note:"= keep doing sth"},
+"better-than":{t:"短语",disp:"It's better to ... than to ...",ph:"/ˈbetə(r)/",pos:"句型",cn:"做……比做……更好",ex:"It's better to travel ten thousand miles than to read ten thousand books.",cnx:"读万卷书，不如行万里路。",s:"J",say:"It's better to travel than to read",note:"第 15 题画线句"},
+"never-too-late":{t:"短语",disp:"It's never too late to learn",ph:"/tuː leɪt/",pos:"句型",cn:"活到老学到老",ex:"My grandpa says it's never too late to learn.",cnx:"爷爷说活到老学到老。",s:"J",note:"too ... to ... 太……而不能"},
+
+/* ================= 生短语 · 语法填空 ================= */
+"arrive-in":{t:"短语",disp:"arrive in",ph:"/əˈraɪv ɪn/",pos:"短语",cn:"到达（大地点）",ex:"He arrived in China last year.",cnx:"他去年到达中国。",s:"F",note:"arrive in + 大地点；arrive at + 小地点"},
+"in-pairs":{t:"短语",disp:"in pairs",ph:"/ɪn peəz/",pos:"短语",cn:"成双成对；两人一组",ex:"Chinese people like giving gifts in pairs.",cnx:"中国人喜欢成双成对地送礼物。",s:"F"},
+"cant-wait-to":{t:"短语",disp:"can't wait to do sth",ph:"/kɑːnt weɪt/",pos:"短语",cn:"迫不及待做某事",ex:"I couldn't wait to open the gifts.",cnx:"我迫不及待想打开礼物。",s:"F",note:"文中为过去时 couldn't wait"},
+"remind-not-to":{t:"短语",disp:"remind sb not to do",ph:"/rɪˈmaɪnd/",pos:"短语",cn:"提醒某人不要做某事",ex:"He reminded me not to open them right away.",cnx:"他提醒我不要马上打开它们。",s:"F",note:"否定词 not 放在不定式前"},
+"right-away":{t:"短语",disp:"right away",ph:"/raɪt əˈweɪ/",pos:"短语",cn:"立刻；马上",ex:"Don't open the gifts right away.",cnx:"不要马上打开礼物。",s:"F",note:"= at once"},
+"in-front-of":{t:"短语",disp:"in front of",ph:"/ɪn frʌnt ɒv/",pos:"短语",cn:"在……（外部）前面",ex:"He opened the gifts in front of the givers.",cnx:"他在送礼人面前打开礼物。",s:"F",note:"in the front of 指“内部的前部”"},
+"expect-to":{t:"短语",disp:"expect to do sth",ph:"/ɪkˈspekt/",pos:"短语",cn:"期待做某事",ex:"I expect to come to China again.",cnx:"我期待再来中国。",s:"F"}
+};
+
+/* ---------- popover ---------- */
+const pop = document.getElementById('pop');
+let cur = null;
+
+const ICON = '<svg viewBox="0 0 24 24" width="12" height="12" aria-hidden="true"><path fill="currentColor" d="M3 9v6h4l5 4V5L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 7.97v8.06A4.5 4.5 0 0 0 16.5 12zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>';
+
+function esc(s){
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function sayOf(k){
+  const d = DICT[k]; if(!d) return k;
+  let s = d.say || d.disp || k.replace(/-/g,' ');
+  return s.replace(/\.\.\./g,' ').replace(/\bsth\b/gi,'something').replace(/\bsb\b/gi,'somebody').replace(/\s+/g,' ').trim();
+}
+function spkBtn(text, label){
+  return '<button class="spk" type="button" data-say="'+esc(text)+'" aria-label="'+(label||'朗读')+'" title="'+(label||'朗读')+'">'+ICON+'</button>';
+}
+
+function fill(k){
+  const d = DICT[k]; if(!d) return null;
+  const title = d.disp || k.replace(/-/g,' ');
+  return '<div class="p-head"><span class="p-w">'+title+'</span>'+
+         (d.pos?'<span class="p-pos">'+d.pos+'</span>':'')+
+         spkBtn(sayOf(k),'朗读单词')+'</div>'+
+         (d.ph?'<div class="p-ph">'+d.ph+'</div>':'')+
+         '<div class="p-cn">'+d.cn+'</div>'+
+         (d.ex?'<div class="p-ex">'+d.ex+spkBtn(d.ex,'朗读例句')+'<span>'+d.cnx+'</span></div>':'')+
+         (d.note?'<div class="p-ex" style="border-color:#e8d9a8;margin-top:8px;color:#7a6423;font-size:12.6px;font-family:var(--sans)">辨析：'+d.note+'</div>':'');
+}
+
+function show(el){
+  const k = el.dataset.k;
+  const html = fill(k); if(!html) return;
+  pop.innerHTML = html;
+  pop.hidden = false;
+  pop.classList.remove('up');
+
+  if(window.innerWidth < 640){
+    pop.classList.add('sheet'); pop.style.left=''; pop.style.top='';
+  } else {
+    pop.classList.remove('sheet');
+    const r = el.getBoundingClientRect();
+    const w = pop.offsetWidth, h = pop.offsetHeight;
+    let left = r.left + r.width/2 - w/2;
+    left = Math.max(12, Math.min(left, window.innerWidth - w - 12));
+    let top = r.bottom + 10;
+    if(top + h > window.innerHeight - 12){
+      top = r.top - h - 10;
+      if(top < 8){ top = r.bottom + 10; } else { pop.classList.add('up'); }
+    }
+    pop.style.left = left + 'px';
+    pop.style.top  = Math.max(8, top) + 'px';
+  }
+
+  if(cur) cur.classList.remove('on');
+  cur = el;
+  el.classList.add('on');
+}
+
+function hide(stopVoice){
+  pop.hidden = true;
+  if(cur) cur.classList.remove('on');
+  cur = null;
+  if(stopVoice && 'speechSynthesis' in window){
+    window.speechSynthesis.cancel();
+    if(speakingBtn){ speakingBtn.classList.remove('speaking'); speakingBtn = null; }
+  }
+}
+
+/* ---------- speech ---------- */
+let VOICE = null, speakingBtn = null;
+const synthOK = 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window;
+
+function pickVoice(){
+  if(!synthOK) return null;
+  const vs = window.speechSynthesis.getVoices() || [];
+  if(!vs.length) return null;
+  return vs.find(v => /^en[-_]GB/i.test(v.lang) && /natural|google|female|hazel|sonia|libby/i.test(v.name))
+      || vs.find(v => /^en[-_]GB/i.test(v.lang))
+      || vs.find(v => /^en[-_]US/i.test(v.lang) && /natural|google|aria|jenny/i.test(v.name))
+      || vs.find(v => /^en[-_]US/i.test(v.lang))
+      || vs.find(v => /^en/i.test(v.lang)) || null;
+}
+
+if(synthOK){
+  VOICE = pickVoice();
+  if(typeof window.speechSynthesis.onvoiceschanged !== 'undefined'){
+    window.speechSynthesis.onvoiceschanged = function(){ VOICE = pickVoice(); };
+  }
+} else {
+  document.documentElement.classList.add('no-speech');
+}
+
+function speak(text, btn, rate){
+  if(!synthOK || !text) return;
+  const synth = window.speechSynthesis;
+
+  if(speakingBtn === btn && (synth.speaking || synth.pending)){
+    synth.cancel();
+    btn.classList.remove('speaking');
+    speakingBtn = null;
+    return;
+  }
+  if(synth.speaking || synth.pending) synth.cancel();
+  if(speakingBtn) speakingBtn.classList.remove('speaking');
+
+  const u = new SpeechSynthesisUtterance(text);
+  const v = VOICE || pickVoice();
+  if(v){ u.voice = v; u.lang = v.lang; } else { u.lang = 'en-GB'; }
+  u.rate = rate || 0.95;
+  u.pitch = 1;
+  u.volume = 1;
+
+  const done = function(){ btn.classList.remove('speaking'); if(speakingBtn === btn) speakingBtn = null; };
+  u.onend = done;
+  u.onerror = done;
+
+  btn.classList.add('speaking');
+  speakingBtn = btn;
+  synth.speak(u);
+}
+
+document.addEventListener('click', function(e){
+  const sp = e.target.closest('.spk');
+  if(sp){ e.stopPropagation(); speak(sp.dataset.say, sp); return; }
+
+  const v = e.target.closest('.v');
+  if(v){ e.stopPropagation(); if(cur === v){ hide(true); } else { show(v); } return; }
+  if(!e.target.closest('#pop')) hide(true);
+});
+
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape') hide(true);
+  if((e.key === 'Enter' || e.key === ' ') && document.activeElement.classList.contains('v')){
+    e.preventDefault(); show(document.activeElement);
+  }
+});
+
+/* 滚动时只收起气泡，不打断整篇朗读 */
+window.addEventListener('scroll', function(){ hide(false); }, {passive:true});
+window.addEventListener('resize', function(){ hide(false); });
+
+/* ---------- read whole passage ---------- */
+document.querySelectorAll('.readall').forEach(function(b){
+  b.addEventListener('click', function(e){
+    e.stopPropagation();
+    const t = document.getElementById(b.dataset.t);
+    if(!t) return;
+    const text = t.textContent.replace(/\s+/g,' ').trim();
+    speak(text, b, 0.92);
+  });
+});
+
+/* ---------- tables ---------- */
+function row(k, d){
+  return '<tr data-s="'+d.s+'">'+
+    '<td class="td-w"><span class="srcTag '+d.s.toLowerCase()+'">'+d.s+'</span><b>'+(d.disp||k)+'</b>'+
+      spkBtn(sayOf(k),"朗读")+
+      (d.note?'<em>'+d.note+'</em>':'')+'</td>'+
+    '<td class="td-ph c-ph">'+(d.ph||'—')+'</td>'+
+    (d.t==='短语'?'':'<td class="td-pos c-pos">'+(d.pos||'')+'</td>')+
+    '<td class="td-cn">'+d.cn+'</td>'+
+    '<td class="td-ex">'+d.ex+spkBtn(d.ex,"朗读例句")+'<span>'+d.cnx+'</span></td>'+
+  '</tr>';
+}
+
+const words = Object.entries(DICT).filter(x=>x[1].t==='词');
+const phrases = Object.entries(DICT).filter(x=>x[1].t==='短语');
+document.getElementById('wtable').innerHTML = words.map(x=>row(x[0],x[1])).join('');
+document.getElementById('ptable').innerHTML = phrases.map(x=>row(x[0],x[1])).join('');
+document.getElementById('wcount').textContent = words.length;
+document.getElementById('pcount').textContent = phrases.length;
+const total = words.length + phrases.length;
+document.getElementById('statV').textContent = total;
+document.getElementById('statF').textContent = total;
+
+/* ---------- filters ---------- */
+document.querySelectorAll('.chips').forEach(function(box){
+  const target = document.getElementById(box.dataset.target);
+  box.addEventListener('click', function(e){
+    const chip = e.target.closest('.chip'); if(!chip) return;
+    box.querySelectorAll('.chip').forEach(c=>c.classList.remove('on'));
+    chip.classList.add('on');
+    const s = chip.dataset.s;
+    target.querySelectorAll('tr').forEach(function(tr){
+      tr.classList.toggle('hide', s !== 'all' && tr.dataset.s !== s);
+    });
+  });
+});
+
+/* ---------- quiz mode ---------- */
+const qb = document.getElementById('quizBtn');
+qb.addEventListener('click', function(){
+  const on = document.body.classList.toggle('quiz');
+  qb.setAttribute('aria-pressed', on ? 'true' : 'false');
+  qb.querySelector('.dot').style.opacity = on ? '1' : '.55';
+  document.querySelectorAll('.ans').forEach(a=>a.classList.remove('open'));
+});
+document.querySelectorAll('.ans').forEach(function(a){
+  a.addEventListener('click', function(){ if(document.body.classList.contains('quiz')) a.classList.add('open'); });
+});
+</script>
+</body>
+</html>
