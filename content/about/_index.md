@@ -17,49 +17,10 @@ title: About
 
 好好写东西，少折腾代码。共勉！
 
-- [大模型是怎么&#34;想&#34;的 · 运作原理可视化](/llm.html)
-- [高性价比人生指南](/how-to-live-better.html)
+## 学习资料与独立页面
 
-## 文言文
+已将静态页面按用途整理，方便查找：
 
-- [走进文言文_六七年级](/走进文言文_六七年级.html)
-- [走进文言文_八年级](/走进文言文_八年级.html)
-- [走进文言文_九年级](/走进文言文_九年级.html)
-
-## 语文培优
-
-- [第八周语文培优v1](/w8paper-v1.html)  [v2](/w8paper-v2.html) [v3](/w8paper-v3.html)
-- [第七周语文培优](/w7paper.html)
-- [容易写错、读错的字和多音字](/appendix-chars.html)  [v2](/mis-chars.html)
-  
-## 英语培优
-
-- [8周5培优v1](/en8-5-1.html)  [v2](/en8-5-2.html)  [v3](/en8-5-3.html)  [v4](/en8-5-4.html)
-- [8周3培优v1](/en8-3.html)  [v2](/en8-3-v2.html)  [v3](/en8-3-v3.html)
-- [8周4培优v1](/en8-4-v1.html)  [11月21作业](/en-1121.html) [v2](/en-1021-1.html)
-- [8周1培优v1](/en8_1.html)  [v2](/en8_1_v2.html)  [v3](/en8_1_v3.html)  [v4](/en8_1_v4.html)
-- [英语不规则动词](/irregular-verbs.html)
-
-<!--  8周5培优html生成工具分别为 v1:workbuddy+mimo；v2：mimo claw；v3：opencode ds4.1f ；v4：couzi claw；-->
-<!--  8周3培优html生成工具分别为 v1:mimo claw在线；v2：opencode ds4.1f；v3：Hermes openrouter -->
-
-
-## 作文范文
-
-- [七年级作文范文](/essays.html)  [v2](/ff.html)  [v3](/essays-v2.html)
-
-## 阅读理解
-
-- [初中记叙文阅读答题模板](/初中记叙文阅读答题模板.html)
-- [语文阅读技巧思维导图](/语文阅读技巧思维导图.html)
-- [现代文阅读学案思维导图](/现代文阅读学案思维导图.#html)
-- [中考现代文阅读_思维导图](/中考现代文阅读_思维导图.html)
-
-## 历史等
-
-- [七年级历史背诵](/history-review.html)
-- [七年级上册核心知识点精讲与典型例题](/七年级上册核心知识点精讲与典型例题.html)
-- [七年级上册知识网络图](/七年级上册知识网络图.html)
-- [语文期末分析报告](/语文期末分析报告.html)
-- [语文期末分析报告_详细版](/语文期末分析报告_详细版.html)
-- [暑假40天规范字提升计划](/plan_qh_v2.html)
+- [学习资料总览](/resources/)
+- [大模型运作原理可视化](/other/llm.html)
+- [高性价比人生指南](/other/how-to-live-better.html)
