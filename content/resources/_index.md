@@ -27,13 +27,15 @@ HTML 学习资料，按学科分类。
 - [语文期末分析报告](/chinese/chinese-final-report.html)、[详细版](/chinese/chinese-final-report-detailed.html)
 - [暑假40天规范字提升计划](/chinese/plan_qh_v2.html)
 
-## 历史与道法
+## 历史、道法、 地理
 
 - [七年级历史背诵](/history/history-review.html)
 - [七年级上册核心知识点精讲与典型例题](/history/grade-7-core-review.html)
 - [七年级上册知识网络图](/history/grade-7-knowledge-map.html)
 - [道德与法治七年级上册单元思维导图](/history/moral-education-grade-7-units.html)
 - [道德与法治七年级上册思维导图（屏幕版）](/history/moral-education-grade-7-mindmap-screen.html)
+- [初二地理期中复习](/geography/geo-review-1.html)  [v2](/geography/geo-review-2.html)
+- [地理期中默写纸互动复习](/geography/geo-midterm-v2.html)
 
 ## 其他页面
 
