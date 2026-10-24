@@ -166,9 +166,12 @@ footer li{margin:4px 0 4px 18px}
   :root{--bg:#fff;--bg2:#fff;--card:#fff;--line:#c9d2e0;--tx:#111;--tx2:#333;--acc:#0a4a75}
   html[data-theme=light]{--bg:#fff;--bg2:#fff;--card:#fff;--line:#c9d2e0;--tx:#111;--tx2:#333;--acc:#0a4a75}
   body{font-size:14px}
-  body::before,.toolbar,.nav,.reveal-btn,.mbtns,.cbtns,.fig-note,.minfo,.cinfo,.hero .contour{display:none!important}
+  body::before,.toolbar,.nav,.reveal-btn,.mbtns,.cbtns,.fig-note,.hero .contour{display:none!important}
   .wrap{max-width:100%;padding:0}
   .print-only{display:block}
+  /* 打印兜底已把全部答案填入山脉/气候信息区，此处需可见 */
+  .minfo,.cinfo{display:block!important;border:1px solid #c9d2e0;background:#fff;color:#222;margin:6px 0;padding:8px 10px}
+  .minfo .row,.cinfo .row{display:block;margin:2px 0}
   .sec{margin:14px 0;break-inside:avoid}
   .sec-body{border:1px solid #c9d2e0;border-top:2px solid #333;padding:8px 12px 10px}
   .qa{margin:5px 0;padding:7px 10px;border:1px solid #dde3ec;break-inside:avoid}
@@ -214,7 +217,7 @@ footer li{margin:4px 0 4px 18px}
   </svg>
   <span class="kicker">GEOGRAPHY · 期中复习</span>
   <h1>初二地理 · 从世界看中国</h1>
-  <p class="sub">依据《实验初中初二地理默写纸》整理：疆域人口、地形地势、气候、河流、土地资源、水资源六大板块，配套原卷地图与自测挖空，可检索、可打印。</p>
+  <p class="sub">依据《实验初中初二地理默写纸》整理：疆域人口、地形地势、气候、河流、土地资源、水资源六大板块，配套原卷地图与自测挖空，可检索、可打印；也可一键切换「背诵模式」展开全部答案直接顺读。</p>
   <div class="stats">
     <div class="stat"><b>6</b><span>知识板块</span></div>
     <div class="stat"><b>81</b><span>背诵知识点</span></div>
@@ -225,7 +228,8 @@ footer li{margin:4px 0 4px 18px}
 
   <div class="toolbar">
   <div class="search">🔍 <input id="q" type="search" placeholder="搜索知识点 / 山脉 / 省区 / 气候类型…" autocomplete="off"></div>
-  <button class="tbtn" id="btn-test" type="button">🎯 自测模式</button><button class="tbtn" id="btn-print" type="button">🖨 打印 / 存 PDF</button>
+  <button class="tbtn" id="btn-test" type="button">🎯 自测模式</button><button class="tbtn" id="btn-recite" type="button">📖 背诵模式</button>
+  <button class="tbtn" id="btn-print" type="button">🖨 打印 / 存 PDF</button>
   <button class="tbtn" id="btn-theme" type="button">🌙 深色</button>
 </div>
 
@@ -240,7 +244,7 @@ footer li{margin:4px 0 4px 18px}
     <li>省级行政区轮廓答案按轮廓形状辨认给出（甘肃、重庆两例尤其如此），若与老师课上要求不一致，以课本为准。</li>
     <li>山脉图中 4（雪峰山）、8（喜马拉雅山脉）、9（武夷山）、10（阴山）、11（祁连山脉）原卷未设问，仅列名称。</li>
     <li>气候类型分布图中 A—E 依次为：热带季风、亚热带季风、温带季风、高原山地、温带大陆性气候。</li>
-    <li>“自测模式”下答案默认模糊，点击逐条揭示；打印时自动展开全部答案并以浅色高对比排版，A4 满页。想直接拿着背，可用答案完整版 geo-recite.html。</li>
+    <li>“自测模式”下答案默认模糊，点击逐条揭示；打印时自动展开全部答案并以浅色高对比排版，A4 满页。想直接拿着背：点工具栏「📖 背诵模式」，全部答案即刻展开（打印时也会自动带上答案）。</li>
   </ul>
 </footer>
 
@@ -292,22 +296,85 @@ qEl.addEventListener('input',function(){
   });
 });
 
-/* 自测模式 */
-var testOn=false, btnTest=document.getElementById('btn-test');
-function applyTest(){
+/* 自测模式 / 背诵模式（互斥） */
+var MINFO_IDLE='👆 点击山脉编号，查看两侧地形区（4 / 8 / 9 / 10 / 11 号原卷未设问）';
+var CINFO_IDLE='👆 点击字母，查看气候类型与特征';
+var testOn=false, reciteOn=false,
+    btnTest=document.getElementById('btn-test'),
+    btnRecite=document.getElementById('btn-recite');
+function refreshQa(){
   document.querySelectorAll('.qa').forEach(function(qa){
-    qa.classList.toggle('locked',testOn);
+    qa.classList.toggle('locked', testOn && !reciteOn);
     var b=qa.querySelector('.reveal-btn');
-    if(b)b.style.display=testOn?'inline-block':'none';
+    if(b)b.style.display=(testOn && !reciteOn)?'inline-block':'none';
   });
+}
+function applyTest(){
   btnTest.classList.toggle('on',testOn);
   btnTest.textContent=testOn?'🎯 自测中 · 点击退出':'🎯 自测模式';
 }
-btnTest.onclick=function(){testOn=!testOn;applyTest()};
-applyTest();
+function applyRecite(){
+  /* 挖空词：背诵模式直接填入答案，退出后还原横线 */
+  document.querySelectorAll('.blank').forEach(function(bl){
+    if(reciteOn){bl.classList.add('show');bl.textContent=bl.dataset.a}
+    else{bl.classList.remove('show');bl.textContent='▁▁▁▁'}
+  });
+  /* 整卡解除模糊 */
+  refreshQa();
+  /* 政区翻牌全部翻到正面 */
+  document.querySelectorAll('.pcard').forEach(function(c){c.classList.toggle('flip',reciteOn)});
+  /* 山脉：背诵模式一次列出全部答案 */
+  var mi=document.getElementById('minfo');
+  if(mi){
+    if(reciteOn){
+      var ms='';
+      document.querySelectorAll('.mbtn.has').forEach(function(b){
+        ms+='<span class="row"><b>'+b.dataset.no+' · '+b.dataset.name+'</b>　'+b.dataset.a+'　|　'+b.dataset.b+'</span>';
+      });
+      mi.innerHTML='<b>全部山脉两侧地形区</b>'+ms;
+    }else{
+      mi.innerHTML=MINFO_IDLE;
+    }
+  }
+  /* 气候：背诵模式一次列出全部答案 */
+  var ci=document.getElementById('cinfo');
+  if(ci){
+    if(reciteOn){
+      var cs='';
+      document.querySelectorAll('.cbtn').forEach(function(b){
+        cs+='<span class="row"><b>'+b.dataset.k+' · '+b.dataset.name+'</b>　特征：'+b.dataset.f+'　分布：'+b.dataset.d+'</span>';
+      });
+      ci.innerHTML='<b>五种气候类型速查</b>'+cs;
+    }else{
+      ci.innerHTML=CINFO_IDLE;
+    }
+  }
+  btnRecite.classList.toggle('on',reciteOn);
+  btnRecite.textContent=reciteOn?'📖 背诵中 · 点击退出':'📖 背诵模式';
+}
+btnTest.onclick=function(){
+  testOn=!testOn;
+  if(testOn&&reciteOn)reciteOn=false;
+  applyTest();applyRecite();saveMode();
+};
+btnRecite.onclick=function(){
+  reciteOn=!reciteOn;
+  if(reciteOn&&testOn)testOn=false;
+  applyTest();applyRecite();saveMode();
+};
+function saveMode(){try{localStorage.setItem('geo_recite',reciteOn?'1':'0')}catch(e){}}
+try{reciteOn=localStorage.getItem('geo_recite')==='1'}catch(e){}
+applyTest();applyRecite();
 
-/* 单条揭示 / 挖空点击 */
+/* 打印兜底：无论当前什么模式，打印前强制展开全部答案，打印后还原 */
+var _printPrev=null;
+window.onbeforeprint=function(){_printPrev=reciteOn;if(!reciteOn){reciteOn=true;applyRecite()}};
+window.onafterprint=function(){if(!_printPrev){reciteOn=false;applyRecite()}};
+
+
+/* 单条揭示 / 挖空点击（背诵模式下答案已展开，无需操作） */
 document.addEventListener('click',function(e){
+  if(reciteOn)return;
   var blank=e.target.closest('.blank');
   if(blank){blank.classList.add('show');blank.textContent=blank.dataset.a;return}
   var rb=e.target.closest('.reveal-btn');
@@ -315,12 +382,13 @@ document.addEventListener('click',function(e){
 });
 
 /* 政区翻牌 */
-document.querySelectorAll('.pcard').forEach(function(c){c.onclick=function(){c.classList.toggle('flip')}});
+document.querySelectorAll('.pcard').forEach(function(c){c.onclick=function(){if(!reciteOn)c.classList.toggle('flip')}});
 
 /* 山脉热点 */
 var minfo=document.getElementById('minfo');
 document.querySelectorAll('.mbtn.has').forEach(function(b){
   b.onclick=function(){
+    if(reciteOn)return;
     document.querySelectorAll('.mbtn').forEach(function(x){x.classList.remove('sel')});
     b.classList.add('sel');
     minfo.innerHTML='<b>'+b.dataset.no+' · '+b.dataset.name+'</b><br>'+b.dataset.a+'　|　'+b.dataset.b;
@@ -331,6 +399,7 @@ document.querySelectorAll('.mbtn.has').forEach(function(b){
 var cinfo=document.getElementById('cinfo');
 document.querySelectorAll('.cbtn').forEach(function(b){
   b.onclick=function(){
+    if(reciteOn)return;
     document.querySelectorAll('.cbtn').forEach(function(x){x.classList.remove('sel')});
     b.classList.add('sel');
     cinfo.innerHTML='<b>'+b.dataset.k+' · '+b.dataset.name+'</b>'
