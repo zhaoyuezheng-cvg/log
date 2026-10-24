@@ -34,8 +34,7 @@ HTML 学习资料，按学科分类。
 - [七年级上册知识网络图](/history/grade-7-knowledge-map.html)
 - [道德与法治七年级上册单元思维导图](/history/moral-education-grade-7-units.html)
 - [道德与法治七年级上册思维导图（屏幕版）](/history/moral-education-grade-7-mindmap-screen.html)
-- [初二地理期中复习](/geography/geo-review-1.html)  [v2](/geography/geo-review-2.html)
-- [地理期中默写纸互动复习](/geography/geo-midterm-v2.html)
+- [初二地理期中复习](/geography/geo-review-1.html)  [v2](/geography/geo-review-2.html)  [v3](/geography/geo-midterm-v2.html)
 
 ## 其他页面
 
