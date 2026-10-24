@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>初二地理 · 期中默写纸答案全览</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --ink:#0f172a;
+  --ink2:#334155;
+  --muted:#64748b;
+  --line:#e5edf5;
+  --card:#ffffff;
+  --sky:#0284c7;
+  --ans:#0e7490;
+  --r:18px;
+}
+
+html{scroll-behavior:smooth;scroll-padding-top:92px}
+
+body{
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",system-ui,-apple-system,sans-serif;
+  color:var(--ink2);
+  line-height:1.8;
+  font-size:15px;
+  background-color:#f5f8fc;
+  background-image:
+    radial-gradient(900px 420px at 8% -5%, #dbeafe 0%, rgba(219,234,254,0) 65%),
+    radial-gradient(800px 400px at 98% 2%, #ccfbf1 0%, rgba(204,251,241,0) 60%),
+    radial-gradient(700px 500px at 50% 110%, #e0f2fe 0%, rgba(224,242,254,0) 60%);
+  background-attachment:fixed;
+  -webkit-font-smoothing:antialiased;
+  padding-bottom:80px;
+  overflow-x:hidden;
+}
+
+/* ---------- 顶部进度条 ---------- */
+.progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:100}
+.progress-fill{
+  height:100%;width:0;
+  background:linear-gradient(90deg,#0ea5e9,#22d3ee,#34d399);
+  box-shadow:0 0 10px rgba(34,211,238,.6);
+  transition:width .1s linear;
+}
+
+/* ---------- 头部 ---------- */
+.hero{
+  position:relative;
+  padding:64px 24px 54px;
+  text-align:center;
+  overflow:hidden;
+  background:linear-gradient(135deg,#0b2545 0%,#12355b 42%,#0e5c72 100%);
+  color:#fff;
+  border-radius:0 0 36px 36px;
+}
+.hero::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(600px 300px at 15% 10%, rgba(56,189,248,.32), transparent 70%),
+    radial-gradient(500px 260px at 85% 20%, rgba(16,185,129,.28), transparent 70%),
+    radial-gradient(420px 300px at 50% 125%, rgba(99,102,241,.32), transparent 70%);
+}
+.hero::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);
+  background-size:44px 44px;
+  -webkit-mask-image:radial-gradient(circle at 50% 40%, #000 28%, transparent 78%);
+  mask-image:radial-gradient(circle at 50% 40%, #000 28%, transparent 78%);
+}
+.hero-inner{position:relative;z-index:1;max-width:880px;margin:0 auto}
+.eyebrow{
+  display:inline-block;font-size:12.5px;letter-spacing:.3em;
+  padding:5px 18px;border-radius:999px;
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.24);
+  color:#c9f2ff;margin-bottom:18px;
+}
+.hero h1{
+  font-size:clamp(26px,4.4vw,44px);
+  letter-spacing:.02em;line-height:1.28;font-weight:800;color:#fff;
+}
+.hero h1 em{
+  font-style:normal;
+  background:linear-gradient(90deg,#7dd3fc,#5eead4,#a7f3d0);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.sub{margin-top:12px;color:#bfdbfe;font-size:14.5px;letter-spacing:.06em}
+.hero-actions{margin-top:26px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:11px 24px;border-radius:999px;border:1px solid transparent;
+  font-size:14.5px;font-weight:600;cursor:pointer;text-decoration:none;
+  transition:.25s;font-family:inherit;
+}
+.btn-solid{
+  background:linear-gradient(135deg,#22d3ee,#34d399);color:#052e3c;
+  box-shadow:0 10px 24px -8px rgba(52,211,153,.75);
+}
+.btn-solid:hover{transform:translateY(-2px);box-shadow:0 16px 32px -8px rgba(52,211,153,.9)}
+.btn-line{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.35);color:#e0f2fe}
+.btn-line:hover{background:rgba(255,255,255,.18);transform:translateY(-2px)}
+.btn-warm{
+  background:linear-gradient(135deg,#fbbf24,#f97316);color:#3b1d00;
+  box-shadow:0 10px 24px -8px rgba(249,115,22,.75);
+}
+.btn-warm:hover{transform:translateY(-2px)}
+
+/* ---------- 导航 ---------- */
+.navbar{
+  position:sticky;top:0;z-index:60;
+  background:rgba(245,248,252,.84);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(226,232,240,.9);
+}
+.nav-inner{
+  max-width:1080px;margin:0 auto;padding:10px 18px;
+  display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;
+}
+.nav-inner::-webkit-scrollbar{display:none}
+.pill{
+  flex:none;padding:7px 16px;border-radius:999px;
+  background:#fff;border:1px solid var(--line);
+  color:#475569;text-decoration:none;font-size:13.5px;font-weight:600;
+  transition:.22s;white-space:nowrap;
+}
+.pill:hover{border-color:#7dd3fc;color:#0369a1;transform:translateY(-1px)}
+.pill.active{
+  background:linear-gradient(135deg,#0ea5e9,#06b6d4);
+  border-color:transparent;color:#fff;
+  box-shadow:0 8px 18px -8px rgba(14,165,233,.9);
+}
+
+/* ---------- 主体 ---------- */
+main{max-width:1080px;margin:0 auto;padding:28px 18px 40px}
+
+.section{margin-bottom:54px}
+
+.sec-head{display:flex;align-items:center;gap:12px;margin:0 0 18px 4px}
+.sec-icon{
+  width:46px;height:46px;flex:none;display:grid;place-items:center;font-size:22px;
+  border-radius:15px;
+  background:linear-gradient(135deg,#e0f2fe,#ccfbf1);
+  border:1px solid #bae6fd;
+  box-shadow:0 8px 18px -10px rgba(14,165,233,.8);
+}
+.sec-head h2{font-size:22px;color:var(--ink);font-weight:800;letter-spacing:.03em;line-height:1.25}
+.sec-head h2::after{
+  content:"";display:block;width:46px;height:3px;margin-top:6px;border-radius:2px;
+  background:linear-gradient(90deg,#0ea5e9,#34d399);
+}
+
+.grid{display:grid;gap:16px}
+.grid-2{grid-template-columns:repeat(auto-fit,minmax(330px,1fr))}
+
+.card{
+  position:relative;
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:var(--r);
+  padding:20px 22px;
+  box-shadow:0 1px 2px rgba(15,23,42,.04),0 12px 28px -22px rgba(15,23,42,.5);
+  transition:transform .28s cubic-bezier(.2,.8,.3,1),box-shadow .28s,border-color .28s;
+}
+.card::after{
+  content:"";position:absolute;left:22px;right:22px;top:0;height:3px;border-radius:0 0 6px 6px;
+  background:linear-gradient(90deg,#38bdf8,#34d399);
+  opacity:0;transition:opacity .28s;
+}
+.card:hover{transform:translateY(-4px);box-shadow:0 20px 44px -24px rgba(2,132,199,.6);border-color:#cfeafd}
+.card:hover::after{opacity:1}
+
+.card h3{
+  display:flex;align-items:center;gap:9px;
+  font-size:16px;font-weight:700;color:var(--ink);
+  margin-bottom:12px;line-height:1.45;
+}
+.num{
+  flex:none;width:26px;height:26px;border-radius:9px;
+  display:inline-grid;place-items:center;
+  font-size:13px;font-weight:700;color:#fff;
+  background:linear-gradient(135deg,#0ea5e9,#22d3ee);
+  box-shadow:0 6px 12px -6px rgba(14,165,233,.95);
+}
+.card p{margin:0 0 8px}
+.card p:last-child{margin-bottom:0}
+
+.k{color:#0f172a;font-weight:700}
+
+/* 答案高亮 */
+span.ans,em.ans{
+  font-style:normal;
+  color:var(--ans);
+  font-weight:600;
+  background:linear-gradient(to top,rgba(34,211,238,.24) 0%,rgba(34,211,238,.24) 44%,transparent 44%);
+  border-radius:3px;
+  padding:0 2px;
+  transition:filter .25s ease,opacity .25s ease;
+}
+
+/* 默写模式 */
+body.dictation span.ans,
+body.dictation em.ans{
+  filter:blur(5px);
+  cursor:pointer;
+  user-select:none;
+  opacity:.9;
+}
+body.dictation span.ans:hover,
+body.dictation em.ans:hover{filter:blur(2.5px)}
+body.dictation span.ans.revealed,
+body.dictation em.ans.revealed{filter:none;cursor:default;opacity:1}
+
+/* 列表 */
+.list{list-style:none;display:grid;gap:7px}
+.list li{position:relative;padding-left:20px}
+.list li::before{
+  content:"";position:absolute;left:4px;top:.72em;
+  width:7px;height:7px;border-radius:2px;transform:rotate(45deg);
+  background:linear-gradient(135deg,#22d3ee,#34d399);
+}
+
+/* 小卡片 */
+.mini-grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));margin-top:4px}
+.mini{
+  background:linear-gradient(180deg,#f9fdff,#f1f9fd);
+  border:1px solid #e0f2fe;border-radius:13px;
+  padding:12px 14px;display:flex;flex-direction:column;gap:3px;
+  font-size:14px;transition:.22s;
+}
+.mini:hover{border-color:#7dd3fc;background:#f0faff;transform:translateY(-2px)}
+.mini b{color:#0f172a;font-size:14.5px;margin-bottom:2px}
+
+/* 表格 */
+.table-wrap{
+  overflow-x:auto;border-radius:13px;border:1px solid var(--line);
+  margin-top:6px;background:#fff;
+}
+table{width:100%;border-collapse:collapse;font-size:14px;min-width:430px}
+th{
+  background:linear-gradient(135deg,#e0f2fe,#e7fffb);
+  color:#0f172a;font-weight:700;text-align:left;
+  padding:11px 14px;white-space:nowrap;font-size:13.5px;
+}
+td{padding:11px 14px;border-top:1px solid var(--line);vertical-align:top}
+tbody tr:hover{background:#f7fdff}
+
+/* ---------- 原图重现 / 图册板块 ---------- */
+.figure-card{
+  margin-top:16px;
+  background:linear-gradient(180deg,#ffffff,#f8fdff);
+  border-color:#cfeafd;
+}
+.figure-card h3 .badge{
+  flex:none;display:inline-flex;align-items:center;gap:5px;
+  font-size:11.5px;font-weight:700;letter-spacing:.05em;
+  padding:3px 10px;border-radius:999px;
+  background:linear-gradient(135deg,#e0f2fe,#ccfbf1);
+  border:1px solid #bae6fd;color:#0369a1;
+  margin-left:auto;
+}
+.figure-hint{
+  font-size:12.5px;color:var(--muted);
+  margin:-4px 0 12px;letter-spacing:.02em;
+}
+
+/* 真实图片容器 */
+.img-wrapper{
+  display:flex;justify-content:center;align-items:center;
+  margin:16px 0;padding:8px;
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  overflow:hidden;cursor:zoom-in;
+  box-shadow:0 4px 14px rgba(0,0,0,.03);
+  transition:transform .25s, box-shadow .25s;
+}
+.img-wrapper:hover{
+  transform:translateY(-2px);
+  box-shadow:0 12px 24px -10px rgba(2,132,199,.3);
+}
+.img-wrapper img{
+  max-width:100%;height:auto;border-radius:8px;
+  display:block;
+}
+
+/* 省级翻转卡片 */
+.province-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(132px,1fr));
+  gap:10px;margin-top:8px;
+}
+.province-card{
+  perspective:900px;
+  cursor:pointer;
+  height:108px;
+  outline:none;
+  -webkit-tap-highlight-color:transparent;
+}
+.province-card:focus-visible .province-front,
+.province-card:focus-visible .province-back{
+  box-shadow:0 0 0 3px rgba(34,211,238,.55);
+}
+.province-inner{
+  position:relative;width:100%;height:100%;
+  transition:transform .55s cubic-bezier(.2,.8,.3,1);
+  transform-style:preserve-3d;
+}
+.province-card.flipped .province-inner{transform:rotateY(180deg)}
+.province-front,.province-back{
+  position:absolute;inset:0;
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+  border-radius:14px;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:8px;text-align:center;
+  border:1px solid #bae6fd;
+  overflow:hidden;
+}
+.province-front{
+  background:
+    radial-gradient(120px 70px at 50% 0%, #e0f2fe, transparent 70%),
+    linear-gradient(180deg,#f7fdff,#eef9ff);
+  gap:4px;
+}
+.province-front .p-num{
+  font-size:15px;font-weight:800;color:#0369a1;
+  width:28px;height:28px;border-radius:9px;
+  display:grid;place-items:center;
+  background:#fff;border:1px solid #bae6fd;
+  box-shadow:0 4px 10px -6px rgba(14,165,233,.8);
+}
+.province-front .p-tip{
+  font-size:11.5px;color:#475569;line-height:1.35;
+  padding:0 2px;
+}
+.province-front .p-flip{
+  font-size:10px;color:#94a3b8;letter-spacing:.1em;
+}
+.province-back{
+  background:linear-gradient(135deg,#0ea5e9,#06b6d4 60%,#22d3ee);
+  color:#fff;transform:rotateY(180deg);
+  gap:1px;padding:6px 6px;
+  border-color:transparent;
+  box-shadow:0 12px 22px -14px rgba(14,165,233,.95);
+}
+.province-back b{font-size:12.5px;line-height:1.25;letter-spacing:.01em}
+.province-back span{font-size:10.5px;color:#e0f2fe;line-height:1.3}
+
+/* 动效 */
+.reveal{opacity:0;transform:translateY(16px)}
+.reveal.in{opacity:1;transform:none;transition:opacity .6s ease,transform .6s cubic-bezier(.2,.8,.3,1)}
+
+/* 页脚 */
+footer{
+  max-width:1080px;margin:0 auto;padding:30px 18px 0;
+  text-align:center;color:#94a3b8;font-size:13px;line-height:2;
+}
+footer strong{color:#64748b}
+
+/* 提示浮层 */
+.toast{
+  position:fixed;left:50%;bottom:26px;transform:translate(-50%,26px);
+  padding:11px 22px;border-radius:999px;
+  background:rgba(15,23,42,.93);color:#e0f2fe;
+  font-size:13.5px;font-weight:600;
+  box-shadow:0 18px 38px -16px rgba(15,23,42,.95);
+  opacity:0;pointer-events:none;transition:.35s;z-index:80;
+  backdrop-filter:blur(8px);white-space:nowrap;
+}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* 返回顶部 */
+.totop{
+  position:fixed;right:22px;bottom:26px;
+  width:44px;height:44px;border-radius:50%;border:none;cursor:pointer;
+  background:linear-gradient(135deg,#0ea5e9,#22d3ee);color:#fff;font-size:18px;
+  box-shadow:0 14px 28px -14px rgba(14,165,233,.95);
+  opacity:0;pointer-events:none;transition:.3s;z-index:80;
+}
+.totop.show{opacity:1;pointer-events:auto}
+.totop:hover{transform:translateY(-3px)}
+
+/* 图片放大模态框 */
+.modal{
+  position:fixed;inset:0;z-index:200;
+  background:rgba(15,23,42,.85);
+  backdrop-filter:blur(6px);
+  display:flex;justify-content:center;align-items:center;
+  opacity:0;pointer-events:none;transition:opacity .3s;
+  padding:20px;
+}
+.modal.show{opacity:1;pointer-events:auto}
+.modal img{
+  max-width:95vw;max-height:90vh;
+  border-radius:12px;box-shadow:0 20px 50px rgba(0,0,0,.5);
+  transform:scale(.95);transition:transform .3s;
+  object-fit:contain;
+}
+.modal.show img{transform:scale(1)}
+.modal-close{
+  position:absolute;top:20px;right:24px;
+  width:40px;height:40px;border-radius:50%;
+  background:rgba(255,255,255,.15);border:none;color:#fff;
+  font-size:22px;cursor:pointer;display:grid;place-items:center;
+  transition:.2s;
+}
+.modal-close:hover{background:rgba(255,255,255,.3)}
+
+@media (max-width:520px){
+  .hero{padding:48px 18px 42px;border-radius:0 0 26px 26px}
+  .card{padding:17px 16px}
+  main{padding:22px 13px 30px}
+  .toast{font-size:12.5px;padding:10px 16px}
+  .province-grid{grid-template-columns:repeat(auto-fill,minmax(118px,1fr))}
+  .province-card{height:102px}
+}
+</style>
+</head>
+<body>
+
+<div class="progress"><div class="progress-fill" id="progressFill"></div></div>
+
+<!-- ================= 头部 ================= -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">实验初中 · 初二地理</div>
+    <h1>期中前听写纸 <em>答案全览</em></h1>
+    <p class="sub">从世界看中国 · 地形 · 气候 · 河流 · 土地资源 · 水资源</p>
+    <div class="hero-actions">
+      <button id="modeBtn" class="btn btn-solid">✍️ 开启默写模式</button>
+      <a href="#china" class="btn btn-line">开始复习 →</a>
+    </div>
+  </div>
+</header>
+
+<!-- ================= 导航 ================= -->
+<nav class="navbar">
+  <div class="nav-inner" id="navInner">
+    <a href="#china" class="pill">🌏 从世界看中国</a>
+    <a href="#landform" class="pill">⛰️ 地形</a>
+    <a href="#climate" class="pill">🌦️ 气候</a>
+    <a href="#river" class="pill">🌊 河流</a>
+    <a href="#land" class="pill">🌾 土地资源</a>
+    <a href="#water" class="pill">💧 水资源</a>
+  </div>
+</nav>
+
+<main>
+
+<!-- ================= 一、从世界看中国 ================= -->
+<section id="china" class="section">
+  <div class="sec-head">
+    <span class="sec-icon">🌏</span>
+    <h2>从世界看中国</h2>
+  </div>
+
+  <div class="grid grid-2">
+    <article class="card">
+      <h3><span class="num">1</span>地理位置及其优越性</h3>
+      <p><b class="k">纬度位置：</b><span class="ans">北回归线穿过中国南部，大部分位于北温带，南部小部分地区位于热带，没有寒带</span></p>
+      <p><b class="k">海陆位置：</b><span class="ans">位于亚欧大陆东部，东临太平洋，海陆兼备</span></p>
+      <p><b class="k">纬度位置优越性：</b><span class="ans">光热条件好，有利于农业生产和人们的生活</span></p>
+      <p><b class="k">海陆位置优越性：</b><span class="ans">海陆兼备，交通便利，有利于发展海洋事业和对外贸易</span></p>
+    </article>
+
+    <article class="card">
+      <h3><span class="num">2</span>领土四至</h3>
+      <ul class="list">
+        <li><b class="k">最南端：</b><span class="ans">南沙群岛中的曾母暗沙，属于海南省</span></li>
+        <li><b class="k">最北端：</b><span class="ans">黑龙江省漠河县北端的黑龙江主航道中心线上</span></li>
+        <li><b class="k">最西端：</b><span class="ans">新疆维吾尔自治区的帕米尔高原</span></li>
+        <li><b class="k">最东端：</b><span class="ans">黑龙江省黑龙江与乌苏里江主航道中心线的汇合处</span></li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <h3><span class="num">3</span>海陆兼备的大国</h3>
+      <ul class="list">
+        <li>陆地领土面积居世界<span class="ans">第三位</span>，仅次于<span class="ans">俄罗斯和加拿大</span></li>
+        <li>邻国中面积最大的邻国是<span class="ans">俄罗斯</span></li>
+        <li>最大的内陆国是<span class="ans">哈萨克斯坦</span></li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <h3><span class="num">4</span>东西、南北差异的原因</h3>
+      <p><b class="k">东西差异：</b>东部乌苏里江晨曦初露时，西部帕米尔高原还是星斗满天 → <span class="ans">东西跨经度广，东西距离长</span></p>
+      <p><b class="k">南北差异：</b>冬季海南岛天气炎热而黑龙江冰天雪地 → <span class="ans">南北跨纬度广</span></p>
+    </article>
+
+    <article class="card">
+      <h3><span class="num">5</span>濒临的海域</h3>
+      <p><b class="k">四个海域（自北向南）：</b><span class="ans">渤海、黄海、东海、南海</span></p>
+      <p><b class="k">两大内海：</b><span class="ans">渤海、琼州海峡</span></p>
+    </article>
+
+    <article class="card">
+      <h3><span class="num">6</span>省区小结论</h3>
+      <ul class="list">
+        <li>既临渤海又临黄海：<span class="ans">山东省（鲁）、辽宁省（辽）</span></li>
+        <li>北回归线自西向东依次穿过：<span class="ans">云南省（云）、广西壮族自治区（桂）、广东省（粤）、台湾省（台）</span></li>
+        <li>纬度最低、全部位于热带：<span class="ans">海南省（琼）</span></li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <h3><span class="num">7</span>人口</h3>
+      <p><b class="k">增长特点：</b><span class="ans">新生人口显著减少，老年人口比重快速上升，劳动年龄人口比重下降</span></p>
+      <p><b class="k">基本国策：</b><span class="ans">计划生育</span></p>
+      <p><b class="k">分布特点：</b><span class="ans">东南部人口稠密，西北部人口稀疏（东密西疏）</span></p>
+      <p><b class="k">人口地理界线：</b><span class="ans">黑河—腾冲一线</span></p>
+    </article>
+
+    <article class="card">
+      <h3><span class="num">8</span>民族</h3>
+      <ul class="list">
+        <li>人口最多的民族：<span class="ans">汉族</span></li>
+        <li>少数民族中人口最多：<span class="ans">壮族，主要分布于广西壮族自治区</span></li>
+        <li>少数民族种类最多：<span class="ans">云南省</span></li>
+        <li>分布特点：<span class="ans">大杂居、小聚居、交错居住</span></li>
+        <li>少数民族主要分布：<span class="ans">西南、西北、东北地区</span></li>
+      </ul>
+    </article>
+  </div>
+
+  <!-- 省级轮廓图 -->
+  <div class="card figure-card">
+    <h3>
+      <span class="num">📷</span>省级行政单位轮廓识别
+      <span class="badge">原图重现</span>
+    </h3>
+    <p class="figure-hint">对应原稿第 7 题 · 点击图片可放大，点击下方卡片翻转查看答案</p>
+
+    <div class="img-wrapper" onclick="openModal('provinces.png')">
+      <img src="provinces.png" alt="省级行政单位轮廓图" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'100\'><rect width=\'100%\' height=\'100%\' fill=\'%23f0f9ff\'/><text x=\'50%\' y=\'50%\' font-family=\'sans-serif\' font-size=\'14\' fill=\'%2364748b\' text-anchor=\'middle\' dominant-baseline=\'middle\'>请将图片保存为 provinces.png 并放在同目录下</text></svg>';this.onclick=null;">
+    </div>
+
+    <div class="province-grid" id="provinceGrid">
+      <!-- ① 内蒙古 -->
+      <div class="province-card" tabindex="0" aria-label="轮廓①">
+        <div class="province-inner">
+          <div class="province-front">
+            <span class="p-num">①</span>
+            <span class="p-tip">跨经度最广</span>
+            <span class="p-flip">点击翻转</span>
+          </div>
+          <div class="province-back">
+            <b>内蒙古自治区</b>
+            <span>简称：内蒙古</span>
+            <span>行政中心：呼和浩特</span>
+          </div>
+        </div>
+      </div>
+      <!-- ② 黑龙江 -->
+      <div class="province-card" tabindex="0" aria-label="轮廓②">
+        <div class="province-inner">
+          <div class="province-front">
+            <span class="p-num">②</span>
+            <span class="p-tip">我国最北端所在省</span>
+            <span class="p-flip">点击翻转</span>
+          </div>
+          <div class="province-back">
+            <b>黑龙江省</b>
+            <span>简称：黑</span>
+            <span>行政中心：哈尔滨</span>
+          </div>
+        </div>
+      </div>
+      <!-- ③ 吉林 -->
+      <div class="province-card" tabindex="0" aria-label="轮廓③">
+        <div class="province-inner">
+          <div class="province-front">
+            <span class="p-num">③</span>
+            <span class="p-tip">东北三省之一</span>
+            <span class="p-flip">点击翻转</span>
+          </div>
+          <div class="province-back">
+            <b>吉林省</b>
+            <span>简称：吉</span>
+            <span>行政中心：长春</span>
+          </div>
+        </div>
+      </div>
+      <!-- ④ 辽宁 -->
+      <div class="province-card" tabindex="0" aria-label="轮廓④">
+        <div class="province-inner">
+          <div class="province-front">
+            <span class="p-num">④</span>
+            <span class="p-tip">既临渤海又临黄海</span>
+            <span class="p-flip">点击翻转</span>
+          </div>
+          <div class="province-back">
+            <b>辽宁省</b>
+            <span>简称：辽</span>
+            <span>行政中心：沈阳</span>
+          </div>
+        </div>
+      </div>
+      <!-- ⑤ 山东 -->
+      <div class="province-card" tabindex="0" aria-label="轮廓⑤">
+        <div class="province-inner">
+          <div class="province-front">
+            <span class="p-num">⑤</span>
+            <span class="p-tip">既临渤海又临黄海</span>
+            <span class="p-flip">点击翻转</span>
+          </div>
+          <div class="province-back">
+            <b>山东省</b>
+            <span>简称：鲁</span>
+            <span>行政中心：济南</span>
+          </div>
+        </div>
+      </div>
+      <!-- ⑥ 河南 -->
+      <div class="province-card" tabindex="0" aria-label="轮廓⑥">
+        <div class="province-inner">
+          <div class="province-front">
+            <span class="p-num">⑥</span>
+            <span class="p-tip">中原腹地</span>
+            <span class="p-flip">点击翻转</span>
+          </div>
+          <div class="province-back">
+            <b>河南省</b>
+            <span>简称：豫</span>
+            <span>行政中心：郑州</span>
+          </div>
+        </div>
+      </div>
+      <!-- ⑦ 江苏 -->
+      <div class="province-card" tabindex="0" aria-label="轮廓⑦">
+        <div class="province-inner">
+          <div class="province-front">
+            <span class="p-num">⑦</span>
+            <span class="p-tip">临黄海</span>
+            <span class="p-flip">点击翻转</span>
+          </div>
+          <div class="province-back">
+            <b>江苏省</b>
+            <span>简称：苏</span>
+            <span>行政中心：南京</span>
+          </div>
+        </div>
+      </div>
+      <!-- ⑧ 浙江 -->
+      <div class="province-card" tabindex="0" aria-label="轮廓⑧">
+        <div class="province-inner">
+          <div class="province-front">
+            <span class="p-num">⑧</span>
+            <span class="p-tip">临东海</span>
+            <span class="p-flip">点击翻转</span>
+          </div>
+          <div class="province-back">
+            <b>浙江省</b>
+            <span>简称：浙</span>
+            <span>行政中心：杭州</span>
+          </div>
+        </div>
+      </div>
+      <!-- ⑨ 福建 -->
+      <div class="province-card" tabindex="0" aria-label="轮廓⑨">
+        <div class="province-inner">
+          <div class="province-front">
+            <span class="p-num">⑨</span>
+            <span class="p-tip">临台湾海峡</span>
+            <span class="p-flip">点击翻转</span>
+          </div>
+          <div class="province-back">
+            <b>福建省</b>
+            <span>简称：闽</span>
+            <span>行政中心：福州</span>
+          </div>
+        </div>
+      </div>
+      <!-- ⑩ 广东 -->
+      <div class="province-card" tabindex="0" aria-label="轮廓⑩">
+        <div class="province-inner">
+          <div class="province-front">
+            <span class="p-num">⑩</span>
+            <span class="p-tip">北回归线穿过</span>
+            <span class="p-flip">点击翻转</span>
+          </div>
+          <div class="province-back">
+            <b>广东省</b>
+            <span>简称：粤</span>
+            <span>行政中心：广州</span>
+          </div>
+        </div>
+      </div>
+      <!-- ⑪ 广西 -->
+      <div class="province-card" tabindex="0" aria-label="轮廓⑪">
+        <div class="province-inner">
+          <div class="province-front">
+            <span class="p-num">⑪</span>
+            <span class="p-tip">北回归线穿过</span>
+            <span class="p-flip">点击翻转</span>
+          </div>
+          <div class="province-back">
+            <b>广西壮族自治区</b>
+            <span>简称：桂</span>
+            <span>行政中心：南宁</span>
+          </div>
+        </div>
+      </div>
+      <!-- ⑫ 云南 -->
+      <div class="province-card" tabindex="0" aria-label="轮廓⑫">
+        <div class="province-inner">
+          <div class="province-front">
+            <span class="p-num">⑫</span>
+            <span class="p-tip">北回归线穿过</span>
+            <span class="p-flip">点击翻转</span>
+          </div>
+          <div class="province-back">
+            <b>云南省</b>
+            <span>简称：云 / 滇</span>
+            <span>行政中心：昆明</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 二、地形 ================= -->
+<section id="landform" class="section">
+  <div class="sec-head">
+    <span class="sec-icon">⛰️</span>
+    <h2>地形</h2>
+  </div>
+
+  <div class="grid grid-2">
+    <article class="card">
+      <h3><span class="num">1</span>地形特点</h3>
+      <p><span class="ans">地形类型齐全，山区面积广大</span></p>
+      <h3 style="margin-top:16px"><span class="num">2</span>地势特点</h3>
+      <p><span class="ans">地势西高东低，呈现三级阶梯</span></p>
+      <ul class="list" style="margin-top:9px">
+        <li><b class="k">对气候：</b>便于海上湿润气流深入内陆，形成降水，有利于农业生产</li>
+        <li><b class="k">对交通：</b>众多大河滚滚东流，便利东西交通</li>
+        <li><b class="k">对河流：</b>河流在阶梯交界处落差大，水流急，水能资源丰富</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <h3><span class="num">3</span>大型水电站的分布</h3>
+      <p>多分布在<span class="ans">阶梯交界处</span></p>
+      <p><b class="k">原因：</b><span class="ans">阶梯交界处河流落差大，水流急，水能资源丰富；河流流量大</span></p>
+    </article>
+
+    <article class="card">
+      <h3><span class="num">4</span>三级阶梯分界线</h3>
+      <p><b class="k">第一、二级阶梯：</b><span class="ans">昆仑山脉、祁连山脉、横断山脉</span></p>
+      <p><b class="k">第二、三级阶梯：</b><span class="ans">大兴安岭、太行山、巫山、雪峰山</span></p>
+    </article>
+
+    <article class="card">
+      <h3><span class="num">5</span>各阶梯主要地形区</h3>
+      <ul class="list">
+        <li><b class="k">第一阶梯：</b><span class="ans">青藏高原</span></li>
+        <li><b class="k">第二阶梯：</b><span class="ans">内蒙古高原、黄土高原、云贵高原；准噶尔盆地、塔里木盆地、四川盆地</span></li>
+        <li><b class="k">第三阶梯：</b><span class="ans">东北平原、华北平原、长江中下游平原、东南丘陵（以平原和丘陵为主）</span></li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <h3><span class="num">6</span>地形之最</h3>
+      <ul class="list">
+        <li>面积最大的盆地：<span class="ans">塔里木盆地</span></li>
+        <li>位置最北的盆地：<span class="ans">准噶尔盆地</span></li>
+        <li>海拔最高的盆地：<span class="ans">柴达木盆地</span></li>
+        <li>面积最大的平原：<span class="ans">东北平原</span></li>
+      </ul>
+    </article>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <h3><span class="num">7</span>主要山脉两侧的地形区</h3>
+    <div class="mini-grid">
+      <div class="mini"><b>大兴安岭</b><span>东：<em class="ans">东北平原</em></span><span>西：<em class="ans">内蒙古高原</em></span></div>
+      <div class="mini"><b>太行山</b><span>东：<em class="ans">华北平原</em></span><span>西：<em class="ans">黄土高原</em></span></div>
+      <div class="mini"><b>巫山</b><span>东：<em class="ans">长江中下游平原</em></span><span>西：<em class="ans">四川盆地</em></span></div>
+      <div class="mini"><b>秦岭</b><span>北：<em class="ans">黄土高原</em></span><span>南：<em class="ans">四川盆地</em></span></div>
+      <div class="mini"><b>天山</b><span>北：<em class="ans">准噶尔盆地</em></span><span>南：<em class="ans">塔里木盆地</em></span></div>
+      <div class="mini"><b>昆仑山</b><span>北：<em class="ans">塔里木盆地</em></span><span>南：<em class="ans">青藏高原</em></span></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <h3><span class="num">8</span>四大高原地表景观</h3>
+    <div class="mini-grid">
+      <div class="mini"><b>云贵高原</b><span class="ans">石灰岩广布、地形崎岖</span></div>
+      <div class="mini"><b>青藏高原</b><span class="ans">地势高峻、雪山连绵</span></div>
+      <div class="mini"><b>黄土高原</b><span class="ans">黄土深厚、沟壑纵横</span></div>
+      <div class="mini"><b>内蒙古高原</b><span class="ans">辽阔坦荡、草场广布</span></div>
+    </div>
+  </div>
+
+  <!-- 地形分布图 -->
+  <div class="card figure-card">
+    <h3>
+      <span class="num">📷</span>中国主要地形分布图
+      <span class="badge">原图重现</span>
+    </h3>
+    <p class="figure-hint">对应原稿第 2 页图 · 图中数字为山脉序号，与下方表格对应</p>
+
+    <div class="img-wrapper" onclick="openModal('topography.png')">
+      <img src="topography.png" alt="中国主要地形分布图" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'100\'><rect width=\'100%\' height=\'100%\' fill=\'%23f0f9ff\'/><text x=\'50%\' y=\'50%\' font-family=\'sans-serif\' font-size=\'14\' fill=\'%2364748b\' text-anchor=\'middle\' dominant-baseline=\'middle\'>请将图片保存为 topography.png 并放在同目录下</text></svg>';this.onclick=null;">
+    </div>
+
+    <div class="table-wrap" style="margin-top:14px">
+      <table>
+        <thead>
+          <tr><th>序号</th><th>山脉名称</th><th>序号</th><th>山脉名称</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>大兴安岭</td><td>7</td><td>昆仑山</td></tr>
+          <tr><td>2</td><td>太行山</td><td>8</td><td>喜马拉雅山脉</td></tr>
+          <tr><td>3</td><td>巫山</td><td>9</td><td>武夷山</td></tr>
+          <tr><td>4</td><td>雪峰山</td><td>10</td><td>阴山</td></tr>
+          <tr><td>5</td><td>秦岭</td><td>11</td><td>祁连山脉</td></tr>
+          <tr><td>6</td><td>天山</td><td>12</td><td>横断山脉</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 三、气候 ================= -->
+<section id="climate" class="section">
+  <div class="sec-head">
+    <span class="sec-icon">🌦️</span>
+    <h2>气候</h2>
+  </div>
+
+  <div class="grid grid-2">
+    <article class="card">
+      <h3><span class="num">1</span>气温分布特点</h3>
+      <p><b class="k">冬季：</b>南北温差大，自南向北逐渐降低。主导影响因素：<span class="ans">纬度因素</span></p>
+      <p><b class="k">夏季：</b>我国大部分地区普遍高温。青藏高原地区气温相对较低，主要影响因素：<span class="ans">地形因素</span></p>
+    </article>
+
+    <article class="card">
+      <h3><span class="num">2</span>降水分布特点</h3>
+      <p><b class="k">空间分布：</b><span class="ans">从东南沿海向西北内陆递减</span></p>
+      <p><b class="k">时间分配：</b><span class="ans">大部分地区降水集中在夏季；南方雨季长，北方雨季短；年际变化也很大</span></p>
+      <p><b class="k">西北地区降水少的原因：</b><span class="ans">① 深居内陆，距海遥远；② 山脉阻挡了夏季风，受夏季风影响小</span></p>
+    </article>
+
+    <article class="card">
+      <h3><span class="num">3</span>干湿地区</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>分界线</th><th>两侧的干湿地区</th></tr></thead>
+          <tbody>
+            <tr><td>800 毫米年等降水量线</td><td><span class="ans">湿润区</span> ↔ <span class="ans">半湿润区</span></td></tr>
+            <tr><td>400 毫米年等降水量线</td><td><span class="ans">半湿润区</span> ↔ <span class="ans">半干旱区</span></td></tr>
+            <tr><td>200 毫米年等降水量线</td><td><span class="ans">半干旱区</span> ↔ <span class="ans">干旱区</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+
+    <article class="card">
+      <h3><span class="num">4</span>气候主要特征</h3>
+      <p><span class="ans">气候类型多样、季风气候显著</span></p>
+      <div class="table-wrap" style="margin-top:10px">
+        <table>
+          <thead><tr><th>代码</th><th>气候类型</th><th>气候特征</th></tr></thead>
+          <tbody>
+            <tr><td>A</td><td>热带季风气候</td><td>全年高温，分旱雨两季</td></tr>
+            <tr><td>B</td><td>亚热带季风气候</td><td>夏季高温多雨，冬季温和少雨</td></tr>
+            <tr><td>C</td><td>温带季风气候</td><td>夏季高温多雨，冬季寒冷干燥</td></tr>
+            <tr><td>D</td><td>温带大陆性气候</td><td>冬冷夏热，降水少，温差大</td></tr>
+            <tr><td>E</td><td>高原山地气候</td><td>气温随高度变化，垂直差异显著</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+  </div>
+
+  <div class="grid grid-2" style="margin-top:16px">
+    <article class="card">
+      <h3><span class="num">5</span>影响气候的因素</h3>
+      <p>主要有<span class="ans">纬度因素、海陆因素和地形因素</span></p>
+      <div class="table-wrap" style="margin-top:9px">
+        <table>
+          <thead><tr><th>季风</th><th>源地</th><th>风向</th><th>特点</th><th>影响</th></tr></thead>
+          <tbody>
+            <tr><td>冬季风</td><td>蒙古和西伯利亚地区</td><td>偏北风</td><td>寒冷干燥</td><td>加剧我国北方的严寒，加大南北温差</td></tr>
+            <tr><td>夏季风</td><td>太平洋和印度洋</td><td>偏南风（东南季风和西南季风）</td><td>温暖湿润</td><td>增温增湿，大部分地区雨热同期</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+
+    <article class="card">
+      <h3><span class="num">6</span>秦岭—淮河一线的地理意义</h3>
+      <ul class="list">
+        <li>大致与 <span class="ans">1月 0℃ 等温线</span> 重合</li>
+        <li><span class="ans">冬季河流是否结冰</span> 的界限</li>
+        <li><span class="ans">暖温带和亚热带</span> 的分界线</li>
+        <li>大致与 <span class="ans">800mm 等降水量线</span> 重合</li>
+        <li><span class="ans">湿润区和半湿润区</span> 的分界线</li>
+        <li><span class="ans">水田和旱地</span> 的分界线</li>
+        <li><span class="ans">温带季风气候和亚热带季风气候</span> 的分界线</li>
+        <li><span class="ans">南方与北方</span> 的分界线</li>
+      </ul>
+    </article>
+  </div>
+
+  <article class="card" style="margin-top:16px">
+    <h3><span class="num">7</span>季风气候对我国农业生产的影响</h3>
+    <p><b class="k">有利：</b><span class="ans">季风气候雨热同期，为农业发展提供了有利条件</span></p>
+    <p><b class="k">不利：</b><span class="ans">降水不稳定，主要集中在夏季，而且年际变化大，容易造成旱涝灾害</span></p>
+  </article>
+
+  <!-- 干湿地区图 -->
+  <div class="card figure-card">
+    <h3>
+      <span class="num">📷</span>中国干湿地区分布图
+      <span class="badge">原图重现</span>
+    </h3>
+    <p class="figure-hint">对应原稿第 3 页图 · ① 湿润区 ② 半湿润区 ③ 半干旱区 ④ 干旱区</p>
+    <div class="img-wrapper" onclick="openModal('dry-wet.png')">
+      <img src="dry-wet.png" alt="中国干湿地区分布图" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'100\'><rect width=\'100%\' height=\'100%\' fill=\'%23f0f9ff\'/><text x=\'50%\' y=\'50%\' font-family=\'sans-serif\' font-size=\'14\' fill=\'%2364748b\' text-anchor=\'middle\' dominant-baseline=\'middle\'>请将图片保存为 dry-wet.png 并放在同目录下</text></svg>';this.onclick=null;">
+    </div>
+  </div>
+
+  <!-- 气候类型图 -->
+  <div class="card figure-card">
+    <h3>
+      <span class="num">📷</span>中国气候类型分布图
+      <span class="badge">原图重现</span>
+    </h3>
+    <p class="figure-hint">对应原稿第 4 页图 · A 热带季风 · B 亚热带季风 · C 温带季风 · D 温带大陆性 · E 高原山地</p>
+    <div class="img-wrapper" onclick="openModal('climate.png')">
+      <img src="climate.png" alt="中国气候类型分布图" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'100\'><rect width=\'100%\' height=\'100%\' fill=\'%23f0f9ff\'/><text x=\'50%\' y=\'50%\' font-family=\'sans-serif\' font-size=\'14\' fill=\'%2364748b\' text-anchor=\'middle\' dominant-baseline=\'middle\'>请将图片保存为 climate.png 并放在同目录下</text></svg>';this.onclick=null;">
+    </div>
+  </div>
+</section>
+
+<!-- ================= 四、河流 ================= -->
+<section id="river" class="section">
+  <div class="sec-head">
+    <span class="sec-icon">🌊</span>
+    <h2>河流</h2>
+  </div>
+
+  <div class="grid grid-2">
+    <article class="card">
+      <h3><span class="num">1</span>河流基础</h3>
+      <ul class="list">
+        <li>额尔齐斯河注入：<span class="ans">北冰洋</span></li>
+        <li>中国最长的内流河：<span class="ans">塔里木河</span></li>
+        <li>内外流区分界线大约与 <span class="ans">400mm 等降水量线</span> 重合</li>
+      </ul>
+      <div class="table-wrap" style="margin-top:12px">
+        <table>
+          <thead><tr><th>类型</th><th>补给水源</th><th>汛期</th><th>主导因素</th></tr></thead>
+          <tbody>
+            <tr><td>外流河</td><td>大气降水</td><td>夏季</td><td>夏季降水多</td></tr>
+            <tr><td>内流河</td><td>高山冰雪融水</td><td>夏季</td><td>夏季气温高，冰雪融水多</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+
+    <article class="card">
+      <h3><span class="num">2</span>长江概况</h3>
+      <ul class="list">
+        <li>发源地：<span class="ans">唐古拉山脉</span>，注入：<span class="ans">东海</span></li>
+        <li>最大的支流：<span class="ans">汉江</span></li>
+        <li>上中游分界点：<span class="ans">宜昌</span>；中下游分界点：<span class="ans">湖口</span></li>
+        <li>水能资源主要集中于<span class="ans">上、中游</span>，蕴藏量约占全国的 1/3，被称为 <span class="ans">清洁能源走廊、水能宝库</span></li>
+        <li>航运价值主要集中于<span class="ans">中下游</span>，通航里程高，被称为 <span class="ans">黄金水道</span></li>
+        <li>世界最大的水利枢纽：<span class="ans">三峡工程</span>，首要功能：<span class="ans">防洪</span>，位于长江<span class="ans">上游</span></li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <h3><span class="num">3</span>长江上游的生态环境问题</h3>
+      <p><b class="k">问题：</b><span class="ans">水土流失</span></p>
+      <p><b class="k">治理措施：</b><span class="ans">植树造林、建防护林等</span></p>
+    </article>
+
+    <article class="card">
+      <h3><span class="num">4</span>黄河概况</h3>
+      <ul class="list">
+        <li>发源地：<span class="ans">巴颜喀拉山脉</span>，注入：<span class="ans">渤海</span>，是我国第二长河</li>
+        <li>上中游分界城市：<span class="ans">河口</span>；中下游分界城市：<span class="ans">桃花峪</span></li>
+        <li>流经地形区：<span class="ans">青藏高原、内蒙古高原、黄土高原、华北平原</span></li>
+        <li>长江、黄河共同流经的省区：<span class="ans">青、川（简称）</span>，共同流经的地形区：<span class="ans">青藏高原</span></li>
+        <li>河水含沙量急剧增加发生在<span class="ans">中游</span>，该河段有丰富的矿产资源<span class="ans">煤</span></li>
+        <li>上游断流：自然原因<span class="ans">气候干旱，降水少</span>，人为原因<span class="ans">引黄灌溉</span></li>
+        <li>引黄灌溉成为“塞上江南”的地区：<span class="ans">宁夏平原、河套平原</span></li>
+        <li>治黄的关键：<span class="ans">治沙</span>；根本措施：<span class="ans">做好中游的水土保持工作</span></li>
+      </ul>
+    </article>
+  </div>
+
+  <article class="card" style="margin-top:16px">
+    <h3><span class="num">5</span>长江中下游洪涝灾害的原因及治理措施</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>原因分类</th><th>存在的问题</th><th>采取措施</th></tr></thead>
+        <tbody>
+          <tr><td>自然原因</td><td>降水丰沛且集中，水量大</td><td>修建水利工程，如三峡；裁弯取直</td></tr>
+          <tr><td rowspan="3">人为原因</td><td>上游水土流失</td><td>建设长江防护林</td></tr>
+          <tr><td>中下游围湖造田</td><td>退耕还林</td></tr>
+          <tr><td>河道淤积</td><td>疏浚河道、加固大堤</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <article class="card" style="margin-top:16px">
+    <h3><span class="num">6</span>黄河各河段的问题与治理</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>河段</th><th>问题</th><th>形成原因</th><th>治理措施</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>上游</td>
+            <td>草地退化、土地荒漠化</td>
+            <td>自然：气候干旱，降水少<br>人为：过度放牧</td>
+            <td>加强生态环境建设，如退耕还草、植树种草</td>
+          </tr>
+          <tr>
+            <td>中游</td>
+            <td>水土流失严重，含沙量大</td>
+            <td>自然：流经黄土高原，土质疏松；夏季降水集中，多暴雨；植被覆盖率低<br>人为：过垦过牧，植被破坏严重</td>
+            <td>生物措施：植树种草<br>工程措施：修建梯田，打坝淤地</td>
+          </tr>
+          <tr>
+            <td>下游</td>
+            <td>洪涝灾害</td>
+            <td>进入下游平原，河道变宽，流速减慢，泥沙沉积，河床抬高，形成“地上河”</td>
+            <td>疏浚河道，加固大堤，建设大型水利枢纽</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+</section>
+
+<!-- ================= 五、土地资源 ================= -->
+<section id="land" class="section">
+  <div class="sec-head">
+    <span class="sec-icon">🌾</span>
+    <h2>土地资源</h2>
+  </div>
+
+  <div class="grid grid-2">
+    <article class="card">
+      <h3><span class="num">1</span>我国土地资源的特点</h3>
+      <p><span class="ans">总量大、种类全、人均不足</span></p>
+      <p><b class="k">耕地现状：</b><span class="ans">耕地紧缺，人均占有量少；适合耕作的土地开垦殆尽，可开垦土地数量少、质量差、开发难度大</span></p>
+    </article>
+
+    <article class="card">
+      <h3><span class="num">2</span>南北耕地类型差异</h3>
+      <p><b class="k">南方：</b><span class="ans">水田</span>；<b class="k">北方：</b><span class="ans">旱地</span></p>
+      <p><b class="k">主要成因：</b><span class="ans">降水不同</span></p>
+      <div class="table-wrap" style="margin-top:10px">
+        <table>
+          <thead><tr><th>耕地类型</th><th>所在干湿地区</th><th>主要地形类型</th></tr></thead>
+          <tbody>
+            <tr><td>旱地</td><td>半湿润区</td><td>平原、丘陵</td></tr>
+            <tr><td>水田</td><td>湿润区</td><td>平原、丘陵</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+
+    <article class="card">
+      <h3><span class="num">3</span>三大林区与西部土地利用</h3>
+      <ul class="list">
+        <li>我国三大林区：<span class="ans">东北林区、西南林区、东南林区</span></li>
+        <li>西部地区主要土地利用类型：<span class="ans">草地</span>，农业类型以<span class="ans">畜牧业</span>为主</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <h3><span class="num">4</span>中美人均耕地对比</h3>
+      <p>我国和美国面积相差不大，但人均耕地远远低于美国，原因是：<span class="ans">美国平原面积广阔，耕地多；美国人口少于我国</span></p>
+    </article>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <h3><span class="num">5</span>主要土地利用类型与农业类型</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>字母</th><th>土地利用类型</th><th>农业类型</th></tr></thead>
+        <tbody>
+          <tr><td>A</td><td>水田</td><td>种植业</td></tr>
+          <tr><td>B</td><td>旱地</td><td>种植业</td></tr>
+          <tr><td>C</td><td>草地</td><td>畜牧业</td></tr>
+          <tr><td>D</td><td>林地</td><td>林业</td></tr>
+          <tr><td>E</td><td>难以利用土地</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:12px"><b class="k">保护要求：</b><span class="ans">针对农业用地、建设用地和生态用地，分别设定保护和开发边界，合理用地、节约用地、保护耕地尤为重要</span></p>
+  </div>
+
+  <!-- 土地利用类型分布图 -->
+  <div class="card figure-card">
+    <h3>
+      <span class="num">📷</span>中国土地利用类型分布图
+      <span class="badge">原图重现</span>
+    </h3>
+    <p class="figure-hint">对应原稿第 6 页图 · A 水田 · B 旱地 · C 草地 · D 林地 · E 难以利用土地</p>
+    <div class="img-wrapper" onclick="openModal('land-use.png')">
+      <img src="land-use.png" alt="中国土地利用类型分布图" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'100\'><rect width=\'100%\' height=\'100%\' fill=\'%23f0f9ff\'/><text x=\'50%\' y=\'50%\' font-family=\'sans-serif\' font-size=\'14\' fill=\'%2364748b\' text-anchor=\'middle\' dominant-baseline=\'middle\'>请将图片保存为 land-use.png 并放在同目录下</text></svg>';this.onclick=null;">
+    </div>
+  </div>
+</section>
+
+<!-- ================= 六、水资源 ================= -->
+<section id="water" class="section">
+  <div class="sec-head">
+    <span class="sec-icon">💧</span>
+    <h2>水资源</h2>
+  </div>
+
+  <div class="grid grid-2">
+    <article class="card">
+      <h3><span class="num">1</span>水资源的概念</h3>
+      <p>通常把地球上的<span class="ans">淡水资源</span>称为水资源。</p>
+      <p><span class="ans">河流水和淡水湖泊水</span>是我国主要的淡水资源。</p>
+    </article>
+
+    <article class="card">
+      <h3><span class="num">2</span>时空分布不均及解决措施</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>特点</th><th>具体表现</th><th>解决措施</th><th>工程实例</th></tr></thead>
+          <tbody>
+            <tr><td>空间分布</td><td>南丰北缺，东多西少</td><td>跨流域调水</td><td>南水北调</td></tr>
+            <tr><td>时间分配</td><td>① 夏秋多，冬春少<br>② 年际变化大</td><td>修建水库</td><td>三峡水利枢纽</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+
+    <article class="card">
+      <h3><span class="num">3</span>南水北调工程</h3>
+      <p>把<span class="ans">长江流域</span>的水调到<span class="ans">华北和西北地区</span>，分为东线、中线、西线三个方案。</p>
+      <ul class="list" style="margin-top:8px">
+        <li><b class="k">东线：</b>把长江下游扬州江都的水输送到<span class="ans">山东、天津</span></li>
+        <li><b class="k">中线：</b>从<span class="ans">丹江口水库</span>引水，输送到<span class="ans">北京</span>；地势南高北低，<span class="ans">自流北上</span></li>
+        <li><b class="k">西线：</b>把长江上游的水引入<span class="ans">黄河</span>，解决西北地区的缺水</li>
+        <li><b class="k">工程量最小的是：</b><span class="ans">东线</span>，原因：<span class="ans">利用京杭运河输水，不用开挖新的河道</span></li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <h3><span class="num">4</span>保护水资源</h3>
+      <p><b class="k">利用现状：</b><span class="ans">水资源供应相当紧张，缺水状况日益加重；水资源利用率低，浪费惊人；严重的水污染降低了水资源的可利用价值，进一步加剧了我国的缺水程度</span></p>
+      <p><b class="k">解决措施：</b><span class="ans">节约用水，保护水资源</span></p>
+      <ul class="list" style="margin-top:6px">
+        <li><b class="k">农业：</b>发展节水农业，推广喷灌滴灌技术；改良农作物品种，种植耐旱作物</li>
+        <li><b class="k">工业：</b>提高利用效率；污水处理，达标排放</li>
+        <li><b class="k">家庭：</b>一水多用；推广节水器具</li>
+      </ul>
+    </article>
+  </div>
+
+  <div class="grid grid-2" style="margin-top:16px">
+    <article class="card">
+      <h3><span class="num">5</span>点拨：西北地区水资源贫乏的原因</h3>
+      <p><span class="ans">深居内陆，加上地形对夏季风的阻挡，降水稀少，气候干旱</span></p>
+    </article>
+
+    <article class="card">
+      <h3><span class="num">6</span>点拨：华北地区更缺水的原因</h3>
+      <p><b class="k">自然原因：</b><span class="ans">降水少；蒸发旺盛</span></p>
+      <p><b class="k">人为原因：</b><span class="ans">人口稠密，生产生活用水量大；水资源污染和浪费严重</span></p>
+    </article>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p><strong>实验初中初二地理 · 期中前听写纸（答案）</strong></p>
+  <p>图片已嵌入对应章节，建议保存为 provinces.png、topography.png 等文件名与网页放在同一文件夹</p>
+</footer>
+
+<div class="toast" id="toast">默写模式已开启 · 点击模糊内容显示答案</div>
+<button class="totop" id="toTop" aria-label="返回顶部">↑</button>
+
+<!-- 图片放大模态框 -->
+<div class="modal" id="imageModal" onclick="closeModal(event)">
+  <button class="modal-close" onclick="closeModal(event)">✕</button>
+  <img id="modalImg" src="" alt="放大图片">
+</div>
+
+<script>
+/* ---------- 进度条 ---------- */
+const progressFill = document.getElementById('progressFill');
+function updateProgress(){
+  const h = document.documentElement;
+  const max = h.scrollHeight - h.clientHeight;
+  const p = max > 0 ? h.scrollTop / max : 0;
+  progressFill.style.width = (p * 100).toFixed(2) + '%';
+}
+window.addEventListener('scroll', updateProgress, {passive:true});
+window.addEventListener('resize', updateProgress);
+updateProgress();
+
+/* ---------- 导航高亮 ---------- */
+const sections = Array.from(document.querySelectorAll('section.section'));
+const pills = Array.from(document.querySelectorAll('.pill'));
+
+const navObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting){
+      const id = '#' + entry.target.id;
+      pills.forEach(p => p.classList.toggle('active', p.getAttribute('href') === id));
+    }
+  });
+}, {rootMargin:'-96px 0px -68% 0px', threshold:0});
+sections.forEach(s => navObserver.observe(s));
+
+/* ---------- 滚动渐显 ---------- */
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting){
+      entry.target.classList.add('in');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, {threshold:0.06, rootMargin:'0px 0px -40px 0px'});
+
+document.querySelectorAll('.card, .sec-head').forEach((el, i) => {
+  el.classList.add('reveal');
+  el.style.transitionDelay = (Math.min(i, 6) * 40) + 'ms';
+  revealObserver.observe(el);
+});
+
+/* ---------- 默写模式 ---------- */
+const modeBtn = document.getElementById('modeBtn');
+const toast = document.getElementById('toast');
+let toastTimer = null;
+
+function showToast(text){
+  toast.textContent = text;
+  toast.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove('show'), 2600);
+}
+
+modeBtn.addEventListener('click', () => {
+  const on = document.body.classList.toggle('dictation');
+  modeBtn.textContent = on ? '👁️ 退出默写模式' : '✍️ 开启默写模式';
+  modeBtn.classList.toggle('btn-solid', !on);
+  modeBtn.classList.toggle('btn-warm', on);
+
+  document.querySelectorAll('.ans.revealed').forEach(el => el.classList.remove('revealed'));
+
+  if (on) showToast('默写模式已开启 · 点击模糊内容显示答案');
+  else toast.classList.remove('show');
+});
+
+document.addEventListener('click', (e) => {
+  if (document.body.classList.contains('dictation') && e.target.classList.contains('ans')){
+    e.target.classList.toggle('revealed');
+  }
+});
+
+document.addEventListener('keydown', (e) => {
+  if ((e.key === 'd' || e.key === 'D') && !e.metaKey && !e.ctrlKey && !e.altKey){
+    const tag = document.activeElement.tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+    modeBtn.click();
+  }
+});
+
+/* ---------- 省级轮廓翻转卡片 ---------- */
+const provinceCards = document.querySelectorAll('.province-card');
+provinceCards.forEach(card => {
+  const flip = () => card.classList.toggle('flipped');
+  card.addEventListener('click', flip);
+  card.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' '){
+      e.preventDefault();
+      flip();
+    }
+  });
+});
+
+/* ---------- 图片放大模态框 ---------- */
+const modal = document.getElementById('imageModal');
+const modalImg = document.getElementById('modalImg');
+
+function openModal(src){
+  modalImg.src = src;
+  modal.classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(e){
+  if (e) e.stopPropagation();
+  modal.classList.remove('show');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && modal.classList.contains('show')) {
+    closeModal();
+  }
+});
+
+/* ---------- 返回顶部 ---------- */
+const toTop = document.getElementById('toTop');
+window.addEventListener('scroll', () => {
+  toTop.classList.toggle('show', window.scrollY > 620);
+}, {passive:true});
+toTop.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+
+updateProgress();
+</script>
+</body>
+</html>
