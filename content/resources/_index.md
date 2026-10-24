@@ -31,7 +31,7 @@ HTML 学习资料，按学科分类。
 
 - [七年级历史背诵](/history/history-review.html)
 - [数学七上知识点](/history/grade-7-core-review.html) 、 [知识网络](/history/grade-7-knowledge-map.html)
-- [道法七上册思维导图](/history/moral-education-grade-7-units.html) 、 [屏幕版）](/history/moral-education-grade-7-mindmap-screen.html)
+- [道法七上册思维导图](/history/moral-education-grade-7-units.html) 、 [屏幕版](/history/moral-education-grade-7-mindmap-screen.html)
 - [初二地理期中复习](/geography/geo-review-1.html)  [v2](/geography/geo-review-2.html)  [v3](/geography/geo-midterm-v2.html)
 
 ## 其他页面
