@@ -20,7 +20,7 @@ HTML 学习资料，按学科分类。
 - [走进文言文：六七年级](/chinese/classical-chinese-grades-6-7.html)、[八年级](/chinese/classical-chinese-grade-8.html)、[九年级](/chinese/classical-chinese-grade-9.html)
 - [第七周语文培优](/chinese/w7paper.html)
 - [第八周语文培优 v1](/chinese/w8paper-v1.html)、[v2](/chinese/w8paper-v2.html)、[v3](/chinese/w8paper-v3.html)
-- [第九周培优](/chinese/grade-7-week-9-chinese.html)
+- [第九周培优 v1](/chinese/grade-7-week-9-chinese.html)、[解析 v2](/chinese/grade-7-week-9-chinese-answer-v2.html)
 - [容易写错、读错的字和多音字](/chinese/appendix-chars.html)、[补充版](/chinese/mis-chars.html)
 - [七年级作文范文](/chinese/essays.html)、[v2](/chinese/ff.html)、[v3](/chinese/essays-v2.html)
 - [初中记叙文阅读答题模板](/chinese/narrative-reading-guide.html)
