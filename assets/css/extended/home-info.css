@@ -1,0 +1,8 @@
+.home-info {
+    min-height: auto;
+    padding: 1.5rem 0;
+}
+
+.home-info .entry-content p {
+    margin-block: 0.5em;
+}
