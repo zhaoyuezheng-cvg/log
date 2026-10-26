@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>9-1 培优 · Unit 1 Here and Now 精读精讲</title>
+<style>
+  :root{
+    --bg:#f5f7fb; --card:#fff; --ink:#1f2937; --sub:#6b7280;
+    --accent:#4f46e5; --accent2:#0ea5e9; --soft:#eef2ff;
+    --mark:#f59e0b; --line:#e5e7eb; --good:#10b981; --bad:#ef4444;
+    --shadow:0 6px 24px rgba(31,41,55,.08); --r:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--ink);line-height:1.78;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:960px;margin:0 auto;padding:0 16px 90px}
+
+  header{background:linear-gradient(135deg,#4f46e5 0%,#0ea5e9 100%);color:#fff;padding:44px 16px 92px;text-align:center;border-radius:0 0 32px 32px}
+  header h1{font-size:clamp(21px,4.4vw,33px);letter-spacing:.5px}
+  header .en{font-family:Georgia,serif;font-style:italic;font-size:clamp(15px,3vw,20px);margin-top:6px;opacity:.95}
+  header p{margin-top:10px;opacity:.92;font-size:clamp(12.5px,2.5vw,15px)}
+  .chips{margin-top:18px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+  .chip{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);padding:5px 13px;border-radius:999px;font-size:12.5px}
+
+  .toolbar{position:sticky;top:0;z-index:60;margin:-56px auto 24px;max-width:960px;width:calc(100% - 32px);
+    background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:14px;
+    box-shadow:var(--shadow);padding:10px 13px;display:flex;flex-wrap:wrap;gap:9px;align-items:center;justify-content:space-between}
+  .nav{display:flex;gap:6px;flex-wrap:wrap}
+  .nav a{text-decoration:none;color:var(--accent);font-size:13px;font-weight:600;padding:6px 12px;border-radius:9px;background:var(--soft);transition:.2s}
+  .nav a:hover{background:var(--accent);color:#fff}
+  .tools{display:flex;gap:7px;flex-wrap:wrap;align-items:center}
+  .btn{font:inherit;font-size:12.5px;border:1px solid var(--line);border-radius:9px;padding:6px 11px;background:#fff;color:var(--ink);cursor:pointer;transition:.18s}
+  .btn:hover{border-color:var(--accent);color:var(--accent)}
+  .btn.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .progress{font-size:12px;color:var(--sub);white-space:nowrap}
+  .progress b{color:var(--accent)}
+
+  section{margin-top:44px;scroll-margin-top:78px}
+  .sec-title{display:flex;align-items:center;gap:10px;font-size:clamp(19px,3.4vw,25px);margin-bottom:6px}
+  .sec-title .dot{width:9px;height:25px;border-radius:6px;background:linear-gradient(180deg,var(--accent),var(--accent2))}
+  .sec-desc{color:var(--sub);font-size:13.5px;margin-bottom:16px}
+  .card{background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);padding:clamp(18px,4vw,30px);margin-bottom:22px;border:1px solid #eef0f6}
+  .tag{display:inline-block;font-size:11.5px;font-weight:600;color:var(--accent);background:var(--soft);border-radius:6px;padding:2px 9px;margin:0 5px 5px 0}
+  .meta-line{font-size:12.5px;color:var(--sub);background:#f8fafc;border:1px dashed var(--line);border-radius:10px;padding:8px 12px;margin:10px 0 18px}
+  .meta-line b{color:var(--accent)}
+
+  /* ---- article ---- */
+  .article{font-family:Georgia,"Times New Roman",serif;font-size:clamp(16px,3.1vw,18px);line-height:2.1}
+  .article p{margin-bottom:13px;text-align:justify}
+  .article .pic-note{font-size:.9em;font-family:inherit}
+  .pics{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin:12px 0 16px}
+  .pics div{background:#f8fafc;border:1px solid var(--line);border-radius:11px;padding:10px 12px;font-size:14.5px;font-family:Georgia,serif;line-height:1.65}
+  .pics span{display:inline-block;font-weight:700;color:var(--accent);margin-right:5px;font-family:inherit}
+  .info-box{border:1px solid var(--line);border-left:4px solid var(--accent2);background:#fbfdff;border-radius:0 12px 12px 0;padding:14px 16px;margin-bottom:14px}
+  .info-box .lbl{font-family:Georgia,serif;font-weight:700;color:#0369a1}
+  .u{border-bottom:2px solid var(--bad);font-style:italic}
+  .gloss{color:var(--sub);font-size:.85em}
+
+  /* ---- inline vocab mark ---- */
+  button.vw{font:inherit;color:inherit;background:none;border:none;cursor:pointer;padding:0 1px;
+    border-bottom:2.5px solid var(--accent2);transition:background .16s,color .16s,border-color .16s}
+  button.vw.phrase{border-bottom-style:dashed;border-bottom-color:var(--accent)}
+  button.vw:hover,button.vw.act{background:var(--soft);color:var(--accent);border-bottom-color:var(--mark)}
+  button.vw::after{content:"◦";color:var(--mark);font-size:.8em;vertical-align:super;margin-left:1px;font-weight:700}
+  body.novw button.vw{border-bottom:none;background:none;color:inherit}
+  body.novw button.vw::after{content:""}
+  .learned{background:linear-gradient(180deg,transparent 68%,rgba(16,185,129,.28) 68%)}
+
+  /* ---- questions ---- */
+  .q{border-top:1px solid var(--line);padding:16px 0 4px}
+  .q:first-of-type{border-top:none}
+  .q-head{display:flex;gap:9px;align-items:flex-start}
+  .q-num{flex:none;width:25px;height:25px;border-radius:8px;background:var(--accent);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:3px}
+  .q-text{font-size:15.5px;font-weight:600}
+  .q-type{font-size:11.5px;color:var(--sub);font-weight:400;margin-left:4px}
+  .options{margin:12px 0 2px;display:grid;gap:7px}
+  button.opt{text-align:left;font-family:Georgia,serif;font-size:15px;background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:9px 13px;cursor:pointer;transition:.16s;color:inherit}
+  button.opt:hover{border-color:var(--accent);background:var(--soft)}
+  button.opt.right{background:#ecfdf5;border-color:var(--good);color:#065f46;font-weight:700}
+  button.opt.wrong{background:#fef2f2;border-color:var(--bad);color:#991b1b}
+  button.opt.show-ans{box-shadow:inset 0 0 0 2px var(--good)}
+  .verdict{font-size:13px;font-weight:700;margin-top:9px}
+  .verdict.ok{color:var(--good)} .verdict.no{color:var(--bad)}
+  .explain{margin-top:11px;background:#fffdf5;border:1px solid #fde68a;border-left:4px solid var(--mark);border-radius:0 11px 11px 0;padding:12px 15px;font-size:14.5px}
+  .explain h5{font-size:13px;color:#b45309;margin-bottom:4px;letter-spacing:.5px}
+  .explain .tip2{margin-top:8px;font-size:13.5px;color:#57534e;background:#f5f5f4;border-radius:9px;padding:8px 11px}
+  .explain .tip2 b{color:var(--accent)}
+  .hidden-until{display:none}
+  .answered .explain,.explain.force{display:block}
+
+  /* ---- 积累小筏 ---- */
+  h4.sub{font-size:15px;margin:20px 0 9px;color:var(--accent);display:flex;align-items:center;gap:7px}
+  h4.sub::before{content:"";width:5px;height:16px;border-radius:3px;background:var(--accent2)}
+  .drill{display:grid;gap:8px}
+  .drill .row{display:flex;gap:9px;align-items:baseline;background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:9px 13px;font-size:15px}
+  .drill .n{flex:none;width:20px;font-weight:700;color:var(--sub);font-size:13px}
+  .drill .en{font-family:Georgia,serif}
+  span.blank{display:inline-block;min-width:96px;border-bottom:1.6px solid var(--sub);cursor:pointer;color:transparent;position:relative;transition:.16s;border-radius:3px}
+  span.blank:hover{background:var(--soft)}
+  span.blank.filled{color:#065f46;font-weight:700;border-bottom-color:var(--good);background:#ecfdf5;padding:0 6px;min-width:0}
+  span.blank.filled::after{content:"↺";font-size:11px;color:var(--sub);margin-left:5px;font-weight:400}
+  .ans-all{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
+  .ans-pill{background:linear-gradient(135deg,#eef2ff,#e0f2fe);border:1px solid #c7d2fe;color:#3730a3;font-weight:700;border-radius:9px;padding:5px 12px;font-size:13.5px}
+
+  details.tr{margin-top:22px;border:1px solid var(--line);border-radius:12px;background:#fbfdff;overflow:hidden}
+  details.tr summary{cursor:pointer;font-weight:700;color:var(--accent);font-size:14.5px;padding:11px 15px;list-style:none;background:#f4f7ff}
+  details.tr summary::before{content:"▸ ";color:var(--accent2)}
+  details.tr[open] summary::before{content:"▾ "}
+  details.tr .bd{padding:13px 16px;font-size:14.8px;color:#374151}
+  details.tr .bd p{margin-bottom:9px}
+
+  /* ---- vocab summary ---- */
+  .v-ctl{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:14px}
+  .v-ctl input[type=search]{flex:1;min-width:180px;font:inherit;font-size:14px;padding:8px 13px;border:1px solid var(--line);border-radius:10px;background:#fff}
+  .v-ctl input[type=search]:focus{outline:none;border-color:var(--accent)}
+  .fchips{display:flex;gap:6px;flex-wrap:wrap}
+  .fchip{font-size:12.5px;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 12px;cursor:pointer;transition:.16s}
+  .fchip:hover{border-color:var(--accent);color:var(--accent)}
+  .fchip.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:12px}
+  .vc{background:#fff;border:1px solid var(--line);border-radius:13px;padding:13px 15px;box-shadow:0 2px 8px rgba(31,41,55,.05);transition:.16s}
+  .vc:hover{border-color:var(--accent2);box-shadow:0 6px 18px rgba(14,165,233,.14)}
+  .vc.flash{border-color:var(--mark);box-shadow:0 0 0 3px rgba(245,158,11,.3)}
+  .vc .w{font-family:Georgia,serif;font-size:17.5px;font-weight:700;color:var(--accent)}
+  .vc .ph{font-size:13px;color:var(--sub);margin-left:6px;font-family:Arial,sans-serif}
+  .vc .pos{font-size:11.5px;font-style:italic;color:#0369a1;background:#e0f2fe;border-radius:5px;padding:1px 7px;margin-left:6px}
+  .vc .cn{font-size:14.5px;margin-top:5px}
+  body.mem .vc .cn,body.mem .vc .ex{filter:blur(6px);cursor:pointer;user-select:none}
+  body.mem .vc.open .cn,body.mem .vc.open .ex{filter:none}
+  .vc .ex{font-size:13.5px;margin-top:8px;padding-top:8px;border-top:1px dashed var(--line);font-family:Georgia,serif;color:#374151}
+  .vc .ex .cn2{display:block;font-family:inherit;color:var(--sub);font-size:12.8px;margin-top:2px}
+  .vc .foot{display:flex;justify-content:space-between;align-items:center;margin-top:9px}
+  .vc .src{font-size:11.5px;color:var(--sub)}
+  .vc label.mk{font-size:12.5px;color:var(--sub);cursor:pointer;display:flex;align-items:center;gap:4px}
+  .vc label.mk input{accent-color:var(--good)}
+  .vc.done{background:#f6fffb;border-color:#a7f3d0}
+  .empty{text-align:center;color:var(--sub);font-size:14px;padding:26px}
+
+  /* ---- tooltip ---- */
+  .tip{position:fixed;z-index:200;width:min(340px,92vw);background:#fff;border:1px solid var(--line);border-radius:14px;
+    box-shadow:0 14px 40px rgba(17,24,39,.22);padding:14px 16px;font-size:14px;animation:pop .16s ease-out}
+  @keyframes pop{from{opacity:0;transform:translateY(6px) scale(.98)}to{opacity:1;transform:none}}
+  .tip .tw{font-family:Georgia,serif;font-size:19px;font-weight:700;color:var(--accent);word-spacing:2px}
+  .tip .tp{font-size:12.5px;color:var(--sub);margin-left:6px;font-family:Arial,sans-serif}
+  .tip .ttag{font-size:11px;font-weight:700;border-radius:5px;padding:1px 7px;margin-left:6px;vertical-align:2px}
+  .tip .ttag.w{background:#e0f2fe;color:#0369a1}.tip .ttag.p{background:#fef3c7;color:#b45309}
+  .tip .tcn{margin:7px 0 2px;font-size:14.5px}
+  .tip .tsrc{font-size:12.5px;color:var(--sub);background:#f8fafc;border-left:3px solid var(--accent2);padding:5px 9px;border-radius:0 7px 7px 0;margin-top:8px;font-family:Georgia,serif}
+  .tip .tex{margin-top:8px;font-size:13.8px;font-family:Georgia,serif}
+  .tip .tex span{display:block;color:var(--sub);font-size:12.8px;margin-top:1px}
+  .tip .tact{display:flex;gap:7px;margin-top:11px;align-items:center;justify-content:space-between}
+  .tip .tact .btn{font-size:12px;padding:5px 10px}
+  .tip .close{position:absolute;top:6px;right:9px;border:none;background:none;font-size:19px;color:var(--sub);cursor:pointer;line-height:1}
+  .tip .close:hover{color:var(--bad)}
+
+  .note{background:#fff7ed;border:1px solid #fed7aa;border-radius:12px;padding:12px 15px;font-size:13.5px;color:#7c2d12;margin-bottom:20px}
+  .note b{color:#9a3412}
+  table.kc{width:100%;border-collapse:collapse;font-size:14px;margin-top:6px}
+  table.kc th,table.kc td{border:1px solid var(--line);padding:8px 10px;text-align:left}
+  table.kc th{background:var(--soft);color:var(--accent);font-size:13px}
+  table.kc td b{color:var(--good)}
+  footer{text-align:center;color:var(--sub);font-size:12.5px;padding:26px 16px}
+
+  @media print{
+    .toolbar,.tip,header{display:none!important}
+    body{background:#fff}
+    .card,.vc{box-shadow:none;border:1px solid #ccc;break-inside:avoid}
+    details.tr{display:block}details.tr .bd{display:block!important}
+    .explain{display:block!important}
+    span.blank{color:#065f46!important;font-weight:700;border-bottom:none}
+    body.mem .vc .cn,body.mem .vc .ex{filter:none}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>9-1 英语培优 · 精读精讲</h1>
+  <div class="en">Unit 1 &nbsp;Here and Now</div>
+  <p>第一部分 单元阅读与写作 · 一、阅读理解（A / B / C 三篇 + 积累小筏）</p>
+  <div class="chips">
+    <span class="chip">初中英语话题阅读 · 七年级上册</span>
+    <span class="chip">生词 <b id="chipV">0</b> 个</span>
+    <span class="chip">点击原文下划线词 → 查看释义与例句</span>
+  </div>
+</header>
+
+<div class="toolbar">
+  <nav class="nav">
+    <a href="#pA">A 龙猫</a><a href="#pB">B 各国习俗</a><a href="#pC">C 义演筹款</a>
+    <a href="#vocab">生词汇总</a><a href="#key">答案速查</a>
+  </nav>
+  <div class="tools">
+    <span class="progress">答题 <b id="pgDone">0</b>/<b id="pgAll">0</b> · 正确 <b id="pgOk">0</b></span>
+    <button class="btn" id="btAns">显示全部答案</button>
+    <button class="btn" id="btVw">生词标注：开</button>
+    <button class="btn" id="btMem">背诵模式</button>
+    <button class="btn" id="btPrint">打印</button>
+  </div>
+</div>
+
+<main class="wrap">
+
+<div class="note">
+  <b>文本校对说明：</b>原 PDF 为扫描件（3 页，无文字层），已逐页 OCR 并人工校正识别残缺，例如
+  <span style="font-family:Georgia,serif">bcaeh→beach、whoro→where、mcmbers→members、pconle→people、colbcations→celebrations、
+  dccp→deep、timc zoncs→time zones、spcial→special、scts→sets、cating→eating、dclicious→delicious、slecping→sleeping、
+  nccd→need、rcfer→refer、1t→It</span> 等；题干与选项均按上下文还原为规范英文，未改动任何题目含义。
+  卷面右上角标注「答案：P1」指向另册答案页，本 PDF 未附答案，下列答案与解析由本篇文本独立推定。
+</div>
+
+<!-- =================  Passage A  ================= -->
+<section id="pA">
+  <div class="sec-title"><span class="dot"></span>一、阅读理解 A</div>
+  <p class="sec-desc">影视概况 · 应用文（图表 + 电影简介）</p>
+
+  <div class="card">
+    <div class="meta-line">主题：人与社会——影视概况 ｜ 语篇类型：应用文 ｜ 词数：<b>110</b> ｜ 难度：★★☆☆☆ ｜ 建议用时：6′ ｜ 题量：3</div>
+
+    <div class="article">
+      <div class="info-box">
+        <div><span class="lbl">Movie name:</span> <i>My <button class="vw" data-v="neighbour">Neighbour</button> Totoro</i>（《龙猫》）</div>
+        <div><span class="lbl">Year:</span> 1988</div>
+        <div><span class="lbl">Time:</span> 86 minutes</div>
+        <div><span class="lbl">Story:</span> Two young girls, Satsuki and Mei, go to a new place with their father. Their mother is ill <button class="vw phrase" data-v="in_hospital">in hospital</button> near it. <button class="vw phrase" data-v="one_day">One day</button>, Mei finds Totoro and only <button class="vw" data-v="kind">kind</button> children can see him. Totoro looks <button class="vw phrase" data-v="kind_of">kind of</button> big and <button class="vw" data-v="terrible">terrible</button>, but he always helps them when they are <button class="vw phrase" data-v="in_trouble">in trouble</button>.</div>
+      </div>
+
+      <p><b>Pictures from the movie:</b></p>
+      <div class="pics">
+        <div><span>①</span>Mei finds Totoro and she is sleeping on Totoro.</div>
+        <div><span>②</span>Satsuki and Mei are standing with Totoro in the rain.</div>
+        <div><span>③</span>Satsuki and Mei are taking Totoro's bus to see their mother.</div>
+        <div><span>④</span>Totoro is taking Satsuki and Mei flying through the night sky.</div>
+      </div>
+    </div>
+
+    <div class="q" data-sec="A" data-ans="A">
+      <div class="q-head"><span class="q-num">1</span><p class="q-text">Totoro is always ______ Satsuki and Mei.<span class="q-type">（细节理解题）</span></p></div>
+      <div class="options">
+        <button class="opt" data-k="A">A. kind to</button>
+        <button class="opt" data-k="B">B. strict(严厉的) with</button>
+        <button class="opt" data-k="C">C. sorry for</button>
+      </div>
+      <div class="verdict hidden-until"></div>
+      <div class="explain hidden-until">
+        <h5>答案 A ｜ 解析</h5>
+        <p>细节理解题。电影简介末句 <i>“Totoro looks kind of big and terrible, but he always helps them when they are in trouble.”</i>
+        （龙猫看起来有点又大又吓人，<b>但</b>她们遇到困难时他总是出手相助）——“总是帮忙”即说明他对两个孩子一直是<b>友好的</b>，故选 A（<b>be kind to sb</b> 对某人友好）。
+        注意 <b>but</b> 之后的内容才是作者真正想强调的信息，是本题的命题点。</p>
+        <p style="margin-top:6px">干扰项：B 项 <i>be strict with sb</i>（对某人严厉）与“always helps them”相反；C 项 <i>be sorry for</i>（为……感到难过/抱歉）文中无依据。</p>
+        <div class="tip2"><b>搭配小结：</b>三个选项都是「be + 形容词 + 固定介词」结构——be kind <b>to</b> / be <button class="vw" data-v="strict">strict</button> <b>with</b>（人）· be strict <b>in</b>（事）/ be sorry <b>for</b>（人·事）。先记介词，再记词义。</div>
+      </div>
+    </div>
+
+    <div class="q" data-sec="A" data-ans="C">
+      <div class="q-head"><span class="q-num">2</span><p class="q-text">In Picture ______, Satsuki and Mei are going to the hospital.<span class="q-type">（新考法·图文匹配题）</span></p></div>
+      <div class="options">
+        <button class="opt" data-k="A">A. ①</button>
+        <button class="opt" data-k="B">B. ②</button>
+        <button class="opt" data-k="C">C. ③</button>
+      </div>
+      <div class="verdict hidden-until"></div>
+      <div class="explain hidden-until">
+        <h5>答案 C ｜ 解析</h5>
+        <p>图文匹配题。题干关键信息 <i>going to the hospital</i>（去医院）。简介中交代 <i>“Their mother is ill in hospital”</i>（妈妈在附近医院住院），
+        而图片 <b>③</b> 的说明是 <i>“Satsuki and Mei are taking Totoro's bus to <b>see their mother</b>”</i>——看望住院的妈妈，就是去医院，故选 C。</p>
+        <p style="margin-top:6px">干扰项：① Mei 趴在龙猫身上睡觉；② 三人一起站在雨中；④ 龙猫带她们飞越夜空，都不含“去医院 / 看妈妈”的信息。</p>
+        <div class="tip2"><b>图文匹配技巧：</b>不要看图猜情节，要把题干的<b>关键词</b>与每幅图下文的<b>文字说明</b>逐词比对，本题对应词就是 <i>mother → hospital</i>。</div>
+      </div>
+    </div>
+
+    <div class="q" data-sec="A" data-ans="C">
+      <div class="q-head"><span class="q-num">3</span><p class="q-text">What can we learn from the text?<span class="q-type">（推理判断题）</span></p></div>
+      <div class="options">
+        <button class="opt" data-k="A">A. Anyone can see Totoro.</button>
+        <button class="opt" data-k="B">B. The movie is about twenty years old.</button>
+        <button class="opt" data-k="C">C. Totoro takes the two sisters to do some interesting things.</button>
+      </div>
+      <div class="verdict hidden-until"></div>
+      <div class="explain hidden-until">
+        <h5>答案 C ｜ 解析</h5>
+        <p>推理判断题。四幅剧照显示：龙猫让 Mei 睡在自己身上、和她们在雨中同站、用龙猫巴士送她们去看妈妈、带她们飞越夜空——这些正是“有趣的事情”，故 C 成立。</p>
+        <p style="margin-top:6px">干扰项：A 与原文 <i>“<b>only</b> kind children can see him”</i>（只有善良的孩子看得见）矛盾，<i>anyone</i> 把限定条件扩大为“任何人”；
+        B 说“这部电影大约二十年了”，但 <span class="lbl">Year: 1988</span> 距今已三十余年，数字与原文不符。</p>
+        <div class="tip2"><b>命题陷阱：</b><i>learn from the text</i> 类题最常见两类错误——① <b>扩大/缩小范围</b>（only → anyone）；② <b>数字偷换</b>（1988 → about twenty years）。看到绝对词和数字务必回原文核对。</div>
+      </div>
+    </div>
+
+    <h4 class="sub">积累小筏 · 短语互译</h4>
+    <div class="drill">
+      <div class="row"><span class="n">1.</span><span class="en">in hospital <span class="blank" data-a="住院">＿＿＿＿</span></span></div>
+      <div class="row"><span class="n">2.</span><span class="en">一天 <span class="blank" data-a="one day">＿＿＿＿</span></span></div>
+    </div>
+    <h4 class="sub">积累小筏 · 完成句子</h4>
+    <div class="drill">
+      <div class="row"><span class="n">3.</span><span>考拉有点意思，但老虎真的很吓人。<br><span class="en">Koalas are <span class="blank" data-a="kind">＿＿</span> <span class="blank" data-a="of">＿＿</span> interesting but tigers are really scary.</span></span></div>
+      <div class="row"><span class="n">4.</span><span>我父亲总是告诉我，遇到困难时，永远不要放弃。<br><span class="en">My father always tells me never to <button class="vw phrase" data-v="give_up">give up</button> when I am <span class="blank" data-a="in">＿＿</span> <span class="blank" data-a="trouble">＿＿</span>.</span></span></div>
+    </div>
+
+    <details class="tr">
+      <summary>参考译文 · A 篇</summary>
+      <div class="bd">
+        <p><b>片名：</b>《龙猫》　<b>年份：</b>1988 年　<b>片长：</b>86 分钟</p>
+        <p><b>剧情：</b>两个小女孩——小月和小梅——跟着父亲搬到一个新地方。她们的妈妈生病住院，医院就在附近。有一天，小梅发现了龙猫，而只有善良的孩子才能看见他。龙猫看上去有点又大又吓人，可每当孩子们遇上麻烦，他总是出来帮忙。</p>
+        <p><b>电影剧照：</b>① 小梅找到了龙猫，正趴在龙猫身上睡觉。② 小月和小梅与龙猫一起站在雨中。③ 小月和小梅坐上龙猫的巴士去看妈妈。④ 龙猫正带着小月和小梅飞越夜空。</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- =================  Passage B  ================= -->
+<section id="pB">
+  <div class="sec-title"><span class="dot"></span>一、阅读理解 B</div>
+  <p class="sec-desc">文化习俗 · 记叙文（三国孩子的自述）</p>
+
+  <div class="card">
+    <div class="meta-line">主题：人与社会——文化习俗 ｜ 语篇类型：记叙文 ｜ 词数：<b>176</b> ｜ 难度：★★★☆☆ ｜ 建议用时：6′ ｜ 题量：4</div>
+
+    <div class="article">
+      <p><b>Calvin:</b> I'm Calvin and I <button class="vw phrase" data-v="come_from">come from</button> New Zealand. Our Christmas is in summer, so we have <button class="vw phrase" data-v="beach_party">beach parties</button> <button class="vw phrase" data-v="under_the_stars">under the stars</button>. Christmas here is really <button class="vw phrase" data-v="be_different_from">different from</button> Christmas in places where it snows.</p>
+      <p><b>Maria:</b> I, Maria, come from Australia. People in China are <button class="vw" data-v="celebrate">celebrating</button> the Spring Festival and <button class="vw phrase" data-v="family_member">family members</button> are <button class="vw" data-v="reunite">reuniting</button> for a <button class="vw phrase" data-v="new_year_eve">New Year's Eve</button> dinner, <button class="vw" data-v="while_c">while</button> people in Australia may be <button class="vw phrase" data-v="take_a_walk">taking a walk</button> to enjoy the cool summer night or <button class="vw phrase" data-v="prepare_for">preparing for</button> their New Year <button class="vw" data-v="celebration">celebrations</button>. This gives me a <button class="vw phrase" data-v="deep_understanding">deep understanding of</button> how <button class="vw phrase" data-v="time_zone">time zones</button> <button class="vw" data-v="affect">affect</button> people's <button class="vw phrase" data-v="daily_life">daily life</button>.</p>
+      <p><b>Huck:</b> I, Huck, am from Spain. Now I'll tell you about <button class="vw" data-v="siesta">siesta</button>(<span class="gloss">午休</span>) time — our special break <button class="vw phrase" data-v="in_the_middle_of">in the middle of</button> the day. We sit down with family for a <button class="vw" data-v="relaxing">relaxing</button> meal, <button class="vw" data-v="unlike">unlike</button> the quick lunches in other places. We usually have lunch and <button class="vw phrase" data-v="have_a_nap">have a nap</button>(<span class="gloss">小睡</span>) from 2:00 to 5:00 in the afternoon. And at night, Barcelona really <button class="vw phrase" data-v="come_to_life">comes to life</button>! The sun <button class="vw" data-v="set_v">sets</button> late, so we <button class="vw phrase" data-v="hold_a_party">hold parties</button> and <button class="vw phrase" data-v="enjoy_oneself">enjoy ourselves</button> at <button class="vw" data-v="midnight">midnight</button>.</p>
+    </div>
+
+    <div class="q" data-sec="B" data-ans="B">
+      <div class="q-head"><span class="q-num">1</span><p class="q-text">How does New Zealand celebrate Christmas according to the passage?<span class="q-type">（细节理解题）</span></p></div>
+      <div class="options">
+        <button class="opt" data-k="A">A. By eating delicious food.</button>
+        <button class="opt" data-k="B">B. By holding beach parties.</button>
+        <button class="opt" data-k="C">C. By inviting people to dance.</button>
+      </div>
+      <div class="verdict hidden-until"></div>
+      <div class="explain hidden-until">
+        <h5>答案 B ｜ 解析</h5>
+        <p>细节理解题。Calvin 说 <i>“Our Christmas is in summer, so we have <b>beach parties</b> under the stars.”</i>（我们的圣诞在夏天，所以我们在星空下开沙滩派对），
+        问题用 <b>How</b> 提问方式，答案用 <b>By + doing</b> 回答，<i>hold beach parties</i> 与原文 <i>have beach parties</i> 同义替换，故选 B。</p>
+        <p style="margin-top:6px">干扰项：A（吃美食）、C（请人跳舞）在 Calvin 一段中完全没有出现，属无中生有。</p>
+        <div class="tip2"><b>同义替换：</b>have a party = <b>hold</b> a party；文中 <i>have</i> 在题干选项中换成 <i>hold</i>，是中考最常见的替换方式。</div>
+      </div>
+    </div>
+
+    <div class="q" data-sec="B" data-ans="B">
+      <div class="q-head"><span class="q-num">2</span><p class="q-text">In which season is New Year in Australia?<span class="q-type">（新考法·跨学科知识题）</span></p></div>
+      <div class="options">
+        <button class="opt" data-k="A">A. Spring.</button>
+        <button class="opt" data-k="B">B. Summer.</button>
+        <button class="opt" data-k="C">C. Autumn.</button>
+      </div>
+      <div class="verdict hidden-until"></div>
+      <div class="explain hidden-until">
+        <h5>答案 B ｜ 解析</h5>
+        <p>跨学科（地理）题。Maria 说中国人正过春节吃年夜饭时，澳大利亚人 <i>“may be taking a walk to enjoy the cool <b>summer</b> night”</i>（在凉爽的夏夜散步），
+        即澳大利亚过新年时正值夏季——因为澳大利亚位于<b>南半球</b>，季节与北半球相反。故选 B。</p>
+        <div class="tip2"><b>背景知识：</b>南北半球季节相反：北半球 12—2 月为冬季，南半球同期为夏季。所以新西兰、澳大利亚的圣诞都在夏天，才有“沙滩派对、夏夜散步”。</div>
+      </div>
+    </div>
+
+    <div class="q" data-sec="B" data-ans="A">
+      <div class="q-head"><span class="q-num">3</span><p class="q-text">If you call Huck at 3:30 p.m. in Spain and he doesn't <button class="vw phrase" data-v="pick_up">pick up</button>, what might he be doing?<span class="q-type">（细节推断题）</span></p></div>
+      <div class="options">
+        <button class="opt" data-k="A">A. He is having lunch or sleeping.</button>
+        <button class="opt" data-k="B">B. He is having a party or sleeping.</button>
+        <button class="opt" data-k="C">C. He is having dinner or holding a party.</button>
+      </div>
+      <div class="verdict hidden-until"></div>
+      <div class="explain hidden-until">
+        <h5>答案 A ｜ 解析</h5>
+        <p>细节推断题。Huck 介绍西班牙的 <i>siesta</i>（午休）：<i>“We usually <b>have lunch</b> and <b>have a nap</b> from 2:00 to 5:00 in the afternoon.”</i>
+        下午 3:30 正好落在 2:00—5:00 这个时间段内，因此他不接电话时很可能正在<b>吃午饭或睡午觉</b>，选 A。</p>
+        <p style="margin-top:6px">干扰项：B、C 中的 party 属于 <i>at night / at midnight</i>（夜里、午夜）的活动，与 3:30 p.m. 时间不符；C 中 dinner（晚餐）也在晚上。</p>
+        <div class="tip2"><b>时间轴读法：</b>遇到“某时刻在做什么”的题，先在草稿上画时间轴：2:00—5:00 午休 → 傍晚太阳落山 → 午夜派对，再定位题干时刻落在哪一段。</div>
+      </div>
+    </div>
+
+    <div class="q" data-sec="B" data-ans="A">
+      <div class="q-head"><span class="q-num">4</span><p class="q-text">What is the passage <button class="vw" data-v="mainly">mainly</button> about?<span class="q-type">（主旨大意题）</span></p></div>
+      <div class="options">
+        <button class="opt" data-k="A">A. Different festivals and daily habits in different countries.</button>
+        <button class="opt" data-k="B">B. How people celebrate Christmas around the world.</button>
+        <button class="opt" data-k="C">C. Special lunch time in Spain.</button>
+      </div>
+      <div class="verdict hidden-until"></div>
+      <div class="explain hidden-until">
+        <h5>答案 A ｜ 解析</h5>
+        <p>主旨大意题。三段各说一国：新西兰（夏天过圣诞、沙滩派对）、澳大利亚（南半球的除夕新年与夏夜）、西班牙（午休 siesta 与午夜生活）——
+        合起来正是“不同国家不同的节日与日常习惯”，只有 A 能覆盖全文，故选 A。</p>
+        <p style="margin-top:6px">干扰项：B 只对应 Calvin 一段（且 Maria、Huck 讲的是新年、午休，不是圣诞）；C 只对应 Huck 一段。两者都是<b>以偏概全</b>。</p>
+        <div class="tip2"><b>主旨题铁律：</b>正确项必须“盖得住全文”。凡只复述某一段细节的选项，无论说得多对，都不能选。</div>
+      </div>
+    </div>
+
+    <h4 class="sub">积累小筏 · 短语互译</h4>
+    <div class="drill">
+      <div class="row"><span class="n">1.</span><span>来自 <span class="blank" data-a="come from / be from">＿＿＿＿＿＿</span></span></div>
+      <div class="row"><span class="n">2.</span><span>与……不同 <span class="blank" data-a="be different from">＿＿＿＿＿＿</span></span></div>
+      <div class="row"><span class="n">3.</span><span class="en">the Spring Festival <span class="blank" data-a="春节">＿＿＿＿</span></span></div>
+      <div class="row"><span class="n">4.</span><span class="en">New Year's Eve dinner <span class="blank" data-a="年夜饭；除夕晚餐">＿＿＿＿＿＿</span></span></div>
+      <div class="row"><span class="n">5.</span><span>为……做准备 <span class="blank" data-a="prepare for">＿＿＿＿＿＿</span></span></div>
+      <div class="row"><span class="n">6.</span><span class="en">have a nap <span class="blank" data-a="小睡；打个盹">＿＿＿＿</span></span></div>
+      <div class="row"><span class="n">7.</span><span class="en">come to life <span class="blank" data-a="（变得）热闹起来；活跃起来">＿＿＿＿＿＿</span></span></div>
+      <div class="row"><span class="n">8.</span><span>玩得开心 <span class="blank" data-a="enjoy oneself / have a good time">＿＿＿＿＿＿</span></span></div>
+    </div>
+    <h4 class="sub">积累小筏 · 翻译句子</h4>
+    <div class="drill">
+      <div class="row"><span class="n">9.</span><span class="en">This gives me a deep understanding of how time zones affect people's daily life.</span></div>
+      <div class="row"><span class="n">译</span><span><button class="btn" data-reveal="r9">查看参考答案</button><span id="r9" class="hidden-until" style="font-weight:700;color:#065f46">这（一切）让我对“时区如何影响人们的日常生活”有了深入的了解。</span></span></div>
+    </div>
+    <h4 class="sub">积累小筏 · 仿写句子</h4>
+    <div class="drill">
+      <div class="row"><span class="n">10.</span><span>原句：Christmas here is really different from Christmas in places where it snows.<br>
+      <span class="gloss">（这里的圣诞节和下雪地区的圣诞节大不相同。be different from 和……不同）</span><br>
+      仿写：（这里的生活和大城市的生活大不相同。）<br>
+      <button class="btn" data-reveal="r10">查看参考仿写</button>
+      <span id="r10" class="hidden-until en" style="font-weight:700;color:#065f46">Life here is really different from life in big cities. （也可写 …different from that in big cities.）</span></span></div>
+    </div>
+
+    <details class="tr">
+      <summary>参考译文 · B 篇</summary>
+      <div class="bd">
+        <p><b>卡尔文：</b>我是卡尔文，来自新西兰。我们的圣诞节在夏天，所以我们会在星空下举办沙滩派对。这里的圣诞节和会下雪的地方的圣诞节真的很不一样。</p>
+        <p><b>玛丽亚：</b>我，玛丽亚，来自澳大利亚。中国人正在庆祝春节，家人们团聚在一起吃年夜饭；而澳大利亚人此时也许正在散步，享受凉爽的夏夜，或者在为他们的新年庆祝活动做准备。这一切让我对时区如何影响人们的日常生活有了深入的了解。</p>
+        <p><b>哈克：</b>我，哈克，来自西班牙。现在我来跟你们说说“午休”时间——我们一天中间那段特别的休息时间。我们会和家人坐下来，从容地吃一顿让人放松的饭，不像别的地方那样匆匆忙忙地吃午饭。我们通常从下午两点到五点吃午饭、打个盹。而到了夜里，巴塞罗那才真正热闹起来！太阳落山很晚，所以我们办派对，一直玩到半夜。</p>
+      </div>
+    </details>
+
+    <details class="tr">
+      <summary>长难句拆解 · B 篇第 2 段</summary>
+      <div class="bd">
+        <p><b>People in China are celebrating the Spring Festival and family members are reuniting for a New Year's Eve dinner, <b style="color:#b45309">while</b> people in Australia may be taking a walk to enjoy the cool summer night or preparing for their New Year celebrations.</b></p>
+        <p>句子主干：前半句（中国人在过春节、家人团聚吃年夜饭）+ <b>while</b> + 后半句（澳大利亚人可能在散步或做准备）。
+        这里的 <b>while</b> 不译作“当……时候”，而是<b>表示对比的并列连词，意为“而、然而”</b>，把同一时刻两个国家的不同生活画面并排呈现——这正是全文的题眼。</p>
+        <p>注意后半句 <i>may be taking a walk … or preparing for …</i> 是 <b>may be doing</b>（可能正在做），表推测的进行时。</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- =================  Passage C  ================= -->
+<section id="pC">
+  <div class="sec-title"><span class="dot"></span>一、阅读理解 C</div>
+  <p class="sec-desc">公益事业（<button class="vw" data-v="charity">charity</button>）· 记叙文（一场特别的公园音乐会）</p>
+
+  <div class="card">
+    <div class="meta-line">主题：人与社会——公益事业 ｜ 语篇类型：记叙文 ｜ 词数：<b>162</b> ｜ 难度：★★☆☆☆ ｜ 建议用时：7′ ｜ 题量：4</div>
+
+    <div class="article">
+      <p>It is Saturday today. Steven doesn't need to go to school. But he and his classmates still <button class="vw phrase" data-v="school_gate">meet at the school gate</button> at 8:00 in the morning. Why? Because they <button class="vw phrase" data-v="have_to">have to</button> go to the City Park.</p>
+      <p>They <button class="vw phrase" data-v="take_a_bus">take a bus</button> and <button class="vw phrase" data-v="get_to">get to</button> the park at 8:30 a.m. At 9 o'clock, the students are <button class="vw phrase" data-v="give_a_concert">giving a concert</button>. Steven is <button class="vw phrase" data-v="play_the_piano">playing the piano</button>. He does it well. Diana, Steven's <button class="vw" data-v="deskmate">deskmate</button>, is singing an English song. Jenny <button class="vw phrase" data-v="be_good_at">is good at</button> <button class="vw phrase" data-v="play_the_violin">playing the violin</button>, and she is playing it now. David is <button class="vw phrase" data-v="play_the_drums">playing the drums</button>. Many people in the park are <button class="vw phrase" data-v="listen_to">listening to</button> their music.</p>
+      <p>Why do the children give this concert? They do <span class="u">it</span> for Nick, a boy in their class. Nick is ill <button class="vw phrase" data-v="in_hospital">in hospital</button>. The students want to help him. They give this concert to <button class="vw phrase" data-v="raise_money">raise money</button> for him. They hope Nick can <button class="vw phrase" data-v="get_well">get well</button> and come back to school early.</p>
+    </div>
+
+    <div class="q" data-sec="C" data-ans="C">
+      <div class="q-head"><span class="q-num">1</span><p class="q-text">Where do the students meet?<span class="q-type">（细节理解题）</span></p></div>
+      <div class="options">
+        <button class="opt" data-k="A">A. At the concert.</button>
+        <button class="opt" data-k="B">B. At the City Park.</button>
+        <button class="opt" data-k="C">C. At the school gate.</button>
+      </div>
+      <div class="verdict hidden-until"></div>
+      <div class="explain hidden-until">
+        <h5>答案 C ｜ 解析</h5>
+        <p>细节理解题。第一段 <i>“he and his classmates still <b>meet at the school gate</b> at 8:00 in the morning”</i>——集合地点是<b>校门口</b>，故选 C。</p>
+        <p style="margin-top:6px">干扰项：B 市立公园是他们 8:30 到达并<b>演出</b>的地点，不是“集合”地点；A 音乐会（concert）是活动而非地点。本题专门考查<b>“集合”与“到达”两个动作的地点区分</b>。</p>
+        <div class="tip2"><b>审题关键：</b>题干问 <i>meet</i>（集合），就要回到含 <i>meet</i> 的那一句找答案，不能凭“故事发生在公园”的印象选 B。</div>
+      </div>
+    </div>
+
+    <div class="q" data-sec="C" data-ans="A">
+      <div class="q-head"><span class="q-num">2</span><p class="q-text">What is Steven doing at 9:00 a.m.?<span class="q-type">（新考法·图文匹配题）</span></p></div>
+      <div class="options">
+        <button class="opt" data-k="A">A. 🎹 钢琴（图 A）</button>
+        <button class="opt" data-k="B">B. 🎻 小提琴（图 B）</button>
+        <button class="opt" data-k="C">C. 🎤 唱歌（图 C）</button>
+      </div>
+      <div class="verdict hidden-until"></div>
+      <div class="explain hidden-until">
+        <h5>答案 A ｜ 解析</h5>
+        <p>图文匹配题。第二段 <i>“At 9 o'clock, the students are giving a concert. <b>Steven is playing the piano.</b>”</i> ——九点史蒂文在弹钢琴，对应图 A（钢琴）。</p>
+        <p style="margin-top:6px">干扰项：图 B 小提琴是 <b>Jenny</b> 在演奏；图 C 话筒（唱歌）是同桌 <b>Diana</b> 在唱英文歌；此外 David 在打鼓（未配图）。四人一活动一一对应，不可张冠李戴。</p>
+        <div class="tip2"><b>人物—活动对应表：</b>Steven→钢琴；Diana→唱英文歌；Jenny→小提琴；David→鼓。做此类题先在原文旁做人物标注，再回选项比对。</div>
+      </div>
+    </div>
+
+    <div class="q" data-sec="C" data-ans="C">
+      <div class="q-head"><span class="q-num">3</span><p class="q-text">What does the <button class="vw" data-v="underlined">underlined</button> word “it” in Paragraph 3 <button class="vw phrase" data-v="refer_to">refer to</button>?<span class="q-type">（词义指代题）</span></p></div>
+      <div class="options">
+        <button class="opt" data-k="A">A. Playing music.</button>
+        <button class="opt" data-k="B">B. Raising money.</button>
+        <button class="opt" data-k="C">C. Giving the concert.</button>
+      </div>
+      <div class="verdict hidden-until"></div>
+      <div class="explain hidden-until">
+        <h5>答案 C ｜ 解析</h5>
+        <p>词义指代题。第三段先问 <i>“Why do the children <b>give this concert</b>?”</i>，紧接着回答 <i>“They do <b>it</b> for Nick…”</i>。
+        <b>do it</b> 中的 it 是代词，指代上文刚刚提到的那件事——<b>举办这场音乐会</b>，故选 C。</p>
+        <p style="margin-top:6px">干扰项：A（演奏音乐）过于宽泛，原文没有把“play music”作为被指代的对象；B（筹款）是举办音乐会的<b>目的</b>（后文 <i>to raise money for him</i> 是不定式目的状语），不是 it 所指的那个动作本身。</p>
+        <div class="tip2"><b>指代题三步法：</b>① 答案一定在代词<b>前面</b>（往前找）；② it 指“事/物”，they/them 常指“人”；③ 把候选项代入原句重读，语义通顺且<b>不是目的、不是原因</b>的那一项才是指代对象。</div>
+      </div>
+    </div>
+
+    <div class="q" data-sec="C" data-ans="B">
+      <div class="q-head"><span class="q-num">4</span><p class="q-text">Which word can best <button class="vw" data-v="describe">describe</button> the students?<span class="q-type">（新考法·推断人物特征题）</span></p></div>
+      <div class="options">
+        <button class="opt" data-k="A">A. Strict.</button>
+        <button class="opt" data-k="B">B. Kind.</button>
+        <button class="opt" data-k="C">C. Quiet.</button>
+      </div>
+      <div class="verdict hidden-until"></div>
+      <div class="explain hidden-until">
+        <h5>答案 B ｜ 解析</h5>
+        <p>人物特征推断题。学生们周六本不用上学，却早上八点在校门口集合，坐公交去公园<b>义演</b>，只为给住院的同学 Nick 筹款、盼他早日康复——这是有爱心的表现，故用 <b>kind</b>（善良的、热心的）最能概括，选 B。</p>
+        <p style="margin-top:6px">干扰项：A strict（严厉的）、C quiet（安静的）在文中都找不到行为依据。</p>
+        <div class="tip2"><b>推断题依据：</b>人物性格必须由<b>行为</b>推出，不能凭空拔高。本篇与 A 篇共用 kind 一词（A 篇“only kind children can see him”），可见它是本单元的核心品格词。</div>
+      </div>
+    </div>
+
+    <h4 class="sub">积累小筏 · 短语互译</h4>
+    <div class="drill">
+      <div class="row"><span class="n">1.</span><span class="en">take a bus <span class="blank" data-a="乘公共汽车">＿＿＿＿</span></span></div>
+      <div class="row"><span class="n">2.</span><span>弹钢琴 <span class="blank" data-a="play the piano">＿＿＿＿＿＿</span></span></div>
+      <div class="row"><span class="n">3.</span><span class="en">play the violin <span class="blank" data-a="拉小提琴">＿＿＿＿</span></span></div>
+      <div class="row"><span class="n">4.</span><span>打鼓 <span class="blank" data-a="play the drums">＿＿＿＿＿＿</span></span></div>
+    </div>
+    <h4 class="sub">积累小筏 · 完成句子</h4>
+    <div class="drill">
+      <div class="row"><span class="n">5.</span><span>为了学好英语，他必须每天都听磁带。<br><span class="en"><button class="vw phrase" data-v="learn_english_well">To learn English well</button>, he <span class="blank" data-a="has to listen to">＿＿＿＿＿＿＿＿</span> tapes every day.</span></span></div>
+      <div class="row"><span class="n">6.</span><span>你的同学们是怎样为那位住院的贫困老人筹款的？<br><span class="en">How did your classmates <span class="blank" data-a="raise money">＿＿＿＿＿＿</span> for the <button class="vw" data-v="poor">poor</button> old man <span class="blank" data-a="in hospital">＿＿＿＿＿＿</span>?</span></span></div>
+    </div>
+    <div class="note" style="margin-top:14px">
+      <b>第 5 题要点：</b>“必须”= <i>have to</i>，主语 he 为三单 → <b>has to</b>；“听磁带”= <i>listen to tapes</i>（listen 后必带 to）；句首 <i>To learn English well</i> 是不定式作目的状语。
+      <br><b>第 6 题要点：</b>“筹款”= <i>raise money</i>（助动词 did 后用动词原形）；“住院的”作后置定语修饰 <i>the poor old man</i> → <b>in hospital</b>。
+    </div>
+
+    <details class="tr">
+      <summary>参考译文 · C 篇</summary>
+      <div class="bd">
+        <p>今天是星期六，史蒂文本不用去上学。但他和同学们仍然在早上八点于<b>校门口</b>集合。为什么呢？因为他们必须去市立公园。</p>
+        <p>他们坐公交车，早上八点半到达公园。九点整，同学们正在举办一场<b>音乐会</b>。史蒂文在弹钢琴，弹得很好。史蒂文的同桌戴安娜在唱一首英文歌。珍妮擅长拉小提琴，她现在正在演奏。大卫在打鼓。公园里许多人在听他们的音乐。</p>
+        <p>孩子们为什么要办这场音乐会？他们是为了尼克——班上的一个男孩——而做的。尼克生病住院了。同学们想帮助他。他们举办这场音乐会为他<b>筹款</b>。他们希望尼克能康复，早日回到学校。</p>
+      </div>
+    </details>
+
+    <details class="tr">
+      <summary>语法点拨 · 乐器与球类前的冠词</summary>
+      <div class="bd">
+        <p>① <b>play + the + 乐器</b>：play <b>the</b> piano / <b>the</b> violin / <b>the</b> drums（drums 习惯用复数）。</p>
+        <p>② <b>play + 球类/棋类（零冠词）</b>：play basketball / play chess（不能说 play the basketball）。</p>
+        <p>③ <b>the + 形容词</b> 表示一类人：the poor 穷人、the old 老人、the disabled 残疾人。本篇 <i>the poor old man</i>（第 6 题）中 the 是特指“那位”，不是这类结构，注意区分。</p>
+        <p>④ <b>be good at + n./doing</b> = do well in；<b>have to</b> 强调客观需要，否定 <i>don't/doesn't have to</i> = 不必（与 mustn't“禁止”不同）。</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- =================  Vocab  ================= -->
+<section id="vocab">
+  <div class="sec-title"><span class="dot"></span>生词与生短语汇总</div>
+  <p class="sec-desc">按七年级（上）教材词汇量筛选：低于该水平的常用词（girl、school、mother、sing 等）不再收录。点卡片上的「定位原文」可跳回原文并自动弹出释义；勾选「已掌握」后，原文中该词的标注会变绿。</p>
+  <div class="card">
+    <div class="v-ctl">
+      <input type="search" id="vSearch" placeholder="搜索单词 / 短语 / 中文释义…">
+      <div class="fchips" id="fSec">
+        <button class="fchip on" data-s="all">全部</button>
+        <button class="fchip" data-s="A">A 篇</button>
+        <button class="fchip" data-s="B">B 篇</button>
+        <button class="fchip" data-s="C">C 篇</button>
+      </div>
+      <div class="fchips" id="fType">
+        <button class="fchip on" data-t="all">词+短语</button>
+        <button class="fchip" data-t="w">只单词</button>
+        <button class="fchip" data-t="p">只短语</button>
+      </div>
+      <div class="fchips"><button class="fchip" id="fTodo">只看未掌握</button></div>
+    </div>
+    <div class="progress" style="margin-bottom:12px">已掌握 <b id="vDone">0</b> / <b id="vAll">0</b></div>
+    <div class="vgrid" id="vGrid"></div>
+    <div class="empty" id="vEmpty" hidden>没有匹配的生词，换个关键词试试。</div>
+  </div>
+</section>
+
+<!-- =================  Key  ================= -->
+<section id="key">
+  <div class="sec-title"><span class="dot"></span>答案速查</div>
+  <p class="sec-desc">阅读理解 11 题（A 3 / B 4 / C 4）· 积累小筏 20 项（A 4 / B 10 / C 6）</p>
+  <div class="card">
+    <h4 class="sub">阅读理解答案</h4>
+    <table class="kc">
+      <tr><th style="width:120px">篇目</th><th>1</th><th>2</th><th>3</th><th>4</th></tr>
+      <tr><td><b>A</b>（3 题）</td><td><b>A</b></td><td><b>C</b></td><td><b>C</b></td><td>—</td></tr>
+      <tr><td><b>B</b>（4 题）</td><td><b>B</b></td><td><b>B</b></td><td><b>A</b></td><td><b>A</b></td></tr>
+      <tr><td><b>C</b>（4 题）</td><td><b>C</b></td><td><b>A</b></td><td><b>C</b></td><td><b>B</b></td></tr>
+    </table>
+    <h4 class="sub">积累小筏 · A 篇</h4>
+    <div class="ans-all"><span class="ans-pill">1. 住院</span><span class="ans-pill">2. one day</span><span class="ans-pill">3. kind of</span><span class="ans-pill">4. in trouble</span></div>
+    <h4 class="sub">积累小筏 · B 篇</h4>
+    <div class="ans-all">
+      <span class="ans-pill">1. come from / be from</span><span class="ans-pill">2. be different from</span><span class="ans-pill">3. 春节</span>
+      <span class="ans-pill">4. 年夜饭（除夕晚餐）</span><span class="ans-pill">5. prepare for</span><span class="ans-pill">6. 小睡、打个盹</span>
+      <span class="ans-pill">7. （变得）热闹起来、活跃起来</span><span class="ans-pill">8. enjoy oneself / have a good time</span>
+      <span class="ans-pill">9. 这（一切）让我对“时区如何影响人们的日常生活”有了深入的了解。</span>
+      <span class="ans-pill">10. Life here is really different from life in big cities.</span>
+    </div>
+    <h4 class="sub">积累小筏 · C 篇</h4>
+    <div class="ans-all"><span class="ans-pill">1. 乘公共汽车</span><span class="ans-pill">2. play the piano</span><span class="ans-pill">3. 拉小提琴</span><span class="ans-pill">4. play the drums</span><span class="ans-pill">5. has to listen to</span><span class="ans-pill">6. raise money；in hospital</span></div>
+  </div>
+</section>
+
+<footer>9-1 培优 · Unit 1 Here and Now ｜ 精读精讲交互页 ｜ 生词点击即释义，答案点击即解析</footer>
+</main>
+
+<script>
+/* ============ 生词数据 ============ */
+const VOCAB = {
+  neighbour:{w:"neighbour",t:"w",s:"A",ph:"/ˈneɪbə(r)/",p:"n.",cn:"邻居（英式拼写；美式 neighbor）；neighbourhood 邻近地区、街区",ex:"Our new neighbour is a kind old man.",excn:"我们的新邻居是位和蔼的老人。",src:"Movie name: My Neighbour Totoro"},
+  terrible:{w:"terrible",t:"w",s:"A",ph:"/ˈterəbl/",p:"adj.",cn:"可怕的；糟糕的；很严重的",ex:"The wolf looks terrible, but Grandma is not afraid.",excn:"狼看起来很吓人，但奶奶并不害怕。",src:"Totoro looks kind of big and terrible"},
+  kind:{w:"kind",t:"w",s:"A",ph:"/kaɪnd/",p:"adj. / n.",cn:"友好的、善良的；n. 种类（a kind of 一种）",ex:"She is kind to everyone in our class.",excn:"她对我们班每个人都很好。",src:"only kind children can see him"},
+  kind_of:{w:"kind of",t:"p",s:"A",ph:"",p2:"短语",cn:"有点儿、稍微（= a little / a bit），后接形容词或副词",ex:"Koalas are kind of interesting.",excn:"考拉有点意思。",src:"Totoro looks kind of big and terrible"},
+  in_trouble:{w:"in trouble",t:"p",s:"A",ph:"",cn:"处于困境、遇上麻烦；惹上麻烦",ex:"The cat is in trouble — it can't climb down the tree.",excn:"那只猫遇上麻烦了——它下不了树。",src:"he always helps them when they are in trouble"},
+  in_hospital:{w:"in hospital",t:"p",s:"A",ph:"",cn:"住院（英式，表状态，中间不加冠词；in the hospital 只表示“在医院里”）",ex:"My grandpa is ill in hospital.",excn:"我爷爷生病住院了。",src:"Their mother is ill in hospital near it."},
+  one_day:{w:"one day",t:"p",s:"A",ph:"",cn:"（过去或将来的）某一天；总有一天",ex:"One day, they flew over the hills together.",excn:"有一天，他们一起飞越了山丘。",src:"One day, Mei finds Totoro"},
+  come_from:{w:"come from",t:"p",s:"B",ph:"",cn:"来自、出生于（= be from）",ex:"I come from Shandong, but I live in Beijing.",excn:"我来自山东，但现在住在北京。",src:"I'm Calvin and I come from New Zealand"},
+  beach_party:{w:"beach party",t:"p",s:"B",ph:"",cn:"沙滩派对、海滩聚会",ex:"We had a beach party on New Year's Day.",excn:"元旦那天我们办了一场沙滩派对。",src:"we have beach parties under the stars"},
+  under_the_stars:{w:"under the stars",t:"p",s:"B",ph:"",cn:"在星空下、露天（星天下）",ex:"They sang songs under the stars all night.",excn:"他们在星空下唱了一整夜的歌。",src:"beach parties under the stars"},
+  be_different_from:{w:"be different from",t:"p",s:"B",ph:"",cn:"与……不同（difference n. 不同；differently adv.）",ex:"Your schoolbag is different from mine.",excn:"你的书包和我的不一样。",src:"Christmas here is really different from Christmas in places where it snows"},
+  celebrate:{w:"celebrate",t:"w",s:"B",ph:"/ˈselɪbreɪt/",p:"v.",cn:"庆祝；过（节日）；celebration n. 庆祝活动、庆典",ex:"People celebrate the Spring Festival with their families.",excn:"人们和家人一起庆祝春节。",src:"People in China are celebrating the Spring Festival"},
+  celebration:{w:"celebration",t:"w",s:"B",ph:"/ˌselɪˈbreɪʃn/",p:"n.",cn:"庆祝活动、庆典（celebrate 的名词形式）",ex:"The New Year celebrations lasted three days.",excn:"新年庆祝活动持续了三天。",src:"preparing for their New Year celebrations"},
+  family_member:{w:"family member",t:"p",s:"B",ph:"",cn:"家庭成员（member 成员；club member 俱乐部成员）",ex:"Every family member helps with the housework.",excn:"每个家庭成员都帮忙做家务。",src:"family members are reuniting"},
+  reunite:{w:"reunite",t:"w",s:"B",ph:"/ˌriːjuˈnaɪt/",p:"v.",cn:"（使）重聚、团聚、重逢（re- 再 + unite 联合；reunion n. 团聚）",ex:"The family reunited after ten years.",excn:"这家人失散十年后终于团聚了。",src:"family members are reuniting for a New Year's Eve dinner"},
+  new_year_eve:{w:"New Year's Eve",t:"p",s:"B",ph:"",cn:"除夕、新年前夜（eve 前夕；Christmas Eve 平安夜）",ex:"We watch the Spring Festival Gala on New Year's Eve.",excn:"除夕夜我们看春节联欢晚会。",src:"a New Year's Eve dinner"},
+  while_c:{w:"while",t:"w",s:"B",ph:"/waɪl/",p:"conj.",cn:"此处表对比，意为“而、然而”；也可作“当……的时候”（后多接进行时）",ex:"China is cold in January, while Australia is hot.",excn:"一月中国很冷，而澳大利亚却很热。",src:"…New Year's Eve dinner, while people in Australia may be taking a walk…"},
+  take_a_walk:{w:"take a walk",t:"p",s:"B",ph:"",cn:"散步、走一走（= go for a walk / have a walk）",ex:"Grandpa takes a walk after dinner every day.",excn:"爷爷每天晚饭后都去散步。",src:"may be taking a walk to enjoy the cool summer night"},
+  prepare_for:{w:"prepare for",t:"p",s:"B",ph:"",cn:"为……做准备（prepare sth for sb 为某人准备某物；preparation n.）",ex:"They are preparing for the New Year party.",excn:"他们正在为新年联欢会做准备。",src:"or preparing for their New Year celebrations"},
+  deep_understanding:{w:"a deep understanding of",t:"p",s:"B",ph:"",cn:"对……的深入了解/透彻理解（understand v. 理解；understanding n.）",ex:"The book gives me a deep understanding of Chinese history.",excn:"这本书让我对中国历史有了深入的了解。",src:"This gives me a deep understanding of how time zones affect people's daily life."},
+  time_zone:{w:"time zone",t:"p",s:"B",ph:"",cn:"时区（zone 地带、区域）",ex:"China uses only one time zone, but Russia has eleven.",excn:"中国只用一个时区，而俄罗斯有十一个。",src:"how time zones affect people's daily life"},
+  affect:{w:"affect",t:"w",s:"B",ph:"/əˈfekt/",p:"v.",cn:"影响；感动（动词！名词影响是 effect，勿混：have an effect on = affect）",ex:"Eating too much sugar affects your teeth.",excn:"吃太多糖会影响你的牙齿。",src:"how time zones affect people's daily life"},
+  daily_life:{w:"daily life",t:"p",s:"B",ph:"",cn:"日常生活（daily adj. 每天的；adv. daily 每天）",ex:"Mobile phones are part of daily life now.",excn:"如今手机已是日常生活的一部分。",src:"affect people's daily life"},
+  siesta:{w:"siesta",t:"w",s:"B",ph:"/siˈestə/",p:"n.",cn:"（西班牙等国的）午睡、午休（文化词，卷面已给注释）",ex:"In Spain, many shops close at siesta time.",excn:"在西班牙，许多商店在午休时间关门。",src:"our special break in the middle of the day"},
+  in_the_middle_of:{w:"in the middle of",t:"p",s:"B",ph:"",cn:"在……的中间/正当……的时候（middle n. 中间，中央）",ex:"The bank is in the middle of the street.",excn:"银行在这条街的中间。",src:"our special break in the middle of the day"},
+  relaxing:{w:"relaxing",t:"w",s:"B",ph:"/rɪˈlæksɪŋ/",p:"adj.",cn:"令人放松的（修饰事物）；relaxed 感到放松的（修饰人）",ex:"A walk in the park is really relaxing.",excn:"在公园里散步真让人放松。",src:"a relaxing meal"},
+  unlike:{w:"unlike",t:"w",s:"B",ph:"/ˌʌnˈlaɪk/",p:"prep.",cn:"不像、和……不同（后接名词/代词；like 此处也是介词“像”）",ex:"Unlike his brother, Tom gets up early every day.",excn:"和他哥哥不同，汤姆每天很早起床。",src:"unlike the quick lunches in other places"},
+  have_a_nap:{w:"have a nap",t:"p",s:"B",ph:"",cn:"小睡一会儿、打个盹（nap 白天短时间的睡眠）",ex:"I usually have a nap at noon.",excn:"我通常中午打个盹。",src:"We usually have lunch and have a nap from 2:00 to 5:00"},
+  come_to_life:{w:"come to life",t:"p",s:"B",ph:"",cn:"（城镇、夜晚）变得热闹/活跃起来；（人）苏醒过来",ex:"The small town comes to life in the evening.",excn:"这座小镇一到傍晚就热闹起来。",src:"Barcelona really comes to life!"},
+  set_v:{w:"set",t:"w",s:"B",ph:"/set/",p:"v. (set-set)",cn:"（太阳、月亮）落下；安置；n. 一套、一台（the sun sets = goes down）",ex:"The sun sets late in summer.",excn:"夏天太阳落山很晚。",src:"The sun sets late"},
+  hold_a_party:{w:"hold a party",t:"p",s:"B",ph:"",cn:"举办聚会/派对（hold held held 举行、抓住；= have a party）",ex:"They hold a party for her birthday.",excn:"他们为她的生日举办了一个派对。",src:"we hold parties and enjoy ourselves at midnight"},
+  enjoy_oneself:{w:"enjoy oneself",t:"p",s:"B",ph:"",cn:"玩得开心、过得愉快（= have fun / have a good time；oneself 随主语变化）",ex:"Did you enjoy yourselves at the park?",excn:"你们在公园玩得开心吗？",src:"we hold parties and enjoy ourselves at midnight"},
+  midnight:{w:"midnight",t:"w",s:"B",ph:"/ˈmɪdnaɪt/",p:"n.",cn:"午夜、半夜十二点（at midnight 在半夜；mid- 中间的）",ex:"The film ends at midnight.",excn:"这部电影在午夜结束。",src:"enjoy ourselves at midnight"},
+  pick_up:{w:"pick up",t:"p",s:"B",ph:"",cn:"（接）电话；捡起；（开车）接某人；学会",ex:"The phone rang, but he didn't pick up.",excn:"电话响了，但他没接。",src:"he doesn't pick up（第 3 题题干）"},
+  mainly:{w:"mainly",t:"w",s:"B",ph:"/ˈmeɪnli/",p:"adv.",cn:"主要地、大体上（main adj. 主要的；主旨题必考词）",ex:"The passage is mainly about food in China.",excn:"这篇文章主要讲的是中国食物。",src:"What is the passage mainly about?（第 4 题题干）"},
+  school_gate:{w:"meet at the school gate",t:"p",s:"C",ph:"",cn:"在校门口集合（gate 大门、通道；door 房门）",ex:"We meet at the school gate at eight tomorrow morning.",excn:"明早八点我们在校门口集合。",src:"he and his classmates still meet at the school gate"},
+  have_to:{w:"have to",t:"p",s:"C",ph:"",cn:"必须、不得不（三单 has to；否定 don't/doesn't have to = 不必）",ex:"I have to finish my homework first.",excn:"我必须先完成作业。",src:"Because they have to go to the City Park."},
+  take_a_bus:{w:"take a bus",t:"p",s:"C",ph:"",cn:"乘公共汽车（= go … by bus；take a taxi 打出租车）",ex:"They take a bus to the park every Sunday.",excn:"他们每周日坐公交车去公园。",src:"They take a bus and get to the park at 8:30 a.m."},
+  get_to:{w:"get to",t:"p",s:"C",ph:"",cn:"到达（= arrive at/in / reach；后接 home/here 等副词时省 to）",ex:"We get to the park at 8:30 in the morning.",excn:"我们早上八点半到达公园。",src:"get to the park at 8:30 a.m."},
+  give_a_concert:{w:"give a concert",t:"p",s:"C",ph:"/ˈkɒnsət/",cn:"举办音乐会、演出（concert 音乐会；attend a concert 听音乐会）",ex:"They gave a concert for a sick boy.",excn:"他们为一个生病的男孩举办了一场音乐会。",src:"the students are giving a concert"},
+  play_the_piano:{w:"play the piano",t:"p",s:"C",ph:"/piˈænəʊ/",cn:"弹钢琴（play + the + 乐器；球类前不加 the）",ex:"Steven plays the piano very well.",excn:"史蒂文钢琴弹得很好。",src:"Steven is playing the piano"},
+  deskmate:{w:"deskmate",t:"w",s:"C",ph:"/ˈdeskmeɪt/",p:"n.",cn:"同桌（desk 课桌 + mate 伙伴；classmate 同班同学）",ex:"My deskmate often helps me with English.",excn:"我同桌常常帮我学英语。",src:"Diana, Steven's deskmate, is singing an English song"},
+  be_good_at:{w:"be good at",t:"p",s:"C",ph:"",cn:"擅长……（= do well in；at 后接名词或 doing）",ex:"Jenny is good at playing the violin.",excn:"珍妮擅长拉小提琴。",src:"Jenny is good at playing the violin"},
+  play_the_violin:{w:"play the violin",t:"p",s:"C",ph:"/ˌvaɪəlɪn/",cn:"拉小提琴（violin 小提琴；中文说“拉”，英文一律用 play）",ex:"She has played the violin for three years.",excn:"她学小提琴已经三年了。",src:"she is playing the violin now"},
+  play_the_drums:{w:"play the drums",t:"p",s:"C",ph:"/drʌm/",cn:"打鼓（drum 鼓，习惯用复数 drums）",ex:"David is playing the drums in the park.",excn:"大卫正在公园里打鼓。",src:"David is playing the drums"},
+  listen_to:{w:"listen to",t:"p",s:"C",ph:"",cn:"听……（强调“听”的动作；hear 强调听到的结果）",ex:"Many people are listening to their music.",excn:"许多人正在听他们的音乐。",src:"Many people in the park are listening to their music"},
+  raise_money:{w:"raise money",t:"p",s:"C",ph:"",cn:"筹款、募捐（raise money for sb 为某人筹款；raise 举起、饲养、养育）",ex:"They give this concert to raise money for Nick.",excn:"他们举办这场音乐会来为尼克筹款。",src:"They give this concert to raise money for him"},
+  get_well:{w:"get well",t:"p",s:"C",ph:"",cn:"康复、好起来（get + 形容词 表“变得……”）",ex:"We hope Nick can get well and come back early.",excn:"我们希望尼克能早日康复并早点回来。",src:"They hope Nick can get well"},
+  underlined:{w:"underlined",t:"w",s:"C",ph:"/ˌʌndəlaɪnd/",p:"adj.",cn:"画了线的、加下划线的（under 在下 + line 线；underline v.）",ex:"What does the underlined word mean?",excn:"画线的这个单词是什么意思？",src:"the underlined word “it” in Paragraph 3（第 3 题题干）"},
+  refer_to:{w:"refer to",t:"p",s:"C",ph:"/rɪˈfɜː(r)/",cn:"指的是、表示；提到；参考、查阅（指代题必考；reference n.）",ex:"What does the pronoun “it” refer to?",excn:"代词 “it” 指的是什么？",src:"What does the underlined word “it” refer to?（第 3 题题干）"},
+  describe:{w:"describe",t:"w",s:"C",ph:"/dɪˈskrab/",p:"v.",cn:"描述、形容（description n. 描述；人物特征推断题常用）",ex:"Which word can best describe the students?",excn:"哪个词最能描述这些学生？",src:"Which word can best describe the students?（第 4 题题干）"},
+  strict:{w:"strict",t:"w",s:"C",ph:"/strɪkt/",p:"adj.",cn:"严厉的、严格的（be strict with sb 对某人严格；be strict in sth 在某方面严格）",ex:"Our maths teacher is strict with us.",excn:"我们的数学老师对我们要求很严格。",src:"B. strict(严厉的)（A 篇选项）"},
+  charity:{w:"charity",t:"w",s:"C",ph:"/ˈtʃærəti/",p:"n.",cn:"慈善、公益事业；慈善机构（本话题词；charitable adj. 慈善的）",ex:"The concert is a small act of charity.",excn:"这场音乐会是一次小小的公益行动。",src:"C 篇主题：人与社会——公益事业"},
+  poor:{w:"poor",t:"w",s:"C",ph:"/pɔː(r)/",p2:"adj.",cn:"贫困的；可怜的；（质量）差的。the + adj. 表一类人：the poor 穷人",ex:"They raised money for the poor old man.",excn:"他们为那位贫困的老人筹了款。",src:"How did your classmates … for the poor old man …?（第 6 题）"},
+  give_up:{w:"give up",t:"p",s:"A",ph:"",cn:"放弃（give up doing sth 放弃做某事；never give up 永不放弃）",ex:"Never give up when you are in trouble.",excn:"遇到困难时永远不要放弃。",src:"A 篇积累小筏第 4 题"},
+  learn_english_well:{w:"to learn English well",t:"p",s:"C",ph:"",cn:"为了学好英语（不定式作目的状语，可放句首；well 副词修饰动词）",ex:"To learn English well, he has to listen to tapes every day.",excn:"为了学好英语，他必须每天听磁带。",src:"C 篇积累小筏第 5 题"}
+};
+const SECN = {A:"A 篇",B:"B 篇",C:"C 篇"};
+const learned = new Set();
+
+/* ============ 生词悬浮释义 ============ */
+const tip = document.createElement("div"); tip.className="tip"; tip.hidden=true;
+document.body.appendChild(tip);
+let curBtn = null;
+
+function tipHTML(id){
+  const v = VOCAB[id]; if(!v) return "";
+  const tag = v.t==="p" ? '<span class="ttag p">短语</span>' : '<span class="ttag w">单词</span>';
+  const pos = v.p ? '<span class="tp">'+v.ph+'</span><span class="pos" style="font-size:11.5px;font-style:italic;color:#0369a1;background:#e0f2fe;border-radius:5px;padding:1px 7px;margin-left:6px">'+v.p+'</span>'
+                   : (v.ph ? '<span class="tp">'+v.ph+'</span>' : ((v.p2 && v.t!=="p") ? '<span class="tp">'+v.p2+'</span>' : ''));
+  return '<button class="close" title="关闭">×</button>'
+    + '<div><span class="tw">'+v.w+'</span>'+pos+tag+'</div>'
+    + '<div class="tcn">'+v.cn+'</div>'
+    + (v.ex ? '<div class="tex">▸ '+v.ex+'<span>'+v.excn+'</span></div>' : '')
+    + (v.src ? '<div class="tsrc">原文：'+v.src+'</div>' : '')
+    + '<div class="tact"><span class="src" style="font-size:12px;color:var(--sub)">'+SECN[v.s]+' · '+(v.t==="p"?"短语":"单词")+'</span>'
+    + '<span><button class="btn" data-jump="'+id+'">汇总中查看</button> <button class="btn" data-mk="'+id+'">'+(learned.has(id)?"取消掌握":"标记已掌握")+'</button></span></div>';
+}
+function showTip(btn){
+  const id = btn.dataset.v; if(!VOCAB[id]) return;
+  tip.innerHTML = tipHTML(id); tip.hidden=false;
+  tip.style.left="0px"; tip.style.top="0px";
+  const r = btn.getBoundingClientRect(), tw = tip.offsetWidth, th = tip.offsetHeight;
+  let left = Math.min(Math.max(8, r.left + window.scrollX*0), window.innerWidth - tw - 8);
+  left = Math.max(8, Math.min(left, window.innerWidth - tw - 8));
+  let top = r.bottom + 8;
+  if(top + th > window.innerHeight - 8) top = Math.max(8, r.top - th - 8);
+  tip.style.left = left+"px"; tip.style.top = top+"px";
+  if(curBtn) curBtn.classList.remove("act");
+  curBtn = btn; btn.classList.add("act");
+}
+function hideTip(){ tip.hidden=true; if(curBtn){curBtn.classList.remove("act"); curBtn=null;} }
+function inTip(el){ return !!(el && el.closest && tip.contains(el)); }
+
+document.addEventListener("click", function(e){
+  if(!tip.hidden && !inTip(e.target) && !(e.target.closest && e.target.closest("button.vw"))){ hideTip(); }
+  const t = e.target.closest ? e.target.closest("[data-jump],[data-mk],.close") : null;
+  if(t){
+    if(t.classList.contains("close")){ hideTip(); return; }
+    if(t.dataset.mk){ toggleLearned(t.dataset.mk); hideTip(); return; }
+    if(t.dataset.jump){ const id=t.dataset.jump; hideTip();
+      memOff(); document.getElementById("vSearch").value=""; state.sec="all"; state.type="all"; state.todo=false; renderVocab();
+      const card = document.querySelector('.vc[data-id="'+id+'"]');
+      if(card){ card.scrollIntoView({behavior:"smooth",block:"center"}); card.classList.add("flash"); setTimeout(()=>card.classList.remove("flash"),1600); }
+      return; }
+  }
+  const b = e.target.closest ? e.target.closest("button.vw") : null;
+  if(b){ if(curBtn===b && !tip.hidden){ hideTip(); } else { showTip(b); } }
+});
+document.addEventListener("keydown", function(e){ if(e.key==="Escape") hideTip(); });
+
+/* ============ 掌握状态 ============ */
+function toggleLearned(id){
+  if(learned.has(id)) learned.delete(id); else learned.add(id);
+  const on = learned.has(id);
+  document.querySelectorAll('button.vw[data-v="'+id+'"]').forEach(function(x){ x.classList.toggle("learned", on); });
+  if(state.todo){ renderVocab(); }
+  else {
+    document.querySelectorAll('.vc[data-id="'+id+'"]').forEach(function(c){
+      c.classList.toggle("done", on);
+      const cb = c.querySelector("[data-mkc]"); if(cb) cb.checked = on;
+    });
+    document.getElementById("vDone").textContent = learned.size;
+  }
+}
+
+/* ============ 答题交互 ============ */
+const qs = Array.prototype.slice.call(document.querySelectorAll(".q"));
+const answered = new Map();
+document.getElementById("pgAll").textContent = qs.length;
+qs.forEach(function(q, i){
+  const ans = q.dataset.ans, opts = q.querySelectorAll(".opt"), v = q.querySelector(".verdict"), ex = q.querySelector(".explain");
+  opts.forEach(function(o){
+    o.addEventListener("click", function(){
+      if(q.dataset.locked) return;
+      q.dataset.locked = "1";
+      const k = o.dataset.k, ok = (k===ans);
+      answered.set(i, ok);
+      o.classList.add(ok ? "right" : "wrong");
+      if(!ok){ opts.forEach(function(x){ if(x.dataset.k===ans) x.classList.add("show-ans"); }); }
+      v.className = "verdict " + (ok?"ok":"no");
+      v.textContent = ok ? "✓ 回答正确" : "✗ 回答错误 · 正确答案是 " + ans;
+      ex.classList.remove("hidden-until");
+      refreshPg();
+    });
+  });
+});
+function refreshPg(){
+  let done=0, ok=0; answered.forEach(function(val){ done++; if(val) ok++; });
+  document.getElementById("pgDone").textContent = done;
+  document.getElementById("pgOk").textContent = ok;
+}
+
+/* ============ 填空 / 参考答案揭示 ============ */
+document.addEventListener("click", function(e){
+  const b = e.target.closest ? e.target.closest("span.blank") : null;
+  if(b){
+    if(b.classList.contains("filled")){ b.classList.remove("filled"); b.textContent = "＿＿＿＿"; }
+    else { b.textContent = b.dataset.a; b.classList.add("filled"); }
+    return;
+  }
+  const r = e.target.closest ? e.target.closest("[data-reveal]") : null;
+  if(r){ const el=document.getElementById(r.dataset.reveal);
+    if(el){ const show = el.classList.toggle("hidden-until"); r.textContent = show ? "查看参考答案" : "隐藏参考答案"; } }
+});
+
+/* ============ 工具栏 ============ */
+let forceAns = false;
+document.getElementById("btAns").addEventListener("click", function(){
+  forceAns = !forceAns; this.classList.toggle("on", forceAns);
+  this.textContent = forceAns ? "隐藏全部答案" : "显示全部答案";
+  document.querySelectorAll(".explain").forEach(function(x){ x.classList.toggle("force", forceAns); if(forceAns) x.classList.remove("hidden-until"); else if(!x.closest(".q").dataset.locked) x.classList.add("hidden-until"); });
+  document.querySelectorAll("span.blank").forEach(function(b){
+    if(forceAns){ b.textContent = b.dataset.a; b.classList.add("filled"); }
+    else { b.textContent = "＿＿＿＿"; b.classList.remove("filled"); }
+  });
+  document.querySelectorAll("[data-reveal]").forEach(function(r){
+    const el = document.getElementById(r.dataset.reveal);
+    el.classList.toggle("hidden-until", !forceAns);
+    r.textContent = forceAns ? "隐藏参考答案" : "查看参考答案";
+  });
+  document.querySelectorAll("details.tr").forEach(function(d){ d.open = forceAns; });
+});
+document.getElementById("btVw").addEventListener("click", function(){
+  document.body.classList.toggle("novw");
+  const off = document.body.classList.contains("novw");
+  this.textContent = off ? "生词标注：关" : "生词标注：开";
+  this.classList.toggle("on", off);
+  if(off) hideTip();
+});
+let mem = false;
+function memOff(){ if(mem){ mem=false; document.body.classList.remove("mem"); document.getElementById("btMem").classList.remove("on"); } }
+document.getElementById("btMem").addEventListener("click", function(){
+  mem = !mem; document.body.classList.toggle("mem", mem); this.classList.toggle("on", mem);
+  this.textContent = mem ? "背诵模式：退出" : "背诵模式";
+  document.querySelectorAll(".vc").forEach(function(c){ c.classList.remove("open"); });
+});
+document.getElementById("btPrint").addEventListener("click", function(){ window.print(); });
+
+/* ============ 生词汇总渲染 ============ */
+const state = {sec:"all", type:"all", todo:false, kw:""};
+function renderVocab(){
+  const g = document.getElementById("vGrid"); g.innerHTML="";
+  const ids = Object.keys(VOCAB).filter(function(id){
+    const v = VOCAB[id];
+    if(state.sec!=="all" && v.s!==state.sec) return false;
+    if(state.type!=="all" && v.t!==state.type) return false;
+    if(state.todo && learned.has(id)) return false;
+    if(state.kw){
+      const hay = (v.w+" "+v.cn+" "+(v.ex||"")+" "+(v.excn||"")+" "+v.ph).toLowerCase();
+      if(hay.indexOf(state.kw)<0) return false;
+    }
+    return true;
+  });
+  document.getElementById("vEmpty").hidden = ids.length>0;
+  ids.forEach(function(id){
+    const v = VOCAB[id];
+    const c = document.createElement("div");
+    c.className = "vc" + (learned.has(id)?" done":""); c.dataset.id = id;
+    c.innerHTML = '<div><span class="w">'+v.w+'</span>'+(v.ph?'<span class="ph">'+v.ph+'</span>':'')
+      +(v.p?'<span class="pos">'+v.p+'</span>':(v.p2&&v.t!=="p"?'<span class="pos">'+v.p2+'</span>':''))
+      +(v.t==="p"?'<span class="pos" style="background:#fef3c7;color:#b45309">短语</span>':'')
+      +'</div><div class="cn">'+v.cn+'</div>'
+      +(v.ex?'<div class="ex">'+v.ex+'<span class="cn2">'+v.excn+'</span></div>':'')
+      +'<div class="foot"><span class="src">'+SECN[v.s]+' · '+(v.src||'')+'</span>'
+      +'<span style="display:flex;gap:6px;align-items:center">'
+      +'<button class="btn" style="font-size:11.5px;padding:3px 9px" data-loc="'+id+'">定位原文</button>'
+      +'<label class="mk"><input type="checkbox" data-mkc="'+id+'"'+(learned.has(id)?" checked":"")+'>已掌握</label></span></div>';
+    g.appendChild(c);
+  });
+  document.getElementById("vAll").textContent = Object.keys(VOCAB).length;
+  document.getElementById("vDone").textContent = learned.size;
+  document.getElementById("chipV").textContent = Object.keys(VOCAB).length;
+}
+function locateWord(id){
+  const b = document.querySelector('button.vw[data-v="'+id+'"]');
+  if(!b) return;
+  if(document.body.classList.contains("novw")) document.getElementById("btVw").click();
+  b.scrollIntoView({block:"center"});
+  const raf = window.requestAnimationFrame || function(f){ setTimeout(f, 30); };
+  raf.call(window, function(){
+    showTip(b);
+    b.style.transition="background .1s"; b.style.background="rgba(245,158,11,.35)";
+    setTimeout(function(){ b.style.background=""; }, 1200);
+  });
+}
+document.getElementById("vGrid").addEventListener("click", function(e){
+  const cb = e.target.closest ? e.target.closest("[data-mkc]") : null;
+  if(cb){ toggleLearned(cb.dataset.mkc); return; }
+  const loc = e.target.closest ? e.target.closest("[data-loc]") : null;
+  if(loc){ locateWord(loc.dataset.loc); return; }
+  if(mem){ const c = e.target.closest ? e.target.closest(".vc") : null; if(c) c.classList.toggle("open"); }
+});
+document.getElementById("vSearch").addEventListener("input", function(){ state.kw = this.value.trim().toLowerCase(); renderVocab(); });
+document.getElementById("fSec").addEventListener("click", function(e){
+  const b = e.target.closest ? e.target.closest(".fchip") : null; if(!b) return;
+  state.sec = b.dataset.s; this.querySelectorAll(".fchip").forEach(function(x){ x.classList.toggle("on", x===b); }); renderVocab();
+});
+document.getElementById("fType").addEventListener("click", function(e){
+  const b = e.target.closest ? e.target.closest(".fchip") : null; if(!b) return;
+  state.type = b.dataset.t; this.querySelectorAll(".fchip").forEach(function(x){ x.classList.toggle("on", x===b); }); renderVocab();
+});
+document.getElementById("fTodo").addEventListener("click", function(){ state.todo = !state.todo; this.classList.toggle("on", state.todo); renderVocab(); });
+renderVocab();
+refreshPg();
+</script>
+</body>
+</html>

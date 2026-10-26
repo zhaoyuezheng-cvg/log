@@ -7,6 +7,7 @@ HTML 学习资料，按学科分类。
 ## 英语
 
 - [六年级英语期末考点精讲](/english/grade-6-final-review.html)
+- [9周1培优](/english/unit-1-english-enrichment.html) [v2](/english/unit-1-english-analysis.html)  [v3](/english/unit-1-english-reading.html)
 - [8周1培优 v1](/english/en8_1.html)、[v2](/english/en8_1_v2.html)、[v3](/english/en8_1_v3.html)、[v4](/english/en8_1_v4.html)
 - [8周3培优 v1](/english/en8-3.html)、[v2](/english/en8-3-v2.html)、[v3](/english/en8-3-v3.html)
 - [8周4培优](/english/en8-4-v1.html)、[11月21日作业](/english/en-1121.html)、[10月21日作业](/english/en-1021-1.html)
@@ -18,6 +19,7 @@ HTML 学习资料，按学科分类。
 - [走进文言文：六七年级](/chinese/classical-chinese-grades-6-7.html)、[八年级](/chinese/classical-chinese-grade-8.html)、[九年级](/chinese/classical-chinese-grade-9.html)
 - [第七周语文培优](/chinese/w7paper.html)
 - [第八周语文培优 v1](/chinese/w8paper-v1.html)、[v2](/chinese/w8paper-v2.html)、[v3](/chinese/w8paper-v3.html)
+- [第九周培优](/chinese/grade-7-week-9-chinese.html)
 - [容易写错、读错的字和多音字](/chinese/appendix-chars.html)、[补充版](/chinese/mis-chars.html)
 - [七年级作文范文](/chinese/essays.html)、[v2](/chinese/ff.html)、[v3](/chinese/essays-v2.html)
 - [初中记叙文阅读答题模板](/chinese/narrative-reading-guide.html)
@@ -30,8 +32,8 @@ HTML 学习资料，按学科分类。
 ## 历史、道法、 地理
 
 - [七年级历史背诵](/history/history-review.html)
-- [数学七上知识点](/history/grade-7-core-review.html) 、 [知识网络](/history/grade-7-knowledge-map.html)
-- [道法七上册思维导图](/history/moral-education-grade-7-units.html) 、 [屏幕版](/history/moral-education-grade-7-mindmap-screen.html)
+- [数学七上知识点](/history/grade-7-core-review.html)  [知识网络](/history/grade-7-knowledge-map.html)
+- [道法七上册思维导图](/history/moral-education-grade-7-units.html)  [屏幕版](/history/moral-education-grade-7-mindmap-screen.html)
 - [初二地理期中复习](/geography/geo-review-1.html)  [v2](/geography/geo-review-2.html)  [v3](/geography/geo-midterm-v2.html)
 
 ## 其他页面
