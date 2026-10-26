@@ -16,6 +16,7 @@ HTML 学习资料，按学科分类。
 
 ## 语文
 
+- [走进文言文总目录（支持跨册检索）](/chinese/classical-chinese-index.html)
 - [走进文言文：六七年级](/chinese/classical-chinese-grades-6-7.html)、[八年级](/chinese/classical-chinese-grade-8.html)、[九年级](/chinese/classical-chinese-grade-9.html)
 - [第七周语文培优](/chinese/w7paper.html)
 - [第八周语文培优 v1](/chinese/w8paper-v1.html)、[v2](/chinese/w8paper-v2.html)、[v3](/chinese/w8paper-v3.html)
