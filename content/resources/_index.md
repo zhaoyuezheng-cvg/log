@@ -12,6 +12,7 @@ HTML 学习资料，按学科分类。
 - [8周3培优 v1](/english/en8-3.html)、[v2](/english/en8-3-v2.html)、[v3](/english/en8-3-v3.html)
 - [8周4培优](/english/en8-4-v1.html)、[11月21日作业](/english/en-1121.html)、[10月21日作业](/english/en-1021-1.html)
 - [8周5培优 v1](/english/en8-5-1.html)、[v2](/english/en8-5-2.html)、[v3](/english/en8-5-3.html)、[v4](/english/en8-5-4.html)
+- [9周3培优 v1（精读精讲）](/english/en9-3-v1.html)、[v2（英语精讲）](/english/en9-3-v2.html)、[v3（答案与生词）](/english/en9-3-v3.html)、[v4（阅读精读精讲）](/english/en9-3-v4.html)
 - [英语不规则动词](/english/irregular-verbs.html)
 
 ## 语文
