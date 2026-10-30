@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>9-5培优 · 精读精讲</title>
+<style>
+  :root{
+    --bg:#eef1f8;--bg2:#e6ebf5;--card:#ffffff;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;
+    --line:#e5e7eb;--brand:#4f46e5;--brand-2:#0d9488;--brand-soft:rgba(79,70,229,.08);
+    --accent:#f59e0b;--accent-soft:#fef3c7;--ok:#16a34a;--ok-soft:rgba(22,163,74,.10);--rose:#e11d48;
+    --shadow:0 10px 30px rgba(30,41,59,.10);--shadow-sm:0 4px 14px rgba(30,41,59,.08);--radius:18px;
+    --font:"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",system-ui,-apple-system,sans-serif;
+  }
+  body.dark{
+    --bg:#0f172a;--bg2:#0b1220;--card:#131c31;--ink:#e5edf7;--ink2:#cbd5e1;--muted:#94a3b8;
+    --line:#243049;--brand:#818cf8;--brand-2:#2dd4bf;--brand-soft:rgba(129,140,248,.14);
+    --accent:#fbbf24;--accent-soft:rgba(251,191,36,.16);--ok:#4ade80;--ok-soft:rgba(74,222,128,.12);
+    --rose:#fb7185;--shadow:0 10px 30px rgba(0,0,0,.45);--shadow-sm:0 4px 14px rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:var(--font);color:var(--ink);
+    background:radial-gradient(1100px 500px at 12% -10%, rgba(79,70,229,.16), transparent 60%),
+      radial-gradient(900px 480px at 100% 0%, rgba(13,148,136,.14), transparent 55%),
+      linear-gradient(180deg,var(--bg),var(--bg2));
+    min-height:100vh;line-height:1.75;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 18px 60px}
+  header.hero{position:relative;overflow:hidden;border-radius:0 0 30px 30px;
+    background:linear-gradient(135deg,#4f46e5 0%,#6d28d9 45%,#0d9488 100%);color:#fff;
+    padding:42px 26px 34px;margin-bottom:22px;box-shadow:var(--shadow);}
+  header.hero::after{content:"";position:absolute;inset:0;opacity:.35;
+    background-image:radial-gradient(rgba(255,255,255,.35) 1px,transparent 1px);
+    background-size:22px 22px;mask-image:linear-gradient(180deg,rgba(0,0,0,.6),transparent 75%);}
+  .hero-in{position:relative;z-index:2;max-width:1080px;margin:0 auto}
+  .kicker{display:inline-flex;align-items:center;gap:8px;font-size:.82rem;letter-spacing:.12em;
+    text-transform:uppercase;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);
+    padding:6px 14px;border-radius:999px;backdrop-filter:blur(6px)}
+  h1{margin:16px 0 8px;font-size:clamp(1.5rem,4vw,2.15rem);line-height:1.3;letter-spacing:.01em}
+  h1 .sub{display:block;font-size:.55em;font-weight:500;opacity:.9;margin-top:8px;letter-spacing:.02em}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+  .chip{font-size:.78rem;padding:5px 12px;border-radius:999px;background:rgba(255,255,255,.16);
+    border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(6px)}
+  .hero-note{margin-top:16px;font-size:.85rem;opacity:.9;max-width:760px;line-height:1.7}
+  .toolbar{position:sticky;top:0;z-index:60;display:flex;flex-wrap:wrap;gap:8px;align-items:center;
+    padding:10px 12px;margin:0 0 20px;border-radius:14px;
+    background:color-mix(in srgb,var(--card) 88%,transparent);
+    border:1px solid var(--line);box-shadow:var(--shadow-sm);backdrop-filter:blur(10px);}
+  .toolbar .grow{flex:1}
+  .tool-btn{font-family:inherit;font-size:.82rem;font-weight:600;color:var(--ink);
+    background:var(--brand-soft);border:1px solid transparent;border-radius:10px;
+    padding:8px 13px;cursor:pointer;transition:.18s;display:inline-flex;align-items:center;gap:6px;}
+  .tool-btn:hover{transform:translateY(-1px);box-shadow:var(--shadow-sm)}
+  .tool-btn.on{background:var(--brand);color:#fff}
+  .tool-btn.ghost{background:transparent;border-color:var(--line)}
+  .navlinks{display:flex;gap:6px;flex-wrap:wrap}
+  .navlinks a{font-size:.82rem;font-weight:600;text-decoration:none;color:var(--brand);
+    padding:7px 11px;border-radius:9px;border:1px solid var(--line);background:transparent;transition:.18s;white-space:nowrap}
+  .navlinks a:hover{background:var(--brand-soft)}
+  section.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);padding:26px 26px 30px;margin-bottom:26px;position:relative;overflow:hidden;
+    animation:rise .5s ease both;}
+  @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  section.card::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;
+    background:linear-gradient(90deg,var(--brand),var(--brand-2))}
+  .sec-head{display:flex;align-items:flex-start;gap:14px;flex-wrap:wrap;margin-bottom:6px}
+  .sec-no{flex:0 0 auto;width:44px;height:44px;border-radius:13px;display:grid;place-items:center;
+    font-weight:800;font-size:1.15rem;color:#fff;background:linear-gradient(135deg,var(--brand),var(--brand-2));
+    box-shadow:0 6px 16px rgba(79,70,229,.35)}
+  .sec-title{margin:0;font-size:1.3rem}
+  .sec-title small{display:block;font-weight:500;color:var(--muted);font-size:.8rem;margin-top:3px}
+  .sec-meta{display:flex;flex-wrap:wrap;gap:7px;margin:14px 0 4px}
+  .badge{font-size:.75rem;font-weight:600;padding:4px 11px;border-radius:999px;
+    background:var(--brand-soft);color:var(--brand);border:1px solid transparent}
+  .badge.warm{background:var(--accent-soft);color:#b45309}
+  .badge.gray{background:color-mix(in srgb,var(--muted) 14%,transparent);color:var(--muted)}
+  .badge.ok{background:var(--ok-soft);color:var(--ok)}
+  .lead{color:var(--muted);font-size:.92rem;margin:10px 0 18px}
+  .passage{background:linear-gradient(180deg,color-mix(in srgb,var(--brand) 5%,var(--card)),var(--card));
+    border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:8px 0 18px;
+    font-size:1.06rem;line-height:2.05;letter-spacing:.005em;}
+  .passage p{margin:0 0 14px}
+  .passage p:last-child{margin-bottom:0}
+  .passage .tag{font-size:.72em;color:var(--muted);vertical-align:super}
+  .passage .h{font-weight:800;color:var(--brand)}
+  .w{position:relative;cursor:pointer;color:inherit;border-radius:3px;padding:0 1px;
+    border-bottom:2px solid var(--accent);background:linear-gradient(transparent 60%,var(--accent-soft) 60%);
+    transition:.15s;white-space:nowrap;}
+  .w:hover{filter:brightness(.96);box-shadow:0 2px 0 -1px var(--accent)}
+  .w.active{background:var(--accent);color:#3b2a04;border-bottom-color:#b45309}
+  .gloss{display:none}
+  body.showall .gloss{display:inline;font-size:.8em;color:var(--brand-2);font-weight:600;
+    padding:0 3px;border-bottom:0;white-space:normal}
+  .blank{display:inline-block;min-width:2.4em;text-align:center;font-weight:800;color:var(--brand);
+    background:var(--brand-soft);border-bottom:2px solid var(--brand);border-radius:6px 6px 3px 3px;
+    padding:0 8px;margin:0 2px;cursor:pointer;transition:.15s;font-size:.94em;}
+  .blank:hover{background:color-mix(in srgb,var(--brand) 18%,transparent)}
+  .blank b{font-weight:800}
+  .blank i{display:none;font-style:normal;color:var(--ok);font-weight:800}
+  .blank.open{background:var(--ok-soft);border-bottom-color:var(--ok);color:var(--ok)}
+  .blank.open b{display:none}
+  .blank.open i{display:inline}
+  body.showans .blank{background:var(--ok-soft);border-bottom-color:var(--ok);color:var(--ok)}
+  body.showans .blank b{display:none}
+  body.showans .blank i{display:inline}
+  #pop{position:absolute;z-index:200;width:min(330px,88vw);background:var(--card);
+    border:1px solid var(--line);border-top:4px solid var(--accent);border-radius:14px;
+    box-shadow:0 18px 45px rgba(15,23,42,.28);padding:14px 16px;display:none;}
+  #pop.show{display:block;animation:pop .18s ease}
+  @keyframes pop{from{opacity:0;transform:translateY(6px) scale(.98)}to{opacity:1;transform:none}}
+  #pop .pw{font-size:1.12rem;font-weight:800;color:var(--ink);display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+  #pop .pph{font-size:.82rem;color:var(--brand-2);font-weight:600}
+  #pop .pcn{margin-top:7px;font-size:1rem;font-weight:700;color:var(--brand)}
+  #pop .pnote{margin-top:7px;font-size:.86rem;color:var(--muted);line-height:1.65}
+  #pop .pex{margin-top:10px;padding-top:9px;border-top:1px dashed var(--line);font-size:.9rem}
+  #pop .pex b{color:var(--brand-2)}
+  #pop .pex .cn{color:var(--muted);font-size:.85rem;display:block;margin-top:3px}
+  .pos{display:inline-block;font-size:.72rem;font-weight:700;color:#fff;background:var(--brand-2);
+    border-radius:6px;padding:2px 8px;margin-left:2px}
+  .qstem{font-weight:700;color:var(--ink);margin:2px 0 6px;font-size:1.02rem}
+  .qopts{margin:2px 0 0;padding-left:2px;color:var(--muted);font-size:.92rem}
+  .qopts div{margin:3px 0}
+  .qopts .picked{color:var(--ok);font-weight:800}
+  h3.ans-h{margin:26px 0 12px;font-size:1.05rem;display:flex;align-items:center;gap:9px}
+  h3.ans-h::before{content:"";width:10px;height:10px;border-radius:3px;background:var(--ok);display:inline-block}
+  .ans-list{display:grid;gap:10px}
+  .ans-item{border:1px solid var(--line);border-left:4px solid var(--ok);border-radius:12px;
+    padding:12px 15px;background:color-mix(in srgb,var(--ok) 4%,var(--card))}
+  .ans-item .top{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+  .ans-item .num{font-weight:800;color:var(--ok)}
+  .ans-item .key{font-weight:800;font-size:1.05rem;color:var(--ink);background:var(--ok-soft);
+    padding:1px 10px;border-radius:7px}
+  .ans-item .kt{font-size:.72rem;font-weight:700;color:#fff;background:var(--brand);border-radius:6px;padding:2px 8px}
+  .ans-item ul{margin:8px 0 0;padding-left:20px;color:var(--muted);font-size:.9rem}
+  .ans-item ul li{margin:3px 0}
+  .ans-item .sent{font-size:.92rem;color:var(--ink2);margin-top:6px}
+  .vgroup{margin-top:18px}
+  .vgroup > h3{margin:0 0 10px;font-size:1.02rem;color:var(--brand);display:flex;gap:9px;align-items:center}
+  .vgroup > h3 .dot{width:9px;height:9px;border-radius:50%;background:var(--brand-2)}
+  .vcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px}
+  .vcard{border:1px solid var(--line);border-radius:13px;padding:13px 15px;background:var(--card);
+    box-shadow:var(--shadow-sm);transition:.18s;position:relative;overflow:hidden}
+  .vcard::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--accent)}
+  .vcard:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+  .vcard .hw{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+  .vcard .en{font-weight:800;font-size:1.04rem;color:var(--ink)}
+  .vcard .ph{font-size:.8rem;color:var(--brand-2);font-weight:600}
+  .vcard .cn{margin-top:5px;font-weight:700;color:var(--brand);font-size:.98rem}
+  .vcard .nt{margin-top:5px;font-size:.84rem;color:var(--muted);line-height:1.6}
+  .vcard .ex{margin-top:8px;font-size:.88rem;border-top:1px dashed var(--line);padding-top:8px}
+  .vcard .ex .ecn{display:block;color:var(--muted);font-size:.82rem;margin-top:2px}
+  .callout{border:1px dashed var(--accent);background:var(--accent-soft);border-radius:12px;
+    padding:12px 15px;font-size:.9rem;color:#92400e;margin:12px 0;line-height:1.9}
+  body.dark .callout{color:#fcd34d}
+  details.more{margin-top:14px;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  details.more>summary{cursor:pointer;padding:11px 15px;font-weight:700;color:var(--brand);
+    background:var(--brand-soft);list-style:none;display:flex;justify-content:space-between;align-items:center}
+  details.more>summary::-webkit-details-marker{display:none}
+  details.more>summary::after{content:"▾";transition:.2s;font-size:.9em}
+  details.more[open]>summary::after{transform:rotate(180deg)}
+  details.more .body{padding:14px 16px;font-size:.95rem;line-height:1.9;color:var(--ink2)}
+  details.more .body p{margin:0 0 10px}
+  footer{text-align:center;color:var(--muted);font-size:.82rem;padding:26px 10px 10px;line-height:1.8}
+  kbd{background:var(--brand-soft);border-radius:5px;padding:1px 6px;font-size:.8em;font-weight:700;color:var(--brand)}
+  header.hero kbd{background:rgba(255,255,255,.22);color:#fff;border:1px solid rgba(255,255,255,.45);white-space:nowrap}
+  .jilei{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:22px}
+  .jilei .jh{background:linear-gradient(135deg,#7c3aed,#0d9488);color:#fff;padding:10px 16px;
+    font-weight:800;font-size:.95rem}
+  .jilei .jb{padding:14px 16px}
+  .jilei .qb{padding:10px 12px;border-radius:10px;margin:6px 0;background:var(--brand-soft)}
+  .jilei .qb .q{color:var(--muted);font-size:.9rem}
+  .jilei .qb .a{font-weight:700;color:var(--ok);font-size:1rem;margin-top:3px}
+  .jilei .qb .a u{text-decoration:none;border-bottom:2px solid var(--ok);padding-bottom:1px}
+  .jilei .qb .nt{font-size:.85rem;color:var(--muted);margin-top:5px}
+  .optbox{border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin:8px 0 14px;
+    background:var(--card);font-size:.95rem;line-height:2}
+  .optbox b{color:var(--brand)}
+  .rolecard{border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:0 0 12px;background:var(--card)}
+  .rolecard .who{font-weight:800;color:var(--brand);margin-bottom:4px}
+  @media (max-width:560px){
+    section.card{padding:18px 15px 22px}
+    .passage{padding:15px 14px;font-size:1rem;line-height:1.95}
+    header.hero{padding:30px 18px 26px;border-radius:0 0 22px 22px}
+    .vcards{grid-template-columns:1fr}
+    .sec-no{width:38px;height:38px;font-size:1rem}
+  }
+  @media print{
+    .toolbar,#pop{display:none!important}.spk{display:none!important}body{background:#fff}
+    section.card{box-shadow:none;break-inside:avoid}
+    .w{border-bottom:1px solid #d97706;background:none}
+    body:not(.showall) .gloss{display:inline;color:#0d9488}
+  }
+  .spk{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border:none;border-radius:50%;
+    background:var(--brand-soft);color:var(--brand);cursor:pointer;font-size:.95rem;line-height:1;transition:.15s;flex:0 0 auto}
+  .spk:hover{background:var(--brand);color:#fff;transform:scale(1.08)}
+  .spk:active{transform:scale(.94)}
+  .pw .spk{margin-left:auto;align-self:center}.hw .spk{margin-left:auto}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-in">
+    <span class="kicker">✦ 初中英语 · 话题阅读精讲</span>
+    <h1>9-5培优 · 精读精讲
+      <span class="sub">Unit 1 Here and Now · 第9周五 · 语法填空 / 阅读表达 / 阅读理解 A（时区） · 七年级上册</span>
+    </h1>
+    <div class="hero-meta">
+      <span class="chip">3 个板块</span>
+      <span class="chip">10 空 + 5 题 + 3 题</span>
+      <span class="chip">25 生词短语</span>
+      <span class="chip">含答案 · 逐题解析 · 积累小栈</span>
+    </div>
+    <p class="hero-note">
+      页面把每篇语篇中的<b>生词与生短语</b>用<span style="border-bottom:2px solid #fbbf24;background:linear-gradient(transparent 60%,rgba(254,243,199,.55) 60%)">黄线下划线</span>标出——<b>点击任意划线词</b>即可弹出释义、读音、用法与例句；也可用上方按钮 <kbd>显示全部释义</kbd> 一键对照阅读。<b>点击文中序号</b>可直观显示答案。每篇附<b>积累小栈</b>参考答案。
+    </p>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="toolbar">
+    <div class="navlinks">
+      <a href="#passGram">一 · 语法填空</a>
+      <a href="#passRead">二 · 阅读表达</a>
+      <a href="#passTime">三 · 阅读理解 A</a>
+      <a href="#vocab">生词汇总</a>
+    </div>
+    <span class="grow"></span>
+    <button class="tool-btn" id="btnAllWords" type="button">👁 显示全部释义</button>
+    <button class="tool-btn ghost" id="btnAllAns" type="button">✅ 显示全部答案</button>
+    <button class="tool-btn ghost" id="btnTheme" type="button">🌙 夜间</button>
+  </div>
+
+  <!-- ============ 一、语法填空 ============ -->
+
+  <section class="card" id="passGram">
+    <div class="sec-head">
+      <div class="sec-no">一</div>
+      <div><h2 class="sec-title">语法填空 · Peter 与 Sam 的铅笔盒 <small>阅读下面短文，在空白处填入一个适当的单词或括号内单词的正确形式。</small></h2></div>
+    </div>
+    <div class="sec-meta">
+      <span class="badge">主题：人与自我——优秀品行</span>
+      <span class="badge gray">语篇类型：记叙文</span>
+      <span class="badge gray">词数 167</span>
+      <span class="badge warm">难度 ★★★☆☆</span>
+      <span class="badge ok">10 空</span>
+    </div>
+
+    <article class="passage">
+      <p>Peter <span class="blank" data-n="1"><b>1</b><i>is looking</i></span> at his new <span class="w" data-k="sportsshoes">sports shoes</span> now. They are the third pair he gets <span class="w" data-k="term">this term</span>. The first pair is red and the <span class="blank" data-n="2"><b>2</b><i>second</i></span> pair is blue. Now he <span class="blank" data-n="3"><b>3</b><i>has</i></span> the black shoes. "Next time I want white ones," Peter thinks.</p>
+      <p>Peter's parents are busy. They <span class="blank" data-n="4"><b>4</b><i>don't have</i></span> much time to be with Peter. They feel sorry for that, <span class="blank" data-n="5"><b>5</b><i>but</i></span> they buy a lot of things he wants for him.</p>
+      <p>Peter sees his <span class="w" data-k="classmate">classmate</span> Sam's <span class="w" data-k="pencilbox">pencil box</span>. Sam's parents have good jobs. Why does Sam use <span class="blank" data-n="6"><b>6</b><i>an</i></span> old pencil box? Peter doesn't <span class="w" data-k="understand">understand</span>.</p>
+      <p>"Hey, Sam," Peter says. "Why not buy a new <span class="w" data-k="pencilbox">pencil box</span>?"</p>
+      <p>"This one is still nice," Sam says. "And I <span class="blank" data-n="7"><b>7</b><i>am saving</i></span> money."</p>
+      <p>"For what?" Peter asks.</p>
+      <p>"I want to <span class="w" data-k="savemoney">save 200 dollars</span> this year <span class="blank" data-n="8"><b>8</b><i>to help</i></span> some children in <span class="w" data-k="village">villages</span>," Sam says.</p>
+      <p>Peter is <span class="w" data-k="surprised">surprised</span>. Sam is doing a <span class="blank" data-n="9"><b>9</b><i>really</i></span> great thing. Then he starts thinking: Does he really need those new shoes, clothes and <span class="blank" data-n="10"><b>10</b><i>toys</i></span>?</p>
+    </article>
+
+    <details class="more">
+      <summary>📖 参考译文（点击展开）</summary>
+      <div class="body">
+        <p>彼得现在正看着他的新运动鞋。这是他这学期得到的第三双鞋。第一双是红色的，第二双是蓝色的。现在他穿着这双黑鞋。"下次我想要白色的。"彼得想。</p>
+        <p>彼得的父母很忙。他们没有太多时间陪彼得。他们对此感到抱歉，但是他们给他买很多他想要的东西。</p>
+        <p>彼得看到同学萨姆的铅笔盒。萨姆的父母有不错的工作。为什么萨姆用一个旧铅笔盒？彼得不理解。</p>
+        <p>"嘿，萨姆，"彼得说，"为什么不买个新铅笔盒？"</p>
+        <p>"这个还挺好，"萨姆说，"而且我正在存钱。"</p>
+        <p>"存钱做什么？"彼得问。</p>
+        <p>"今年我想攒 200 美元来帮助山村里的孩子，"萨姆说。</p>
+        <p>彼得很惊讶。萨姆在做一件真正了不起的事。然后他开始想：他真的需要那些新鞋、新衣服和玩具吗？</p>
+      </div>
+    </details>
+
+    <h3 class="ans-h">答案与详解（点击文中序号可显答案）</h3>
+    <div class="ans-list" id="gAns"></div>
+
+    <div class="jilei">
+      <div class="jh">📝 快乐小练（积累小栈 · 语法填空）</div>
+      <div class="jb" id="jileiB"></div>
+    </div>
+  </section>
+
+  <!-- ============ 二、阅读表达 ============ -->
+
+  <section class="card" id="passRead">
+    <div class="sec-head">
+      <div class="sec-no">二</div>
+      <div><h2 class="sec-title">阅读表达 · 李汝秀与彝族服饰 <small>阅读短文，根据短文内容回答下列问题。</small></h2></div>
+    </div>
+    <div class="sec-meta">
+      <span class="badge">主题：人与社会——文化遗产</span>
+      <span class="badge gray">语篇类型：记叙文</span>
+      <span class="badge gray">词数 183</span>
+      <span class="badge warm">难度 ★★★☆☆</span>
+      <span class="badge ok">5 题</span>
+    </div>
+
+    <article class="passage">
+      <p>An old woman is wearing a <span class="w" data-k="cockscomb">cockscomb-shaped</span> hat and black, red, yellow and green clothes and walking to people. She is showing Yi people's clothes to them.</p>
+      <p>The woman is Li Ruxiu. She is 63 years old. She lives in a small village in Yunnan. Yunnan is home to about 5,000,000 Yi people. Yi people are good at <span class="w" data-k="embroidery">embroidery</span> work. Like many Yi people, Li is good at making clothes. She learnt to do embroidery work <span class="w" data-k="atageof">at the age of</span> eight and could make clothes at 12.</p>
+      <p>Li also likes <span class="w" data-k="collect">collecting</span> Yi people's clothes. In Li's house, there are <span class="w" data-k="over">over</span> 7,000 pieces of Yi people's clothes. The clothes are very beautiful. There are nice <span class="w" data-k="pattern">patterns</span> of flowers, birds, tigers and cats on them. Li gets some of the clothes from other people <span class="w" data-k="forfree">for free</span>, and she buys some from the shops. She <span class="w" data-k="spend">spends</span> lots of money buying them, but she is <span class="w" data-k="behappytp">happy to do that</span>. She loves Yi people's clothes and ______.</p>
+    </article>
+
+    <details class="more">
+      <summary>📖 参考译文（点击展开）</summary>
+      <div class="body">
+        <p>一位老奶奶戴着鸡冠状的帽子，穿着黑、红、黄、绿相间的衣服，正向人们走去。她正向人们展示彝族的服饰。</p>
+        <p>这位老奶奶叫李汝秀。她 63 岁了。她住在云南的一个小村庄里。云南是大约 500 万彝族人的家乡。彝族人擅长刺绣。和许多彝族人一样，李擅长做衣服。她八岁学会刺绣，十二岁就能做衣服了。</p>
+        <p>李也喜欢收集彝族的服饰。在李的家里，有超过 7000 件彝族服饰。这些衣服很漂亮。上面有漂亮的花、鸟、老虎和猫的图案。李从别人那里免费得到一些衣服，也从商店买一些。她花很多钱买它们，但她很乐意这么做。她热爱彝族的服饰，而且______。</p>
+      </div>
+    </details>
+
+    <h3 class="ans-h">题目与答案</h3>
+    <div class="ans-list" id="rAns"></div>
+
+    <div class="jilei">
+      <div class="jh">🌸 素养小花（积累小栈 · 阅读表达）</div>
+      <div class="jb" id="jileiC"></div>
+    </div>
+  </section>
+
+  <!-- ============ 三、阅读理解 A ============ -->
+
+  <section class="card" id="passTime">
+    <div class="sec-head">
+      <div class="sec-no">三</div>
+      <div><h2 class="sec-title">阅读理解 A · 时区（Time Zones） <small>阅读下面短文，从每题 A、B、C 三个选项中选出最佳答案。</small></h2></div>
+    </div>
+    <div class="sec-meta">
+      <span class="badge">主题：人与自然——自然科学</span>
+      <span class="badge gray">语篇类型：说明文</span>
+      <span class="badge gray">词数 263</span>
+      <span class="badge warm">难度 ★★★★☆</span>
+      <span class="badge ok">3 题</span>
+    </div>
+
+    <article class="passage">
+      <p>①At 4:00 p.m., you are watching a football game <span class="w" data-k="live">live</span> from Europe. At the same time, your friend in New York is sleeping—it's 4:00 a.m. there! Why is the time so different? Why do people in other places start their day when we are already in the middle of ours?</p>
+      <p>②That's because of <span class="w" data-k="timezone">time zones</span>. Even though we live on the same <span class="w" data-k="planet">planet</span>, people in different places are doing different things at the same time.</p>
+      <p>③How do <span class="w" data-k="timezone">time zones</span> work? The earth is like a big <span class="w" data-k="spinning">spinning</span> ball. It turns from west to east. That's why the sun is coming up in the east first. The world is <span class="w" data-k="divideinto">divided into</span> 24 <span class="w" data-k="timezone">time zones</span>. Every time zone is one hour different from the next.</p>
+      <p>④Let's look at some examples. In China, people in the East 8 <span class="w" data-k="timezone">time zone</span> are getting up early and going to school or work. In London, people are enjoying afternoon tea at around 4 p.m. In New York, many people have just finished lunch at that time.</p>
+      <p>⑤<span class="w" data-k="timezone">Time zones</span> also bring some problems to our modern life. For example, a video meeting may start at 10 a.m. in Beijing, but it's midnight in New York. These <span class="w" data-k="timedifference">time differences</span> make it important to plan carefully and <span class="w" data-k="respect">respect</span> others' time.</p>
+      <p>⑥<span class="w" data-k="timezone">Time zones</span> don't just change the clock—they change our daily life. Time makes us different—but it also makes the world <span class="w" data-k="colorful">colorful</span> and fun.</p>
+    </article>
+
+    <details class="more">
+      <summary>📖 参考译文（点击展开）</summary>
+      <div class="body">
+        <p>①下午 4 点，你正在观看一场来自欧洲的足球赛现场直播。与此同时，你在纽约的朋友正在睡觉——那里是凌晨 4 点！为什么时间差别这么大？为什么别处的人开始一天的生活时，我们已经过到一半了？</p>
+        <p>②那是因为时区。尽管我们生活在同一个星球上，不同地方的人在同一时刻做的事情却各不相同。</p>
+        <p>③时区是怎么运作的？地球就像一个巨大的旋转球。它自西向东转。那就是为什么太阳先从东方升起。世界被分成 24 个时区。每个时区比相邻的时区早或晚一小时。</p>
+        <p>④我们来看一些例子。在中国，处于东八区的人们早早起床去上学或上班。在伦敦，人们大约下午 4 点正在享用下午茶。在纽约，那时许多人刚吃完午饭。</p>
+        <p>⑤时区也给我们的现代生活带来一些问题。比如，一场视频会议可能在北京上午 10 点开始，但在纽约却是午夜。这些时差让仔细规划、尊重他人的时间变得很重要。</p>
+        <p>⑥时区改变的不仅是时钟——它们改变我们的日常生活。时间让我们彼此不同——但它也让这个世界多姿多彩、充满乐趣。</p>
+      </div>
+    </details>
+
+    <h3 class="ans-h">题目与选项</h3>
+    <div class="ans-list" id="qA"></div>
+
+    <h3 class="ans-h">答案与详解</h3>
+    <div class="ans-list" id="ansA"></div>
+
+    <div class="jilei">
+      <div class="jh">⏱ 时区小站（积累小栈 · 阅读理解 A）</div>
+      <div class="jb" id="jileiA"></div>
+    </div>
+  </section>
+
+  <!-- ============ 生词汇总 ============ -->
+
+  <section class="card" id="vocab">
+    <div class="sec-head">
+      <div class="sec-no">词</div>
+      <div><h2 class="sec-title">生词与短语汇总 <small>按七年级英语词汇水平整理 · 每条含音标、释义、用法与例句 · 点击 🔊 可发音。</small></h2></div>
+    </div>
+    <div id="vocabBox"></div>
+  </section>
+
+  <footer>
+    🐾 本页由扫描件提取整理而成，生词、答案与解析仅供学习参考。如发现转录偏差，请以教材原页为准。<br>
+    交互逻辑：点击黄线生词看释义 · 点击文中序号看答案 · 顶部按钮切换「显示全部释义 / 显示全部答案 / 夜间模式」· 打印自动适配。
+  </footer>
+</div>
+
+<div id="pop"></div>
+
+<script>
+const VOCAB = [
+  /* ===== B 组：语法填空 ===== */
+  {k:"sportsshoes",g:"B",en:"sports shoes",ph:"/spɔːts ʃuːz/",pos:"n.",cn:"运动鞋",note:"a pair of sports shoes 一双运动鞋；shoes 常用复数。",ex:"Peter looks at his new sports shoes.",exCn:"彼得看着他的新运动鞋。"},
+  {k:"term",g:"B",en:"term",ph:"/tɜːm/",pos:"n.",cn:"学期；术语",note:"this term 这学期；next term 下学期。",ex:"They are the third pair he gets this term.",exCn:"这是他这学期得到的第三双。"},
+  {k:"classmate",g:"B",en:"classmate",ph:"/ˈklɑːsmeɪt/",pos:"n.",cn:"同班同学",note:"class（班级）+ mate（伙伴）。",ex:"Peter sees his classmate Sam's pencil box.",exCn:"彼得看到同学萨姆的铅笔盒。"},
+  {k:"pencilbox",g:"B",en:"pencil box",ph:"/ˈpensl bɒks/",pos:"n.",cn:"铅笔盒",note:"= pencil case；a new pencil box 一个新铅笔盒。",ex:"Why not buy a new pencil box?",exCn:"为什么不买个新铅笔盒？"},
+  {k:"understand",g:"B",en:"understand",ph:"/ˌʌndəˈstænd/",pos:"v.",cn:"理解；懂",note:"过去式 / 过去分词 understood。",ex:"Peter doesn't understand.",exCn:"彼得不理解。"},
+  {k:"savemoney",g:"B",en:"save (money)",ph:"/seɪv/",pos:"v.",cn:"节省；储蓄；存钱",note:"save money 存钱 / 省钱；save 还有「拯救」之意，如 save sb.。",ex:"And I am saving money.",exCn:"而且我正在存钱。"},
+  {k:"surprised",g:"B",en:"surprised",ph:"/səˈpraɪzd/",pos:"adj.",cn:"惊讶的；吃惊的",note:"be surprised 感到惊讶；surprising 令人惊讶的（修饰事物）。",ex:"Peter is surprised.",exCn:"彼得很惊讶。"},
+  {k:"village",g:"B",en:"village",ph:"/ˈvɪlɪdʒ/",pos:"n.",cn:"村庄；乡村",note:"in villages 在村庄里；villager 村民。",ex:"help some children in villages",exCn:"帮助山村里的孩子"},
+
+  /* ===== C 组：阅读表达 ===== */
+  {k:"cockscomb",g:"C",en:"cockscomb-shaped",ph:"/ˈkɒkskəʊm ʃeɪpt/",pos:"adj.",cn:"鸡冠状的",note:"cockscomb（鸡冠）+ shaped（形状的）；文中作定语修饰 hat。",ex:"a cockscomb-shaped hat",exCn:"一顶鸡冠状的帽子"},
+  {k:"embroidery",g:"C",en:"embroidery",ph:"/ɪmˈbrɔɪdəri/",pos:"n.",cn:"刺绣；绣品",note:"embroider（v. 刺绣）；be good at embroidery work 擅长刺绣。",ex:"Yi people are good at embroidery work.",exCn:"彝族人擅长刺绣。"},
+  {k:"atageof",g:"C",en:"at the age of",ph:"/æt ði eɪdʒ ɒv/",pos:"短语",cn:"在……岁时",note:"后接数字，如 at the age of eight（在八岁时）。",ex:"She learnt to do it at the age of eight.",exCn:"她八岁时学会做它。"},
+  {k:"collect",g:"C",en:"collect",ph:"/kəˈlekt/",pos:"v.",cn:"收集；采集",note:"collector 收藏者；collection 收藏品。",ex:"Li also likes collecting Yi people's clothes.",exCn:"李也喜欢收集彝族服饰。"},
+  {k:"over",g:"C",en:"over",ph:"/ˈəʊvə(r)/",pos:"prep./adv.",cn:"超过；在……上方",note:"over 7,000 = more than 7,000（超过七千）。",ex:"There are over 7,000 pieces.",exCn:"有超过 7000 件。"},
+  {k:"pattern",g:"C",en:"pattern",ph:"/ˈpætn/",pos:"n.",cn:"图案；花样",note:"patterns of flowers and birds 花鸟图案。",ex:"There are nice patterns on them.",exCn:"上面有漂亮的图案。"},
+  {k:"forfree",g:"C",en:"for free",ph:"",pos:"短语",cn:"免费地",note:"= free of charge；get sth. for free 免费得到某物。",ex:"Li gets some clothes from other people for free.",exCn:"李从别人那里免费得到一些衣服。"},
+  {k:"spend",g:"C",en:"spend",ph:"/spend/",pos:"v.",cn:"花费（时间 / 金钱）",note:"spend + 钱/时间 + on sth. 或 (in) doing；过去式 spent。",ex:"She spends lots of money buying them.",exCn:"她花很多钱买它们。"},
+  {k:"behappytp",g:"C",en:"be happy to",ph:"",pos:"短语",cn:"乐意（做）……；很高兴（做）……",note:"后接动词原形；be happy to do sth.。",ex:"She is happy to do that.",exCn:"她很乐意这么做。"},
+
+  /* ===== A 组：阅读理解 A（时区） ===== */
+  {k:"live",g:"A",en:"live",ph:"/laɪv/",pos:"adv.",cn:"现场直播地；实时地",note:"a live football game 一场现场直播的足球赛；注意 live /laɪv/（直播的）与 live /lɪv/（v. 居住）同形异音。",ex:"watching a football game live",exCn:"观看一场现场直播的足球赛"},
+  {k:"timezone",g:"A",en:"time zone",ph:"/taɪm zəʊn/",pos:"n.",cn:"时区",note:"the world is divided into 24 time zones 全球分为 24 个时区。",ex:"That's because of time zones.",exCn:"那是因为时区。"},
+  {k:"planet",g:"A",en:"planet",ph:"/ˈplænɪt/",pos:"n.",cn:"行星",note:"the same planet 同一个星球（指地球）。",ex:"we live on the same planet",exCn:"我们生活在同一个星球上"},
+  {k:"spinning",g:"A",en:"spinning",ph:"/ˈspɪnɪŋ/",pos:"adj.",cn:"旋转的",note:"spin（v. 旋转）的现在分词；a spinning ball 旋转的球。",ex:"The earth is like a big spinning ball.",exCn:"地球就像一个巨大的旋转球。"},
+  {k:"divideinto",g:"A",en:"divide into",ph:"/dɪˈvaɪd ˈɪntuː/",pos:"短语",cn:"被分成……",note:"被动 be divided into；主动 divide A into B 把 A 分成 B。",ex:"The world is divided into 24 time zones.",exCn:"世界被分成 24 个时区。"},
+  {k:"timedifference",g:"A",en:"time difference",ph:"",pos:"n.",cn:"时差",note:"make it important to plan carefully 使仔细规划变得重要。",ex:"These time differences make it important to plan.",exCn:"这些时差使仔细规划变得重要。"},
+  {k:"respect",g:"A",en:"respect",ph:"/rɪˈspekt/",pos:"v./n.",cn:"尊重；重视",note:"respect others' time 尊重别人的时间。",ex:"respect others' time",exCn:"尊重他人的时间"},
+  {k:"colorful",g:"A",en:"colorful",ph:"/ˈkʌləfl/",pos:"adj.",cn:"多彩的；生动的",note:"color（n. 颜色）+ ful；make the world colorful 让世界多姿多彩。",ex:"it also makes the world colorful and fun",exCn:"它也让世界多姿多彩、充满乐趣"}
+];
+const V={}; VOCAB.forEach(o=>V[o.k]=o);
+const GROUP_NAME={
+  A:"阅读理解 A · 时区（Time Zones）",
+  B:"语法填空 · Peter 与 Sam 的铅笔盒",
+  C:"阅读表达 · 李汝秀与彝族服饰"
+};
+
+/* ===== 阅读理解 A（选择题） ===== */
+const Q_A=[
+  {n:1,q:"How does the writer start Paragraph ①?",opts:["By giving an example.","By giving some numbers.","By telling a story."],ans:0},
+  {n:2,q:"Why does the writer talk about a video meeting?",opts:["To show how interesting meetings are.","To show time zones can be a problem.","To tell us how to take part in a meeting."],ans:1},
+  {n:3,q:"Which paragraph does the following picture come from? (图：地球，西 ← 东，太阳)",opts:["Paragraph ②","Paragraph ③","Paragraph ④"],ans:1}
+];
+
+/* ===== 语法填空 答案与详解 ===== */
+const G_ANS=[
+  {n:1,key:"is looking",tag:"语法填空",sent:"Peter ___(look) at his new sports shoes now.",ana:["now 是现在进行时的标志词。","主语 Peter 是第三人称单数 → be 动词用 is，look → looking。","答案：is looking。"]},
+  {n:2,key:"second",tag:"语法填空",sent:"The first pair is red and the ___(two) pair is blue.",ana:["定冠词 the 后接序数词，表示「第几」。","two 的序数词是 second（第二）。","答案：second。"]},
+  {n:3,key:"has",tag:"语法填空",sent:"Now he ___(have) the black shoes.",ana:["此处描述彼得「现在拥有」这双黑鞋的状态，用一般现在时。","主语 he 是第三人称单数，have → has。","答案：has。"]},
+  {n:4,key:"don't have",tag:"语法填空",sent:"They ___(not, have) much time to be with Peter.",ana:["一般现在时否定；主语 they 复数，助动词用 do + not。","have 还原为原形。","答案：don't have。"]},
+  {n:5,key:"but",tag:"语法填空",sent:"They feel sorry for that, ___ they buy a lot of things for him.",ana:["前后为转折关系：父母觉得愧疚，「但是」还是给他买很多东西。","填并列连词 but（但是）。","答案：but。"]},
+  {n:6,key:"an",tag:"语法填空",sent:"Why does Sam use ___ old pencil box?",ana:["单数可数名词 pencil box 前需用不定冠词。","old 以元音音素 /əʊ/ 开头，用 an。","答案：an。"]},
+  {n:7,key:"am saving",tag:"语法填空",sent:"And I ___(save) money.",ana:["语境：萨姆现在正为帮助山村孩子攒钱，强调当前正在进行的动作，用现在进行时。","主语 I → am，save → saving。","答案：am saving（若理解为一般性事实，填 save 也可，但进行时更贴切语境）。"]},
+  {n:8,key:"to help",tag:"语法填空",sent:"I want to save 200 dollars this year ___(help) some children.",ana:["此处表示「攒钱」的目的——「为了帮助」山村孩子。","不定式 to do 作目的状语。","答案：to help。"]},
+  {n:9,key:"really",tag:"语法填空",sent:"Sam is doing a ___(real) great thing.",ana:["修饰形容词 great 需用副词。","real（adj. 真实的）的副词形式是 really（真正地）。","答案：really。"]},
+  {n:10,key:"toys",tag:"语法填空",sent:"Does he really need those new shoes, clothes and ___(toy)?",ana:["and 连接并列名词 shoes、clothes、(toy)，三者同为复数概念。","toy 的复数是 toys。","答案：toys。"]}
+];
+
+/* ===== 阅读表达 答案与详解（开放式） ===== */
+const R_ANS=[
+  {n:1,key:"She is showing Yi people's clothes to people.",tag:"回答问题",sent:"What is Li doing in beautiful clothes?",ana:["定位第一段末句：She is showing Yi people's clothes to them.","她穿着漂亮衣服，正向人们展示彝族的服饰。","答：She is showing Yi people's clothes to people / to them."]},
+  {n:2,key:"She lives in a small village in Yunnan.",tag:"回答问题",sent:"Where does Li live?",ana:["定位第二段：She lives in a small village in Yunnan.","答：She lives in a small village in Yunnan.（她住在云南的一个小村庄里。）"]},
+  {n:3,key:"She is good at making clothes.",tag:"回答问题",sent:"What's Li good at?",ana:["定位第二段：Like many Yi people, Li is good at making clothes.","也可答 She is good at embroidery work（擅长刺绣）。","答：She is good at making clothes."]},
+  {n:4,key:"Over 7,000 pieces.",tag:"回答问题",sent:"How many pieces of Yi people's clothes are there in Li's house?",ana:["定位第三段：there are over 7,000 pieces of Yi people's clothes.","over = more than（超过）。","答：Over 7,000 pieces. / There are over 7,000 pieces."]},
+  {n:5,key:"（开放题）She loves... and she will keep collecting them.",tag:"句子补全题",sent:"She loves Yi people's clothes and ______.（根据文章内容续写）",ana:["前文讲她收集（collect）、花钱买、乐于为之，且「爱」彝族服饰。","续写应顺着「爱 → 行动」的逻辑，合理即可。","示例：and she will keep collecting them.（她会继续收集它们）/ and she wants to share them with more people.（她想让更多人看到）"]}
+];
+
+/* ===== 积累小栈 ===== */
+const JILEI_A=[
+  {q:"短语互译 1：time zones",a:"时区",note:"the world is divided into 24 time zones."},
+  {q:"短语互译 2：live（副词）",a:"现场直播地",note:"a football game live 一场现场直播的足球赛。"},
+  {q:"完成句子 3：地球被分成 24 个时区。The world ______ 24 time zones.",a:"is divided into",note:"divide into 把……分成；此处用被动 be divided into。"}
+];
+const JILEI_B=[
+  {q:"短语互译 1：运动鞋",a:"sports shoes",note:"a pair of sports shoes 一双运动鞋。"},
+  {q:"短语互译 2：a lot of",a:"许多；大量",note:"= lots of，后接可数或不可数名词。"},
+  {q:"短语互译 3：铅笔盒",a:"pencil box / pencil case",note:""},
+  {q:"短语互译 4：save money",a:"存钱；省钱",note:"save 还有「拯救」之意，如 save sb.。"},
+  {q:"完成句子 5：This ______ of glasses ______ nice, but expensive.（这副眼镜很漂亮，但是很贵。）",a:"pair; is",note:"this pair of glasses 作主语时，谓语与 pair 一致，用单数 is。"},
+  {q:"完成句子 6：______ ______ out for a walk after supper?（晚饭后为什么不出去散步呢？）",a:"Why not",note:"Why not + 动词原形，表示建议；= Why don't you...?"}
+];
+const JILEI_C=[
+  {q:"短语互译 1：make clothes",a:"做衣服",note:""},
+  {q:"短语互译 2：在……岁时",a:"at the age of",note:"后接数字，如 at the age of eight（在八岁时）。"},
+  {q:"完成句子 3：China ______ bridges and railways.（中国擅长修建桥梁和铁路。）",a:"is good at building",note:"be good at + 名词 / 动名词；build 用 building。"},
+  {q:"完成句子 4：Mike only has a little money, so he can only afford ______.（迈克只有一点钱，所以他只能买得起一块面包。）",a:"a piece of bread",note:"a piece of bread 一块面包；bread 不可数。"}
+];
+
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");}
+
+function renderQ(box, arr){
+  arr.forEach(o=>{
+    const d=document.createElement("div"); d.className="ans-item";
+    const letter=(arr.length>5)?"ABCDEF":"ABC";
+    const opts=o.opts.map((t,i)=>`<div${i===o.ans?' class="picked"':''}>${esc(t)}</div>`).join("");
+    d.innerHTML = `<div class="top"><span class="num">${o.n}.</span><span class="kt">${arr.length>5?'第 '+o.n+' 空':'第 '+o.n+' 题'}</span></div>`+
+      `<div class="qstem">${esc(o.q)}</div><div class="qopts">${opts}</div>`;
+    box.appendChild(d);
+  });
+}
+renderQ(document.getElementById("qA"), Q_A);
+
+function renderAns(box, arr){
+  arr.forEach(o=>{
+    const d=document.createElement("div"); d.className="ans-item";
+    d.innerHTML = `<div class="top"><span class="num">${o.n}.</span><span class="key">${esc(o.key)}</span><span class="kt">${esc(o.tag)}</span></div>`+
+      `<div class="sent">📌 ${esc(o.sent)}</div>`+
+      `<ul>${o.ana.map(a=>`<li>${esc(a)}</li>`).join("")}</ul>`;
+    box.appendChild(d);
+  });
+}
+renderAns(document.getElementById("gAns"), G_ANS);
+renderAns(document.getElementById("rAns"), R_ANS);
+renderAns(document.getElementById("ansA"), [
+  {n:1,key:"A",tag:"写作手法题",sent:"How does the writer start Paragraph ①?",ana:["第一段首句给出一个具体场景：下午 4 点你在看欧洲球赛直播，而纽约的朋友在睡觉（当地时间凌晨 4 点）。","这是用「举例子」的方式引出话题，对应 A（By giving an example）。","B 给数字、C 讲故事均不符合首段写法。"]},
+  {n:2,key:"B",tag:"写作意图题",sent:"Why does the writer talk about a video meeting?",ana:["第五段主题句：时区给现代生活「带来一些问题（bring some problems）」。","随后用「视频会议」举例：北京上午 10 点开会，纽约却是午夜——说明时区会造成不便。","因此举这个例子是为证明「时区会带来问题」，选 B。A、C 均为干扰。"]},
+  {n:3,key:"B",tag:"图文匹配题",sent:"Which paragraph does the picture (earth, west→east, the sun) come from?",ana:["图片内容是「地球自西向东旋转、太阳从东边升起」，对应第三段对时区原理的解释。","第三段原文：The earth is like a big spinning ball. It turns from west to east. That's why the sun is coming up in the east first.","故选 B（Paragraph ③）。"]}
+]);
+
+function renderJilei(box, arr){
+  arr.forEach(o=>{
+    const d=document.createElement("div"); d.className="qb";
+    d.innerHTML = `<div class="q">${esc(o.q)}</div><div class="a">${o.a}</div>`+
+      (o.note?`<div class="nt">${esc(o.note)}</div>`:"");
+    box.appendChild(d);
+  });
+}
+renderJilei(document.getElementById("jileiA"), JILEI_A);
+renderJilei(document.getElementById("jileiB"), JILEI_B);
+renderJilei(document.getElementById("jileiC"), JILEI_C);
+
+/* ================= 生词汇总（按语篇分组） ================= */
+const vocabBox = document.getElementById("vocabBox");
+["B","C","A"].forEach(g=>{
+  const wrap=document.createElement("div"); wrap.className="vgroup";
+  const h=document.createElement("h3"); h.innerHTML=`<span class="dot"></span>${GROUP_NAME[g]}`;
+  wrap.appendChild(h);
+  const cards=document.createElement("div"); cards.className="vcards";
+  VOCAB.filter(v=>v.g===g).forEach(v=>{
+    const c=document.createElement("div"); c.className="vcard";
+    c.innerHTML = `<div class="hw"><span class="en">${esc(v.en)}</span>`+
+      (v.ph?`<span class="ph">${esc(v.ph)}</span>`:"")+
+      `<span class="pos">${esc(v.pos)}</span><button class="spk" type="button" data-word="${esc(v.en)}" title="点击发音" aria-label="发音">🔊</button></div>`+
+      `<div class="cn">${esc(v.cn)}</div>`+
+      `<div class="nt">${esc(v.note)}</div>`+
+      `<div class="ex">e.g. ${esc(v.ex)}<span class="ecn">${esc(v.exCn)}</span></div>`;
+    cards.appendChild(c);
+  });
+  wrap.appendChild(cards);
+  vocabBox.appendChild(wrap);
+});
+
+/* ================= 交互：划线词弹出 / 内联对照 ================= */
+const words = [...document.querySelectorAll(".w")];
+words.forEach(w=>{
+  const d=V[w.dataset.k]; if(!d) return;
+  const g=document.createElement("span"); g.className="gloss"; g.textContent="（"+d.cn+"）";
+  w.after(g);
+});
+
+const pop=document.getElementById("pop");
+let cur=null;
+function closePop(){ pop.classList.remove("show"); if(cur) cur.classList.remove("active"); cur=null; }
+function openPop(el){
+  const d=V[el.dataset.k]; if(!d) return;
+  if(cur===el){ closePop(); return; }
+  closePop();
+  cur=el; el.classList.add("active");
+  pop.innerHTML =
+    `<div class="pw">${esc(d.en)}${d.ph?`<span class="pph">${esc(d.ph)}</span>`:""}<span class="pos">${esc(d.pos)}</span><button class="spk" type="button" data-word="${esc(d.en)}" title="点击发音" aria-label="发音">🔊</button></div>`+
+    `<div class="pcn">${esc(d.cn)}</div>`+
+    `<div class="pnote">${esc(d.note)}</div>`+
+    `<div class="pex"><b>例：</b> ${esc(d.ex)}<span class="cn">${esc(d.exCn)}</span></div>`;
+  pop.classList.add("show");
+  const r=el.getBoundingClientRect();
+  const pw=pop.offsetWidth, ph=pop.offsetHeight;
+  let left=r.left + r.width/2 - pw/2 + window.scrollX;
+  left=Math.max(12+window.scrollX, Math.min(left, window.scrollX + document.documentElement.clientWidth - pw - 12));
+  let top=r.top + window.scrollY - ph - 12;
+  if(top < window.scrollY + 8){ top = r.bottom + window.scrollY + 12; }
+  pop.style.left=left+"px"; pop.style.top=top+"px";
+}
+words.forEach(w=>w.addEventListener("click",e=>{e.stopPropagation();openPop(w);}));
+document.addEventListener("click",e=>{ if(!pop.contains(e.target)) closePop(); });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape") closePop(); });
+window.addEventListener("scroll",closePop,{passive:true});
+window.addEventListener("resize",closePop);
+
+document.querySelectorAll(".blank").forEach(b=>{
+  b.addEventListener("click",e=>{e.stopPropagation(); b.classList.toggle("open");});
+});
+
+const btnAllWords=document.getElementById("btnAllWords");
+btnAllWords.addEventListener("click",()=>{
+  const on=document.body.classList.toggle("showall");
+  btnAllWords.classList.toggle("on",on);
+  btnAllWords.textContent = on ? "🙈 隐藏全部释义" : "👁 显示全部释义";
+  if(on) closePop();
+});
+const btnAllAns=document.getElementById("btnAllAns");
+btnAllAns.addEventListener("click",()=>{
+  const on=document.body.classList.toggle("showans");
+  btnAllAns.classList.toggle("on",on);
+  btnAllAns.textContent = on ? "🔒 隐藏全部答案" : "✅ 显示全部答案";
+});
+const btnTheme=document.getElementById("btnTheme");
+btnTheme.addEventListener("click",()=>{
+  const on=document.body.classList.toggle("dark");
+  btnTheme.textContent = on ? "☀️ 日间" : "🌙 夜间";
+});
+
+function speak(text){
+  if(!('speechSynthesis' in window)){
+    alert('当前浏览器不支持语音朗读，请用 Chrome / Edge / Safari 打开本页。');
+    return;
+  }
+  const u=new SpeechSynthesisUtterance(text);
+  u.lang='en-US'; u.rate=0.92; u.pitch=1;
+  window.speechSynthesis.cancel();
+  window.speechSynthesis.speak(u);
+}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('.spk');
+  if(b){ e.stopPropagation(); speak(b.dataset.word); }
+});
+</script>
+</body>
+</html>
