@@ -33,8 +33,7 @@ HTML 学习资料，按学科分类。
 - [中考现代文阅读思维导图](/chinese/modern-reading-mindmap.html)
 - [语文期末分析报告](/chinese/chinese-final-report.html)、[详细版](/chinese/chinese-final-report-detailed.html)
 - [暑假40天规范字提升计划](/chinese/plan_qh_v2.html)
-- [Grade 8 Midterm Analysis](/chinese/grade-8-midterm-analysis.html)
-- [Grade 8 Midterm Paper Analysis](/chinese/grade-8-midterm-paper-analysis.html)
+- [24-25年初二语文期中试卷](/chinese/grade-8-midterm-analysis.html)  [v2](/chinese/grade-8-midterm-paper-analysis.html)
 
 ## 历史、道法、 地理
 
