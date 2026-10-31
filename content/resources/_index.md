@@ -19,7 +19,7 @@ HTML 学习资料，按学科分类。
 ## 语文
 
 - [中考语文基础大过关](/chinese/middle-school-chinese-foundations.html)
-- [语文复习资料归档](/chinese/chinese-review-archive.html)
+- [语文基础知识题](/chinese/chinese-review-archive.html)
 - [走进文言文总目录（支持跨册检索）](/chinese/classical-chinese-index.html)
 - [走进文言文：六七年级](/chinese/classical-chinese-grades-6-7.html)、[八年级](/chinese/classical-chinese-grade-8.html)、[九年级](/chinese/classical-chinese-grade-9.html)
 - [第七周语文培优](/chinese/w7paper.html)
