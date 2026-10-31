@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2024—2025学年度第一学期期中质量检测 · 初二语文 · 全卷解析</title>
+<style>
+  :root{
+    --bg:#f4f1eb;
+    --paper:#fbfaf7;
+    --ink:#2c2a26;
+    --muted:#6f6a61;
+    --line:#d8d2c6;
+    --accent:#8a5a3b;
+    --accent-soft:#f0e6dc;
+    --green:#2f6b4f;
+    --green-soft:#e8f1ec;
+    --blue:#315d7a;
+    --blue-soft:#e8eef3;
+    --amber:#8a6d2f;
+    --amber-soft:#f7f0dd;
+    --radius:10px;
+    --shadow:0 2px 10px rgba(40,30,20,.06);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:"Songti SC","Noto Serif CJK SC","Source Han Serif SC",Georgia,"Times New Roman",serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.8;
+    font-size:16px;
+  }
+  /* ===== 顶栏 ===== */
+  .topbar{
+    position:sticky;top:0;z-index:50;
+    background:rgba(244,241,235,.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+    padding:10px 18px;
+    display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  }
+  .topbar .brand{font-weight:700;letter-spacing:.04em;color:var(--accent);font-size:15px;white-space:nowrap;}
+  .topbar nav{display:flex;gap:4px;flex-wrap:wrap;font-size:13px;}
+  .topbar nav a{
+    color:var(--muted);text-decoration:none;padding:3px 9px;border-radius:999px;
+    transition:.2s;white-space:nowrap;
+  }
+  .topbar nav a:hover{background:var(--accent-soft);color:var(--accent);}
+  .topbar .spacer{flex:1;}
+  .toggle-all{
+    font-size:13px;padding:5px 12px;border-radius:999px;border:1px solid var(--line);
+    background:var(--paper);color:var(--muted);cursor:pointer;font-family:inherit;
+  }
+  .toggle-all:hover{border-color:var(--accent);color:var(--accent);}
+
+  /* ===== 版面 ===== */
+  .wrap{max-width:1080px;margin:0 auto;padding:28px 18px 80px;}
+  header.paper-head{
+    text-align:center;margin-bottom:26px;padding:26px 16px 22px;
+    background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);
+  }
+  header.paper-head .school{font-size:14px;color:var(--muted);letter-spacing:.16em;}
+  header.paper-head h1{font-size:clamp(19px,3.4vw,26px);margin:10px 0 6px;letter-spacing:.05em;}
+  header.paper-head .meta{font-size:13px;color:var(--muted);}
+  header.paper-head .notice{margin-top:12px;font-size:12.5px;color:var(--muted);border-top:1px dashed var(--line);padding-top:10px;}
+
+  /* ===== 大题 ===== */
+  .section{margin-top:34px;scroll-margin-top:64px;}
+  .section > h2{
+    font-size:18px;margin:0 0 16px;padding-bottom:8px;
+    border-bottom:2px solid var(--ink);letter-spacing:.06em;
+    display:flex;align-items:baseline;gap:10px;
+  }
+  .section > h2 .pts{font-size:12.5px;font-weight:400;color:var(--muted);letter-spacing:0;}
+
+  /* ===== 题目块 ===== */
+  .q{
+    background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+    padding:18px 20px;margin:14px 0;box-shadow:var(--shadow);
+  }
+  .q .stem{font-size:15.5px;}
+  .q .stem .qn{font-weight:700;color:var(--accent);margin-right:4px;}
+  .choices{margin:10px 0 4px;padding-left:4px;}
+  .choices .ch{display:block;padding:4px 0;color:var(--ink);}
+  .choices .ch .lbl{font-weight:700;color:var(--accent);margin-right:6px;}
+
+  /* 阅读材料 */
+  .material{
+    background:#f7f4ee;border:1px solid var(--line);border-radius:var(--radius);
+    padding:16px 18px;margin:12px 0;font-size:14.5px;color:#3a3732;
+  }
+  .material .mat-title{font-weight:700;margin-bottom:6px;font-size:15px;}
+  .material p{margin:.5em 0;text-indent:2em;}
+  .material .note{font-size:12.8px;color:var(--muted);margin-top:8px;text-indent:0;}
+  .poem{text-align:center;font-size:16px;line-height:2.1;margin:10px 0;}
+  .poem p{text-indent:0;}
+
+  /* 表格 */
+  .tbl-wrap{overflow-x:auto;margin:12px 0;}
+  table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px;background:var(--paper);}
+  th,td{border:1px solid var(--line);padding:8px 10px;vertical-align:top;text-align:left;}
+  th{background:var(--accent-soft);font-weight:700;color:#4a3424;white-space:nowrap;}
+
+  /* ===== 答案 / 解析 ===== */
+  .answer-box{
+    margin-top:14px;border-radius:var(--radius);overflow:hidden;
+    border:1px solid var(--green);background:var(--green-soft);
+  }
+  .answer-box .head{
+    display:flex;align-items:center;justify-content:space-between;gap:10px;
+    padding:9px 14px;cursor:pointer;user-select:none;
+    background:rgba(47,107,79,.12);
+  }
+  .answer-box .head .tag{
+    font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--green);
+    background:#fff;border:1px solid var(--green);border-radius:999px;padding:1px 10px;
+  }
+  .answer-box .head .hint{font-size:12px;color:var(--muted);}
+  .answer-box .body{display:none;padding:4px 16px 16px;}
+  .answer-box.open .body{display:block;}
+  .answer-box.open .head .hint{visibility:hidden;}
+  .answer-box .ans{
+    background:#fff;border-radius:8px;padding:12px 14px;font-size:14.5px;
+    border-left:3px solid var(--green);
+  }
+  .answer-box .ans p{margin:.35em 0;text-indent:0;}
+
+  .analysis{
+    margin-top:10px;background:#fff;border:1px dashed var(--line);border-radius:8px;
+    padding:11px 14px;font-size:14px;color:#3f3b35;
+  }
+  .analysis .a-title{
+    font-weight:700;color:var(--blue);font-size:13px;letter-spacing:.05em;
+    display:block;margin-bottom:4px;
+  }
+  .analysis p{margin:.35em 0;text-indent:0;}
+  .analysis ul,.analysis ol{margin:.3em 0 .3em 1.2em;padding:0;}
+  .analysis li{margin:.2em 0;}
+
+  .method{
+    margin-top:10px;background:var(--amber-soft);border-radius:8px;
+    padding:10px 14px;font-size:13.5px;color:#5a4a2a;
+  }
+  .method .m-title{font-weight:700;color:var(--amber);display:block;margin-bottom:3px;font-size:12.5px;letter-spacing:.05em;}
+  .method p{margin:.25em 0;text-indent:0;}
+
+  /* 标签 */
+  .pill{
+    display:inline-block;font-size:12px;padding:1px 9px;border-radius:999px;
+    background:var(--blue-soft);color:var(--blue);margin-right:6px;font-weight:700;
+  }
+
+  /* 翻译对照 */
+  .trans{
+    margin-top:10px;border:1px solid var(--line);border-radius:8px;overflow:hidden;
+  }
+  .trans .th{
+    background:var(--accent-soft);padding:6px 12px;font-size:13px;font-weight:700;color:#4a3424;
+  }
+  .trans .tb{padding:10px 14px;font-size:14px;background:#fff;}
+  .trans .tb p{margin:.35em 0;text-indent:0;}
+
+  /* 作文格提示 */
+  .essay-tip{
+    background:#fbf7ef;border:1px solid var(--line);border-left:4px solid var(--accent);
+    border-radius:8px;padding:12px 16px;font-size:14px;color:#4a4035;margin-top:10px;
+  }
+
+  /* 返回顶部 */
+  #toTop{
+    position:fixed;right:18px;bottom:22px;width:42px;height:42px;border-radius:50%;
+    border:1px solid var(--line);background:var(--paper);color:var(--accent);
+    font-size:19px;cursor:pointer;box-shadow:var(--shadow);display:none;z-index:60;
+    font-family:inherit;
+  }
+  #toTop:hover{background:var(--accent-soft);}
+
+  @media (max-width:640px){
+    body{font-size:15px;}
+    .wrap{padding:16px 10px 60px;}
+    .q{padding:14px 13px;}
+    .topbar{padding:8px 10px;}
+    .topbar nav{font-size:12px;}
+    .material{padding:12px 13px;}
+    table{font-size:12.5px;}
+    th,td{padding:6px 7px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ 顶栏 ============ -->
+<div class="topbar">
+  <span class="brand">初二语文 · 期中全解</span>
+  <nav>
+    <a href="#s1">一、基础积累</a>
+    <a href="#s2">二、古诗文阅读</a>
+    <a href="#s3">三、语言运用与名著</a>
+    <a href="#s4">四、现代文阅读</a>
+    <a href="#s5">五、写作</a>
+  </nav>
+  <span class="spacer"></span>
+  <button class="toggle-all" id="toggleAll">显示全部答案</button>
+</div>
+
+<div class="wrap">
+
+<!-- ============ 卷头 ============ -->
+<header class="paper-head">
+  <div class="school">2024—2025 学年度第一学期期中质量检测</div>
+  <h1>实验初中 初二语文试题</h1>
+  <div class="meta">全卷解析 · 参考答案 · 逐题精讲 · 课外文言文翻译 · 课外古诗赏析</div>
+  <div class="notice">点击每题下方的「参考答案」即可展开答案、解析与解题思路；顶栏可一键显示/隐藏全部答案。</div>
+</header>
+
+<!-- ============================================================ -->
+<!-- 一、基础积累 -->
+<!-- ============================================================ -->
+<section class="section" id="s1">
+  <h2>一、基础积累 <span class="pts">（共 8 分，每小题 2 分）</span></h2>
+
+  <!-- 1 -->
+  <div class="q">
+    <div class="stem"><span class="qn">1.</span>下列加点字的注音<strong>没有错误</strong>的一项是（　　）</div>
+    <div class="choices">
+      <span class="ch"><span class="lbl">A.</span>菜畦（qí）　确凿（záo）　绿草茵茵（yīn）</span>
+      <span class="ch"><span class="lbl">B.</span>匿笑（nì）　着落（zháo）　恍（huǎng）然大悟</span>
+      <span class="ch"><span class="lbl">C.</span>收敛（lián）　脊梁（jī）　人声鼎沸（dīng）</span>
+      <span class="ch"><span class="lbl">D.</span>莅临（lì）　迷惘（mǎng）　咄咄逼人（duō）</span>
+    </div>
+    <div class="answer-box">
+      <div class="head"><span class="tag">参考答案</span><span class="hint">点击展开 ▾</span></div>
+      <div class="body">
+        <div class="ans"><p><strong>A</strong></p></div>
+        <div class="analysis">
+          <span class="a-title">逐项解析</span>
+          <p>B项“着落”应读 <strong>zhuó luò</strong>；“着”在“着落、着手、着意”中读 zhuó，在“着急、着火”中才读 zháo。C项“收敛”应读 <strong>liǎn</strong>，不是 lián；“人声鼎沸”的“鼎”读 dǐng，不是 dīng。D项“迷惘”应读 <strong>wǎng</strong>，不是 mǎng。</p>
+          <p>A项三字读音均正确：畦 qí、凿 záo、茵 yīn。</p>
+        </div>
+        <div class="method">
+          <span class="m-title">解题思路</span>
+          <p>字音题优先排查<strong>多音字</strong>（着、澄、落）和<strong>形声字声旁误导</strong>（惘 wǎng 不读 mǎng，敛 liǎn 不读 lián）。可用“据义定音”法：先判断词语含义，再确定多音字读音。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2 -->
+  <div class="q">
+    <div class="stem"><span class="qn">2.</span>下列词语书写<strong>没有错误</strong>的一项是（　　）</div>
+    <div class="choices">
+      <span class="ch"><span class="lbl">A.</span>棱镜　应合　嘹亮　小心翼翼</span>
+      <span class="ch"><span class="lbl">B.</span>奥密　健壮　烘托　花枝招展</span>
+      <span class="ch"><span class="lbl">C.</span>感慨　澄清　诀别　各得其所</span>
+      <span class="ch"><span class="lbl">D.</span>鉴赏　草垛　质朴　浑为一谈</span>
+    </div>
+    <div class="answer-box">
+      <div class="head"><span class="tag">参考答案</span><span class="hint">点击展开 ▾</span></div>
+      <div class="body">
+        <div class="ans"><p><strong>C</strong></p></div>
+        <div class="analysis">
+          <span class="a-title">逐项解析</span>
+          <p>A项“应合”应为<strong>应和</strong>（yìng hè，呼应、附和）。B项“奥密”应为<strong>奥秘</strong>（“秘”指隐秘的道理，“密”指稠密、秘密，此处当用“秘”）。D项“浑为一谈”应为<strong>混为一谈</strong>（“混”是混杂、混同，“浑”是浑浊、全）。C项全部正确。</p>
+        </div>
+        <div class="method">
+          <span class="m-title">解题思路</span>
+          <p>字形题重点抓<strong>同音替代</strong>和<strong>形近致误</strong>。本题三处错误都属于“音同义异”型：应和≠应合，奥秘≠奥密，混为一谈≠浑为一谈。答题时把词语放回语境中理解词义，比单纯死记字形更可靠。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3 -->
+  <div class="q">
+    <div class="stem"><span class="qn">3.</span>下列句子成语运用<strong>有误</strong>的一项是（　　）</div>
+    <div class="choices">
+      <span class="ch"><span class="lbl">A.</span>陆新生日那天收到爸爸的礼物——一台笔记本电脑，真令他<strong>喜出望外</strong>。</span>
+      <span class="ch"><span class="lbl">B.</span>黄明的自我介绍很精彩，台下的同学们<strong>不可抗拒</strong>地鼓起掌来。</span>
+      <span class="ch"><span class="lbl">C.</span>运动会上，同学们<strong>各尽其能</strong>。运动健将们参加比赛，文学高手写稿件，啦啦队员们都是文艺活跃分子。</span>
+      <span class="ch"><span class="lbl">D.</span>从小学一年级开始，我俩就是<strong>形影不离</strong>的好朋友。</span>
+    </div>
+    <div class="answer-box">
+      <div class="head"><span class="tag">参考答案</span><span class="hint">点击展开 ▾</span></div>
+      <div class="body">
+        <div class="ans"><p><strong>B</strong></p></div>
+        <div class="analysis">
+          <span class="a-title">逐项解析</span>
+          <p>“不可抗拒”指无法抵抗或拒绝，通常用于<strong>力量、趋势、规律、情感冲击</strong>等，带有“外力强大到无法阻挡”的意味。同学们鼓掌是出于<strong>欣赏、赞许</strong>的自发行为，不是“无法抵抗”的被动结果，用“不可抗拒”修饰“鼓起掌来”搭配不当，可改为“情不自禁”或“不由自主”。</p>
+          <p>A项“喜出望外”指遇到出乎意料的喜事而特别高兴，收到生日礼物且是笔记本电脑，符合语境。C项“各尽其能”指各自发挥自己的才能，与运动健将、文学高手、啦啦队员的分工吻合。D项“形影不离”形容彼此关系密切、经常在一起，符合“好朋友”的语境。</p>
+        </div>
+        <div class="method">
+          <span class="m-title">解题思路</span>
+          <p>成语题三步走：<strong>①辨词义</strong>（是否望文生义）→<strong>②看对象</strong>（适用对象、范围）→<strong>③察褒贬与搭配</strong>。本题错在“对象与搭配”——“不可抗拒”不适合修饰人的主动行为。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4 -->
+  <div class="q">
+    <div class="stem"><span class="qn">4.</span>下列依次在①②③处填入的句子，衔接最恰当的一项是（　　）</div>
+    <div class="material">
+      <p>如果说春天的花儿是草本的，<strong>①</strong>，那么秋天的花儿就是木本的，<strong>②</strong>。秋光照耀在一树一树的叶子上，<strong>③</strong>，铺天盖地，人就陶醉得有些许震撼。</p>
+    </div>
+    <div class="choices">
+      <span class="ch"><span class="lbl">A.</span>①娇嫩，柔弱，让人怜惜　②灿烂，刚毅，让人赞叹　③叶子燃烧成花朵，花朵沉淀成醉酒</span>
+      <span class="ch"><span class="lbl">B.</span>①灿烂，刚毅，让人赞叹　②娇嫩，柔弱，让人怜惜　③叶子燃烧成花朵，花朵沉淀成醉酒</span>
+      <span class="ch"><span class="lbl">C.</span>①娇嫩，柔弱，让人怜惜　②灿烂，刚毅，让人赞叹　③花朵沉淀成醉酒，叶子燃烧成花朵</span>
+      <span class="ch"><span class="lbl">D.</span>①灿烂，刚毅，让人赞叹　②娇嫩，柔弱，让人怜惜　③花朵沉淀成醉酒，叶子燃烧成花朵</span>
+    </div>
+    <div class="answer-box">
+      <div class="head"><span class="tag">参考答案</span><span class="hint">点击展开 ▾</span></div>
+      <div class="body">
+        <div class="ans"><p><strong>A</strong></p></div>
+        <div class="analysis">
+          <span class="a-title">解析</span>
+          <p><strong>第一空：</strong>前文说“春天的花儿是<u>草本</u>的”，草本花形体小、质地柔，对应“娇嫩，柔弱，让人怜惜”；后文说“秋天的花儿是<u>木本</u>的”，木本花树高大、生命力强，对应“灿烂，刚毅，让人赞叹”。因此①②应为“娇嫩柔弱”与“灿烂刚毅”，排除B、D。</p>
+          <p><strong>第二空：</strong>③处紧承“秋光照耀在一树一树的叶子上”。秋日叶色转红转金，视觉上先有“叶子”如花般绚烂，再由叶的绚烂联想到花的“沉淀”与酒的醇厚，逻辑上应先“叶子燃烧成花朵”，再“花朵沉淀成醉酒”。C项将顺序颠倒，与“秋光照耀在叶子上”的起点脱节，排除。</p>
+          <p>因此选 <strong>A</strong>。</p>
+        </div>
+        <div class="method">
+          <span class="m-title">解题思路</span>
+          <p>语句衔接题抓<strong>“对举结构”</strong>（春—秋、草本—木本、娇嫩—刚毅）和<strong>“逻辑顺序”</strong>（从眼前“叶子”出发，先比喻成花朵，再进一步虚化为醉酒）。先找前后文关键词的呼应，再比较③内部的事理顺序。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 二、古诗文阅读 -->
+<!-- ============================================================ -->
+<section class="section" id="s2">
+  <h2>二、古诗文阅读 <span class="pts">（共 20 分）</span></h2>
+
+  <div class="q">
+    <div class="stem" style="margin-bottom:4px;">阅读下面的文言文，完成 5—8 题。<span class="pts">（10 分）</span></div>
+
+    <div class="material">
+      <div class="mat-title">【甲】陈太丘与友期行</div>
+      <p>陈太丘与友期行，期日中。过中不至，太丘舍去，去后乃至。元方时年七岁，门外戏。客问元方：“尊君在不？”答曰：“待君久不至，已去。”友人便怒曰：“非人哉！与人期行，相委而去。”元方曰：“君与家君期日中。日中不至，则是无信；对子骂父，则是无礼。”友人惭，下车引之。元方入门不顾。</p>
+    </div>
+
+    <div class="material">
+      <div class="mat-title">【乙】宾客诣陈太丘宿（《世说新语·夙惠》）</div>
+      <p>宾客诣陈太丘宿，太丘使元方、季方炊。客与太丘论议，二人进火，俱委而窃听，炊忘著箅，饭落釜中。太丘问：“炊何不馏？”元方、季方长跪曰：“大人与客语，乃俱窃听，炊忘著箅，饭今成糜。”太丘曰：“尔颇有所识不？”对曰：“仿佛志之。”二子俱说，更相易夺，言无遗失。太丘曰：“如此，但糜自可，何必饭也！”</p>
+      <div class="note">【注释】①进火：烧火。②著：放。③箅（bì）：蒸锅中的竹屉，作用是使米不漏到锅中。④馏（liù）：把米放在水里煮至水开，再捞出蒸成饭。⑤糜（mí）：比较稠的粥。⑥志：记忆。⑦更相：互相。⑧易夺：改正补充。</div>
+    </div>
+  </div>
+
+  <!-- 5 -->
+  <div class="q">
+    <div class="stem"><span class="qn">5.</span>参考表格中提示的词语含义推断方法，解释加点字词。<span class="pts">（4 分）</span></div>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>文言词句</th><th>推断词义方法</th><th>字词释义</th></tr>
+        <tr><td>宾客<strong>诣</strong>陈太丘宿</td><td>字形辨析法：（言，询问）+（旨，想法、思想）</td><td>拜访，拜见</td></tr>
+        <tr><td>俱<strong>委</strong>而窃听</td><td>课内迁移法：相<strong>委</strong>而去</td><td>①</td></tr>
+        <tr><td>饭落<strong>釜</strong>中</td><td>联想成语法：破<strong>釜</strong>沉舟、<strong>釜</strong>底抽薪</td><td>②</td></tr>
+        <tr><td><strong>颇</strong>有所识不</td><td>查阅词典法：a.偏差，不平正；b.奸邪，邪佞；c.略微，稍微；d.很，甚。</td><td>③</td></tr>
+        <tr><td>二子俱说，更相<strong>易夺</strong>，言无遗失</td><td>联系语境法：“易夺”本意为“改变，夺取”，这里可以联想两孩子互相争辩情形，联系下文“他们说的话合在一起，没有一点遗漏”来理解词义</td><td>④</td></tr>
+      </table>
+    </div>
+    <div class="answer-box">
+      <div class="head"><span class="tag">参考答案</span><span class="hint">点击展开 ▾</span></div>
+      <div class="body">
+        <div class="ans">
+          <p>① <strong>舍弃，放弃</strong>（或：丢下，抛开）</p>
+          <p>② <strong>锅</strong>（古代的炊具）</p>
+          <p>③ <strong>c</strong>（略微，稍微）</p>
+          <p>④ <strong>改正补充</strong>（互相修正、补充）</p>
+        </div>
+        <div class="analysis">
+          <span class="a-title">逐空解析</span>
+          <ul>
+            <li><strong>①委：</strong>课内《陈太丘与友期行》有“相委而去”，“委”即“舍弃、丢下”。迁移到“俱委而窃听”，意为“都丢下烧火的事去偷听”。</li>
+            <li><strong>②釜：</strong>成语“破釜沉舟”“釜底抽薪”中的“釜”都是“锅”。句意为“饭落进了锅里”。</li>
+            <li><strong>③颇：</strong>代入检验。“偏差”“奸邪”与“有所识不”不搭配；“很，甚”语气过重；用“略微，稍微”，句意为“你们略微记住了一些吗”，正合父亲试探的口气。</li>
+            <li><strong>④易夺：</strong>语境中两兄弟抢着复述，“易夺”不是“改变、夺取”的本义，而是互相<strong>改正、补充</strong>对方遗漏或说错的地方，所以下文才能“言无遗失”。</li>
+          </ul>
+        </div>
+        <div class="trans">
+          <div class="th">【乙】全文翻译</div>
+          <div class="tb">
+            <p>有位客人到陈太丘家过夜，陈太丘让元方、季方兄弟俩做饭。客人和陈太丘清谈议论，兄弟二人烧着火，却都丢下活儿去偷听。做饭时忘了放蒸屉，米落进了锅里。陈太丘问：“饭为什么没有蒸成饭？”元方、季方跪直了身子说：“您和客人谈话，我们就一起偷听，忘了放蒸屉，饭现在煮成稠粥了。”陈太丘说：“你们略微记住了一些吗？”兄弟俩回答：“好像记住了。”两人一起复述，互相改正补充，说的话没有一点遗漏。陈太丘说：“既然这样，只喝粥就行了，何必一定要吃饭呢！”</p>
+          </div>
+        </div>
+        <div class="method">
+          <span class="m-title">解题思路</span>
+          <p>文言实词释义，优先用<strong>课内迁移</strong>（委、顾、引等高频词）；没有课内依据时，用<strong>成语联想</strong>（釜）、<strong>词典代入</strong>（颇）、<strong>语境推断</strong>（易夺）。答题时把词义放回原句“读一遍”，通顺才算过。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6 -->
+  <div class="q">
+    <div class="stem"><span class="qn">6.</span>小华想要根据甲、乙两文情节导演一个短剧，请你帮他完成下面的导演手记。<span class="pts">（2 分）</span></div>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>原文</th><th>表演指导（合理推测人物的神态、语气）</th></tr>
+        <tr>
+          <td>元方曰：“君与家君期日中。日中不至，则是无信；对子骂父，则是无礼。”</td>
+          <td>元方<strong>生气</strong>地说：“您与我父亲约定的时间是正午时分。正午时分（您）没有来，就是不讲信用；当着（人家的）儿子骂他的父亲，就是没有礼貌。”</td>
+        </tr>
+        <tr>
+          <td>太丘曰：“尔颇有所识不？”</td>
+          <td>陈太丘<strong>①________</strong>地说：“________________________”</td>
+        </tr>
+        <tr>
+          <td>太丘曰：“如此，但糜自可，何必饭也！”</td>
+          <td>陈太丘<strong>欣慰地</strong>说：“既然这样，只要喝粥就行了，何必吃米饭呢？”</td>
+        </tr>
+      </table>
+    </div>
+    <div class="answer-box">
+      <div class="head"><span class="tag">参考答案</span><span class="hint">点击展开 ▾</span></div>
+      <div class="body">
+        <div class="ans">
+          <p><strong>①</strong> 好奇（或：饶有兴致 / 试探 / 温和）</p>
+          <p><strong>台词补写示例：</strong>“你们大概记住了些什么吧？”（或：“你们略微记住了一些吗？”）</p>
+        </div>
+        <div class="analysis">
+          <span class="a-title">解析</span>
+          <p>陈太丘发问时，饭已煮成粥，但两个儿子是因为偷听大人谈话才误事。他问“尔颇有所识不”，重点不在责备，而在<strong>探问孩子是否真的听进去了</strong>。“颇”是“略微”之意，语气中带着<strong>好奇与温和的试探</strong>，而不是严厉质问。后文“如此，但糜自可”也印证了他对儿子们才能的欣赏与宽容。因此神态填“好奇”“温和”“饶有兴致”均可；台词要把“颇”的试探语气和“不”的疑问语气译出。</p>
+        </div>
+        <div class="method">
+          <span class="m-title">解题思路</span>
+          <p>导演手记类题目，本质是<strong>“由言逆志”</strong>：从人物语言反推心理和神态。抓关键词——“颇”表程度轻微，“不”表疑问，再结合上下文的宽松氛围，就不会把父亲误读成“愤怒”。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7 -->
+  <div class="q">
+    <div class="stem"><span class="qn">7.</span>用“√”给下面的句子断句（限断两处）。<span class="pts">（2 分）</span></div>
+    <div class="material" style="text-align:center;font-size:17px;letter-spacing:.06em;">
+      二 子 俱 说 更 相 易 夺 言 无 遗 失
+    </div>
+    <div class="answer-box">
+      <div class="head"><span class="tag">参考答案</span><span class="hint">点击展开 ▾</span></div>
+      <div class="body">
+        <div class="ans">
+          <p>二子俱说<strong>√</strong>更相易夺<strong>√</strong>言无遗失</p>
+        </div>
+        <div class="analysis">
+          <span class="a-title">解析</span>
+          <p>“二子俱说”是完整的主谓句（两个人一起复述），句意已足，后断开。“更相易夺”是另一个动作（互相改正补充），后断开。“言无遗失”是结果（说的话没有遗漏）。全句意为“两个儿子一起复述，互相改正补充，说的话没有一点遗漏”。</p>
+        </div>
+        <div class="method">
+          <span class="m-title">解题思路</span>
+          <p>断句先找<strong>主语和谓语</strong>，再找<strong>句意完结处</strong>。“说”后不宜连“更相易夺”（“说更相易夺”不成话），“夺”后不宜连“言”（“易夺言”也讲不通）。断句后逐一回读，确保每一段都能独立成意。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8 -->
+  <div class="q">
+    <div class="stem"><span class="qn">8.</span>《世说新语》依内容可分 36 门，【甲】文与【乙】文分别选自“方正”门和“夙慧”门。请结合两文分析陈元方“方正”且“夙慧”的表现。<span class="pts">（2 分）</span></div>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>《世说新语》门类</th><th>提示</th></tr>
+        <tr><td>方正</td><td>指人的行为、品性正直，合乎道义</td></tr>
+        <tr><td>夙慧</td><td>早慧，幼童聪慧过人</td></tr>
+      </table>
+    </div>
+    <div class="answer-box">
+      <div class="head"><span class="tag">参考答案</span><span class="hint">点击展开 ▾</span></div>
+      <div class="body">
+        <div class="ans">
+          <p><strong>“方正”表现：</strong>【甲】文中，友人当着元方的面骂他的父亲，元方当即以“日中不至，则是无信；对子骂父，则是无礼”严正反驳，<strong>直言不讳，据理力争</strong>，维护父亲尊严，体现了行为品性的正直与合乎道义。</p>
+          <p><strong>“夙慧”表现：</strong>【乙】文中，元方与季方因偷听大人清谈而把饭煮成粥，却能<strong>在短时间内记住谈话内容</strong>，并且兄弟二人“更相易夺，言无遗失”，<strong>互相补充修正而完整复述</strong>，幼年便表现出过人的记忆力与理解力，是早慧的体现。</p>
+        </div>
+        <div class="analysis">
+          <span class="a-title">解析</span>
+          <p>本题考查<strong>“门类概念 + 文本证据”</strong>的对应能力。“方正”侧重<strong>品性、道义、言行正直</strong>，对应甲文中元方面对友人无礼时的不卑不亢、有理有据；“夙慧”侧重<strong>幼童智慧超常</strong>，对应乙文中兄弟俩偷听即能记忆、复述无遗。两文都写元方七岁左右，但一个突出“德”，一个突出“才”。</p>
+        </div>
+        <div class="method">
+          <span class="m-title">解题思路</span>
+          <p>“结合两文分析”类题目，务必<strong>一门类对应一文、一特点配一证据</strong>。不要笼统说“元方很聪明”，而要落到具体情节：甲文的反驳语言、乙文的“更相易夺，言无遗失”。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 9 -->
+  <div class="q">
+    <div class="stem"><span class="qn">9.</span>阅读下面这首诗，回答问题。<span class="pts">（5 分）</span></div>
+    <div class="material">
+      <div class="mat-title">龙标野宴　王昌龄</div>
+      <div class="poem">
+        <p>沅溪夏晚足凉风，春酒相携就竹丛。</p>
+        <p>莫道弦歌愁远谪，青山明月不曾空。</p>
+      </div>
+      <div class="note">【注】①龙标：古地名，在今湖南洪江西。②沅溪：沅江，湖南境内的大河之一。③春酒：特指春天酿造的酒。这里泛指酒。④远谪：贬官到离京城很远的地方。</div>
+    </div>
+
+    <div class="q" style="box-shadow:none;border-style:dashed;margin-top:16px;">
+      <div class="stem"><span class="qn">(1)</span>本诗与李白《闻王昌龄左迁龙标遥有此寄》写作时间孰先孰后？请判断，并结合两首诗内容进行分析。<span class="pts">（2 分）</span></div>
+      <div class="answer-box">
+        <div class="head"><span class="tag">参考答案</span><span class="hint">点击展开 ▾</span></div>
+        <div class="body">
+          <div class="ans">
+            <p><strong>李白诗先写，王昌龄《龙标野宴》后写。</strong></p>
+            <p>李白诗中“闻道龙标过五溪”“我寄愁心与明月，随君直到夜郎西”，写的是<strong>听说</strong>王昌龄被贬、<strong>正在赴龙标途中</strong>的情景，是送别/遥寄之作。而《龙标野宴》写“沅溪夏晚足凉风，春酒相携就竹丛”，明确写到<strong>已经在龙标沅溪边与友人宴饮</strong>，是到达贬所之后的生活场景。因此王诗在后。</p>
+          </div>
+          <div class="analysis">
+            <span class="a-title">解析</span>
+            <p>判断依据来自诗歌内容的<strong>“时间坐标”</strong>。李白诗的核心事件是“闻道”（听说）和“遥寄”，王昌龄尚在途中；王昌龄诗的核心事件是“野宴”于“沅溪”，且自称“远谪”，说明贬谪已经成为正在经历的现实。一在“贬途中”，一在“贬所中”，先后自明。</p>
+          </div>
+          <div class="method">
+            <span class="m-title">解题思路</span>
+            <p>比较写作先后，不靠猜测，靠诗中的<strong>行为动词和空间信息</strong>：“闻道/遥寄”指向“尚未到达”，“就竹丛/野宴”指向“已经身处其地”。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="stem" style="margin-top:18px;"><span class="qn">(2)</span>本诗与李白《闻王昌龄左迁龙标遥有此寄》都用到“明月”这一意象，请结合内容分析其各自的作用。<span class="pts">（3 分）</span></div>
+      <div class="answer-box">
+        <div class="head"><span class="tag">参考答案</span><span class="hint">点击展开 ▾</span></div>
+        <div class="body">
+          <div class="ans">
+            <p><strong>李白诗中的“明月”：</strong>“我寄愁心与明月，随君直到夜郎西。”诗人把“愁心”<strong>托付给明月</strong>，让明月带着自己的牵挂与担忧，一路伴随友人直到夜郎以西。明月在这里是<strong>情感的使者、友情的载体</strong>，化抽象愁心为可托付之物，表达了深切的同情与思念。</p>
+            <p><strong>王昌龄诗中的“明月”：</strong>“莫道弦歌愁远谪，青山明月不曾空。”明月与青山同在，<strong>永恒而不会空缺</strong>。诗人以“青山明月”自许，表明虽然遭贬远谪，但内心的<strong>旷达与高洁不会改变</strong>；明月既是眼前实景，也是<strong>精神人格的物化</strong>，在宽慰中暗含不屈与自持。</p>
+          </div>
+          <div class="analysis">
+            <span class="a-title">解析</span>
+            <p>同一意象，作用不同，关键在于<strong>诗人与明月的关系</strong>。李白是“寄愁心<u>与</u>明月”，明月被<strong>派遣</strong>去传递情感，是友情的信使；王昌龄是“青山明月<u>不曾空</u>”，明月<strong>始终在场</strong>，与诗人相对而存在，成为诗人人格的映照。一为“托情于月”，一为“以月自况”。</p>
+          </div>
+          <div class="method">
+            <span class="m-title">解题思路</span>
+            <p>意象作用题答<strong>“意象 + 语境义 + 情感/效果”</strong>。先指出明月在两首诗中的具体状态（被寄托 / 不曾空缺），再分别落到情感：李白诗是<strong>牵挂与慰藉</strong>，王昌龄诗是<strong>旷达与自持</strong>。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10 -->
+  <div class="q">
+    <div class="stem"><span class="qn">10.</span>补出下列句子中的空缺部分。<span class="pts">（5 分）</span></div>
+    <div class="choices">
+      <span class="ch">(1)________________，小桥流水人家。（马致远《天净沙·秋思》）</span>
+      <span class="ch">(2)子曰：饭疏食，饮水，________________，乐亦在其中矣。（《〈论语〉十二章》）</span>
+      <span class="ch">(3)不必说碧绿的菜畦，光滑的石井栏，________________，也不必说……（鲁迅《从百草园到三味书屋》）</span>
+      <span class="ch">(4)《夜上受降城闻笛》中写出了受降城亘古苍茫的句子是：________________，________________。</span>
+    </div>
+    <div class="answer-box">
+      <div class="head"><span class="tag">参考答案</span><span class="hint">点击展开 ▾</span></div>
+      <div class="body">
+        <div class="ans">
+          <p>(1) <strong>枯藤老树昏鸦</strong></p>
+          <p>(2) <strong>曲肱而枕之</strong></p>
+          <p>(3) <strong>高大的皂荚树</strong></p>
+          <p>(4) <strong>回乐烽前沙似雪，受降城外月如霜</strong></p>
+        </div>
+        <div class="analysis">
+          <span class="a-title">易错提示</span>
+          <ul>
+            <li>(1)“藤”不要写成“腾”，“鸦”不要写成“鸭”。</li>
+            <li>(2)“肱”读 gōng，不要写成“宏”或“弓”。</li>
+            <li>(3)“皂荚”的“荚”不要写成“夹”。</li>
+            <li>(4)“烽”不要写成“峰”，“受降城”的“降”读 xiáng，不要写成“隆”。</li>
+          </ul>
+        </div>
+        <div class="method">
+          <span class="m-title">解题思路</span>
+          <p>默写题把<strong>“形近字”和“同音字”</strong>作为排查重点。第(4)题审题抓“亘古苍茫”，对应的是“沙似雪”“月如霜”所营造的荒寒辽阔之境，而不是后两句的“芦管”与“征人”。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 三、语言运用与整本书阅读 -->
+<!-- ============================================================ -->
+<section class="section" id="s3">
+  <h2>三、语言运用与整本书阅读 <span class="pts">（共 8 分）</span></h2>
+
+  <!-- 11(1) -->
+  <div class="q">
+    <div class="stem"><span class="qn">11.(1)</span>鲁迅的求学之路，下列按时间顺序排列正确的一项是（　　）<span class="pts">（2 分）</span></div>
+    <div class="choices">
+      <span class="ch">①三味书屋读书　②仙台求医　③南京求学　④回国教书　⑤弃医从文</span>
+      <span class="ch"><span class="lbl">A.</span>①②⑤③④　　<span class="lbl">B.</span>①③②⑤④　　<span class="lbl">C.</span>①⑤③②④　　<span class="lbl">D.</span>①②③⑤④</span>
+    </div>
+    <div class="answer-box">
+      <div class="head"><span class="tag">参考答案</span><span class="hint">点击展开 ▾</span></div>
+      <div class="body">
+        <div class="ans"><p><strong>B</strong></p></div>
+        <div class="analysis">
+          <span class="a-title">解析</span>
+          <p>鲁迅的求学与人生轨迹：<strong>①三味书屋</strong>（童年私塾）→<strong>③南京求学</strong>（江南水师学堂、矿路学堂）→<strong>②仙台求医</strong>（日本仙台医学专门学校）→<strong>⑤弃医从文</strong>（“幻灯片事件”后）→<strong>④回国教书</strong>（杭州、绍兴、北京等地任教）。正确顺序为 ①③②⑤④。</p>
+        </div>
+        <div class="method">
+          <span class="m-title">解题思路</span>
+          <p>用<strong>“地点 + 身份”</strong>串联：绍兴（私塾）→南京（学生）→仙台（医学生）→弃医从文（东京/文艺）→回国（教师）。先锁定最早①和最晚④，再排中间三项，答案基本唯一。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 11(2) -->
+  <div class="q">
+    <div class="stem"><span class="qn">11.(2)</span>鲁迅故居的“朝花夕拾厅”打算添置几座人物雕塑，现面向全体同学征集设计方案。请你分享自己的创意设计。<span class="pts">（3 分）</span></div>
+    <div class="material">
+      <p><strong>示例：</strong>我想在展厅添置藤野先生的雕塑。雕塑命名：遇见恩师。</p>
+      <p>创意设计：在对应的橱窗里放置藤野先生添改后的讲义手稿或照片。因为在日本求学时藤野先生对鲁迅没有任何民族偏见，在学习方面给予热诚的帮助，鲁迅对藤野先生十分怀念、感激和尊敬。</p>
+    </div>
+    <div class="answer-box">
+      <div class="head"><span class="tag">参考答案</span><span class="hint">点击展开 ▾</span></div>
+      <div class="body">
+        <div class="ans">
+          <p><strong>示例一：</strong>我想添置<strong>长妈妈</strong>的雕塑。雕塑命名：<strong>阿长与《山海经》</strong>。创意设计：在橱窗中放置一本<strong>粗拙的《山海经》</strong>，旁边配一封展开的信笺。因为长妈妈虽然不识字、粗俗，却费尽心力为童年的鲁迅买来了他渴望已久的《山海经》，让鲁迅第一次感受到被理解的温暖。她身上有底层劳动者的愚昧，更有质朴真挚的关爱。</p>
+          <p><strong>示例二：</strong>我想添置<strong>寿镜吾先生</strong>的雕塑。雕塑命名：<strong>三味书屋的先生</strong>。创意设计：雕塑呈现他<strong>拿着戒尺、微仰着头念书</strong>的姿态，旁边放一本线装书。寿镜吾先生方正、质朴、博学，虽有戒尺却不常用，对儿童既有约束也有宽容，体现了传统塾师复杂而真实的面貌。</p>
+        </div>
+        <div class="analysis">
+          <span class="a-title">解析</span>
+          <p>这是一道<strong>“人物 + 命名 + 展品/场景 + 理由”</strong>四要素题。示例已经给出了评分框架：命名要凝练、有文学感；创意设计要落到<strong>一个具体的实物或场景</strong>；理由必须结合《朝花夕拾》中的具体情节，说明人物的性格或意义，不能空泛。</p>
+        </div>
+        <div class="method">
+          <span class="m-title">解题思路</span>
+          <p>选择自己最熟悉的人物（长妈妈、寿镜吾、藤野先生、范爱农等），确保能说出<strong>一个具体事件 + 人物特点 + 对鲁迅的意义</strong>。展品越具体（讲义、书、戒尺、草药），设计越有画面感。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 11(3) -->
+  <div class="q">
+    <div class="stem"><span class="qn">11.(3)</span>在《朝花夕拾》中，有几篇文章涉及儿童教育问题，有些观点在今天仍有借鉴意义。请你从以下文章中选择一篇，结合相关内容说说鲁迅的儿童教育思想。<span class="pts">（3 分）</span></div>
+    <div class="choices">
+      <span class="ch">《五猖会》　　《二十四孝图》</span>
+    </div>
+    <div class="answer-box">
+      <div class="head"><span class="tag">参考答案</span><span class="hint">点击展开 ▾</span></div>
+      <div class="body">
+        <div class="ans">
+          <p><strong>选《五猖会》：</strong>鲁迅记述自己儿时热切盼望去看迎神赛会，正要兴高采烈地出发时，父亲却突然命令他<strong>背完《鉴略》才能去</strong>。他只能强记硬背，“似乎从头上浇了一盆冷水”。鲁迅借此批判<strong>不顾儿童心理、以强制手段压制儿童天性的封建教育</strong>，主张<strong>尊重儿童爱玩、好奇的天性</strong>，让儿童在健康快乐中成长。</p>
+          <p><strong>选《二十四孝图》：</strong>鲁迅对“老莱娱亲”“郭巨埋儿”等故事尤为反感，认为“郭巨埋儿”是<strong>以“孝”为名摧残儿童生命</strong>，“老莱娱亲”则以虚伪做作的方式教孝。他批判<strong>封建孝道的虚伪和残酷</strong>，反对用违背人情、伤害儿童的故事教育孩子，体现出<strong>以儿童为本位、尊重儿童生命与心理</strong>的教育观。</p>
+        </div>
+        <div class="analysis">
+          <span class="a-title">解析</span>
+          <p>两篇的批判指向略有不同：《五猖会》批判的是<strong>教育方式</strong>——强制、压制、不顾儿童感受；《二十四孝图》批判的是<strong>教育内容</strong>——封建孝道故事的虚伪与残忍。答题时要<strong>先叙事、再批判、后正面主张</strong>，形成“情节→问题→观念”的完整链条。</p>
+        </div>
+        <div class="method">
+          <span class="m-title">解题思路</span>
+          <p>“结合相关内容”必须出现<strong>具体篇名中的具体事件</strong>（背《鉴略》、郭巨埋儿）。鲁迅的儿童教育思想核心可以概括为：<strong>尊重儿童天性，反对强制压迫；以儿童为本位，反对虚伪残忍的封建教化</strong>。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 四、现代文阅读 -->
+<!-- ============================================================ -->
+<section class="section" id="s4">
+  <h2>四、现代文阅读 <span class="pts">（共 24 分）</span></h2>
+
+  <!-- ================= (一) 石榴花开 ================= -->
+  <div class="q">
+    <div class="stem"><span class="qn">（一）</span>阅读下面的文章，完成 12—14 题。<span class="pts">（12 分）</span></div>
+    <div class="material">
+      <div class="mat-title">石榴花开　纪明涛</div>
+      <p>①行走在初夏的早上，尽是雨后的微凉和氤湿的绿意，令人神清气爽。清晨，在小区健身廊道跑步锻炼时，忽然瞥见路边花园里有几株石榴树开花了。“只待绿荫芳树合，蕊珠如火一时开。”远看，石榴树上开满许多小喇叭似的花朵，红红的，缀满在朦胧的绿丛里，灿若烟霞。</p>
+      <p>②我不由得停下脚步，走近栅栏，来到石榴树下，仔细端详。昨夜下了一阵小雨，空气是那样清新，石榴树的枝叶上还有一层水滴。绿叶红花，点缀滴滴晶莹露水，石榴花越发显得纤细、秀美、娇艳。</p>
+      <p>③古人把石榴称作“丹若”，就是取自石榴花的颜色。据《广群芳谱》记载：“石榴，一名丹若，本草云，若木乃扶桑之名，榴花丹颊似之，故亦有丹若之称……”说起来石榴算是外来物种，汉朝时传入我国。先是在皇家苑囿中栽种，后来随着时代变迁，才飞入寻常百姓家。</p>
+      <p>④红红的石榴花，一树树，一簇簇，一团团，抓人眼球，张力十足，灼热，烂漫，飞扬，充满了蓬勃的生命感，成为初夏时节一道绚丽的风景线。望着石榴花，遐想着金秋时满树的石榴果，我的思绪又飘飞到老家的那棵石榴树身上。记不清楚是哪一年，母亲在院子里栽下了一棵石榴树。刚栽种的时候，它只有大拇指般粗细，起初我没怎么关注过它。直到几年后，石榴树枝繁叶茂，石榴花怒放，秋后果实累累，让儿时的我有了大快朵颐的美味。在零食匮乏的年代，那棵石榴树结出的果实，汁液饱满，甜而不酸，还未入口，已让我满口生津，成为我童年味蕾的一份留恋。</p>
+      <p>⑤石榴树很容易培植，母亲每年都通过压枝生根的方法培育幼苗，对有需要的左邻右舍，母亲总是把幼苗慷慨相赠。石榴树的成长少不了母亲的精心呵护，经过几十年的生长，石榴树的躯干已有碗口那么粗，斑斑驳驳，疙疙瘩瘩，仿佛写满了岁月的沧桑。每次看到那棵石榴树，我的眼前总会浮现出母亲劳作的身影。母亲用一双布满老茧的手，操持着农活和家务，日复一日地为家庭付出，从无怨言。石榴树的品格，不正像我的母亲吗？没有奢华的外表，却勤勤恳恳，甘于奉献。</p>
+      <p>⑥农历五月，是石榴花盛开的时节，故五月又称“榴月”。盛开的石榴花将静谧的小庭院映衬得热闹缤纷。石榴花的花期比较长，但若是遇到较大的风吹拂，花瓣便纷纷落下，落在地上像是铺上了一层红色的地毯，踩上去软绵绵的，有一种说不出的好爽萦绕在心头。</p>
+      <p>⑦等到了盛夏，如今一般的树冠下，更是成了乘凉休憩的好地方。晚饭后，母亲在树下做一些诸如纳新鞋底之类的针线活，有时也会给我讲岳飞、海瑞的故事，教一些做人的道理。到10月份，是石榴的收获时节，细心的母亲总是按成熟的先后顺序采摘。母亲把采摘下来的石榴保存得特别仔细，先是将石榴放在阴凉通风的地方，待石榴皮的水分蒸发后，母亲把果皮干燥好的石榴放到一种略显青色的、柔软的草纸上，一包一折，一滚一倾，尽量排出空气，让每一层纸都包裹严紧，最后把纸的一角掖进纸层中，便大功告成了。直等到春节期间拿出来招待客人。</p>
+      <p>⑧“却是石榴知立夏，年年此日一花开。”此刻，眼前的石榴花活泼、灵动，像一簇簇跳动的火苗，又像一片红艳艳的晚霞，充满生机，热烈热闹。老屋、古巷、石板路、石榴花，在今天的都市里似乎很难找到了，而眼前的这几株石榴树，浓缩了故乡的远影，浓缩了我儿时的记忆与快乐，也浓缩了我对故乡依依不舍的思念。</p>
+      <div class="note">（《人民日报》2023 年 6 月 25 日）</div>
+    </div>
+  </div>
+
+  <!-- 12 -->
+  <div class="q">
+    <div class="stem"><span class="qn">12.</span>品读本文应关注引用的作用。本文第①段和第③段分别引用诗句、《广群芳谱》，请思考其用意。<span class="pts">（4 分）</span></div>
+    <div class="answer-box">
+      <div class="head"><span class="tag">参考答案</span><span class="hint">点击展开 ▾</span></div>
+      <div class="body">
+        <div class="ans">
+          <p><strong>第①段引用诗句“只待绿荫芳树合，蕊珠如火一时开”：</strong>以古典诗句起笔，<strong>凝练而形象地写出石榴花在绿荫中红艳如火、骤然盛开的景象</strong>，与后文“小喇叭似的花朵”“灿若烟霞”相呼应；同时为全文<strong>奠定了典雅、富有诗意的抒情基调</strong>，增强了文学色彩和文化韵味。</p>
+          <p><strong>第③段引用《广群芳谱》：</strong>交代“丹若”这一名称的由来和石榴传入中国的历史，<strong>增加了文章的知识性与文化厚重感</strong>；从眼前的石榴花宕开一笔，把物候观赏与名物考据结合，使散文在抒情之外多了一层<strong>典雅的学识趣味</strong>，也为后文由石榴树写到母亲、故乡做了自然的铺垫。</p>
+        </div>
+        <div class="analysis">
+          <span class="a-title">解析</span>
+          <p>“引用”的作用通常从<strong>内容、结构、效果</strong>三个层面作答。第①段诗句在<strong>开头</strong>，主要作用是<strong>写景 + 定调 + 增添文采</strong>；第③段《广群芳谱》在<strong>中间</strong>，主要作用是<strong>补充知识 + 增加文化内涵 + 过渡铺垫</strong>。两处引用功能不同，不宜笼统合并。</p>
+        </div>
+        <div class="method">
+          <span class="m-title">解题思路</span>
+          <p>引用作用题答题框架：<strong>引了什么 → 写出了什么内容 → 有什么表达效果（文学性/知识性/结构作用）</strong>。诗句重“意境与文采”，典籍重“知识与文化”。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 13 -->
+  <div class="q">
+    <div class="stem"><span class="qn">13.</span>读散文应品味其语言美。请根据文后的疑问式批注，解答问题。<span class="pts">（4 分）</span></div>
+
+    <div class="q" style="box-shadow:none;border-style:dashed;">
+      <div class="stem"><span class="qn">①</span>红红的石榴花，一树树，一簇簇，一团团，抓人眼球，张力十足，灼热，烂漫，飞扬，充满了蓬勃的生命感，成为初夏时节一道绚丽的风景线。<br><span style="color:var(--muted);font-size:13.5px;">（批注：运用叠词有何妙处？）</span></div>
+      <div class="answer-box">
+        <div class="head"><span class="tag">参考答案</span><span class="hint">点击展开 ▾</span></div>
+        <div class="body">
+          <div class="ans">
+            <p>“一树树，一簇簇，一团团”连用三组叠词，<strong>从“树”到“簇”再到“团”，由整体到局部、由大到小</strong>，写出石榴花数量之多、分布之密、形态之饱满；叠词<strong>增强了语言的节奏感和韵律美</strong>，读来轻快而富有画面感；同时叠词的反复使用，把石榴花<strong>热烈、繁盛、蓬勃的生命力</strong>渲染得更加充分，与后文“灼热、烂漫、飞扬”的情感气势一致。</p>
+          </div>
+          <div class="analysis">
+            <span class="a-title">解析</span>
+            <p>叠词的赏析一般从<strong>形象性、音乐性、情感性</strong>三个角度展开。形象上，“树—簇—团”有层次地写出花之繁密；音乐上，叠音使音节舒展、节奏鲜明；情感上，反复叠用传递出作者面对石榴花时的<strong>惊喜与赞叹</strong>。</p>
+          </div>
+          <div class="method">
+            <span class="m-title">解题思路</span>
+            <p>叠词妙处 = <strong>写出了什么 + 节奏/韵律效果 + 情感强化</strong>。不要只答“生动形象”，要具体到“由整体到局部的层次”和“繁盛热烈的生命力”。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="q" style="box-shadow:none;border-style:dashed;margin-top:16px;">
+      <div class="stem"><span class="qn">②</span>母亲把果皮干燥好的石榴放到一种略显青色的、柔软的草纸上，一包一折，一滚一顿，尽量排出空气，让每一层纸都包裹严紧，最后把纸的一角掖进纸层中，便大功告成了。<br><span style="color:var(--muted);font-size:13.5px;">（批注：运用了什么描写方法写母亲？有什么表达效果？）</span></div>
+      <div class="answer-box">
+        <div class="head"><span class="tag">参考答案</span><span class="hint">点击展开 ▾</span></div>
+        <div class="body">
+          <div class="ans">
+            <p>运用了<strong>动作描写（细节描写）</strong>。“包”“折”“滚”“顿”“排”“包裹”“掖”等一系列动词，<strong>细致入微地再现了母亲包裹石榴的完整过程</strong>，表现出母亲<strong>做事认真、耐心细致、珍惜劳动果实</strong>的特点；这些动作越琐碎、越郑重，越能见出母亲对家人的<strong>用心与爱意</strong>，也呼应了上文“母亲用一双布满老茧的手，操持着农活和家务，日复一日地为家庭付出，从无怨言”的朴素形象。</p>
+          </div>
+          <div class="analysis">
+            <span class="a-title">解析</span>
+            <p>判断描写方法的关键是看句子<strong>“在写什么”</strong>：这里连续出现多个手部动作，显然是动作描写；动作被拆解得很细（一包一折、一滚一顿、排出空气、掖进纸角），又具有细节描写的性质。表达效果要落到<strong>人物性格 + 情感</strong>：认真细致、珍惜果实、对家人的爱与用心。</p>
+          </div>
+          <div class="method">
+            <span class="m-title">解题思路</span>
+            <p>动作描写赏析公式：<strong>动作描写 + 一系列动词 + 写出什么过程/状态 + 表现人物什么性格/情感</strong>。动词越具体，人物形象越饱满。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 14 -->
+  <div class="q">
+    <div class="stem"><span class="qn">14.</span>如果将本文和史铁生《秋天的怀念》勾连阅读，请你结合链接资料，探究两文结尾的抒情方式和情感有何不同。<span class="pts">（4 分）</span></div>
+    <div class="material">
+      <p><strong>本文结尾：</strong>老屋、古巷、石板路、石榴花，在今天的都市里似乎很难找到了，而眼前的这几株石榴树，浓缩了故乡的远影，浓缩了我儿时的记忆与快乐，也浓缩了我对故乡依依不舍的思念。</p>
+      <p><strong>链接资料（《秋天的怀念》结尾）：</strong>黄色的花淡雅，白色的花高洁，紫红色的花热烈而深沉，泼泼洒洒，秋风中正开得烂漫……</p>
+    </div>
+    <div class="answer-box">
+      <div class="head"><span class="tag">参考答案</span><span class="hint">点击展开 ▾</span></div>
+      <div class="body">
+        <div class="ans">
+          <p><strong>抒情方式不同：</strong>本文结尾以<strong>直接抒情</strong>为主，连用三个“浓缩了……”构成排比，直白地喊出“对故乡依依不舍的思念”；《秋天的怀念》结尾以<strong>间接抒情（借景抒情）</strong>为主，只写各色菊花“泼泼洒洒，秋风中正开得烂漫”，把对母亲的怀念、对“好好活”的领悟<strong>藏在花景之中</strong>，不直接说破。</p>
+          <p><strong>情感不同：</strong>本文结尾的情感指向<strong>故乡之思与童年之恋</strong>，是温暖中带着惆怅的<strong>怀旧与眷恋</strong>；《秋天的怀念》结尾的情感指向<strong>对已故母亲的深切怀念与愧疚</strong>，以及在母亲“好好儿活”的嘱托中获得的生命觉悟，<strong>更沉痛、更深邃</strong>，花开的烂漫与内心的缺失形成张力。</p>
+        </div>
+        <div class="analysis">
+          <span class="a-title">解析</span>
+          <p>比较抒情方式，关键看<strong>“情感是直接说出来的，还是借物象传递的”</strong>。本文结尾有“浓缩了……思念”这样的情感判断句，属于直接抒情；《秋天的怀念》结尾只呈现菊花，情感全部压在景物背后，属于借景抒情。情感内涵则要结合全文主旨：一为<strong>故乡怀旧</strong>，一为<strong>悼母与生命觉醒</strong>。</p>
+        </div>
+        <div class="method">
+          <span class="m-title">解题思路</span>
+          <p>比较阅读题用<strong>“同中求异”</strong>框架：先指出两文都借“花/树”收束，再分别从<strong>抒情方式（直接/间接）</strong>和<strong>情感内涵（故乡/母亲）</strong>两个维度对照，避免只答“都表达思念”的空泛结论。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= (二) 春天的节奏 ================= -->
+  <div class="q">
+    <div class="stem"><span class="qn">（二）</span>阅读下面的文章，完成 15—18 题。<span class="pts">（12 分）</span></div>
+    <div class="material">
+      <div class="mat-title">春天的节奏　康健</div>
+      <p>①北京的春天，总是从容不迫带着自己的节奏，农历二月、三月、四月，一步步走来，顾盼生辉。</p>
+      <p>②早春二月时，我路过公园的土坡旁，发现有亮眼的小花在悄然绽放，一点、几点，一小片、一大片……就像是一张张调皮孩子的灿烂笑脸，天真无邪又肆无忌惮地惹逗你，似乎都能听见花丛中传出的咯咯的笑声。</p>
+      <p>③看远处，朝阳的柳树梢上，已有一抹亮色的鹅黄点染，像是高悬的米黄酒旗，又像是万千流苏迎风摆动，提醒人们春意已闹上枝头。北方的柳树多高大伟岸，看似粗粝豪放一些，却也呈现出潇洒妩媚的面相。柳色鹅黄新绿，也是春来的播报。</p>
+      <p>④时令进入三月，春意开始浩荡。草色一天比一天绿，也一天比一天深。园中的花木由爆蕾而发华，而生新叶，而成花海、成绿阵。所有这些，都不用等上多少天，变化好像就是瞬息之间的事，稍不留神便会错过。</p>
+      <p>⑤才几天不见，草地新绿已是无边蔓延，明亮晃人眼。每一根小草都挺直了腰肢，像花枝招展的小姑娘，通体新鲜闪亮，是努力生长的样子。而抬眼远望，几片小树林集体着了春衫。最惹眼的是春阳照耀之下，一树树的断叶也一天天长大不少，发出油亮而柔和的光泽。而各种花儿这时候已次第盛开，红的桃花，白的梨花、杏花、海棠花，还有各种粉的不知名字的什么花，一树树，一丛丛，高高低低盛开，各自乐此不疲。园中湖泊和池塘都是水清见底，倒映着周围的绿树杂花，居然还有偶尔几声零星的虫鸣，呈现出一种幽远静谧之美。林间、花丛，河边、路上，有各色各样好看的小鸟落下、飞起、掠过，三五成群，啾啾啾啾，叽叽喳喳，七嘴八舌很热烈的样子。</p>
+      <p>⑥四月春深，已至暮春。绿色的规模和程度都大大地推进，到了一个前所未有的境界，所有的空间乃至所有的空白都被绿色充满。满坑满谷的绿意足够盛大，在地上膨胀溢出，还想往天上去。于是，看到那些遍地铺陈、漫无际涯的绿意真的就飞上天了。一树一树成排连片，腿脚扎进绿色的海洋，挺拔的腰身向空中延伸，披挂茂盛的绿叶连天蔽日。暮春是春之盛。此时的春天，是青春勃发、是风华正茂，热情迸发，活力彰显。</p>
+      <p>⑦春意最浓，花事也最盛，大地就是一座大花园。这个时候，有花开，也有花落，一茬接着一茬。这边厢，花开正欢；那边厢，落英缤纷。花有花期，不过，大可不必伤春，在当下尚是脉脉温情，在前方更有众人的热情，新陈代谢更加频繁，生命也会加速成长。</p>
+      <p>⑧也该说说春雨了。春雨贵如油，是对春雨的夸赞，也透露出人们对春雨的期盼之情。悠闲的人在春蝶时盼春雨，是为了让春雨滋润心田，给生活添加诗意；四季忙碌的农人在春耕时也盼春雨，是为了让春雨滋润禾苗，给一年好收成打下基础。“好雨知时节，当春乃发生”，经过雨水洗染的大地，花木扶疏，草色新绿，水汽氤氲于天地之间，不外是浓浓的春天的气息。</p>
+      <p>⑨人们在春天之初做出各种计划，播种希望的种子，心心念念全是向着前方和未来。一年又一年，人们盼春、迎春、惜春，是因为春天总是激励着一整年的奋斗与创造。</p>
+      <div class="note">（选自《人民日报》2024 年 5 月 11 日，有删改）</div>
+    </div>
+  </div>
+
+  <!-- 15 -->
+  <div class="q">
+    <div class="stem"><span class="qn">15.</span>文章是以什么顺序展开的？这样写有什么好处？<span class="pts">（3 分）</span></div>
+    <div class="answer-box">
+      <div class="head"><span class="tag">参考答案</span><span class="hint">点击展开 ▾</span></div>
+      <div class="body">
+        <div class="ans">
+          <p><strong>以时间顺序（农历二月—三月—四月）展开。</strong></p>
+          <p><strong>好处：</strong>①清晰呈现北京春天<strong>从早春到暮春的渐进过程</strong>，草色由浅到深、花事由少到盛、绿意由地面到天空，层次分明；②与标题“春天的节奏”高度契合，<strong>“一步步走来”的从容节奏感</strong>在结构上得到落实；③引导读者跟随时间的脚步逐层感受春意加深，<strong>情感也随之逐步蓄积</strong>，到第⑨段自然收束到“盼春、迎春、惜春”与“奋斗与创造”的升华上。</p>
+        </div>
+        <div class="analysis">
+          <span class="a-title">解析</span>
+          <p>文章第①段即点明“农历二月、三月、四月，一步步走来”，②—③段写二月，④—⑤段写三月，⑥—⑦段写四月，⑧—⑨段收束。这是典型的<strong>时间顺序</strong>。好处要扣住“节奏”这个标题核心词：时间推进本身就是“节奏”的体现，同时使写景有<strong>动态感和过程感</strong>，避免了静态罗列。</p>
+        </div>
+        <div class="method">
+          <span class="m-title">解题思路</span>
+          <p>顺序题先找<strong>标志性时间词</strong>，再看这些词是否贯穿全篇。好处题把顺序和<strong>标题、结构、情感走向</strong>三者挂钩，答案就不空。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 16 -->
+  <div class="q">
+    <div class="stem"><span class="qn">16.</span>请分析结尾段在全文中的作用。<span class="pts">（2 分）</span></div>
+    <div class="answer-box">
+      <div class="head"><span class="tag">参考答案</span><span class="hint">点击展开 ▾</span></div>
+      <div class="body">
+        <div class="ans">
+          <p><strong>结构上：</strong>总结全文，收束前文对二月、三月、四月春景的逐层描写，使文章完整圆合。<strong>内容上：</strong>由写景转向写人，点明人们“盼春、迎春、惜春”的深层原因——春天<strong>激励着一整年的奋斗与创造</strong>，由自然之春升华到<strong>希望与行动之春</strong>，深化了主旨。<strong>表达效果上：</strong>以议论性语句收尾，将前文的景物描写转化为对生活的启示，余味悠长，增强了文章的感染力。</p>
+        </div>
+        <div class="analysis">
+          <span class="a-title">解析</span>
+          <p>结尾段的作用从<strong>结构、内容、效果</strong>三个维度作答。结构上“总结全文、收束全篇”；内容上要从“景”看到“人”和“理”——第⑨段的关键词是“计划”“播种希望的种子”“奋斗与创造”，这是由实入虚的升华；效果上，议论收尾使散文有了<strong>思想的重量</strong>。</p>
+        </div>
+        <div class="method">
+          <span class="m-title">解题思路</span>
+          <p>结尾作用题牢记“<strong>结构 + 内容 + 效果</strong>”三件套。如果结尾有议论/抒情句，内容维度一定要点出<strong>“升华主旨”</strong>，并具体说明升华到了什么（奋斗与创造）。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 17 -->
+  <div class="q">
+    <div class="stem"><span class="qn">17.</span>请你从<strong>重音、语气</strong>两个角度为文章画波浪线的句子作朗读设计，并简要说明理由。<span class="pts">（4 分）</span></div>
+    <div class="material" style="text-align:center;font-size:15.5px;">
+      <strong>“人们在春天之初做出各种计划，播种希望的种子，心心念念全是向着前方和未来。”</strong>
+    </div>
+    <div class="answer-box">
+      <div class="head"><span class="tag">参考答案</span><span class="hint">点击展开 ▾</span></div>
+      <div class="body">
+        <div class="ans">
+          <p><strong>重音设计：</strong>重读“<strong>计划</strong>”“<strong>希望的种子</strong>”“<strong>心心念念</strong>”“<strong>前方和未来</strong>”。</p>
+          <p><strong>理由：</strong>“计划”是行动的起点，“希望的种子”是春天的隐喻核心，“心心念念”写出全神贯注、念念不忘的情态，“前方和未来”点明方向与目标。重读这些词语，可以突出人们<strong>积极筹划、满怀期待、一心向前的精神状态</strong>，把结尾段由景入理、鼓舞人心的力量传递出来。</p>
+          <p><strong>语气设计：</strong>用<strong>坚定、昂扬、充满希望</strong>的语气朗读，语速稍缓，在“心心念念”后稍作停顿，到“前方和未来”时语调微微上扬、收束有力。</p>
+          <p><strong>理由：</strong>这句话是全文的升华句，承载着“春天激励奋斗与创造”的主旨，坚定的语气与“计划”“播种”“向前”的语义相匹配；稍缓的语速体现“心心念念”的郑重，结尾上扬则强化对未来的信心与召唤感。</p>
+        </div>
+        <div class="analysis">
+          <span class="a-title">解析</span>
+          <p>朗读设计题必须做到<strong>“设计 + 理由”一一对应</strong>。重音选<strong>承载主旨或比喻义的词语</strong>（希望的种子、前方和未来），语气选<strong>与句意情感一致的色彩</strong>（坚定昂扬）。理由不能只说“这样读好听”，而要说明这些词句在内容上<strong>表达了什么</strong>。</p>
+        </div>
+        <div class="method">
+          <span class="m-title">解题思路</span>
+          <p>重音题抓<strong>“动词/比喻词/主旨词”</strong>；语气题抓<strong>“情感基调 + 语速 + 停顿 + 语调走向”</strong>。理由要回到句意和全文主旨，形成闭环。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 18 -->
+  <div class="q">
+    <div class="stem"><span class="qn">18.</span>本文能不能作为朱自清《春》的拓展阅读篇目？请你从两篇文章的主题方面简要说明理由。<span class="pts">（3 分）</span></div>
+    <div class="answer-box">
+      <div class="head"><span class="tag">参考答案</span><span class="hint">点击展开 ▾</span></div>
+      <div class="body">
+        <div class="ans">
+          <p><strong>能。</strong></p>
+          <p>两文主题高度相通：朱自清《春》通过对春草、春花、春风、春雨、迎春的描绘，赞美春天的<strong>生机与希望</strong>，表达对自然和生活的热爱，并激励人们<strong>“一年之计在于春”</strong>，抓紧春光、奋发向上。本文同样以春天为对象，写北京春天从早春到暮春的<strong>渐进节奏与蓬勃生命力</strong>，并在结尾点明春天“<strong>激励着一整年的奋斗与创造</strong>”。两文都完成了<strong>从“自然之春”到“希望与行动之春”的升华</strong>，主题一致，因此可以作为拓展阅读篇目，帮助学生在比较中加深对“春”的文化内涵的理解。</p>
+        </div>
+        <div class="analysis">
+          <span class="a-title">解析</span>
+          <p>“能否作为拓展阅读”本质上考查<strong>主题关联性</strong>。判断标准是两文是否在<strong>核心情感与思想指向</strong>上形成互文。《春》的结尾以三个比喻收束，把春天比作“刚落地的娃娃”“小姑娘”“健壮的青年”，指向<strong>新生、美丽、力量</strong>；本文结尾指向<strong>计划、希望、奋斗</strong>。两者都超越了单纯的景物描写，走向<strong>对生命与行动的肯定</strong>，因此“能”的理由是充分的。</p>
+        </div>
+        <div class="method">
+          <span class="m-title">解题思路</span>
+          <p>拓展阅读题先明确表态（能/不能），再从<strong>主题、内容、情感、写法</strong>中选题目要求的维度展开。本题限定“主题方面”，就必须落到两文各自的主旨句或主旨段，不能跑偏到语言风格。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 五、写作 -->
+<!-- ============================================================ -->
+<section class="section" id="s5">
+  <h2>五、写作 <span class="pts">（40 分）</span></h2>
+
+  <div class="q">
+    <div class="stem"><span class="qn">19.</span>阅读下面的材料，按要求作文。</div>
+    <div class="material">
+      <p>一朵白莲，点燃了冰心对母爱的诗情；一滴水，触发了海伦·凯勒对生命的热爱；一片菊花寄托了史铁生对母亲的怀念……物虽微，事虽小，真意在其中。什么触动了你？为什么触动了你？你从中懂得了些什么？</p>
+      <p>请以“<strong>触动心弦的________</strong>”为题目，写一篇记叙文。</p>
+      <p><strong>要求：</strong>①在横线上填写合适的内容，把题目补充完整，然后作文。②表达意图明确，内容具体充实。③600 字左右。④文中请回避与你有关的人名、校名、地名。</p>
+    </div>
+    <div class="answer-box">
+      <div class="head"><span class="tag">写作指导</span><span class="hint">点击展开 ▾</span></div>
+      <div class="body">
+        <div class="ans">
+          <p><strong>一、补题方向</strong></p>
+          <p>横线处宜填<strong>具体的“物”或“小场景”</strong>，不宜填抽象概念。“触动心弦的”后面可以是：<strong>一碗面、一把旧伞、窗台上的仙人掌、那声吆喝、外婆的针线筐、雨中的公交站牌、父亲的后背、一张泛黄的奖状、巷口的爆米花声</strong>等。具体之物才能承载细节，抽象之物容易写成空泛议论。</p>
+          <p><strong>二、立意框架</strong></p>
+          <p>材料提示了三个层次：<strong>“什么触动了你”（叙事）→“为什么触动了你”（描写与心理）→“你从中懂得了什么”（感悟与成长）</strong>。三者缺一不可：只有叙事没有感悟，文章会“浅”；只有感悟没有具体事件，文章会“空”。</p>
+          <p><strong>三、结构建议</strong></p>
+          <p><strong>开头</strong>：由“物”切入，简洁点题，设置悬念或对比。<strong>主体</strong>：集中写<strong>一个核心事件或一组连贯细节</strong>，用动作、语言、神态、环境把“触动”的瞬间写慢、写细，让读者也能“看见”那个画面。<strong>结尾</strong>：回扣题目，写出“懂得了什么”，升华要自然，从“物”走向“情”或“理”，避免生硬拔高。</p>
+          <p><strong>四、避雷提醒</strong></p>
+          <p>①不要写成“感动中国人物颁奖词”式的概述，记叙文的核心是<strong>具体场景和细节</strong>。②“触动心弦”意味着情感冲击，要写出<strong>心理变化</strong>（从不在意到被触动），形成前后反差。③严守“回避人名、校名、地名”的要求，可用“父亲”“巷口”“那所学校”等泛指。④600 字左右，建议写 <strong>650—750 字</strong>，把笔墨集中在“触动瞬间”的展开上。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 页脚 -->
+<div style="text-align:center;color:var(--muted);font-size:12.5px;margin-top:44px;padding-top:18px;border-top:1px solid var(--line);">
+  全卷解析 · 参考答案经过校对 · 课外文言文与古诗均附词语解释和全文翻译 · 点击题目下方「参考答案」可展开/收起
+</div>
+
+</div><!-- /wrap -->
+
+<button id="toTop" title="返回顶部">↑</button>
+
+<script>
+  // 单题展开/收起
+  document.querySelectorAll('.answer-box').forEach(function(box){
+    var head = box.querySelector('.head');
+    head.addEventListener('click', function(){
+      box.classList.toggle('open');
+    });
+  });
+
+  // 一键全部展开/收起
+  var allBtn = document.getElementById('toggleAll');
+  allBtn.addEventListener('click', function(){
+    var boxes = document.querySelectorAll('.answer-box');
+    var anyClosed = Array.prototype.some.call(boxes, function(b){ return !b.classList.contains('open'); });
+    boxes.forEach(function(b){ b.classList.toggle('open', anyClosed); });
+    allBtn.textContent = anyClosed ? '收起全部答案' : '显示全部答案';
+  });
+
+  // 返回顶部
+  var topBtn = document.getElementById('toTop');
+  window.addEventListener('scroll', function(){
+    topBtn.style.display = window.scrollY > 400 ? 'block' : 'none';
+  });
+  topBtn.addEventListener('click', function(){
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+</script>
+</body>
+</html>
