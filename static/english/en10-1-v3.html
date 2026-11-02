@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 2 · Rain or Shine — 第9周五培优 | 七年级英语阅读精讲</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=DM+Mono:wght@400;500&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f2ece1;
+  --paper-2:#e7ddcc;
+  --card:#fbf7ef;
+  --ink:#15272c;
+  --ink-2:#3c545a;
+  --muted:#7d8c8f;
+  --accent:#c0442b;
+  --accent-soft:#f0d9d1;
+  --rain:#2b6c74;
+  --rain-soft:#d5e5e5;
+  --gold:#bd8b29;
+  --line:rgba(21,39,44,.14);
+  --shadow:0 24px 60px -30px rgba(21,39,44,.45);
+  --display:"Fraunces",Georgia,serif;
+  --serif:"Newsreader",Georgia,serif;
+  --sans:"Noto Sans SC","PingFang SC",sans-serif;
+  --mono:"DM Mono",ui-monospace,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+a{color:inherit;text-decoration:none}
+
+/* ---------- texture & progress ---------- */
+.grain{
+  position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:1000;background:transparent}
+.progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--gold),var(--rain));transition:width .12s linear}
+
+/* ---------- nav ---------- */
+.nav{
+  position:sticky;top:0;z-index:900;
+  background:rgba(242,236,225,.86);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.nav-in{max-width:1240px;margin:0 auto;padding:.75rem clamp(1rem,4vw,2.5rem);display:flex;align-items:center;gap:1.25rem}
+.brand{font-family:var(--display);font-weight:700;font-size:1.02rem;letter-spacing:.01em;white-space:nowrap}
+.brand em{font-style:italic;color:var(--accent)}
+.nav-links{display:flex;gap:.35rem;margin-left:auto;flex-wrap:wrap}
+.nav-links a{
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.09em;text-transform:uppercase;
+  padding:.42rem .78rem;border-radius:99px;color:var(--ink-2);border:1px solid transparent;
+  transition:background .28s ease,color .28s ease,border-color .28s ease,letter-spacing .3s ease;
+}
+.nav-links a:hover{background:var(--ink);color:var(--paper);letter-spacing:.14em}
+.nav-links a.active{background:var(--accent);color:#fff}
+.nav-cta{
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;
+  border:1px solid var(--ink);border-radius:99px;padding:.45rem .95rem;
+  transition:background .28s,color .28s;
+}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(ellipse at 18% 12%,rgba(43,108,116,.55),transparent 58%),
+    radial-gradient(ellipse at 82% 78%,rgba(192,68,43,.32),transparent 55%),
+    #12222a;
+  color:#f2ece1;
+  padding:clamp(3.5rem,9vw,7.5rem) clamp(1.15rem,5vw,3.5rem) clamp(3rem,7vw,5.5rem);
+}
+.hero::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(115deg,transparent 0 26px,rgba(242,236,225,.045) 26px 27px);
+}
+.rain{position:absolute;inset:0;overflow:hidden;pointer-events:none;opacity:.4}
+.rain i{
+  position:absolute;top:-18%;width:1px;height:70px;
+  background:linear-gradient(to bottom,transparent,rgba(226,238,238,.85));
+  animation:fall linear infinite;
+}
+@keyframes fall{to{transform:translateY(150vh)}}
+.hero-grid{position:relative;z-index:2;max-width:1240px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.65fr);gap:clamp(1.5rem,4vw,3.5rem);align-items:end}
+.eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.28em;text-transform:uppercase;color:#a9c6c9;margin-bottom:1.4rem;display:flex;align-items:center;gap:.85rem}
+.eyebrow span{display:block;width:52px;height:1px;background:#a9c6c9}
+.hero h1{
+  font-family:var(--display);
+  font-size:clamp(3.1rem,10.2vw,8.2rem);
+  line-height:.86;font-weight:700;letter-spacing:-.035em;
+}
+.hero h1 .light{font-weight:300;font-style:italic;letter-spacing:-.02em;color:#bcdcdd;display:block}
+.hero h1 .stroke{
+  color:transparent;-webkit-text-stroke:1.6px rgba(242,236,225,.55);
+  display:inline-block;transform:translateY(.06em);
+}
+.hero-sub{
+  margin-top:1.9rem;max-width:44ch;font-size:clamp(.98rem,1.6vw,1.16rem);
+  color:#d8e3e1;line-height:1.85;
+}
+.hero-sub b{color:#fff;font-weight:500}
+.hero-tags{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:1.75rem}
+.hero-tags span{
+  font-family:var(--mono);font-size:.71rem;letter-spacing:.11em;text-transform:uppercase;
+  padding:.42rem .85rem;border:1px solid rgba(242,236,225,.28);border-radius:99px;color:#e5eeec;
+}
+.hero-side{display:flex;flex-direction:column;gap:1.15rem;align-items:flex-start}
+.ghost-num{
+  font-family:var(--display);font-size:clamp(6rem,15vw,12.5rem);line-height:.72;font-weight:700;
+  color:transparent;-webkit-text-stroke:1.3px rgba(242,236,225,.34);letter-spacing:-.05em;
+}
+.hero-note{
+  border-left:2px solid var(--accent);padding-left:1.1rem;
+  font-family:var(--serif);font-style:italic;font-size:1.02rem;color:#cddcda;line-height:1.8;
+}
+.scroll-hint{
+  margin-top:2.6rem;display:inline-flex;align-items:center;gap:.7rem;
+  font-family:var(--mono);font-size:.71rem;letter-spacing:.22em;text-transform:uppercase;color:#9fbabd;
+}
+.scroll-hint b{width:34px;height:1px;background:#9fbabd;animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:.35;transform:scaleX(.6)}50%{opacity:1;transform:scaleX(1)}}
+
+/* ---------- layout ---------- */
+main{max-width:1240px;margin:0 auto;padding:0 clamp(1.15rem,5vw,3.5rem)}
+.sec{padding:clamp(3.5rem,7vw,6.25rem) 0;border-bottom:1px solid var(--line)}
+.sec:last-of-type{border-bottom:none}
+.sec-head{display:grid;grid-template-columns:minmax(0,240px) minmax(0,1fr);gap:clamp(1.25rem,4vw,3rem);align-items:start;margin-bottom:2.65rem}
+.sec-kicker{font-family:var(--mono);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:.75rem}
+.sec-kicker span{flex:1;height:1px;background:var(--line);min-width:22px}
+.sec-head h2{
+  font-family:var(--display);font-size:clamp(1.95rem,4.4vw,3.15rem);
+  line-height:1.06;letter-spacing:-.028em;font-weight:700;
+}
+.sec-head h2 em{font-style:italic;font-weight:300;color:var(--rain)}
+.sec-head .lead{margin-top:.95rem;max-width:62ch;color:var(--ink-2);font-size:1.02rem}
+.meta-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.65rem}
+.chip{
+  font-family:var(--mono);font-size:.7rem;letter-spacing:.07em;
+  padding:.4rem .82rem;border-radius:3px;background:var(--paper-2);color:var(--ink-2);
+}
+.chip.hot{background:var(--accent);color:#fff}
+
+/* ---------- passage ---------- */
+.passage{
+  background:var(--card);border:1px solid var(--line);border-radius:2px;
+  padding:clamp(1.55rem,4vw,3.15rem);box-shadow:var(--shadow);position:relative;overflow:hidden;
+}
+.passage::before{
+  content:attr(data-label);position:absolute;top:0;right:0;
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;
+  background:var(--ink);color:var(--paper);padding:.55rem 1.15rem;
+}
+.en{
+  font-family:var(--serif);font-size:clamp(1.06rem,1.85vw,1.28rem);
+  line-height:2.02;color:#1c2f34;
+}
+.en p{margin-bottom:1.25rem}
+.en p:last-child{margin-bottom:0}
+.en .lead-cap::first-letter{
+  font-family:var(--display);font-size:3.55em;line-height:.8;float:left;
+  padding:.06em .12em 0 0;color:var(--accent);font-weight:700;
+}
+.w{
+  font-weight:600;cursor:pointer;position:relative;
+  border-bottom:2px solid var(--accent);
+  background:linear-gradient(to top,rgba(192,68,43,.13) 34%,transparent 34%);
+  transition:background .25s ease,color .25s ease,border-color .25s ease;
+  padding:0 .05em;
+}
+.w:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+.w.on{background:var(--rain);color:#fff;border-color:var(--rain)}
+.w::after{
+  content:"";position:absolute;right:-3px;top:-2px;width:5px;height:5px;border-radius:50%;
+  background:var(--gold);opacity:.85;
+}
+.read-btn{
+  display:inline-flex;align-items:center;gap:.55rem;margin-top:1.65rem;
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;
+  border:1px solid var(--ink);border-radius:99px;padding:.62rem 1.25rem;
+  transition:background .28s,color .28s,letter-spacing .3s;
+}
+.read-btn:hover{background:var(--ink);color:var(--paper);letter-spacing:.19em}
+.read-btn svg{width:14px;height:14px;fill:currentColor}
+
+/* ---------- data table ---------- */
+.dtable{width:100%;border-collapse:collapse;margin:.55rem 0 1.15rem;font-family:var(--serif)}
+.dtable th,.dtable td{border:1px solid var(--line);padding:.92rem 1.05rem;text-align:left;vertical-align:top}
+.dtable th{
+  background:var(--ink);color:var(--paper);font-family:var(--mono);
+  font-size:.73rem;letter-spacing:.15em;text-transform:uppercase;font-weight:500;
+}
+.dtable td{font-size:1.01rem;line-height:1.85}
+.dtable td:first-child{font-family:var(--display);font-weight:600;white-space:nowrap}
+.dtable tr:nth-child(even) td{background:rgba(231,221,204,.4)}
+.dtable td:last-child{color:var(--accent);font-weight:600}
+
+/* ---------- questions ---------- */
+.quiz{margin-top:2.65rem;display:grid;gap:1.35rem}
+.q{
+  background:var(--card);border:1px solid var(--line);border-left:3px solid var(--rain);
+  padding:1.55rem clamp(1.15rem,3vw,2.15rem);border-radius:2px;
+  transition:box-shadow .35s ease,transform .35s ease;
+}
+.q:hover{box-shadow:0 20px 46px -28px rgba(21,39,44,.5);transform:translateY(-2px)}
+.q-stem{font-family:var(--serif);font-size:1.11rem;line-height:1.8;font-weight:600;margin-bottom:1.05rem}
+.q-stem .no{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:26px;height:26px;border-radius:50%;background:var(--ink);color:var(--paper);
+  font-family:var(--mono);font-size:.76rem;margin-right:.72rem;vertical-align:middle;
+}
+.opts{display:grid;gap:.55rem}
+.opt{
+  text-align:left;font-family:var(--serif);font-size:1.03rem;line-height:1.7;
+  padding:.72rem 1.05rem;border:1px solid var(--line);border-radius:2px;background:transparent;
+  transition:background .24s,border-color .24s,transform .24s,color .24s;
+  display:flex;gap:.72rem;align-items:flex-start;
+}
+.opt .k{
+  font-family:var(--mono);font-size:.78rem;letter-spacing:.06em;color:var(--rain);
+  border:1px solid var(--line);border-radius:2px;padding:.06rem .42rem;flex-shrink:0;
+}
+.opt:hover{background:var(--paper-2);border-color:var(--ink-2);transform:translateX(4px)}
+.opt.correct{background:#dfeee3;border-color:#3d7a52;color:#1f4630}
+.opt.correct .k{background:#3d7a52;color:#fff;border-color:#3d7a52}
+.opt.wrong{background:#f6ded8;border-color:var(--accent);color:#7c2c1b}
+.opt.wrong .k{background:var(--accent);color:#fff;border-color:var(--accent)}
+.q-foot{display:flex;align-items:center;gap:1rem;margin-top:1.05rem;flex-wrap:wrap}
+.toggle-exp{
+  font-family:var(--mono);font-size:.71rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--rain);border-bottom:1px solid var(--rain);padding-bottom:.18rem;
+  transition:letter-spacing .3s,color .25s;
+}
+.toggle-exp:hover{letter-spacing:.22em;color:var(--accent);border-color:var(--accent)}
+.verdict{font-family:var(--mono);font-size:.74rem;letter-spacing:.11em;text-transform:uppercase;opacity:0;transition:opacity .35s}
+.verdict.show{opacity:1}
+.verdict.ok{color:#2c6a45}
+.verdict.no{color:var(--accent)}
+.exp{
+  max-height:0;overflow:hidden;opacity:0;
+  transition:max-height .55s cubic-bezier(.2,.8,.25,1),opacity .45s ease,margin .45s ease;
+}
+.exp.open{max-height:900px;opacity:1;margin-top:1.15rem}
+.exp-in{
+  background:rgba(43,108,116,.08);border:1px solid rgba(43,108,116,.24);border-radius:2px;
+  padding:1.15rem 1.35rem;font-size:.975rem;line-height:1.92;color:var(--ink-2);
+}
+.exp-in .tag{
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.19em;text-transform:uppercase;
+  color:var(--rain);display:block;margin-bottom:.55rem;
+}
+.exp-in b{color:var(--accent);font-weight:600}
+
+/* ---------- analysis ---------- */
+.analysis{
+  margin-top:2.85rem;background:linear-gradient(160deg,rgba(231,221,204,.72),rgba(251,247,239,.4));
+  border:1px solid var(--line);border-radius:2px;padding:clamp(1.55rem,3.6vw,2.85rem);
+}
+.analysis h3{
+  font-family:var(--display);font-size:1.42rem;letter-spacing:-.015em;margin-bottom:1.45rem;
+  display:flex;align-items:center;gap:.85rem;
+}
+.analysis h3::before{content:"";width:26px;height:2px;background:var(--accent)}
+.para{display:grid;grid-template-columns:minmax(0,150px) minmax(0,1fr);gap:1.35rem;padding:1.15rem 0;border-top:1px dashed var(--line)}
+.para:first-of-type{border-top:none;padding-top:0}
+.para .lbl{
+  font-family:var(--mono);font-size:.71rem;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--rain);padding-top:.32rem;
+}
+.para .body{font-size:1rem;line-height:1.95;color:var(--ink-2)}
+.para .body strong{color:var(--ink);font-weight:600}
+.para .body .enq{font-family:var(--serif);font-style:italic;color:var(--ink)}
+.tip{
+  margin-top:1.55rem;padding:1.15rem 1.35rem;border-radius:2px;
+  background:var(--accent);color:#fff;font-size:.975rem;line-height:1.9;
+}
+.tip .tag{font-family:var(--mono);font-size:.68rem;letter-spacing:.19em;text-transform:uppercase;opacity:.82;display:block;margin-bottom:.5rem}
+
+/* ---------- key strip ---------- */
+.keygrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:1.15rem}
+.keycard{
+  background:var(--card);border:1px solid var(--line);padding:1.55rem 1.35rem;border-radius:2px;
+  position:relative;overflow:hidden;transition:transform .38s cubic-bezier(.2,.8,.25,1),box-shadow .38s;
+}
+.keycard:hover{transform:translateY(-5px);box-shadow:0 26px 52px -30px rgba(21,39,44,.55)}
+.keycard::after{
+  content:"";position:absolute;left:0;bottom:0;width:100%;height:3px;
+  background:linear-gradient(90deg,var(--accent),var(--gold));transform:scaleX(0);transform-origin:left;
+  transition:transform .5s cubic-bezier(.2,.8,.25,1);
+}
+.keycard:hover::after{transform:scaleX(1)}
+.keycard .k{font-family:var(--mono);font-size:.7rem;letter-spacing:.19em;text-transform:uppercase;color:var(--muted)}
+.keycard .ans{font-family:var(--display);font-size:2.65rem;line-height:1;margin:.65rem 0 .55rem;font-weight:700;color:var(--accent)}
+.keycard .txt{font-size:.945rem;line-height:1.82;color:var(--ink-2)}
+
+/* ---------- phrase drill ---------- */
+.drill{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:1.15rem;margin-top:1.65rem}
+.dcard{background:var(--card);border:1px solid var(--line);border-radius:2px;padding:1.35rem 1.45rem}
+.dcard h4{font-family:var(--mono);font-size:.71rem;letter-spacing:.19em;text-transform:uppercase;color:var(--accent);margin-bottom:.95rem}
+.dcard ol{list-style:none;counter-reset:d}
+.dcard li{
+  counter-increment:d;padding:.62rem 0;border-top:1px dashed var(--line);
+  font-size:.985rem;line-height:1.85;display:flex;gap:.72rem;align-items:baseline;
+}
+.dcard li:first-child{border-top:none}
+.dcard li::before{
+  content:counter(d,decimal-leading-zero);font-family:var(--mono);font-size:.72rem;
+  color:var(--rain);flex-shrink:0;
+}
+.dcard li b{color:var(--accent);font-weight:600}
+
+/* ---------- vocab summary ---------- */
+.v-toolbar{display:flex;flex-wrap:wrap;gap:.85rem;align-items:center;margin-bottom:1.85rem}
+.v-search{
+  flex:1;min-width:225px;font-family:var(--serif);font-size:1.01rem;
+  padding:.82rem 1.15rem;border:1px solid var(--line);border-radius:2px;background:var(--card);color:var(--ink);
+  transition:border-color .28s,box-shadow .28s;
+}
+.v-search:focus{outline:none;border-color:var(--rain);box-shadow:0 0 0 3px rgba(43,108,116,.16)}
+.filters{display:flex;flex-wrap:wrap;gap:.42rem}
+.filters button{
+  font-family:var(--mono);font-size:.71rem;letter-spacing:.11em;text-transform:uppercase;
+  padding:.52rem .95rem;border:1px solid var(--line);border-radius:99px;color:var(--ink-2);
+  transition:background .26s,color .26s,border-color .26s;
+}
+.filters button:hover{border-color:var(--ink)}
+.filters button.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.v-count{font-family:var(--mono);font-size:.72rem;letter-spacing:.11em;color:var(--muted);text-transform:uppercase}
+
+.vtable{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line)}
+.vtable thead th{
+  background:var(--ink);color:var(--paper);font-family:var(--mono);font-size:.71rem;
+  letter-spacing:.15em;text-transform:uppercase;font-weight:500;padding:.95rem 1.15rem;text-align:left;
+}
+.vtable td{padding:1.05rem 1.15rem;border-top:1px solid var(--line);vertical-align:top;font-size:.965rem;line-height:1.85}
+.vtable tbody tr{transition:background .26s}
+.vtable tbody tr:hover{background:rgba(43,108,116,.07)}
+.v-word{font-family:var(--display);font-size:1.19rem;font-weight:600;letter-spacing:-.012em;display:block}
+.v-pos{font-family:var(--mono);font-size:.71rem;letter-spacing:.1em;color:var(--rain);text-transform:uppercase}
+.v-cn{color:var(--accent);font-weight:500}
+.v-use{color:var(--ink-2)}
+.v-ex{font-family:var(--serif);font-style:italic;color:var(--ink)}
+.v-exc{display:block;font-family:var(--sans);font-style:normal;font-size:.875rem;color:var(--muted);margin-top:.22rem}
+.v-tag{
+  display:inline-block;font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;
+  text-transform:uppercase;padding:.16rem .52rem;border-radius:99px;background:var(--paper-2);color:var(--ink-2);
+}
+.v-say{
+  display:inline-flex;align-items:center;gap:.42rem;font-family:var(--mono);font-size:.68rem;
+  letter-spacing:.11em;text-transform:uppercase;border:1px solid var(--line);border-radius:99px;
+  padding:.34rem .78rem;color:var(--ink-2);margin-top:.62rem;
+  transition:background .25s,color .25s,border-color .25s;
+}
+.v-say:hover{background:var(--rain);color:#fff;border-color:var(--rain)}
+
+/* ---------- word card ---------- */
+.wordcard{
+  position:fixed;z-index:1200;width:min(390px,calc(100vw - 2.25rem));
+  right:1.15rem;bottom:1.15rem;background:var(--card);
+  border:1px solid var(--line);border-top:3px solid var(--accent);
+  box-shadow:0 32px 72px -26px rgba(21,39,44,.65);
+  padding:1.55rem 1.55rem 1.35rem;
+  transform:translateY(18px) scale(.97);opacity:0;pointer-events:none;
+  transition:transform .42s cubic-bezier(.2,.8,.25,1),opacity .32s ease;
+}
+.wordcard.show{transform:none;opacity:1;pointer-events:auto}
+.wc-top{display:flex;align-items:flex-start;gap:1rem}
+.wc-word{font-family:var(--display);font-size:1.72rem;line-height:1.12;letter-spacing:-.022em;font-weight:700;flex:1}
+.wc-close{
+  width:30px;height:30px;border-radius:50%;border:1px solid var(--line);
+  display:grid;place-items:center;flex-shrink:0;transition:background .25s,color .25s,transform .35s;
+}
+.wc-close:hover{background:var(--accent);color:#fff;transform:rotate(90deg)}
+.wc-pos{font-family:var(--mono);font-size:.71rem;letter-spacing:.15em;text-transform:uppercase;color:var(--rain);margin:.42rem 0 .72rem}
+.wc-cn{font-size:1.16rem;color:var(--accent);font-weight:500;margin-bottom:.85rem}
+.wc-use{font-size:.945rem;line-height:1.88;color:var(--ink-2);padding-left:.95rem;border-left:2px solid var(--rain-soft)}
+.wc-ex{
+  margin-top:1.05rem;padding:.95rem 1.15rem;background:rgba(43,108,116,.08);border-radius:2px;
+  font-family:var(--serif);font-style:italic;font-size:1.03rem;line-height:1.78;
+}
+.wc-exc{display:block;font-family:var(--sans);font-style:normal;font-size:.895rem;color:var(--muted);margin-top:.42rem}
+.wc-btns{display:flex;gap:.55rem;margin-top:1.15rem;flex-wrap:wrap}
+.wc-btns button{
+  font-family:var(--mono);font-size:.7rem;letter-spacing:.11em;text-transform:uppercase;
+  padding:.55rem 1.02rem;border:1px solid var(--ink);border-radius:99px;
+  transition:background .25s,color .25s,letter-spacing .3s;
+}
+.wc-btns button:hover{background:var(--ink);color:var(--paper);letter-spacing:.17em}
+
+/* ---------- toast ---------- */
+.toast{
+  position:fixed;left:50%;bottom:1.7rem;transform:translate(-50%,26px);
+  background:var(--ink);color:var(--paper);padding:.78rem 1.45rem;border-radius:99px;
+  font-family:var(--mono);font-size:.74rem;letter-spacing:.09em;z-index:1400;
+  opacity:0;pointer-events:none;transition:opacity .32s,transform .32s;
+}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* ---------- footer ---------- */
+footer{
+  background:#12222a;color:#cddcda;padding:clamp(3rem,6vw,4.75rem) clamp(1.15rem,5vw,3.5rem) 2.25rem;
+  margin-top:clamp(2.5rem,6vw,4.5rem);
+}
+.foot-in{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:2.25rem}
+.foot-in h5{font-family:var(--mono);font-size:.71rem;letter-spacing:.22em;text-transform:uppercase;color:#7fa3a7;margin-bottom:.95rem}
+.foot-in p{font-family:var(--serif);font-size:1.01rem;line-height:1.88}
+.foot-brand{font-family:var(--display);font-size:clamp(2.05rem,5vw,3.35rem);line-height:1;letter-spacing:-.032em;color:#f2ece1}
+.foot-brand em{font-style:italic;color:var(--accent)}
+.copy{
+  max-width:1240px;margin:2.85rem auto 0;padding-top:1.35rem;border-top:1px solid rgba(242,236,225,.16);
+  display:flex;justify-content:space-between;gap:1.15rem;flex-wrap:wrap;
+  font-family:var(--mono);font-size:.71rem;letter-spacing:.13em;text-transform:uppercase;color:#7fa3a7;
+}
+
+/* ---------- reveal ---------- */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .82s cubic-bezier(.2,.8,.25,1),transform .82s cubic-bezier(.2,.8,.25,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- back to top ---------- */
+.top{
+  position:fixed;right:1.15rem;top:5.25rem;width:42px;height:42px;border-radius:50%;
+  background:var(--ink);color:var(--paper);display:grid;place-items:center;z-index:850;
+  opacity:0;pointer-events:none;transition:opacity .35s,transform .35s;transform:translateY(-10px);
+}
+.top.show{opacity:1;pointer-events:auto;transform:none}
+.top:hover{background:var(--accent)}
+
+/* ---------- responsive ---------- */
+@media(max-width:960px){
+  .hero-grid{grid-template-columns:1fr}
+  .hero-side{flex-direction:row;align-items:center;gap:1.75rem;flex-wrap:wrap}
+  .ghost-num{font-size:clamp(4.25rem,18vw,7.5rem)}
+  .sec-head{grid-template-columns:1fr;gap:1.15rem}
+  .para{grid-template-columns:1fr;gap:.55rem}
+}
+@media(max-width:780px){
+  .nav-links{display:none}
+  .nav-in{gap:.85rem}
+  .nav-cta{margin-left:auto}
+  .passage::before{position:static;display:inline-block;margin-bottom:1.15rem}
+  .dtable,.dtable tbody,.dtable tr,.dtable td{display:block;width:100%}
+  .dtable thead{display:none}
+  .dtable tr{border:1px solid var(--line);margin-bottom:.95rem;background:var(--card)}
+  .dtable td{border:none;border-top:1px dashed var(--line);padding:.78rem 1.05rem}
+  .dtable td:first-child{border-top:none;background:var(--ink);color:var(--paper);white-space:normal}
+  .vtable,.vtable tbody,.vtable tr,.vtable td{display:block;width:100%}
+  .vtable thead{display:none}
+  .vtable tbody tr{border-bottom:1px solid var(--line);padding:1.15rem .35rem}
+  .vtable td{border-top:none;padding:.35rem .72rem}
+  .wordcard{right:.75rem;left:.75rem;bottom:.75rem;width:auto;max-height:66vh;overflow-y:auto}
+  .top{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;transition-duration:.12s!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<div class="grain"></div>
+<div class="progress"><i id="bar"></i></div>
+
+<nav class="nav">
+  <div class="nav-in">
+    <div class="brand">Rain or Shine <em>· 精讲</em></div>
+    <div class="nav-links" id="navLinks">
+      <a href="#sec-a">A 篇 · 动物与天气</a>
+      <a href="#sec-b">B 篇 · 冬泳</a>
+      <a href="#sec-c">Test 1 · 萨克斯</a>
+      <a href="#sec-key">答案与解析</a>
+      <a href="#sec-vocab">生词汇总</a>
+    </div>
+    <button class="nav-cta" id="readAll">朗读全文</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="rain" id="rain"></div>
+  <div class="hero-grid">
+    <div>
+      <div class="eyebrow"><span></span> 七年级英语 · 话题阅读 · 第 9 周 周五培优</div>
+      <h1>Unit 2<span class="light">Rain or <span class="stroke">Shine</span></span></h1>
+      <p class="hero-sub">三篇阅读精讲：<b>动物与天气征兆</b>、<b>松花江上的冬泳老人</b>、<b>一支萨克斯的圆梦之路</b>。文中所有重点词汇与短语均以横线标注，<b>点击即可查看中文释义、用法解析与例句</b>，并支持语音朗读。</p>
+      <div class="hero-tags">
+        <span>3 篇阅读 · 13 题</span>
+        <span>逐段解析</span>
+        <span>53 条生词短语</span>
+        <span>语音朗读</span>
+      </div>
+      <div class="scroll-hint"><b></b> scroll to read</div>
+    </div>
+    <div class="hero-side">
+      <div class="ghost-num">09</div>
+      <div class="hero-note">"Most studies show that many animals can feel weather changes." —— 动物是大自然最灵验的天气预报员。</div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ================= A ================= -->
+  <section class="sec" id="sec-a">
+    <div class="sec-head reveal">
+      <div>
+        <div class="sec-kicker">Passage A <span></span></div>
+      </div>
+      <div>
+        <h2>Animals and <em>Weather</em></h2>
+        <p class="lead">应用文 · 说明对象：动物行为与天气变化的对应关系。结构为"总—分—总"，表格承载核心信息，是细节题与出处题的重点。</p>
+      </div>
+    </div>
+
+    <div class="meta-row reveal">
+      <span class="chip hot">主题 · 人与自然 — 自然环境</span>
+      <span class="chip">语篇类型 · 应用文</span>
+      <span class="chip">词数 · 163</span>
+      <span class="chip">难度 ★★★★☆</span>
+      <span class="chip">建议用时 5′</span>
+      <span class="chip">正确率 __ / 5</span>
+    </div>
+
+    <article class="passage reveal" data-label="Original Text A">
+      <div class="en" id="textA">
+        <p class="lead-cap">Most <b class="w" data-id="studies">studies</b> show that many animals can feel <b class="w" data-id="weatherchange">weather changes</b>. Here are some interesting things about animals.</p>
+        <table class="dtable">
+          <thead><tr><th>Animals</th><th>Behaviours（行为方式）</th><th>Weather changes</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>Birds</td>
+              <td>A lot of birds <b class="w" data-id="gettogether">get together</b> and stay under the <b class="w" data-id="roof">roof</b>（屋檐）of houses.</td>
+              <td><b class="w" data-id="heavyrain">Heavy rain</b> will come.</td>
+            </tr>
+            <tr>
+              <td>Sharks</td>
+              <td>Sharks swim to <b class="w" data-id="comparative">deeper</b> water.</td>
+              <td>A big <b class="w" data-id="storm">storm</b> will <b class="w" data-id="arrive">arrive</b>.</td>
+            </tr>
+            <tr>
+              <td>Spiders</td>
+              <td>There are more <b class="w" data-id="spider">spiders</b> <b class="w" data-id="thanusual">than usual</b> in autumn, and the spiders are making larger <b class="w" data-id="web">webs</b>（网）than usual.</td>
+              <td>A <b class="w" data-id="colddry">cold and dry</b> winter will come.</td>
+            </tr>
+            <tr>
+              <td>Spiders</td>
+              <td>There are <b class="w" data-id="fewer">fewer</b> spiders and they make smaller webs.</td>
+              <td>A <b class="w" data-id="warmwet">warm and wet</b> winter will come.</td>
+            </tr>
+            <tr>
+              <td>Ants</td>
+              <td>A lot of <b class="w" data-id="ant">ants</b> are on the <b class="w" data-id="grass">grass</b>.</td>
+              <td>It is <b class="w" data-id="begoingto">going to</b> rain.</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>The world of animals is really <b class="w" data-id="amazing">amazing</b>. Sometimes you can not <b class="w" data-id="explain">explain</b>（解释）why they can tell the weather before the <b class="w" data-id="weatherreport">weather report</b>. If you want to know more about them, you can read more <b class="w" data-id="article">articles</b> about <b class="w" data-id="science">science</b> in School Science <b class="w" data-id="magazine">Magazine</b>.</p>
+      </div>
+      <button class="read-btn" data-read="textA">
+        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg> 朗读 A 篇原文
+      </button>
+    </article>
+
+    <div class="quiz">
+      <div class="q reveal" data-answer="B">
+        <p class="q-stem"><span class="no">1</span>If the spiders are getting more and they are making larger webs than usual in autumn, the weather in the following winter will be ______.</p>
+        <div class="opts">
+          <button class="opt" data-k="A"><span class="k">A</span>wet and warm</button>
+          <button class="opt" data-k="B"><span class="k">B</span>dry and cold</button>
+          <button class="opt" data-k="C"><span class="k">C</span>wet and cold</button>
+        </div>
+        <div class="q-foot">
+          <button class="toggle-exp">显示解析</button>
+          <span class="verdict"></span>
+        </div>
+        <div class="exp"><div class="exp-in">
+          <span class="tag">解析</span>
+          定位表格蜘蛛（Spiders）第一种情形：<b>more spiders than usual / larger webs than usual</b> 对应的结果是 <b>"A cold and dry winter will come."</b>，即 <b>dry and cold</b>。注意选项把原文的 cold and dry 调换语序，故 B 正确。A（warm and wet）对应"蜘蛛更少、网更小"的情形；C 把冷热特征混搭，与原文不符。
+        </div></div>
+      </div>
+
+      <div class="q reveal" data-answer="C">
+        <p class="q-stem"><span class="no">2</span>What can we learn from the passage?</p>
+        <div class="opts">
+          <button class="opt" data-k="A"><span class="k">A</span>In winter, there are no spiders making webs.</button>
+          <button class="opt" data-k="B"><span class="k">B</span>If too many birds or ants get together, it will rain.</button>
+          <button class="opt" data-k="C"><span class="k">C</span>Scientists can't explain the behaviours of animals.</button>
+        </div>
+        <div class="q-foot">
+          <button class="toggle-exp">显示解析</button>
+          <span class="verdict"></span>
+        </div>
+        <div class="exp"><div class="exp-in">
+          <span class="tag">解析</span>
+          A 错：原文只说蜘蛛"数量更少、网更小"，并未说"冬天没有蜘蛛结网"，属于<b>过度推断</b>。B 错：鸟是"<b>聚集在屋檐下</b>"预示大雨，蚂蚁"<b>出现在草地上</b>"预示下雨，选项把两个不同条件混为一谈，<b>偷换概念</b>。C 对：末段 <span class="enq">"Sometimes you can not explain why they can tell the weather before the weather report."</span> 与选项意思一致，注意情态动词 can't 的温和表述正是推断题的正确项特征。
+        </div></div>
+      </div>
+
+      <div class="q reveal" data-answer="C">
+        <p class="q-stem"><span class="no">3</span>（新考法 · 文章出处题）Where can we read the passage?</p>
+        <div class="opts">
+          <button class="opt" data-k="A"><span class="k">A</span>In a storybook.</button>
+          <button class="opt" data-k="B"><span class="k">B</span>In a travel guide.</button>
+          <button class="opt" data-k="C"><span class="k">C</span>In a science magazine.</button>
+        </div>
+        <div class="q-foot">
+          <button class="toggle-exp">显示解析</button>
+          <span class="verdict"></span>
+        </div>
+        <div class="exp"><div class="exp-in">
+          <span class="tag">解析</span>
+          末句给出明确出处线索：you can read more articles about science in <b>School Science Magazine</b>，且全文为科普类应用文，故选 <b>C</b>。storybook 需有人物与情节，travel guide 需有景点、路线等信息，均无依据。<b>技巧：出处题先找杂志/栏目名称，再看文体特征。</b>
+        </div></div>
+      </div>
+    </div>
+
+    <div class="analysis reveal">
+      <h3>逐段详细解析</h3>
+      <div class="para">
+        <div class="lbl">第 1 段 · 总起</div>
+        <div class="body">
+          <span class="enq">"Most studies show that many animals can feel weather changes."</span> 用 <strong>Most studies show that…（大多数研究表明……）</strong>开门见山点明说明对象：许多动物能感知天气变化。<span class="enq">"Here are some interesting things about animals."</span> 起<strong>承上启下</strong>作用，引出下文表格。结构上属于"<strong>总—分—总</strong>"中的第一个"总"。
+        </div>
+      </div>
+      <div class="para">
+        <div class="lbl">表格 · 分说</div>
+        <div class="body">
+          四种动物的行为与天气征兆一一对应：<strong>鸟</strong>聚集、躲在屋檐下 → 大雨将至；<strong>鲨鱼</strong>游向更深水域（deeper water）→ 大风暴来临；<strong>蜘蛛</strong>用两种相反情形作<strong>对比说明</strong>——数量更多、网更大 → <strong>干冷</strong>的冬天，数量更少、网更小 → <strong>温暖湿润</strong>的冬天；<strong>蚂蚁</strong>大量出现在草地上 → 天要下雨。注意 more／fewer、larger／smaller 两组<strong>反义比较级</strong>构成对照，是表格信息题的常考设错点。
+        </div>
+      </div>
+      <div class="para">
+        <div class="lbl">末段 · 总结</div>
+        <div class="body">
+          <span class="enq">"The world of animals is really amazing."</span> 总括全文并抒发赞叹；<span class="enq">"Sometimes you can not explain why they can tell the weather before the weather report."</span> 说明人们<strong>有时无法解释</strong>动物为何能先于天气预报预知天气（对应第 2 题 C）；末句给出延伸阅读的<strong>出处</strong> School Science Magazine（对应第 3 题）。结构上是第二个"总"，兼有<strong>拓展延伸</strong>功能。
+        </div>
+      </div>
+      <div class="tip">
+        <span class="tag">积累小卷 · 集有所用 / 识有所悟</span>
+        ① 比较级归纳：deeper—deep、more—many、larger—large、<b>fewer—few</b>、smaller—small；fewer 修饰<b>可数名词复数</b>，less 修饰不可数名词。<br>
+        ② <b>be going to</b> 表示根据现有迹象作出的<b>主观判断</b>（It is going to rain. 天要下雨了），区别于 will 表纯粹将来。<br>
+        ③ 读有所思（开放题）：如蜻蜓低飞（dragonflies fly low）、蚂蚁搬家、燕子低飞都预示将下雨。<br>
+        ④ 识有所悟·仿生学：蜘蛛丝 → 防弹衣、医用缝合线；鲨鱼皮肤 → 减阻高速泳衣与船体设计；蝙蝠回声定位 → 雷达与声呐。
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= B ================= -->
+  <section class="sec" id="sec-b">
+    <div class="sec-head reveal">
+      <div><div class="sec-kicker">Passage B <span></span></div></div>
+      <div>
+        <h2>Zhang Dew and <em>Winter Swimming</em></h2>
+        <p class="lead">记叙文 · 按"背景—人物—评价"展开，用他人怕冷与主人公兴奋的对比引出人物，结尾以直接引语点明健身观。</p>
+      </div>
+    </div>
+
+    <div class="meta-row reveal">
+      <span class="chip hot">主题 · 人与社会 — 体育锻炼</span>
+      <span class="chip">语篇类型 · 记叙文</span>
+      <span class="chip">词数 · 143</span>
+      <span class="chip">难度 ★★★★☆</span>
+      <span class="chip">建议用时 5′</span>
+      <span class="chip">正确率 __ / 4</span>
+    </div>
+
+    <article class="passage reveal" data-label="Original Text B">
+      <div class="en" id="textB">
+        <p class="lead-cap">It's December and it is about −10°C in Harbin these days. Many people think it's too cold, but Zhang Dew is <b class="w" data-id="excited">excited</b> about the cold days.</p>
+        <p>Zhang Dew lives in Harbin, Heilongjiang. He is seventy-four years old, but he <b class="w" data-id="lookyoung">looks young</b>. Zhang loves <b class="w" data-id="winterswim">winter swimming</b> very much. It's <b class="w" data-id="snowy">snowy</b> today and it is very cold. But look at the picture! Zhang is swimming in the Songhua River and he is having fun! Before he <b class="w" data-id="getinto">gets into</b> the cold river, Zhang usually <b class="w" data-id="doexercise">does some exercise</b> like running <b class="w" data-id="makewarm">to make himself warm</b>. The cold and <b class="w" data-id="strongwind">strong winds</b> on the river can't make him <b class="w" data-id="afraid">afraid</b>.</p>
+        <p>"Winter swimming helps me to be <b class="w" data-id="healthy">healthy</b> and I never <b class="w" data-id="catchcold">catch a cold</b>. It makes me happy and I want to <b class="w" data-id="keepdoing">keep doing it</b>. But this exercise <b class="w" data-id="berightfor">isn't right for</b> everyone. People with some <b class="w" data-id="healthproblem">health problems</b> can't do it", Zhang says.</p>
+      </div>
+      <button class="read-btn" data-read="textB">
+        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg> 朗读 B 篇原文
+      </button>
+    </article>
+
+    <div class="quiz">
+      <div class="q reveal" data-answer="B">
+        <p class="q-stem"><span class="no">1</span>The weather is ______ in Harbin in December.</p>
+        <div class="opts">
+          <button class="opt" data-k="A"><span class="k">A</span>warm</button>
+          <button class="opt" data-k="B"><span class="k">B</span>cold</button>
+          <button class="opt" data-k="C"><span class="k">C</span>rainy</button>
+        </div>
+        <div class="q-foot"><button class="toggle-exp">显示解析</button><span class="verdict"></span></div>
+        <div class="exp"><div class="exp-in"><span class="tag">解析</span>
+          首句直接给出信息：<b>It's December and it is about −10°C … Many people think it's too cold.</b>，−10°C 与 "too cold" 都指向 <b>cold</b>，故选 B。warm、rainy 文中均无依据。
+        </div></div>
+      </div>
+
+      <div class="q reveal" data-answer="C">
+        <p class="q-stem"><span class="no">2</span>What does Zhang usually do before getting into the river?</p>
+        <div class="opts">
+          <button class="opt" data-k="A"><span class="k">A</span>He takes a shower.</button>
+          <button class="opt" data-k="B"><span class="k">B</span>He has a good sleep.</button>
+          <button class="opt" data-k="C"><span class="k">C</span>He does some running.</button>
+        </div>
+        <div class="q-foot"><button class="toggle-exp">显示解析</button><span class="verdict"></span></div>
+        <div class="exp"><div class="exp-in"><span class="tag">解析</span>
+          细节定位句：<span class="enq">"Before he gets into the cold river, Zhang usually does some exercise like running to make himself warm."</span>，running 与选项 C 的 "does some running" 同义复现，故选 C。A、B 均未提及。
+        </div></div>
+      </div>
+
+      <div class="q reveal" data-answer="B">
+        <p class="q-stem"><span class="no">3</span>The underlined word "it" in the last paragraph refers to ______.</p>
+        <div class="opts">
+          <button class="opt" data-k="A"><span class="k">A</span>winter exercise</button>
+          <button class="opt" data-k="B"><span class="k">B</span>winter swimming</button>
+          <button class="opt" data-k="C"><span class="k">C</span>healthy food</button>
+        </div>
+        <div class="q-foot"><button class="toggle-exp">显示解析</button><span class="verdict"></span></div>
+        <div class="exp"><div class="exp-in"><span class="tag">解析</span>
+          代词指代题：末段 <span class="enq">"It makes me happy and I want to keep doing it."</span> 中的 it 回指上文反复出现的 <b>winter swimming</b>；后句 <span class="enq">"But this exercise isn't right for everyone"</span> 用 this exercise 同义复现，进一步印证。故选 B。<b>技巧：代词指代题向前就近寻找同一名词或同义复现。</b>
+        </div></div>
+      </div>
+
+      <div class="q reveal" data-answer="C">
+        <p class="q-stem"><span class="no">4</span>What can we learn from the passage?</p>
+        <div class="opts">
+          <button class="opt" data-k="A"><span class="k">A</span>Zhang doesn't like snowy days.</button>
+          <button class="opt" data-k="B"><span class="k">B</span>Zhang is good at all kinds of sports.</button>
+          <button class="opt" data-k="C"><span class="k">C</span>Winter swimming is not right for everyone.</button>
+        </div>
+        <div class="q-foot"><button class="toggle-exp">显示解析</button><span class="verdict"></span></div>
+        <div class="exp"><div class="exp-in"><span class="tag">解析</span>
+          C 与原句 <span class="enq">"But this exercise isn't right for everyone."</span> 完全一致，正确。A 与原文相反——下雪天他正在江里游泳且 <b>having fun</b>；B"擅长所有运动"属无中生有，原文只提到跑步与冬泳。
+        </div></div>
+      </div>
+    </div>
+
+    <div class="analysis reveal">
+      <h3>逐段详细解析</h3>
+      <div class="para">
+        <div class="lbl">第 1 段 · 背景</div>
+        <div class="body">
+          交代时间（December）、地点与气温（Harbin，约 −10°C）；<span class="enq">"Many people think it's too cold, but Zhang Dew is excited about the cold days."</span> 用 <strong>but 转折</strong>形成"<strong>众人怕冷 vs 主人公兴奋</strong>"的对比，制造悬念，自然引出人物。
+        </div>
+      </div>
+      <div class="para">
+        <div class="lbl">第 2 段 · 人物</div>
+        <div class="body">
+          先总写身份：家住黑龙江哈尔滨，74 岁却<strong>看起来年轻</strong>（looks young）；再写爱好：非常喜欢<strong>冬泳</strong>；接着用 <span class="enq">"But look at the picture!"</span> 把读者带入现场——今天下雪、天气很冷，他却在松花江里游泳而且<strong>很开心</strong>；随后补充细节：<strong>下水前</strong>通常做跑步等运动使自己暖和（to make himself warm 表<strong>目的</strong>）；江上的寒冷与强风不能使他<strong>害怕</strong>（can't make him afraid，make + 宾语 + 形容词）。
+        </div>
+      </div>
+      <div class="para">
+        <div class="lbl">第 3 段 · 评价</div>
+        <div class="body">
+          直接引语写冬泳的益处：使人<strong>健康</strong>（helps me to be healthy）、<strong>从不感冒</strong>（never catch a cold）、心情愉快并想<strong>坚持</strong>下去（keep doing it）；末句以 But 转折点明理性态度——<strong>这项运动并非人人适合</strong>，有健康问题的人不能做，既是第 4 题依据，也体现科学健身观。
+        </div>
+      </div>
+      <div class="tip">
+        <span class="tag">积累小卷 · 短语互译与完成句子</span>
+        1. 冬泳 → <b>winter swimming</b>　2. do some exercise → <b>做运动，锻炼</b>（exercise 表"锻炼"时不可数）<br>
+        3. 感冒 → <b>catch / have a cold</b>　4. health problems → <b>健康问题</b><br>
+        5. The <b>exciting</b> news made him <b>excited</b>.（-ing 修饰事物"令人…的"，-ed 修饰人"感到…的"）<br>
+        6. just <b>right for</b> him（be right for = be suitable for，适合……）
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= C ================= -->
+  <section class="sec" id="sec-c">
+    <div class="sec-head reveal">
+      <div><div class="sec-kicker">Test 1 · B <span></span></div></div>
+      <div>
+        <h2>The <em>Saxophone</em> — No Pain, No Gain</h2>
+        <p class="lead">记叙文 · 按时间顺序写"梦想—尝试—练习—圆梦"，情感线索呈"向往 → 低落 → 回升 → 最高兴"，是情感态度题的典型素材。</p>
+      </div>
+    </div>
+
+    <div class="meta-row reveal">
+      <span class="chip hot">主题 · 人与自我 — 自我提升</span>
+      <span class="chip">语篇类型 · 记叙文</span>
+      <span class="chip">词数 · 212</span>
+      <span class="chip">难度 ★★★☆☆</span>
+      <span class="chip">建议用时 6′</span>
+      <span class="chip">正确率 __ / 4</span>
+    </div>
+
+    <article class="passage reveal" data-label="Test 1 · Text B">
+      <div class="en" id="textC">
+        <p class="lead-cap">Five years ago, <b class="w" data-id="onway">on my way home</b> on the bus every night, I always found an old man playing his <b class="w" data-id="saxophone">saxophone</b>（萨克斯）near the river. I could see the big smile on his face. The beautiful music <b class="w" data-id="makedream">made me dream</b>（梦想着）to play the saxophone just like that man.</p>
+        <p>Two weeks later, it was my birthday. I opened my <b class="w" data-id="present">present</b> and found that it was a saxophone! I put it to my mouth to play, but it wouldn't <b class="w" data-id="makesound">make a sound</b>. I <b class="w" data-id="blow">blew</b>（吹）and blew but I couldn't get the saxophone to make a sound. I <b class="w" data-id="beabout">was about to</b> cry when <b class="w" data-id="suddenly">suddenly</b> the saxophone made a sound. I blew again, I moved my fingers on the saxophone and I made more sounds. Some of them were <b class="w" data-id="loud">loud</b>（大声的）and <b class="w" data-id="clear">clear</b> but many of them weren't. I was happy because I was playing very interesting sounds. But it wasn't beautiful music.</p>
+        <p>Then came the lesson. <b class="w" data-id="nightafter">Night after night, week after week</b>, I <b class="w" data-id="practise">practised hard</b> playing the saxophone. Slowly I started to <b class="w" data-id="getbetter">get better</b> and at last there came the <b class="w" data-id="magic">magic</b> day when the beautiful music <b class="w" data-id="comeout">came out of</b> my saxophone.</p>
+        <p>Now I'm in the <b class="w" data-id="tvstudio">TV studio</b>（电视台）with my saxophone. I'm so happy just like the old man near the river.</p>
+      </div>
+      <button class="read-btn" data-read="textC">
+        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg> 朗读 Test 1 原文
+      </button>
+    </article>
+
+    <div class="quiz">
+      <div class="q reveal" data-answer="B">
+        <p class="q-stem"><span class="no">1</span>What made the writer want to play the saxophone?</p>
+        <div class="opts">
+          <button class="opt" data-k="A"><span class="k">A</span>The big smile on the old man's face.</button>
+          <button class="opt" data-k="B"><span class="k">B</span>The beautiful music from the old man.</button>
+          <button class="opt" data-k="C"><span class="k">C</span>The birthday present from his parents.</button>
+        </div>
+        <div class="q-foot"><button class="toggle-exp">显示解析</button><span class="verdict"></span></div>
+        <div class="exp"><div class="exp-in"><span class="tag">解析</span>
+          定位首段末句：<span class="enq">"The beautiful music made me dream to play the saxophone just like that man."</span>，梦想源于<b>美妙的音乐</b>，故选 B。A（笑容）只是"我"看到的表象；C（生日礼物）是实现梦想的<b>契机</b>，而非动机，属因果倒置。
+        </div></div>
+      </div>
+
+      <div class="q reveal" data-answer="B">
+        <p class="q-stem"><span class="no">2</span>Why is the writer happy in the last paragraph?</p>
+        <div class="opts">
+          <button class="opt" data-k="A"><span class="k">A</span>Because he meets the old man near the river.</button>
+          <button class="opt" data-k="B"><span class="k">B</span>Because he plays the saxophone well after practice.</button>
+          <button class="opt" data-k="C"><span class="k">C</span>Because he gets a magic saxophone from the studio.</button>
+        </div>
+        <div class="q-foot"><button class="toggle-exp">显示解析</button><span class="verdict"></span></div>
+        <div class="exp"><div class="exp-in"><span class="tag">解析</span>
+          经过 <span class="enq">"Night after night, week after week, I practised hard"</span>，终于 <span class="enq">"the beautiful music came out of my saxophone"</span>，末段的高兴正源于<b>练习后的成功</b>，故选 B。A 未提及与老人重逢；C 把 magic 误接到 saxophone 上（原文 magic 修饰 day），属偷换概念。
+        </div></div>
+      </div>
+
+      <div class="q reveal" data-answer="B">
+        <p class="q-stem"><span class="no">3</span>（新考法 · 情感态度题）Which of the following shows the writer's feelings?</p>
+        <div class="opts">
+          <button class="opt" data-k="A"><span class="k">A</span>折线由低到高持续直线上升（5 years ago → 2 weeks later → Now）</button>
+          <button class="opt" data-k="B"><span class="k">B</span>先平稳 → 中间短暂下挫 → 再上升至最高</button>
+          <button class="opt" data-k="C"><span class="k">C</span>由高到低持续下降</button>
+        </div>
+        <div class="q-foot"><button class="toggle-exp">显示解析</button><span class="verdict"></span></div>
+        <div class="exp"><div class="exp-in"><span class="tag">解析</span>
+          情感线索：<b>五年前</b>被音乐打动、心生向往（中等偏上，并非低落）→ <b>两周后</b>拿到萨克斯却吹不出声，<span class="enq">"I was about to cry"</span>（<b>短暂低谷</b>）→ 发出有趣声音后"was happy"回升 → 刻苦练习不断进步 → <b>现在</b>在电视台演出"I'm so happy"（最高点）。因此曲线应<b>有起伏、整体上扬</b>，选 B。A 的一路直线上升忽略了"几乎要哭"的挫折点，且与开头已有的喜悦不符；C 持续下降与结局完全相反。
+        </div></div>
+      </div>
+
+      <div class="q reveal" data-answer="A">
+        <p class="q-stem"><span class="no">4</span>What lesson does the writer learn?</p>
+        <div class="opts">
+          <button class="opt" data-k="A"><span class="k">A</span>No pain, no gain.</button>
+          <button class="opt" data-k="B"><span class="k">B</span>It's never too old to learn.</button>
+          <button class="opt" data-k="C"><span class="k">C</span>Learning without thinking is of no use.</button>
+        </div>
+        <div class="q-foot"><button class="toggle-exp">显示解析</button><span class="verdict"></span></div>
+        <div class="exp"><div class="exp-in"><span class="tag">解析</span>
+          全文围绕"<b>反复刻苦练习 → 最终成功</b>"展开（Then came the lesson… practised hard… get better），对应谚语 <b>No pain, no gain.（一分耕耘，一分收获）</b>，故选 A。B "It's never too old to learn（活到老学到老）"强调年龄，文中未提；C "Learning without thinking is of no use（学而不思则罔）"强调思考，与主题无关。
+        </div></div>
+      </div>
+    </div>
+
+    <div class="analysis reveal">
+      <h3>逐段详细解析</h3>
+      <div class="para">
+        <div class="lbl">第 1 段 · 起因</div>
+        <div class="body">
+          <span class="enq">"Five years ago, on my way home on the bus every night"</span> 交代时间与场景；<span class="enq">"I always found an old man playing his saxophone near the river."</span> 引出关键人物与事物；<span class="enq">"I could see the big smile on his face."</span> 写老人的快乐；末句 <span class="enq">"The beautiful music made me dream to play the saxophone just like that man."</span> 点明<strong>梦想的由来</strong>，注意 <strong>make sb. do sth.</strong>（使某人做某事）结构。
+        </div>
+      </div>
+      <div class="para">
+        <div class="lbl">第 2 段 · 发展</div>
+        <div class="body">
+          <span class="enq">"Two weeks later, it was my birthday."</span> 时间推进，礼物正是一把萨克斯（present = gift）；接着写<strong>挫折</strong>——吹不出声音（wouldn't make a sound），"blew and blew but I couldn't…" 反复尝试仍失败；<span class="enq">"I was about to cry when suddenly the saxophone made a sound."</span> 用 <strong>be about to do … when …（正要做……这时……）</strong>写出情绪低谷与转折；随后继续吹、动手指，发出更多声音，"Some of them were loud and clear but many of them weren't."；末两句说明此时虽有小进步，但<strong>尚未成功</strong>，情感"先降后升"。
+        </div>
+      </div>
+      <div class="para">
+        <div class="lbl">第 3 段 · 转折</div>
+        <div class="body">
+          <span class="enq">"Then came the lesson."</span> 短句过渡，引出练习阶段；<span class="enq">"Night after night, week after week, I practised hard playing the saxophone."</span> 用<strong>反复</strong>句式强调坚持与刻苦；<span class="enq">"Slowly I started to get better"</span> 写渐进式进步；<span class="enq">"at last there came the magic day when the beautiful music came out of my saxophone."</span> 写终于成功，<strong>呼应</strong>第 1 段的梦想。
+        </div>
+      </div>
+      <div class="para">
+        <div class="lbl">第 4 段 · 结果</div>
+        <div class="body">
+          <span class="enq">"Now I'm in the TV studio with my saxophone."</span> 与开头"河边的老人"形成<strong>首尾呼应</strong>；<span class="enq">"I'm so happy just like the old man near the river."</span> 点明"我"也因音乐而快乐，情感达到最高点，主题升华：<strong>努力让梦想成真，也把快乐带给别人</strong>。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= KEY ================= -->
+  <section class="sec" id="sec-key">
+    <div class="sec-head reveal">
+      <div><div class="sec-kicker">Answer Key <span></span></div></div>
+      <div>
+        <h2>答案速查与<em>解题方法</em></h2>
+        <p class="lead">三篇阅读共 13 题，答案与题型考点一并归纳，便于自查与复盘。</p>
+      </div>
+    </div>
+
+    <div class="keygrid">
+      <div class="keycard reveal"><div class="k">Passage A · 1</div><div class="ans">B</div><div class="txt">dry and cold — 细节定位题：蜘蛛更多、网更大 → 干冷冬天。注意选项语序与原文相反。</div></div>
+      <div class="keycard reveal"><div class="k">Passage A · 2</div><div class="ans">C</div><div class="txt">推断题：末段 can not explain 为依据；A 过度推断，B 偷换概念。</div></div>
+      <div class="keycard reveal"><div class="k">Passage A · 3</div><div class="ans">C</div><div class="txt">出处题：School Science Magazine + 科普应用文体裁。</div></div>
+      <div class="keycard reveal"><div class="k">Passage B · 1</div><div class="ans">B</div><div class="txt">cold — 数字 −10°C 与 too cold 双重提示。</div></div>
+      <div class="keycard reveal"><div class="k">Passage B · 2</div><div class="ans">C</div><div class="txt">does some running — 同义复现 does some exercise like running。</div></div>
+      <div class="keycard reveal"><div class="k">Passage B · 3</div><div class="ans">B</div><div class="txt">it = winter swimming — 代词指代题向前就近回指。</div></div>
+      <div class="keycard reveal"><div class="k">Passage B · 4</div><div class="ans">C</div><div class="txt">原句复现 isn't right for everyone；A 与文意相反，B 无中生有。</div></div>
+      <div class="keycard reveal"><div class="k">Test 1 · 1</div><div class="ans">B</div><div class="txt">梦想源于音乐；A 是表象，C 是契机非动机。</div></div>
+      <div class="keycard reveal"><div class="k">Test 1 · 2</div><div class="ans">B</div><div class="txt">练习后的成功带来快乐；C 把 magic 误接到 saxophone。</div></div>
+      <div class="keycard reveal"><div class="k">Test 1 · 3</div><div class="ans">B</div><div class="txt">情感曲线：向往 → 即将哭泣（低谷）→ 回升 → 最高兴。</div></div>
+      <div class="keycard reveal"><div class="k">Test 1 · 4</div><div class="ans">A</div><div class="txt">No pain, no gain. 一分耕耘，一分收获。</div></div>
+    </div>
+
+    <div class="analysis reveal" style="margin-top:2.25rem">
+      <h3>高频考点与方法归纳</h3>
+      <div class="para">
+        <div class="lbl">细节理解题</div>
+        <div class="body">先读题干、圈出<strong>定位词</strong>（数字、地名、专有名词），再回原文找<strong>同义复现</strong>（running → does some running）；选项常通过<strong>调换语序</strong>（cold and dry ↔ dry and cold）设置障碍。</div>
+      </div>
+      <div class="para">
+        <div class="lbl">推断题</div>
+        <div class="body">警惕三类干扰项：<strong>过度推断</strong>（no spiders making webs）、<strong>偷换概念</strong>（把两个条件混为一谈）、<strong>绝对化表述</strong>（all / never / no）。正确项常含 can't、sometimes、often 等温和词。</div>
+      </div>
+      <div class="para">
+        <div class="lbl">代词指代题</div>
+        <div class="body">向前<strong>就近回指</strong>，找同一名词或同义复现（it → winter swimming，由 "this exercise" 印证）；代入验证句意通顺。</div>
+      </div>
+      <div class="para">
+        <div class="lbl">出处题 / 情感态度题</div>
+        <div class="body">出处题看<strong>文体 + 栏目/杂志名</strong>；情感态度题画出<strong>情感曲线</strong>，注意转折词（but、when、at last）带来的起伏，不能只看整体趋势。</div>
+      </div>
+      <div class="para">
+        <div class="lbl">语法聚焦</div>
+        <div class="body">① <strong>比较级</strong>：deeper—deep、more—many、larger—large、fewer—few、smaller—small（fewer 修饰可数复数，less 修饰不可数）。② <strong>be going to</strong> 表根据迹象的主观判断。③ <strong>make + 宾语 + 形容词 / 动词原形</strong>：make himself warm、make him excited、made me dream。④ <strong>-ing / -ed 形容词</strong>：exciting news（事物）／excited people（人）。⑤ <strong>keep doing sth.</strong>、<strong>be about to do … when …</strong>。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= VOCAB ================= -->
+  <section class="sec" id="sec-vocab">
+    <div class="sec-head reveal">
+      <div><div class="sec-kicker">Vocabulary <span></span></div></div>
+      <div>
+        <h2>生词与生短语<em>总汇</em></h2>
+        <p class="lead">共 53 条，按 A 篇 / B 篇 / Test 1 分类，含中文释义、用法解析与双语例句，支持搜索、筛选与语音朗读。</p>
+      </div>
+    </div>
+
+    <div class="v-toolbar reveal">
+      <input class="v-search" id="vsearch" type="search" placeholder="搜索单词 / 短语 / 中文释义…">
+      <div class="filters" id="vfilters">
+        <button class="on" data-tag="all">全部</button>
+        <button data-tag="A">A 篇</button>
+        <button data-tag="B">B 篇</button>
+        <button data-tag="C">Test 1</button>
+      </div>
+      <div class="v-count" id="vcount">53 / 53 条</div>
+    </div>
+
+    <div class="reveal" style="overflow-x:auto">
+      <table class="vtable">
+        <thead>
+          <tr>
+            <th style="width:20%">词语</th>
+            <th style="width:9%">出处</th>
+            <th style="width:14%">中文释义</th>
+            <th style="width:28%">用法解析</th>
+            <th style="width:29%">例句</th>
+          </tr>
+        </thead>
+        <tbody id="vbody"></tbody>
+      </table>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="foot-in">
+    <div>
+      <div class="foot-brand">Rain<br>or <em>Shine</em></div>
+    </div>
+    <div>
+      <h5>本讲内容</h5>
+      <p>Unit 2 Rain or Shine · 三篇阅读精讲<br>Animals and Weather<br>Zhang Dew and Winter Swimming<br>The Saxophone — No Pain, No Gain</p>
+    </div>
+    <div>
+      <h5>使用说明</h5>
+      <p>点击原文中带横线的词语即可查看释义、用法与例句；点击"朗读"按钮可听英文发音（需联网加载语音）。页面末尾为全部生词短语汇总表。</p>
+    </div>
+    <div>
+      <h5>校对说明</h5>
+      <p>原文 "Zhang Dews" 与 "Zhang Dew" 系同一人的印刷不一致，规范写法为 Zhang Dew；A 篇 "can not" 为教辅原文写法，已保留原样。</p>
+    </div>
+  </div>
+  <div class="copy">
+    <span>第 9 周 · 周五培优 · 七年级英语阅读</span>
+    <span>点击生词 · 展开释义 · 语音朗读</span>
+  </div>
+</footer>
+
+<div class="wordcard" id="wordCard" aria-live="polite">
+  <div class="wc-top">
+    <div class="wc-word" id="wcWord">—</div>
+    <button class="wc-close" id="wcClose" aria-label="关闭">✕</button>
+  </div>
+  <div class="wc-pos" id="wcPos">—</div>
+  <div class="wc-cn" id="wcCn">—</div>
+  <div class="wc-use" id="wcUse">—</div>
+  <div class="wc-ex" id="wcEx">—<span class="wc-exc" id="wcExc"></span></div>
+  <div class="wc-btns">
+    <button id="wcSay">朗读单词</button>
+    <button id="wcSayEx">朗读例句</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+<button class="top" id="toTop" aria-label="回到顶部">↑</button>
+<script>
+/* ============ 词汇数据 ============ */
+const VOCAB = [
+ {id:"studies",w:"studies / study",pos:"n. / v.",cn:"研究；学习",tag:"A",use:"作“研究”讲时常用复数 studies；作动词意为“学习、研究”，study for a test 为考试而学习。",ex:"Most studies show that many animals can feel weather changes.",exc:"大多数研究表明，许多动物能感知天气变化。"},
+ {id:"weatherchange",w:"weather changes",pos:"n. phr.",cn:"天气变化",tag:"A",use:"change 作名词“变化”时可数；weather 作定语用单数。",ex:"Animals can feel weather changes before we do.",exc:"动物能在我们之前感觉到天气变化。"},
+ {id:"behaviour",w:"behaviour",pos:"n.",cn:"行为，行为方式",tag:"A",use:"英式拼写 behaviour，美式 behavior；动词 behave（表现）。",ex:"The behaviours of animals are really amazing.",exc:"动物的行为方式真的很神奇。"},
+ {id:"gettogether",w:"get together",pos:"phr. v.",cn:"聚集，聚在一起",tag:"A",use:"get-together 还可作名词“聚会”；get together with sb. 与某人聚一聚。",ex:"A lot of birds get together under the roof of houses.",exc:"许多鸟聚集在房子的屋檐下。"},
+ {id:"roof",w:"roof",pos:"n.",cn:"屋顶；屋檐",tag:"A",use:"复数 roofs；under the roof of … 在……的屋檐下。",ex:"The birds stay under the roof when the rain comes.",exc:"下雨时鸟儿躲在屋檐下。"},
+ {id:"heavyrain",w:"heavy rain",pos:"n. phr.",cn:"大雨，暴雨",tag:"A",use:"heavy 修饰雨、雪、风表示“大”：heavy snow 大雪，heavy wind 大风。",ex:"Heavy rain will come, so take an umbrella.",exc:"要下大雨了，带把伞吧。"},
+ {id:"storm",w:"storm",pos:"n.",cn:"暴风雨",tag:"A",use:"stormy adj. 有暴风雨的；snowstorm 暴风雪，thunderstorm 雷暴。",ex:"A big storm will arrive tomorrow.",exc:"一场大风暴明天就会到来。"},
+ {id:"arrive",w:"arrive",pos:"v.",cn:"到达",tag:"A",use:"arrive in + 大地点（arrive in Beijing），arrive at + 小地点（arrive at school），也可单独使用；get to / reach 同义。",ex:"We arrived at the bus stop early.",exc:"我们早早到了公交站。"},
+ {id:"spider",w:"spider",pos:"n.",cn:"蜘蛛",tag:"A",use:"同类小昆虫词：ant 蚂蚁，bee 蜜蜂，fly 苍蝇。",ex:"There are more spiders than usual in autumn.",exc:"秋天的蜘蛛比平常多。"},
+ {id:"web",w:"web",pos:"n.",cn:"网",tag:"A",use:"蜘蛛网 a spider's web；website 网站（web + site）。",ex:"The spiders are making larger webs than usual.",exc:"蜘蛛正在织比平常更大的网。"},
+ {id:"thanusual",w:"than usual",pos:"phr.",cn:"比平常",tag:"A",use:"usual adj. 通常的；as usual 像往常一样；usually adv. 通常。",ex:"He gets up earlier than usual today.",exc:"他今天比平常起得早。"},
+ {id:"comparative",w:"deeper / larger / smaller",pos:"adj. 比较级",cn:"更深的／更大的／更小的",tag:"A",use:"原形 deep / large / small；多音节用 more + 原级，如 more beautiful；比较级常与 than 连用。",ex:"Sharks swim to deeper water before a storm.",exc:"风暴来临前鲨鱼会游向更深的水域。"},
+ {id:"fewer",w:"fewer",pos:"det.",cn:"更少的",tag:"A",use:"few 的比较级，修饰可数名词复数；little 的比较级 less 修饰不可数名词。",ex:"There are fewer spiders and they make smaller webs.",exc:"蜘蛛更少了，织的网也更小。"},
+ {id:"colddry",w:"cold and dry",pos:"adj. phr.",cn:"干冷的，寒冷干燥的",tag:"A",use:"常用来形容冬季气候；反义 warm and wet 温暖湿润的。",ex:"A cold and dry winter will come.",exc:"将会迎来一个干冷的冬天。"},
+ {id:"warmwet",w:"warm and wet",pos:"adj. phr.",cn:"温暖湿润的",tag:"A",use:"wet 湿的，be/get wet 变湿；反义 dry 干燥的。",ex:"It is warm and wet in the south in spring.",exc:"南方的春天温暖而湿润。"},
+ {id:"ant",w:"ant",pos:"n.",cn:"蚂蚁",tag:"A",use:"常见搭配：a group of ants 一群蚂蚁。",ex:"A lot of ants are on the grass.",exc:"草地上有许多蚂蚁。"},
+ {id:"grass",w:"grass",pos:"n.",cn:"草，草地",tag:"A",use:"不可数名词；on the grass 在草地上。",ex:"Don't walk on the grass.",exc:"请勿践踏草坪。"},
+ {id:"begoingto",w:"be going to",pos:"phr.",cn:"将要；（根据迹象）即将",tag:"A",use:"表示根据现有迹象作出的主观判断或计划打算；与 will（表纯粹将来）区别。",ex:"Look at the dark clouds! It is going to rain.",exc:"看那些乌云！天要下雨了。"},
+ {id:"amazing",w:"amazing",pos:"adj.",cn:"令人惊奇的",tag:"A",use:"-ing 形容词修饰事物；amazed 修饰人“感到惊奇的”；amaze v. 使惊奇。",ex:"The world of animals is really amazing.",exc:"动物世界真的很神奇。"},
+ {id:"explain",w:"explain",pos:"v.",cn:"解释，说明",tag:"A",use:"explain sth. to sb. 向某人解释某事；不接双宾语，不说 explain sb. sth.。",ex:"Can you explain why you are late?",exc:"你能解释一下你为什么迟到吗？"},
+ {id:"weatherreport",w:"weather report",pos:"n. phr.",cn:"天气预报",tag:"A",use:"report 也可作动词“报道”；the weather forecast 亦指天气预报。",ex:"I watch the weather report every evening.",exc:"我每天晚上看天气预报。"},
+ {id:"article",w:"article",pos:"n.",cn:"文章",tag:"A",use:"an article about … 一篇关于……的文章；article 还可指“物品、冠词”。",ex:"She wrote an article about animals and weather.",exc:"她写了一篇关于动物与天气的文章。"},
+ {id:"science",w:"science",pos:"n.",cn:"科学",tag:"A",use:"scientific adj. 科学的；scientist n. 科学家。",ex:"Science is my favourite subject.",exc:"科学是我最喜欢的科目。"},
+ {id:"magazine",w:"magazine",pos:"n.",cn:"杂志",tag:"A",use:"read a magazine 看杂志；注意与 newspaper（报纸）区别。",ex:"There are some articles in School Science Magazine.",exc:"《校园科学杂志》上有一些文章。"},
+ {id:"excited",w:"excited / exciting",pos:"adj.",cn:"感到兴奋的／令人兴奋的",tag:"B",use:"excited 修饰人，be excited about sth. 对……感到兴奋；exciting 修饰事物。",ex:"Zhang Dew is excited about the cold days.",exc:"张德文对寒冷的日子感到兴奋。"},
+ {id:"winterswim",w:"winter swimming",pos:"n. phr.",cn:"冬泳",tag:"B",use:"swim 的动名词形式 swimming；go winter swimming 去冬泳。",ex:"Winter swimming helps me to be healthy.",exc:"冬泳使我保持健康。"},
+ {id:"lookyoung",w:"look young",pos:"phr.",cn:"看起来年轻",tag:"B",use:"look + 形容词“看起来……”：look happy / tired；系动词还有 feel、sound、taste、smell。",ex:"He is seventy-four, but he looks young.",exc:"他七十四岁了，但看起来很年轻。"},
+ {id:"snowy",w:"snowy",pos:"adj.",cn:"下雪的，多雪的",tag:"B",use:"名词 snow + y 构成形容词，同类：rainy、windy、cloudy、sunny。",ex:"It is snowy and cold today.",exc:"今天下雪，天气很冷。"},
+ {id:"getinto",w:"get into",pos:"phr. v.",cn:"进入",tag:"B",use:"get into + 地方；反义 get out of 从……出来；get on / off 上下（车）。",ex:"He gets into the river slowly.",exc:"他慢慢下到河里。"},
+ {id:"doexercise",w:"do some exercise",pos:"phr.",cn:"做运动，锻炼",tag:"B",use:"exercise 表“锻炼”时不可数；表“体操、练习”时可数（do eye exercises 做眼保健操）。",ex:"I do some exercise every morning.",exc:"我每天早上都锻炼。"},
+ {id:"makewarm",w:"make himself warm",pos:"phr.",cn:"使他自己暖和",tag:"B",use:"make + 宾语 + 形容词“使……处于某种状态”；make + 宾语 + 动词原形“使……做”。",ex:"Running makes himself warm before he swims.",exc:"游泳前跑步使他暖和起来。"},
+ {id:"strongwind",w:"strong winds",pos:"n. phr.",cn:"强风，大风",tag:"B",use:"strong 修饰风、光、味道等；a strong wind 一阵大风。",ex:"The cold and strong winds can't make him afraid.",exc:"寒冷与强风不能使他害怕。"},
+ {id:"afraid",w:"afraid",pos:"adj.",cn:"害怕的",tag:"B",use:"be afraid of sth. / sb.；be afraid to do sth. 不敢做某事；只作表语，不作定语。",ex:"Don't be afraid of difficulties.",exc:"不要害怕困难。"},
+ {id:"healthy",w:"healthy / health",pos:"adj. / n.",cn:"健康的／健康",tag:"B",use:"healthy = in good health；keep healthy 保持健康；unhealthy 不健康的。",ex:"Winter swimming helps me to be healthy.",exc:"冬泳使我保持健康。"},
+ {id:"catchcold",w:"catch a cold",pos:"phr.",cn:"感冒",tag:"B",use:"= have a cold；catch 表“患上（疾病）”；注意 a 不能省。",ex:"I never catch a cold in winter.",exc:"我冬天从不感冒。"},
+ {id:"keepdoing",w:"keep doing sth.",pos:"phr.",cn:"继续／一直做某事",tag:"B",use:"keep 后接动词 -ing；同类：keep on doing、continue doing。",ex:"I want to keep doing it every winter.",exc:"我想每个冬天都坚持做这件事。"},
+ {id:"berightfor",w:"be right for",pos:"phr.",cn:"适合",tag:"B",use:"= be suitable / good for；right 此处意为“合适的”。",ex:"This exercise isn't right for everyone.",exc:"这项运动并非人人适合。"},
+ {id:"healthproblem",w:"health problems",pos:"n. phr.",cn:"健康问题",tag:"B",use:"problem 可数；have problems with … 在……方面有问题。",ex:"People with some health problems can't do it.",exc:"有一些健康问题的人不能做这项运动。"},
+ {id:"takingshower",w:"take a shower",pos:"phr.",cn:"洗澡，淋浴",tag:"B",use:"= have a shower；take a bath 洗盆浴。",ex:"He takes a shower after he gets out of the river.",exc:"他上岸后冲个澡。"},
+ {id:"onway",w:"on one's way home",pos:"phr.",cn:"在某人回家的路上",tag:"C",use:"home 前不加 to；on the way to school 在上学的路上。",ex:"On my way home, I always found an old man.",exc:"在回家的路上，我总能看见一位老人。"},
+ {id:"saxophone",w:"saxophone",pos:"n.",cn:"萨克斯（管）",tag:"C",use:"play the saxophone 吹萨克斯；乐器前加 the。",ex:"The old man is playing his saxophone near the river.",exc:"老人在河边吹萨克斯。"},
+ {id:"makedream",w:"make me dream",pos:"phr.",cn:"使我梦想着",tag:"C",use:"make sb. do sth. 使某人做某事（省略 to）；被动语态需还原 to：be made to do。",ex:"The beautiful music made me dream to play the saxophone.",exc:"那美妙的音乐让我梦想着吹萨克斯。"},
+ {id:"present",w:"present",pos:"n.",cn:"礼物",tag:"C",use:"= gift；present 还可作形容词“在场的”、动词“赠送”。",ex:"I opened my present on my birthday.",exc:"我在生日那天打开了礼物。"},
+ {id:"makesound",w:"make a sound",pos:"phr.",cn:"发出声音",tag:"C",use:"make + 名词构成许多搭配：make noise、make a mistake、make friends。",ex:"The saxophone wouldn't make a sound.",exc:"萨克斯发不出声音。"},
+ {id:"blow",w:"blow / blew",pos:"v.",cn:"吹",tag:"C",use:"过去式 blew，过去分词 blown；blow out 吹灭（蜡烛）。",ex:"I blew and blew, but it made no sound.",exc:"我吹啊吹，可它就是不出声。"},
+ {id:"beabout",w:"be about to",pos:"phr.",cn:"即将，正要",tag:"C",use:"be about to do … when … 正要做……这时……；表示非常近的将来，不与 tomorrow 等连用。",ex:"I was about to cry when it made a sound.",exc:"我正要哭，这时它忽然发出了声音。"},
+ {id:"suddenly",w:"suddenly",pos:"adv.",cn:"突然地",tag:"C",use:"= all of a sudden；形容词 sudden 突然的。",ex:"Suddenly the saxophone made a sound.",exc:"突然，萨克斯发出了声音。"},
+ {id:"loud",w:"loud",pos:"adj. / adv.",cn:"大声的，响亮的",tag:"C",use:"loudly adv. 大声地；aloud adv. 出声地（read aloud 朗读）。",ex:"Some of the sounds were loud and clear.",exc:"有些声音响亮而清晰。"},
+ {id:"clear",w:"clear",pos:"adj.",cn:"清晰的；清楚的",tag:"C",use:"clearly adv. 清晰地；clear 还可作动词“清理”。",ex:"The music came out clear and beautiful.",exc:"音乐出来得清晰而美妙。"},
+ {id:"practise",w:"practise hard",pos:"phr.",cn:"刻苦练习",tag:"C",use:"practise doing sth. 练习做某事（英式动词拼写 practise，名词 practice）；美式动词、名词均用 practice。",ex:"Night after night, I practised hard playing the saxophone.",exc:"一夜又一夜，我刻苦练习吹萨克斯。"},
+ {id:"nightafter",w:"night after night / week after week",pos:"phr.",cn:"一夜又一夜／一周又一周",tag:"C",use:"名词 + after + 同一名词，表示动作反复持续：day after day、year after year。",ex:"Week after week, I kept practising.",exc:"一周又一周，我坚持练习。"},
+ {id:"getbetter",w:"get better",pos:"phr.",cn:"变得更好，进步",tag:"C",use:"get + 形容词比较级表“变得……”：get warmer、get stronger。",ex:"Slowly I started to get better.",exc:"慢慢地，我开始进步了。"},
+ {id:"magic",w:"magic",pos:"n. / adj.",cn:"魔法；神奇的",tag:"C",use:"magical adj. 神奇的；magician n. 魔术师。",ex:"At last the magic day came.",exc:"神奇的那一天终于来了。"},
+ {id:"comeout",w:"come out of",pos:"phr. v.",cn:"从……出来；由……发出",tag:"C",use:"come out 还可指“（书）出版、（消息）传出”。",ex:"The beautiful music came out of my saxophone.",exc:"美妙的音乐从我的萨克斯中流出。"},
+ {id:"tvstudio",w:"TV studio",pos:"n. phr.",cn:"电视台演播室",tag:"C",use:"studio 工作室、演播室；in the studio 在演播室里。",ex:"Now I'm in the TV studio with my saxophone.",exc:"现在我带着萨克斯坐在电视台演播室里。"},
+ {id:"nopain",w:"No pain, no gain.",pos:"saying",cn:"一分耕耘，一分收获",tag:"C",use:"英语谚语，常用于劝勉他人刻苦努力；同类：Practice makes perfect. 熟能生巧。",ex:"If you want to succeed, remember: no pain, no gain.",exc:"想成功就记住：一分耕耘，一分收获。"}
+];
+
+/* ============ 工具（不使用 $ 符号，避免转存被改写） ============ */
+const qs = function(s, c){ return (c || document).querySelector(s); };
+const qsa = function(s, c){ return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
+
+const toastEl = qs("#toast");
+let toastTimer = null;
+function toast(msg){
+  toastEl.textContent = msg;
+  toastEl.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(function(){ toastEl.classList.remove("show"); }, 2200);
+}
+function speak(text, lang){
+  if(!("speechSynthesis" in window)){ toast("当前浏览器不支持语音朗读"); return; }
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = lang || "en-US";
+  u.rate = 0.92;
+  u.pitch = 1;
+  window.speechSynthesis.speak(u);
+}
+
+/* ============ 雨丝背景 ============ */
+(function rainInit(){
+  const box = qs("#rain");
+  if(!box) return;
+  const n = window.innerWidth < 700 ? 16 : 34;
+  for(let i = 0; i < n; i++){
+    const s = document.createElement("i");
+    s.style.left = Math.random() * 100 + "%";
+    s.style.animationDuration = (2.6 + Math.random() * 3.2) + "s";
+    s.style.animationDelay = (-Math.random() * 5) + "s";
+    s.style.height = (40 + Math.random() * 90) + "px";
+    s.style.opacity = 0.25 + Math.random() * 0.65;
+    box.appendChild(s);
+  }
+})();
+
+/* ============ 滚动进度 / 回到顶部 ============ */
+const bar = qs("#bar");
+const toTop = qs("#toTop");
+window.addEventListener("scroll", function(){
+  const h = document.documentElement.scrollHeight - window.innerHeight;
+  const p = h > 0 ? (window.scrollY / h) * 100 : 0;
+  bar.style.width = p + "%";
+  toTop.classList.toggle("show", window.scrollY > 620);
+}, {passive:true});
+toTop.addEventListener("click", function(){
+  window.scrollTo({top:0, behavior:"smooth"});
+});
+
+/* ============ 进场动画 ============ */
+const io = new IntersectionObserver(function(entries){
+  entries.forEach(function(e, i){
+    if(e.isIntersecting){
+      e.target.style.transitionDelay = (Math.min(i, 5) * 0.075) + "s";
+      e.target.classList.add("in");
+      io.unobserve(e.target);
+    }
+  });
+}, {threshold:0.12, rootMargin:"0px 0px -8% 0px"});
+qsa(".reveal").forEach(function(el){ io.observe(el); });
+
+/* ============ 导航高亮 ============ */
+const navMap = new Map();
+qsa("#navLinks a").forEach(function(a){ navMap.set(a.getAttribute("href").slice(1), a); });
+const secIo = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){
+      qsa("#navLinks a").forEach(function(a){ a.classList.remove("active"); });
+      const link = navMap.get(e.target.id);
+      if(link) link.classList.add("active");
+    }
+  });
+}, {threshold:0.16, rootMargin:"-18% 0px -62% 0px"});
+qsa("main .sec").forEach(function(s){ secIo.observe(s); });
+
+/* ============ 单词卡片 ============ */
+const card = qs("#wordCard");
+const wcWord = qs("#wcWord");
+const wcPos = qs("#wcPos");
+const wcCn = qs("#wcCn");
+const wcUse = qs("#wcUse");
+const wcEx = qs("#wcEx");
+const wcExc = qs("#wcExc");
+let currentWord = null;
+
+function openCard(id, sourceEl){
+  const item = VOCAB.find(function(v){ return v.id === id; });
+  if(!item){ toast("未找到该词条"); return; }
+  currentWord = item;
+  wcWord.textContent = item.w;
+  wcPos.textContent = item.pos + "　·　出处：" + ({A:"A 篇 · 动物与天气", B:"B 篇 · 冬泳", C:"Test 1 · 萨克斯"}[item.tag] || "");
+  wcCn.textContent = item.cn;
+  wcUse.textContent = item.use;
+  if(wcEx.firstChild && wcEx.firstChild.nodeType === 3){
+    wcEx.firstChild.nodeValue = item.ex;
+  }
+  wcExc.textContent = item.exc;
+  card.classList.add("show");
+  qsa(".w.on").forEach(function(el){ el.classList.remove("on"); });
+  if(sourceEl) sourceEl.classList.add("on");
+}
+function closeCard(){
+  card.classList.remove("show");
+  qsa(".w.on").forEach(function(el){ el.classList.remove("on"); });
+}
+document.addEventListener("click", function(e){
+  const w = e.target.closest ? e.target.closest(".w") : null;
+  if(w){ openCard(w.dataset.id, w); return; }
+  if(!e.target.closest || !e.target.closest("#wordCard")) closeCard();
+});
+qs("#wcClose").addEventListener("click", closeCard);
+document.addEventListener("keydown", function(e){
+  if(e.key === "Escape") closeCard();
+});
+qs("#wcSay").addEventListener("click", function(){
+  if(currentWord) speak(currentWord.w.replace(/ \/ .*/, ""), "en-US");
+});
+qs("#wcSayEx").addEventListener("click", function(){
+  if(currentWord) speak(currentWord.ex, "en-US");
+});
+
+/* ============ 整篇朗读 ============ */
+qsa(".read-btn").forEach(function(btn){
+  btn.addEventListener("click", function(){
+    const el = document.getElementById(btn.dataset.read);
+    if(!el) return;
+    const text = el.innerText.replace(/\s+/g, " ").trim();
+    speak(text, "en-US");
+    toast("正在朗读，请稍候…");
+  });
+});
+qs("#readAll").addEventListener("click", function(){
+  const passages = qsa(".passage");
+  const active = passages.find(function(p){
+    const r = p.getBoundingClientRect();
+    return r.top < window.innerHeight * 0.75 && r.bottom > window.innerHeight * 0.2;
+  }) || passages[0];
+  if(!active) return;
+  const text = active.querySelector(".en").innerText.replace(/\s+/g, " ").trim();
+  speak(text, "en-US");
+  toast("正在朗读当前篇章…");
+});
+
+/* ============ 选择题交互 ============ */
+qsa(".q").forEach(function(q){
+  const answer = q.dataset.answer;
+  const verdict = qs(".verdict", q);
+  const exp = qs(".exp", q);
+  const toggle = qs(".toggle-exp", q);
+  qsa(".opt", q).forEach(function(opt){
+    opt.addEventListener("click", function(e){
+      e.stopPropagation();
+      qsa(".opt", q).forEach(function(o){ o.classList.remove("correct", "wrong"); });
+      const k = opt.dataset.k;
+      if(k === answer){
+        opt.classList.add("correct");
+        verdict.textContent = "✓ 回答正确";
+        verdict.className = "verdict show ok";
+        toast("回答正确");
+      }else{
+        opt.classList.add("wrong");
+        const right = qsa(".opt", q).find(function(o){ return o.dataset.k === answer; });
+        if(right) right.classList.add("correct");
+        verdict.textContent = "✕ 正确答案：" + answer;
+        verdict.className = "verdict show no";
+      }
+      exp.classList.add("open");
+      toggle.textContent = "收起解析";
+    });
+  });
+  toggle.addEventListener("click", function(e){
+    e.stopPropagation();
+    exp.classList.toggle("open");
+    toggle.textContent = exp.classList.contains("open") ? "收起解析" : "显示解析";
+  });
+});
+
+/* ============ 词汇表 ============ */
+const vbody = qs("#vbody");
+const vcount = qs("#vcount");
+function renderVocab(){
+  const kw = qs("#vsearch").value.trim().toLowerCase();
+  const tag = qs("#vfilters .on").dataset.tag;
+  const rows = VOCAB.filter(function(v){
+    const okTag = (tag === "all") || (v.tag === tag);
+    const hay = (v.w + v.cn + v.use + v.ex + v.exc).toLowerCase();
+    return okTag && (!kw || hay.indexOf(kw) !== -1);
+  });
+  vbody.innerHTML = rows.map(function(v){
+    return "" +
+    "<tr>" +
+      "<td>" +
+        '<span class="v-word">' + v.w + "</span>" +
+        '<span class="v-pos">' + v.pos + "</span>" +
+        '<button class="v-say" data-say="' + v.w.replace(/ \/ .*/, "") + '">朗读</button>' +
+      "</td>" +
+      '<td><span class="v-tag">' + ({A:"A 篇", B:"B 篇", C:"Test 1"}[v.tag]) + "</span></td>" +
+      '<td class="v-cn">' + v.cn + "</td>" +
+      '<td class="v-use">' + v.use + "</td>" +
+      '<td class="v-ex">“' + v.ex + '”' +
+        '<span class="v-exc">' + v.exc + "</span>" +
+        '<button class="v-say" data-say="' + v.ex.replace(/"/g, "") + '">朗读例句</button>' +
+      "</td>" +
+    "</tr>";
+  }).join("");
+  vcount.textContent = rows.length + " / " + VOCAB.length + " 条";
+}
+vbody.addEventListener("click", function(e){
+  const b = e.target.closest ? e.target.closest(".v-say") : null;
+  if(!b) return;
+  e.stopPropagation();
+  speak(b.dataset.say, "en-US");
+});
+qs("#vsearch").addEventListener("input", renderVocab);
+qs("#vfilters").addEventListener("click", function(e){
+  const b = e.target.closest ? e.target.closest("button") : null;
+  if(!b) return;
+  qsa("#vfilters button").forEach(function(x){ x.classList.remove("on"); });
+  b.classList.add("on");
+  renderVocab();
+});
+renderVocab();
+</script>
+</body>
+</html>
