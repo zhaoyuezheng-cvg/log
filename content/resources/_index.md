@@ -38,7 +38,7 @@ HTML 学习资料，按学科分类。
 
 ## 历史、道法、 地理
 
-- [八年级历史上册核心考点及重难点突破](/history/grade-8-history-core-review.html)
+- [八年级历史上册核心考点及重难点突破](/history/grade-8-history-core-review.html)、[v2（含原文档图片与拓展资料）](/history/grade-8-history-core-review-v2.html)
 - [七年级历史背诵](/history/history-review.html)
 - [数学七上知识点](/history/grade-7-core-review.html)  [知识网络](/history/grade-7-knowledge-map.html)
 - [道法七上册思维导图](/history/moral-education-grade-7-units.html)  [屏幕版](/history/moral-education-grade-7-mindmap-screen.html)
