@@ -14,7 +14,7 @@ HTML 学习资料，按学科分类。
 - [8周3培优 v1](/english/en8-3.html)、[v2](/english/en8-3-v2.html)、[v3](/english/en8-3-v3.html)
 - [8周4培优](/english/en8-4-v1.html)、[11月21日作业](/english/en-1121.html)、[10月21日作业](/english/en-1021-1.html)
 - [8周5培优 v1](/english/en8-5-1.html)、[v2](/english/en8-5-2.html)、[v3](/english/en8-5-3.html)、[v4](/english/en8-5-4.html)
-- [9周3培优 v1](/english/en9-3-v1.html)、[v2](/english/en9-3-v2.html)、[v3](/english/en9-3-v3.html)、[v](/english/en9-3-v4.html)4
+- [9周3培优 v1](/english/en9-3-v1.html)、[v2](/english/en9-3-v2.html)、[v3](/english/en9-3-v3.html)
 - [英语不规则动词](/english/irregular-verbs.html)
 
 ## 语文
@@ -38,6 +38,7 @@ HTML 学习资料，按学科分类。
 
 ## 历史、道法、 地理
 
+- [八年级历史上册核心考点及重难点突破](/history/grade-8-history-core-review.html)
 - [七年级历史背诵](/history/history-review.html)
 - [数学七上知识点](/history/grade-7-core-review.html)  [知识网络](/history/grade-7-knowledge-map.html)
 - [道法七上册思维导图](/history/moral-education-grade-7-units.html)  [屏幕版](/history/moral-education-grade-7-mindmap-screen.html)
