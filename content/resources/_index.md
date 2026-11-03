@@ -26,7 +26,7 @@ HTML 学习资料，按学科分类。
 - [第七周语文培优](/chinese/w7paper.html)
 - [第八周语文培优 v1](/chinese/w8paper-v1.html)、[v2](/chinese/w8paper-v2.html)、[v3](/chinese/w8paper-v3.html)
 - [第九周培优 v1](/chinese/grade-7-week-9-chinese.html)、[解析 v2](/chinese/grade-7-week-9-chinese-answer-v2.html)
-- [第十周语文培优：全解全析](/chinese/grade-7-week-10-chinese-v1.html)、[全卷精讲精练](/chinese/grade-7-week-10-chinese-v2.html)、[讲评](/chinese/grade-7-week-10-chinese-v3.html)、[详细解析](/chinese/grade-7-week-10-chinese-v4.html)、[精讲精练手册](/chinese/grade-7-week-10-chinese-v5.html)、[详解交互版](/chinese/grade-7-week-10-chinese-v6.html)
+- [第十周语文培优：全解全析](/chinese/grade-7-week-10-chinese-v1.html)、[全卷精讲精练](/chinese/grade-7-week-10-chinese-v2.html)、[详细解析](/chinese/grade-7-week-10-chinese-v4.html)、[精讲精练手册](/chinese/grade-7-week-10-chinese-v5.html)
 - [容易写错、读错的字和多音字](/chinese/appendix-chars.html)、[补充版](/chinese/mis-chars.html)
 - [七年级作文范文](/chinese/essays.html)、[v2](/chinese/ff.html)、[v3](/chinese/essays-v2.html) 、[范文集](/chinese/grade-7-themed-essays.html)、[作文范文阅读](/chinese/grade-7-essay-reading.html)
 - [初中记叙文阅读答题模板](/chinese/narrative-reading-guide.html)
