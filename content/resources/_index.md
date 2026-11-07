@@ -10,7 +10,7 @@ HTML 学习资料，按学科分类。
 - [9周1培优](/english/unit-1-english-enrichment.html) [v2](/english/unit-1-english-analysis.html)  [v3](/english/unit-1-english-reading.html)
 - [9周5英语培优v1](/english/en9-5-learning.html)、[v](/english/en9-5-intensive-reading.html)2、[精读精讲 ](/english/en9-5-intensive-reading-v2.html)、[精讲与解析](/english/en9-5-analysis.html)
 - [10周一英语培优 v1](/english/en10-1-v1.html)、[v2](/english/en10-1-v2.html)、[v3](/english/en10-1-v3.html)
-- [10周3英语培优 v1（精读精讲）](/english/en10-3-v1.html)、[v2（精读学习）](/english/en10-3-v2.html)、[v3（交互式学习）](/english/en10-3-v3.html)
+- [10周3英语培优 v1](/english/en10-3-v1.html)、[v2](/english/en10-3-v2.html)、[v3](/english/en10-3-v3.html)
 - [8周1培优 v1](/english/en8_1.html)、[v2](/english/en8_1_v2.html)、[v3](/english/en8_1_v3.html)、[v4](/english/en8_1_v4.html)
 - [8周3培优 v1](/english/en8-3.html)、[v2](/english/en8-3-v2.html)、[v3](/english/en8-3-v3.html)
 - [8周4培优](/english/en8-4-v1.html)、[11月21日作业](/english/en-1121.html)、[10月21日作业](/english/en-1021-1.html)
@@ -41,8 +41,10 @@ HTML 学习资料，按学科分类。
 
 ## 历史、道法、 地理
 
-- [八年级历史期中模拟试题 v1（答案与详解）](/history/grade-8-history-midterm-v1.html)、[v2（全卷解析）](/history/grade-8-history-midterm-v2.html)
-- [八年级历史上册核心考点及重难点突破](/history/grade-8-history-core-review.html)、[v2（含原文档图片与拓展资料）](/history/grade-8-history-core-review-v2.html)
+- [八上历史期中模拟 v1](/history/grade-8-history-midterm-v1.html)、[v2](/history/grade-8-history-midterm-v2.html)
+- [八上历史知识清单](/history/8th-grade-history-knowledge-list)
+- [八上历史考点研究](/history/8th-grade-history-key-points)
+- [八上历史核心考点及重难点突破](/history/grade-8-history-core-review.html)、[v2](/history/grade-8-history-core-review-v2.html)
 - [七年级历史背诵](/history/history-review.html)
 - [数学七上知识点](/history/grade-7-core-review.html)  [知识网络](/history/grade-7-knowledge-map.html)
 - [道法七上册思维导图](/history/moral-education-grade-7-units.html)  [屏幕版](/history/moral-education-grade-7-mindmap-screen.html)
