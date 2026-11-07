@@ -1,0 +1,2190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>初中历史 · 八年级上册 考点研究（网页交互版）</title>
+<meta name="description" content="八年级上册历史考点研究网页版：单元体系构建、时间轴、知识结构图、表格与真题解析，适配桌面与移动端。">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="progress"></div>
+
+<!-- ================= 顶栏 ================= -->
+<header class="topbar">
+  <button class="icon-btn menu-btn" id="menuBtn" aria-label="打开目录">☰</button>
+  <div class="brand">
+    <div class="logo">史</div>
+    <span class="name">历史考点研究 · 八年级上册</span>
+  </div>
+  <div class="spacer"></div>
+  <div class="search-box">
+    <span class="s-icon">🔍</span>
+    <input id="searchInput" type="search" placeholder="搜索考点、条约、人物…" autocomplete="off">
+    <div class="search-results" id="searchResults"></div>
+  </div>
+  <button class="icon-btn" id="expandAllBtn" title="全部展开/收起">📂</button>
+  <button class="icon-btn" id="themeBtn" title="切换深浅色主题">🌙</button>
+</header>
+
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+<div class="layout">
+  <!-- ================= 侧栏目录 ================= -->
+  <nav class="sidebar" id="sidebar">
+    <div class="toc-unit open">
+      <button aria-expanded="true"><span>📘 使用说明与校对说明</span><span class="chev">▶</span></button>
+      <div class="toc-sub">
+        <a href="#intro">导言 · 阅读指南</a>
+        <a href="#proofread">校对与补全说明</a>
+      </div>
+    </div>
+
+    <div class="toc-unit">
+      <button aria-expanded="false"><span>第一单元　中国开始沦为半殖民地半封建社会</span><span class="chev">▶</span></button>
+      <div class="toc-sub">
+        <a href="#u1-overview">单元体系构建</a>
+        <a href="#u1-k1">考点01　鸦片战争</a>
+        <a href="#u1-k2">考点02　第二次鸦片战争、太平天国运动</a>
+      </div>
+    </div>
+
+    <div class="toc-unit">
+      <button aria-expanded="false"><span>第二单元　近代化的早期探索与民族危机的加剧</span><span class="chev">▶</span></button>
+      <div class="toc-sub">
+        <a href="#u2-overview">单元体系构建</a>
+        <a href="#u2-k1">考点01　洋务运动和边疆危机</a>
+        <a href="#u2-k2">考点02　甲午中日战争与列强瓜分狂潮</a>
+        <a href="#u2-k3">考点03　戊戌变法<span style="opacity:.7">（缺页补全）</span></a>
+        <a href="#u2-k4">考点04　八国联军侵华与《辛丑条约》</a>
+        <a href="#u2-chart">图示·半殖民地化沉沦进程</a>
+      </div>
+    </div>
+
+    <div class="toc-unit">
+      <button aria-expanded="false"><span>第三单元　资产阶级民主革命与中华民国的建立</span><span class="chev">▶</span></button>
+      <div class="toc-sub">
+        <a href="#u3-overview">单元体系构建</a>
+        <a href="#u3-k1">考点01　革命先行者孙中山与辛亥革命</a>
+        <a href="#u3-k2">考点02　中华民国的创建与北洋统治</a>
+      </div>
+    </div>
+
+    <div class="toc-unit">
+      <button aria-expanded="false"><span>第四、五单元　新民主主义革命的开始、从国共合作到国共对立</span><span class="chev">▶</span></button>
+      <div class="toc-sub">
+        <a href="#u45-overview">单元体系构建</a>
+        <a href="#u45-k1">考点01　新文化运动</a>
+        <a href="#u45-k2">考点02　五四运动和中国共产党诞生</a>
+        <a href="#u45-k3">考点03　国共合作与北伐战争</a>
+        <a href="#u45-k4">考点04　毛泽东开辟井冈山道路</a>
+        <a href="#u45-k5">考点05　中国工农红军长征</a>
+      </div>
+    </div>
+
+    <div class="toc-unit">
+      <button aria-expanded="false"><span>第六单元　中华民族的抗日战争</span><span class="chev">▶</span></button>
+      <div class="toc-sub">
+        <a href="#u6-overview">单元体系构建<span style="opacity:.7">（缺页补全）</span></a>
+        <a href="#u6-k1">考点01　从九一八事变到西安事变<span style="opacity:.7">（部分补全）</span></a>
+        <a href="#u6-k2">考点02　七七事变与全民族抗战</a>
+        <a href="#u6-k3">考点03　正面战场和敌后战场的抗战</a>
+        <a href="#u6-k4">考点04　全民族坚持抗战与抗战胜利</a>
+      </div>
+    </div>
+
+    <div class="toc-unit">
+      <button aria-expanded="false"><span>第七单元　人民解放战争</span><span class="chev">▶</span></button>
+      <div class="toc-sub">
+        <a href="#u7-overview">单元体系构建</a>
+        <a href="#u7-k1">考点01　内战爆发</a>
+        <a href="#u7-k2">考点02　人民解放战争的胜利<span style="opacity:.7">（部分补全）</span></a>
+      </div>
+    </div>
+
+    <div class="toc-unit">
+      <button aria-expanded="false"><span>第八单元　近代经济、社会生活与教育文化事业的发展</span><span class="chev">▶</span></button>
+      <div class="toc-sub">
+        <a href="#u8-overview">单元体系构建</a>
+        <a href="#u8-k1">考点01　经济和社会生活的变化</a>
+        <a href="#u8-k2">考点02　教育文化事业的发展</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ================= 主内容 ================= -->
+  <main>
+    <div class="content">
+
+      <!-- ===== 导言 ===== -->
+      <section class="unit-head section" id="intro" data-title="导言·阅读指南" style="background:linear-gradient(135deg,#1c2333,#2f54eb 60%,#d4682c)">
+        <div class="kicker">REVIEW · 八年级上册 · 中国近代史</div>
+        <h2>初中历史 考点研究 · 网页交互版</h2>
+        <p>依据《第 1 部分 考点研究（八年级上册）》扫描稿逐页识别、校对整理而成。全部表格均转为网页原生表格；时间轴、知识结构图、进程图均重绘为可交互组件；「易错易混」「提能力」「典例」与「背景资料」均可折叠展开。</p>
+      </section>
+
+      <div class="card-grid" style="margin-top:22px">
+        <div class="card"><div class="card-title"><span class="dot"></span>怎么用</div>
+          <p style="margin:0">左侧目录按单元 → 考点导航（手机端点「☰」）；顶部搜索框支持全文检索；「📂」一键展开/收起全部折叠面板；「🌙」切换深浅色主题。</p>
+        </div>
+        <div class="card"><div class="card-title"><span class="dot"></span>标记约定</div>
+          <p style="margin:0"><span class="tag" style="background:var(--accent-soft);color:var(--accent);padding:2px 10px;border-radius:999px;font-size:12px;font-weight:700">背景资料</span> 为编者补充的拓展内容；<b>易错易混</b> 提示高频失分点；<b>典例</b> 为真题精析，点开查看答案。</p>
+        </div>
+        <div class="card"><div class="card-title"><span class="dot"></span>内容范围</div>
+          <p style="margin:0">涵盖八年级上册全部 8 个单元（第四、五单元合并）：鸦片战争 → 人民解放战争 → 近代经济与文化，共 20 余个考点。</p>
+        </div>
+      </div>
+
+      <section class="section" id="proofread" data-title="校对与补全说明">
+        <h3 class="sec-title">校对与补全说明</h3>
+        <div class="tip warn">
+          <div class="t-ico">📝</div>
+          <div>
+            <p style="margin:0 0 8px"><b>关于原稿缺页：</b>扫描原稿共 27 页，对应原书页码 036–065，经逐页核对<b>缺失 3 个印张页</b>（原书 042、054、061 页）。缺失内容已在本页按统编版教材补全并联网核实，均以「缺页补全」角标注明。</p>
+            <p style="margin:0"><b>补全范围：</b>①考点03 戊戌变法（整页）；②第六单元体系构建与「九一八事变」正文；③「内战爆发」后半 + 「三大战役」表格表头。另有少量 OCR 讹误已校正（如《狂人日记》1918 年、《歌女红牡丹》1931 年、京张铁路 1909 年通车、京师大学堂等）。</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 第一单元 ================= -->
+      <section class="unit-head section" id="unit1" data-title="第一单元 中国开始沦为半殖民地半封建社会">
+        <div class="kicker">UNIT 01 · 1840—1864</div>
+        <h2>中国开始沦为半殖民地半封建社会</h2>
+        <p>从 1840 年鸦片战争爆发到 19 世纪六七十年代，在西方工业文明的冲击下，中国社会发生巨大变化，开始由农耕文明向工业文明演进。</p>
+      </section>
+
+      <section class="section" id="u1-overview" data-title="第一单元 单元体系构建">
+        <h3 class="sec-title">单元体系构建</h3>
+
+        <div class="timeline">
+          <div class="tl-title">🕐 时空坐标（点击查看事件详情）</div>
+          <div class="track">
+            <div class="tl-item" data-year="1839" data-name="虎门销烟" data-desc="林则徐在虎门海滩当众销毁收缴的鸦片 110 多万千克，显示了中华民族反抗外来侵略的坚强意志。"><span class="year">1839</span><div class="node"></div><div class="ev">虎门销烟</div></div>
+            <div class="tl-item" data-year="1840" data-name="鸦片战争爆发" data-desc="1840 年 6 月，英国舰队封锁广东海面，鸦片战争爆发。"><span class="year">1840</span><div class="node"></div><div class="ev">鸦片战争爆发</div></div>
+            <div class="tl-item" data-year="1842" data-name="《南京条约》签订" data-desc="清政府被迫签订中英《南京条约》，中国开始沦为半殖民地半封建社会，鸦片战争成为中国近代史的开端。"><span class="year">1842</span><div class="node"></div><div class="ev">《南京条约》签订</div></div>
+            <div class="tl-item" data-year="1851" data-name="太平天国运动爆发" data-desc="洪秀全在广西金田发动起义，建号太平天国，太平天国运动爆发。"><span class="year">1851</span><div class="node"></div><div class="ev">太平天国运动爆发</div></div>
+            <div class="tl-item" data-year="1856" data-name="第二次鸦片战争爆发" data-desc="英国以“亚罗号事件”为借口发动第二次鸦片战争，英法联军出兵。"><span class="year">1856</span><div class="node"></div><div class="ev">第二次鸦片战争爆发</div></div>
+            <div class="tl-item" data-year="1858" data-name="《天津条约》签订" data-desc="清政府被迫与英、法、美、俄分别签订《天津条约》；同年签订《通商章程善后条约》《瑷珲条约》。"><span class="year">1858</span><div class="node"></div><div class="ev">《天津条约》签订</div></div>
+            <div class="tl-item" data-year="1860" data-name="《北京条约》签订" data-desc="英法联军抢劫并烧毁圆明园，清政府被迫签订中英、中法《北京条约》。"><span class="year">1860</span><div class="node"></div><div class="ev">《北京条约》签订</div></div>
+            <div class="tl-item" data-year="1864" data-name="天京陷落" data-desc="天京陷落，太平天国运动失败。它是中国历史上规模最宏大的一次农民战争。"><span class="year">1864</span><div class="node"></div><div class="ev">天京陷落</div></div>
+          </div>
+          <div class="tl-detail"></div>
+        </div>
+
+        <div class="table-wrap">
+          <caption>阶段特征（1840—19 世纪六七十年代）</caption>
+          <table>
+            <thead><tr><th>类别</th><th>内容</th></tr></thead>
+            <tbody>
+              <tr><th>侵略</th><td>鸦片战争使中国开始沦为半殖民地半封建社会；第二次鸦片战争使中国的半殖民地化程度进一步加深</td></tr>
+              <tr><th>抗争</th><td>林则徐领导虎门销烟，关天培和陈化成在鸦片战争中英勇抗敌，显示了中国人民反抗外来侵略的决心和勇气；太平军抗击洋枪队，打击了外国侵略势力</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="ktree">
+          <div class="kt-title">🌳 知识结构图（点击节点可折叠/展开）</div>
+          <ul>
+            <li>
+              <span class="k-node"><span class="fold-ico">▼</span>中国开始沦为半殖民地半封建社会（1840—1864）</span>
+              <ul>
+                <li>
+                  <span class="k-node"><span class="fold-ico">▼</span>列强侵略</span>
+                  <ul>
+                    <li><span class="k-node">鸦片战争（1840—1842）</span><span class="k-note">→《南京条约》→ 开始沦为半殖民地半封建社会</span></li>
+                    <li><span class="k-node">第二次鸦片战争（1856—1860）</span><span class="k-note">→《天津条约》《北京条约》→ 半殖民地化程度进一步加深；沙俄割占 150 多万平方千米领土</span></li>
+                  </ul>
+                </li>
+                <li>
+                  <span class="k-node"><span class="fold-ico">▼</span>中国人民的抗争</span>
+                  <ul>
+                    <li><span class="k-node">林则徐虎门销烟（1839）</span></li>
+                    <li><span class="k-node">爱国官兵：关天培、陈化成等</span></li>
+                    <li><span class="k-node">太平天国运动（1851—1864）</span><span class="k-note">沉重打击了清朝的统治和外国侵略势力</span></li>
+                  </ul>
+                </li>
+                <li><span class="k-node">关键概念：半殖民地半封建社会</span></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section" id="u1-k1" data-title="考点01 鸦片战争">
+        <h4 class="sub-title"><span class="badge">考点 01</span>鸦片战争</h4>
+
+        <h5>一、鸦片走私与林则徐禁烟</h5>
+        <div class="table-wrap">
+          <caption>1. 鸦片走私</caption>
+          <table>
+            <thead><tr><th>项目</th><th>内容</th></tr></thead>
+            <tbody>
+              <tr><th>背景</th><td>①国际：西方已经进入资本主义时代，英国成为头号工业强国，并不断向外进行殖民主义扩张，掠夺殖民地。<br>②国内：清朝统治下的中国危机四伏</td></tr>
+              <tr><th>原因</th><td>在中英的正当贸易中，中国处于明显的出超地位</td></tr>
+              <tr><th>目的</th><td>改变中英贸易的不利局面</td></tr>
+              <tr><th>概况</th><td>从 18 世纪末到鸦片战争前夕，英国走私到中国的鸦片达 40 多万箱，从中国掠走 3 亿至 4 亿银元</td></tr>
+              <tr><th>影响</th><td>鸦片泛滥给中华民族带来深重灾难。白银大量外流直接威胁到清政府的财政；许多官员、士兵吸食鸦片，不但严重摧残了他们的体质，更导致政治腐败和军队战斗力削弱</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="table-wrap">
+          <caption>2. 虎门销烟</caption>
+          <table>
+            <thead><tr><th>项目</th><th>内容</th></tr></thead>
+            <tbody>
+              <tr><th>时间</th><td>1839 年 6 月 3 日至 25 日</td></tr>
+              <tr><th>地点</th><td>虎门海滩</td></tr>
+              <tr><th>过程</th><td>1838 年底，道光帝派力主禁烟的林则徐为钦差大臣，前往广东查禁鸦片。林则徐到广州后，收缴鸦片 110 多万千克，并在虎门海滩当众销毁</td></tr>
+              <tr><th>意义</th><td>虎门销烟是中国人民禁烟斗争的伟大胜利，显示了中华民族反抗外来侵略的坚强意志</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <details class="collapse bg">
+          <summary><span class="tag">背景资料</span>虎门销烟是怎样销毁鸦片的？<span class="chev">▶</span></summary>
+          <div class="body">
+            <p>林则徐采用「海水浸化法」：在虎门海滩高处挖池，引入海水，投入鸦片浸泡半日，再投入石灰，鸦片在池中翻滚销毁，退潮时随海浪送入大海。销烟自 6 月 3 日持续到 25 日，历时 23 天，共销毁鸦片 237 万余斤（约 119 万千克）。</p>
+            <p>林则徐还主持编译《四洲志》等书刊，被誉为近代中国「开眼看世界」的先行者之一。</p>
+          </div>
+        </details>
+
+        <h5>二、鸦片战争（1840—1842 年）</h5>
+        <ol class="kp-list">
+          <li><b>原因</b>：根本原因是打开中国市场；直接原因是中国的禁烟运动。</li>
+          <li><b>经过</b>：⑴ 1840 年 6 月战争开始；⑵ 1841 年初，英军强占香港岛；⑶ 1842 年 8 月，英军到达南京下关江面，清政府向侵略者屈服。</li>
+          <li><b>结果</b>：清政府被迫与英国签订中英《南京条约》（<em class="term">中国近代史上第一个不平等条约</em>）。</li>
+        </ol>
+
+        <div class="table-wrap">
+          <caption>4. 《南京条约》的主要内容</caption>
+          <table>
+            <thead><tr><th>项目</th><th>内容</th></tr></thead>
+            <tbody>
+              <tr><th>割地</th><td>割香港岛给英国</td></tr>
+              <tr><th>赔款</th><td>赔款 2100 万银元</td></tr>
+              <tr><th>通商</th><td>开放广州、福州、厦门、宁波、上海五处为通商口岸</td></tr>
+              <tr><th>协议关税</th><td>英商进出口货物应纳税款，必须经过双方协议</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p><b>5. 影响：</b>鸦片战争改变了中国历史发展的进程。中国独立主权的完整性遭到破坏，自然经济遭到破坏，<span class="hl">开始沦为半殖民地半封建社会，鸦片战争成为中国近代史的开端</span>。</p>
+
+        <div class="tip warn">
+          <div class="t-ico">⚠️</div>
+          <div><b>易错易混：</b>《南京条约》规定割<b>香港岛</b>给英国，「香港岛」只是现在香港的一部分（1860 年《北京条约》割九龙司地方一区，1898 年英国强租新界）。</div>
+        </div>
+
+        <details class="collapse detail">
+          <summary><span class="tag">提能力</span>为什么说鸦片战争是中国近代史的开端？<span class="chev">▶</span></summary>
+          <div class="body">
+            <ol class="kp-list">
+              <li><b>从社会性质看</b>：战前，中国是一个主权独立、领土完整的封建国家；战后，由于《南京条约》等一系列不平等条约的签订，中国的领土完整、主权独立遭到破坏，中国开始沦为半殖民地半封建社会。</li>
+              <li><b>从社会主要矛盾看</b>：战前，中国社会的主要矛盾是地主阶级与农民阶级的矛盾；战后，开始变为中华民族与外国资本主义的矛盾、人民大众与本国封建主义的矛盾，而前者成为中国社会最主要的矛盾。</li>
+              <li><b>从革命任务看</b>：战前，中国人民主要担负着反对本国封建主义的任务；战后，中国人民开始了反对外来侵略和本国封建主义的斗争。</li>
+            </ol>
+          </div>
+        </details>
+
+        <details class="collapse bg">
+          <summary><span class="tag">背景资料</span>「半殖民地半封建社会」到底是什么意思？<span class="chev">▶</span></summary>
+          <div class="body">
+            <p>不是「一半殖民地、一半封建」。它指在形式上保留封建国家机关及主权名义，同时在经济、政治、文化上受到资本主义国家控制与压迫的社会形态。理解这个词，是理解整部中国近代史的钥匙。</p>
+          </div>
+        </details>
+
+        <details class="quiz">
+          <summary><span class="tag">典例</span>[2023·四川雅安] 林则徐虎门销烟、关天培殉国、三元里抗英……这反映了（　）<span class="chev">▶</span></summary>
+          <div class="body">
+            <p class="q">A. 中国独立主权的完整性遭到破坏　B. 农民阶级反帝救国的强烈愿望<br>C. 清朝封建专制制度的腐败　D. 中华民族反抗外来侵略的坚强意志</p>
+            <div class="a"><b>解析</b>　材料所述均为鸦片战争时期清朝官兵和群众抵抗外来侵略的事迹，反映了中华民族反抗外来侵略的坚强意志。A 项始于《南京条约》的签订；林则徐等是清朝官员，B 项不成立；材料未体现制度腐败，排除 C。<br><b>答案</b>　D</div>
+          </div>
+        </details>
+      </section>
+
+      <section class="section" id="u1-k2" data-title="考点02 第二次鸦片战争、太平天国运动">
+        <h4 class="sub-title"><span class="badge">考点 02</span>第二次鸦片战争、太平天国运动</h4>
+
+        <h5>一、第二次鸦片战争（1856—1860 年）</h5>
+        <ol class="kp-list">
+          <li><b>原因</b>：西方列强不满足既得利益，企图进一步打开中国市场，扩大侵略权益。</li>
+          <li><b>罪行</b>：⑴ 1860 年，英法联军抢劫并烧毁圆明园，清政府被迫签订中英、中法《北京条约》；⑵ 俄国趁火打劫，共割占中国东北和西北 <b>150 多万平方千米</b>领土。</li>
+        </ol>
+
+        <div class="tip warn">
+          <div class="t-ico">⚠️</div>
+          <div><b>易错易混：</b>第二次鸦片战争中，<b>俄国</b>主要侵占中国领土；英国更关注经济特权，重视谋取经济利益。</div>
+        </div>
+
+        <div class="table-wrap">
+          <caption>3. 条约</caption>
+          <table>
+            <thead><tr><th>条约</th><th>时间</th><th>内容</th></tr></thead>
+            <tbody>
+              <tr><th>《天津条约》</th><td>1858 年</td><td>外国公使进驻北京，增开汉口、南京等十处为通商口岸，外国商船和军舰可以在长江各口岸自由航行</td></tr>
+              <tr><th>《通商章程善后条约》</th><td>1858 年</td><td>清政府被迫承认鸦片贸易的合法化</td></tr>
+              <tr><th>《北京条约》</th><td>1860 年</td><td>清政府承认《天津条约》继续有效，增开天津为商埠，割九龙司地方一区给英国，赔款额大幅增加</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p><b>4. 影响：</b>第二次鸦片战争使中国丧失更多主权，西方侵略势力由东南沿海一带深入到长江中下游地区。<span class="hl">中国的半殖民地化程度进一步加深</span>。</p>
+
+        <details class="collapse bg">
+          <summary><span class="tag">背景资料</span>圆明园与「万园之园」<span class="chev">▶</span></summary>
+          <div class="body">
+            <p>圆明园始建于康熙年间，历经 150 余年营建，汇集中外园林艺术精华，被誉为「万园之园」。1860 年 10 月，英法联军闯入园内劫掠文物珍宝，随后纵火焚烧，大火连烧三日。法国文豪雨果在《致巴特勒上尉的信》中怒斥：「有一天，两个强盗闯入了夏宫……一个叫法兰西，另一个叫英吉利。」</p>
+          </div>
+        </details>
+
+        <h5>二、太平天国运动</h5>
+        <ol class="kp-list">
+          <li><b>主要原因</b>：①鸦片战争的失败，进一步加深了清政府的统治危机；②阶级矛盾日益尖锐。</li>
+          <li><b>地位</b>：中国历史上规模最宏大的一次农民战争。</li>
+          <li><b>历史意义</b>：沉重打击了清朝的统治和外国侵略势力，谱写了中国近代史上壮烈的一章。</li>
+        </ol>
+
+        <div class="timeline">
+          <div class="tl-title">🕐 太平天国运动进程（点击查看）</div>
+          <div class="track">
+            <div class="tl-item" data-year="1851" data-name="金田起义（兴起）" data-desc="洪秀全在广西桂平金田村发动起义，建号太平天国。"><span class="year">1851</span><div class="node"></div><div class="ev">金田起义<br>（兴起）</div></div>
+            <div class="tl-item" data-year="1851" data-name="永安建制（建制）" data-desc="太平军攻克永安，分封诸王，初步建立起政权组织。"><span class="year">1851</span><div class="node"></div><div class="ev">永安建制<br>（建制）</div></div>
+            <div class="tl-item" data-year="1853" data-name="定都天京（强盛）" data-desc="太平军攻占南京，改名天京并定都，颁布《天朝田亩制度》，与清廷南北对峙。"><span class="year">1853</span><div class="node"></div><div class="ev">定都天京<br>（强盛）</div></div>
+            <div class="tl-item" data-year="1856" data-name="天京事变（衰落）" data-desc="太平天国领导集团内讧，天京事变成为由盛转衰的转折点。"><span class="year">1856</span><div class="node"></div><div class="ev">天京事变<br>（衰落）</div></div>
+            <div class="tl-item" data-year="1864" data-name="天京陷落（失败）" data-desc="天京陷落，太平天国运动失败。"><span class="year">1864</span><div class="node"></div><div class="ev">天京陷落<br>（失败）</div></div>
+          </div>
+          <div class="tl-detail"></div>
+        </div>
+
+        <details class="collapse detail">
+          <summary><span class="tag">提能力</span>一、如何认识第二次鸦片战争是鸦片战争的继续和扩大？<span class="chev">▶</span></summary>
+          <div class="body">
+            <ol class="kp-list">
+              <li><b>从目的上看</b>，列强发动两次鸦片战争都是要打开中国市场，攫取侵略权益。</li>
+              <li><b>从进程上看</b>，发动鸦片战争的是英国，战火主要在东南沿海；发动第二次鸦片战争的是英法，战火由东南沿海烧到北京，规模进一步扩大。</li>
+              <li><b>从结果上看</b>，第二次鸦片战争使中国丧失了更多的领土和主权，中国的半殖民地化程度进一步加深。</li>
+            </ol>
+          </div>
+        </details>
+
+        <details class="collapse detail">
+          <summary><span class="tag">提能力</span>二、比较《天朝田亩制度》和《资政新篇》<span class="chev">▶</span></summary>
+          <div class="body">
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>项目</th><th>《天朝田亩制度》</th><th>《资政新篇》</th></tr></thead>
+                <tbody>
+                  <tr><th>不同</th><td>在土地分配和产品分配上实行平均主义，废除私有制；在内容上带有空想性和落后性；是农民革命实践的产物，反映了农民的迫切愿望</td><td>核心是在中国发展资本主义，维护私有制；主张发展资本主义，顺应了历史潮流；不是农民革命实践的产物，没有从根本上解决农民的土地问题</td></tr>
+                  <tr><th>相同</th><td colspan="2">都是太平天国的革命纲领；都具有反封建的内容；都未得到真正实践</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+      </section>
+
+      <!-- ================= 第二单元 ================= -->
+      <section class="unit-head section" id="unit2" data-title="第二单元 近代化的早期探索与民族危机的加剧">
+        <div class="kicker">UNIT 02 · 19 世纪 60 年代—1901</div>
+        <h2>近代化的早期探索与民族危机的加剧</h2>
+        <p>列强的侵略使民族危机日益严重，中国人民开始了救亡图存的探索。</p>
+      </section>
+
+      <section class="section" id="u2-overview" data-title="第二单元 单元体系构建">
+        <h3 class="sec-title">单元体系构建</h3>
+
+        <div class="timeline">
+          <div class="tl-title">🕐 时空坐标（点击查看）</div>
+          <div class="track">
+            <div class="tl-item" data-year="19世纪60—90年代" data-name="洋务运动" data-desc="地主阶级洋务派发起「自强」「求富」的洋务运动，开启了中国的近代化进程（甲午战败标志其破产）。"><span class="year">60—90s</span><div class="node"></div><div class="ev">洋务运动</div></div>
+            <div class="tl-item" data-year="1894—1895" data-name="甲午中日战争" data-desc="清政府战败，被迫签订《马关条约》，大大加深了中国的半殖民地化程度。"><span class="year">1894—95</span><div class="node"></div><div class="ev">甲午中日战争<br><small>（大大加深）</small></div></div>
+            <div class="tl-item" data-year="1895—1898" data-name="瓜分中国的狂潮" data-desc="《马关条约》签订后，列强抢夺利权、强租租借地、划分「势力范围」；美国于 1899 年提出「门户开放」照会。"><span class="year">1895+</span><div class="node"></div><div class="ev">瓜分中国的狂潮</div></div>
+            <div class="tl-item" data-year="1898" data-name="戊戌变法" data-desc="资产阶级维新派发动戊戌变法，开启了中国政治近代化的探索，在思想文化方面产生广泛而持久的影响。"><span class="year">1898</span><div class="node"></div><div class="ev">戊戌变法</div></div>
+            <div class="tl-item" data-year="1900—1901" data-name="义和团运动与八国联军侵华" data-desc="义和团运动兴起，八国联军侵华；1901 年《辛丑条约》签订，中国完全沦为半殖民地半封建社会。"><span class="year">1900—01</span><div class="node"></div><div class="ev">义和团运动<br>八国联军侵华<br><small>（完全沦为）</small></div></div>
+            <div class="tl-item" data-year="1911" data-name="武昌起义" data-desc="辛亥革命爆发，推翻清王朝统治（详见第三单元）。"><span class="year">1911</span><div class="node"></div><div class="ev">武昌起义</div></div>
+            <div class="tl-item" data-year="1912" data-name="中华民国建立" data-desc="中华民国临时政府成立，结束君主专制制度（详见第三单元）。"><span class="year">1912</span><div class="node"></div><div class="ev">中华民国建立</div></div>
+          </div>
+          <div class="tl-detail"></div>
+        </div>
+
+        <div class="table-wrap">
+          <caption>阶段特征</caption>
+          <table>
+            <thead><tr><th>类别</th><th>内容</th></tr></thead>
+            <tbody>
+              <tr><th>政治</th><td>甲午中日战争和八国联军侵华战争使民族危机进一步加剧，《辛丑条约》签订后，中国完全沦为半殖民地半封建社会；地主阶级洋务派发起的洋务运动，开启了中国的近代化进程；资产阶级维新派发动戊戌变法，开启了中国政治近代化的探索</td></tr>
+              <tr><th>经济</th><td>19 世纪六七十年代，中国民族资本主义产生并得到发展；甲午中日战争后，列强侵略方式由商品输出为主转为资本输出为主</td></tr>
+              <tr><th>思想文化</th><td>洋务派兴办新式学校，派遣留学生出国深造，中国教育近代化由此起步；戊戌变法在思想文化方面产生了广泛而持久的影响</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="ktree">
+          <div class="kt-title">🌳 知识结构图（点击节点可折叠/展开）</div>
+          <ul>
+            <li>
+              <span class="k-node"><span class="fold-ico">▼</span>近代化的早期探索与民族危机的加剧</span>
+              <ul>
+                <li>
+                  <span class="k-node"><span class="fold-ico">▼</span>近代化的早期探索</span>
+                  <ul>
+                    <li><span class="k-node">洋务运动（学技术·器物）</span><span class="k-note">中国近代化的开端</span></li>
+                    <li><span class="k-node">戊戌变法（学制度·君主立宪）</span><span class="k-note">中国政治近代化的探索，思想启蒙</span></li>
+                  </ul>
+                </li>
+                <li>
+                  <span class="k-node"><span class="fold-ico">▼</span>民族危机的加剧</span>
+                  <ul>
+                    <li><span class="k-node">边疆危机（美日侵台、俄占伊犁、中法战争）</span></li>
+                    <li><span class="k-node">甲午中日战争 →《马关条约》</span><span class="k-note">大大加深半殖民地化程度</span></li>
+                    <li><span class="k-node">瓜分狂潮与「门户开放」</span></li>
+                    <li><span class="k-node">义和团运动与八国联军侵华 →《辛丑条约》</span><span class="k-note">完全沦为半殖民地半封建社会</span></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section" id="u2-k1" data-title="考点01 洋务运动和边疆危机">
+        <h4 class="sub-title"><span class="badge">考点 01</span>洋务运动和边疆危机</h4>
+
+        <ol class="kp-list">
+          <li><b>时间</b>：19 世纪 60—90 年代。</li>
+          <li><b>代表</b>：在中央以奕訢为代表，在地方以曾国藩、李鸿章、左宗棠、张之洞等人为代表。</li>
+          <li><b>根本目的</b>：维护和巩固清王朝的统治。</li>
+        </ol>
+
+        <div class="table-wrap">
+          <caption>4. 活动</caption>
+          <table>
+            <thead><tr><th>项目</th><th>内容</th></tr></thead>
+            <tbody>
+              <tr><th>创办近代军事工业</th><td>以「自强」为口号，创办了江南机器制造总局、福州船政局等一批近代军事工业</td></tr>
+              <tr><th>创办近代民用企业</th><td>以「求富」为口号，创办了轮船招商局、开平煤矿、汉阳铁厂、湖北织布局等</td></tr>
+              <tr><th>兴办新式学校</th><td>1862 年设立的京师同文馆是洋务派创办的第一所新式学堂</td></tr>
+              <tr><th>建立新式海陆军</th><td>从 19 世纪 60 年代起，开始组建新式洋枪队，淘汰传统兵器，采用西式方法练兵。随后，清政府大规模进行近代海防建设。到 19 世纪 80 年代，福建、广东、南洋和北洋等新式海军初步建成</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p><b>5. 地位：</b><span class="hl">洋务运动是中国历史上第一次近代化运动</span>。</p>
+        <p><b>6. 评价：</b>⑴ 影响：中国近代化的军事工业、民用企业等逐渐发展起来，在客观上促进了中国民族资本主义的产生；⑵ 结果：没有使中国走上富强的道路。</p>
+
+        <div class="tip warn">
+          <div class="t-ico">⚠️</div>
+          <div><b>易错易混：</b>鸦片战争是<b>中国近代史</b>的开端；洋务运动是<b>中国近代化</b>的开端。</div>
+        </div>
+
+        <h5>二、边疆危机</h5>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>方向</th><th>概况</th></tr></thead>
+            <tbody>
+              <tr><th>美、日侵略台湾</th><td>19 世纪 60 年代，美国派军队进攻台湾，大败而归。此后，美国转而支持、联合日本侵略台湾。1874 年，日本派军队进攻台湾</td></tr>
+              <tr><th>俄国侵占伊犁</th><td>19 世纪 70 年代，俄国直接出兵侵占新疆伊犁地区</td></tr>
+              <tr><th>收复新疆</th><td>1876 年，左宗棠命刘锦棠入疆，采取「先北后南，缓进急战」的策略，先收复乌鲁木齐及其附近地区，然后攻克达坂城等地，挺进南疆</td></tr>
+              <tr><th>新疆建省</th><td>1884 年，清政府在新疆地区建立行省，改称西域为「新疆」</td></tr>
+              <tr><th>新疆建省的意义</th><td>巩固了西北边防，加强了新疆与内地的联系，维护了边疆稳定和国家统一</td></tr>
+              <tr><th>中法战争</th><td>1883 年，中法战争爆发。1884 年，法军进犯台北，刘铭传率部抵抗，击退法军。1885 年初，冯子材临危受命，取得镇南关大捷</td></tr>
+              <tr><th>台湾建省</th><td>清政府于 1885 年在台湾建立行省。这加强了东南海防，强化了对台湾的治理，推动了台湾社会经济的发展</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <details class="collapse bg">
+          <summary><span class="tag">背景资料</span>左宗棠抬棺出征与「新疆」之名<span class="chev">▶</span></summary>
+          <div class="body">
+            <p>1875 年，年过六旬的左宗棠受命督办新疆军务。为表决心，他命士兵抬着棺材同行，一路「先北后南、缓进急战」，于 1878 年收复除伊犁外的新疆全境，后又通过外交谈判收回伊犁。「新疆」取「故土新归」之意，1884 年建省后沿用至今。</p>
+          </div>
+        </details>
+
+        <details class="collapse detail">
+          <summary><span class="tag">提能力</span>比较中国洋务运动与日本明治维新<span class="chev">▶</span></summary>
+          <div class="body">
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>项目</th><th>中国洋务运动</th><th>日本明治维新</th></tr></thead>
+                <tbody>
+                  <tr><th>根本目的</th><td>维护清王朝的统治</td><td>发展资本主义，富国强兵</td></tr>
+                  <tr><th>领导力量</th><td>地主阶级洋务派</td><td>新兴资产阶级</td></tr>
+                  <tr><th>主要领域</th><td>主要集中在军事和经济领域</td><td>涉及政治、经济、文化、教育、社会生活等各个方面</td></tr>
+                  <tr><th>结果</th><td>甲午中日战争中，北洋舰队全军覆没，洋务运动破产</td><td>日本迅速走上了发展资本主义的道路，实现了富国强兵，开始跻身资本主义强国之列</td></tr>
+                  <tr><th>相同点</th><td colspan="2">都是在遭受西方殖民者入侵的压力下进行的改革；都主张向西方学习；都是采取自上而下的改革方式；都在一定程度上推动了本国的近代化进程</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+      </section>
+
+      <section class="section" id="u2-k2" data-title="考点02 甲午中日战争与列强瓜分中国狂潮">
+        <h4 class="sub-title"><span class="badge">考点 02</span>甲午中日战争与列强瓜分中国狂潮</h4>
+
+        <h5>一、甲午中日战争（1894—1895 年）</h5>
+        <p><b>1. 原因：</b>日本对朝鲜觊觎已久，征服朝鲜是日本企图侵略中国、称霸世界的重要步骤。</p>
+
+        <div class="table-wrap">
+          <caption>2. 主要战役</caption>
+          <table>
+            <thead><tr><th>战役名称</th><th>主要过程及结果</th></tr></thead>
+            <tbody>
+              <tr><th>平壤战役</th><td>清军将领左宝贵牺牲，平壤陷落</td></tr>
+              <tr><th>黄海海战</th><td>致远舰管带邓世昌与 200 余名将士壮烈殉国</td></tr>
+              <tr><th>辽东半岛战役</th><td>徐邦道孤军迎敌，旅顺失陷。日军制造旅顺大屠杀</td></tr>
+              <tr><th>威海卫战役</th><td>北洋水师提督丁汝昌自杀殉国。北洋舰队全军覆没</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h5>二、《马关条约》的签订</h5>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>类别</th><th>内容</th></tr></thead>
+            <tbody>
+              <tr><th>时间</th><td>1895 年春</td></tr>
+              <tr><th>割地</th><td>割辽东半岛、台湾全岛及所有附属各岛屿、澎湖列岛给日本</td></tr>
+              <tr><th>赔款</th><td>赔偿日本兵费白银 2 亿两</td></tr>
+              <tr><th>办厂</th><td>允许日本在通商口岸开设工厂</td></tr>
+              <tr><th>通商</th><td>开放沙市、重庆、苏州、杭州为商埠</td></tr>
+              <tr><th>影响</th><td>大大加深了中国的半殖民地化程度</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="tip warn">
+          <div class="t-ico">⚠️</div>
+          <div><b>易错易混：</b>第二次鸦片战争使西方侵略势力由东南沿海一带深入到<b>长江中下游地区</b>；甲午中日战争使外国侵略势力进一步深入<b>中国腹地</b>。</div>
+        </div>
+
+        <details class="collapse bg">
+          <summary><span class="tag">背景资料</span>邓世昌与「此日漫挥天下泪」<span class="chev">▶</span></summary>
+          <div class="body">
+            <p>1894 年 9 月黄海海战中，致远舰多处受创、弹药将尽，管带邓世昌下令开足马力撞向日舰「吉野」号，不幸被鱼雷击中沉没，邓世昌坠海后拒绝救援，与爱犬一同殉国。光绪帝为其题挽联：「此日漫挥天下泪，有公足壮海军威。」</p>
+            <p>《马关条约》签订后，台湾军民掀起反割台斗争（丘逢甲、徐骧、刘永福等），坚持抵抗日军 5 个月。</p>
+          </div>
+        </details>
+
+        <h5>三、列强瓜分中国狂潮</h5>
+        <ol class="kp-list">
+          <li><b>背景</b>：《马关条约》签订后，俄国联合法国、德国干涉还辽。</li>
+          <li><b>表现</b>：列强在中国抢夺利权、强租租借地、划分「势力范围」；美国于 1899 年提出「门户开放」照会。</li>
+        </ol>
+
+        <details class="collapse detail">
+          <summary><span class="tag">提能力</span>为什么说《马关条约》使中国的半殖民地化程度大大加深？<span class="chev">▶</span></summary>
+          <div class="body">
+            <ol class="kp-list">
+              <li>《马关条约》割辽东半岛、台湾全岛及所有附属各岛屿、澎湖列岛给日本，进一步破坏了中国主权的完整。帝国主义国家争相在中国划分「势力范围」，中国的民族危机进一步加深。</li>
+              <li>巨额赔款加重了中国人民的负担，清政府无力偿还，不得不大量举借外债，这便于列强通过贷款控制中国的经济命脉。</li>
+              <li>新的通商口岸的开放，使外国侵略势力深入中国腹地。</li>
+              <li>条约规定日本可在通商口岸开设工厂，便利了帝国主义对中国的资本输出，便于列强进一步掠夺中国的原料和廉价劳动力，严重阻碍了中国民族资本主义的发展。</li>
+            </ol>
+          </div>
+        </details>
+
+        <details class="quiz">
+          <summary><span class="tag">典例</span>「……立为通商口岸，以便日本臣民往来侨寓、从事商业工艺制作」——该条约的危害是（　）<span class="chev">▶</span></summary>
+          <div class="body">
+            <p class="q">A. 中国开始沦为半殖民地半封建社会　B. 中国丧失了东北和西北大片领土<br>C. 大大加深了中国的半殖民地化程度　D. 中国完全沦为半殖民地半封建社会</p>
+            <div class="a"><b>解析</b>　材料中日本获得在通商口岸居住和从事工业生产的权利，可知条约为 1895 年《马关条约》，其签订大大加深了中国的半殖民地化程度。<br><b>答案</b>　C</div>
+          </div>
+        </details>
+      </section>
+
+      <section class="section" id="u2-k3" data-title="考点03 戊戌变法">
+        <h4 class="sub-title"><span class="badge">考点 03</span>戊戌变法 <span style="font-size:12px;font-weight:400;color:var(--text-faint)">（原稿缺页 · 编者按统编版教材补全并核实）</span></h4>
+
+        <h5>一、康有为与公车上书</h5>
+        <ol class="kp-list">
+          <li><b>公车上书</b>：1895 年春，《马关条约》签订的消息传到北京，康有为、梁启超等联合各省 1300 多名参加会试的举人，上书光绪帝，请求拒和、迁都、变法。这就是著名的「公车上书」，<span class="hl">拉开了变法维新运动的序幕</span>。</li>
+          <li><b>宣传变法</b>：维新派组织学会（如强学会），创办报刊——上海《时务报》、天津《国闻报》影响最大。梁启超在《时务报》发表《变法通议》，强调「变者，天下之公理也」；严复等主持《国闻报》，并翻译介绍《天演论》，宣传「物竞天择，适者生存」的进化论观点。</li>
+        </ol>
+
+        <h5>二、百日维新</h5>
+        <ol class="kp-list">
+          <li><b>开始</b>：1898 年 6 月 11 日，光绪帝颁布「明定国是」诏书，宣布实行变法。1898 年为农历戊戌年，史称「戊戌变法」。</li>
+        </ol>
+
+        <div class="table-wrap">
+          <caption>百日维新的主要内容</caption>
+          <table>
+            <thead><tr><th>领域</th><th>主要内容</th></tr></thead>
+            <tbody>
+              <tr><th>政治</th><td>裁撤冗官冗员，允许官民上书言事</td></tr>
+              <tr><th>经济</th><td>鼓励私人兴办工矿企业，发展农、工、商业；改革财政，编制国家预算</td></tr>
+              <tr><th>教育</th><td>废除八股，改试策论，开办京师大学堂</td></tr>
+              <tr><th>军事</th><td>裁减绿营，训练新式军队</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <ol class="kp-list" start="3">
+          <li><b>失败</b>：1898 年 9 月 21 日，慈禧太后等发动戊戌政变，囚禁光绪帝，搜捕维新人士，废除变法诏令。谭嗣同、刘光第、林旭、杨锐、杨深秀、康广仁六人被捕遇害，史称「<em class="term">戊戌六君子</em>」。变法历时 103 天，故又称「百日维新」。</li>
+          <li><b>影响</b>：戊戌变法<span class="hl">在思想文化方面产生了广泛而持久的影响，起到了思想启蒙的作用</span>。</li>
+        </ol>
+
+        <div class="tip warn">
+          <div class="t-ico">⚠️</div>
+          <div><b>易错易混：</b>公车上书<b>拉开</b>了变法维新运动的<b>序幕</b>；戊戌变法是中国<b>政治近代化</b>的早期探索。变法失败说明资产阶级改良道路在半殖民地半封建的中国行不通。</div>
+        </div>
+
+        <details class="collapse bg">
+          <summary><span class="tag">背景资料</span>「戊戌六君子」与京师大学堂<span class="chev">▶</span></summary>
+          <div class="body">
+            <p>谭嗣同本可逃走，却决心以死醒民，临刑前写下「我自横刀向天笑，去留肝胆两昆仑」。六君子中还有康有为的弟弟康广仁。</p>
+            <p>变法期间创办的<b>京师大学堂</b>（1898）是当时唯一保留下来的新政成果，1912 年改称北京大学，是中国近代第一所国立大学。</p>
+          </div>
+        </details>
+
+        <details class="collapse detail">
+          <summary><span class="tag">提能力</span>戊戌变法为什么会失败？<span class="chev">▶</span></summary>
+          <div class="body">
+            <ol class="kp-list">
+              <li>根本原因：中国民族资本主义发展不充分，资产阶级维新派力量弱小，具有软弱性和妥协性。</li>
+              <li>依靠没有实权的皇帝，脱离广大人民群众。</li>
+              <li>变法触动了以慈禧太后为首的顽固派利益，顽固势力强大，发动政变扼杀变法。</li>
+            </ol>
+          </div>
+        </details>
+      </section>
+
+      <section class="section" id="u2-k4" data-title="考点04 八国联军侵华与《辛丑条约》签订">
+        <h4 class="sub-title"><span class="badge">考点 04</span>八国联军侵华与《辛丑条约》签订</h4>
+
+        <h5>一、义和团运动</h5>
+        <ol class="kp-list">
+          <li><b>兴起</b>：义和团由山东、直隶一带的义和拳、民间秘密结社和练拳习武的组织发展而来。</li>
+          <li><b>口号</b>：「扶清灭洋」。</li>
+          <li><b>性质</b>：具有广泛群众性的反帝斗争组织。</li>
+        </ol>
+
+        <h5>二、抗击八国联军</h5>
+        <ol class="kp-list">
+          <li><b>八国联军侵华</b>：⑴ 直接原因：镇压义和团运动；⑵ 时间：1900 年 6 月；⑶ 侵华国家：英、美、俄、日、法、德、意、奥。</li>
+          <li><b>抗争</b>：义和团破坏沿线铁路，并在廊坊一带阻击敌人，迫使八国联军撤回天津。在天津保卫战中，清军直隶提督聂士成壮烈殉国。</li>
+          <li><b>列强罪行</b>：八国联军占领北京后，采取了报复性的屠杀、劫掠，充分暴露了侵略者的凶恶本质。</li>
+          <li><b>结果</b>：义和团在中外反动势力的镇压下失败。</li>
+        </ol>
+
+        <div class="tip warn">
+          <div class="t-ico">⚠️</div>
+          <div><b>易错易混：</b>八国联军中的「奥」指<b>奥匈帝国</b>，不是奥地利。</div>
+        </div>
+
+        <h5>三、《辛丑条约》</h5>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>类别</th><th>内容</th></tr></thead>
+            <tbody>
+              <tr><th>时间</th><td>1901 年</td></tr>
+              <tr><th>经济</th><td>赔款白银 4.5 亿两，分 39 年还清，本息共计 9.8 亿两，以海关税、盐税等税收作担保</td></tr>
+              <tr><th>政治</th><td>清政府保证严禁人民参加各种形式的反帝活动</td></tr>
+              <tr><th>军事</th><td>清政府拆毁大沽炮台，允许外国军队驻扎在从北京到山海关的铁路沿线要地</td></tr>
+              <tr><th>外交</th><td>划定北京东交民巷为使馆界，允许各国派兵驻守，不准中国人居住；改总理衙门为外务部，班列六部之前</td></tr>
+              <tr><th>影响</th><td>清政府沦为帝国主义列强统治中国的工具；<span class="hl">中国完全陷入半殖民地半封建社会的深渊</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="tip warn">
+          <div class="t-ico">⚠️</div>
+          <div><b>易错易混：</b>⑴ 与清政府签订《辛丑条约》的不是八国，而是<b>十一国</b>；⑵《南京条约》使中国<b>开始沦为</b>半殖民地半封建社会；《辛丑条约》使中国<b>完全陷入</b>半殖民地半封建社会的深渊。</div>
+        </div>
+
+        <details class="collapse bg">
+          <summary><span class="tag">背景资料</span>庚子赔款与清华学堂<span class="chev">▶</span></summary>
+          <div class="body">
+            <p>4.5 亿两赔款对应当时全国人口「人均一两」，本息合计 9.8 亿两，是近代赔款数额最大的不平等条约，史称「庚子赔款」。后来美国将部分赔款退还中国，用于兴办留美预备学校——清华学堂（1911 年成立，清华大学前身）。</p>
+          </div>
+        </details>
+
+        <details class="collapse detail">
+          <summary><span class="tag">提能力</span>比较《南京条约》《马关条约》《辛丑条约》<span class="chev">▶</span></summary>
+          <div class="body">
+            <p><b>相同点：</b>⑴ 性质：都是不平等条约；⑵ 背景：都是在中国战败的情况下签订的；⑶ 内容：三大条约都涉及赔款，《南京条约》和《马关条约》都有割地、开埠通商；⑷ 影响：都使中国的半殖民地化程度逐步加深，给中国社会带来深重灾难。</p>
+            <p><b>不同点：</b>《马关条约》允许日本在通商口岸<b>开设工厂</b>（资本输出）；《辛丑条约》赔款最多，驻兵、设使馆界等内容严重破坏了中国的主权。</p>
+          </div>
+        </details>
+      </section>
+
+      <section class="section" id="u2-chart" data-title="图示 中国半殖民地化沉沦进程">
+        <h3 class="sec-title">图示 · 中国一步步沦为半殖民地半封建社会的进程</h3>
+        <p class="lead">点击折线上的节点，查看每次沉沦的关键条约与影响——三次战争、三个条约，把中国推入半殖民地半封建社会的深渊。</p>
+
+        <div class="card" style="padding:26px 22px">
+          <svg viewBox="0 0 800 340" id="sinkChart" role="img" aria-label="中国半殖民地半封建社会程度进程图" style="width:100%;height:auto;display:block">
+            <!-- 坐标轴 -->
+            <line x1="70" y1="40" x2="70" y2="280" stroke="currentColor" stroke-opacity=".35" stroke-width="2"/>
+            <line x1="70" y1="280" x2="760" y2="280" stroke="currentColor" stroke-opacity=".35" stroke-width="2"/>
+            <text x="34" y="60" fill="currentColor" font-size="13" opacity=".7" transform="rotate(-90 34 60)"></text>
+            <text x="20" y="170" fill="currentColor" font-size="13.5" opacity=".75" writing-mode="tb">半殖民地半封建社会程度</text>
+            <text x="700" y="308" fill="currentColor" font-size="13" opacity=".7">时间 →</text>
+            <!-- 阶段色块 -->
+            <path d="M70,280 L70,215 L300,215 L300,140 L530,140 L530,70 L760,70" fill="none" stroke="#2f54eb" stroke-width="4" stroke-linejoin="round"/>
+            <g class="sink-node" data-i="0" style="cursor:pointer">
+              <circle cx="300" cy="215" r="11" fill="#2f54eb"/>
+              <circle cx="300" cy="215" r="17" fill="none" stroke="#2f54eb" stroke-opacity=".35" stroke-width="3"/>
+              <text x="300" y="192" text-anchor="middle" font-size="15" font-weight="700" fill="var(--accent)">开始沦为</text>
+            </g>
+            <g class="sink-node" data-i="1" style="cursor:pointer">
+              <circle cx="530" cy="140" r="11" fill="#2f54eb"/>
+              <circle cx="530" cy="140" r="17" fill="none" stroke="#2f54eb" stroke-opacity=".35" stroke-width="3"/>
+              <text x="530" y="117" text-anchor="middle" font-size="15" font-weight="700" fill="var(--accent)">大大加深</text>
+            </g>
+            <g class="sink-node" data-i="2" style="cursor:pointer">
+              <circle cx="720" cy="70" r="11" fill="#2f54eb"/>
+              <circle cx="720" cy="70" r="17" fill="none" stroke="#2f54eb" stroke-opacity=".35" stroke-width="3"/>
+              <text x="700" y="47" text-anchor="middle" font-size="15" font-weight="700" fill="var(--accent)">完全沦为</text>
+            </g>
+            <!-- 年份与事件 -->
+            <text x="300" y="305" text-anchor="middle" font-size="14" fill="currentColor" opacity=".85">1842《南京条约》</text>
+            <text x="300" y="326" text-anchor="middle" font-size="12.5" fill="currentColor" opacity=".6">鸦片战争</text>
+            <text x="530" y="305" text-anchor="middle" font-size="14" fill="currentColor" opacity=".85">1895《马关条约》</text>
+            <text x="530" y="326" text-anchor="middle" font-size="12.5" fill="currentColor" opacity=".6">甲午中日战争</text>
+            <text x="712" y="305" text-anchor="middle" font-size="14" fill="currentColor" opacity=".85">1901《辛丑条约》</text>
+            <text x="712" y="326" text-anchor="middle" font-size="12.5" fill="currentColor" opacity=".6">八国联军侵华</text>
+          </svg>
+          <div class="tl-detail" id="sinkDetail" style="margin-top:14px"></div>
+        </div>
+      </section>
+
+      <!-- ================= 第三单元 ================= -->
+      <section class="unit-head section" id="unit3" data-title="第三单元 资产阶级民主革命与中华民国的建立">
+        <div class="kicker">UNIT 03 · 1894—1918</div>
+        <h2>资产阶级民主革命与中华民国的建立</h2>
+        <p>辛亥革命是一次完全意义上的资产阶级民主革命，是 20 世纪中国的第一次历史性巨变。辛亥革命后，中国人民的革命洪流汹涌澎湃，民主革命逐渐成为不可阻挡的时代潮流。</p>
+      </section>
+
+      <section class="section" id="u3-overview" data-title="第三单元 单元体系构建">
+        <h3 class="sec-title">单元体系构建</h3>
+
+        <div class="timeline">
+          <div class="tl-title">🕐 时空坐标：民主革命历程（点击查看）</div>
+          <div class="track">
+            <div class="tl-item" data-year="1894" data-name="兴中会成立" data-desc="11 月，孙中山在檀香山成立兴中会，提出「振兴中华」的宗旨——近代中国第一个资产阶级革命团体。"><span class="year">1894</span><div class="node"></div><div class="ev">兴中会成立</div></div>
+            <div class="tl-item" data-year="1905" data-name="中国同盟会成立" data-desc="8 月，孙中山在日本东京成立中国同盟会——第一个全国规模的、统一的资产阶级革命政党。"><span class="year">1905</span><div class="node"></div><div class="ev">中国同盟会成立</div></div>
+            <div class="tl-item" data-year="1911" data-name="武昌起义" data-desc="10 月 10 日武昌起义爆发，革命在武汉三镇取得胜利，各省纷纷响应。"><span class="year">1911</span><div class="node"></div><div class="ev">武昌起义</div></div>
+            <div class="tl-item" data-year="1912.1.1" data-name="中华民国建立" data-desc="孙中山在南京宣誓就职，宣告中华民国临时政府成立，以 1912 年为中华民国元年。"><span class="year">1912.1</span><div class="node"></div><div class="ev">中华民国建立</div></div>
+            <div class="tl-item" data-year="1912.2" data-name="清帝退位" data-desc="2 月 12 日，袁世凯逼迫宣统帝下诏退位，清朝统治结束。"><span class="year">1912.2</span><div class="node"></div><div class="ev">清帝退位</div></div>
+            <div class="tl-item" data-year="1912.3" data-name="《中华民国临时约法》颁布" data-desc="孙中山以临时大总统名义颁布，是中国历史上第一部具有资产阶级共和国宪法性质的重要文件。"><span class="year">1912.3</span><div class="node"></div><div class="ev">《临时约法》颁布</div></div>
+            <div class="tl-item" data-year="1912.4" data-name="袁世凯窃取革命果实" data-desc="袁世凯在北京就任临时大总统，临时政府迁往北京，辛亥革命的胜利果实被窃取。"><span class="year">1912.4</span><div class="node"></div><div class="ev">袁世凯窃取果实</div></div>
+            <div class="tl-item" data-year="1913" data-name="「宋案」与二次革命" data-desc="袁世凯派人刺杀宋教仁，镇压二次革命。"><span class="year">1913</span><div class="node"></div><div class="ev">「宋案」二次革命</div></div>
+            <div class="tl-item" data-year="1915—1916" data-name="护国战争" data-desc="袁世凯复辟帝制，蔡锷等掀起护国战争；1916 年 3 月袁世凯被迫取消帝制。"><span class="year">1915—16</span><div class="node"></div><div class="ev">护国战争</div></div>
+            <div class="tl-item" data-year="1917—1918" data-name="护法运动" data-desc="孙中山为维护《临时约法》和国会，发起护法运动。"><span class="year">1917—18</span><div class="node"></div><div class="ev">护法运动</div></div>
+          </div>
+          <div class="tl-detail"></div>
+        </div>
+
+        <div class="flow" title="政权更迭">
+          <div class="f-box"><div class="f-label">政权更迭</div>清政府时期</div>
+          <div class="f-arrow">→</div>
+          <div class="f-box"><div class="f-label">1912.1—1912.4</div>南京临时政府时期</div>
+          <div class="f-arrow">→</div>
+          <div class="f-box"><div class="f-label">1912—1928</div>北洋政府时期</div>
+        </div>
+
+        <div class="table-wrap">
+          <caption>阶段特征</caption>
+          <table>
+            <thead><tr><th>类别</th><th>内容</th></tr></thead>
+            <tbody>
+              <tr><th>革命潮流</th><td>20 世纪初，资产阶级民主革命成为不可阻挡的时代潮流。在孙中山等人的推动下，革命思想广为传播，革命团体不断出现，各地革命活动蓬勃发展，革命党人不屈不挠、英勇奋斗，不断推进革命进程</td></tr>
+              <tr><th>政治变革</th><td>资产阶级革命派发起的辛亥革命推翻了清王朝的统治，结束了在中国延续 2000 多年的君主专制制度，建立了中华民国，拉开了中国完全意义上的近代民族民主革命的序幕</td></tr>
+              <tr><th>军阀割据</th><td>袁世凯上台后，建立起北洋军阀统治，他破坏民主共和，复辟帝制，遭到举国反对。孙中山等人先后发起二次革命、护国战争，最终袁世凯在绝望中死去。此后，中国陷入了军阀割据纷争的动乱之中</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="ktree">
+          <div class="kt-title">🌳 知识结构图（点击节点可折叠/展开）</div>
+          <ul>
+            <li>
+              <span class="k-node"><span class="fold-ico">▼</span>资产阶级民主革命与中华民国的建立</span>
+              <ul>
+                <li>
+                  <span class="k-node"><span class="fold-ico">▼</span>革命先行者孙中山</span>
+                  <ul>
+                    <li><span class="k-node">兴中会（1894）</span><span class="k-note">第一个资产阶级革命团体</span></li>
+                    <li><span class="k-node">中国同盟会（1905）</span><span class="k-note">第一个全国规模的统一的资产阶级革命政党 · 三民主义</span></li>
+                    <li><span class="k-node">革命志士的奋斗</span><span class="k-note">萍浏醴起义、安庆绍兴起义、广西起义、黄花岗起义</span></li>
+                  </ul>
+                </li>
+                <li>
+                  <span class="k-node"><span class="fold-ico">▼</span>辛亥革命（1911）</span>
+                  <ul>
+                    <li><span class="k-node">武昌起义 → 各省响应</span><span class="k-note">推翻清王朝，结束君主专制制度</span></li>
+                  </ul>
+                </li>
+                <li>
+                  <span class="k-node"><span class="fold-ico">▼</span>中华民国的创建</span>
+                  <ul>
+                    <li><span class="k-node">中华民国成立（1912.1.1）</span></li>
+                    <li><span class="k-node">清帝退位（1912.2.12）</span></li>
+                    <li><span class="k-node">《中华民国临时约法》（1912.3.11）</span></li>
+                  </ul>
+                </li>
+                <li>
+                  <span class="k-node"><span class="fold-ico">▼</span>北洋政府的统治与军阀割据</span>
+                  <ul>
+                    <li><span class="k-node">袁世凯窃取果实 → 复辟帝制 → 护国战争</span></li>
+                    <li><span class="k-node">军阀割据：直系、皖系、奉系、滇系、桂系</span></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section" id="u3-k1" data-title="考点01 革命先行者孙中山与辛亥革命">
+        <h4 class="sub-title"><span class="badge">考点 01</span>革命先行者孙中山与辛亥革命</h4>
+
+        <h5>一、孙中山早年的革命活动</h5>
+        <ol class="kp-list">
+          <li><b>成立兴中会</b>：1894 年 11 月，孙中山在檀香山成立兴中会，提出「振兴中华」的宗旨，号召「驱除鞑虏，恢复中国，创立合众政府」。</li>
+          <li><b>广州起义</b>：1895 年，孙中山、陆皓东等人成立香港兴中会总会，准备在广州发动武装起义，因消息泄露，起义失败。</li>
+        </ol>
+
+        <h5>二、同盟会与三民主义</h5>
+        <p><b>1. 背景：</b>⑴ 群众基础：《辛丑条约》签订后，国内革命情绪日趋高涨；⑵ 思想基础：资产阶级革命思想迅速传播——章炳麟《驳康有为论革命书》、邹容《革命军》、陈天华《猛回头》《警世钟》，号召人们推翻清政府统治，建立民主共和制度；⑶ 组织基础：各种革命团体纷纷成立，影响较大的有华兴会和光复会；⑷ 领导基础：孙中山成为革命党公认的领袖。</p>
+
+        <div class="table-wrap">
+          <caption>2. 中国同盟会</caption>
+          <table>
+            <thead><tr><th>项目</th><th>内容</th></tr></thead>
+            <tbody>
+              <tr><th>成立</th><td>1905 年 8 月，孙中山在日本东京成立</td></tr>
+              <tr><th>政治纲领</th><td>「驱除鞑虏，恢复中华，创立民国，平均地权」</td></tr>
+              <tr><th>机关报</th><td>《民报》</td></tr>
+              <tr><th>指导思想</th><td>「三民主义」，即「民族」「民权」「民生」三大主义</td></tr>
+              <tr><th>性质</th><td>是第一个全国规模的、统一的资产阶级革命政党</td></tr>
+              <tr><th>意义</th><td>使全国资产阶级革命派有了一个统一的领导和明确的奋斗目标，大大推动了全国革命运动的发展</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="tip warn">
+          <div class="t-ico">⚠️</div>
+          <div><b>易错易混：</b>⑴ 兴中会是近代中国第一个资产阶级革命<b>团体</b>；中国同盟会是第一个全国规模的、统一的资产阶级革命<b>政党</b>。⑵「驱除鞑虏」中的「鞑虏」指<b>满族统治者</b>，而不是整个满族，在当时具有反封建的进步意义。</div>
+        </div>
+
+        <h5>三、辛亥革命</h5>
+        <ol class="kp-list">
+          <li><b>革命志士的奋斗</b>：萍浏醴起义，安庆、绍兴起义，广西起义，黄花岗起义。</li>
+          <li><b>武昌起义</b>：⑴ 经过：1911 年 10 月 10 日晚，武昌全城被起义军占领。随后，革命在武汉三镇取得胜利。10 月 11 日，起义军成立湖北军政府，推举黎元洪为都督；⑵ 成果：各省纷纷响应，到 1911 年 11 月下旬，全国已有一半以上的省份宣布独立，支持革命。</li>
+          <li><b>辛亥革命的意义</b>：辛亥革命推翻了清王朝的反动统治，宣告了中国 2000 多年君主专制制度的终结。它<span class="hl">拉开了中国完全意义上的近代民族民主革命的序幕</span>，极大推动了中华民族的思想解放，打开了中国进步潮流的闸门。</li>
+        </ol>
+
+        <div class="tip warn">
+          <div class="t-ico">⚠️</div>
+          <div><b>易错易混：</b>⑴ 虽然孙中山领导了辛亥革命，但他<b>没有直接参与武昌起义</b>。⑵ 辛亥革命推翻了清朝统治，结束了中国 2000 多年的<b>封建君主专制制度</b>，但并没有结束中国的<b>封建制度</b>，也并未改变中国半殖民地半封建的社会性质。</div>
+        </div>
+
+        <details class="collapse detail">
+          <summary><span class="tag">提能力</span>武昌起义为什么能够得到各省迅速响应？<span class="chev">▶</span></summary>
+          <div class="body">
+            <ol class="kp-list">
+              <li>清王朝的反动统治已失去人心。</li>
+              <li>以孙中山为代表的革命党人的长期宣传和不屈斗争，赢得了人们一定程度上的理解与支持。</li>
+              <li>西方资产阶级思想的传播，一定程度上使人们摆脱了封建思想的束缚。</li>
+              <li>随着民族资本主义的发展，资产阶级的力量增强，为革命的迅速发展奠定了阶级基础。</li>
+            </ol>
+          </div>
+        </details>
+
+        <details class="collapse bg">
+          <summary><span class="tag">背景资料</span>黄花岗七十二烈士与「三·二九」起义<span class="chev">▶</span></summary>
+          <div class="body">
+            <p>1911 年 4 月 27 日（农历三月二十九），黄兴率敢死队进攻两广总督署，起义失败。革命党人潘达微收殓烈士遗骸 72 具，合葬于广州黄花岗，史称「黄花岗七十二烈士」。孙中山评价：「是役也，碧血横飞，浩气四塞……直可惊天地，泣鬼神。」</p>
+          </div>
+        </details>
+      </section>
+
+      <section class="section" id="u3-k2" data-title="考点02 中华民国的创建、北洋政府的统治与军阀割据">
+        <h4 class="sub-title"><span class="badge">考点 02</span>中华民国的创建、北洋政府的统治与军阀割据</h4>
+
+        <h5>一、中华民国的创建</h5>
+        <ol class="kp-list">
+          <li><b>中华民国的建立</b>：⑴ 准备：1911 年 12 月，各省代表选举孙中山为临时大总统；⑵ 建立：1912 年 1 月 1 日，孙中山在南京宣誓就职，宣告中华民国临时政府成立，以 1912 年为中华民国元年。</li>
+          <li><b>袁世凯窃取革命果实</b>：⑴ 过程：1912 年 2 月 12 日，袁世凯逼迫宣统帝下诏退位；2 月 13 日，孙中山辞职；2 月 15 日，临时参议院选举袁世凯为临时大总统；3 月，袁世凯在北京就任中华民国临时大总统；4 月，孙中山正式解除临时大总统职务；⑵ 结果：临时政府迁往北京，辛亥革命的胜利果实被袁世凯窃取。</li>
+        </ol>
+
+        <div class="table-wrap">
+          <caption>3. 《中华民国临时约法》</caption>
+          <table>
+            <thead><tr><th>项目</th><th>内容</th></tr></thead>
+            <tbody>
+              <tr><th>颁布</th><td>1912 年 3 月 11 日，孙中山以临时大总统名义颁布</td></tr>
+              <tr><th>内容</th><td>中华民国的主权属于全体国民；国民不分种族、阶级、宗教信仰，一律平等；国民有人身、居住、言论、出版、集会、结社、宗教信仰及请愿、考试、选举、参政等自由和权利；参议院行使立法权，国务员辅佐临时大总统行使行政权并负其责任，司法独立等</td></tr>
+              <tr><th>性质</th><td>是中国历史上第一部具有资产阶级共和国宪法性质的重要文件</td></tr>
+              <tr><th>意义</th><td>肯定了资产阶级民主共和制度和民主自由原则，是辛亥革命的重要成果</td></tr>
+              <tr><th>局限</th><td>在当时的历史条件下难有实际的约束效力</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h5>二、袁世凯复辟帝制</h5>
+        <ol class="kp-list">
+          <li><b>独裁统治</b>：破坏责任内阁制；派人刺杀宋教仁；镇压二次革命。</li>
+          <li><b>复辟帝制</b>：1915 年末，袁世凯下令以 1916 年为「中华帝国洪宪元年」，准备在元旦举行登基大典；孙中山发表《讨袁檄文》；1915 年底，蔡锷等人掀起护国战争。</li>
+          <li><b>结果</b>：1916 年 3 月，袁世凯被迫宣布取消帝制。</li>
+        </ol>
+
+        <h5>三、军阀割据</h5>
+        <ol class="kp-list">
+          <li><b>主要派系</b>：直系、皖系、奉系、滇系、桂系。</li>
+          <li><b>目的</b>：争夺地盘和巩固政权。</li>
+          <li><b>影响</b>：中国陷入了军阀割据纷争的动乱之中。</li>
+        </ol>
+
+        <details class="collapse detail">
+          <summary><span class="tag">提能力</span>如何理解辛亥革命既有成功的一面，又有失败的一面？<span class="chev">▶</span></summary>
+          <div class="body">
+            <p>从<b>直接结果</b>看，辛亥革命推翻了清王朝的反动统治，宣告了中国 2000 多年君主专制制度的终结，拉开了中国完全意义上的近代民族民主革命的序幕，极大推动了中华民族的思想解放，打开了中国进步潮流的闸门；从<b>最终结果</b>看，辛亥革命的果实被袁世凯窃取，反帝反封建的革命任务没有完成，中国半殖民地半封建的社会性质没有改变。</p>
+          </div>
+        </details>
+
+        <details class="collapse detail">
+          <summary><span class="tag">提能力</span>军阀割据混战的危害<span class="chev">▶</span></summary>
+          <div class="body">
+            <p>军阀之间为争夺地盘和巩固政权，不惜出卖国家利益，依附帝国主义。大小军阀连年混战给人民带来了深重的灾难，也对社会经济造成严重破坏。</p>
+          </div>
+        </details>
+
+        <details class="quiz">
+          <summary><span class="tag">典例</span>下表项目出现变化的主要原因是（　）<span class="chev">▶</span></summary>
+          <div class="body">
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>项目</th><th>时间</th><th>变化</th></tr></thead>
+                <tbody>
+                  <tr><th>农户</th><td>1914—1918 年</td><td>减少 1500 多万户</td></tr>
+                  <tr><th>耕地</th><td>1914—1918 年</td><td>减少 26000 多万亩</td></tr>
+                  <tr><th>荒地</th><td>1914—1918 年</td><td>增加 49000 多万亩</td></tr>
+                  <tr><th>军费</th><td>1916—1918 年</td><td>增加 5000 多万元</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="q">A. 自然灾害　B. 军阀纷争　C. 列强侵略　D. 农民战争</p>
+            <div class="a"><b>解析</b>　表格所示现象的主要原因是北洋军阀的割据混战。1916 年袁世凯死后，北洋军阀内部矛盾暴露，在帝国主义各国的收买和争夺下分裂成几个派系，军阀割据、战事不断，对社会经济造成严重破坏。<br><b>答案</b>　B</div>
+          </div>
+        </details>
+      </section>
+
+      <!-- ================= 第四、五单元 ================= -->
+      <section class="unit-head section" id="unit45" data-title="第四、五单元 新民主主义革命的开始、从国共合作到国共对立">
+        <div class="kicker">UNIT 04 &amp; 05 · 1915—1936</div>
+        <h2>新民主主义革命的开始、从国共合作到国共对立</h2>
+        <p>新民主主义革命开始，中国无产阶级登上政治舞台。中国共产党成立，推动民主革命的发展。国共两党从合作到对立。中国共产党开辟了一条农村包围城市、武装夺取政权的正确革命道路。</p>
+      </section>
+
+      <section class="section" id="u45-overview" data-title="第四五单元 单元体系构建">
+        <h3 class="sec-title">单元体系构建</h3>
+
+        <div class="timeline">
+          <div class="tl-title">🕐 时空坐标（点击查看）</div>
+          <div class="track">
+            <div class="tl-item" data-year="1915" data-name="新文化运动开始" data-desc="陈独秀在上海创办《青年杂志》（后改名《新青年》），新文化运动开始。"><span class="year">1915</span><div class="node"></div><div class="ev">《青年杂志》创办</div></div>
+            <div class="tl-item" data-year="1919.5.4" data-name="五四运动" data-desc="五四运动爆发，是中国旧民主主义革命走向新民主主义革命的转折点。"><span class="year">1919</span><div class="node"></div><div class="ev">五四运动</div></div>
+            <div class="tl-item" data-year="1921.7" data-name="中国共产党成立" data-desc="中共一大先后在上海和嘉兴南湖召开，中国共产党诞生，是中国历史上开天辟地的大事变。"><span class="year">1921</span><div class="node"></div><div class="ev">中国共产党成立</div></div>
+            <div class="tl-item" data-year="1924.5" data-name="黄埔军校建立" data-desc="孙中山在广州黄埔创办中国国民党陆军军官学校，即「黄埔军校」。"><span class="year">1924</span><div class="node"></div><div class="ev">黄埔军校建立</div></div>
+            <div class="tl-item" data-year="1926.7" data-name="北伐战争开始" data-desc="北伐军从珠江流域打到长江流域，基本推翻北洋军阀的统治。"><span class="year">1926</span><div class="node"></div><div class="ev">北伐战争开始</div></div>
+            <div class="tl-item" data-year="1927.4" data-name="南京国民政府成立" data-desc="蒋介石发动四一二反革命政变，在南京建立「国民政府」，国民革命失败。"><span class="year">1927.4</span><div class="node"></div><div class="ev">南京国民政府成立</div></div>
+            <div class="tl-item" data-year="1927.8.1" data-name="南昌起义" data-desc="打响武装反抗国民党反动派的第一枪。"><span class="year">1927.8</span><div class="node"></div><div class="ev">南昌起义</div></div>
+            <div class="tl-item" data-year="1927.9" data-name="秋收起义" data-desc="毛泽东在湘赣边界举行秋收起义，随后向井冈山进军。"><span class="year">1927.9</span><div class="node"></div><div class="ev">秋收起义</div></div>
+            <div class="tl-item" data-year="1928.4" data-name="井冈山会师" data-desc="朱德、陈毅率部与毛泽东在井冈山会师，合编为中国工农革命军第四军。"><span class="year">1928.4</span><div class="node"></div><div class="ev">井冈山会师</div></div>
+            <div class="tl-item" data-year="1934.10" data-name="长征开始" data-desc="中共中央率领中央红军突围西进，开始长征。"><span class="year">1934.10</span><div class="node"></div><div class="ev">长征开始</div></div>
+            <div class="tl-item" data-year="1935.1" data-name="遵义会议" data-desc="开始确立以毛泽东为主要代表的马克思主义正确路线在中共中央的领导地位，是生死攸关的转折点。"><span class="year">1935.1</span><div class="node"></div><div class="ev">遵义会议</div></div>
+            <div class="tl-item" data-year="1936.10" data-name="会宁会师" data-desc="红军三大主力在甘肃会宁地区会师，长征胜利结束。"><span class="year">1936.10</span><div class="node"></div><div class="ev">会宁会师</div></div>
+          </div>
+          <div class="tl-detail"></div>
+        </div>
+
+        <div class="table-wrap">
+          <caption>阶段特征</caption>
+          <table>
+            <thead><tr><th>阶段</th><th>阶段特征</th></tr></thead>
+            <tbody>
+              <tr><th>思想奠基</th><td>新文化运动打开了遏制新思想涌流的闸门，为五四运动起了思想宣传和铺垫的作用；五四运动促进了马克思主义在中国的传播，是中国旧民主主义革命走向新民主主义革命的转折点</td></tr>
+              <tr><th>国共合作</th><td>1921 年中国共产党诞生，中国革命面貌焕然一新。在「打倒列强，除军阀」的目标下，国共两党实现了第一次合作，推动了北伐胜利进军，掀起了国民革命运动的高潮。由于国民党内反动集团叛变革命，国民革命失败</td></tr>
+              <tr><th>国共对立</th><td>国民革命失败后，中国共产党开始武装反抗国民党反动派，并开辟了一条农村包围城市、武装夺取政权的正确革命道路。中国共产党通过遵义会议确立了以毛泽东为主要代表的马克思主义正确路线在中共中央的领导地位，并取得了长征的胜利，粉碎了国民党反动派消灭红军的企图</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="ktree">
+          <div class="kt-title">🌳 知识结构图（点击节点可折叠/展开）</div>
+          <ul>
+            <li>
+              <span class="k-node"><span class="fold-ico">▼</span>新民主主义革命的开始 → 从国共合作到国共对立</span>
+              <ul>
+                <li><span class="k-node">思想奠基：新文化运动（1915）</span><span class="k-note">民主与科学 · 文学革命 · 思想解放</span></li>
+                <li><span class="k-node">伟大转折：五四运动（1919）</span><span class="k-note">新民主主义革命的开端</span></li>
+                <li><span class="k-node">开天辟地：中国共产党诞生（1921）→ 中共二大（1922）</span><span class="k-note">第一次提出明确的反帝反封建民主革命纲领</span></li>
+                <li>
+                  <span class="k-node"><span class="fold-ico">▼</span>国共合作与国民革命（1924—1927）</span>
+                  <ul>
+                    <li><span class="k-node">国民党一大 → 黄埔军校</span></li>
+                    <li><span class="k-node">北伐战争 → 国民革命失败</span></li>
+                  </ul>
+                </li>
+                <li>
+                  <span class="k-node"><span class="fold-ico">▼</span>国共对立（1927—1936）</span>
+                  <ul>
+                    <li><span class="k-node">南昌起义 · 八七会议 · 秋收起义</span></li>
+                    <li><span class="k-node">井冈山道路：工农武装割据</span><span class="k-note">农村包围城市、武装夺取政权</span></li>
+                    <li><span class="k-node">红军长征（1934—1936）→ 遵义会议 → 转危为安</span></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section" id="u45-k1" data-title="考点01 新文化运动">
+        <h4 class="sub-title"><span class="badge">考点 01</span>新文化运动 🔥重点</h4>
+
+        <ol class="kp-list">
+          <li><b>兴起</b>：陈独秀于 1915 年在上海创办《青年杂志》（后改名为《新青年》）。</li>
+          <li><b>代表人物</b>：陈独秀、李大钊、胡适、鲁迅等。</li>
+          <li><b>主要阵地</b>：《新青年》和北京大学。</li>
+        </ol>
+
+        <div class="table-wrap">
+          <caption>4. 内容及成就</caption>
+          <table>
+            <thead><tr><th>内容</th><th>成就</th></tr></thead>
+            <tbody>
+              <tr><th>抨击封建的旧道德和旧文化</th><td>鲁迅的《狂人日记》，以新文学的形式深刻揭露了封建礼教的吃人本质，号召人民起来推翻「黑漆漆的」吃人社会</td></tr>
+              <tr><th>提倡民主与科学</th><td>民主与科学由陈独秀首先提出，是新文化运动的两大口号</td></tr>
+              <tr><th>文学革命</th><td>胡适的《文学改良刍议》、陈独秀的《文学革命论》</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p><b>5. 评价：</b>⑴ 意义：是一次伟大的思想解放运动，动摇了封建道德礼教的统治地位，使中国人民接受了一次民主与科学的洗礼，为随后爆发的五四运动起了思想宣传和铺垫的作用，掀起了一股思想解放的潮流；⑵ 局限：对中国传统文化的看法有一定的片面性。</p>
+
+        <details class="collapse detail">
+          <summary><span class="tag">提能力</span>一、比较近代化的探索历程<span class="chev">▶</span></summary>
+          <div class="body">
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>事件</th><th>派别</th><th>主张（目的）</th><th>性质</th></tr></thead>
+                <tbody>
+                  <tr><th>洋务运动</th><td>洋务派</td><td>学习西方先进技术，维护清朝统治</td><td>地主阶级发起的自救运动</td></tr>
+                  <tr><th>戊戌变法</th><td>资产阶级维新派</td><td>维新改革，建立君主立宪制</td><td>一次政治改良运动和思想启蒙运动</td></tr>
+                  <tr><th>辛亥革命</th><td>资产阶级革命派</td><td>推翻清王朝，建立资产阶级共和国</td><td>资产阶级民主革命运动</td></tr>
+                  <tr><th>新文化运动</th><td>先进知识分子</td><td>前期宣传「民主」「科学」，后期宣传马克思主义</td><td>一次空前的思想解放运动</td></tr>
+                  <tr><th>共同点</th><td colspan="3">① 都主张学习西方先进之处；② 都推动了中国的近代化进程；③ 都没有改变中国半殖民地半封建的社会性质</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p style="margin-top:10px"><b>探索主线：</b>器物（洋务运动）→ 制度（戊戌变法、辛亥革命）→ 思想文化（新文化运动）。</p>
+          </div>
+        </details>
+
+        <details class="collapse detail">
+          <summary><span class="tag">提能力</span>二、新文化运动中「新」的含义<span class="chev">▶</span></summary>
+          <div class="body">
+            <ol class="kp-list">
+              <li><b>新领导</b>：新文化运动的领导者是先进知识分子。</li>
+              <li><b>新基础</b>：中国民族资本主义的进一步发展为其奠定了经济基础。</li>
+              <li><b>新思想</b>：新文化运动提倡民主、科学。</li>
+              <li><b>新成果</b>：新文化运动动摇了封建道德礼教的统治地位，使人们的思想得到空前解放。</li>
+            </ol>
+          </div>
+        </details>
+
+        <details class="collapse bg">
+          <summary><span class="tag">背景资料</span>蔡元培与「兼容并包」的北大<span class="chev">▶</span></summary>
+          <div class="body">
+            <p>1917 年蔡元培出任北京大学校长，主张「思想自由，兼容并包」，聘请陈独秀、李大钊、胡适、鲁迅等任教，《新青年》编辑部迁到北京，北大成为新文化运动的主要阵地。</p>
+            <p>《狂人日记》（1918 年）是中国现代文学史上第一篇白话短篇小说。</p>
+          </div>
+        </details>
+
+        <details class="quiz">
+          <summary><span class="tag">典例</span>[2025·湖北] 新文化时期的文学变革（反蒙昧、反守旧、反奴化、反迷信）起到的作用是（　）<span class="chev">▶</span></summary>
+          <div class="body">
+            <p class="q">A. 揭开了民主革命的序幕　B. 开启了近代化进程<br>C. 起到思想解放的作用　D. 促进了民族工业的产生</p>
+            <div class="a"><b>解析</b>　新文化运动提倡白话文、批判封建礼教，将启蒙对象扩展到下层群众，冲破了传统思想的束缚，起到思想解放的作用。<br><b>答案</b>　C</div>
+          </div>
+        </details>
+      </section>
+
+      <section class="section" id="u45-k2" data-title="考点02 五四运动和中国共产党诞生">
+        <h4 class="sub-title"><span class="badge">考点 02</span>五四运动和中国共产党诞生</h4>
+
+        <h5>一、五四运动</h5>
+        <ol class="kp-list">
+          <li><b>直接原因（导火线）</b>：1919 年，巴黎和会上中国外交的失败。</li>
+          <li><b>口号</b>：「外争主权，内除国贼」「誓死力争，还我青岛」「取消二十一条」「拒绝在和约上签字」。</li>
+          <li><b>结果</b>：北洋政府释放被捕学生，罢免曹汝霖等人的职务，中国代表没有在「巴黎和约」上签字。</li>
+        </ol>
+
+        <div class="flow">
+          <div class="f-box"><div class="f-label">前期（6 月 3 日前）</div>中心：<b>北京</b><br>主力：<b>学生</b>（先锋力量）<br>形式：游行、罢课</div>
+          <div class="f-arrow">➜</div>
+          <div class="f-box"><div class="f-label">后期（6 月 3 日后）</div>中心：<b>上海</b><br>主力：<b>工人阶级</b><br>形式：罢工、罢市</div>
+        </div>
+
+        <p><b>5. 五四运动的历史意义：</b>⑴ 性质：是一场以先进青年知识分子为先锋、广大人民群众参加的彻底反帝反封建的伟大爱国革命运动，是一场中国人民为拯救民族危亡、捍卫民族尊严、凝聚民族力量而掀起的伟大社会革命运动，是一场传播新思想新文化新知识的伟大思想启蒙运动；⑵ 特点：彻底反帝反封建的革命性、追求救国强国真理的进步性、各族各界群众积极参与的广泛性；⑶ 作用：推动了中国社会进步，促进了马克思主义在中国的传播，促进了马克思主义同中国工人运动的结合，为中国共产党成立做了思想上干部上的准备，为新的革命力量、革命文化、革命斗争登上历史舞台创造了条件；⑷ 地位：<span class="hl">是中国旧民主主义革命走向新民主主义革命的转折点</span>，在近代以来中华民族追求民族独立和发展进步的历史进程中具有里程碑意义。</p>
+
+        <div class="tip warn">
+          <div class="t-ico">⚠️</div>
+          <div><b>易错易混：</b>⑴ 最能体现五四运动反帝反封建性质的口号是「<b>外争主权，内除国贼</b>」。⑵ 鸦片战争是<b>旧民主主义革命</b>的开端；五四运动是<b>新民主主义革命</b>的开端。</div>
+        </div>
+
+        <h5>二、中国共产党诞生</h5>
+        <div class="table-wrap">
+          <caption>1. 条件</caption>
+          <table>
+            <thead><tr><th>基础类别</th><th>具体内容</th></tr></thead>
+            <tbody>
+              <tr><th>思想基础</th><td>马克思主义的传播（1919 年，李大钊的《我的马克思主义观》较为系统地介绍了马克思主义）</td></tr>
+              <tr><th>阶级基础</th><td>工人阶级队伍壮大，马克思主义开始与工人运动相结合</td></tr>
+              <tr><th>组织基础</th><td>1920 年夏，陈独秀在上海建立中国第一个共产党早期组织。接着，北京等地也先后建立了共产党早期组织</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="table-wrap">
+          <caption>2. 中国共产党的成立：中共一大与中共二大</caption>
+          <table>
+            <thead><tr><th>项目</th><th>中共一大</th><th>中共二大</th></tr></thead>
+            <tbody>
+              <tr><th>时间</th><td>1921 年 7—8 月</td><td>1922 年 7 月</td></tr>
+              <tr><th>地点</th><td>上海、嘉兴</td><td>上海</td></tr>
+              <tr><th>内容</th><td>① 大会确定党的名称为「中国共产党」，通过了中国共产党第一个纲领，明确党的奋斗目标是推翻资产阶级政权，建立无产阶级专政，实现共产主义。② 大会确定党的中心工作是领导和组织工人运动。③ 成立党的中央领导机构中央局，陈独秀当选为中央局书记</td><td>大会重申了党的最终奋斗目标是实现共产主义，同时制定了党的最低纲领：在民主革命阶段，党的主要任务是打倒军阀，推翻帝国主义的压迫，将中国统一为真正的民主共和国</td></tr>
+              <tr><th>意义</th><td>中国共产党的诞生，是<em class="term">中国历史上开天辟地的大事变</em>。自从有了中国共产党，中国革命的面貌就焕然一新了</td><td>中国共产党在中国历史上第一次提出了明确的反帝反封建的民主革命纲领</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="tip warn">
+          <div class="t-ico">⚠️</div>
+          <div><b>易错易混：</b>⑴ 中共一大选举陈独秀为中央局书记，但<b>陈独秀没有参加中共一大</b>；⑵ 在中国第一次举起马克思主义旗帜的是<b>李大钊</b>，建立中国第一个共产党早期组织的是<b>陈独秀</b>；⑶ 中共一大提出实现共产主义的奋斗目标，中共二大重申最终目标并<b>制定最低纲领</b>。</div>
+        </div>
+
+        <h5>三、全国工人运动的高涨</h5>
+        <ol class="kp-list">
+          <li><b>时间</b>：从 1922 年初到 1923 年春。</li>
+          <li><b>顶峰</b>：1923 年 2 月，京汉铁路工人举行大罢工。</li>
+          <li><b>教训</b>：单枪匹马不能取得革命的胜利，必须团结一切可能的同盟者，才能战胜强大的敌人。</li>
+        </ol>
+
+        <details class="collapse detail">
+          <summary><span class="tag">提能力</span>一、为什么说五四运动是中国新民主主义革命的开端？<span class="chev">▶</span></summary>
+          <div class="body">
+            <ol class="kp-list">
+              <li>从<b>性质</b>上看，五四运动是一次彻底反帝反封建的伟大爱国革命运动。</li>
+              <li>从<b>领导力量</b>上看，五四运动中，无产阶级开始登上历史舞台，先进的知识分子逐步成为革命的领导力量。</li>
+              <li>从<b>作用</b>上看，五四运动进一步推动了马克思主义在中国的传播，为中国共产党的成立准备了条件。</li>
+              <li>从<b>群众基础</b>上看，五四运动波及全国广大地区，具有广泛的群众性。</li>
+            </ol>
+          </div>
+        </details>
+
+        <details class="collapse detail">
+          <summary><span class="tag">提能力</span>二、比较旧民主主义革命与新民主主义革命<span class="chev">▶</span></summary>
+          <div class="body">
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>项目</th><th>旧民主主义革命</th><th>新民主主义革命</th></tr></thead>
+                <tbody>
+                  <tr><th>领导阶级</th><td>资产阶级</td><td>无产阶级</td></tr>
+                  <tr><th>指导思想</th><td>三民主义</td><td>马克思主义</td></tr>
+                  <tr><th>革命前途</th><td>资产阶级共和国</td><td>社会主义（共产主义）</td></tr>
+                  <tr><th>历史时期</th><td>从鸦片战争到五四运动</td><td>从五四运动到中华人民共和国成立</td></tr>
+                  <tr><th>社会性质</th><td>半殖民地半封建社会</td><td>半殖民地半封建社会</td></tr>
+                  <tr><th>革命任务</th><td>反帝反封建</td><td>反帝反封建</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+
+        <details class="collapse bg">
+          <summary><span class="tag">背景资料</span>中共一大代表与「七一」的由来<span class="chev">▶</span></summary>
+          <div class="body">
+            <p>1921 年 7 月 23 日，中共一大在上海法租界望志路 106 号（今兴业路 76 号）开幕，13 名代表出席，因受巡捕搜查，最后一天转移到嘉兴南湖的一条游船上继续进行。毛泽东当年 28 岁。后来把 7 月 1 日作为中国共产党成立纪念日。</p>
+          </div>
+        </details>
+
+        <details class="quiz">
+          <summary><span class="tag">典例</span>新、旧民主主义革命共同的任务是（　）<span class="chev">▶</span></summary>
+          <div class="body">
+            <p class="q">A. 反抗地主阶级压迫　B. 打败日本侵略者　C. 反对国民党专政　D. 反帝反封建</p>
+            <div class="a"><b>解析</b>　中国近代社会性质是半殖民地半封建社会，新、旧民主主义革命共同的任务是反帝反封建。<br><b>答案</b>　D</div>
+          </div>
+        </details>
+      </section>
+
+      <section class="section" id="u45-k3" data-title="考点03 国共合作与北伐战争">
+        <h4 class="sub-title"><span class="badge">考点 03</span>国共合作与北伐战争</h4>
+
+        <h5>一、国共合作的实现</h5>
+        <ol class="kp-list">
+          <li><b>背景</b>：1923 年 6 月召开的中共三大，正式决定同孙中山领导的国民党合作，建立革命统一战线；孙中山决定改组国民党。</li>
+          <li><b>形式</b>：共产党员以个人身份加入国民党。</li>
+          <li><b>政治基础</b>：新三民主义。</li>
+          <li><b>实现标志</b>：1924 年 1 月，中国国民党第一次全国代表大会的召开。</li>
+          <li><b>黄埔军校的创办</b>：1924 年 5 月，孙中山在广州黄埔创办中国国民党陆军军官学校，亦称「黄埔军校」。蒋介石任校长，周恩来不久后担任政治部主任。</li>
+        </ol>
+
+        <div class="tip warn">
+          <div class="t-ico">⚠️</div>
+          <div><b>易错易混：</b>⑴ <b>中共一大</b>的召开标志中国共产党成立；<b>国民党一大</b>的召开标志国共两党合作的正式建立。⑵ 党内合作并不是国共两党合并，而是共产党员以个人身份加入国民党。</div>
+        </div>
+
+        <h5>二、北伐战争</h5>
+        <ol class="kp-list">
+          <li><b>开始时间</b>：1926 年 7 月。</li>
+          <li><b>目的</b>：推翻北洋军阀的统治，统一全国。</li>
+          <li><b>对象</b>：吴佩孚、张作霖、孙传芳。</li>
+          <li><b>初期主要战场</b>：湖南、湖北。</li>
+          <li><b>战役</b>：汀泗桥战役、贺胜桥战役和武昌战役。</li>
+          <li><b>成果</b>：北伐军从珠江流域打到长江流域。随着北伐的胜利进军，各地的工农革命运动蓬勃发展。</li>
+        </ol>
+
+        <div class="tip warn">
+          <div class="t-ico">⚠️</div>
+          <div><b>易错易混：</b>孙中山<b>并没有领导北伐战争</b>（1926 年北伐开始时，孙中山已经逝世）。</div>
+        </div>
+
+        <h5>三、国民党内反动集团叛变革命与南京国民政府的建立</h5>
+        <ol class="kp-list">
+          <li><b>国民革命失败</b>：1927 年 4 月，蒋介石在上海发动了四一二反革命政变，并在南京建立「国民政府」。7 月，汪精卫在武汉召开「分共会议」，大肆屠杀共产党人和工农群众。轰轰烈烈的国民革命失败了。</li>
+          <li><b>全国统一</b>：1928 年底，张学良发表通告，宣布「服从国民政府，改易旗帜」。至此，南京政府在名义上统一了全国。</li>
+        </ol>
+
+        <details class="collapse detail">
+          <summary><span class="tag">提能力</span>北伐胜利进军，为什么还说国民革命失败了？<span class="chev">▶</span></summary>
+          <div class="body">
+            <p>蒋介石、汪精卫等国民党内反动集团发动反革命政变，建立了反共反人民的南京政府。吴佩孚等旧军阀被打垮了，但又出现了以蒋介石为代表的新军阀，他们是帝国主义和大地主大资产阶级利益的代表。中国人民反帝反封建的民主革命任务没有完成，半殖民地半封建的社会性质没有改变。因此，国民革命失败了。</p>
+          </div>
+        </details>
+
+        <details class="quiz">
+          <summary><span class="tag">典例</span>下列有关 1926—1927 年北伐战争的叙述，错误的是（　）<span class="chev">▶</span></summary>
+          <div class="body">
+            <p class="q">A. 是国共合作的产物　B. 初期主要战场在湖南、湖北<br>C. 得到了工农群众的支持　D. 彻底消灭了北洋军阀</p>
+            <div class="a"><b>解析</b>　北伐军先后消灭了吴佩孚、孙传芳的主力，但没有消灭张作霖。<br><b>答案</b>　D</div>
+          </div>
+        </details>
+      </section>
+
+      <section class="section" id="u45-k4" data-title="考点04 毛泽东开辟井冈山道路">
+        <h4 class="sub-title"><span class="badge">考点 04</span>毛泽东开辟井冈山道路</h4>
+
+        <h5>一、南昌起义、八七会议、秋收起义与井冈山会师</h5>
+        <ol class="kp-list">
+          <li><b>南昌起义</b>：1927 年 8 月 1 日，周恩来、贺龙、朱德等人领导革命军在南昌发动武装起义，<span class="hl">打响武装反抗国民党反动派的第一枪</span>，标志着中国共产党独立领导革命战争、创建人民军队和武装夺取政权的开端。</li>
+          <li><b>八七会议</b>：1927 年 8 月 7 日，中共中央在汉口召开会议，确定实行土地革命和武装起义的方针，决定在秋收时节发动武装起义，毛泽东提出了「政权是由枪杆子中取得的」著名论断。</li>
+          <li><b>秋收起义</b>：1927 年 9 月，毛泽东在湘赣边界举行秋收起义，起义受挫后，改向敌人统治力量薄弱的山区进军，创建井冈山革命根据地。井冈山革命根据地的创建，拉开了中国革命从城市转入农村、建立根据地的序幕。</li>
+          <li><b>井冈山会师</b>：1928 年 4 月，朱德、陈毅率领部分军队和工农武装在井冈山与毛泽东率领的工农革命军会师，两军合编为中国工农革命军第四军，不久改称中国工农红军第四军。</li>
+        </ol>
+
+        <div class="tip warn">
+          <div class="t-ico">⚠️</div>
+          <div><b>易错易混：</b>打响武装反抗国民党反动派的第一枪——<b>南昌起义</b>；第一个农村革命根据地——<b>井冈山革命根据地</b>；第一支红军——<b>中国工农红军第四军</b>。</div>
+        </div>
+
+        <h5>二、工农武装割据</h5>
+        <ol class="kp-list">
+          <li><b>「工农武装割据」局面的形成</b>：毛泽东率领工农革命军在井冈山打土豪，分田地，建立革命政权，开展土地革命和游击战争，创造了「工农武装割据」的局面。</li>
+          <li><b>古田会议</b>：1929 年 12 月，古田会议召开，确立了思想建党、政治建军的原则。</li>
+          <li><b>临时中央政府成立</b>：1931 年冬，中华苏维埃第一次全国代表大会在江西瑞金召开，毛泽东当选为中央执行委员会主席和中央执行委员会人民委员会主席。</li>
+        </ol>
+
+        <details class="collapse detail">
+          <summary><span class="tag">提能力</span>一、南昌起义与秋收起义的相同之处<span class="chev">▶</span></summary>
+          <div class="body">
+            <ol class="kp-list">
+              <li><b>背景相同</b>：都发生在国民革命失败后。</li>
+              <li><b>目的相同</b>：都是反抗国民党反动派，挽救革命。</li>
+              <li><b>过程相同</b>：都受到挫折，都转入农村。</li>
+              <li><b>方式相同</b>：都采用武装起义的方式。</li>
+            </ol>
+          </div>
+        </details>
+
+        <details class="collapse detail">
+          <summary><span class="tag">提能力</span>二、工农武装割据的成因与条件<span class="chev">▶</span></summary>
+          <div class="body">
+            <ol class="kp-list">
+              <li>中国是一个半殖民地半封建国家。</li>
+              <li>有良好的群众基础。</li>
+              <li>红色政权的存在与发展，同全国的革命形势密切相关。</li>
+              <li>有相当力量的正式红军。</li>
+              <li>中国共产党组织有力、纪律严明。</li>
+            </ol>
+          </div>
+        </details>
+
+        <details class="collapse bg">
+          <summary><span class="tag">背景资料</span>八一建军节与「朱毛会师」<span class="chev">▶</span></summary>
+          <div class="body">
+            <p>南昌起义打响了武装反抗国民党反动派的第一枪，后来 8 月 1 日被定为中国人民解放军建军节。井冈山会师后，朱德任军长、毛泽东任党代表的红四军成为中国工农红军第一支坚强的队伍，「朱毛红军」从此名扬天下。</p>
+          </div>
+        </details>
+      </section>
+
+      <section class="section" id="u45-k5" data-title="考点05 中国工农红军长征">
+        <h4 class="sub-title"><span class="badge">考点 05</span>中国工农红军长征</h4>
+
+        <ol class="kp-list">
+          <li><b>原因</b>：红军第五次反「围剿」失利。</li>
+          <li><b>开始</b>：1934 年 10 月，中共中央率领中央红军突围西进，开始长征。</li>
+          <li><b>转折</b>：1935 年 1 月召开的遵义会议，开始确立以毛泽东为主要代表的马克思主义正确路线在中共中央的领导地位；挽救了党，挽救了红军，挽救了中国革命，是<em class="term">中国共产党历史上一个生死攸关的转折点</em>。</li>
+          <li><b>突出重围</b>：四渡赤水（打乱了敌人的「追剿」计划）→ 渡过金沙江（跳出了敌人的重重包围）→ 强渡大渡河、飞夺泸定桥 → 翻雪山、过草地 → 到达吴起镇。</li>
+          <li><b>胜利</b>：1936 年 10 月，红军三大主力在甘肃会宁地区会师。</li>
+          <li><b>意义</b>：粉碎了国民党反动派消灭红军的企图，保存了党和红军的基干力量，使中国革命转危为安；红军长征播下了革命种子，铸就了长征精神，打开了中国革命的新局面。</li>
+        </ol>
+
+        <div class="tip warn">
+          <div class="t-ico">⚠️</div>
+          <div><b>易错易混：</b>⑴ 红军长征从<b>中央革命根据地（江西瑞金）</b>出发，不是井冈山革命根据地；⑵ 遵义会议是<b>党史上生死攸关的转折点</b>，红军长征是<b>中国革命转危为安的关键</b>；⑶ 四渡赤水<b>打乱</b>「追剿」计划，渡过金沙江<b>跳出</b>重重包围。</div>
+        </div>
+
+        <details class="collapse detail">
+          <summary><span class="tag">提能力</span>一、遵义会议为什么是中国共产党历史上一个生死攸关的转折点？<span class="chev">▶</span></summary>
+          <div class="body">
+            <p>首先，从<b>革命形势</b>来看，遵义会议前，红军被迫离开根据地，损失巨大，革命处在非常危险的境地；遵义会议后，由于有毛泽东的正确指挥，红军在军事上采取主动，形势大为改观。</p>
+            <p>其次，从<b>会议内容</b>来看，遵义会议从根本上改变了党的战略思想和战略指挥，纠正了「左」的错误，这是挽救党、挽救红军、挽救中国革命的根本性转折。</p>
+          </div>
+        </details>
+
+        <details class="collapse detail">
+          <summary><span class="tag">提能力</span>二、红军长征胜利的原因<span class="chev">▶</span></summary>
+          <div class="body">
+            <ol class="kp-list">
+              <li>广大红军战士对革命的坚定信念，战胜所有敌人的大无畏的革命英雄主义，战胜一切困难的决心和勇气，团结友爱、顾全大局的集体主义。</li>
+              <li>中国共产党的正确领导。</li>
+              <li>人民群众的大力支持。</li>
+            </ol>
+          </div>
+        </details>
+
+        <details class="collapse bg">
+          <summary><span class="tag">背景资料</span>长征的数字<span class="chev">▶</span></summary>
+          <div class="body">
+            <p>中央红军从 1934 年 10 月到 1935 年 10 月，行程约二万五千里，翻越 18 座山脉（其中 5 座终年积雪），渡过 24 条河流，转战 11 个省。三大主力会师时，红军总数由出发时的 20 余万人锐减至约 3 万人。</p>
+          </div>
+        </details>
+
+        <details class="quiz">
+          <summary><span class="tag">典例1</span>[2025·成都] 陈云记录的某次会议决定：「毛泽东增选为政治局常委……取消三人团……」该会议（　）<span class="chev">▶</span></summary>
+          <div class="body">
+            <div class="table-wrap">
+              <table>
+                <tbody>
+                  <tr><th>会议决定</th><td>（一）毛泽东增选为政治局常委；（二）指定洛甫（张闻天）起草决议委托常委审查后发到支部讨论；（三）常委中再进行适当分工；（四）取消「三人团」，仍由最高军事首长朱德、周恩来为军事指挥者，而周恩来为党内委托的对于指挥军事上下最后决心的负责者。</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="q">A. 指明了土地革命的方向　B. 总结了抗日战争的经验<br>C. 实现了工作重心的转移　D. 挽救了中国革命</p>
+            <div class="a"><b>解析</b>　该会议是遵义会议。会议肯定了毛泽东的正确军事主张，取消了博古、李德的军事最高指挥权，开始确立以毛泽东为主要代表的马克思主义正确路线在中共中央的领导地位，是生死攸关的转折点。<br><b>答案</b>　D</div>
+          </div>
+        </details>
+
+        <details class="quiz">
+          <summary><span class="tag">典例2</span>[2023·江苏镇江] 红军将士同敌人进行了 600 余次战斗，跨越近百条江河……诠释了（　）<span class="chev">▶</span></summary>
+          <div class="body">
+            <p class="q">A. 五四精神　B. 红船精神　C. 井冈山精神　D. 长征精神</p>
+            <div class="a"><b>解析</b>　材料反映的史实与长征相关，红军将士诠释了长征精神。<br><b>答案</b>　D</div>
+          </div>
+        </details>
+      </section>
+
+      <!-- ================= 第六单元 ================= -->
+      <section class="unit-head section" id="unit6" data-title="第六单元 中华民族的抗日战争">
+        <div class="kicker">UNIT 06 · 1931—1945</div>
+        <h2>中华民族的抗日战争</h2>
+        <p>从九一八事变到日本投降，中国人民进行了 14 年艰苦卓绝的抗战。正面战场与敌后战场相互配合，中国共产党在全民族抗战中发挥了中流砥柱作用，近代以来中国人民第一次取得反抗外敌入侵的完全胜利。</p>
+      </section>
+
+      <section class="section" id="u6-overview" data-title="第六单元 单元体系构建">
+        <h3 class="sec-title">单元体系构建 <span style="font-size:12px;font-weight:400;color:var(--text-faint)">（原稿缺页 · 编者补全）</span></h3>
+
+        <div class="timeline">
+          <div class="tl-title">🕐 时空坐标（点击查看）</div>
+          <div class="track">
+            <div class="tl-item" data-year="1931.9.18" data-name="九一八事变" data-desc="日本关东军炸毁沈阳北郊柳条湖附近南满铁路路轨，反诬中国军队所为，突袭北大营，炮轰沈阳。九一八事变成为中国人民抗日战争的起点。"><span class="year">1931.9</span><div class="node"></div><div class="ev">九一八事变</div></div>
+            <div class="tl-item" data-year="1935.12.9" data-name="一二·九运动" data-desc="北平学生举行抗日救亡游行，促进全国抗日救亡运动新高潮的到来。"><span class="year">1935.12</span><div class="node"></div><div class="ev">一二·九运动</div></div>
+            <div class="tl-item" data-year="1936.12.12" data-name="西安事变" data-desc="张学良、杨虎城发动「兵谏」逼蒋抗日，西安事变和平解决，十年内战基本停止，抗日民族统一战线初步形成。"><span class="year">1936.12</span><div class="node"></div><div class="ev">西安事变</div></div>
+            <div class="tl-item" data-year="1937.7.7" data-name="七七事变" data-desc="日军进攻卢沟桥，中国守军奋起抵抗，标志着中国全民族抗战的开始。"><span class="year">1937.7</span><div class="node"></div><div class="ev">七七事变</div></div>
+            <div class="tl-item" data-year="1937.8—11" data-name="淞沪会战" data-desc="打破日本 3 个月灭亡中国的迷梦，激发了全国人民的斗志。"><span class="year">1937.8</span><div class="node"></div><div class="ev">淞沪会战</div></div>
+            <div class="tl-item" data-year="1937.12" data-name="南京大屠杀" data-desc="日军攻陷南京，屠杀手无寸铁的中国居民和放下武器的士兵达 30 万人以上。"><span class="year">1937.12</span><div class="node"></div><div class="ev">南京大屠杀</div></div>
+            <div class="tl-item" data-year="1938.3—4" data-name="台儿庄战役" data-desc="抗战以来中国正面战场取得的最大的一场胜仗。"><span class="year">1938.3</span><div class="node"></div><div class="ev">台儿庄战役</div></div>
+            <div class="tl-item" data-year="1938.6—10" data-name="武汉会战" data-desc="日本企图迅速灭亡中国的既定战略彻底破灭，抗战进入战略相持阶段。"><span class="year">1938.6</span><div class="node"></div><div class="ev">武汉会战</div></div>
+            <div class="tl-item" data-year="1940.8" data-name="百团大战" data-desc="八路军在彭德怀指挥下主动出击日军，有力打击了日军的侵略气焰。"><span class="year">1940.8</span><div class="node"></div><div class="ev">百团大战</div></div>
+            <div class="tl-item" data-year="1945.4—6" data-name="中共七大" data-desc="在延安召开，确立毛泽东思想为中国共产党的指导思想并写入党章。"><span class="year">1945.4</span><div class="node"></div><div class="ev">中共七大</div></div>
+            <div class="tl-item" data-year="1945.8.15" data-name="日本投降" data-desc="日本天皇宣布无条件投降；9 月 2 日日本签署投降书，抗日战争取得最后胜利。"><span class="year">1945.8</span><div class="node"></div><div class="ev">日本投降</div></div>
+          </div>
+          <div class="tl-detail"></div>
+        </div>
+
+        <div class="table-wrap">
+          <caption>阶段特征（编者据教材补全）</caption>
+          <table>
+            <thead><tr><th>阶段</th><th>内容</th></tr></thead>
+            <tbody>
+              <tr><th>局部抗战<br>（1931—1937）</th><td>九一八事变后中国人民局部抗战开始；中国共产党派杨靖宇等在东北组织抗日游击队。华北危机下，一二·九运动促进抗日救亡新高潮；西安事变和平解决，抗日民族统一战线初步形成</td></tr>
+              <tr><th>全民族抗战<br>（1937—1945）</th><td>七七事变后全民族抗战开始；国共第二次合作实现，抗日民族统一战线正式建立。正面战场与敌后战场相互配合，构成中国抗日战争的整体；中国共产党在全民族抗战中发挥中流砥柱作用</td></tr>
+              <tr><th>历史意义</th><td>中国人民抗日战争是近代以来中国人民反抗外敌入侵第一次取得完全胜利的民族解放斗争；中国战场是世界反法西斯战争的东方主战场，中国的国际地位得到提高</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="ktree">
+          <div class="kt-title">🌳 知识结构图（点击节点可折叠/展开）</div>
+          <ul>
+            <li>
+              <span class="k-node"><span class="fold-ico">▼</span>中华民族的抗日战争（1931—1945）</span>
+              <ul>
+                <li>
+                  <span class="k-node"><span class="fold-ico">▼</span>局部抗战（1931—1937）</span>
+                  <ul>
+                    <li><span class="k-node">九一八事变 → 东北沦陷 · 抗日义勇军 · 东北抗日联军</span></li>
+                    <li><span class="k-node">华北危机与一二·九运动</span></li>
+                    <li><span class="k-node">西安事变和平解决</span><span class="k-note">抗日民族统一战线初步形成</span></li>
+                  </ul>
+                </li>
+                <li>
+                  <span class="k-node"><span class="fold-ico">▼</span>全民族抗战（1937—1945）</span>
+                  <ul>
+                    <li><span class="k-node">七七事变 · 第二次国共合作</span><span class="k-note">抗日民族统一战线正式建立</span></li>
+                    <li><span class="k-node">正面战场：淞沪 · 台儿庄 · 武汉 · 第三次长沙会战</span></li>
+                    <li><span class="k-node">敌后战场：平型关大捷 · 百团大战 · 抗日根据地</span></li>
+                    <li><span class="k-node">全民族坚持抗战 · 中共七大</span></li>
+                    <li><span class="k-node">战略反攻 → 日本投降</span><span class="k-note">第一次取得完全胜利的民族解放斗争</span></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section" id="u6-k1" data-title="考点01 从九一八事变到西安事变">
+        <h4 class="sub-title"><span class="badge">考点 01</span>从九一八事变到西安事变 <span style="font-size:12px;font-weight:400;color:var(--text-faint)">（「九一八事变」正文为缺页补全）</span></h4>
+
+        <h5>一、九一八事变 <span style="font-size:12px;font-weight:400;color:var(--text-faint)">（缺页补全）</span></h5>
+        <ol class="kp-list">
+          <li><b>概况</b>：1931 年 9 月 18 日夜，日本关东军炸毁沈阳北郊柳条湖附近南满铁路的一段路轨，反诬中国军队破坏，以此为借口突袭中国东北军驻地北大营，炮轰沈阳城。这就是「九一八事变」。</li>
+          <li><b>结果</b>：蒋介石下令不抵抗，东北三省沦陷。1932 年，日本扶植溥仪在长春建立伪满洲国傀儡政权，企图把东北从中国分裂出去。</li>
+          <li><b>抗争</b>：东北民众和未撤走的东北军组织抗日义勇军；中国共产党派杨靖宇等人在东北组织游击队，开展抗日游击战争。1936 年初，东北各抗日部队改编为由中国共产党领导的东北抗日联军。</li>
+          <li><b>影响</b>：九一八事变成为中国人民「十四年抗战」的起点，揭开了世界反法西斯战争的序幕。</li>
+        </ol>
+
+        <div class="tip warn">
+          <div class="t-ico">⚠️</div>
+          <div><b>易错易混：</b>九一八事变成为中国人民「十四年抗战」的起点，揭开世界反法西斯战争的<b>序幕</b>；七七事变标志着中国<b>全民族抗战</b>的开始。</div>
+        </div>
+
+        <h5>二、华北危机与一二·九运动</h5>
+        <ol class="kp-list">
+          <li><b>背景</b>：日军侵占东北后，又将侵略的魔爪伸向华北，策动所谓「华北自治运动」，中华民族面临亡国灭种的危险。</li>
+          <li><b>时间</b>：1935 年 12 月 9 日。</li>
+          <li><b>口号</b>：「打倒日本帝国主义」「反对华北自治」「停止内战，一致对外」等。</li>
+          <li><b>意义</b>：一二·九运动揭露了日本侵略者企图吞并华北的阴谋，打击了国民政府对日妥协的政策，促进了全国抗日救亡运动新高潮的到来。</li>
+        </ol>
+
+        <h5>三、西安事变</h5>
+        <ol class="kp-list">
+          <li><b>时间</b>：1936 年 12 月 12 日。</li>
+          <li><b>人物</b>：张学良、杨虎城。</li>
+          <li><b>目的</b>：逼蒋抗日。</li>
+          <li><b>结果</b>：中国共产党从全民族的利益出发，派周恩来到西安参加谈判，西安事变和平解决。</li>
+          <li><b>意义</b>：十年内战基本停止，抗日民族统一战线<b>初步形成</b>。</li>
+        </ol>
+
+        <div class="tip warn">
+          <div class="t-ico">⚠️</div>
+          <div><b>易错易混：</b>西安事变的和平解决标志着十年内战基本停止，抗日民族统一战线<b>初步</b>形成，而非<b>正式</b>形成（正式形成：1937 年 9 月国共合作宣言发表）。</div>
+        </div>
+
+        <details class="collapse detail">
+          <summary><span class="tag">提能力</span>一、归纳近代以来日本侵略中国的史实<span class="chev">▶</span></summary>
+          <div class="body">
+            <ol class="kp-list">
+              <li>1894—1895 年，日本挑起甲午中日战争，逼迫清政府签订《马关条约》，掠夺巨额赔款，割占台湾全岛及所有附属各岛屿、澎湖列岛。</li>
+              <li>在列强瓜分中国狂潮中，日本强行把福建划为其「势力范围」。</li>
+              <li>日本在八国联军侵华战争中，与欧美列强一起逼迫清政府签订《辛丑条约》。</li>
+              <li>1905 年，日本强租旅顺、大连。</li>
+              <li>第一次世界大战期间，日本借口对德宣战，出兵山东，强占德国在山东的一切权益。</li>
+              <li>1915 年，日本向袁世凯提出旨在灭亡中国的「二十一条」。</li>
+              <li>1931 年，日本发动九一八事变，这成为中国人民抗日战争的起点。</li>
+              <li>1937 年，日本发动七七事变，这成为中国全民族抗战的起点。</li>
+            </ol>
+          </div>
+        </details>
+
+        <details class="collapse detail">
+          <summary><span class="tag">提能力</span>二、从九一八事变到西安事变再到七七事变，中国共产党对蒋介石的政策发生了什么变化？<span class="chev">▶</span></summary>
+          <div class="body">
+            <ol class="kp-list">
+              <li><b>九一八事变发生后：反蒋抗日。</b>主要原因：中日矛盾不断上升，民族危机不断加深；蒋介石消极抗日，积极反共。</li>
+              <li><b>西安事变发生时：联蒋抗日。</b>主要原因：日本不断加紧侵略步伐；全民族抗日力量的推动。</li>
+              <li><b>七七事变发生后：联蒋抗日。</b>主要原因：当时中国社会的主要矛盾是中日民族矛盾；国民政府开始坚决抵抗侵略。</li>
+            </ol>
+          </div>
+        </details>
+
+        <details class="collapse bg">
+          <summary><span class="tag">背景资料</span>柳条湖事件的真相与《松花江上》<span class="chev">▶</span></summary>
+          <div class="body">
+            <p>柳条湖爆破是日本关东军一手策划的自导自演事件——爆破点选在北大营附近，炸药量很小，铁轨几乎无损，目的只是制造侵华借口。事件发生后，不抵抗政策使东北大片国土在四个多月内沦陷。</p>
+            <p>流亡关内的东北籍作曲家张寒晖目睹东北同胞流离失所，写下《松花江上》，「九一八，九一八，从那个悲惨的时候」唱遍全国，成为抗战名曲。</p>
+          </div>
+        </details>
+
+        <details class="quiz">
+          <summary><span class="tag">典例</span>下列有关九一八事变和卢沟桥事变相同点的说法中，不正确的是（　）<span class="chev">▶</span></summary>
+          <div class="body">
+            <p class="q">A. 都是日本寻找借口发动的　B. 都是日本推行侵略扩张政策的必然结果<br>C. 事变发生后，中国政府都采取了积极抵抗的政策　D. 中国内部的不团结给日本侵华以可乘之机</p>
+            <div class="a"><b>解析</b>　九一八事变后，蒋介石采取不抵抗政策，并未积极抵抗。<br><b>答案</b>　C</div>
+          </div>
+        </details>
+
+        <details class="quiz">
+          <summary><span class="tag">典例</span>中国近代史上两次学生运动（五四运动和一二·九运动）的共同点是（　）<span class="chev">▶</span></summary>
+          <div class="body">
+            <p class="q">A. 都是由中国共产党领导的　B. 运动中心都在北京<br>C. 都是反帝爱国运动　D. 主力都是学生</p>
+            <div class="a"><b>解析</b>　五四运动是彻底反帝反封建的伟大爱国革命运动，一二·九运动是爱国救亡运动，二者的共同点是反帝爱国。五四运动后期主力是工人。<br><b>答案</b>　C</div>
+          </div>
+        </details>
+      </section>
+
+      <section class="section" id="u6-k2" data-title="考点02 七七事变与全民族抗战">
+        <h4 class="sub-title"><span class="badge">考点 02</span>七七事变与全民族抗战 🔥重点</h4>
+
+        <h5>一、七七事变（卢沟桥事变）</h5>
+        <ol class="kp-list">
+          <li><b>概况</b>：1937 年 7 月 7 日，日军借口一名士兵失踪，向卢沟桥中国守军发动进攻，中国守军奋起抵抗。</li>
+          <li><b>影响</b>：七七事变标志着<span class="hl">中国全民族抗战的开始</span>。</li>
+        </ol>
+
+        <div class="tip warn">
+          <div class="t-ico">⚠️</div>
+          <div><b>易错易混：</b>九一八事变后，中国人民的<b>局部抗战</b>开始；七七事变后，全国性的抗日战争爆发，中国开始<b>全民族抗战</b>。</div>
+        </div>
+
+        <h5>二、第二次国共合作</h5>
+        <ol class="kp-list">
+          <li><b>背景</b>：日本侵略者发动全面侵华战争后，中国共产党与中国国民党分别发表声明，抗议日本侵略，表明抗战立场。</li>
+          <li><b>改编红军</b>：中国工农红军主力改编为国民革命军第八路军，朱德任总指挥，彭德怀任副总指挥；南方八省的游击队改编为国民革命军新编第四军，叶挺任军长。</li>
+          <li><b>标志</b>：1937 年 9 月，国民党中央通讯社公开发表了中共中央提交的国共合作宣言，蒋介石也发表谈话，实际上承认了中国共产党在全国的合法地位。</li>
+          <li><b>意义</b>：以国共合作为主体的抗日民族统一战线正式建立，国共团结御侮、全民族抗战的局面开始形成。</li>
+        </ol>
+
+        <div class="tip warn">
+          <div class="t-ico">⚠️</div>
+          <div><b>易错易混：</b>西安事变和平解决 → 抗日民族统一战线<b>初步</b>形成；1937 年 9 月国共合作宣言发表 → 抗日民族统一战线<b>正式</b>建立。</div>
+        </div>
+
+        <h5>三、淞沪会战</h5>
+        <ol class="kp-list">
+          <li><b>经过</b>：1937 年 8 月，日军在上海挑起事端，中国军队奋起反击，淞沪会战爆发。11 月，上海失陷，淞沪会战结束。</li>
+          <li><b>抵抗事迹</b>：姚子青率军守卫宝山、谢晋元率部坚守苏州河北岸四行仓库阵地。</li>
+          <li><b>意义</b>：打破了日本 3 个月灭亡中国的迷梦，激发了全国人民的斗志。</li>
+        </ol>
+
+        <h5>四、南京大屠杀</h5>
+        <ol class="kp-list">
+          <li><b>背景</b>：1937 年 12 月 13 日，日军攻陷南京。国民政府迁往重庆，将其作为战时的陪都。</li>
+          <li><b>暴行</b>：日军占领南京后，屠杀手无寸铁的中国居民和放下武器的士兵达 <b>30 万人以上</b>。</li>
+        </ol>
+
+        <details class="collapse bg">
+          <summary><span class="tag">背景资料</span>国家公祭日与世界记忆<span class="chev">▶</span></summary>
+          <div class="body">
+            <p>2014 年，我国以立法形式将每年 <b>12 月 13 日</b>设立为南京大屠杀死难者国家公祭日。2015 年，《南京大屠杀档案》列入联合国教科文组织《世界记忆名录》。</p>
+          </div>
+        </details>
+
+        <details class="collapse detail">
+          <summary><span class="tag">提能力</span>比较九一八事变与七七事变<span class="chev">▶</span></summary>
+          <div class="body">
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>项目</th><th>九一八事变</th><th>七七事变</th></tr></thead>
+                <tbody>
+                  <tr><th>时间</th><td>1931 年 9 月 18 日</td><td>1937 年 7 月 7 日</td></tr>
+                  <tr><th>性质</th><td>日本局部侵华事件</td><td>日本全面侵华事件</td></tr>
+                  <tr><th>国民政府的态度</th><td>不抵抗，力避事态扩大</td><td>命令军队奋起还击，全面抗击侵略</td></tr>
+                  <tr><th>结果</th><td>中国军队撤进关内，东北三省沦陷，进一步刺激了日本帝国主义的侵略野心</td><td>中国全民族抗战开始</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+      </section>
+
+      <section class="section" id="u6-k3" data-title="考点03 正面战场和敌后战场的抗战">
+        <h4 class="sub-title"><span class="badge">考点 03</span>正面战场和敌后战场的抗战</h4>
+
+        <h5>一、正面战场</h5>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>战役名称</th><th>时间</th><th>概况</th><th>意义</th></tr></thead>
+            <tbody>
+              <tr><th>台儿庄战役</th><td>1938 年 3—4 月</td><td>指挥官：第五战区司令长官李宗仁。<br>结果：共歼敌 1 万余人</td><td>台儿庄战役是抗战以来中国正面战场取得的最大的一场胜仗，振奋了中国军民的精神，坚定了抗战意志和信念</td></tr>
+              <tr><th>武汉会战</th><td>1938 年 6—10 月</td><td>日军集结 40 多万兵力进攻武汉，中国军队利用有利地形，构筑工事，逐次抵抗，消耗敌人，在江西万家岭击毙日军 3000 余人。<br>结果：武汉失陷</td><td>日本企图迅速灭亡中国的既定战略彻底破灭</td></tr>
+              <tr><th>第三次长沙会战</th><td>1941 年 12 月—1942 年 1 月</td><td>中国军队歼灭大批日军，获得会战胜利</td><td>这次会战的胜利，在国内外产生了积极影响</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h5>二、敌后战场</h5>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>战役名称</th><th>时间</th><th>领导人</th><th>意义</th></tr></thead>
+            <tbody>
+              <tr><th>平型关大捷</th><td>1937 年 9 月</td><td>林彪</td><td>全民族抗战爆发后中国军队主动对日作战取得的第一个重大胜利</td></tr>
+              <tr><th>百团大战</th><td>1940 年 8 月至 1941 年 1 月</td><td>彭德怀</td><td>有力打击了日军的侵略气焰，提高了共产党和八路军的威望，振奋了全国军民争取抗战胜利的信心</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="tip warn">
+          <div class="t-ico">⚠️</div>
+          <div><b>易错易混：</b>1937 年<b>平型关大捷</b>是全民族抗战爆发后中国军队主动对日作战取得的<b>第一个重大胜利</b>；1938 年<b>台儿庄战役</b>是抗战以来<b>正面战场</b>取得的<b>最大的一场胜仗</b>。</div>
+        </div>
+
+        <h5>三、毛泽东《论持久战》和抗日根据地的建立与发展</h5>
+        <ol class="kp-list">
+          <li><b>毛泽东发表《论持久战》</b>：1938 年，阐明了中国共产党的抗日持久战战略总方针，大大增强了全国人民坚持抗战的决心和信心。</li>
+          <li><b>抗日根据地的建立与发展</b>：⑴ 建立：陕甘宁边区首府、中共中央所在地延安是敌后战场的战略总后方和指挥中枢；⑵ 发展：军事上展开人民游击战争，进行反「扫荡」；政治上建立抗日民主政权，实行民主选举，推行精兵简政，减轻人民负担；经济上实行地主减租减息、农民交租交息的土地政策，开展大生产运动；⑶ 作用：敌后战场与正面战场相互配合，构成了中国抗日战争的整体。</li>
+        </ol>
+
+        <div class="tip warn">
+          <div class="t-ico">⚠️</div>
+          <div><b>易错易混：</b>中国第一个<b>农村革命根据地</b>是井冈山革命根据地；第一个<b>敌后抗日根据地</b>是晋察冀抗日根据地。</div>
+        </div>
+
+        <details class="collapse detail">
+          <summary><span class="tag">提能力</span>正面战场与敌后战场的主要区别和联系<span class="chev">▶</span></summary>
+          <div class="body">
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>项目</th><th>正面战场</th><th>敌后战场</th></tr></thead>
+                <tbody>
+                  <tr><th>抗战路线</th><td>片面抗战路线</td><td>全面抗战路线</td></tr>
+                  <tr><th>武装力量</th><td>国民政府的正规军</td><td>中国共产党领导的八路军、新四军及其他抗日武装</td></tr>
+                  <tr><th>作战规模和方式</th><td>多是大兵团的大会战，以正面的阵地防御战为主</td><td>小规模的伏击战，基本上是游击战和有利条件下的运动战</td></tr>
+                  <tr><th>战略地位</th><td>战略防御阶段起主导作用，是抗战的主战场</td><td>抗战进入战略相持阶段后起主导作用，上升为抗战的主战场</td></tr>
+                  <tr><th>联系</th><td colspan="2">总目标一致：驱逐日寇。在伟大的民族解放战争中，两个战场相互配合，都做出了积极的贡献</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+
+        <details class="quiz">
+          <summary><span class="tag">典例</span>下列关于正面战场和敌后战场的抗战，说法不正确的是（　）<span class="chev">▶</span></summary>
+          <div class="body">
+            <p class="q">A. 平型关大捷是全民族抗战爆发后中国军队主动对日作战取得的第一个重大胜利<br>B. 根据地成为敌后游击战得以坚持并取得最后胜利的基地<br>C. 敌后战场与正面战场相互配合，构成了中国抗日战争的整体<br>D. 百团大战是抗战以来中国正面战场取得的最大一场胜仗</p>
+            <div class="a"><b>解析</b>　台儿庄战役是抗战以来中国正面战场取得的最大的一场胜仗。<br><b>答案</b>　D</div>
+          </div>
+        </details>
+      </section>
+
+      <section class="section" id="u6-k4" data-title="考点04 全民族坚持抗战与抗日战争的胜利">
+        <h4 class="sub-title"><span class="badge">考点 04</span>全民族坚持抗战与抗日战争的胜利</h4>
+
+        <h5>一、全民族坚持抗战</h5>
+        <ol class="kp-list">
+          <li><b>背景</b>：⑴ 日本改变策略：对国民政府进行政治诱降，辅之以军事打击；加紧进攻敌后抗日根据地；加强对占领区的军事统治和经济掠夺；⑵ 汪精卫叛国：1940 年 3 月，汪精卫在南京建立伪国民政府；⑶ 国民党反共：国民党顽固派不断制造反共「摩擦」，1941 年 1 月制造「皖南事变」。</li>
+          <li><b>表现</b>：中国共产党坚持抗战，在各敌后抗日根据地掀起了大生产运动。在枣宜会战中，第三十三集团军总司令张自忠上将壮烈殉国；在反「扫荡」作战中，八路军副参谋长左权将军血洒疆场。</li>
+        </ol>
+
+        <h5>二、中共七大</h5>
+        <ol class="kp-list">
+          <li><b>召开</b>：1945 年 4—6 月，在延安召开。</li>
+          <li><b>主要内容</b>：大会总结了中国共产党领导中国民主革命曲折发展的历史经验，制定了党的政治路线；大会选举产生了中央领导机关，毛泽东在七届一中全会上当选为中共中央主席；大会确立毛泽东思想为中国共产党的指导思想并写入党章。</li>
+          <li><b>意义</b>：为争取抗日战争的最后胜利准备了条件，并为中国共产党和中国人民指明了战后的奋斗方向。</li>
+        </ol>
+
+        <div class="tip warn">
+          <div class="t-ico">⚠️</div>
+          <div><b>易错易混：</b><b>遵义会议</b>开始确立以毛泽东为主要代表的马克思主义正确路线在中共中央的领导地位；<b>中共七大</b>确立<b>毛泽东思想</b>为中国共产党的指导思想。</div>
+        </div>
+
+        <h5>三、战略反攻和日本投降</h5>
+        <ol class="kp-list">
+          <li><b>战略反攻</b>：中国共产党领导的敌后战场率先发起局部反攻，取得一系列胜利；美国先后向日本广岛、长崎各投下一枚原子弹；苏联政府对日宣战并出兵中国东北；毛泽东发表《对日寇的最后一战》声明。</li>
+          <li><b>日本投降</b>：1945 年 8 月 15 日，日本天皇被迫宣布无条件投降；9 月 2 日，日本政府正式签署投降书，中国抗日战争取得了最后的胜利。</li>
+        </ol>
+
+        <h5>四、抗日战争胜利的原因与伟大意义</h5>
+        <ol class="kp-list">
+          <li><b>胜利的决定性因素</b>：中国共产党在全民族抗战中发挥了<span class="hl">中流砥柱</span>作用。</li>
+          <li><b>伟大意义</b>：⑴ 国内：中国人民抗日战争是近代以来中国人民反抗外敌入侵<b>第一次取得完全胜利</b>的民族解放斗争；促进了中华民族的觉醒，为中国共产党带领中国人民实现彻底的民族独立和人民解放奠定了重要基础。⑵ 国际：中国战场是世界反法西斯战争的<b>东方主战场</b>，对世界反法西斯战争的胜利、维护世界和平做出了巨大贡献；中国的国际地位得到提高。</li>
+        </ol>
+
+        <details class="collapse detail">
+          <summary><span class="tag">提能力</span>一、比较两次国共合作<span class="chev">▶</span></summary>
+          <div class="body">
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>项目</th><th>第一次国共合作</th><th>第二次国共合作</th></tr></thead>
+                <tbody>
+                  <tr><th>背景</th><td>列强操纵下军阀割据混战</td><td>中日民族矛盾加深</td></tr>
+                  <tr><th>合作方式</th><td>党内合作</td><td>党外合作</td></tr>
+                  <tr><th>任务</th><td>打倒列强，除军阀</td><td>打倒日本帝国主义</td></tr>
+                  <tr><th>成果</th><td>基本推翻了北洋军阀的统治</td><td>近代以来中国人民反抗外敌入侵第一次取得完全胜利</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+
+        <details class="collapse detail">
+          <summary><span class="tag">提能力</span>二、比较甲午中日战争和全民族抗战<span class="chev">▶</span></summary>
+          <div class="body">
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>项目</th><th>甲午中日战争</th><th>全民族抗战</th></tr></thead>
+                <tbody>
+                  <tr><th>时间</th><td>1894—1895 年</td><td>1937—1945 年</td></tr>
+                  <tr><th>背景</th><td>清政府腐朽，国力衰弱，列强蜂拥而至，民族危机日益深重；日本完成明治维新，走上了殖民扩张的道路</td><td>日本在经济危机的打击下，急需通过侵略战争转嫁危机</td></tr>
+                  <tr><th>结果</th><td>清政府战败，被迫签订中日《马关条约》</td><td>中国抗日战争获得完全胜利</td></tr>
+                  <tr><th>影响</th><td>列强掀起了瓜分中国的狂潮，中国的民族危机空前严重，大大加深了中国的半殖民地化程度</td><td>大大提高了中国的国际地位，改变了中国政治力量的对比，为解放战争的胜利奠定了基础，成为中华民族由衰败到振兴的转折点</td></tr>
+                  <tr><th>启示</th><td>落后就要挨打</td><td>中华民族具有无穷的生命力；民族团结是维护民族利益的重要保障</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+
+        <details class="quiz">
+          <summary><span class="tag">典例</span>日本两次大规模侵华战争（甲午战争与全面侵华）相同点中，错误的是（　）<span class="chev">▶</span></summary>
+          <div class="body">
+            <p class="q">A. 都是为了解决资本主义发展中的矛盾而发动，以征服中国为目的<br>B. 都曾对中国人民进行了惨绝人寰的大屠杀　C. 都对中国进行了野蛮的经济掠夺<br>D. 都使中国半殖民地化程度大大加深</p>
+            <div class="a"><b>解析</b>　《马关条约》大大加深了中国的半殖民地化程度；中国取得抗日战争的伟大胜利，抗战并未加深半殖民地化程度。<br><b>答案</b>　D</div>
+          </div>
+        </details>
+      </section>
+
+      <!-- ================= 第七单元 ================= -->
+      <section class="unit-head section" id="unit7" data-title="第七单元 人民解放战争">
+        <div class="kicker">UNIT 07 · 1945—1949</div>
+        <h2>人民解放战争</h2>
+        <p>人民解放战争是中国新民主主义革命迅速走向胜利的阶段，为中华人民共和国的成立奠定了基础。</p>
+      </section>
+
+      <section class="section" id="u7-overview" data-title="第七单元 单元体系构建">
+        <h3 class="sec-title">单元体系构建</h3>
+
+        <div class="timeline">
+          <div class="tl-title">🕐 时空坐标（点击查看）</div>
+          <div class="track">
+            <div class="tl-item" data-year="1945.8" data-name="重庆谈判" data-desc="毛泽东亲赴重庆与国民党进行和平谈判；10 月 10 日签署《政府与中共代表会谈纪要》，即「双十协定」。"><span class="year">1945.8</span><div class="node"></div><div class="ev">重庆谈判</div></div>
+            <div class="tl-item" data-year="1946.1.10" data-name="政治协商会议" data-desc="政治协商会议在重庆举行，再次确认了避免内战、和平建国的方针。"><span class="year">1946.1</span><div class="node"></div><div class="ev">政治协商会议</div></div>
+            <div class="tl-item" data-year="1946.6" data-name="全面内战爆发" data-desc="国民党全力围攻中原解放区，全面内战爆发，进入战略防御阶段。"><span class="year">1946.6</span><div class="node"></div><div class="ev">全面内战爆发<br>（战略防御）</div></div>
+            <div class="tl-item" data-year="1947.3" data-name="中共中央转战陕北" data-desc="国民党重点进攻陕北解放区，中共中央转战陕北。"><span class="year">1947.3</span><div class="node"></div><div class="ev">转战陕北</div></div>
+            <div class="tl-item" data-year="1947.夏" data-name="刘邓大军千里跃进大别山" data-desc="揭开人民解放军战略进攻的序幕。"><span class="year">1947.夏</span><div class="node"></div><div class="ev">千里跃进大别山<br>（战略进攻）</div></div>
+            <div class="tl-item" data-year="1948.9—1949.1" data-name="三大战役" data-desc="辽沈、淮海、平津三大战役，国民党军队的主力基本被消灭。"><span class="year">1948.9</span><div class="node"></div><div class="ev">三大战役<br>（战略决战）</div></div>
+            <div class="tl-item" data-year="1949.4" data-name="人民解放军占领南京" data-desc="渡江战役胜利，人民解放军占领南京，宣告国民党反动统治的覆灭。"><span class="year">1949.4</span><div class="node"></div><div class="ev">占领南京</div></div>
+          </div>
+          <div class="tl-detail"></div>
+        </div>
+
+        <div class="table-wrap">
+          <caption>阶段特征</caption>
+          <table>
+            <thead><tr><th>阶段</th><th>内容</th></tr></thead>
+            <tbody>
+              <tr><th>防御阶段</th><td>抗日战争胜利后，人民期盼和平建国。毛泽东亲赴重庆谈判，争取和平民主，但是国民党坚持独裁统治，1946 年 6 月发动全面内战。在中国共产党的领导下，解放区军民先后粉碎了国民党军队的全面进攻和重点进攻</td></tr>
+              <tr><th>进攻阶段</th><td>1947 年夏，刘邓大军强渡黄河，千里跃进大别山，揭开了人民解放军战略进攻的序幕。解放区的土地改革激发了农民革命和生产的积极性，为人民解放战争的胜利提供了重要的人力、物力保障</td></tr>
+              <tr><th>战略决战</th><td>1948 年冬，人民解放军发动战略决战，历经辽沈、淮海、平津三大战役。1949 年 4 月，人民解放军占领南京，宣告了国民党反动统治的覆灭</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="ktree">
+          <div class="kt-title">🌳 知识结构图（点击节点可折叠/展开）</div>
+          <ul>
+            <li>
+              <span class="k-node"><span class="fold-ico">▼</span>人民解放战争（1945—1949）</span>
+              <ul>
+                <li><span class="k-node">争取和平民主：重庆谈判 · 政治协商会议</span></li>
+                <li><span class="k-node">战略防御（1946.6—1947.6）</span><span class="k-note">粉碎全面进攻和重点进攻</span></li>
+                <li><span class="k-node">战略进攻（1947.6—1948.8）</span><span class="k-note">土地改革 + 千里跃进大别山</span></li>
+                <li><span class="k-node">战略决战（1948.9—1949.1）</span><span class="k-note">辽沈 · 淮海 · 平津三大战役</span></li>
+                <li><span class="k-node">战略追歼（1949.4）</span><span class="k-note">渡江战役 → 南京解放 → 国民党政权覆灭</span></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section" id="u7-k1" data-title="考点01 内战爆发">
+        <h4 class="sub-title"><span class="badge">考点 01</span>内战爆发 🔥重点</h4>
+
+        <h5>一、重庆谈判</h5>
+        <ol class="kp-list">
+          <li><b>目的</b>：⑴ 国民党：一方面为发动内战争取时间；另一方面想在政治舆论上获得主动，把不愿和平的罪名强加到中国共产党身上。⑵ 中国共产党：尽一切可能争取和平。</li>
+          <li><b>概况</b>：1945 年 8 月，毛泽东亲赴重庆与国民党进行和平谈判；1945 年 10 月 10 日，国共双方签署了《政府与中共代表会谈纪要》，即「双十协定」。</li>
+        </ol>
+
+        <h5>二、政治协商会议 <span style="font-size:12px;font-weight:400;color:var(--text-faint)">（缺页补全）</span></h5>
+        <ol class="kp-list">
+          <li><b>召开</b>：1946 年 1 月 10 日，在重庆举行。</li>
+          <li><b>内容</b>：会议讨论了建立联合政府、和平建国纲领、召开国民大会、修改宪法草案、整编军队等问题，并通过一系列决议，再次确认了避免内战、和平建国的方针。</li>
+        </ol>
+
+        <h5>三、国民党发动内战与解放区军民的自卫反击 <span style="font-size:12px;font-weight:400;color:var(--text-faint)">（缺页补全）</span></h5>
+        <ol class="kp-list">
+          <li><b>全面内战爆发</b>：1946 年 6 月，蒋介石公然违背「双十协定」，撕毁政协决议，全力围攻中原解放区，发动了全面内战。</li>
+          <li><b>粉碎全面进攻</b>：毛泽东提出「一切反动派都是纸老虎」的著名论断。解放区军民以自卫战争粉碎国民党的全面进攻，主要作战方式是运动战，主要目标是歼灭敌人有生力量。</li>
+          <li><b>粉碎重点进攻</b>：1947 年 3 月，国民党军队对陕北解放区和山东解放区发动重点进攻。彭德怀率西北野战军先后取得青化砭、羊马河、蟠龙、沙家店等战役的胜利；华东野战军在孟良崮战役中全歼国民党整编第七十四师，打退了敌人对山东解放区的重点进攻。</li>
+        </ol>
+
+        <details class="collapse bg">
+          <summary><span class="tag">背景资料</span>重庆谈判期间的「弥天大勇」<span class="chev">▶</span></summary>
+          <div class="body">
+            <p>毛泽东赴重庆谈判被民主人士柳亚子称为「弥天大勇」。谈判期间，毛泽东把 1936 年写的《沁园春·雪》书赠柳亚子，词作在重庆传诵一时，轰动山城。</p>
+          </div>
+        </details>
+      </section>
+
+      <section class="section" id="u7-k2" data-title="考点02 人民解放战争的胜利">
+        <h4 class="sub-title"><span class="badge">考点 02</span>人民解放战争的胜利</h4>
+
+        <h5>一、解放区的土地改革 <span style="font-size:12px;font-weight:400;color:var(--text-faint)">（缺页补全）</span></h5>
+        <ol class="kp-list">
+          <li>1947 年，中国共产党颁布《中国土地法大纲》，制定土地改革总路线：依靠贫雇农，团结中农，有步骤地、有分别地消灭封建剥削制度，发展农业生产。</li>
+          <li>解放区的土地改革激发了农民革命和生产的积极性，为人民解放战争的胜利提供了重要的人力、物力保障。</li>
+        </ol>
+
+        <h5>二、千里跃进大别山 <span style="font-size:12px;font-weight:400;color:var(--text-faint)">（缺页补全）</span></h5>
+        <ol class="kp-list">
+          <li>1947 年夏，刘伯承、邓小平率领晋冀鲁豫解放军主力强渡黄河，千里跃进大别山，直接威胁南京、武汉，<span class="hl">揭开了人民解放军战略进攻的序幕</span>。</li>
+        </ol>
+
+        <h5>三、三大战役</h5>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>项目</th><th>辽沈战役</th><th>淮海战役</th><th>平津战役</th></tr></thead>
+            <tbody>
+              <tr><th>时间</th><td>1948 年 9—11 月</td><td>1948 年 11 月—1949 年 1 月</td><td>1948 年 11 月—1949 年 1 月</td></tr>
+              <tr><th>指挥者</th><td>林彪、罗荣桓</td><td>刘伯承、陈毅、邓小平、粟裕等</td><td>林彪、罗荣桓、聂荣臻</td></tr>
+              <tr><th>概况</th><td>攻克锦州，封锁东北门户；长春守敌起义投诚；黑山阻击战；攻克沈阳</td><td>以徐州为中心展开；人民群众用小车推出来的胜利</td><td>分割包围张家口、天津、北平；北平和平解放（傅作义）</td></tr>
+              <tr><th>结果</th><td>解放东北全境</td><td>解放了长江中下游以北的广大地区</td><td>华北全境基本解放</td></tr>
+              <tr><th>意义</th><td colspan="3">国民党军队的主力基本被消灭，大大加速了人民解放战争在全国的胜利</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h5>3. 渡江战役</h5>
+        <p>1949 年 4 月，人民解放军百万雄师兵分三路，横渡长江，占领南京，<span class="hl">宣告了国民党反动统治的覆灭</span>。</p>
+
+        <div class="tip warn">
+          <div class="t-ico">⚠️</div>
+          <div><b>易错易混：</b>⑴ <b>三大战役</b>基本消灭了国民党军队的<b>主力</b>；<b>渡江战役</b>的胜利宣告了国民党反动统治的<b>覆灭</b>。⑵ 南京解放标志着统治中国 22 年（1927—1949）的国民党政权垮台，但这并不意味着人民解放战争的结束和新民主主义革命的结束。</div>
+        </div>
+
+        <details class="collapse detail">
+          <summary><span class="tag">提能力</span>一、人民解放战争取胜的主要原因<span class="chev">▶</span></summary>
+          <div class="body">
+            <ol class="kp-list">
+              <li>解放军广大官兵浴血奋战。</li>
+              <li>中国共产党的战略战术正确，国民党指挥失当。</li>
+              <li>国民党政权代表大地主大资产阶级的利益；共产党代表广大人民群众的利益，得到广大人民群众的拥护和支持。</li>
+              <li>国民党政治腐败，不得人心，注定失败。</li>
+            </ol>
+          </div>
+        </details>
+
+        <details class="collapse detail">
+          <summary><span class="tag">提能力</span>二、国共关系的发展（点击卡片看阶段特征）<span class="chev">▶</span></summary>
+          <div class="body">
+            <div class="event-cards">
+              <div class="event-card"><div class="ec-time">1924—1927 年</div><div class="ec-name">第一次合作</div><div class="ec-desc">成果：基本推翻了北洋军阀的统治</div></div>
+              <div class="event-card"><div class="ec-time">1927—1936 年</div><div class="ec-name">分裂</div><div class="ec-desc">危害：内战不休，给日本侵华以可乘之机</div></div>
+              <div class="event-card"><div class="ec-time">1937—1945 年</div><div class="ec-name">第二次合作</div><div class="ec-desc">成果：建立抗日民族统一战线，取得抗日战争的胜利</div></div>
+              <div class="event-card"><div class="ec-time">1946—1949 年</div><div class="ec-name">分裂</div><div class="ec-desc">危害：国共内战、祖国至今未能统一</div></div>
+            </div>
+          </div>
+        </details>
+
+        <details class="collapse bg">
+          <summary><span class="tag">背景资料</span>淮海战役：小车推出来的胜利<span class="chev">▶</span></summary>
+          <div class="body">
+            <p>淮海战役中，解放区民工支前规模空前：出动民工 543 万人、担架 30.5 万副、大小车 88 万辆、筹粮 9.6 亿斤。陈毅元帅后来感慨：淮海战役的胜利，是人民群众用小车推出来的。</p>
+          </div>
+        </details>
+
+        <details class="quiz">
+          <summary><span class="tag">典例</span>[2025·山东烟台] 1948.11—1949.1，继辽沈战役之后又一次决定性战役，主要发生在华东和中原地区（　）<span class="chev">▶</span></summary>
+          <div class="body">
+            <p class="q">A. 平型关大捷　B. 台儿庄战役　C. 淮海战役　D. 平津战役</p>
+            <div class="a"><b>解析</b>　1948 年 11 月，中原野战军与华东野战军在以徐州为中心的广大地区发起淮海战役，1949 年 1 月胜利结束，长江中下游以北广大地区获得解放，为渡江战役奠定基础。<br><b>答案</b>　C</div>
+          </div>
+        </details>
+      </section>
+
+      <!-- ================= 第八单元 ================= -->
+      <section class="unit-head section" id="unit8" data-title="第八单元 近代经济、社会生活与教育文化事业的发展">
+        <div class="kicker">UNIT 08 · 1840—1949</div>
+        <h2>近代经济、社会生活与教育文化事业的发展</h2>
+        <p>从晚清到民国，伴随着外来文化的冲击和社会政局的更替，中国的经济、社会生活、教育文化事业等各个领域都发生了巨大变化。</p>
+      </section>
+
+      <section class="section" id="u8-overview" data-title="第八单元 单元体系构建">
+        <h3 class="sec-title">单元体系构建</h3>
+
+        <div class="timeline">
+          <div class="tl-title">🕐 时空坐标：中国近代史（半殖民地半封建社会）1840—1949（点击查看）</div>
+          <div class="track">
+            <div class="tl-item" data-year="1840" data-name="鸦片战争【时代背景】" data-desc="中国开始沦为半殖民地半封建社会。"><span class="year">1840</span><div class="node"></div><div class="ev">鸦片战争</div></div>
+            <div class="tl-item" data-year="1861—1862" data-name="洋务运动起步【时代背景】" data-desc="民族工业在洋务运动时期诞生（19 世纪六七十年代）；1862 年京师同文馆成立，新式教育起步。"><span class="year">1861—62</span><div class="node"></div><div class="ev">洋务运动起步<br>民族工业诞生</div></div>
+            <div class="tl-item" data-year="1872" data-name="《申报》创办【文化成果】" data-desc="在上海创办，是近代中国存在时间最长的中文报纸。"><span class="year">1872</span><div class="node"></div><div class="ev">《申报》创办</div></div>
+            <div class="tl-item" data-year="1894—1895" data-name="甲午中日战争【时代背景】" data-desc="战后列强侵略方式转为资本输出为主，民族工业初步发展（张謇创办大生纱厂）。"><span class="year">1894—95</span><div class="node"></div><div class="ev">甲午中日战争</div></div>
+            <div class="tl-item" data-year="1897" data-name="商务印书馆创办【文化成果】" data-desc="在上海创办，是近代中国人创办的第一个也是规模最大的文化出版机构。"><span class="year">1897</span><div class="node"></div><div class="ev">商务印书馆创办</div></div>
+            <div class="tl-item" data-year="1898" data-name="京师大学堂创办【文化成果】" data-desc="百日维新期间创办，后发展为北京大学。"><span class="year">1898</span><div class="node"></div><div class="ev">京师大学堂创办</div></div>
+            <div class="tl-item" data-year="1905" data-name="废除科举制【社会生活】" data-desc="清政府谕令一律停止科举考试，存在约 1300 年的科举制寿终正寝；同年中国自己拍摄的第一部无声电影《定军山》上映。"><span class="year">1905</span><div class="node"></div><div class="ev">废除科举制<br>《定军山》上映</div></div>
+            <div class="tl-item" data-year="1909" data-name="京张铁路通车【社会生活】" data-desc="詹天佑主持修建的京张铁路建成通车，是中国人自行设计和施工的第一条铁路干线。"><span class="year">1909</span><div class="node"></div><div class="ev">京张铁路通车</div></div>
+            <div class="tl-item" data-year="1912" data-name="中华民国建立【时代背景】" data-desc="辛亥革命后掀起发展实业的热潮。"><span class="year">1912</span><div class="node"></div><div class="ev">中华民国建立</div></div>
+            <div class="tl-item" data-year="1914—1918" data-name="第一次世界大战【时代背景】" data-desc="西方列强忙于欧洲战事，暂时放松了对中国的经济侵略，民族工业出现「短暂的春天」。"><span class="year">1914—18</span><div class="node"></div><div class="ev">一战 · 民族工业<br>「短暂的春天」</div></div>
+            <div class="tl-item" data-year="1918" data-name="《狂人日记》发表【文化成果】" data-desc="鲁迅的白话小说《狂人日记》发表，成为一篇讨伐封建主义的檄文。"><span class="year">1918</span><div class="node"></div><div class="ev">《狂人日记》发表</div></div>
+            <div class="tl-item" data-year="1931" data-name="抗日战争爆发【时代背景】" data-desc="抗战时期民族工业再度受挫；中国第一部有声电影《歌女红牡丹》上映（1931 年）。"><span class="year">1931</span><div class="node"></div><div class="ev">抗战爆发<br>《歌女红牡丹》上映</div></div>
+            <div class="tl-item" data-year="1945" data-name="抗日战争胜利【时代背景】" data-desc="抗战胜利后，民族工业发展仍受官僚资本主义压迫。"><span class="year">1945</span><div class="node"></div><div class="ev">抗战胜利</div></div>
+            <div class="tl-item" data-year="1949" data-name="近代史终结【时代背景】" data-desc="中华人民共和国成立前夕，近代民族工业整体落后、集中于轻工业与沿海沿江城市。"><span class="year">1949</span><div class="node"></div><div class="ev">近代史终结</div></div>
+          </div>
+          <div class="tl-detail"></div>
+        </div>
+
+        <div class="table-wrap">
+          <caption>阶段特征</caption>
+          <table>
+            <thead><tr><th>类别</th><th>具体内容</th></tr></thead>
+            <tbody>
+              <tr><th>政治</th><td>西方列强加紧侵略中国，中国逐步沦为半殖民地半封建社会；民族资产阶级产生并发展壮大</td></tr>
+              <tr><th>经济</th><td>民族资本主义产生，民族工业在恶劣的生存环境中艰难成长；第一次世界大战期间，民族工业迅速发展，出现了「短暂的春天」；近代民族工业发展总体比较落后，集中于轻工业部门，地区分布极不均衡</td></tr>
+              <tr><th>思想文化</th><td>晚清时期，「实业救国」思潮兴起；随着生活方式和风俗习惯的深刻变化，国民平等、民主等观念形成并发展；中国近代新式教育制度逐渐建立起来；在文艺创作上，涌现出一大批优秀作品</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="ktree">
+          <div class="kt-title">🌳 知识结构图（点击节点可折叠/展开）</div>
+          <ul>
+            <li>
+              <span class="k-node"><span class="fold-ico">▼</span>近代经济、社会生活与教育文化事业</span>
+              <ul>
+                <li><span class="k-node">经济：民族资本主义的产生与发展</span><span class="k-note">产生 → 初步发展 →「短暂的春天」→ 再度受挫</span></li>
+                <li><span class="k-node">社会生活：新式交通工具 · 习俗变迁 · 新旧并呈、多元发展</span></li>
+                <li>
+                  <span class="k-node"><span class="fold-ico">▼</span>教育文化事业</span>
+                  <ul>
+                    <li><span class="k-node">教育：新式学堂 → 1905 废除科举制</span></li>
+                    <li><span class="k-node">新闻出版：《申报》· 商务印书馆 · 新华书店</span></li>
+                    <li><span class="k-node">文学：鲁迅 · 郭沫若 · 茅盾 · 曹禺 · 巴金 · 老舍等</span></li>
+                    <li><span class="k-node">美术：齐白石 · 徐悲鸿</span></li>
+                    <li><span class="k-node">音乐：聂耳 · 冼星海</span></li>
+                    <li><span class="k-node">电影：《定军山》·《歌女红牡丹》</span></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section" id="u8-k1" data-title="考点01 经济和社会生活的变化">
+        <h4 class="sub-title"><span class="badge">考点 01</span>经济和社会生活的变化</h4>
+
+        <h5>一、民族资本主义的产生和发展</h5>
+        <ol class="kp-list">
+          <li><b>产生</b>：19 世纪六七十年代。</li>
+          <li><b>发展</b>：⑴ 甲午中日战争后，状元实业家张謇创办大生纱厂，带动了很多中国人走上「实业救国」道路；⑵ 辛亥革命后，掀起了发展实业的热潮；⑶ 第一次世界大战期间，西方列强忙于欧洲战事，暂时放松了对中国的经济侵略，中国民族工业获得了迅速发展的良机，出现了「短暂的春天」；⑷ 第一次世界大战后，帝国主义经济势力卷土重来，民族资本主义发展再度受挫。</li>
+        </ol>
+
+        <div class="table-wrap">
+          <caption>3. 特点与曲折发展的原因</caption>
+          <table>
+            <thead><tr><th>项目</th><th>内容</th></tr></thead>
+            <tbody>
+              <tr><th>特点</th><td>⑴ 资金少，规模小，技术差；⑵ 主要集中在轻工业部门，重工业基础极为薄弱；⑶ 地区分布极不平衡，主要集中在上海、武汉等沿海沿江的大城市</td></tr>
+              <tr><th>曲折发展的原因</th><td>民族工业除了受帝国主义和封建主义的双重压迫外，还遭到官僚资本主义的摧残</td></tr>
+              <tr><th>著名企业家</th><td>荣氏兄弟、卢作孚、侯德榜等</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="tip warn">
+          <div class="t-ico">⚠️</div>
+          <div><b>易错易混：</b>近代中国的民族资本主义最早产生于<b>洋务运动时期</b>，而不是明清资本主义萌芽时期。</div>
+        </div>
+
+        <h5>二、社会生活的变化</h5>
+        <ol class="kp-list">
+          <li><b>新式交通工具的出现</b>：19 世纪 70 年代以后，西方发明的火车、轮船、电车、汽车、飞机等新式交通工具相继传入中国。</li>
+        </ol>
+
+        <div class="table-wrap">
+          <caption>2. 社会习俗的变化</caption>
+          <table>
+            <thead><tr><th>项目</th><th>辛亥革命前</th><th>辛亥革命后</th></tr></thead>
+            <tbody>
+              <tr><th>剪辫</th><td>男子剃发留辫</td><td>强令男子剪掉辫子</td></tr>
+              <tr><th>放足</th><td>女子缠足</td><td>劝禁女子缠足</td></tr>
+              <tr><th>礼节</th><td>跪拜礼</td><td>鞠躬、握手礼</td></tr>
+              <tr><th>称谓</th><td>「老爷」「大人」</td><td>「先生」</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <ol class="kp-list" start="3">
+          <li><b>生活方式的变化</b>：人们的饮食、服饰、婚丧以及休闲娱乐方式日益开放，出现了崇洋逐新的趋向。旗袍、中山装等具有民族风情的服装也受人青睐。</li>
+          <li><b>特征</b>：新旧并呈、多元发展。</li>
+        </ol>
+
+        <div class="tip warn">
+          <div class="t-ico">⚠️</div>
+          <div><b>易错易混：</b>火车、轮船等近代交通工具的传入，在促进交通运输业发展的同时，也在一定程度上便利了帝国主义对中国的侵略。</div>
+        </div>
+
+        <details class="collapse detail">
+          <summary><span class="tag">提能力</span>正确理解中国近代民族工业曲折发展的历程<span class="chev">▶</span></summary>
+          <div class="body">
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>阶段</th><th>特点</th><th>原因</th></tr></thead>
+                <tbody>
+                  <tr><th>洋务运动到清朝末年</th><td>民族工业萌芽，艰难发展</td><td>封建制度的阻碍</td></tr>
+                  <tr><th>第一次世界大战期间</th><td>出现「短暂的春天」</td><td>① 内因：辛亥革命冲击了封建制度，推动了民族工业发展；② 外因：西方列强忙于欧洲战事，暂时放松了对中国的经济侵略</td></tr>
+                  <tr><th>一战后到新中国成立前夕</th><td>发展受挫</td><td>① 帝国主义经济势力卷土重来；② 国民党发动内战和官僚资本主义的压迫</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+
+        <details class="collapse bg">
+          <summary><span class="tag">背景资料</span>张謇与「实业救国」<span class="chev">▶</span></summary>
+          <div class="body">
+            <p>张謇是清末状元，甲午战后深感「救国必先实业」，放弃仕途在南通创办大生纱厂，主张「父教育而母实业」，兴办学校、图书馆、博物苑，使南通成为当时的模范县。荣氏兄弟（荣宗敬、荣德生）则以面粉、纺织起家，被称为「面粉大王」「纺织大王」。</p>
+          </div>
+        </details>
+
+        <details class="quiz">
+          <summary><span class="tag">典例</span>[2025·福建] 荣德生认为「如仿做，不外吃、着（穿）两门为最妥」，这折射出当时民族资本家（　）<span class="chev">▶</span></summary>
+          <div class="body">
+            <p class="q">A. 倾向于发展轻工业　B. 投身社会福利事业<br>C. 重点建设化学工业　D. 主张变革政治制度</p>
+            <div class="a"><b>解析</b>　「吃、着（穿）」指食品、纺织等轻工业，折射出民族资本家倾向于发展轻工业。<br><b>答案</b>　A</div>
+          </div>
+        </details>
+      </section>
+
+      <section class="section" id="u8-k2" data-title="考点02 教育文化事业的发展">
+        <h4 class="sub-title"><span class="badge">考点 02</span>教育文化事业的发展</h4>
+
+        <h5>一、教育、新闻出版业的发展</h5>
+        <div class="table-wrap">
+          <caption>1. 新式教育</caption>
+          <table>
+            <thead><tr><th>时期</th><th>内容</th></tr></thead>
+            <tbody>
+              <tr><th>洋务运动时期</th><td>洋务派先后兴办了同文馆、福州船政学堂等一批新式学校</td></tr>
+              <tr><th>甲午中日战争后</th><td>清政府先后在天津创办北洋西学堂，在上海创办南洋公学</td></tr>
+              <tr><th>百日维新期间</th><td>清政府决定创办京师大学堂</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <ol class="kp-list" start="2">
+          <li><b>废除科举制</b>：1905 年，清政府谕令一律停止科举考试，存在约 1300 年的科举制至此寿终正寝。</li>
+          <li><b>创办报纸</b>：1872 年在上海创办的《申报》，是近代中国存在时间最长的中文报纸。</li>
+          <li><b>出版机构</b>：1897 年在上海创办的商务印书馆是近代中国人创办的第一个也是规模最大的文化出版机构。中国共产党在根据地创办的新华书店，成为出版发行进步书刊的重要阵地。</li>
+        </ol>
+
+        <h5>二、文学艺术的成就</h5>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>领域</th><th>时间</th><th>内容</th></tr></thead>
+            <tbody>
+              <tr><th>文学</th><td>20 世纪初以后</td><td>鲁迅的白话小说《狂人日记》成为一篇讨伐封建主义的檄文；《阿 Q 正传》是批判国民性问题的经典之作</td></tr>
+              <tr><th>文学</th><td>20 世纪初以后</td><td>郭沫若的《女神》、茅盾的《子夜》、曹禺的《雷雨》、巴金的《家》、老舍的《骆驼祥子》</td></tr>
+              <tr><th>文学</th><td>20 世纪中期</td><td>赵树理的《小二黑结婚》《李有才板话》，丁玲的《太阳照在桑干河上》，周立波的《暴风骤雨》</td></tr>
+              <tr><th>美术</th><td>—</td><td>齐白石：描绘花鸟草虫，画法上工笔、写意兼长，造诣精深</td></tr>
+              <tr><th>美术</th><td>—</td><td>徐悲鸿：《田横五百士》《愚公移山》等鸿篇巨制，在中国画技法和意境上开辟了新时代</td></tr>
+              <tr><th>音乐</th><td>—</td><td>聂耳：《义勇军进行曲》后来被定为中华人民共和国国歌；《毕业歌》</td></tr>
+              <tr><th>音乐</th><td>—</td><td>冼星海：《黄河大合唱》表现出中华民族的伟大、独立、坚强</td></tr>
+              <tr><th>电影</th><td>1905 年</td><td>《定军山》：中国自己拍摄的第一部无声电影</td></tr>
+              <tr><th>电影</th><td>1931 年</td><td>《歌女红牡丹》：中国第一部有声电影</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <details class="collapse detail">
+          <summary><span class="tag">提能力</span>一、清政府废除科举制的原因<span class="chev">▶</span></summary>
+          <div class="body">
+            <ol class="kp-list">
+              <li>教育改革是大势所趋和时代的要求。</li>
+              <li>统治阶级中的一些开明人士认真思考国内问题，主张改革教育，学习西方教育制度。</li>
+              <li>此时的洋务派、维新派已办起了一些新式学堂，教育改革势在必行。</li>
+            </ol>
+          </div>
+        </details>
+
+        <details class="collapse detail">
+          <summary><span class="tag">提能力</span>二、民国时期的文学艺术有哪些特点？<span class="chev">▶</span></summary>
+          <div class="body">
+            <p>民国时期的时代特征是宣传科学进步，反对迷信落后；追求人民民主，抨击专制独裁；讴歌民族独立，反抗外来侵略。这一时代特征对文学艺术领域产生了巨大影响。进步的文学艺术家讴歌光明，鞭挞黑暗，激励人民英勇奋斗。文学艺术家所取得的辉煌成就，证明了一定时期的文化是一定时期政治、经济的反映。</p>
+          </div>
+        </details>
+
+        <details class="collapse bg">
+          <summary><span class="tag">背景资料</span>科举制的「一生」与《义勇军进行曲》<span class="chev">▶</span></summary>
+          <div class="body">
+            <p>科举制创立于隋朝（隋炀帝设进士科，约 605 年），延续约 1300 年，1905 年废除。它是古代选官制度的重大创新，后期内容僵化，阻碍教育与社会进步。</p>
+            <p>《义勇军进行曲》由田汉作词、聂耳作曲，是 1935 年电影《风云儿女》的主题曲；冼星海 1939 年在延安创作《黄河大合唱》，成为抗战音乐的丰碑。詹天佑主持修建的京张铁路（1909 年通车）首创「人」字形路轨，是中国人自行设计施工的第一条铁路干线。</p>
+          </div>
+        </details>
+      </section>
+
+      <!-- ================= 页脚 ================= -->
+      <footer>
+        <p>📚 初中历史 · 八年级上册 考点研究 · 网页交互版</p>
+        <p>本页内容整理自《第 1 部分 考点研究（八年级上册）》扫描稿，经逐页 OCR 识别、校对与联网核实；原稿缺失页已按统编版教材补全并标注。</p>
+        <p>表格为网页原生表格 · 时间轴/结构图/进程图均为可交互组件 · 适配桌面与移动端 · <span id="year"></span></p>
+      </footer>
+
+    </div><!-- /.content -->
+  </main>
+</div><!-- /.layout -->
+
+<button id="toTop" aria-label="返回顶部">↑</button>
+
+<script>
+/* 进程图交互 */
+(function () {
+  var details = [
+    "① <b>1842《南京条约》· 鸦片战争 —— 开始沦为：</b>割香港岛、赔款 2100 万银元、五口通商、协定关税，中国独立主权的完整性遭到破坏，自然经济开始解体。",
+    "② <b>1895《马关条约》· 甲午中日战争 —— 大大加深：</b>割辽东半岛、台湾全岛及附属岛屿、澎湖列岛，赔款白银 2 亿两，允许设厂，外国侵略势力深入中国腹地。",
+    "③ <b>1901《辛丑条约》· 八国联军侵华 —— 完全沦为：</b>赔款白银 4.5 亿两（本息 9.8 亿两）、严禁人民反帝、拆毁大沽炮台、划定使馆界，清政府沦为列强统治中国的工具。"
+  ];
+  var box = document.getElementById("sinkDetail");
+  var nodes = document.querySelectorAll("#sinkChart .sink-node");
+  function show(i) {
+    if (box) box.innerHTML = details[i];
+  }
+  nodes.forEach(function (n) {
+    n.addEventListener("click", function () { show(+n.dataset.i); });
+    n.addEventListener("mouseenter", function () { show(+n.dataset.i); });
+  });
+  show(0);
+})();
+</script>
+<script src="app.js"></script>
+</body>
+</html>
