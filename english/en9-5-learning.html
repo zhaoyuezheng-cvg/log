@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第9周五 · 英语培优 — Unit 1 Here and Now | 全文解析 · 交互词汇</title>
+<style>
+  :root{
+    --bg:#f4f6fb; --card:#ffffff; --ink:#1f2937; --muted:#6b7280;
+    --accent:#4f46e5; --accent-soft:#eef2ff; --accent2:#0d9488; --accent2-soft:#eefbf9;
+    --warn:#b45309; --warn-soft:#fffbeb; --line:#e5e7eb;
+    --vocab-underline:#4f46e5; --shadow:0 6px 24px rgba(31,41,55,.08);
+    --radius:16px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",-apple-system,sans-serif;
+    line-height:1.75; -webkit-text-size-adjust:100%;
+  }
+  .en{font-family:"Cambria","Georgia","Times New Roman",serif;}
+  .wrap{max-width:960px; margin:0 auto; padding:0 18px 80px;}
+
+  /* ===== Header ===== */
+  header.hero{
+    background:linear-gradient(135deg,#4f46e5 0%,#6d28d9 45%,#0d9488 100%);
+    color:#fff; padding:44px 18px 34px; text-align:center;
+  }
+  header.hero .tag{
+    display:inline-block; background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.35);
+    padding:4px 16px; border-radius:999px; font-size:.85rem; letter-spacing:.12em; margin-bottom:14px;
+  }
+  header.hero h1{margin:.15em 0 .2em; font-size:clamp(1.55rem,4.6vw,2.5rem); line-height:1.35;}
+  header.hero p{margin:.3em auto; max-width:680px; opacity:.94; font-size:clamp(.92rem,2.6vw,1.06rem);}
+  .hero-badges{display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-top:18px;}
+  .hero-badges span{
+    background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.28);
+    padding:5px 14px; border-radius:999px; font-size:.82rem;
+  }
+
+  /* ===== Nav ===== */
+  nav.chips{
+    position:sticky; top:0; z-index:50; background:rgba(244,246,251,.92);
+    backdrop-filter:blur(10px); border-bottom:1px solid var(--line);
+    padding:10px 12px; display:flex; gap:8px; overflow-x:auto; justify-content:flex-start;
+    scrollbar-width:none;
+  }
+  nav.chips::-webkit-scrollbar{display:none;}
+  nav.chips a{
+    flex:0 0 auto; text-decoration:none; color:var(--accent); background:var(--accent-soft);
+    padding:7px 16px; border-radius:999px; font-size:.86rem; font-weight:600;
+    border:1px solid transparent; transition:.2s;
+  }
+  nav.chips a:hover{background:var(--accent); color:#fff;}
+
+  /* ===== Cards & Sections ===== */
+  section{margin-top:38px;}
+  .sec-head{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; margin-bottom:6px;}
+  .sec-head h2{
+    margin:0; font-size:clamp(1.25rem,3.6vw,1.7rem);
+    background:linear-gradient(120deg,var(--accent),var(--accent2));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .sec-head .no{
+    background:var(--accent); color:#fff; border-radius:12px; padding:2px 12px;
+    font-size:.85rem; font-weight:700; -webkit-background-clip:initial; background-clip:initial;
+  }
+  .sec-sub{color:var(--muted); font-size:.92rem; margin:.2em 0 1.1em;}
+  .card{
+    background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow);
+    padding:22px 24px; margin-bottom:20px; border:1px solid #eceff5;
+  }
+  .card h3{margin:.1em 0 .55em; font-size:1.08rem; color:#3730a3; display:flex; align-items:center; gap:8px;}
+  .card h3 .ico{font-size:1.15rem;}
+  .meta-chips{display:flex; flex-wrap:wrap; gap:8px; margin:10px 0 16px;}
+  .meta-chips span{
+    background:var(--accent2-soft); color:var(--accent2); border:1px solid #cdeeea;
+    border-radius:999px; padding:4px 13px; font-size:.8rem; font-weight:600;
+  }
+
+  /* ===== Passage ===== */
+  .passage-box{position:relative; background:#fbfcff; border:1px solid var(--line); border-radius:12px; padding:18px 20px;}
+  .passage{font-size:1.04rem; line-height:2.05; color:#111827;}
+  .passage p{margin:.85em 0;}
+  .passage .para-no{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:22px; height:22px; border-radius:50%; background:var(--accent-soft); color:var(--accent);
+    font-size:.72rem; font-weight:700; margin-right:7px; vertical-align:2px;
+  }
+  .blank{letter-spacing:2px; color:#9ca3af; font-weight:600;}
+  .tts-btn{
+    border:none; cursor:pointer; border-radius:999px; padding:8px 18px; font-size:.85rem; font-weight:600;
+    background:var(--accent2); color:#fff; transition:.2s; white-space:nowrap;
+  }
+  .tts-btn:hover{filter:brightness(1.08); transform:translateY(-1px);}
+  .tts-btn.speaking{background:#dc2626;}
+  .passage-bar{display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom:10px; flex-wrap:wrap;}
+  .passage-bar .hint{font-size:.8rem; color:var(--muted);}
+
+  /* ===== Inline vocabulary ===== */
+  .vocab{
+    cursor:pointer; border-bottom:2.5px solid var(--vocab-underline); padding-bottom:1px;
+    background:linear-gradient(transparent 65%, #e0e7ff 65%); border-radius:2px;
+    transition:background .18s, color .18s; outline:none;
+  }
+  .vocab:hover, .vocab:focus, .vocab.active{
+    background:#c7d2fe; color:#3730a3;
+  }
+  .vocab::after{
+    content:"🔈"; font-size:.62em; vertical-align:super; margin-left:1px; opacity:.55;
+  }
+
+  /* ===== Popover ===== */
+  #pop{
+    position:fixed; z-index:200; width:min(340px, calc(100vw - 28px));
+    background:#fff; border-radius:14px; box-shadow:0 18px 50px rgba(31,41,55,.28);
+    border:1px solid #e5e7eb; padding:16px 18px 14px; display:none;
+  }
+  #pop.show{display:block; animation:popin .18s ease;}
+  @keyframes popin{from{opacity:0; transform:translateY(8px) scale(.97);} to{opacity:1; transform:none;}}
+  #pop .p-word{font-size:1.18rem; font-weight:700; color:#3730a3; display:flex; align-items:center; gap:8px; flex-wrap:wrap;}
+  #pop .p-phon{color:var(--muted); font-size:.88rem; font-weight:400;}
+  #pop .p-pos{background:var(--accent-soft); color:var(--accent); border-radius:6px; padding:1px 8px; font-size:.76rem; font-weight:600;}
+  #pop .p-mean{margin:.5em 0 .3em; font-size:.98rem;}
+  #pop .p-usage{background:#f8fafc; border-left:3px solid var(--accent2); padding:7px 11px; border-radius:8px; font-size:.86rem; color:#374151; margin:.5em 0;}
+  #pop .p-ex{font-size:.88rem; color:#1f2937; margin:.35em 0 .1em;}
+  #pop .p-excn{font-size:.82rem; color:var(--muted);}
+  #pop .p-close{
+    position:absolute; top:9px; right:11px; border:none; background:#f3f4f6; color:#6b7280;
+    width:26px; height:26px; border-radius:50%; cursor:pointer; font-size:.95rem; line-height:1;
+  }
+  #pop .p-close:hover{background:#e5e7eb; color:#111827;}
+  .speak-mini{
+    border:none; cursor:pointer; background:var(--accent); color:#fff; border-radius:8px;
+    padding:3px 10px; font-size:.76rem; font-weight:600;
+  }
+  .speak-mini:hover{filter:brightness(1.1);}
+
+  /* ===== Answers ===== */
+  .ans-list{display:grid; gap:10px; margin-top:6px;}
+  .ans-item{
+    display:grid; grid-template-columns:34px 1fr; gap:12px; align-items:start;
+    background:#f9fafb; border:1px solid var(--line); border-radius:12px; padding:12px 14px;
+  }
+  .ans-item .num{
+    background:var(--accent); color:#fff; width:30px; height:30px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; font-weight:700; font-size:.88rem;
+  }
+  .ans-item .body b{color:#3730a3;}
+  .ans-item .body .why{color:var(--muted); font-size:.88rem; margin-top:2px;}
+  .chip-kao{
+    display:inline-block; background:var(--warn-soft); color:var(--warn); border:1px solid #fde68a;
+    border-radius:6px; padding:0 8px; font-size:.75rem; font-weight:600; margin-left:6px; vertical-align:1px;
+  }
+  .answer-pill{
+    display:inline-block; background:#dcfce7; color:#166534; font-weight:700;
+    border-radius:8px; padding:1px 10px; margin-right:6px;
+  }
+
+  /* ===== 逐段解析 ===== */
+  details.explain{
+    background:#fff; border:1px solid var(--line); border-radius:12px; margin:12px 0; overflow:hidden;
+  }
+  details.explain summary{
+    cursor:pointer; padding:13px 18px; font-weight:700; color:#3730a3; list-style:none;
+    display:flex; align-items:center; gap:9px; background:#f8faff;
+  }
+  details.explain summary::-webkit-details-marker{display:none;}
+  details.explain summary::before{
+    content:"▸"; display:inline-block; transition:transform .2s; color:var(--accent); font-size:.9em;
+  }
+  details.explain[open] summary::before{transform:rotate(90deg);}
+  details.explain .inner{padding:6px 20px 16px; border-top:1px solid var(--line);}
+  .trans{
+    background:var(--accent2-soft); border-radius:10px; padding:11px 15px; margin:.7em 0;
+    font-size:.94rem; color:#134e4a;
+  }
+  .trans .lbl{font-weight:700; color:var(--accent2); margin-right:6px;}
+  .points{margin:.5em 0 .2em; padding-left:0; list-style:none;}
+  .points li{
+    position:relative; padding-left:20px; margin:.42em 0; font-size:.93rem;
+  }
+  .points li::before{
+    content:"◆"; position:absolute; left:0; top:0; color:var(--accent); font-size:.72em; line-height:2.2;
+  }
+  .points b{color:#4338ca;}
+
+  /* ===== 图片说明 ===== */
+  .illus-note{
+    background:var(--warn-soft); border:1px dashed #f0c36d; border-radius:12px;
+    padding:13px 17px; font-size:.92rem; color:#7c4a03; margin:12px 0;
+  }
+  .illus-note b{color:#b45309;}
+
+  /* ===== Vocab summary ===== */
+  .filter-bar{display:flex; flex-wrap:wrap; gap:9px; margin:4px 0 18px;}
+  .filter-bar button{
+    border:1px solid var(--line); background:#fff; color:#374151; border-radius:999px;
+    padding:8px 18px; font-size:.86rem; font-weight:600; cursor:pointer; transition:.2s;
+  }
+  .filter-bar button:hover{border-color:var(--accent); color:var(--accent);}
+  .filter-bar button.on{background:var(--accent); border-color:var(--accent); color:#fff;}
+  .vocab-grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(285px,1fr)); gap:15px;}
+  .v-card{
+    background:#fff; border:1px solid var(--line); border-radius:14px; padding:16px 17px;
+    box-shadow:0 3px 14px rgba(31,41,55,.05); transition:.22s; display:flex; flex-direction:column;
+  }
+  .v-card:hover{transform:translateY(-3px); box-shadow:0 12px 28px rgba(79,70,229,.14); border-color:#c7d2fe;}
+  .v-card .w{font-size:1.12rem; font-weight:700; color:#3730a3; display:flex; align-items:center; gap:8px; flex-wrap:wrap;}
+  .v-card .ph{color:var(--muted); font-size:.82rem; font-weight:400;}
+  .v-card .mean{margin:.45em 0 .25em; font-size:.95rem;}
+  .v-card .use{
+    background:#f8fafc; border-left:3px solid var(--accent2); border-radius:8px;
+    padding:7px 11px; font-size:.82rem; color:#374151; margin:.4em 0;
+  }
+  .v-card .ex{font-size:.83rem; color:#1f2937; margin-top:auto; padding-top:.4em;}
+  .v-card .excn{font-size:.79rem; color:var(--muted);}
+  .v-card .grp{
+    align-self:flex-start; margin-bottom:7px; font-size:.72rem; font-weight:700;
+    border-radius:6px; padding:1px 9px;
+  }
+  .grp-p1{background:#eef2ff; color:#4338ca;}
+  .grp-p2{background:#ecfeff; color:#0e7490;}
+  .grp-p3{background:#f0fdf4; color:#15803d;}
+
+  /* ===== Footer ===== */
+  footer{
+    margin-top:52px; padding:22px 18px 10px; text-align:center;
+    color:var(--muted); font-size:.84rem; border-top:1px solid var(--line);
+  }
+  .totop{
+    display:inline-block; margin-top:10px; text-decoration:none; color:var(--accent);
+    background:var(--accent-soft); padding:8px 20px; border-radius:999px; font-weight:600;
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width:620px){
+    .wrap{padding:0 13px 60px;}
+    .card{padding:17px 15px;}
+    .passage-box{padding:14px 13px;}
+    .passage{font-size:.99rem; line-height:2;}
+    header.hero{padding:34px 15px 26px;}
+    .ans-item{grid-template-columns:28px 1fr; gap:9px;}
+    .ans-item .num{width:26px; height:26px; font-size:.8rem;}
+    details.explain .inner{padding:4px 14px 13px;}
+    #pop{width:calc(100vw - 22px); left:11px !important;}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero" id="top">
+  <div class="tag">第 9 周 · 周五培优</div>
+  <h1>Unit 1 — Here and Now</h1>
+  <p>全文提取 · 参考答案 · 逐段精讲 · 交互式生词库<br>点击文中<span style="border-bottom:2px solid #fff; padding-bottom:1px; background:rgba(255,255,255,.14); border-radius:2px;">横线标注的生词短语</span>展开释义与例句，支持语音朗读</p>
+  <div class="hero-badges">
+    <span>📄 原卷 3 页 · CamScanner 扫描件</span>
+    <span>✅ 双重 OCR 交叉校对无误</span>
+    <span>🗣️ 全文 / 单词朗读</span>
+    <span>📱 响应式排版</span>
+  </div>
+</header>
+
+<nav class="chips">
+  <a href="#s1">① 语法填空</a>
+  <a href="#s2">② 阅读表达</a>
+  <a href="#s3">③ 阅读理解</a>
+  <a href="#s4">④ 答案速查</a>
+  <a href="#s5">⑤ 生词汇总</a>
+</nav>
+
+<div class="wrap">
+
+  <!-- ================= SECTION 1 ================= -->
+  <section id="s1">
+    <div class="sec-head"><span class="no">四</span><h2>语法填空 · Peter's New Shoes</h2></div>
+    <p class="sec-sub">阅读下面短文，在空白处填入一个适当的单词或括号内单词的正确形式。</p>
+
+    <div class="card">
+      <div class="meta-chips">
+        <span>主题：人与自我 — 优秀品行</span><span>语篇类型：记叙文</span>
+        <span>词数：167</span><span>难度：★★★☆☆</span><span>建议用时：7′</span><span>正确率： /10</span>
+      </div>
+      <div class="passage-box">
+        <div class="passage-bar">
+          <div class="hint">💡 蓝色横线单词可点击查看释义；右上角可朗读全文</div>
+          <button class="tts-btn" data-read="passage-1">▶ 朗读全文</button>
+        </div>
+        <div class="passage en" id="passage-1">
+          <p>Peter 1. <span class="blank">____________</span>(look) at his new <b>sports shoes</b> now. They are the third <b>pair</b> he gets this term. The first pair is red and the 2. <span class="blank">____________</span>(two) pair is blue. Now he 3. <span class="blank">____________</span>(have) the black shoes. "Next time I want white ones," Peter thinks.</p>
+          <p>Peter's parents are busy. They 4. <span class="blank">____________</span>(not, have) much time to be with Peter. They <b>feel sorry for</b> that, 5. <span class="blank">____________</span> they buy <b>a lot of</b> things he wants for him.</p>
+          <p>Peter sees his classmate Sam's <b>pencil box</b>. Sam's parents have good jobs. Why does Sam use 6. <span class="blank">____________</span> old pencil box? Peter doesn't understand.</p>
+          <p>"Hey, Sam," Peter says. "Why not buy a new pencil box?"<br>
+          "This one is still nice," Sam says. "And I 7. <span class="blank">____________</span>(save) money."<br>
+          "For what?" Peter asks.<br>
+          "I want to save 200 dollars this year 8. <span class="blank">____________</span>(help) some children in <b>villages</b>," Sam says.</p>
+          <p>Peter is <b>surprised</b>. Sam is doing a 9. <span class="blank">____________</span>(real) great thing. Then he starts thinking: Does he really need those new shoes, clothes and 10. <span class="blank">____________</span>(toy)?</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3><span class="ico">✅</span>参考答案与考点</h3>
+      <div class="ans-list">
+        <div class="ans-item"><div class="num">1</div><div class="body"><b class="answer-pill">is looking</b><span class="chip-kao">现在进行时</span><div class="why">句中 now（此刻）是现在进行时的标志词，结构 be + doing；主语 Peter 是第三人称单数，be 用 is，look → looking。</div></div></div>
+        <div class="ans-item"><div class="num">2</div><div class="body"><b class="answer-pill">second</b><span class="chip-kao">序数词</span><div class="why">前面有 the first（第一双），此处与之并列表顺序，用序数词 second（第二）；two → second。</div></div></div>
+        <div class="ans-item"><div class="num">3</div><div class="body"><b class="answer-pill">has</b><span class="chip-kao">一般现在时 · 三单</span><div class="why">have 表示"拥有"，是状态类动词，不用进行时；主语 he 第三人称单数，have → has。</div></div></div>
+        <div class="ans-item"><div class="num">4</div><div class="body"><b class="answer-pill">don't have</b><span class="chip-kao">否定句</span><div class="why">提示词 not, have；主语 They 为复数，一般现在时否定用 don't + 动词原形。</div></div></div>
+        <div class="ans-item"><div class="num">5</div><div class="body"><b class="answer-pill">so</b><span class="chip-kao">连词 · 因果</span><div class="why">前句"父母没时间陪他、感到抱歉"是原因，后句"给他买很多东西"是结果，故填 so（所以）。</div></div></div>
+        <div class="ans-item"><div class="num">6</div><div class="body"><b class="answer-pill">an</b><span class="chip-kao">不定冠词</span><div class="why">old 以元音音素 /əʊ/ 开头，泛指"一个旧铅笔盒"，用 an 而不是 a。</div></div></div>
+        <div class="ans-item"><div class="num">7</div><div class="body"><b class="answer-pill">am saving</b><span class="chip-kao">现在进行时</span><div class="why">由下文"I want to save 200 dollars this year"可知萨姆正在攒钱（本年度持续进行的计划），用现在进行时；主语 I 配 am，save → saving。</div></div></div>
+        <div class="ans-item"><div class="num">8</div><div class="body"><b class="answer-pill">to help</b><span class="chip-kao">不定式作目的状语</span><div class="why">"今年存 200 美元"的目的是"帮助村里的孩子"，want to do / do sth to do 表目的，help → to help。</div></div></div>
+        <div class="ans-item"><div class="num">9</div><div class="body"><b class="answer-pill">really</b><span class="chip-kao">词性转换</span><div class="why">空格修饰形容词 great，修饰形容词要用副词；real（形容词）→ really（副词，真正地）。</div></div></div>
+        <div class="ans-item"><div class="num">10</div><div class="body"><b class="answer-pill">toys</b><span class="chip-kao">名词复数</span><div class="why">与前面的 shoes、clothes 并列，且 those 修饰可数名词复数；toy → toys。</div></div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3><span class="ico">📖</span>逐段详细解析</h3>
+
+      <details class="explain" open>
+        <summary>第 1 段 · Peter 看新鞋</summary>
+        <div class="inner">
+          <div class="trans"><span class="lbl">译文</span>彼得此刻正看着他的新运动鞋。这是他这学期得到的第三双。第一双是红色的，第二双是蓝色的。现在他有了这双黑色的。"下次我想要白色的，"彼得想。</div>
+          <ul class="points">
+            <li><b>now</b> 是现在进行时（be + doing）的典型时间标志，故第 1 空填 is looking。</li>
+            <li><b>the third pair</b>：pair 是量词，"一双/一副"，a pair of shoes / glasses / trousers；序数词前一定要加 the（the first / the second / the third）。</li>
+            <li><b>he gets this term</b> 是定语从句修饰 the third pair，省略了关系代词 that。</li>
+            <li><b>white ones</b>：ones 是代词，代替前面出现的 shoes，避免重复（white ones = white shoes）。</li>
+            <li>本段埋下线索：鞋子越买越多、越买越花哨，为结尾的反思做铺垫。</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="explain">
+        <summary>第 2 段 · 父母的补偿</summary>
+        <div class="inner">
+          <div class="trans"><span class="lbl">译文</span>彼得的父母很忙。他们没有太多时间陪彼得。他们对此感到抱歉，所以给他买很多他想要的东西。</div>
+          <ul class="points">
+            <li><b>be busy</b>（忙碌的）；much time to be with Peter —— to be with 是不定式作后置定语修饰 time。</li>
+            <li><b>feel sorry for that</b>：feel sorry for sb/sth 为……感到抱歉、难过。</li>
+            <li><b>so</b> 表因果"所以"，注意与 because（因为）区别：一句中二者不能同时出现。</li>
+            <li><b>buy a lot of things (that) he wants for him</b>：he wants 是定语从句修饰 things；buy sth for sb = buy sb sth（给某人买某物）。</li>
+            <li>本段揭示 Peter 总有新鞋的原因：父母用物质补偿陪伴的缺失。</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="explain">
+        <summary>第 3 段 · 旧铅笔盒的疑问</summary>
+        <div class="inner">
+          <div class="trans"><span class="lbl">译文</span>彼得看到同学萨姆的铅笔盒。萨姆的父母都有很好的工作。为什么萨姆用一个旧铅笔盒呢？彼得不理解。</div>
+          <ul class="points">
+            <li><b>use sth</b> 使用某物；an old pencil box —— old 以元音音素开头用 an。</li>
+            <li><b>Why does Sam use...?</b> 特殊疑问句：疑问词 + 助动词 does + 主语 + 动词原形。</li>
+            <li><b>understand</b> 理解（三单为 understands，此处 doesn't 后用原形）。</li>
+            <li>转折出现：家境好的 Sam 反而用旧文具，制造悬念。</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="explain">
+        <summary>第 4–6 段 · Sam 攒钱的原因（对话）</summary>
+        <div class="inner">
+          <div class="trans"><span class="lbl">译文</span>"嘿，萨姆，"彼得说，"为什么不买个新铅笔盒呢？"<br>"这个还很好，"萨姆说，"而且我正在攒钱。"<br>"为什么攒？"彼得问。<br>"我想今年存下 200 美元，去帮助村里的孩子们，"萨姆说。</div>
+          <ul class="points">
+            <li><b>Why not + 动词原形...?</b> = Why don't you...? 用来提建议，"为什么不……呢？"（第 6 题考句型）。</li>
+            <li><b>This one is still nice.</b>：one 代指 pencil box；still 仍然。</li>
+            <li><b>am saving money</b>：攒钱是当前持续进行的计划，用现在进行时。</li>
+            <li><b>want to save 200 dollars to help...</b>：to help 表目的；dollars 美元（货币单位）。</li>
+            <li><b>children in villages</b>：in villages 在村庄里，village 的复数为 villages。</li>
+            <li>对话推动情节：Sam 俭省不是因为缺钱，而是为了帮助他人。</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="explain">
+        <summary>第 7 段 · Peter 的反思（点题）</summary>
+        <div class="inner">
+          <div class="trans"><span class="lbl">译文</span>彼得很惊讶。萨姆正在做一件真正了不起的事。然后他开始思考：他真的需要那些新鞋、新衣服和新玩具吗？</div>
+          <ul class="points">
+            <li><b>be surprised</b>（人感到惊讶）↔ <b>be surprising</b>（事物令人惊讶），注意 -ed / -ing 形容词区别。</li>
+            <li><b>Sam is doing a really great thing.</b>：really 副词修饰形容词 great（第 9 空考点）。</li>
+            <li><b>start thinking</b> = start to think，开始思考；start doing / to do 均可。</li>
+            <li><b>Does he really need...?</b> 一般疑问句用 does + 动词原形；those 后接名词复数（shoes, clothes, toys）。</li>
+            <li><b>主题升华</b>：needs（需要）vs wants（想要）。Sam 的俭省与分享让 Peter 反思自己的消费，点题"优秀品行"。</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <div class="card">
+      <h3><span class="ico">🧺</span>积累小筐 · 答案</h3>
+      <div class="ans-list">
+        <div class="ans-item"><div class="num">1</div><div class="body">运动鞋 → <b class="answer-pill">sports shoes</b><div class="why">注意常用复数；"一双运动鞋" = a pair of sports shoes。</div></div></div>
+        <div class="ans-item"><div class="num">2</div><div class="body">a lot of → <b class="answer-pill">许多；大量</b><div class="why">= lots of，既可修饰可数名词复数，也可修饰不可数名词。</div></div></div>
+        <div class="ans-item"><div class="num">3</div><div class="body">铅笔盒 → <b class="answer-pill">pencil box</b><div class="why">= pencil case；复数 pencil boxes。</div></div></div>
+        <div class="ans-item"><div class="num">4</div><div class="body">save money → <b class="answer-pill">攒钱；省钱</b><div class="why">save up 攒钱；save money for... 为……存钱。</div></div></div>
+        <div class="ans-item"><div class="num">5</div><div class="body">这副眼镜很漂亮，但是很贵。<div class="why">This <b class="answer-pill">pair</b> of glasses <b class="answer-pill">is / looks</b> nice, but expensive.（a pair of 作主语，谓语与 pair 一致用单数；look + 形容词表示"看起来……"）</div></div></div>
+        <div class="ans-item"><div class="num">6</div><div class="body">晚饭后为什么不出去散步呢？<div class="why"><b class="answer-pill">Why not</b> go out for a walk after supper?（Why not + 动词原形 = Why don't you...）</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SECTION 2 ================= -->
+  <section id="s2">
+    <div class="sec-head"><span class="no">五</span><h2>阅读表达 · 彝族服饰收藏家李如秀</h2></div>
+    <p class="sec-sub">阅读短文，根据短文内容回答下列问题。（原卷答案标注：P2）</p>
+
+    <div class="card">
+      <div class="meta-chips">
+        <span>主题：人与社会 — 文化遗产</span><span>语篇类型：记叙文</span>
+        <span>词数：183</span><span>难度：★★★☆☆</span><span>建议用时：7′</span><span>正确率： /5</span>
+      </div>
+      <div class="passage-box">
+        <div class="passage-bar">
+          <div class="hint">💡 点击横线单词查看释义，点 ▶ 朗读全文</div>
+          <button class="tts-btn" data-read="passage-2">▶ 朗读全文</button>
+        </div>
+        <div class="passage en" id="passage-2">
+          <p><span class="para-no">①</span>An old woman is <b>wearing</b> a cockscomb-shaped(鸡冠状的) hat and black, red, yellow and green clothes and walking to people. She is <b>showing</b> Yi people's clothes to them.</p>
+          <p><span class="para-no">②</span>The woman is Li Ruxiu. She is 63 years old. She lives in a small <b>village</b> in Yunnan. Yunnan <b>is home to</b> about 5,000,000 Yi people. Yi people are <b>good at</b> embroidery(刺绣) work. Like many Yi people, Li is good at making clothes. She learnt to do embroidery work <b>at the age of</b> eight and could make clothes at 12.</p>
+          <p><span class="para-no">③</span>Li also likes <b>collecting</b> Yi people's clothes. In Li's house, there are <b>over</b> 7,000 <b>pieces</b> of Yi people's clothes. The clothes are very beautiful. There are nice <b>patterns</b>(图案) of flowers, birds, tigers and cats on them. Li gets some of the clothes from other people <b>for free</b>, and she buys some from the shops. She <b>spends</b> lots of money buying them, but she is happy to do that. She loves Yi people's clothes and ______.</p>
+        </div>
+      </div>
+
+      <h3 style="margin-top:20px;"><span class="ico">❓</span>读后回答问题</h3>
+      <ul class="points" style="font-size:.95rem;">
+        <li>1. What is Li doing in beautiful clothes?</li>
+        <li>2. Where does Li live?</li>
+        <li>3. What's Li good at?</li>
+        <li>4. How many pieces of Yi people's clothes are there in Li's house?</li>
+        <li>5.（新考法 · 句子补全题）根据文章内容，续写句子：<span class="en">She loves Yi people's clothes and ______.</span></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3><span class="ico">✅</span>参考答案与解析</h3>
+      <div class="ans-list">
+        <div class="ans-item"><div class="num">1</div><div class="body"><b class="answer-pill">She is showing Yi people's clothes to them.</b><div class="why">对应第①段末句 "She is showing Yi people's clothes to them."。问句用现在进行时 is doing，回答保持时态一致。也可答：She is showing Yi people's clothes to people.</div></div></div>
+        <div class="ans-item"><div class="num">2</div><div class="body"><b class="answer-pill">She lives in a small village in Yunnan.</b><div class="why">对应第②段 "She lives in a small village in Yunnan."。注意 live 第三人称单数用 lives；"在云南"用 in Yunnan。</div></div></div>
+        <div class="ans-item"><div class="num">3</div><div class="body"><b class="answer-pill">She is good at embroidery work and making clothes.</b><div class="why">对应第②段 "Yi people are good at embroidery work... Li is good at making clothes."。答出 embroidery work（刺绣）或 making clothes（做衣服）即可，两者都写更完整。</div></div></div>
+        <div class="ans-item"><div class="num">4</div><div class="body"><b class="answer-pill">Over 7,000 pieces.</b><div class="why">对应第③段 "there are over 7,000 pieces of Yi people's clothes."。也答 There are over 7,000 pieces of Yi people's clothes in her house.（over = more than 超过）</div></div></div>
+        <div class="ans-item"><div class="num">5</div><div class="body"><b class="answer-pill">wants more people to know about Yi people's clothes.</b><div class="why">开放性续写，言之有理即可。参考思路：她如此热爱彝族服饰 → 想把它们保存下来并让更多人了解。参考答案：She loves Yi people's clothes and <b>wants more people to know about them / wants to keep them well and pass them on to more people</b>。注意 and 连接并列结构，续写用一般现在时（wants / hopes）。</div></div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3><span class="ico">📖</span>逐段详细解析</h3>
+
+      <details class="explain" open>
+        <summary>第 ① 段 · 场景引入：展示彝族服饰</summary>
+        <div class="inner">
+          <div class="trans"><span class="lbl">译文</span>一位老妇人戴着鸡冠状的帽子，穿着黑、红、黄、绿相间的衣服，正朝人们走去。她正在向人们展示彝族服饰。</div>
+          <ul class="points">
+            <li><b>is wearing</b>：wear 表"穿着、戴着"的状态；put on 强调"穿上"的动作；dress 后接人（dress sb）。试比较：She is wearing a red coat. / Put on your coat, it's cold.</li>
+            <li><b>show sth to sb</b> = <b>show sb sth</b>，把某物展示给某人看；show sb around sp 带某人参观某地。</li>
+            <li><b>cockscomb-shaped</b> 鸡冠状的：名词 + -shaped 构成复合形容词，如 heart-shaped（心形的）。</li>
+            <li><b>walking to people</b>：walk to... 朝……走去。</li>
+            <li>写作手法：开篇用特写镜头（外貌 + 动作）切入，画面感强，吸引读者。</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="explain">
+        <summary>第 ② 段 · 人物介绍：李如秀与刺绣</summary>
+        <div class="inner">
+          <div class="trans"><span class="lbl">译文</span>这位女士叫李如秀。她 63 岁，住在云南的一个小村庄里。云南约有 500 万彝族人。彝族人擅长刺绣。和许多彝族人一样，李擅长做衣服。她八岁学刺绣，12 岁就会做衣服了。</div>
+          <ul class="points">
+            <li><b>be home to</b> 是……的家园、居住着：Yunnan is home to about 5,000,000 Yi people.（= About 5,000,000 Yi people live in Yunnan.）注意 home 前不用冠词。</li>
+            <li><b>be good at + 名词 / 动名词</b>：good at embroidery work / (in) making clothes；同义短语 do well in；反义 be weak/poor at。</li>
+            <li><b>at the age of eight</b> = when she was eight = at eight，"在八岁时"（第 2 题考点）。</li>
+            <li><b>learn to do sth</b> 学会做某事；can 的过去式 could，此处表示过去的能力。</li>
+            <li>数字表达：5,000,000 读作 five million；63 years old / at 12（年龄前不用 at the age of 时可省略）。</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="explain">
+        <summary>第 ③ 段 · 收藏 7000+ 件服饰（含续写点）</summary>
+        <div class="inner">
+          <div class="trans"><span class="lbl">译文</span>李还喜欢收藏彝族服饰。她家里有七千多件彝族服饰。这些衣服非常漂亮，上面有漂亮的花、鸟、虎、猫图案。李的一些衣服是别人免费送的，一些是从商店买的。她花很多钱买它们，但她乐在其中。她热爱彝族服饰，而且 ______。</div>
+          <ul class="points">
+            <li><b>like doing sth</b> 喜欢做某事；collect sth 收集某物（collector 收藏家）。</li>
+            <li><b>over 7,000 pieces</b>：over = more than 超过；piece 是常用量词：a piece of bread（一片面包）、a piece of news（一条消息）、7,000 pieces of clothes（七千多件衣服）。</li>
+            <li><b>patterns of flowers, birds...</b>：a pattern of... ……的图案；on them 指在衣服上。</li>
+            <li><b>for free</b> 免费 = free of charge；get sth from sb 从某人处得到某物。</li>
+            <li><b>spend money (in) doing sth</b> 花钱做某事：She spends lots of money buying them. 同义转换：It takes her lots of money to buy them. / The clothes cost her lots of money.（第 4 题考点句式）</li>
+            <li><b>be happy to do sth</b> 乐于做某事；but 表转折——花钱多却甘之如饴。</li>
+            <li><b>续写思路</b>：前文说她热爱 → 后文自然接"希望更多人了解/传承它"，即 wants more people to know about them / hopes to keep them and pass them on。</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <div class="card">
+      <h3><span class="ico">🧺</span>积累小笺 · 答案</h3>
+      <div class="ans-list">
+        <div class="ans-item"><div class="num">1</div><div class="body">make clothes → <b class="answer-pill">做衣服</b><div class="why">make 制作；make sb sth = make sth for sb 为某人制作某物。</div></div></div>
+        <div class="ans-item"><div class="num">2</div><div class="body">在……岁时 → <b class="answer-pill">at the age of</b><div class="why">at the age of eight = when she was eight = at eight。</div></div></div>
+        <div class="ans-item"><div class="num">3</div><div class="body">中国擅长修建桥梁和铁路。<div class="why">China <b class="answer-pill">is good at building</b> bridges and railways.（be good at + doing）</div></div></div>
+        <div class="ans-item"><div class="num">4</div><div class="body">迈克只有一点钱，所以他只能买得起一块面包。<div class="why">Mike only has a little money, so he can only afford <b class="answer-pill">a piece of bread</b>.（afford 买得起，后接名词；a piece of 一片/一块）</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SECTION 3 ================= -->
+  <section id="s3">
+    <div class="sec-head"><span class="no">Test 1</span><h2>阅读理解 A · Time Zones 时区</h2></div>
+    <p class="sec-sub">第二部分 综合素养提升 · 一、阅读理解：从每题 A、B、C 三个选项中选出最佳答案。（原卷答案标注：P17）</p>
+
+    <div class="card">
+      <div class="meta-chips">
+        <span>主题：人与自然 — 自然科学</span><span>语篇类型：说明文</span>
+        <span>词数：263</span><span>难度：★★★★☆</span><span>建议用时：8′</span><span>正确率： /3</span>
+      </div>
+      <div class="passage-box">
+        <div class="passage-bar">
+          <div class="hint">💡 点击横线单词查看释义，点 ▶ 朗读全文</div>
+          <button class="tts-btn" data-read="passage-3">▶ 朗读全文</button>
+        </div>
+        <div class="passage en" id="passage-3">
+          <p><span class="para-no">①</span>At 4:00 p.m., you are watching a football game live(现场直播) from Europe. At the same time, your friend in New York is sleeping—it's 4:00 a.m. there! Why is the time so different? Why do people in other places start their day when we are already in the middle of ours?</p>
+          <p><span class="para-no">②</span>That's because of time zones. Even though we live on the same planet(行星), people in different places are doing different things at the same time.</p>
+          <p><span class="para-no">③</span>How do time zones work? The earth is like a big spinning(旋转的) ball. It turns from west to east. That's why the sun is coming up in the east first. The world is divided into(被分成) 24 time zones. Every time zone is one hour different from the next.</p>
+          <p><span class="para-no">④</span>Let's look at some examples. In China, people in the East 8 time zone are getting up early and going to school or work. In London, people are <b>enjoying</b> afternoon tea at around 4 p.m. In New York, many people have just finished lunch at that time.</p>
+          <p><span class="para-no">⑤</span>Time zones also bring some problems to our <b>modern</b> life. For example, a video(视频) meeting may start at 10 a.m. in Beijing, but it's midnight in New York. These time differences(时差) make it important to <b>plan</b> <b>carefully</b> and <b>respect</b> others' time.</p>
+          <p><span class="para-no">⑥</span>Time zones don't just change the clock—they change our <b>daily life</b>. Time makes us different—but it also makes the world <b>colorful</b> and fun.</p>
+        </div>
+      </div>
+
+      <div class="illus-note">
+        <b>🖼️ 原卷插图说明（第 3 题）：</b>图中画着地球（The earth）与太阳（The sun），标注了 West（西）和 East（东），并用箭头表示地球<b>自西向东自转</b>、太阳从东方先升起——即"时区形成原理"示意图。
+      </div>
+
+      <h3 style="margin-top:18px;"><span class="ico">❓</span>读后选择题</h3>
+      <ul class="points" style="font-size:.95rem;">
+        <li><b>1.</b>（新考法 · 写作手法题）How does the writer start Paragraph ①?<br>A. By giving an example.　B. By giving some numbers.　C. By telling a story.</li>
+        <li><b>2.</b>（新考法 · 写作意图题）Why does the writer talk about a video meeting?<br>A. To show how interesting meetings are.　B. To show time zones can be a problem.　C. To tell us how to take part in a meeting.</li>
+        <li><b>3.</b>（新考法 · 图文匹配题）Which paragraph does this following picture come from?<br>A. ②　B. ③　C. ④</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3><span class="ico">✅</span>参考答案与解析</h3>
+      <div class="ans-list">
+        <div class="ans-item"><div class="num">1</div><div class="body"><b class="answer-pill">A</b><span class="chip-kao">写作手法题</span><div class="why">第①段用"下午 4 点你看欧洲足球赛直播，而纽约的朋友凌晨 4 点在睡觉"这个<b>具体例子</b>引出话题 → By giving an example。数字（4:00）只是例子中的细节，不是主要手法；全段也不是在讲故事（C 排除）。<b>答题技巧：</b>判断开头手法，看它是在"举实例/讲完整故事/列数据"，个例 = example。</div></div></div>
+        <div class="ans-item"><div class="num">2</div><div class="body"><b class="answer-pill">B</b><span class="chip-kao">写作意图题</span><div class="why">第⑤段首句是段落主旨句 "Time zones also bring some problems to our modern life."，视频会议（北京 10 点 vs 纽约午夜）是支撑例子，目的是<b>说明时区会带来问题</b> → B。A（有趣）与原文"problems"相反；C（如何参会）无中生有。<b>答题技巧：</b>例子服务于段落主旨句，主旨句常在段首或段尾。</div></div></div>
+        <div class="ans-item"><div class="num">3</div><div class="body"><b class="answer-pill">B</b><span class="chip-kao">图文匹配题</span><div class="why">插图是地球自转示意图（地球 + 太阳 + 东西方向 + 自转箭头），对应第③段 "The earth is like a big spinning ball. It turns from west to east..." 讲<b>地球自转与 24 个时区的划分</b> → 选 B（③段）。②段讲时区概念、④段讲各国具体场景，均与图无关。</div></div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3><span class="ico">📖</span>逐段详细解析</h3>
+
+      <details class="explain" open>
+        <summary>第 ① 段 · 现象引入：同一时刻，两种生活</summary>
+        <div class="inner">
+          <div class="trans"><span class="lbl">译文</span>下午 4 点，你正在看来自欧洲的足球赛现场直播。与此同时，你在纽约的朋友正在睡觉——那里是凌晨 4 点！为什么时间这么不一样？为什么别的地方的人在我们一天正过到一半时，才开始他们的一天？</div>
+          <ul class="points">
+            <li><b>watch sth live</b> 看……的现场直播（live 作副词，/laɪv/）；live 作动词读 /lɪv/，意为"居住"（live on the same planet）。</li>
+            <li><b>at the same time</b> 同时；it's 4:00 a.m. there —— there 指纽约。</li>
+            <li><b>start their day</b> 开始一天的生活；<b>in the middle of ours</b> 在我们一天的中间（ours = our day）。</li>
+            <li>写作手法：用具体例子（举例子）开篇 + 连续设问（Why...? Why...?），引发思考，自然引出"时区"话题。</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="explain">
+        <summary>第 ② 段 · 揭示原因：时区</summary>
+        <div class="inner">
+          <div class="trans"><span class="lbl">译文</span>那是因为时区。尽管我们生活在同一个星球上，不同地方的人却在同一时间做着不同的事。</div>
+          <ul class="points">
+            <li><b>That's because of...</b> 那是因为……：<b>because of + 名词/名词短语</b>；<b>because + 句子</b>。对比：Because of the rain, we stayed home. / Because it rained, we stayed home.</li>
+            <li><b>even though</b> 即使、尽管，引导让步状语从句。</li>
+            <li><b>the same planet</b>：the same + 名词，"相同的……"；be doing different things 与前半句形成对比。</li>
+            <li>本段是全文的"答案段"，回应第①段的两个设问。</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="explain">
+        <summary>第 ③ 段 · 原理讲解：地球自转与时区划分（配图段）</summary>
+        <div class="inner">
+          <div class="trans"><span class="lbl">译文</span>时区是怎么运作的呢？地球就像一个巨大的旋转球。它自西向东转。所以太阳先从东方升起。世界被分成 24 个时区。每个时区与相邻时区相差一小时。</div>
+          <ul class="points">
+            <li><b>be like</b> 像……一样；a big spinning ball（spinning 旋转的，spin → spun → spun）。</li>
+            <li><b>turn from west to east</b> 由西向东转；That's why... 那就是……的原因（后接结果）。</li>
+            <li><b>be divided into</b> 被分成：divide sth into...（把……分成）；divide A from B（把 A 与 B 分开）。</li>
+            <li><b>be different from</b> 与……不同；one hour different 相差一小时（= different by one hour）。</li>
+            <li><b>第 3 题配图段</b>：地球自转示意图（太阳、地球、东西箭头）正是本段内容的可视化。</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="explain">
+        <summary>第 ④ 段 · 举例说明：同一时刻的三座城市</summary>
+        <div class="inner">
+          <div class="trans"><span class="lbl">译文</span>让我们来看一些例子。在中国，东八区的人们早早起床，去上学或上班。在伦敦，人们下午 4 点左右享用下午茶。在纽约，很多人那时刚吃完午饭。</div>
+          <ul class="points">
+            <li><b>Let's look at some examples.</b> 承上启下，转入举例说明。</li>
+            <li><b>the East 8 time zone</b> 东八区（北京时间所在时区）。</li>
+            <li><b>get up early</b> 早起；go to school or work 去上学或上班。</li>
+            <li><b>enjoy afternoon tea</b> 享用下午茶：enjoy doing sth 喜欢/享受做某事；enjoy oneself = have a good time。</li>
+            <li><b>have just finished lunch</b> 现在完成时（have/has + 过去分词）：刚吃完午饭；at that time 在那时。</li>
+            <li>三个城市（北京 / 伦敦 / 纽约）按时间推移排列，直观展示时差。</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="explain">
+        <summary>第 ⑤ 段 · 辩证看待：时区带来的问题</summary>
+        <div class="inner">
+          <div class="trans"><span class="lbl">译文</span>时区也给我们的现代生活带来一些问题。例如，视频会议可能在北京时间上午 10 点开始，但纽约却是午夜。这些时差让认真计划、尊重他人时间变得重要。</div>
+          <ul class="points">
+            <li><b>bring problems to...</b> 给……带来问题；also 表递进，转入新角度。</li>
+            <li><b>for example</b> 例如（举一例）；比较 such as（列举多个，后接名词）。</li>
+            <li><b>a video meeting</b> 视频会议（video 视频）；midnight 午夜。</li>
+            <li><b>time differences</b> 时差：the time difference between A and B。</li>
+            <li><b>make it important to do sth</b>：make + 宾语 + 形容词（宾补）+ 不定式（真正宾语），it 是形式宾语。如：Music makes me happy.</li>
+            <li><b>plan carefully and respect others' time</b> 认真计划并尊重他人时间；respect v. 尊重（show respect for...）。</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="explain">
+        <summary>第 ⑥ 段 · 总结升华：时间让世界多彩</summary>
+        <div class="inner">
+          <div class="trans"><span class="lbl">译文</span>时区不只是改变了时钟——它们改变了我们的日常生活。时间让我们不同——但也让世界丰富多彩、充满乐趣。</div>
+          <ul class="points">
+            <li><b>not just...</b> 不仅仅……（呼应前文：不仅有时差问题，也塑造了多彩生活）。</li>
+            <li><b>daily life</b> 日常生活 = everyday life；daily routine 日常作息。</li>
+            <li><b>make sb + 形容词</b>：makes us different（使我们不同）；makes the world colorful and fun（使世界多彩有趣）。</li>
+            <li>结尾用破折号 + but also 形成转折升华，是典型的说明文总结式收束。</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ================= SECTION 4 ================= -->
+  <section id="s4">
+    <div class="sec-head"><h2>📋 答案速查表</h2></div>
+    <p class="sec-sub">考前自查 · 三道大题答案一览</p>
+    <div class="card">
+      <div class="ans-list">
+        <div class="ans-item"><div class="num">A</div><div class="body"><b>四、语法填空（10 空）</b><div class="why">1. is looking　2. second　3. has　4. don't have　5. so　6. an　7. am saving　8. to help　9. really　10. toys</div></div></div>
+        <div class="ans-item"><div class="num">B</div><div class="body"><b>五、阅读表达（5 题）</b><div class="why">1. She is showing Yi people's clothes to them.　2. She lives in a small village in Yunnan.　3. She is good at embroidery work and making clothes.　4. Over 7,000 pieces.　5. She loves Yi people's clothes and wants more people to know about them.（续写言之有理即可）</div></div></div>
+        <div class="ans-item"><div class="num">C</div><div class="body"><b>Test 1 阅读理解 A（3 题）</b><div class="why">1. A（举例开篇）　2. B（说明时区带来问题）　3. B（配图对应第③段）</div></div></div>
+        <div class="ans-item"><div class="num">D</div><div class="body"><b>积累小筐 / 小笺</b><div class="why">小筐：1. sports shoes　2. 许多　3. pencil box　4. 攒钱　5. pair; is/looks　6. Why not<br>小笺：1. 做衣服　2. at the age of　3. is good at building　4. a piece of bread</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SECTION 5 ================= -->
+  <section id="s5">
+    <div class="sec-head"><h2>📚 生词 & 生短语汇总</h2></div>
+    <p class="sec-sub">依据七年级词汇水平整理 · 共 <b id="vcount">38</b> 条 · 点击 🔊 朗读发音</p>
+
+    <div class="filter-bar" id="filterBar">
+      <button class="on" data-filter="all">全部</button>
+      <button data-filter="p1">① 语法填空</button>
+      <button data-filter="p2">② 阅读表达</button>
+      <button data-filter="p3">③ 阅读理解</button>
+    </div>
+
+    <div class="vocab-grid" id="vocabGrid"></div>
+  </section>
+
+</div>
+
+<footer>
+  <div>📖 第 9 周周五英语培优 · Unit 1 Here and Now — 内容经双重 OCR 交叉校对，文字与括号注释与原卷一致</div>
+  <div style="margin-top:6px;">词义、用法与例句依据七年级（人教版起点）词汇水平编写 · 朗读功能依赖浏览器语音合成（TTS）</div>
+  <a class="totop" href="#top">⬆ 回到顶部</a>
+</footer>
+
+<!-- Popover -->
+<div id="pop" role="dialog" aria-label="词汇释义">
+  <button class="p-close" id="popClose" aria-label="关闭">✕</button>
+  <div class="p-word"><span id="popWord"></span><span class="p-phon" id="popPhon"></span><span class="p-pos" id="popPos"></span>
+    <button class="speak-mini" id="popSpeak">🔊 发音</button>
+  </div>
+  <div class="p-mean" id="popMean"></div>
+  <div class="p-usage" id="popUsage"></div>
+  <div class="p-ex en" id="popEx"></div>
+  <div class="p-excn" id="popExCn"></div>
+</div>
+
+<script>
+/* ================= 词汇数据 ================= */
+const VOCAB = [
+  /* ===== 语法填空 (p1) ===== */
+  {id:"v1", g:"p1", term:"sports shoes", phon:"/ˌspɔːts ˈʃuːz/", pos:"n.", mean:"运动鞋",
+   use:"常用复数形式；“一双运动鞋”要说 a pair of sports shoes。", ex:"He is looking at his new sports shoes.", excn:"他正在看他的新运动鞋。", match:["sports shoes"]},
+  {id:"v2", g:"p1", term:"pair", phon:"/peə(r)/", pos:"n.", mean:"一双；一副；一对",
+   use:"a pair of + 复数名词；作主语时谓语与 pair 的单复数一致：This pair of glasses is...。", excn:"这副眼镜很漂亮，但是很贵。", ex:"This pair of glasses is nice but expensive.", match:["pair"]},
+  {id:"v3", g:"p1", term:"a lot of / lots of", phon:"/ə ˈlɒt əv/", pos:"det.", mean:"许多；大量",
+   use:"两者同义，既可修饰可数名词复数，也可修饰不可数名词；疑问句、否定句中常用 many / much。", ex:"They buy a lot of things for him.", excn:"他们给他买很多东西。", match:["a lot of","lots of"]},
+  {id:"v4", g:"p1", term:"pencil box", phon:"/ˈpensl bɒks/", pos:"n.", mean:"铅笔盒",
+   use:"= pencil case；复数形式为 pencil boxes。", ex:"Why does Sam use an old pencil box?", excn:"为什么萨姆用一个旧铅笔盒？", match:["pencil box"]},
+  {id:"v5", g:"p1", term:"save money", phon:"/seɪv ˈmʌni/", pos:"phr.", mean:"攒钱；省钱",
+   use:"save v. 节省、储蓄；save up 攒钱；save money for... 为……存钱。", ex:"I am saving money for a new bike.", excn:"我正在为一辆新自行车攒钱。", match:["save money"]},
+  {id:"v6", g:"p1", term:"feel sorry for", phon:"/fiːl ˈsɒri fɔː(r)/", pos:"phr.", mean:"为……感到抱歉（难过）",
+   use:"feel sorry for sb/sth；feel sorry to do sth 为做某事感到抱歉。", ex:"They feel sorry for not being with Peter.", excn:"他们为没时间陪彼得感到抱歉。", match:["feel sorry for"]},
+  {id:"v7", g:"p1", term:"surprised", phon:"/səˈpraɪzd/", pos:"adj.", mean:"惊讶的",
+   use:"修饰人：be surprised to do / at sth；修饰事物用 surprising（令人惊讶的）。", ex:"Peter is surprised at Sam's words.", excn:"彼得对萨姆的话感到惊讶。", match:["surprised"]},
+  {id:"v8", g:"p1", term:"village", phon:"/ˈvɪlɪdʒ/", pos:"n.", mean:"村庄",
+   use:"in a small village 在一个小村庄；villager n. 村民。", ex:"She lives in a small village in Yunnan.", excn:"她住在云南的一个小村庄里。", match:["villages","village"]},
+
+  /* ===== 阅读表达 (p2) ===== */
+  {id:"v9", g:"p2", term:"wear (wearing)", phon:"/weə(r)/", pos:"v.", mean:"穿；戴",
+   use:"wear 表“穿着/戴着”的状态；put on 强调“穿上”的动作；dress 后接人（dress sb）。", ex:"She is wearing a cockscomb-shaped hat.", excn:"她戴着一顶鸡冠状的帽子。", match:["wearing"]},
+  {id:"v10", g:"p2", term:"show sth to sb", phon:"/ʃəʊ/", pos:"phr.", mean:"把某物展示给某人看",
+   use:"show sth to sb = show sb sth；show sb around sp 带某人参观某地。", ex:"She is showing Yi people's clothes to them.", excn:"她正在把彝族服饰展示给他们看。", match:["showing"]},
+  {id:"v11", g:"p2", term:"cockscomb-shaped", phon:"/ˌkɒkskəm ˈʃeɪpt/", pos:"adj.", mean:"鸡冠状的",
+   use:"复合形容词：名词 + -shaped 表“……形状的”，如 heart-shaped 心形的、star-shaped 星形的。", ex:"She wears a cockscomb-shaped hat.", excn:"她戴着一顶鸡冠状的帽子。", match:["cockscomb-shaped"]},
+  {id:"v12", g:"p2", term:"embroidery", phon:"/ɪmˈbrɔɪdəri/", pos:"n.", mean:"刺绣；刺绣品",
+   use:"do embroidery work 做刺绣；动词为 embroider（刺绣）。", ex:"Yi people are good at embroidery work.", excn:"彝族人擅长刺绣。", match:["embroidery"]},
+  {id:"v13", g:"p2", term:"be good at", phon:"/biː ɡʊd æt/", pos:"phr.", mean:"擅长",
+   use:"be good at + 名词 / 动名词（doing）；同义 do well in；反义 be weak / poor at。", ex:"Li is good at making clothes.", excn:"李擅长做衣服。", match:["good at"]},
+  {id:"v14", g:"p2", term:"at the age of", phon:"/æt ði ˈeɪdʒ əv/", pos:"phr.", mean:"在……岁时",
+   use:"at the age of eight = when she was eight = at eight。", ex:"She learnt to do embroidery at the age of eight.", excn:"她八岁就开始学刺绣。", match:["at the age of"]},
+  {id:"v15", g:"p2", term:"collect (collecting)", phon:"/kəˈlekt/", pos:"v.", mean:"收集；收藏",
+   use:"collect sth 收集某物；collector n. 收藏家；collect stamps 集邮。", ex:"Li likes collecting Yi people's clothes.", excn:"李喜欢收藏彝族服饰。", match:["collecting"]},
+  {id:"v16", g:"p2", term:"piece (pieces)", phon:"/piːs/", pos:"n. / 量词", mean:"件；片；张",
+   use:"常用量词：a piece of bread 一片面包、a piece of news 一条消息；7,000 pieces of clothes 七千多件衣服。", ex:"There are over 7,000 pieces of clothes in her house.", excn:"她家里有七千多件衣服。", match:["pieces"]},
+  {id:"v17", g:"p2", term:"pattern (patterns)", phon:"/ˈpætn/", pos:"n.", mean:"图案；花样",
+   use:"a pattern of... ……的图案；常用复数表示各种花纹。", ex:"There are patterns of flowers and birds on them.", excn:"上面有花鸟图案。", match:["patterns"]},
+  {id:"v18", g:"p2", term:"for free", phon:"/fɔː friː/", pos:"phr.", mean:"免费",
+   use:"= free of charge；get sth for free 免费得到某物。", ex:"She gets some of the clothes for free.", excn:"她免费得到其中一些衣服。", match:["for free"]},
+  {id:"v19", g:"p2", term:"spend ... doing sth", phon:"/spend/", pos:"v.", mean:"花费（时间、金钱）做某事",
+   use:"sb spends time/money (in) doing sth / on sth；可与 It takes sb time to do、sth costs sb money 互换。", ex:"She spends lots of money buying the clothes.", excn:"她花很多钱买这些衣服。", match:["spends"]},
+  {id:"v20", g:"p2", term:"be home to", phon:"/biː həʊm tuː/", pos:"phr.", mean:"是……的家园；居住着",
+   use:"地点 + be home to + 人/物，= ... is the home of；home 前不用冠词。", ex:"Yunnan is home to about 5,000,000 Yi people.", excn:"云南约有五百万彝族人。", match:["is home to"]},
+  {id:"v21", g:"p2", term:"over", phon:"/ˈəʊvə(r)/", pos:"prep.", mean:"超过",
+   use:"over = more than，后接数词，表示“多于、超过”。", ex:"There are over 7,000 pieces of clothes.", excn:"有超过七千件衣服。", match:["over"]},
+
+  /* ===== 阅读理解 (p3) ===== */
+  {id:"v22", g:"p3", term:"live", phon:"/laɪv/", pos:"adv. & adj.", mean:"现场直播（的）",
+   use:"watch sth live 看现场直播；live 读 /lɪv/ 时作动词，意为“居住”：live on the same planet。", ex:"You are watching a football game live.", excn:"你正在看足球赛现场直播。", match:["live"]},
+  {id:"v23", g:"p3", term:"time zone (time zones)", phon:"/taɪm zəʊn/", pos:"n.", mean:"时区",
+   use:"the world is divided into 24 time zones；北京属于 the East 8 time zone（东八区）。", ex:"That's because of time zones.", excn:"那是因为时区。", match:["time zones"]},
+  {id:"v24", g:"p3", term:"at the same time", phon:"/æt ðə seɪm taɪm/", pos:"phr.", mean:"同时",
+   use:"作时间状语，可放句首或句末；the same...as... 与……相同。", ex:"Your friend is sleeping at the same time.", excn:"与此同时，你的朋友在睡觉。", match:["at the same time"]},
+  {id:"v25", g:"p3", term:"planet", phon:"/ˈplænɪt/", pos:"n.", mean:"行星",
+   use:"the Earth is a planet；on the same planet 在同一个星球上。", ex:"We live on the same planet.", excn:"我们住在同一个星球上。", match:["planet"]},
+  {id:"v26", g:"p3", term:"spin (spinning)", phon:"/spɪn/", pos:"v.", mean:"旋转",
+   use:"spin 旋转，过去式 spun；spinning 作形容词意为“旋转的”。", ex:"The earth is like a big spinning ball.", excn:"地球像一个巨大的旋转球体。", match:["spinning"]},
+  {id:"v27", g:"p3", term:"divide ... into", phon:"/dɪˈvaɪd/", pos:"phr.v.", mean:"把……分成",
+   use:"divide sth into... 把……分成；be divided into 被分成；divide A from B 把 A 与 B 分开。", ex:"The world is divided into 24 time zones.", excn:"世界被分成 24 个时区。", match:["divided into"]},
+  {id:"v28", g:"p3", term:"video", phon:"/ˈvɪdiəʊ/", pos:"n. & adj.", mean:"视频（的）",
+   use:"video meeting 视频会议；watch a video 看视频；复数 videos。", ex:"A video meeting may start at 10 a.m. in Beijing.", excn:"视频会议可能在北京上午十点开始。", match:["video"]},
+  {id:"v29", g:"p3", term:"time difference", phon:"/taɪm ˈdɪfrəns/", pos:"n.", mean:"时差",
+   use:"the time difference between A and B A 与 B 之间的时差。", ex:"These time differences make it important to plan carefully.", excn:"这些时差让认真计划变得重要。", match:["time differences"]},
+  {id:"v30", g:"p3", term:"for example", phon:"/fɔːr ɪɡˈzɑːmpl/", pos:"phr.", mean:"例如",
+   use:"举例说明，可放句首并加逗号；such as 后接并列的名词性例子。", ex:"Time zones bring problems. For example, it may be midnight in New York.", excn:"时区带来问题。例如，纽约可能是午夜。", match:["for example"]},
+  {id:"v31", g:"p3", term:"modern", phon:"/ˈmɒdn/", pos:"adj.", mean:"现代的",
+   use:"modern life 现代生活；modern buildings 现代建筑；反义词 old / traditional。", ex:"Time zones bring some problems to our modern life.", excn:"时区给我们的现代生活带来一些问题。", match:["modern"]},
+  {id:"v32", g:"p3", term:"plan", phon:"/plæn/", pos:"v. & n.", mean:"计划",
+   use:"plan to do sth 计划做某事；make a plan 制定计划；过去式 planned。", ex:"It makes it important to plan carefully.", excn:"这让认真计划变得重要。", match:["plan"]},
+  {id:"v33", g:"p3", term:"carefully", phon:"/ˈkeəfəli/", pos:"adv.", mean:"认真地；小心地",
+   use:"形容词 careful；be careful with 小心……；listen carefully 认真听。", ex:"We should plan carefully before the meeting.", excn:"会议前我们应认真做计划。", match:["carefully"]},
+  {id:"v34", g:"p3", term:"respect", phon:"/rɪˈspekt/", pos:"v. & n.", mean:"尊重",
+   use:"respect sb 尊重某人；show respect for... 表示对……的尊重。", ex:"We should respect others' time.", excn:"我们应该尊重别人的时间。", match:["respect"]},
+  {id:"v35", g:"p3", term:"enjoy (enjoying)", phon:"/ɪnˈdʒɔɪ/", pos:"v.", mean:"享受；喜爱",
+   use:"enjoy doing sth 喜欢做某事；enjoy oneself = have a good time 玩得开心。", ex:"People in London are enjoying afternoon tea.", excn:"伦敦的人们正在享用下午茶。", match:["enjoying"]},
+  {id:"v36", g:"p3", term:"daily life", phon:"/ˈdeɪli laɪf/", pos:"n.", mean:"日常生活",
+   use:"daily adj. 每日的、日常的；daily routine 日常作息；= everyday life。", ex:"Time zones change our daily life.", excn:"时区改变了我们的日常生活。", match:["daily life"]},
+  {id:"v37", g:"p3", term:"colorful", phon:"/ˈkʌləfl/", pos:"adj.", mean:"多彩的；丰富多彩的",
+   use:"color（颜色）+ -ful（形容词后缀）；a colorful life 多彩的生活。", ex:"Time makes the world colorful and fun.", excn:"时间让世界丰富多彩、充满乐趣。", match:["colorful"]},
+  {id:"v38", g:"p3", term:"take part in", phon:"/teɪk pɑːt ɪn/", pos:"phr.", mean:"参加",
+   use:"take part in + 活动（参与其中）= join in；join 后接组织或人。出自本卷选项，重点短语。", ex:"Do you want to take part in the meeting?", excn:"你想参加会议吗？", match:["take part in"]}
+];
+
+const BY_ID = {}; VOCAB.forEach(v => BY_ID[v.id] = v);
+const GRP_NAME = {p1:"① 语法填空", p2:"② 阅读表达", p3:"③ 阅读理解"};
+
+/* ================= 语音朗读 (TTS) ================= */
+function speak(text, rate){
+  if(!("speechSynthesis" in window)){ alert("当前浏览器不支持语音合成，请使用 Chrome / Edge / Safari 打开。"); return; }
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = "en-US"; u.rate = rate || 0.92; u.pitch = 1;
+  const voices = window.speechSynthesis.getVoices();
+  const en = voices.find(v => /^en(-|_)/i.test(v.lang));
+  if(en) u.voice = en;
+  window.speechSynthesis.speak(u);
+  return u;
+}
+
+/* 全文朗读按钮 */
+document.querySelectorAll(".tts-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const el = document.getElementById(btn.dataset.read);
+    if(!el) return;
+    if(btn.classList.contains("speaking")){
+      window.speechSynthesis.cancel();
+      btn.classList.remove("speaking");
+      btn.textContent = "▶ 朗读全文";
+      return;
+    }
+    const txt = el.textContent
+      .replace(/\([^)]*\)/g, " ")      /* 去掉括号注释 */
+      .replace(/_+/g, " ... ")          /* 空格朗读为停顿 */
+      .replace(/\s+/g, " ").trim();
+    const u = speak(txt, 0.88);
+    if(u){
+      btn.classList.add("speaking");
+      btn.textContent = "⏸ 停止朗读";
+      u.onend = u.onerror = () => {
+        btn.classList.remove("speaking");
+        btn.textContent = "▶ 朗读全文";
+      };
+    }
+  });
+});
+
+/* ================= 内文生词自动标注 ================= */
+(function wrapVocab(){
+  const surfaces = [];
+  VOCAB.forEach(v => (v.match || [v.term]).forEach(s => surfaces.push({s, id:v.id})));
+  surfaces.sort((a,b) => b.s.length - a.s.length);
+  const esc = s => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const re = new RegExp("\\b(?:" + surfaces.map(x => esc(x.s)).join("|") + ")\\b", "gi");
+  const seen = new Set();
+
+  document.querySelectorAll(".passage").forEach(p => {
+    const walker = document.createTreeWalker(p, NodeFilter.SHOW_TEXT, null);
+    const nodes = []; let n;
+    while((n = walker.nextNode())) nodes.push(n);
+
+    nodes.forEach(node => {
+      const text = node.nodeValue;
+      const marks = [];
+      let m; re.lastIndex = 0;
+      while((m = re.exec(text))){
+        const key = m[0].toLowerCase();
+        const hit = surfaces.find(x => x.s.toLowerCase() === key);
+        if(!hit) continue;
+        const uniq = hit.id + "::" + key;
+        if(seen.has(uniq)) continue;
+        seen.add(uniq);
+        marks.push({start:m.index, end:m.index + m[0].length, id:hit.id});
+      }
+      if(!marks.length) return;
+
+      const frag = document.createDocumentFragment();
+      let pos = 0;
+      marks.forEach(mk => {
+        if(mk.start < pos) return;
+        if(mk.start > pos) frag.appendChild(document.createTextNode(text.slice(pos, mk.start)));
+        const span = document.createElement("span");
+        span.className = "vocab";
+        span.dataset.vid = mk.id;
+        span.tabIndex = 0;
+        span.setAttribute("role", "button");
+        span.title = "点击查看释义";
+        span.textContent = text.slice(mk.start, mk.end);
+        frag.appendChild(span);
+        pos = mk.end;
+      });
+      if(pos < text.length) frag.appendChild(document.createTextNode(text.slice(pos)));
+      node.parentNode.replaceChild(frag, node);
+    });
+  });
+})();
+
+/* ================= 点击展开释义 Popover ================= */
+const pop = document.getElementById("pop");
+let popActiveSpan = null;
+
+function showPop(span){
+  const v = BY_ID[span.dataset.vid];
+  if(!v) return;
+  if(popActiveSpan) popActiveSpan.classList.remove("active");
+  popActiveSpan = span; span.classList.add("active");
+
+  document.getElementById("popWord").textContent = v.term;
+  document.getElementById("popPhon").textContent = v.phon;
+  document.getElementById("popPos").textContent = v.pos;
+  document.getElementById("popMean").textContent = "【释义】" + v.mean;
+  document.getElementById("popUsage").innerHTML = "<b>用法</b>　" + v.use;
+  document.getElementById("popEx").textContent = "📝 " + v.ex;
+  document.getElementById("popExCn").textContent = v.excn;
+  document.getElementById("popSpeak").onclick = () => speak(v.term.replace(/\s*\(.*\)/, ""), 0.85);
+
+  pop.classList.add("show");
+  /* 定位：尽量靠近单词，夹在视口内 */
+  const r = span.getBoundingClientRect();
+  const pw = Math.min(340, window.innerWidth - 28);
+  let left = Math.min(Math.max(10, r.left), window.innerWidth - pw - 12);
+  const estH = 300;
+  let top = r.bottom + 10;
+  if(top + estH > window.innerHeight - 10) top = Math.max(10, r.top - estH - 10);
+  pop.style.left = left + "px";
+  pop.style.top = top + "px";
+}
+
+document.addEventListener("click", e => {
+  const span = e.target.closest(".vocab");
+  if(span){ e.stopPropagation(); showPop(span); return; }
+  if(!e.target.closest("#pop")) hidePop();
+});
+document.addEventListener("keydown", e => {
+  if(e.key === "Escape") hidePop();
+  if((e.key === "Enter" || e.key === " ") && e.target.classList && e.target.classList.contains("vocab")){
+    e.preventDefault(); showPop(e.target);
+  }
+});
+document.getElementById("popClose").addEventListener("click", e => { e.stopPropagation(); hidePop(); });
+function hidePop(){
+  pop.classList.remove("show");
+  if(popActiveSpan){ popActiveSpan.classList.remove("active"); popActiveSpan = null; }
+}
+
+/* ================= 生词汇总卡片 ================= */
+function renderVocab(filter){
+  const grid = document.getElementById("vocabGrid");
+  grid.innerHTML = "";
+  VOCAB.filter(v => filter === "all" || v.g === filter).forEach(v => {
+    const card = document.createElement("div");
+    card.className = "v-card";
+    card.innerHTML = `
+      <span class="grp grp-${v.g}">${GRP_NAME[v.g]}</span>
+      <div class="w"><span>${v.term}</span><span class="ph">${v.phon}</span>
+        <button class="speak-mini" title="朗读">🔊</button></div>
+      <div><span class="p-pos" style="background:#eef2ff;color:#4f46e5;border-radius:6px;padding:1px 8px;font-size:.74rem;font-weight:600;">${v.pos}</span></div>
+      <div class="mean"><b>释义：</b>${v.mean}</div>
+      <div class="use"><b>用法</b>　${v.use}</div>
+      <div class="ex en">📝 ${v.ex}</div>
+      <div class="excn">${v.excn}</div>`;
+    card.querySelector(".speak-mini").addEventListener("click", () => speak(v.term.replace(/\s*\(.*\)/, ""), 0.85));
+    grid.appendChild(card);
+  });
+}
+renderVocab("all");
+
+document.getElementById("filterBar").addEventListener("click", e => {
+  const btn = e.target.closest("button");
+  if(!btn) return;
+  document.querySelectorAll("#filterBar button").forEach(b => b.classList.remove("on"));
+  btn.classList.add("on");
+  renderVocab(btn.dataset.filter);
+});
+document.getElementById("vcount").textContent = VOCAB.length;
+
+/* 语音引擎就绪（部分浏览器需先触发一次 getVoices） */
+if("speechSynthesis" in window){ window.speechSynthesis.getVoices(); window.speechSynthesis.onvoiceschanged = () => {}; }
+</script>
+</body>
+</html>

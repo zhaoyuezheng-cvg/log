@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>现代文阅读学案 · 思维导图</title>
+<style>
+  :root {
+    --bg-0: #0a0a0f;
+    --bg-1: #11131a;
+    --bg-2: #181a23;
+    --bg-3: #20232f;
+    --border: #2a2d3a;
+    --border-2: #353846;
+    --text-1: #e8e9ee;
+    --text-2: #9ba0b0;
+    --text-3: #6c7080;
+    --accent: #7c3aed;
+    --c1: #f59e0b;
+    --c2: #06b6d4;
+    --c3: #ec4899;
+    --c4: #10b981;
+    --c5: #3b82f6;
+    --c6: #a78bfa;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg-0);
+    color: var(--text-1);
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 50% at 15% 0%, rgba(124,58,237,0.12), transparent 60%),
+      radial-gradient(ellipse 60% 40% at 85% 100%, rgba(6,182,212,0.10), transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+  }
+  header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  .badge {
+    display: inline-block;
+    padding: 5px 14px;
+    background: rgba(124,58,237,0.12);
+    border: 1px solid rgba(124,58,237,0.3);
+    border-radius: 999px;
+    font-size: 12px;
+    color: #a78bfa;
+    letter-spacing: 0.5px;
+    margin-bottom: 14px;
+  }
+  h1 {
+    font-size: clamp(26px, 4vw, 38px);
+    font-weight: 700;
+    background: linear-gradient(135deg, #e8e9ee 0%, #a78bfa 50%, #06b6d4 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+  }
+  .subtitle {
+    color: var(--text-2);
+    font-size: 14px;
+  }
+  .nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin: 24px 0 8px;
+  }
+  .nav a {
+    padding: 7px 14px;
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text-2);
+    text-decoration: none;
+    font-size: 13px;
+    transition: all 0.2s;
+  }
+  .nav a:hover {
+    color: #fff;
+    border-color: var(--accent);
+    background: rgba(124,58,237,0.1);
+  }
+  section {
+    margin-bottom: 28px;
+    scroll-margin-top: 20px;
+  }
+  .section-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 20px;
+    background: linear-gradient(135deg, var(--bg-1), var(--bg-2));
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--c);
+    border-radius: 12px;
+    margin-bottom: 16px;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.2s;
+  }
+  .section-head:hover {
+    border-color: var(--c);
+    background: var(--bg-2);
+  }
+  .section-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--c);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .section-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-1);
+    flex: 1;
+  }
+  .section-tag {
+    font-size: 12px;
+    color: var(--c);
+    background: rgba(255,255,255,0.05);
+    padding: 4px 10px;
+    border-radius: 6px;
+    border: 1px solid var(--c);
+  }
+  .toggle-arrow {
+    color: var(--text-3);
+    font-size: 14px;
+    transition: transform 0.3s;
+  }
+  .section-head.collapsed .toggle-arrow {
+    transform: rotate(-90deg);
+  }
+  .section-body {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 14px;
+    overflow: hidden;
+    transition: max-height 0.4s ease, opacity 0.3s;
+    max-height: 9999px;
+    opacity: 1;
+  }
+  .section-body.collapsed {
+    max-height: 0;
+    opacity: 0;
+  }
+  .card {
+    background: var(--bg-1);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--c);
+    border-radius: 10px;
+    padding: 16px 18px;
+    transition: all 0.2s;
+    position: relative;
+  }
+  .card:hover {
+    border-color: var(--c);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+  }
+  .card-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px dashed var(--border-2);
+  }
+  .card-num {
+    min-width: 28px;
+    height: 28px;
+    background: var(--c);
+    color: #fff;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+  .card-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-1);
+  }
+  .card-source {
+    font-size: 11px;
+    color: var(--text-3);
+    background: var(--bg-3);
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-left: auto;
+    white-space: nowrap;
+  }
+  .card-body {
+    font-size: 13.5px;
+    color: var(--text-1);
+    line-height: 1.8;
+  }
+  .card-body p {
+    margin-bottom: 8px;
+  }
+  .card-body b {
+    color: var(--c);
+    font-weight: 600;
+  }
+  .method {
+    background: rgba(124,58,237,0.08);
+    border-left: 3px solid var(--accent);
+    padding: 10px 14px;
+    border-radius: 0 8px 8px 0;
+    margin: 8px 0;
+    font-size: 13px;
+    color: #c4b5fd;
+  }
+  .method::before {
+    content: "🎯 答题方法：";
+    font-weight: 700;
+    color: #a78bfa;
+  }
+  .example-box {
+    background: var(--bg-2);
+    border: 1px solid var(--border-2);
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin: 8px 0;
+    font-size: 13px;
+    color: var(--text-2);
+  }
+  .example-box::before {
+    content: "📝 示例：";
+    font-weight: 700;
+    color: var(--c);
+  }
+  .key-point {
+    background: rgba(245,158,11,0.08);
+    border: 1px solid rgba(245,158,11,0.2);
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin: 6px 0;
+    font-size: 12.5px;
+    color: #fbbf24;
+  }
+  .key-point::before {
+    content: "💡 ";
+  }
+  .toolbar {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 10;
+  }
+  .toolbar button {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--bg-2);
+    border: 1px solid var(--border-2);
+    color: var(--text-1);
+    cursor: pointer;
+    font-size: 18px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    transition: all 0.2s;
+  }
+  .toolbar button:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    transform: scale(1.05);
+  }
+  footer {
+    text-align: center;
+    color: var(--text-3);
+    font-size: 12px;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+  }
+  .article-ref {
+    display: inline-block;
+    padding: 2px 8px;
+    background: var(--bg-3);
+    border-radius: 4px;
+    font-size: 11px;
+    color: var(--text-2);
+    margin-left: 6px;
+  }
+  @media (max-width: 700px) {
+    .wrap { padding: 24px 12px; }
+    .section-body { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="badge">初中语文 · 现代文阅读学案</span>
+    <h1>现代文阅读 · 答题方法思维导图</h1>
+    <p class="subtitle">4 篇例文 · 6 大题型 · 方法 + 示例对照</p>
+    <nav class="nav">
+      <a href="#sec1">① 概括题</a>
+      <a href="#sec2">② 词语赏析</a>
+      <a href="#sec3">③ 标题含义</a>
+      <a href="#sec4">④ 句段作用</a>
+      <a href="#sec5">⑤ 人物形象</a>
+      <a href="#sec6">⑥ 神态 / 语言描写</a>
+    </nav>
+  </header>
+
+  <!-- ============ 1. 概括题 ============ -->
+  <section id="sec1">
+    <div class="section-head" style="--c: var(--c1);" onclick="toggleSection(this)">
+      <div class="section-icon">📋</div>
+      <div class="section-title">概括题（概括人物特点 / 事件）</div>
+      <span class="section-tag">方法 + 示例</span>
+      <span class="toggle-arrow">▼</span>
+    </div>
+    <div class="section-body" style="--c: var(--c1);">
+
+      <div class="card">
+        <div class="card-head">
+          <div class="card-num">1.1</div>
+          <div class="card-title">概括人物行为 / 特点</div>
+          <span class="card-source">《中国地图》</span>
+        </div>
+        <div class="card-body">
+          <div class="method">从原文找到具体描写 → 提炼为四字/短语概括 → 分点罗列（①②③④）</div>
+          <p><b>示例：</b>概括爷爷对地图的喜爱</p>
+          <div class="example-box">
+            ①"退休后每天对着地图默默地看，有时还自言自语" → <b>退休后还经常查看地图</b><br>
+            ②"家里有人的时候，总要给人家讲述地图上地名背后的故事" → <b>喜欢��述地图上地名背后的故事</b><br>
+            ③"爷爷两眼放光，戴着老花镜，趴在地图上瞅起来" → <b>对新地图兴趣浓厚</b><br>
+            ④"伶仃洋上咋有一座桥？新建的" → <b>敏锐发现新地图中的细微变化</b>
+          </div>
+          <div class="key-point">每条都是"原文细节 → 提炼概括"，不要照抄原文，要压缩成短语</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div class="card-num">1.2</div>
+          <div class="card-title">概括人物成长经历</div>
+          <span class="card-source">《方志敏传》</span>
+        </div>
+        <div class="card-body">
+          <div class="method">按段落顺序定位关键句 → 提取动作行为 → 用动词短语概括</div>
+          <p><b>示例：</b>概括"我"怀念父亲的具体表现</p>
+          <div class="example-box">
+            ①第⑥段"这句话深深地触动了我。从那以后，我发愤用功读书" → <b>发愤用功读书，��习文化</b><br>
+            ②第⑨段"从《可爱的中国》起，我才开始真正认识父亲" → <b>通过读父亲写的书去认识、了解父亲</b><br>
+            ③第⑩段"母亲��世了，我就接过母亲的担子，延续着与父亲革命战友的血肉联系" → <b>延续与革命战友、家乡人民的血肉联系</b><br>
+            ④第⑪段"1986年退休后，我开始全身心投入寻访父亲革命足迹的事业" → <b>寻访父亲革命足迹，为父亲写作《方志敏全传》</b>
+          </div>
+          <div class="key-point">按时间/段落顺序分点，每点对应一个段落的关键动作</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ 2. 词语赏析 ============ -->
+  <section id="sec2">
+    <div class="section-head" style="--c: var(--c2);" onclick="toggleSection(this)">
+      <div class="section-icon">🔍</div>
+      <div class="section-title">词语赏析（能否替换 / 删除）</div>
+      <span class="section-tag">方法 + 示例</span>
+      <span class="toggle-arrow">▼</span>
+    </div>
+    <div class="section-body" style="--c: var(--c2);">
+
+      <div class="card" style="grid-column: span 2;">
+        <div class="card-head">
+          <div class="card-num">2.1</div>
+          <div class="card-title">"能否替换/互换"题</div>
+          <span class="card-source">《中国地图》</span>
+        </div>
+        <div class="card-body">
+          <div class="method">首先回答"能 / 不能" → 分别解释两个词的本义和侧重 → 结合原文分析替换后的效果变化</div>
+          <p><b>示例：</b>"故事"与"事故"能否互换？</p>
+          <div class="example-box">
+            <b>第一步（表态）</b>：能。<br><br>
+            <b>第二步（释词）</b>：<br>
+            "故事"指旧事、旧业、先例、典故等，侧重<b>传奇色彩</b>；<br>
+            "事故"（多指生产、工作中）发生的意外损失或祸患，侧重<b>意外</b>。<br><br>
+            <b>第三步（结合原文）</b>：<br>
+            原文写爷爷在河南嵩山被三只饿狼盯上、在陕西榆林遇飞沙走石保护仪器等情节，突出了爷爷当年测绘工作的<b>艰辛和危险</b>。<br><br>
+            <b>第四步（分析互换效果）</b>：<br>
+            "事故"侧重意外，"故事"侧重传奇色彩，互换后<b>突出了爷爷对事业的热爱，对付出的无悔</b>。
+          </div>
+          <div class="key-point">必答"能/不能"开头，再分两词解释，最后落到"表达效果/情感"的变化</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ 3. 标题含义 ============ -->
+  <section id="sec3">
+    <div class="section-head" style="--c: var(--c3);" onclick="toggleSection(this)">
+      <div class="section-icon">🏷️</div>
+      <div class="section-title">标题含义 / 词语多义赏析</div>
+      <span class="section-tag">方法 + 示例</span>
+      <span class="toggle-arrow">▼</span>
+    </div>
+    <div class="section-body" style="--c: var(--c3);">
+
+      <div class="card" style="grid-column: span 2;">
+        <div class="card-head">
+          <div class="card-num">3.1</div>
+          <div class="card-title">标题的多重含义</div>
+          <span class="card-source">《中国地图》</span>
+        </div>
+        <div class="card-body">
+          <div class="method">由表及里，逐层挖掘：①字面义（实物）→ ②象征义（人物内心）→ ③时代义（折射变化）→ ④情感义（热爱/骄傲）</div>
+          <p><b>示例：</b>分析"中国地图"的含义</p>
+          <div class="example-box">
+            <b>���字面义（实物）</b>：<br>
+            "爷爷曾是地图绘制工程师，绘了一辈子地图" → 指文中的<b>中国地图实物</b>。<br><br>
+            <b>②内心义（人物）</b>：<br>
+            "总要给人家讲述地图上地名背后的故事" → 指装在<b>爷爷心中的中国地图</b>。<br><br>
+            <b>③时代义（变化）</b>：<br>
+            "伶仃洋上咋有一座桥？""丹江口水库咋新增一条支流？" → 新旧地图的变化折射出<b>祖国建设取得了伟大成就</b>。<br><br>
+            <b>④情感义（主旨）</b>：<br>
+            "中国地图"承载着地图测绘人对中国地图测绘事业的<b>热爱与追求</b>；蕴含了对祖国发展的<b>骄傲与自豪</b>之情。
+          </div>
+          <div class="key-point">从"物→人→时代→情"四个层次递进，每层都要结合原文细节</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div class="card-num">3.2</div>
+          <div class="card-title">修辞手法赏析</div>
+          <span class="card-source">《中国地图》</span>
+        </div>
+        <div class="card-body">
+          <div class="method">找出修辞 → 分析作用（形象生动 + 表现内容 + 表达情感）</div>
+          <div class="example-box">
+            <b>"再活五百年""在福窝里还没扑腾够"</b><br>
+            运用<b>夸张、比喻</b>的修辞方法，形象生动，充满感情色彩，表现了爷爷对<b>时代、对事业、对生活的热爱</b>。
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ 4. 句段作用 ============ -->
+  <section id="sec4">
+    <div class="section-head" style="--c: var(--c4);" onclick="toggleSection(this)">
+      <div class="section-icon">📐</div>
+      <div class="section-title">句段作用（开头段 / 中间段）</div>
+      <span class="section-tag">方法 + 示例</span>
+      <span class="toggle-arrow">▼</span>
+    </div>
+    <div class="section-body" style="--c: var(--c4);">
+
+      <div class="card">
+        <div class="card-head">
+          <div class="card-num">4.1</div>
+          <div class="card-title">开头段作用</div>
+          <span class="card-source">《方志敏传》</span>
+        </div>
+        <div class="card-body">
+          <div class="method">结构作用（总领/悬念/铺垫） + 内容作用（点题） + 情感作用（奠定基调）</div>
+          <div class="example-box">
+            第①段"<b>我一生只见过父亲方志敏两次</b>"<br>
+            ①<b>总领全文</b>，设置悬念，引起读者的阅读兴趣；<br>
+            ②"但是够我怀念一辈子的了"<b>饱含对父亲的怀念之情</b>，为全文奠定了"怀念父亲"的感情基调。
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div class="card-num">4.2</div>
+          <div class="card-title">中间段作用（承上启下）</div>
+          <span class="card-source">《袁隆平》</span>
+        </div>
+        <div class="card-body">
+          <div class="method">分"结构 + 内容"两方面答：结构看承上启下，内容看突出什么精神</div>
+          <div class="example-box">
+            <b>结构方面</b>：<br>
+            前文讲袁隆平<b>决定研究杂交水稻及研究过程</b>，后文侧重他<b>在科研一线的坚持</b>。此段处于中间位置，起到<b>承上启下</b>的作用——承接上文研究杂交水稻的背景，引出下文他持续为科研努力及对他人的影响。<br><br>
+            <b>内容方面</b>：<br>
+            体现袁隆平经历的苦难，以及他为改变人们生活所付出努力的意义，<b>突出他的奉献精神</b>。
+          </div>
+          <div class="key-point">中间段必答"承上启下"，并具体说明承了什么、启了什么</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ 5. 人物形象 ============ -->
+  <section id="sec5">
+    <div class="section-head" style="--c: var(--c5);" onclick="toggleSection(this)">
+      <div class="section-icon">👤</div>
+      <div class="section-title">人物形象分析</div>
+      <span class="section-tag">方法 + 示例</span>
+      <span class="toggle-arrow">▼</span>
+    </div>
+    <div class="section-body" style="--c: var(--c5);">
+
+      <div class="card">
+        <div class="card-head">
+          <div class="card-num">5.1</div>
+          <div class="card-title">结合事件概括品质</div>
+          <span class="card-source">《方志敏传》</span>
+        </div>
+        <div class="card-body">
+          <div class="method">找原文事件 → 提炼四字品质 → 一事一品质，分点作答</div>
+          <div class="example-box">
+            ①"父亲一生忠贞不屈，到了最后牺牲自己的一切，都是为了'救国'" → <b>忠贞爱国</b><br>
+            ②"在狱中用生命写下了感人肺腑的《可爱的中国》《清贫》等名篇" → <b>坚定的信仰和信念</b><br>
+            ③"为战火岁月中出生的5个孩子，分别取名为松、柏、竹、梅、兰" → <b>高洁的品格</b>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div class="card-num">5.2</div>
+          <div class="card-title">人物形象跨文比对</div>
+          <span class="card-source">《鲁迅》</span>
+        </div>
+        <div class="card-body">
+          <div class="method">选定最符合的材料 → 结合已学课文（《阿长》《藤野先生》）印证 → 多角度论证</div>
+          <div class="example-box">
+            <b>示例一（选材料二·认真随和）</b>：<br>
+            在《阿长与＜山海经＞》中，面对淳朴善良的长妈妈，鲁迅虽偶尔憎恶，但因她讲长毛故事和买来山海经而变得<b>随和近人</b>；在《藤野先生》中，面对认真负责的老师时，鲁迅<b>性情随和，认真对待学习</b>。<br><br>
+            <b>示例二（选材料三·爱国者）</b>：<br>
+            爱国是鲁迅一生的主旋律。《藤野先生》中中国人被认为是"低能儿"，鲁迅<b>决定弃医从文</b>，从精神上唤醒国人；在北大校徽设计中，蕴含着对北大学子的希望。
+          </div>
+          <div class="key-point">跨文比对必须引用学过的课文作论据，不能只说空话</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div class="card-num">5.3</div>
+          <div class="card-title">"平凡"与"不平凡"辩证分析</div>
+          <span class="card-source">《袁隆平》</span>
+        </div>
+        <div class="card-body">
+          <div class="method">先解释词语本义 → 结合原文分别举证"平凡"和"不平凡" → 总结升华</div>
+          <div class="example-box">
+            <b>"平平无奇"</b>：生活中袁隆平对吃穿不讲究，衣服打折时10元一件的衬衫能买十几件，和普通人一样，<b>生活物质方面平凡普通</b>。<br><br>
+            <b>"不平凡"</b>：他是杂交水稻研究领域<b>开创者和带头人</b>，面对科研困难知难而进，经十几年努力攻破技术难关，让粮食增产解决温饱问题；鲐背之年仍活跃科研一线，一生为让所有人远离饥饿而奋斗，<b>成就和奉献极其伟大</b>。
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ 6. 神态 / 语言描写 ============ -->
+  <section id="sec6">
+    <div class="section-head" style="--c: var(--c6);" onclick="toggleSection(this)">
+      <div class="section-icon">💬</div>
+      <div class="section-title">神态判断 / 语言描写赏析</div>
+      <span class="section-tag">方法 + 示例</span>
+      <span class="toggle-arrow">▼</span>
+    </div>
+    <div class="section-body" style="--c: var(--c6);">
+
+      <div class="card" style="grid-column: span 2;">
+        <div class="card-head">
+          <div class="card-num">6.1</div>
+          <div class="card-title">根据语句判断人物神态</div>
+          <span class="card-source">《鲁迅》</span>
+        </div>
+        <div class="card-body">
+          <div class="method">看涉及对象（敌/友） → 分析修辞/用词 → 推断说话人态度 → 给出神态词</div>
+          <div class="example-box">
+            <b>A 句（对象是政见不同的伪君子）</b>：<br>
+            神态：<b>冷静沉稳、淡然坚毅、斗志昂扬</b>。<br>
+            理由：鲁迅把自己比作具有战斗性的雄鸡，形象写出与敌人斗争时的<b>思维冷静，毫不畏惧</b>，表达了与恶势力抗争到底的决心。<br><br>
+            <b>B 句（对象是思想要求进步的青年）</b>：<br>
+            神态：<b>无可奈何、皱眉叹气、垂头丧气</b>。<br>
+            理由："胡乱"说明青年写信只管速度忽略质量，是<b>做事敷衍</b>。鲁迅否定青年们敷衍的态度，但青年写信是希望得到前辈指点，所以神态应是<b>无可奈何</b>——既不满又关心青年进步。
+          </div>
+          <div class="key-point">神态判断关键看"说话对象"是敌是友，决定态度是"斗争"还是"关爱"</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div class="card-num">6.2</div>
+          <div class="card-title">语言描写的作用</div>
+          <span class="card-source">《袁隆平》</span>
+        </div>
+        <div class="card-body">
+          <div class="method">指出描写方法 + 引述内容 + 分析体现的品质 + 表达的情感</div>
+          <div class="example-box">
+            运用<b>语言描写</b>，通过袁隆平对学生的期许和叮嘱，体现他<b>淡泊名利、重视理想追求</b>的高尚品质。
+          </div>
+          <div class="key-point">语言描写答题：描写方法 + 内容 + 人物品质，三步缺一不可</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div class="card-num">6.3</div>
+          <div class="card-title">读后感 / 续写表达</div>
+          <span class="card-source">《方志敏传》</span>
+        </div>
+        <div class="card-body">
+          <div class="method">紧扣文章主旨 + 联系现实成就 + 抒发情感（致敬式表达）</div>
+          <div class="example-box">
+            <b>示例</b>（给方志敏爷爷的回话）：<br>
+            方志敏爷爷，<b>如您所愿</b>，我们的祖国非常可爱！您看，今日之中国，<b>飞船直上云霄，航母劈波斩浪，大桥横跨天堑，高铁穿行不息</b>。我们的国家一天比一天富强，我们的生活一天比一天幸福！
+          </div>
+          <div class="key-point">用排比句式列举国家成就，情感真挚，呼应原文"可爱的中国"主题</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <p>📚 现代文阅读学案 · 答题方法思维导图</p>
+    <p style="margin-top:4px;">例文：《中国地图》《方志敏传》《鲁迅》《袁隆平》 · 6 大题型全覆盖</p>
+  </footer>
+</div>
+
+<div class="toolbar">
+  <button onclick="expandAll()" title="全部展开">⊕</button>
+  <button onclick="collapseAll()" title="全部折叠">⊖</button>
+  <button onclick="window.scrollTo({top:0,behavior:'smooth'})" title="回到顶部">↑</button>
+</div>
+
+<script>
+function toggleSection(head) {
+  const body = head.nextElementSibling;
+  head.classList.toggle('collapsed');
+  body.classList.toggle('collapsed');
+}
+function expandAll() {
+  document.querySelectorAll('.section-head').forEach(h => h.classList.remove('collapsed'));
+  document.querySelectorAll('.section-body').forEach(b => b.classList.remove('collapsed'));
+}
+function collapseAll() {
+  document.querySelectorAll('.section-head').forEach(h => h.classList.add('collapsed'));
+  document.querySelectorAll('.section-body').forEach(b => b.classList.add('collapsed'));
+}
+</script>
+</body>
+</html>

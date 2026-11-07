@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>英语不规则动词表 · 交互学习</title>
+<style>
+  :root{
+    --radius:16px;
+    --radius-sm:10px;
+    --accent:#6ea8fe;
+    --accent-2:#a78bfa;
+    --accent-3:#34d399;
+    --danger:#f87171;
+    --font-en:"Segoe UI","Helvetica Neue",Arial,sans-serif;
+    --font-cn:"PingFang SC","Microsoft YaHei","Noto Sans SC",system-ui,sans-serif;
+    --trans:.28s cubic-bezier(.4,0,.2,1);
+  }
+  html[data-theme="dark"]{
+    --bg:#0d1117;
+    --bg-grad-1:#111a2e;
+    --bg-grad-2:#0d1117;
+    --panel:#161b26;
+    --panel-2:#1c2333;
+    --panel-hover:#222b3d;
+    --border:#283044;
+    --border-soft:#1f2635;
+    --text:#e6edf7;
+    --text-dim:#9aa7bd;
+    --text-faint:#63708a;
+    --shadow:0 10px 40px rgba(0,0,0,.45);
+    --shadow-sm:0 4px 16px rgba(0,0,0,.3);
+    --chip-bg:#1c2333;
+    --glow:0 0 0 1px rgba(110,168,254,.18),0 8px 30px rgba(110,168,254,.12);
+  }
+  html[data-theme="light"]{
+    --bg:#f4f6fb;
+    --bg-grad-1:#e8eefb;
+    --bg-grad-2:#f7f9fd;
+    --panel:#ffffff;
+    --panel-2:#f6f8fd;
+    --panel-hover:#eef3fd;
+    --border:#dde4f2;
+    --border-soft:#e9eefa;
+    --text:#1a2233;
+    --text-dim:#5a6784;
+    --text-faint:#8b96ad;
+    --shadow:0 10px 40px rgba(43,63,111,.12);
+    --shadow-sm:0 4px 16px rgba(43,63,111,.09);
+    --chip-bg:#eef3fd;
+    --glow:0 0 0 1px rgba(90,140,240,.16),0 8px 30px rgba(90,140,240,.12);
+    --accent:#3b6ff0;
+    --accent-2:#7c5cf0;
+    --accent-3:#12a870;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--font-cn);
+    background:
+      radial-gradient(1200px 700px at 12% -8%,var(--bg-grad-1),transparent 55%),
+      radial-gradient(1000px 600px at 100% 0%,color-mix(in srgb,var(--accent-2) 12%,transparent),transparent 50%),
+      var(--bg-grad-2);
+    background-attachment:fixed;
+    color:var(--text);
+    min-height:100vh;
+    -webkit-font-smoothing:antialiased;
+    transition:background var(--trans),color var(--trans);
+    padding-bottom:70px;
+  }
+  .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky;top:0;z-index:40;
+    backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+    background:color-mix(in srgb,var(--bg) 78%,transparent);
+    border-bottom:1px solid var(--border-soft);
+    transition:background var(--trans),border-color var(--trans);
+  }
+  .hd{display:flex;align-items:center;gap:16px;padding:14px 0;flex-wrap:wrap}
+  .brand{display:flex;align-items:center;gap:13px;min-width:0}
+  .logo{
+    width:46px;height:46px;border-radius:13px;flex:none;
+    display:grid;place-items:center;font-size:23px;font-weight:800;
+    font-family:var(--font-en);letter-spacing:-1px;
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    color:#fff;box-shadow:0 6px 20px color-mix(in srgb,var(--accent) 40%,transparent);
+  }
+  .brand h1{font-size:1.18rem;font-weight:800;letter-spacing:.3px;line-height:1.25}
+  .brand .sub{font-size:.74rem;color:var(--text-dim);font-weight:500;margin-top:2px;letter-spacing:.5px}
+  .hd-tools{margin-left:auto;display:flex;align-items:center;gap:10px}
+  .icon-btn{
+    width:40px;height:40px;border-radius:11px;border:1px solid var(--border);
+    background:var(--panel);color:var(--text-dim);cursor:pointer;
+    display:grid;place-items:center;font-size:17px;transition:var(--trans);
+  }
+  .icon-btn:hover{background:var(--panel-hover);color:var(--text);transform:translateY(-1px)}
+
+  /* ---------- Hero / stats ---------- */
+  .hero{padding:34px 0 8px;text-align:center}
+  .hero h2{
+    font-size:clamp(1.5rem,4vw,2.25rem);font-weight:800;letter-spacing:.5px;
+    background:linear-gradient(100deg,var(--accent),var(--accent-2),var(--accent-3));
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+    margin-bottom:9px;
+  }
+  .hero p{color:var(--text-dim);font-size:.92rem}
+  .stats{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:20px}
+  .stat{
+    background:var(--panel);border:1px solid var(--border);border-radius:var(--radius-sm);
+    padding:11px 20px;min-width:104px;box-shadow:var(--shadow-sm);
+  }
+  .stat b{display:block;font-size:1.3rem;font-weight:800;font-family:var(--font-en);color:var(--accent)}
+  .stat span{font-size:.72rem;color:var(--text-dim);letter-spacing:.4px}
+
+  /* ---------- Controls ---------- */
+  .controls{margin-top:26px;display:flex;flex-direction:column;gap:14px}
+  .search-row{display:flex;gap:10px;flex-wrap:wrap}
+  .search-box{position:relative;flex:1;min-width:220px}
+  .search-box .ic{position:absolute;left:15px;top:50%;transform:translateY(-50%);color:var(--text-faint);font-size:15px;pointer-events:none}
+  #search{
+    width:100%;padding:13px 42px 13px 42px;border-radius:var(--radius-sm);
+    border:1px solid var(--border);background:var(--panel);color:var(--text);
+    font-size:.94rem;font-family:var(--font-cn);outline:none;transition:var(--trans);
+  }
+  #search::placeholder{color:var(--text-faint)}
+  #search:focus{border-color:var(--accent);box-shadow:var(--glow)}
+  .clear-s{position:absolute;right:10px;top:50%;transform:translateY(-50%);border:none;background:none;color:var(--text-faint);cursor:pointer;font-size:16px;padding:6px;display:none}
+  .clear-s.show{display:block}
+
+  .view-toggle{display:flex;background:var(--panel);border:1px solid var(--border);border-radius:var(--radius-sm);padding:4px;gap:4px}
+  .view-toggle button{
+    border:none;background:none;color:var(--text-dim);cursor:pointer;
+    padding:9px 16px;border-radius:7px;font-size:.86rem;font-weight:600;
+    font-family:var(--font-cn);transition:var(--trans);white-space:nowrap;
+  }
+  .view-toggle button:hover{color:var(--text)}
+  .view-toggle button.on{
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;
+    box-shadow:0 4px 14px color-mix(in srgb,var(--accent) 34%,transparent);
+  }
+
+  .chips{display:flex;gap:8px;flex-wrap:wrap;padding-bottom:2px}
+  .chip{
+    border:1px solid var(--border);background:var(--chip-bg);color:var(--text-dim);
+    padding:7px 14px;border-radius:999px;font-size:.8rem;font-weight:600;
+    cursor:pointer;transition:var(--trans);white-space:nowrap;font-family:var(--font-cn);
+  }
+  .chip:hover{color:var(--text);border-color:var(--accent)}
+  .chip.on{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;border-color:transparent}
+  .chip small{opacity:.72;font-weight:500;margin-left:3px}
+
+  /* ---------- Sections (table view) ---------- */
+  .sec{margin-top:22px;background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm);animation:rise .45s both}
+  @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  .sec-head{
+    display:flex;align-items:center;gap:12px;padding:15px 18px;cursor:pointer;
+    background:linear-gradient(180deg,var(--panel-2),transparent);
+    border-bottom:1px solid var(--border-soft);user-select:none;
+  }
+  .sec-head:hover{background:var(--panel-hover)}
+  .sec-no{
+    flex:none;width:30px;height:30px;border-radius:9px;display:grid;place-items:center;
+    font-weight:800;font-size:.82rem;font-family:var(--font-en);
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;
+  }
+  .sec-title{font-weight:700;font-size:.98rem;letter-spacing:.2px}
+  .sec-title code{
+    font-family:var(--font-en);background:color-mix(in srgb,var(--accent) 15%,transparent);
+    color:var(--accent);padding:2px 7px;border-radius:6px;font-size:.84rem;margin-left:6px;font-weight:700;
+  }
+  .sec-count{margin-left:auto;font-size:.74rem;color:var(--text-faint);font-family:var(--font-en);font-weight:600}
+  .sec-arrow{color:var(--text-faint);transition:transform var(--trans);font-size:13px}
+  .sec.collapsed .sec-arrow{transform:rotate(-90deg)}
+  .sec.collapsed .sec-body{display:none}
+
+  table{width:100%;border-collapse:collapse;font-size:.92rem}
+  thead th{
+    text-align:left;padding:10px 16px;font-size:.72rem;letter-spacing:.8px;
+    color:var(--text-faint);font-weight:700;text-transform:uppercase;
+    border-bottom:1px solid var(--border-soft);background:var(--panel-2);
+  }
+  thead th:first-child{width:52px;text-align:center}
+  tbody td{padding:11px 16px;border-bottom:1px solid var(--border-soft);vertical-align:middle}
+  tbody tr{transition:background .15s}
+  tbody tr:hover{background:var(--panel-hover)}
+  tbody tr:last-child td{border-bottom:none}
+  td.no{text-align:center;color:var(--text-faint);font-family:var(--font-en);font-size:.8rem;font-weight:600}
+  td.base{font-family:var(--font-en);font-weight:700;color:var(--accent);font-size:.98rem;letter-spacing:.2px}
+  td.past{font-family:var(--font-en);font-weight:700;color:var(--accent-3);font-size:.98rem;letter-spacing:.2px}
+  td.cn{color:var(--text-dim)}
+  .hide-past td.past{color:transparent;background:color-mix(in srgb,var(--text) 9%,transparent);border-radius:6px;cursor:pointer;user-select:none;position:relative}
+  .hide-past td.past::after{content:"点击显示";position:absolute;inset:0;display:grid;place-items:center;color:var(--text-faint);font-size:.66rem;font-family:var(--font-cn);font-weight:500;letter-spacing:.5px}
+  .hide-past td.past.rev{color:var(--accent-3);background:none}
+  .hide-past td.past.rev::after{content:""}
+
+  /* ---------- Card view ---------- */
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(196px,1fr));gap:14px;margin-top:22px}
+  .card{
+    perspective:1000px;height:132px;cursor:pointer;animation:rise .4s both;
+  }
+  .card-in{position:relative;width:100%;height:100%;transition:transform .55s cubic-bezier(.4,.2,.2,1);transform-style:preserve-3d}
+  .card.flip .card-in{transform:rotateY(180deg)}
+  .card-f,.card-b{
+    position:absolute;inset:0;border-radius:var(--radius);backface-visibility:hidden;-webkit-backface-visibility:hidden;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:14px;text-align:center;
+    border:1px solid var(--border);box-shadow:var(--shadow-sm);
+  }
+  .card-f{background:linear-gradient(150deg,var(--panel-2),var(--panel))}
+  .card:hover .card-f{border-color:var(--accent)}
+  .card-f .w{font-family:var(--font-en);font-size:1.3rem;font-weight:800;color:var(--accent);letter-spacing:.3px}
+  .card-f .c{font-size:.8rem;color:var(--text-dim)}
+  .card-f .tag{position:absolute;top:9px;left:11px;font-size:.62rem;color:var(--text-faint);font-family:var(--font-en);font-weight:600}
+  .card-f .hint{position:absolute;bottom:8px;font-size:.62rem;color:var(--text-faint);letter-spacing:.5px}
+  .card-b{
+    transform:rotateY(180deg);
+    background:linear-gradient(150deg,color-mix(in srgb,var(--accent-3) 18%,var(--panel)),var(--panel));
+    border-color:color-mix(in srgb,var(--accent-3) 40%,var(--border));
+  }
+  .card-b .lab{font-size:.66rem;color:var(--text-faint);letter-spacing:1.5px;text-transform:uppercase}
+  .card-b .p{font-family:var(--font-en);font-size:1.5rem;font-weight:800;color:var(--accent-3);letter-spacing:.3px}
+  .card-b .c{font-size:.82rem;color:var(--text-dim)}
+
+  /* ---------- Quiz view ---------- */
+  .quiz{max-width:580px;margin:26px auto 0}
+  .q-progress{height:7px;border-radius:99px;background:var(--panel-2);overflow:hidden;margin-bottom:8px}
+  .q-progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent-3));transition:width .35s}
+  .q-meta{display:flex;justify-content:space-between;font-size:.76rem;color:var(--text-dim);margin-bottom:18px;font-family:var(--font-en)}
+  .q-card{
+    background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);
+    padding:34px 26px;text-align:center;box-shadow:var(--shadow);
+  }
+  .q-tag{display:inline-block;font-size:.7rem;color:var(--accent);background:color-mix(in srgb,var(--accent) 14%,transparent);padding:4px 11px;border-radius:999px;font-weight:700;margin-bottom:16px}
+  .q-base{font-family:var(--font-en);font-size:2.4rem;font-weight:800;color:var(--accent);letter-spacing:.5px;word-break:break-word}
+  .q-cn{margin-top:7px;color:var(--text-dim);font-size:1rem}
+  .q-input{
+    width:100%;margin-top:24px;padding:15px 18px;border-radius:var(--radius-sm);
+    border:2px solid var(--border);background:var(--panel-2);color:var(--text);
+    font-family:var(--font-en);font-size:1.15rem;font-weight:700;text-align:center;outline:none;transition:var(--trans);
+  }
+  .q-input:focus{border-color:var(--accent);box-shadow:var(--glow)}
+  .q-input.ok{border-color:var(--accent-3);color:var(--accent-3)}
+  .q-input.bad{border-color:var(--danger);color:var(--danger);animation:shake .4s}
+  @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-7px)}75%{transform:translateX(7px)}}
+  .q-fb{min-height:26px;margin-top:12px;font-size:.9rem;font-weight:600}
+  .q-fb.ok{color:var(--accent-3)}
+  .q-fb.bad{color:var(--danger)}
+  .q-actions{display:flex;gap:10px;margin-top:18px}
+  .btn{
+    flex:1;padding:13px;border-radius:var(--radius-sm);border:1px solid var(--border);
+    background:var(--panel);color:var(--text);font-family:var(--font-cn);font-size:.92rem;font-weight:700;
+    cursor:pointer;transition:var(--trans);
+  }
+  .btn:hover{background:var(--panel-hover);transform:translateY(-1px)}
+  .btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;border-color:transparent;box-shadow:0 6px 20px color-mix(in srgb,var(--accent) 32%,transparent)}
+  .btn.primary:hover{filter:brightness(1.08)}
+  .btn:disabled{opacity:.45;cursor:not-allowed;transform:none}
+  .q-result{text-align:center;padding:20px 0}
+  .q-result .big{font-family:var(--font-en);font-size:3.2rem;font-weight:800;color:var(--accent)}
+  .q-result .txt{color:var(--text-dim);margin:6px 0 4px}
+  .q-result .acc{font-size:1rem;color:var(--accent-3);font-weight:700}
+  .scope-note{text-align:center;font-size:.76rem;color:var(--text-faint);margin-top:14px}
+
+  .empty{text-align:center;padding:70px 20px;color:var(--text-faint)}
+  .empty .e{font-size:2.6rem;margin-bottom:12px;opacity:.6}
+
+  footer{text-align:center;color:var(--text-faint);font-size:.76rem;padding:40px 20px 10px;line-height:1.9}
+  footer a{color:var(--accent);text-decoration:none}
+
+  @media(max-width:640px){
+    .wrap{padding:0 14px}
+    .brand h1{font-size:1.02rem}
+    .view-toggle button{padding:8px 11px;font-size:.8rem}
+    .stat{padding:9px 15px;min-width:88px}
+    thead th,tbody td{padding:9px 11px}
+    td.base,td.past{font-size:.9rem}
+    .cards{grid-template-columns:repeat(auto-fill,minmax(148px,1fr))}
+    .card{height:120px}
+    .q-base{font-size:1.9rem}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap hd">
+    <div class="brand">
+      <div class="logo">V<sub style="font-size:.5em">2</sub></div>
+      <div>
+        <h1>英语不规则动词表</h1>
+        <div class="sub">IRREGULAR VERBS · 100 词 · 11 类变化规律</div>
+      </div>
+    </div>
+    <div class="hd-tools">
+      <button class="icon-btn" id="themeBtn" title="切换主题">🌙</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <h2>动词过去式不规则变化速查</h2>
+    <p>按规律分组 · 支持搜索 / 卡片 / 自测</p>
+    <div class="stats">
+      <div class="stat"><b id="sTotal">100</b><span>动词总数</span></div>
+      <div class="stat"><b id="sGroup">11</b><span>变化规律</span></div>
+      <div class="stat"><b id="sShow">100</b><span>当前显示</span></div>
+    </div>
+  </section>
+
+  <div class="controls">
+    <div class="search-row">
+      <div class="search-box">
+        <span class="ic">🔍</span>
+        <input id="search" type="text" placeholder="搜索动词 / 过去式 / 中文释义…" autocomplete="off">
+        <button class="clear-s" id="clearBtn">✕</button>
+      </div>
+      <div class="view-toggle" id="viewToggle">
+        <button data-view="table" class="on">📋 表格</button>
+        <button data-view="card">🃏 卡片</button>
+        <button data-view="quiz">✍️ 自测</button>
+      </div>
+    </div>
+    <div class="chips" id="chips"></div>
+  </div>
+
+  <div id="app"></div>
+</main>
+
+<footer>
+  <div>数据来源：动词过去式不规则变化表格 1 · 表格 2（共 100 词）</div>
+  <div>交互页面 · 单文件离线可用 · 点击卡片翻转 / 点击空白处显示答案</div>
+</footer>
+
+<script>
+/* ===================== 数据 ===================== */
+const GROUPS = [
+  { id:'g1', table:1, no:'1', title:'原形和过去式同形', code:'', verbs:[
+    [1,'beat','beat','敲/击/打'],
+    [2,'cost','cost','花费'],
+    [3,'cut','cut','切/割/剪'],
+    [4,'hit','hit','打/击；撞击'],
+    [5,'hurt','hurt','受伤'],
+    [6,'let','let','让'],
+    [7,'put','put','放置'],
+    [8,'set','set','设立/建立'],
+    [9,'shut','shut','关'],
+    [10,'read','read','阅读'],
+    [11,'spread','spread','展开/张/打开'],
+  ]},
+  { id:'g2', table:1, no:'2', title:'过去式以 ought / aught 结尾', code:'-ought / -aught', verbs:[
+    [12,'bring','brought','带来'],
+    [13,'buy','bought','买'],
+    [14,'fight','fought','打架/战斗'],
+    [15,'think','thought','思考/认为/想'],
+    [16,'catch','caught','抓住'],
+    [17,'teach','taught','教'],
+  ]},
+  { id:'g3', table:1, no:'3', title:'过去式以 ew 结尾', code:'-ew', verbs:[
+    [18,'draw','drew','画画'],
+    [19,'fly','flew','飞'],
+    [20,'blow','blew','吹'],
+    [21,'grow','grew','成长/生长'],
+    [22,'know','knew','知道'],
+    [23,'throw','threw','扔/丢'],
+  ]},
+  { id:'g4', table:1, no:'4', title:'元音字母变化', code:'a/e/i/o/u', verbs:[
+    [24,'wake','woke','醒来'],
+    [25,'awake','awoke','醒来'],
+    [26,'win','won','赢/获胜'],
+    [27,'get','got','得到'],
+    [28,'forget','forgot','忘记'],
+    [29,'ride','rode','骑'],
+    [30,'rise','rose','升起'],
+    [31,'shine','shone','闪耀/发光'],
+    [32,'write','wrote','写'],
+    [33,'drive','drove','驾驶'],
+    [34,'give','gave','给'],
+    [35,'drink','drank','喝'],
+    [36,'begin','began','开始'],
+    [37,'ring','rang','接电话/响铃'],
+    [38,'sing','sang','唱歌'],
+    [39,'sit','sat','坐'],
+    [40,'swim','swam','游泳'],
+    [41,'come','came','来'],
+    [42,'become','became','成为/变得'],
+    [43,'run','ran','跑'],
+    [44,'hang','hung','闲逛/悬挂'],
+    [45,'stick','stuck','坚持'],
+    [46,'dig','dug','挖/掘'],
+    [47,'fall','fell','降落/落下'],
+    [48,'hold','held','拿着/抓住'],
+  ]},
+  { id:'g5', table:1, no:'5', title:'el 变成 old / elt', code:'-old / -elt', verbs:[
+    [49,'sell','sold','售卖'],
+    [50,'tell','told','告诉'],
+    [51,'smell','smelt','闻'],
+    [52,'spell','spelt','拼写'],
+  ]},
+  { id:'g6', table:1, no:'6', title:'加一个 t / 末尾字母变成 t', code:'+t', verbs:[
+    [53,'deal','dealt','处理'],
+    [54,'learn','learnt','学习'],
+    [55,'mean','meant','意思是/打算'],
+    [56,'build','built','建造'],
+    [57,'lend','lent','借'],
+    [58,'send','sent','发送/邮寄'],
+    [59,'spend','spent','花费/度过'],
+    [60,'burn','burnt','燃烧'],
+    [61,'dream','dreamt','做梦'],
+  ]},
+  { id:'g7', table:1, no:'7', title:'ee 改成 e、oo 改成 o', code:'ee→e · oo→o', verbs:[
+    [62,'meet','met','遇见/见面'],
+    [63,'bleed','bled','流血/出血'],
+    [64,'feed','fed','喂养'],
+    [65,'speed','sped','使（加速）'],
+    [66,'choose','chose','选择'],
+    [67,'shoot','shot','射击/开（枪）'],
+  ]},
+  { id:'g8', table:1, no:'8', title:'eep 改成 ept、eel 改成 elt', code:'eep→ept · eel→elt', verbs:[
+    [68,'sleep','slept','睡觉'],
+    [69,'sweep','swept','扫地'],
+    [70,'keep','kept','保持/保存'],
+    [71,'feel','felt','感觉'],
+  ]},
+  { id:'g9', table:1, no:'9', title:'ay 改成 aid', code:'ay→aid', verbs:[
+    [72,'lay','laid','下（蛋）/放置'],
+    [73,'pay','paid','支付'],
+    [74,'say','said','说'],
+  ]},
+  { id:'g10', table:1, no:'10', title:'ake 改成 ook', code:'ake→ook', verbs:[
+    [75,'take','took','拿/带/花费'],
+    [76,'mistake','mistook','误解/误会'],
+    [77,'shake','shook','摇晃'],
+  ]},
+  { id:'g11', table:2, no:'表2', title:'词形完全变化（特殊动词）', code:'', verbs:[
+    [78,'be (am/is/are)','was/were','是/在'],
+    [79,'do','did','做'],
+    [80,'go','went','去'],
+    [81,'have','had','有'],
+    [82,'see','saw','看见'],
+    [83,'eat','ate','吃'],
+    [84,'leave','left','离开'],
+    [85,'make','made','制作'],
+    [86,'lose','lost','丢失/输'],
+    [87,'find','found','寻找'],
+    [88,'speak','spoke','说（某种语言）'],
+    [89,'break','broke','打破'],
+    [90,'stand','stood','站立'],
+    [91,'understand','understood','理解/明白'],
+    [92,'bear','bore','容忍'],
+    [93,'wear','wore','穿戴'],
+    [94,'lead','led','引领/带路'],
+    [95,'lie','lay','躺/处（位）于'],
+    [96,'light','lit','发光'],
+    [97,'freeze','froze','冰冻'],
+    [98,'hear','heard','听见'],
+    [99,'hide','hid','躲藏'],
+    [100,'steal','stole','偷'],
+  ]},
+];
+
+const ALL = GROUPS.flatMap(g => g.verbs.map(v => ({no:v[0],base:v[1],past:v[2],cn:v[3],gid:g.id,gno:g.no,gt:g.title})));
+const TOTAL = ALL.length;
+
+/* ===================== 状态 ===================== */
+const state = {
+  view:'table',
+  q:'',
+  gid:'all',
+  quiz:{ order:[], idx:0, score:0, answered:false, pool:[] },
+  collapsed:new Set(),
+};
+
+/* ===================== 工具 ===================== */
+const $ = s => document.querySelector(s);
+const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function match(v){
+  if(state.gid!=='all' && v.gid!==state.gid) return false;
+  const q = state.q.trim().toLowerCase();
+  if(!q) return true;
+  return (v.base+' '+v.past+' '+v.cn).toLowerCase().includes(q);
+}
+function filtered(){ return ALL.filter(match); }
+
+/* ===================== 渲染：筛选条 ===================== */
+function renderChips(){
+  const c = $('#chips');
+  const items = [{id:'all',label:'全部',n:TOTAL}].concat(GROUPS.map(g=>({id:g.id,label:(g.table===2?'表格2 · ':'')+g.title.split('（')[0],n:g.verbs.length})));
+  c.innerHTML = items.map(it=>{
+    const n = it.id==='all' ? TOTAL : ALL.filter(v=>v.gid===it.id).length;
+    return `<button class="chip ${state.gid===it.id?'on':''}" data-gid="${it.id}">${esc(it.label)}<small>${n}</small></button>`;
+  }).join('');
+  c.querySelectorAll('.chip').forEach(b=>b.onclick=()=>{ state.gid=b.dataset.gid; renderChips(); render(); });
+}
+
+/* ===================== 渲染：主入口 ===================== */
+function render(){
+  const list = filtered();
+  $('#sShow').textContent = list.length;
+  const app = $('#app');
+  if(state.view==='table') renderTable(app,list);
+  else if(state.view==='card') renderCards(app,list);
+  else renderQuiz(app,list);
+  window.__list = list;
+}
+
+/* ---------- 表格视图 ---------- */
+function renderTable(app,list){
+  const byG = {};
+  list.forEach(v=>{ (byG[v.gid]=byG[v.gid]||[]).push(v); });
+  const gids = GROUPS.map(g=>g.id).filter(id=>byG[id]);
+  if(!gids.length){ app.innerHTML = emptyHTML(); return; }
+  let html='';
+  gids.forEach(gid=>{
+    const g = GROUPS.find(x=>x.id===gid);
+    const vs = byG[gid];
+    const col = state.collapsed.has(gid);
+    html += `<section class="sec ${col?'collapsed':''}" data-sec="${gid}">
+      <div class="sec-head">
+        <div class="sec-no">${g.no}</div>
+        <div class="sec-title">${esc(g.title)}${g.code?`<code>${esc(g.code)}</code>`:''}</div>
+        <div class="sec-count">${vs.length} 词</div>
+        <div class="sec-arrow">▼</div>
+      </div>
+      <div class="sec-body">
+        <table>
+          <thead><tr><th>序号</th><th>原形</th><th>过去式</th><th>中文</th></tr></thead>
+          <tbody>
+            ${vs.map(v=>`<tr data-row="${v.no}">
+              <td class="no">${v.no}</td>
+              <td class="base">${esc(v.base)}</td>
+              <td class="past">${esc(v.past)}</td>
+              <td class="cn">${esc(v.cn)}</td>
+            </tr>`).join('')}
+          </tbody>
+        </table>
+      </div>
+    </section>`;
+  });
+  app.innerHTML = html;
+  app.querySelectorAll('.sec-head').forEach(h=>h.onclick=()=>{
+    const gid = h.parentElement.dataset.sec;
+    h.parentElement.classList.toggle('collapsed');
+    state.collapsed.has(gid) ? state.collapsed.delete(gid) : state.collapsed.add(gid);
+  });
+}
+
+/* ---------- 卡片视图 ---------- */
+function renderCards(app,list){
+  if(!list.length){ app.innerHTML = emptyHTML(); return; }
+  app.innerHTML = `<div class="cards">${list.map((v,i)=>`
+    <div class="card" data-i="${i}" style="animation-delay:${Math.min(i*14,420)}ms">
+      <div class="card-in">
+        <div class="card-f">
+          <div class="tag">#${v.no}</div>
+          <div class="w">${esc(v.base)}</div>
+          <div class="c">${esc(v.cn)}</div>
+          <div class="hint">点击翻转 →</div>
+        </div>
+        <div class="card-b">
+          <div class="lab">Past Tense</div>
+          <div class="p">${esc(v.past)}</div>
+          <div class="c">${esc(v.cn)}</div>
+        </div>
+      </div>
+    </div>`).join('')}</div>`;
+  app.querySelectorAll('.card').forEach(c=>c.onclick=()=>c.classList.toggle('flip'));
+}
+
+/* ---------- 自测视图 ---------- */
+function buildQuizPool(list){
+  return list.slice();
+}
+function startQuiz(){
+  const pool = buildQuizPool(filtered());
+  if(!pool.length){ return; }
+  const order = pool.map((_,i)=>i);
+  for(let i=order.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [order[i],order[j]]=[order[j],order[i]]; }
+  state.quiz = { order, idx:0, score:0, answered:false, pool };
+}
+function renderQuiz(app,list){
+  if(!list.length){ app.innerHTML = emptyHTML(); return; }
+  const q = state.quiz;
+  // 池子失效（筛选变化）时重建
+  if(!q.pool || q.pool.length!==list.length || !q.order.length){ startQuiz(); }
+  const qq = state.quiz;
+  if(qq.idx >= qq.pool.length){ return renderQuizResult(app); }
+  const v = qq.pool[qq.order[qq.idx]];
+  app.innerHTML = `<div class="quiz">
+    <div class="q-progress"><i style="width:${(qq.idx/qq.pool.length)*100}%"></i></div>
+    <div class="q-meta"><span>第 ${qq.idx+1} / ${qq.pool.length} 题</span><span>得分 ${qq.score}</span></div>
+    <div class="q-card">
+      <div class="q-tag">${esc(v.gno==='表2'?'表格2':('规则 '+v.gno))}</div>
+      <div class="q-base">${esc(v.base)}</div>
+      <div class="q-cn">${esc(v.cn)}</div>
+      <input class="q-input" id="qInput" type="text" placeholder="输入过去式，回车提交" autocomplete="off" spellcheck="false">
+      <div class="q-fb" id="qFb"></div>
+      <div class="q-actions">
+        <button class="btn" id="qShow">显示答案</button>
+        <button class="btn primary" id="qNext">提交 / 下一题</button>
+      </div>
+    </div>
+    <div class="scope-note">当前范围：${state.gid==='all'?'全部 100 词':esc(GROUPS.find(g=>g.id===state.gid).title)}${state.q?(' · 搜索“'+esc(state.q)+'”'):''}</div>
+  </div>`;
+  const input = $('#qInput');
+  input.focus();
+  const fb = $('#qFb');
+  const submit = ()=>{
+    if(state.quiz.answered){ nextQ(); return; }
+    const ans = input.value.trim().toLowerCase().replace(/\s+/g,'');
+    if(!ans) return;
+    const ok = v.past.toLowerCase().split('/').some(p=>p.replace(/\s+/g,'')===ans);
+    state.quiz.answered = true;
+    if(ok){ state.quiz.score++; input.classList.add('ok'); fb.className='q-fb ok'; fb.textContent='✅ 正确！'; }
+    else{ input.classList.add('bad'); fb.className='q-fb bad'; fb.innerHTML='❌ 正确答案：<b>'+esc(v.past)+'</b>'; }
+    $('#qNext').textContent = state.quiz.idx+1>=state.quiz.pool.length ? '查看成绩 →' : '下一题 →';
+  };
+  const nextQ = ()=>{ state.quiz.idx++; state.quiz.answered=false; renderQuiz($('#app'),filtered()); };
+  $('#qNext').onclick = submit;
+  input.addEventListener('keydown',e=>{ if(e.key==='Enter') submit(); });
+  $('#qShow').onclick = ()=>{
+    if(state.quiz.answered) return;
+    state.quiz.answered = true;
+    input.classList.add('bad');
+    fb.className='q-fb bad';
+    fb.innerHTML='正确答案：<b>'+esc(v.past)+'</b>';
+    $('#qNext').textContent = state.quiz.idx+1>=state.quiz.pool.length ? '查看成绩 →' : '下一题 →';
+  };
+}
+function renderQuizResult(app){
+  const q = state.quiz;
+  const pct = Math.round(q.score/q.pool.length*100);
+  const label = pct>=90?'太棒了！🏆':pct>=75?'不错，继续保持！👍':pct>=60?'及格啦，再练练 💪':'多复习几遍吧 📚';
+  app.innerHTML = `<div class="quiz"><div class="q-card q-result">
+    <div class="big">${pct}%</div>
+    <div class="txt">答对 ${q.score} / ${q.pool.length} 题</div>
+    <div class="acc">${label}</div>
+    <div class="q-actions">
+      <button class="btn" id="qReset">🔁 再来一轮</button>
+      <button class="btn primary" id="qBack">📋 回到表格</button>
+    </div>
+  </div></div>`;
+  $('#qReset').onclick = ()=>{ startQuiz(); renderQuiz($('#app'),filtered()); };
+  $('#qBack').onclick = ()=>{ setView('table'); };
+}
+function emptyHTML(){ return `<div class="empty"><div class="e">🔍</div><div>没有找到匹配的动词，换个关键词试试</div></div>`; }
+
+/* ===================== 视图切换 ===================== */
+function setView(v){
+  state.view = v;
+  document.querySelectorAll('#viewToggle button').forEach(b=>b.classList.toggle('on',b.dataset.view===v));
+  if(v==='quiz') startQuiz();
+  render();
+}
+document.querySelectorAll('#viewToggle button').forEach(b=>b.onclick=()=>setView(b.dataset.view));
+
+/* ===================== 搜索 ===================== */
+let timer=null;
+$('#search').addEventListener('input',e=>{
+  state.q = e.target.value;
+  $('#clearBtn').classList.toggle('show', !!state.q);
+  clearTimeout(timer);
+  timer = setTimeout(()=>{ if(state.view==='quiz') startQuiz(); render(); }, 140);
+});
+$('#clearBtn').onclick = ()=>{ $('#search').value=''; state.q=''; $('#clearBtn').classList.remove('show'); render(); $('#search').focus(); };
+
+/* ===================== 主题 ===================== */
+const themeBtn = $('#themeBtn');
+function applyTheme(t){
+  document.documentElement.dataset.theme = t;
+  themeBtn.textContent = t==='dark' ? '🌙' : '☀️';
+  try{ localStorage.setItem('iv-theme',t); }catch(e){}
+}
+themeBtn.onclick = ()=> applyTheme(document.documentElement.dataset.theme==='dark'?'light':'dark');
+(()=>{ let t='dark'; try{ t=localStorage.getItem('iv-theme')||'dark'; }catch(e){} applyTheme(t); })();
+
+/* ===================== 初始化 ===================== */
+$('#sTotal').textContent = TOTAL;
+$('#sGroup').textContent = GROUPS.length;
+renderChips();
+render();
+</script>
+</body>
+</html>

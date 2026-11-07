@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>8-3 培优 · 阅读理解精读精讲</title>
+<style>
+:root{
+  --paper:#faf7f2;
+  --card:#fffdf9;
+  --ink:#211e1a;
+  --ink-soft:#3d3830;
+  --muted:#77706a;
+  --line:#e3dbcd;
+  --accent:#0f766e;
+  --accent-deep:#0b5a54;
+  --accent-soft:#e7f3f1;
+  --gold:#a97a2c;
+  --gold-soft:#fbf1dd;
+  --good:#2f8f63;
+  --good-bg:#e9f6ee;
+  --bad:#c0595b;
+  --bad-bg:#fcecec;
+  --serif:"Source Han Serif SC","Noto Serif SC","Songti SC",Georgia,"Times New Roman",serif;
+  --sans:"Inter","Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--serif);
+  -webkit-font-smoothing:antialiased;
+  line-height:1.5;
+}
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--accent),#59b3a8);z-index:900;transition:width .1s linear}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(900px 380px at 12% -10%,rgba(89,179,168,.30),transparent 60%),
+    radial-gradient(700px 320px at 92% 0%,rgba(169,122,44,.22),transparent 62%),
+    linear-gradient(160deg,#132b29 0%,#1b3b38 45%,#0e2422 100%);
+  color:#f4efe6;
+  padding:58px 0 74px;
+}
+.hero::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
+  background-size:44px 44px;
+  mask-image:radial-gradient(70% 60% at 50% 40%,#000 30%,transparent 100%);
+}
+.wrap{max-width:1080px;margin:0 auto;padding:0 26px;position:relative}
+.kicker{
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;
+  color:#8fd1c6;
+  border:1px solid rgba(143,209,198,.35);border-radius:999px;padding:7px 15px;
+  background:rgba(255,255,255,.04);
+}
+.kicker i{width:6px;height:6px;border-radius:50%;background:#8fd1c6;display:inline-block}
+h1{
+  font-size:clamp(30px,4.4vw,46px);line-height:1.18;margin:22px 0 14px;font-weight:600;
+  letter-spacing:.01em;
+}
+h1 em{font-style:normal;color:#f0c987}
+.lede{color:#cdd8d2;font-size:16.5px;max-width:640px;margin:0;line-height:1.85}
+.hero-meta{display:flex;flex-wrap:wrap;gap:26px;margin-top:30px;font-family:var(--sans);font-size:13px;color:#a9bdb6}
+.hero-meta b{display:block;color:#f4efe6;font-size:15px;font-weight:600;margin-top:4px;letter-spacing:.02em}
+
+/* ---------- tabs ---------- */
+.tabbar-wrap{position:sticky;top:0;z-index:800;background:rgba(250,247,242,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.tabbar{display:flex;gap:6px;overflow-x:auto;padding:12px 0;scrollbar-width:none}
+.tabbar::-webkit-scrollbar{display:none}
+.tab{
+  font-family:var(--sans);font-size:13.5px;letter-spacing:.01em;
+  border:1px solid transparent;background:transparent;color:var(--muted);
+  padding:9px 16px;border-radius:999px;cursor:pointer;white-space:nowrap;
+  transition:.18s;display:flex;align-items:center;gap:8px;
+}
+.tab span.n{font-size:11px;opacity:.6}
+.tab:hover{color:var(--ink);background:#f1ece2}
+.tab.on{background:var(--accent);color:#fff;box-shadow:0 6px 18px -8px rgba(15,118,110,.9)}
+.tab.on span.n{opacity:.85}
+
+/* ---------- panels ---------- */
+main{padding:44px 0 90px}
+.panel{display:none;animation:fade .35s ease}
+.panel.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+.section-head{display:flex;align-items:baseline;gap:14px;margin:0 0 26px}
+.section-head h2{font-size:24px;margin:0;font-weight:600;letter-spacing:.01em}
+.section-head .hint{font-family:var(--sans);font-size:12.5px;color:var(--muted)}
+
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:20px;
+  padding:38px 42px;box-shadow:0 1px 0 #fff inset,0 22px 48px -34px rgba(40,30,10,.45);
+  margin-bottom:26px;
+}
+@media(max-width:720px){.card{padding:24px 20px;border-radius:16px}}
+
+.ptag{
+  display:inline-flex;align-items:center;gap:9px;font-family:var(--sans);
+  font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-deep);
+  background:var(--accent-soft);border-radius:999px;padding:6px 14px;margin-bottom:20px;
+}
+.ptag i{width:5px;height:5px;border-radius:50%;background:var(--accent)}
+
+article p{margin:0 0 1.05em;font-size:17.5px;line-height:2.02;color:var(--ink-soft);text-align:justify}
+article p:last-child{margin-bottom:0}
+article .cn{font-family:var(--sans);font-size:14.5px;color:var(--muted);font-style:normal}
+@media(max-width:720px){article p{font-size:16.5px;line-height:1.95}}
+
+/* interactive word */
+em.v{
+  font-style:normal;cursor:pointer;position:relative;
+  color:#0c625b;
+  border-bottom:1.6px dotted rgba(15,118,110,.62);
+  padding-bottom:1px;
+  transition:background .15s,color .15s,border-color .15s;
+}
+em.v:hover{background:var(--accent-soft);color:var(--accent-deep);border-bottom-color:var(--accent)}
+em.v.active{background:#d6ede9;border-bottom:1.6px solid var(--accent);border-radius:3px}
+em.v::after{
+  content:"";display:none;
+}
+
+/* popover */
+#pop{
+  position:absolute;z-index:1000;width:min(352px,calc(100vw - 32px));
+  background:var(--card);border:1px solid #d9cfbd;border-radius:15px;
+  box-shadow:0 26px 60px -18px rgba(30,20,5,.42),0 2px 0 #fff inset;
+  padding:16px 18px 15px;opacity:0;transform:translateY(6px) scale(.985);
+  transition:opacity .16s ease,transform .16s ease;pointer-events:none;
+}
+#pop.show{opacity:1;transform:none;pointer-events:auto}
+#pop .pw{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;font-size:21px;font-weight:600;letter-spacing:.01em}
+#pop .pw .ipa{font-family:var(--sans);font-size:13px;color:var(--muted);font-weight:400}
+#pop .pos{font-family:var(--sans);font-size:11px;color:var(--gold);background:var(--gold-soft);border-radius:5px;padding:2px 7px;letter-spacing:.04em}
+#pop .cn{margin-top:9px;font-size:15px;color:var(--ink);font-family:var(--sans)}
+#pop .sep{height:1px;background:var(--line);margin:13px 0 11px}
+#pop .ex{font-size:14.5px;line-height:1.75;color:var(--ink-soft)}
+#pop .ex b{color:var(--accent-deep);font-weight:600}
+#pop .excn{margin-top:6px;font-family:var(--sans);font-size:12.5px;color:var(--muted);line-height:1.7}
+#pop .tip{font-family:var(--sans);font-size:11px;color:#a29a8e;margin-top:11px;letter-spacing:.02em}
+
+/* questions */
+.q{border-top:1px solid var(--line);padding:26px 0 6px}
+.q:first-of-type{border-top:none}
+.qhead{display:flex;gap:12px;font-size:17px;line-height:1.7;font-weight:600;margin-bottom:14px}
+.qnum{
+  flex:none;width:26px;height:26px;border-radius:8px;background:#efe7d8;color:#8a6a2f;
+  font-family:var(--sans);font-size:12.5px;font-weight:700;display:grid;place-items:center;margin-top:3px;
+}
+.opts{display:grid;gap:8px;padding-left:38px}
+@media(max-width:720px){.opts{padding-left:0}}
+.opt{
+  display:flex;gap:11px;align-items:flex-start;
+  border:1px solid var(--line);background:#fff;border-radius:11px;
+  padding:11px 14px;cursor:pointer;font-size:15.5px;line-height:1.6;color:var(--ink-soft);
+  transition:.16s;font-family:var(--sans);
+}
+.opt:hover{border-color:#bccfcb;background:#fcfdfc;transform:translateX(2px)}
+.opt .ltr{flex:none;font-weight:700;color:#a49a8a;width:14px}
+.opt.correct{background:var(--good-bg);border-color:#8fc7a9}
+.opt.correct .ltr{color:var(--good)}
+.opt.wrong{background:var(--bad-bg);border-color:#e2a9aa}
+.opt.wrong .ltr{color:var(--bad)}
+.opt.dim{opacity:.62}
+.explain{
+  display:none;margin:14px 0 0 38px;padding:15px 18px;
+  background:#fbf7ee;border-left:3px solid var(--gold);border-radius:0 11px 11px 0;
+  font-family:var(--sans);font-size:13.8px;line-height:1.85;color:#4c453a;
+}
+@media(max-width:720px){.explain{margin-left:0}}
+.explain.show{display:block;animation:fade .3s ease}
+.explain .k{color:var(--gold);font-weight:700;letter-spacing:.04em;font-size:12px;display:block;margin-bottom:5px}
+.explain q{font-family:var(--serif);font-style:italic;color:#6b5a3a}
+.explain .ansline{margin-top:8px;color:var(--accent-deep);font-weight:600}
+
+/* score / answer bar */
+.answerbar{
+  display:flex;flex-wrap:wrap;align-items:center;gap:12px;justify-content:space-between;
+  border-top:1px dashed var(--line);margin-top:20px;padding-top:20px;
+}
+.answerbar .key{font-family:var(--sans);font-size:13px;color:var(--muted);letter-spacing:.02em}
+.answerbar .key b{color:var(--accent-deep);letter-spacing:.08em;margin-left:6px}
+.btn{
+  font-family:var(--sans);font-size:13.5px;border-radius:10px;padding:10px 18px;cursor:pointer;
+  border:1px solid var(--accent);background:var(--accent);color:#fff;transition:.18s;letter-spacing:.02em;
+}
+.btn:hover{background:var(--accent-deep);border-color:var(--accent-deep);transform:translateY(-1px)}
+.btn.ghost{background:transparent;color:var(--accent-deep);border-color:#c3d6d2}
+.btn.ghost:hover{background:var(--accent-soft);transform:none}
+
+/* analysis grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(198px,1fr));gap:14px}
+.mini{background:#fdfbf5;border:1px solid var(--line);border-radius:13px;padding:18px 20px}
+.mini h4{margin:0 0 8px;font-family:var(--sans);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+.mini p{margin:0;font-family:var(--sans);font-size:13.8px;line-height:1.8;color:#4c453a}
+.flow{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.flow span{font-family:var(--sans);font-size:12.5px;background:#f0ece2;color:#5d564a;border-radius:7px;padding:6px 11px;position:relative}
+.flow span:not(:last-child)::after{content:"→";position:absolute;right:-13px;color:#b9b1a2;font-size:11px}
+
+/* long sentences */
+.sent{border-left:2px solid #d8cfbe;padding:2px 0 2px 18px;margin:0 0 20px}
+.sent:last-child{margin-bottom:0}
+.sent .en{font-size:16.5px;line-height:1.95;margin:0 0 7px;color:var(--ink-soft)}
+.sent .en u{text-decoration:none;background:linear-gradient(transparent 62%,#f5e3bd 62%);padding:0 1px}
+.sent .zh{font-family:var(--sans);font-size:13.5px;color:var(--muted);line-height:1.8;margin:0 0 6px}
+.sent .pt{font-family:var(--sans);font-size:13px;color:var(--accent-deep);line-height:1.8;margin:0}
+.sent .pt b{background:var(--accent-soft);border-radius:4px;padding:1px 5px;font-weight:600}
+
+/* cloze */
+select.ck{
+  font-family:var(--sans);font-size:14px;color:var(--accent-deep);font-weight:600;
+  border:1px solid #b9cfca;border-bottom-width:2px;background:#f4fbf9;
+  border-radius:7px;padding:2px 6px;margin:0 3px;cursor:pointer;appearance:none;
+  text-align:center;
+}
+select.ck:focus{outline:2px solid #a8d3cc;outline-offset:1px}
+select.ck.ok{background:var(--good-bg);border-color:#8fc7a9;color:#23704d}
+select.ck.no{background:var(--bad-bg);border-color:#e2a9aa;color:#a24446}
+
+/* glossary */
+.gloss-head{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;margin-bottom:22px}
+.chips{display:flex;gap:7px;flex-wrap:wrap}
+.chip{font-family:var(--sans);font-size:12.5px;border:1px solid var(--line);background:#fff;color:var(--muted);border-radius:999px;padding:7px 14px;cursor:pointer;transition:.15s}
+.chip:hover{border-color:#c3d6d2;color:var(--ink)}
+.chip.on{background:#173b37;color:#fff;border-color:#173b37}
+.search{
+  font-family:var(--sans);font-size:14px;padding:10px 15px;border-radius:11px;
+  border:1px solid var(--line);background:#fff;min-width:230px;color:var(--ink);
+}
+.search:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(15,118,110,.1)}
+
+table{width:100%;border-collapse:collapse;font-size:14.5px}
+thead th{
+  position:sticky;top:57px;background:var(--paper);z-index:2;
+  text-align:left;font-family:var(--sans);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:#9c9284;font-weight:600;padding:12px 14px;border-bottom:1.5px solid var(--line);
+}
+tbody tr{border-bottom:1px solid #f0eadf;transition:background .15s}
+tbody tr:hover{background:#fdfbf4}
+tbody td{padding:15px 14px;vertical-align:top;line-height:1.65}
+tbody td.wd{font-family:var(--serif);font-size:17px;font-weight:600;color:#125e57;white-space:nowrap}
+tbody td.wd small{display:block;font-family:var(--sans);font-size:12px;color:#a49a8a;font-weight:400;margin-top:2px;letter-spacing:.01em}
+tbody td.pos{font-family:var(--sans);font-size:12px;color:var(--gold);white-space:nowrap}
+tbody td.cn{font-family:var(--sans);font-size:14px;color:var(--ink-soft)}
+tbody td.eg{font-size:14.5px;color:#4c453a;line-height:1.7}
+tbody td.eg small{display:block;font-family:var(--sans);font-size:12.5px;color:#a49a8a;margin-top:4px;line-height:1.65}
+@media(max-width:860px){
+  thead{display:none}
+  table,tbody,tr,td{display:block;width:100%}
+  tbody tr{padding:14px 4px;border-bottom:1px solid #eee6d8}
+  tbody td{padding:3px 4px;border:none}
+  tbody td.wd{font-size:18px}
+}
+.count{font-family:var(--sans);font-size:12.5px;color:var(--muted)}
+
+svg.icon{width:15px;height:15px;flex:none;opacity:.55}
+
+/* reading-restore result */
+.result{
+  margin-top:18px;font-family:var(--sans);font-size:14px;border-radius:12px;padding:15px 18px;display:none;
+  background:var(--accent-soft);color:#134e48;border:1px solid #cbe4df;
+}
+.result.show{display:block}
+.result b{font-size:16px}
+
+/* ---------- speaker buttons ---------- */
+.spk{
+  flex:none;width:26px;height:26px;border-radius:50%;
+  border:1px solid #c6d8d4;background:#fff;color:var(--accent-deep);
+  display:inline-flex;align-items:center;justify-content:center;cursor:pointer;
+  transition:.16s;margin-left:8px;vertical-align:middle;padding:0;
+}
+.spk svg{width:13px;height:13px;display:block}
+.spk:hover{background:var(--accent-soft);border-color:var(--accent);transform:scale(1.08)}
+.spk.playing{background:var(--accent);border-color:var(--accent);color:#fff;animation:spkpulse 1s ease-in-out infinite}
+@keyframes spkpulse{50%{box-shadow:0 0 0 5px rgba(15,118,110,.18)}}
+.pspk{opacity:.4}
+.pspk:hover{opacity:1}
+td .spk{margin-left:8px}
+#pop .spk{margin-left:4px}
+
+footer{border-top:1px solid var(--line);padding:34px 0 50px;color:#a49a8a;font-family:var(--sans);font-size:12.5px;line-height:1.9}
+footer b{color:#6b6255;font-weight:600}
+.note{background:#fdf7e8;border:1px solid #efe0bc;border-radius:11px;padding:13px 17px;font-family:var(--sans);font-size:13px;color:#7a6a45;line-height:1.75;margin-bottom:22px}
+@media print{
+  .tabbar-wrap,#progress,#pop,.btn{display:none!important}
+  .panel{display:block!important}
+  .card{box-shadow:none;break-inside:avoid}
+  body{background:#fff}
+}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker"><i></i>第十八章 · 阅读理解 · 真题汇编</div>
+    <h1>8-3 培优 · <em>阅读精读精讲</em></h1>
+    <p class="lede">三页真题，三篇文章。逐句精读、逐题拆解，文章里划线的生词生短语<b style="color:#f0c987;font-weight:600">点亮即可查看</b>释义与例句——读到哪儿，查到哪儿；每个单词、例句、段落旁都有 🔊，点击即可朗读。</p>
+    <div class="hero-meta">
+      <div>PASSAGE<b>A · B · 阅读还原 A</b></div>
+      <div>LEVEL<b>七年级 / 培优</b></div>
+      <div>生词短语<b>61 条</b></div>
+      <div>题目<b>9 题全解</b></div>
+    </div>
+  </div>
+</header>
+
+<div class="tabbar-wrap">
+  <div class="wrap">
+    <div class="tabbar" role="tablist">
+      <button class="tab on" data-t="t1">阅读单选 A <span class="n">青霉素的诞生</span></button>
+      <button class="tab" data-t="t2">阅读单选 B <span class="n">一只蚂蚁的任务</span></button>
+      <button class="tab" data-t="t3">阅读还原 A <span class="n">如何更自信</span></button>
+      <button class="tab" data-t="t4">生词 · 生短语 <span class="n">61</span></button>
+    </div>
+  </div>
+</div>
+
+<main>
+<div class="wrap">
+
+<!-- ============ PANEL 1 ============ -->
+<section class="panel on" id="t1">
+  <div class="section-head"><h2>阅读单选 · A</h2><span class="hint">记叙文 / 说明性叙事 · 约 300 词</span></div>
+
+  <div class="card">
+    <div class="ptag"><i></i>Passage A — The Discovery of Penicillin</div>
+    <article>
+      <p>Fleming saw many <em class="v" data-v="soldier">soldiers</em> die from <em class="v" data-v="infection">infections</em>（感染） in their <em class="v" data-v="wound">wounds</em> as he worked in a hospital during World War Ⅰ. This made Fleming decide to find a way to help the body <em class="v" data-v="fight">fight</em> infections.</p>
+
+      <p>In September 1928, Fleming left some glass <em class="v" data-v="dish">dishes</em> on a <em class="v" data-v="bench">bench</em> in his <em class="v" data-v="laboratory">laboratory</em> for two weeks. When he came back, he noticed something <em class="v" data-v="puzzling">puzzling</em>. <em class="v" data-v="bacteria">Bacteria</em>（细菌） were growing on all the glass dishes except one. On this dish <em class="v" data-v="mould">mould</em>（霉菌） had started to grow — the kind found on old bread. The mould seemed to be <em class="v" data-v="giveoff">giving off</em> something that stopped the bacteria from growing. Fleming called it “mould juice”. He tried it on other bacteria, and it killed them, too. Fleming became <em class="v" data-v="wildjoy">wild with joy</em> and named it <em class="v" data-v="penicillin">penicillin</em>.</p>
+
+      <p><em class="v" data-v="unfortunately">Unfortunately</em>, Fleming's <em class="v" data-v="boss">boss</em> thought he was <em class="v" data-v="waste">wasting</em> his time and it was <em class="v" data-v="impossible">impossible</em> to kill bacteria at that time. Fleming did a few more <em class="v" data-v="experiment">experiments</em> with penicillin, and he also wrote about it so other <em class="v" data-v="scientist">scientists</em> could learn about it. However, because no one seemed <em class="v" data-v="interestedin">interested in</em> his <em class="v" data-v="discovery">discovery</em>, he forgot about penicillin and started to work on other things.</p>
+
+      <p>In 1939, Ernest Chain, a scientist, and his boss, Howard Florey, were looking for <em class="v" data-v="medicine">medicines</em> that could kill bacteria. They discovered Fleming's notes and decided to test penicillin. In 1940, they gave penicillin to some sick mice, who <em class="v" data-v="survive">survived</em> later. But those who didn't get it died. Florey <em class="v" data-v="declare">declared</em>: “It looks like a <em class="v" data-v="miracle">miracle</em>!” By 1943, the final tests on humans were finished successfully and the world had its first <em class="v" data-v="antibiotic">antibiotic</em>（抗生素） medicine.</p>
+    </article>
+
+    <div class="answerbar">
+      <div class="key">答案速查<b>1A　2C　3B　4D</b></div>
+      <div style="display:flex;gap:10px">
+        <button class="btn ghost" data-reveal="t1">显示全部解析</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ptag"><i></i>语篇分析</div>
+    <div class="grid">
+      <div class="mini"><h4>体裁</h4><p>记叙 + 说明的科普叙事文。以时间顺序讲述一个科学发现的完整过程。</p></div>
+      <div class="mini"><h4>主旨</h4><p>青霉素从“意外发现—无人重视—被人重新拾起—成为世界第一种抗生素药物”的诞生历程。</p></div>
+      <div class="mini"><h4>结构</h4>
+        <div class="flow"><span>起因(战争·感染)</span><span>意外发现(1928)</span><span>被冷落(老板/同行)</span><span>重获重视(1939-43)</span></div>
+      </div>
+      <div class="mini"><h4>解题钥匙</h4><p>全文是“时间轴”结构，抓住 <b>1928 / 1939 / 1940 / 1943</b> 四个年份，第 3、4 题几乎不用读细节也能定位。</p></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ptag"><i></i>逐题精解</div>
+
+    <div class="q" data-ans="A">
+      <div class="qhead"><span class="qnum">1</span><span>Why did bacteria stop growing on one of the dishes?</span></div>
+      <div class="opts">
+        <div class="opt" data-o="A"><span class="ltr">A</span><span>The mould juice killed them.</span></div>
+        <div class="opt" data-o="B"><span class="ltr">B</span><span>Some old bread was on the dish.</span></div>
+        <div class="opt" data-o="C"><span class="ltr">C</span><span>There was something special in the lab.</span></div>
+        <div class="opt" data-o="D"><span class="ltr">D</span><span>The dish was on the bench for two weeks.</span></div>
+      </div>
+      <div class="explain">
+        <span class="k">定位与解析</span>
+        定位第二段：<q>On this dish mould had started to grow … The mould seemed to be giving off something that stopped the bacteria from growing. Fleming called it “mould juice”.</q> 霉菌（mould）分泌出的“霉菌汁”抑制并杀死了细菌，正是它让那一个培养皿里的细菌停止生长。<br>
+        <b>排除：</b>B 项“面包”只是霉菌的来源，不是杀菌的原因；C 项“实验室里有特别的东西”文中毫无依据；D 项“放了两周”只交代了时间，不是原因。<br>
+        <span class="ansline">答案 A｜mould juice = 后来命名的 penicillin</span>
+      </div>
+    </div>
+
+    <div class="q" data-ans="C">
+      <div class="qhead"><span class="qnum">2</span><span>Fleming had to give up his study on penicillin because ______.</span></div>
+      <div class="opts">
+        <div class="opt" data-o="A"><span class="ltr">A</span><span>something else was worth doing</span></div>
+        <div class="opt" data-o="B"><span class="ltr">B</span><span>doing experiments cost much money</span></div>
+        <div class="opt" data-o="C"><span class="ltr">C</span><span>no scientists showed an interest in it</span></div>
+        <div class="opt" data-o="D"><span class="ltr">D</span><span>his boss didn't believe his new discovery</span></div>
+      </div>
+      <div class="explain">
+        <span class="k">定位与解析</span>
+        题干问“为什么放弃”，第三段末尾有一个现成的 <q>because</q>：<q>However, because no one seemed interested in his discovery, he forgot about penicillin and started to work on other things.</q> —— 因为“没有人对他的发现感兴趣”，所以他把青霉素放下了。<br>
+        <b>易错项 D：</b>老板认为他在浪费时间，这是“阻力”之一，但原文把“放弃”直接挂在 because 从句上，而这个从句说的是“同行没人感兴趣”。做因果题时，一定要找题干对应的那个 because，不要用常识补齐。<br>
+        <b>排除：</b>A、B 项文中均未提及（没说缺钱、也没说别的事更值得做）。<br>
+        <span class="ansline">答案 C｜忠实于原文的 because 从句</span>
+      </div>
+    </div>
+
+    <div class="q" data-ans="B">
+      <div class="qhead"><span class="qnum">3</span><span>What is Paragraph 4 mainly about?</span></div>
+      <div class="opts">
+        <div class="opt" data-o="A"><span class="ltr">A</span><span>The discovery of penicillin.</span></div>
+        <div class="opt" data-o="B"><span class="ltr">B</span><span>The great work of Chain and Florey.</span></div>
+        <div class="opt" data-o="C"><span class="ltr">C</span><span>The tests on sick mice and humans.</span></div>
+        <div class="opt" data-o="D"><span class="ltr">D</span><span>The value of Fleming's notes about penicillin.</span></div>
+      </div>
+      <div class="explain">
+        <span class="k">定位与解析</span>
+        第四段以 Chain 和 Florey 为主角展开：他们寻找杀菌的药 → 看到弗莱明的笔记 → 决定测试青霉素 → 先在小鼠身上试验 → 再在人体上完成试验。整段讲的是这两人“接棒并完成了青霉素的研究”。<br>
+        <b>排除：</b>A 项“发现青霉素”发生在第二段（弗莱明），时间与人都不对；C 项只是本段的一个细节（试验步骤），不能概括整段；D 项“笔记的价值”只是他们工作的起点，范围太窄。<br>
+        <span class="ansline">答案 B｜段落主旨 = 主体人物 + 主体行为</span>
+      </div>
+    </div>
+
+    <div class="q" data-ans="D">
+      <div class="qhead"><span class="qnum">4</span><span>Which might be the best title of the text?</span></div>
+      <div class="opts">
+        <div class="opt" data-o="A"><span class="ltr">A</span><span>The Life of Fleming</span></div>
+        <div class="opt" data-o="B"><span class="ltr">B</span><span>The Story of Ernest Chain</span></div>
+        <div class="opt" data-o="C"><span class="ltr">C</span><span>The Science of Fighting Infections</span></div>
+        <div class="opt" data-o="D"><span class="ltr">D</span><span>The Birth of the World's First Antibiotic Medicine</span></div>
+      </div>
+      <div class="explain">
+        <span class="k">定位与解析</span>
+        标题要覆盖全文主线。全文从 1928 年意外发现，到 1943 年完成人体试验，末句收束于 <q>the world had its first antibiotic medicine</q> —— 这正是全文的落点，D 项“世界第一种抗生素药物的诞生”完全对应。<br>
+        <b>排除：</b>A 项只写了弗莱明，且“生平”范围过大（文中没写他的童年、求学）；B 项只写了第四段的人物；C 项太笼统，没有点出“青霉素”这一核心，也丢掉了“发现—诞生”的时间线索。<br>
+        <span class="ansline">答案 D｜标题 = 全文主线 + 首尾落点</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ptag"><i></i>长难句拆解</div>
+    <div class="sent">
+      <p class="en">Fleming saw many soldiers <u>die from infections</u> in their wounds <u>as</u> he worked in a hospital during World War Ⅰ.</p>
+      <p class="zh">一战期间在一家医院工作时，弗莱明看到许多士兵因伤口感染而死去。</p>
+      <p class="pt"><b>see sb do sth</b> 看见某人做某事（强调整个过程）；<b>as</b> 引导时间状语从句，“当……的时候”，比 when 更强调“同时”。</p>
+    </div>
+    <div class="sent">
+      <p class="en">On this dish mould had started to grow — <u>the kind found on old bread</u>.</p>
+      <p class="zh">这个培养皿里长出了霉菌——就是旧面包上长的那种。</p>
+      <p class="pt">破折号后是 <b>同位语</b>，补充说明 mould；<b>the kind (that is) found on old bread</b> 中 found 是过去分词作后置定语，相当于一个省略的定语从句。</p>
+    </div>
+    <div class="sent">
+      <p class="en">Fleming's boss thought <u>he was wasting his time</u> and <u>it was impossible to kill bacteria</u> at that time.</p>
+      <p class="zh">弗莱明的老板认为他在浪费时间，而且那时候杀死细菌是不可能的。</p>
+      <p class="pt">thought 后跟两个并列的<b>宾语从句</b>（第二个 that 省略）；<b>it</b> 是形式主语，真正的主语是 to kill bacteria。</p>
+    </div>
+    <div class="sent">
+      <p class="en">But <u>those who didn't get it</u> died.</p>
+      <p class="zh">但那些没有得到青霉素的小鼠都死了。</p>
+      <p class="pt"><b>who didn't get it</b> 是定语从句修饰 those；those who… 是常考的“那些……的人”结构。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PANEL 2 ============ -->
+<section class="panel" id="t2">
+  <div class="section-head"><h2>阅读单选 · B</h2><span class="hint">记叙文 · 成长故事 · 约 260 词</span></div>
+
+  <div class="card">
+    <div class="ptag"><i></i>Passage B — Rita and Her Ant</div>
+    <article>
+      <p>At the beginning of the school year, each student would be given a special job for which they would be <em class="v" data-v="responsible">responsible</em>（负责任的） for the whole <em class="v" data-v="term">term</em>. Rita, a quiet and <em class="v" data-v="hardworking">hard-working</em> girl, hoped for an exciting task, like <em class="v" data-v="takecareof">taking care of</em> the class plants. <em class="v" data-v="instead">Instead</em>, she received a small box with <em class="v" data-v="sand">sand</em> and a small <em class="v" data-v="ant">ant</em>.</p>
+
+      <p>Even though the teacher explained that this task was very special, Rita could not help feeling <em class="v" data-v="disappointed">disappointed</em>. However, she decided to <em class="v" data-v="doonesbest">do her best</em> with her new job. She began to study and care for the ant, learning about its <em class="v" data-v="habitat">habitat</em>（栖息地） and needs. She made the box a <em class="v" data-v="comfortable">comfortable</em> home for the ant, and it grew much bigger than anyone expected.</p>
+
+      <p>Rita's efforts caught the attention of her science teacher, Mr. Thompson. He turned her work into a class project, and Rita became the class <em class="v" data-v="expert">expert</em>（专家） on ants. Her hard work helped the whole class learn about ant <em class="v" data-v="behaviour">behaviour</em> and habitats. They even built a small ant farm in the classroom to <em class="v" data-v="observe">observe</em> the ant <em class="v" data-v="closely">closely</em>.</p>
+
+      <p><em class="v" data-v="gradually">Gradually</em>, Rita's <em class="v" data-v="classmate">classmates</em> became more and more interested in the ant project. They started asking her questions and observing the ant's behaviour themselves. Rita <em class="v" data-v="organize">organized</em> a <em class="v" data-v="presentation">presentation</em> where she shared her <em class="v" data-v="finding">findings</em> with the whole school during the <em class="v" data-v="sciencefair">science fair</em>.</p>
+
+      <p>At the end of the year, Rita's class was <em class="v" data-v="recognize">recognized</em> as the best of the year. Rita was as well <em class="v" data-v="praise">praised</em> for her hard work and how she <em class="v" data-v="turninto">turned a small task into</em> something big. Rita learned that every task, no matter how small, could <em class="v" data-v="makeadiff">make a big difference</em>. She also learned that sometimes the most <em class="v" data-v="unexpected">unexpected</em> things can lead to great <em class="v" data-v="success">success</em>.</p>
+    </article>
+
+    <div class="answerbar">
+      <div class="key">答案速查<b>1B　2D　3A　4C</b></div>
+      <button class="btn ghost" data-reveal="t2">显示全部解析</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ptag"><i></i>语篇分析</div>
+    <div class="grid">
+      <div class="mini"><h4>体裁</h4><p>记叙文（成长类）。人物—起因—转折—结果，情绪线非常清晰。</p></div>
+      <div class="mini"><h4>主旨</h4><p>再小的任务只要认真去做，也能带来大不同（every task, no matter how small, could make a big difference）。</p></div>
+      <div class="mini"><h4>情绪线</h4>
+        <div class="flow"><span>期待</span><span>失望</span><span>认真对待</span><span>被关注</span><span>被认可</span></div>
+      </div>
+      <div class="mini"><h4>解题钥匙</h4><p>第 2 题考“情绪词”，第 4 题考“主旨句”。记叙文的最后一两句几乎总是答案所在。</p></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ptag"><i></i>逐题精解</div>
+
+    <div class="q" data-ans="B">
+      <div class="qhead"><span class="qnum">1</span><span>What was Rita's job this term?</span></div>
+      <div class="opts">
+        <div class="opt" data-o="A"><span class="ltr">A</span><span>To look after plants.</span></div>
+        <div class="opt" data-o="B"><span class="ltr">B</span><span>To raise an ant.</span></div>
+        <div class="opt" data-o="C"><span class="ltr">C</span><span>To become an expert.</span></div>
+        <div class="opt" data-o="D"><span class="ltr">D</span><span>To build an ant farm.</span></div>
+      </div>
+      <div class="explain">
+        <span class="k">定位与解析</span>
+        第一段：<q>she received a small box with sand and a small ant</q>，之后 <q>She began to study and care for the ant</q> —— 她真正分到的任务是“养一只蚂蚁”。<br>
+        <b>易错项 A：</b>照顾植物是她 <q>hoped for</q>（希望得到的）任务，不是实际分配的，注意 hoped for 与 received 的对比，这是命题人最爱的“愿望 vs 事实”陷阱。C 项“成为专家”是她后来被大家承认的身份，不是任务本身；D 项 ant farm 是全班后来一起搭建的，主体不是她个人任务。<br>
+        <span class="ansline">答案 B｜raise = 饲养，对应 care for the ant</span>
+      </div>
+    </div>
+
+    <div class="q" data-ans="D">
+      <div class="qhead"><span class="qnum">2</span><span>How did Rita feel about receiving the task at first?</span></div>
+      <div class="opts">
+        <div class="opt" data-o="A"><span class="ltr">A</span><span>Cool.</span></div>
+        <div class="opt" data-o="B"><span class="ltr">B</span><span>Bored.</span></div>
+        <div class="opt" data-o="C"><span class="ltr">C</span><span>Angry.</span></div>
+        <div class="opt" data-o="D"><span class="ltr">D</span><span>Unhappy.</span></div>
+      </div>
+      <div class="explain">
+        <span class="k">定位与解析</span>
+        第二段开头：<q>Rita could not help feeling disappointed.</q> disappointed（失望的）属于负面情绪，四个选项中只有 unhappy 与之同义。<br>
+        <b>排除：</b>A 项 cool 表示“酷、淡定”，与文意相反；B 项 bored 是“无聊、觉得没意思”，强调的是乏味，而原文强调的是“期待落空后的失落”；C 项 angry 是“生气”，文中她并没有生气，反而决定 do her best，态度是积极的。<br>
+        <span class="ansline">答案 D｜情绪词替换：disappointed → unhappy</span>
+      </div>
+    </div>
+
+    <div class="q" data-ans="A">
+      <div class="qhead"><span class="qnum">3</span><span>What was the final result of Rita's special job?</span></div>
+      <div class="opts">
+        <div class="opt" data-o="A"><span class="ltr">A</span><span>Her class became No. 1 of the year.</span></div>
+        <div class="opt" data-o="B"><span class="ltr">B</span><span>She gave a report to the whole school.</span></div>
+        <div class="opt" data-o="C"><span class="ltr">C</span><span>The class learned much knowledge about ants.</span></div>
+        <div class="opt" data-o="D"><span class="ltr">D</span><span>She caught the attention of the science teacher.</span></div>
+      </div>
+      <div class="explain">
+        <span class="k">定位与解析</span>
+        题干关键词是 <b>final result</b>（最终结果）。末段第一句：<q>At the end of the year, Rita's class was recognized as the best of the year.</q> best of the year = No. 1 of the year。<br>
+        <b>排除：</b>B、C、D 都是过程性事件（做展示、学到知识、引起老师注意），发生在年中而非年末；命题人正是用这些“真事”来干扰“最终结果”。<br>
+        <span class="ansline">答案 A｜时间标志 at the end of the year</span>
+      </div>
+    </div>
+
+    <div class="q" data-ans="C">
+      <div class="qhead"><span class="qnum">4</span><span>What can we learn from Rita's story?</span></div>
+      <div class="opts">
+        <div class="opt" data-o="A"><span class="ltr">A</span><span>Actions speak louder than words.</span></div>
+        <div class="opt" data-o="B"><span class="ltr">B</span><span>The harder you work, the luckier you'll be.</span></div>
+        <div class="opt" data-o="C"><span class="ltr">C</span><span>A small task could make a big difference.</span></div>
+        <div class="opt" data-o="D"><span class="ltr">D</span><span>Great success depends on the most unexpected things.</span></div>
+      </div>
+      <div class="explain">
+        <span class="k">定位与解析</span>
+        主旨题，直接锁定末段点题句：<q>Rita learned that every task, no matter how small, could make a big difference.</q> 与 C 项几乎逐词对应。<br>
+        <b>排除：</b>A 项讲“行动胜于言辞”，文中没有“说 vs 做”的对比；B 项把成功归于运气，与文章强调的“认真做事”相反；D 项 depends on 过于绝对，原文是 <q>sometimes</q>，且“意外的事”只是次要感悟，不是文章重心。<br>
+        <span class="ansline">答案 C｜主旨题看末段 + 警惕绝对化词语</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ptag"><i></i>长难句拆解</div>
+    <div class="sent">
+      <p class="en">Each student would be given a special job <u>for which they would be responsible</u> for the whole term.</p>
+      <p class="zh">每个学生都会分到一项特别的任务，并要为它负责整个学期。</p>
+      <p class="pt">被动语态 + <b>“介词 + which”定语从句</b>：be responsible <b>for</b> the job → for which。七年级只需读懂“这项任务他们要负责一学期”。</p>
+    </div>
+    <div class="sent">
+      <p class="en"><u>Even though</u> the teacher explained that this task was very special, Rita <u>could not help feeling</u> disappointed.</p>
+      <p class="zh">尽管老师解释说这项任务很特别，丽塔还是忍不住感到失望。</p>
+      <p class="pt"><b>even though</b> 引导让步状语从句，“尽管”；<b>can't help doing sth</b> 忍不住做某事（help 后接动名词，是固定搭配）。</p>
+    </div>
+    <div class="sent">
+      <p class="en">Rita learned that every task, <u>no matter how small</u>, could make a big difference.</p>
+      <p class="zh">丽塔明白了：每一项任务，无论多么微小，都能带来很大的不同。</p>
+      <p class="pt"><b>no matter how + adj.</b> 引导让步状语，插在主语和谓语之间作补充说明，相当于 however small every task is。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PANEL 3 ============ -->
+<section class="panel" id="t3">
+  <div class="section-head"><h2>阅读还原 · A</h2><span class="hint">说明文 / 建议类 · 五选五</span></div>
+
+  <div class="note">原扫描件第三节标题下另有一个字母「B」，但该页到此结束，<b>没有 B 篇正文</b>，故此页只收录 A 篇。</div>
+
+  <div class="card">
+    <div class="ptag"><i></i>Passage — How to Be More Confident</div>
+    <article id="cloze">
+      <p><em class="v" data-v="confidence">Confidence</em> is very important. It can help you <em class="v" data-v="develop">develop</em> a healthy <em class="v" data-v="attitude">attitude</em>（态度）. But how can we be more confident?
+        <span class="blank"><select class="ck" data-b="1"><option value="">__1__</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></span>
+      </p>
+
+      <p><b>Speak louder.</b><br>
+      When you are not confident, you may speak in a voice so low that other people can <em class="v" data-v="hardly">hardly</em> hear you.
+        <span class="blank"><select class="ck" data-b="2"><option value="">__2__</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></span>
+      Your voice can help you become more confident.</p>
+
+      <p><span class="blank"><select class="ck" data-b="3"><option value="">__3__</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></span><br>
+      Taking exercise makes you tired, but <em class="v" data-v="relaxed">relaxed</em>. A strong body helps you be full of confidence.</p>
+
+      <p><b><em class="v" data-v="encourage">Encourage</em> yourself.</b><br>
+      Write down a list of things you did during the day to see how many things you did well. Did you finish your homework on time?
+        <span class="blank"><select class="ck" data-b="4"><option value="">__4__</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></span>
+      Give yourself <em class="v" data-v="praise">praise</em> for the good things you have done.</p>
+
+      <p><b>Don't be afraid of <em class="v" data-v="failure">failure</em>（失败）.</b><br>
+        <span class="blank"><select class="ck" data-b="5"><option value="">__5__</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></span>
+      It will be easier for you to become more confident if you understand that. Try to start again and believe you can do better.</p>
+
+      <p style="margin-top:26px;padding-top:20px;border-top:1px dashed var(--line);font-size:16.5px;line-height:2">
+        <b>选项</b><br>
+        A. Play sports.<br>
+        B. Failure is part of life.<br>
+        C. Here are some <em class="v" data-v="suggestion">suggestions</em>.<br>
+        D. Did you give your friends help?<br>
+        E. Try to speak loud enough to make people hear you.
+      </p>
+    </article>
+
+    <div class="answerbar">
+      <div class="key">答案速查<b>1C &nbsp;2E &nbsp;3A &nbsp;4D &nbsp;5B</b></div>
+      <div style="display:flex;gap:10px">
+        <button class="btn" id="checkCloze">批改我的答案</button>
+        <button class="btn ghost" id="revealCloze">直接看答案</button>
+      </div>
+    </div>
+    <div class="result" id="clozeResult"></div>
+  </div>
+
+  <div class="card">
+    <div class="ptag"><i></i>解题思路 · 五选五三步法</div>
+    <div class="grid">
+      <div class="mini"><h4>第一步 · 看位置</h4><p>空在段首 → 多是<b>主题句/小标题</b>；空在段中 → 承上启下；空在段尾 → <b>总结或过渡</b>。本篇第 3 空单独成行、后接 "Taking exercise…"，必是这一段的小标题。</p></div>
+      <div class="mini"><h4>第二步 · 找同现</h4><p>上下句里重复出现的词就是线索：exercise ↔ sports；speak in a voice so low ↔ speak loud enough；failure ↔ failure is part of life。</p></div>
+      <div class="mini"><h4>第三步 · 验逻辑</h4><p>把选项代进去通读一遍，看人称、时态、句式是否一致。第 4 空前的 "Did you finish…?" 决定了它必须也是一个 <b>Did you…?</b> 问句。</p></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ptag"><i></i>逐空精解</div>
+    <div class="q">
+      <div class="qhead"><span class="qnum">1</span><span>__1__ 　（段尾）</span></div>
+      <div class="explain show" style="margin-left:0">
+        <span class="k">解析</span>
+        前句提出问题 <q>But how can we be more confident?</q>，后文立刻给出四条建议（Speak louder / 锻炼 / Encourage yourself / Don't be afraid of failure）。空处需要一句“承上启下”的过渡：<b>C. Here are some suggestions.（下面是一些建议）</b>。这是典型的“设问 + 总起”结构。
+        <div class="ansline" style="margin-top:8px">答案 C</div>
+      </div>
+    </div>
+    <div class="q">
+      <div class="qhead"><span class="qnum">2</span><span>__2__ 　（段中）</span></div>
+      <div class="explain show" style="margin-left:0">
+        <span class="k">解析</span>
+        本段小标题是 <b>Speak louder</b>；前句说“说话声音低到别人几乎听不见”，后句说“你的声音能帮你变得更自信”。空处要给出解决办法，且必须与“声音”有关 → <b>E. Try to speak loud enough to make people hear you.</b>
+        <div class="ansline" style="margin-top:8px">答案 E｜同现词：voice / hear / speak loud</div>
+      </div>
+    </div>
+    <div class="q">
+      <div class="qhead"><span class="qnum">3</span><span>__3__ 　（段首独立成行）</span></div>
+      <div class="explain show" style="margin-left:0">
+        <span class="k">解析</span>
+        空后一句是 <q>Taking exercise makes you tired, but relaxed.</q> 空处应是本段小标题，且要涵盖“锻炼”。五个选项中只有 <b>A. Play sports.</b> 属于运动类，与小标题的简短祈使句形式也完全一致。
+        <div class="ansline" style="margin-top:8px">答案 A｜exercise ↔ sports</div>
+      </div>
+    </div>
+    <div class="q">
+      <div class="qhead"><span class="qnum">4</span><span>__4__ 　（段中）</span></div>
+      <div class="explain show" style="margin-left:0">
+        <span class="k">解析</span>
+        空前是 <q>Did you finish your homework on time?</q>，空后是 <q>Give yourself praise for the good things you have done.</q> 空处应是与前句并列的又一个自问句，句式必须是 <b>Did you…?</b> → <b>D. Did you give your friends help?</b> 这也是“写下你做过的好事”的另一个例子。
+        <div class="ansline" style="margin-top:8px">答案 D｜句式一致（平行结构）</div>
+      </div>
+    </div>
+    <div class="q">
+      <div class="qhead"><span class="qnum">5</span><span>__5__ 　（小标题之后）</span></div>
+      <div class="explain show" style="margin-left:0">
+        <span class="k">解析</span>
+        小标题是 <b>Don't be afraid of failure</b>，空后一句 <q>It will be easier for you to become more confident if you understand that.</q> 中的 <b>that</b> 必须指代空处那句话的内容——“失败是生活的一部分” → <b>B. Failure is part of life.</b> 代词 that 的回指，是五选五最硬的线索。
+        <div class="ansline" style="margin-top:8px">答案 B｜that 指代前句</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ptag"><i></i>长难句拆解</div>
+    <div class="sent">
+      <p class="en">When you are not confident, you may speak <u>in a voice so low that other people can hardly hear you</u>.</p>
+      <p class="zh">当你没有自信时，你说话的声音可能低到别人几乎听不见。</p>
+      <p class="pt"><b>so + adj. + that…</b> 如此……以至于……；<b>hardly</b> 是“几乎不”，本身含否定意义，不能再加 not。</p>
+    </div>
+    <div class="sent">
+      <p class="en">It will be easier for you to become more confident <u>if you understand that</u>.</p>
+      <p class="zh">如果你明白这一点，变得自信就会容易一些。</p>
+      <p class="pt"><b>It is + adj. + for sb + to do sth</b> 句型，it 为形式主语；that 指代上一句“失败是生活的一部分”。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PANEL 4 ============ -->
+<section class="panel" id="t4">
+  <div class="section-head"><h2>生词 · 生短语汇总</h2><span class="hint">按文中出现顺序 · 点击任意一行可回到原文</span></div>
+
+  <div class="card">
+    <div class="gloss-head">
+      <div class="chips">
+        <button class="chip on" data-f="all">全部</button>
+        <button class="chip" data-f="word">单词</button>
+        <button class="chip" data-f="phrase">短语</button>
+        <button class="chip" data-f="n">名词</button>
+        <button class="chip" data-f="v">动词</button>
+        <button class="chip" data-f="adj">形容词/副词</button>
+      </div>
+      <input class="search" id="q" placeholder="搜索单词、释义或例句…">
+      <div class="count" id="cnt"></div>
+    </div>
+    <table>
+      <thead>
+        <tr><th style="width:17%">词 / 短语</th><th style="width:7%">词性</th><th style="width:27%">释义</th><th>例句</th></tr>
+      </thead>
+      <tbody id="gloss"></tbody>
+    </table>
+  </div>
+</section>
+
+<footer class="wrap" style="padding-left:26px;padding-right:26px">
+  <b>8-3 培优 · 阅读精读精讲</b>　依据扫描件原文逐页转录整理，答案与解析为逐题人工校对。<br>
+  生词筛选标准：以七年级教材词汇为基准，剔除已学基础词，保留理解文章所必需的高频超纲词与固定搭配。<br>
+  提示：文中所有虚线下划线的词都可点击，弹出释义卡；键盘 <b>Esc</b> 可关闭。
+</footer>
+
+</div>
+</main>
+
+<div id="pop" role="dialog" aria-live="polite">
+  <div class="pw"><span class="w"></span><span class="ipa"></span><span class="pos"></span><button class="spk" id="popW" title="朗读单词"></button></div>
+  <div class="cn"></div>
+  <div class="sep"></div>
+  <div class="ex"></div>
+  <div class="excn"></div>
+  <button class="spk" id="popE" title="朗读例句"></button>
+  <div class="tip">点击别处关闭 · 🔊 可朗读单词/例句</div>
+</div>
+
+<script>
+/* ================= 词汇库 ================= */
+const V = {
+ soldier:{w:"soldier",ipa:"/ˈsəʊldʒə(r)/",pos:"n.",cn:"士兵；军人",t:"n",ex:"The <b>soldier</b> was badly hurt in the fight.",exCn:"那名士兵在战斗中受了重伤。"},
+ infection:{w:"infection",ipa:"/ɪnˈfekʃn/",pos:"n.",cn:"感染；传染（病）",t:"n",ex:"Wash your hands often to keep away from <b>infections</b>.",exCn:"经常洗手可以预防感染。"},
+ wound:{w:"wound",ipa:"/wuːnd/",pos:"n.",cn:"伤口；创伤",t:"n",ex:"The nurse cleaned the <b>wound</b> on his arm.",exCn:"护士清洗了他手臂上的伤口。"},
+ fight:{w:"fight",ipa:"/faɪt/",pos:"v.",cn:"对抗；与……作斗争",t:"v",ex:"Vitamins help our body <b>fight</b> illnesses.",exCn:"维生素帮助我们的身体抵抗疾病。"},
+ dish:{w:"dish",ipa:"/dɪʃ/",pos:"n.",cn:"碟子；盘子（文中指培养皿）",t:"n",ex:"Please put the apples on that <b>dish</b>.",exCn:"请把苹果放在那个碟子里。"},
+ bench:{w:"bench",ipa:"/bentʃ/",pos:"n.",cn:"长凳；（实验室的）工作台",t:"n",ex:"Grandpa is sitting on a <b>bench</b> in the park.",exCn:"爷爷正坐在公园的长凳上。"},
+ laboratory:{w:"laboratory",ipa:"/ləˈbɒrətri/",pos:"n.",cn:"实验室（口语常略作 lab）",t:"n",ex:"The students did the test in the <b>laboratory</b>.",exCn:"学生们在实验室里做了这个实验。"},
+ puzzling:{w:"puzzling",ipa:"/ˈpʌzlɪŋ/",pos:"adj.",cn:"令人费解的；使人困惑的",t:"adj",ex:"He asked a <b>puzzling</b> question and nobody could answer it.",exCn:"他问了一个令人费解的问题，没有人能回答。"},
+ bacteria:{w:"bacteria",ipa:"/bækˈtɪəriə/",pos:"n.",cn:"细菌（bacterium 的复数）",t:"n",ex:"Some <b>bacteria</b> are good for our health.",exCn:"有些细菌对我们的健康有益。"},
+ mould:{w:"mould",ipa:"/məʊld/",pos:"n.",cn:"霉菌（美式拼写 mold）",t:"n",ex:"There is green <b>mould</b> on the old bread.",exCn:"那块旧面包上长了绿色的霉菌。"},
+ giveoff:{w:"give off",ipa:"/ɡɪv ɒf/",pos:"短语",cn:"散发出（气味、光、热等）",t:"phrase",ex:"The flowers <b>give off</b> a sweet smell at night.",exCn:"这些花在夜里散发出甜甜的香味。"},
+ wildjoy:{w:"wild with joy",ipa:"/waɪld wɪð dʒɔɪ/",pos:"短语",cn:"欣喜若狂",t:"phrase",ex:"The children were <b>wild with joy</b> when they saw the snow.",exCn:"孩子们看到雪时欣喜若狂。"},
+ penicillin:{w:"penicillin",ipa:"/ˌpenɪˈsɪlɪn/",pos:"n.",cn:"青霉素（盘尼西林）",t:"n",ex:"<b>Penicillin</b> has saved millions of lives.",exCn:"青霉素挽救了数百万人的生命。"},
+ unfortunately:{w:"unfortunately",ipa:"/ʌnˈfɔːtʃənətli/",pos:"adv.",cn:"不幸的是；遗憾的是",t:"adj",ex:"<b>Unfortunately</b>, I left my homework at home.",exCn:"不幸的是，我把作业忘在家里了。"},
+ boss:{w:"boss",ipa:"/bɒs/",pos:"n.",cn:"老板；上司",t:"n",ex:"His <b>boss</b> asked him to finish the report today.",exCn:"他的老板让他今天完成报告。"},
+ waste:{w:"waste",ipa:"/weɪst/",pos:"v.",cn:"浪费；白费",t:"v",ex:"Don't <b>waste</b> water when you wash your hands.",exCn:"洗手时不要浪费水。"},
+ impossible:{w:"impossible",ipa:"/ɪmˈpɒsəbl/",pos:"adj.",cn:"不可能的",t:"adj",ex:"It is <b>impossible</b> to finish the work in one hour.",exCn:"一小时内完成这项工作是不可能的。"},
+ experiment:{w:"experiment",ipa:"/ɪkˈsperɪmənt/",pos:"n.",cn:"实验；试验",t:"n",ex:"We did an interesting <b>experiment</b> in science class.",exCn:"我们在科学课上做了一个有趣的实验。"},
+ scientist:{w:"scientist",ipa:"/ˈsaɪəntɪst/",pos:"n.",cn:"科学家",t:"n",ex:"She wants to be a <b>scientist</b> like Yuan Longping.",exCn:"她想成为像袁隆平那样的科学家。"},
+ interestedin:{w:"be interested in",ipa:"/ˈɪntrəstɪd ɪn/",pos:"短语",cn:"对……感兴趣",t:"phrase",ex:"More and more students <b>are interested in</b> Chinese history.",exCn:"越来越多的学生对中国历史感兴趣。"},
+ discovery:{w:"discovery",ipa:"/dɪˈskʌvəri/",pos:"n.",cn:"发现；被发现的事物",t:"n",ex:"The <b>discovery</b> of penicillin changed the world.",exCn:"青霉素的发现改变了世界。"},
+ medicine:{w:"medicine",ipa:"/ˈmedsn/",pos:"n.",cn:"药；药物；医学",t:"n",ex:"Take the <b>medicine</b> three times a day.",exCn:"这药一天服三次。"},
+ survive:{w:"survive",ipa:"/səˈvaɪv/",pos:"v.",cn:"幸存；活下来；比……活得长",t:"v",ex:"Few plants can <b>survive</b> in the desert.",exCn:"很少有植物能在沙漠中存活。"},
+ declare:{w:"declare",ipa:"/dɪˈkleə(r)/",pos:"v.",cn:"宣布；宣称；声明",t:"v",ex:"The teacher <b>declared</b> the winner of the game.",exCn:"老师宣布了比赛的获胜者。"},
+ miracle:{w:"miracle",ipa:"/ˈmɪrəkl/",pos:"n.",cn:"奇迹",t:"n",ex:"It was a <b>miracle</b> that nobody was hurt.",exCn:"没有人受伤，这真是个奇迹。"},
+ antibiotic:{w:"antibiotic",ipa:"/ˌæntibaɪˈɒtɪk/",pos:"n. / adj.",cn:"抗生素；抗菌的",t:"n",ex:"Doctors don't advise taking <b>antibiotics</b> for a cold.",exCn:"医生不建议感冒时服用抗生素。"},
+ responsible:{w:"responsible",ipa:"/rɪˈspɒnsəbl/",pos:"adj.",cn:"有责任的；负责的",t:"adj",ex:"Each student is <b>responsible</b> for cleaning his own desk.",exCn:"每个学生负责清理自己的课桌。"},
+ term:{w:"term",ipa:"/tɜːm/",pos:"n.",cn:"学期；术语；期限",t:"n",ex:"We have a sports meeting every <b>term</b>.",exCn:"我们每学期都有一次运动会。"},
+ hardworking:{w:"hard-working",ipa:"/ˌhɑːd ˈwɜːkɪŋ/",pos:"adj.",cn:"勤奋的；努力工作的",t:"adj",ex:"Rita is a quiet and <b>hard-working</b> girl.",exCn:"丽塔是个安静又勤奋的女孩。"},
+ takecareof:{w:"take care of",ipa:"/teɪk keə(r) ɒv/",pos:"短语",cn:"照顾；照料；处理",t:"phrase",ex:"I <b>take care of</b> my little sister on Sundays.",exCn:"星期天我照顾我的小妹妹。"},
+ instead:{w:"instead",ipa:"/ɪnˈsted/",pos:"adv.",cn:"反而；代替（常放句首或句末）",t:"adj",ex:"He didn't go home. He went to the library <b>instead</b>.",exCn:"他没回家，而是去了图书馆。"},
+ sand:{w:"sand",ipa:"/sænd/",pos:"n.",cn:"沙子；沙地",t:"n",ex:"The children built a castle with <b>sand</b>.",exCn:"孩子们用沙子堆了一座城堡。"},
+ ant:{w:"ant",ipa:"/ænt/",pos:"n.",cn:"蚂蚁",t:"n",ex:"A line of <b>ants</b> is carrying food to the hole.",exCn:"一队蚂蚁正把食物搬进洞里。"},
+ disappointed:{w:"disappointed",ipa:"/ˌdɪsəˈpɔɪntɪd/",pos:"adj.",cn:"失望的；沮丧的",t:"adj",ex:"She was <b>disappointed</b> at the bad news.",exCn:"听到这个坏消息，她很失望。"},
+ doonesbest:{w:"do one's best",ipa:"/duː wʌnz best/",pos:"短语",cn:"尽最大努力",t:"phrase",ex:"Just <b>do your best</b> and don't worry about the result.",exCn:"尽力就好，别担心结果。"},
+ habitat:{w:"habitat",ipa:"/ˈhæbɪtæt/",pos:"n.",cn:"（动植物的）栖息地",t:"n",ex:"The panda's <b>habitat</b> is being protected now.",exCn:"大熊猫的栖息地现在得到了保护。"},
+ comfortable:{w:"comfortable",ipa:"/ˈkʌmftəbl/",pos:"adj.",cn:"舒适的；舒服的",t:"adj",ex:"The box is a <b>comfortable</b> home for the ant.",exCn:"这个盒子是蚂蚁舒适的家。"},
+ expert:{w:"expert",ipa:"/ˈekspɜːt/",pos:"n. / adj.",cn:"专家；熟练的",t:"n",ex:"My uncle is an <b>expert</b> on birds.",exCn:"我叔叔是鸟类专家。"},
+ behaviour:{w:"behaviour",ipa:"/bɪˈheɪvjə(r)/",pos:"n.",cn:"行为；举止（美式 behavior）",t:"n",ex:"We should learn about animals' <b>behaviour</b>.",exCn:"我们应该了解动物的行为。"},
+ observe:{w:"observe",ipa:"/əbˈzɜːv/",pos:"v.",cn:"观察；注意到；遵守",t:"v",ex:"We <b>observe</b> the stars through a telescope.",exCn:"我们用望远镜观察星星。"},
+ closely:{w:"closely",ipa:"/ˈkləʊsli/",pos:"adv.",cn:"仔细地；密切地",t:"adj",ex:"Watch <b>closely</b> and you will see how it works.",exCn:"仔细看，你就会明白它是怎么运作的。"},
+ gradually:{w:"gradually",ipa:"/ˈɡrædʒuəli/",pos:"adv.",cn:"逐渐地；慢慢地",t:"adj",ex:"The weather <b>gradually</b> got warmer.",exCn:"天气逐渐变暖了。"},
+ classmate:{w:"classmate",ipa:"/ˈklɑːsmeɪt/",pos:"n.",cn:"同班同学",t:"n",ex:"My <b>classmates</b> are friendly to me.",exCn:"我的同班同学对我很友好。"},
+ organize:{w:"organize",ipa:"/ˈɔːɡənaɪz/",pos:"v.",cn:"组织；筹办；安排",t:"v",ex:"Our class <b>organized</b> a trip to the museum.",exCn:"我们班组织了一次去博物馆的旅行。"},
+ presentation:{w:"presentation",ipa:"/ˌpreznˈteɪʃn/",pos:"n.",cn:"（口头）展示；报告；演示",t:"n",ex:"She gave a <b>presentation</b> about her project.",exCn:"她就她的项目做了一次展示。"},
+ finding:{w:"finding",ipa:"/ˈfaɪndɪŋ/",pos:"n.",cn:"研究结果；发现（常用复数 findings）",t:"n",ex:"They shared their <b>findings</b> with the class.",exCn:"他们和全班分享了研究结果。"},
+ sciencefair:{w:"science fair",ipa:"/ˈsaɪəns feə(r)/",pos:"短语",cn:"科学展；科技节",t:"phrase",ex:"Our robot won first prize at the <b>science fair</b>.",exCn:"我们的机器人在科学展上获得了一等奖。"},
+ recognize:{w:"recognize",ipa:"/ˈrekəɡnaɪz/",pos:"v.",cn:"认可；承认；认出",t:"v",ex:"Her hard work was <b>recognized</b> by the school.",exCn:"她的努力得到了学校的认可。"},
+ praise:{w:"praise",ipa:"/preɪz/",pos:"v. / n.",cn:"表扬；称赞",t:"v",ex:"The teacher <b>praised</b> him for his good answer.",exCn:"老师表扬了他答案好。"},
+ turninto:{w:"turn ... into",ipa:"/tɜːn ˈɪntuː/",pos:"短语",cn:"把……变成",t:"phrase",ex:"She <b>turned a small task into</b> something big.",exCn:"她把一项小任务做成了大事。"},
+ makeadiff:{w:"make a difference",ipa:"/meɪk ə ˈdɪfrəns/",pos:"短语",cn:"有影响；起作用；带来改变",t:"phrase",ex:"A kind word can <b>make a difference</b>.",exCn:"一句善意的话也能带来改变。"},
+ unexpected:{w:"unexpected",ipa:"/ˌʌnɪkˈspektɪd/",pos:"adj.",cn:"意想不到的；意外的",t:"adj",ex:"We had an <b>unexpected</b> visitor yesterday.",exCn:"昨天我们来了位意想不到的客人。"},
+ success:{w:"success",ipa:"/səkˈses/",pos:"n.",cn:"成功；成功的人或事",t:"n",ex:"Hard work leads to <b>success</b>.",exCn:"努力通向成功。"},
+ confidence:{w:"confidence",ipa:"/ˈkɒnfɪdəns/",pos:"n.",cn:"自信；信心；信任",t:"n",ex:"Speaking louder can give you more <b>confidence</b>.",exCn:"大声说话能给你更多自信。"},
+ attitude:{w:"attitude",ipa:"/ˈætɪtjuːd/",pos:"n.",cn:"态度；看法",t:"n",ex:"A healthy <b>attitude</b> helps you learn better.",exCn:"健康的态度有助于你学得更好。"},
+ hardly:{w:"hardly",ipa:"/ˈhɑːdli/",pos:"adv.",cn:"几乎不（本身含否定意义）",t:"adj",ex:"I could <b>hardly</b> hear him.",exCn:"我几乎听不见他说话。"},
+ suggestion:{w:"suggestion",ipa:"/səˈdʒestʃən/",pos:"n.",cn:"建议；提议（可数）",t:"n",ex:"Here are some <b>suggestions</b> for you.",exCn:"这里有一些给你的建议。"},
+ relaxed:{w:"relaxed",ipa:"/rɪˈlækst/",pos:"adj.",cn:"放松的；轻松的",t:"adj",ex:"I feel <b>relaxed</b> after a walk.",exCn:"散步后我感到很放松。"},
+ encourage:{w:"encourage",ipa:"/ɪnˈkʌrɪdʒ/",pos:"v.",cn:"鼓励；激励",t:"v",ex:"My teacher <b>encourages</b> me to speak English.",exCn:"老师鼓励我说英语。"},
+ failure:{w:"failure",ipa:"/ˈfeɪljə(r)/",pos:"n.",cn:"失败；失败的人或事",t:"n",ex:"<b>Failure</b> is part of life.",exCn:"失败是生活的一部分。"},
+ develop:{w:"develop",ipa:"/dɪˈveləp/",pos:"v.",cn:"培养；养成；发展",t:"v",ex:"Reading helps you <b>develop</b> a good habit.",exCn:"阅读帮助你养成好习惯。"}
+};
+
+/* ================= 标签页 ================= */
+const tabs=document.querySelectorAll('.tab');
+tabs.forEach(t=>t.addEventListener('click',()=>{
+  tabs.forEach(x=>x.classList.remove('on'));
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
+  t.classList.add('on');
+  document.getElementById(t.dataset.t).classList.add('on');
+  window.scrollTo({top:document.querySelector('.tabbar-wrap').offsetTop-2,behavior:'smooth'});
+  hidePop(); stopAll();
+}));
+
+/* ================= 生词弹卡 ================= */
+const pop=document.getElementById('pop');
+let activeEl=null;
+
+function showPop(el){
+  const d=V[el.dataset.v];
+  if(!d) return;
+  if(activeEl) activeEl.classList.remove('active');
+  activeEl=el; el.classList.add('active');
+  pop.querySelector('.w').textContent=d.w;
+  pop.querySelector('.ipa').textContent=d.ipa;
+  pop.querySelector('.pos').textContent=d.pos;
+  pop.querySelector('.cn').textContent=d.cn;
+  pop.querySelector('.ex').innerHTML=d.ex;
+  pop.querySelector('.excn').textContent=d.exCn;
+  curVocab=d; stopAll();
+  pop.classList.add('show');
+  pop.style.visibility='hidden';
+  pop.style.left='0px'; pop.style.top='0px';
+  requestAnimationFrame(()=>{
+    const r=el.getBoundingClientRect();
+    const pr=pop.getBoundingClientRect();
+    const sx=window.scrollX, sy=window.scrollY;
+    let left=r.left+sx+r.width/2-pr.width/2;
+    left=Math.max(14+sx,Math.min(left,sx+document.documentElement.clientWidth-pr.width-14));
+    let top=r.bottom+sy+10;
+    if(r.bottom+pr.height+18>document.documentElement.clientHeight){
+      top=r.top+sy-pr.height-10;
+    }
+    pop.style.left=left+'px';
+    pop.style.top=top+'px';
+    pop.style.visibility='';
+  });
+}
+function hidePop(){
+  pop.classList.remove('show');
+  if(activeEl){activeEl.classList.remove('active');activeEl=null;}
+}
+document.addEventListener('click',e=>{
+  const v=e.target.closest('em.v');
+  if(v){ e.preventDefault(); showPop(v); return; }
+  if(!e.target.closest('#pop')) hidePop();
+});
+document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ hidePop(); stopAll(); } });
+window.addEventListener('scroll',()=>{ if(pop.classList.contains('show')) hidePop(); },{passive:true});
+
+/* ================= 选择题 ================= */
+document.querySelectorAll('.q').forEach(q=>{
+  const ans=q.dataset.ans;
+  if(!ans) return;
+  q.querySelectorAll('.opt').forEach(opt=>{
+    opt.addEventListener('click',()=>{
+      if(q.dataset.done) return;
+      q.dataset.done='1';
+      const pick=opt.dataset.o;
+      q.querySelectorAll('.opt').forEach(o=>{
+        if(o.dataset.o===ans) o.classList.add('correct');
+        else if(o.dataset.o===pick) o.classList.add('wrong');
+        else o.classList.add('dim');
+      });
+      const ex=q.querySelector('.explain');
+      if(ex) ex.classList.add('show');
+    });
+  });
+});
+
+document.querySelectorAll('[data-reveal]').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const panel=document.getElementById(btn.dataset.reveal);
+    panel.querySelectorAll('.q').forEach(q=>{
+      const ans=q.dataset.ans; if(!ans) return;
+      q.dataset.done='1';
+      q.querySelectorAll('.opt').forEach(o=>{
+        o.classList.add(o.dataset.o===ans?'correct':'dim');
+      });
+      const ex=q.querySelector('.explain');
+      if(ex) ex.classList.add('show');
+    });
+    btn.textContent='已显示全部答案';
+  });
+});
+
+/* ================= 阅读还原 ================= */
+const clozeAns={1:'C',2:'E',3:'A',4:'D',5:'B'};
+const sels=[...document.querySelectorAll('#cloze select.ck')];
+sels.forEach(s=>s.addEventListener('change',()=>{
+  s.classList.remove('ok','no');
+  document.getElementById('clozeResult').classList.remove('show');
+}));
+
+document.getElementById('checkCloze').addEventListener('click',()=>{
+  let right=0,empty=0;
+  sels.forEach(s=>{
+    const n=s.dataset.b;
+    s.classList.remove('ok','no');
+    if(!s.value){empty++;return;}
+    if(s.value===clozeAns[n]){s.classList.add('ok');right++;}
+    else s.classList.add('no');
+  });
+  const box=document.getElementById('clozeResult');
+  box.innerHTML='<b>得分：'+right+' / 5</b>'+(empty?'　（还有 '+empty+' 空未选）':'')+
+    (right===5?'　全对，逻辑链抓住了！':'　错的地方看下面的解析，重点找“同现词”和“代词指代”。');
+  box.classList.add('show');
+});
+
+document.getElementById('revealCloze').addEventListener('click',()=>{
+  sels.forEach(s=>{ s.value=clozeAns[s.dataset.b]; s.classList.remove('no'); s.classList.add('ok'); });
+  const box=document.getElementById('clozeResult');
+  box.innerHTML='<b>参考答案：1 C　2 E　3 A　4 D　5 B</b>　已全部填入，可对照上方逐空解析。';
+  box.classList.add('show');
+});
+
+/* ================= 语音朗读（Web Speech API） ================= */
+var curBtn=null, curVocab=null;
+function spkVoices(){ try{ return speechSynthesis.getVoices(); }catch(e){ return []; } }
+function spkPick(){
+  const vs=spkVoices().filter(v=>/^en/i.test(v.lang));
+  const pref=['Google UK English Female','Microsoft Aria Online (Natural) - English (United States)','Microsoft Zira - English (United States)','Microsoft Hazel - English (Great Britain)','Microsoft Susan - English (United Kingdom)'];
+  for(const p of pref){ const f=vs.find(v=>v.name===p); if(f) return f; }
+  return vs[0]||null;
+}
+function stopAll(){
+  if(!('speechSynthesis' in window)) return;
+  speechSynthesis.cancel();
+  document.querySelectorAll('.spk.playing').forEach(b=>b.classList.remove('playing'));
+  curBtn=null;
+}
+function speak(text,btn,rate){
+  if(!('speechSynthesis' in window)){ alert('当前环境不支持语音朗读'); return; }
+  rate=rate||0.9;
+  if(btn && curBtn===btn && speechSynthesis.speaking){ stopAll(); return; }
+  stopAll();
+  const u=new SpeechSynthesisUtterance(text);
+  const v=spkPick(); if(v){ u.voice=v; u.lang=v.lang; } else { u.lang='en-GB'; }
+  u.rate=rate; u.pitch=1;
+  if(btn){ curBtn=btn; btn.classList.add('playing'); }
+  const done=()=>{ if(btn) btn.classList.remove('playing'); curBtn=null; };
+  u.onend=done; u.onerror=done;
+  speechSynthesis.speak(u);
+}
+function cleanEn(t){ return t.replace(/（[^）]*）/g,'').replace(/\s+/g,' ').trim(); }
+const SPK_SVG='<svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 3 9 3 15 6 15 11 19 11 5" stroke="none"/><path d="M15.5 8.5a5 5 0 0 1 0 7" fill="none"/><path d="M18.5 5.5a9 9 0 0 1 0 13" fill="none"/></svg>';
+/* 弹卡：朗读单词 / 例句 */
+const popW=document.getElementById('popW'), popE=document.getElementById('popE');
+popW.innerHTML=SPK_SVG; popE.innerHTML=SPK_SVG;
+popW.addEventListener('click',e=>{ e.stopPropagation(); if(curVocab) speak(curVocab.w,popW); });
+popE.addEventListener('click',e=>{ e.stopPropagation(); if(curVocab) speak(curVocab.ex.replace(/<\/?b>/g,''),popE,0.85); });
+/* 每段正文 / 每个长难句后加朗读按钮 */
+document.querySelectorAll('article p, .sent p.en').forEach(p=>{
+  const b=document.createElement('button');
+  b.className='spk pspk'; b.innerHTML=SPK_SVG; b.title='朗读这段英文';
+  b.addEventListener('click',e=>{ e.stopPropagation(); speak(cleanEn(p.textContent),b,0.85); });
+  p.appendChild(b);
+});
+/* 预热语音列表 */
+if('speechSynthesis' in window){ spkVoices(); speechSynthesis.onvoiceschanged=()=>spkVoices(); }
+
+/* ================= 生词表 ================= */
+const tbody=document.getElementById('gloss');
+const order=Object.keys(V);
+let filter='all', kw='';
+
+function cardTag(t){
+  const m={n:'名词',v:'动词',adj:'形容词/副词',phrase:'短语'};
+  return m[t]||'';
+}
+function render(){
+  const q=kw.trim().toLowerCase();
+  const rows=order.filter(k=>{
+    const d=V[k];
+    if(filter==='word'&&d.t==='phrase') return false;
+    if(filter==='phrase'&&d.t!=='phrase') return false;
+    if(['n','v','adj'].includes(filter)&&d.t!==filter) return false;
+    if(!q) return true;
+    return (d.w+' '+d.cn+' '+d.ex+' '+d.exCn+' '+d.ipa).toLowerCase().includes(q);
+  });
+  tbody.innerHTML=rows.map(k=>{
+    const d=V[k];
+    return '<tr data-k="'+k+'">'+
+      '<td class="wd">'+d.w+'<small>'+d.ipa+'</small><button class="spk" data-gw="'+k+'">'+SPK_SVG+'</button></td>'+
+      '<td class="pos">'+d.pos+'</td>'+
+      '<td class="cn">'+d.cn+'</td>'+
+      '<td class="eg">'+d.ex+'<button class="spk" data-ge="'+k+'">'+SPK_SVG+'</button><small>'+d.exCn+'</small></td>'+
+    '</tr>';
+  }).join('') || '<tr><td colspan="4" style="padding:26px;color:#a49a8a;font-family:var(--sans);font-size:13.5px">没有匹配的词条。</td></tr>';
+  document.getElementById('cnt').textContent='共 '+rows.length+' 条';
+}
+render();
+
+document.querySelectorAll('.chip').forEach(c=>c.addEventListener('click',()=>{
+  document.querySelectorAll('.chip').forEach(x=>x.classList.remove('on'));
+  c.classList.add('on'); filter=c.dataset.f; render();
+}));
+document.getElementById('q').addEventListener('input',e=>{ kw=e.target.value; render(); });
+
+/* 点表格行 → 跳到原文并高亮该词 */
+tbody.addEventListener('click',e=>{
+  const b=e.target.closest('.spk');
+  if(b){ e.stopPropagation();
+    const k=b.dataset.gw||b.dataset.ge; const d=V[k]; if(!d) return;
+    if(b.dataset.gw) speak(d.w,b); else speak(d.ex.replace(/<\/?b>/g,''),b,0.85);
+    return;
+  }
+  const tr=e.target.closest('tr'); if(!tr) return;
+  const k=tr.dataset.k;
+  const target=[...document.querySelectorAll('em.v')].find(x=>x.dataset.v===k);
+  if(!target) return;
+  const panel=target.closest('.panel');
+  const tab=[...document.querySelectorAll('.tab')].find(t=>t.dataset.t===panel.id);
+  if(tab) tab.click();
+  setTimeout(()=>{
+    target.scrollIntoView({behavior:'smooth',block:'center'});
+    showPop(target);
+  },260);
+});
+
+/* ================= 进度条 ================= */
+const bar=document.getElementById('progress');
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+  bar.style.width=(h>0?window.scrollY/h*100:0)+'%';
+},{passive:true});
+</script>
+</body>
+</html>

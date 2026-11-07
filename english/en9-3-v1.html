@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>9-3培优 · 精读精讲 | Unit 1 Here and Now</title>
+<style>
+  :root{
+    --bg:#eef1f8;--bg2:#e6ebf5;--card:#ffffff;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;
+    --line:#e5e7eb;--brand:#4f46e5;--brand-2:#0d9488;--brand-soft:rgba(79,70,229,.08);
+    --accent:#f59e0b;--accent-soft:#fef3c7;--ok:#16a34a;--ok-soft:rgba(22,163,74,.10);--rose:#e11d48;
+    --shadow:0 10px 30px rgba(30,41,59,.10);--shadow-sm:0 4px 14px rgba(30,41,59,.08);--radius:18px;
+    --font:"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",system-ui,-apple-system,sans-serif;
+  }
+  body.dark{
+    --bg:#0f172a;--bg2:#0b1220;--card:#131c31;--ink:#e5edf7;--ink2:#cbd5e1;--muted:#94a3b8;
+    --line:#243049;--brand:#818cf8;--brand-2:#2dd4bf;--brand-soft:rgba(129,140,248,.14);
+    --accent:#fbbf24;--accent-soft:rgba(251,191,36,.16);--ok:#4ade80;--ok-soft:rgba(74,222,128,.12);
+    --rose:#fb7185;--shadow:0 10px 30px rgba(0,0,0,.45);--shadow-sm:0 4px 14px rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:var(--font);color:var(--ink);
+    background:radial-gradient(1100px 500px at 12% -10%, rgba(79,70,229,.16), transparent 60%),
+      radial-gradient(900px 480px at 100% 0%, rgba(13,148,136,.14), transparent 55%),
+      linear-gradient(180deg,var(--bg),var(--bg2));
+    min-height:100vh;line-height:1.75;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 18px 60px}
+  header.hero{position:relative;overflow:hidden;border-radius:0 0 30px 30px;
+    background:linear-gradient(135deg,#4f46e5 0%,#6d28d9 45%,#0d9488 100%);color:#fff;
+    padding:42px 26px 34px;margin-bottom:22px;box-shadow:var(--shadow);}
+  header.hero::after{content:"";position:absolute;inset:0;opacity:.35;
+    background-image:radial-gradient(rgba(255,255,255,.35) 1px,transparent 1px);
+    background-size:22px 22px;mask-image:linear-gradient(180deg,rgba(0,0,0,.6),transparent 75%);}
+  .hero-in{position:relative;z-index:2;max-width:1080px;margin:0 auto}
+  .kicker{display:inline-flex;align-items:center;gap:8px;font-size:.82rem;letter-spacing:.12em;
+    text-transform:uppercase;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);
+    padding:6px 14px;border-radius:999px;backdrop-filter:blur(6px)}
+  h1{margin:16px 0 8px;font-size:clamp(1.5rem,4vw,2.15rem);line-height:1.3;letter-spacing:.01em}
+  h1 .sub{display:block;font-size:.55em;font-weight:500;opacity:.9;margin-top:8px;letter-spacing:.02em}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+  .chip{font-size:.78rem;padding:5px 12px;border-radius:999px;background:rgba(255,255,255,.16);
+    border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(6px)}
+  .hero-note{margin-top:16px;font-size:.85rem;opacity:.9;max-width:760px;line-height:1.7}
+  .toolbar{position:sticky;top:0;z-index:60;display:flex;flex-wrap:wrap;gap:8px;align-items:center;
+    padding:10px 12px;margin:0 0 20px;border-radius:14px;
+    background:color-mix(in srgb,var(--card) 88%,transparent);
+    border:1px solid var(--line);box-shadow:var(--shadow-sm);backdrop-filter:blur(10px);}
+  .toolbar .grow{flex:1}
+  .tool-btn{font-family:inherit;font-size:.82rem;font-weight:600;color:var(--ink);
+    background:var(--brand-soft);border:1px solid transparent;border-radius:10px;
+    padding:8px 13px;cursor:pointer;transition:.18s;display:inline-flex;align-items:center;gap:6px;}
+  .tool-btn:hover{transform:translateY(-1px);box-shadow:var(--shadow-sm)}
+  .tool-btn.on{background:var(--brand);color:#fff}
+  .tool-btn.ghost{background:transparent;border-color:var(--line)}
+  .navlinks{display:flex;gap:6px;flex-wrap:wrap}
+  .navlinks a{font-size:.82rem;font-weight:600;text-decoration:none;color:var(--brand);
+    padding:7px 11px;border-radius:9px;border:1px solid var(--line);background:transparent;transition:.18s;white-space:nowrap}
+  .navlinks a:hover{background:var(--brand-soft)}
+  section.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);padding:26px 26px 30px;margin-bottom:26px;position:relative;overflow:hidden;
+    animation:rise .5s ease both;}
+  @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  section.card::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;
+    background:linear-gradient(90deg,var(--brand),var(--brand-2))}
+  .sec-head{display:flex;align-items:flex-start;gap:14px;flex-wrap:wrap;margin-bottom:6px}
+  .sec-no{flex:0 0 auto;width:44px;height:44px;border-radius:13px;display:grid;place-items:center;
+    font-weight:800;font-size:1.15rem;color:#fff;background:linear-gradient(135deg,var(--brand),var(--brand-2));
+    box-shadow:0 6px 16px rgba(79,70,229,.35)}
+  .sec-title{margin:0;font-size:1.3rem}
+  .sec-title small{display:block;font-weight:500;color:var(--muted);font-size:.8rem;margin-top:3px}
+  .sec-meta{display:flex;flex-wrap:wrap;gap:7px;margin:14px 0 4px}
+  .badge{font-size:.75rem;font-weight:600;padding:4px 11px;border-radius:999px;
+    background:var(--brand-soft);color:var(--brand);border:1px solid transparent}
+  .badge.warm{background:var(--accent-soft);color:#b45309}
+  .badge.gray{background:color-mix(in srgb,var(--muted) 14%,transparent);color:var(--muted)}
+  .badge.ok{background:var(--ok-soft);color:var(--ok)}
+  .lead{color:var(--muted);font-size:.92rem;margin:10px 0 18px}
+  .passage{background:linear-gradient(180deg,color-mix(in srgb,var(--brand) 5%,var(--card)),var(--card));
+    border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:8px 0 18px;
+    font-size:1.06rem;line-height:2.05;letter-spacing:.005em;}
+  .passage p{margin:0 0 14px}
+  .passage p:last-child{margin-bottom:0}
+  .passage .tag{font-size:.72em;color:var(--muted);vertical-align:super}
+  .passage .h{font-weight:800;color:var(--brand)}
+  .w{position:relative;cursor:pointer;color:inherit;border-radius:3px;padding:0 1px;
+    border-bottom:2px solid var(--accent);background:linear-gradient(transparent 60%,var(--accent-soft) 60%);
+    transition:.15s;white-space:nowrap;}
+  .w:hover{filter:brightness(.96);box-shadow:0 2px 0 -1px var(--accent)}
+  .w.active{background:var(--accent);color:#3b2a04;border-bottom-color:#b45309}
+  .gloss{display:none}
+  body.showall .gloss{display:inline;font-size:.8em;color:var(--brand-2);font-weight:600;
+    padding:0 3px;border-bottom:0;white-space:normal}
+  .blank{display:inline-block;min-width:2.4em;text-align:center;font-weight:800;color:var(--brand);
+    background:var(--brand-soft);border-bottom:2px solid var(--brand);border-radius:6px 6px 3px 3px;
+    padding:0 8px;margin:0 2px;cursor:pointer;transition:.15s;font-size:.94em;}
+  .blank:hover{background:color-mix(in srgb,var(--brand) 18%,transparent)}
+  .blank b{font-weight:800}
+  .blank i{display:none;font-style:normal;color:var(--ok);font-weight:800}
+  .blank.open{background:var(--ok-soft);border-bottom-color:var(--ok);color:var(--ok)}
+  .blank.open b{display:none}
+  .blank.open i{display:inline}
+  body.showans .blank{background:var(--ok-soft);border-bottom-color:var(--ok);color:var(--ok)}
+  body.showans .blank b{display:none}
+  body.showans .blank i{display:inline}
+  #pop{position:absolute;z-index:200;width:min(330px,88vw);background:var(--card);
+    border:1px solid var(--line);border-top:4px solid var(--accent);border-radius:14px;
+    box-shadow:0 18px 45px rgba(15,23,42,.28);padding:14px 16px;display:none;}
+  #pop.show{display:block;animation:pop .18s ease}
+  @keyframes pop{from{opacity:0;transform:translateY(6px) scale(.98)}to{opacity:1;transform:none}}
+  #pop .pw{font-size:1.12rem;font-weight:800;color:var(--ink);display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+  #pop .pph{font-size:.82rem;color:var(--brand-2);font-weight:600}
+  #pop .pcn{margin-top:7px;font-size:1rem;font-weight:700;color:var(--brand)}
+  #pop .pnote{margin-top:7px;font-size:.86rem;color:var(--muted);line-height:1.65}
+  #pop .pex{margin-top:10px;padding-top:9px;border-top:1px dashed var(--line);font-size:.9rem}
+  #pop .pex b{color:var(--brand-2)}
+  #pop .pex .cn{color:var(--muted);font-size:.85rem;display:block;margin-top:3px}
+  .pos{display:inline-block;font-size:.72rem;font-weight:700;color:#fff;background:var(--brand-2);
+    border-radius:6px;padding:2px 8px;margin-left:2px}
+  .qstem{font-weight:700;color:var(--ink);margin:2px 0 6px;font-size:1.02rem}
+  .qopts{margin:2px 0 0;padding-left:2px;color:var(--muted);font-size:.92rem}
+  .qopts div{margin:3px 0}
+  .qopts .picked{color:var(--ok);font-weight:800}
+  h3.ans-h{margin:26px 0 12px;font-size:1.05rem;display:flex;align-items:center;gap:9px}
+  h3.ans-h::before{content:"";width:10px;height:10px;border-radius:3px;background:var(--ok);display:inline-block}
+  .ans-list{display:grid;gap:10px}
+  .ans-item{border:1px solid var(--line);border-left:4px solid var(--ok);border-radius:12px;
+    padding:12px 15px;background:color-mix(in srgb,var(--ok) 4%,var(--card))}
+  .ans-item .top{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+  .ans-item .num{font-weight:800;color:var(--ok)}
+  .ans-item .key{font-weight:800;font-size:1.05rem;color:var(--ink);background:var(--ok-soft);
+    padding:1px 10px;border-radius:7px}
+  .ans-item .kt{font-size:.72rem;font-weight:700;color:#fff;background:var(--brand);border-radius:6px;padding:2px 8px}
+  .ans-item ul{margin:8px 0 0;padding-left:20px;color:var(--muted);font-size:.9rem}
+  .ans-item ul li{margin:3px 0}
+  .ans-item .sent{font-size:.92rem;color:var(--ink2);margin-top:6px}
+  .vgroup{margin-top:18px}
+  .vgroup > h3{margin:0 0 10px;font-size:1.02rem;color:var(--brand);display:flex;gap:9px;align-items:center}
+  .vgroup > h3 .dot{width:9px;height:9px;border-radius:50%;background:var(--brand-2)}
+  .vcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px}
+  .vcard{border:1px solid var(--line);border-radius:13px;padding:13px 15px;background:var(--card);
+    box-shadow:var(--shadow-sm);transition:.18s;position:relative;overflow:hidden}
+  .vcard::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--accent)}
+  .vcard:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+  .vcard .hw{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+  .vcard .en{font-weight:800;font-size:1.04rem;color:var(--ink)}
+  .vcard .ph{font-size:.8rem;color:var(--brand-2);font-weight:600}
+  .vcard .cn{margin-top:5px;font-weight:700;color:var(--brand);font-size:.98rem}
+  .vcard .nt{margin-top:5px;font-size:.84rem;color:var(--muted);line-height:1.6}
+  .vcard .ex{margin-top:8px;font-size:.88rem;border-top:1px dashed var(--line);padding-top:8px}
+  .vcard .ex .ecn{display:block;color:var(--muted);font-size:.82rem;margin-top:2px}
+  .callout{border:1px dashed var(--accent);background:var(--accent-soft);border-radius:12px;
+    padding:12px 15px;font-size:.9rem;color:#92400e;margin:12px 0;line-height:1.9}
+  body.dark .callout{color:#fcd34d}
+  details.more{margin-top:14px;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  details.more>summary{cursor:pointer;padding:11px 15px;font-weight:700;color:var(--brand);
+    background:var(--brand-soft);list-style:none;display:flex;justify-content:space-between;align-items:center}
+  details.more>summary::-webkit-details-marker{display:none}
+  details.more>summary::after{content:"▾";transition:.2s;font-size:.9em}
+  details.more[open]>summary::after{transform:rotate(180deg)}
+  details.more .body{padding:14px 16px;font-size:.95rem;line-height:1.9;color:var(--ink2)}
+  details.more .body p{margin:0 0 10px}
+  footer{text-align:center;color:var(--muted);font-size:.82rem;padding:26px 10px 10px;line-height:1.8}
+  kbd{background:var(--brand-soft);border-radius:5px;padding:1px 6px;font-size:.8em;font-weight:700;color:var(--brand)}
+  header.hero kbd{background:rgba(255,255,255,.22);color:#fff;border:1px solid rgba(255,255,255,.45);white-space:nowrap}
+  .jilei{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:22px}
+  .jilei .jh{background:linear-gradient(135deg,#7c3aed,#0d9488);color:#fff;padding:10px 16px;
+    font-weight:800;font-size:.95rem}
+  .jilei .jb{padding:14px 16px}
+  .jilei .qb{padding:10px 12px;border-radius:10px;margin:6px 0;background:var(--brand-soft)}
+  .jilei .qb .q{color:var(--muted);font-size:.9rem}
+  .jilei .qb .a{font-weight:700;color:var(--ok);font-size:1rem;margin-top:3px}
+  .jilei .qb .a u{text-decoration:none;border-bottom:2px solid var(--ok);padding-bottom:1px}
+  .jilei .qb .nt{font-size:.85rem;color:var(--muted);margin-top:5px}
+  .optbox{border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin:8px 0 14px;
+    background:var(--card);font-size:.95rem;line-height:2}
+  .optbox b{color:var(--brand)}
+  .rolecard{border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:0 0 12px;background:var(--card)}
+  .rolecard .who{font-weight:800;color:var(--brand);margin-bottom:4px}
+  @media (max-width:560px){
+    section.card{padding:18px 15px 22px}
+    .passage{padding:15px 14px;font-size:1rem;line-height:1.95}
+    header.hero{padding:30px 18px 26px;border-radius:0 0 22px 22px}
+    .vcards{grid-template-columns:1fr}
+    .sec-no{width:38px;height:38px;font-size:1rem}
+  }
+  @media print{
+    .toolbar,#pop{display:none!important}.spk{display:none!important}body{background:#fff}
+    section.card{box-shadow:none;break-inside:avoid}
+    .w{border-bottom:1px solid #d97706;background:none}
+    body:not(.showall) .gloss{display:inline;color:#0d9488}
+  }
+  .spk{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border:none;border-radius:50%;
+    background:var(--brand-soft);color:var(--brand);cursor:pointer;font-size:.95rem;line-height:1;transition:.15s;flex:0 0 auto}
+  .spk:hover{background:var(--brand);color:#fff;transform:scale(1.08)}
+  .spk:active{transform:scale(.94)}
+  .pw .spk{margin-left:auto;align-self:center}.hw .spk{margin-left:auto}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-in">
+    <span class="kicker">✦ 初中英语 · 话题阅读精讲</span>
+    <h1>9-3培优 · 精读精讲
+      <span class="sub">Unit 1 Here and Now · 阅读理解 D 篇 / 阅读还原六选五 / 完形填空 · 七年级上册</span>
+    </h1>
+    <div class="hero-meta">
+      <span class="chip">3 篇语篇</span>
+      <span class="chip">4 题 + 5 空 + 10 题</span>
+      <span class="chip">60+ 生词短语</span>
+      <span class="chip">含答案 · 逐题解析 · 积累小栈</span>
+    </div>
+    <p class="hero-note">
+      页面把每篇语篇中的<b>生词与生短语</b>用<span style="border-bottom:2px solid #fbbf24;background:linear-gradient(transparent 60%,rgba(254,243,199,.55) 60%)">黄线下划线</span>标出——<b>点击任意划线词</b>即可弹出释义、读音、用法与例句；也可用上方按钮 <kbd>显示全部释义</kbd> 一键对照阅读。<b>点击文中序号</b>可直观显示答案。每篇附<b>积累小栈</b>参考答案。
+    </p>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="toolbar">
+    <div class="navlinks">
+      <a href="#passD">一 · 生物钟 D 篇</a>
+      <a href="#passSix">二 · 六选五</a>
+      <a href="#passCloze">三 · 完形填空</a>
+      <a href="#vocab">生词汇总</a>
+    </div>
+    <span class="grow"></span>
+    <button class="tool-btn" id="btnAllWords" type="button">👁 显示全部释义</button>
+    <button class="tool-btn ghost" id="btnAllAns" type="button">✅ 显示全部答案</button>
+    <button class="tool-btn ghost" id="btnTheme" type="button">🌙 夜间</button>
+  </div>
+
+  <!-- ============ 一、阅读理解 D ============ -->
+  <section class="card" id="passD">
+    <div class="sec-head">
+      <div class="sec-no">一</div>
+      <div><h2 class="sec-title">阅读理解 D · 生物钟与时差 <small>阅读下面短文，从每题 A、B、C 三个选项中选出最佳答案。</small></h2></div>
+    </div>
+    <div class="sec-meta">
+      <span class="badge">主题：人与自然——自然科学</span>
+      <span class="badge gray">语篇类型：说明文</span>
+      <span class="badge gray">词数：229</span>
+      <span class="badge warm">难度 ★★★★☆</span>
+      <span class="badge gray">建议用时 7′</span>
+      <span class="badge ok">正确率 △</span>
+    </div>
+
+    <article class="passage">
+      <p>If you <span class="w" data-k="flyacross">fly across</span> several <span class="w" data-k="timezone">time zones</span>, you may have <span class="w" data-k="jetlag">jet lag</span><span class="tag">（时差反应）</span>. You <span class="w" data-k="arrivein">arrive in</span> a new time zone, but your body is still living on the time in the old time zone. You may be <span class="w" data-k="bereadyfor">ready for</span> dinner <span class="w" data-k="atmidnight">at midnight</span>, and you may want to <span class="w" data-k="sleepallday">sleep all day</span>.</p>
+      <p>People have jet lag because all <span class="w" data-k="livingthings">living things</span> have a <span class="w" data-k="biologicalclock">biological clock</span><span class="tag">（生物钟）</span>. <span class="w" data-k="forexample">For example</span>, plants begin to work <span class="w" data-k="atsunrise">at sunrise</span>. When winter comes, birds <span class="w" data-k="flyto">fly to</span> <span class="w" data-k="warmplaces">warm places</span>. Some <span class="w" data-k="insects">insects</span> like bees also seem to <span class="w" data-k="setalarm">set their alarm clocks</span> to look for food.</p>
+      <p>Some scientists did an <span class="w" data-k="experiment">experiment</span><span class="tag">（实验）</span> with bees in Paris. They put out <span class="w" data-k="sugarwater">sugar water</span> at 4:00 p.m. every day, and the bees came to drink the water at <span class="w" data-k="exactly">exactly</span> the right time. Then the scientists put bees in a <span class="w" data-k="darkroom">dark room</span>. The bees still came out at the same time. Later the scientists <span class="w" data-k="taketo">took the bees to New York</span>. The bees came for the food at the right time again, when it was only 10:00 a.m. in New York. Their bodies were still on Paris time.</p>
+      <p><span class="w" data-k="humans">Humans</span><span class="tag">（人类）</span> have a biological clock too. It tells us when to sleep and eat. Our bodies are <span class="w" data-k="controlledby">controlled by</span> a biological clock, but we can learn to <span class="w" data-k="adjust">adjust</span><span class="tag">（调整）</span> it to different times.</p>
+    </article>
+
+    <details class="more">
+      <summary>📖 参考译文（点击展开）</summary>
+      <div class="body">
+        <p>如果你飞越几个时区，你可能会有时差反应。你到了一个新的时区，但你的身体仍按旧时区的时间运转。你可能半夜就想吃晚饭，也可能想睡上一整天。</p>
+        <p>人们会有时差反应，是因为所有生物都有生物钟。例如，植物在日出时开始“工作”。冬天来临时，鸟儿飞往温暖的地方。一些昆虫（如蜜蜂）似乎也设定了它们的“闹钟”来寻找食物。</p>
+        <p>一些科学家在巴黎用蜜蜂做了一个实验。他们每天下午 4 点摆出糖水，蜜蜂就在准确的时间飞来喝水。然后科学家把蜜蜂放进一间暗室，蜜蜂仍然在同一个时间出来。后来科学家把蜜蜂带到纽约，蜜蜂又在准确的时间出来觅食——而那时纽约才上午 10 点。它们的身体仍按巴黎时间运转。</p>
+        <p>人类也有生物钟。它告诉我们何时睡觉、何时吃饭。我们的身体由生物钟控制，但我们可以学习把它调整到不同的时间。</p>
+      </div>
+    </details>
+
+    <h3 class="ans-h">题目与选项</h3>
+    <div class="ans-list" id="qA"></div>
+
+    <h3 class="ans-h">答案与详解</h3>
+    <div class="ans-list" id="ansA"></div>
+
+    <div class="jilei">
+      <div class="jh">✎ 积累小栈 · 参考答案</div>
+      <div class="jb" id="jileiA"></div>
+    </div>
+  </section>
+
+  <!-- ============ 二、阅读还原六选五 ============ -->
+  <section class="card" id="passSix">
+    <div class="sec-head">
+      <div class="sec-no">二</div>
+      <div><h2 class="sec-title">阅读还原六选五 · 谁是真正善良的？ <small>根据短文内容，从短文后的选项中选出能填入空白处的最佳选项。选项中有一项为多余选项。</small></h2></div>
+    </div>
+    <div class="sec-meta">
+      <span class="badge">主题：人与社会——公益事业</span>
+      <span class="badge gray">语篇类型：记叙文</span>
+      <span class="badge gray">词数：216</span>
+      <span class="badge warm">难度 ★★★★★</span>
+      <span class="badge gray">建议用时 6′</span>
+      <span class="badge ok">正确率 △</span>
+    </div>
+
+    <div class="optbox">
+      <b>备选选项：</b>A. I want to buy some bread.　B. A boy and his mother sit in it.　C. On the way, a man stops Sam.<br>
+      D. They give the man some food and money.　E. It takes him a lot of time, but he finds them all.　F. Harry takes them, but he doesn't give the coins to the man.
+    </div>
+
+    <article class="passage">
+      <p>It is a summer afternoon. Sam is walking home from school. He is very happy because he buys a new book with all his money. <span class="blank" data-n="1"><b>1</b><i>C</i></span> The man is <span class="w" data-k="blind">blind</span>. He can't see anything. He says to Sam, "Please give me some money. I am very <span class="w" data-k="hungry">hungry</span>. <span class="blank" data-n="2"><b>2</b><i>A</i></span>" Sam is sad because he has no money.</p>
+      <p><span class="w" data-k="atthatmoment">At that moment</span>, a <span class="w" data-k="carriage">carriage</span><span class="tag">（马车）</span> comes over. <span class="blank" data-n="3"><b>3</b><i>B</i></span> The boy's name is Harry. Harry stops <span class="w" data-k="infrontof">in front of</span> the carriage. Harry says to his mother, "Let's give the man something."</p>
+      <p>Harry's mother gives Harry some <span class="w" data-k="coins">coins</span><span class="tag">（硬币）</span>. <span class="blank" data-n="4"><b>4</b><i>F</i></span> He <span class="w" data-k="throwinto">throws them into</span> the <span class="w" data-k="grass">grass</span> <span class="w" data-k="bytheroad">by the road</span>. The blind man can't find them because he can't see.</p>
+      <p>Sam sees that. He starts <span class="w" data-k="lookfor">looking for</span> the coins for the blind man. <span class="blank" data-n="5"><b>5</b><i>E</i></span></p>
+      <p>Which of the two boys do you think is <span class="w" data-k="truly">truly</span> <span class="w" data-k="bekindto">kind to</span> the blind man?</p>
+    </article>
+
+    <details class="more">
+      <summary>📖 参考译文（点击展开）</summary>
+      <div class="body">
+        <p>那是一个夏日的下午。萨姆放学步行回家。他非常高兴，因为他用所有的钱买了一本新书。路上，一个人拦住了萨姆。那人是个盲人，什么也看不见。他对萨姆说：“请给我一点钱吧，我很饿。我想买些面包。”萨姆很难过，因为他已经没有钱了。</p>
+        <p>就在这时，一辆马车驶了过来。一个男孩和他的母亲坐在车里。男孩名叫哈里。哈里在马车前停下，对母亲说：“我们给那人一点东西吧。”</p>
+        <p>哈里的母亲给了他一些硬币。哈里接过了硬币，却没有把它们给那个人。他把硬币扔进了路边的草地里。盲人看不见，所以找不到它们。</p>
+        <p>萨姆看到了这一幕。他开始替盲人寻找那些硬币。这费了他不少时间，但他把它们全找到了。</p>
+        <p>两个男孩中，你认为谁对盲人是真正善良的？</p>
+      </div>
+    </details>
+
+    <h3 class="ans-h">题目与选项（点击文中序号可显答案）</h3>
+    <div class="ans-list" id="qB"></div>
+
+    <h3 class="ans-h">答案与详解</h3>
+    <div class="ans-list" id="ansB"></div>
+
+    <div class="jilei">
+      <div class="jh">✎ 积累小栈 · 参考答案</div>
+      <div class="jb" id="jileiB"></div>
+    </div>
+  </section>
+
+  <!-- ============ 三、完形填空 ============ -->
+  <section class="card" id="passCloze">
+    <div class="sec-head">
+      <div class="sec-no">三</div>
+      <div><h2 class="sec-title">完形填空 · 妈妈的上海之行 <small>阅读下面短文，从每小题所给的 A、B、C 三个选项中选出一个最佳选项。</small></h2></div>
+    </div>
+    <div class="sec-meta">
+      <span class="badge">主题：人与自我——家庭生活</span>
+      <span class="badge gray">语篇类型：记叙文</span>
+      <span class="badge gray">词数：214</span>
+      <span class="badge warm">难度 ★★★☆☆</span>
+      <span class="badge gray">建议用时 7′</span>
+      <span class="badge ok">正确率 △</span>
+    </div>
+
+    <article class="passage">
+      <p>It is 8:30 in the evening. I can't <span class="blank" data-n="1"><b>1</b><i>sleep</i></span> in my room and I keep <span class="w" data-k="thinkabout">thinking about</span> my mother's <span class="w" data-k="tripto">trip to</span> Shanghai. <span class="blank" data-n="2"><b>2</b><i>So</i></span> I close my books and <span class="w" data-k="walkoutof">walk out of</span> my room. My mother usually <span class="w" data-k="dothedishes">does the dishes</span>, but today my father is doing that in the <span class="blank" data-n="3"><b>3</b><i>kitchen</i></span> now. What about my mother? She is <span class="w" data-k="packing">packing</span><span class="tag">（打包）</span> her clothes for her trip. I go to her and ask, "<span class="blank" data-n="4"><b>4</b><i>When</i></span> are you <span class="w" data-k="leavehome">leaving home</span> tomorrow, Mum?"</p>
+      <p>"At 6:30 a.m. I'll <span class="w" data-k="comeback">come back</span> in three days."</p>
+      <p>"I see. How I wish you could take <span class="blank" data-n="5"><b>5</b><i>me</i></span>!"</p>
+      <p>"Oh, my dear girl, I'll go there to work, not for <span class="w" data-k="forfun">fun</span>."</p>
+      <p>"But you know, it is my favourite <span class="blank" data-n="6"><b>6</b><i>place</i></span>."</p>
+      <p>"Don't be sad about it. Our family can go there when your brother gets older."</p>
+      <p>"Sounds great. But I'll <span class="blank" data-n="7"><b>7</b><i>miss</i></span> you, Mum."</p>
+      <p>"Me too. I'm free at night, and we can <span class="w" data-k="videocalls">make video calls</span>."</p>
+      <p>"OK. Can you <span class="blank" data-n="8"><b>8</b><i>bring</i></span> back any <span class="w" data-k="gifts">gifts</span> from Shanghai?"</p>
+      <p>"Sure. I can <span class="w" data-k="dosomeshopping">do some shopping</span> in my <span class="w" data-k="freetime">free time</span>."</p>
+      <p>Then I look at my two-year-old brother. He is <span class="blank" data-n="9"><b>9</b><i>still</i></span> playing with his <span class="w" data-k="modelcars">model cars</span> on the bed. He looks happy. He is <span class="blank" data-n="10"><b>10</b><i>young</i></span>, so he doesn't know what we are talking about. I wish him to <span class="w" data-k="growup">grow up</span> quickly.</p>
+    </article>
+
+    <details class="more">
+      <summary>📖 参考译文（点击展开）</summary>
+      <div class="body">
+        <p>现在是晚上 8:30。我在房间里睡不着，一直想着妈妈的上海之行。于是我合上书，走出房间。平时都是妈妈洗碗，但今天是爸爸在厨房洗。妈妈呢？她正在为旅行打包衣服。我走过去问她：“妈妈，你明天什么时候离开家？”</p>
+        <p>“早上 6:30。我三天后回来。”</p>
+        <p>“知道了。我多希望你能带上我！”</p>
+        <p>“哦，亲爱的女儿，我去那里是工作，不是玩。”</p>
+        <p>“可你知道，那是我最喜欢的地方。”</p>
+        <p>“别难过。等你弟弟长大些，我们全家一起去。”</p>
+        <p>“听起来不错。可我会想你的，妈妈。”</p>
+        <p>“我也会想你。晚上我有空，我们可以打视频电话。”</p>
+        <p>“好啊。你能从上海带些礼物回来吗？”</p>
+        <p>“当然。我有空的时候可以去买点东西。”</p>
+        <p>然后我看向两岁的弟弟。他还在床上玩他的模型车，看起来很开心。他年纪还小，不知道我们在说什么。我真希望他快点长大。</p>
+      </div>
+    </details>
+
+    <h3 class="ans-h">题目与选项</h3>
+    <div class="ans-list" id="qC"></div>
+
+    <h3 class="ans-h">答案与详解</h3>
+    <div class="ans-list" id="ansC"></div>
+
+    <div class="jilei">
+      <div class="jh">✎ 积累小栈 · 参考答案</div>
+      <div class="jb" id="jileiC"></div>
+    </div>
+  </section>
+
+  <!-- ============ 生词汇总 ============ -->
+  <section class="card" id="vocab">
+    <div class="sec-head">
+      <div class="sec-no">✦</div>
+      <div><h2 class="sec-title">生词与短语汇总 <small>按七年级英语词汇水平整理 · 每条含音标、释义、用法与例句 · 点击 🔊 可发音。</small></h2></div>
+    </div>
+    <div id="vocabBox"></div>
+  </section>
+
+  <footer>
+    9-3培优 · 精读精讲 ｜ Unit 1 Here and Now ｜ 单文件 · 纯前端 · 离线可用<br>
+    生词划线点击展开 · 答案与逐题解析 · 积累小栈 · 夜间模式 · 打印友好
+  </footer>
+</div>
+
+<div id="pop"></div>
+
+<script>
+/* ================= 生词数据 ================= */
+const VOCAB = [
+/* ---- 一、D篇 生物钟与时差 ---- */
+{k:"flyacross",g:"A",en:"fly across",ph:"",pos:"短语",cn:"飞越；飞过",note:"across 从表面/上空横过；fly across several time zones 飞越几个时区。",ex:"We fly across the sea to the island.",exCn:"我们飞越大海到达那座岛。"},
+{k:"timezone",g:"A",en:"time zone",ph:"",pos:"短语",cn:"时区",note:"time + zone 区域；跨时区飞行会产生时差。",ex:"You arrive in a new time zone.",exCn:"你到了一个新的时区。"},
+{k:"jetlag",g:"A",en:"jet lag",ph:"/ˈdʒet læɡ/",pos:"n.",cn:"时差反应",note:"不可数名词；have jet lag 有时差反应；由飞机跨时区飞行引起。",ex:"You may have jet lag after a long flight.",exCn:"长途飞行后你可能会有时差反应。"},
+{k:"arrivein",g:"A",en:"arrive in",ph:"",pos:"短语",cn:"到达（大地点）",note:"arrive in + 大地点（国家/城市）；arrive at + 小地点；= get to / reach。",ex:"We arrive in Shanghai at noon.",exCn:"我们中午到达上海。"},
+{k:"bereadyfor",g:"A",en:"be ready for",ph:"",pos:"短语",cn:"为……做好准备",note:"ready 准备好的；be ready for sth / be ready to do sth 准备好做某事。",ex:"You may be ready for dinner at midnight.",exCn:"你可能半夜就想吃晚饭。"},
+{k:"atmidnight",g:"A",en:"at midnight",ph:"",pos:"短语",cn:"在午夜；半夜",note:"midnight 午夜（12 点）；at noon 在正午；in the middle of the night 也表半夜。",ex:"He got home at midnight.",exCn:"他半夜才到家。"},
+{k:"sleepallday",g:"A",en:"sleep all day",ph:"",pos:"短语",cn:"睡一整天",note:"all day 一整天；all night 一整夜；all week 一整周。",ex:"You may want to sleep all day.",exCn:"你可能想睡上一整天。"},
+{k:"livingthings",g:"A",en:"living things",ph:"",pos:"短语",cn:"生物；有生命的事物",note:"living 活着的；living things 泛指动植物等生物。",ex:"All living things have a biological clock.",exCn:"所有生物都有生物钟。"},
+{k:"biologicalclock",g:"A",en:"biological clock",ph:"",pos:"短语",cn:"生物钟",note:"biological 生物学的；clock 钟；生物钟控制睡眠、进食等节律。",ex:"People have jet lag because of their biological clock.",exCn:"人们有时差反应是因为生物钟。"},
+{k:"forexample",g:"A",en:"for example",ph:"",pos:"短语",cn:"例如",note:"用于举例，后常接逗号；= such as（后接词组）。",ex:"Plants begin to work at sunrise, for example.",exCn:"例如，植物在日出时开始工作。"},
+{k:"atsunrise",g:"A",en:"at sunrise",ph:"",pos:"短语",cn:"在日出时",note:"sunrise 日出；sunset 日落；at sunrise 在日出时刻。",ex:"Plants begin to work at sunrise.",exCn:"植物在日出时开始工作。"},
+{k:"flyto",g:"A",en:"fly to",ph:"",pos:"短语",cn:"飞往",note:"fly to + 地点 飞往某地；过去式 flew to。",ex:"Birds fly to warm places in winter.",exCn:"鸟儿冬天飞往温暖的地方。"},
+{k:"warmplaces",g:"A",en:"warm places",ph:"",pos:"短语",cn:"温暖的地方",note:"warm 温暖的；warm water 温水；keep warm 保暖。",ex:"Birds fly to warm places when winter comes.",exCn:"冬天来临时鸟儿飞往温暖的地方。"},
+{k:"insects",g:"A",en:"insects",ph:"/ˈɪnsekts/",pos:"n.",cn:"昆虫（复数）",note:"单数 insect；insect 昆虫（如蜜蜂、蚂蚁）。",ex:"Some insects like bees are very busy.",exCn:"一些昆虫（如蜜蜂）非常忙碌。"},
+{k:"setalarm",g:"A",en:"set their alarm clocks",ph:"",pos:"短语",cn:"设定它们的闹钟",note:"set an alarm clock 设闹钟；此处是比喻，指昆虫按固定时间活动。",ex:"Bees seem to set their alarm clocks to look for food.",exCn:"蜜蜂似乎设定了“闹钟”来寻找食物。"},
+{k:"experiment",g:"A",en:"experiment",ph:"/ɪkˈsperɪmənt/",pos:"n.",cn:"实验",note:"可数名词；do an experiment 做实验；carry out an experiment 进行实验。",ex:"Scientists did an experiment with bees.",exCn:"科学家用蜜蜂做了一个实验。"},
+{k:"sugarwater",g:"A",en:"sugar water",ph:"",pos:"短语",cn:"糖水",note:"sugar 糖（不可数）；sugar water 糖水。",ex:"They put out sugar water every day.",exCn:"他们每天摆出糖水。"},
+{k:"exactly",g:"A",en:"exactly",ph:"/ɪɡˈzæktli/",pos:"adv.",cn:"准确地；恰好",note:"exact adj. 准确的；at exactly the right time 在准确的时间。",ex:"The bees came at exactly the right time.",exCn:"蜜蜂在准确的时间飞来。"},
+{k:"darkroom",g:"A",en:"dark room",ph:"",pos:"短语",cn:"暗室；黑暗的房间",note:"dark 黑暗的；in a dark room 在一间暗室里。",ex:"The scientists put bees in a dark room.",exCn:"科学家把蜜蜂放进一间暗室。"},
+{k:"taketo",g:"A",en:"take ... to ...",ph:"",pos:"短语",cn:"把……带到……",note:"take sb/sth to + 地点 把某人/某物带到某地；过去式 took。",ex:"Later the scientists took the bees to New York.",exCn:"后来科学家把蜜蜂带到了纽约。"},
+{k:"humans",g:"A",en:"humans",ph:"/ˈhjuːmənz/",pos:"n.",cn:"人类（复数）",note:"单数 human；= people；human beings 人类。",ex:"Humans have a biological clock too.",exCn:"人类也有生物钟。"},
+{k:"controlledby",g:"A",en:"be controlled by",ph:"",pos:"短语",cn:"被……控制",note:"control v. 控制；be controlled by 被动语态，被……控制/调节。",ex:"Our bodies are controlled by a biological clock.",exCn:"我们的身体由生物钟控制。"},
+{k:"adjust",g:"A",en:"adjust",ph:"/əˈdʒʌst/",pos:"v.",cn:"调整；调节",note:"adjust sth to sth 把某物调整到……；adjust to 适应。",ex:"We can learn to adjust the clock to different times.",exCn:"我们可以学习把生物钟调整到不同的时间。"},
+
+/* ---- 二、六选五 Sam 与盲人 ---- */
+{k:"blind",g:"B",en:"blind",ph:"/blaɪnd/",pos:"adj.",cn:"失明的；瞎的",note:"be blind 失明；the blind 盲人（the + 形容词表一类人）。",ex:"The man is blind. He can't see anything.",exCn:"那人是个盲人，什么也看不见。"},
+{k:"hungry",g:"B",en:"hungry",ph:"/ˈhʌŋɡri/",pos:"adj.",cn:"饥饿的",note:"be hungry 饿了；hunger n. 饥饿；反义 full 饱的。",ex:"I am very hungry.",exCn:"我很饿。"},
+{k:"atthatmoment",g:"B",en:"at that moment",ph:"",pos:"短语",cn:"就在那时",note:"moment 时刻；at that moment 就在那时（常引出突发事件）。",ex:"At that moment, a carriage comes over.",exCn:"就在那时，一辆马车驶了过来。"},
+{k:"carriage",g:"B",en:"carriage",ph:"/ˈkærɪdʒ/",pos:"n.",cn:"马车",note:"可数名词；旧时由马拉的载人车；a horse-drawn carriage 一辆马车。",ex:"A carriage comes over.",exCn:"一辆马车驶了过来。"},
+{k:"coins",g:"B",en:"coins",ph:"/kɔɪnz/",pos:"n.",cn:"硬币（复数）",note:"单数 coin；pay in coins 用硬币付钱；paper money 纸币。",ex:"Harry's mother gives him some coins.",exCn:"哈里的母亲给了他一些硬币。"},
+{k:"throwinto",g:"B",en:"throw ... into",ph:"",pos:"短语",cn:"把……扔进……",note:"throw sth into sp 把某物扔进某处；过去式 threw；过去分词 thrown。",ex:"He throws the coins into the grass.",exCn:"他把硬币扔进草地里。"},
+{k:"grass",g:"B",en:"grass",ph:"/ɡrɑːs/",pos:"n.",cn:"草地；草",note:"不可数名词；on the grass 在草地上（勿踩草坪：Keep off the grass）。",ex:"The coins fall into the grass.",exCn:"硬币掉进了草地。"},
+{k:"bytheroad",g:"B",en:"by the road",ph:"",pos:"短语",cn:"在路边",note:"by 在……旁边；by the road 在路旁；by the river 在河边。",ex:"He throws them into the grass by the road.",exCn:"他把它们扔进路边的草地。"},
+{k:"lookfor",g:"B",en:"look for",ph:"",pos:"短语",cn:"寻找",note:"强调寻找的过程；find 强调找到的结果。",ex:"Sam starts looking for the coins.",exCn:"萨姆开始寻找硬币。"},
+{k:"bekindto",g:"B",en:"be kind to",ph:"",pos:"短语",cn:"对……友好/善良",note:"kind 善良的；be kind to sb 对某人友好。",ex:"Which boy is truly kind to the blind man?",exCn:"哪个男孩对盲人是真正善良的？"},
+{k:"truly",g:"B",en:"truly",ph:"/ˈtruːli/",pos:"adv.",cn:"真正地；确实",note:"true adj. 真实的 → truly adv.；= really。",ex:"Which of the two boys is truly kind?",exCn:"两个男孩中谁是真正善良的？"},
+{k:"infrontof",g:"B",en:"in front of",ph:"",pos:"短语",cn:"在……前面",note:"in front of 在（外部的）前面；in the front of 在（内部的）前部。",ex:"Harry stops in front of the carriage.",exCn:"哈里在马车前停下。"},
+
+/* ---- 三、完形 妈妈的上海之行 ---- */
+{k:"thinkabout",g:"C",en:"think about",ph:"",pos:"短语",cn:"考虑；想起",note:"think about sth/doing sth 考虑（做）某事；think of 想起。",ex:"I keep thinking about my mother's trip.",exCn:"我一直想着妈妈的旅行。"},
+{k:"tripto",g:"C",en:"trip to",ph:"",pos:"短语",cn:"去……的旅行",note:"a trip to + 地点；go on a trip 去旅行。",ex:"My mother's trip to Shanghai is tomorrow.",exCn:"妈妈去上海的旅行是明天。"},
+{k:"walkoutof",g:"C",en:"walk out of",ph:"",pos:"短语",cn:"从……走出",note:"walk out of + 地点 从某地走出来；walk into 走进。",ex:"I close my books and walk out of my room.",exCn:"我合上书走出房间。"},
+{k:"dothedishes",g:"C",en:"do the dishes",ph:"",pos:"短语",cn:"洗碗",note:"= wash the dishes；do the dishes 洗餐具。",ex:"My mother usually does the dishes.",exCn:"我妈妈通常洗碗。"},
+{k:"packing",g:"C",en:"packing",ph:"/ˈpækɪŋ/",pos:"v.-ing",cn:"打包（进行时）",note:"pack v. 打包；pack clothes 打包衣服；package n. 包裹。",ex:"She is packing her clothes for the trip.",exCn:"她正在为旅行打包衣服。"},
+{k:"leavehome",g:"C",en:"leave home",ph:"",pos:"短语",cn:"离开家",note:"leave + 地点 离开某地；leave for 动身去……。",ex:"When are you leaving home tomorrow?",exCn:"你明天什么时候离开家？"},
+{k:"comeback",g:"C",en:"come back",ph:"",pos:"短语",cn:"回来",note:"come back to + 地点 回到某地；come back 回来。",ex:"I'll come back in three days.",exCn:"我三天后回来。"},
+{k:"forfun",g:"C",en:"for fun",ph:"",pos:"短语",cn:"为了好玩；为了消遣",note:"fun 不可数名词，乐趣；for fun 为了好玩；have fun 玩得开心。",ex:"I go there to work, not for fun.",exCn:"我去那里是工作，不是玩。"},
+{k:"videocalls",g:"C",en:"make video calls",ph:"",pos:"短语",cn:"打视频电话",note:"make a phone call 打电话；video call 视频通话。",ex:"We can make video calls at night.",exCn:"我们晚上可以打视频电话。"},
+{k:"gifts",g:"C",en:"gifts",ph:"/ɡɪfts/",pos:"n.",cn:"礼物（复数）",note:"单数 gift = present；give sb a gift 给某人礼物。",ex:"Can you bring back any gifts?",exCn:"你能带些礼物回来吗？"},
+{k:"dosomeshopping",g:"C",en:"do some shopping",ph:"",pos:"短语",cn:"买东西；购物",note:"= go shopping；do some/the shopping 采购。",ex:"I can do some shopping in my free time.",exCn:"我有空的时候可以去买点东西。"},
+{k:"freetime",g:"C",en:"free time",ph:"",pos:"短语",cn:"空闲时间",note:"free 有空的、免费的；in one's free time 在某人的空闲时间。",ex:"I read books in my free time.",exCn:"我在空闲时间读书。"},
+{k:"modelcars",g:"C",en:"model cars",ph:"",pos:"短语",cn:"模型车",note:"model 模型、型号；model plane 模型飞机。",ex:"He is playing with his model cars.",exCn:"他正在玩他的模型车。"},
+{k:"growup",g:"C",en:"grow up",ph:"",pos:"短语",cn:"长大",note:"grow up 长大（不及物，不接宾语）；grow 长大、种植。",ex:"I wish him to grow up quickly.",exCn:"我真希望他快点长大。"}
+];
+
+const V={}; VOCAB.forEach(o=>V[o.k]=o);
+
+const GROUP_NAME={
+  A:"一、D篇 · 生物钟与时差",
+  B:"二、六选五 · 谁是真正善良的？",
+  C:"三、完形填空 · 妈妈的上海之行"
+};
+
+/* ================= 题目数据 ================= */
+const Q_A=[
+ {n:1,q:"What is the passage about?",opts:["Time zones.","An experiment.","Biological clocks."],ans:2},
+ {n:2,q:"When did bees come out for food in New York?",opts:["At 10:00 a.m.(Paris time).","At 4:00 p.m.(Paris time).","At 10:00 a.m.(New York time)."],ans:1},
+ {n:3,q:"(新考法·写作意图题) What is the purpose(目的) of showing the experiment with bees?",opts:["To explain how bees set their alarm clocks.","To prove that living things have a biological clock.","To show that living things can reset their biological clock."],ans:1},
+ {n:4,q:"What can we learn from the passage?",opts:["Humans can adjust their biological clock.","Bees couldn't tell the time in the dark room.","Some people have jet lag because they are weak(弱的)."],ans:0}
+];
+const Q_B=[
+ {n:1,q:"第 1 空：Sam 买完书回家，后文引出拦路的盲人。",opts:["A. I want to buy some bread.","B. A boy and his mother sit in it.","C. On the way, a man stops Sam.","D. They give the man some food and money.","E. It takes him a lot of time, but he finds them all.","F. Harry takes them, but he doesn't give the coins to the man."],ans:2},
+ {n:2,q:"第 2 空：盲人说“I am very hungry.”之后的直接引语。",opts:["A. I want to buy some bread.","B. A boy and his mother sit in it.","C. On the way, a man stops Sam.","D. They give the man some food and money.","E. It takes him a lot of time, but he finds them all.","F. Harry takes them, but he doesn't give the coins to the man."],ans:0},
+ {n:3,q:"第 3 空：a carriage comes over 之后，下句 The boy's name is Harry。",opts:["A. I want to buy some bread.","B. A boy and his mother sit in it.","C. On the way, a man stops Sam.","D. They give the man some food and money.","E. It takes him a lot of time, but he finds them all.","F. Harry takes them, but he doesn't give the coins to the man."],ans:1},
+ {n:4,q:"第 4 空：母亲给硬币后，下句 He throws them into the grass。",opts:["A. I want to buy some bread.","B. A boy and his mother sit in it.","C. On the way, a man stops Sam.","D. They give the man some food and money.","E. It takes him a lot of time, but he finds them all.","F. Harry takes them, but he doesn't give the coins to the man."],ans:5},
+ {n:5,q:"第 5 空：Sam 帮盲人找硬币之后。",opts:["A. I want to buy some bread.","B. A boy and his mother sit in it.","C. On the way, a man stops Sam.","D. They give the man some food and money.","E. It takes him a lot of time, but he finds them all.","F. Harry takes them, but he doesn't give the coins to the man."],ans:4}
+];
+const Q_C=[
+ {n:1,q:"It is 8:30 in the evening. I can't ____ in my room.",opts:["study","sleep","play"],ans:1},
+ {n:2,q:"____ I close my books and walk out of my room.",opts:["So","But","Or"],ans:0},
+ {n:3,q:"...today my father is doing that in the ____ now.",opts:["bookcase","classroom","kitchen"],ans:2},
+ {n:4,q:"...ask, “____ are you leaving home tomorrow, Mum?”",opts:["How","When","Why"],ans:1},
+ {n:5,q:"How I wish you could take ____!",opts:["it","me","her"],ans:1},
+ {n:6,q:"But you know, it is my favourite ____.",opts:["place","sport","bridge"],ans:0},
+ {n:7,q:"Sounds great. But I'll ____ you, Mum.",opts:["help","miss","join"],ans:1},
+ {n:8,q:"Can you ____ back any gifts from Shanghai?",opts:["see","show","bring"],ans:2},
+ {n:9,q:"He is ____ playing with his model cars on the bed.",opts:["still","also","either"],ans:0},
+ {n:10,q:"He is ____, so he doesn't know what we are talking about.",opts:["cute","smart","young"],ans:2}
+];
+
+/* ================= 答案与详解 ================= */
+const ANS_A=[
+ {n:1,key:"C",tag:"主旨大意",sent:"People have jet lag because all living things have a biological clock.",
+  ana:["全文围绕 biological clock（生物钟）展开：时差现象 → 生物钟的存在 → 蜜蜂实验验证 → 人类也有生物钟。C 概括最准。",
+       "A. Time zones 只是引子（第一段），不是主题；B. An experiment 只是第三段的论据，以偏概全。",
+       "解题关键：说明文主旨找说明对象——实验、时差都是为“生物钟”服务的。"]},
+ {n:2,key:"B",tag:"细节理解",sent:"The bees still came out at the same time, when it was only 10:00 a.m. in New York. Their bodies were still on Paris time.",
+  ana:["实验中蜜蜂每天下午 4 点（巴黎时间）进食。带到纽约后，“the same time”仍指它们按巴黎时间下午 4 点的进食节律出来，即 4:00 p.m.(Paris time)，选 B。",
+       "A. 10:00 a.m.(Paris time) 文中无此说法；C. 10:00 a.m.(New York time) 是同一时刻的纽约钟面读数——题目问的是蜜蜂按哪个时间出来（体内生物钟仍在巴黎时间），这是实验要证明的点。",
+       "解题关键：抓末句 Their bodies were still on Paris time——括号里的时区标注就是用来区分“按哪个时区的钟”。"]},
+ {n:3,key:"B",tag:"写作意图",sent:"Some scientists did an experiment with bees in Paris... Their bodies were still on Paris time.",
+  ana:["蜜蜂实验是为了证明第二段的论点：all living things have a biological clock（所有生物都有生物钟），选 B。",
+       "A. 设定闹钟只是比喻说法，不是实验目的；C. 重置生物钟是末段讲人类能做到的事，不是蜜蜂实验的结论。",
+       "解题关键：写作意图题往论点上靠——实验是论据，说明文的论点通常在段首/段尾句。"]},
+ {n:4,key:"A",tag:"推理判断",sent:"we can learn to adjust it to different times",
+  ana:["末句明确说人类可以学习调整生物钟到不同时间，A 正确。",
+       "B. 错。暗室里蜜蜂照样准时出来（The bees still came out at the same time），说明它们能“知道”时间。",
+       "C. 错。时差是因为身体还按旧时区运转，与强弱无关。",
+       "解题关键：逐项回原文核对，注意 still、because 等逻辑词。"]}
+];
+const ANS_B=[
+ {n:1,key:"C",tag:"语篇衔接",sent:"...he buys a new book with all his money. __1__ The man is blind.",
+  ana:["前句讲 Sam 拿着新书高高兴兴回家，后句突然出现 The man is blind——中间需要“有人拦住 Sam”的过渡，C（On the way, a man stops Sam）承接自然。",
+       "其余选项语义均接不上“引出盲人”这一步。",
+       "解题关键：抓前后句的主语切换（Sam → the man），找引入新人物的句子。"]},
+ {n:2,key:"A",tag:"语篇衔接（直接引语）",sent:"Please give me some money. I am very hungry. __2__",
+  ana:["空在盲人的直接引语内，且前句说“我很饿”——A（I want to buy some bread）是饿了要钱的目的，语义连贯。",
+       "其他选项都不是盲人的口吻或与“饿”无关。",
+       "解题关键：引号内的空要保持同一说话人、同一话题（hungry → bread）。"]},
+ {n:3,key:"B",tag:"语篇衔接",sent:"a carriage comes over. __3__ The boy's name is Harry.",
+  ana:["前句引出马车，后句说 The boy's name is Harry——B（A boy and his mother sit in it）先交代车里有人，再引出男孩名字，衔接自然。",
+       "解题关键：it 指代前句的 carriage，构成“马车 → 车里坐着谁 → 男孩是谁”的链条。"]},
+ {n:4,key:"F",tag:"语篇衔接（转折）",sent:"Harry's mother gives Harry some coins. __4__ He throws them into the grass by the road.",
+  ana:["后句说他把硬币扔进草地、盲人找不到——说明哈里拿了硬币却没给盲人，F（Harry takes them, but he doesn't give the coins to the man）是“转折”，引出下句的恶劣行为。",
+       "D（They give the man some food and money）与后文“扔进草地、没给盲人”矛盾。",
+       "解题关键：but 转折是六选五高频逻辑；后句的 throws into the grass 是强提示。"]},
+ {n:5,key:"E",tag:"语篇衔接（结果）",sent:"He starts looking for the coins for the blind man. __5__",
+  ana:["Sam 开始替盲人找硬币——E（It takes him a lot of time, but he finds them all）是找的结果，且呼应结尾“谁是真正善良的”（Sam 用行动帮人）。",
+       "多余选项为 D。D 说“他们给了那人食物和钱”，与全文事实不符（Harry 并没给）。",
+       "解题关键：段尾空常填结果/总结句；末句的追问“which boy is truly kind”暗示 Sam 的行为是正面的。"]}
+];
+const ANS_C=[
+ {n:1,key:"B",tag:"语境推断",sent:"It is 8:30 in the evening. I can't __1__ in my room",
+  ana:["晚上 8:30 在房间里，且“一直想着妈妈的旅行”——应是睡不着（can't sleep），B 正确。",
+       "A study 与“我合上书走出去”矛盾（已经关书）；C play 不合语境。"]},
+ {n:2,key:"A",tag:"逻辑连词",sent:"I keep thinking about my mother's trip. __2__ I close my books and walk out of my room.",
+  ana:["前后是因果关系：因为想得睡不着/坐不住，所以合书走出去。So 表结果，A 正确。",
+       "But 表转折、Or 表选择，均不合逻辑。"]},
+ {n:3,key:"C",tag:"生活常识+语境",sent:"My mother usually does the dishes, but today my father is doing that in the __3__ now.",
+  ana:["洗碗（does the dishes）发生在厨房（kitchen），C 正确。",
+       "A bookcase 书架、B classroom 教室都不是洗碗的地方。"]},
+ {n:4,key:"B",tag:"疑问词",sent:"“__4__ are you leaving home tomorrow, Mum?” “At 6:30 a.m.”",
+  ana:["答句是 At 6:30 a.m.（时间），问句必是 When（什么时候），B 正确。",
+       "How 问方式、Why 问原因，答句都不会是钟点。"]},
+ {n:5,key:"B",tag:"代词",sent:"How I wish you could take __5__!",
+  ana:["女儿希望妈妈带上“我”（me），B 正确。",
+       "take it 带上它、take her 带上她，均不合说话人身份。"]},
+ {n:6,key:"A",tag:"语境推断",sent:"But you know, it is my favourite __6__.",
+  ana:["it 指上海——女儿说上海是她最喜欢的“地方”（place），A 正确。",
+       "sport 运动、bridge 桥均不能指代上海。"]},
+ {n:7,key:"B",tag:"固定搭配",sent:"Sounds great. But I'll __7__ you, Mum.",
+  ana:["妈妈要离家三天，女儿说“我会想你的”——I'll miss you，B 正确。",
+       "help 帮助、join 加入均不合告别语境。"]},
+ {n:8,key:"C",tag:"动词辨析",sent:"Can you __8__ back any gifts from Shanghai?",
+  ana:["从上海“带回”礼物——bring back，C 正确。",
+       "see back / show back 均不是“带回”的表达。"]},
+ {n:9,key:"A",tag:"副词辨析",sent:"He is __9__ playing with his model cars on the bed.",
+  ana:["两岁的弟弟“还在”玩模型车——still（仍然、还在），A 正确。",
+       "also（也）需与他人行为并列；either 用于否定句。"]},
+ {n:10,key:"C",tag:"语境推断",sent:"He is __10__, so he doesn't know what we are talking about.",
+  ana:["弟弟听不懂大人说话是因为“年纪小”（young），且下句“希望他快点长大”呼应，C 正确。",
+       "cute 可爱、smart 聪明都不能解释“听不懂”。"]}
+];
+
+/* ================= 积累小栈 ================= */
+const JILEI_A=[
+ {q:"1. fly across ______",a:"飞越；飞过"},
+ {q:"2. 做好准备 ______",a:"<u>be ready for</u>"},
+ {q:"3. at midnight ______",a:"在午夜"},
+ {q:"4. at sunrise ______",a:"在日出时"},
+ {q:"5. 同时 ______",a:"<u>at the same time</u>"},
+ {q:"6. when to sleep ______",a:"何时睡觉"},
+ {q:"7. 猜测词义：Our bodies are controlled by a biological clock.（controlled by ______）",a:"被……控制/调节",
+  note:"control v. 控制；be controlled by 被……控制。句意：我们的身体由生物钟控制。"},
+ {q:"8. 仿写句子：原句 Later the scientists took the bees to New York.（后来，科学家们把蜜蜂带到了纽约。take...to... 把……带到……）仿写：我妈妈每周日带我去公园。",a:"<u>My mother takes me to the park every Sunday.</u>",
+  note:"套用 take sb to + 地点 结构；every Sunday 表习惯性动作，用一般现在时，主语第三人称单数 takes。"}
+];
+const JILEI_B=[
+ {q:"1. walk home ______",a:"步行回家"},
+ {q:"2. 在那时 ______",a:"<u>at that moment</u>"},
+ {q:"3. look for ______",a:"寻找"},
+ {q:"4. be kind to ______",a:"对……友好/善良"},
+ {q:"5. 完成句子：汽车刚才撞到了路边的一棵树。The car hit a tree ______ ______ just now.",a:"<u>by the road</u>",
+  note:"by the road 在路边，作后置定语修饰 a tree。句意：汽车刚才撞到了路边的一棵树。"},
+ {q:"6. 完成句子：从成都到西昌坐高铁需要花费我们大约三个小时。______ ______ us about three hours from Chengdu to Xichang on a high-speed train.",a:"<u>It takes</u>",
+  note:"It takes sb some time to do sth. 花费某人多长时间做某事。完整句：It takes us about three hours from Chengdu to Xichang on a high-speed train."}
+];
+const JILEI_C=[
+ {q:"1. think about ______",a:"考虑；想起"},
+ {q:"2. 从……走出 ______",a:"<u>walk out of</u>"},
+ {q:"3. come back ______",a:"回来"},
+ {q:"4. 在晚上 ______",a:"<u>at night</u>"},
+ {q:"5. 完成句子：下个月去上海迪士尼公园怎么样？______ ______ to Shanghai Disneyland Park next month?",a:"<u>What/How about going</u>",
+  note:"What/How about + doing sth.? 用于提议，“做……怎么样？”。完整句：What about going to Shanghai Disneyland Park next month?"},
+ {q:"6. 完成句子：我住在超市旁边。对我来说，买东西非常便利。I live next to a supermarket. It's very convenient for me to ______ ______ ______.",a:"<u>do some shopping</u>",
+  note:"It's convenient for sb to do sth. 对某人来说做某事很方便；do some shopping 买东西。"}
+];
+
+/* ================= 渲染 ================= */
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");}
+
+function renderQ(box, arr){
+  arr.forEach(o=>{
+    const d=document.createElement("div"); d.className="ans-item";
+    const letter=(arr.length>5)?"ABCDEF":"ABC";
+    const opts=o.opts.map((t,i)=>`<div${i===o.ans?' class="picked"':''}>${esc(t)}</div>`).join("");
+    d.innerHTML = `<div class="top"><span class="num">${o.n}.</span><span class="kt">${arr.length>5?'第 '+o.n+' 空':'第 '+o.n+' 题'}</span></div>`+
+      `<div class="qstem">${esc(o.q)}</div><div class="qopts">${opts}</div>`;
+    box.appendChild(d);
+  });
+}
+renderQ(document.getElementById("qA"), Q_A);
+renderQ(document.getElementById("qB"), Q_B);
+renderQ(document.getElementById("qC"), Q_C);
+
+function renderAns(box, arr){
+  arr.forEach(o=>{
+    const d=document.createElement("div"); d.className="ans-item";
+    d.innerHTML = `<div class="top"><span class="num">${o.n}.</span><span class="key">${esc(o.key)}</span><span class="kt">${esc(o.tag)}</span></div>`+
+      `<div class="sent">📌 ${esc(o.sent)}</div>`+
+      `<ul>${o.ana.map(a=>`<li>${esc(a)}</li>`).join("")}</ul>`;
+    box.appendChild(d);
+  });
+}
+renderAns(document.getElementById("ansA"), ANS_A);
+renderAns(document.getElementById("ansB"), ANS_B);
+renderAns(document.getElementById("ansC"), ANS_C);
+
+function renderJilei(box, arr){
+  arr.forEach(o=>{
+    const d=document.createElement("div"); d.className="qb";
+    d.innerHTML = `<div class="q">${esc(o.q)}</div><div class="a">${o.a}</div>`+
+      (o.note?`<div class="nt">${esc(o.note)}</div>`:"");
+    box.appendChild(d);
+  });
+}
+renderJilei(document.getElementById("jileiA"), JILEI_A);
+renderJilei(document.getElementById("jileiB"), JILEI_B);
+renderJilei(document.getElementById("jileiC"), JILEI_C);
+
+/* 生词汇总（按语篇分组） */
+const vocabBox = document.getElementById("vocabBox");
+["A","B","C"].forEach(g=>{
+  const wrap=document.createElement("div"); wrap.className="vgroup";
+  const h=document.createElement("h3"); h.innerHTML=`<span class="dot"></span>${GROUP_NAME[g]}`;
+  wrap.appendChild(h);
+  const cards=document.createElement("div"); cards.className="vcards";
+  VOCAB.filter(v=>v.g===g).forEach(v=>{
+    const c=document.createElement("div"); c.className="vcard";
+    c.innerHTML = `<div class="hw"><span class="en">${esc(v.en)}</span>`+
+      (v.ph?`<span class="ph">${esc(v.ph)}</span>`:"")+
+      `<span class="pos">${esc(v.pos)}</span><button class="spk" type="button" data-word="${esc(v.en)}" title="点击发音" aria-label="发音">🔊</button></div>`+
+      `<div class="cn">${esc(v.cn)}</div>`+
+      `<div class="nt">${esc(v.note)}</div>`+
+      `<div class="ex">e.g. ${esc(v.ex)}<span class="ecn">${esc(v.exCn)}</span></div>`;
+    cards.appendChild(c);
+  });
+  wrap.appendChild(cards);
+  vocabBox.appendChild(wrap);
+});
+
+/* ================= 交互：划线词弹出 / 内联对照 ================= */
+const words = [...document.querySelectorAll(".w")];
+words.forEach(w=>{
+  const d=V[w.dataset.k]; if(!d) return;
+  const g=document.createElement("span"); g.className="gloss"; g.textContent="（"+d.cn+"）";
+  w.after(g);
+});
+
+const pop=document.getElementById("pop");
+let cur=null;
+function closePop(){ pop.classList.remove("show"); if(cur) cur.classList.remove("active"); cur=null; }
+function openPop(el){
+  const d=V[el.dataset.k]; if(!d) return;
+  if(cur===el){ closePop(); return; }
+  closePop();
+  cur=el; el.classList.add("active");
+  pop.innerHTML =
+    `<div class="pw">${esc(d.en)}${d.ph?`<span class="pph">${esc(d.ph)}</span>`:""}<span class="pos">${esc(d.pos)}</span><button class="spk" type="button" data-word="${esc(d.en)}" title="点击发音" aria-label="发音">🔊</button></div>`+
+    `<div class="pcn">${esc(d.cn)}</div>`+
+    `<div class="pnote">${esc(d.note)}</div>`+
+    `<div class="pex"><b>例：</b> ${esc(d.ex)}<span class="cn">${esc(d.exCn)}</span></div>`;
+  pop.classList.add("show");
+  const r=el.getBoundingClientRect();
+  const pw=pop.offsetWidth, ph=pop.offsetHeight;
+  let left=r.left + r.width/2 - pw/2 + window.scrollX;
+  left=Math.max(12+window.scrollX, Math.min(left, window.scrollX + document.documentElement.clientWidth - pw - 12));
+  let top=r.top + window.scrollY - ph - 12;
+  if(top < window.scrollY + 8){ top = r.bottom + window.scrollY + 12; }
+  pop.style.left=left+"px"; pop.style.top=top+"px";
+}
+words.forEach(w=>w.addEventListener("click",e=>{e.stopPropagation();openPop(w);}));
+document.addEventListener("click",e=>{ if(!pop.contains(e.target)) closePop(); });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape") closePop(); });
+window.addEventListener("scroll",closePop,{passive:true});
+window.addEventListener("resize",closePop);
+
+document.querySelectorAll(".blank").forEach(b=>{
+  b.addEventListener("click",e=>{e.stopPropagation(); b.classList.toggle("open");});
+});
+
+const btnAllWords=document.getElementById("btnAllWords");
+btnAllWords.addEventListener("click",()=>{
+  const on=document.body.classList.toggle("showall");
+  btnAllWords.classList.toggle("on",on);
+  btnAllWords.textContent = on ? "🙈 隐藏全部释义" : "👁 显示全部释义";
+  if(on) closePop();
+});
+const btnAllAns=document.getElementById("btnAllAns");
+btnAllAns.addEventListener("click",()=>{
+  const on=document.body.classList.toggle("showans");
+  btnAllAns.classList.toggle("on",on);
+  btnAllAns.textContent = on ? "🔒 隐藏全部答案" : "✅ 显示全部答案";
+});
+const btnTheme=document.getElementById("btnTheme");
+btnTheme.addEventListener("click",()=>{
+  const on=document.body.classList.toggle("dark");
+  btnTheme.textContent = on ? "☀️ 日间" : "🌙 夜间";
+});
+
+function speak(text){
+  if(!('speechSynthesis' in window)){
+    alert('当前浏览器不支持语音朗读，请用 Chrome / Edge / Safari 打开本页。');
+    return;
+  }
+  const u=new SpeechSynthesisUtterance(text);
+  u.lang='en-US'; u.rate=0.92; u.pitch=1;
+  window.speechSynthesis.cancel();
+  window.speechSynthesis.speak(u);
+}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('.spk');
+  if(b){ e.stopPropagation(); speak(b.dataset.word); }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>初二历史上学期期中复习题签 · 交互背诵</title>
+<style>
+  :root{
+    --radius:16px;--radius-sm:10px;
+    --accent:#e0b155;       /* 琥珀金 */
+    --accent2:#7aa2f7;      /* 靛蓝 */
+    --accent3:#6cd0a8;      /* 青绿 */
+    --danger:#f87171;
+    --font-cn:"PingFang SC","Microsoft YaHei","Noto Sans SC",system-ui,sans-serif;
+    --font-en:"Segoe UI","Helvetica Neue",Arial,sans-serif;
+    --serif:"Songti SC","SimSun","Noto Serif SC",serif;
+    --trans:.28s cubic-bezier(.4,0,.2,1);
+  }
+  html[data-theme="dark"]{
+    --bg:#0f1219;--bg1:#182035;--bg2:#0f1219;
+    --panel:#171b25;--panel2:#1e2333;--panel-hover:#242b3d;
+    --border:#2a3145;--border-soft:#212736;
+    --text:#eaeef7;--text-dim:#9aa5bd;--text-faint:#66718c;
+    --shadow:0 12px 44px rgba(0,0,0,.5);--shadow-sm:0 4px 18px rgba(0,0,0,.32);
+    --chip:#1e2333;
+    --glow:0 0 0 1px rgba(224,177,85,.22),0 8px 30px rgba(224,177,85,.13);
+    --gold:rgba(224,177,85,.13);
+  }
+  html[data-theme="light"]{
+    --bg:#f5f3ee;--bg1:#fdfaf3;--bg2:#f6f4ef;
+    --panel:#ffffff;--panel2:#faf8f3;--panel-hover:#f4f1e9;
+    --border:#e6e1d5;--border-soft:#efeae0;
+    --text:#23262e;--text-dim:#5f6474;--text-faint:#93989f;
+    --shadow:0 12px 44px rgba(90,74,40,.12);--shadow-sm:0 4px 18px rgba(90,74,40,.08);
+    --chip:#faf8f3;
+    --glow:0 0 0 1px rgba(180,140,50,.22),0 8px 30px rgba(180,140,50,.12);
+    --accent:#a8781f;--accent2:#3f66c4;--accent3:#1f9a72;
+    --gold:rgba(200,160,60,.12);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--font-cn);
+    background:
+      radial-gradient(1200px 680px at 8% -10%,var(--bg1),transparent 58%),
+      radial-gradient(900px 560px at 102% 2%,color-mix(in srgb,var(--accent2) 10%,transparent),transparent 52%),
+      var(--bg2);
+    background-attachment:fixed;color:var(--text);min-height:100vh;
+    -webkit-font-smoothing:antialiased;transition:background var(--trans),color var(--trans);
+    padding-bottom:80px;
+  }
+  .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+
+  /* Header */
+  header{position:sticky;top:0;z-index:50;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+    background:color-mix(in srgb,var(--bg) 80%,transparent);border-bottom:1px solid var(--border-soft);transition:var(--trans)}
+  .hd{display:flex;align-items:center;gap:14px;padding:13px 0;flex-wrap:wrap}
+  .brand{display:flex;align-items:center;gap:13px;min-width:0}
+  .logo{width:46px;height:46px;flex:none;border-radius:13px;display:grid;place-items:center;
+    background:linear-gradient(140deg,var(--accent),#a8761f);color:#221a05;font-weight:900;font-size:20px;
+    box-shadow:0 6px 20px rgba(200,150,50,.35);font-family:var(--serif)}
+  .brand h1{font-size:1.1rem;font-weight:800;letter-spacing:.3px;line-height:1.25}
+  .brand .sub{font-size:.7rem;color:var(--text-dim);margin-top:3px;letter-spacing:.3px}
+  .hd-tools{margin-left:auto;display:flex;gap:9px}
+  .icon-btn{width:40px;height:40px;border-radius:11px;border:1px solid var(--border);background:var(--panel);
+    color:var(--text-dim);cursor:pointer;display:grid;place-items:center;font-size:17px;transition:var(--trans)}
+  .icon-btn:hover{background:var(--panel-hover);color:var(--text);transform:translateY(-1px)}
+
+  /* Hero / stats */
+  .hero{padding:32px 0 6px;text-align:center}
+  .hero h2{font-family:var(--serif);font-size:clamp(1.5rem,4vw,2.15rem);font-weight:800;letter-spacing:1px;
+    background:linear-gradient(100deg,var(--accent),var(--accent2),var(--accent3));
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:9px}
+  .hero p{color:var(--text-dim);font-size:.88rem}
+  .stats{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:20px}
+  .stat{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius-sm);padding:11px 22px;min-width:100px;box-shadow:var(--shadow-sm)}
+  .stat b{display:block;font-size:1.35rem;font-weight:800;font-family:var(--font-en);color:var(--accent)}
+  .stat span{font-size:.72rem;color:var(--text-dim)}
+
+  /* Controls */
+  .controls{margin-top:24px;display:flex;flex-direction:column;gap:13px}
+  .search-row{display:flex;gap:10px;flex-wrap:wrap}
+  .search-box{position:relative;flex:1;min-width:200px}
+  .search-box .ic{position:absolute;left:15px;top:50%;transform:translateY(-50%);color:var(--text-faint);font-size:15px;pointer-events:none}
+  #search{width:100%;padding:13px 42px;border-radius:var(--radius-sm);border:1px solid var(--border);
+    background:var(--panel);color:var(--text);font-size:.94rem;font-family:var(--font-cn);outline:none;transition:var(--trans)}
+  #search::placeholder{color:var(--text-faint)}
+  #search:focus{border-color:var(--accent);box-shadow:var(--glow)}
+  .clear-s{position:absolute;right:10px;top:50%;transform:translateY(-50%);border:none;background:none;color:var(--text-faint);cursor:pointer;font-size:15px;padding:6px;display:none}
+  .clear-s.show{display:block}
+  .view-toggle{display:flex;background:var(--panel);border:1px solid var(--border);border-radius:var(--radius-sm);padding:4px;gap:4px}
+  .view-toggle button{border:none;background:none;color:var(--text-dim);cursor:pointer;padding:9px 15px;border-radius:7px;
+    font-size:.85rem;font-weight:700;font-family:var(--font-cn);transition:var(--trans);white-space:nowrap}
+  .view-toggle button:hover{color:var(--text)}
+  .view-toggle button.on{background:linear-gradient(135deg,var(--accent),#c4922c);color:#241b06;box-shadow:0 4px 14px rgba(200,150,50,.3)}
+  .toolbar{display:flex;gap:9px;flex-wrap:wrap;align-items:center}
+  .mini{border:1px solid var(--border);background:var(--panel);color:var(--text-dim);padding:8px 14px;border-radius:999px;
+    font-size:.79rem;font-weight:600;cursor:pointer;transition:var(--trans);font-family:var(--font-cn);white-space:nowrap}
+  .mini:hover{color:var(--text);border-color:var(--accent)}
+  .mini.on{background:var(--gold);color:var(--accent);border-color:color-mix(in srgb,var(--accent) 45%,var(--border))}
+  .chips{display:flex;gap:8px;flex-wrap:wrap}
+  .chip{border:1px solid var(--border);background:var(--chip);color:var(--text-dim);padding:7px 14px;border-radius:999px;
+    font-size:.79rem;font-weight:600;cursor:pointer;transition:var(--trans);white-space:nowrap;font-family:var(--font-cn)}
+  .chip:hover{color:var(--text);border-color:var(--accent)}
+  .chip.on{background:linear-gradient(135deg,var(--accent),#c4922c);color:#241b06;border-color:transparent}
+  .chip small{opacity:.7;font-weight:500;margin-left:3px}
+
+  /* List view */
+  .qlist{margin-top:20px;display:flex;flex-direction:column;gap:12px}
+  .qi{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;
+    box-shadow:var(--shadow-sm);transition:var(--trans);animation:rise .4s both}
+  @keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+  .qi:hover{border-color:color-mix(in srgb,var(--accent) 40%,var(--border))}
+  .qi.known{border-color:color-mix(in srgb,var(--accent3) 45%,var(--border));background:color-mix(in srgb,var(--accent3) 5%,var(--panel))}
+  .qi-head{display:flex;gap:12px;padding:15px 17px;align-items:flex-start}
+  .qno{flex:none;min-width:34px;height:34px;padding:0 8px;border-radius:9px;display:grid;place-items:center;
+    font-weight:800;font-size:.82rem;font-family:var(--font-en);
+    background:linear-gradient(135deg,var(--accent),#b98619);color:#241b06}
+  .qi.known .qno{background:linear-gradient(135deg,var(--accent3),#3f9e78);color:#04231a}
+  .qi-main{flex:1;min-width:0}
+  .qi-cat{display:inline-block;font-size:.66rem;color:var(--accent2);background:color-mix(in srgb,var(--accent2) 14%,transparent);
+    padding:2px 9px;border-radius:999px;font-weight:700;margin-bottom:6px}
+  .qi-q{font-size:.98rem;font-weight:700;line-height:1.55}
+  .qi-ans{margin-top:11px;padding-top:11px;border-top:1px dashed var(--border);font-size:.92rem;line-height:1.75;
+    color:var(--text-dim);white-space:pre-wrap;display:none;animation:fade .3s}
+  @keyframes fade{from{opacity:0}to{opacity:1}}
+  .qi.open .qi-ans{display:block}
+  .qi-ans em{font-style:normal;color:var(--accent);font-weight:700}
+  .qi-acts{display:flex;gap:7px;flex:none}
+  .act{width:32px;height:32px;border-radius:9px;border:1px solid var(--border);background:var(--panel2);color:var(--text-faint);
+    cursor:pointer;display:grid;place-items:center;font-size:14px;transition:var(--trans)}
+  .act:hover{color:var(--text);background:var(--panel-hover)}
+  .act.k{border-color:color-mix(in srgb,var(--accent3) 45%,var(--border));color:var(--accent3)}
+  .masked .qi-ans{display:block;filter:blur(6px);cursor:pointer;user-select:none;transition:filter .25s}
+  .masked .qi-ans.rev{filter:none}
+
+  /* Card view */
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:14px;margin-top:20px}
+  .card{perspective:1200px;height:216px;cursor:pointer;animation:rise .4s both}
+  .card-in{position:relative;width:100%;height:100%;transition:transform .55s cubic-bezier(.4,.2,.2,1);transform-style:preserve-3d}
+  .card.flip .card-in{transform:rotateY(180deg)}
+  .card-f,.card-b{position:absolute;inset:0;border-radius:var(--radius);backface-visibility:hidden;-webkit-backface-visibility:hidden;
+    padding:18px;border:1px solid var(--border);box-shadow:var(--shadow-sm);display:flex;flex-direction:column;overflow:hidden}
+  .card-f{background:linear-gradient(150deg,var(--panel2),var(--panel))}
+  .card:hover .card-f{border-color:var(--accent)}
+  .card-f .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:9px}
+  .card-f .n{font-family:var(--font-en);font-weight:800;color:var(--accent);font-size:.85rem}
+  .card-f .tag{font-size:.62rem;color:var(--accent2);font-weight:700}
+  .card-f .q{font-size:.9rem;font-weight:700;line-height:1.6;overflow:auto}
+  .card-f .hint{position:absolute;bottom:11px;left:18px;font-size:.62rem;color:var(--text-faint)}
+  .card-b{transform:rotateY(180deg);background:linear-gradient(150deg,color-mix(in srgb,var(--accent3) 16%,var(--panel)),var(--panel));
+    border-color:color-mix(in srgb,var(--accent3) 38%,var(--border))}
+  .card-b .lab{font-size:.62rem;color:var(--text-faint);letter-spacing:2px;margin-bottom:8px}
+  .card-b .a{font-size:.86rem;line-height:1.7;color:var(--text);overflow:auto;white-space:pre-wrap}
+  .card-b .n2{position:absolute;bottom:11px;right:18px;font-family:var(--font-en);font-weight:800;color:var(--accent3);font-size:.8rem}
+
+  /* Quiz view */
+  .quiz{max-width:620px;margin:22px auto 0}
+  .q-prog{height:7px;border-radius:99px;background:var(--panel2);overflow:hidden;margin-bottom:8px}
+  .q-prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent3));transition:width .35s}
+  .q-meta{display:flex;justify-content:space-between;font-size:.76rem;color:var(--text-dim);margin-bottom:16px;font-family:var(--font-en)}
+  .q-card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:30px 24px;box-shadow:var(--shadow)}
+  .q-tag{display:inline-block;font-size:.7rem;color:var(--accent2);background:color-mix(in srgb,var(--accent2) 14%,transparent);
+    padding:4px 11px;border-radius:999px;font-weight:700;margin-bottom:14px}
+  .q-qt{font-size:1.25rem;font-weight:800;line-height:1.6;text-align:left}
+  .q-ans{margin-top:16px;padding:15px 17px;border-radius:var(--radius-sm);background:var(--panel2);border:1px dashed var(--border);
+    font-size:.94rem;line-height:1.8;color:var(--text);text-align:left;white-space:pre-wrap;display:none}
+  .q-ans.show{display:block;animation:fade .3s}
+  .q-actions{display:flex;gap:10px;margin-top:16px}
+  .btn{flex:1;padding:13px;border-radius:var(--radius-sm);border:1px solid var(--border);background:var(--panel);color:var(--text);
+    font-family:var(--font-cn);font-size:.9rem;font-weight:700;cursor:pointer;transition:var(--trans)}
+  .btn:hover{background:var(--panel-hover);transform:translateY(-1px)}
+  .btn.primary{background:linear-gradient(135deg,var(--accent),#c4922c);color:#241b06;border-color:transparent;box-shadow:0 6px 20px rgba(200,150,50,.3)}
+  .btn.primary:hover{filter:brightness(1.06)}
+  .btn.good{background:linear-gradient(135deg,var(--accent3),#3f9e78);color:#04231a;border-color:transparent}
+  .btn.warn{background:linear-gradient(135deg,var(--danger),#d64a4a);color:#fff;border-color:transparent}
+  .q-result{text-align:center;padding:16px 0}
+  .q-result .big{font-family:var(--font-en);font-size:3rem;font-weight:800;color:var(--accent)}
+  .q-result .txt{color:var(--text-dim);margin:8px 0 4px}
+  .q-result .acc{color:var(--accent3);font-weight:700}
+  .scope{text-align:center;font-size:.75rem;color:var(--text-faint);margin-top:13px}
+
+  .empty{text-align:center;padding:64px 20px;color:var(--text-faint)}
+  .empty .e{font-size:2.4rem;margin-bottom:12px;opacity:.6}
+
+  footer{text-align:center;color:var(--text-faint);font-size:.75rem;padding:42px 20px 10px;line-height:2}
+  .kbd{font-family:var(--font-en);background:var(--panel2);border:1px solid var(--border);border-radius:5px;padding:1px 6px;font-size:.72rem}
+
+  @media(max-width:640px){
+    .wrap{padding:0 14px}
+    .brand h1{font-size:.98rem}
+    .view-toggle button{padding:8px 11px;font-size:.79rem}
+    .stat{padding:9px 16px;min-width:84px}
+    .cards{grid-template-columns:1fr}
+    .card{height:200px}
+    .q-qt{font-size:1.1rem}
+    .qi-head{padding:13px}
+  }
+
+  /* ---------- 打印：浅色 · 全部展开 · A4 满页 ---------- */
+  @media print{
+    @page{size:A4;margin:12mm 10mm}
+    html{--accent:#9a6b12;--accent2:#2f4f9e;--accent3:#177a5a}
+    body{background:#fff!important;color:#111!important;padding:0!important}
+    header,.controls,.hero p,.stats,.hd-tools,footer .no-print,.view-toggle,.chips,.search-row,.toolbar{display:none!important}
+    .hero{padding:0 0 8px!important}
+    .hero h2{font-size:20pt!important;-webkit-text-fill-color:#111!important;background:none!important;color:#111!important;margin:0 0 4px!important}
+    .qi,.card,.q-card{box-shadow:none!important;border:1px solid #bbb!important;break-inside:avoid;page-break-inside:avoid;background:#fff!important}
+    .qi-ans,.masked .qi-ans{display:block!important;filter:none!important;color:#111!important;border-top-color:#ccc!important}
+    .qi-q,.card-f .q,.q-qt{color:#111!important}
+    .qi-cat,.q-tag{color:#333!important;background:#eee!important}
+    .qno{background:#333!important;color:#fff!important}
+    .cards{display:block!important}
+    .card{height:auto!important;perspective:none!important;margin-bottom:8px!important}
+    .card-in{transform:none!important;position:static!important}
+    .card-f,.card-b{position:static!important;transform:none!important;backface-visibility:visible!important;border:none!important;padding:0!important}
+    .card-f .hint,.card-b .lab{display:none!important}
+    .card-b{margin-top:4px!important}
+    .cards .card{display:none}
+    body.print-mode .cards .card{display:block}
+    .qlist{gap:6px!important}
+    .qi-head{padding:6px 8px!important}
+    .qi-ans{font-size:9.5pt!important;line-height:1.5!important}
+    .qi-q{font-size:10pt!important}
+    .banner{display:block!important}
+  }
+  .banner{display:none;text-align:center;font-weight:800;font-size:13pt;margin-bottom:6px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap hd">
+    <div class="brand">
+      <div class="logo">史</div>
+      <div>
+        <h1>初二历史上学期 · 期中复习题签</h1>
+        <div class="sub">济宁市实验初中 · 整理：初二历史组 · 审核：李媛</div>
+      </div>
+    </div>
+    <div class="hd-tools">
+      <button class="icon-btn" id="printBtn" title="打印 / 导出 PDF">🖨</button>
+      <button class="icon-btn" id="themeBtn" title="切换主题">🌙</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="banner">初二历史上学期期中复习题签</div>
+  <section class="hero">
+    <h2>期中背诵题签 · 131 题</h2>
+    <p>按单元分组 · 支持搜索 / 卡片 / 默写自测 / 掌握标记</p>
+    <div class="stats">
+      <div class="stat"><b id="sTotal">131</b><span>题目总数</span></div>
+      <div class="stat"><b id="sCat">11</b><span>单元板块</span></div>
+      <div class="stat"><b id="sKnown">0</b><span>已掌握</span></div>
+      <div class="stat"><b id="sShow">131</b><span>当前显示</span></div>
+    </div>
+  </section>
+
+  <div class="controls">
+    <div class="search-row">
+      <div class="search-box">
+        <span class="ic">🔍</span>
+        <input id="search" type="text" placeholder="搜索问题 / 答案关键词，如“马关条约”“孙中山”…" autocomplete="off">
+        <button class="clear-s" id="clearBtn">✕</button>
+      </div>
+      <div class="view-toggle" id="viewToggle">
+        <button data-view="list" class="on">📖 列表</button>
+        <button data-view="card">🃏 卡片</button>
+        <button data-view="quiz">✍️ 自测</button>
+      </div>
+    </div>
+    <div class="chips" id="chips"></div>
+    <div class="toolbar" id="toolbar">
+      <button class="mini" id="expandAll">展开全部答案</button>
+      <button class="mini" id="collapseAll">收起全部</button>
+      <button class="mini" id="onlyUnknown">只看未掌握</button>
+      <button class="mini" id="resetKnown">重置掌握进度</button>
+    </div>
+  </div>
+
+  <div id="app"></div>
+</main>
+
+<footer>
+  <div>资料来源：《济宁市实验初中初二历史上学期期中复习题签》（共 131 题，原题签序号缺 72）</div>
+  <div class="no-print">快捷键：<span class="kbd">/</span> 聚焦搜索 · 列表模式点击题号右侧 <span class="kbd">👁</span> 看答案 · <span class="kbd">🖨</span> 打印为 A4 浅色满页</div>
+</footer>
+
+<script>
+/* ===================== 数据 ===================== */
+const CATS = [
+  "鸦片战争","第二次鸦片战争","太平天国运动","洋务运动","边疆危机与甲午中日战争",
+  "民族危机与戊戌变法","义和团运动与八国联军侵华","辛亥革命","新文化运动","五四运动","中国共产党的诞生"
+];
+/* [题号, 分类索引, 问题, 答案]  答案中 \n 为换行 */
+const DATA = [
+[1,0,'英国发动鸦片战争的根本原因和借口？','①英国为了打开中国市场；②林则徐领导虎门销烟。'],
+[2,0,'虎门销烟的时间、意义？','1839年；这是中国人民禁烟斗争的伟大胜利，显示了中华民族反抗外来侵略的坚强意志。'],
+[3,0,'鸦片战争的起止时间？','1840-1842年'],
+[4,0,'鸦片战争期间出现的民族英雄及其牺牲地点？','关天培——虎门炮台；葛云飞、王锡朋、郑国鸿——定海；陈化成——吴淞；海龄——镇江'],
+[5,0,'为什么鸦片战争以中国的失败结束？','清政府腐败无能，落后的封建制度无法战胜先进的资本主义制度。'],
+[6,0,'中国近代史上第一个不平等条约？主要内容？','《南京条约》：①开放广州、厦门、福州、宁波、上海为通商口岸；②割香港岛给英国；③赔偿英国2100万银元；④英商进出口货物应纳税款，必须经过双方协议。'],
+[7,0,'鸦片战争对中国的影响？','鸦片战争改变了中国历史发展的进程。中国开始沦为半殖民地半封建社会，这是中国近代史的开端。'],
+[8,0,'近代中国人民的主要历史任务？','反对帝国主义和封建主义，实现民族独立和人民解放。'],
+[9,1,'第二次鸦片战争爆发的根本原因？','进一步打开中国市场'],
+[10,1,'英、法发动第二次鸦片战争的借口？','亚罗号事件和马神甫事件'],
+[11,1,'第二次鸦片战争的起止时间？','1856—1860年'],
+[12,1,'《天津条约》中，外国公使获得了进驻哪里的特权？增开哪些通商口岸？','北京；汉口、南京等十处通商口岸'],
+[13,1,'第二次鸦片战争期间，英法联军哪一滔天罪行是人类文明史上非常可耻的一页？','火烧圆明园'],
+[14,1,'《北京条约》增开哪一通商口岸？割哪里给英国？','天津；九龙半岛南端'],
+[15,1,'在第二次鸦片战争前后，哪一国家不费一兵一卒就侵占了中国北方大片领土？其中，哪一条约割让领土面积最大？','俄国；《瑷珲条约》'],
+[16,1,'第二次鸦片战争的影响？','这是中国丧失更多主权，西方侵略势力由东南沿海一带深入长江中下游地区，中国的半殖民地化程度进一步加深。'],
+[17,1,'鸦片战争和第二次鸦片战争的关系？','第二次鸦片战争是鸦片战争的继续和扩大。'],
+[18,2,'太平天国运动的领导人、开始的标志？','洪秀全，1851年的金田起义'],
+[19,2,'太平天国定都天京后，颁布了哪一土地纲领文件？主要内容？','《天朝田亩制度》；规定不分男女，按人口和年龄平均分配土地。'],
+[20,2,'《天朝田亩制度》的进步性？有何局限性？','①反映了千百年来农民要求得到土地的强烈愿望，对于发动和鼓舞广大农民起来参加反封建斗争起了积极作用。②带有空想色彩'],
+[21,2,'太平天国在军事上进入全盛的标志？由盛转衰的标志？失败的标志？','西征战场取得重大胜利；天京事变；天京陷落（1864年）'],
+[22,2,'太平天国后期颁布的哪一文件主张学习西方？','《资政新篇》'],
+[23,2,'太平天国运动失败的原因？','根本：农民阶级的局限性；客观原因：中外反动势力联合镇压'],
+[24,2,'太平天国运动的意义？','它沉重打击了清朝的统治和外国侵略势力，谱写了中国近代史上的壮烈篇章。'],
+[25,3,'洋务运动的背景？','第二次鸦片战争后，清政府内忧外患。'],
+[26,3,'洋务运动的根本目的？','学习西方先进技术，强兵富国，维护清王朝统治'],
+[27,3,'洋务运动的领导阶级和派别？口号？','地主阶级洋务派；自强求富'],
+[28,3,'洋务运动的代表人物？','奕䜣；曾国藩、李鸿章、张之洞、左宗棠'],
+[29,3,'洋务运动的起止时间？','19世纪60—90年代中期'],
+[30,3,'洋务运动期间创办了哪些军事工业？','江南机器制造总局、福州船政局'],
+[31,3,'洋务运动期间创办了哪些民用工业？','轮船招商局、开平煤矿、汉阳铁厂、湖北织布局'],
+[32,3,'洋务运动期间，清政府加快建设近代化国防的主要表现？','组建新式洋枪队和新式海军，海军有南洋、北洋、福建和广东等海军'],
+[33,3,'洋务运动的失败的根本原因？','只学习西方技术，没有改变落后的封建制度'],
+[34,3,'洋务运动的性质？','一次失败的封建统治者的自救运动'],
+[35,3,'如何评价洋务运动？','①意义：这是中国早期现代化的初步探索，经过30多年建设，中国近代军事工业、民用工业、交通运输业等有了一定程度的发展，在客观上促进了中国民族资本主义的产生。\n②局限性：洋务运动求富求强的目标没有实现。'],
+[36,4,'“大将筹边尚未还，湖湘子弟满天山”赞扬的历史人物？他的主要贡献？','左宗棠，收复除伊犁以外的新疆地区，为维护国家领土主权的完整作出了重大贡献。'],
+[37,4,'1884年，清政府为加强对新疆的管辖，采取了什么措施？','建立新疆行省'],
+[38,4,'在中法战争期间，谁在台湾率部反击？谁取得了镇南关大捷？','刘铭传，冯子材'],
+[39,4,'中法战争后签订了什么条约？从此，法国的势力侵入中国什么地区？战后，清政府如何加强对台湾管理的？','《越南条款》，云南和广西（西南地区）；设立台湾行省'],
+[40,4,'甲午中日战争爆发的根本原因？','日本向侵略中国、称霸世界。（原文如此）'],
+[41,4,'甲午中日战争开始的标志？','1894年，日军在丰岛海面袭击清军运兵船'],
+[42,4,'甲午中日战争中出现的民族英雄及其相关战役？','左宝贵——平壤战役；邓世昌（致远舰）、林永升（经远舰）——黄海大战；徐邦道——辽东半岛战役；丁汝昌——威海卫战役'],
+[43,4,'甲午中日战争结束的时间？签订条约？','1895年，《马关条约》'],
+[44,4,'《马关条约》割哪些领土给日本？','辽东半岛、台湾全岛及所有附属各岛屿、澎湖列岛'],
+[45,4,'《马关条约》赔款金额？','白银2亿两'],
+[46,4,'《马关条约》开放了哪些通商口岸？','沙市、重庆、苏州、杭州'],
+[47,4,'《马关条约》哪一内容体现了帝国主义对中国进行资本输出？','日本可在中国通商口岸开设工厂'],
+[48,4,'《马关条约》的影响？','①外国侵略势力深入中国腹地，中国半殖民地化程度大大加深；②列强发起了瓜分中国的狂潮，中国民族危机空前严重；③促进了中国民族资本主义的发展。'],
+[49,5,'19世纪末，在列强瓜分中国的狂潮后，美国提出了哪一政策？','门户开放'],
+[50,5,'清末状元实业家是谁？他创办的企业？体现了哪一救国主张？','张謇，大生纱厂，实业救国'],
+[51,5,'戊戌变法的主要政治背景？','列强发起瓜分中国的狂潮，中国民族危机空前严重。'],
+[52,5,'公车上书的时间、领导人、皇帝？','1895年，康有为、梁启超，光绪帝'],
+[53,5,'公车上书的影响？','它拉开了维新运动的序幕。'],
+[54,5,'资产阶级维新派的哪些举措推动维新思想广泛传播？最著名的报刊？','创办报刊，组织学会。上海《时务报》和天津《国闻报》'],
+[55,5,'“法者天下之公器也，变者天下之公理也”是谁说的？戊戌变法的指导思想？','梁启超；变法图强（变法维新）'],
+[56,5,'资产阶级维新派进行变法的目标？','改变封建制度，实行君主立宪制，发展资本主义'],
+[57,5,'戊戌变法正式开始的标志？','1898年，光绪帝颁布“明定国是”诏书'],
+[58,5,'戊戌变法失败的标志？','慈禧太后发动政变'],
+[59,5,'戊戌变法哪一内容最有利于民族资本主义发展？哪一内容最有利于打击封建官僚制度和维新派参政议政？哪一内容最有利于近代教育事业发展？','①鼓励私人兴办工矿企业，发展农业、工业、商业；②裁撤冗官冗员，允许官民上书言事；③废除八股文，创办京师大学堂'],
+[60,5,'戊戌变法（百日维新）失败的原因？','维新派力量相对弱小，没有掌握实权，又缺乏政治经验；变法触犯了顽固派的利益等'],
+[61,5,'戊戌变法的性质？','这是中国近代第一次思想解放运动，也是资产阶级改良运动。'],
+[62,5,'戊戌变法的意义？','它使更多仁人志士关心国家命运，促进了思想启蒙和民族意识觉醒，对近代教育和报刊事业的发展也产生了长远影响。'],
+[63,6,'义和团运动兴起的时间和原因？','19世纪末，帝国主义侵略加剧和外国传教士活动猖獗，再加上华北地区干旱严重。'],
+[64,6,'义和团运动的性质？','它是一场反帝爱国运动'],
+[65,6,'义和团运动的政治口号？','扶清灭洋'],
+[66,6,'八国联军侵华战争的起止时间？战后签订的条约？','1900-1901年；《辛丑条约》'],
+[67,6,'八国联军侵华期间，有哪些反侵略的人物和事迹？','①义和团抗击八国联军，在廊坊阻击敌人；②在天津保卫战中，清军将领聂士成壮烈殉国。'],
+[68,6,'八国联军攻陷北京后，慈禧太后携哪位皇帝狼狈西逃？','光绪帝'],
+[69,6,'义和团运动的历史意义？','它沉重打击了帝国主义瓜分中国的野心，是一次反帝爱国运动。'],
+[70,6,'义和团运动失败的原因？','农民阶级的局限性，中外反动势力的镇压'],
+[71,6,'《辛丑条约》哪些内容最能直接体现清政府成为帝国主义列强统治中国的工具？','惩办“首祸诸臣”，在华北等地区停止科举考试5年；清政府保证严禁人民参加各种形式的反帝活动。'],
+[73,6,'《辛丑条约》的赔款金额？','白银4.5亿两'],
+[74,6,'《辛丑条约》哪一内容使得北京出现了“国中之国”？','划定北京东交民巷为使馆界，允许各国派兵驻守，不准中国人居住。'],
+[75,6,'《辛丑条约》哪一内容严重破坏了中国的军事主权？','拆除大沽炮台，允许外国军队驻扎在北京到山海关的铁路沿线地区。'],
+[76,6,'《辛丑条约》哪一内容便于列强控制中国的外交？','改总理衙门为外务部，班列六部之前'],
+[77,6,'如何认识《辛丑条约》？','这是中国近代史上赔款数目最庞大、主权丧失最严重的不平等条约，是中华民族的巨大耻辱；从此，清政府成为帝国主义列强统治中国的工具，中国完全陷入半殖民地半封建社会的深渊。'],
+[78,7,'19世纪晚期，孙中山的思想发生了哪两次重大转变？','从学医救人（医人）到医国，主张改革，再到主张革命，推翻清朝统治。'],
+[79,7,'中国近代史上第一个资产阶级革命团体是什么？成立的时间、地点、领导人？','兴中会，1894年，檀香山，孙中山'],
+[80,7,'为什么1901年后，国内革命情绪日趋高涨？','1901年，《辛丑条约》签订后，清政府成为帝国主义列强统治中国的工具。'],
+[81,7,'19世纪末20世纪初，出现了哪些著名的资产阶级革命派？相关著作？','章炳麟——《驳康有为论革命书》；邹容——《革命军》；陈天华——《猛回头》《警世钟》'],
+[82,7,'中国近代史上第一个全国规模的统一的资产阶级革命政党是什么？成立的时间、地点、机关报？','中国同盟会，1905年，日本东京，《民报》'],
+[83,7,'中国同盟会的政治纲领？','驱除鞑虏，恢复中华，创立民国，平均地权'],
+[84,7,'三民主义的内容及地位？','民族主义、民权主义、民生主义；它是孙中山领导资产阶级革命的指导思想。'],
+[85,7,'中国同盟会成立后领导的第一次武装起义？','萍浏醴起义'],
+[86,7,'1911年发生的哪一次武装起义与“武昌革命之役并寿”？意义？','广州（黄花岗）起义；革命党人不屈不挠的精神和视死如归的英雄气概，极大地鼓舞了全国人民的斗志。'],
+[87,7,'哪一次起义打响了辛亥革命的第一枪？时间？结果？','武昌起义，1911年10月10日，革命在武汉三镇取得胜利，成立湖北军政府。'],
+[88,7,'辛亥革命的重要成果？','中华民国建立（成立南京临时政府），颁布《中华民国临时约法》'],
+[89,7,'中华民国成立的时间、地点？第一任临时大总统？','1912年1月1日，南京，孙中山'],
+[90,7,'公元纪年与民国纪年的换算？','公元多少年＝1911＋N（民国N年）'],
+[91,7,'《中华民国临时约法》体现了哪些原则？','主权在民，自由平等，三权分立等'],
+[92,7,'《中华民国临时约法》的地位？意义？','这是中国历史上第一部具有资产阶级共和国宪法性质的重要文件。\n它肯定了资产阶级民主共和制度和民主自由原则，是辛亥革命的重要成果。'],
+[93,7,'《中华民国临时约法》的局限性？','在当时的历史条件下难有实际的约束效力。'],
+[94,7,'清朝末代皇帝是谁？退位的时间？影响？','宣统帝，1912年2月，标志着清朝统治结束'],
+[95,7,'临时政府迁往哪里，标志辛亥革命果实被袁世凯窃取？','北京'],
+[96,7,'1912年，谁以同盟会为基础、联合其他几个政党，组成国民党，随后被袁世凯刺杀？','宋教仁'],
+[97,7,'在袁世凯窃取革命果实后，为了维护共和制度，孙中山等资产阶级革命党人先后做了哪些努力？','发动二次革命、护国战争、护法运动等'],
+[98,7,'为了复辟帝制，袁世凯不惜牺牲国家主权和民族利益，请举例说明？','1915年，他接受日本提出的“二十一条”大部分内容'],
+[99,7,'护国战争开始的标志？领导人？','1915年底，唐继尧、蔡锷、李烈钧在云南宣告独立'],
+[100,7,'袁世凯死后，中国陷入怎样的政治局面？','军阀割据'],
+[101,7,'如何评价辛亥革命？','①成功之处：辛亥革命推翻了清王朝的统治，宣告了君主专制制度的终结；它拉开了中国完全意义上的近代民族民主革命的序幕，极大推动了中华民族的思想解放，打开了中国进步潮流的闸门。\n②失败之处：辛亥革命没有解决近代中国社会的主要矛盾，没有完成民族独立、人民解放的历史任务，中国半殖民地半封建社会的社会性质没有改变。'],
+[102,8,'新文化运动开始的标志？','1915年，陈独秀在上海创办《青年杂志》'],
+[103,8,'新文化运动的代表人物？主阵地？口号？','人物：陈独秀、胡适、李大钊、鲁迅；\n主阵地：北京大学和《新青年》；\n口号：民主、科学'],
+[104,8,'新文化运动的主要内容？','①抨击旧道德和旧文化；\n②提倡民主与科学；\n③倡导文学革命，提倡新文学，推广白话文。'],
+[105,8,'反对定孔教为国教的作品是？','李大钊《孔子与宪法》'],
+[106,8,'以新文学的形式深刻揭露了封建礼教的吃人本质的是？','鲁迅《狂人日记》（中国第一部白话文小说）'],
+[107,8,'新文化运动中，提倡白话文和新文学的作品有？','胡适《文学改良刍议》；陈独秀《文学革命论》'],
+[108,8,'新文化运动的意义？','①动摇了封建道德礼教的统治地位，掀起了一股思想解放的潮流；\n②使中国人民接受了一次民主与科学的洗礼；\n③对随后爆发的五四运动起到了思想宣传和铺垫作用。'],
+[109,9,'巴黎和会上中国代表提出的正当要求有哪些？','①废除外国在华特权；②誓死力争，还我青岛；③取消“二十一条”；④收回青岛主权。'],
+[110,9,'五四运动的导火索？','巴黎和会上，中国外交失败'],
+[111,9,'五四运动爆发时间？地点？前期主力是？','1919年5月4日；北京；学生'],
+[112,9,'五四运动的口号有哪些？其中最能体现五四运动性质的口号是？','①外争主权，内除国贼（最能体现五四运动性质）；②誓死力争，还我青岛；③取消二十一条；④拒绝在和约上签字。'],
+[113,9,'五四运动后期的中心和主力是怎样转移的？','中心：从北京转移到上海；\n主力：从学生变成了工人'],
+[114,9,'五四运动成功的主要原因是？','工人阶级开始登上历史舞台。'],
+[115,9,'五四运动的斗争形式有哪些？','工人罢工，学生罢课，商人罢市'],
+[116,9,'五四运动得以实现的直接目标有哪些？','①北洋政府释放被捕学生；②罢免曹汝霖等人的职务；③中国代表没有在“巴黎和约”上签字。'],
+[117,9,'五四运动的性质？','一场彻底反帝反封建的伟大爱国革命运动。'],
+[118,9,'五四运动的意义？','①推动了中国社会进步；\n②促进了马克思主义在中国的传播及其与中国工人运动的结合，为中国共产党成立做了思想上干部上的准备；\n③是中国旧民主主义革命走向新民主主义革命的转折点。'],
+[119,9,'五四精神是？其核心是？','爱国（核心），进步，民主，科学'],
+[120,10,'中国共产党诞生的思想、阶级和组织基础分别是什么？','马克思主义在中国广泛传播；工人阶级队伍壮大；共产党早期组织的成立。'],
+[121,10,'中国共产党诞生的标志？地点？','1921年，中共一大召开；上海'],
+[122,10,'中共一大通过的第一个纲领是什么？','明确党的奋斗目标是推翻资产阶级政权，建立无产阶级专政，实现共产主义。'],
+[123,10,'中共一大确定党的中心工作是什么？','领导和组织工人运动'],
+[124,10,'中共一大成立的领导机构？领导人？','中央局，陈独秀当选为中央局书记'],
+[125,10,'中国共产党诞生的历史意义？','这是中国历史上开天辟地的大事。从此，中国革命的面貌就焕然一新了；中国共产党的创建，形成了伟大的建党精神。'],
+[126,10,'建党精神的内涵？','坚持真理，坚守理想，践行初心，担当使命，不怕牺牲，英勇斗争，对党忠诚，不负人民。'],
+[127,10,'中共二大的时间、地点？','1922年，上海'],
+[128,10,'中共二大的内容？','重申了党的最高奋斗目标是实现共产主义，制定了党的最低纲领，即，在民主革命阶段，党的主要任务是打倒军阀，推翻帝国主义的压迫，将中国统一为真正的民主共和国。'],
+[129,10,'中共二大召开的意义？','这是中国共产党第一次提出了明确的反帝反封建的民主革命纲领。'],
+[130,10,'中国共产党成立后设哪一机构领导工人运动？','中国劳动组合书记部'],
+[131,10,'哪一工人运动把第一次全国工人运动高潮推向顶峰？','京汉铁路工人大罢工'],
+[132,10,'在京汉铁路工人大罢工失败后，中国共产党有什么新的认识？','必须团结一切可能的同盟者，才能战胜强大的敌人。'],
+];
+
+const ITEMS = DATA.map(d=>({n:d[0],cat:d[1],q:d[2],a:d[3]}));
+const TOTAL = ITEMS.length;
+
+/* ===================== 状态 ===================== */
+const store = {
+  get(k,def){ try{ const v=localStorage.getItem(k); return v===null?def:JSON.parse(v); }catch(e){ return def; } },
+  set(k,v){ try{ localStorage.setItem(k,JSON.stringify(v)); }catch(e){} }
+};
+const state = {
+  view:'list', q:'', cat:'all',
+  known:new Set(store.get('his-known',[])),
+  onlyUnknown:false,
+  quiz:{pool:[],order:[],idx:0,ok:0,revealed:false}
+};
+const $ = s=>document.querySelector(s);
+const esc = s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const fmt = s=>esc(s).replace(/\n/g,'<br>');
+
+/* ===================== 过滤 ===================== */
+function filtered(){
+  const q = state.q.trim().toLowerCase();
+  return ITEMS.filter(it=>{
+    if(state.cat!=='all' && it.cat!==state.cat) return false;
+    if(state.onlyUnknown && state.known.has(it.n)) return false;
+    if(!q) return true;
+    return (it.q+' '+it.a+' '+it.n+' '+CATS[it.cat]).toLowerCase().includes(q);
+  });
+}
+
+/* ===================== 渲染 ===================== */
+function render(){
+  const list = filtered();
+  $('#sShow').textContent = list.length;
+  $('#sKnown').textContent = state.known.size;
+  const app = $('#app');
+  if(!list.length){ app.innerHTML = emptyHTML(); return; }
+  if(state.view==='list') renderList(app,list);
+  else if(state.view==='card') renderCards(app,list);
+  else renderQuiz(app,list);
+}
+
+function emptyHTML(){ return `<div class="empty"><div class="e">🔍</div><div>没有找到匹配的题目，换个关键词试试</div></div>`; }
+
+/* ---- 列表 ---- */
+function renderList(app,list){
+  app.className = 'qlist';
+  app.innerHTML = list.map((it,i)=>{
+    const k = state.known.has(it.n);
+    return `<article class="qi ${k?'known':''}" data-n="${it.n}" style="animation-delay:${Math.min(i*10,300)}ms">
+      <div class="qi-head">
+        <div class="qno">${it.n}</div>
+        <div class="qi-main">
+          <span class="qi-cat">${esc(CATS[it.cat])}</span>
+          <div class="qi-q">${esc(it.q)}</div>
+          <div class="qi-ans">${fmt(it.a)}</div>
+        </div>
+        <div class="qi-acts">
+          <button class="act t" title="显示 / 隐藏答案">👁</button>
+          <button class="act k ${k?'k':''}" title="标记已掌握">${k?'✓':'○'}</button>
+        </div>
+      </div>
+    </article>`;
+  }).join('');
+  app.querySelectorAll('.qi').forEach(el=>{
+    const n = +el.dataset.n;
+    el.querySelector('.t').onclick = e=>{ e.stopPropagation(); el.classList.toggle('open'); };
+    el.querySelector('.qi-q').onclick = ()=> el.classList.toggle('open');
+    el.querySelector('.k').onclick = e=>{ e.stopPropagation(); toggleKnown(n); };
+  });
+  if(app.classList.contains('masked')) app.classList.add('masked');
+}
+
+/* ---- 卡片 ---- */
+function renderCards(app,list){
+  app.className = 'cards';
+  app.innerHTML = list.map((it,i)=>`
+    <div class="card" data-n="${it.n}" style="animation-delay:${Math.min(i*12,400)}ms">
+      <div class="card-in">
+        <div class="card-f">
+          <div class="top"><span class="n">第 ${it.n} 题</span><span class="tag">${esc(CATS[it.cat])}</span></div>
+          <div class="q">${esc(it.q)}</div>
+          <div class="hint">点击翻转查看答案 →</div>
+        </div>
+        <div class="card-b">
+          <div class="lab">答案</div>
+          <div class="a">${fmt(it.a)}</div>
+          <div class="n2">${it.n}</div>
+        </div>
+      </div>
+    </div>`).join('');
+  app.querySelectorAll('.card').forEach(c=>c.onclick=()=>c.classList.toggle('flip'));
+}
+
+/* ---- 自测 ---- */
+function buildQuiz(){
+  const pool = filtered();
+  const order = pool.map((_,i)=>i);
+  for(let i=order.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [order[i],order[j]]=[order[j],order[i]]; }
+  state.quiz = {pool,order,idx:0,ok:0,revealed:false};
+}
+function renderQuiz(app,list){
+  const z = state.quiz;
+  if(!z.pool || z.pool.length!==list.length){ buildQuiz(); }
+  const q = state.quiz;
+  app.className = 'quiz-wrap';
+  if(q.idx >= q.pool.length) return renderResult(app);
+  const it = q.pool[q.order[q.idx]];
+  app.innerHTML = `<div class="quiz">
+    <div class="q-prog"><i style="width:${(q.idx/q.pool.length)*100}%"></i></div>
+    <div class="q-meta"><span>第 ${q.idx+1} / ${q.pool.length} 题</span><span>已会 ${q.ok}</span></div>
+    <div class="q-card">
+      <div class="q-tag">${esc(CATS[it.cat])} · 第 ${it.n} 题</div>
+      <div class="q-qt">${esc(it.q)}</div>
+      <div class="q-ans ${q.revealed?'show':''}">${fmt(it.a)}</div>
+      <div class="q-actions" id="qa1">
+        <button class="btn" id="reveal">显示答案</button>
+        ${q.revealed?`
+          <button class="btn good" id="yes">✅ 会了</button>
+          <button class="btn warn" id="no">❌ 再练</button>`
+        :`<button class="btn primary" id="skip">想不出，看答案 →</button>`}
+      </div>
+    </div>
+    <div class="scope">范围：${state.cat==='all'?'全部题目':esc(CATS[state.cat])}${state.q?(' · 搜索“'+esc(state.q)+'”'):''}</div>
+  </div>`;
+  const reveal = ()=>{ state.quiz.revealed=true; renderQuiz($('#app'),filtered()); };
+  $('#reveal').onclick = reveal;
+  const skip = $('#skip'); if(skip) skip.onclick = reveal;
+  const yes = $('#yes'); if(yes) yes.onclick = ()=>{ state.known.add(it.n); persistKnown(); state.quiz.ok++; nextQ(); };
+  const no = $('#no'); if(no) no.onclick = ()=>{ state.known.delete(it.n); persistKnown(); nextQ(); };
+}
+function nextQ(){ state.quiz.idx++; state.quiz.revealed=false; window.scrollTo({top:0,behavior:'smooth'}); renderQuiz($('#app'),filtered()); }
+function renderResult(app){
+  const q = state.quiz;
+  const pct = q.pool.length? Math.round(q.ok/q.pool.length*100):0;
+  const label = pct>=90?'非常熟练！🏆':pct>=75?'掌握不错，继续保持 👍':pct>=60?'基本掌握，再复习一遍 💪':'需要加强背诵 📚';
+  app.innerHTML = `<div class="quiz"><div class="q-card q-result">
+    <div class="big">${pct}%</div>
+    <div class="txt">本轮“会了” ${q.ok} / ${q.pool.length} 题</div>
+    <div class="acc">${label}</div>
+    <div class="q-actions">
+      <button class="btn" id="again">🔁 再来一轮</button>
+      <button class="btn primary" id="back">📖 回到列表</button>
+    </div>
+  </div></div>`;
+  $('#again').onclick = ()=>{ buildQuiz(); renderQuiz($('#app'),filtered()); };
+  $('#back').onclick = ()=> setView('list');
+}
+
+/* ===================== 掌握标记 ===================== */
+function toggleKnown(n){
+  if(state.known.has(n)) state.known.delete(n); else state.known.add(n);
+  persistKnown();
+  const el = document.querySelector(`.qi[data-n="${n}"]`);
+  if(el){
+    const k = state.known.has(n);
+    el.classList.toggle('known',k);
+    const btn = el.querySelector('.k'); btn.classList.toggle('k',k); btn.textContent = k?'✓':'○';
+  }
+  $('#sKnown').textContent = state.known.size;
+  if(state.onlyUnknown) renderList($('#app'),filtered());
+}
+function persistKnown(){ store.set('his-known',[...state.known]); }
+
+/* ===================== 控制 ===================== */
+function setView(v){
+  state.view = v;
+  document.querySelectorAll('#viewToggle button').forEach(b=>b.classList.toggle('on',b.dataset.view===v));
+  $('#app').classList.toggle('masked', false);
+  if(v==='quiz') buildQuiz();
+  render();
+}
+document.querySelectorAll('#viewToggle button').forEach(b=>b.onclick=()=>setView(b.dataset.view));
+
+let t=null;
+$('#search').addEventListener('input',e=>{
+  state.q = e.target.value;
+  $('#clearBtn').classList.toggle('show',!!state.q);
+  clearTimeout(t); t=setTimeout(()=>{ if(state.view==='quiz') buildQuiz(); render(); },150);
+});
+$('#clearBtn').onclick = ()=>{ $('#search').value=''; state.q=''; $('#clearBtn').classList.remove('show'); render(); $('#search').focus(); };
+
+$('#expandAll').onclick = ()=>{ document.querySelectorAll('.qi').forEach(el=>el.classList.add('open')); };
+$('#collapseAll').onclick = ()=>{ document.querySelectorAll('.qi').forEach(el=>el.classList.remove('open')); };
+$('#onlyUnknown').onclick = ()=>{
+  state.onlyUnknown = !state.onlyUnknown;
+  $('#onlyUnknown').classList.toggle('on',state.onlyUnknown);
+  $('#onlyUnknown').textContent = state.onlyUnknown?'显示全部':'只看未掌握';
+  render();
+};
+$('#resetKnown').onclick = ()=>{
+  if(!confirm('确定清空所有“已掌握”标记吗？')) return;
+  state.known.clear(); persistKnown(); render();
+};
+$('#printBtn').onclick = ()=> window.print();
+
+/* 主题 */
+function applyTheme(t){
+  document.documentElement.dataset.theme = t;
+  $('#themeBtn').textContent = t==='dark'?'🌙':'☀️';
+  store.set('his-theme',t);
+}
+$('#themeBtn').onclick = ()=> applyTheme(document.documentElement.dataset.theme==='dark'?'light':'dark');
+
+/* 快捷键 / */
+document.addEventListener('keydown',e=>{
+  if(e.key==='/' && document.activeElement!==$('#search')){ e.preventDefault(); $('#search').focus(); }
+  if(e.key==='Escape' && document.activeElement===$('#search')){ $('#search').blur(); }
+});
+
+/* 打印时列表全展开 */
+window.addEventListener('beforeprint',()=>{
+  if(state.view==='list') document.querySelectorAll('.qi').forEach(el=>el.classList.add('open'));
+  document.body.classList.add('print-mode');
+});
+window.addEventListener('afterprint',()=>{ document.body.classList.remove('print-mode'); });
+
+/* ===================== 初始化 ===================== */
+(function init(){
+  applyTheme(store.get('his-theme','dark'));
+  $('#sTotal').textContent = TOTAL;
+  $('#sCat').textContent = CATS.length;
+  // chips
+  const c = $('#chips');
+  c.innerHTML = `<button class="chip on" data-cat="all">全部<small>${TOTAL}</small></button>` +
+    CATS.map((name,i)=>{
+      const n = ITEMS.filter(x=>x.cat===i).length;
+      return `<button class="chip" data-cat="${i}">${esc(name)}<small>${n}</small></button>`;
+    }).join('');
+  c.querySelectorAll('.chip').forEach(b=>b.onclick=()=>{
+    state.cat = b.dataset.cat==='all'?'all':+b.dataset.cat;
+    c.querySelectorAll('.chip').forEach(x=>x.classList.toggle('on',x===b));
+    if(state.view==='quiz') buildQuiz();
+    render();
+  });
+  render();
+})();
+</script>
+</body>
+</html>

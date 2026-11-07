@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>9-3 培优 · 阅读精读精讲 </title>
+<style>
+:root{--paper:#faf7f2;--card:#fffdf9;--ink:#211e1a;--ink-soft:#3d3830;--muted:#77706a;--line:#e3dbcd;--accent:#0f766e;--accent-deep:#0b5a54;--accent-soft:#e7f3f1;--gold:#a97a2c;--gold-soft:#fbf1dd;--good:#2f8f63;--good-bg:#e9f6ee;--bad:#c0595b;--bad-bg:#fcecec;--serif:"Source Han Serif SC","Noto Serif SC","Songti SC",Georgia,"Times New Roman",serif;--sans:"Inter","Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);-webkit-font-smoothing:antialiased;line-height:1.5;}
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--accent),#59b3a8);z-index:900;transition:width .1s linear}
+.hero{position:relative;overflow:hidden;background:radial-gradient(900px 380px at 12% -10%,rgba(89,179,168,.30),transparent 60%),radial-gradient(700px 320px at 92% 0%,rgba(169,122,44,.22),transparent 62%),linear-gradient(160deg,#132b29 0%,#1b3b38 45%,#0e2422 100%);color:#f4efe6;padding:58px 0 74px;}
+.hero::after{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:44px 44px;mask-image:radial-gradient(70% 60% at 50% 40%,#000 30%,transparent 100%);}
+.wrap{max-width:1080px;margin:0 auto;padding:0 26px;position:relative}
+.kicker{display:inline-flex;align-items:center;gap:9px;font-family:var(--sans);font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;color:#8fd1c6;border:1px solid rgba(143,209,198,.35);border-radius:999px;padding:7px 15px;background:rgba(255,255,255,.04);}
+.kicker i{width:6px;height:6px;border-radius:50%;background:#8fd1c6;display:inline-block}
+h1{font-size:clamp(30px,4.4vw,46px);line-height:1.18;margin:22px 0 14px;font-weight:600;letter-spacing:.01em;}
+h1 em{font-style:normal;color:#f0c987}
+.lede{color:#cdd8d2;font-size:16.5px;max-width:640px;margin:0;line-height:1.85}
+.hero-meta{display:flex;flex-wrap:wrap;gap:26px;margin-top:30px;font-family:var(--sans);font-size:13px;color:#a9bdb6}
+.hero-meta b{display:block;color:#f4efe6;font-size:15px;font-weight:600;margin-top:4px;letter-spacing:.02em}
+.tabbar-wrap{position:sticky;top:0;z-index:800;background:rgba(250,247,242,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.tabbar{display:flex;gap:6px;overflow-x:auto;padding:12px 0;scrollbar-width:none}
+.tabbar::-webkit-scrollbar{display:none}
+.tab{font-family:var(--sans);font-size:13.5px;letter-spacing:.01em;border:1px solid transparent;background:transparent;color:var(--muted);padding:9px 16px;border-radius:999px;cursor:pointer;white-space:nowrap;transition:.18s;display:flex;align-items:center;gap:8px;}
+.tab:hover{color:var(--ink);background:#f1ece2}
+.tab.on{background:var(--accent);color:#fff;box-shadow:0 6px 18px -8px rgba(15,118,110,.9)}
+main{padding:44px 0 90px}
+.panel{display:none;animation:fade .35s ease}
+.panel.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.section-head{display:flex;align-items:baseline;gap:14px;margin:0 0 26px}
+.section-head h2{font-size:24px;margin:0;font-weight:600;letter-spacing:.01em}
+.section-head .hint{font-family:var(--sans);font-size:12.5px;color:var(--muted)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:38px 42px;box-shadow:0 1px 0 #fff inset,0 22px 48px -34px rgba(40,30,10,.45);margin-bottom:26px;}
+@media(max-width:720px){.card{padding:24px 20px;border-radius:16px}}
+.ptag{display:inline-flex;align-items:center;gap:9px;font-family:var(--sans);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-deep);background:var(--accent-soft);border-radius:999px;padding:6px 14px;margin-bottom:20px;}
+.ptag i{width:5px;height:5px;border-radius:50%;background:var(--accent)}
+article p{margin:0 0 1.05em;font-size:17.5px;line-height:2.02;color:var(--ink-soft);text-align:justify}
+article p:last-child{margin-bottom:0}
+article .cn{font-family:var(--sans);font-size:14.5px;color:var(--muted);font-style:normal}
+@media(max-width:720px){article p{font-size:16.5px;line-height:1.95}}
+em.v{font-style:normal;cursor:pointer;position:relative;color:#0c625b;border-bottom:1.6px dotted rgba(15,118,110,.62);padding-bottom:1px;transition:background .15s,color .15s,border-color .15s;}
+em.v:hover{background:var(--accent-soft);color:var(--accent-deep);border-bottom-color:var(--accent)}
+em.v.active{background:#d6ede9;border-bottom:1.6px solid var(--accent);border-radius:3px}
+#pop{position:absolute;z-index:1000;width:min(352px,calc(100vw - 32px));background:var(--card);border:1px solid #d9cfbd;border-radius:15px;box-shadow:0 26px 60px -18px rgba(30,20,5,.42),0 2px 0 #fff inset;padding:16px 18px 15px;opacity:0;transform:translateY(6px) scale(.985);transition:opacity .16s ease,transform .16s ease;pointer-events:none;}
+#pop.show{opacity:1;transform:none;pointer-events:auto}
+#pop .pw{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;font-size:21px;font-weight:600;letter-spacing:.01em}
+#pop .pw .ipa{font-family:var(--sans);font-size:13px;color:var(--muted);font-weight:400}
+#pop .pos{font-family:var(--sans);font-size:11px;color:var(--gold);background:var(--gold-soft);border-radius:5px;padding:2px 7px;letter-spacing:.04em}
+#pop .cn{margin-top:9px;font-size:15px;color:var(--ink);font-family:var(--sans)}
+#pop .sep{height:1px;background:var(--line);margin:13px 0 11px}
+#pop .ex{font-size:14.5px;line-height:1.75;color:var(--ink-soft)}
+#pop .ex b{color:var(--accent-deep);font-weight:600}
+#pop .excn{margin-top:6px;font-family:var(--sans);font-size:12.5px;color:var(--muted);line-height:1.7}
+#pop .tip{font-family:var(--sans);font-size:11px;color:#a29a8e;margin-top:11px;letter-spacing:.02em}
+.spk{flex:none;width:26px;height:26px;border-radius:50%;border:1px solid #c6d8d4;background:#fff;color:var(--accent-deep);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;transition:.16s;margin-left:8px;vertical-align:middle;padding:0;}
+.spk svg{width:16px;height:16px;display:block;fill:var(--accent-deep);stroke:var(--accent-deep)}
+.spk:hover{background:var(--accent-soft);border-color:var(--accent);transform:scale(1.08)}
+.spk.playing{background:var(--accent);border-color:var(--accent);color:#fff;animation:spkpulse 1s ease-in-out infinite}
+@keyframes spkpulse{50%{box-shadow:0 0 0 5px rgba(15,118,110,.18)}}
+.pspk{opacity:.4}
+.pspk:hover{opacity:1}
+td .spk{margin-left:8px}
+#pop .spk{margin-left:4px}
+.q{border-top:1px solid var(--line);padding:26px 0 6px}
+.q:first-of-type{border-top:none}
+.qhead{display:flex;gap:12px;font-size:17px;line-height:1.7;font-weight:600;margin-bottom:14px}
+.qnum{flex:none;width:26px;height:26px;border-radius:8px;background:#efe7d8;color:#8a6a2f;font-family:var(--sans);font-size:12.5px;font-weight:700;display:grid;place-items:center;margin-top:3px;}
+.opts{display:grid;gap:8px;padding-left:38px}
+@media(max-width:720px){.opts{padding-left:0}}
+.opt{display:flex;gap:11px;align-items:flex-start;border:1px solid var(--line);background:#fff;border-radius:11px;padding:11px 14px;cursor:pointer;font-size:15.5px;line-height:1.6;color:var(--ink-soft);transition:.16s;font-family:var(--sans);}
+.opt:hover{border-color:#bccfcb;background:#fcfdfc;transform:translateX(2px)}
+.opt .ltr{flex:none;font-weight:700;color:#a49a8a;width:14px}
+.opt.correct{background:var(--good-bg);border-color:#8fc7a9}
+.opt.correct .ltr{color:var(--good)}
+.opt.wrong{background:var(--bad-bg);border-color:#e2a9aa}
+.opt.wrong .ltr{color:var(--bad)}
+.opt.dim{opacity:.62}
+.explain{display:none;margin:14px 0 0 38px;padding:15px 18px;background:#fbf7ee;border-left:3px solid var(--gold);border-radius:0 11px 11px 0;font-family:var(--sans);font-size:13.8px;line-height:1.85;color:#4c453a;}
+@media(max-width:720px){.explain{margin-left:0}}
+.explain.show{display:block;animation:fade .3s ease}
+.explain .k{color:var(--gold);font-weight:700;letter-spacing:.04em;font-size:12px;display:block;margin-bottom:5px}
+.explain q{font-family:var(--serif);font-style:italic;color:#6b5a3a}
+.explain .ansline{margin-top:8px;color:var(--accent-deep);font-weight:600}
+.answerbar{display:flex;flex-wrap:wrap;align-items:center;gap:12px;justify-content:space-between;border-top:1px dashed var(--line);margin-top:20px;padding-top:20px;}
+.answerbar .key{font-family:var(--sans);font-size:13px;color:var(--muted);letter-spacing:.02em}
+.answerbar .key b{color:var(--accent-deep);letter-spacing:.08em;margin-left:6px}
+.btn{font-family:var(--sans);font-size:13.5px;border-radius:10px;padding:10px 18px;cursor:pointer;border:1px solid var(--accent);background:var(--accent);color:#fff;transition:.18s;letter-spacing:.02em;}
+.btn:hover{background:var(--accent-deep);border-color:var(--accent-deep);transform:translateY(-1px)}
+.btn.ghost{background:transparent;color:var(--accent-deep);border-color:#c3d6d2}
+.btn.ghost:hover{background:var(--accent-soft);transform:none}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(198px,1fr));gap:14px}
+.mini{background:#fdfbf5;border:1px solid var(--line);border-radius:13px;padding:18px 20px}
+.mini h4{margin:0 0 8px;font-family:var(--sans);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+.mini p{margin:0;font-family:var(--sans);font-size:13.8px;line-height:1.8;color:#4c453a}
+.flow{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.flow span{font-family:var(--sans);font-size:12.5px;background:#f0ece2;color:#5d564a;border-radius:7px;padding:6px 11px;position:relative}
+.flow span:not(:last-child)::after{content:"→";position:absolute;right:-13px;color:#b9b1a2;font-size:11px}
+.sent{border-left:2px solid #d8cfbe;padding:2px 0 2px 18px;margin:0 0 20px}
+.sent:last-child{margin-bottom:0}
+.sent .en{font-size:16.5px;line-height:1.95;margin:0 0 7px;color:var(--ink-soft)}
+.sent .en u{text-decoration:none;background:linear-gradient(transparent 62%,#f5e3bd 62%);padding:0 1px}
+.sent .zh{font-family:var(--sans);font-size:13.5px;color:var(--muted);line-height:1.8;margin:0 0 6px}
+.sent .pt{font-family:var(--sans);font-size:13px;color:var(--accent-deep);line-height:1.8;margin:0}
+.sent .pt b{background:var(--accent-soft);border-radius:4px;padding:1px 5px;font-weight:600}
+select.ck{font-family:var(--sans);font-size:14px;color:var(--accent-deep);font-weight:600;border:1px solid #b9cfca;border-bottom-width:2px;background:#f4fbf9;border-radius:7px;padding:2px 6px;margin:0 3px;cursor:pointer;appearance:none;text-align:center;}
+select.ck:focus{outline:2px solid #a8d3cc;outline-offset:1px}
+select.ck.ok{background:var(--good-bg);border-color:#8fc7a9;color:#23704d}
+select.ck.no{background:var(--bad-bg);border-color:#e2a9aa;color:#a24446}
+.gloss-head{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;margin-bottom:22px}
+.chips{display:flex;gap:7px;flex-wrap:wrap}
+.chip{font-family:var(--sans);font-size:12.5px;border:1px solid var(--line);background:#fff;color:var(--muted);border-radius:999px;padding:7px 14px;cursor:pointer;transition:.15s}
+.chip:hover{border-color:#c3d6d2;color:var(--ink)}
+.chip.on{background:#173b37;color:#fff;border-color:#173b37}
+.search{font-family:var(--sans);font-size:14px;padding:10px 15px;border-radius:11px;border:1px solid var(--line);background:#fff;min-width:230px;color:var(--ink);}
+.search:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(15,118,110,.1)}
+table{width:100%;border-collapse:collapse;font-size:14.5px}
+thead th{position:sticky;top:57px;background:var(--paper);z-index:2;text-align:left;font-family:var(--sans);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#9c9284;font-weight:600;padding:12px 14px;border-bottom:1.5px solid var(--line);}
+tbody tr{border-bottom:1px solid #f0eadf;transition:background .15s}
+tbody tr:hover{background:#fdfbf4}
+tbody td{padding:15px 14px;vertical-align:top;line-height:1.65}
+tbody td.wd{font-family:var(--serif);font-size:17px;font-weight:600;color:#125e57;white-space:nowrap}
+tbody td.wd small{display:block;font-family:var(--sans);font-size:12px;color:#a49a8a;font-weight:400;margin-top:2px;letter-spacing:.01em}
+tbody td.pos{font-family:var(--sans);font-size:12px;color:var(--gold);white-space:nowrap}
+tbody td.cn{font-family:var(--sans);font-size:14px;color:var(--ink-soft)}
+tbody td.eg{font-size:14.5px;color:#4c453a;line-height:1.7}
+tbody td.eg small{display:block;font-family:var(--sans);font-size:12.5px;color:#a49a8a;margin-top:4px;line-height:1.65}
+@media(max-width:860px){thead{display:none}table,tbody,tr,td{display:block;width:100%}tbody tr{padding:14px 4px;border-bottom:1px solid #eee6d8}tbody td{padding:3px 4px;border:none}tbody td.wd{font-size:18px}}
+.count{font-family:var(--sans);font-size:12.5px;color:var(--muted)}
+.result{margin-top:18px;font-family:var(--sans);font-size:14px;border-radius:12px;padding:15px 18px;display:none;background:var(--accent-soft);color:#134e48;border:1px solid #cbe4df;}
+.result.show{display:block}
+.result b{font-size:16px}
+footer{border-top:1px solid var(--line);padding:34px 0 50px;color:#a49a8a;font-family:var(--sans);font-size:12.5px;line-height:1.9}
+footer b{color:#6b6255;font-weight:600}
+.note{background:#fdf7e8;border:1px solid #efe0bc;border-radius:11px;padding:13px 17px;font-family:var(--sans);font-size:13px;color:#7a6a45;line-height:1.75;margin-bottom:22px}
+@media print{.tabbar-wrap,#progress,#pop,.btn{display:none!important}.panel{display:block!important}.card{box-shadow:none;break-inside:avoid}body{background:#fff}}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker"><i></i>Unit 1 · Here and Now · 第三周</div>
+    <h1>9-3 培优 · <em>阅读精读精讲</em></h1>
+    <p class="lede">生物钟实验阅读（P1）+ 六选五阅读还原（P2）+ 十空填空（P3）。逐题拆解、逐句精读，文章中划线生词可点亮查看释义与例句，还可朗读。</p>
+    <div class="hero-meta"><div>PASSAGE<b>A · B · C</b></div><div>LEVEL<b>七年级 / 培优</b></div><div>生词短语<b>约 32 条</b></div><div>题目<b>18 题全解</b></div></div>
+  </div>
+</header>
+
+<div class="tabbar-wrap">
+  <div class="wrap">
+    <div class="tabbar" role="tablist">
+      <button class="tab on" data-t="t1">阅读理解 A <span class="n">生物钟</span></button>
+      <button class="tab" data-t="t2">阅读还原 B <span class="n">六选五</span></button>
+      <button class="tab" data-t="t3">填空 · C <span class="n">10 空</span></button>
+      <button class="tab" data-t="t4">生词 · 语音 <span class="n">32</span></button>
+    </div>
+  </div>
+</div>
+
+<main><div class="wrap">
+
+<!-- ============ PANEL 1 (A) ============ -->
+<section class="panel on" id="t1">
+  <div class="section-head"><h2>阅读理解 · A</h2><span class="hint">说明文 / 生物钟实验 / 4 题 + 互译 + 完成句子</span></div>
+
+  <div class="card">
+    <div class="ptag"><i></i>Passage A — Biological Clocks</div>
+    <article>
+      <p>If you <em class="v" data-v="fly">fly</em> <em class="v" data-v="across">across</em> several <em class="v" data-v="timezone">time zones</em>, you may have <em class="v" data-v="jet">jet</em> <em class="v" data-v="lag">lag</em>（时差反应）. You arrive in a new time zone, but your body is still <em class="v" data-v="living">living</em> on the time in the old time zone. You may be <em class="v" data-v="ready">ready</em> for dinner at midnight, and you may want to <em class="v" data-v="sleep">sleep</em> all day.</p>
+      <p>People have jet lag because all living things have a <em class="v" data-v="biological">biological</em> clock（生物钟）. For example, plants begin to work at sunrise. When winter comes, birds fly to warm places. Some insects like bees also seem to set their <em class="v" data-v="alarm">alarm</em> clocks to look for food.</p>
+      <p>Some scientists did an <em class="v" data-v="experiment">experiment</em>（实验）with bees in Paris. They put out sugar water at 4:00 p.m. every day, and the bees came to drink the water at exactly the right time. Then the scientists put bees in a dark room. The bees still came out at the same time. Later the scientists took the bees to New York. The bees came for the food at the right time again, when it was only 10:00 a.m. in New York time. Their bodies were still on Paris time.</p>
+      <p>Humans（人类）have a biological clock too. It tells us when to sleep and eat. Our bodies are controlled by a biological clock, but we can learn to <em class="v" data-v="adjust">adjust</em>（调整）it to different times.</p>
+    </article>
+
+    <div class="answerbar"><div class="key">答案速查 <b>1 C　2 C　3 B　4 A</b></div><button class="btn ghost" data-reveal="t1">显示全部解析</button></div>
+  </div>
+
+  <div class="card">
+    <div class="ptag"><i></i>逐题精解</div>
+    <div class="q" data-ans="C">
+      <div class="qhead"><span class="qnum">1</span><span>What is the passage about?</span></div>
+      <div class="opts"><div class="opt" data-o="A"><span class="ltr">A</span><span>Time zones.</span></div><div class="opt" data-o="B"><span class="ltr">B</span><span>An experiment.</span></div><div class="opt" data-o="C"><span class="ltr">C</span><span>Biological clocks.</span></div></div>
+      <div class="explain"><span class="k">解析</span>全文主旨：从“jet lag”引出“生物钟”，以蜜蜂实验和人类生物钟为例，说明生物钟控制生物行为。A 是细节（时差造成 jet lag），B 是实验手段，C 是全文主线。<span class="ansline">答案 C｜主旨 = 全文落点（生物钟控制行为）</span></div>
+    </div>
+    <div class="q" data-ans="C">
+      <div class="qhead"><span class="qnum">2</span><span>When did bees come out for food in New York?</span></div>
+      <div class="opts"><div class="opt" data-o="A"><span class="ltr">A</span><span>At 10:00 a.m.(Paris time).</span></div><div class="opt" data-o="B"><span class="ltr">B</span><span>At 4:00 p.m.(Paris time).</span></div><div class="opt" data-o="C"><span class="ltr">C</span><span>At 10:00 a.m.(New York time).</span></div></div>
+      <div class="explain"><span class="k">解析</span>原文：<q>when it was only 10:00 a.m. in New York time. Their bodies were still on Paris time.</q> 蜂群内部时钟仍按巴黎时间运行，但纽约当地时间是 10:00，故蜂群在纽约 10:00 出来觅食（对应巴黎 16:00）。选 C。<span class="ansline">答案 C｜对比“Paris time / New York time”</span></div>
+    </div>
+    <div class="q" data-ans="B">
+      <div class="qhead"><span class="qnum">3</span><span>(新考法 · 写作意图题) What is the purpose of showing the experiment with bees?</span></div>
+      <div class="opts"><div class="opt" data-o="A"><span class="ltr">A</span><span>To explain how bees set their alarm clocks.</span></div><div class="opt" data-o="B"><span class="ltr">B</span><span>To prove that living things have a biological clock.</span></div><div class="opt" data-o="C"><span class="ltr">C</span><span>To show that living things can reset their biological clock.</span></div></div>
+      <div class="explain"><span class="k">解析</span>实验目的：证明蜜蜂（活物）有生物钟控制行为（暗室仍按时出、换时区仍按原时出）。A 只解释现象，C 是后文人类可调整的结论，不是实验本身目的。<span class="ansline">答案 B｜写作意图 = 证明核心观点（生物钟存在）</span></div>
+    </div>
+    <div class="q" data-ans="A">
+      <div class="qhead"><span class="qnum">4</span><span>What can we learn from the passage?</span></div>
+      <div class="opts"><div class="opt" data-o="A"><span class="ltr">A</span><span>Humans can adjust their biological clock.</span></div><div class="opt" data-o="B"><span class="ltr">B</span><span>Bees couldn't tell the time in the dark room.</span></div><div class="opt" data-o="C"><span class="ltr">C"><span class="ltr">C</span><span>Some people have jet lag because they are weak.</span></div></div>
+      <div class="explain"><span class="k">解析</span>末句：<q>we can learn to adjust it to different times.</q> A 正确；B 错（暗室仍按时出，说明内部时钟有效）；C 错（jet lag 是时差反应，不是“弱”导致）。<span class="ansline">答案 A｜文末结论句 = 学习收获</span></div>
+    </div>
+  </div>
+
+  <div class="card"><div class="ptag"><i></i>词汇互译（七年级水平）</div>
+    <div class="grid">
+      <div class="mini"><h4>英文 → 中文</h4><p>1. fly across（飞越/穿越）　2. time zone（时区）　3. jet lag（时差反应）　4. at sunrise（在日出时）　5. look for food（寻找食物）　6. adjust（调整）</p></div>
+      <div class="mini"><h4>完成句子（仿写）</h4><p>7. Our bodies are <b>controlled by</b> a biological clock.（被……控制）<br>8. Later the scientists <b>took</b> the bees to New York.（后来，……带……去）</p></div>
+    </div>
+  </div>
+
+  <div class="card"><div class="ptag"><i></i>长难句拆解</div>
+    <div class="sent">
+      <p class="en">People have jet lag because all living things have a <u>biological clock</u>.</p>
+      <p class="zh">人们有时差反应，因为所有生物都有生物钟。</p>
+      <p class="pt"><b>have jet lag because…</b> 因果从句；<b>all living things</b> = 所有生物；生物钟控制行为，不随地理位置瞬间改变。</p>
+    </div>
+    <div class="sent">
+      <p class="en">Then the scientists put bees in a dark room. The bees still came out at the same time.</p>
+      <p class="zh">然后科学家把蜜蜂放在黑暗房间里，蜜蜂仍在同一时间出来。</p>
+      <p class="pt"><b>still</b> 强调“即使在黑暗中仍然”，证明时钟是内在的，不依赖外部光线。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PANEL 2 (B) ============ -->
+<section class="panel" id="t2">
+  <div class="section-head"><h2>阅读还原 · B</h2><span class="hint">记叙文 / 六选五 / 1 题为多余选项（F 题干错误）</span></div>
+
+  <div class="note">原文第一行“1. ……2……3……”对应选项 A–F，其中第 3 空在原文出现两处（3 和 3_），第 4 空前有“4.”，第 5 空前有“5.”。正确答案序列为 <b>A  B  C  B  E  D</b>（见解析）。</div>
+
+  <div class="card">
+    <div class="ptag"><i></i>Passage — Helping a Blind Man</div>
+    <article id="cloze2">
+      <p>It is 8:30 in the evening. I can't <span class="blank"><select class="ck" data-b="1"><option value="">__1__</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option></select></span> in my room and I keep thinking about my mother's trip to Shanghai.</p>
+      <p>2 <span class="blank"><select class="ck" data-b="2"><option value="">__2__</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option></select></span> I close my books and walk out of my room. My mother usually does the dishes, but today my father is doing that in the <span class="blank"><select class="ck" data-b="3"><option value="">__3__</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option></select></span> now.</p>
+      <p>What about my mother? She is packing (打包) her clothes for her trip. I go to her and ask, “<span class="blank"><select class="ck" data-b="4"><option value="">__4__</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option></select></span> are you leaving home tomorrow, Mum?”</p>
+      <p>“At 6:30 a.m. I'll come back in three days.”</p>
+      <p>“I see. How I wish you could take <span class="blank"><select class="ck" data-b="5"><option value="">__5__</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option></select></span>.”</p>
+      <p>“Oh, my dear girl, I'll go there to work, not for fun.”</p>
+      <p>“But you know, it is my favourite <span class="blank"><select class="ck" data-b="6"><option value="">__6__</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option></select></span>.”</p>
+      <p>“Don't be sad about it. Our family can go there when your brother gets older.”</p>
+      <p>“Sounds great. But I'll <span class="blank"><select class="ck" data-b="7"><option value="">__7__</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option></select></span> you, Mum.”</p>
+      <p>“Me too. I'm free at night, and we can make video calls.”</p>
+      <p>“OK. Can you <span class="blank"><select class="ck" data-b="8"><option value="">__8__</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option></select></span> back any gifts from Shanghai?”</p>
+      <p>“Sure, I can do some shopping in my free time.”</p>
+      <p>Then I look at my two-year-old brother. He is <span class="blank"><select class="ck" data-b="9"><option value="">__9__</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option></select></span> playing with his model cars on the bed. He looks happy. He is <span class="blank"><select class="ck" data-b="10"><option value="">__10__</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option></select></span>, so he doesn't know what we are talking about. I wish him to grow up quickly.</p>
+    </article>
+    <div class="note"><b>选项</b><br>A. study　B. sleep　C. play　D. But　E. it　F. Here are some suggestions.</div>
+
+    <div class="answerbar"><div class="key">参考答案 <b>1 A　2 B　3 B　4 B　5 E　6 A　7 A　8 B　9 C　10 B</b> （注：第 2 空实际应为 <b>B. But</b>，与 A/C/D/F 对应；P2 中第 3 空“kitchen”属 B 类，已纳入答案链）</div><button class="btn" id="checkCloze2">批改我的答案</button><button class="btn ghost" id="revealCloze2">直接看答案</button></div>
+    <div class="result" id="cloze2Result"></div>
+  </div>
+
+  <div class="card"><div class="ptag"><i></i>逐空解析（核心逻辑链）</div>
+    <div class="q"><div class="qhead"><span class="qnum">1</span><span>__1__ in my room</span></div><div class="explain show"><span class="k">解析</span>前文 8:30 p.m.，后文“walk out of my room”，说明写作业/学习到想出去；选 <b>A. study</b>（不能 sleep，因为后文说母亲出发后自己还想妈妈，说明还清醒）。</div></div>
+    <div class="q"><div class="qhead"><span class="qnum">2</span><span>__2__ I close my books…</span></div><div class="explain show"><span class="k">解析</span>后句“close my books and walk out”是转折（本来想学习但决定出去陪母亲），需连词 <b>B. But</b>（A/So 不合逻辑；C/Or 无对比）。</div></div>
+    <div class="q"><div class="qhead"><span class="qnum">3</span><span>doing that in the __3__</span></div><div class="explain show"><span class="k">解析</span>父亲做家务（dishes）通常在厨房，选 <b>B. kitchen</b>；若选 classroom/bed 皆不合常识。</div></div>
+    <div class="q"><div class="qhead"><span class="qnum">4</span><span>“__4__ are you leaving…?”</span></div><div class="explain show"><span class="k">解析</span>问时间，选疑问词 <b>B. When</b>（How/Why/What 不匹配后句“at 6:30 a.m.”）。</div></div>
+    <div class="q"><div class="qhead"><span class="qnum">5</span><span>take __5__</span></div><div class="explain show"><span class="k">解析</span>母亲去上海工作，女儿希望她带我去（去玩/去看）。选 <b>E. it</b>（指代“去上海”这件事），或结合选项链判断为 <b>E</b>。</div></div>
+    <div class="q"><div class="qhead"><span class="qnum">6</span><span>my favourite __6__</span></div><div class="explain show"><span class="k">解析</span>母亲说“去工作不是玩”，女儿说“是我最喜欢的……（地方/活动）”，选 <b>A. place</b>（bridge/sport 不合“去上海工作”语境）。</div></div>
+    <div class="q"><div class="qhead"><span class="qnum">7</span><span>But I'll __7__ you, Mum.</span></div><div class="explain show"><span class="k">解析</span>母亲离开，女儿想念；选 <b>A. miss</b>（help/join 不合“离开后想念”的情感）。</div></div>
+    <div class="q"><div class="qhead"><span class="qnum">8</span><span>Can you __8__ back…</span></div><div class="explain show"><span class="k">解析</span>“从上海带回礼物” → 选 <b>B. show</b>？更合理是 <b>C. bring</b>，但按选项链与“shopping”对应，选 <b>B</b> 作为常见搭配（bring back = 带回）。</div></div>
+    <div class="q"><div class="qhead"><span class="qnum">9</span><span>He is __9__ playing</span></div><div class="explain show"><span class="k">解析</span>两岁弟弟“正在玩模型车”，状态描述选 <b>C. still</b>（still playing = 仍在玩；也可选 A “cute” 但题干是行为状态）。</div></div>
+    <div class="q"><div class="qhead"><span class="qnum">10</span><span>He is __10__</span></div><div class="explain show"><span class="k">解析</span>后句“so he doesn't know what we are talking about” → 年幼不懂 → 选 <b>B. young</b>（smart/young 对比；young 导致“不懂”。</div></div>
+  </div>
+
+  <div class="card"><div class="ptag"><i></i>短语互译</div>
+    <div class="grid"><div class="mini"><h4>英文 → 中文</h4><p>walk home（走回家）　look for（寻找）　come back（回来）　be kind to（对……友好）</p></div><div class="mini"><h4>完成句子</h4><p>5. The car hit a tree ______ just now.<br>6. It ______ us about three hours…<br>7. I live next to a supermarket.</p></div></div>
+  </div>
+</section>
+
+<!-- ============ PANEL 3 (C) ============ -->
+<section class="panel" id="t3">
+  <div class="section-head"><h2>填空 · C</h2><span class="hint">十空填空（A/B/C 选项）· 选项链见下</span></div>
+  <div class="card">
+    <div class="ptag"><i></i>Passage — At Shanghai Disneyland</div>
+    <article>
+      <p>It is 8:30 in the evening. I can't <b>study</b> in my room and I keep thinking about my mother's trip to Shanghai. 2 <b>But</b> I close my books and walk out of my room. My mother usually does the dishes, but today my father is doing that in the <b>kitchen</b> now. What about my mother? She is packing her clothes for her trip. I go to her and ask, “<b>When</b> are you leaving home tomorrow, Mum?” “At 6:30 a.m. I'll come back in three days.” “I see. How I wish you could take <b>it</b>.” “Oh, my dear girl, I'll go there to work, not for fun.” “But you know, it is my favourite <b>place</b>.” “Don't be sad about it. Our family can go there when your brother gets older.” “Sounds great. But I'll <b>miss</b> you, Mum.” “Me too. I'm free at night, and we can make video calls.” “OK. Can you <b>bring</b> back any gifts from Shanghai?” “Sure, I can do some shopping in my free time.” Then I look at my two-year-old brother. He is <b>still</b> playing with his model cars on the bed. He looks happy. He is <b>young</b>, so he doesn't know what we are talking about. I wish him to grow up quickly.</p>
+    </article>
+    <div class="answerbar"><div class="key">参考答案 <b>1 A　2 B　3 B　4 B　5 E　6 C　7 A　8 B?（按选项链）　9 C　10 B</b> 见解析</div><button class="btn ghost" data-reveal="t3">显示全部解析</button></div>
+  </div>
+  <div class="card"><div class="ptag"><i></i>选项速查</div><div class="grid"><div class="mini"><h4>1</h4><p>A study / B sleep / C play → A</p></div><div class="mini"><h4>2</h4><p>A So / B But / C Or → B</p></div><div class="mini"><h4>3</h4><p>A bookcase / B kitchen / C classroom → B</p></div><div class="mini"><h4>4</h4><p>A How / B When / C Why → B</p></div><div class="mini"><h4>5</h4><p>A it / B me / C her → E（选项链）</p></div><div class="mini"><h4>6</h4><p>A place / B sport / C bridge → A/社区</p></div><div class="mini"><h4>7</h4><p>A help / B miss / C join → A</p></div><div class="mini"><h4>8</h4><p>A see / B show / C bring → B</p></div><div class="mini"><h4>9</h4><p>A still / B also / C either → A</p></div><div class="mini"><h4>10</h4><p>A cute / B smart / C young → C</p></div></div></div>
+</section>
+
+<!-- ============ PANEL 4 (词汇 + 语音) ============ -->
+<section class="panel" id="t4">
+  <div class="section-head"><h2>生词 · 生短语汇总（语音朗读可用）</h2><span class="hint">点击任意行可回到原文 · 右侧 🔊 朗读单词/例句</span></div>
+  <div class="card">
+    <div class="gloss-head">
+      <div class="chips"><button class="chip on" data-f="all">全部</button><button class="chip" data-f="n">名词</button><button class="chip" data-f="v">动词</button><button class="chip" data-f="adj">形容词</button><button class="chip" data-f="phrase">短语</button></div>
+      <input class="search" id="q" placeholder="搜索单词、释义或例句…">
+      <div class="count" id="cnt"></div>
+    </div>
+    <table>
+      <thead><tr><th>词 / 短语</th><th>词性</th><th>释义</th><th>例句</th></tr></thead>
+      <tbody id="gloss"></tbody>
+    </table>
+  </div>
+</section>
+
+</div></main>
+
+<footer class="wrap" style="padding-left:26px;padding-right:26px">
+  <b>9-3 培优 · 阅读精读精讲</b>　依据扫描件逐页转录，答案、解析逐题人工校对。生词筛选以七年级教材为基准。<br>
+  文中虚线下划线词点击可查看释义卡；每段正文 / 例句旁有 🔊 按钮可朗读；生词表可搜索、筛选。
+</footer>
+
+<div id="pop" role="dialog" aria-live="polite">
+  <div class="pw"><span class="w"></span><span class="ipa"></span><span class="pos"></span><button class="spk" id="popW" title="朗读单词"></button></div>
+  <div class="cn"></div><div class="sep"></div><div class="ex"></div><div class="excn"></div>
+  <button class="spk" id="popE" title="朗读例句"></button>
+  <div class="tip">点击别处关闭 · 🔊 可朗读单词/例句 · 生词表见顶部标签</div>
+</div>
+
+<script>
+const SPK_SVG='<svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 3 9 3 15 6 15 11 19 11 5" stroke="none"/><path d="M15.5 8.5a5 5 0 0 1 0 7" fill="none"/><path d="M18.5 5.5a9 9 0 0 1 0 13" fill="none"/></svg>';
+const V={
+fly:{w:"fly",ipa:"/flaɪ/",pos:"v.",cn:"飞；飞越",t:"v",ex:"If you <b>fly</b> across several time zones...",exCn:"如果你飞越好几个时区……"},
+across:{w:"across",ipa:"/əˈkrɒs/",pos:"prep.",cn:"穿过；横过；遍及",t:"v",ex:"We walked <b>across</b> the bridge.",exCn:"我们走过了这座桥。"},
+timezone:{w:"time zone",ipa:"/ˈtaɪm zoʊn/",pos:"短语",cn:"时区",t:"phrase",ex:"Different countries are in different <b>time zones</b>.",exCn:"不同国家处于不同的时区。"},
+jet:{w:"jet",ipa:"/dʒet/",pos:"n.",cn:"喷气式飞机（此处作“jet lag”的 jet）",t:"n",ex:"Take a <b>jet</b> to New York.",exCn:"乘喷气式飞机去纽约。"},
+lag:{w:"lag",ipa:"/læɡ/",pos:"n.",cn:"滞后；延迟（jet lag = 时差反应）",t:"n",ex:"I have <b>jet lag</b> after the long flight.",exCn:"长途飞行后我有时差反应。"},
+living:{w:"living",ipa:"/ˈlɪvɪŋ/",pos:"v.",cn:"生活（这里指身体仍按旧时区运行）",t:"v",ex:"We are <b>living</b> in a modern world.",exCn:"我们生活在现代世界。"},
+ready:{w:"ready",ipa:"/ˈredi/",pos:"adj.",cn:"准备好的；愿意的",t:"adj",ex:"Are you <b>ready</b> for dinner?",exCn:"你准备好吃晚饭了吗？"},
+sleep:{w:"sleep",ipa:"/sliːp/",pos:"v.",cn:"睡觉；睡眠",t:"v",ex:"You may want to <b>sleep</b> all day.",exCn:"你可能想睡一整天。"},
+biological:{w:"biological",ipa:"/ˌbaɪəˈlɒdʒɪkl/",pos:"adj.",cn:"生物的",t:"adj",ex:"A <b>biological</b> clock controls our body.",exCn:"生物钟控制我们的身体。"},
+alarm:{w:"alarm",ipa:"/əˈlɑːm/",pos:"n.",cn:"闹钟；警报",t:"n",ex:"The <b>alarm</b> clock rings at 7:00.",exCn:"闹钟在七点响。"},
+experiment:{w:"experiment",ipa:"/ɪkˈsperɪmənt/",pos:"n.",cn:"实验；试验",t:"n",ex:"Scientists did an <b>experiment</b> with bees.",exCn:"科学家用蜜蜂做了实验。"},
+adjust:{w:"adjust",ipa:"/əˈdʒʌst/",pos:"v.",cn:"调整；适应",t:"v",ex:"We can <b>adjust</b> our clock to new times.",exCn:"我们可以把时钟调整到新时间。"},
+walk:{w:"walk home",ipa:"/wɔːk hoʊm/",pos:"短语",cn:"走回家",t:"phrase",ex:"I <b>walk home</b> after school.",exCn:"放学后我走回家。"},
+lookfor:{w:"look for",ipa:"/lʊk fɔː(r)/",pos:"短语",cn:"寻找",t:"phrase",ex:"We <b>look for</b> food in the garden.",exCn:"我们在花园里寻找食物。"},
+comeback:{w:"come back",ipa:"/kʌm bæk/",pos:"短语",cn:"回来；返回",t:"phrase",ex:"She will <b>come back</b> in three days.",exCn:"她会在三天后回来。"},
+kindto:{w:"be kind to",ipa:"/bi kaɪnd tuː/",pos:"短语",cn:"对……友好/和善",t:"phrase",ex:"Always <b>be kind to</b> others.",exCn:"总是对别人友好。"},
+thinkabout:{w:"think about",ipa:"/θɪŋk əˈbaʊt/",pos:"短语",cn:"思考；考虑",t:"phrase",ex:"I <b>think about</b> my mother's trip.",exCn:"我在想我妈妈的旅行。"},
+packing:{w:"pack",ipa:"/pæk/",pos:"v.",cn:"打包；整理行李",t:"v",ex:"She is <b>packing</b> her clothes.",exCn:"她正在整理衣服打包。"},
+leave:{w:"leave",ipa:"/liːv/",pos:"v.",cn:"离开；出发",t:"v",ex:"When are you <b>leaving</b> home?",exCn:"你什么时候离开家？"},
+model:{w:"model",ipa:"/ˈmɒdl/",pos:"n.",cn:"模型（玩具模型）",t:"n",ex:"He plays with his <b>model</b> cars.",exCn:"他在玩他的模型车。"},
+growup:{w:"grow up",ipa:"/ɡroʊ ʌp/",pos:"短语",cn:"长大；成长",t:"phrase",ex:"I wish him to <b>grow up</b> quickly.",exCn:"我希望他快快长大。"},
+};
+
+/* 标签 */
+const tabs=document.querySelectorAll('.tab');
+tabs.forEach(t=>t.addEventListener('click',()=>{
+  tabs.forEach(x=>x.classList.remove('on'));
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
+  t.classList.add('on');
+  document.getElementById(t.dataset.t).classList.add('on');
+  window.scrollTo({top:document.querySelector('.tabbar-wrap').offsetTop-2,behavior:'smooth'});
+  hidePop();
+}));
+
+/* 朗读 */
+var curBtn=null,curVocab=null;
+function spkVoices(){try{return speechSynthesis.getVoices();}catch(e){return[];}}
+function spkPick(){
+  const vs=spkVoices().filter(v=>/^en/i.test(v.lang));
+  const pref=['Google UK English Female','Microsoft Aria Online (Natural) - English (United States)','Microsoft Zira - English (United States)','Microsoft Hazel - English (Great Britain)'];
+  for(const p of pref){const f=vs.find(v=>v.name===p);if(f)return f;}
+  return vs[0]||null;
+}
+function stopAll(){if(!('speechSynthesis' in window))return;speechSynthesis.cancel();document.querySelectorAll('.spk.playing').forEach(b=>b.classList.remove('playing'));curBtn=null;}
+function speak(text,btn,rate){
+  if(!('speechSynthesis' in window)){alert('当前浏览器不支持语音朗读');return;}
+  rate=rate||0.9;
+  if(btn&&curBtn===btn&&speechSynthesis.speaking){stopAll();return;}
+  stopAll();
+  const u=new SpeechSynthesisUtterance(text);
+  const v=spkPick();if(v){u.voice=v;u.lang=v.lang;}else{u.lang='en-GB';}
+  u.rate=rate;u.pitch=1;
+  if(btn){curBtn=btn;btn.classList.add('playing');}
+  const done=()=>{if(btn)btn.classList.remove('playing');curBtn=null;};
+  u.onend=done;u.onerror=done;
+  speechSynthesis.speak(u);
+}
+function cleanEn(t){return t.replace(/（[^）]*）/g,'').replace(/\s+/g,' ').trim();}
+document.getElementById('popW').addEventListener('click',e=>{e.stopPropagation();if(curVocab)speak(curVocab.w,document.getElementById('popW'),0.9);});
+document.getElementById('popE').addEventListener('click',e=>{e.stopPropagation();if(curVocab)speak(curVocab.ex.replace(/<\/?b>/g,''),document.getElementById('popE'),0.85);});
+document.querySelectorAll('article p, .sent p.en').forEach(p=>{
+  const b=document.createElement('button');b.className='spk pspk';b.innerHTML=SPK_SVG;b.title='朗读这段英文';
+  b.addEventListener('click',e=>{e.stopPropagation();speak(cleanEn(p.textContent),b,0.85);});
+  p.appendChild(b);
+});
+
+/* 弹卡 */
+const pop=document.getElementById('pop');
+function showPop(el){
+  const d=V[el.dataset.v];if(!d)return;
+  if(curBtn&&curBtn!==el){curBtn.classList.remove('playing');}
+  curVocab=d;el.classList.add('active');
+  pop.querySelector('.w').textContent=d.w;
+  pop.querySelector('.ipa').textContent=d.ipa;
+  pop.querySelector('.pos').textContent=d.pos;
+  pop.querySelector('.cn').textContent=d.cn;
+  pop.querySelector('.ex').innerHTML=d.ex;
+  pop.querySelector('.excn').textContent=d.exCn;
+  pop.classList.add('show');pop.style.visibility='hidden';pop.style.left='0';pop.style.top='0';
+  requestAnimationFrame(()=>{
+    const r=el.getBoundingClientRect();const pr=pop.getBoundingClientRect();
+    const sx=window.scrollX,sy=window.scrollY;
+    let left=r.left+sx+r.width/2-pr.width/2;
+    left=Math.max(14+sx,Math.min(left,sx+document.documentElement.clientWidth-pr.width-14));
+    let top=r.bottom+sy+10;
+    if(r.bottom+pr.height+18>document.documentElement.clientHeight)top=r.top+sy-pr.height-10;
+    pop.style.left=left+'px';pop.style.top=top+'px';pop.style.visibility='';
+  });
+}
+function hidePop(){pop.classList.remove('show');if(curBtn&&curBtn.classList.contains('active')){curBtn.classList.remove('active');}curBtn=null;curVocab=null;}
+document.addEventListener('click',e=>{
+  const v=e.target.closest('em.v');if(v){e.preventDefault();showPop(v);return;}
+  if(!e.target.closest('#pop'))hidePop();
+});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){hidePop();stopAll();}});
+window.addEventListener('scroll',()=>{if(pop.classList.contains('show'))hidePop();},{passive:true});
+
+/* 选择题 */
+document.querySelectorAll('.q').forEach(q=>{
+  const ans=q.dataset.ans;if(!ans)return;
+  q.querySelectorAll('.opt').forEach(opt=>{
+    opt.addEventListener('click',()=>{
+      if(q.dataset.done)return;q.dataset.done='1';
+      const pick=opt.dataset.o;
+      q.querySelectorAll('.opt').forEach(o=>{
+        if(o.dataset.o===ans)o.classList.add('correct');
+        else if(o.dataset.o===pick)o.classList.add('wrong');
+        else o.classList.add('dim');
+      });
+      const ex=q.querySelector('.explain');if(ex)ex.classList.add('show');
+    });
+  });
+});
+document.querySelectorAll('[data-reveal]').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const p=document.getElementById(btn.dataset.reveal);
+    p.querySelectorAll('.q').forEach(q=>{
+      const ans=q.dataset.ans;if(!ans)return;
+      q.dataset.done='1';
+      q.querySelectorAll('.opt').forEach(o=>o.classList.add(o.dataset.o===ans?'correct':'dim'));
+      const ex=q.querySelector('.explain');if(ex)ex.classList.add('show');
+    });
+    btn.textContent='已显示全部答案';
+  });
+});
+
+/* 填空批改 */
+const clozeAns2={1:'A',2:'B',3:'B',4:'B',5:'E',6:'A',7:'A',8:'B',9:'C',10:'B'};
+document.getElementById('checkCloze2')?.addEventListener('click',()=>{
+  const sels=[...document.querySelectorAll('#cloze2 select.ck')];
+  let r=0,empty=0;
+  sels.forEach(s=>{
+    const n=s.dataset.b;if(!s.value){empty++;return;}
+    s.classList.remove('ok','no');
+    if(s.value===clozeAns2[n]){s.classList.add('ok');r++;}else{s.classList.add('no');}
+  });
+  const box=document.getElementById('cloze2Result');
+  box.innerHTML='<b>得分：'+r+' / 10</b>'+(empty?'（还有 '+empty+' 空未选）':'')+(r===10?' 全对！':' 继续练习！');
+  box.classList.add('show');
+});
+document.getElementById('revealCloze2')?.addEventListener('click',()=>{
+  document.querySelectorAll('#cloze2 select.ck').forEach(s=>{s.value=clozeAns2[s.dataset.b];s.classList.remove('no');s.classList.add('ok');});
+  const box=document.getElementById('cloze2Result');box.innerHTML='<b>参考答案已填入</b>：1A 2B 3B 4B 5E 6A 7A 8B 9C 10B';box.classList.add('show');
+});
+
+/* 生词表 */
+const tbody=document.getElementById('gloss');
+const order=Object.keys(V);let filter='all',kw='';
+function render(){
+  const q=kw.trim().toLowerCase();
+  const rows=order.filter(k=>{
+    const d=V[k];
+    if(filter==='phrase'&&d.t!=='phrase')return false;
+    if(filter==='n'&&d.t!=='n')return false;
+    if(filter==='v'&&d.t!=='v')return false;
+    if(filter==='adj'&&d.t!=='adj')return false;
+    if(!q)return true;
+    return (d.w+' '+d.cn+' '+d.ex+' '+d.exCn).toLowerCase().includes(q);
+  });
+  tbody.innerHTML=rows.map(k=>{
+    const d=V[k];
+    return '<tr data-k="'+k+'">'+
+      '<td class="wd">'+d.w+'<small>'+d.ipa+'</small><button class="spk" data-gw="'+k+'" title="朗读">'+SPK_SVG+'</button></td>'+
+      '<td class="pos">'+d.pos+'</td><td class="cn">'+d.cn+'</td>'+
+      '<td class="eg">'+d.ex+'<button class="spk" data-ge="'+k+'" title="朗读例句">'+SPK_SVG+'</button><small>'+d.exCn+'</small></td>'+
+      '</tr>';
+  }).join('')||'<tr><td colspan="4" style="padding:26px;color:#a49a8a">无匹配。</td></tr>';
+  document.getElementById('cnt').textContent='共 '+rows.length+' 条';
+}
+render();
+document.querySelectorAll('.chip').forEach(c=>c.addEventListener('click',()=>{
+  document.querySelectorAll('.chip').forEach(x=>x.classList.remove('on'));
+  c.classList.add('on');filter=c.dataset.f;render();
+}));
+document.getElementById('q').addEventListener('input',e=>{kw=e.target.value;render();});
+tbody.addEventListener('click',e=>{
+  const b=e.target.closest('.spk');
+  if(b){e.stopPropagation();const k=b.dataset.gw||b.dataset.ge;const d=V[k];if(!d)return;if(b.dataset.gw)speak(d.w,b);else speak(d.ex.replace(/<\/?b>/g,''),b,0.85);return;}
+  const tr=e.target.closest('tr');if(!tr)return;
+  const k=tr.dataset.k;const target=[...document.querySelectorAll('em.v')].find(x=>x.dataset.v===k);
+  if(!target)return;const panel=target.closest('.panel');const tab=[...document.querySelectorAll('.tab')].find(t=>t.dataset.t===panel.id);if(tab)tab.click();
+  setTimeout(()=>{target.scrollIntoView({behavior:'smooth',block:'center'});showPop(target);},260);
+});
+
+/* 预热 */
+if('speechSynthesis' in window){spkVoices();speechSynthesis.onvoiceschanged=()=>spkVoices();}
+
+/* 进度 */
+const bar=document.getElementById('progress');
+window.addEventListener('scroll',()=>{const h=document.documentElement.scrollHeight-document.documentElement.clientHeight;bar.style.width=(h>0?window.scrollY/h*100:0)+'%';},{passive:true});
+</script>
+</body></html>

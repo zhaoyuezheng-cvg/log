@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>7年级英语 · 8-5培优题 精读精讲（阅读还原/七选五 专题22）</title>
+<style>
+  :root{
+    --bg:#eef1f8;--bg2:#e6ebf5;--card:#ffffff;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;
+    --line:#e5e7eb;--brand:#4f46e5;--brand-2:#0d9488;--brand-soft:rgba(79,70,229,.08);
+    --accent:#f59e0b;--accent-soft:#fef3c7;--ok:#16a34a;--ok-soft:rgba(22,163,74,.10);--rose:#e11d48;
+    --shadow:0 10px 30px rgba(30,41,59,.10);--shadow-sm:0 4px 14px rgba(30,41,59,.08);--radius:18px;
+    --font:"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",system-ui,-apple-system,sans-serif;
+  }
+  body.dark{
+    --bg:#0f172a;--bg2:#0b1220;--card:#131c31;--ink:#e5edf7;--ink2:#cbd5e1;--muted:#94a3b8;
+    --line:#243049;--brand:#818cf8;--brand-2:#2dd4bf;--brand-soft:rgba(129,140,248,.14);
+    --accent:#fbbf24;--accent-soft:rgba(251,191,36,.16);--ok:#4ade80;--ok-soft:rgba(74,222,128,.12);
+    --rose:#fb7185;--shadow:0 10px 30px rgba(0,0,0,.45);--shadow-sm:0 4px 14px rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:var(--font);color:var(--ink);
+    background:radial-gradient(1100px 500px at 12% -10%, rgba(79,70,229,.16), transparent 60%),
+      radial-gradient(900px 480px at 100% 0%, rgba(13,148,136,.14), transparent 55%),
+      linear-gradient(180deg,var(--bg),var(--bg2));
+    min-height:100vh;line-height:1.75;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 18px 60px}
+  header.hero{position:relative;overflow:hidden;border-radius:0 0 30px 30px;
+    background:linear-gradient(135deg,#4f46e5 0%,#6d28d9 45%,#0d9488 100%);color:#fff;
+    padding:42px 26px 34px;margin-bottom:22px;box-shadow:var(--shadow);}
+  header.hero::after{content:"";position:absolute;inset:0;opacity:.35;
+    background-image:radial-gradient(rgba(255,255,255,.35) 1px,transparent 1px);
+    background-size:22px 22px;mask-image:linear-gradient(180deg,rgba(0,0,0,.6),transparent 75%);}
+  .hero-in{position:relative;z-index:2;max-width:1080px;margin:0 auto}
+  .kicker{display:inline-flex;align-items:center;gap:8px;font-size:.82rem;letter-spacing:.12em;
+    text-transform:uppercase;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);
+    padding:6px 14px;border-radius:999px;backdrop-filter:blur(6px)}
+  h1{margin:16px 0 8px;font-size:clamp(1.5rem,4vw,2.15rem);line-height:1.3;letter-spacing:.01em}
+  h1 .sub{display:block;font-size:.55em;font-weight:500;opacity:.9;margin-top:8px;letter-spacing:.02em}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+  .chip{font-size:.78rem;padding:5px 12px;border-radius:999px;background:rgba(255,255,255,.16);
+    border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(6px)}
+  .hero-note{margin-top:16px;font-size:.85rem;opacity:.9;max-width:760px;line-height:1.7}
+  .toolbar{position:sticky;top:0;z-index:60;display:flex;flex-wrap:wrap;gap:8px;align-items:center;
+    padding:10px 12px;margin:0 0 20px;border-radius:14px;
+    background:color-mix(in srgb,var(--card) 88%,transparent);
+    border:1px solid var(--line);box-shadow:var(--shadow-sm);backdrop-filter:blur(10px);}
+  .toolbar .grow{flex:1}
+  .tool-btn{font-family:inherit;font-size:.82rem;font-weight:600;color:var(--ink);
+    background:var(--brand-soft);border:1px solid transparent;border-radius:10px;
+    padding:8px 13px;cursor:pointer;transition:.18s;display:inline-flex;align-items:center;gap:6px;}
+  .tool-btn:hover{transform:translateY(-1px);box-shadow:var(--shadow-sm)}
+  .tool-btn.on{background:var(--brand);color:#fff}
+  .tool-btn.ghost{background:transparent;border-color:var(--line)}
+  .navlinks{display:flex;gap:6px;flex-wrap:wrap}
+  .navlinks a{font-size:.82rem;font-weight:600;text-decoration:none;color:var(--brand);
+    padding:7px 11px;border-radius:9px;border:1px solid var(--line);background:transparent;transition:.18s;white-space:nowrap}
+  .navlinks a:hover{background:var(--brand-soft)}
+  section.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);padding:26px 26px 30px;margin-bottom:26px;position:relative;overflow:hidden;
+    animation:rise .5s ease both;}
+  @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  section.card::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;
+    background:linear-gradient(90deg,var(--brand),var(--brand-2))}
+  .sec-head{display:flex;align-items:flex-start;gap:14px;flex-wrap:wrap;margin-bottom:6px}
+  .sec-no{flex:0 0 auto;width:44px;height:44px;border-radius:13px;display:grid;place-items:center;
+    font-weight:800;font-size:1.15rem;color:#fff;background:linear-gradient(135deg,var(--brand),var(--brand-2));
+    box-shadow:0 6px 16px rgba(79,70,229,.35)}
+  .sec-title{margin:0;font-size:1.3rem}
+  .sec-title small{display:block;font-weight:500;color:var(--muted);font-size:.8rem;margin-top:3px}
+  .sec-meta{display:flex;flex-wrap:wrap;gap:7px;margin:14px 0 4px}
+  .badge{font-size:.75rem;font-weight:600;padding:4px 11px;border-radius:999px;
+    background:var(--brand-soft);color:var(--brand);border:1px solid transparent}
+  .badge.warm{background:var(--accent-soft);color:#b45309}
+  .badge.gray{background:color-mix(in srgb,var(--muted) 14%,transparent);color:var(--muted)}
+  .badge.ok{background:var(--ok-soft);color:var(--ok)}
+  .lead{color:var(--muted);font-size:.92rem;margin:10px 0 18px}
+  .passage{background:linear-gradient(180deg,color-mix(in srgb,var(--brand) 5%,var(--card)),var(--card));
+    border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:8px 0 18px;
+    font-size:1.06rem;line-height:2.05;letter-spacing:.005em;}
+  .passage p{margin:0 0 14px}
+  .passage p:last-child{margin-bottom:0}
+  .passage .tag{font-size:.72em;color:var(--muted);vertical-align:super}
+  .passage .h{font-weight:800;color:var(--brand)}
+  .w{position:relative;cursor:pointer;color:inherit;border-radius:3px;padding:0 1px;
+    border-bottom:2px solid var(--accent);background:linear-gradient(transparent 60%,var(--accent-soft) 60%);
+    transition:.15s;white-space:nowrap;}
+  .w:hover{filter:brightness(.96);box-shadow:0 2px 0 -1px var(--accent)}
+  .w.active{background:var(--accent);color:#3b2a04;border-bottom-color:#b45309}
+  .gloss{display:none}
+  body.showall .gloss{display:inline;font-size:.8em;color:var(--brand-2);font-weight:600;
+    padding:0 3px;border-bottom:0;white-space:normal}
+  .blank{display:inline-block;min-width:2.4em;text-align:center;font-weight:800;color:var(--brand);
+    background:var(--brand-soft);border-bottom:2px solid var(--brand);border-radius:6px 6px 3px 3px;
+    padding:0 8px;margin:0 2px;cursor:pointer;transition:.15s;font-size:.94em;}
+  .blank:hover{background:color-mix(in srgb,var(--brand) 18%,transparent)}
+  .blank b{font-weight:800}
+  .blank i{display:none;font-style:normal;color:var(--ok);font-weight:800}
+  .blank.open{background:var(--ok-soft);border-bottom-color:var(--ok);color:var(--ok)}
+  .blank.open b{display:none}
+  .blank.open i{display:inline}
+  body.showans .blank{background:var(--ok-soft);border-bottom-color:var(--ok);color:var(--ok)}
+  body.showans .blank b{display:none}
+  body.showans .blank i{display:inline}
+  #pop{position:absolute;z-index:200;width:min(330px,88vw);background:var(--card);
+    border:1px solid var(--line);border-top:4px solid var(--accent);border-radius:14px;
+    box-shadow:0 18px 45px rgba(15,23,42,.28);padding:14px 16px;display:none;}
+  #pop.show{display:block;animation:pop .18s ease}
+  @keyframes pop{from{opacity:0;transform:translateY(6px) scale(.98)}to{opacity:1;transform:none}}
+  #pop .pw{font-size:1.12rem;font-weight:800;color:var(--ink);display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+  #pop .pph{font-size:.82rem;color:var(--brand-2);font-weight:600}
+  #pop .pcn{margin-top:7px;font-size:1rem;font-weight:700;color:var(--brand)}
+  #pop .pnote{margin-top:7px;font-size:.86rem;color:var(--muted);line-height:1.65}
+  #pop .pex{margin-top:10px;padding-top:9px;border-top:1px dashed var(--line);font-size:.9rem}
+  #pop .pex b{color:var(--brand-2)}
+  #pop .pex .cn{color:var(--muted);font-size:.85rem;display:block;margin-top:3px}
+  .pos{display:inline-block;font-size:.72rem;font-weight:700;color:#fff;background:var(--brand-2);
+    border-radius:6px;padding:2px 8px;margin-left:2px}
+  .qstem{font-weight:700;color:var(--ink);margin:2px 0 6px;font-size:1.02rem}
+  .qopts{margin:2px 0 0;padding-left:2px;color:var(--muted);font-size:.92rem}
+  .qopts div{margin:3px 0}
+  .qopts .picked{color:var(--ok);font-weight:800}
+  h3.ans-h{margin:26px 0 12px;font-size:1.05rem;display:flex;align-items:center;gap:9px}
+  h3.ans-h::before{content:"";width:10px;height:10px;border-radius:3px;background:var(--ok);display:inline-block}
+  .ans-list{display:grid;gap:10px}
+  .ans-item{border:1px solid var(--line);border-left:4px solid var(--ok);border-radius:12px;
+    padding:12px 15px;background:color-mix(in srgb,var(--ok) 4%,var(--card))}
+  .ans-item .top{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+  .ans-item .num{font-weight:800;color:var(--ok)}
+  .ans-item .key{font-weight:800;font-size:1.05rem;color:var(--ink);background:var(--ok-soft);
+    padding:1px 10px;border-radius:7px}
+  .ans-item .kt{font-size:.72rem;font-weight:700;color:#fff;background:var(--brand);border-radius:6px;padding:2px 8px}
+  .ans-item ul{margin:8px 0 0;padding-left:20px;color:var(--muted);font-size:.9rem}
+  .ans-item ul li{margin:3px 0}
+  .ans-item .sent{font-size:.92rem;color:var(--ink2);margin-top:6px}
+  .vgroup{margin-top:18px}
+  .vgroup > h3{margin:0 0 10px;font-size:1.02rem;color:var(--brand);display:flex;gap:9px;align-items:center}
+  .vgroup > h3 .dot{width:9px;height:9px;border-radius:50%;background:var(--brand-2)}
+  .vcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px}
+  .vcard{border:1px solid var(--line);border-radius:13px;padding:13px 15px;background:var(--card);
+    box-shadow:var(--shadow-sm);transition:.18s;position:relative;overflow:hidden}
+  .vcard::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--accent)}
+  .vcard:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+  .vcard .hw{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+  .vcard .en{font-weight:800;font-size:1.04rem;color:var(--ink)}
+  .vcard .ph{font-size:.8rem;color:var(--brand-2);font-weight:600}
+  .vcard .cn{margin-top:5px;font-weight:700;color:var(--brand);font-size:.98rem}
+  .vcard .nt{margin-top:5px;font-size:.84rem;color:var(--muted);line-height:1.6}
+  .vcard .ex{margin-top:8px;font-size:.88rem;border-top:1px dashed var(--line);padding-top:8px}
+  .vcard .ex .ecn{display:block;color:var(--muted);font-size:.82rem;margin-top:2px}
+  .callout{border:1px dashed var(--accent);background:var(--accent-soft);border-radius:12px;
+    padding:12px 15px;font-size:.9rem;color:#92400e;margin:12px 0;line-height:1.9}
+  body.dark .callout{color:#fcd34d}
+  details.more{margin-top:14px;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  details.more>summary{cursor:pointer;padding:11px 15px;font-weight:700;color:var(--brand);
+    background:var(--brand-soft);list-style:none;display:flex;justify-content:space-between;align-items:center}
+  details.more>summary::-webkit-details-marker{display:none}
+  details.more>summary::after{content:"▾";transition:.2s;font-size:.9em}
+  details.more[open]>summary::after{transform:rotate(180deg)}
+  details.more .body{padding:14px 16px;font-size:.95rem;line-height:1.9;color:var(--ink2)}
+  details.more .body p{margin:0 0 10px}
+  footer{text-align:center;color:var(--muted);font-size:.82rem;padding:26px 10px 10px;line-height:1.8}
+  kbd{background:var(--brand-soft);border-radius:5px;padding:1px 6px;font-size:.8em;font-weight:700;color:var(--brand)}
+  header.hero kbd{background:rgba(255,255,255,.22);color:#fff;border:1px solid rgba(255,255,255,.45);white-space:nowrap}
+  @media (max-width:560px){
+    section.card{padding:18px 15px 22px}
+    .passage{padding:15px 14px;font-size:1rem;line-height:1.95}
+    header.hero{padding:30px 18px 26px;border-radius:0 0 22px 22px}
+    .vcards{grid-template-columns:1fr}
+    .sec-no{width:38px;height:38px;font-size:1rem}
+  }
+  @media print{
+    .toolbar,#pop{display:none!important}.spk{display:none!important}body{background:#fff}
+    section.card{box-shadow:none;break-inside:avoid}
+    .w{border-bottom:1px solid #d97706;background:none}
+    body:not(.showall) .gloss{display:inline;color:#0d9488}
+  }
+  .spk{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border:none;border-radius:50%;
+    background:var(--brand-soft);color:var(--brand);cursor:pointer;font-size:.95rem;line-height:1;transition:.15s;flex:0 0 auto}
+  .spk:hover{background:var(--brand);color:#fff;transform:scale(1.08)}
+  .spk:active{transform:scale(.94)}
+  .pw .spk{margin-left:auto;align-self:center}.hw .spk{margin-left:auto}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-in">
+    <span class="kicker">✦ 初中英语 · 话题阅读精讲</span>
+    <h1>8-5培优题 · 精读精讲
+      <span class="sub">专题22 阅读理解 · 考点5 阅读还原 · 七选五 / 阅读表达 / 语法填空 · 2025 中考真题</span>
+    </h1>
+    <div class="hero-meta">
+      <span class="chip">3 篇语篇</span>
+      <span class="chip">5 空 + 5 题 + 10 空</span>
+      <span class="chip">65+ 生词短语</span>
+      <span class="chip">含答案 · 逐题解析 · 例句</span>
+    </div>
+    <p class="hero-note">
+      页面把每篇语篇中的<b>生词与生短语</b>用<span style="border-bottom:2px solid #fbbf24;background:linear-gradient(transparent 60%,rgba(254,243,199,.55) 60%)">黄线下划线</span>标出——<b>点击任意划线词</b>即可弹出释义、读音、用法与例句；也可用上方按钮 <kbd>显示全部释义</kbd> 一键对照阅读。<b>点击文中序号</b>可直观显示答案。
+    </p>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="toolbar">
+    <div class="navlinks">
+      <a href="#seven">一 · 七选五</a>
+      <a href="#readExp">二 · 阅读表达</a>
+      <a href="#grammar">三 · 语法填空</a>
+      <a href="#vocab">生词汇总</a>
+    </div>
+    <span class="grow"></span>
+    <button class="tool-btn" id="btnAllWords" type="button">👁 显示全部释义</button>
+    <button class="tool-btn ghost" id="btnAllAns" type="button">✅ 显示全部答案</button>
+    <button class="tool-btn ghost" id="btnTheme" type="button">🌙 夜间</button>
+  </div>
+
+  <!-- ============ 一、七选五 ============ -->
+  <section class="card" id="seven">
+    <div class="sec-head">
+      <div class="sec-no">一</div>
+      <div><h2 class="sec-title">七选五 · 塑料污染 <small>阅读短文，从方框内所给选项中选出能填入空白处的最佳选项（有一项多余）。</small></h2></div>
+    </div>
+    <div class="sec-meta">
+      <span class="badge">2025 · 江西 · 中考真题</span>
+      <span class="badge">主题：人与自然——环境保护</span>
+      <span class="badge gray">体裁：说明文</span>
+      <span class="badge gray">词数：约 180</span>
+      <span class="badge warm">难度 ★★★☆☆</span>
+      <span class="badge ok">答案见下</span>
+    </div>
+
+    <article class="passage" id="passage75">
+      <p><span class="w" data-k="pollution">Plastic pollution</span> is a <span class="w" data-k="serious">serious</span> problem, and it’s <span class="w" data-k="getworse">getting worse</span>. <span class="w" data-k="plastic">Plastic</span> can stay for a long time. Scientists are trying to create plastic that <span class="w" data-k="breakdown">breaks down</span> quickly, but the best way for now is to use less plastic. <span class="blank" data-n="1"><b>1</b><i>E</i></span></p>
+      <p class="h">Stop using plastic bags.</p>
+      <p>Instead, take your own <span class="w" data-k="reusable">reusable</span> shopping bag to the store. Every year, people use <span class="w" data-k="tonsof">tons of</span> plastic bags <span class="w" data-k="worldwide">worldwide</span>. Some countries try to stop using plastic bags. <span class="blank" data-n="2"><b>2</b><i>F</i></span></p>
+      <p class="h">Say no to the <span class="w" data-k="straw">straw</span><span class="tag">（吸管）</span>.</p>
+      <p>A study showed that around 8.3 <span class="w" data-k="billion">billion</span> plastic straws <span class="w" data-k="cover">cover</span> the world’s beaches. So when you <span class="w" data-k="order">order</span> a drink, say no to the straw, or bring your own reusable one.</p>
+      <p><span class="blank" data-n="3"><b>3</b><i>B</i></span></p>
+      <p><span class="w" data-k="carry">Carry</span> a reusable water bottle with you. Around the world, nearly a million plastic bottles are <span class="w" data-k="throwaway">thrown away</span> every minute. The problem is so bad that in some countries, stores <span class="w" data-k="beallowedto">aren’t allowed to</span> sell bottled water <span class="w" data-k="anymore">any more</span>.</p>
+      <p class="h">Avoid plastic <span class="w" data-k="packaging">packaging</span><span class="tag">（包装）</span>.</p>
+      <p><span class="blank" data-n="4"><b>4</b><i>G</i></span> It’s <span class="w" data-k="almost">almost</span> <span class="w" data-k="everywhere">everywhere</span>. But there is something you can do, too: <span class="w" data-k="avoid">avoid</span> fruit or vegetables packed in plastic.</p>
+      <p class="h"><span class="w" data-k="recycle">Recycle</span> what you can.</p>
+      <p>You can’t recycle all plastic things. <span class="blank" data-n="5"><b>5</b><i>D</i></span> <span class="w" data-k="forexample">For example</span>, you can recycle bottles and milk or juice bags. In some countries, <span class="w" data-k="machine">machines</span> take the bottles and give a little money back for each bottle.</p>
+    </article>
+
+    <div class="callout">
+      📌 备选句子（A—G，有两项多余）：<br>
+      <b>A.</b> They are fresh.<br>
+      <b>B.</b> Don’t buy bottled water.<br>
+      <b>C.</b> Bottled water is expensive.<br>
+      <b>D.</b> But it is possible to start small.<br>
+      <b>E.</b> Here are five tips that can help you.<br>
+      <b>F.</b> Other countries make customers pay for them.<br>
+      <b>G.</b> Most things you buy come in plastic packaging.
+    </div>
+
+    <details class="more">
+      <summary>📖 参考译文（点击展开）</summary>
+      <div class="body">
+        <p>塑料污染是个严重的问题，而且越来越糟。塑料能存在很长时间。科学家们正试图造出能快速降解的塑料，但目前最好的办法是少用塑料。<b>（1）这里有五条建议能帮到你。</b></p>
+        <p class="h">停止使用塑料袋。</p>
+        <p>相反，去商店带上你自己的可重复使用的购物袋。全世界每年用掉成吨的塑料袋。一些国家试图停止使用塑料袋。<b>（2）另一些国家则让顾客为塑料袋付费。</b></p>
+        <p class="h">对吸管说“不”。</p>
+        <p>一项研究显示，全球海滩上覆盖着约 83 亿根塑料吸管。所以当你点饮料时，拒绝吸管，或者自带一根可重复使用的。</p>
+        <p><b>（3）别买瓶装水。</b></p>
+        <p>随身携带一个可重复使用的水瓶。在全世界，每分钟有近一百万个塑料瓶被扔掉。问题严重到在一些国家，商店不再被允许出售瓶装水。</p>
+        <p class="h">避免塑料包装。</p>
+        <p><b>（4）你买的大多数东西都是塑料包装的。</b>塑料包装几乎无处不在。但也有一件你能做的事：避免买塑料包装的水果或蔬菜。</p>
+        <p class="h">能回收的就回收。</p>
+        <p>你无法回收所有塑料制品。<b>（5）但从小处做起是可行的。</b>例如，你可以回收瓶子、牛奶盒或果汁袋。在一些国家，机器回收瓶子并返还少量的钱。</p>
+        <p style="font-size:.85rem;color:var(--muted)">（注：多余选项为 A「They are fresh.」与 C「Bottled water is expensive.」，文中无对应语境。）</p>
+      </div>
+    </details>
+
+    <h3 class="ans-h">答案与详解</h3>
+    <div class="ans-list" id="ans75"></div>
+  </section>
+
+  <!-- ============ 二、阅读表达 ============ -->
+  <section class="card" id="readExp">
+    <div class="sec-head">
+      <div class="sec-no">二</div>
+      <div><h2 class="sec-title">阅读表达 · Jeff 的中文学习之旅 <small>阅读短文，根据短文内容回答问题或翻译画线部分。</small></h2></div>
+    </div>
+    <div class="sec-meta">
+      <span class="badge">2025 · 湖南 · 中考真题</span>
+      <span class="badge">主题：人与自我——学习经历</span>
+      <span class="badge gray">体裁：记叙文</span>
+      <span class="badge gray">词数：约 200</span>
+      <span class="badge warm">难度 ★★★☆☆</span>
+      <span class="badge ok">答案见下</span>
+    </div>
+
+    <article class="passage" id="passageExp">
+      <p>My name is Jeff. I like learning <span class="w" data-k="foreign">foreign</span> <span class="w" data-k="language">languages</span>. When I <span class="w" data-k="retired">retired</span><span class="tag">（退休）</span> in 2018, I could speak three foreign languages. At that time, my biggest <span class="w" data-k="wish">wish</span> was to learn a new one.</p>
+      <p>Later, I watched a <span class="w" data-k="program">program</span> about <span class="w" data-k="cultural">Chinese culture</span> on TV. I was so interested in it that I <span class="w" data-k="makethedecision">made the decision</span> to learn Chinese. I found a cultural center in the north of London <span class="w" data-k="bychance">by chance</span>. It <span class="w" data-k="offer">offered</span> Chinese language courses <span class="w" data-k="fitfor">fit for</span> me. In March 2019, I began to learn. To <span class="w" data-k="attend">attend</span> the classes, I left my home at 5 a.m. every Saturday and drove 3 hours to the cultural center. But this didn’t stop me. After class, I <span class="w" data-k="practice">practiced</span> a lot. Through learning, I <span class="w" data-k="developalovefor">developed a love for</span> Chinese <span class="w" data-k="poem">poems</span> and <span class="w" data-k="joinin">joined in</span> activities like Chinese poetry readings. I <span class="w" data-k="increasingly">increasingly</span> <span class="w" data-k="dreamof">dreamed of</span> visiting China.</p>
+      <p>My Chinese teacher Mr. Liu always <span class="w" data-k="mention">mentioned</span> <span class="h">“It’s better to travel ten thousand miles than read ten thousand books”</span>. He <span class="w" data-k="suggest">suggested</span> that I should <span class="w" data-k="takepartin">take part in</span> a <span class="w" data-k="studytour">study tour</span> in China. So in August 2024, I visited Xi’an with my classmates of the cultural center. During the trip, as the student best at Chinese among us, I tried to <span class="w" data-k="actas">act as</span> an <span class="w" data-k="interpreter">interpreter</span><span class="tag">（口译员）</span>. I helped my classmates in many ways like asking the way and shopping in Chinese. This experience <span class="w" data-k="encourage">encouraged</span> me to study <span class="w" data-k="further">further</span>.</p>
+      <p>The British often say “Learning is a <span class="w" data-k="lifelong">lifelong</span> <span class="w" data-k="pursuit">pursuit</span><span class="tag">（追求）</span>”, which means “It’s never too late to learn”. I will keep on learning Chinese, hoping to be a lifelong learner. I believe that learning Chinese will bring even more <span class="w" data-k="possibilities">possibilities</span> to my life.</p>
+    </article>
+
+    <details class="more">
+      <summary>📖 参考译文（点击展开）</summary>
+      <div class="body">
+        <p>我叫杰夫。我喜欢学习外语。2018 年退休时，我会说三门外语。那时，我最大的愿望就是再学一门新语言。</p>
+        <p>后来，我在电视上看了一个关于中国文化的节目。我对此非常感兴趣，于是决定学习中文。我偶然在伦敦北部找到一个文化中心，它提供适合我的中文课程。2019 年 3 月，我开始学习。为了上课，我每周六早上 5 点离开家，开 3 个小时的车到文化中心。但这并没有阻止我。课后我大量练习。通过学习，我爱上了中文诗，还参加了中文诗歌朗诵等活动。我越来越梦想去中国看看。</p>
+        <p>我的中文老师刘老师总是提到<span class="h">“读万卷书不如行万里路”</span>。他建议我参加中国的研学旅行。于是 2024 年 8 月，我和文化中心的同学一起去了西安。旅途中，作为我们中中文最好的学生，我试着担任口译员。我用问路、中文购物等方式帮助同学。这段经历鼓励我继续深造。</p>
+        <p>英国人常说“学习是一生的追求”，意思是“活到老学到老”。我会继续学习中文，希望成为一个终身学习者。我相信学中文会给我的人生带来更多可能。</p>
+      </div>
+    </details>
+
+    <h3 class="ans-h">答案与详解</h3>
+    <div class="ans-list" id="ansExp"></div>
+  </section>
+
+  <!-- ============ 三、语法填空 ============ -->
+  <section class="card" id="grammar">
+    <div class="sec-head">
+      <div class="sec-no">三</div>
+      <div><h2 class="sec-title">语法填空 · 中国礼仪 <small>在空白处填入 1 个适当的单词或括号内单词的正确形式。</small></h2></div>
+    </div>
+    <div class="sec-meta">
+      <span class="badge">2025 · 吉林长春 · 中考真题</span>
+      <span class="badge">主题：人与社会——文化礼仪</span>
+      <span class="badge gray">体裁：记叙文</span>
+      <span class="badge gray">词数：约 150</span>
+      <span class="badge warm">难度 ★★★☆☆</span>
+      <span class="badge ok">答案见下</span>
+    </div>
+
+    <article class="passage" id="passageGrammar">
+      <p>China is a country of <span class="w" data-k="etiquette">etiquette</span><span class="tag">（礼仪）</span>. I’m working here as a <span class="w" data-k="foreignteacher">foreign teacher</span> and I’m leaving soon. I <span class="blank" data-n="1"><b>1</b><i>really</i></span> (real) have a <span class="w" data-k="deep">deep</span> <span class="w" data-k="understanding">understanding</span> of Chinese culture and <span class="w" data-k="society">society</span>.</p>
+      <p>Everything was new to me when I first <span class="w" data-k="arrivein">arrived</span> <span class="blank" data-k="arrivein" data-n="2"><b>2</b><i>in</i></span> China. As for <span class="w" data-k="seat">seats</span> at the table, Chinese people have their own culture. Once, I <span class="blank" data-n="3"><b>3</b><i>was invited</i></span> (invite) to a big dinner at a restaurant. Before the dinner, someone <span class="w" data-k="show">showed</span> me to take the seat <span class="blank" data-n="4"><b>4</b><i>that / which</i></span> was ready for the most important person. It <span class="w" data-k="face">faced</span> the door.</p>
+      <p>I found another <span class="blank" data-n="5"><b>5</b><i>interesting</i></span> (interest) thing. Chinese people like giving gifts <span class="w" data-k="inpairs">in pairs</span>. Last month, I <span class="blank" data-n="6"><b>6</b><i>had</i></span> (have) a party with three friends in my home. They each brought two gifts. I couldn’t wait to open them, <span class="blank" data-n="7"><b>7</b><i>but</i></span> one of my friends <span class="w" data-k="remind">reminded</span> me not to do that <span class="w" data-k="rightaway">right away</span>. He thought it was <span class="blank" data-n="8"><b>8</b><i>impolite</i></span> (polite) to open gifts <span class="w" data-k="infrontof">in front of</span> the <span class="w" data-k="giver">givers</span>.</p>
+      <p>These are <span class="w" data-k="amazing">amazing</span> <span class="blank" data-n="9"><b>9</b><i>days</i></span> (day) of <span class="w" data-k="culturalexperiences">cultural experiences</span>. I believe my stay in China will not be <span class="blank" data-n="10"><b>10</b><i>the</i></span> last time. I <span class="w" data-k="expect">expect</span> to come to China again.</p>
+    </article>
+
+    <details class="more">
+      <summary>📖 参考译文（点击展开）</summary>
+      <div class="body">
+        <p>中国是一个礼仪之邦。我在这里当外籍教师，很快就要离开了。我对中国文化和社会有了深入的了解。</p>
+        <p>初到中国时，一切对我来说都很新鲜。说到餐桌上的座位，中国人有自己的文化。有一次，我被邀请去一家餐厅参加一场盛大晚宴。开席前，有人指引我坐到为最重要的人准备的座位上，那个座位正对着门。</p>
+        <p>我发现了另一件有趣的事。中国人喜欢成双成对地送礼。上个月，我和三个朋友在家里聚会，他们每人带了两件礼物。我迫不及待想打开，但我的一个朋友提醒我别马上这么做。他认为当着送礼人的面拆礼物是不礼貌的。</p>
+        <p>这些是奇妙的文化体验时光。我相信这次中国之行不会是最后一次。我期待再次来到中国。</p>
+      </div>
+    </details>
+
+    <h3 class="ans-h">答案与详解</h3>
+    <div class="ans-list" id="ansGrammar"></div>
+  </section>
+
+  <!-- ============ 生词汇总 ============ -->
+  <section class="card" id="vocab">
+    <div class="sec-head">
+      <div class="sec-no">✦</div>
+      <div><h2 class="sec-title">生词与短语汇总 <small>按七年级英语词汇水平整理 · 每条含音标、释义、用法与例句。</small></h2></div>
+    </div>
+    <p class="lead">以下生词与短语均已在正文用黄线标出，点击可查看释义与例句；这里按语篇分组集中复习，右侧 <b>🔊</b> 按钮可朗读发音。</p>
+    <div id="vocabBox"></div>
+  </section>
+
+  <footer>
+    8-5培优题 · 精读精讲｜专题22 阅读理解 · 考点5 阅读还原（2025 中考真题）<br>
+    纯前端单文件 · 无需联网 · 支持发音、暗色与打印｜生成日期 2026-10-23
+  </footer>
+
+</div>
+
+<div id="pop"></div>
+
+<script>
+/* ================= 生词数据 ================= */
+const VOCAB = [
+/* ---- 一、七选五（塑料污染） ---- */
+{k:"pollution",g:"A",en:"pollution",ph:"/pəˈluːʃn/",pos:"n.",cn:"污染",note:"动词 pollute 污染；air/water pollution 空气/水污染；不可数名词。",ex:"Plastic pollution is a serious problem.",exCn:"塑料污染是个严重的问题。"},
+{k:"plastic",g:"A",en:"plastic",ph:"/ˈplæstɪk/",pos:"n./adj.",cn:"塑料；塑料的",note:"作名词不可数，作形容词“塑料的”；plastic bag 塑料袋。",ex:"We should use less plastic.",exCn:"我们应该少用塑料。"},
+{k:"serious",g:"A",en:"serious",ph:"/ˈsɪəriəs/",pos:"adj.",cn:"严重的；严肃的",note:"a serious problem 严重的问题；seriously adv. 严重地。",ex:"This is a serious problem.",exCn:"这是一个严重的问题。"},
+{k:"getworse",g:"A",en:"get worse",ph:"",pos:"短语",cn:"变得更糟",note:"get + 形容词比较级“变得……”；worse 是 bad 的比较级。",ex:"The weather is getting worse.",exCn:"天气正变得更糟。"},
+{k:"breakdown",g:"A",en:"break down",ph:"",pos:"短语",cn:"分解；降解；出故障",note:"此处指“降解（自然分解）”；也可指机器出故障。",ex:"This kind of plastic breaks down quickly.",exCn:"这种塑料能快速降解。"},
+{k:"reusable",g:"A",en:"reusable",ph:"/ˌriːˈjuːzəbl/",pos:"adj.",cn:"可重复使用的",note:"re-（再）+ use（用）+ -able（能……的）；a reusable bag 可重复使用的袋子。",ex:"Take a reusable shopping bag.",exCn:"带一个可重复使用的购物袋。"},
+{k:"worldwide",g:"A",en:"worldwide",ph:"/ˌwɜːldˈwaɪd/",pos:"adv./adj.",cn:"全世界；遍及全球的",note:"world（世界）+ wide（宽）；= around the world。",ex:"People use tons of plastic bags worldwide.",exCn:"全世界人们用掉成吨的塑料袋。"},
+{k:"tonsof",g:"A",en:"tons of",ph:"",pos:"短语",cn:"大量的；许多的",note:"= a lot of / lots of，口语常用；ton 本义“吨”。",ex:"There are tons of books in the room.",exCn:"房间里有大量的书。"},
+{k:"straw",g:"A",en:"straw",ph:"/strɔː/",pos:"n.",cn:"吸管",note:"可数名词；drink with a straw 用吸管喝。",ex:"Say no to the plastic straw.",exCn:"对塑料吸管说“不”。"},
+{k:"billion",g:"A",en:"billion",ph:"/ˈbɪljən/",pos:"num.",cn:"十亿",note:"数字 + billion（不加 s）；billions of 数十亿的。",ex:"There are 8.3 billion plastic straws.",exCn:"有 83 亿根塑料吸管。"},
+{k:"cover",g:"A",en:"cover",ph:"/ˈkʌvə(r)/",pos:"v.",cn:"覆盖",note:"cover sth with sth 用某物覆盖某物；be covered with 被……覆盖。",ex:"Plastic straws cover the beaches.",exCn:"塑料吸管覆盖了海滩。"},
+{k:"order",g:"A",en:"order",ph:"/ˈɔːdə(r)/",pos:"v.",cn:"点餐；订购",note:"order a drink 点一杯饮料；order food 点餐。",ex:"When you order a drink, say no to the straw.",exCn:"当你点饮料时，对吸管说“不”。"},
+{k:"carry",g:"A",en:"carry",ph:"/ˈkæri/",pos:"v.",cn:"携带；搬运",note:"= take with you；carry a bottle 带一个瓶子。",ex:"Carry a reusable water bottle with you.",exCn:"随身携带一个可重复使用的水瓶。"},
+{k:"throwaway",g:"A",en:"throw away",ph:"",pos:"短语",cn:"扔掉；丢弃",note:"throw away sth = throw sth away；过去分词 thrown away。",ex:"Don’t throw away the bottles.",exCn:"不要扔掉这些瓶子。"},
+{k:"beallowedto",g:"A",en:"be allowed to",ph:"",pos:"短语",cn:"被允许做某事",note:"allow sb to do 允许某人做；被动 be allowed to do。",ex:"Stores aren’t allowed to sell bottled water.",exCn:"商店不被允许出售瓶装水。"},
+{k:"anymore",g:"A",en:"any more / anymore",ph:"",pos:"短语",cn:"不再（常用于否定句）",note:"not ... any more = no more“不再”；常放句末。",ex:"He doesn’t live here any more.",exCn:"他不再住在这里了。"},
+{k:"avoid",g:"A",en:"avoid",ph:"/əˈvɔɪd/",pos:"v.",cn:"避免；回避",note:"avoid + 名词/doing sth“避免（做）某事”（不接 to do）。",ex:"Avoid using plastic bags.",exCn:"避免使用塑料袋。"},
+{k:"packaging",g:"A",en:"packaging",ph:"/ˈpækɪdʒɪŋ/",pos:"n.",cn:"包装",note:"pack（v. 包装）→ package（n. 包裹）→ packaging（n. 包装材料）。",ex:"Avoid plastic packaging.",exCn:"避免塑料包装。"},
+{k:"almost",g:"A",en:"almost",ph:"/ˈɔːlməʊst/",pos:"adv.",cn:"几乎；差不多",note:"= nearly；almost everywhere 几乎到处。",ex:"It’s almost everywhere.",exCn:"它几乎无处不在。"},
+{k:"everywhere",g:"A",en:"everywhere",ph:"/ˈevriweə(r)/",pos:"adv.",cn:"到处；处处",note:"every（每）+ where（哪里）；反义 nowhere 哪儿也不。",ex:"Plastic is everywhere.",exCn:"塑料到处都是。"},
+{k:"recycle",g:"A",en:"recycle",ph:"/ˌriːˈsaɪkl/",pos:"v.",cn:"回收利用",note:"re-（再）+ cycle（循环）→ 再循环、回收；recyclable 可回收的。",ex:"We should recycle what we can.",exCn:"我们应尽量回收利用。"},
+{k:"forexample",g:"A",en:"for example",ph:"",pos:"短语",cn:"例如",note:"用于举例，后接逗号；= such as（后接词组）。",ex:"You can recycle bottles, for example.",exCn:"例如，你可以回收瓶子。"},
+{k:"machine",g:"A",en:"machine",ph:"/məˈʃiːn/",pos:"n.",cn:"机器",note:"可数名词；machine 机器（如回收机）。",ex:"Machines take the bottles and give money back.",exCn:"机器回收瓶子并返还少量的钱。"},
+
+/* ---- 二、阅读表达（Jeff 学中文） ---- */
+{k:"foreign",g:"B",en:"foreign",ph:"/ˈfɒrən/",pos:"adj.",cn:"外国的",note:"foreign language 外语；foreigner n. 外国人。",ex:"I like learning foreign languages.",exCn:"我喜欢学习外语。"},
+{k:"language",g:"B",en:"language",ph:"/ˈlæŋɡwɪdʒ/",pos:"n.",cn:"语言",note:"可数名词；foreign language 外语；native language 母语。",ex:"She speaks three languages.",exCn:"她会说三种语言。"},
+{k:"retired",g:"B",en:"retired",ph:"/rɪˈtaɪəd/",pos:"v./adj.",cn:"退休（的）",note:"retire（v. 退休）→ retired（adj. 退休的）；retirement n. 退休。",ex:"He retired in 2018.",exCn:"他 2018 年退休。"},
+{k:"wish",g:"B",en:"wish",ph:"/wɪʃ/",pos:"n./v.",cn:"愿望；希望",note:"作名词可数（a wish）；作动词“希望”，wish to do 希望做。",ex:"My biggest wish was to learn Chinese.",exCn:"我最大的愿望是学中文。"},
+{k:"program",g:"B",en:"program",ph:"/ˈprəʊɡræm/",pos:"n.",cn:"节目；程序",note:"可数名词；美式拼写 program，英式 programme。",ex:"I watched a program about China.",exCn:"我看了一个关于中国的节目。"},
+{k:"cultural",g:"B",en:"cultural",ph:"/ˈkʌltʃərəl/",pos:"adj.",cn:"文化的",note:"culture（n. 文化）→ cultural（adj.）；cultural center 文化中心。",ex:"I found a cultural center.",exCn:"我找到了一个文化中心。"},
+{k:"makethedecision",g:"B",en:"make the decision to do",ph:"",pos:"短语",cn:"决定做某事",note:"= decide to do；decision n. 决定；make a decision 作决定。",ex:"I made the decision to learn Chinese.",exCn:"我决定学习中文。"},
+{k:"bychance",g:"B",en:"by chance",ph:"",pos:"短语",cn:"偶然；碰巧",note:"= by accident；反义 on purpose 故意。",ex:"I found it by chance.",exCn:"我偶然发现了它。"},
+{k:"offer",g:"B",en:"offer",ph:"/ˈɒfə(r)/",pos:"v.",cn:"提供",note:"offer sb sth = offer sth to sb 提供某人某物。",ex:"The center offers Chinese courses.",exCn:"该中心提供中文课程。"},
+{k:"fitfor",g:"B",en:"fit for",ph:"",pos:"短语",cn:"适合",note:"= suitable for；fit 作动词“适合、合身”。",ex:"The course is fit for me.",exCn:"这门课适合我。"},
+{k:"attend",g:"B",en:"attend",ph:"/əˈtend/",pos:"v.",cn:"参加；出席",note:"attend a class/meeting 上课/出席会议；= take part in。",ex:"I attend the classes every Saturday.",exCn:"我每周六去上课。"},
+{k:"practice",g:"B",en:"practice",ph:"/ˈpræktɪs/",pos:"v./n.",cn:"练习",note:"practice doing sth 练习做某事；美式 practice 作动词，英式 practise。",ex:"I practiced a lot after class.",exCn:"课后我大量练习。"},
+{k:"developalovefor",g:"B",en:"develop a love for",ph:"",pos:"短语",cn:"培养对……的热爱",note:"develop 培养、发展；a love for ……的热爱。",ex:"I developed a love for Chinese poems.",exCn:"我爱上了中文诗。"},
+{k:"poem",g:"B",en:"poem",ph:"/ˈpəʊɪm/",pos:"n.",cn:"诗；诗歌",note:"可数名词；poet 诗人；poetry 诗（总称）。",ex:"She likes reading Chinese poems.",exCn:"她喜欢读中文诗。"},
+{k:"joinin",g:"B",en:"join in",ph:"",pos:"短语",cn:"参加（活动）",note:"= take part in；join in + 活动。",ex:"I joined in the poetry readings.",exCn:"我参加了诗歌朗诵活动。"},
+{k:"increasingly",g:"B",en:"increasingly",ph:"/ɪnˈkriːsɪŋli/",pos:"adv.",cn:"越来越多地；日益",note:"increase（v. 增加）→ increasingly（adv.）；表程度加深。",ex:"I increasingly dreamed of visiting China.",exCn:"我越来越梦想去中国看看。"},
+{k:"dreamof",g:"B",en:"dream of",ph:"",pos:"短语",cn:"梦想；向往",note:"dream of doing sth 梦想做某事；dream about 梦见。",ex:"I dreamed of visiting China.",exCn:"我梦想去中国看看。"},
+{k:"mention",g:"B",en:"mention",ph:"/ˈmenʃn/",pos:"v.",cn:"提到；提及",note:"mention sth to sb 向某人提及某事；Don’t mention it 不客气。",ex:"He mentioned the famous saying.",exCn:"他提到了那句名言。"},
+{k:"suggest",g:"B",en:"suggest",ph:"/səˈdʒest/",pos:"v.",cn:"建议",note:"suggest doing sth 建议做某事；suggest that + 从句（用虚拟）。",ex:"He suggested taking a study tour.",exCn:"他建议参加研学旅行。"},
+{k:"takepartin",g:"B",en:"take part in",ph:"",pos:"短语",cn:"参加",note:"= join in / participate in；take part in + 活动。",ex:"I took part in a study tour in China.",exCn:"我参加了中国的研学旅行。"},
+{k:"studytour",g:"B",en:"study tour",ph:"",pos:"短语",cn:"研学旅行；游学",note:"study 学习 + tour 旅行；指边游边学的教育旅行。",ex:"We went on a study tour to Xi’an.",exCn:"我们去西安参加了研学旅行。"},
+{k:"actas",g:"B",en:"act as",ph:"",pos:"短语",cn:"担任；充当",note:"act as + 身份“担任……角色”。",ex:"I acted as an interpreter.",exCn:"我担任了口译员。"},
+{k:"interpreter",g:"B",en:"interpreter",ph:"/ɪnˈtɜːprɪtə(r)/",pos:"n.",cn:"口译员",note:"interpret（v. 口译、诠释）→ interpreter（n. 口译员）。",ex:"She works as an interpreter.",exCn:"她担任口译员。"},
+{k:"encourage",g:"B",en:"encourage",ph:"/ɪnˈkʌrɪdʒ/",pos:"v.",cn:"鼓励",note:"en-（使）+ courage（勇气）→ 使有勇气，鼓励；encourage sb to do。",ex:"This experience encouraged me to study.",exCn:"这段经历鼓励我继续学习。"},
+{k:"further",g:"B",en:"further",ph:"/ˈfɜːðə(r)/",pos:"adv.",cn:"进一步地",note:"far 的比较级之一（farther 距离更远 / further 程度更深）；study further 继续深造。",ex:"I want to study further.",exCn:"我想进一步深造。"},
+{k:"lifelong",g:"B",en:"lifelong",ph:"/ˈlaɪflɒŋ/",pos:"adj.",cn:"终身的；一生的",note:"life（生命）+ long（长）；a lifelong learner 终身学习者。",ex:"Learning is a lifelong pursuit.",exCn:"学习是一生的追求。"},
+{k:"pursuit",g:"B",en:"pursuit",ph:"/pəˈsjuːt/",pos:"n.",cn:"追求",note:"pursue（v. 追求）→ pursuit（n.）；a lifelong pursuit 终身的追求。",ex:"Reading is a lifelong pursuit.",exCn:"阅读是终身的追求。"},
+{k:"possibilities",g:"B",en:"possibilities",ph:"/ˌpɒsəˈbɪlətiz/",pos:"n.",cn:"可能性",note:"possible（adj. 可能的）→ possibility（n. 可能性）；复数 possibilities。",ex:"Learning Chinese brings more possibilities.",exCn:"学中文带来更多可能。"},
+
+/* ---- 三、语法填空（中国礼仪） ---- */
+{k:"etiquette",g:"C",en:"etiquette",ph:"/ˈetɪket/",pos:"n.",cn:"礼仪；礼节",note:"不可数名词；a country of etiquette 礼仪之邦。",ex:"China is a country of etiquette.",exCn:"中国是礼仪之邦。"},
+{k:"foreignteacher",g:"C",en:"foreign teacher",ph:"",pos:"短语",cn:"外籍教师",note:"foreign 外国的 + teacher 教师。",ex:"He works here as a foreign teacher.",exCn:"他在这里当外籍教师。"},
+{k:"deep",g:"C",en:"deep",ph:"/diːp/",pos:"adj.",cn:"深的；深入的",note:"a deep understanding 深入的了解；deep 还可作 adv.。",ex:"I have a deep understanding of China.",exCn:"我对中国有深入的了解。"},
+{k:"understanding",g:"C",en:"understanding",ph:"/ˌʌndəˈstændɪŋ/",pos:"n.",cn:"理解；了解",note:"understand（v. 理解）→ understanding（n.）；不可数名词。",ex:"I have a deep understanding of the culture.",exCn:"我对这种文化有深入的了解。"},
+{k:"society",g:"C",en:"society",ph:"/səˈsaɪəti/",pos:"n.",cn:"社会",note:"society 社会；social adj. 社会的。",ex:"I understand Chinese society better now.",exCn:"我现在更了解中国社会了。"},
+{k:"arrivein",g:"C",en:"arrive in",ph:"",pos:"短语",cn:"到达（大地点）",note:"arrive in + 国家/城市（大地点）；arrive at + 小地点（车站、学校）。",ex:"I arrived in China last year.",exCn:"我去年到了中国。"},
+{k:"seat",g:"C",en:"seat",ph:"/siːt/",pos:"n.",cn:"座位",note:"可数名词；take a seat 坐下（= sit down）；have a seat 请坐。",ex:"Take the seat facing the door.",exCn:"坐那个正对着门的座位。"},
+{k:"show",g:"C",en:"show",ph:"/ʃəʊ/",pos:"v.",cn:"展示；指引",note:"show sb sth = show sth to sb；show sb the way 指路。",ex:"Someone showed me to take the seat.",exCn:"有人指引我坐那个座位。"},
+{k:"face",g:"C",en:"face",ph:"/feɪs/",pos:"v.",cn:"面向；面对",note:"face the door 面对着门；face 还可作名词“脸”。",ex:"The seat faces the door.",exCn:"这个座位正对着门。"},
+{k:"inpairs",g:"C",en:"in pairs",ph:"",pos:"短语",cn:"成对地；成双地",note:"pair 一双、一对；in pairs 成对地。",ex:"Chinese people like giving gifts in pairs.",exCn:"中国人喜欢成双成对地送礼。"},
+{k:"remind",g:"C",en:"remind",ph:"/rɪˈmaɪnd/",pos:"v.",cn:"提醒",note:"remind sb to do 提醒某人做；remind sb of sth 提醒某人某事。",ex:"He reminded me not to open the gifts.",exCn:"他提醒我别打开礼物。"},
+{k:"rightaway",g:"C",en:"right away",ph:"",pos:"短语",cn:"立刻；马上",note:"= at once / right now；强调“马上、立刻”。",ex:"Don’t open them right away.",exCn:"别马上打开它们。"},
+{k:"infrontof",g:"C",en:"in front of",ph:"",pos:"短语",cn:"在……面前；在……前面",note:"in front of 在（外部）前面；in the front of 在（内部）前部。",ex:"Don’t open gifts in front of the givers.",exCn:"别当着送礼人的面拆礼物。"},
+{k:"giver",g:"C",en:"giver",ph:"/ˈɡɪvə(r)/",pos:"n.",cn:"赠送者；给予者",note:"give（v. 给）+ -er（人）→ giver；the givers 送礼的人。",ex:"It’s impolite to open gifts in front of the givers.",exCn:"当着送礼人的面拆礼物不礼貌。"},
+{k:"amazing",g:"C",en:"amazing",ph:"/əˈmeɪzɪŋ/",pos:"adj.",cn:"令人惊叹的",note:"amaze（v. 使惊叹）→ amazing（修饰物）/ amazed（修饰人）。",ex:"These are amazing days.",exCn:"这些是奇妙的时光。"},
+{k:"culturalexperiences",g:"C",en:"cultural experiences",ph:"",pos:"短语",cn:"文化体验",note:"cultural 文化的 + experience 经历、体验。",ex:"I had many cultural experiences in China.",exCn:"我在中国有许多文化体验。"},
+{k:"expect",g:"C",en:"expect",ph:"/ɪkˈspekt/",pos:"v.",cn:"期待；期盼",note:"expect to do sth 期待做某事；expectation n. 期待。",ex:"I expect to come to China again.",exCn:"我期待再次来中国。"}
+];
+const V={}; VOCAB.forEach(o=>V[o.k]=o);
+
+const GROUP_NAME={
+  A:"一、七选五（塑料污染）",
+  B:"二、阅读表达（Jeff 的中文学习之旅）",
+  C:"三、语法填空（中国礼仪）"
+};
+
+/* ================= 答案与详解 ================= */
+const ANS_75=[
+ {n:1,key:"E",tag:"语篇衔接/总起",sent:"...but the best way for now is to use less plastic. __1__",
+  ana:["空处位于首段末，下文以“Stop using plastic bags / Say no to the straw / ...”等小标题给出多条建议。",
+   "E“Here are five tips that can help you.”（这里有五条建议能帮到你）承上启下、引出下文五条建议，最贴切。",
+   "其余选项都是某条具体内容或无衔接作用，不能作总起句。"]},
+ {n:2,key:"F",tag:"语篇衔接",sent:"Some countries try to stop using plastic bags. __2__",
+  ana:["空前是“Some countries...”（一些国家……），句式上需要一个与之并列/递进的句子。",
+   "F“Other countries make customers pay for them.”（另一些国家则让顾客付费）以“Some...Other...”形成对照，衔接自然。",
+   "“them” 指代前文的 plastic bags，代词指代也吻合。"]},
+ {n:3,key:"B",tag:"主题句/小标题",sent:"__3__（段落小标题）",
+  ana:["空处独占一行，且下文“Carry a reusable water bottle with you...stores aren’t allowed to sell bottled water”都围绕“水瓶/瓶装水”。",
+   "B“Don’t buy bottled water.”（别买瓶装水）正是本段小标题，与后文内容一致。",
+   "其他选项不是小标题形式，或与“瓶装水”主题不符。"]},
+ {n:4,key:"G",tag:"语篇衔接",sent:"Avoid plastic packaging. __4__ It’s almost everywhere.",
+  ana:["本段主题是“避免塑料包装”，后句“It’s almost everywhere.”（它几乎无处不在）中的 it 指塑料包装。",
+   "G“Most things you buy come in plastic packaging.”（你买的大多数东西都是塑料包装）正好解释“为什么塑料包装无处不在”，衔接紧密。",
+   "A、C 与“塑料包装无处不在”无关。"]},
+ {n:5,key:"D",tag:"语篇衔接",sent:"You can’t recycle all plastic things. __5__ For example, you can recycle bottles...",
+  ana:["空前“你无法回收所有塑料制品”是消极表述，空后“For example...”举例说明能回收的小物件。",
+   "D“But it is possible to start small.”（但从小处做起是可行的）用 But 转折、接 For example 举例，逻辑顺畅。",
+   "多余选项为 A“They are fresh.”、C“Bottled water is expensive.”，文中无对应语境。"]}
+];
+const ANS_EXP=[
+ {n:11,key:"In March 2019.",tag:"细节理解",sent:"When did Jeff begin to learn Chinese?",
+  ana:["定位第二段：“In March 2019, I began to learn.”（2019 年 3 月，我开始学习。）",
+   "问时间，直接答 In March 2019.（= He began to learn Chinese in March 2019.）"]},
+ {n:12,key:"His Chinese teacher Mr. Liu.",tag:"细节理解",sent:"Who suggested a study tour in China?",
+  ana:["定位第三段：“My Chinese teacher Mr. Liu... He suggested that I should take part in a study tour in China.”（我的中文老师刘老师……他建议我参加中国的研学旅行。）",
+   "建议者是他的中文老师刘老师（Mr. Liu）。"]},
+ {n:13,key:"He is hardworking and persistent (a lifelong learner).",tag:"观点评价（开放）",sent:"What do you think of Jeff?",
+  ana:["开放题，从文中找依据评价。依据：每周六 5 点起、开车 3 小时去上课；课后大量练习；坚持终身学习。",
+   "参考答案：He is hardworking and persistent.（他勤奋且有毅力）/ He is a lifelong learner.（他是终身学习者）。",
+   "答题要点：抓住“勤奋、坚持、热爱学习”等品质，言之有理、与原文相符即可。"]},
+ {n:14,key:"(示例) I will learn a foreign language, because learning is a lifelong pursuit.",tag:"开放表达",sent:"What new things will you try after reading Jeff’s story? Why?",
+  ana:["开放题，答“想尝试的新事物 + 原因”，需与文章主题（终身学习、坚持）呼应。",
+   "示例一：I will learn a foreign language, because learning is a lifelong pursuit.（我想学一门外语，因为学习是终身的追求。）",
+   "示例二：I will take part in a study tour, because it helps me learn about the world.（我想参加研学旅行，因为它帮我了解世界。）",
+   "答题要点：内容积极、给出合理理由即可，不必与示例完全一致。"]},
+ {n:15,key:"读万卷书不如行万里路。",tag:"翻译/画线句",sent:"将短文中画线部分翻译成中文。",
+  ana:["画线句：“It’s better to travel ten thousand miles than read ten thousand books.”",
+   "直译：行万里路胜过读万卷书。对应中文名句“读万卷书不如行万里路”。",
+   "句型 It’s better to do A than do B“做 A 比做 B 更好”；travel ten thousand miles 行万里路，read ten thousand books 读万卷书。"]}
+];
+const ANS_GRAMMAR=[
+ {n:1,key:"really",tag:"词性转换/副词",sent:"I __1__ (real) have a deep understanding",
+  ana:["修饰动词 have 要用副词，real（adj. 真的）→ really（adv. 真正地、确实）。"]},
+ {n:2,key:"in",tag:"介词/固定搭配",sent:"when I first arrived __2__ China",
+  ana:["固定搭配 arrive in + 大地点（国家、城市）“到达……”；arrive at + 小地点（车站、学校等）。",
+   "China 是大地点，故填 in，arrived in China 即“到达中国”。"]},
+ {n:3,key:"was invited",tag:"时态/被动语态",sent:"Once, I __3__ (invite) to a big dinner",
+  ana:["句意：有一次，我“被邀请”去参加一场盛大晚宴。主语 I 与 invite 是被动关系，且为过去时，故用一般过去时被动：was/were + 过去分词。",
+   "主语 I 是单数，be 用 was；invite 的过去分词是 invited，故填 was invited。"]},
+ {n:4,key:"that / which",tag:"定语从句/关系代词",sent:"take the seat __4__ was ready for the most important person",
+  ana:["先行词是 the seat（物），关系代词在从句中作主语（was ready 的主语），用 that 或 which。",
+   "注意关系代词在从句中作宾语时才可省略，作主语时不可省略，故须填 that/which。"]},
+ {n:5,key:"interesting",tag:"词性转换/形容词",sent:"I found another __5__ (interest) thing",
+  ana:["修饰名词 thing 要用形容词，interest（n. 兴趣）→ interesting（adj. 有趣的，修饰物）。",
+   "注意：interesting 修饰事物，interested 修饰人（be interested in）。"]},
+ {n:6,key:"had",tag:"时态/一般过去时",sent:"Last month, I __6__ (have) a party",
+  ana:["Last month（上个月）是一般过去时的标志，故 have 变过去式 had。"]},
+ {n:7,key:"but",tag:"连词/转折",sent:"I couldn’t wait to open them, __7__ one of my friends reminded me not to",
+  ana:["前句“我迫不及待想打开礼物”与后句“朋友提醒我别马上打开”是转折关系，故用连词 but（但是）。"]},
+ {n:8,key:"impolite",tag:"词性转换/否定",sent:"He thought it was __8__ (polite) to open gifts in front of the givers",
+  ana:["语境：当着送礼人的面拆礼物是“不礼貌的”。polite（礼貌的）加否定前缀 im- → impolite（不礼貌的）。",
+   "im- 是常见否定前缀（如 impossible 不可能的），以 p 开头的形容词多用 im- 表否定。"]},
+ {n:9,key:"days",tag:"名词复数",sent:"These are amazing __9__ (day) of cultural experiences",
+  ana:["These（这些）后接可数名词复数，且 be 动词用 are，故 day 变复数 days。"]},
+ {n:10,key:"the",tag:"冠词/固定搭配",sent:"my stay in China will not be __10__ last time",
+  ana:["last time（最后一次）前加定冠词 the，表特指，the last time“最后一次”。",
+   "句意：我相信这次中国之行不会是最后一次。"]}
+];
+
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");}
+
+function renderAns(box, arr){
+  arr.forEach(o=>{
+    const d=document.createElement("div"); d.className="ans-item";
+    d.innerHTML = `<div class="top"><span class="num">${o.n}.</span><span class="key">${esc(o.key)}</span><span class="kt">${esc(o.tag)}</span></div>`+
+      `<div class="sent">📌 ${esc(o.sent)}</div>`+
+      `<ul>${o.ana.map(a=>`<li>${esc(a)}</li>`).join("")}</ul>`;
+    box.appendChild(d);
+  });
+}
+renderAns(document.getElementById("ans75"), ANS_75);
+renderAns(document.getElementById("ansExp"), ANS_EXP);
+renderAns(document.getElementById("ansGrammar"), ANS_GRAMMAR);
+
+/* 生词汇总（按语篇分组） */
+const vocabBox = document.getElementById("vocabBox");
+["A","B","C"].forEach(g=>{
+  const wrap=document.createElement("div"); wrap.className="vgroup";
+  const h=document.createElement("h3"); h.innerHTML=`<span class="dot"></span>${GROUP_NAME[g]}`;
+  wrap.appendChild(h);
+  const cards=document.createElement("div"); cards.className="vcards";
+  VOCAB.filter(v=>v.g===g).forEach(v=>{
+    const c=document.createElement("div"); c.className="vcard";
+    c.innerHTML = `<div class="hw"><span class="en">${esc(v.en)}</span>`+
+      (v.ph?`<span class="ph">${esc(v.ph)}</span>`:"")+
+      `<span class="pos">${esc(v.pos)}</span><button class="spk" type="button" data-word="${esc(v.en)}" title="点击发音" aria-label="发音">🔊</button></div>`+
+      `<div class="cn">${esc(v.cn)}</div>`+
+      `<div class="nt">${esc(v.note)}</div>`+
+      `<div class="ex">e.g. ${esc(v.ex)}<span class="ecn">${esc(v.exCn)}</span></div>`;
+    cards.appendChild(c);
+  });
+  wrap.appendChild(cards);
+  vocabBox.appendChild(wrap);
+});
+
+/* ================= 交互：划线词弹出 / 内联对照 ================= */
+const words = [...document.querySelectorAll(".w")];
+words.forEach(w=>{
+  const d=V[w.dataset.k]; if(!d) return;
+  const g=document.createElement("span"); g.className="gloss"; g.textContent="（"+d.cn+"）";
+  w.after(g);
+});
+
+const pop=document.getElementById("pop");
+let cur=null;
+function closePop(){ pop.classList.remove("show"); if(cur) cur.classList.remove("active"); cur=null; }
+function openPop(el){
+  const d=V[el.dataset.k]; if(!d) return;
+  if(cur===el){ closePop(); return; }
+  closePop();
+  cur=el; el.classList.add("active");
+  pop.innerHTML =
+    `<div class="pw">${esc(d.en)}${d.ph?`<span class="pph">${esc(d.ph)}</span>`:""}<span class="pos">${esc(d.pos)}</span><button class="spk" type="button" data-word="${esc(d.en)}" title="点击发音" aria-label="发音">🔊</button></div>`+
+    `<div class="pcn">${esc(d.cn)}</div>`+
+    `<div class="pnote">${esc(d.note)}</div>`+
+    `<div class="pex"><b>例：</b> ${esc(d.ex)}<span class="cn">${esc(d.exCn)}</span></div>`;
+  pop.classList.add("show");
+  const r=el.getBoundingClientRect();
+  const pw=pop.offsetWidth, ph=pop.offsetHeight;
+  let left=r.left + r.width/2 - pw/2 + window.scrollX;
+  left=Math.max(12+window.scrollX, Math.min(left, window.scrollX + document.documentElement.clientWidth - pw - 12));
+  let top=r.top + window.scrollY - ph - 12;
+  if(top < window.scrollY + 8){ top = r.bottom + window.scrollY + 12; }
+  pop.style.left=left+"px"; pop.style.top=top+"px";
+}
+words.forEach(w=>w.addEventListener("click",e=>{e.stopPropagation();openPop(w);}));
+document.addEventListener("click",e=>{ if(!pop.contains(e.target)) closePop(); });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape") closePop(); });
+window.addEventListener("scroll",closePop,{passive:true});
+window.addEventListener("resize",closePop);
+
+document.querySelectorAll(".blank").forEach(b=>{
+  b.addEventListener("click",e=>{e.stopPropagation(); b.classList.toggle("open");});
+});
+
+const btnAllWords=document.getElementById("btnAllWords");
+btnAllWords.addEventListener("click",()=>{
+  const on=document.body.classList.toggle("showall");
+  btnAllWords.classList.toggle("on",on);
+  btnAllWords.textContent = on ? "🙈 隐藏全部释义" : "👁 显示全部释义";
+  if(on) closePop();
+});
+const btnAllAns=document.getElementById("btnAllAns");
+btnAllAns.addEventListener("click",()=>{
+  const on=document.body.classList.toggle("showans");
+  btnAllAns.classList.toggle("on",on);
+  btnAllAns.textContent = on ? "🔒 隐藏全部答案" : "✅ 显示全部答案";
+});
+const btnTheme=document.getElementById("btnTheme");
+btnTheme.addEventListener("click",()=>{
+  const on=document.body.classList.toggle("dark");
+  btnTheme.textContent = on ? "☀️ 日间" : "🌙 夜间";
+});
+
+function speak(text){
+  if(!('speechSynthesis' in window)){
+    alert('当前浏览器不支持语音朗读，请用 Chrome / Edge / Safari 打开本页。');
+    return;
+  }
+  const u=new SpeechSynthesisUtterance(text);
+  u.lang='en-US'; u.rate=0.92; u.pitch=1;
+  window.speechSynthesis.cancel();
+  window.speechSynthesis.speak(u);
+}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('.spk');
+  if(b){ e.stopPropagation(); speak(b.dataset.word); }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>鲁教版七年级上册 · 数学知识网络图</title>
+<style>
+/* ===== Reset & Base ===== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #f0f4f8;
+  --card-bg: #ffffff;
+  --text: #1e293b;
+  --text-light: #64748b;
+  --text-lighter: #94a3b8;
+  --border: #e2e8f0;
+  --line: #cbd5e1;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+  --radius: 14px;
+}
+
+/* ===== Body ===== */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== Header ===== */
+.page-header {
+  background: linear-gradient(135deg, #1e3a5f 0%, #2d5a8e 50%, #3b6fa0 100%);
+  padding: 48px 24px 40px;
+  text-align: center;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.page-header::before {
+  content: '';
+  position: absolute;
+  top: -60%;
+  right: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.page-header h1 {
+  font-size: 1.9rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+  position: relative;
+}
+.page-header .subtitle {
+  font-size: 0.9rem;
+  opacity: 0.85;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+.page-header .deco-line {
+  width: 50px;
+  height: 3px;
+  background: rgba(255,255,255,0.5);
+  margin: 14px auto 0;
+  border-radius: 2px;
+}
+
+/* ===== Navigation ===== */
+.nav-bar {
+  background: #fff;
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  padding: 10px 16px;
+  flex-wrap: wrap;
+}
+.nav-bar a {
+  text-decoration: none;
+  color: var(--text-light);
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 6px 13px;
+  border-radius: 20px;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.nav-bar a:hover { background: var(--bg); color: var(--text); }
+.nav-bar a.active { color: #fff; }
+
+/* ===== Main Container ===== */
+.main-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 28px 16px 60px;
+}
+
+/* ===== Chapter Section ===== */
+.chapter {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  margin-bottom: 28px;
+  overflow: hidden;
+}
+
+.chapter-banner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 24px;
+  color: #fff;
+}
+.chapter-banner .ch-num {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+.chapter-banner .ch-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.chapter-banner .ch-subtitle {
+  font-size: 0.78rem;
+  opacity: 0.8;
+  font-weight: 300;
+  margin-top: 2px;
+}
+
+/* Chapter colors */
+#ch1 { --c1: #3b82f6; --c2: #1d4ed8; --c-light: #eff6ff; --c-soft: #dbeafe; }
+#ch2 { --c1: #8b5cf6; --c2: #6d28d9; --c-light: #f5f3ff; --c-soft: #ede9fe; }
+#ch3 { --c1: #10b981; --c2: #047857; --c-light: #ecfdf5; --c-soft: #d1fae5; }
+#ch4 { --c1: #f59e0b; --c2: #d97706; --c-light: #fffbeb; --c-soft: #fef3c7; }
+#ch5 { --c1: #06b6d4; --c2: #0891b2; --c-light: #ecfeff; --c-soft: #cffafe; }
+#ch6 { --c1: #f43f5e; --c2: #e11d48; --c-light: #fff1f2; --c-soft: #ffe4e6; }
+
+#ch1 .chapter-banner { background: linear-gradient(135deg, #3b82f6, #1d4ed8); }
+#ch2 .chapter-banner { background: linear-gradient(135deg, #8b5cf6, #6d28d9); }
+#ch3 .chapter-banner { background: linear-gradient(135deg, #10b981, #047857); }
+#ch4 .chapter-banner { background: linear-gradient(135deg, #f59e0b, #d97706); }
+#ch5 .chapter-banner { background: linear-gradient(135deg, #06b6d4, #0891b2); }
+#ch6 .chapter-banner { background: linear-gradient(135deg, #f43f5e, #e11d48); }
+
+#ch1 .nav-bar a[href="#ch1"] { background: #3b82f6; }
+#ch2 .nav-bar a[href="#ch2"] { background: #8b5cf6; }
+#ch3 .nav-bar a[href="#ch3"] { background: #10b981; }
+#ch4 .nav-bar a[href="#ch4"] { background: #f59e0b; }
+#ch5 .nav-bar a[href="#ch5"] { background: #06b6d4; }
+#ch6 .nav-bar a[href="#ch6"] { background: #f43f5e; }
+
+/* ===== Mind Map — Compact Vertical Tree ===== */
+.mindmap-wrapper {
+  padding: 28px 20px 16px;
+}
+
+/* Root center row */
+.tree-root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Branch columns container */
+.tree-branches {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+/* Single branch column */
+.tree-branch-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  min-width: 140px;
+  max-width: 220px;
+}
+
+/* Vertical connector from root down */
+.branch-connector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.branch-connector .v-line {
+  width: 2px;
+  height: 14px;
+  background: var(--line);
+}
+.branch-connector .h-line {
+  display: none; /* hide horizontal spread line, compact */
+}
+
+/* Branch label node */
+.branch-node {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 9px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--c2);
+  background: #fff;
+  border: 2px solid var(--c1);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s, box-shadow 0.2s;
+  white-space: nowrap;
+  text-align: center;
+  width: 100%;
+}
+.branch-node:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Connector from branch to leaves */
+.leaf-connector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.leaf-connector .v-line {
+  width: 2px;
+  height: 10px;
+  background: var(--line);
+}
+
+/* Leaves container — vertical stack per branch */
+.leaves-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  align-items: center;
+}
+
+.leaf-node {
+  display: inline-block;
+  padding: 6px 11px;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #334155;
+  background: var(--c-light);
+  border: 1.5px solid var(--c-soft);
+  text-align: center;
+  line-height: 1.4;
+  transition: transform 0.2s, box-shadow 0.2s;
+  width: 100%;
+  max-width: 190px;
+}
+.leaf-node:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+.leaf-node strong {
+  color: var(--c2);
+  font-weight: 700;
+}
+
+/* Root node */
+.node.root {
+  display: inline-block;
+  padding: 12px 22px;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  text-align: center;
+  color: #fff;
+  background: linear-gradient(135deg, var(--c1), var(--c2));
+  box-shadow: var(--shadow-md);
+  letter-spacing: 1px;
+  white-space: nowrap;
+  transition: transform 0.2s;
+}
+.node.root:hover { transform: translateY(-2px); }
+
+/* ===== Formula Box ===== */
+.formula-section {
+  padding: 0 24px 20px;
+}
+.formula-box {
+  background: var(--c-light);
+  border-left: 4px solid var(--c1);
+  border-radius: 0 10px 10px 0;
+  padding: 14px 18px;
+  margin-top: 8px;
+}
+.formula-box .formula-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--c2);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.formula-box ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.formula-box li {
+  font-size: 0.8rem;
+  color: #334155;
+  padding: 3px 10px;
+  background: rgba(255,255,255,0.6);
+  border-radius: 6px;
+  white-space: nowrap;
+}
+.formula-box code {
+  background: rgba(255,255,255,0.8);
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-family: "SF Mono", "Fira Code", "Consolas", monospace;
+  font-size: 0.8rem;
+  color: var(--c2);
+  font-weight: 600;
+}
+
+/* ===== Overview Section ===== */
+.overview {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  margin-bottom: 28px;
+  overflow: hidden;
+}
+.overview-banner {
+  background: linear-gradient(135deg, #1e3a5f, #2d5a8e);
+  padding: 18px 24px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.overview-banner .ch-num {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+.overview-banner .ch-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.overview-banner .ch-subtitle {
+  font-size: 0.78rem;
+  opacity: 0.8;
+  font-weight: 300;
+  margin-top: 2px;
+}
+
+.overview-content {
+  padding: 28px 24px;
+}
+
+/* Compact flow: two rows of 3 chapters */
+.flow-chapter-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  flex-wrap: wrap;
+}
+.flow-chapter-row + .flow-chapter-row {
+  margin-top: 0;
+}
+
+.flow-card {
+  width: 130px;
+  padding: 14px 10px;
+  border-radius: 12px;
+  text-align: center;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.88rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  flex-shrink: 0;
+}
+.flow-card .flow-ch-num {
+  font-size: 0.68rem;
+  opacity: 0.8;
+  font-weight: 400;
+}
+
+.flow-arrow-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 6px;
+  min-width: 60px;
+}
+.flow-arrow-col .v-arrow {
+  font-size: 0.65rem;
+  color: var(--text-lighter);
+  text-align: center;
+  padding: 4px 0;
+  white-space: nowrap;
+}
+.flow-arrow-col .arrow-line {
+  width: 2px;
+  height: 24px;
+  background: var(--line);
+  position: relative;
+}
+.flow-arrow-col .arrow-line::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0; height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 7px solid var(--line);
+}
+
+.flow-row-label {
+  font-size: 0.72rem;
+  color: var(--text-lighter);
+  text-align: center;
+  padding: 10px 0 4px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Connection grid */
+.connection-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 10px;
+  margin-top: 24px;
+}
+.connection-item {
+  background: #f8fafc;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.connection-item .conn-icon {
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #fff;
+}
+.connection-item .conn-text {
+  font-size: 0.8rem;
+  color: var(--text);
+  line-height: 1.5;
+}
+.connection-item .conn-text strong {
+  color: #2d5a8e;
+}
+
+/* ===== Footer ===== */
+.page-footer {
+  text-align: center;
+  padding: 20px;
+  color: var(--text-lighter);
+  font-size: 0.78rem;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 640px) {
+  .page-header h1 { font-size: 1.3rem; }
+  .chapter-banner .ch-title { font-size: 1.05rem; }
+  .tree-branches { gap: 10px; }
+  .tree-branch-col { min-width: 110px; max-width: 160px; }
+  .branch-node { font-size: 0.8rem; padding: 7px 10px; }
+  .leaf-node { font-size: 0.72rem; padding: 5px 8px; max-width: 150px; }
+  .flow-card { width: 100px; font-size: 0.8rem; }
+  .formula-box ul { flex-direction: column; gap: 4px; }
+  .formula-box li { white-space: normal; }
+}
+
+/* ===== Print ===== */
+@media print {
+  .nav-bar { display: none; }
+  .page-header { padding: 20px; }
+  .main-container { padding: 12px; max-width: 100%; }
+  .chapter, .overview { box-shadow: none; border: 1px solid var(--border); break-inside: avoid; }
+  .branch-node:hover, .leaf-node:hover, .node.root:hover { transform: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== Header ===== -->
+<header class="page-header">
+  <h1>鲁教版七年级上册 · 数学知识网络图</h1>
+  <div class="deco-line"></div>
+  <p class="subtitle">六章知识全景地图 · 思维导图 + 核心公式 + 章节关联</p>
+</header>
+
+<!-- ===== Navigation ===== -->
+<nav class="nav-bar">
+  <a href="#ch1">第一章 三角形</a>
+  <a href="#ch2">第二章 轴对称</a>
+  <a href="#ch3">第三章 勾股定理</a>
+  <a href="#ch4">第四章 实数</a>
+  <a href="#ch5">第五章 位置与坐标</a>
+  <a href="#ch6">第六章 一次函数</a>
+  <a href="#overview">全书关联</a>
+</nav>
+
+<!-- ===== Main ===== -->
+<main class="main-container">
+
+<!-- ========== Chapter 1: 三角形 ========== -->
+<section class="chapter" id="ch1">
+  <div class="chapter-banner">
+    <div class="ch-num">1</div>
+    <div>
+      <div class="ch-title">三角形</div>
+      <div class="ch-subtitle">基本性质 · 全等判定 · 实际应用</div>
+    </div>
+  </div>
+
+  <div class="mindmap-wrapper">
+    <div class="tree-root">
+      <!-- Root -->
+      <div class="node root">三角形</div>
+
+      <!-- Branches row -->
+      <div class="tree-branches">
+
+        <!-- Branch 1 -->
+        <div class="tree-branch-col">
+          <div class="branch-connector">
+            <div class="v-line"></div>
+          </div>
+          <div class="branch-node">基本性质</div>
+          <div class="leaf-connector"><div class="v-line"></div></div>
+          <div class="leaves-stack">
+            <div class="leaf-node"><strong>内角和</strong> = 180°</div>
+            <div class="leaf-node"><strong>外角</strong> = 不相邻两内角之和</div>
+            <div class="leaf-node">任意两边之和 > 第三边</div>
+            <div class="leaf-node">任意两边之差 < 第三边</div>
+            <div class="leaf-node"><strong>分类：</strong>锐角 / 直角 / 钝角</div>
+            <div class="leaf-node"><strong>重要线段：</strong>中线 · 角平分线 · 高</div>
+          </div>
+        </div>
+
+        <!-- Branch 2 -->
+        <div class="tree-branch-col">
+          <div class="branch-connector">
+            <div class="v-line"></div>
+          </div>
+          <div class="branch-node">全等三角形</div>
+          <div class="leaf-connector"><div class="v-line"></div></div>
+          <div class="leaves-stack">
+            <div class="leaf-node">对应边相等 · 对应角相等</div>
+            <div class="leaf-node"><strong>SSS</strong>（边边边）</div>
+            <div class="leaf-node"><strong>SAS</strong>（边角边）</div>
+            <div class="leaf-node"><strong>ASA</strong>（角边角）</div>
+            <div class="leaf-node"><strong>AAS</strong>（角角边）</div>
+            <div class="leaf-node"><strong>HL</strong>（仅限直角三角形）</div>
+            <div class="leaf-node">尺规作图</div>
+          </div>
+        </div>
+
+        <!-- Branch 3 -->
+        <div class="tree-branch-col">
+          <div class="branch-connector">
+            <div class="v-line"></div>
+          </div>
+          <div class="branch-node">实际应用</div>
+          <div class="leaf-connector"><div class="v-line"></div></div>
+          <div class="leaves-stack">
+            <div class="leaf-node">测量距离</div>
+            <div class="leaf-node">面积 S = ½ × 底 × 高</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="formula-section">
+    <div class="formula-box">
+      <div class="formula-title">核心公式与定理</div>
+      <ul>
+        <li>内角和：<code>∠A + ∠B + ∠C = 180°</code></li>
+        <li>外角定理：<code>外角 = 不相邻两内角之和</code></li>
+        <li>面积公式：<code>S = ½ × 底 × 高</code></li>
+        <li>全等口诀：SSS · SAS · ASA · AAS · HL</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ========== Chapter 2: 轴对称 ========== -->
+<section class="chapter" id="ch2">
+  <div class="chapter-banner">
+    <div class="ch-num">2</div>
+    <div>
+      <div class="ch-title">轴对称</div>
+      <div class="ch-subtitle">对称性质 · 等腰三角形 · 角平分线</div>
+    </div>
+  </div>
+
+  <div class="mindmap-wrapper">
+    <div class="tree-root">
+      <div class="node root">轴对称</div>
+
+      <div class="tree-branches">
+
+        <div class="tree-branch-col">
+          <div class="branch-connector"><div class="v-line"></div></div>
+          <div class="branch-node">轴对称性质</div>
+          <div class="leaf-connector"><div class="v-line"></div></div>
+          <div class="leaves-stack">
+            <div class="leaf-node">对应点连线被对称轴<strong>垂直平分</strong></div>
+            <div class="leaf-node">对应边相等</div>
+            <div class="leaf-node">对应角相等</div>
+            <div class="leaf-node"><strong>垂直平分线</strong>上的点到两端距离相等</div>
+          </div>
+        </div>
+
+        <div class="tree-branch-col">
+          <div class="branch-connector"><div class="v-line"></div></div>
+          <div class="branch-node">等腰三角形</div>
+          <div class="leaf-connector"><div class="v-line"></div></div>
+          <div class="leaves-stack">
+            <div class="leaf-node"><strong>等边对等角</strong></div>
+            <div class="leaf-node"><strong>等角对等边</strong>（判定等腰）</div>
+            <div class="leaf-node"><strong>三线合一：</strong>顶角平分线 = 底边中线 = 底边上的高</div>
+            <div class="leaf-node">等边三角形：三个角 = 60°</div>
+            <div class="leaf-node">30°直角△：短边 = 斜边 ÷ 2</div>
+          </div>
+        </div>
+
+        <div class="tree-branch-col">
+          <div class="branch-connector"><div class="v-line"></div></div>
+          <div class="branch-node">角平分线</div>
+          <div class="leaf-connector"><div class="v-line"></div></div>
+          <div class="leaves-stack">
+            <div class="leaf-node">角平分线上的点到两边<strong>距离相等</strong></div>
+            <div class="leaf-node">逆定理：到两边距离相等的点在角平分线上</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="formula-section">
+    <div class="formula-box">
+      <div class="formula-title">核心定理</div>
+      <ul>
+        <li>对应点连线被对称轴<strong>垂直平分</strong></li>
+        <li>垂直平分线 → 到两端距离相等</li>
+        <li>角平分线 → 到两边距离相等</li>
+        <li>等腰△：<code>等边对等角</code> / <code>等角对等边</code> / <code>三线合一</code></li>
+        <li>30°直角△：30°所对直角边 = 斜边的一半</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ========== Chapter 3: 勾股定理 ========== -->
+<section class="chapter" id="ch3">
+  <div class="chapter-banner">
+    <div class="ch-num">3</div>
+    <div>
+      <div class="ch-title">勾股定理</div>
+      <div class="ch-subtitle">定理与逆定理 · 勾股数 · 实际应用</div>
+    </div>
+  </div>
+
+  <div class="mindmap-wrapper">
+    <div class="tree-root">
+      <div class="node root">勾股定理</div>
+
+      <div class="tree-branches">
+
+        <div class="tree-branch-col">
+          <div class="branch-connector"><div class="v-line"></div></div>
+          <div class="branch-node">定理本身</div>
+          <div class="leaf-connector"><div class="v-line"></div></div>
+          <div class="leaves-stack">
+            <div class="leaf-node"><strong>a² + b² = c²</strong>（c 为斜边）</div>
+            <div class="leaf-node">已知两直角边 → 求斜边</div>
+            <div class="leaf-node">已知斜边和一直角边 → 求另一直角边</div>
+          </div>
+        </div>
+
+        <div class="tree-branch-col">
+          <div class="branch-connector"><div class="v-line"></div></div>
+          <div class="branch-node">逆定理</div>
+          <div class="leaf-connector"><div class="v-line"></div></div>
+          <div class="leaves-stack">
+            <div class="leaf-node">若 <strong>a² + b² = c²</strong> → 直角三角形</div>
+            <div class="leaf-node"><strong>勾股数：</strong>满足条件的正整数解</div>
+            <div class="leaf-node">常见：3,4,5 / 5,12,13 / 8,15,17</div>
+            <div class="leaf-node">勾股数倍数仍为勾股数</div>
+          </div>
+        </div>
+
+        <div class="tree-branch-col">
+          <div class="branch-connector"><div class="v-line"></div></div>
+          <div class="branch-node">应用</div>
+          <div class="leaf-connector"><div class="v-line"></div></div>
+          <div class="leaves-stack">
+            <div class="leaf-node">坐标系中求两点距离</div>
+            <div class="leaf-node">面积法求高</div>
+            <div class="leaf-node">长方体对角线 <strong>d = √(a²+b²+c²)</strong></div>
+            <div class="leaf-node">折叠问题中的长度计算</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="formula-section">
+    <div class="formula-box">
+      <div class="formula-title">核心公式</div>
+      <ul>
+        <li>勾股定理：<code>a² + b² = c²</code>（直角△，c 为斜边）</li>
+        <li>逆定理：<code>a² + b² = c²</code> → 直角三角形</li>
+        <li>长方体体对角线：<code>d = √(a² + b² + c²)</code></li>
+        <li>常用勾股数：3-4-5、5-12-13、8-15-17、7-24-25</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ========== Chapter 4: 实数 ========== -->
+<section class="chapter" id="ch4">
+  <div class="chapter-banner">
+    <div class="ch-num">4</div>
+    <div>
+      <div class="ch-title">实数</div>
+      <div class="ch-subtitle">有理数与无理数 · 平方根与立方根 · 运算律</div>
+    </div>
+  </div>
+
+  <div class="mindmap-wrapper">
+    <div class="tree-root">
+      <div class="node root">实数</div>
+
+      <div class="tree-branches">
+
+        <div class="tree-branch-col">
+          <div class="branch-connector"><div class="v-line"></div></div>
+          <div class="branch-node">有理数</div>
+          <div class="leaf-connector"><div class="v-line"></div></div>
+          <div class="leaves-stack">
+            <div class="leaf-node">整数（正整数 · 零 · 负整数）</div>
+            <div class="leaf-node">分数</div>
+            <div class="leaf-node">有限小数 · 循环小数</div>
+          </div>
+        </div>
+
+        <div class="tree-branch-col">
+          <div class="branch-connector"><div class="v-line"></div></div>
+          <div class="branch-node">无理数</div>
+          <div class="leaf-connector"><div class="v-line"></div></div>
+          <div class="leaves-stack">
+            <div class="leaf-node"><strong>无限不循环</strong>小数</div>
+            <div class="leaf-node">√2, √3, √5, π …</div>
+            <div class="leaf-node">非完全平方数的平方根</div>
+          </div>
+        </div>
+
+        <div class="tree-branch-col">
+          <div class="branch-connector"><div class="v-line"></div></div>
+          <div class="branch-node">平方根</div>
+          <div class="leaf-connector"><div class="v-line"></div></div>
+          <div class="leaves-stack">
+            <div class="leaf-node"><strong>算术平方根</strong> √a（a ≥ 0, √a ≥ 0）</div>
+            <div class="leaf-node">平方根 <strong>±√a</strong>（a > 0 有两个）</div>
+            <div class="leaf-node">a = 0 → √a = 0；a < 0 → 无意义</div>
+          </div>
+        </div>
+
+        <div class="tree-branch-col">
+          <div class="branch-connector"><div class="v-line"></div></div>
+          <div class="branch-node">立方根</div>
+          <div class="leaf-connector"><div class="v-line"></div></div>
+          <div class="leaves-stack">
+            <div class="leaf-node"><strong>∛a：</strong>任何实数都有立方根</div>
+            <div class="leaf-node">∛(-a) = -∛a</div>
+          </div>
+        </div>
+
+        <div class="tree-branch-col">
+          <div class="branch-connector"><div class="v-line"></div></div>
+          <div class="branch-node">运算律</div>
+          <div class="leaf-connector"><div class="v-line"></div></div>
+          <div class="leaves-stack">
+            <div class="leaf-node"><strong>√a × √b = √(ab)</strong></div>
+            <div class="leaf-node"><strong>√a ÷ √b = √(a/b)</strong>（b ≠ 0）</div>
+            <div class="leaf-node"><strong>(√a)² = a</strong>（a ≥ 0）</div>
+            <div class="leaf-node"><strong>√(a²) = |a|</strong></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="formula-section">
+    <div class="formula-box">
+      <div class="formula-title">核心概念</div>
+      <ul>
+        <li><code>√a</code>：a ≥ 0，√a ≥ 0（算术平方根非负）</li>
+        <li><code>±√a</code>：a > 0 有两个，a = 0 有一个，a < 0 没有</li>
+        <li><code>∛a</code>：任何实数都有立方根（正数正、负数负、零为零）</li>
+        <li>关键公式：<code>√(a²) = |a|</code> — 注意绝对值不可省略</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ========== Chapter 5: 位置与坐标 ========== -->
+<section class="chapter" id="ch5">
+  <div class="chapter-banner">
+    <div class="ch-num">5</div>
+    <div>
+      <div class="ch-title">位置与坐标</div>
+      <div class="ch-subtitle">平面直角坐标系 · 对称变换 · 距离与中点</div>
+    </div>
+  </div>
+
+  <div class="mindmap-wrapper">
+    <div class="tree-root">
+      <div class="node root">平面直角坐标系</div>
+
+      <div class="tree-branches">
+
+        <div class="tree-branch-col">
+          <div class="branch-connector"><div class="v-line"></div></div>
+          <div class="branch-node">基本概念</div>
+          <div class="leaf-connector"><div class="v-line"></div></div>
+          <div class="leaves-stack">
+            <div class="leaf-node"><strong>x 轴：</strong>水平方向（y = 0）</div>
+            <div class="leaf-node"><strong>y 轴：</strong>铅直方向（x = 0）</div>
+            <div class="leaf-node"><strong>原点：</strong>(0, 0)</div>
+            <div class="leaf-node">点 → 有序数对 (x, y)</div>
+          </div>
+        </div>
+
+        <div class="tree-branch-col">
+          <div class="branch-connector"><div class="v-line"></div></div>
+          <div class="branch-node">象限符号</div>
+          <div class="leaf-connector"><div class="v-line"></div></div>
+          <div class="leaves-stack">
+            <div class="leaf-node">第一象限 <strong>(+, +)</strong></div>
+            <div class="leaf-node">第二象限 <strong>(-, +)</strong></div>
+            <div class="leaf-node">第三象限 <strong>(-, -)</strong></div>
+            <div class="leaf-node">第四象限 <strong>(+, -)</strong></div>
+          </div>
+        </div>
+
+        <div class="tree-branch-col">
+          <div class="branch-connector"><div class="v-line"></div></div>
+          <div class="branch-node">对称变换</div>
+          <div class="leaf-connector"><div class="v-line"></div></div>
+          <div class="leaves-stack">
+            <div class="leaf-node">关于 x 轴：<strong>(a, b) → (a, -b)</strong></div>
+            <div class="leaf-node">关于 y 轴：<strong>(a, b) → (-a, b)</strong></div>
+            <div class="leaf-node">关于原点：<strong>(a, b) → (-a, -b)</strong></div>
+          </div>
+        </div>
+
+        <div class="tree-branch-col">
+          <div class="branch-connector"><div class="v-line"></div></div>
+          <div class="branch-node">距离与中点</div>
+          <div class="leaf-connector"><div class="v-line"></div></div>
+          <div class="leaves-stack">
+            <div class="leaf-node">两点距离 <strong>d = √[(x₂-x₁)² + (y₂-y₁)²]</strong></div>
+            <div class="leaf-node">中点坐标 <strong>((x₁+x₂)/2, (y₁+y₂)/2)</strong></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="formula-section">
+    <div class="formula-box">
+      <div class="formula-title">核心规律</div>
+      <ul>
+        <li>关于 x 轴对称：<code>(a, b) → (a, -b)</code> — 纵坐标变号</li>
+        <li>关于 y 轴对称：<code>(a, b) → (-a, b)</code> — 横坐标变号</li>
+        <li>关于原点对称：<code>(a, b) → (-a, -b)</code> — 都变号</li>
+        <li>两点距离：<code>d = √[(x₂-x₁)² + (y₂-y₁)²]</code></li>
+        <li>中点公式：<code>((x₁+x₂)/2, (y₁+y₂)/2)</code></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ========== Chapter 6: 一次函数 ========== -->
+<section class="chapter" id="ch6">
+  <div class="chapter-banner">
+    <div class="ch-num">6</div>
+    <div>
+      <div class="ch-title">一次函数</div>
+      <div class="ch-subtitle">定义与图象 · 性质分析 · 实际应用</div>
+    </div>
+  </div>
+
+  <div class="mindmap-wrapper">
+    <div class="tree-root">
+      <div class="node root">一次函数</div>
+
+      <div class="tree-branches">
+
+        <div class="tree-branch-col">
+          <div class="branch-connector"><div class="v-line"></div></div>
+          <div class="branch-node">定义</div>
+          <div class="leaf-connector"><div class="v-line"></div></div>
+          <div class="leaves-stack">
+            <div class="leaf-node"><strong>y = kx + b</strong>（k ≠ 0）</div>
+            <div class="leaf-node">正比例函数 <strong>y = kx</strong>（b = 0）</div>
+            <div class="leaf-node">k：斜率（变化率）</div>
+            <div class="leaf-node">b：截距（与 y 轴交点）</div>
+          </div>
+        </div>
+
+        <div class="tree-branch-col">
+          <div class="branch-connector"><div class="v-line"></div></div>
+          <div class="branch-node">图象性质</div>
+          <div class="leaf-connector"><div class="v-line"></div></div>
+          <div class="leaves-stack">
+            <div class="leaf-node"><strong>k > 0：</strong>y 随 x 增大而增大 ↗</div>
+            <div class="leaf-node"><strong>k < 0：</strong>y 随 x 增大而减小 ↘</div>
+            <div class="leaf-node">b > 0：与 y 轴交于上方</div>
+            <div class="leaf-node">b < 0：与 y 轴交于下方</div>
+            <div class="leaf-node">与 x 轴交点：<strong>(-b/k, 0)</strong></div>
+            <div class="leaf-node">与 y 轴交点：<strong>(0, b)</strong></div>
+          </div>
+        </div>
+
+        <div class="tree-branch-col">
+          <div class="branch-connector"><div class="v-line"></div></div>
+          <div class="branch-node">平行与交点</div>
+          <div class="leaf-connector"><div class="v-line"></div></div>
+          <div class="leaves-stack">
+            <div class="leaf-node">平行：<strong>k₁ = k₂</strong> 且 <strong>b₁ ≠ b₂</strong></div>
+            <div class="leaf-node">交点：联立两方程求解</div>
+            <div class="leaf-node">重合：k₁ = k₂ 且 b₁ = b₂</div>
+          </div>
+        </div>
+
+        <div class="tree-branch-col">
+          <div class="branch-connector"><div class="v-line"></div></div>
+          <div class="branch-node">应用</div>
+          <div class="leaf-connector"><div class="v-line"></div></div>
+          <div class="leaves-stack">
+            <div class="leaf-node"><strong>待定系数法</strong>求解析式</div>
+            <div class="leaf-node">实际问题建模</div>
+            <div class="leaf-node">分段函数</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="formula-section">
+    <div class="formula-box">
+      <div class="formula-title">核心公式</div>
+      <ul>
+        <li>一次函数：<code>y = kx + b</code>（k ≠ 0）</li>
+        <li>正比例函数：<code>y = kx</code>（k ≠ 0，b = 0）</li>
+        <li>斜率公式：<code>k = (y₂ - y₁) / (x₂ - x₁)</code></li>
+        <li>两直线平行：<code>k₁ = k₂</code> 且 <code>b₁ ≠ b₂</code></li>
+        <li>待定系数法：已知两点 → 列方程组求 k、b</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ========== Overview: 全书知识关联 ========== -->
+<section class="overview" id="overview">
+  <div class="overview-banner">
+    <div class="ch-num">★</div>
+    <div>
+      <div class="ch-title">全书知识关联图</div>
+      <div class="ch-subtitle">六章知识的前后衔接与逻辑递进</div>
+    </div>
+  </div>
+
+  <div class="overview-content">
+    <!-- Compact 2-row flow -->
+    <div class="flow-chapter-row">
+      <div class="flow-card" style="background: linear-gradient(135deg, #3b82f6, #1d4ed8);">
+        <span class="flow-ch-num">第一章</span>
+        <span>三角形</span>
+      </div>
+      <div class="flow-arrow-col">
+        <div class="v-arrow">全等判定</div>
+        <div class="arrow-line"></div>
+      </div>
+      <div class="flow-card" style="background: linear-gradient(135deg, #8b5cf6, #6d28d9);">
+        <span class="flow-ch-num">第二章</span>
+        <span>轴对称</span>
+      </div>
+      <div class="flow-arrow-col">
+        <div class="v-arrow">直角△·面积</div>
+        <div class="arrow-line"></div>
+      </div>
+      <div class="flow-card" style="background: linear-gradient(135deg, #10b981, #047857);">
+        <span class="flow-ch-num">第三章</span>
+        <span>勾股定理</span>
+      </div>
+    </div>
+
+    <div class="flow-chapter-row">
+      <div class="flow-card" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
+        <span class="flow-ch-num">第四章</span>
+        <span>实数</span>
+      </div>
+      <div class="flow-arrow-col">
+        <div class="v-arrow">√2 · 开方</div>
+        <div class="arrow-line"></div>
+      </div>
+      <div class="flow-card" style="background: linear-gradient(135deg, #06b6d4, #0891b2);">
+        <span class="flow-ch-num">第五章</span>
+        <span>位置与坐标</span>
+      </div>
+      <div class="flow-arrow-col">
+        <div class="v-arrow">Δy/Δx</div>
+        <div class="arrow-line"></div>
+      </div>
+      <div class="flow-card" style="background: linear-gradient(135deg, #f43f5e, #e11d48);">
+        <span class="flow-ch-num">第六章</span>
+        <span>一次函数</span>
+      </div>
+    </div>
+
+    <!-- Connection Details -->
+    <div class="connection-grid">
+      <div class="connection-item">
+        <div class="conn-icon" style="background: linear-gradient(135deg, #3b82f6, #8b5cf6);">1→2</div>
+        <div class="conn-text"><strong>第一章 → 第二章：</strong>全等三角形是证明等腰三角形性质（等边对等角、三线合一）的基础工具</div>
+      </div>
+      <div class="connection-item">
+        <div class="conn-icon" style="background: linear-gradient(135deg, #3b82f6, #10b981);">1→3</div>
+        <div class="conn-text"><strong>第一章 → 第三章：</strong>直角三角形是勾股定理的前提条件，三角形面积法是推导工具</div>
+      </div>
+      <div class="connection-item">
+        <div class="conn-icon" style="background: linear-gradient(135deg, #10b981, #f59e0b);">3→4</div>
+        <div class="conn-text"><strong>第三章 → 第四章：</strong>√2 等无理数通过勾股定理产生（边长为 1 的正方形对角线），推动数系扩充</div>
+      </div>
+      <div class="connection-item">
+        <div class="conn-icon" style="background: linear-gradient(135deg, #10b981, #06b6d4);">3→5</div>
+        <div class="conn-text"><strong>第三章 → 第五章：</strong>坐标系中两点距离公式 d = √[(Δx)²+(Δy)²] 本质是勾股定理</div>
+      </div>
+      <div class="connection-item">
+        <div class="conn-icon" style="background: linear-gradient(135deg, #06b6d4, #f43f5e);">5→6</div>
+        <div class="conn-text"><strong>第五章 → 第六章：</strong>斜率公式 k = Δy/Δx 来自坐标运算，函数图象在坐标系中绘制</div>
+      </div>
+      <div class="connection-item">
+        <div class="conn-icon" style="background: linear-gradient(135deg, #f59e0b, #f43f5e);">4→6</div>
+        <div class="conn-text"><strong>第四章 → 第六章：</strong>一次函数图象是一条直线，涉及实数的连续性，k 和 b 取值覆盖全体实数</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===== Footer ===== -->
+<footer class="page-footer">
+  <p>鲁教版（山东教育出版社）七年级上册 · 数学知识网络图</p>
+</footer>
+
+<script>
+// Navigation active state
+const sections = document.querySelectorAll('.chapter, .overview');
+const navLinks = document.querySelectorAll('.nav-bar a');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+      });
+    }
+  });
+}, { threshold: 0.3, rootMargin: '-80px 0px -50% 0px' });
+
+sections.forEach(section => observer.observe(section));
+
+// Smooth scroll
+navLinks.forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    const target = document.querySelector(link.getAttribute('href'));
+    if (target) {
+      const top = target.getBoundingClientRect().top + window.pageYOffset - 60;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  });
+});
+</script>
+
+</body>
+</html>

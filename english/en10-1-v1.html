@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>10-1 培优 · Unit 2 Rain or Shine（精读精讲）</title>
+<style>
+  :root{
+    --bg:#eef1f8;--bg2:#e6ebf5;--card:#ffffff;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;
+    --line:#e5e7eb;--brand:#4f46e5;--brand-2:#0d9488;--brand-soft:rgba(79,70,229,.08);
+    --accent:#f59e0b;--accent-soft:#fef3c7;--ok:#16a34a;--ok-soft:rgba(22,163,74,.10);--rose:#e11d48;
+    --shadow:0 10px 30px rgba(30,41,59,.10);--shadow-sm:0 4px 14px rgba(30,41,59,.08);--radius:18px;
+    --font:"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",system-ui,-apple-system,sans-serif;
+  }
+  body.dark{
+    --bg:#0f172a;--bg2:#0b1220;--card:#131c31;--ink:#e5edf7;--ink2:#cbd5e1;--muted:#94a3b8;
+    --line:#243049;--brand:#818cf8;--brand-2:#2dd4bf;--brand-soft:rgba(129,140,248,.14);
+    --accent:#fbbf24;--accent-soft:rgba(251,191,36,.16);--ok:#4ade80;--ok-soft:rgba(74,222,128,.12);
+    --rose:#fb7185;--shadow:0 10px 30px rgba(0,0,0,.45);--shadow-sm:0 4px 14px rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:var(--font);color:var(--ink);
+    background:radial-gradient(1100px 500px at 12% -10%, rgba(79,70,229,.16), transparent 60%),
+      radial-gradient(900px 480px at 100% 0%, rgba(13,148,136,.14), transparent 55%),
+      linear-gradient(180deg,var(--bg),var(--bg2));
+    min-height:100vh;line-height:1.75;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 18px 60px}
+  header.hero{position:relative;overflow:hidden;border-radius:0 0 30px 30px;
+    background:linear-gradient(135deg,#4f46e5 0%,#6d28d9 45%,#0d9488 100%);color:#fff;
+    padding:42px 26px 34px;margin-bottom:22px;box-shadow:var(--shadow);}
+  header.hero::after{content:"";position:absolute;inset:0;opacity:.35;
+    background-image:radial-gradient(rgba(255,255,255,.35) 1px,transparent 1px);
+    background-size:22px 22px;mask-image:linear-gradient(180deg,rgba(0,0,0,.6),transparent 75%);}
+  .hero-in{position:relative;z-index:2;max-width:1080px;margin:0 auto}
+  .kicker{display:inline-flex;align-items:center;gap:8px;font-size:.82rem;letter-spacing:.12em;
+    text-transform:uppercase;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);
+    padding:6px 14px;border-radius:999px;backdrop-filter:blur(6px)}
+  h1{margin:16px 0 8px;font-size:clamp(1.5rem,4vw,2.15rem);line-height:1.3;letter-spacing:.01em}
+  h1 .sub{display:block;font-size:.55em;font-weight:500;opacity:.9;margin-top:8px;letter-spacing:.02em}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+  .chip{font-size:.78rem;padding:5px 12px;border-radius:999px;background:rgba(255,255,255,.16);
+    border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(6px)}
+  .hero-note{margin-top:16px;font-size:.85rem;opacity:.9;max-width:760px;line-height:1.7}
+  .toolbar{position:sticky;top:0;z-index:60;display:flex;flex-wrap:wrap;gap:8px;align-items:center;
+    padding:10px 12px;margin:0 0 20px;border-radius:14px;
+    background:color-mix(in srgb,var(--card) 88%,transparent);
+    border:1px solid var(--line);box-shadow:var(--shadow-sm);backdrop-filter:blur(10px);}
+  .toolbar .grow{flex:1}
+  .tool-btn{font-family:inherit;font-size:.82rem;font-weight:600;color:var(--ink);
+    background:var(--brand-soft);border:1px solid transparent;border-radius:10px;
+    padding:8px 13px;cursor:pointer;transition:.18s;display:inline-flex;align-items:center;gap:6px;}
+  .tool-btn:hover{transform:translateY(-1px);box-shadow:var(--shadow-sm)}
+  .tool-btn.on{background:var(--brand);color:#fff}
+  .tool-btn.ghost{background:transparent;border-color:var(--line)}
+  .navlinks{display:flex;gap:6px;flex-wrap:wrap}
+  .navlinks a{font-size:.82rem;font-weight:600;text-decoration:none;color:var(--brand);
+    padding:7px 11px;border-radius:9px;border:1px solid var(--line);background:transparent;transition:.18s;white-space:nowrap}
+  .navlinks a:hover{background:var(--brand-soft)}
+  section.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);padding:26px 26px 30px;margin-bottom:26px;position:relative;overflow:hidden;
+    animation:rise .5s ease both;}
+  @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  section.card::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;
+    background:linear-gradient(90deg,var(--brand),var(--brand-2))}
+  .sec-head{display:flex;align-items:flex-start;gap:14px;flex-wrap:wrap;margin-bottom:6px}
+  .sec-no{flex:0 0 auto;width:44px;height:44px;border-radius:13px;display:grid;place-items:center;
+    font-weight:800;font-size:1.15rem;color:#fff;background:linear-gradient(135deg,var(--brand),var(--brand-2));
+    box-shadow:0 6px 16px rgba(79,70,229,.35)}
+  .sec-title{margin:0;font-size:1.3rem}
+  .sec-title small{display:block;font-weight:500;color:var(--muted);font-size:.8rem;margin-top:3px}
+  .sec-meta{display:flex;flex-wrap:wrap;gap:7px;margin:14px 0 4px}
+  .badge{font-size:.75rem;font-weight:600;padding:4px 11px;border-radius:999px;
+    background:var(--brand-soft);color:var(--brand);border:1px solid transparent}
+  .badge.warm{background:var(--accent-soft);color:#b45309}
+  .badge.gray{background:color-mix(in srgb,var(--muted) 14%,transparent);color:var(--muted)}
+  .badge.ok{background:var(--ok-soft);color:var(--ok)}
+  .lead{color:var(--muted);font-size:.92rem;margin:10px 0 18px}
+  .passage{background:linear-gradient(180deg,color-mix(in srgb,var(--brand) 5%,var(--card)),var(--card));
+    border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:8px 0 18px;
+    font-size:1.06rem;line-height:2.05;letter-spacing:.005em;}
+  .passage p{margin:0 0 14px}
+  .passage p:last-child{margin-bottom:0}
+  .passage .tag{font-size:.72em;color:var(--muted);vertical-align:super}
+  .passage .h{font-weight:800;color:var(--brand)}
+  .w{position:relative;cursor:pointer;color:inherit;border-radius:3px;padding:0 1px;
+    border-bottom:2px solid var(--accent);background:linear-gradient(transparent 60%,var(--accent-soft) 60%);
+    transition:.15s;white-space:nowrap;}
+  .w:hover{filter:brightness(.96);box-shadow:0 2px 0 -1px var(--accent)}
+  .w.active{background:var(--accent);color:#3b2a04;border-bottom-color:#b45309}
+  .gloss{display:none}
+  body.showall .gloss{display:inline;font-size:.8em;color:var(--brand-2);font-weight:600;
+    padding:0 3px;border-bottom:0;white-space:normal}
+  .blank{display:inline-block;min-width:2.4em;text-align:center;font-weight:800;color:var(--brand);
+    background:var(--brand-soft);border-bottom:2px solid var(--brand);border-radius:6px 6px 3px 3px;
+    padding:0 8px;margin:0 2px;cursor:pointer;transition:.15s;font-size:.94em;}
+  .blank:hover{background:color-mix(in srgb,var(--brand) 18%,transparent)}
+  .blank b{font-weight:800}
+  .blank i{display:none;font-style:normal;color:var(--ok);font-weight:800}
+  .blank.open{background:var(--ok-soft);border-bottom-color:var(--ok);color:var(--ok)}
+  .blank.open b{display:none}
+  .blank.open i{display:inline}
+  body.showans .blank{background:var(--ok-soft);border-bottom-color:var(--ok);color:var(--ok)}
+  body.showans .blank b{display:none}
+  body.showans .blank i{display:inline}
+  #pop{position:absolute;z-index:200;width:min(330px,88vw);background:var(--card);
+    border:1px solid var(--line);border-top:4px solid var(--accent);border-radius:14px;
+    box-shadow:0 18px 45px rgba(15,23,42,.28);padding:14px 16px;display:none;}
+  #pop.show{display:block;animation:pop .18s ease}
+  @keyframes pop{from{opacity:0;transform:translateY(6px) scale(.98)}to{opacity:1;transform:none}}
+  #pop .pw{font-size:1.12rem;font-weight:800;color:var(--ink);display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+  #pop .pph{font-size:.82rem;color:var(--brand-2);font-weight:600}
+  #pop .pcn{margin-top:7px;font-size:1rem;font-weight:700;color:var(--brand)}
+  #pop .pnote{margin-top:7px;font-size:.86rem;color:var(--muted);line-height:1.65}
+  #pop .pex{margin-top:10px;padding-top:9px;border-top:1px dashed var(--line);font-size:.9rem}
+  #pop .pex b{color:var(--brand-2)}
+  #pop .pex .cn{color:var(--muted);font-size:.85rem;display:block;margin-top:3px}
+  .pos{display:inline-block;font-size:.72rem;font-weight:700;color:#fff;background:var(--brand-2);
+    border-radius:6px;padding:2px 8px;margin-left:2px}
+  .qstem{font-weight:700;color:var(--ink);margin:2px 0 6px;font-size:1.02rem}
+  .qopts{margin:2px 0 0;padding-left:2px;color:var(--muted);font-size:.92rem}
+  .qopts div{margin:3px 0}
+  .qopts .picked{color:var(--ok);font-weight:800}
+  h3.ans-h{margin:26px 0 12px;font-size:1.05rem;display:flex;align-items:center;gap:9px}
+  h3.ans-h::before{content:"";width:10px;height:10px;border-radius:3px;background:var(--ok);display:inline-block}
+  .ans-list{display:grid;gap:10px}
+  .ans-item{border:1px solid var(--line);border-left:4px solid var(--ok);border-radius:12px;
+    padding:12px 15px;background:color-mix(in srgb,var(--ok) 4%,var(--card))}
+  .ans-item .top{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+  .ans-item .num{font-weight:800;color:var(--ok)}
+  .ans-item .key{font-weight:800;font-size:1.05rem;color:var(--ink);background:var(--ok-soft);
+    padding:1px 10px;border-radius:7px}
+  .ans-item .kt{font-size:.72rem;font-weight:700;color:#fff;background:var(--brand);border-radius:6px;padding:2px 8px}
+  .ans-item ul{margin:8px 0 0;padding-left:20px;color:var(--muted);font-size:.9rem}
+  .ans-item ul li{margin:3px 0}
+  .ans-item .sent{font-size:.92rem;color:var(--ink2);margin-top:6px}
+  .vgroup{margin-top:18px}
+  .vgroup > h3{margin:0 0 10px;font-size:1.02rem;color:var(--brand);display:flex;gap:9px;align-items:center}
+  .vgroup > h3 .dot{width:9px;height:9px;border-radius:50%;background:var(--brand-2)}
+  .vcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px}
+  .vcard{border:1px solid var(--line);border-radius:13px;padding:13px 15px;background:var(--card);
+    box-shadow:var(--shadow-sm);transition:.18s;position:relative;overflow:hidden}
+  .vcard::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--accent)}
+  .vcard:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+  .vcard .hw{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+  .vcard .en{font-weight:800;font-size:1.04rem;color:var(--ink)}
+  .vcard .ph{font-size:.8rem;color:var(--brand-2);font-weight:600}
+  .vcard .cn{margin-top:5px;font-weight:700;color:var(--brand);font-size:.98rem}
+  .vcard .nt{margin-top:5px;font-size:.84rem;color:var(--muted);line-height:1.6}
+  .vcard .ex{margin-top:8px;font-size:.88rem;border-top:1px dashed var(--line);padding-top:8px}
+  .vcard .ex .ecn{display:block;color:var(--muted);font-size:.82rem;margin-top:2px}
+  .callout{border:1px dashed var(--accent);background:var(--accent-soft);border-radius:12px;
+    padding:12px 15px;font-size:.9rem;color:#92400e;margin:12px 0;line-height:1.9}
+  body.dark .callout{color:#fcd34d}
+  details.more{margin-top:14px;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  details.more>summary{cursor:pointer;padding:11px 15px;font-weight:700;color:var(--brand);
+    background:var(--brand-soft);list-style:none;display:flex;justify-content:space-between;align-items:center}
+  details.more>summary::-webkit-details-marker{display:none}
+  details.more>summary::after{content:"▾";transition:.2s;font-size:.9em}
+  details.more[open]>summary::after{transform:rotate(180deg)}
+  details.more .body{padding:14px 16px;font-size:.95rem;line-height:1.9;color:var(--ink2)}
+  details.more .body p{margin:0 0 10px}
+  footer{text-align:center;color:var(--muted);font-size:.82rem;padding:26px 10px 10px;line-height:1.8}
+  kbd{background:var(--brand-soft);border-radius:5px;padding:1px 6px;font-size:.8em;font-weight:700;color:var(--brand)}
+  header.hero kbd{background:rgba(255,255,255,.22);color:#fff;border:1px solid rgba(255,255,255,.45);white-space:nowrap}
+  .jilei{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:22px}
+  .jilei .jh{background:linear-gradient(135deg,#7c3aed,#0d9488);color:#fff;padding:10px 16px;
+    font-weight:800;font-size:.95rem}
+  .jilei .jb{padding:14px 16px}
+  .jilei .qb{padding:10px 12px;border-radius:10px;margin:6px 0;background:var(--brand-soft)}
+  .jilei .qb .q{color:var(--muted);font-size:.9rem}
+  .jilei .qb .a{font-weight:700;color:var(--ok);font-size:1rem;margin-top:3px}
+  .jilei .qb .a u{text-decoration:none;border-bottom:2px solid var(--ok);padding-bottom:1px}
+  .jilei .qb .nt{font-size:.85rem;color:var(--muted);margin-top:5px}
+  .optbox{border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin:8px 0 14px;
+    background:var(--card);font-size:.95rem;line-height:2}
+  .optbox b{color:var(--brand)}
+  .rolecard{border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:0 0 12px;background:var(--card)}
+  .rolecard .who{font-weight:800;color:var(--brand);margin-bottom:4px}
+  .passage table.wtable{width:100%;border-collapse:collapse;margin:14px 0;font-size:.95em}
+  .passage table.wtable caption{caption-side:top;font-size:.82rem;color:var(--muted);margin-bottom:6px;text-align:left}
+  .passage table.wtable th,.passage table.wtable td{border:1px solid var(--line);padding:.5em .65em;text-align:left;vertical-align:top;line-height:1.7}
+  .passage table.wtable thead th{background:var(--brand-soft);color:var(--brand);font-weight:700}
+  .passage table.wtable tbody tr:nth-child(even){background:color-mix(in srgb,var(--brand) 4%,transparent)}
+  @media (max-width:560px){
+    section.card{padding:18px 15px 22px}
+    .passage{padding:15px 14px;font-size:1rem;line-height:1.95}
+    header.hero{padding:30px 18px 26px;border-radius:0 0 22px 22px}
+    .vcards{grid-template-columns:1fr}
+    .sec-no{width:38px;height:38px;font-size:1rem}
+  }
+  @media print{
+    .toolbar,#pop{display:none!important}.spk{display:none!important}body{background:#fff}
+    section.card{box-shadow:none;break-inside:avoid}
+    .w{border-bottom:1px solid #d97706;background:none}
+    body:not(.showall) .gloss{display:inline;color:#0d9488}
+  }
+  .spk{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border:none;border-radius:50%;
+    background:var(--brand-soft);color:var(--brand);cursor:pointer;font-size:.95rem;line-height:1;transition:.15s;flex:0 0 auto}
+  .spk:hover{background:var(--brand);color:#fff;transform:scale(1.08)}
+  .spk:active{transform:scale(.94)}
+  .pw .spk{margin-left:auto;align-self:center}.hw .spk{margin-left:auto}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <div class="hero-in">
+      <span class="kicker">📘 七年级上册 · 英语培优</span>
+      <h1>10-1 培优 · Unit 2 Rain or Shine<span class="sub">第10周一 · 阅读理解（动物感知天气 / 冬泳 / 萨克斯的启示）</span></h1>
+      <div class="hero-meta">
+        <span class="chip">📄 源 PDF：10-1培优.pdf（扫描件 4 页）</span>
+        <span class="chip">📚 3 篇阅读理解</span>
+        <span class="chip">🔤 46 生词短语</span>
+        <span class="chip">✅ 11 道选择题</span>
+      </div>
+      <p class="hero-note">本页为单文件交互式精讲：生词已用 <span style="border-bottom:2px solid #f59e0b">黄线</span> 嵌入原文，点击可展开音标 / 释义 / 例句并 🔊 发音；题目附逐项解析；文末按篇章汇总全部生词。A 篇附「积累小屋」、B 篇附「积累小报」。</p>
+    </div>
+  </header>
+
+  <div class="toolbar">
+    <button class="tool-btn" id="btnAllWords" type="button">👁 显示全部释义</button>
+    <button class="tool-btn ghost" id="btnAllAns" type="button">✅ 显示全部答案</button>
+    <button class="tool-btn ghost" id="btnTheme" type="button">🌙 夜间</button>
+    <span class="grow"></span>
+    <nav class="navlinks">
+      <a href="#passA">A 动物</a>
+      <a href="#passB">B 冬泳</a>
+      <a href="#passC">C 萨克斯</a>
+      <a href="#vocab">生词汇总</a>
+    </nav>
+  </div>
+
+  <!-- ============ A 篇 ============ -->
+  <section class="card" id="passA">
+    <div class="sec-head">
+      <div class="sec-no">一</div>
+      <div><h2 class="sec-title">阅读理解 A · 动物感知天气 <small>阅读下面短文，从每题 A、B、C 三个选项中选出最佳答案。</small></h2></div>
+    </div>
+    <div class="sec-meta">
+      <span class="badge">主题：人与自然——自然环境</span>
+      <span class="badge gray">语篇类型：应用文</span>
+      <span class="badge gray">词数 163</span>
+      <span class="badge warm">难度 ★★★☆☆</span>
+      <span class="badge ok">3 题</span>
+    </div>
+
+    <article class="passage">
+      <p>Most <span class="w" data-k="studies">studies</span> show that many animals can feel <span class="w" data-k="weatherchanges">weather changes</span>. Here are some interesting things about animals.</p>
+      <table class="wtable">
+        <caption>动物行为 vs. 天气变化对照表</caption>
+        <thead><tr><th>Animals</th><th><span class="w" data-k="behaviours">Behaviours</span>（行为方式）</th><th>Weather changes</th></tr></thead>
+        <tbody>
+          <tr><td>Birds</td><td>A lot of birds get together and stay under the <span class="w" data-k="roofs">roofs</span> (屋檐) of houses.</td><td><span class="w" data-k="heavyrain">Heavy rain</span> will come.</td></tr>
+          <tr><td><span class="w" data-k="sharks">Sharks</span></td><td>swim to <span class="w" data-k="deeper">deeper</span> water.</td><td>A big <span class="w" data-k="storm">storm</span> will arrive.</td></tr>
+          <tr><td><span class="w" data-k="spiders">Spiders</span></td><td>There are more spiders than <span class="w" data-k="usual">usual</span> in autumn, and they make larger <span class="w" data-k="webs">webs</span> (网) than usual.</td><td>A cold and dry winter will come.</td></tr>
+          <tr><td></td><td>There are fewer spiders and they make smaller webs.</td><td>A warm and wet winter will come.</td></tr>
+          <tr><td><span class="w" data-k="ants">Ants</span></td><td>A lot of ants are on the grass.</td><td>It is going to rain.</td></tr>
+        </tbody>
+      </table>
+      <p>The world of animals is really <span class="w" data-k="amazing">amazing</span>. Sometimes you can not <span class="w" data-k="explain">explain</span> (解释) why they can tell the weather before the weather report. If you want to know more about them, you can read more <span class="w" data-k="articles">articles</span> about science in <span class="w" data-k="magazine">School Science Magazine</span>.</p>
+
+      <details class="more">
+        <summary>📖 参考译文（点击展开）</summary>
+        <div class="body">
+          <p>多数研究表明，许多动物能感知天气变化。这里有一些关于动物们的有趣现象。</p>
+          <p>（表格）鸟：许多鸟聚在一起，停在房屋的屋檐下 → 大雨要来了。鲨鱼：游向更深的水域 → 一场大暴风雨将要来临。蜘蛛：秋天蜘蛛比平时更多，且织的网比平时更大 → 一个寒冷干燥的冬天要来了；蜘蛛更少、织的网更小 → 一个温暖湿润的冬天要来了。蚂蚁：许多蚂蚁在草地上 → 天要下雨了。</p>
+          <p>动物的世界真令人惊奇。有时你无法解释，为什么它们能在天气预报之前就预知天气。如果你想知道更多关于它们的事，你可以阅读《学校科学杂志》里更多关于科学的文章。</p>
+        </div>
+      </details>
+    </article>
+
+    <h3 class="ans-h">题目与选项</h3>
+    <div class="ans-list" id="qA"></div>
+
+    <h3 class="ans-h">答案与详解</h3>
+    <div class="ans-list" id="ansA"></div>
+
+    <div class="jilei">
+      <div class="jh">🕷 积累小屋（阅读理解 A）</div>
+      <div class="jb" id="jileiA"></div>
+    </div>
+  </section>
+
+  <!-- ============ B 篇 ============ -->
+  <section class="card" id="passB">
+    <div class="sec-head">
+      <div class="sec-no">二</div>
+      <div><h2 class="sec-title">阅读理解 B · 张德武冬泳 <small>阅读下面短文，从每题 A、B、C 三个选项中选出最佳答案。</small></h2></div>
+    </div>
+    <div class="sec-meta">
+      <span class="badge">主题：人与社会——体育健康</span>
+      <span class="badge gray">语篇类型：记叙文</span>
+      <span class="badge gray">词数 145</span>
+      <span class="badge warm">难度 ★★★☆☆</span>
+      <span class="badge ok">4 题</span>
+    </div>
+
+    <article class="passage">
+      <p>It's <span class="w" data-k="december">December</span> and it is about -10℃ in Harbin these days. Many people think it's too cold, but Zhang Dewu is <span class="w" data-k="excited">excited</span> about the cold days.</p>
+      <p>Zhang Dewu lives in Harbin, Heilongjiang. He is <span class="w" data-k="seventy">seventy</span>-four years old, but he looks <span class="w" data-k="young">young</span>. Zhang loves <span class="w" data-k="winterswimming">winter swimming</span> very much. It's snowing today and it is very cold. But look at the picture! Zhang is swimming in the <span class="w" data-k="songhuariver">Songhua River</span> and he is <span class="w" data-k="havefun">having fun</span>! Before he <span class="w" data-k="getinto">gets into</span> the cold river, Zhang usually does some <span class="w" data-k="exercise">exercise</span> like running to make himself warm. The cold and <span class="w" data-k="strongwinds">strong winds</span> on the river can't make him <span class="w" data-k="afraid">afraid</span>.</p>
+      <p>"<span class="w" data-k="winterswimming">Winter swimming</span> helps me to be <span class="w" data-k="healthy">healthy</span> and I never <span class="w" data-k="catchacold">catch a cold</span>. It makes me happy and I want to <span class="w" data-k="keepdoing">keep doing</span> it. But this exercise isn't <span class="w" data-k="rightfor">right for</span> everyone. People with some <span class="w" data-k="healthproblems">health problems</span> can't do it," Zhang says.</p>
+
+      <details class="more">
+        <summary>📖 参考译文（点击展开）</summary>
+        <div class="body">
+          <p>现在是十二月，哈尔滨这些天大约零下 10 摄氏度。许多人觉得太冷了，但张德武对这些寒冷的日子感到兴奋。</p>
+          <p>张德武住在黑龙江哈尔滨。他七十四岁，但看起来很年轻。张非常喜欢冬泳。今天下雪，天气很冷。但看看这张照片！张正在松花江里游泳，他玩得很开心！在他进入寒冷的江里之前，张通常做一些像跑步这样的运动来让自己暖和。江上寒冷而强劲的风并不能让他害怕。</p>
+          <p>"冬泳帮助我保持健康，我从不感冒。它让我快乐，我想继续下去。但这种运动并不适合每个人。有某些健康问题的人不能做，"张说。</p>
+        </div>
+      </details>
+    </article>
+
+    <h3 class="ans-h">题目与选项</h3>
+    <div class="ans-list" id="qB"></div>
+
+    <h3 class="ans-h">答案与详解</h3>
+    <div class="ans-list" id="ansB"></div>
+
+    <div class="jilei">
+      <div class="jh">🏊 积累小报（阅读理解 B）</div>
+      <div class="jb" id="jileiB"></div>
+    </div>
+  </section>
+
+  <!-- ============ C 篇 ============ -->
+  <section class="card" id="passC">
+    <div class="sec-head">
+      <div class="sec-no">三</div>
+      <div><h2 class="sec-title">Test 1 阅读 B · 萨克斯的启示 <small>阅读下面短文，从每题 A、B、C 三个选项中选出最佳答案。</small></h2></div>
+    </div>
+    <div class="sec-meta">
+      <span class="badge">主题：人与自我——自我提升</span>
+      <span class="badge gray">语篇类型：记叙文</span>
+      <span class="badge gray">词数 212</span>
+      <span class="badge warm">难度 ★★★☆☆</span>
+      <span class="badge ok">4 题</span>
+    </div>
+
+    <article class="passage">
+      <p>Five years ago, <span class="w" data-k="onmywayhome">on my way home</span> on the bus every night, I always found an old man playing his <span class="w" data-k="saxophone">saxophone</span> (萨克斯) near the river. I could see the big <span class="w" data-k="smile">smile</span> on his face. The beautiful music made me <span class="w" data-k="dream">dream</span> (梦想) to play the saxophone just like that man.</p>
+      <p>Two weeks later, it was my birthday. I opened my <span class="w" data-k="present">present</span> and found that it was a saxophone! I put it to my mouth to play, but it wouldn't make a <span class="w" data-k="sound">sound</span>. I <span class="w" data-k="blow">blew</span> (吹) and blew but I couldn't get the saxophone to make a sound. I was <span class="w" data-k="beaboutto">about to</span> cry when suddenly the saxophone made a sound. I blew again, I moved my fingers on the saxophone and I made more sounds. Some of them were <span class="w" data-k="loud">loud</span> (大声的) and <span class="w" data-k="clear">clear</span> (清晰的) but many of them weren't. I was happy because I was playing very interesting sounds. But it wasn't beautiful music.</p>
+      <p>Then came the <span class="w" data-k="lesson">lesson</span>. Night after night, week after week, I <span class="w" data-k="practised">practised</span> (练习) hard playing the saxophone. Slowly I started to get better and at last there came the <span class="w" data-k="magic">magic</span> (神奇的) day when the beautiful music came out of my saxophone.</p>
+      <p>Now I'm in the <span class="w" data-k="tvstudio">TV studio</span> (电视台) with my saxophone. I'm so happy just like the old man near the river.</p>
+
+      <details class="more">
+        <summary>📖 参考译文（点击展开）</summary>
+        <div class="body">
+          <p>五年前，每天晚上在回家路上的公交车上，我总能看到一个老人在河边吹萨克斯。我能看到他脸上大大的微笑。那美妙的音乐让我梦想着像那位老人一样吹萨克斯。</p>
+          <p>两周后，那天是我的生日。我打开礼物，发现它是一把萨克斯！我把它放到嘴边吹，但它发不出声音。我吹了又吹，却没法让萨克斯发出声音。我正要哭的时候，萨克斯突然发出了声音。我又吹，手指在萨克斯上移动，发出了更多声音。其中一些又响又清晰，但很多不是。我很高兴，因为我正在吹出很有趣的声音。但那还不是美妙的音乐。</p>
+          <p>接着有了教训（启示）。一夜又一夜，一周又一周，我努力练习吹萨克斯。慢慢地我开始变得更好，终于迎来了神奇的一天——美妙的音乐从我的萨克斯里流淌出来。</p>
+          <p>现在我在电视台，带着我的萨克斯。我如此开心，就像河边那位老人一样。</p>
+        </div>
+      </details>
+    </article>
+
+    <h3 class="ans-h">题目与选项</h3>
+    <div class="ans-list" id="qC"></div>
+
+    <h3 class="ans-h">答案与详解</h3>
+    <div class="ans-list" id="ansC"></div>
+
+    <div class="jilei">
+      <div class="jh">🎷 素养小花（Test 1 阅读 B）</div>
+      <div class="jb" id="jileiC"></div>
+    </div>
+  </section>
+
+  <!-- ============ 生词汇总 ============ -->
+  <section class="card" id="vocab">
+    <div class="sec-head">
+      <div class="sec-no">词</div>
+      <div><h2 class="sec-title">生词与短语汇总 <small>按七年级英语词汇水平整理 · 每条含音标、释义、用法与例句 · 点击 🔊 可发音。</small></h2></div>
+    </div>
+    <div id="vocabBox"></div>
+  </section>
+
+  <footer>
+    本页由 PDF 扫描件提取并整理为交互式精讲 · 生词标注以七年级词汇水平为参考 · 点击 <kbd>显示全部释义</kbd> 可在原文直接显示中文对照，<kbd>显示全部答案</kbd> 可一次性展开解析。<br>
+    _unit: Unit 2 Rain or Shine · 第10周一_
+  </footer>
+
+  <div id="pop"></div>
+</div>
+
+<script>
+const VOCAB = [
+  /* ===== A 组：阅读理解 A（动物感知天气） ===== */
+  {k:"studies",g:"A",en:"studies",ph:"/ˈstʌdiz/",pos:"n.",cn:"研究；学习",note:"study 的复数形式；do a study 做一项研究。",ex:"Most studies show that...",exCn:"多数研究表明……"},
+  {k:"weatherchanges",g:"A",en:"weather changes",ph:"/ˈweðə tʃeɪndʒɪz/",pos:"n.",cn:"天气变化",note:"weather（天气）+ changes（change 的复数）。",ex:"many animals can feel weather changes",exCn:"许多动物能感知天气变化"},
+  {k:"behaviours",g:"A",en:"behaviours",ph:"/bɪˈheɪvjəz/",pos:"n.",cn:"行为；举动",note:"= behaviors（美式）；behaviour 的复数。",ex:"interesting behaviours about animals",exCn:"动物们有趣的行为"},
+  {k:"roofs",g:"A",en:"roofs",ph:"/ruːfs/",pos:"n.",cn:"屋顶；屋檐",note:"roof 的复数；under the roofs of houses 在房屋的屋檐下。",ex:"birds stay under the roofs",exCn:"鸟停在屋檐下"},
+  {k:"heavyrain",g:"A",en:"heavy rain",ph:"/ˈhevi reɪn/",pos:"n.",cn:"大雨",note:"heavy 此处意为「大量的」。",ex:"Heavy rain will come.",exCn:"大雨要来了。"},
+  {k:"sharks",g:"A",en:"sharks",ph:"/ʃɑːks/",pos:"n.",cn:"鲨鱼",note:"shark 的复数。",ex:"Sharks swim to deeper water.",exCn:"鲨鱼游向更深的水域。"},
+  {k:"deeper",g:"A",en:"deeper",ph:"/ˈdiːpə(r)/",pos:"adj.",cn:"更深的",note:"deep 的比较级；deep—deeper—deepest。",ex:"swim to deeper water",exCn:"游向更深的水域"},
+  {k:"storm",g:"A",en:"storm",ph:"/stɔːm/",pos:"n.",cn:"暴风雨",note:"a big storm 一场大暴风雨。",ex:"A big storm will arrive.",exCn:"一场大暴风雨将要来临。"},
+  {k:"spiders",g:"A",en:"spiders",ph:"/ˈspaɪdəz/",pos:"n.",cn:"蜘蛛",note:"spider 的复数。",ex:"more spiders than usual",exCn:"比平时更多的蜘蛛"},
+  {k:"webs",g:"A",en:"webs",ph:"/webz/",pos:"n.",cn:"网",note:"web 的复数；蜘蛛网 spider webs。",ex:"making larger webs",exCn:"织更大的网"},
+  {k:"usual",g:"A",en:"usual",ph:"/ˈjuːʒuəl/",pos:"adj.",cn:"通常的；平常的",note:"than usual 比平时；as usual 像往常一样。",ex:"larger webs than usual",exCn:"比平时更大的网"},
+  {k:"ants",g:"A",en:"ants",ph:"/ænts/",pos:"n.",cn:"蚂蚁",note:"ant 的复数。",ex:"A lot of ants are on the grass.",exCn:"许多蚂蚁在草地上。"},
+  {k:"amazing",g:"A",en:"amazing",ph:"/əˈmeɪzɪŋ/",pos:"adj.",cn:"令人惊奇的；了不起的",note:"amaze（v. 使惊奇）的现在分词作形容词。",ex:"The world of animals is amazing.",exCn:"动物的世界真令人惊奇。"},
+  {k:"explain",g:"A",en:"explain",ph:"/ɪkˈspleɪn/",pos:"v.",cn:"解释；说明",note:"explain sth. to sb. 向某人解释某事。",ex:"you can not explain why",exCn:"你无法解释为什么"},
+  {k:"articles",g:"A",en:"articles",ph:"/ˈɑːtɪklz/",pos:"n.",cn:"文章",note:"article 的复数；read articles 读文章。",ex:"read more articles about science",exCn:"阅读更多关于科学的文章"},
+  {k:"magazine",g:"A",en:"magazine",ph:"/ˌmæɡəˈziːn/",pos:"n.",cn:"杂志",note:"School Science Magazine《学校科学杂志》。",ex:"read in School Science Magazine",exCn:"在《学校科学杂志》上阅读"},
+
+  /* ===== B 组：阅读理解 B（张德武冬泳） ===== */
+  {k:"december",g:"B",en:"December",ph:"/dɪˈsembə(r)/",pos:"n.",cn:"十二月",note:"缩写为 Dec.；月份首字母大写。",ex:"It's December in Harbin.",exCn:"哈尔滨现在是十二月。"},
+  {k:"excited",g:"B",en:"excited",ph:"/ɪkˈsaɪtɪd/",pos:"adj.",cn:"兴奋的；激动的",note:"be excited about 对……感到兴奋；exciting 令人兴奋的（修饰物）。",ex:"Zhang is excited about the cold days.",exCn:"张对寒冷的日子感到兴奋。"},
+  {k:"seventy",g:"B",en:"seventy",ph:"/ˈsevnti/",pos:"num.",cn:"七十",note:"seventy-four 七十四。",ex:"He is seventy-four years old.",exCn:"他七十四岁。"},
+  {k:"young",g:"B",en:"young",ph:"/jʌŋ/",pos:"adj.",cn:"年轻的",note:"反义词 old（老的）。",ex:"he looks young",exCn:"他看起来很年轻"},
+  {k:"winterswimming",g:"B",en:"winter swimming",ph:"/ˈwɪntə swɪmɪŋ/",pos:"n.",cn:"冬泳",note:"winter（冬天）+ swimming（游泳）。",ex:"Zhang loves winter swimming.",exCn:"张喜欢冬泳。"},
+  {k:"songhuariver",g:"B",en:"the Songhua River",ph:"/sɒŋˈhwɑː ˈrɪvə/",pos:"n.",cn:"松花江",note:"哈尔滨境内的著名河流。",ex:"swimming in the Songhua River",exCn:"在松花江里游泳"},
+  {k:"havefun",g:"B",en:"have fun",ph:"/hæv fʌn/",pos:"短语",cn:"玩得开心；过得愉快",note:"= have a good time；fun 不可数。",ex:"he is having fun",exCn:"他正玩得开心"},
+  {k:"getinto",g:"B",en:"get into",ph:"/ɡet ˈɪntuː/",pos:"短语",cn:"进入（某处）",note:"get into the river 进入江里。",ex:"before he gets into the river",exCn:"在他进入江里之前"},
+  {k:"exercise",g:"B",en:"exercise",ph:"/ˈeksəsaɪz/",pos:"n./v.",cn:"锻炼；运动",note:"do some exercise 做些运动；作锻炼时常不可数。",ex:"does some exercise like running",exCn:"做些像跑步这样的运动"},
+  {k:"strongwinds",g:"B",en:"strong winds",ph:"/strɒŋ wɪndz/",pos:"n.",cn:"强风",note:"strong（强劲的）+ winds（风，常用复数）。",ex:"the cold and strong winds",exCn:"寒冷而强劲的风"},
+  {k:"afraid",g:"B",en:"afraid",ph:"/əˈfreɪd/",pos:"adj.",cn:"害怕的",note:"be afraid of sth. 害怕某物；can't make him afraid 不能让他害怕。",ex:"can't make him afraid",exCn:"不能让他害怕"},
+  {k:"healthy",g:"B",en:"healthy",ph:"/ˈhelθi/",pos:"adj.",cn:"健康的",note:"health（n. 健康）+ y；keep healthy 保持健康。",ex:"helps me to be healthy",exCn:"帮助我保持健康"},
+  {k:"catchacold",g:"B",en:"catch a cold",ph:"/kætʃ ə kəʊld/",pos:"短语",cn:"感冒；着凉",note:"catch（v. 染上）；have a cold 也表感冒。",ex:"I never catch a cold.",exCn:"我从不感冒。"},
+  {k:"keepdoing",g:"B",en:"keep doing",ph:"/kiːp ˈduːɪŋ/",pos:"短语",cn:"继续做（某事）",note:"keep + 动词-ing，表示持续动作。",ex:"I want to keep doing it.",exCn:"我想继续做下去。"},
+  {k:"rightfor",g:"B",en:"right for",ph:"/raɪt fɔː(r)/",pos:"短语",cn:"适合（某人）",note:"be right for sb. 适合某人；right for everyone 适合所有人。",ex:"this exercise isn't right for everyone",exCn:"这项运动并不适合每个人"},
+  {k:"healthproblems",g:"B",en:"health problems",ph:"/helθ ˈprɒbləmz/",pos:"n.",cn:"健康问题",note:"health（健康）+ problems（问题，复数）。",ex:"People with health problems",exCn:"有健康问题的人"},
+
+  /* ===== C 组：Test 1 阅读 B（萨克斯） ===== */
+  {k:"onmywayhome",g:"C",en:"on one's way home",ph:"/ɒn wʌnz weɪ həʊm/",pos:"短语",cn:"在某人回家路上",note:"on my way home 在我回家路上；one's 随主语变化。",ex:"on my way home on the bus",exCn:"在回家路上的公交车上"},
+  {k:"saxophone",g:"C",en:"saxophone",ph:"/ˈsæksəfəʊn/",pos:"n.",cn:"萨克斯（管乐器）",note:"play the saxophone 吹萨克斯。",ex:"an old man playing his saxophone",exCn:"一位吹萨克斯的老人"},
+  {k:"smile",g:"C",en:"smile",ph:"/smaɪl/",pos:"n./v.",cn:"微笑",note:"the big smile on his face 他脸上大大的微笑。",ex:"the big smile on his face",exCn:"他脸上大大的微笑"},
+  {k:"dream",g:"C",en:"dream",ph:"/driːm/",pos:"v./n.",cn:"梦想；做梦",note:"dream to do 梦想做；过去式 dreamed/dreamt。",ex:"made me dream to play",exCn:"让我梦想着去吹奏"},
+  {k:"present",g:"C",en:"present",ph:"/ˈpreznt/",pos:"n.",cn:"礼物",note:"= gift；open one's present 拆礼物。",ex:"I opened my present",exCn:"我打开我的礼物"},
+  {k:"blow",g:"C",en:"blow",ph:"/bləʊ/",pos:"v.",cn:"吹",note:"过去式 blew，过去分词 blown；blow the saxophone 吹萨克斯。",ex:"I blew and blew",exCn:"我吹了又吹"},
+  {k:"sound",g:"C",en:"sound",ph:"/saʊnd/",pos:"n.",cn:"声音",note:"make a sound 发出声音。",ex:"it wouldn't make a sound",exCn:"它发不出声音"},
+  {k:"loud",g:"C",en:"loud",ph:"/laʊd/",pos:"adj.",cn:"大声的；响亮的",note:"反义词 quiet（安静的）；loud and clear 又响又清晰。",ex:"Some of them were loud",exCn:"其中一些很响亮"},
+  {k:"clear",g:"C",en:"clear",ph:"/klɪə(r)/",pos:"adj.",cn:"清晰的",note:"loud and clear 又响又清晰。",ex:"loud and clear but many weren't",exCn:"又响又清晰，但很多不是"},
+  {k:"lesson",g:"C",en:"lesson",ph:"/ˈlesn/",pos:"n.",cn:"教训；课",note:"learn a lesson 吸取教训；文中指「启示」。",ex:"Then came the lesson.",exCn:"接着有了教训（启示）。"},
+  {k:"practised",g:"C",en:"practised",ph:"/ˈpræktɪst/",pos:"v.",cn:"练习（过去式）",note:"= practiced（美式）；practise 的过去式，原形 practise（v. 练习）。",ex:"I practised hard",exCn:"我努力练习"},
+  {k:"magic",g:"C",en:"magic",ph:"/ˈmædʒɪk/",pos:"adj.",cn:"神奇的；魔法的",note:"the magic day 神奇的一天。",ex:"the magic day when music came",exCn:"音乐流出的神奇一天"},
+  {k:"tvstudio",g:"C",en:"TV studio",ph:"/ˈtiː ˈviː ˈstjuːdiəʊ/",pos:"n.",cn:"电视台；电视演播室",note:"studio 的复数 studios。",ex:"I'm in the TV studio",exCn:"我在电视台"},
+  {k:"beaboutto",g:"C",en:"be about to",ph:"/əˈbaʊt tuː/",pos:"短语",cn:"正要；即将",note:"be about to do 正要做（马上发生）。",ex:"I was about to cry",exCn:"我正要哭"}
+];
+const V={}; VOCAB.forEach(o=>V[o.k]=o);
+const GROUP_NAME={
+  A:"阅读理解 A · 动物感知天气",
+  B:"阅读理解 B · 张德武冬泳",
+  C:"Test 1 阅读 B · 萨克斯的启示"
+};
+
+/* ===== 三篇选择题题目与选项 ===== */
+const Q_A=[
+  {n:1,q:"If spiders are getting more and they are making larger webs than usual in autumn, the weather in the following winter will be ______.",opts:["wet and warm","dry and cold","wet and cold"],ans:1},
+  {n:2,q:"What can we learn from the passage?",opts:["In winter, there are no spiders making webs.","If too many birds or ants get together, it will rain.","Scientists can't explain the behaviours of animals."],ans:1},
+  {n:3,q:"(新考法·文章出处题) Where can we read the passage?",opts:["In a storybook.","In a travel guide.","In a science magazine."],ans:2}
+];
+const Q_B=[
+  {n:1,q:"The weather is ________ in Harbin in December.",opts:["warm","cold","rainy"],ans:1},
+  {n:2,q:"What does Zhang usually do before getting into the river?",opts:["He takes a shower.","He has a good sleep.","He does some running."],ans:2},
+  {n:3,q:"The underlined word \"it\" in the last paragraph refers to ________.",opts:["winter exercise","winter swimming","healthy food"],ans:1},
+  {n:4,q:"What can we learn from the passage?",opts:["Zhang doesn't like snowy days.","Zhang is good at all kinds of sports.","Winter swimming is not right for everyone."],ans:2}
+];
+const Q_C=[
+  {n:1,q:"What made the writer want to play the saxophone?",opts:["The big smile on the old man's face.","The beautiful music from the old man.","The birthday present from his parents."],ans:1},
+  {n:2,q:"Why is the writer happy in the last paragraph?",opts:["Because he meets the old man near the river.","Because he plays the saxophone well after practice.","Because he gets a magic saxophone from the studio."],ans:1},
+  {n:3,q:"(新考法·情感态度题) Which of the following shows the writer's feelings? （图A：曲线由皱眉到微笑持续上升；图B：先平后升；图C：持续下降）",opts:["图A：情感持续上升（dream→happy→so happy）","图B：情感先平后升","图C：情感持续下降"],ans:0},
+  {n:4,q:"What lesson does the writer learn?",opts:["No pain, no gain.","It's never too old to learn.","Learning without thinking is of no use."],ans:0}
+];
+
+/* ===== 三篇答案与详解 ===== */
+const ANS_A=[
+  {n:1,key:"B",tag:"细节理解题",sent:"If spiders are getting more and they make larger webs than usual in autumn, the winter will be ______.",ana:["定位表格 Spiders 行：秋天蜘蛛更多、织的网更大 → A cold and dry winter will come（寒冷干燥的冬天要来）。","wet and warm（A）与 wet and cold（C）均与原文相反。","答案：B（dry and cold）。"]},
+  {n:2,key:"B",tag:"推理判断题",sent:"What can we learn from the passage?",ana:["A 错：文中只说冬天蛛网大小随冷暖变化，并未说「冬天没有蜘蛛织网」。","C 错：原文是 you（泛指人）can not explain，并非特指 scientists，且属偷换概念。","B 对：Birds 聚集→Heavy rain 要来，Ants 在草地→It is going to rain，鸟或蚂蚁大量聚集都预示要下雨。"]},
+  {n:3,key:"C",tag:"文章出处题",sent:"Where can we read the passage?",ana:["文章末句提到：you can read more articles about science in School Science Magazine。","这直接点明文章出自科学类杂志。","A（故事书）、B（旅游指南）均不符；答案：C（In a science magazine）。"]}
+];
+const ANS_B=[
+  {n:1,key:"B",tag:"细节理解题",sent:"The weather is ________ in Harbin in December.",ana:["定位第一段：It's December and it is about -10℃ ... too cold。","零下 10 度、人们觉得太冷，说明哈尔滨十二月很冷。","A（warm 暖）、C（rainy 下雨）均与原文不符；答案：B（cold）。"]},
+  {n:2,key:"C",tag:"细节理解题",sent:"What does Zhang usually do before getting into the river?",ana:["定位第二段：Before he gets into the cold river, Zhang usually does some exercise like running to make himself warm。","他通常做些像跑步的运动来暖身。","A（洗澡）、B 写为 sleep 均错；答案：C（He does some running）。"]},
+  {n:3,key:"B",tag:"代词指代题",sent:"The underlined word \"it\" in the last paragraph refers to ________.",ana:["末段：Winter swimming helps me... But this exercise isn't right for everyone... People... can't do it。","it 承接前一句的 winter swimming（冬泳），指「这项运动」。","A（winter exercise）范围过大、文中用词是 winter swimming；C（healthy food）无关；答案：B。"]},
+  {n:4,key:"C",tag:"主旨推断题",sent:"What can we learn from the passage?",ana:["A 错：张说爱冬泳、下雪也开心，并非不喜欢雪天。","B 错：文中只说他擅长冬泳，未说擅长「所有」运动。","C 对：末句明确 this exercise isn't right for everyone（冬泳并不适合所有人）；答案：C。"]}
+];
+const ANS_C=[
+  {n:1,key:"B",tag:"细节理解题",sent:"What made the writer want to play the saxophone?",ana:["定位第一段：The beautiful music made me dream to play the saxophone just like that man。","是老人「美妙的音乐」让他萌生吹萨克斯的愿望。","A（微笑）只是伴随画面，非动因；C（父母礼物）是他后来得到乐器的契机，不是「想学」的起因；答案：B。"]},
+  {n:2,key:"B",tag:"细节理解题",sent:"Why is the writer happy in the last paragraph?",ana:["末段：Now I'm in the TV studio... I'm so happy，结合前文 at last the magic day when the beautiful music came out。","他开心是因为长期坚持练习后终于能吹出优美音乐。","A 错（未说又见到老人）；C 错（不是录音棚给的「神奇萨克斯」，是自己练成的）；答案：B。"]},
+  {n:3,key:"A",tag:"情感态度题",sent:"Which of the following shows the writer's feelings?",ana:["以「与萨克斯的联结/成就感」为纵轴：5 years ago 只是旁观羡慕（最低）→ 2 weeks later 能吹出声但仍不美（中间）→ Now 优美音乐、登上电视台（最高），整体持续上升。","图B「先平后升」不对（2 weeks later 已比 5 years ago 进步）；图C「持续下降」与全文积极基调相反。","答案：A（情感持续上升）。"]},
+  {n:4,key:"A",tag:"主旨大意题",sent:"What lesson does the writer learn?",ana:["全文 Night after night, week after week, I practised hard... at last beautiful music came out 强调「努力坚持才有收获」。","A（No pain, no gain 一分耕耘一分收获）最契合。","B（活到老学到老）文中未强调年龄；C（学而不思则罔）无关；答案：A。"]}
+];
+
+/* ===== 积累小屋 / 小报 / 素养小花 ===== */
+const JILEI_A=[
+  {q:"比较级归纳：deeper—___；more—___；larger—___；fewer—___；smaller—___",a:"deep / many / large / few / small",note:"文中用比较级描述动物行为的「程度差异」：更深的、更多的、更大的、更少的、更小的。"},
+  {q:"句型：It is going to rain.",a:"天要下雨了。",note:"be going to 表示根据眼前现象作出的主观判断（即将发生），不等于 will 的单纯将来。"},
+  {q:"识有所悟·仿生学：蜘蛛丝 → ？；鲨鱼皮肤 → ？；蝙蝠回声定位 → ？",a:"防弹衣 / 医用缝合线；高速泳衣与船体；雷达与声呐",note:"人类从生物特性中得到启发，研发出对人类有用的材料与技术，这是经典的仿生学（bionics）成果。"}
+];
+const JILEI_B=[
+  {q:"短语互译 1：冬泳",a:"winter swimming",note:""},
+  {q:"短语互译 2：do some exercise",a:"做（些）运动 / 锻炼",note:""},
+  {q:"短语互译 3：感冒",a:"catch a cold / have a cold",note:""},
+  {q:"短语互译 4：health problems",a:"健康问题",note:""},
+  {q:"完成句子 5：The ___ news made him ___.（这个激动人心的消息让他很兴奋。）",a:"exciting; excited",note:"exciting 令人兴奋的（修饰物）；excited 感到兴奋的（修饰人）。"},
+  {q:"完成句子 6：Dave really likes driving. I think being a driver is just ___ ___ him.（我认为开车正适合他。）",a:"right for",note:"right for sb. 适合某人；be right for everyone 适合每个人。"}
+];
+const JILEI_C=[
+  {q:"短语互译 1：on one's way home",a:"在某人回家路上",note:"on my way home 在我回家路上；one's 随主语变化（my/his...）。"},
+  {q:"短语互译 2：be about to",a:"正要；即将",note:"be about to do sth. 正要做某事（马上发生，不接具体时间状语）。"},
+  {q:"素养小花：Practice makes perfect.",a:"熟能生巧。",note:"呼应文中 night after night 苦练、终成优美音乐的主题，也是作者学到的 lesson。"}
+];
+
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");}
+
+function renderQ(box, arr){
+  arr.forEach(o=>{
+    const d=document.createElement("div"); d.className="ans-item";
+    const letter=(arr.length>5)?"ABCDEF":"ABC";
+    const opts=o.opts.map((t,i)=>`<div${i===o.ans?' class="picked"':''}>${esc(t)}</div>`).join("");
+    d.innerHTML = `<div class="top"><span class="num">${o.n}.</span><span class="kt">第 ${o.n} 题</span></div>`+
+      `<div class="qstem">${esc(o.q)}</div><div class="qopts">${opts}</div>`;
+    box.appendChild(d);
+  });
+}
+renderQ(document.getElementById("qA"), Q_A);
+renderQ(document.getElementById("qB"), Q_B);
+renderQ(document.getElementById("qC"), Q_C);
+
+function renderAns(box, arr){
+  arr.forEach(o=>{
+    const d=document.createElement("div"); d.className="ans-item";
+    d.innerHTML = `<div class="top"><span class="num">${o.n}.</span><span class="key">${esc(o.key)}</span><span class="kt">${esc(o.tag)}</span></div>`+
+      `<div class="sent">📌 ${esc(o.sent)}</div>`+
+      `<ul>${o.ana.map(a=>`<li>${esc(a)}</li>`).join("")}</ul>`;
+    box.appendChild(d);
+  });
+}
+renderAns(document.getElementById("ansA"), ANS_A);
+renderAns(document.getElementById("ansB"), ANS_B);
+renderAns(document.getElementById("ansC"), ANS_C);
+
+function renderJilei(box, arr){
+  arr.forEach(o=>{
+    const d=document.createElement("div"); d.className="qb";
+    d.innerHTML = `<div class="q">${esc(o.q)}</div><div class="a">${o.a}</div>`+
+      (o.note?`<div class="nt">${esc(o.note)}</div>`:"");
+    box.appendChild(d);
+  });
+}
+renderJilei(document.getElementById("jileiA"), JILEI_A);
+renderJilei(document.getElementById("jileiB"), JILEI_B);
+renderJilei(document.getElementById("jileiC"), JILEI_C);
+
+/* ================= 生词汇总（按语篇分组） ================= */
+const vocabBox = document.getElementById("vocabBox");
+["A","B","C"].forEach(g=>{
+  const wrap=document.createElement("div"); wrap.className="vgroup";
+  const h=document.createElement("h3"); h.innerHTML=`<span class="dot"></span>${GROUP_NAME[g]}`;
+  wrap.appendChild(h);
+  const cards=document.createElement("div"); cards.className="vcards";
+  VOCAB.filter(v=>v.g===g).forEach(v=>{
+    const c=document.createElement("div"); c.className="vcard";
+    c.innerHTML = `<div class="hw"><span class="en">${esc(v.en)}</span>`+
+      (v.ph?`<span class="ph">${esc(v.ph)}</span>`:"")+
+      `<span class="pos">${esc(v.pos)}</span><button class="spk" type="button" data-word="${esc(v.en)}" title="点击发音" aria-label="发音">🔊</button></div>`+
+      `<div class="cn">${esc(v.cn)}</div>`+
+      `<div class="nt">${esc(v.note)}</div>`+
+      `<div class="ex">e.g. ${esc(v.ex)}<span class="ecn">${esc(v.exCn)}</span></div>`;
+    cards.appendChild(c);
+  });
+  wrap.appendChild(cards);
+  vocabBox.appendChild(wrap);
+});
+
+/* ================= 交互：划线词弹出 / 内联对照 ================= */
+const words = [...document.querySelectorAll(".w")];
+words.forEach(w=>{
+  const d=V[w.dataset.k]; if(!d) return;
+  const g=document.createElement("span"); g.className="gloss"; g.textContent="（"+d.cn+"）";
+  w.after(g);
+});
+
+const pop=document.getElementById("pop");
+let cur=null;
+function closePop(){ pop.classList.remove("show"); if(cur) cur.classList.remove("active"); cur=null; }
+function openPop(el){
+  const d=V[el.dataset.k]; if(!d) return;
+  if(cur===el){ closePop(); return; }
+  closePop();
+  cur=el; el.classList.add("active");
+  pop.innerHTML =
+    `<div class="pw">${esc(d.en)}${d.ph?`<span class="pph">${esc(d.ph)}</span>`:""}<span class="pos">${esc(d.pos)}</span><button class="spk" type="button" data-word="${esc(d.en)}" title="点击发音" aria-label="发音">🔊</button></div>`+
+    `<div class="pcn">${esc(d.cn)}</div>`+
+    `<div class="pnote">${esc(d.note)}</div>`+
+    `<div class="pex"><b>例：</b> ${esc(d.ex)}<span class="cn">${esc(d.exCn)}</span></div>`;
+  pop.classList.add("show");
+  const r=el.getBoundingClientRect();
+  const pw=pop.offsetWidth, ph=pop.offsetHeight;
+  let left=r.left + r.width/2 - pw/2 + window.scrollX;
+  left=Math.max(12+window.scrollX, Math.min(left, window.scrollX + document.documentElement.clientWidth - pw - 12));
+  let top=r.top + window.scrollY - ph - 12;
+  if(top < window.scrollY + 8){ top = r.bottom + window.scrollY + 12; }
+  pop.style.left=left+"px"; pop.style.top=top+"px";
+}
+words.forEach(w=>w.addEventListener("click",e=>{e.stopPropagation();openPop(w);}));
+document.addEventListener("click",e=>{ if(!pop.contains(e.target)) closePop(); });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape") closePop(); });
+window.addEventListener("scroll",closePop,{passive:true});
+window.addEventListener("resize",closePop);
+
+const btnAllWords=document.getElementById("btnAllWords");
+btnAllWords.addEventListener("click",()=>{
+  const on=document.body.classList.toggle("showall");
+  btnAllWords.classList.toggle("on",on);
+  btnAllWords.textContent = on ? "🙈 隐藏全部释义" : "👁 显示全部释义";
+  if(on) closePop();
+});
+const btnAllAns=document.getElementById("btnAllAns");
+btnAllAns.addEventListener("click",()=>{
+  const on=document.body.classList.toggle("showans");
+  btnAllAns.classList.toggle("on",on);
+  btnAllAns.textContent = on ? "🔒 隐藏全部答案" : "✅ 显示全部答案";
+});
+const btnTheme=document.getElementById("btnTheme");
+btnTheme.addEventListener("click",()=>{
+  const on=document.body.classList.toggle("dark");
+  btnTheme.textContent = on ? "☀️ 日间" : "🌙 夜间";
+});
+
+function speak(text){
+  if(!('speechSynthesis' in window)){
+    alert('当前浏览器不支持语音朗读，请用 Chrome / Edge / Safari 打开本页。');
+    return;
+  }
+  const u=new SpeechSynthesisUtterance(text);
+  u.lang='en-US'; u.rate=0.92; u.pitch=1;
+  window.speechSynthesis.cancel();
+  window.speechSynthesis.speak(u);
+}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('.spk');
+  if(b){ e.stopPropagation(); speak(b.dataset.word); }
+});
+</script>
+</body>
+</html>

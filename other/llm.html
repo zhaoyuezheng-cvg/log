@@ -1,0 +1,2349 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>大模型是怎么"想"的 · 运作原理可视化</title>
+<style>
+/* ============ 主题变量 ============ */
+:root{
+  --bg:#070b13;
+  --bg-grad:
+    radial-gradient(1200px 620px at 18% -12%, #1b2b52 0%, transparent 62%),
+    radial-gradient(900px 520px at 92% 6%, #2a1b3e 0%, transparent 58%),
+    radial-gradient(700px 500px at 50% 100%, #0d2b3a 0%, transparent 60%);
+  --panel:rgba(17,24,39,.72);
+  --panel2:rgba(23,32,50,.92);
+  --panel3:rgba(30,41,59,.6);
+  --line:rgba(56,189,248,.18);
+  --line2:rgba(148,163,184,.14);
+  --txt:#e8eefb;
+  --txt2:#9db0cd;
+  --txt3:#657996;
+  --blue:#38bdf8;
+  --violet:#a78bfa;
+  --pink:#f472b6;
+  --green:#34d399;
+  --amber:#fbbf24;
+  --orange:#fb923c;
+  --red:#fb7185;
+  --cyan:#22d3ee;
+  --shadow:0 24px 70px rgba(0,0,0,.5);
+  --grid:rgba(148,163,184,.055);
+}
+body.light{
+  --bg:#f4f7fc;
+  --bg-grad:
+    radial-gradient(1000px 520px at 15% -12%, #dbeafe 0%, transparent 62%),
+    radial-gradient(820px 460px at 90% 4%, #ede9fe 0%, transparent 58%),
+    radial-gradient(680px 460px at 50% 100%, #cffafe 0%, transparent 60%);
+  --panel:rgba(255,255,255,.82);
+  --panel2:#ffffff;
+  --panel3:rgba(241,245,249,.9);
+  --line:rgba(2,132,199,.2);
+  --line2:rgba(100,116,139,.16);
+  --txt:#0d1b2e;
+  --txt2:#48597a;
+  --txt3:#8496b0;
+  --blue:#0284c7;
+  --violet:#7c3aed;
+  --pink:#db2777;
+  --green:#059669;
+  --amber:#b45309;
+  --orange:#ea580c;
+  --red:#e11d48;
+  --cyan:#0891b2;
+  --shadow:0 18px 50px rgba(15,23,42,.10);
+  --grid:rgba(15,23,42,.045);
+}
+
+/* ============ 基础 ============ */
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background-color:var(--bg);
+  background-image:var(--grid);
+  background-size:28px 28px;
+  color:var(--txt);
+  line-height:1.75;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei","PingFang SC","Hiragino Sans GB",sans-serif;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+body::before{
+  content:"";position:fixed;inset:0;background:var(--bg-grad);pointer-events:none;z-index:0;
+}
+b,strong{color:var(--txt);font-weight:700}
+em{font-style:normal;color:var(--blue)}
+code,.mono{font-family:ui-monospace,"Cascadia Code",Consolas,"Courier New",monospace}
+::selection{background:rgba(56,189,248,.3)}
+
+/* ============ 顶部进度条 ============ */
+.progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:100;background:transparent}
+.progress-bar{height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--violet),var(--pink));box-shadow:0 0 12px rgba(56,189,248,.7);transition:width .1s linear}
+
+/* ============ 右侧导航 ============ */
+.rail{position:fixed;right:18px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:11px;z-index:90}
+.rail a{width:9px;height:9px;border-radius:50%;background:var(--line2);border:1px solid var(--line);transition:.28s;position:relative}
+.rail a:hover{background:var(--blue);transform:scale(1.5)}
+.rail a.on{background:var(--blue);box-shadow:0 0 0 4px rgba(56,189,248,.18),0 0 14px rgba(56,189,248,.8);transform:scale(1.25)}
+.rail a::after{
+  content:attr(data-t);position:absolute;right:20px;top:50%;transform:translateY(-50%);
+  white-space:nowrap;font-size:12px;color:var(--txt2);background:var(--panel2);
+  border:1px solid var(--line2);padding:3px 9px;border-radius:6px;opacity:0;pointer-events:none;transition:.2s;
+}
+.rail a:hover::after{opacity:1}
+
+/* ============ 布局 ============ */
+.wrap{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:0 26px 120px}
+section{margin:0 0 92px;scroll-margin-top:70px}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;font-size:12.5px;letter-spacing:.14em;
+  color:var(--blue);font-family:ui-monospace,Consolas,monospace;
+  border:1px solid var(--line);background:rgba(56,189,248,.07);
+  padding:5px 12px;border-radius:999px;margin-bottom:16px;
+}
+h2{font-size:clamp(24px,3.4vw,36px);line-height:1.3;letter-spacing:-.01em;margin-bottom:12px;font-weight:800}
+h3{font-size:17px;font-weight:700;margin-bottom:8px;letter-spacing:.01em}
+.lead{color:var(--txt2);font-size:15.5px;max-width:760px;margin-bottom:26px}
+.lead b{color:var(--blue)}
+
+/* 入场动画：用 .pending 兜底，JS 失效时内容依然可见 */
+.reveal{transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+.reveal.pending{opacity:0;transform:translateY(26px)}
+.reveal.in{opacity:1;transform:none}
+
+/* ============ 卡片 ============ */
+.card{
+  background:var(--panel);border:1px solid var(--line2);border-radius:18px;padding:22px 24px;
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:var(--shadow);
+}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+@media(max-width:820px){.grid2,.grid3,.grid4{grid-template-columns:1fr}}
+.tip{border-left:3px solid var(--blue);background:rgba(56,189,248,.06);padding:12px 16px;border-radius:0 10px 10px 0;color:var(--txt2);font-size:14.5px;margin-top:16px}
+.tip b{color:var(--blue)}
+.tip.warn{border-color:var(--amber);background:rgba(251,191,36,.07)}
+.tip.warn b{color:var(--amber)}
+.kv{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px dashed var(--line2);font-size:14.5px}
+.kv:last-child{border:none}
+.kv span:first-child{color:var(--txt2)}
+.kv span:last-child{font-family:ui-monospace,Consolas,monospace;color:var(--txt);font-weight:600}
+
+/* ============ HERO ============ */
+.hero{padding:88px 0 40px;text-align:center}
+.hero h1{font-size:clamp(32px,6vw,62px);font-weight:900;letter-spacing:-.03em;line-height:1.12;margin-bottom:18px}
+.grad{background:linear-gradient(100deg,var(--blue),var(--violet) 45%,var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .sub{color:var(--txt2);font-size:17px;max-width:620px;margin:0 auto}
+.badge{
+  display:inline-flex;align-items:center;gap:7px;font-size:13px;color:var(--txt2);
+  border:1px solid var(--line2);background:var(--panel);padding:6px 15px;border-radius:999px;margin-bottom:24px;
+  backdrop-filter:blur(10px);
+}
+.oneliner{
+  margin:30px auto 0;max-width:720px;font-size:16px;color:var(--txt2);
+  border:1px solid var(--line);background:var(--panel);border-radius:14px;padding:16px 22px;
+  backdrop-filter:blur(10px);
+}
+.oneliner b{color:var(--violet)}
+
+/* 预测演示 */
+.pred-demo{margin:36px auto 0;max-width:720px;text-align:left;background:var(--panel);border:1px solid var(--line2);border-radius:18px;padding:22px 24px;backdrop-filter:blur(14px);box-shadow:var(--shadow)}
+.pd-label{font-size:12px;letter-spacing:.12em;color:var(--txt3);font-family:ui-monospace,Consolas,monospace;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.dot-live{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green);animation:blink 1.4s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+.pd-text{font-size:22px;font-weight:700;letter-spacing:.01em;min-height:36px;margin-bottom:18px;color:var(--txt)}
+.caret{display:inline-block;width:2px;height:22px;background:var(--blue);vertical-align:-3px;margin-left:3px;animation:blink .9s infinite}
+.pd-bars{display:flex;flex-direction:column;gap:9px;transition:opacity .25s}
+.pd-row{display:grid;grid-template-columns:88px 1fr 54px;align-items:center;gap:12px;font-size:14px}
+.pd-word{font-weight:700;text-align:right;color:var(--txt)}
+.pd-track{height:8px;background:var(--panel3);border-radius:99px;overflow:hidden}
+.pd-fill{height:100%;width:0;border-radius:99px;transition:width .75s cubic-bezier(.22,1,.36,1),background .3s}
+.pd-pct{font-family:ui-monospace,Consolas,monospace;color:var(--txt3);font-size:13px;text-align:right}
+.pd-hint{margin-top:16px;font-size:12.5px;color:var(--txt3);text-align:center}
+
+/* 主题切换 */
+.theme-btn{
+  position:fixed;top:16px;right:18px;z-index:101;width:38px;height:38px;border-radius:11px;
+  border:1px solid var(--line2);background:var(--panel2);color:var(--txt2);cursor:pointer;
+  font-size:16px;display:flex;align-items:center;justify-content:center;transition:.25s;backdrop-filter:blur(10px);
+}
+.theme-btn:hover{color:var(--blue);border-color:var(--line);transform:translateY(-2px)}
+
+/* ============ 流程图 c0 ============ */
+.flow{display:flex;align-items:stretch;gap:0;flex-wrap:wrap;justify-content:center;margin:8px 0 22px}
+.flow-node{
+  flex:1 1 120px;min-width:104px;background:var(--panel2);border:1px solid var(--line2);border-radius:14px;
+  padding:14px 10px;text-align:center;transition:.3s;position:relative;
+}
+.flow-node:hover{transform:translateY(-4px);border-color:var(--line);box-shadow:0 10px 28px rgba(56,189,248,.15)}
+.flow-node .ic{font-size:20px;display:block;margin-bottom:6px}
+.flow-node .nm{font-size:13.5px;font-weight:700;display:block}
+.flow-node .ds{font-size:11.5px;color:var(--txt3);font-family:ui-monospace,Consolas,monospace}
+.flow-arrow{display:flex;align-items:center;padding:0 5px;color:var(--txt3);font-size:15px;position:relative;overflow:hidden}
+.flow-arrow::after{content:"";position:absolute;left:0;top:50%;width:6px;height:6px;border-radius:50%;background:var(--blue);box-shadow:0 0 9px var(--blue);animation:travel 2.2s infinite linear}
+@keyframes travel{0%{left:-6px;opacity:0}20%{opacity:1}80%{opacity:1}100%{left:100%;opacity:0}}
+.loopback{
+  text-align:center;margin-top:6px;font-size:13px;color:var(--violet);
+  font-family:ui-monospace,Consolas,monospace;
+}
+.loopback .arr{animation:pulseArr 1.6s infinite}
+@keyframes pulseArr{0%,100%{opacity:.4}50%{opacity:1}}
+@media(max-width:760px){.flow-arrow{transform:rotate(90deg);padding:6px 0}.flow{flex-direction:column;align-items:stretch}.flow-arrow{align-self:center}}
+
+/* 数字卡片 */
+.stat{background:var(--panel2);border:1px solid var(--line2);border-radius:14px;padding:16px 16px;text-align:center}
+.stat .n{font-size:26px;font-weight:800;font-family:ui-monospace,Consolas,monospace;background:linear-gradient(120deg,var(--blue),var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.2}
+.stat .l{font-size:12.5px;color:var(--txt3);margin-top:4px}
+.kvv{background:var(--panel2);border:1px solid var(--line2);border-radius:14px;padding:16px 18px}
+.tbl-wrap{width:100%}
+
+/* ============ 分词 c1 ============ */
+.input-box{width:100%;background:var(--panel3);border:1px solid var(--line2);border-radius:12px;color:var(--txt);padding:13px 15px;font-size:15px;font-family:inherit;outline:none;transition:.25s;resize:vertical;min-height:62px}
+.input-box:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(56,189,248,.14)}
+.tok-out{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px;min-height:44px;align-items:center}
+.tok{
+  display:inline-flex;align-items:center;gap:6px;padding:6px 11px;border-radius:9px;font-size:14.5px;
+  font-weight:600;border:1px solid;font-family:ui-monospace,Consolas,monospace;
+  animation:tokIn .38s cubic-bezier(.34,1.56,.64,1) both;position:relative;cursor:default;
+}
+@keyframes tokIn{from{opacity:0;transform:scale(.7) translateY(6px)}to{opacity:1;transform:none}}
+.tok .id{font-size:10.5px;opacity:.72;font-weight:500}
+.tok[data-ws]{opacity:.5;font-style:italic;padding:6px 7px}
+.t0{color:#7dd3fc;background:rgba(56,189,248,.14);border-color:rgba(56,189,248,.36)}
+.t1{color:#c4b5fd;background:rgba(167,139,250,.14);border-color:rgba(167,139,250,.36)}
+.t2{color:#f9a8d4;background:rgba(244,114,182,.14);border-color:rgba(244,114,182,.36)}
+.t3{color:#6ee7b7;background:rgba(52,211,153,.14);border-color:rgba(52,211,153,.36)}
+.t4{color:#fcd34d;background:rgba(251,191,36,.14);border-color:rgba(251,191,36,.36)}
+.t5{color:#67e8f9;background:rgba(34,211,238,.14);border-color:rgba(34,211,238,.36)}
+.t6{color:#fdba74;background:rgba(251,146,60,.14);border-color:rgba(251,146,60,.36)}
+.t7{color:#a5b4fc;background:rgba(129,140,248,.14);border-color:rgba(129,140,248,.36)}
+body.light .t0{color:#0369a1;background:#e0f2fe;border-color:#7dd3fc}
+body.light .t1{color:#6d28d9;background:#ede9fe;border-color:#c4b5fd}
+body.light .t2{color:#be185d;background:#fce7f3;border-color:#f9a8d4}
+body.light .t3{color:#047857;background:#d1fae5;border-color:#6ee7b7}
+body.light .t4{color:#b45309;background:#fef3c7;border-color:#fcd34d}
+body.light .t5{color:#0e7490;background:#cffafe;border-color:#67e8f9}
+body.light .t6{color:#c2410c;background:#ffedd5;border-color:#fdba74}
+body.light .t7{color:#4338ca;background:#e0e7ff;border-color:#a5b4fc}
+.samples{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chip{padding:5px 12px;border-radius:99px;border:1px solid var(--line2);background:var(--panel3);color:var(--txt2);font-size:13px;cursor:pointer;transition:.2s}
+.chip:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-2px)}
+
+/* ============ 向量 c2 ============ */
+.vec-vis{display:flex;align-items:flex-end;gap:3px;height:130px;margin:14px 0 6px;padding:0 2px}
+.vec-bar{flex:1;border-radius:3px 3px 0 0;background:linear-gradient(180deg,var(--blue),rgba(56,189,248,.18));min-height:2px;animation:grow .5s cubic-bezier(.22,1,.36,1) both}
+@keyframes grow{from{transform:scaleY(0);opacity:0}to{transform:scaleY(1);opacity:1}}
+.vec-bar.neg{background:linear-gradient(180deg,rgba(251,113,133,.18),var(--red))}
+.axis{display:flex;justify-content:space-between;font-size:11.5px;color:var(--txt3);font-family:ui-monospace,Consolas,monospace;border-top:1px dashed var(--line2);padding-top:5px}
+.vec-switch{display:flex;gap:8px;margin-bottom:6px}
+.scatter-wrap{position:relative;background:var(--panel3);border:1px solid var(--line2);border-radius:14px;overflow:hidden}
+.pt{cursor:pointer;transition:.25s}
+.pt circle{transition:.25s;stroke:var(--bg);stroke-width:2}
+.pt text{font-size:12.5px;font-weight:700;fill:var(--txt2);transition:.25s;pointer-events:none}
+.pt:hover text{fill:var(--txt)}
+.pt.hot text{fill:var(--blue);font-size:13.5px}
+.pt.hot circle{stroke:var(--blue);stroke-width:2}
+.pt.dim{opacity:.22}
+.scatter-msg{position:absolute;left:14px;bottom:12px;font-size:13px;color:var(--txt2);background:var(--panel2);border:1px solid var(--line2);padding:7px 13px;border-radius:9px;font-family:ui-monospace,Consolas,monospace}
+
+/* ============ 注意力 c3 ============ */
+.head-tabs{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px}
+.head-tab{
+  display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:999px;
+  border:1px solid var(--line2);background:var(--panel3);color:var(--txt2);font-size:12.5px;
+  cursor:pointer;transition:.22s;font-family:ui-monospace,Consolas,monospace;white-space:nowrap;
+}
+.head-tab:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-2px)}
+.head-tab.on{border-color:var(--blue);background:rgba(56,189,248,.16);color:var(--blue);
+  box-shadow:0 0 0 3px rgba(56,189,248,.1);font-weight:700}
+.head-tab .hid{font-weight:800;opacity:.65}
+.head-tab.on .hid{opacity:1}
+.head-desc{
+  font-size:13.5px;color:var(--txt2);background:rgba(56,189,248,.06);
+  border-left:3px solid var(--blue);padding:11px 15px;border-radius:0 10px 10px 0;margin-bottom:16px;
+}
+.head-desc b{color:var(--blue)}
+.attn-stage{position:relative;padding:126px 12px 36px;background:var(--panel3);border:1px solid var(--line2);border-radius:16px;overflow:hidden;min-height:230px}
+.attn-words{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;position:relative;z-index:2}
+.aw{
+  padding:11px 18px;border-radius:12px;border:1px solid var(--line2);background:var(--panel2);
+  cursor:pointer;font-weight:700;font-size:16px;transition:.28s;position:relative;user-select:none;
+}
+.aw:hover{transform:translateY(-3px);border-color:var(--blue)}
+.aw.active{border-color:var(--blue);background:rgba(56,189,248,.16);box-shadow:0 0 0 4px rgba(56,189,248,.12),0 0 24px rgba(56,189,248,.35);transform:translateY(-4px) scale(1.04)}
+.aw.attend{border-color:var(--violet);background:rgba(167,139,250,.16);box-shadow:0 0 20px rgba(167,139,250,.3)}
+.attn-svg{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:visible}
+.attn-path{fill:none;stroke:var(--violet);stroke-linecap:round;opacity:0;transition:opacity .35s}
+.attn-path.show{opacity:1}
+.attn-legend{margin-top:18px;font-size:13.5px;color:var(--txt2)}
+.attn-legend .row{display:grid;grid-template-columns:70px 1fr 48px;align-items:center;gap:10px;margin-bottom:7px;font-size:13.5px;font-family:ui-monospace,Consolas,monospace}
+.attn-legend .tr{height:7px;background:var(--panel3);border-radius:99px;overflow:hidden}
+.attn-legend .fl{height:100%;background:linear-gradient(90deg,var(--violet),var(--blue));width:0;border-radius:99px;transition:width .5s cubic-bezier(.22,1,.36,1)}
+
+/* 同词不同义对比 */
+.ctx-card{background:var(--panel2);border:1px solid var(--line2);border-radius:14px;padding:16px 18px}
+.ctx-head{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.ctx-dot{width:8px;height:8px;border-radius:50%;flex:none}
+.ctx-label{font-size:12.5px;font-family:ui-monospace,Consolas,monospace;letter-spacing:.06em}
+.ctx-sent{font-size:16px;font-weight:600;color:var(--txt2);margin-bottom:12px;line-height:1.7}
+.ctx-sent .hl-green{color:var(--green);padding:1px 4px;border-radius:5px;background:rgba(52,211,153,.14)}
+.ctx-sent .hl-blue{color:var(--blue);padding:1px 4px;border-radius:5px;background:rgba(56,189,248,.14)}
+.ctx-vec{display:flex;align-items:flex-end;gap:3px;height:86px;padding:0 2px;border-bottom:1px dashed var(--line2)}
+.ctx-bar{flex:1;border-radius:3px 3px 0 0;min-height:2px;animation:grow .45s cubic-bezier(.22,1,.36,1) both}
+.ctx-bar.g{background:linear-gradient(180deg,var(--green),rgba(52,211,153,.2))}
+.ctx-bar.b{background:linear-gradient(180deg,var(--blue),rgba(56,189,248,.2))}
+.ctx-bar.neg{g-filter:grayscale(.3);opacity:.75}
+.ctx-foot{margin-top:10px;font-size:13px;color:var(--txt3)}
+.cos-box{
+  display:flex;gap:22px;align-items:center;margin-top:16px;flex-wrap:wrap;
+  background:var(--panel3);border:1px solid var(--line2);border-radius:14px;padding:16px 20px;
+}
+.cos-canvas{flex:none}
+.cos-text{flex:1;min-width:240px}
+.cos-line{font-size:15px;color:var(--txt2)}
+.cos-line b{font-family:ui-monospace,Consolas,monospace;font-size:22px;color:var(--amber)}
+.cos-text p{font-size:13.5px;color:var(--txt2);margin-top:6px}
+.angle-line{stroke-width:2.5;stroke-linecap:round}
+.angle-arc{fill:none;stroke:var(--amber);stroke-width:1.5;stroke-dasharray:3 3}
+
+/* 多头拼接 Concat + W_O 演示 */
+.hc-stage{background:var(--panel3);border:1px solid var(--line2);border-radius:16px;padding:20px 18px}
+.hc-item.off{display:none}
+.hc-item{animation:hcIn .5s cubic-bezier(.22,1,.36,1) both}
+@keyframes hcIn{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+.hc-cap{font-size:12.5px;color:var(--txt3);font-family:ui-monospace,Consolas,monospace;margin-bottom:7px}
+.hc-strip{display:flex;gap:2px;height:28px;border-radius:8px;overflow:hidden;border:1px solid var(--line2)}
+.hc-seg{flex:1;display:flex;align-items:center;justify-content:center;
+  font-size:10.5px;font-weight:700;color:#fff;font-family:ui-monospace,Consolas,monospace;
+  letter-spacing:.04em;text-shadow:0 1px 2px rgba(0,0,0,.28)}
+.hc-op{display:flex;align-items:center;justify-content:center;gap:9px;padding:11px 0;
+  font-size:12.5px;color:var(--violet);font-family:ui-monospace,Consolas,monospace;text-align:center}
+.hc-op .ar{animation:pulseArr 1.6s infinite}
+.hc-op b{color:var(--violet)}
+.hc-heads{display:grid;grid-template-columns:repeat(8,1fr);gap:7px}
+@media(max-width:760px){.hc-heads{grid-template-columns:repeat(4,1fr)}}
+.hc-head{border:1px solid var(--line2);background:var(--panel2);border-radius:10px;
+  padding:9px 5px 8px;text-align:center;transition:all .38s cubic-bezier(.22,1,.36,1)}
+.hc-head.hot{border-color:var(--hc);background:var(--hc-bg);transform:translateY(-3px)}
+.hc-head .hn{font-family:ui-monospace,Consolas,monospace;font-size:12.5px;font-weight:800;color:var(--txt3);transition:.35s}
+.hc-head.hot .hn{color:var(--hc)}
+.hc-head .hs{display:block;font-size:11px;color:var(--txt3);margin-top:2px;transition:.35s}
+.hc-head.hot .hs{color:var(--txt2)}
+.hc-head .hbar{height:5px;border-radius:9px;background:var(--panel3);overflow:hidden;margin-top:8px}
+.hc-head .hbar i{display:block;height:100%;width:0;background:var(--hc);border-radius:9px;
+  transition:width .55s cubic-bezier(.22,1,.36,1)}
+.hc-head.hot .hbar i{width:100%}
+.hc-head .hd{font-size:10px;color:var(--txt3);font-family:ui-monospace,Consolas,monospace;margin-top:5px}
+
+/* 前馈网络 FFN */
+.ffn-iso{background:var(--panel3);border:1px solid var(--line2);border-radius:16px;padding:16px 18px}
+.ffn-iso-h{font-size:12.5px;color:var(--txt3);font-family:ui-monospace,Consolas,monospace;margin-bottom:12px}
+.ffn-picks{display:flex;gap:14px;flex-wrap:wrap}
+.ffn-pick{padding:7px 14px;border-radius:10px;border:1px solid var(--line2);background:var(--panel2);
+  font-size:13.5px;color:var(--txt2);cursor:pointer;transition:.25s;font-weight:600;position:relative}
+.ffn-pick:hover{transform:translateY(-2px)}
+.ffn-pick:not(:last-child)::after{content:'';position:absolute;right:-7.5px;top:7px;bottom:7px;width:1px;
+  background:repeating-linear-gradient(180deg,var(--line2) 0 3px,transparent 3px 6px)}
+.ffn-pick.on{color:var(--fc);border-color:var(--fc);background:var(--fc-bg);box-shadow:0 0 0 3px var(--fc-bg)}
+.ffn-iso-f{margin-top:13px;font-size:12px;color:var(--txt3);line-height:1.65;border-top:1px dashed var(--line2);padding-top:11px}
+.ffn-iso-f b{color:var(--txt2)}
+.ffn-stat{margin-top:14px;font-family:ui-monospace,Consolas,monospace;font-size:13px;color:var(--txt2);
+  background:var(--panel3);border:1px solid var(--line2);border-left:3px solid var(--amber);
+  border-radius:0 10px 10px 0;padding:11px 14px;line-height:1.6}
+.ffn-stat b{color:var(--amber);font-size:17px}
+.ffn-stat .w{font-weight:700}
+.ffn-stat:empty{display:none}
+.ffn-nums{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
+@media(max-width:620px){.ffn-nums{grid-template-columns:1fr}}
+.ffn-nums .fn{border:1px solid var(--line2);background:var(--panel3);border-radius:12px;padding:13px 15px;text-align:center}
+.ffn-nums .fn b{display:block;font-family:ui-monospace,Consolas,monospace;font-size:19px;color:var(--violet);font-weight:800}
+.ffn-nums .fn span{display:block;font-size:11.5px;color:var(--txt3);margin-top:5px;line-height:1.45}
+@keyframes ffnGrow{from{opacity:0;transform:scaleY(.05)}to{opacity:1;transform:scaleY(1)}}
+
+/* 残差连接 + LayerNorm */
+.res-flow{background:var(--panel3);border:1px solid var(--line2);border-radius:16px;padding:10px 12px 2px;margin-top:18px}
+.res-lab{background:var(--panel3);border:1px solid var(--line2);border-radius:16px;padding:16px 18px;margin-top:16px}
+.res-ctrl{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.res-ctrl .lb{font-size:12.5px;color:var(--txt3);font-family:ui-monospace,Consolas,monospace}
+.res-ctrl b{font-family:ui-monospace,Consolas,monospace;font-size:21px;color:var(--blue);font-weight:800;min-width:46px;text-align:center}
+.res-ctrl input[type=range]{flex:1;min-width:170px;accent-color:var(--blue);cursor:pointer}
+.res-legend{display:flex;gap:20px;flex-wrap:wrap;margin-top:2px;font-size:12.5px;color:var(--txt2)}
+.res-legend span{display:flex;align-items:center;gap:7px}
+.res-legend i{width:17px;height:3.5px;border-radius:9px;flex:none}
+.res-read{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
+@media(max-width:620px){.res-read{grid-template-columns:1fr}}
+.res-read .rr{border:1px solid var(--line2);background:var(--panel2);border-radius:12px;padding:11px 14px}
+.res-read .rr .h{font-size:11.5px;color:var(--txt3);display:flex;align-items:center;gap:7px}
+.res-read .rr .h i{width:8px;height:8px;border-radius:50%;flex:none}
+.res-read .rr .v{font-family:ui-monospace,Consolas,monospace;font-size:19px;font-weight:800;margin-top:6px;letter-spacing:-.01em}
+.res-read .rr .s{font-size:11.5px;color:var(--txt3);margin-top:4px;line-height:1.45}
+
+/* QKV */
+.qkv{border-radius:14px;padding:18px;border:1px solid;text-align:left;transition:.3s}
+.qkv:hover{transform:translateY(-4px)}
+.qkv .tag{font-family:ui-monospace,Consolas,monospace;font-size:19px;font-weight:800;display:block;margin-bottom:6px}
+.qkv .t{font-size:13.5px;color:var(--txt2)}
+.qkv.q{border-color:rgba(56,189,248,.4);background:rgba(56,189,248,.07)}
+.qkv.q .tag{color:var(--blue)}
+.qkv.k{border-color:rgba(251,191,36,.4);background:rgba(251,191,36,.07)}
+.qkv.k .tag{color:var(--amber)}
+.qkv.v{border-color:rgba(52,211,153,.4);background:rgba(52,211,153,.07)}
+.qkv.v .tag{color:var(--green)}
+.formula{
+  font-family:ui-monospace,Consolas,monospace;font-size:15px;color:var(--blue);
+  background:var(--panel3);border:1px dashed var(--line);border-radius:10px;padding:13px 16px;
+  text-align:center;margin:16px 0;overflow-x:auto;white-space:nowrap;
+}
+
+/* ============ 堆叠层 c4 ============ */
+.stack{position:relative;max-width:520px;margin:0 auto;padding:6px 0}
+.layer{
+  display:flex;align-items:center;gap:12px;padding:8px 14px;border-radius:10px;margin-bottom:6px;
+  border:1px solid var(--line2);background:var(--panel3);transition:.32s;font-size:13.5px;
+}
+.layer .idx{font-family:ui-monospace,Consolas,monospace;font-size:11.5px;color:var(--txt3);width:26px}
+.layer .nm{font-weight:600;color:var(--txt2)}
+.layer .bar{flex:1;height:4px;border-radius:9px;background:var(--line2);overflow:hidden}
+.layer .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--violet));transition:width .5s}
+.layer.hot{border-color:var(--blue);background:rgba(56,189,248,.12);transform:translateX(6px)}
+.layer.hot .nm{color:var(--txt)}
+.layer.hot .bar i{width:100%}
+.layer.io{border-color:rgba(251,191,36,.4);background:rgba(251,191,36,.07)}
+.layer.io .nm{color:var(--amber)}
+
+/* ============ 采样 c5 ============ */
+.slider-row{display:flex;align-items:center;gap:16px;margin:6px 0 20px;flex-wrap:wrap}
+input[type=range]{
+  -webkit-appearance:none;appearance:none;flex:1;min-width:200px;height:6px;border-radius:99px;
+  background:linear-gradient(90deg,var(--blue),var(--amber),var(--red));outline:none;
+}
+input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:#fff;
+  border:3px solid var(--blue);cursor:grab;box-shadow:0 3px 12px rgba(0,0,0,.4);transition:.15s;
+}
+input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.15)}
+input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:#fff;border:3px solid var(--blue);cursor:grab}
+.temp-val{font-family:ui-monospace,Consolas,monospace;font-size:22px;font-weight:800;color:var(--blue);min-width:64px;text-align:center}
+.samp-bars{display:flex;flex-direction:column;gap:10px;margin:6px 0 18px}
+.sb-row{display:grid;grid-template-columns:64px 1fr 62px;align-items:center;gap:12px}
+.sb-word{font-weight:700;font-size:15px;text-align:right}
+.sb-track{height:24px;background:var(--panel3);border-radius:8px;overflow:hidden;border:1px solid var(--line2)}
+.sb-fill{height:100%;width:0;border-radius:7px;transition:width .35s cubic-bezier(.22,1,.36,1);
+  background:linear-gradient(90deg,rgba(56,189,248,.85),rgba(167,139,250,.85));display:flex;align-items:center;justify-content:flex-end;padding-right:8px;font-size:11px;color:#fff;font-weight:700}
+.sb-fill.picked{background:linear-gradient(90deg,var(--green),var(--cyan));box-shadow:0 0 18px rgba(52,211,153,.5)}
+.sb-pct{font-family:ui-monospace,Consolas,monospace;font-size:13.5px;color:var(--txt2);text-align:right}
+.btn{
+  padding:10px 20px;border-radius:11px;border:1px solid var(--line);background:rgba(56,189,248,.12);
+  color:var(--blue);font-weight:700;font-size:14.5px;cursor:pointer;transition:.24s;font-family:inherit;
+}
+.btn:hover{background:rgba(56,189,248,.22);transform:translateY(-2px);box-shadow:0 8px 22px rgba(56,189,248,.22)}
+.btn:active{transform:translateY(0)}
+.samp-out{
+  margin-top:14px;font-family:ui-monospace,Consolas,monospace;font-size:14px;color:var(--txt2);
+  background:var(--panel3);border:1px dashed var(--line2);border-radius:10px;padding:12px 15px;min-height:46px;
+}
+.samp-out b{color:var(--green)}
+
+/* ============ 自回归 c6 ============ */
+.gen-box{background:var(--panel3);border:1px solid var(--line2);border-radius:14px;padding:20px;min-height:96px;font-size:19px;font-weight:600;line-height:2}
+.gen-tok{display:inline-block;animation:tokIn .45s cubic-bezier(.34,1.56,.64,1) both}
+.gen-cursor{display:inline-block;width:9px;height:19px;background:var(--green);vertical-align:-3px;animation:blink .8s infinite;border-radius:2px}
+.step-log{margin-top:16px;max-height:180px;overflow-y:auto;font-family:ui-monospace,Consolas,monospace;font-size:12.5px;color:var(--txt3);padding-right:6px}
+.step-log div{padding:5px 0;border-bottom:1px dashed var(--line2);animation:tokIn .3s both}
+.step-log b{color:var(--blue)}
+.step-log::-webkit-scrollbar{width:6px}
+.step-log::-webkit-scrollbar-thumb{background:var(--line);border-radius:9px}
+
+/* ============ 训练时间线 c7 ============ */
+.tl{position:relative;padding-left:44px}
+.tl::before{content:"";position:absolute;left:15px;top:12px;bottom:12px;width:2px;background:linear-gradient(180deg,var(--blue),var(--violet),var(--pink));border-radius:9px;opacity:.5}
+.tl-item{position:relative;margin-bottom:20px}
+.tl-item::before{
+  content:"";position:absolute;left:-36px;top:20px;width:13px;height:13px;border-radius:50%;
+  background:var(--panel2);border:3px solid var(--blue);box-shadow:0 0 0 4px rgba(56,189,248,.14);
+}
+.tl-item:nth-child(2)::before{border-color:var(--violet);box-shadow:0 0 0 4px rgba(167,139,250,.14)}
+.tl-item:nth-child(3)::before{border-color:var(--pink);box-shadow:0 0 0 4px rgba(244,114,182,.14)}
+.tl-item h3{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.pill{font-size:11.5px;font-family:ui-monospace,Consolas,monospace;padding:3px 9px;border-radius:99px;border:1px solid var(--line2);color:var(--txt3);font-weight:500}
+
+/* ============ 表格 ============ */
+.tbl{width:100%;border-collapse:collapse;font-size:14px}
+.tbl th{text-align:left;padding:11px 13px;border-bottom:2px solid var(--line);color:var(--blue);font-size:13px;letter-spacing:.03em;font-weight:700}
+.tbl td{padding:11px 13px;border-bottom:1px solid var(--line2);color:var(--txt2);vertical-align:top}
+.tbl tr:hover td{background:rgba(56,189,248,.05)}
+.tbl td:first-child{color:var(--txt);font-weight:600;white-space:nowrap}
+
+/* 对比卡 */
+.vs{position:relative;text-align:center}
+.vs .vs-badge{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;
+  background:var(--bg);border:1px solid var(--line2);display:flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:800;color:var(--txt3);z-index:3;
+}
+@media(max-width:820px){.vs .vs-badge{display:none}}
+
+footer{text-align:center;color:var(--txt3);font-size:13.5px;padding:40px 0 0;border-top:1px solid var(--line2)}
+footer b{color:var(--txt2)}
+
+/* ============ 打印 ============ */
+@media print{
+  .rail,.theme-btn,.progress{display:none!important}
+  body{background:#fff!important;color:#000!important}
+  body::before{display:none}
+  .card,.pred-demo,.stat,.qkv,.flow-node,.viz,.input-box{background:#fff!important;border-color:#bbb!important;box-shadow:none!important;backdrop-filter:none!important}
+  .reveal{opacity:1!important;transform:none!important}
+  section{page-break-inside:avoid;margin-bottom:34px}
+  .lead,.tip,.tbl td{color:#222!important}
+  h1,h2,h3{color:#000!important}
+  .grad{-webkit-text-fill-color:#000;color:#000}
+}
+</style>
+</head>
+<body class="light">
+
+<div class="progress"><div class="progress-bar" id="progressBar" style="width: 100.002%;"></div></div>
+<button class="theme-btn" id="themeBtn" title="切换明暗">🌙</button>
+
+<aside class="rail" id="rail">
+  <a href="#c0" data-t="全景流水线" class=""></a>
+  <a href="#c1" data-t="01 分词" class=""></a>
+  <a href="#c2" data-t="02 向量化" class=""></a>
+  <a href="#c3" data-t="03 注意力" class=""></a>
+  <a href="#c4" data-t="04 层层堆叠" class=""></a>
+  <a href="#c5" data-t="05 概率采样" class=""></a>
+  <a href="#c6" data-t="06 自回归循环" class=""></a>
+  <a href="#c7" data-t="07 训练三阶段" class=""></a>
+  <a href="#c8" data-t="08 幻觉与边界" class="on"></a>
+</aside>
+
+<div class="wrap">
+
+<!-- ==================== HERO ==================== -->
+<header class="hero">
+  <div class="badge">🧠 交互式讲解 · 9 章 · 全部可动手玩</div>
+  <h1>大模型是怎么<span class="grad">"想"</span>的</h1>
+  <p class="sub">一句话进去，一句话出来。中间到底发生了什么？<br>把这个黑箱拆成零件，一个一个给你看。</p>
+
+  <div class="oneliner">
+    本质上，大模型就是一个把 <b>「猜下一个词」</b> 练到极致的数学函数。<br>
+    你给它一段上文，它给你全词表的概率分布 —— 然后挑一个，接上去，再猜下一个。
+  </div>
+
+  <div class="pred-demo">
+    <div class="pd-label"><span class="dot-live"></span>LIVE · 模型此刻正在做的事情</div>
+    <div class="pd-text"><span id="pdCtx">今天天气真好</span><span class="caret"></span></div>
+    <div class="pd-bars" id="pdBars" style="opacity: 1;"><div class="pd-row"><span class="pd-word">，</span><span class="pd-track"><i class="pd-fill" style="background:linear-gradient(90deg,#38bdf8,#38bdf8aa)"></i></span><span class="pd-pct">52.0%</span></div><div class="pd-row"><span class="pd-word">。</span><span class="pd-track"><i class="pd-fill" style="background:linear-gradient(90deg,#a78bfa,#a78bfaaa)"></i></span><span class="pd-pct">18.0%</span></div><div class="pd-row"><span class="pd-word">，适合</span><span class="pd-track"><i class="pd-fill" style="background:linear-gradient(90deg,#f472b6,#f472b6aa)"></i></span><span class="pd-pct">12.0%</span></div><div class="pd-row"><span class="pd-word">，想</span><span class="pd-track"><i class="pd-fill" style="background:linear-gradient(90deg,#34d399,#34d399aa)"></i></span><span class="pd-pct">9.0%</span></div><div class="pd-row"><span class="pd-word">哇</span><span class="pd-track"><i class="pd-fill" style="background:linear-gradient(90deg,#fbbf24,#fbbf24aa)"></i></span><span class="pd-pct">5.0%</span></div><div class="pd-row"><span class="pd-word">！</span><span class="pd-track"><i class="pd-fill" style="background:linear-gradient(90deg,#fb7185,#fb7185aa)"></i></span><span class="pd-pct">4.0%</span></div></div>
+    <div class="pd-hint">↑ 每 2 秒重新计算一次：十几万个候选词，每个给一个概率</div>
+  </div>
+</header>
+
+<!-- ==================== c0 全景 ==================== -->
+<section id="c0" class="reveal in">
+  <div class="eyebrow">00 / 全景</div>
+  <h2>一条数据流的完整旅程</h2>
+  <p class="lead">你敲下的那行字，会在模型内部走过这么一条链路。注意最后那个<b>回环箭头</b> —— 这是大模型和所有传统程序最不一样的地方：<b>它一次只吐一个词，然后把自己吐出来的东西当输入，再来一遍</b>。</p>
+
+  <div class="card">
+    <div class="flow">
+      <div class="flow-node"><span class="ic">⌨️</span><span class="nm">你的文字</span><span class="ds">"今天天气真"</span></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node"><span class="ic">✂️</span><span class="nm">分词</span><span class="ds">→ token</span></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node"><span class="ic">🧭</span><span class="nm">向量化</span><span class="ds">→ 向量</span></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node"><span class="ic">👁️</span><span class="nm">注意力</span><span class="ds">× N 层</span></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node"><span class="ic">📊</span><span class="nm">概率分布</span><span class="ds">全词表</span></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node"><span class="ic">🎲</span><span class="nm">采样</span><span class="ds">挑一个</span></div>
+    </div>
+    <div class="loopback"><span class="arr">↺</span> 吐出的词拼回输入，重跑整条链路 —— 循环直到吐出「结束符」</div>
+  </div>
+
+  <div class="grid4" style="margin-top:16px">
+    <div class="stat"><div class="n">1750亿</div><div class="l">GPT-3 参数量</div></div>
+    <div class="stat"><div class="n">96 层</div><div class="l">堆叠的 Transformer</div></div>
+    <div class="stat"><div class="n">~10万</div><div class="l">词表大小（token 种类）</div></div>
+    <div class="stat"><div class="n">1 词/次</div><div class="l">每次前向计算的产出</div></div>
+  </div>
+
+  <div class="tip"><b>先记住这个反直觉的点：</b>模型内部没有一个"句子"的整体表示。它有的是一串数字、一堆矩阵乘法，以及一个永远只在回答同一个问题的输出层 —— <b>下一个词最可能是什么？</b></div>
+</section>
+
+<!-- ==================== c1 分词 ==================== -->
+<section id="c1" class="reveal in">
+  <div class="eyebrow">01 / TOKENIZE</div>
+  <h2>分词：把文字切成"积木块"</h2>
+  <p class="lead">模型不认识汉字、也不认识英文字母。它只认识<b>编号</b>。所以第一步，是把你的句子切成一堆小块（token），每块查一个编号（ID）。<b>下面这个输入框可以直接改，实时看切分结果。</b></p>
+
+  <div class="card">
+    <textarea class="input-box" id="tokInput" rows="2">大模型真的理解语言吗？Transformer is powerful. 2026</textarea>
+    <div class="samples" id="tokSamples">
+      <span class="chip">今天天气真好</span>
+      <span class="chip">中华人民共和国的首都是北京</span>
+      <span class="chip">attention is all you need</span>
+      <span class="chip">人工智能AI技术2026</span>
+    </div>
+
+    <div class="tok-out" id="tokOut"><span class="tok t1" title="token ID: 21649" style="animation-delay: 0ms;"><span>中华人民共和国</span><span class="id">21649</span></span><span class="tok t5" title="token ID: 43677" style="animation-delay: 26ms;"><span>的</span><span class="id">43677</span></span><span class="tok t4" title="token ID: 24156" style="animation-delay: 52ms;"><span>首都</span><span class="id">24156</span></span><span class="tok t6" title="token ID: 23166" style="animation-delay: 78ms;"><span>是</span><span class="id">23166</span></span><span class="tok t6" title="token ID: 29038" style="animation-delay: 104ms;"><span>北京</span><span class="id">29038</span></span></div>
+
+    <div class="grid3" style="margin-top:20px">
+      <div class="stat"><div class="n" id="stChars">13</div><div class="l">字符数</div></div>
+      <div class="stat"><div class="n" id="stToks">5</div><div class="l">Token 数</div></div>
+      <div class="stat"><div class="n" id="stRatio">2.60</div><div class="l">字符 / Token</div></div>
+    </div>
+
+    <div class="tip"><b>为什么要切成碎片？</b>如果按"字"切，词表要覆盖所有字符，英文单词会变得极长且缺乏意义；如果按"词"切，词表会爆炸到几百万，还认不出没见过的词。现代模型用 <b>BPE 子词算法</b>折中：常见词整块留（如 <span class="mono">the</span>），罕见词拆开（如 <span class="mono">token</span> → <span class="mono">tok</span> + <span class="mono">en</span>）。</div>
+    <div class="tip warn"><b>中文更"贵"：</b>一个汉字通常要 1～2 个 token，而一个英文单词平均约 1.3 个 token。这直接决定了 API 计费 —— 同样一段内容，中文的 token 消耗往往更高。</div>
+  </div>
+</section>
+
+<!-- ==================== c2 向量化 ==================== -->
+<section id="c2" class="reveal in">
+  <div class="eyebrow">02 / EMBEDDING</div>
+  <h2>向量化：给每个 token 一个"意义坐标"</h2>
+  <p class="lead">编号本身毫无意义 —— 编号 37 不比编号 12 更接近编号 9。所以模型给每个 token 配了一串长长的数字（<b>词向量</b>，通常 768～12288 维）。这串数字就是它在"语义空间"里的坐标。</p>
+
+  <div class="card">
+    <h3>一个 token 在内部长什么样</h3>
+    <p style="color:var(--txt2);font-size:14.5px;margin-bottom:4px">下面是 token「<b id="vecWord">猫</b>」的向量前 24 维（真实模型有几千维，这里截取开头）。<b>点下面的词切换。</b></p>
+
+    <div class="vec-switch" id="vecSwitch">
+      <span class="chip" data-v="猫" style="border-color: var(--blue); color: var(--blue);">猫</span>
+      <span class="chip" data-v="狗" style="">狗</span>
+      <span class="chip" data-v="汽车" style="">汽车</span>
+      <span class="chip" data-v="苹果" style="">苹果</span>
+      <span class="chip" data-v="计算机" style="">计算机</span>
+    </div>
+
+    <div class="vec-vis" id="vecVis"><i class="vec-bar neg" title="dim 0 = -0.4260" style="height: 69.6263%; animation-delay: 0ms;"></i><i class="vec-bar" title="dim 1 = 0.0060" style="height: 3%; animation-delay: 22ms;"></i><i class="vec-bar neg" title="dim 2 = -0.3428" style="height: 56.0292%; animation-delay: 44ms;"></i><i class="vec-bar neg" title="dim 3 = -0.0015" style="height: 3%; animation-delay: 66ms;"></i><i class="vec-bar neg" title="dim 4 = -0.3477" style="height: 56.8313%; animation-delay: 88ms;"></i><i class="vec-bar" title="dim 5 = 0.2100" style="height: 34.3186%; animation-delay: 110ms;"></i><i class="vec-bar neg" title="dim 6 = -0.4578" style="height: 74.8257%; animation-delay: 132ms;"></i><i class="vec-bar neg" title="dim 7 = -0.3928" style="height: 64.2045%; animation-delay: 154ms;"></i><i class="vec-bar" title="dim 8 = 0.2683" style="height: 43.8535%; animation-delay: 176ms;"></i><i class="vec-bar" title="dim 9 = 0.1250" style="height: 20.4322%; animation-delay: 198ms;"></i><i class="vec-bar neg" title="dim 10 = -0.1419" style="height: 23.1988%; animation-delay: 220ms;"></i><i class="vec-bar" title="dim 11 = 0.5856" style="height: 95.7114%; animation-delay: 242ms;"></i><i class="vec-bar" title="dim 12 = 0.2217" style="height: 36.2267%; animation-delay: 264ms;"></i><i class="vec-bar neg" title="dim 13 = -0.1721" style="height: 28.131%; animation-delay: 286ms;"></i><i class="vec-bar" title="dim 14 = 0.4531" style="height: 74.0468%; animation-delay: 308ms;"></i><i class="vec-bar neg" title="dim 15 = -0.5425" style="height: 88.6654%; animation-delay: 330ms;"></i><i class="vec-bar neg" title="dim 16 = -0.1746" style="height: 28.5329%; animation-delay: 352ms;"></i><i class="vec-bar neg" title="dim 17 = -0.5267" style="height: 86.0783%; animation-delay: 374ms;"></i><i class="vec-bar neg" title="dim 18 = -0.4378" style="height: 71.5585%; animation-delay: 396ms;"></i><i class="vec-bar" title="dim 19 = 0.3215" style="height: 52.5366%; animation-delay: 418ms;"></i><i class="vec-bar neg" title="dim 20 = -0.6119" style="height: 100%; animation-delay: 440ms;"></i><i class="vec-bar" title="dim 21 = 0.1583" style="height: 25.8745%; animation-delay: 462ms;"></i><i class="vec-bar" title="dim 22 = 0.1457" style="height: 23.8066%; animation-delay: 484ms;"></i><i class="vec-bar neg" title="dim 23 = -0.1626" style="height: 26.5756%; animation-delay: 506ms;"></i></div>
+    <div class="axis"><span>dim 0</span><span>→ 每一根柱子的高度 = 一个浮点数</span><span>dim 23</span></div>
+
+    <div class="tip" style="margin-bottom:26px"><b>关键理解：</b>单个数字没意义，<b>整串数字的"方向"才有意义</b>。训练完成后，「猫」和「狗」的向量方向会天然靠近；「猫」和「汽车」则远远分开。模型从来没见过"动物"这个词，却能在空间里学出"动物"这个区域。</div>
+
+    <h3>语义空间长什么样</h3>
+    <p style="color:var(--txt2);font-size:14.5px;margin-bottom:12px">把几千维压成 2 维看一眼（示意）。<b>点任意一个点</b>，看它跟谁最亲。</p>
+    <div class="scatter-wrap" id="scatterWrap">
+      <svg id="scatter" viewBox="0 0 660 380" style="width:100%;display:block"><line x1="46" y1="334" x2="614" y2="334" stroke="var(--line2)" stroke-width="1"></line><line x1="46" y1="23" x2="46" y2="334" stroke="var(--line2)" stroke-width="1"></line><line x1="46" y1="190" x2="614" y2="190" stroke="var(--line2)" stroke-width="1" stroke-dasharray="3 5"></line><text x="614" y="360" text-anchor="end" fill="var(--txt3)" font-size="11.5" font-family="monospace">降维后的 2 个主成分方向（示意）</text><g><line x1="114.16" y1="141.04" x2="153.92000000000002" y2="123.75999999999999" stroke="#34d399" stroke-width="2.5" stroke-dasharray="6 4" stroke-linecap="round"></line></g><g class="pt dim" data-i="0" style="cursor:pointer"><circle cx="506.08000000000004" cy="132.4" r="7" fill="#38bdf8" fill-opacity="0.78" stroke="var(--bg)" stroke-width="2"></circle><text x="506.08000000000004" y="117.4" text-anchor="middle">猫</text></g><g class="pt dim" data-i="1" style="cursor:pointer"><circle cx="540.1600000000001" cy="118" r="7" fill="#38bdf8" fill-opacity="0.78" stroke="var(--bg)" stroke-width="2"></circle><text x="540.1600000000001" y="103" text-anchor="middle">狗</text></g><g class="pt dim" data-i="2" style="cursor:pointer"><circle cx="477.68" cy="100.71999999999997" r="7" fill="#38bdf8" fill-opacity="0.78" stroke="var(--bg)" stroke-width="2"></circle><text x="477.68" y="85.71999999999997" text-anchor="middle">老虎</text></g><g class="pt dim" data-i="3" style="cursor:pointer"><circle cx="557.2" cy="146.79999999999998" r="7" fill="#38bdf8" fill-opacity="0.78" stroke="var(--bg)" stroke-width="2"></circle><text x="557.2" y="131.79999999999998" text-anchor="middle">宠物</text></g><g class="pt hot" data-i="4" style="cursor:pointer"><circle cx="153.92000000000002" cy="123.75999999999999" r="7" fill="#fb923c" fill-opacity="0.78" stroke="var(--bg)" stroke-width="2"></circle><text x="153.92000000000002" y="108.75999999999999" text-anchor="middle">汽车</text></g><g class="pt hot" data-i="5" style="cursor:pointer"><circle cx="114.16" cy="141.04" r="7" fill="#fb923c" fill-opacity="0.78" stroke="var(--bg)" stroke-width="2"></circle><text x="114.16" y="126.03999999999999" text-anchor="middle">火车</text></g><g class="pt dim" data-i="6" style="cursor:pointer"><circle cx="165.28000000000003" cy="94.95999999999998" r="7" fill="#fb923c" fill-opacity="0.78" stroke="var(--bg)" stroke-width="2"></circle><text x="165.28000000000003" y="79.95999999999998" text-anchor="middle">飞机</text></g><g class="pt dim" data-i="7" style="cursor:pointer"><circle cx="375.44" cy="279.28" r="7" fill="#34d399" fill-opacity="0.78" stroke="var(--bg)" stroke-width="2"></circle><text x="375.44" y="264.28" text-anchor="middle">苹果</text></g><g class="pt dim" data-i="8" style="cursor:pointer"><circle cx="420.88" cy="262" r="7" fill="#34d399" fill-opacity="0.78" stroke="var(--bg)" stroke-width="2"></circle><text x="420.88" y="247" text-anchor="middle">香蕉</text></g><g class="pt dim" data-i="9" style="cursor:pointer"><circle cx="341.36" cy="299.44" r="7" fill="#34d399" fill-opacity="0.78" stroke="var(--bg)" stroke-width="2"></circle><text x="341.36" y="284.44" text-anchor="middle">米饭</text></g><g class="pt dim" data-i="10" style="cursor:pointer"><circle cx="216.4" cy="279.28" r="7" fill="#a78bfa" fill-opacity="0.78" stroke="var(--bg)" stroke-width="2"></circle><text x="216.4" y="264.28" text-anchor="middle">计算机</text></g><g class="pt dim" data-i="11" style="cursor:pointer"><circle cx="170.95999999999998" cy="296.56" r="7" fill="#a78bfa" fill-opacity="0.78" stroke="var(--bg)" stroke-width="2"></circle><text x="170.95999999999998" y="281.56" text-anchor="middle">算法</text></g><g class="pt dim" data-i="12" style="cursor:pointer"><circle cx="261.84000000000003" cy="308.08" r="7" fill="#a78bfa" fill-opacity="0.78" stroke="var(--bg)" stroke-width="2"></circle><text x="261.84000000000003" y="293.08" text-anchor="middle">网络</text></g></svg>
+      <div class="scatter-msg" id="scatterMsg">「火车」最近的是 <b style="color:#34d399">汽车</b>（距离 0.18）；最远的是 <b style="color:#fb7185">宠物</b>（距离 1.56） &nbsp;|&nbsp; 同语义簇共 3 个点</div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <h3>同一个 token，两个完全不同的向量</h3>
+    <p style="color:var(--txt2);font-size:14.5px;margin-bottom:6px">
+      注意：下面两张图里的「苹果」是<b>同一个 token、同一个 ID</b>。但读完句子之后，它在模型内部的向量已经变成了两副样子 ——
+      因为注意力把上下文的含义<b>加进了它自己</b>。
+    </p>
+
+    <div class="grid2" style="margin-top:18px;gap:16px">
+      <div class="ctx-card" style="border-color:rgba(52,211,153,.35)">
+        <div class="ctx-head">
+          <span class="ctx-dot" style="background:var(--green)"></span>
+          <span class="ctx-label" style="color:var(--green)">句 A · 水果义</span>
+        </div>
+        <div class="ctx-sent">我把<b class="hl-green">苹果</b>洗干净吃了</div>
+        <div class="ctx-vec" id="ctxVecA"><i class="ctx-bar g neg" title="dim 0 = -0.068" style="height: 14.5885%; animation-delay: 0ms;"></i><i class="ctx-bar g" title="dim 1 = 0.105" style="height: 22.295%; animation-delay: 18ms;"></i><i class="ctx-bar g neg" title="dim 2 = -0.177" style="height: 37.6508%; animation-delay: 36ms;"></i><i class="ctx-bar g neg" title="dim 3 = -0.415" style="height: 88.3698%; animation-delay: 54ms;"></i><i class="ctx-bar g neg" title="dim 4 = -0.034" style="height: 7.28925%; animation-delay: 72ms;"></i><i class="ctx-bar g neg" title="dim 5 = -0.077" style="height: 16.4073%; animation-delay: 90ms;"></i><i class="ctx-bar g" title="dim 6 = 0.021" style="height: 5%; animation-delay: 108ms;"></i><i class="ctx-bar g" title="dim 7 = 0.040" style="height: 8.46848%; animation-delay: 126ms;"></i><i class="ctx-bar g neg" title="dim 8 = -0.134" style="height: 28.4953%; animation-delay: 144ms;"></i><i class="ctx-bar g" title="dim 9 = 0.115" style="height: 24.5057%; animation-delay: 162ms;"></i><i class="ctx-bar g neg" title="dim 10 = -0.249" style="height: 53.1171%; animation-delay: 180ms;"></i><i class="ctx-bar g" title="dim 11 = 0.107" style="height: 22.685%; animation-delay: 198ms;"></i><i class="ctx-bar g neg" title="dim 12 = -0.230" style="height: 48.9779%; animation-delay: 216ms;"></i><i class="ctx-bar g" title="dim 13 = 0.032" style="height: 6.81129%; animation-delay: 234ms;"></i><i class="ctx-bar g" title="dim 14 = 0.016" style="height: 5%; animation-delay: 252ms;"></i><i class="ctx-bar g" title="dim 15 = 0.469" style="height: 100%; animation-delay: 270ms;"></i><i class="ctx-bar g neg" title="dim 16 = -0.242" style="height: 51.4591%; animation-delay: 288ms;"></i><i class="ctx-bar g" title="dim 17 = 0.048" style="height: 10.1622%; animation-delay: 306ms;"></i><i class="ctx-bar g" title="dim 18 = 0.024" style="height: 5.0564%; animation-delay: 324ms;"></i><i class="ctx-bar g neg" title="dim 19 = -0.119" style="height: 25.3783%; animation-delay: 342ms;"></i><i class="ctx-bar g" title="dim 20 = 0.089" style="height: 18.9386%; animation-delay: 360ms;"></i><i class="ctx-bar g neg" title="dim 21 = -0.067" style="height: 14.2312%; animation-delay: 378ms;"></i><i class="ctx-bar g" title="dim 22 = 0.338" style="height: 72.0109%; animation-delay: 396ms;"></i><i class="ctx-bar g neg" title="dim 23 = -0.437" style="height: 92.9851%; animation-delay: 414ms;"></i></div>
+        <div class="ctx-foot">语义方向被拉向 <b style="color:var(--green)">食物 / 可食用 / 甜的</b></div>
+      </div>
+
+      <div class="ctx-card" style="border-color:rgba(56,189,248,.35)">
+        <div class="ctx-head">
+          <span class="ctx-dot" style="background:var(--blue)"></span>
+          <span class="ctx-label" style="color:var(--blue)">句 B · 公司义</span>
+        </div>
+        <div class="ctx-sent"><b class="hl-blue">苹果</b>发布了新款手机</div>
+        <div class="ctx-vec" id="ctxVecB"><i class="ctx-bar b" title="dim 0 = 0.095" style="height: 25.6683%; animation-delay: 0ms;"></i><i class="ctx-bar b" title="dim 1 = 0.102" style="height: 27.5226%; animation-delay: 18ms;"></i><i class="ctx-bar b neg" title="dim 2 = -0.195" style="height: 52.6618%; animation-delay: 36ms;"></i><i class="ctx-bar b neg" title="dim 3 = -0.192" style="height: 51.9498%; animation-delay: 54ms;"></i><i class="ctx-bar b" title="dim 4 = 0.095" style="height: 25.7623%; animation-delay: 72ms;"></i><i class="ctx-bar b" title="dim 5 = 0.214" style="height: 57.8885%; animation-delay: 90ms;"></i><i class="ctx-bar b neg" title="dim 6 = -0.284" style="height: 76.772%; animation-delay: 108ms;"></i><i class="ctx-bar b" title="dim 7 = 0.074" style="height: 20.0174%; animation-delay: 126ms;"></i><i class="ctx-bar b neg" title="dim 8 = -0.370" style="height: 100%; animation-delay: 144ms;"></i><i class="ctx-bar b neg" title="dim 9 = -0.270" style="height: 72.8226%; animation-delay: 162ms;"></i><i class="ctx-bar b neg" title="dim 10 = -0.019" style="height: 5.0512%; animation-delay: 180ms;"></i><i class="ctx-bar b neg" title="dim 11 = -0.096" style="height: 25.8792%; animation-delay: 198ms;"></i><i class="ctx-bar b neg" title="dim 12 = -0.237" style="height: 64.1259%; animation-delay: 216ms;"></i><i class="ctx-bar b" title="dim 13 = 0.205" style="height: 55.479%; animation-delay: 234ms;"></i><i class="ctx-bar b neg" title="dim 14 = -0.022" style="height: 6.00953%; animation-delay: 252ms;"></i><i class="ctx-bar b" title="dim 15 = 0.233" style="height: 62.9258%; animation-delay: 270ms;"></i><i class="ctx-bar b" title="dim 16 = 0.180" style="height: 48.6367%; animation-delay: 288ms;"></i><i class="ctx-bar b" title="dim 17 = 0.271" style="height: 73.2166%; animation-delay: 306ms;"></i><i class="ctx-bar b" title="dim 18 = 0.066" style="height: 17.7292%; animation-delay: 324ms;"></i><i class="ctx-bar b neg" title="dim 19 = -0.168" style="height: 45.2596%; animation-delay: 342ms;"></i><i class="ctx-bar b neg" title="dim 20 = -0.276" style="height: 74.4614%; animation-delay: 360ms;"></i><i class="ctx-bar b neg" title="dim 21 = -0.303" style="height: 81.7653%; animation-delay: 378ms;"></i><i class="ctx-bar b" title="dim 22 = 0.061" style="height: 16.3446%; animation-delay: 396ms;"></i><i class="ctx-bar b neg" title="dim 23 = -0.287" style="height: 77.5421%; animation-delay: 414ms;"></i></div>
+        <div class="ctx-foot">语义方向被拉向 <b style="color:var(--blue)">公司 / 品牌 / 科技</b></div>
+      </div>
+    </div>
+
+    <div class="cos-box">
+      <div class="cos-canvas">
+        <svg id="cosSvg" viewBox="0 0 210 160" style="width:100%;max-width:210px;display:block"><line class="angle-line" x1="54" y1="80" x2="124.55555148367542" y2="34.415856322242625" stroke="#34d399"></line><line class="angle-line" x1="54" y1="80" x2="124.55555148367542" y2="125.58414367775737" stroke="#38bdf8"></line><path class="angle-arc" d="M 89.2777757418377 57.207928161121316 A 42 42 0 0 1 89.2777757418377 102.79207183887868"></path><circle cx="54" cy="80" r="3.5" fill="#888780"></circle><text x="133.5555514836754" y="30.415856322242625" fill="#059669" font-size="12" font-weight="600">水果义</text><text x="133.5555514836754" y="139.58414367775737" fill="#0284c7" font-size="12" font-weight="600">公司义</text><text x="104" y="84" fill="#b45309" font-size="11.5" font-family="ui-monospace,Consolas,monospace">66°</text><text x="12" y="85" fill="#888780" font-size="11" font-family="ui-monospace,Consolas,monospace">原点</text></svg>
+      </div>
+      <div class="cos-text">
+        <div class="cos-line">两者余弦相似度 <b id="cosVal">0.41</b></div>
+        <p id="cosNote">两串数字的夹角约 <b style="color:var(--amber)">66°</b> —— 明显相关，但已经分开了。</p>
+        <p style="color:var(--txt3);font-size:13px;margin-top:6px">
+          夹角越小 = 方向越接近 = 语义越相似。两个「苹果」既没有完全重合（毕竟语境差太多），也没有彼此垂直（它们终究还是同一个词），
+          而是落在中间某个位置 —— <b>这就是"一词多义"在向量空间里的样子</b>。
+        </p>
+      </div>
+    </div>
+
+    <div class="tip"><b>推一步想：</b>如果模型没有注意力机制，每个 token 只能有一个固定的向量，「苹果」就永远停在"水果"和"公司"的中间地带 —— 也就是两个都不像。
+      是<b>上下文动态改写</b>这一步，才让同一个词在不同句子里有了不同的含义。这也解释了为什么早年那种"查词典式"的词向量（word2vec）做不了真正的语言理解。</div>
+  </div>
+</section>
+
+<!-- ==================== c3 注意力 ==================== -->
+<section id="c3" class="reveal in">
+  <div class="eyebrow">03 / SELF-ATTENTION</div>
+  <h2>自注意力：每个词都回头看一眼上下文</h2>
+  <p class="lead">这是 Transformer 的心脏。核心动作只有一句话：<b>每个词都去问其他所有词 ——「你跟我有多大关系？」</b> 关系大的，信息就多拿一点。<br>
+  <b>① 点下面的任意一个词</b>看它把注意力分给了谁；<b>② 再点 H1~H8 切换不同的注意力头</b>，看同一句话被拆解成多少种关系。全部可交互。</p>
+
+  <div class="card">
+    <div class="head-tabs" id="headTabs"><span class="head-tab" style=""><span class="hid">H1</span>主谓</span><span class="head-tab on" style="border-color: rgb(167, 139, 250); color: rgb(167, 139, 250); background: rgba(167, 139, 250, 0.12);"><span class="hid">H2</span>动宾</span><span class="head-tab"><span class="hid">H3</span>相邻</span><span class="head-tab"><span class="hid">H4</span>修饰</span><span class="head-tab"><span class="hid">H5</span>均匀</span><span class="head-tab"><span class="hid">H6</span>句首</span><span class="head-tab"><span class="hid">H7</span>自身</span><span class="head-tab"><span class="hid">H8</span>后视</span></div>
+    <div class="head-desc" id="headDesc"><b>头 2 · 动宾搭配</b> —— <b>动作作用于谁。</b>「追着」几乎只盯着「毛线球」—— 换成"追着公交车"，它的注意力就会转向另一个词。</div>
+
+    <div class="attn-stage" id="attnStage">
+      <svg class="attn-svg" id="attnSvg" viewBox="0 0 903.9522094726562 229.99386596679688" width="903.9522094726562" height="229.99386596679688"><path class="attn-path show" d="M 255.078125 124.1348648071289 Q 296.0554504394531 78.66121368408203 337.03277587890625 121.93720245361328" stroke="#a78bfa" stroke-width="3.38" stroke-opacity="0.5880000000000001" style="transition-delay:0ms"></path><path class="attn-path show" d="M 255.078125 124.1348648071289 Q 341.0347671508789 66.06700500488282 426.9914093017578 126.9760971069336" stroke="#a78bfa" stroke-width="3.12" stroke-opacity="0.562" style="transition-delay:45ms"></path><path class="attn-path show" d="M 255.078125 124.1348648071289 Q 382.01593685150146 54.59227748870849 508.95374870300293 126.9760971069336" stroke="#a78bfa" stroke-width="1.56" stroke-opacity="0.406" style="transition-delay:90ms"></path><path class="attn-path show" d="M 255.078125 124.1348648071289 Q 414.9969244003296 45.35760097503662 574.9157238006592 126.9760971069336" stroke="#a78bfa" stroke-width="1.4" stroke-opacity="0.38" style="transition-delay:135ms"></path><path class="attn-path show" d="M 255.078125 124.1348648071289 Q 451.9761047363281 35.003430480957036 648.8740844726562 126.9760971069336" stroke="#a78bfa" stroke-width="1.4" stroke-opacity="0.354" style="transition-delay:180ms"></path></svg>
+      <div class="attn-words" id="attnWords"><div class="aw active" style="border-color: rgb(167, 139, 250); background: rgba(167, 139, 250, 0.15);">小猫</div><div class="aw attend" style="border-color: rgba(167, 139, 250, 0.333);">追着</div><div class="aw attend" style="border-color: rgba(244, 114, 182, 0.333);">毛线球</div><div class="aw attend" style="border-color: rgba(52, 211, 153, 0.333);">跑</div><div class="aw attend" style="border-color: rgba(251, 191, 36, 0.333);">得</div><div class="aw" style="border-color: rgba(34, 211, 238, 0.333);">飞快</div></div>
+    </div>
+
+    <div class="attn-legend" id="attnLegend" style="margin-top:22px"><div style="color:var(--txt3);font-size:12.5px;margin-bottom:10px;font-family:ui-monospace,monospace">头 2（动宾搭配）中，「小猫」把注意力分给了谁</div><div class="row"><span style="color:#a78bfa">追着</span><span class="tr"><i class="fl" style="background: linear-gradient(90deg, rgb(167, 139, 250), rgb(167, 139, 250)); width: 26%;" data-w="26"></i></span><span>26.0%</span></div><div class="row"><span style="color:#f472b6">毛线球</span><span class="tr"><i class="fl" style="background: linear-gradient(90deg, rgb(167, 139, 250), rgb(244, 114, 182)); width: 24%;" data-w="24"></i></span><span>24.0%</span></div><div class="row"><span style="color:#34d399">跑</span><span class="tr"><i class="fl" style="background: linear-gradient(90deg, rgb(167, 139, 250), rgb(52, 211, 153)); width: 12%;" data-w="12"></i></span><span>12.0%</span></div><div class="row"><span style="color:#fbbf24">得</span><span class="tr"><i class="fl" style="background: linear-gradient(90deg, rgb(167, 139, 250), rgb(251, 191, 36)); width: 10%;" data-w="10"></i></span><span>10.0%</span></div><div class="row"><span style="color:#22d3ee">飞快</span><span class="tr"><i class="fl" style="background: linear-gradient(90deg, rgb(167, 139, 250), rgb(34, 211, 238)); width: 8%;" data-w="8"></i></span><span>8.0%</span></div></div>
+
+    <div class="tip" style="margin-top:22px"><b>换个头，看到的就是完全不同的关系网。</b>同一个句子里，头 1 在追主谓、头 2 在追动宾、头 7 几乎只看自己、头 5 全员盯着句首。
+      这就是为什么模型要并行几十上百个头 —— <b>它没法事先知道该看哪种关系，所以干脆全都看一遍，再让下一层去挑有用的</b>。</div>
+
+    <h3 style="margin-top:30px">拆开看：Q / K / V 三个角色</h3>
+    <p style="color:var(--txt2);font-size:14.5px;margin-bottom:14px">每个 token 会通过三次线性变换，变成三个不同的身份。这就是注意力的全部机关。</p>
+    <div class="grid3">
+      <div class="qkv q"><span class="tag">Q · Query</span><span class="t"><b>我在找什么？</b><br>发出询问。比如「跑」在问：是谁在跑？跑的是什么？</span></div>
+      <div class="qkv k"><span class="tag">K · Key</span><span class="t"><b>我是什么？</b><br>挂牌招标。比如「小猫」挂出：名词、动物、主语。</span></div>
+      <div class="qkv v"><span class="tag">V · Value</span><span class="t"><b>我能给你什么？</b><br>实际内容。匹配成功后，把自己的信息按权重交出去。</span></div>
+    </div>
+
+    <div class="formula">Attention(Q, K, V) = softmax( Q·Kᵀ / √d ) · V</div>
+    <p style="color:var(--txt2);font-size:14px;text-align:center;margin-top:-6px">
+      Q·Kᵀ → 算两两相关度 &nbsp;|&nbsp; ÷√d → 防止数值爆炸 &nbsp;|&nbsp; softmax → 变成加起来等于 1 的权重 &nbsp;|&nbsp; ×V → 按权重加权求和
+    </p>
+
+    <div class="tip"><b>多头注意力（Multi-Head）：</b>上面这套动作会被并行做几十上百次，每套参数独立训练。所以同一个句子里，有的头在算主谓、有的头在算动宾、有的头只看位置关系 —— <b>你上面点过的 H1～H8，就是真实模型里确实存在的头类型</b>（其中"首词锚点"和"自身保留"这两类，是研究者用探针工具从真模型里挖出来的典型现象）。最后把所有头的输出拼起来，再压回原维度。GPT-3 每层有 96 个头。</div>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <h3>最后一步：8 个头到底是怎么拼回去的</h3>
+    <p style="color:var(--txt2);font-size:14.5px;margin-bottom:18px">
+      这一步最常被跳过，但它是"多头"真正成立的关键。8 个头各算各的，每个只输出 64 维 —— 它们必须先<b>拼接（concat）</b>回 512 维，
+      再经过一个线性层 <span class="mono">W<sub>O</sub></span> 做跨头混合，才得到这一层真正的输出。<b>点按钮逐步看。</b>
+    </p>
+
+    <div class="hc-stage" id="hcStage">
+      <div class="hc-item" data-step="0" style="">
+        <div class="hc-cap">① 输入向量 · 512 维（8 个头的维度还混在一起）</div>
+        <div class="hc-strip" id="hcIn"><div class="hc-seg" style="background: rgba(56, 189, 248, 0.15); color: var(--txt2); text-shadow: none;">H1</div><div class="hc-seg" style="background: rgba(167, 139, 250, 0.15); color: var(--txt2); text-shadow: none;">H2</div><div class="hc-seg" style="background: rgba(244, 114, 182, 0.15); color: var(--txt2); text-shadow: none;">H3</div><div class="hc-seg" style="background: rgba(52, 211, 153, 0.15); color: var(--txt2); text-shadow: none;">H4</div><div class="hc-seg" style="background: rgba(251, 191, 36, 0.15); color: var(--txt2); text-shadow: none;">H5</div><div class="hc-seg" style="background: rgba(34, 211, 238, 0.15); color: var(--txt2); text-shadow: none;">H6</div><div class="hc-seg" style="background: rgba(251, 146, 60, 0.15); color: var(--txt2); text-shadow: none;">H7</div><div class="hc-seg" style="background: rgba(248, 113, 113, 0.15); color: var(--txt2); text-shadow: none;">H8</div></div>
+      </div>
+
+      <div class="hc-item hc-op" data-step="1" style="">
+        <span class="ar">↓</span> 按维度均分成 8 份 · <b>每份 64 维</b> · 各自独立算注意力，彼此看不见
+      </div>
+
+      <div class="hc-item" data-step="1" style="">
+        <div class="hc-heads" id="hcHeads"><div class="hc-head hot" style="--hc: #38bdf8; --hc-bg: #38bdf81f; transition-delay: 0ms;"><div class="hn">H1</div><span class="hs">主谓</span><div class="hbar"><i></i></div><div class="hd">64 维</div></div><div class="hc-head hot" style="--hc: #a78bfa; --hc-bg: #a78bfa1f; transition-delay: 55ms;"><div class="hn">H2</div><span class="hs">动宾</span><div class="hbar"><i></i></div><div class="hd">64 维</div></div><div class="hc-head hot" style="--hc: #f472b6; --hc-bg: #f472b61f; transition-delay: 110ms;"><div class="hn">H3</div><span class="hs">相邻</span><div class="hbar"><i></i></div><div class="hd">64 维</div></div><div class="hc-head hot" style="--hc: #34d399; --hc-bg: #34d3991f; transition-delay: 165ms;"><div class="hn">H4</div><span class="hs">修饰</span><div class="hbar"><i></i></div><div class="hd">64 维</div></div><div class="hc-head hot" style="--hc: #fbbf24; --hc-bg: #fbbf241f; transition-delay: 220ms;"><div class="hn">H5</div><span class="hs">均匀</span><div class="hbar"><i></i></div><div class="hd">64 维</div></div><div class="hc-head hot" style="--hc: #22d3ee; --hc-bg: #22d3ee1f; transition-delay: 275ms;"><div class="hn">H6</div><span class="hs">句首</span><div class="hbar"><i></i></div><div class="hd">64 维</div></div><div class="hc-head hot" style="--hc: #fb923c; --hc-bg: #fb923c1f; transition-delay: 330ms;"><div class="hn">H7</div><span class="hs">自身</span><div class="hbar"><i></i></div><div class="hd">64 维</div></div><div class="hc-head hot" style="--hc: #f87171; --hc-bg: #f871711f; transition-delay: 385ms;"><div class="hn">H8</div><span class="hs">后视</span><div class="hbar"><i></i></div><div class="hd">64 维</div></div></div>
+      </div>
+
+      <div class="hc-item hc-op" data-step="2" style="">
+        <span class="ar">↓</span> 拼接 concat · 8 × 64 = <b>512 维</b> · 首尾相接，不做任何混合
+      </div>
+
+      <div class="hc-item" data-step="2" style="">
+        <div class="hc-cap">② 拼接结果 · 512 维（每一段来自一个头，颜色即来源）</div>
+        <div class="hc-strip" id="hcCat"><div class="hc-seg" style="background: rgba(56, 189, 248, 0.88);">H1</div><div class="hc-seg" style="background: rgba(167, 139, 250, 0.88);">H2</div><div class="hc-seg" style="background: rgba(244, 114, 182, 0.88);">H3</div><div class="hc-seg" style="background: rgba(52, 211, 153, 0.88);">H4</div><div class="hc-seg" style="background: rgba(251, 191, 36, 0.88);">H5</div><div class="hc-seg" style="background: rgba(34, 211, 238, 0.88);">H6</div><div class="hc-seg" style="background: rgba(251, 146, 60, 0.88);">H7</div><div class="hc-seg" style="background: rgba(248, 113, 113, 0.88);">H8</div></div>
+      </div>
+
+      <div class="hc-item hc-op" data-step="3" style="">
+        <span class="ar">↓</span> 线性层 W<sub>O</sub> · 512 × 512 · <b>全层唯一一次跨头通信</b>
+      </div>
+
+      <div class="hc-item" data-step="4" style="">
+        <div class="hc-cap">③ 本层最终输出 · 512 维（各头信息已被彻底搅匀）</div>
+        <div class="hc-strip" id="hcOut" style="background: linear-gradient(90deg, rgb(56, 189, 248) 6.3%, rgb(167, 139, 250) 18.8%, rgb(244, 114, 182) 31.3%, rgb(52, 211, 153) 43.8%, rgb(251, 191, 36) 56.3%, rgb(34, 211, 238) 68.8%, rgb(251, 146, 60) 81.3%, rgb(248, 113, 113) 93.8%);"></div>
+      </div>
+    </div>
+
+    <div style="margin-top:16px;display:flex;gap:9px;flex-wrap:wrap;align-items:center">
+      <button class="btn" id="hcNext">↻ 重新演示</button>
+      <button class="btn" id="hcAuto" style="background:transparent;color:var(--txt2);border-color:var(--line2)">⏩ 自动播放</button>
+      <button class="btn" id="hcReset" style="background:transparent;color:var(--txt2);border-color:var(--line2)">重置</button>
+      <span id="hcStatus" style="font-family:ui-monospace,Consolas,monospace;font-size:12.5px;color:var(--txt3)">阶段 5/5 · 输出 512 维</span>
+    </div>
+
+    <div class="tip" style="margin-top:20px">
+      <b>这是全篇最容易被忽略的一个事实：</b>8 个头在拆开的状态下<b>完全不知道彼此在算什么</b>。
+      头 1 在算主谓、头 2 在算动宾，它们之间没有任何连接。是 <span class="mono">W<sub>O</sub></span> 这个矩阵把 8 份结果真正搅在一起，
+      才让"主谓关系"和"动宾关系"有机会组合出更高层的含义（比如"谁对谁做了什么"）。
+      换句话说：<b>注意力负责"看"，W<sub>O</sub> 才负责"合"。少了这一步，多头就只是 8 个互不相干的单头。</b>
+    </div>
+    <div class="tip"><b>真实规模：</b>GPT-3 每层 <span class="mono">d_model = 12288</span>，96 个头，每个头 128 维。
+      那一层的 <span class="mono">W<sub>O</sub></span> 是 12288×12288，单这一个矩阵就有 <b>1.5 亿个参数</b>。
+      而 Q/K/V/O 四个矩阵加起来约 6 亿，占了整层参数量的三分之一 —— 剩下三分之二全在前馈网络里。</div>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <h3>剩下那三分之二参数在哪：前馈网络（FFN）</h3>
+    <p style="color:var(--txt2);font-size:14.5px;margin-bottom:6px">
+      注意力做完之后，每个词的向量还要<b>单独</b>穿过一个两层的前馈网络：先升维 4 倍，过一遍非线性激活，再压回原维度。
+      它占了单层参数的<b>三分之二</b>，而且有一个很反直觉的性质 —— <b>它完全不看别的词</b>。
+    </p>
+
+    <div class="ffn-iso" style="margin-top:18px">
+      <div class="ffn-iso-h">① 6 个位置同时开工，各自独立、互不通信</div>
+      <div class="ffn-picks" id="ffnPicks"><div class="ffn-pick" style="--fc: #38bdf8; --fc-bg: #38bdf81f;">小猫</div><div class="ffn-pick" style="--fc: #a78bfa; --fc-bg: #a78bfa1f;">追着</div><div class="ffn-pick" style="--fc: #f472b6; --fc-bg: #f472b61f;">毛线球</div><div class="ffn-pick" style="--fc: #34d399; --fc-bg: #34d3991f;">跑</div><div class="ffn-pick" style="--fc: #fbbf24; --fc-bg: #fbbf241f;">得</div><div class="ffn-pick on" style="--fc: #22d3ee; --fc-bg: #22d3ee1f;">飞快</div></div>
+      <div class="ffn-iso-f">
+        ↑ 点任意一个词，看它自己经历了什么。注意：6 个位置<b>共用同一套 W₁ / W₂ 权重</b>（不像注意力那样权重随内容变化），
+        但它们在整条通路里<b>从头到尾见不到彼此</b> —— 位置之间的信息交换，全部交给前面的注意力层。
+      </div>
+    </div>
+
+    <svg id="ffnSvg" viewBox="0 0 660 200" style="width:100%;display:block;margin-top:20px"><line x1="16" y1="120" x2="644" y2="120" style="stroke: var(--line2); stroke-width: 1;"></line><text x="94" y="30" text-anchor="middle" font-size="13.5" font-weight="800" style="fill: var(--txt);">输入向量</text><text x="94" y="47" text-anchor="middle" font-size="10.5" font-weight="400" style="fill: var(--txt3);">512 维 · 每柱代表 16 维</text><text x="330" y="30" text-anchor="middle" font-size="13.5" font-weight="800" style="fill: var(--txt);">隐藏层 2048 维</text><text x="330" y="47" text-anchor="middle" font-size="10.5" font-weight="400" style="fill: var(--txt3);">灰 = 激活前 · 彩 = GELU 后</text><text x="566" y="30" text-anchor="middle" font-size="13.5" font-weight="800" style="fill: var(--txt);">输出向量</text><text x="566" y="47" text-anchor="middle" font-size="10.5" font-weight="400" style="fill: var(--txt3);">512 维 · 压回原维度</text><line x1="178" y1="120" x2="224" y2="120" style="stroke: var(--txt3); stroke-width: 1.5; stroke-dasharray: 3, 3;"></line><path d="M 223 115.5 L 232 120 L 223 124.5 Z" style="fill: var(--txt3);"></path><line x1="430" y1="120" x2="476" y2="120" style="stroke: var(--txt3); stroke-width: 1.5; stroke-dasharray: 3, 3;"></line><path d="M 475 115.5 L 484 120 L 475 124.5 Z" style="fill: var(--txt3);"></path><text x="205" y="108" text-anchor="middle" font-size="12" font-weight="800" style="fill: var(--violet);">W₁</text><text x="205" y="141" text-anchor="middle" font-size="9.5" font-weight="400" style="fill: var(--txt3);">升维 4×</text><text x="457" y="108" text-anchor="middle" font-size="12" font-weight="800" style="fill: var(--violet);">W₂</text><text x="457" y="141" text-anchor="middle" font-size="9.5" font-weight="400" style="fill: var(--txt3);">压回</text><rect x="16.83" y="105.84" width="3.22" height="14.16" rx="1.30" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0ms 1 normal both running ffnGrow;"></rect><rect x="21.70" y="120.00" width="3.22" height="29.97" rx="1.30" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 9ms 1 normal both running ffnGrow;"></rect><rect x="26.58" y="97.10" width="3.22" height="22.90" rx="1.30" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 18ms 1 normal both running ffnGrow;"></rect><rect x="31.45" y="114.79" width="3.22" height="5.21" rx="1.30" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 27ms 1 normal both running ffnGrow;"></rect><rect x="36.33" y="120.00" width="3.22" height="19.59" rx="1.30" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 36ms 1 normal both running ffnGrow;"></rect><rect x="41.20" y="120.00" width="3.22" height="4.54" rx="1.30" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 45ms 1 normal both running ffnGrow;"></rect><rect x="46.08" y="120.00" width="3.22" height="6.24" rx="1.30" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 54ms 1 normal both running ffnGrow;"></rect><rect x="50.95" y="120.00" width="3.22" height="20.72" rx="1.30" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 63ms 1 normal both running ffnGrow;"></rect><rect x="55.83" y="120.00" width="3.22" height="5.14" rx="1.30" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 72ms 1 normal both running ffnGrow;"></rect><rect x="60.70" y="120.00" width="3.22" height="27.49" rx="1.30" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 81ms 1 normal both running ffnGrow;"></rect><rect x="65.58" y="74.44" width="3.22" height="45.56" rx="1.30" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 90ms 1 normal both running ffnGrow;"></rect><rect x="70.45" y="102.93" width="3.22" height="17.07" rx="1.30" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 99ms 1 normal both running ffnGrow;"></rect><rect x="75.33" y="56.00" width="3.22" height="64.00" rx="1.30" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 108ms 1 normal both running ffnGrow;"></rect><rect x="80.20" y="120.00" width="3.22" height="43.29" rx="1.30" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 117ms 1 normal both running ffnGrow;"></rect><rect x="85.08" y="103.40" width="3.22" height="16.60" rx="1.30" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 126ms 1 normal both running ffnGrow;"></rect><rect x="89.95" y="103.86" width="3.22" height="16.14" rx="1.30" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 135ms 1 normal both running ffnGrow;"></rect><rect x="94.83" y="118.35" width="3.22" height="1.65" rx="1.30" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 144ms 1 normal both running ffnGrow;"></rect><rect x="99.70" y="120.00" width="3.22" height="4.06" rx="1.30" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 153ms 1 normal both running ffnGrow;"></rect><rect x="104.58" y="114.02" width="3.22" height="5.98" rx="1.30" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 162ms 1 normal both running ffnGrow;"></rect><rect x="109.45" y="59.46" width="3.22" height="60.54" rx="1.30" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 171ms 1 normal both running ffnGrow;"></rect><rect x="114.33" y="120.00" width="3.22" height="64.00" rx="1.30" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 180ms 1 normal both running ffnGrow;"></rect><rect x="119.20" y="120.00" width="3.22" height="32.48" rx="1.30" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 189ms 1 normal both running ffnGrow;"></rect><rect x="124.08" y="120.00" width="3.22" height="36.81" rx="1.30" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 198ms 1 normal both running ffnGrow;"></rect><rect x="128.95" y="117.99" width="3.22" height="2.01" rx="1.30" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 207ms 1 normal both running ffnGrow;"></rect><rect x="133.83" y="120.00" width="3.22" height="1.81" rx="1.30" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 216ms 1 normal both running ffnGrow;"></rect><rect x="138.70" y="65.00" width="3.22" height="55.00" rx="1.30" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 225ms 1 normal both running ffnGrow;"></rect><rect x="143.58" y="84.81" width="3.22" height="35.19" rx="1.30" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 234ms 1 normal both running ffnGrow;"></rect><rect x="148.45" y="76.56" width="3.22" height="43.44" rx="1.30" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 243ms 1 normal both running ffnGrow;"></rect><rect x="153.33" y="114.19" width="3.22" height="5.81" rx="1.30" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 252ms 1 normal both running ffnGrow;"></rect><rect x="158.20" y="116.42" width="3.22" height="3.58" rx="1.30" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 261ms 1 normal both running ffnGrow;"></rect><rect x="163.08" y="120.00" width="3.22" height="35.42" rx="1.30" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 270ms 1 normal both running ffnGrow;"></rect><rect x="167.95" y="115.96" width="3.22" height="4.04" rx="1.30" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 279ms 1 normal both running ffnGrow;"></rect><rect x="236.50" y="93.07" width="1.94" height="26.93" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 330ms 1 normal both running ffnGrow;"></rect><rect x="239.44" y="67.74" width="1.94" height="52.26" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 333.5ms 1 normal both running ffnGrow;"></rect><rect x="242.37" y="120.00" width="1.94" height="4.01" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 337ms 1 normal both running ffnGrow;"></rect><rect x="245.31" y="120.00" width="1.94" height="18.46" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 340.5ms 1 normal both running ffnGrow;"></rect><rect x="248.25" y="84.70" width="1.94" height="35.30" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 344ms 1 normal both running ffnGrow;"></rect><rect x="251.19" y="120.00" width="1.94" height="2.87" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 347.5ms 1 normal both running ffnGrow;"></rect><rect x="254.12" y="83.64" width="1.94" height="36.36" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 351ms 1 normal both running ffnGrow;"></rect><rect x="257.06" y="120.00" width="1.94" height="4.04" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 354.5ms 1 normal both running ffnGrow;"></rect><rect x="260.00" y="85.13" width="1.94" height="34.87" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 358ms 1 normal both running ffnGrow;"></rect><rect x="262.94" y="56.00" width="1.94" height="64.00" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 361.5ms 1 normal both running ffnGrow;"></rect><rect x="265.87" y="120.00" width="1.94" height="15.42" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 365ms 1 normal both running ffnGrow;"></rect><rect x="268.81" y="103.16" width="1.94" height="16.84" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 368.5ms 1 normal both running ffnGrow;"></rect><rect x="271.75" y="120.00" width="1.94" height="10.43" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 372ms 1 normal both running ffnGrow;"></rect><rect x="274.69" y="112.66" width="1.94" height="7.34" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 375.5ms 1 normal both running ffnGrow;"></rect><rect x="277.62" y="120.00" width="1.94" height="21.40" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 379ms 1 normal both running ffnGrow;"></rect><rect x="280.56" y="120.00" width="1.94" height="19.72" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 382.5ms 1 normal both running ffnGrow;"></rect><rect x="283.50" y="120.00" width="1.94" height="15.89" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 386ms 1 normal both running ffnGrow;"></rect><rect x="286.44" y="90.04" width="1.94" height="29.96" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 389.5ms 1 normal both running ffnGrow;"></rect><rect x="289.37" y="120.00" width="1.94" height="39.54" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 393ms 1 normal both running ffnGrow;"></rect><rect x="292.31" y="76.70" width="1.94" height="43.30" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 396.5ms 1 normal both running ffnGrow;"></rect><rect x="295.25" y="120.00" width="1.94" height="26.87" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 400ms 1 normal both running ffnGrow;"></rect><rect x="298.19" y="120.00" width="1.94" height="13.38" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 403.5ms 1 normal both running ffnGrow;"></rect><rect x="301.12" y="83.08" width="1.94" height="36.92" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 407ms 1 normal both running ffnGrow;"></rect><rect x="304.06" y="120.00" width="1.94" height="12.81" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 410.5ms 1 normal both running ffnGrow;"></rect><rect x="307.00" y="93.66" width="1.94" height="26.34" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 414ms 1 normal both running ffnGrow;"></rect><rect x="309.94" y="119.02" width="1.94" height="0.98" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 417.5ms 1 normal both running ffnGrow;"></rect><rect x="312.87" y="120.00" width="1.94" height="34.97" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 421ms 1 normal both running ffnGrow;"></rect><rect x="315.81" y="120.00" width="1.94" height="64.00" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 424.5ms 1 normal both running ffnGrow;"></rect><rect x="318.75" y="120.00" width="1.94" height="28.88" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 428ms 1 normal both running ffnGrow;"></rect><rect x="321.69" y="120.00" width="1.94" height="23.20" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 431.5ms 1 normal both running ffnGrow;"></rect><rect x="324.62" y="120.00" width="1.94" height="2.07" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 435ms 1 normal both running ffnGrow;"></rect><rect x="327.56" y="97.39" width="1.94" height="22.61" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 438.5ms 1 normal both running ffnGrow;"></rect><rect x="330.50" y="120.00" width="1.94" height="33.65" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 442ms 1 normal both running ffnGrow;"></rect><rect x="333.44" y="118.56" width="1.94" height="1.44" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 445.5ms 1 normal both running ffnGrow;"></rect><rect x="336.37" y="74.40" width="1.94" height="45.60" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 449ms 1 normal both running ffnGrow;"></rect><rect x="339.31" y="120.00" width="1.94" height="35.99" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 452.5ms 1 normal both running ffnGrow;"></rect><rect x="342.25" y="120.00" width="1.94" height="18.09" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 456ms 1 normal both running ffnGrow;"></rect><rect x="345.19" y="120.00" width="1.94" height="10.20" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 459.5ms 1 normal both running ffnGrow;"></rect><rect x="348.12" y="63.33" width="1.94" height="56.67" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 463ms 1 normal both running ffnGrow;"></rect><rect x="351.06" y="74.74" width="1.94" height="45.26" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 466.5ms 1 normal both running ffnGrow;"></rect><rect x="354.00" y="68.85" width="1.94" height="51.15" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 470ms 1 normal both running ffnGrow;"></rect><rect x="356.94" y="98.97" width="1.94" height="21.03" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 473.5ms 1 normal both running ffnGrow;"></rect><rect x="359.87" y="78.89" width="1.94" height="41.11" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 477ms 1 normal both running ffnGrow;"></rect><rect x="362.81" y="120.00" width="1.94" height="22.66" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 480.5ms 1 normal both running ffnGrow;"></rect><rect x="365.75" y="120.00" width="1.94" height="5.79" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 484ms 1 normal both running ffnGrow;"></rect><rect x="368.69" y="118.91" width="1.94" height="1.09" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 487.5ms 1 normal both running ffnGrow;"></rect><rect x="374.56" y="120.00" width="1.94" height="44.08" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 494.5ms 1 normal both running ffnGrow;"></rect><rect x="377.50" y="120.00" width="1.94" height="4.78" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 498ms 1 normal both running ffnGrow;"></rect><rect x="380.44" y="120.00" width="1.94" height="12.91" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 501.5ms 1 normal both running ffnGrow;"></rect><rect x="383.37" y="120.00" width="1.94" height="17.64" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 505ms 1 normal both running ffnGrow;"></rect><rect x="386.31" y="120.00" width="1.94" height="14.25" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 508.5ms 1 normal both running ffnGrow;"></rect><rect x="389.25" y="120.00" width="1.94" height="1.76" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 512ms 1 normal both running ffnGrow;"></rect><rect x="395.12" y="120.00" width="1.94" height="26.27" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 519ms 1 normal both running ffnGrow;"></rect><rect x="398.06" y="120.00" width="1.94" height="16.16" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 522.5ms 1 normal both running ffnGrow;"></rect><rect x="401.00" y="120.00" width="1.94" height="31.57" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 526ms 1 normal both running ffnGrow;"></rect><rect x="403.94" y="120.00" width="1.94" height="5.54" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 529.5ms 1 normal both running ffnGrow;"></rect><rect x="406.87" y="114.36" width="1.94" height="5.64" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 533ms 1 normal both running ffnGrow;"></rect><rect x="409.81" y="120.00" width="1.94" height="11.26" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 536.5ms 1 normal both running ffnGrow;"></rect><rect x="412.75" y="104.81" width="1.94" height="15.19" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 540ms 1 normal both running ffnGrow;"></rect><rect x="415.69" y="106.63" width="1.94" height="13.37" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 543.5ms 1 normal both running ffnGrow;"></rect><rect x="418.62" y="120.00" width="1.94" height="3.74" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 547ms 1 normal both running ffnGrow;"></rect><rect x="421.56" y="120.00" width="1.94" height="0.74" rx="0.97" opacity="0.5" style="fill: var(--txt3); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 550.5ms 1 normal both running ffnGrow;"></rect><rect x="236.50" y="79.17" width="1.94" height="40.83" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 760ms 1 normal both running ffnGrow;"></rect><rect x="239.44" y="62.92" width="1.94" height="57.08" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 763.5ms 1 normal both running ffnGrow;"></rect><rect x="242.37" y="95.21" width="1.94" height="24.79" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 767ms 1 normal both running ffnGrow;"></rect><rect x="245.31" y="108.84" width="1.94" height="11.16" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 770.5ms 1 normal both running ffnGrow;"></rect><rect x="248.25" y="73.08" width="1.94" height="46.92" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 774ms 1 normal both running ffnGrow;"></rect><rect x="251.19" y="82.60" width="1.94" height="37.40" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 777.5ms 1 normal both running ffnGrow;"></rect><rect x="254.12" y="76.19" width="1.94" height="43.81" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 781ms 1 normal both running ffnGrow;"></rect><rect x="257.06" y="96.63" width="1.94" height="23.37" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 784.5ms 1 normal both running ffnGrow;"></rect><rect x="260.00" y="62.34" width="1.94" height="57.66" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 788ms 1 normal both running ffnGrow;"></rect><rect x="262.94" y="58.73" width="1.94" height="61.27" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 791.5ms 1 normal both running ffnGrow;"></rect><rect x="265.87" y="95.52" width="1.94" height="24.48" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 795ms 1 normal both running ffnGrow;"></rect><rect x="268.81" y="83.57" width="1.94" height="36.43" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 798.5ms 1 normal both running ffnGrow;"></rect><rect x="271.75" y="96.20" width="1.94" height="23.80" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 802ms 1 normal both running ffnGrow;"></rect><rect x="274.69" y="88.48" width="1.94" height="31.52" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 805.5ms 1 normal both running ffnGrow;"></rect><rect x="277.62" y="103.52" width="1.94" height="16.48" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 809ms 1 normal both running ffnGrow;"></rect><rect x="280.56" y="103.11" width="1.94" height="16.89" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 812.5ms 1 normal both running ffnGrow;"></rect><rect x="283.50" y="101.57" width="1.94" height="18.43" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 816ms 1 normal both running ffnGrow;"></rect><rect x="286.44" y="65.83" width="1.94" height="54.17" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 819.5ms 1 normal both running ffnGrow;"></rect><rect x="289.37" y="116.63" width="1.94" height="3.37" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 823ms 1 normal both running ffnGrow;"></rect><rect x="292.31" y="73.54" width="1.94" height="46.46" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 826.5ms 1 normal both running ffnGrow;"></rect><rect x="295.25" y="102.42" width="1.94" height="17.58" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 830ms 1 normal both running ffnGrow;"></rect><rect x="298.19" y="96.51" width="1.94" height="23.49" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 833.5ms 1 normal both running ffnGrow;"></rect><rect x="301.12" y="77.97" width="1.94" height="42.03" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 837ms 1 normal both running ffnGrow;"></rect><rect x="304.06" y="107.92" width="1.94" height="12.08" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 840.5ms 1 normal both running ffnGrow;"></rect><rect x="307.00" y="75.02" width="1.94" height="44.98" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 844ms 1 normal both running ffnGrow;"></rect><rect x="309.94" y="89.81" width="1.94" height="30.19" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 847.5ms 1 normal both running ffnGrow;"></rect><rect x="312.87" y="120.00" width="1.94" height="2.19" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 851ms 1 normal both running ffnGrow;"></rect><rect x="315.81" y="120.00" width="1.94" height="6.36" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 854.5ms 1 normal both running ffnGrow;"></rect><rect x="318.75" y="114.51" width="1.94" height="5.49" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 858ms 1 normal both running ffnGrow;"></rect><rect x="321.69" y="101.43" width="1.94" height="18.57" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 861.5ms 1 normal both running ffnGrow;"></rect><rect x="324.62" y="96.22" width="1.94" height="23.78" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 865ms 1 normal both running ffnGrow;"></rect><rect x="327.56" y="77.39" width="1.94" height="42.61" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 868.5ms 1 normal both running ffnGrow;"></rect><rect x="330.50" y="106.50" width="1.94" height="13.50" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 872ms 1 normal both running ffnGrow;"></rect><rect x="333.44" y="89.32" width="1.94" height="30.68" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 875.5ms 1 normal both running ffnGrow;"></rect><rect x="336.37" y="66.93" width="1.94" height="53.07" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 879ms 1 normal both running ffnGrow;"></rect><rect x="339.31" y="120.00" width="1.94" height="6.61" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 882.5ms 1 normal both running ffnGrow;"></rect><rect x="342.25" y="105.84" width="1.94" height="14.16" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 886ms 1 normal both running ffnGrow;"></rect><rect x="345.19" y="103.19" width="1.94" height="16.81" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 889.5ms 1 normal both running ffnGrow;"></rect><rect x="348.12" y="61.73" width="1.94" height="58.27" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 893ms 1 normal both running ffnGrow;"></rect><rect x="351.06" y="65.70" width="1.94" height="54.30" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 896.5ms 1 normal both running ffnGrow;"></rect><rect x="354.00" y="62.61" width="1.94" height="57.39" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 900ms 1 normal both running ffnGrow;"></rect><rect x="356.94" y="69.70" width="1.94" height="50.30" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 903.5ms 1 normal both running ffnGrow;"></rect><rect x="359.87" y="71.74" width="1.94" height="48.26" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 907ms 1 normal both running ffnGrow;"></rect><rect x="362.81" y="108.39" width="1.94" height="11.61" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 910.5ms 1 normal both running ffnGrow;"></rect><rect x="365.75" y="85.08" width="1.94" height="34.92" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 914ms 1 normal both running ffnGrow;"></rect><rect x="368.69" y="93.59" width="1.94" height="26.41" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 917.5ms 1 normal both running ffnGrow;"></rect><rect x="371.62" y="85.87" width="1.94" height="34.13" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 921ms 1 normal both running ffnGrow;"></rect><rect x="374.56" y="120.00" width="1.94" height="1.41" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 924.5ms 1 normal both running ffnGrow;"></rect><rect x="377.50" y="87.71" width="1.94" height="32.29" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 928ms 1 normal both running ffnGrow;"></rect><rect x="380.44" y="98.82" width="1.94" height="21.18" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 931.5ms 1 normal both running ffnGrow;"></rect><rect x="383.37" y="101.33" width="1.94" height="18.67" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 935ms 1 normal both running ffnGrow;"></rect><rect x="386.31" y="100.53" width="1.94" height="19.47" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 938.5ms 1 normal both running ffnGrow;"></rect><rect x="389.25" y="81.72" width="1.94" height="38.28" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 942ms 1 normal both running ffnGrow;"></rect><rect x="392.19" y="94.95" width="1.94" height="25.05" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 945.5ms 1 normal both running ffnGrow;"></rect><rect x="395.12" y="114.92" width="1.94" height="5.08" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 949ms 1 normal both running ffnGrow;"></rect><rect x="398.06" y="107.98" width="1.94" height="12.02" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 952.5ms 1 normal both running ffnGrow;"></rect><rect x="401.00" y="111.40" width="1.94" height="8.60" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 956ms 1 normal both running ffnGrow;"></rect><rect x="403.94" y="88.70" width="1.94" height="31.30" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 959.5ms 1 normal both running ffnGrow;"></rect><rect x="406.87" y="84.89" width="1.94" height="35.11" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 963ms 1 normal both running ffnGrow;"></rect><rect x="409.81" y="103.09" width="1.94" height="16.91" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 966.5ms 1 normal both running ffnGrow;"></rect><rect x="412.75" y="80.67" width="1.94" height="39.33" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 970ms 1 normal both running ffnGrow;"></rect><rect x="415.69" y="79.24" width="1.94" height="40.76" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 973.5ms 1 normal both running ffnGrow;"></rect><rect x="418.62" y="90.13" width="1.94" height="29.87" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 977ms 1 normal both running ffnGrow;"></rect><rect x="421.56" y="87.32" width="1.94" height="32.68" rx="0.97" style="fill: rgb(34, 211, 238); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 980.5ms 1 normal both running ffnGrow;"></rect><rect x="488.83" y="120.00" width="3.22" height="9.77" rx="1.30" style="fill: var(--violet); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 1120ms 1 normal both running ffnGrow;"></rect><rect x="493.70" y="120.00" width="3.22" height="64.00" rx="1.30" style="fill: var(--violet); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 1129ms 1 normal both running ffnGrow;"></rect><rect x="498.58" y="120.00" width="3.22" height="29.33" rx="1.30" style="fill: var(--violet); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 1138ms 1 normal both running ffnGrow;"></rect><rect x="503.45" y="120.00" width="3.22" height="1.86" rx="1.30" style="fill: var(--violet); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 1147ms 1 normal both running ffnGrow;"></rect><rect x="508.33" y="56.13" width="3.22" height="63.87" rx="1.30" style="fill: var(--violet); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 1156ms 1 normal both running ffnGrow;"></rect><rect x="513.20" y="61.55" width="3.22" height="58.45" rx="1.30" style="fill: var(--violet); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 1165ms 1 normal both running ffnGrow;"></rect><rect x="518.08" y="120.00" width="3.22" height="33.77" rx="1.30" style="fill: var(--violet); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 1174ms 1 normal both running ffnGrow;"></rect><rect x="522.95" y="120.00" width="3.22" height="19.45" rx="1.30" style="fill: var(--violet); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 1183ms 1 normal both running ffnGrow;"></rect><rect x="527.83" y="117.42" width="3.22" height="2.58" rx="1.30" style="fill: var(--violet); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 1192ms 1 normal both running ffnGrow;"></rect><rect x="537.58" y="107.38" width="3.22" height="12.62" rx="1.30" style="fill: var(--violet); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 1210ms 1 normal both running ffnGrow;"></rect><rect x="542.45" y="105.95" width="3.22" height="14.05" rx="1.30" style="fill: var(--violet); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 1219ms 1 normal both running ffnGrow;"></rect><rect x="547.33" y="120.00" width="3.22" height="9.52" rx="1.30" style="fill: var(--violet); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 1228ms 1 normal both running ffnGrow;"></rect><rect x="552.20" y="120.00" width="3.22" height="19.39" rx="1.30" style="fill: var(--violet); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 1237ms 1 normal both running ffnGrow;"></rect><rect x="557.08" y="120.00" width="3.22" height="26.12" rx="1.30" style="fill: var(--violet); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 1246ms 1 normal both running ffnGrow;"></rect><rect x="561.95" y="56.00" width="3.22" height="64.00" rx="1.30" style="fill: var(--violet); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 1255ms 1 normal both running ffnGrow;"></rect><rect x="566.83" y="111.09" width="3.22" height="8.91" rx="1.30" style="fill: var(--violet); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 1264ms 1 normal both running ffnGrow;"></rect><rect x="571.70" y="120.00" width="3.22" height="44.80" rx="1.30" style="fill: var(--violet); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 1273ms 1 normal both running ffnGrow;"></rect><rect x="576.58" y="120.00" width="3.22" height="2.26" rx="1.30" style="fill: var(--violet); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 1282ms 1 normal both running ffnGrow;"></rect><rect x="581.45" y="62.43" width="3.22" height="57.57" rx="1.30" style="fill: var(--violet); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 1291ms 1 normal both running ffnGrow;"></rect><rect x="586.33" y="120.00" width="3.22" height="7.75" rx="1.30" style="fill: var(--violet); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 1300ms 1 normal both running ffnGrow;"></rect><rect x="591.20" y="120.00" width="3.22" height="26.16" rx="1.30" style="fill: var(--violet); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 1309ms 1 normal both running ffnGrow;"></rect><rect x="596.08" y="93.18" width="3.22" height="26.82" rx="1.30" style="fill: var(--violet); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 1318ms 1 normal both running ffnGrow;"></rect><rect x="600.95" y="81.55" width="3.22" height="38.45" rx="1.30" style="fill: var(--violet); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 1327ms 1 normal both running ffnGrow;"></rect><rect x="605.83" y="100.33" width="3.22" height="19.67" rx="1.30" style="fill: var(--violet); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 1336ms 1 normal both running ffnGrow;"></rect><rect x="610.70" y="120.00" width="3.22" height="25.19" rx="1.30" style="fill: var(--violet); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 1345ms 1 normal both running ffnGrow;"></rect><rect x="615.58" y="120.00" width="3.22" height="10.93" rx="1.30" style="fill: var(--violet); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 1354ms 1 normal both running ffnGrow;"></rect><rect x="620.45" y="116.61" width="3.22" height="3.39" rx="1.30" style="fill: var(--violet); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 1363ms 1 normal both running ffnGrow;"></rect><rect x="625.33" y="120.00" width="3.22" height="7.68" rx="1.30" style="fill: var(--violet); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 1372ms 1 normal both running ffnGrow;"></rect><rect x="630.20" y="114.10" width="3.22" height="5.90" rx="1.30" style="fill: var(--violet); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 1381ms 1 normal both running ffnGrow;"></rect><rect x="635.08" y="120.00" width="3.22" height="17.01" rx="1.30" style="fill: var(--violet); transform-box: fill-box; transform-origin: 50% 0%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 1390ms 1 normal both running ffnGrow;"></rect><rect x="639.95" y="70.79" width="3.22" height="49.21" rx="1.30" style="fill: var(--violet); transform-box: fill-box; transform-origin: 50% 100%; animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) 1399ms 1 normal both running ffnGrow;"></rect></svg>
+
+    <div class="ffn-stat" id="ffnStat">「<span class="w" style="color:#22d3ee">飞快</span>」的 2048 个隐藏神经元里，有 <b>1,056</b> 个的输出被 GELU 压到不足原来的一半（51.6%）。它们的输入全是负值 —— 非线性把这一半直接摁了下去，只有另一半继续往后传。</div>
+
+    <div class="ffn-nums">
+      <div class="fn"><b>205 万</b><span>本页演示规模 · 每层 FFN（512×2048×2）</span></div>
+      <div class="fn"><b>12.08 亿</b><span>GPT-3 规模 · 每层 FFN（12288×49152×2）</span></div>
+      <div class="fn"><b>576 倍</b><span>真实模型比演示大出的倍数</span></div>
+    </div>
+
+    <div class="tip" style="margin-top:20px">
+      <b>为什么非得先升维再降维？</b>在 512 维空间里，"苹果"和"电脑"这类概念挤得很难分开。先把它拉到 2048 维 ——
+      相当于把一团打结的线摊到一张更大的桌面上 —— 高维空间才有足够余地让非线性激活<b>把纠缠的模式切开</b>，切完再压回来。
+      关键在中间那个非线性：如果没有它，W₁ 乘 W₂ 可以直接合并成一个矩阵，<b>堆再多层也等价于一层</b>。是 GELU 打断了这种可合并性，深度才有了意义。
+    </div>
+
+    <div class="tip">
+      <b>它其实是一本"查得到的字典"。</b>研究者把 W₁ 的每一行看作一个<b>模式探测器</b>，W₂ 里对应的那一列看作一段<b>可写入的内容</b>：
+      输入一旦跟某个模式对上，那一行就被点亮，对应内容随即加进输出。模型记住的"法国的首都是巴黎"这类事实性知识，很大一部分就存在这些矩阵里 ——
+      这也是它不查数据库就能答对事实题的原因。<br>
+      <b>和注意力的分工：</b>注意力负责<b>词与词之间横向通信</b>（谁该看谁），FFN 负责<b>每个词自己纵向深加工</b>（把信息嚼碎、提特征）。
+      一个管交流，一个管消化，在 96 层里严格交替进行。
+    </div>
+  </div>
+</section>
+
+<!-- ==================== c4 堆叠 ==================== -->
+<section id="c4" class="reveal in">
+  <div class="eyebrow">04 / DEEP STACK</div>
+  <h2>层层堆叠：96 层在干什么</h2>
+  <p class="lead">一个 Transformer 块 = 多头注意力 + 前馈网络 + 残差连接。这种块被<b>复制堆叠几十到上百层</b>。信号从下往上穿过，每一层都在上一层的理解之上，再抽象一层。</p>
+
+  <div class="card">
+    <div class="stack" id="stack"><div class="layer io"><span class="idx">00</span><span class="nm">输入：Token 向量 + 位置编码</span></div><div class="layer"><span class="idx">01</span><span class="nm">第 1 层 · 多头注意力</span><span class="bar"><i></i></span></div><div class="layer"><span class="idx">02</span><span class="nm">第 1 层 · 前馈网络</span><span class="bar"><i></i></span></div><div class="layer"><span class="idx">03</span><span class="nm">第 2 层 · 多头注意力</span><span class="bar"><i></i></span></div><div class="layer"><span class="idx">04</span><span class="nm">第 2 层 · 前馈网络</span><span class="bar"><i></i></span></div><div class="layer"><span class="idx">05</span><span class="nm">…</span><span class="bar"><i></i></span></div><div class="layer"><span class="idx">06</span><span class="nm">第 47 层 · 多头注意力</span><span class="bar"><i></i></span></div><div class="layer"><span class="idx">07</span><span class="nm">第 47 层 · 前馈网络</span><span class="bar"><i></i></span></div><div class="layer hot"><span class="idx">08</span><span class="nm">第 48 层 · 前馈网络</span><span class="bar"><i></i></span></div><div class="layer io"><span class="idx">09</span><span class="nm">输出：取最后一个位置的向量</span></div></div>
+    <div class="tip" style="margin-top:22px">
+      <b>经验规律：</b>浅层（前 1/3）偏向处理<b>语法和词形</b>（词性、搭配）；中层处理<b>句法结构</b>（谁修饰谁、指代关系）；深层（后 1/3）才开始形成<b>抽象语义和任务意图</b>。所以"让模型先思考再回答"（思维链）确实有效 —— 它让深层网络多跑几轮。
+    </div>
+    <div class="tip"><b>残差连接（图中 <span class="mono">+</span> 号）：</b>每块的输出 = 输入 + 变换结果 —— 就是上面那条绕开计算的 <span class="mono">+</span> 通道。它是能把网络堆到上百层的关键，下面单独拆开讲。</div>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <h3>为什么能堆到 96 层：残差连接 + LayerNorm</h3>
+    <p style="color:var(--txt2);font-size:14.5px;margin-bottom:6px">
+      上一节那两个计算（注意力、FFN）并不是首尾直接串起来的，中间夹着一条<b>旁路</b>。这条旁路叫<b>残差连接</b>，
+      它让每一层的输出变成 <span class="mono">输入 + 变换结果</span>，而不是替换输入。<b>没有它，96 层根本训不起来。</b>
+    </p>
+
+    <div class="res-flow">
+      <svg id="resFlowSvg" viewBox="0 0 660 115" style="width:100%;display:block"><rect x="24" y="44" width="72" height="40" rx="10" style="fill: var(--panel2); stroke: var(--line2); stroke-width: 1;"></rect><text x="60" y="64" text-anchor="middle" font-size="15" font-weight="800" dominant-baseline="central" style="fill: var(--txt);">x</text><path d="M 112 64 L 396 64" style="fill: none; stroke: var(--amber); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;"></path><path d="M 112 64 L 112 30 L 140 30" style="fill: none; stroke: var(--txt3); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round;"></path><rect x="140" y="10" width="160" height="40" rx="10" style="fill: var(--panel2); stroke: var(--line2); stroke-width: 1;"></rect><text x="220" y="30" text-anchor="middle" font-size="12.5" font-weight="700" dominant-baseline="central" style="fill: var(--violet);">子层 · 注意力 / FFN</text><path d="M 300 30 L 410 30 L 410 50" style="fill: none; stroke: var(--txt3); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round;"></path><circle cx="410" cy="64" r="14" style="fill: var(--panel2); stroke: var(--amber); stroke-width: 1.8;"></circle><path d="M 404 64 L 416 64" style="fill: none; stroke: var(--amber); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;"></path><path d="M 410 58 L 410 70" style="fill: none; stroke: var(--amber); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;"></path><path d="M 424 64 L 442 64" style="fill: none; stroke: var(--txt3); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round;"></path><rect x="446" y="44" width="112" height="40" rx="10" style="fill: var(--panel2); stroke: var(--line2); stroke-width: 1;"></rect><text x="502" y="64" text-anchor="middle" font-size="12.5" font-weight="700" dominant-baseline="central" style="fill: var(--blue);">LayerNorm</text><path d="M 558 64 L 574 64" style="fill: none; stroke: var(--txt3); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round;"></path><path d="M 574 59.5 L 583 64 L 574 68.5 Z" style="fill: var(--txt3);"></path><rect x="586" y="44" width="62" height="40" rx="10" style="fill: var(--panel2); stroke: var(--line2); stroke-width: 1;"></rect><text x="617" y="64" text-anchor="middle" font-size="12.5" font-weight="700" dominant-baseline="central" style="fill: var(--txt);">输出</text><text x="254" y="100" text-anchor="middle" font-size="11.5" font-weight="400" style="fill: var(--amber);">旁路：原样通过，不做任何计算</text></svg>
+    </div>
+
+    <div class="res-lab">
+      <div class="res-ctrl">
+        <span class="lb">信号传到第</span>
+        <b id="resLVal">75</b>
+        <span class="lb">层</span>
+        <input type="range" id="resRange" min="1" max="96" value="96" aria-label="层数">
+      </div>
+      <svg id="resSvg" viewBox="0 0 660 250" style="width:100%;display:block"><line x1="78" y1="196" x2="638" y2="196" style="stroke: var(--line2); stroke-width: 1;"></line><text x="69" y="196" text-anchor="end" font-size="10.5" font-weight="400" dominant-baseline="central" style="fill: var(--txt3);">10⁻⁶</text><line x1="78" y1="174.75" x2="638" y2="174.75" style="stroke: var(--line2); stroke-width: 0.6;"></line><line x1="78" y1="153.5" x2="638" y2="153.5" style="stroke: var(--line2); stroke-width: 1;"></line><text x="69" y="153.5" text-anchor="end" font-size="10.5" font-weight="400" dominant-baseline="central" style="fill: var(--txt3);">10⁻⁴</text><line x1="78" y1="132.25" x2="638" y2="132.25" style="stroke: var(--line2); stroke-width: 0.6;"></line><line x1="78" y1="111" x2="638" y2="111" style="stroke: var(--line2); stroke-width: 1;"></line><text x="69" y="111" text-anchor="end" font-size="10.5" font-weight="400" dominant-baseline="central" style="fill: var(--txt3);">10⁻²</text><line x1="78" y1="89.75" x2="638" y2="89.75" style="stroke: var(--line2); stroke-width: 0.6;"></line><line x1="78" y1="68.5" x2="638" y2="68.5" style="stroke: var(--line2); stroke-width: 1;"></line><text x="69" y="68.5" text-anchor="end" font-size="10.5" font-weight="400" dominant-baseline="central" style="fill: var(--txt3);">1</text><line x1="78" y1="47.25" x2="638" y2="47.25" style="stroke: var(--line2); stroke-width: 0.6;"></line><line x1="78" y1="26" x2="638" y2="26" style="stroke: var(--line2); stroke-width: 1;"></line><text x="69" y="26" text-anchor="end" font-size="10.5" font-weight="400" dominant-baseline="central" style="fill: var(--txt3);">10²</text><text x="69" y="16" text-anchor="end" font-size="11" font-weight="400" style="fill: var(--txt3);">信号强度</text><line x1="78" y1="196" x2="638" y2="196" style="stroke: var(--txt3); stroke-width: 1;"></line><line x1="78" y1="196" x2="78" y2="200" style="stroke: var(--txt3); stroke-width: 1;"></line><text x="78" y="212" text-anchor="middle" font-size="10.5" font-weight="400" style="fill: var(--txt3);">1</text><line x1="213.57894736842104" y1="196" x2="213.57894736842104" y2="200" style="stroke: var(--txt3); stroke-width: 1;"></line><text x="213.57894736842104" y="212" text-anchor="middle" font-size="10.5" font-weight="400" style="fill: var(--txt3);">24</text><line x1="355.05263157894734" y1="196" x2="355.05263157894734" y2="200" style="stroke: var(--txt3); stroke-width: 1;"></line><text x="355.05263157894734" y="212" text-anchor="middle" font-size="10.5" font-weight="400" style="fill: var(--txt3);">48</text><line x1="496.5263157894737" y1="196" x2="496.5263157894737" y2="200" style="stroke: var(--txt3); stroke-width: 1;"></line><text x="496.5263157894737" y="212" text-anchor="middle" font-size="10.5" font-weight="400" style="fill: var(--txt3);">72</text><line x1="638" y1="196" x2="638" y2="200" style="stroke: var(--txt3); stroke-width: 1;"></line><text x="638" y="212" text-anchor="middle" font-size="10.5" font-weight="400" style="fill: var(--txt3);">96</text><text x="358" y="234" text-anchor="middle" font-size="11.5" font-weight="400" style="fill: var(--txt3);">层数 L —— 信号从第 1 层传到第 L 层</text><path d="M78.0 69.5 L83.9 70.4 L89.8 71.4 L95.7 72.4 L101.6 73.4 L107.5 74.3 L113.4 75.3 L119.3 76.3 L125.2 77.3 L131.1 78.2 L136.9 79.2 L142.8 80.2 L148.7 81.1 L154.6 82.1 L160.5 83.1 L166.4 84.1 L172.3 85.0 L178.2 86.0 L184.1 87.0 L190.0 87.9 L195.9 88.9 L201.8 89.9 L207.7 90.9 L213.6 91.8 L219.5 92.8 L225.4 93.8 L231.3 94.8 L237.2 95.7 L243.1 96.7 L248.9 97.7 L254.8 98.6 L260.7 99.6 L266.6 100.6 L272.5 101.6 L278.4 102.5 L284.3 103.5 L290.2 104.5 L296.1 105.4 L302.0 106.4 L307.9 107.4 L313.8 108.4 L319.7 109.3 L325.6 110.3 L331.5 111.3 L337.4 112.3 L343.3 113.2 L349.2 114.2 L355.1 115.2 L360.9 116.1 L366.8 117.1 L372.7 118.1 L378.6 119.1 L384.5 120.0 L390.4 121.0 L396.3 122.0 L402.2 123.0 L408.1 123.9 L414.0 124.9 L419.9 125.9 L425.8 126.8 L431.7 127.8 L437.6 128.8 L443.5 129.8 L449.4 130.7 L455.3 131.7 L461.2 132.7 L467.1 133.6 L472.9 134.6 L478.8 135.6 L484.7 136.6 L490.6 137.5 L496.5 138.5 L502.4 139.5 L508.3 140.5 L514.2 141.4 L520.1 142.4 L526.0 143.4 L531.9 144.3 L537.8 145.3 L543.7 146.3 L549.6 147.3 L555.5 148.2 L561.4 149.2 L567.3 150.2 L573.2 151.1 L579.1 152.1 L584.9 153.1 L590.8 154.1 L596.7 155.0 L602.6 156.0 L608.5 157.0 L614.4 158.0 L620.3 158.9 L626.2 159.9 L632.1 160.9 L638.0 161.8" style="fill: none; stroke: var(--red); stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 567.571; stroke-dashoffset: 567.571;"></path><path d="M78.0 65.9 L83.9 63.9 L89.8 62.3 L95.7 60.9 L101.6 59.7 L107.5 58.6 L113.4 57.7 L119.3 56.8 L125.2 56.0 L131.1 55.3 L136.9 54.6 L142.8 53.9 L148.7 53.4 L154.6 52.8 L160.5 52.3 L166.4 51.8 L172.3 51.3 L178.2 50.9 L184.1 50.4 L190.0 50.0 L195.9 49.6 L201.8 49.3 L207.7 48.9 L213.6 48.6 L219.5 48.2 L225.4 47.9 L231.3 47.6 L237.2 47.3 L243.1 47.0 L248.9 46.7 L254.8 46.4 L260.7 46.2 L266.6 45.9 L272.5 45.7 L278.4 45.4 L284.3 45.2 L290.2 44.9 L296.1 44.7 L302.0 44.5 L307.9 44.3 L313.8 44.1 L319.7 43.9 L325.6 43.7 L331.5 43.5 L337.4 43.3 L343.3 43.1 L349.2 42.9 L355.1 42.7 L360.9 42.5 L366.8 42.4 L372.7 42.2 L378.6 42.0 L384.5 41.8 L390.4 41.7 L396.3 41.5 L402.2 41.4 L408.1 41.2 L414.0 41.1 L419.9 40.9 L425.8 40.8 L431.7 40.6 L437.6 40.5 L443.5 40.3 L449.4 40.2 L455.3 40.1 L461.2 39.9 L467.1 39.8 L472.9 39.7 L478.8 39.5 L484.7 39.4 L490.6 39.3 L496.5 39.2 L502.4 39.0 L508.3 38.9 L514.2 38.8 L520.1 38.7 L526.0 38.6 L531.9 38.4 L537.8 38.3 L543.7 38.2 L549.6 38.1 L555.5 38.0 L561.4 37.9 L567.3 37.8 L573.2 37.7 L579.1 37.6 L584.9 37.5 L590.8 37.4 L596.7 37.3 L602.6 37.2 L608.5 37.1 L614.4 37.0 L620.3 36.9 L626.2 36.8 L632.1 36.7 L638.0 36.6" style="fill: none; stroke: var(--amber); stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 561.654; stroke-dashoffset: 561.654;"></path><path d="M78.0 68.5 L83.9 68.5 L89.8 68.5 L95.7 68.5 L101.6 68.5 L107.5 68.5 L113.4 68.5 L119.3 68.5 L125.2 68.5 L131.1 68.5 L136.9 68.5 L142.8 68.5 L148.7 68.5 L154.6 68.5 L160.5 68.5 L166.4 68.5 L172.3 68.5 L178.2 68.5 L184.1 68.5 L190.0 68.5 L195.9 68.5 L201.8 68.5 L207.7 68.5 L213.6 68.5 L219.5 68.5 L225.4 68.5 L231.3 68.5 L237.2 68.5 L243.1 68.5 L248.9 68.5 L254.8 68.5 L260.7 68.5 L266.6 68.5 L272.5 68.5 L278.4 68.5 L284.3 68.5 L290.2 68.5 L296.1 68.5 L302.0 68.5 L307.9 68.5 L313.8 68.5 L319.7 68.5 L325.6 68.5 L331.5 68.5 L337.4 68.5 L343.3 68.5 L349.2 68.5 L355.1 68.5 L360.9 68.5 L366.8 68.5 L372.7 68.5 L378.6 68.5 L384.5 68.5 L390.4 68.5 L396.3 68.5 L402.2 68.5 L408.1 68.5 L414.0 68.5 L419.9 68.5 L425.8 68.5 L431.7 68.5 L437.6 68.5 L443.5 68.5 L449.4 68.5 L455.3 68.5 L461.2 68.5 L467.1 68.5 L472.9 68.5 L478.8 68.5 L484.7 68.5 L490.6 68.5 L496.5 68.5 L502.4 68.5 L508.3 68.5 L514.2 68.5 L520.1 68.5 L526.0 68.5 L531.9 68.5 L537.8 68.5 L543.7 68.5 L549.6 68.5 L555.5 68.5 L561.4 68.5 L567.3 68.5 L573.2 68.5 L579.1 68.5 L584.9 68.5 L590.8 68.5 L596.7 68.5 L602.6 68.5 L608.5 68.5 L614.4 68.5 L620.3 68.5 L626.2 68.5 L632.1 68.5 L638.0 68.5" style="fill: none; stroke: var(--green); stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 560; stroke-dashoffset: 560;"></path><line x1="514.2105263157895" y1="26" x2="514.2105263157895" y2="196" style="stroke: var(--txt3); stroke-width: 1; stroke-dasharray: 3, 3;"></line><circle cx="514.2105263157895" cy="141.42600058107598" r="4.5" style="fill: var(--red); stroke: var(--panel2); stroke-width: 1.5;"></circle><circle cx="514.2105263157895" cy="38.79377481571919" r="4.5" style="fill: var(--amber); stroke: var(--panel2); stroke-width: 1.5;"></circle><circle cx="514.2105263157895" cy="68.5" r="4.5" style="fill: var(--green); stroke: var(--panel2); stroke-width: 1.5;"></circle></svg>
+      <div class="res-legend">
+        <span><i style="background:var(--red)"></i>无残差</span>
+        <span><i style="background:var(--amber)"></i>只有残差（无 LayerNorm）</span>
+        <span><i style="background:var(--green)"></i>残差 + LayerNorm</span>
+      </div>
+      <div class="res-read" id="resRead"><div class="rr"><div class="h"><i style="background:var(--red)"></i>无残差</div><div class="v" style="color:var(--red)">3.7×10⁻⁴</div><div class="s">只剩原信号的 0.0370%</div></div><div class="rr"><div class="h"><i style="background:var(--amber)"></i>只有残差 · 无 LN</div><div class="v" style="color:var(--amber)">25.00</div><div class="s">数值膨胀到 25.0 倍</div></div><div class="rr"><div class="h"><i style="background:var(--green)"></i>残差 + LayerNorm</div><div class="v" style="color:var(--green)">1.00</div><div class="s">稳定在 1 附近，不涨不消</div></div></div>
+    </div>
+
+    <div class="tip" style="margin-top:18px">
+      <b>残差真正改变了什么：每层从"重写"变成"微调"。</b>没有残差，第 40 层必须把前 39 层的成果全部重算一遍才有用 —— 中途任何一层没学好，前面的全白费。
+      有了残差，第 40 层只需要输出一个<b>增量（Δ）</b>，原始信息始终原样躺在主通道里。
+      更要紧的是反向传播：梯度回传时那条旁路提供了一条<b>恒等通路</b>，梯度可以几乎无损耗地直达第 1 层，不会被 96 个矩阵连乘衰减成 0。
+      拖动上面的滑块，红线的下坠就是这种衰减。
+    </div>
+
+    <div class="tip">
+      <b>那为什么必须配 LayerNorm？</b>看曲线里那条橙色线 —— 残差是"加法"，每层都往上加一点，数值尺度会随层数一路漂移膨胀。
+      LayerNorm 每层都把数值拉回标准尺度（均值归零、方差归一），这才把累加摁住，曲线变成绿色那条稳稳的直线。
+      <br><b>分工很清楚：残差解决"梯度能不能传下去"，LayerNorm 解决"传下去会不会失控"。</b>两者缺一不可 —— 只加残差，深层数值会飘；只加 LayerNorm，梯度照样消失。
+      <br>顺带一提：LayerNorm 放在子层<b>之前</b>还是<b>之后</b>（Pre-LN / Post-LN）差别很大，GPT-3 用的是 Pre-LN，这也是它能堆到 96 层还稳定训练的原因之一。
+    </div>
+  </div>
+</section>
+
+<!-- ==================== c5 采样 ==================== -->
+<section id="c5" class="reveal in">
+  <div class="eyebrow">05 / LOGITS → SAMPLING</div>
+  <h2>概率与采样：到底挑哪个词</h2>
+  <p class="lead">最后一层输出是全词表每个词的"原始得分"（<b>logits</b>）。经过 softmax 变成概率后，就要做决定了。<b>拖动下面的温度滑块 —— 概率分布会实时重算（真算，不是假的）。</b></p>
+
+  <div class="card">
+    <div class="slider-row">
+      <span style="color:var(--txt2);font-size:14px;white-space:nowrap">温度 T =</span>
+      <div class="temp-val" id="tempVal">1.00</div>
+      <input type="range" id="tempSlider" min="0.1" max="2" step="0.05" value="1">
+      <span style="font-family:ui-monospace,Consolas,monospace;font-size:12.5px;color:var(--txt3)">0.1 死板 ←→ 2.0 放飞</span>
+    </div>
+
+    <p style="color:var(--txt2);font-size:14px;margin-bottom:16px">上文：<b class="mono">今天天气真 _</b></p>
+    <div class="samp-bars" id="sampBars"><div class="sb-row"><span class="sb-word">好</span><span class="sb-track"><i class="sb-fill" style="width: 66.7391%;"></i></span><span class="sb-pct">66.7%</span></div><div class="sb-row"><span class="sb-word">不错</span><span class="sb-track"><i class="sb-fill" style="width: 20.1014%;"></i></span><span class="sb-pct">20.1%</span></div><div class="sb-row"><span class="sb-word">热</span><span class="sb-track"><i class="sb-fill" style="width: 9.03215%;"></i></span><span class="sb-pct">9.0%</span></div><div class="sb-row"><span class="sb-word">冷</span><span class="sb-track"><i class="sb-fill" style="width: 3.00654%;"></i></span><span class="sb-pct">3.0%</span></div><div class="sb-row"><span class="sb-word">糟</span><span class="sb-track"><i class="sb-fill" style="width: 0.819378%;"></i></span><span class="sb-pct">0.8%</span></div><div class="sb-row"><span class="sb-word">啊</span><span class="sb-track"><i class="sb-fill" style="width: 0.4%;"></i></span><span class="sb-pct">0.3%</span></div></div>
+
+    <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+      <button class="btn" id="sampBtn">🎲 按当前概率抽一个</button>
+      <button class="btn" id="sampReset" style="background:transparent;color:var(--txt2);border-color:var(--line2)">重置</button>
+      <span style="font-family:ui-monospace,Consolas,monospace;font-size:12.5px;color:var(--txt3)" id="sampNote">常规：按模型学到的真实分布采样</span>
+    </div>
+    <div class="samp-out" id="sampOut">p(word) = exp(logit / T) / Σ exp(logit / T)</div>
+
+    <div class="grid3" style="margin-top:22px">
+      <div class="kvv"><h3 style="color:var(--blue);font-size:14.5px">T → 0</h3><p style="color:var(--txt2);font-size:13.5px">永远选概率最高的那个（贪心）。稳定、可复现，但容易死板、复读、创造力差。</p></div>
+      <div class="kvv"><h3 style="color:var(--amber);font-size:14.5px">T ≈ 1</h3><p style="color:var(--txt2);font-size:13.5px">按模型学到的真实分布采样。日常对话、通用写作的默认档位。</p></div>
+      <div class="kvv"><h3 style="color:var(--red);font-size:14.5px">T → 2</h3><p style="color:var(--txt2);font-size:13.5px">低概率词也被大幅抬升。更有创意，但也更容易跑偏、胡说。</p></div>
+    </div>
+
+    <h3 style="margin-top:28px">另外两把剪刀：Top-k 与 Top-p</h3>
+    <p style="color:var(--txt2);font-size:14.5px">温度决定"分布多平"，这两者决定"留几个候选"。</p>
+    <div class="tbl-wrap" style="margin-top:10px;overflow-x:auto">
+    <table class="tbl">
+      <tbody><tr><th>策略</th><th>做法</th><th>效果</th></tr>
+      <tr><td>Top-k</td><td>只保留概率最高的 k 个（如 k=50），其余归零后重新归一化</td><td>简单粗暴地砍掉长尾垃圾词，但 k 固定，不适合"有时候只有 3 个合理候选"的场景</td></tr>
+      <tr><td>Top-p（核采样）</td><td>按概率从高到低累加，攒到 0.9（或 0.95）就停，只在这堆词里抽</td><td>候选池动态伸缩 —— 模型越确定，池子越小。目前最主流</td></tr>
+      <tr><td>重复惩罚</td><td>已出现过的词，logit 打折</td><td>压制复读机倾向，代价是可能回避必要的重复词</td></tr>
+    </tbody></table>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== c6 自回归 ==================== -->
+<section id="c6" class="reveal in">
+  <div class="eyebrow">06 / AUTOREGRESSIVE LOOP</div>
+  <h2>自回归：一句话是怎么长出来的</h2>
+  <p class="lead">模型<b>没有</b>"先想好整句再吐出来"的能力。它一次只能决定一个 token，然后把刚吐的这个词接回输入末尾，<b>重跑一遍整个网络</b>，再决定下一个。</p>
+
+  <div class="card">
+    <div class="gen-box" id="genBox"><span class="gen-tok t0" style="margin-right: 4px;">人工智能</span><span class="gen-tok t1" style="margin-right: 4px;">正在</span><span class="gen-tok t2" style="margin-right: 4px;">深刻</span><span class="gen-tok t3" style="margin-right: 4px;">改变</span><span class="gen-tok t4" style="margin-right: 4px;">我们</span><span class="gen-tok t5" style="margin-right: 4px;">理解</span><span class="gen-tok t6" style="margin-right: 4px;">世界</span><span class="gen-tok t7" style="margin-right: 4px;">的</span><span class="gen-tok t0" style="margin-right: 4px;">方式</span><span class="gen-tok t1" style="margin-right: 4px;">。</span><span class="mono" style="color: var(--green); font-size: 14px; margin-left: 8px;">[EOS] 生成结束</span></div>
+    <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
+      <button class="btn" id="genBtn">▶ 再来一次</button>
+      <button class="btn" id="genClear" style="background:transparent;color:var(--txt2);border-color:var(--line2)">清空</button>
+    </div>
+    <div class="step-log" id="stepLog"><div>step 01 &nbsp;输入长度 <b>1</b> token &nbsp;→&nbsp; 输出 <b>人工智能</b></div><div>step 02 &nbsp;输入长度 <b>2</b> token &nbsp;→&nbsp; 输出 <b>正在</b></div><div>step 03 &nbsp;输入长度 <b>3</b> token &nbsp;→&nbsp; 输出 <b>深刻</b></div><div>step 04 &nbsp;输入长度 <b>4</b> token &nbsp;→&nbsp; 输出 <b>改变</b></div><div>step 05 &nbsp;输入长度 <b>5</b> token &nbsp;→&nbsp; 输出 <b>我们</b></div><div>step 06 &nbsp;输入长度 <b>6</b> token &nbsp;→&nbsp; 输出 <b>理解</b></div><div>step 07 &nbsp;输入长度 <b>7</b> token &nbsp;→&nbsp; 输出 <b>世界</b></div><div>step 08 &nbsp;输入长度 <b>8</b> token &nbsp;→&nbsp; 输出 <b>的</b></div><div>step 09 &nbsp;输入长度 <b>9</b> token &nbsp;→&nbsp; 输出 <b>方式</b></div><div>step 10 &nbsp;输入长度 <b>10</b> token &nbsp;→&nbsp; 输出 <b>。</b></div><div><b>✓ 完成</b> —— 共 10 步前向计算，每步都重跑了整条网络</div></div>
+
+    <div class="tip" style="margin-top:20px"><b>所以，为什么它慢？</b>生成第 500 个 token 时，前面 499 个 token 全都要重新参与注意力计算 —— 计算量随长度<b>平方级</b>增长。工程上的救命稻草是 <b>KV Cache</b>：把历史 token 算过的 Key 和 Value 缓存下来，每步只算新词那一份，把平方复杂度压回线性。这是所有推理框架的头号优化。</div>
+    <div class="tip warn"><b>另一个副产品：</b>因为是逐词"接龙"，模型<b>无法回头修改</b>已经吐出的内容。开头选错一个词，后面只能沿着这个错误继续圆场 —— 这是很多逻辑崩坏和"越描越错"的根源。</div>
+  </div>
+</section>
+
+<!-- ==================== c7 训练 ==================== -->
+<section id="c7" class="reveal in">
+  <div class="eyebrow">07 / TRAINING</div>
+  <h2>训练三阶段：它怎么学会这一切</h2>
+  <p class="lead">前面讲的都是"推理"（模型已训练完，在回答你）。而这些能力，是靠三个阶段一步步喂出来的。</p>
+
+  <div class="tl">
+    <div class="tl-item">
+      <div class="card">
+        <h3>① 预训练 Pre-training <span class="pill">读万卷书</span></h3>
+        <p style="color:var(--txt2);font-size:14.5px">拿互联网级别的海量文本（数万亿 token），做一件极简单的事：<b>遮住下一个词，让它猜，猜错了调参数</b>。这个动作重复几个月、几万张显卡。</p>
+        <div class="kv"><span>目标函数</span><span>预测下一个 token（交叉熵）</span></div>
+        <div class="kv"><span>学到的东西</span><span>语法 + 事实 + 推理模式 + 世界常识</span></div>
+        <div class="kv"><span>产物</span><span>一个"续写能力极强"的基座模型（Base Model）</span></div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="card">
+        <h3>② 监督微调 SFT <span class="pill">学规矩</span></h3>
+        <p style="color:var(--txt2);font-size:14.5px">基座模型只会"续写"，你跟它说话它会继续编你的话。所以要拿几万到几十万条<b>人类写好的（提问 → 优质回答）</b>示范数据去教它：被问到时，该以助手的身份作答。</p>
+        <div class="kv"><span>数据量</span><span>万～十万量级（远小于预训练）</span></div>
+        <div class="kv"><span>学到的东西</span><span>对话格式、指令遵循、拒绝有害请求</span></div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="card">
+        <h3>③ 对齐 RLHF / DPO <span class="pill">对齐偏好</span></h3>
+        <p style="color:var(--txt2);font-size:14.5px">同一问题让模型生成多个回答，人类<b>排序</b>（A 比 B 好）。用这些偏好数据训练一个"奖励模型"，再用强化学习（或更简单的 DPO 直接优化）让模型倾向于产出人类更喜欢的回答。</p>
+        <div class="kv"><span>学到的东西</span><span>有用、诚实、无害；语气、详略、安全性</span></div>
+        <div class="kv"><span>副作用</span><span>可能出现"谄媚"（顺着用户说）和过度拒绝</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tip"><b>回到那个反直觉的点：</b>模型从未被直接教过"什么是猫""什么是因果"。它只是被逼着把"下一个词猜得更准"，而这些能力，是从海量文本的统计规律里<b>自己长出来</b>的。这也解释了为什么它能举一反三，却也会一本正经地胡说。</div>
+</section>
+
+<!-- ==================== c8 幻觉 ==================== -->
+<section id="c8" class="reveal in">
+  <div class="eyebrow">08 / LIMITS</div>
+  <h2>幻觉与边界：为什么会一本正经地胡说</h2>
+  <p class="lead">理解了前面的机制，幻觉就不再神秘 —— 它不是"故障"，而是这套机制的<b>必然副产品</b>。</p>
+
+  <div class="grid2 vs" style="gap:14px;align-items:stretch">
+    <div class="card" style="border-color:rgba(52,211,153,.3)">
+      <h3 style="color:var(--green)">📚 搜索引擎 / 数据库</h3>
+      <p style="color:var(--txt2);font-size:14.5px">存的是<b>事实条目</b>。找到就返回，找不到就明说"没有结果"。<br>不会编造，因为它根本没有"生成"这个动作。</p>
+    </div>
+    <div class="card" style="border-color:rgba(251,113,133,.3)">
+      <h3 style="color:var(--red)">🧠 大语言模型</h3>
+      <p style="color:var(--txt2);font-size:14.5px">存的是<b>语言的统计规律</b>。它永远会输出一个"最像答案的文本"，<br>哪怕正确答案并不存在 —— 因为它必须给一个概率分布。</p>
+    </div>
+    <div class="vs-badge">VS</div>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <h3>三大成因</h3>
+    <div class="kv"><span>① 概率本质</span><span>目标是"像真的"，不是"是真的"</span></div>
+    <div class="kv"><span>② 数据质量</span><span>训练语料里本身就有错误、过时、矛盾的信息</span></div>
+    <div class="kv"><span>③ 对齐偏差</span><span>RLHF 奖励"自信流畅的回答"，惩罚"我不知道"</span></div>
+
+    <h3 style="margin-top:26px">工程上怎么压制</h3>
+    <div class="tbl-wrap" style="overflow-x:auto">
+    <table class="tbl">
+      <tbody><tr><th>手段</th><th>思路</th></tr>
+      <tr><td>RAG 检索增强</td><td>先从可信文档里查出相关段落，塞进上下文，让模型"照着材料答"。把闭卷考试变成开卷考试 —— 目前性价比最高的方案</td></tr>
+      <tr><td>工具调用</td><td>算数交给计算器，查实时信息交给搜索 API。让模型只负责"决定调用什么"和"组织语言"</td></tr>
+      <tr><td>思维链 CoT</td><td>强制先输出推理过程再给结论。让深层网络多跑几轮，显著降低推理类错误</td></tr>
+      <tr><td>降低温度</td><td>事实类任务把 T 调到 0.1～0.3，牺牲多样性换稳定性</td></tr>
+      <tr><td>引用与校验</td><td>要求标注出处，再用另一个流程验证引用是否真实存在</td></tr>
+    </tbody></table>
+    </div>
+  </div>
+
+  <div class="tip warn" style="margin-top:16px"><b>一条实用心法：</b>把大模型当成一位<b>阅读量极大、反应极快、但从不查证、且永远不承认自己不知道</b>的实习生。它的产出是<b>草稿</b>，不是<b>结论</b>。事实、数字、法条、引用 —— 一律要回到一手来源核对。</div>
+</section>
+
+<!-- ==================== 速查表 ==================== -->
+<section id="c9" class="reveal in">
+  <div class="eyebrow">总结 / CHEAT SHEET</div>
+  <h2>一页速查</h2>
+  <div class="card">
+    <div class="tbl-wrap" style="overflow-x:auto">
+    <table class="tbl">
+      <tbody><tr><th>环节</th><th>在干什么</th><th>一句话类比</th></tr>
+      <tr><td>分词</td><td>文字 → token ID 序列</td><td>把整句话拆成乐高积木</td></tr>
+      <tr><td>向量化</td><td>token ID → 高维向量</td><td>给每块积木标上三维坐标</td></tr>
+      <tr><td>位置编码</td><td>注入顺序信息</td><td>给积木贴上"第几块"的标签</td></tr>
+      <tr><td>自注意力</td><td>每个词按相关度吸收上下文</td><td>开会时每个人听谁的发言</td></tr>
+      <tr><td>前馈网络</td><td>逐位置做非线性变换</td><td>每个人私下消化笔记</td></tr>
+      <tr><td>残差连接</td><td>输出 = 输入 + 变换</td><td>保证原始信息不会中途丢失</td></tr>
+      <tr><td>堆叠 N 层</td><td>反复抽象，层层深入</td><td>从认字 → 懂语法 → 悟意图</td></tr>
+      <tr><td>输出层</td><td>全词表 → logits → 概率</td><td>开出十几万个候选的赔率表</td></tr>
+      <tr><td>采样</td><td>温度 / Top-k / Top-p 挑一个</td><td>按赔率下注，未必押最热的</td></tr>
+      <tr><td>自回归</td><td>吐出的词接回输入，循环</td><td>写填空题，一次只填一格</td></tr>
+      <tr><td>预训练</td><td>海量文本上练"猜下一个词"</td><td>读了整个图书馆</td></tr>
+      <tr><td>SFT + RLHF</td><td>学对话格式 + 对齐人类偏好</td><td>上岗培训 + 价值观校准</td></tr>
+    </tbody></table>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <b>🐾 交互式讲解</b> · 所有动画均为原生 CSS / JS 实现，无外部依赖<br>
+  数据为示意值，不影响原理准确性 · 按 <span class="mono">Ctrl/Cmd + P</span> 可直接打印为浅色讲义
+</footer>
+
+</div>
+
+<script>
+/* ============================================================
+   0. 通用工具
+   ============================================================ */
+const $  = (s, r) => (r || document).querySelector(s);
+const $$ = (s, r) => Array.from((r || document).querySelectorAll(s));
+const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+
+/* 主题切换 */
+(function(){
+  const btn = $('#themeBtn');
+  const saved = localStorage.getItem('llm-theme');
+  if (saved === 'light') { document.body.classList.add('light'); btn.textContent = '🌙'; }
+  btn.addEventListener('click', () => {
+    document.body.classList.toggle('light');
+    const isLight = document.body.classList.contains('light');
+    btn.textContent = isLight ? '🌙' : '☀️';
+    localStorage.setItem('llm-theme', isLight ? 'light' : 'dark');
+  });
+})();
+
+/* 顶部进度条 + 入场动画 + 右侧导航高亮 */
+(function(){
+  const bar = $('#progressBar');
+  const links = $$('#rail a');
+  const secs  = links.map(a => $(a.getAttribute('href'))).filter(Boolean);
+
+  function onScroll(){
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+    let cur = 0;
+    secs.forEach((s, i) => { if (s.getBoundingClientRect().top <= window.innerHeight * 0.42) cur = i; });
+    links.forEach((a, i) => a.classList.toggle('on', i === cur));
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  const io = new IntersectionObserver(es => {
+    es.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.remove('pending');
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  $$('.reveal').forEach(el => { el.classList.add('pending'); io.observe(el); });
+})();
+
+/* ============================================================
+   1. HERO —— 逐词预测演示
+   ============================================================ */
+(function(){
+  const ctxEl = $('#pdCtx'), barsEl = $('#pdBars');
+  const palette = ['#38bdf8','#a78bfa','#f472b6','#34d399','#fbbf24','#fb7185'];
+
+  const steps = [
+    { ctx:'今天天气真',   cands:[['好',.46],['不错',.21],['热',.14],['冷',.08],['棒',.06],['怪',.05]] },
+    { ctx:'今天天气真好', cands:[['，',.52],['。',.18],['，适合',.12],['，想',.09],['哇',.05],['！',.04]] },
+    { ctx:'今天天气真好，', cands:[['适合',.31],['阳光',.22],['我们',.17],['我',.12],['大家',.10],['正好',.08]] },
+    { ctx:'今天天气真好，适合', cands:[['出去',.38],['到',.22],['晒',.16],['去',.13],['散步',.07],['运动',.04]] },
+    { ctx:'今天天气真好，适合出去', cands:[['走走',.33],['散步',.26],['玩',.18],['晒晒太阳',.13],['转转',.10]] },
+    { ctx:'今天天气真好，适合出去走走。', cands:[['（生成结束）',1.00]] }
+  ];
+
+  let si = 0;
+  function render(i){
+    const step = steps[i];
+    ctxEl.textContent = step.ctx;
+    barsEl.innerHTML = '';
+    step.cands.forEach((c, j) => {
+      const row = document.createElement('div');
+      row.className = 'pd-row';
+      row.innerHTML =
+        '<span class="pd-word">' + c[0] + '</span>' +
+        '<span class="pd-track"><i class="pd-fill" style="background:linear-gradient(90deg,' + palette[j%6] + ',' + palette[j%6] + 'aa)"></i></span>' +
+        '<span class="pd-pct">' + (c[1]*100).toFixed(1) + '%</span>';
+      barsEl.appendChild(row);
+      const fill = row.querySelector('.pd-fill');
+      requestAnimationFrame(() => setTimeout(() => { fill.style.width = (c[1]*100) + '%'; }, 60 + j*70));
+    });
+  }
+
+  render(0);
+  setInterval(() => {
+    si = (si + 1) % steps.length;
+    if (si === 0) { barsEl.style.opacity = '0'; setTimeout(() => { barsEl.style.opacity = '1'; render(0); }, 260); }
+    else render(si);
+  }, 2100);
+})();
+
+/* ============================================================
+   2. 分词演示
+   ============================================================ */
+(function(){
+  const input = $('#tokInput'), out = $('#tokOut');
+
+  const CJK_RE = /[\u3400-\u4DBF\u4E00-\u9FFF\uF900-\uFAFF]/;
+  // 模拟 BPE 的常用词表（贪心最长匹配）
+  const VOCAB = [
+    '中华人民共和国','人工智能','大模型','天气','语言','理解','模型','智能','人工','技术',
+    '今天','明天','首都','北京','大语言','数据','训练','神经','网络','学习','深度',
+    '计算机','编程','代码','计算','真的','可以','什么','怎么','我们','他们','这个','那个',
+    '但是','因为','所以','如果','已经','正在','一个','一下','一起','了解','知道','发现',
+    '增加','提高','完成','开始','结束','问题','方法','方式','时间','地方','东西','事情',
+    '能力','水平','世界','系统','方式','基础','核心','关键','重要','主要','非常','特别'
+  ];
+  const VOCAB_SET = VOCAB.slice().sort((a,b) => b.length - a.length);
+
+  function tokenize(text){
+    const res = [];
+    let i = 0;
+    while (i < text.length) {
+      const ch = text[i];
+      // 英文 / 拉丁字母：4 字符一组（模拟子词切分）
+      if (/[A-Za-z]/.test(ch)) {
+        let j = i; while (j < text.length && /[A-Za-z']/.test(text[j])) j++;
+        const w = text.slice(i, j);
+        if (w.length <= 4) res.push(w);
+        else { for (let k = 0; k < w.length; k += 4) res.push(w.slice(k, k + 4)); }
+        i = j; continue;
+      }
+      // 数字：3 位一组
+      if (/[0-9]/.test(ch)) {
+        let j = i; while (j < text.length && /[0-9]/.test(text[j])) j++;
+        const w = text.slice(i, j);
+        for (let k = 0; k < w.length; k += 3) res.push(w.slice(k, k + 3));
+        i = j; continue;
+      }
+      // 空白：合并成一块
+      if (/\s/.test(ch)) {
+        let j = i; while (j < text.length && /\s/.test(text[j])) j++;
+        res.push({ ws: true, v: text.slice(i, j) });
+        i = j; continue;
+      }
+      // 中文：贪心最长匹配
+      if (CJK_RE.test(ch)) {
+        let hit = null;
+        for (const w of VOCAB_SET) {
+          if (w.length > 1 && text.startsWith(w, i)) { hit = w; break; }
+        }
+        if (hit) { res.push(hit); i += hit.length; }
+        else { res.push(ch); i += 1; }
+        continue;
+      }
+      // 标点等
+      res.push(ch); i += 1;
+    }
+    return res;
+  }
+
+  /* 伪 ID：稳定哈希 */
+  function pseudoId(s){
+    let h = 2166136261;
+    const t = (typeof s === 'string') ? s : s.v;
+    for (let i = 0; i < t.length; i++) { h ^= t.charCodeAt(i); h = Math.imul(h, 16777619); }
+    return Math.abs(h) % 50256;
+  }
+
+  function render(){
+    const text = input.value;
+    const toks = tokenize(text);
+    out.innerHTML = '';
+    let real = 0;
+    toks.forEach((t, idx) => {
+      const isWs = typeof t === 'object';
+      const val = isWs ? (t.v === '\n' ? '\\n' : t.v) : t;
+      if (!isWs) real++;
+      const id = pseudoId(t);
+      const el = document.createElement('span');
+      el.className = 'tok t' + (id % 8) + (isWs ? ' ws' : '');
+      el.style.animationDelay = (idx * 26) + 'ms';
+      if (isWs) el.setAttribute('data-ws', '1');
+      el.innerHTML = '<span>' + val.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;') +
+                     '</span><span class="id">' + id + '</span>';
+      el.title = 'token ID: ' + id;
+      out.appendChild(el);
+    });
+    const chars = text.replace(/\s/g, '').length || 1;
+    $('#stChars').textContent = text.length;
+    $('#stToks').textContent  = real;
+    $('#stRatio').textContent = (text.length / (real || 1)).toFixed(2);
+  }
+
+  input.addEventListener('input', render);
+  $$('#tokSamples .chip').forEach(c => c.addEventListener('click', () => {
+    input.value = c.textContent; render();
+  }));
+  render();
+})();
+
+/* ============================================================
+   3. 向量可视化
+   ============================================================ */
+(function(){
+  const vis = $('#vecVis'), wordEl = $('#vecWord');
+
+  // 用固定种子生成"看起来有语义"的伪向量
+  const seeds = { '猫':7, '狗':19, '汽车':131, '苹果':271, '计算机':389 };
+  const DIMS = 24;
+
+  function genVec(seed){
+    const arr = [];
+    let s = seed * 9301;
+    for (let i = 0; i < DIMS; i++) {
+      s = (s * 9301 + 49297) % 233280;
+      let v = (s / 233280) * 2 - 1;
+      // 让相邻维度有相关性，看起来更像真实 embedding
+      v = v * 0.75 + Math.sin(i * 0.6 + seed) * 0.35;
+      arr.push(clamp(v, -1, 1));
+    }
+    return arr;
+  }
+
+  function draw(word, animate){
+    wordEl.textContent = word;
+    const v = genVec(seeds[word] || 42);
+    vis.innerHTML = '';
+    const maxAbs = Math.max.apply(null, v.map(Math.abs));
+    v.forEach((val, i) => {
+      const h = Math.max(3, (Math.abs(val) / maxAbs) * 100);
+      const b = document.createElement('i');
+      b.className = 'vec-bar' + (val < 0 ? ' neg' : '');
+      b.style.height = h + '%';
+      b.title = 'dim ' + i + ' = ' + val.toFixed(4);
+      if (animate) b.style.animationDelay = (i * 22) + 'ms';
+      vis.appendChild(b);
+    });
+  }
+
+  $$('#vecSwitch .chip').forEach(c => c.addEventListener('click', () => {
+    $$('#vecSwitch .chip').forEach(x => {
+      x.style.borderColor = ''; x.style.color = '';
+    });
+    c.style.borderColor = 'var(--blue)'; c.style.color = 'var(--blue)';
+    draw(c.dataset.v, true);
+  }));
+  draw('猫', true);
+})();
+
+/* ---- 语义空间散点 ---- */
+(function(){
+  const svg = $('#scatter'), msg = $('#scatterMsg');
+  const W = 660, H = 380, PAD = 46;
+
+  // 预设坐标（-1 ~ 1），分成若干语义簇
+  const pts = [
+    { w:'猫',   x: 0.62, y: 0.40, g:'animal' },
+    { w:'狗',   x: 0.74, y: 0.50, g:'animal' },
+    { w:'老虎', x: 0.52, y: 0.62, g:'animal' },
+    { w:'宠物', x: 0.80, y: 0.30, g:'animal' },
+    { w:'汽车', x:-0.62, y: 0.46, g:'vehicle' },
+    { w:'火车', x:-0.76, y: 0.34, g:'vehicle' },
+    { w:'飞机', x:-0.58, y: 0.66, g:'vehicle' },
+    { w:'苹果', x: 0.16, y:-0.62, g:'food' },
+    { w:'香蕉', x: 0.32, y:-0.50, g:'food' },
+    { w:'米饭', x: 0.04, y:-0.76, g:'food' },
+    { w:'计算机', x:-0.40, y:-0.62, g:'tech' },
+    { w:'算法',   x:-0.56, y:-0.74, g:'tech' },
+    { w:'网络',   x:-0.24, y:-0.82, g:'tech' }
+  ];
+  const groupColor = { animal:'#38bdf8', vehicle:'#fb923c', food:'#34d399', tech:'#a78bfa' };
+  const sx = v => PAD + (v + 1) / 2 * (W - PAD * 2);
+  const sy = v => H - PAD - (v + 1) / 2 * (H - PAD * 2);
+
+  const NS = 'http://www.w3.org/2000/svg';
+  function el(n, attrs){
+    const e = document.createElementNS(NS, n);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    return e;
+  }
+
+  // 坐标轴
+  svg.appendChild(el('line', { x1:PAD, y1:H-PAD, x2:W-PAD, y2:H-PAD, stroke:'var(--line2)', 'stroke-width':1 }));
+  svg.appendChild(el('line', { x1:PAD, y1:PAD/2, x2:PAD, y2:H-PAD, stroke:'var(--line2)', 'stroke-width':1 }));
+  svg.appendChild(el('line', { x1:PAD, y1:H-PAD-((H-PAD*2)/2), x2:W-PAD, y2:H-PAD-((H-PAD*2)/2), stroke:'var(--line2)', 'stroke-width':1, 'stroke-dasharray':'3 5' }));
+  const axLbl = el('text', { x:W-PAD, y:H-PAD+26, 'text-anchor':'end', fill:'var(--txt3)', 'font-size':11.5, 'font-family':'monospace' });
+  axLbl.textContent = '降维后的 2 个主成分方向（示意）';
+  svg.appendChild(axLbl);
+
+  const linkLayer = el('g', {}); svg.appendChild(linkLayer);
+
+  pts.forEach((p, i) => {
+    const g = el('g', { class:'pt', 'data-i':i, style:'cursor:pointer' });
+    const c = el('circle', {
+      cx: sx(p.x), cy: sy(p.y), r: 7,
+      fill: groupColor[p.g], 'fill-opacity': .78,
+      stroke: 'var(--bg)', 'stroke-width': 2
+    });
+    const t = el('text', { x: sx(p.x), y: sy(p.y) - 15, 'text-anchor':'middle' });
+    t.textContent = p.w;
+    g.appendChild(c); g.appendChild(t);
+    g.addEventListener('click', () => focusOn(i));
+    svg.appendChild(g);
+  });
+
+  let focused = -1;
+  function dist(a, b){ return Math.sqrt(Math.pow(a.x-b.x,2) + Math.pow(a.y-b.y,2)); }
+
+  function focusOn(i){
+    focused = i;
+    const src = pts[i];
+    linkLayer.innerHTML = '';
+
+    const ds = pts.map((p, j) => ({ j:j, d: dist(src, p) }))
+                  .filter(o => o.j !== i)
+                  .sort((a, b) => a.d - b.d);
+    const nearest = ds[0], farthest = ds[ds.length - 1];
+
+    // 隐掉其他点的连线和 svg 内的点状态
+    $$('#scatter .pt').forEach((g, j) => {
+      g.classList.toggle('hot', j === i || j === nearest.j);
+      g.classList.toggle('dim', j !== i && j !== nearest.j);
+    });
+
+    // 画到最近点的连线
+    const p1 = pts[i], p2 = pts[nearest.j];
+    linkLayer.appendChild(el('line', {
+      x1: sx(p1.x), y1: sy(p1.y), x2: sx(p2.x), y2: sy(p2.y),
+      stroke: '#34d399', 'stroke-width': 2.5, 'stroke-dasharray':'6 4', 'stroke-linecap':'round'
+    }));
+
+    const sameGroup = pts.filter(p => p.g === src.g && p.w !== src.w).length;
+    msg.innerHTML = '「' + src.w + '」最近的是 <b style="color:#34d399">' + pts[nearest.j].w +
+      '</b>（距离 ' + nearest.d.toFixed(2) + '）；最远的是 <b style="color:#fb7185">' +
+      pts[farthest.j].w + '</b>（距离 ' + farthest.d.toFixed(2) + '）' +
+      ' &nbsp;|&nbsp; 同语义簇共 ' + (sameGroup + 1) + ' 个点';
+  }
+})();
+
+/* ============================================================
+   3.5 同一个 token，两个不同的向量
+   ============================================================ */
+(function(){
+  const DIMS = 24;
+  const boxA = $('#ctxVecA'), boxB = $('#ctxVecB');
+  const cosVal = $('#cosVal'), cosNote = $('#cosNote'), cosSvg = $('#cosSvg');
+  if (!boxA || !boxB) return;
+
+  // 固定种子伪随机，保证每次打开形态一致
+  function rnd(seed){
+    const a = [];
+    let s = (seed * 7919) % 233280;
+    for (let i = 0; i < DIMS; i++) {
+      s = (s * 9301 + 49297) % 233280;
+      a.push((s / 233280) * 2 - 1);
+    }
+    return a;
+  }
+  const norm = v => { const m = Math.sqrt(v.reduce((s, x) => s + x * x, 0)) || 1; return v.map(x => x / m); };
+  // 原始词义 + 上下文带来的偏移方向
+  const blend = (b, o, w) => norm(b.map((x, i) => x + o[i] * w));
+
+  const base = norm(rnd(17));
+  const vA = blend(base, rnd(53), 0.32);   // 被"吃 / 洗 / 甜"拉向水果义
+  const vB = blend(base, rnd(97), 0.32);   // 被"发布 / 手机 / 品牌"拉向公司义
+
+  function cos(a, b){
+    let d = 0, ma = 0, mb = 0;
+    for (let i = 0; i < a.length; i++) { d += a[i] * b[i]; ma += a[i] * a[i]; mb += b[i] * b[i]; }
+    return d / (Math.sqrt(ma) * Math.sqrt(mb));
+  }
+
+  function drawVec(box, vec, cls){
+    box.innerHTML = '';
+    const m = Math.max.apply(null, vec.map(Math.abs)) || 1;
+    vec.forEach((val, i) => {
+      const b = document.createElement('i');
+      b.className = 'ctx-bar ' + cls + (val < 0 ? ' neg' : '');
+      b.style.height = Math.max(5, (Math.abs(val) / m) * 100) + '%';
+      b.style.animationDelay = (i * 18) + 'ms';
+      b.title = 'dim ' + i + ' = ' + val.toFixed(3);
+      box.appendChild(b);
+    });
+  }
+
+  function drawAngle(c){
+    const theta = Math.acos(clamp(c, -1, 1));
+    const half = theta / 2;
+    const L = 84, ox = 54, oy = 80, r = 42;
+    const ax = ox + L * Math.cos(-half), ay = oy + L * Math.sin(-half);
+    const bx = ox + L * Math.cos(half),  by = oy + L * Math.sin(half);
+    const p1x = ox + r * Math.cos(-half), p1y = oy + r * Math.sin(-half);
+    const p2x = ox + r * Math.cos(half),  p2y = oy + r * Math.sin(half);
+    const deg = Math.round(theta * 180 / Math.PI);
+
+    let h = '';
+    h += '<line class="angle-line" x1="' + ox + '" y1="' + oy + '" x2="' + ax + '" y2="' + ay + '" stroke="#34d399"/>';
+    h += '<line class="angle-line" x1="' + ox + '" y1="' + oy + '" x2="' + bx + '" y2="' + by + '" stroke="#38bdf8"/>';
+    h += '<path class="angle-arc" d="M ' + p1x + ' ' + p1y + ' A ' + r + ' ' + r + ' 0 0 1 ' + p2x + ' ' + p2y + '"/>';
+    h += '<circle cx="' + ox + '" cy="' + oy + '" r="3.5" fill="#888780"/>';
+    h += '<text x="' + (ax + 9) + '" y="' + (ay - 4) + '" fill="#059669" font-size="12" font-weight="600">水果义</text>';
+    h += '<text x="' + (bx + 9) + '" y="' + (by + 14) + '" fill="#0284c7" font-size="12" font-weight="600">公司义</text>';
+    h += '<text x="' + (ox + r + 8) + '" y="' + (oy + 4) + '" fill="#b45309" font-size="11.5" ' +
+         'font-family="ui-monospace,Consolas,monospace">' + deg + '°</text>';
+    h += '<text x="' + (ox - 42) + '" y="' + (oy + 5) + '" fill="#888780" font-size="11" ' +
+         'font-family="ui-monospace,Consolas,monospace">原点</text>';
+    cosSvg.innerHTML = h;
+  }
+
+  const c = cos(vA, vB);
+  const deg = Math.round(Math.acos(clamp(c, -1, 1)) * 180 / Math.PI);
+  drawVec(boxA, vA, 'g');
+  drawVec(boxB, vB, 'b');
+  drawAngle(c);
+  cosVal.textContent = c.toFixed(2);
+  cosNote.innerHTML = '两串数字的夹角约 <b style="color:var(--amber)">' + deg + '°</b> —— ' +
+    (c > 0.6 ? '方向相当接近。' : c > 0.35 ? '明显相关，但已经分开了。' :
+     c > 0.15 ? '分得比较开。' : '几乎正交，等于两个不同的词。');
+
+  // 章节滚动到视口时重播一次柱子生长动画
+  const io = new IntersectionObserver(es => {
+    es.forEach(e => {
+      if (e.isIntersecting) {
+        setTimeout(() => { drawVec(boxA, vA, 'g'); drawVec(boxB, vB, 'b'); }, 760);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  io.observe(boxA);
+})();
+
+/* ============================================================
+   4. 注意力演示
+   ============================================================ */
+(function(){
+  const stage = $('#attnStage'), svg = $('#attnSvg'), wrap = $('#attnWords'), legend = $('#attnLegend');
+  const tabsBox = $('#headTabs'), descBox = $('#headDesc');
+  const words = ['小猫', '追着', '毛线球', '跑', '得', '飞快'];
+
+  // 8 个注意力头：每个头关注的关系不同。行 = query，列 = key，每行和为 1
+  const HEADS = [
+    { short:'主谓', name:'主谓关系', color:'#38bdf8',
+      desc:'<b>谁在做这个动作。</b>动作词纷纷把注意力投向施事者「小猫」—— 这是句子主干的骨架。',
+      m:[ [0.26,0.22,0.20,0.12,0.10,0.10],
+          [0.50,0.14,0.20,0.06,0.05,0.05],
+          [0.30,0.30,0.14,0.10,0.08,0.08],
+          [0.46,0.06,0.16,0.10,0.10,0.12],
+          [0.12,0.06,0.08,0.40,0.10,0.24],
+          [0.10,0.05,0.07,0.42,0.12,0.24] ] },
+    { short:'动宾', name:'动宾搭配', color:'#a78bfa',
+      desc:'<b>动作作用于谁。</b>「追着」几乎只盯着「毛线球」—— 换成"追着公交车"，它的注意力就会转向另一个词。',
+      m:[ [0.20,0.26,0.24,0.12,0.10,0.08],
+          [0.16,0.10,0.54,0.08,0.06,0.06],
+          [0.22,0.34,0.14,0.12,0.10,0.08],
+          [0.18,0.08,0.44,0.10,0.10,0.10],
+          [0.08,0.06,0.12,0.44,0.12,0.18],
+          [0.07,0.05,0.10,0.46,0.14,0.18] ] },
+    { short:'相邻', name:'相邻位置', color:'#f472b6',
+      desc:'<b>只看前一个词。</b>这种头几乎不关心语义，纯粹在处理"顺序"—— 而在语言里，顺序本身就是信息。',
+      m:[ [0.60,0.10,0.10,0.08,0.06,0.06],
+          [0.62,0.10,0.10,0.08,0.05,0.05],
+          [0.08,0.64,0.10,0.08,0.05,0.05],
+          [0.06,0.08,0.64,0.10,0.06,0.06],
+          [0.05,0.05,0.08,0.66,0.08,0.08],
+          [0.05,0.05,0.06,0.10,0.64,0.10] ] },
+    { short:'修饰', name:'修饰指向', color:'#34d399',
+      desc:'<b>状语指向被修饰的动词。</b>「飞快」和「得」都在回答同一个问题：跑得怎么样？于是它们把注意力交给「跑」。',
+      m:[ [0.24,0.20,0.20,0.14,0.12,0.10],
+          [0.24,0.14,0.22,0.18,0.12,0.10],
+          [0.22,0.26,0.14,0.16,0.12,0.10],
+          [0.20,0.06,0.20,0.12,0.16,0.26],
+          [0.08,0.05,0.09,0.52,0.10,0.16],
+          [0.07,0.05,0.08,0.56,0.12,0.12] ] },
+    { short:'均匀', name:'全局平均', color:'#fbbf24',
+      desc:'<b>谁也不特别关注。</b>近似均匀地把整句话揉成一层"语境底色"。这类头提供的是背景，而不是某种具体关系。',
+      m:[ [0.18,0.17,0.17,0.16,0.16,0.16],
+          [0.17,0.17,0.17,0.16,0.16,0.17],
+          [0.17,0.17,0.17,0.16,0.17,0.16],
+          [0.16,0.17,0.17,0.17,0.17,0.16],
+          [0.16,0.16,0.17,0.17,0.17,0.17],
+          [0.16,0.16,0.17,0.17,0.17,0.17] ] },
+    { short:'句首', name:'首词锚点', color:'#22d3ee',
+      desc:'<b>全员盯着句首。</b>真实模型里大量存在这种"位置锚"头。它提供一个稳定参照原点，帮模型判断"我现在读到哪儿了"。',
+      m:[ [0.20,0.18,0.18,0.16,0.14,0.14],
+          [0.62,0.10,0.10,0.07,0.06,0.05],
+          [0.60,0.12,0.10,0.07,0.06,0.05],
+          [0.58,0.08,0.12,0.09,0.07,0.06],
+          [0.56,0.07,0.09,0.13,0.08,0.07],
+          [0.54,0.07,0.08,0.14,0.09,0.08] ] },
+    { short:'自身', name:'自身保留', color:'#fb923c',
+      desc:'<b>几乎只看自己。</b>接近恒等映射 —— 等于给原始词义开了一条"不被上下文冲淡"的通道。',
+      m:[ [0.74,0.06,0.06,0.05,0.05,0.04],
+          [0.06,0.74,0.07,0.05,0.04,0.04],
+          [0.06,0.06,0.74,0.05,0.05,0.04],
+          [0.05,0.05,0.06,0.74,0.05,0.05],
+          [0.05,0.04,0.05,0.07,0.74,0.05],
+          [0.05,0.04,0.05,0.06,0.06,0.74] ] },
+    { short:'后视', name:'后视预判', color:'#f87171',
+      desc:'<b>往后面看。</b>关注下一个词，相当于在问"接下来会出现什么"—— 这类头与"预测下一个 token"这个终极目标直接相关。',
+      m:[ [0.14,0.32,0.28,0.12,0.08,0.06],
+          [0.10,0.12,0.34,0.26,0.12,0.06],
+          [0.08,0.10,0.14,0.36,0.24,0.08],
+          [0.06,0.07,0.10,0.14,0.36,0.27],
+          [0.05,0.06,0.07,0.12,0.34,0.36],
+          [0.05,0.05,0.06,0.08,0.20,0.56] ] }
+  ];
+
+  const colors = ['#38bdf8','#a78bfa','#f472b6','#34d399','#fbbf24','#22d3ee'];
+  let head = 0, cur = -1;
+  const nodes = [], tabs = [];
+
+  words.forEach((w, i) => {
+    const d = document.createElement('div');
+    d.className = 'aw';
+    d.textContent = w;
+    d.style.borderColor = colors[i] + '55';
+    d.addEventListener('click', () => select(i));
+    wrap.appendChild(d);
+    nodes.push(d);
+  });
+
+  const NS = 'http://www.w3.org/2000/svg';
+  function svgEl(n, a){ const e = document.createElementNS(NS, n); for (const k in a) e.setAttribute(k, a[k]); return e; }
+
+  function paint(){
+    const sr = stage.getBoundingClientRect();
+    svg.setAttribute('viewBox', '0 0 ' + sr.width + ' ' + sr.height);
+    svg.setAttribute('width', sr.width);
+    svg.setAttribute('height', sr.height);
+    svg.innerHTML = '';
+    if (cur < 0) return;
+
+    const M = HEADS[head].m;
+    const col = HEADS[head].color;
+    const cr = nodes[cur].getBoundingClientRect();
+    const x0 = cr.left - sr.left + cr.width / 2;
+    const y0 = cr.top  - sr.top;
+
+    const links = [];
+    nodes.forEach((n, j) => {
+      if (j === cur) return;
+      const wgt = M[cur][j];
+      if (wgt < 0.045) return;
+      const nr = n.getBoundingClientRect();
+      links.push({
+        x1: nr.left - sr.left + nr.width / 2,
+        y1: nr.top  - sr.top,
+        wgt: wgt
+      });
+    });
+    links.sort((a, b) => b.wgt - a.wgt);
+
+    links.forEach((l, k) => {
+      const lift = 34 + Math.abs(l.x1 - x0) * 0.14;
+      const path = svgEl('path', {
+        class:'attn-path show',
+        d: 'M ' + x0 + ' ' + y0 + ' Q ' + ((x0 + l.x1) / 2) + ' ' + (y0 - lift) + ' ' + l.x1 + ' ' + l.y1,
+        stroke: col,
+        'stroke-width': Math.max(1.4, l.wgt * 13),
+        'stroke-opacity': clamp(0.25 + l.wgt * 1.3, 0.25, 0.95),
+        style: 'transition-delay:' + (k * 45) + 'ms'
+      });
+      svg.appendChild(path);
+    });
+  }
+
+  function select(i){
+    cur = i;
+    const M = HEADS[head].m, col = HEADS[head].color;
+    nodes.forEach((n, j) => {
+      n.style.borderColor = colors[j] + '55';
+      n.style.background = '';
+      n.classList.toggle('active', j === i);
+      n.classList.toggle('attend', j !== i && M[i][j] >= 0.10);
+    });
+    nodes[i].style.borderColor = col;
+    nodes[i].style.background = col + '26';
+    paint();
+
+    // 图例：列出该词对其他词的注意力权重
+    const rows = words.map((w, j) => ({ w: w, j: j, v: M[i][j] }))
+                      .filter(o => o.j !== i)
+                      .sort((a, b) => b.v - a.v);
+    legend.innerHTML = '<div style="color:var(--txt3);font-size:12.5px;margin-bottom:10px;font-family:ui-monospace,monospace">' +
+      '头 ' + (head + 1) + '（' + HEADS[head].name + '）中，「' + words[i] + '」把注意力分给了谁</div>';
+    rows.forEach(o => {
+      const div = document.createElement('div');
+      div.className = 'row';
+      div.innerHTML = '<span style="color:' + colors[o.j] + '">' + o.w +
+        '</span><span class="tr"><i class="fl" style="background:linear-gradient(90deg,' + col + ',' +
+        colors[o.j] + ')" data-w="' + (o.v * 100) + '"></i></span>' +
+        '<span>' + (o.v * 100).toFixed(1) + '%</span>';
+      legend.appendChild(div);
+    });
+    requestAnimationFrame(() => {
+      setTimeout(() => {
+        $$('.attn-legend .fl', legend).forEach(f => { f.style.width = f.dataset.w + '%'; });
+      }, 40);
+    });
+  }
+
+  function setHead(i, skip){
+    head = i;
+    const h = HEADS[i];
+    tabs.forEach((b, k) => {
+      const on = (k === i);
+      b.classList.toggle('on', on);
+      b.style.borderColor = on ? h.color : '';
+      b.style.color = on ? h.color : '';
+      b.style.background = on ? (h.color + '1f') : '';
+    });
+    descBox.innerHTML = '<b>头 ' + (i + 1) + ' · ' + h.name + '</b> —— ' + h.desc;
+    if (!skip) select(cur < 0 ? 3 : cur);
+  }
+
+  HEADS.forEach((h, i) => {
+    const b = document.createElement('span');
+    b.className = 'head-tab';
+    b.innerHTML = '<span class="hid">H' + (i + 1) + '</span>' + h.short;
+    b.addEventListener('click', () => setHead(i));
+    tabsBox.appendChild(b);
+    tabs.push(b);
+  });
+
+  setHead(0, true);
+  setTimeout(() => select(3), 420);
+
+  window.addEventListener('resize', () => setTimeout(paint, 60));
+  // 章节入场动画结束后重绘一次（入场有 translateY，会让连线错位）
+  const io3 = new IntersectionObserver(es => {
+    es.forEach(e => {
+      if (e.isIntersecting) { setTimeout(paint, 780); io3.unobserve(e.target); }
+    });
+  }, { threshold: 0.25 });
+  io3.observe(stage);
+})();
+
+/* ============================================================
+   4.5 多头拼接：Concat + W_O
+   ============================================================ */
+(function(){
+  const stage = $('#hcStage');
+  if (!stage) return;
+
+  const HEADS8 = [
+    ['H1','主谓','#38bdf8'], ['H2','动宾','#a78bfa'], ['H3','相邻','#f472b6'], ['H4','修饰','#34d399'],
+    ['H5','均匀','#fbbf24'], ['H6','句首','#22d3ee'], ['H7','自身','#fb923c'], ['H8','后视','#f87171']
+  ];
+  const NAMES = ['输入 512 维', '拆分成 8 个并行头', '拼接 concat', '线性层 W_O 混合', '输出 512 维'];
+  const MAX = 4;
+
+  function mkSeg(color, label, alpha, txt){
+    const d = document.createElement('div');
+    d.className = 'hc-seg';
+    d.style.background = color + alpha;
+    if (txt) { d.style.color = txt; d.style.textShadow = 'none'; }
+    d.textContent = label;
+    return d;
+  }
+
+  // ① 输入条：按"将来会分给哪个头"的维度区间着色，半透明表示尚未分开
+  const inEl = $('#hcIn');
+  HEADS8.forEach(h => inEl.appendChild(mkSeg(h[2], h[0], '26', 'var(--txt2)')));
+
+  // 8 个头卡片
+  const headsEl = $('#hcHeads');
+  HEADS8.forEach(h => {
+    const d = document.createElement('div');
+    d.className = 'hc-head';
+    d.style.setProperty('--hc', h[2]);
+    d.style.setProperty('--hc-bg', h[2] + '1f');
+    d.innerHTML = '<div class="hn">' + h[0] + '</div><span class="hs">' + h[1] +
+      '</span><div class="hbar"><i></i></div><div class="hd">64 维</div>';
+    headsEl.appendChild(d);
+  });
+
+  // ② 拼接条：8 段实色，边界清晰 —— 强调"只是首尾相接，没有混合"
+  const catEl = $('#hcCat');
+  HEADS8.forEach(h => catEl.appendChild(mkSeg(h[2], h[0], 'e0')));
+
+  // ③ 输出条：平滑渐变 —— 强调"信息已经被搅匀"
+  $('#hcOut').style.background = 'linear-gradient(90deg,' +
+    HEADS8.map((h, i) => h[2] + ' ' + ((i + 0.5) / 8 * 100).toFixed(1) + '%').join(',') + ')';
+
+  const items = Array.from(stage.querySelectorAll('.hc-item'));
+  let step = 1, timer = null;
+
+  function render(){
+    items.forEach(el => {
+      const s = +el.dataset.step;
+      if (s <= step) {
+        if (el.classList.contains('off')) {
+          el.classList.remove('off');
+          el.style.animation = 'none';
+          void el.offsetWidth;          // 强制重排以重播入场动画
+          el.style.animation = '';
+        }
+      } else if (!el.classList.contains('off')) {
+        el.classList.add('off');
+      }
+    });
+
+    Array.from(headsEl.children).forEach((h, i) => {
+      h.style.transitionDelay = (i * 55) + 'ms';
+      h.classList.toggle('hot', step >= 1);
+    });
+
+    $('#hcStatus').textContent = '阶段 ' + (step + 1) + '/' + (MAX + 1) + ' · ' + NAMES[step];
+    $('#hcNext').textContent = step >= MAX ? '↻ 重新演示' : '▶ 下一步';
+  }
+
+  function stopAuto(){
+    if (timer) { clearInterval(timer); timer = null; }
+    $('#hcAuto').textContent = '⏩ 自动播放';
+  }
+
+  $('#hcNext').addEventListener('click', () => {
+    stopAuto();
+    if (step >= MAX) { step = 0; render(); return; }
+    step++; render();
+  });
+
+  $('#hcReset').addEventListener('click', () => { stopAuto(); step = 1; render(); });
+
+  $('#hcAuto').addEventListener('click', () => {
+    if (timer) { stopAuto(); return; }
+    if (step >= MAX) { step = 0; render(); }
+    $('#hcAuto').textContent = '⏸ 暂停';
+    timer = setInterval(() => {
+      if (step >= MAX) { stopAuto(); return; }
+      step++; render();
+    }, 1250);
+  });
+
+  items.forEach(el => el.classList.add('off'));   // JS 正常时才有折叠效果
+  render();
+})();
+
+/* ============================================================
+   4.5 前馈网络 FFN：逐位置独立 + 升维 / 激活 / 降维
+   ============================================================ */
+(function(){
+  const svg = $('#ffnSvg'), picks = $('#ffnPicks'), stat = $('#ffnStat');
+  if (!svg || !picks) return;
+
+  const NS = 'http://www.w3.org/2000/svg';
+  const mk = (n, a) => {
+    const e = document.createElementNS(NS, n);
+    for (const k in a) { if (k === 'style') e.style.cssText = a[k]; else e.setAttribute(k, a[k]); }
+    return e;
+  };
+
+  const WORDS = ['小猫', '追着', '毛线球', '跑', '得', '飞快'];
+  const COLS  = ['#38bdf8', '#a78bfa', '#f472b6', '#34d399', '#fbbf24', '#22d3ee'];
+
+  /* 确定性伪随机（可复现，不依赖 Math.random） */
+  function rndArr(seed, n){
+    const a = []; let s = (seed * 7919) % 233280;
+    for (let i = 0; i < n; i++){ s = (s * 9301 + 49297) % 233280; a.push(s / 233280 * 2 - 1); }
+    return a;
+  }
+  /* 制造"活跃簇 / 沉寂区"的起伏，别长得像均匀噪声 */
+  const shaped = (seed, n) => rndArr(seed, n)
+    .map((v, i) => v * (0.28 + 0.72 * Math.abs(Math.sin(i / 11.3 + seed * 0.37))));
+
+  /* GELU，GPT 系列实际用的激活函数 */
+  const gelu = x => 0.5 * x * (1 + Math.tanh(0.7978845608 * (x + 0.044715 * x * x * x)));
+
+  /* 把 n 维压成 k 根柱：每段取均值 */
+  function sample(arr, k){
+    const step = arr.length / k, out = [];
+    for (let i = 0; i < k; i++){
+      const s = Math.floor(i * step), e = Math.max(s + 1, Math.floor((i + 1) * step));
+      let sum = 0; for (let j = s; j < e; j++) sum += arr[j];
+      out.push(sum / (e - s));
+    }
+    return out;
+  }
+
+  /* 布局：零线在中间，正值向上、负值向下 */
+  const ZERO = 120, UP = 64, DN = 64;
+  const ZONES = [
+    { x0: 16,  x1: 172, n: 32, cx: 94,  t1: '输入向量',      t2: '512 维 · 每柱代表 16 维' },
+    { x0: 236, x1: 424, n: 64, cx: 330, t1: '隐藏层 2048 维', t2: '灰 = 激活前 · 彩 = GELU 后' },
+    { x0: 488, x1: 644, n: 32, cx: 566, t1: '输出向量',      t2: '512 维 · 压回原维度' }
+  ];
+
+  /* 正负分别归一化，两个方向都吃满高度 */
+  function refOf(arr){
+    return {
+      p: Math.max.apply(null, arr.filter(v => v > 0).concat(0.001)),
+      n: Math.max.apply(null, arr.filter(v => v < 0).map(Math.abs).concat(0.001))
+    };
+  }
+
+  function bars(vals, z, ref, o){
+    const step = (z.x1 - z.x0) / z.n;
+    const bw = step * (o.gap || 0.66);
+    vals.forEach((v, i) => {
+      if (v === 0) return;
+      const mag = Math.abs(v) / (v >= 0 ? ref.p : ref.n);
+      const h = Math.min(mag, 1) * (v >= 0 ? UP : DN);
+      if (h < 0.6) return;                       // 太矮就不画，视觉上就是"被静默"
+      const x = z.x0 + i * step + (step - bw) / 2;
+      const y = v >= 0 ? ZERO - h : ZERO;
+      const r = mk('rect', {
+        x: x.toFixed(2), y: y.toFixed(2),
+        width: bw.toFixed(2), height: h.toFixed(2),
+        rx: Math.min(1.3, bw / 2).toFixed(2),
+        style: 'fill:' + o.fill
+      });
+      r.style.transformBox = 'fill-box';
+      r.style.transformOrigin = v >= 0 ? '50% 100%' : '50% 0%';
+      r.style.animation = 'ffnGrow .5s cubic-bezier(.22,1,.36,1) both';
+      r.style.animationDelay = (o.delay + i * (o.stagger || 0)) + 'ms';
+      if (o.opacity != null) r.setAttribute('opacity', o.opacity);
+      if (o.cls) r.setAttribute('class', o.cls);
+      svg.appendChild(r);
+    });
+  }
+
+  function arrow(x0, x1, y){
+    svg.appendChild(mk('line', {
+      x1: x0, y1: y, x2: x1 - 8, y2: y,
+      style: 'stroke:var(--txt3);stroke-width:1.5;stroke-dasharray:3 3'
+    }));
+    svg.appendChild(mk('path', {
+      d: 'M ' + (x1 - 9) + ' ' + (y - 4.5) + ' L ' + x1 + ' ' + y + ' L ' + (x1 - 9) + ' ' + (y + 4.5) + ' Z',
+      style: 'fill:var(--txt3)'
+    }));
+  }
+
+  function text(x, y, t, o){
+    const e = mk('text', {
+      x: x, y: y, 'text-anchor': 'middle',
+      'font-size': (o && o.sz) || 10.5,
+      'font-weight': (o && o.wt) || 400,
+      style: 'fill:' + ((o && o.fill) || 'var(--txt3)')
+    });
+    e.textContent = t;
+    svg.appendChild(e);
+    return e;
+  }
+
+  let cur = -1;
+
+  function draw(i){
+    cur = i;
+    svg.innerHTML = '';
+
+    const col  = COLS[i];
+    const inp  = shaped(11 + i * 37, 512);      // 位置 i 的输入向量
+    const hid  = shaped(23 + i * 53, 2048);     // W₁ 升维后的隐藏层
+    const act  = hid.map(gelu);                 // GELU 之后
+    const outp = shaped(41 + i * 71, 512);      // W₂ 压回后的输出
+
+    const A = sample(inp, 32), H = sample(hid, 64), G = sample(act, 64), C = sample(outp, 32);
+
+    // 零线
+    svg.appendChild(mk('line', {
+      x1: 16, y1: ZERO, x2: 644, y2: ZERO,
+      style: 'stroke:var(--line2);stroke-width:1'
+    }));
+
+    // 区标题
+    ZONES.forEach(z => {
+      text(z.cx, 30, z.t1, { sz: 13.5, wt: 800, fill: 'var(--txt)' });
+      text(z.cx, 47, z.t2, { sz: 10.5, fill: 'var(--txt3)' });
+    });
+
+    // 箭头与标注
+    arrow(178, 232, ZERO);
+    arrow(430, 484, ZERO);
+    text(205, 108, 'W₁', { sz: 12, wt: 800, fill: 'var(--violet)' });
+    text(205, 141, '升维 4×', { sz: 9.5, fill: 'var(--txt3)' });
+    text(457, 108, 'W₂', { sz: 12, wt: 800, fill: 'var(--violet)' });
+    text(457, 141, '压回', { sz: 9.5, fill: 'var(--txt3)' });
+
+    // ① 输入
+    bars(A, ZONES[0], refOf(A), { fill: col, delay: 0, stagger: 9 });
+    // ② 隐藏层：先铺灰色（激活前），再叠彩色（GELU 后）
+    bars(H, ZONES[1], refOf(H), { fill: 'var(--txt3)', opacity: 0.5, delay: 330, stagger: 3.5 });
+    bars(G, ZONES[1], refOf(H), { fill: col, delay: 760, stagger: 3.5 });
+    // ③ 输出
+    bars(C, ZONES[2], refOf(C), { fill: 'var(--violet)', delay: 1120, stagger: 9 });
+
+    // 真实统计：输出幅值被压到不足输入一半的神经元有多少
+    const crushed = hid.reduce((n, v, k) => n + (Math.abs(act[k]) < Math.abs(v) * 0.5 ? 1 : 0), 0);
+    stat.innerHTML = '「<span class="w" style="color:' + col + '">' + WORDS[i] + '</span>」的 2048 个隐藏神经元里，' +
+      '有 <b>' + crushed.toLocaleString('en-US') + '</b> 个的输出被 GELU 压到不足原来的一半（' +
+      (crushed / 2048 * 100).toFixed(1) + '%）。' +
+      '它们的输入全是负值 —— 非线性把这一半直接摁了下去，只有另一半继续往后传。';
+  }
+
+  function setActive(i){
+    $$('.ffn-pick', picks).forEach((e, j) => e.classList.toggle('on', j === i));
+  }
+
+  WORDS.forEach((w, i) => {
+    const d = document.createElement('div');
+    d.className = 'ffn-pick';
+    d.textContent = w;
+    d.style.setProperty('--fc', COLS[i]);
+    d.style.setProperty('--fc-bg', COLS[i] + '1f');
+    d.addEventListener('click', () => { setActive(i); draw(i); });
+    picks.appendChild(d);
+  });
+
+  // 滚进视口才播第一次动画
+  let painted = false;
+  const io = new IntersectionObserver(es => {
+    es.forEach(e => {
+      if (e.isIntersecting && !painted){
+        painted = true;
+        setActive(3);            // 默认选中「跑」，和上面注意力章节一致
+        draw(3);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  io.observe(svg);
+})();
+
+/* ============================================================
+   4.8 残差连接 + LayerNorm：信号随层数怎么变
+   ============================================================ */
+(function(){
+  const flow = $('#resFlowSvg'), svg = $('#resSvg'), range = $('#resRange'),
+        lval = $('#resLVal'), read = $('#resRead');
+  if (!svg || !range) return;
+
+  const NS = 'http://www.w3.org/2000/svg';
+  const mk = (n, a) => {
+    const e = document.createElementNS(NS, n);
+    for (const k in a) { if (k === 'style') e.style.cssText = a[k]; else e.setAttribute(k, a[k]); }
+    return e;
+  };
+  function txt(x, y, t, o){
+    o = o || {};
+    const e = mk('text', {
+      x: x, y: y,
+      'text-anchor': o.anchor || 'middle',
+      'font-size': o.sz || 12,
+      'font-weight': o.wt || 400,
+      style: 'fill:' + (o.fill || 'var(--txt2)')
+    });
+    if (o.mid) e.setAttribute('dominant-baseline', 'central');
+    e.textContent = t;
+    return e;
+  }
+  const ln = (d, col, w) => mk('path', {
+    d: d,
+    style: 'fill:none;stroke:' + (col || 'var(--txt3)') + ';stroke-width:' + (w || 1.6) +
+           ';stroke-linecap:round;stroke-linejoin:round'
+  });
+
+  const SUP = { '-': '⁻', '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴',
+                '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹' };
+  const sup = n => String(n).split('').map(c => SUP[c] || c).join('');
+
+  /* ---------- A. 残差路径结构图 ---------- */
+  (function drawFlow(){
+    if (!flow) return;
+    const CY = 64;
+    const box = (x, y, w, h) => mk('rect', {
+      x: x, y: y, width: w, height: h, rx: 10,
+      style: 'fill:var(--panel2);stroke:var(--line2);stroke-width:1'
+    });
+
+    flow.appendChild(box(24, CY - 20, 72, 40));
+    flow.appendChild(txt(60, CY, 'x', { sz: 15, wt: 800, fill: 'var(--txt)', mid: true }));
+
+    flow.appendChild(ln('M 112 ' + CY + ' L 396 ' + CY, 'var(--amber)', 1.8));
+    flow.appendChild(ln('M 112 ' + CY + ' L 112 30 L 140 30'));
+
+    flow.appendChild(box(140, 10, 160, 40));
+    flow.appendChild(txt(220, 30, '子层 · 注意力 / FFN', { sz: 12.5, wt: 700, fill: 'var(--violet)', mid: true }));
+
+    flow.appendChild(ln('M 300 30 L 410 30 L 410 50'));
+
+    flow.appendChild(mk('circle', { cx: 410, cy: CY, r: 14,
+      style: 'fill:var(--panel2);stroke:var(--amber);stroke-width:1.8' }));
+    flow.appendChild(ln('M 404 ' + CY + ' L 416 ' + CY, 'var(--amber)', 1.8));
+    flow.appendChild(ln('M 410 ' + (CY - 6) + ' L 410 ' + (CY + 6), 'var(--amber)', 1.8));
+
+    flow.appendChild(ln('M 424 ' + CY + ' L 442 ' + CY, 'var(--txt3)', 1.6));
+    flow.appendChild(box(446, CY - 20, 112, 40));
+    flow.appendChild(txt(502, CY, 'LayerNorm', { sz: 12.5, wt: 700, fill: 'var(--blue)', mid: true }));
+
+    flow.appendChild(ln('M 558 ' + CY + ' L 574 ' + CY, 'var(--txt3)', 1.6));
+    flow.appendChild(mk('path', {
+      d: 'M 574 ' + (CY - 4.5) + ' L 583 ' + CY + ' L 574 ' + (CY + 4.5) + ' Z',
+      style: 'fill:var(--txt3)'
+    }));
+    flow.appendChild(box(586, CY - 20, 62, 40));
+    flow.appendChild(txt(617, CY, '输出', { sz: 12.5, wt: 700, fill: 'var(--txt)', mid: true }));
+
+    flow.appendChild(txt(254, 100, '旁路：原样通过，不做任何计算', { sz: 11.5, fill: 'var(--amber)' }));
+  })();
+
+  /* ---------- B. 信号随层数的变化 ---------- */
+  const BX0 = 78, BX1 = 638, BY0 = 26, BY1 = 196;
+  const LMIN = -6, LMAX = 2;
+  const xOf = L => BX0 + (L - 1) / 95 * (BX1 - BX0);
+  const yOf = v => BY1 - (Math.log10(Math.max(v, 1e-9)) - LMIN) / (LMAX - LMIN) * (BY1 - BY0);
+
+  // 三条曲线都是"示意模型"，目的是展示趋势差异，不是实测数据
+  const CURVES = [
+    { key: 'none', nm: '无残差',              col: 'var(--red)',   fn: L => Math.pow(0.9, L) },
+    { key: 'res',  nm: '只有残差 · 无 LN',     col: 'var(--amber)', fn: L => 1 + 0.32 * L },
+    { key: 'ln',   nm: '残差 + LayerNorm',    col: 'var(--green)', fn: L => 1 }
+  ];
+
+  function fmt(v){
+    if (v >= 0.01) return v.toFixed(2);
+    const e = Math.floor(Math.log10(v));
+    return (v / Math.pow(10, e)).toFixed(1) + '×10' + sup(e);
+  }
+  function note(c, v){
+    if (c.key === 'none') return '只剩原信号的 ' + (v * 100).toFixed(4) + '%';
+    if (c.key === 'res')  return '数值膨胀到 ' + v.toFixed(1) + ' 倍';
+    return '稳定在 1 附近，不涨不消';
+  }
+
+  let indLine = null, dots = [], painted = false;
+
+  function setL(L){
+    lval.textContent = L;
+    if (indLine) indLine.remove();
+    dots.forEach(d => d.remove());
+    dots = [];
+    if (!painted) return;
+
+    const x = xOf(L);
+    indLine = mk('line', { x1: x, y1: BY0, x2: x, y2: BY1,
+      style: 'stroke:var(--txt3);stroke-width:1;stroke-dasharray:3 3' });
+    svg.appendChild(indLine);
+
+    CURVES.forEach(c => {
+      const dot = mk('circle', { cx: x, cy: yOf(c.fn(L)), r: 4.5,
+        style: 'fill:' + c.col + ';stroke:var(--panel2);stroke-width:1.5' });
+      svg.appendChild(dot);
+      dots.push(dot);
+    });
+
+    read.innerHTML = CURVES.map(c => {
+      const v = c.fn(L);
+      return '<div class="rr">' +
+        '<div class="h"><i style="background:' + c.col + '"></i>' + c.nm + '</div>' +
+        '<div class="v" style="color:' + c.col + '">' + fmt(v) + '</div>' +
+        '<div class="s">' + note(c, v) + '</div></div>';
+    }).join('');
+  }
+
+  function draw(){
+    svg.innerHTML = '';
+    indLine = null; dots = [];
+
+    // 横向网格 + 纵轴刻度（对数）
+    for (let k = LMIN; k <= LMAX; k++){
+      const y = yOf(Math.pow(10, k));
+      svg.appendChild(mk('line', { x1: BX0, y1: y, x2: BX1, y2: y,
+        style: 'stroke:var(--line2);stroke-width:' + (k % 2 === 0 ? 1 : 0.6) }));
+      if (k % 2 === 0){
+        svg.appendChild(txt(BX0 - 9, y, k === 0 ? '1' : '10' + sup(k),
+          { anchor: 'end', sz: 10.5, fill: 'var(--txt3)', mid: true }));
+      }
+    }
+    svg.appendChild(txt(BX0 - 9, BY0 - 10, '信号强度', { anchor: 'end', sz: 11, fill: 'var(--txt3)' }));
+
+    // 横轴
+    svg.appendChild(mk('line', { x1: BX0, y1: BY1, x2: BX1, y2: BY1,
+      style: 'stroke:var(--txt3);stroke-width:1' }));
+    [1, 24, 48, 72, 96].forEach(L => {
+      svg.appendChild(mk('line', { x1: xOf(L), y1: BY1, x2: xOf(L), y2: BY1 + 4,
+        style: 'stroke:var(--txt3);stroke-width:1' }));
+      svg.appendChild(txt(xOf(L), BY1 + 16, L, { sz: 10.5, fill: 'var(--txt3)' }));
+    });
+    svg.appendChild(txt((BX0 + BX1) / 2, BY1 + 38,
+      '层数 L —— 信号从第 1 层传到第 L 层', { sz: 11.5, fill: 'var(--txt3)' }));
+
+    // 三条曲线，逐条描出来
+    CURVES.forEach((c, ci) => {
+      let d = '';
+      for (let L = 1; L <= 96; L++){
+        d += (L === 1 ? 'M' : 'L') + xOf(L).toFixed(1) + ' ' + yOf(c.fn(L)).toFixed(1) + ' ';
+      }
+      const p = mk('path', { d: d.trim(),
+        style: 'fill:none;stroke:' + c.col + ';stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round' });
+      svg.appendChild(p);
+      const len = p.getTotalLength();
+      p.style.strokeDasharray = len;
+      p.style.strokeDashoffset = len;
+      p.animate([{ strokeDashoffset: len }, { strokeDashoffset: 0 }],
+        { duration: 1200, delay: ci * 220, fill: 'forwards', easing: 'ease-out' });
+    });
+
+    painted = true;
+  }
+
+  range.addEventListener('input', () => setL(+range.value));
+
+  const io = new IntersectionObserver(es => {
+    es.forEach(e => {
+      if (e.isIntersecting && !painted){
+        draw();
+        setL(+range.value);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  io.observe(svg);
+})();
+
+/* ============================================================
+   5. Transformer 堆叠动画
+   ============================================================ */
+(function(){
+  const box = $('#stack');
+  const LAYERS = [
+    { nm:'输入：Token 向量 + 位置编码', io:true },
+    { nm:'第 1 层 · 多头注意力', t:'attn' },
+    { nm:'第 1 层 · 前馈网络',   t:'ffn' },
+    { nm:'第 2 层 · 多头注意力', t:'attn' },
+    { nm:'第 2 层 · 前馈网络',   t:'ffn' },
+    { nm:'…', t:'dots' },
+    { nm:'第 47 层 · 多头注意力', t:'attn' },
+    { nm:'第 47 层 · 前馈网络',   t:'ffn' },
+    { nm:'第 48 层 · 前馈网络',   t:'ffn' },
+    { nm:'输出：取最后一个位置的向量', io:true }
+  ];
+
+  const els = [];
+  LAYERS.forEach((l, i) => {
+    const d = document.createElement('div');
+    d.className = 'layer' + (l.io ? ' io' : '');
+    d.innerHTML = '<span class="idx">' + String(i).padStart(2, '0') + '</span>' +
+                  '<span class="nm">' + l.nm + '</span>' +
+                  (l.io ? '' : '<span class="bar"><i></i></span>');
+    box.appendChild(d);
+    els.push(d);
+  });
+
+  let k = 0, timer = null;
+  function tick(){
+    els.forEach((e, i) => e.classList.toggle('hot', i === k));
+    k = (k + 1) % els.length;
+  }
+  const obs = new IntersectionObserver(es => {
+    es.forEach(e => {
+      if (e.isIntersecting && !timer) {
+        timer = setInterval(tick, 620);
+        tick();
+      } else if (!e.isIntersecting && timer) {
+        clearInterval(timer); timer = null;
+      }
+    });
+  }, { threshold: 0.25 });
+  obs.observe(box);
+})();
+
+/* ============================================================
+   6. 温度与采样（真实 softmax）
+   ============================================================ */
+(function(){
+  const CAND = [
+    { w:'好',   l: 4.6 },
+    { w:'不错', l: 3.4 },
+    { w:'热',   l: 2.6 },
+    { w:'冷',   l: 1.5 },
+    { w:'糟',   l: 0.2 },
+    { w:'啊',   l:-0.8 }
+  ];
+  const barsEl = $('#sampBars'), slider = $('#tempSlider'), tv = $('#tempVal');
+  const outEl = $('#sampOut'), noteEl = $('#sampNote');
+
+  function probs(T){
+    const exps = CAND.map(c => Math.exp(c.l / T));
+    const sum = exps.reduce((a, b) => a + b, 0);
+    return exps.map(e => e / sum);
+  }
+
+  let rows = [];
+  function build(){
+    barsEl.innerHTML = '';
+    rows = CAND.map(c => {
+      const r = document.createElement('div');
+      r.className = 'sb-row';
+      r.innerHTML = '<span class="sb-word">' + c.w + '</span>' +
+                    '<span class="sb-track"><i class="sb-fill"></i></span>' +
+                    '<span class="sb-pct">--</span>';
+      barsEl.appendChild(r);
+      return { el:r, fill:r.querySelector('.sb-fill'), pct:r.querySelector('.sb-pct') };
+    });
+  }
+
+  function update(clearPick){
+    const T = parseFloat(slider.value);
+    tv.textContent = T.toFixed(2);
+    const p = probs(T);
+    p.forEach((v, i) => {
+      rows[i].fill.style.width = Math.max(0.4, v * 100) + '%';
+      rows[i].pct.textContent = (v * 100).toFixed(1) + '%';
+      if (clearPick) rows[i].fill.classList.remove('picked');
+    });
+    if (clearPick) {
+      noteEl.textContent = T < 0.35 ? '极低温度：几乎必然选「好」'
+        : T < 0.8 ? '偏低：分布较尖锐，输出稳定'
+        : T < 1.3 ? '常规：按模型学到的真实分布采样'
+        : '高温：低概率词被显著抬升，输出发散';
+      outEl.innerHTML = 'p(word) = exp(logit / T) / Σ exp(logit / T)';
+    }
+  }
+
+  slider.addEventListener('input', () => update(true));
+  $('#sampReset').addEventListener('click', () => { slider.value = 1; update(true); });
+  $('#sampBtn').addEventListener('click', () => {
+    const T = parseFloat(slider.value);
+    const p = probs(T);
+    let r = Math.random(), acc = 0, pick = 0;
+    for (let i = 0; i < p.length; i++) { acc += p[i]; if (r <= acc) { pick = i; break; } }
+    rows.forEach((row, i) => row.fill.classList.toggle('picked', i === pick));
+    noteEl.textContent = '已采样 1 次（T=' + T.toFixed(2) + '）';
+    outEl.innerHTML = '抽中了 → <b>「' + CAND[pick].w + '」</b>&nbsp; ' +
+      '（它的理论概率 ' + (p[pick] * 100).toFixed(1) + '%，' +
+      '累计区间 ' + ((p.slice(0, pick).reduce((a, b) => a + b, 0) * 100).toFixed(1)) + '% ~ ' +
+      ((p.slice(0, pick + 1).reduce((a, b) => a + b, 0) * 100).toFixed(1)) + '%）' +
+      '<br><span style="color:var(--txt3)">换个随机数再来一次，结果可能不同 —— 这就是"同一个问题，两次回答不一样"的原因。</span>';
+  });
+
+  build();
+  update(true);
+})();
+
+/* ============================================================
+   7. 自回归生成动画
+   ============================================================ */
+(function(){
+  const box = $('#genBox'), log = $('#stepLog'), btn = $('#genBtn'), clr = $('#genClear');
+
+  const SEQ = ['人工智能', '正在', '深刻', '改变', '我们', '理解', '世界', '的', '方式', '。'];
+  let timer = null, idx = 0;
+
+  function reset(){
+    if (timer) { clearInterval(timer); timer = null; }
+    idx = 0;
+    box.innerHTML = '<span class="gen-cursor"></span>';
+    log.innerHTML = '';
+    btn.textContent = '▶ 开始生成';
+  }
+
+  function step(){
+    if (idx >= SEQ.length) {
+      clearInterval(timer); timer = null;
+      box.innerHTML = '';
+      SEQ.forEach((t, i) => {
+        const s = document.createElement('span');
+        s.className = 'gen-tok t' + (i % 8);
+        s.style.marginRight = '4px';
+        s.textContent = t;
+        box.appendChild(s);
+      });
+      const end = document.createElement('span');
+      end.className = 'mono';
+      end.style.cssText = 'color:var(--green);font-size:14px;margin-left:8px';
+      end.textContent = '[EOS] 生成结束';
+      box.appendChild(end);
+
+      const d = document.createElement('div');
+      d.innerHTML = '<b>✓ 完成</b> —— 共 ' + SEQ.length + ' 步前向计算，每步都重跑了整条网络';
+      log.appendChild(d);
+      log.scrollTop = log.scrollHeight;
+      btn.textContent = '▶ 再来一次';
+      return;
+    }
+
+    const word = SEQ[idx];
+    const cursor = box.querySelector('.gen-cursor');
+    const s = document.createElement('span');
+    s.className = 'gen-tok t' + (idx % 8);
+    s.style.marginRight = '4px';
+    s.textContent = word;
+    box.insertBefore(s, cursor);
+
+    const d = document.createElement('div');
+    d.innerHTML = 'step ' + String(idx + 1).padStart(2, '0') +
+      ' &nbsp;输入长度 <b>' + (idx + 1) + '</b> token &nbsp;→&nbsp; 输出 <b>' + word + '</b>';
+    log.appendChild(d);
+    log.scrollTop = log.scrollHeight;
+
+    idx++;
+  }
+
+  btn.addEventListener('click', () => {
+    if (timer) { clearInterval(timer); timer = null; return; }
+    if (idx >= SEQ.length) reset();
+    step();
+    timer = setInterval(step, 780);
+  });
+  clr.addEventListener('click', reset);
+})();
+
+/* ============================================================
+   8. 打印前统一展开（避免 pending 状态被打印成空白）
+   ============================================================ */
+window.addEventListener('beforeprint', () => {
+  $$('.reveal').forEach(el => el.classList.remove('pending'));
+});
+</script>
+
+
+</body></html>

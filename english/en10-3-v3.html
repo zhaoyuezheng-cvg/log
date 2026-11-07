@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>七年级英语培优阅读 - 交互式学习页面</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;600&display=swap');
+
+  :root {
+    --primary: #2c5f8a;
+    --primary-light: #4a90d9;
+    --accent: #e8734a;
+    --accent-light: #f5a623;
+    --bg: #f7f9fc;
+    --card-bg: #ffffff;
+    --text: #2d3748;
+    --text-light: #718096;
+    --border: #e2e8f0;
+    --vocab-bg: #fff8e7;
+    --vocab-border: #f5a623;
+    --answer-bg: #e8f5e9;
+    --answer-border: #4caf50;
+    --shadow: 0 4px 20px rgba(0,0,0,0.08);
+    --shadow-hover: 0 8px 30px rgba(0,0,0,0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+    font-size: 16px;
+  }
+
+  .container { max-width: 960px; margin: 0 auto; padding: 20px; }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    color: white;
+    padding: 40px 30px;
+    border-radius: 16px;
+    margin-bottom: 30px;
+    box-shadow: var(--shadow);
+    text-align: center;
+  }
+  .header h1 { font-size: 2em; margin-bottom: 10px; font-weight: 700; }
+  .header p { font-size: 1.1em; opacity: 0.9; }
+
+  /* Navigation */
+  .nav {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+    justify-content: center;
+  }
+  .nav a {
+    background: var(--card-bg);
+    color: var(--primary);
+    text-decoration: none;
+    padding: 8px 18px;
+    border-radius: 20px;
+    border: 2px solid var(--border);
+    font-weight: 500;
+    transition: all 0.3s;
+    font-size: 0.95em;
+  }
+  .nav a:hover {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+  }
+
+  /* Passage Card */
+  .passage-card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: var(--shadow);
+    border-left: 5px solid var(--primary);
+    transition: box-shadow 0.3s;
+  }
+  .passage-card:hover { box-shadow: var(--shadow-hover); }
+  .passage-card h2 {
+    color: var(--primary);
+    font-size: 1.5em;
+    margin-bottom: 8px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border);
+  }
+  .passage-meta {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    font-size: 0.9em;
+    color: var(--text-light);
+    margin-bottom: 18px;
+  }
+  .passage-meta span {
+    background: var(--bg);
+    padding: 3px 10px;
+    border-radius: 12px;
+  }
+
+  /* English Text */
+  .english-text {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 1.1em;
+    line-height: 2;
+    color: #333;
+    margin-bottom: 20px;
+    background: #fafbfc;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+  }
+  .english-text p { margin-bottom: 12px; text-indent: 0; }
+
+  /* Vocabulary Highlight */
+  .vocab {
+    color: var(--accent);
+    border-bottom: 2px dashed var(--vocab-border);
+    cursor: pointer;
+    position: relative;
+    font-weight: 500;
+    transition: all 0.2s;
+    background: var(--vocab-bg);
+    padding: 1px 4px;
+    border-radius: 3px;
+  }
+  .vocab:hover {
+    background: #fff3cd;
+    color: #d35400;
+  }
+
+  /* Vocab Tooltip */
+  .vocab-tooltip {
+    display: none;
+    position: fixed;
+    background: white;
+    border: 2px solid var(--vocab-border);
+    border-radius: 12px;
+    padding: 15px 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    z-index: 1000;
+    max-width: 380px;
+    min-width: 250px;
+    font-family: 'Noto Sans SC', sans-serif;
+    pointer-events: none;
+  }
+  .vocab-tooltip.active { display: block; }
+  .vocab-tooltip .vt-word {
+    font-size: 1.2em;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 5px;
+    font-family: 'Georgia', serif;
+  }
+  .vocab-tooltip .vt-pos {
+    font-size: 0.85em;
+    color: var(--text-light);
+    font-style: italic;
+    margin-bottom: 6px;
+  }
+  .vocab-tooltip .vt-meaning {
+    font-size: 1em;
+    color: var(--text);
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+  .vocab-tooltip .vt-example {
+    font-size: 0.92em;
+    color: var(--primary);
+    border-left: 3px solid var(--primary-light);
+    padding-left: 10px;
+    font-style: italic;
+    font-family: 'Georgia', serif;
+    line-height: 1.6;
+  }
+  .vocab-tooltip .vt-example::before {
+    content: "例: ";
+    font-weight: 600;
+    color: var(--text-light);
+    font-style: normal;
+    font-family: 'Noto Sans SC', sans-serif;
+  }
+  .vocab-tooltip .vt-phonetic {
+    font-size: 0.85em;
+    color: var(--text-light);
+    margin-bottom: 4px;
+  }
+
+  /* Questions */
+  .questions { margin-top: 20px; }
+  .question {
+    background: var(--bg);
+    border-radius: 10px;
+    padding: 18px;
+    margin-bottom: 15px;
+    border: 1px solid var(--border);
+  }
+  .question p { margin-bottom: 8px; }
+  .question .q-text { font-weight: 600; color: var(--text); }
+  .question .options { margin-left: 10px; }
+  .question .options label {
+    display: block;
+    padding: 4px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.2s;
+  }
+  .question .options label:hover { background: #e3f2fd; }
+
+  /* Answer Section */
+  .answer-section {
+    background: var(--answer-bg);
+    border: 2px solid var(--answer-border);
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 15px;
+  }
+  .answer-section h4 {
+    color: var(--answer-border);
+    margin-bottom: 10px;
+    font-size: 1.1em;
+  }
+  .answer-section .answer-line {
+    font-weight: 700;
+    color: var(--answer-border);
+    font-size: 1.1em;
+    margin-bottom: 8px;
+  }
+  .answer-section .explanation {
+    font-size: 0.95em;
+    line-height: 1.8;
+    color: #333;
+  }
+  .answer-section .explanation strong { color: var(--primary); }
+
+  /* Exercises */
+  .exercises {
+    background: #f0f7ff;
+    border: 1px solid #b3d9ff;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 20px;
+  }
+  .exercises h4 {
+    color: var(--primary);
+    margin-bottom: 12px;
+    font-size: 1.1em;
+  }
+  .exercise-item {
+    margin-bottom: 10px;
+    padding: 8px 12px;
+    background: white;
+    border-radius: 8px;
+    border-left: 3px solid var(--primary-light);
+  }
+  .exercise-item .ex-answer {
+    color: var(--answer-border);
+    font-weight: 600;
+  }
+
+  /* Vocabulary Summary Section */
+  .vocab-section {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 30px;
+    margin-top: 30px;
+    box-shadow: var(--shadow);
+  }
+  .vocab-section h2 {
+    color: var(--accent);
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border);
+  }
+  .vocab-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    font-size: 0.95em;
+  }
+  .vocab-table th {
+    background: var(--primary);
+    color: white;
+    padding: 12px 15px;
+    text-align: left;
+    font-weight: 600;
+  }
+  .vocab-table th:first-child { border-radius: 8px 0 0 0; }
+  .vocab-table th:last-child { border-radius: 0 8px 0 0; }
+  .vocab-table td {
+    padding: 10px 15px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  .vocab-table tr:nth-child(even) { background: var(--bg); }
+  .vocab-table tr:hover { background: #e3f2fd; }
+  .vocab-table .word-col {
+    font-family: 'Georgia', serif;
+    font-weight: 600;
+    color: var(--accent);
+    font-size: 1em;
+    white-space: nowrap;
+  }
+  .vocab-table .phonetic-col {
+    color: var(--text-light);
+    font-size: 0.9em;
+    white-space: nowrap;
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 30px;
+    color: var(--text-light);
+    font-size: 0.9em;
+    margin-top: 40px;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .container { padding: 15px; }
+    .header { padding: 25px 20px; }
+    .header h1 { font-size: 1.5em; }
+    .passage-card { padding: 20px; }
+    .vocab-table { font-size: 0.85em; }
+    .vocab-table th, .vocab-table td { padding: 8px 10px; }
+  }
+
+  /* Print */
+  @media print {
+    .vocab-tooltip { display: none !important; }
+    .nav { display: none; }
+    .passage-card { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <h1>七年级英语培优阅读</h1>
+    <p>完整转录 · 逐题详解 · 生词互动学习</p>
+  </div>
+
+  <!-- Navigation -->
+  <div class="nav">
+    <a href="#passage1">Passage C - 北极熊</a>
+    <a href="#passage2">Passage D - Grain Painting</a>
+    <a href="#passage3">Passage C - 季节谚语</a>
+    <a href="#passage4">Passage D - 雨天困倦</a>
+    <a href="#vocab-summary">生词汇总</a>
+  </div>
+
+  <!-- ==================== Passage 1 ==================== -->
+  <div class="passage-card" id="passage1">
+    <h2>Passage C &mdash; Polar Bears (北极熊)</h2>
+    <div class="passage-meta">
+      <span>主题：人与自然 &mdash; 自然生态</span>
+      <span>语篇类型：说明文</span>
+      <span>词数：240</span>
+      <span>难度：★★★☆☆</span>
+    </div>
+
+    <div class="english-text">
+      <p>Polar bears are facing hard times as their icy home goes away. Scientists found that as the Arctic sea ice goes away because of rising temperatures, it is hard for these bears to find their most important food &mdash; ringed seals (环斑海豹), which they usually hunt on the ice.</p>
+
+      <p>With less ice, polar bears are spending more time on land, trying to eat things like birds' eggs, berries and grass. But this <span class="vocab" data-word="diet" data-phonetic="/ˈdaɪət/" data-pos="n. 名词" data-meaning="饮食；日常食物" data-example="A balanced diet is important for good health.（均衡的饮食对健康很重要。）">diet</span> isn't good enough for them, and they start to lose weight quickly, which can lead to serious problems.</p>
+
+      <p>The things happening in Western Manitoba, an important place for these bears, show just <span class="vocab" data-word="▲" data-phonetic="" data-pos="" data-meaning="（此处为题目中的空缺位置）" data-example="">▲</span>. Here, the time without ice grew by three weeks from 1979 to 2015. To better understand what's happening to the bears, scientists followed 20 of them over three summers to see what they were doing and eating.</p>
+
+      <p>What they found wasn't very hopeful. Almost all the bears in the study were trying different ways to keep away from hunger, like resting to save energy or looking for berries, but they still lost weight, some up to 11% of their body weight.</p>
+
+      <p>The story of the polar bears is a clear sign of how changes in the earth's weather are affecting our planet.</p>
+
+      <p>While hunting once was a big problem for these bears, it's now the warming world that's their biggest problem, changing the very nature of their Arctic home and making it hard for them to live.</p>
+    </div>
+
+    <!-- Questions -->
+    <div class="questions">
+      <div class="question">
+        <p class="q-text">( ) 1. What does the underlined word "diet" in Paragraph 2 mean in Chinese?</p>
+        <div class="options">
+          <label>A. 污染 &nbsp;&nbsp;&nbsp;&nbsp; B. 饮食 &nbsp;&nbsp;&nbsp;&nbsp; C. 活动</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p class="q-text">( ) 2. (新考法 &middot; 信息还原题) Which of the following is the best to be put in "▲" in Paragraph 3?</p>
+        <div class="options">
+          <label>A. what made the problem &nbsp;&nbsp;&nbsp;&nbsp; B. how serious things have become &nbsp;&nbsp;&nbsp;&nbsp; C. why they are facing the problem</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p class="q-text">( ) 3. What did scientists find out about polar bears in the study?</p>
+        <div class="options">
+          <label>A. They all lost weight. &nbsp;&nbsp;&nbsp;&nbsp; B. They all liked resting. &nbsp;&nbsp;&nbsp;&nbsp; C. They all liked eating berries.</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p class="q-text">( ) 4. What does the passage mainly tell us?</p>
+        <div class="options">
+          <label>A. Polar bears are facing hunger. &nbsp;&nbsp;&nbsp;&nbsp; B. Polar bears need good weather. &nbsp;&nbsp;&nbsp;&nbsp; C. Polar bears have different eating habits.</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Answers -->
+    <div class="answer-section">
+      <h4>&#9745; 参考答案与解析</h4>
+      <div class="answer-line">1. 【B】饮食</div>
+      <div class="explanation">
+        <strong>解析：</strong>根据第二段上下文，北极熊在陆地上尝试吃鸟蛋、浆果和草等东西，但这种"<u>饮食</u>"不足以满足它们的需求，导致它们迅速掉体重。diet 意为"饮食；日常食物"，故选 B。A项"污染"和C项"活动"均不符合语境。
+      </div>
+      <div class="answer-line" style="margin-top:12px;">2. 【B】how serious things have become</div>
+      <div class="explanation">
+        <strong>解析：</strong>第三段提到 Manitoba 地区无冰时间从1979年到2015年增加了三周，这是对北极熊生存状况恶化的具体描述，说明情况变得有多严重。前文说"这些情况展示了仅仅是___"，后文用具体数据说明问题的严重性，因此填入"情况变得有多严重"最合适。故选 B。
+      </div>
+      <div class="answer-line" style="margin-top:12px;">3. 【A】They all lost weight.</div>
+      <div class="explanation">
+        <strong>解析：</strong>第四段明确指出"Almost all the bears in the study...but they still lost weight"（研究中几乎所有的熊......但它们仍然体重下降），说明科学家发现熊们都体重减轻了。故选 A。B项"都喜欢休息"和C项"都喜欢吃浆果"只是部分行为描述，不是研究发现的核心结论。
+      </div>
+      <div class="answer-line" style="margin-top:12px;">4. 【A】Polar bears are facing hunger.</div>
+      <div class="explanation">
+        <strong>解析：</strong>全文围绕北极熊因北极海冰融化而面临食物短缺、体重下降的困境展开。第一段总述北极熊面临困难，第二段讲它们改变饮食但仍体重下降，第三段用 Manitoba 的数据说明问题严重性，第四段讲研究发现熊们都在挨饿，最后两段总结这是气候变化带来的威胁。因此文章主要告诉我们北极熊正面临饥饿。故选 A。
+      </div>
+    </div>
+
+    <!-- Exercises -->
+    <div class="exercises">
+      <h4>&#9998; 积累小袋</h4>
+      <p><strong>短语互译：</strong></p>
+      <div class="exercise-item">1. go away <span class="ex-answer">→ 离开；消失</span></div>
+      <div class="exercise-item">2. 体重减轻/减肥 <span class="ex-answer">→ lose weight</span></div>
+      <div class="exercise-item">3. keep away from <span class="ex-answer">→ 远离；避开</span></div>
+      <div class="exercise-item">4. 多达 <span class="ex-answer">→ up to</span></div>
+      <p><strong>完成句子：</strong></p>
+      <div class="exercise-item">5. Amy did very well in her report. She is <span class="ex-answer">careful enough</span> to pay attention to every detail.</div>
+      <div class="exercise-item">6. If we work hard together, our actions can make a difference to the world and <span class="ex-answer">lead to</span> a better future.</div>
+    </div>
+  </div>
+
+  <!-- ==================== Passage 2 ==================== -->
+  <div class="passage-card" id="passage2">
+    <h2>Passage D &mdash; Dongming Grain Painting (东明粒画)</h2>
+    <div class="passage-meta">
+      <span>主题：人与社会 &mdash; 传统文化</span>
+      <span>语篇类型：说明文</span>
+      <span>词数：201</span>
+      <span>难度：★★★☆☆</span>
+    </div>
+
+    <div class="english-text">
+      <p>Do you know that seeds (种子) can be used to make beautiful paintings? Dongming grain painting is a good example.</p>
+
+      <p>Dongming grain painting has a history of more than 200 years. In 2016, it was named Shandong's intangible cultural heritage (非物质文化遗产). In the past, people gave grain paintings as important gifts when it was time for the "Three-Animal Sacrifice" (三牲祭祀).</p>
+
+      <p>Han Guorui, 44, started learning Dongming grain paintings when he was 8. During these years, he saw the art become less popular. People are losing interest in it, maybe because it takes much time and work to make one. It usually takes 27 steps (步骤) <span class="vocab" data-word="▲" data-phonetic="" data-pos="" data-meaning="（此处为题目中的空缺位置）" data-example="">▲</span>. For example, Han spent five years growing red corn (玉米) for making plum blossom petals (梅花花瓣).</p>
+
+      <p>To keep people interested, Han thought of some new ideas. And they are working too. In 2014, he made a grain painting of the Mona Lisa. Hopefully, it sold for much money, and he succeeded in making more people know about Chinese culture!</p>
+    </div>
+
+    <div class="questions">
+      <div class="question">
+        <p class="q-text">( ) 1. What do you know about Dongming grain paintings?</p>
+        <div class="options">
+          <label>A. People use seeds to make Dongming grain paintings.</label>
+          <label>B. People still give Dongming grain paintings as gifts today.</label>
+          <label>C. Dongming grain painting has a history of about 100 years.</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p class="q-text">( ) 2. (新考法 &middot; 信息还原题) Which sentence can be put in ▲ ?</p>
+        <div class="options">
+          <label>A. and it needs much money</label>
+          <label>B. and people help each other</label>
+          <label>C. and some seeds are difficult to get</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p class="q-text">( ) 3. Why did Han Guorui make a grain painting of the Mona Lisa?</p>
+        <div class="options">
+          <label>A. To show a new kind of art.</label>
+          <label>B. To make money only for himself.</label>
+          <label>C. To make people interested in grain paintings.</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p class="q-text">( ) 4. (新考法 &middot; 写作意图题) What's the purpose (目的) of the passage?</p>
+        <div class="options">
+          <label>A. To show different kinds of paintings.</label>
+          <label>B. To tell people about the grain paintings.</label>
+          <label>C. To tell how Han Guorui learnt painting.</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="answer-section">
+      <h4>&#9745; 参考答案与解析</h4>
+      <div class="answer-line">1. 【A】People use seeds to make Dongming grain paintings.</div>
+      <div class="explanation">
+        <strong>解析：</strong>第一段明确指出"seeds can be used to make beautiful paintings"（种子可以用来制作美丽的画作），东明粒画就是很好的例子。A项正确。B项文中说过去人们用粒画作礼物，但未说今天仍然如此；C项文中说历史超过200年，而非约100年。故选 A。
+      </div>
+      <div class="answer-line" style="margin-top:12px;">2. 【C】and some seeds are difficult to get</div>
+      <div class="explanation">
+        <strong>解析：</strong>前文说"制作一幅粒画通常需要27个步骤"，后文举例"韩国瑞花了五年时间种植红玉米来做梅花花瓣"，说明某些材料（种子）很难获取。C项"有些种子很难弄到"与上下文逻辑一致。A项"需要很多钱"和B项"人们互相帮助"均与后文举例不衔接。故选 C。
+      </div>
+      <div class="answer-line" style="margin-top:12px;">3. 【C】To make people interested in grain paintings.</div>
+      <div class="explanation">
+        <strong>解析：</strong>第四段开头说"To keep people interested"（为了保持人们的兴趣），然后提到他画了蒙娜丽莎的粒画，最终"he succeeded in making more people know about Chinese culture"（他成功让更多人了了解中国文化）。因此画蒙娜丽莎的目的是让人们重新对粒画产生兴趣。故选 C。
+      </div>
+      <div class="answer-line" style="margin-top:12px;">4. 【B】To tell people about the grain paintings.</div>
+      <div class="explanation">
+        <strong>解析：</strong>全文介绍了东明粒画的历史（200多年）、被命名为非物质文化遗产、制作工艺复杂（27个步骤）、传承人韩国瑞的努力以及创新尝试。文章的主旨是向读者介绍粒画这种传统文化艺术。故选 B。A项"展示不同种类的画"偏离主题；C项"讲述韩国瑞如何学画"只是文中一部分内容，不是全文目的。
+      </div>
+    </div>
+
+    <div class="exercises">
+      <h4>&#9998; 积累小助手</h4>
+      <p><strong>短语互译：</strong></p>
+      <div class="exercise-item">1. 超过；多于 <span class="ex-answer">→ more than / over</span></div>
+      <div class="exercise-item">2. lose interest in... <span class="ex-answer">→ 对......失去兴趣</span></div>
+      <div class="exercise-item">3. think of new ideas <span class="ex-answer">→ 想出新主意</span></div>
+      <div class="exercise-item">4. 成功做某事 <span class="ex-answer">→ succeed in doing sth.</span></div>
+      <p><strong>仿写句子：</strong></p>
+      <div class="exercise-item">5. It takes me an hour every morning to take exercise.（我每天早上花一小时锻炼身体。）</div>
+      <div class="exercise-item">6. She spends her free time painting.（她利用空闲时间画画。）</div>
+    </div>
+  </div>
+
+  <!-- ==================== Passage 3 ==================== -->
+  <div class="passage-card" id="passage3">
+    <h2>Passage C &mdash; Seasonal Sayings (季节谚语)</h2>
+    <div class="passage-meta">
+      <span>主题：人与社会 &mdash; 语言与文化</span>
+      <span>语篇类型：说明文</span>
+      <span>词数：245</span>
+      <span>难度：★★★☆☆</span>
+    </div>
+
+    <div class="english-text">
+      <p>Every season brings special things &mdash; flowers in spring, sunshine in summer, colourful leaves in autumn, and snow in winter. There are many fun sayings and expressions about these seasons. Let's get to know some of them!</p>
+
+      <p><strong>Spring: A Fresh Start</strong></p>
+      <p>Spring is all about new beginnings, so people often say, "April showers bring May flowers." This means the rain in April helps flowers bloom (开花) in May. It's a way of telling us that good things often come after a little trouble.</p>
+
+      <p><strong>Summer: Fun in the Sun</strong></p>
+      <p>Summer is hot, sunny, and full of life. A popular saying is "Make hay (草料) while the sun shines." This means to make good use of a good situation (形势) while it lasts. Farmers often say this because they can only dry hay on sunny days.</p>
+
+      <p><strong>Autumn: A Time for Change</strong></p>
+      <p>When leaves turn red, orange and yellow, people often say, "The autumn of one's life". It refers to the later years of a person's life, as autumn is later in the year.</p>
+
+      <p><strong>Winter: Comfortable and Cold</strong></p>
+      <p>Winter can be hard, but people make the best of it. You may hear someone say, "snowed under". It means being very busy, like when snow piles up (堆积) all around you.</p>
+
+      <p>Seasonal sayings are like little pieces of wisdom (智慧) in fun words. So next time you hear one, smile and think about how it works in the world around you!</p>
+    </div>
+
+    <div class="questions">
+      <div class="question">
+        <p class="q-text">( ) 1. (新考法 &middot; 跨学科知识题) What is the best Chinese meaning for the underlined sentence?</p>
+        <div class="options">
+          <label>A. 停车坐爱枫林晚，霜叶红于二月花。</label>
+          <label>B. 人间四月芳菲尽，山寺桃花始盛开。</label>
+          <label>C. 宝剑锋从磨砺出，梅花香自苦寒来。</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p class="q-text">( ) 2. (新考法 &middot; 句意理解题) What can we learn from "Make hay while the sun shines."?</p>
+        <div class="options">
+          <label>A. It teaches us to work when having a chance (机会).</label>
+          <label>B. It tells us to rest on sunny days.</label>
+          <label>C. It tells people to dry some grass in spring.</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p class="q-text">( ) 3. What is the main idea of the passage?</p>
+        <div class="options">
+          <label>A. People should enjoy all the seasons.</label>
+          <label>B. Different seasons have their own weather.</label>
+          <label>C. Seasonal sayings help us understand life and nature.</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p class="q-text">( ) 4. (新考法 &middot; 文章出处题) In which part of a website (网站) can we find the passage?</p>
+        <div class="options">
+          <label>A. Health. &nbsp;&nbsp;&nbsp;&nbsp; B. Story. &nbsp;&nbsp;&nbsp;&nbsp; C. Nature.</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="answer-section">
+      <h4>&#9745; 参考答案与解析</h4>
+      <div class="answer-line">1. 【C】宝剑锋从磨砺出，梅花香自苦寒来。</div>
+      <div class="explanation">
+        <strong>解析：</strong>文中划线句"April showers bring May flowers"意为"四月的雨水带来五月的花朵"，比喻好事往往在经历困难之后到来。C项"宝剑锋从磨砺出，梅花香自苦寒来"同样表达了"美好事物需要经历磨难才能到来"的含义，最为贴切。A项描写秋景，B项描写四月花尽桃花开，均不符合。故选 C。
+      </div>
+      <div class="answer-line" style="margin-top:12px;">2. 【A】It teaches us to work when having a chance.</div>
+      <div class="explanation">
+        <strong>解析：</strong>文中明确解释"Make hay while the sun shines"的意思是"to make good use of a good situation while it lasts"（在好形势还在时好好利用），即"趁有机会时努力工作"。故选 A。B项"晴天休息"和C项"春天晒草"均曲解了谚语含义。
+      </div>
+      <div class="answer-line" style="margin-top:12px;">3. 【C】Seasonal sayings help us understand life and nature.</div>
+      <div class="explanation">
+        <strong>解析：</strong>文章分别介绍了春夏秋冬四个季节的谚语，并解释了每个谚语背后的含义和哲理。最后一段总结"Seasonal sayings are like little pieces of wisdom in fun words"（季节谚语就像趣味文字中的小小智慧），说明季节谚语帮助我们理解生活和自然。故选 C。A项"享受所有季节"和B项"不同季节有不同天气"都不是文章主旨。
+      </div>
+      <div class="answer-line" style="margin-top:12px;">4. 【C】Nature.</div>
+      <div class="explanation">
+        <strong>解析：</strong>文章主题是四季谚语与自然的关系，涉及春天的花、夏天的阳光、秋天的落叶和冬天的雪，属于自然类话题。文章出处应在网站的自然（Nature）版块。故选 C。A项"健康"和B项"故事"与文章主题不符。
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== Passage 4 ==================== -->
+  <div class="passage-card" id="passage4">
+    <h2>Passage D &mdash; Why Are We Sleepy on Rainy Days? (雨天为什么困？)</h2>
+    <div class="passage-meta">
+      <span>主题：人与自然 &mdash; 人类活动</span>
+      <span>语篇类型：说明文</span>
+      <span>词数：289</span>
+      <span>难度：★☆☆☆☆</span>
+    </div>
+
+    <div class="english-text">
+      <p>Do you feel sleepy on rainy days? If the answer is yes, you are not alone. Many people feel the same way. But do you know why?</p>
+
+      <p>One of the reasons is that there is little sunshine on rainy days. Our brain (大脑) will have less serotonin (血清素) and more melatonin (褪黑素) if there is not enough sunlight. Serotonin helps us feel good and <span class="vocab" data-word="energetic" data-phonetic="/ˌenə'dʒetɪk/" data-pos="adj. 形容词" data-meaning="精力充沛的；充满活力的" data-example="After a good night's sleep, I feel energetic all day.（睡个好觉后，我整天都精力充沛。）">energetic</span>, while melatonin makes us feel sleepy. As a result, we may want to go to sleep and even feel a bit sad when it is rainy.</p>
+
+      <p>The humidity (湿度) of a rainy day is another reason. As it rains, the air becomes wetter than usual. It's more difficult for our sweat (汗水) to dry in weather like this, so our body has to work harder to stay cool. This can make us feel tired.</p>
+
+      <p>Moreover (此外), the sound of rain, a type of pink noise, will make us feel sleepy too. Like white noise, pink noise includes all the sound frequencies (频率) humans can hear, but it has fewer high frequencies (频率) than white noise. This makes pink noise sound softer. Studies show that people's brain waves (脑电波) will become fewer when they hear pink noise, so they will fall asleep more easily.</p>
+
+      <p>Now you can understand why you are sleepy on rainy days. Then what can you do if you don't like that feeling? Well, you can get as much natural light as possible and keep yourself busy. Also, you can use a machine to make your room dry. In this way, you won't feel sleepy any more.</p>
+    </div>
+
+    <div class="questions">
+      <div class="question">
+        <p class="q-text">( ) 1. (新考法 &middot; 开篇方式题) How does the writer start the passage?</p>
+        <div class="options">
+          <label>A. By asking a question. &nbsp;&nbsp;&nbsp;&nbsp; B. By telling a story. &nbsp;&nbsp;&nbsp;&nbsp; C. By using a picture.</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p class="q-text">( ) 2. What does the underlined word "energetic" in Paragraph 2 probably mean?</p>
+        <div class="options">
+          <label>A. Cold. &nbsp;&nbsp;&nbsp;&nbsp; B. Active. &nbsp;&nbsp;&nbsp;&nbsp; C. Tired.</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p class="q-text">( ) 3. From the fourth paragraph, we can learn _______.</p>
+        <div class="options">
+          <label>A. white noise includes fewer high frequencies than pink noise</label>
+          <label>B. people will have more brain waves when they hear pink noise</label>
+          <label>C. the softer the noise sounds, the more easily people will feel sleepy</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p class="q-text">( ) 4. What is the passage mainly about?</p>
+        <div class="options">
+          <label>A. Some facts about different kinds of noises.</label>
+          <label>B. The reasons why people need enough sleep.</label>
+          <label>C. The reasons why people are sleepy in rainy weather.</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="answer-section">
+      <h4>&#9745; 参考答案与解析</h4>
+      <div class="answer-line">1. 【A】By asking a question.</div>
+      <div class="explanation">
+        <strong>解析：</strong>文章开篇第一句"Do you feel sleepy on rainy days?"（你在雨天会感到困倦吗？）是一个疑问句，作者通过提问来引出话题。这是典型的"设问开篇"方式。故选 A。
+      </div>
+      <div class="answer-line" style="margin-top:12px;">2. 【B】Active.</div>
+      <div class="explanation">
+        <strong>解析：</strong>根据第二段上下文，serotonin 帮助我们"feel good and energetic"，而 melatonin 让我们"feel sleepy"（感到困倦）。energetic 与 sleepy 形成对比，应表示"精力充沛的、活跃的"意思。B项 Active（活跃的）最接近。A项 Cold（冷的）和C项 Tired（疲倦的）均不符合语境。故选 B。
+      </div>
+      <div class="answer-line" style="margin-top:12px;">3. 【C】the softer the noise sounds, the more easily people will feel sleepy</div>
+      <div class="explanation">
+        <strong>解析：</strong>第四段指出粉噪音（pink noise）比白噪音有更少的高频声音，"This makes pink noise sound softer"（这使得粉噪音听起来更柔和），然后"Studies show that people's brain waves will become fewer when they hear pink noise, so they will fall asleep more easily"（研究表明听到粉噪音时人们脑电波减少，更容易入睡）。因此可以推断：声音越柔和，人们越容易感到困倦。故选 C。A项说反了（白噪音高频更多）；B项说反了（粉噪音使脑电波更少而非更多）。
+      </div>
+      <div class="answer-line" style="margin-top:12px;">4. 【C】The reasons why people are sleepy in rainy weather.</div>
+      <div class="explanation">
+        <strong>解析：</strong>文章第一段提出问题"雨天为什么会困"，然后第二段讲原因一（阳光少导致血清素少、褪黑素多），第三段讲原因二（湿度大导致身体散热困难），第四段讲原因三（雨声是粉噪音让人困），最后一段给出建议。全文围绕"雨天困倦的原因"展开。故选 C。A项只涉及第四段部分内容；B项"人们需要足够睡眠的原因"偏离主题。
+      </div>
+    </div>
+
+    <div class="exercises">
+      <h4>&#9998; 积累小点</h4>
+      <p><strong>短语互译：</strong></p>
+      <div class="exercise-item">1. feel sleepy <span class="ex-answer">→ 感到困倦</span></div>
+      <div class="exercise-item">2. 在下雨天 <span class="ex-answer">→ on rainy days</span></div>
+      <div class="exercise-item">3. little sunshine <span class="ex-answer">→ 几乎没有阳光</span></div>
+      <div class="exercise-item">4. enough sunlight <span class="ex-answer">→ 足够的阳光</span></div>
+      <div class="exercise-item">5. feel good and energetic <span class="ex-answer">→ 感觉良好且精力充沛</span></div>
+      <div class="exercise-item">6. as a result <span class="ex-answer">→ 结果；因此</span></div>
+      <div class="exercise-item">7. stay cool <span class="ex-answer">→ 保持凉爽</span></div>
+      <div class="exercise-item">8. 使某人感到疲惫 <span class="ex-answer">→ make sb. feel tired</span></div>
+      <div class="exercise-item">9. 入睡 <span class="ex-answer">→ fall asleep</span></div>
+      <div class="exercise-item">10. 保持忙碌 <span class="ex-answer">→ keep oneself busy</span></div>
+      <div class="exercise-item">11. in this way <span class="ex-answer">→ 这样；通过这种方式</span></div>
+      <div class="exercise-item">12. not... any more <span class="ex-answer">→ 不再</span></div>
+    </div>
+  </div>
+
+  <!-- ==================== Vocabulary Summary ==================== -->
+  <div class="vocab-section" id="vocab-summary">
+    <h2>&#128218; 生词与生短语汇总</h2>
+    <p style="color:var(--text-light); margin-bottom:15px;">以下词汇根据七年级英语水平筛选，包含音标、词性、中文释义、典型例句及用法解析。点击上方文章中的橙色标注词也可查看释义。</p>
+
+    <table class="vocab-table">
+      <thead>
+        <tr>
+          <th>单词/短语</th>
+          <th>音标</th>
+          <th>词性/用法</th>
+          <th>中文释义</th>
+          <th>典型例句</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="word-col">diet</td>
+          <td class="phonetic-col">/ˈdaɪət/</td>
+          <td>n. 名词</td>
+          <td>饮食；日常食物</td>
+          <td>A balanced <b>diet</b> is important for good health.（均衡的饮食对健康很重要。）</td>
+        </tr>
+        <tr>
+          <td class="word-col">ringed seal</td>
+          <td class="phonetic-col">/rɪŋd siːl/</td>
+          <td>n. 名词短语</td>
+          <td>环斑海豹</td>
+          <td>Polar bears hunt <b>ringed seals</b> on the ice.（北极熊在冰上捕猎环斑海豹。）</td>
+        </tr>
+        <tr>
+          <td class="word-col">lead to</td>
+          <td class="phonetic-col">/liːd tuː/</td>
+          <td>动词短语</td>
+          <td>导致；引起</td>
+          <td>Smoking can <b>lead to</b> serious health problems.（吸烟会导致严重的健康问题。）</td>
+        </tr>
+        <tr>
+          <td class="word-col">keep away from</td>
+          <td class="phonetic-col">/kiːp əˈweɪ frɒm/</td>
+          <td>动词短语</td>
+          <td>远离；避开</td>
+          <td>You should <b>keep away from</b> dangerous places.（你应该远离危险的地方。）</td>
+        </tr>
+        <tr>
+          <td class="word-col">up to</td>
+          <td class="phonetic-col">/ʌp tuː/</td>
+          <td>介词短语</td>
+          <td>多达；高达</td>
+          <td>The room can hold <b>up to</b> 50 people.（这个房间最多能容纳50人。）</td>
+        </tr>
+        <tr>
+          <td class="word-col">make a difference</td>
+          <td class="phonetic-col">/meɪk ə ˈdɪfrəns/</td>
+          <td>动词短语</td>
+          <td>产生影响；起作用</td>
+          <td>Small actions can <b>make a difference</b> to the environment.（小行动也能对环境产生影响。）</td>
+        </tr>
+        <tr>
+          <td class="word-col">intangible cultural heritage</td>
+          <td class="phonetic-col">/ˈɪntændʒəbl ˈkʌltʃərəl ˈherɪtɪdʒ/</td>
+          <td>n. 名词短语</td>
+          <td>非物质文化遗产</td>
+          <td>Peking Opera is an important part of China's <b>intangible cultural heritage</b>.（京剧是中国非物质文化遗产的重要组成部分。）</td>
+        </tr>
+        <tr>
+          <td class="word-col">sacrifice</td>
+          <td class="phonetic-col">/ˈsækrɪfaɪs/</td>
+          <td>n. 名词 / v. 动词</td>
+          <td>祭祀；牺牲</td>
+          <td>In the past, people made <b>sacrifices</b> to pray for a good harvest.（过去人们通过祭祀来祈求丰收。）</td>
+        </tr>
+        <tr>
+          <td class="word-col">lose interest in</td>
+          <td class="phonetic-col">/luːz ˈɪntrəst ɪn/</td>
+          <td>动词短语</td>
+          <td>对......失去兴趣</td>
+          <td>Some students <b>lose interest in</b> learning English.（一些学生对学英语失去了兴趣。）</td>
+        </tr>
+        <tr>
+          <td class="word-col">think of</td>
+          <td class="phonetic-col">/θɪŋk ʌv/</td>
+          <td>动词短语</td>
+          <td>想出；想到</td>
+          <td>Can you <b>think of</b> a good idea?（你能想到一个好主意吗？）</td>
+        </tr>
+        <tr>
+          <td class="word-col">succeed in doing sth.</td>
+          <td class="phonetic-col">/səkˈsiːd ɪn/</td>
+          <td>动词短语</td>
+          <td>成功做某事</td>
+          <td>He <b>succeeded in</b> <b>passing</b> the exam.（他成功通过了考试。）</td>
+        </tr>
+        <tr>
+          <td class="word-col">expression</td>
+          <td class="phonetic-col">/ɪkˈspreʃn/</td>
+          <td>n. 名词</td>
+          <td>表达；表情；习语</td>
+          <td>"Break a leg" is a common English <b>expression</b>.（"Break a leg"是一个常见的英语习语。）</td>
+        </tr>
+        <tr>
+          <td class="word-col">bloom</td>
+          <td class="phonetic-col">/bluːm/</td>
+          <td>v. 动词 / n. 名词</td>
+          <td>开花；花朵</td>
+          <td>Cherry trees <b>bloom</b> in spring.（樱桃树在春天开花。）</td>
+        </tr>
+        <tr>
+          <td class="word-col">refer to</td>
+          <td class="phonetic-col">/rɪˈfɜː tuː/</td>
+          <td>动词短语</td>
+          <td>指的是；参考</td>
+          <td>What does this word <b>refer to</b>?（这个词指的是什么？）</td>
+        </tr>
+        <tr>
+          <td class="word-col">wisdom</td>
+          <td class="phonetic-col">/ˈwɪzdəm/</td>
+          <td>n. 名词</td>
+          <td>智慧；明智</td>
+          <td>Reading books is a good way to gain <b>wisdom</b>.（读书是获取智慧的好方法。）</td>
+        </tr>
+        <tr>
+          <td class="word-col">pile up</td>
+          <td class="phonetic-col">/paɪl ʌp/</td>
+          <td>动词短语</td>
+          <td>堆积；积累</td>
+          <td>Snow <b>piled up</b> on the road after the storm.（暴风雨后路上积满了雪。）</td>
+        </tr>
+        <tr>
+          <td class="word-col">situation</td>
+          <td class="phonetic-col">/ˌsɪtʃuˈeɪʃn/</td>
+          <td>n. 名词</td>
+          <td>形势；情况</td>
+          <td>We need to deal with this <b>situation</b> carefully.（我们需要仔细处理这个情况。）</td>
+        </tr>
+        <tr>
+          <td class="word-col">serotonin</td>
+          <td class="phonetic-col">/ˌserəˈtəʊnɪn/</td>
+          <td>n. 名词</td>
+          <td>血清素（一种神经递质，影响情绪）</td>
+          <td><b>Serotonin</b> helps us feel happy and calm.（血清素帮助我们感到快乐和平静。）</td>
+        </tr>
+        <tr>
+          <td class="word-col">melatonin</td>
+          <td class="phonetic-col">/ˌmeləˈtəʊnɪn/</td>
+          <td>n. 名词</td>
+          <td>褪黑素（调节睡眠的激素）</td>
+          <td><b>Melatonin</b> helps us fall asleep at night.（褪黑素帮助我们夜间入睡。）</td>
+        </tr>
+        <tr>
+          <td class="word-col">humidity</td>
+          <td class="phonetic-col">/hjuːˈmɪdəti/</td>
+          <td>n. 名词</td>
+          <td>湿度；潮湿</td>
+          <td>The <b>humidity</b> is very high in summer.（夏天湿度很高。）</td>
+        </tr>
+        <tr>
+          <td class="word-col">sweat</td>
+          <td class="phonetic-col">/swet/</td>
+          <td>n. 名词 / v. 动词</td>
+          <td>汗水；出汗</td>
+          <td>He was covered in <b>sweat</b> after running.（跑步后他浑身是汗。）</td>
+        </tr>
+        <tr>
+          <td class="word-col">energetic</td>
+          <td class="phonetic-col">/ˌenə'dʒetɪk/</td>
+          <td>adj. 形容词</td>
+          <td>精力充沛的；充满活力的</td>
+          <td>After a good night's sleep, I feel <b>energetic</b> all day.（睡个好觉后，我整天都精力充沛。）</td>
+        </tr>
+        <tr>
+          <td class="word-col">moreover</td>
+          <td class="phonetic-col">/mɔːˈrəʊvə(r)/</td>
+          <td>adv. 副词</td>
+          <td>此外；而且</td>
+          <td>The job is difficult. <b>Moreover</b>, it doesn't pay well.（这份工作很难。而且薪水也不高。）</td>
+        </tr>
+        <tr>
+          <td class="word-col">frequency</td>
+          <td class="phonetic-col">/ˈfriːkwənsi/</td>
+          <td>n. 名词</td>
+          <td>频率</td>
+          <td>Radio stations broadcast at different <b>frequencies</b>.（广播电台以不同频率广播。）</td>
+        </tr>
+        <tr>
+          <td class="word-col">brain wave</td>
+          <td class="phonetic-col">/breɪn weɪv/</td>
+          <td>n. 名词短语</td>
+          <td>脑电波</td>
+          <td>Scientists study <b>brain waves</b> to understand how the mind works.（科学家研究脑电波来了解大脑如何工作。）</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="footer">
+    <p>七年级英语培优阅读 &middot; 交互式学习页面 &middot; 点击文中橙色标注词查看释义与例句</p>
+  </div>
+
+</div>
+
+<!-- Vocabulary Tooltip (hidden by default) -->
+<div class="vocab-tooltip" id="vocabTooltip">
+  <div class="vt-word"></div>
+  <div class="vt-phonetic"></div>
+  <div class="vt-pos"></div>
+  <div class="vt-meaning"></div>
+  <div class="vt-example"></div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const tooltip = document.getElementById('vocabTooltip');
+  const vocabItems = document.querySelectorAll('.vocab');
+
+  vocabItems.forEach(function(item) {
+    item.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      var word = this.getAttribute('data-word');
+      var phonetic = this.getAttribute('data-phonetic');
+      var pos = this.getAttribute('data-pos');
+      var meaning = this.getAttribute('data-meaning');
+      var example = this.getAttribute('data-example');
+
+      // Only show tooltip for actual vocabulary words (not placeholders)
+      if (word === '▲' || word === '') {
+        return;
+      }
+
+      tooltip.querySelector('.vt-word').textContent = word;
+      tooltip.querySelector('.vt-phonetic').textContent = phonetic ? '发音：' + phonetic : '';
+      tooltip.querySelector('.vt-pos').textContent = pos ? pos : '';
+      tooltip.querySelector('.vt-meaning').textContent = meaning;
+      tooltip.querySelector('.vt-example').textContent = example;
+
+      // Position tooltip
+      var rect = this.getBoundingClientRect();
+      var top = rect.bottom + window.scrollY + 10;
+      var left = rect.left + window.scrollX;
+
+      tooltip.style.top = top + 'px';
+      tooltip.style.left = left + 'px';
+      tooltip.classList.add('active');
+
+      // Adjust if overflowing right
+      var tooltipRect = tooltip.getBoundingClientRect();
+      if (tooltipRect.right > window.innerWidth) {
+        tooltip.style.left = (left - tooltipRect.width + rect.width) + 'px';
+      }
+      // Adjust if overflowing bottom
+      if (tooltipRect.bottom > window.innerHeight + window.scrollY) {
+        tooltip.style.top = (rect.top + window.scrollY - tooltipRect.height - 10) + 'px';
+      }
+    });
+
+    // Hover for desktop
+    item.addEventListener('mouseenter', function() {
+      var word = this.getAttribute('data-word');
+      if (word === '▲' || word === '') return;
+
+      var phonetic = this.getAttribute('data-phonetic');
+      var pos = this.getAttribute('data-pos');
+      var meaning = this.getAttribute('data-meaning');
+      var example = this.getAttribute('data-example');
+
+      tooltip.querySelector('.vt-word').textContent = word;
+      tooltip.querySelector('.vt-phonetic').textContent = phonetic ? '发音：' + phonetic : '';
+      tooltip.querySelector('.vt-pos').textContent = pos ? pos : '';
+      tooltip.querySelector('.vt-meaning').textContent = meaning;
+      tooltip.querySelector('.vt-example').textContent = example;
+
+      var rect = this.getBoundingClientRect();
+      var top = rect.bottom + window.scrollY + 10;
+      var left = rect.left + window.scrollX;
+
+      tooltip.style.top = top + 'px';
+      tooltip.style.left = left + 'px';
+      tooltip.classList.add('active');
+
+      var tooltipRect = tooltip.getBoundingClientRect();
+      if (tooltipRect.right > window.innerWidth) {
+        tooltip.style.left = (left - tooltipRect.width + rect.width) + 'px';
+      }
+      if (tooltipRect.bottom > window.innerHeight + window.scrollY) {
+        tooltip.style.top = (rect.top + window.scrollY - tooltipRect.height - 10) + 'px';
+      }
+    });
+
+    item.addEventListener('mouseleave', function() {
+      // Don't auto-hide on mouseleave to allow click persistence
+    });
+  });
+
+  // Close tooltip when clicking outside
+  document.addEventListener('click', function(e) {
+    if (!e.target.classList.contains('vocab')) {
+      tooltip.classList.remove('active');
+    }
+  });
+
+  // Close tooltip on ESC key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      tooltip.classList.remove('active');
+    }
+  });
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1440 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>鲁教版七年级上册 · 核心知识点精讲与典型例题</title>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #f0f4f8;
+  --card-bg: #ffffff;
+  --text: #1e293b;
+  --text-light: #64748b;
+  --text-lighter: #94a3b8;
+  --border: #e2e8f0;
+  --line: #cbd5e1;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+  --shadow-lg: 0 12px 32px rgba(0,0,0,0.10), 0 4px 8px rgba(0,0,0,0.04);
+  --radius: 14px;
+  --radius-sm: 8px;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== Header ===== */
+.page-header {
+  background: linear-gradient(135deg, #1e3a5f 0%, #2d5a8e 50%, #3b6fa0 100%);
+  padding: 56px 24px 48px;
+  text-align: center;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.page-header::before {
+  content: '';
+  position: absolute;
+  top: -60%; right: -10%;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.page-header h1 { font-size: 2rem; font-weight: 800; letter-spacing: 2px; margin-bottom: 10px; position: relative; }
+.page-header .subtitle { font-size: 0.95rem; opacity: 0.85; font-weight: 300; letter-spacing: 1px; }
+.page-header .deco-line { width: 60px; height: 3px; background: rgba(255,255,255,0.5); margin: 16px auto 0; border-radius: 2px; }
+
+/* ===== Nav ===== */
+.nav-bar {
+  background: #fff; box-shadow: var(--shadow-sm);
+  position: sticky; top: 0; z-index: 100;
+  display: flex; justify-content: center; gap: 4px; padding: 10px 16px; flex-wrap: wrap;
+}
+.nav-bar a {
+  text-decoration: none; color: var(--text-light);
+  font-size: 0.85rem; font-weight: 600;
+  padding: 7px 14px; border-radius: 20px; transition: all 0.2s; white-space: nowrap;
+}
+.nav-bar a:hover { background: var(--bg); color: var(--text); }
+.nav-bar a.active { color: #fff; }
+
+/* ===== Main ===== */
+.main-container { max-width: 900px; margin: 0 auto; padding: 32px 20px 60px; }
+
+/* ===== Chapter ===== */
+.chapter {
+  background: var(--card-bg); border-radius: var(--radius);
+  box-shadow: var(--shadow-md); margin-bottom: 36px; overflow: hidden;
+}
+.chapter-banner {
+  display: flex; align-items: center; gap: 16px; padding: 20px 28px; color: #fff;
+}
+.chapter-banner .ch-num {
+  width: 44px; height: 44px; border-radius: 12px;
+  background: rgba(255,255,255,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem; font-weight: 800; flex-shrink: 0; backdrop-filter: blur(4px);
+}
+.chapter-banner .ch-title { font-size: 1.35rem; font-weight: 700; letter-spacing: 1px; }
+.chapter-banner .ch-subtitle { font-size: 0.8rem; opacity: 0.8; font-weight: 300; margin-top: 2px; }
+
+#ch1 { --c1: #3b82f6; --c2: #1d4ed8; --c-light: #eff6ff; --c-soft: #dbeafe; }
+#ch2 { --c1: #8b5cf6; --c2: #6d28d9; --c-light: #f5f3ff; --c-soft: #ede9fe; }
+#ch3 { --c1: #10b981; --c2: #047857; --c-light: #ecfdf5; --c-soft: #d1fae5; }
+#ch4 { --c1: #f59e0b; --c2: #d97706; --c-light: #fffbeb; --c-soft: #fef3c7; }
+#ch5 { --c1: #06b6d4; --c2: #0891b2; --c-light: #ecfeff; --c-soft: #cffafe; }
+#ch6 { --c1: #f43f5e; --c2: #e11d48; --c-light: #fff1f2; --c-soft: #ffe4e6; }
+
+#ch1 .chapter-banner { background: linear-gradient(135deg, #3b82f6, #1d4ed8); }
+#ch2 .chapter-banner { background: linear-gradient(135deg, #8b5cf6, #6d28d9); }
+#ch3 .chapter-banner { background: linear-gradient(135deg, #10b981, #047857); }
+#ch4 .chapter-banner { background: linear-gradient(135deg, #f59e0b, #d97706); }
+#ch5 .chapter-banner { background: linear-gradient(135deg, #06b6d4, #0891b2); }
+#ch6 .chapter-banner { background: linear-gradient(135deg, #f43f5e, #e11d48); }
+
+#ch1 .nav-bar a[href="#ch1"] { background: #3b82f6; }
+#ch2 .nav-bar a[href="#ch2"] { background: #8b5cf6; }
+#ch3 .nav-bar a[href="#ch3"] { background: #10b981; }
+#ch4 .nav-bar a[href="#ch4"] { background: #f59e0b; }
+#ch5 .nav-bar a[href="#ch5"] { background: #06b6d4; }
+#ch6 .nav-bar a[href="#ch6"] { background: #f43f5e; }
+
+.chapter-content { padding: 28px 28px 12px; }
+
+/* ===== Section ===== */
+.section {
+  margin-bottom: 32px;
+  scroll-margin-top: 64px;
+}
+.section h3 {
+  font-size: 1.15rem; font-weight: 700; color: var(--c2);
+  margin-bottom: 14px; padding-bottom: 8px;
+  border-bottom: 2px solid var(--c-soft);
+  display: flex; align-items: center; gap: 8px;
+}
+.section h3 .sec-icon {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 28px; height: 28px; border-radius: 8px;
+  background: var(--c1); color: #fff; font-size: 0.8rem;
+}
+.section h4 {
+  font-size: 1rem; font-weight: 700; color: var(--text);
+  margin: 18px 0 10px;
+}
+
+/* ===== Paragraphs & Lists ===== */
+.section p { margin-bottom: 12px; color: #334155; }
+.section ul, .section ol { margin: 10px 0 14px 20px; }
+.section li { margin-bottom: 6px; color: #334155; }
+.section strong { color: var(--c2); font-weight: 700; }
+.section code {
+  background: var(--c-light); padding: 1px 6px; border-radius: 4px;
+  font-family: "SF Mono", "Fira Code", "Consolas", monospace;
+  font-size: 0.88rem; color: var(--c2); font-weight: 600;
+}
+
+/* ===== SVG Figure ===== */
+.figure {
+  background: #fafbfc; border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 20px;
+  margin: 16px 0; text-align: center; overflow-x: auto;
+}
+.figure svg { max-width: 100%; height: auto; }
+.figure-caption {
+  font-size: 0.8rem; color: var(--text-light);
+  margin-top: 10px; font-style: italic;
+}
+
+/* ===== Callout ===== */
+.callout {
+  background: var(--c-light); border-left: 4px solid var(--c1);
+  border-radius: 0 10px 10px 0; padding: 14px 18px;
+  margin: 14px 0; font-size: 0.88rem; color: #334155;
+}
+.callout strong { color: var(--c2); }
+
+/* ===== Example Box ===== */
+.example {
+  background: #f8fafc; border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 18px 20px;
+  margin: 16px 0; position: relative;
+}
+.example::before {
+  content: '例题'; position: absolute; top: -10px; left: 16px;
+  background: var(--c1); color: #fff; font-size: 0.75rem; font-weight: 700;
+  padding: 2px 12px; border-radius: 12px; letter-spacing: 1px;
+}
+.example .ex-body { margin-top: 6px; }
+.example .ex-body p { margin-bottom: 8px; }
+.example .solution-label {
+  display: inline-block; background: var(--c2); color: #fff;
+  font-size: 0.78rem; font-weight: 700; padding: 2px 10px;
+  border-radius: 10px; margin-bottom: 8px;
+}
+.example .answer {
+  display: inline-block; background: var(--c-soft); color: var(--c2);
+  font-weight: 700; padding: 2px 10px; border-radius: 6px;
+}
+
+/* ===== Table ===== */
+.tbl-wrapper { overflow-x: auto; margin: 14px 0; }
+table {
+  border-collapse: collapse; width: 100%; font-size: 0.85rem;
+}
+th, td {
+  border: 1px solid var(--border); padding: 8px 12px; text-align: center;
+}
+th { background: var(--c-light); color: var(--c2); font-weight: 700; }
+tr:nth-child(even) td { background: #fafbfc; }
+
+/* ===== Appendix ===== */
+.appendix {
+  background: var(--card-bg); border-radius: var(--radius);
+  box-shadow: var(--shadow-md); margin-bottom: 36px; overflow: hidden;
+}
+.appendix-banner {
+  background: linear-gradient(135deg, #1e3a5f, #2d5a8e);
+  padding: 20px 28px; color: #fff;
+  display: flex; align-items: center; gap: 16px;
+}
+.appendix-banner .ch-num {
+  width: 44px; height: 44px; border-radius: 12px;
+  background: rgba(255,255,255,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem; font-weight: 800; flex-shrink: 0;
+}
+.appendix-banner .ch-title { font-size: 1.35rem; font-weight: 700; }
+.appendix-banner .ch-subtitle { font-size: 0.8rem; opacity: 0.8; font-weight: 300; margin-top: 2px; }
+
+/* ===== Footer ===== */
+.page-footer {
+  text-align: center; padding: 24px; color: var(--text-lighter); font-size: 0.8rem;
+}
+
+@media (max-width: 768px) {
+  .page-header h1 { font-size: 1.4rem; }
+  .chapter-banner .ch-title { font-size: 1.1rem; }
+  .chapter-content { padding: 20px 16px 8px; }
+  .section h3 { font-size: 1rem; }
+}
+
+@media print {
+  .nav-bar { display: none; }
+  .main-container { padding: 12px; max-width: 100%; }
+  .chapter, .appendix { box-shadow: none; border: 1px solid var(--border); break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<header class="page-header">
+  <h1>鲁教版七年级上册 · 核心知识点精讲与典型例题</h1>
+  <div class="deco-line"></div>
+  <p class="subtitle">通俗讲解 · 完整解题过程 · SVG 几何图形 · 适合自学</p>
+</header>
+
+<nav class="nav-bar">
+  <a href="#ch1">第一章 三角形</a>
+  <a href="#ch2">第二章 轴对称</a>
+  <a href="#ch3">第三章 勾股定理</a>
+  <a href="#ch4">第四章 实数</a>
+  <a href="#ch5">第五章 位置与坐标</a>
+  <a href="#ch6">第六章 一次函数</a>
+  <a href="#appendix">解题速查</a>
+</nav>
+
+<main class="main-container">
+
+<!-- ================================================================ -->
+<!-- ==================== 第一章 三角形 ============================== -->
+<!-- ================================================================ -->
+<section class="chapter" id="ch1">
+  <div class="chapter-banner">
+    <div class="ch-num">1</div>
+    <div>
+      <div class="ch-title">三角形</div>
+      <div class="ch-subtitle">内角和 · 外角定理 · 三边关系 · 全等判定</div>
+    </div>
+  </div>
+  <div class="chapter-content">
+
+    <!-- 1.1 -->
+    <div class="section">
+      <h3><span class="sec-icon">1.1</span> 三角形内角和 = 180°</h3>
+
+      <h4>为什么是 180°？</h4>
+      <p>课本上说"三角形三个内角加起来等于 180°"，但<strong>为什么</strong>？</p>
+      <p><strong>证明方法（平行线法）：</strong>在 △ABC 中，过顶点 A 作直线 DE ∥ BC。</p>
+
+      <div class="figure">
+        <svg viewBox="0 0 380 280" width="380" xmlns="http://www.w3.org/2000/svg">
+          <!-- 平行线 DE -->
+          <line x1="20" y1="230" x2="360" y2="230" stroke="#64748b" stroke-width="2" stroke-dasharray="6,4"/>
+          <text x="8" y="236" font-size="14" fill="#64748b" font-weight="bold">D</text>
+          <text x="365" y="236" font-size="14" fill="#64748b" font-weight="bold">E</text>
+          <!-- 三角形 ABC -->
+          <polygon points="190,50 80,230 300,230" fill="rgba(59,130,246,0.06)" stroke="#1d4ed8" stroke-width="2.5"/>
+          <!-- 顶点标签 -->
+          <text x="184" y="42" font-size="16" fill="#1d4ed8" font-weight="bold">A</text>
+          <text x="68" y="248" font-size="16" fill="#1d4ed8" font-weight="bold">B</text>
+          <text x="305" y="248" font-size="16" fill="#1d4ed8" font-weight="bold">C</text>
+          <!-- 从A到BC的辅助线（虚线表示平行线过A） -->
+          <!-- ∠1 和 ∠2 标注 -->
+          <text x="150" y="220" font-size="13" fill="#ef4444" font-weight="bold">∠1</text>
+          <text x="230" y="220" font-size="13" fill="#ef4444" font-weight="bold">∠2</text>
+          <!-- ∠BAC 标注 -->
+          <text x="178" y="100" font-size="12" fill="#8b5cf6">∠BAC</text>
+          <!-- ∠B 标注 -->
+          <text x="105" y="215" font-size="12" fill="#10b981">∠B</text>
+          <!-- ∠C 标注 -->
+          <text x="270" y="215" font-size="12" fill="#10b981">∠C</text>
+          <!-- 平行标记 -->
+          <text x="130" y="222" font-size="10" fill="#94a3b8">＞</text>
+          <text x="250" y="222" font-size="10" fill="#94a3b8">＞</text>
+        </svg>
+        <div class="figure-caption">图 1.1  过顶点 A 作 DE ∥ BC，将三个内角"搬"到一条直线上</div>
+      </div>
+
+      <p>因为 DE ∥ BC，所以：</p>
+      <ul>
+        <li>∠1 = ∠B（内错角相等）</li>
+        <li>∠2 = ∠C（内错角相等）</li>
+      </ul>
+      <p>而 ∠1 + ∠BAC + ∠2 = 180°（平角）</p>
+      <p>所以 ∠B + ∠BAC + ∠C = 180° <strong>∎</strong></p>
+
+      <div class="callout"><strong>一句话记忆：</strong>把三个角"搬"到一条直线上，刚好拼成平角。</div>
+
+      <h4>典型例题</h4>
+      <div class="example">
+        <div class="ex-body">
+          <p><strong>例 1：</strong>在 △ABC 中，∠A = 50°，∠B = 70°，求 ∠C。</p>
+          <span class="solution-label">解</span>
+          <p>∠C = 180° − ∠A − ∠B = 180° − 50° − 70° = <span class="answer">60°</span></p>
+        </div>
+      </div>
+      <div class="example">
+        <div class="ex-body">
+          <p><strong>例 2：</strong>在 △ABC 中，∠A : ∠B : ∠C = 2 : 3 : 5，求三个角的度数。</p>
+          <span class="solution-label">解</span>
+          <p>设 ∠A = 2k，∠B = 3k，∠C = 5k。</p>
+          <p>由内角和：2k + 3k + 5k = 180° → 10k = 180° → k = 18°</p>
+          <p>∴ ∠A = 36°，∠B = 54°，∠C = <span class="answer">90°</span></p>
+        </div>
+      </div>
+      <div class="callout"><strong>技巧：</strong>遇到角度比，设比例系数 k，用内角和列方程。</div>
+    </div>
+
+    <!-- 1.2 -->
+    <div class="section">
+      <h3><span class="sec-icon">1.2</span> 三角形外角定理</h3>
+      <h4>外角 = 不相邻两内角之和</h4>
+      <p>外角是三角形一个内角的"补角"（延长一边得到的角）。</p>
+      <p><strong>为什么？</strong>直接从内角和推导：</p>
+      <p>∠ACD（外角）= 180° − ∠ACB</p>
+      <p>而 ∠A + ∠B = 180° − ∠ACB（内角和）</p>
+      <p>所以 ∠ACD = ∠A + ∠B <strong>∎</strong></p>
+      <div class="callout"><strong>推论：</strong>三角形的外角大于任何一个不相邻的内角。</div>
+
+      <div class="example">
+        <div class="ex-body">
+          <p><strong>例：</strong>在 △ABC 中，∠A = 45°，∠B 的外角 = 110°，求 ∠C。</p>
+          <span class="solution-label">解</span>
+          <p>∠B = 180° − 110° = 70°（邻补角）</p>
+          <p>∠C = 180° − ∠A − ∠B = 180° − 45° − 70° = <span class="answer">65°</span></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1.3 -->
+    <div class="section">
+      <h3><span class="sec-icon">1.3</span> 三边关系</h3>
+      <h4>为什么"两边之和大于第三边"？</h4>
+      <p>这是几何公理，直觉理解：<strong>两点之间，线段最短</strong>。</p>
+      <p>从 A 到 B，走直线（边 c）一定比绕道走（边 a + 边 b）短。所以 a + b &gt; c。</p>
+      <div class="callout"><strong>实际做题技巧：</strong>不需要验三组，只需<strong>较小两边之和 &gt; 最大边</strong>。</div>
+
+      <div class="example">
+        <div class="ex-body">
+          <p><strong>例：</strong>以下列线段为边，能构成三角形的是哪组？<br>A. 1, 2, 3　B. 2, 3, 5　C. 3, 4, 5　D. 1, 3, 5</p>
+          <span class="solution-label">解</span>
+          <p>只需看较小两边之和是否 &gt; 最大边：</p>
+          <ul>
+            <li>A：1 + 2 = 3，<strong>不大于</strong>，❌</li>
+            <li>B：2 + 3 = 5，<strong>不大于</strong>，❌</li>
+            <li>C：3 + 4 = 7 &gt; 5，✅</li>
+            <li>D：1 + 3 = 4 &lt; 5，❌</li>
+          </ul>
+          <p>选 <span class="answer">C</span></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1.4 -->
+    <div class="section">
+      <h3><span class="sec-icon">1.4</span> 全等判定 — 为什么 SSA 不行？</h3>
+      <h4>五种判定方法</h4>
+      <div class="tbl-wrapper">
+        <table>
+          <tr><th>判定</th><th>含义</th><th>关键</th></tr>
+          <tr><td><strong>SSS</strong></td><td>三边对应相等</td><td>—</td></tr>
+          <tr><td><strong>SAS</strong></td><td>两边及其<strong>夹角</strong>对应相等</td><td>必须是夹角！</td></tr>
+          <tr><td><strong>ASA</strong></td><td>两角及其<strong>夹边</strong>对应相等</td><td>必须是夹边！</td></tr>
+          <tr><td><strong>AAS</strong></td><td>两角及一角的对边对应相等</td><td>—</td></tr>
+          <tr><td><strong>HL</strong></td><td>斜边和一直角边对应相等</td><td>仅限直角三角形</td></tr>
+        </table>
+      </div>
+
+      <h4>SSA 为什么不行？</h4>
+      <p>想象一下：你有两条边 AB、BC 和一个<strong>非夹角</strong>∠A。同样的 AB、BC、∠A，可以画出<strong>两个不同的三角形</strong>（C₁ 和 C₂）！</p>
+
+      <div class="figure">
+        <svg viewBox="0 0 360 250" width="360" xmlns="http://www.w3.org/2000/svg">
+          <!-- 三角形 ABC1 -->
+          <polygon points="60,220 60,50 220,210" fill="rgba(239,68,68,0.05)" stroke="#ef4444" stroke-width="2"/>
+          <!-- 三角形 ABC2 -->
+          <polygon points="60,220 60,50 330,225" fill="rgba(245,158,11,0.05)" stroke="#f59e0b" stroke-width="2" stroke-dasharray="5,3"/>
+          <!-- 顶点 -->
+          <circle cx="60" cy="50" r="4" fill="#1d4ed8"/>
+          <text x="40" y="46" font-size="15" fill="#1d4ed8" font-weight="bold">B</text>
+          <circle cx="60" cy="220" r="4" fill="#1d4ed8"/>
+          <text x="40" y="235" font-size="15" fill="#1d4ed8" font-weight="bold">A</text>
+          <circle cx="220" cy="210" r="4" fill="#ef4444"/>
+          <text x="225" y="225" font-size="14" fill="#ef4444" font-weight="bold">C₁</text>
+          <circle cx="330" cy="225" r="4" fill="#f59e0b"/>
+          <text x="335" y="235" font-size="14" fill="#f59e0b" font-weight="bold">C₂</text>
+          <!-- 边标注 -->
+          <text x="68" y="140" font-size="12" fill="#64748b">AB</text>
+          <text x="135" y="140" font-size="12" fill="#ef4444">BC</text>
+          <text x="140" y="235" font-size="12" fill="#64748b">AC₁</text>
+          <text x="250" y="245" font-size="12" fill="#64748b">AC₂</text>
+          <!-- ∠A 弧线 -->
+          <path d="M 75,220 A 18,18 0 0,0 75,202" fill="none" stroke="#8b5cf6" stroke-width="2"/>
+          <text x="82" y="210" font-size="12" fill="#8b5cf6" font-weight="bold">∠A</text>
+        </svg>
+        <div class="figure-caption">图 1.4  SSA 不能确定唯一三角形 — 同样的 AB、BC、∠A 可以画出两个不同的三角形</div>
+      </div>
+
+      <div class="callout"><strong>记忆口诀：</strong>"角必须夹在两边中间"——SAS 的 A 夹在 S 和 S 之间。</div>
+
+      <div class="example">
+        <div class="ex-body">
+          <p><strong>例：</strong>如图，AB = AD，∠BAC = ∠DAC。求证：△ABC ≌ △ADC。</p>
+          <span class="solution-label">证明</span>
+          <p>在 △ABC 和 △ADC 中：</p>
+          <div class="tbl-wrapper">
+            <table>
+              <tr><th>条件</th><th>△ABC</th><th>△ADC</th><th>依据</th></tr>
+              <tr><td>边</td><td>AB</td><td>AD</td><td>已知</td></tr>
+              <tr><td>角</td><td>∠BAC</td><td>∠DAC</td><td>已知</td></tr>
+              <tr><td>边</td><td>AC</td><td>AC</td><td><strong>公共边</strong></td></tr>
+            </table>
+          </div>
+          <p>∴ △ABC ≌ △ADC（<span class="answer">SAS</span>）</p>
+        </div>
+      </div>
+      <div class="callout"><strong>关键：</strong>证明题第一步——找公共边、对顶角这些"隐藏条件"。</div>
+    </div>
+
+    <!-- 1.5 -->
+    <div class="section">
+      <h3><span class="sec-icon">1.5</span> 全等证明的书写规范</h3>
+      <p><strong>标准格式（必须按这个写，考试才给分）：</strong></p>
+      <div class="callout" style="font-family: 'SF Mono', Consolas, monospace; font-size: 0.85rem;">
+        在 △___ 和 △___ 中，<br>
+        &nbsp;&nbsp;___ = ___ （________）<br>
+        &nbsp;&nbsp;___ = ___ （________）<br>
+        &nbsp;&nbsp;___ = ___ （________）<br>
+        ∴ △___ ≌ △___（___）
+      </div>
+      <p><strong>三条注意：</strong></p>
+      <ol>
+        <li>每个等式后面必须写<strong>依据</strong>（已知 / 公共边 / 对顶角等）</li>
+        <li>判定方法写在括号里（SSS / SAS / ASA / AAS / HL）</li>
+        <li>对应顶点的字母顺序必须一致（△ABC ≌ △DEF 意味着 A↔D, B↔E, C↔F）</li>
+      </ol>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- ==================== 第二章 轴对称 ============================== -->
+<!-- ================================================================ -->
+<section class="chapter" id="ch2">
+  <div class="chapter-banner">
+    <div class="ch-num">2</div>
+    <div>
+      <div class="ch-title">轴对称</div>
+      <div class="ch-subtitle">对称性质 · 垂直平分线 · 等腰三角形 · 角平分线</div>
+    </div>
+  </div>
+  <div class="chapter-content">
+
+    <!-- 2.1 -->
+    <div class="section">
+      <h3><span class="sec-icon">2.1</span> 轴对称的性质</h3>
+      <h4>"对应点连线被对称轴垂直平分"是什么意思？</h4>
+      <p>把一张纸沿直线 l 对折，点 A 和它的对称点 A' 重合。折痕 l 就是 AA' 的<strong>垂直平分线</strong>——</p>
+      <ul>
+        <li>垂直：l ⊥ AA'</li>
+        <li>平分：l 过 AA' 的中点</li>
+      </ul>
+      <div class="callout"><strong>做题时怎么用：</strong>如果知道 A 和对称轴 l，求 A'——过 A 向 l 作垂线，延长等距离即得 A'。</div>
+    </div>
+
+    <!-- 2.2 -->
+    <div class="section">
+      <h3><span class="sec-icon">2.2</span> 垂直平分线性质 — "到两端距离相等"</h3>
+      <h4>性质</h4>
+      <p>线段垂直平分线上的<strong>任意一点</strong>，到这条线段两个端点的距离相等。</p>
+
+      <div class="figure">
+        <svg viewBox="0 0 380 280" width="380" xmlns="http://www.w3.org/2000/svg">
+          <!-- 线段AB -->
+          <line x1="80" y1="140" x2="300" y2="140" stroke="#1e293b" stroke-width="2.5"/>
+          <!-- 中点M -->
+          <circle cx="190" cy="140" r="3" fill="#1e293b"/>
+          <text x="185" y="160" font-size="14" fill="#1e293b" font-weight="bold">M</text>
+          <!-- 垂直平分线 l -->
+          <line x1="190" y1="20" x2="190" y2="260" stroke="#8b5cf6" stroke-width="2" stroke-dasharray="6,4"/>
+          <text x="196" y="28" font-size="14" fill="#8b5cf6" font-weight="bold">l</text>
+          <!-- 端点 -->
+          <circle cx="80" cy="140" r="4" fill="#1d4ed8"/>
+          <text x="64" y="160" font-size="15" fill="#1d4ed8" font-weight="bold">A</text>
+          <circle cx="300" cy="140" r="4" fill="#1d4ed8"/>
+          <text x="306" y="160" font-size="15" fill="#1d4ed8" font-weight="bold">B</text>
+          <!-- 直角标记 -->
+          <path d="M 180,140 L 180,130 L 190,130" fill="none" stroke="#8b5cf6" stroke-width="1.5"/>
+          <!-- 点 P1~P4 -->
+          <circle cx="190" cy="50" r="4" fill="#ef4444"/>
+          <text x="200" y="50" font-size="13" fill="#ef4444" font-weight="bold">P₁</text>
+          <circle cx="190" cy="95" r="4" fill="#10b981"/>
+          <text x="200" y="98" font-size="13" fill="#10b981" font-weight="bold">P₂</text>
+          <circle cx="190" cy="190" r="4" fill="#f59e0b"/>
+          <text x="200" y="193" font-size="13" fill="#f59e0b" font-weight="bold">P₃</text>
+          <circle cx="190" cy="240" r="4" fill="#06b6d4"/>
+          <text x="200" y="243" font-size="13" fill="#06b6d4" font-weight="bold">P₄</text>
+          <!-- 连线 P1A P1B -->
+          <line x1="190" y1="50" x2="80" y2="140" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="3,3"/>
+          <line x1="190" y1="50" x2="300" y2="140" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="3,3"/>
+          <text x="120" y="88" font-size="11" fill="#ef4444">P₁A</text>
+          <text x="255" y="88" font-size="11" fill="#ef4444">P₁B</text>
+        </svg>
+        <div class="figure-caption">图 2.2  垂直平分线 l 上的任意点到两端 A、B 的距离相等</div>
+      </div>
+
+      <p>P₁、P₂、P₃、P₄ 都在 l 上 → P₁A = P₁B，P₂A = P₂B，……</p>
+      <div class="callout"><strong>逆命题也成立：</strong>到线段两端距离相等的点，在这条线段的垂直平分线上。</div>
+
+      <div class="example">
+        <div class="ex-body">
+          <p><strong>例 1：</strong>直线 l 是线段 AB 的垂直平分线，点 P 在 l 上，PA = 5cm。求 PB。</p>
+          <span class="solution-label">解</span>
+          <p>P 在 AB 的垂直平分线上 → PA = PB = <span class="answer">5cm</span></p>
+        </div>
+      </div>
+
+      <div class="example">
+        <div class="ex-body">
+          <p><strong>例 2：</strong>在 △ABC 中，AB = AC = 10cm，BC = 12cm。求底边 BC 上的高 AD。</p>
+          <span class="solution-label">解</span>
+          <p>等腰三角形中，底边上的高也是底边的中线（三线合一）。</p>
+          <p>所以 BD = BC ÷ 2 = 6cm。</p>
+          <p>在 Rt△ABD 中：AD = √(AB² − BD²) = √(100 − 36) = √64 = <span class="answer">8cm</span></p>
+        </div>
+      </div>
+      <div class="callout"><strong>关键：</strong>"垂直平分线"和"三线合一"经常联合使用——等腰三角形底边上的高，就是底边的垂直平分线。</div>
+    </div>
+
+    <!-- 2.3 -->
+    <div class="section">
+      <h3><span class="sec-icon">2.3</span> 等腰三角形 — "等边对等角"</h3>
+      <h4>为什么两底角相等？</h4>
+      <p><strong>证明：</strong>在等腰 △ABC 中（AB = AC），作底边上的高 AD。</p>
+
+      <div class="figure">
+        <svg viewBox="0 0 340 260" width="340" xmlns="http://www.w3.org/2000/svg">
+          <!-- 三角形 -->
+          <polygon points="170,40 50,230 290,230" fill="rgba(139,92,246,0.06)" stroke="#6d28d9" stroke-width="2.5"/>
+          <!-- 高 AD -->
+          <line x1="170" y1="40" x2="170" y2="230" stroke="#ef4444" stroke-width="2" stroke-dasharray="5,3"/>
+          <!-- 直角标记 -->
+          <path d="M 170,215 L 155,215 L 155,230" fill="none" stroke="#ef4444" stroke-width="1.5"/>
+          <!-- 顶点 -->
+          <circle cx="170" cy="40" r="4" fill="#6d28d9"/>
+          <text x="164" y="32" font-size="16" fill="#6d28d9" font-weight="bold">A</text>
+          <circle cx="50" cy="230" r="4" fill="#6d28d9"/>
+          <text x="36" y="248" font-size="16" fill="#6d28d9" font-weight="bold">B</text>
+          <circle cx="290" cy="230" r="4" fill="#6d28d9"/>
+          <text x="296" y="248" font-size="16" fill="#6d28d9" font-weight="bold">C</text>
+          <circle cx="170" cy="230" r="3" fill="#1e293b"/>
+          <text x="158" y="250" font-size="14" fill="#1e293b" font-weight="bold">D</text>
+          <!-- 等边标记 -->
+          <text x="95" y="135" font-size="12" fill="#1e293b">AB</text>
+          <text x="225" y="135" font-size="12" fill="#1e293b">AC</text>
+          <!-- 等边记号 -->
+          <line x1="100" y1="120" x2="108" y2="132" stroke="#6d28d9" stroke-width="2"/>
+          <line x1="232" y1="120" x2="240" y2="132" stroke="#6d28d9" stroke-width="2"/>
+          <!-- ∠B ∠C 标注 -->
+          <text x="78" y="222" font-size="12" fill="#10b981" font-weight="bold">∠B</text>
+          <text x="260" y="222" font-size="12" fill="#10b981" font-weight="bold">∠C</text>
+          <!-- AD标注 -->
+          <text x="178" y="140" font-size="12" fill="#ef4444" font-weight="bold">AD</text>
+        </svg>
+        <div class="figure-caption">图 2.3  等腰三角形底边上的高 AD，同时也是底边中线和顶角平分线（三线合一）</div>
+      </div>
+
+      <p>在 Rt△ABD 和 Rt△ACD 中：</p>
+      <ul>
+        <li>AB = AC（已知）</li>
+        <li>AD = AD（公共边）</li>
+        <li>∠ADB = ∠ADC = 90°</li>
+      </ul>
+      <p>∴ Rt△ABD ≌ Rt△ACD（HL）</p>
+      <p>∴ ∠B = ∠C <strong>∎</strong></p>
+
+      <h4>"三线合一"到底是什么？</h4>
+      <p>等腰三角形中，底边上的以下三条线<strong>重合为同一条</strong>：</p>
+      <ol>
+        <li>底边上的<strong>中线</strong>（过顶点和底边中点）</li>
+        <li>底边上的<strong>高</strong>（从顶点垂直底边）</li>
+        <li>顶角的<strong>角平分线</strong></li>
+      </ol>
+      <div class="callout"><strong>易错提醒：</strong>三线合一<strong>只对底边成立</strong>！腰上的中线、高、角平分线不重合。</div>
+
+      <div class="example">
+        <div class="ex-body">
+          <p><strong>例 1：</strong>等腰三角形的一个角为 50°，求另外两个角。</p>
+          <span class="solution-label">解</span>
+          <p>⚠️ <strong>必须分两种情况！</strong></p>
+          <p><strong>情况一：</strong>50° 是顶角 → 底角 = (180° − 50°) ÷ 2 = <span class="answer">65°</span>，两个底角都是 65°</p>
+          <p><strong>情况二：</strong>50° 是底角 → 另一个底角也是 50°，顶角 = 180° − 50° − 50° = <span class="answer">80°</span></p>
+          <p>∴ 另外两个角为 65°、65° 或 50°、80°</p>
+        </div>
+      </div>
+      <div class="callout"><strong>防坑口诀：</strong>"等腰给角分两种，顶角底角都要验。"</div>
+
+      <div class="example">
+        <div class="ex-body">
+          <p><strong>例 2：</strong>等腰 △ABC 中，AB = AC = 10cm，BC = 12cm，求底边上的高 AD。</p>
+          <span class="solution-label">解</span>
+          <p>由三线合一，AD 也是底边中线，所以 BD = BC ÷ 2 = 6cm。</p>
+          <p>在 Rt△ABD 中，由勾股定理：AD = √(AB² − BD²) = √(100 − 36) = √64 = <span class="answer">8cm</span></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2.4 -->
+    <div class="section">
+      <h3><span class="sec-icon">2.4</span> 30° 直角三角形 — 短边 = 斜边的一半</h3>
+      <h4>为什么？</h4>
+      <p>在 Rt△ABC 中，∠C = 90°，∠A = 30°，则 ∠B = 60°。以点 B 为中心，将 △ABC 旋转 180° 并拼合，可以得到一个<strong>等边三角形</strong>。</p>
+      <p>等边三角形边长 = AB（原斜边），而 BC（30° 所对的边）正好是等边三角形边长的一半。所以 <strong>BC = AB / 2</strong> <strong>∎</strong></p>
+      <div class="callout"><strong>更直接的证明：</strong>在 BC 延长线上取 CD = BC，连接 AD。则 △ABD 是等边三角形（三个角都是 60°），所以 AB = BD = 2BC。</div>
+
+      <div class="example">
+        <div class="ex-body">
+          <p><strong>例：</strong>在 Rt△ABC 中，∠C = 90°，∠A = 30°，AB = 14cm，求 BC 和 AC。</p>
+          <span class="solution-label">解</span>
+          <p>BC = AB ÷ 2 = 14 ÷ 2 = <span class="answer">7cm</span>（30° 对边 = 斜边一半）</p>
+          <p>AC = √(AB² − BC²) = √(196 − 49) = √147 = <span class="answer">7√3 cm</span></p>
+        </div>
+      </div>
+      <div class="callout"><strong>速记：</strong>30-60-90 三角形三边比 = <strong>1 : √3 : 2</strong></div>
+    </div>
+
+    <!-- 2.5 -->
+    <div class="section">
+      <h3><span class="sec-icon">2.5</span> 角平分线性质 — "到两边距离相等"</h3>
+      <h4>注意："距离"是垂直距离！</h4>
+      <p>角平分线上的点到角两边的距离相等——这里的"距离"是指<strong>点到直线的垂直距离</strong>，不是斜着连过去的距离。</p>
+
+      <div class="figure">
+        <svg viewBox="0 0 360 250" width="360" xmlns="http://www.w3.org/2000/svg">
+          <!-- 角的两边 OA 和 OB -->
+          <line x1="40" y1="210" x2="330" y2="210" stroke="#1e293b" stroke-width="2.5"/>
+          <line x1="40" y1="210" x2="280" y2="50" stroke="#1e293b" stroke-width="2.5"/>
+          <!-- 角平分线 OC -->
+          <line x1="40" y1="210" x2="310" y2="105" stroke="#8b5cf6" stroke-width="2" stroke-dasharray="6,4"/>
+          <!-- 端点 -->
+          <circle cx="40" cy="210" r="4" fill="#1d4ed8"/>
+          <text x="20" y="225" font-size="15" fill="#1d4ed8" font-weight="bold">O</text>
+          <text x="325" y="213" font-size="14" fill="#1d4ed8" font-weight="bold">A</text>
+          <text x="275" y="42" font-size="14" fill="#1d4ed8" font-weight="bold">B</text>
+          <text x="315" y="100" font-size="14" fill="#8b5cf6" font-weight="bold">C</text>
+          <!-- 点P -->
+          <circle cx="180" cy="150" r="5" fill="#ef4444"/>
+          <text x="188" y="148" font-size="14" fill="#ef4444" font-weight="bold">P</text>
+          <!-- PD ⊥ OA -->
+          <line x1="180" y1="150" x2="180" y2="210" stroke="#10b981" stroke-width="2"/>
+          <path d="M 180,200 L 170,200 L 170,210" fill="none" stroke="#10b981" stroke-width="1.5"/>
+          <text x="155" y="195" font-size="13" fill="#10b981" font-weight="bold">D</text>
+          <text x="190" y="185" font-size="12" fill="#10b981">PD</text>
+          <!-- PE ⊥ OB (需要计算垂足) -->
+          <!-- OB方向: (240,-160), 归一化后 -->
+          <line x1="180" y1="150" x2="262" y2="95" stroke="#f59e0b" stroke-width="2"/>
+          <text x="230" y="115" font-size="13" fill="#f59e0b" font-weight="bold">E</text>
+          <text x="240" y="135" font-size="12" fill="#f59e0b">PE</text>
+          <!-- 垂足直角标记 (PE⊥OB) -->
+          <rect x="252" y="90" width="8" height="8" fill="none" stroke="#f59e0b" stroke-width="1" transform="rotate(34, 256, 94)"/>
+          <!-- PD = PE 标注 -->
+          <text x="120" y="145" font-size="13" fill="#ef4444" font-weight="bold">PD = PE</text>
+        </svg>
+        <div class="figure-caption">图 2.5  角平分线上的点 P 到角两边的垂直距离相等（PD = PE）</div>
+      </div>
+
+      <p>PD ⊥ AB，PE ⊥ AC，OC 平分 ∠A → PD = PE</p>
+
+      <div class="example">
+        <div class="ex-body">
+          <p><strong>例：</strong>OC 是 ∠AOB 的角平分线，点 P 在 OC 上，PD ⊥ OA 于 D，PE ⊥ OB 于 E，PD = 3cm。求 PE。</p>
+          <span class="solution-label">解</span>
+          <p>P 在角平分线上 → P 到 OA、OB 的距离相等 → PE = PD = <span class="answer">3cm</span></p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- ==================== 第三章 勾股定理 ============================ -->
+<!-- ================================================================ -->
+<section class="chapter" id="ch3">
+  <div class="chapter-banner">
+    <div class="ch-num">3</div>
+    <div>
+      <div class="ch-title">勾股定理</div>
+      <div class="ch-subtitle">定理与逆定理 · 实际应用 · 勾股数</div>
+    </div>
+  </div>
+  <div class="chapter-content">
+
+    <!-- 3.1 -->
+    <div class="section">
+      <h3><span class="sec-icon">3.1</span> 勾股定理 — 为什么 a² + b² = c²？</h3>
+      <h4>面积法证明（赵爽弦图）</h4>
+      <p>用四个全等的直角三角形（直角边 a、b，斜边 c）拼成一个大正方形：</p>
+
+      <div class="figure">
+        <svg viewBox="0 0 340 340" width="340" xmlns="http://www.w3.org/2000/svg">
+          <!-- 大正方形 -->
+          <rect x="20" y="20" width="300" height="300" fill="rgba(16,185,129,0.05)" stroke="#047857" stroke-width="2.5"/>
+          <!-- 四个三角形 -->
+          <!-- 三角形1: 左上 -->
+          <polygon points="20,20 20,220 170,20" fill="rgba(59,130,246,0.12)" stroke="#1d4ed8" stroke-width="2"/>
+          <!-- 三角形2: 右上 -->
+          <polygon points="320,20 120,20 320,170" fill="rgba(59,130,246,0.12)" stroke="#1d4ed8" stroke-width="2"/>
+          <!-- 三角形3: 右下 -->
+          <polygon points="320,320 320,120 170,320" fill="rgba(59,130,246,0.12)" stroke="#1d4ed8" stroke-width="2"/>
+          <!-- 三角形4: 左下 -->
+          <polygon points="20,320 220,320 20,170" fill="rgba(59,130,246,0.12)" stroke="#1d4ed8" stroke-width="2"/>
+          <!-- 中间小正方形 -->
+          <polygon points="170,20 320,170 170,320 20,170" fill="rgba(245,158,11,0.1)" stroke="#d97706" stroke-width="2"/>
+          <!-- 边标注 -->
+          <text x="30" y="130" font-size="13" fill="#1d4ed8" font-weight="bold">a</text>
+          <text x="85" y="40" font-size="13" fill="#1d4ed8" font-weight="bold">b</text>
+          <text x="70" y="110" font-size="12" fill="#64748b">c</text>
+          <!-- 小正方形标注 -->
+          <text x="160" y="180" font-size="12" fill="#d97706" font-weight="bold">b−a</text>
+          <!-- 大正方形标注 -->
+          <text x="280" y="40" font-size="13" fill="#047857" font-weight="bold">c</text>
+        </svg>
+        <div class="figure-caption">图 3.1  赵爽弦图 — 四个全等直角三角形拼成大正方形，中间小正方形边长 = b − a</div>
+      </div>
+
+      <p>大正方形边长 = c，面积 = c²</p>
+      <p>中间小正方形边长 = b − a（或 a − b），面积 = (b − a)²</p>
+      <p>四个三角形面积 = 4 × ½ab = 2ab</p>
+      <p>所以：c² = (b − a)² + 2ab = b² − 2ab + a² + 2ab = <strong>a² + b²</strong> <strong>∎</strong></p>
+      <div class="callout"><strong>一句话理解：</strong>大正方形面积 = 小正方形面积 + 4 个三角形面积。</div>
+    </div>
+
+    <!-- 3.2 -->
+    <div class="section">
+      <h3><span class="sec-icon">3.2</span> 逆定理 — 怎么判断是不是直角三角形？</h3>
+      <p>如果三角形三边 a、b、c（c 为最大边）满足 a² + b² = c²，那么这个三角形是直角三角形，且 c 所对的角是直角。</p>
+      <div class="callout"><strong>关键：</strong>必须先找到<strong>最大边</strong>，让它当 c！</div>
+
+      <div class="example">
+        <div class="ex-body">
+          <p><strong>例 1：</strong>三边长分别为 6、8、10，判断是否为直角三角形。</p>
+          <span class="solution-label">解</span>
+          <p>最大边 = 10，验证：6² + 8² = 36 + 64 = 100 = 10² ✅</p>
+          <p>∴ 是直角三角形（10 所对的角是直角）</p>
+        </div>
+      </div>
+      <div class="example">
+        <div class="ex-body">
+          <p><strong>例 2：</strong>三边长分别为 5、7、9，判断是否为直角三角形。</p>
+          <span class="solution-label">解</span>
+          <p>最大边 = 9，验证：5² + 7² = 25 + 49 = 74 ≠ 81 = 9² ❌</p>
+          <p>∴ 不是直角三角形（实际上是钝角三角形，因为 74 &lt; 81）</p>
+        </div>
+      </div>
+      <div class="callout">
+        <strong>规律：</strong>设最大边为 c<br>
+        • a² + b² = c² → 直角三角形<br>
+        • a² + b² &gt; c² → 锐角三角形<br>
+        • a² + b² &lt; c² → 钝角三角形
+      </div>
+    </div>
+
+    <!-- 3.3 -->
+    <div class="section">
+      <h3><span class="sec-icon">3.3</span> 勾股定理的实际应用</h3>
+
+      <div class="example">
+        <div class="ex-body">
+          <p><strong>例 1（梯子问题）：</strong>一架梯子长 5 米，斜靠在墙上，梯子底端距墙 3 米。梯子顶端距地面多高？</p>
+          <span class="solution-label">解</span>
+          <p>墙、地面、梯子构成直角三角形。梯子 = 斜边 = 5m，底端距墙 = 一条直角边 = 3m。</p>
+          <p>高 = √(5² − 3²) = √(25 − 9) = √16 = <span class="answer">4m</span></p>
+        </div>
+      </div>
+
+      <div class="example">
+        <div class="ex-body">
+          <p><strong>例 2（折叠问题）：</strong>长方形纸片 ABCD 中，AB = 3，BC = 5。将 △BCE 沿 BE 折叠，使 C 落在 C' 处，C' 恰好在 AD 上。求 BE 的长。</p>
+          <span class="solution-label">解</span>
+          <p>折叠后 BC' = BC = 5。</p>
+          <p>在 Rt△ABC' 中：AC' = √(BC'² − AB²) = √(25 − 9) = 4</p>
+          <p>C'D = AD − AC' = 5 − 4 = 1</p>
+          <p>设 CE = x，则 C'E = x，DE = 3 − x。</p>
+          <p>在 Rt△DEC' 中：DE² + DC'² = C'E² → (3 − x)² + 1² = x²</p>
+          <p>9 − 6x + x² + 1 = x² → 10 − 6x = 0 → x = 5/3</p>
+          <p>∴ BE = √(BC² + CE²) = √(25 + 25/9) = √(250/9) = <span class="answer">5√10 / 3</span></p>
+        </div>
+      </div>
+      <div class="callout"><strong>折叠题关键：</strong>折叠前后对应边相等，设未知数后用勾股定理列方程。</div>
+
+      <div class="example">
+        <div class="ex-body">
+          <p><strong>例 3（长方体对角线）：</strong>长方体的长、宽、高分别为 3、4、12，求体对角线长度。</p>
+          <span class="solution-label">解</span>
+          <p>面对角线 = √(3² + 4²) = √25 = 5</p>
+          <p>体对角线 = √(5² + 12²) = √(25 + 144) = √169 = <span class="answer">13</span></p>
+        </div>
+      </div>
+      <div class="callout"><strong>公式：</strong>体对角线 = √(长² + 宽² + 高²) = √(9 + 16 + 144) = 13 ✓</div>
+    </div>
+
+    <!-- 3.4 -->
+    <div class="section">
+      <h3><span class="sec-icon">3.4</span> 常用勾股数</h3>
+      <div class="tbl-wrapper">
+        <table>
+          <tr><th>基本勾股数</th><th>×2</th><th>×3</th><th>×4</th><th>×5</th></tr>
+          <tr><td><strong>3, 4, 5</strong></td><td>6, 8, 10</td><td>9, 12, 15</td><td>12, 16, 20</td><td>15, 20, 25</td></tr>
+          <tr><td><strong>5, 12, 13</strong></td><td>10, 24, 26</td><td>15, 36, 39</td><td>20, 48, 52</td><td>25, 60, 65</td></tr>
+          <tr><td><strong>8, 15, 17</strong></td><td>16, 30, 34</td><td>24, 45, 51</td><td>32, 60, 68</td><td>40, 75, 85</td></tr>
+          <tr><td><strong>7, 24, 25</strong></td><td>14, 48, 50</td><td>21, 72, 75</td><td>28, 96, 100</td><td>35, 120, 125</td></tr>
+        </table>
+      </div>
+      <div class="callout"><strong>注意：</strong>勾股数必须是<strong>正整数</strong>！1.5, 2, 2.5 不是勾股数（虽然 1.5² + 2² = 2.5²）。</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- ==================== 第四章 实数 ================================ -->
+<!-- ================================================================ -->
+<section class="chapter" id="ch4">
+  <div class="chapter-banner">
+    <div class="ch-num">4</div>
+    <div>
+      <div class="ch-title">实数</div>
+      <div class="ch-subtitle">平方根 · 立方根 · 夹逼法估算 · 运算律</div>
+    </div>
+  </div>
+  <div class="chapter-content">
+
+    <!-- 4.1 -->
+    <div class="section">
+      <h3><span class="sec-icon">4.1</span> 平方根 vs 算术平方根 — 最容易混淆的概念</h3>
+      <h4>区别</h4>
+      <div class="tbl-wrapper">
+        <table>
+          <tr><th></th><th>平方根</th><th>算术平方根</th></tr>
+          <tr><td>定义</td><td>若 x² = a，则 x 是 a 的平方根</td><td>a 的<strong>非负</strong>平方根</td></tr>
+          <tr><td>个数</td><td>正数有<strong>两个</strong>（一正一负）</td><td>只有<strong>一个</strong>（非负）</td></tr>
+          <tr><td>符号</td><td>±√a</td><td>√a</td></tr>
+          <tr><td>例：9 的</td><td>±3（两个）</td><td>3（一个）</td></tr>
+          <tr><td>例：0 的</td><td>0（一个）</td><td>0</td></tr>
+        </table>
+      </div>
+      <h4>关键理解</h4>
+      <p><strong>√a 这个符号本身代表的是"算术平方根"——永远 ≥ 0。</strong></p>
+      <ul>
+        <li>√4 = <strong>2</strong>（不是 ±2！）</li>
+        <li>√9 = <strong>3</strong>（不是 ±3！）</li>
+      </ul>
+      <p>题目问"9 的平方根" → 答 ±3；题目问"√9" → 答 3</p>
+      <div class="callout"><strong>记忆法：</strong>带 √ 号的结果永远非负，就像绝对值 |a| 永远非负一样。</div>
+
+      <div class="example">
+        <div class="ex-body">
+          <p><strong>例 1：</strong>求 25 的平方根。</p>
+          <span class="solution-label">解</span>
+          <p>因为 (±5)² = 25，所以 25 的平方根是 <span class="answer">±5</span></p>
+        </div>
+      </div>
+      <div class="example">
+        <div class="ex-body">
+          <p><strong>例 2：</strong>求 √(−3)²</p>
+          <span class="solution-label">解</span>
+          <p>√(−3)² = √9 = <span class="answer">3</span>（不是 −3！）</p>
+        </div>
+      </div>
+      <div class="callout"><strong>公式：</strong>√(a²) = |a|，因为结果必须非负。当 a ≥ 0 时，|a| = a；当 a &lt; 0 时，|a| = −a。</div>
+      <div class="example">
+        <div class="ex-body">
+          <p><strong>例 3：</strong>化简 √72</p>
+          <span class="solution-label">解</span>
+          <p>72 = 36 × 2 = 6² × 2</p>
+          <p>√72 = √(36 × 2) = √36 × √2 = <span class="answer">6√2</span></p>
+        </div>
+      </div>
+      <div class="callout"><strong>化简步骤：</strong>找最大的完全平方因数 → 提出来 → 剩下的留在根号里。</div>
+    </div>
+
+    <!-- 4.2 -->
+    <div class="section">
+      <h3><span class="sec-icon">4.2</span> 负数有没有平方根？有没有立方根？</h3>
+      <div class="tbl-wrapper">
+        <table>
+          <tr><th></th><th>平方根</th><th>立方根</th></tr>
+          <tr><td>正数</td><td>有两个（±√a）</td><td>有一个（∛a &gt; 0）</td></tr>
+          <tr><td>0</td><td>有一个（0）</td><td>有一个（0）</td></tr>
+          <tr><td>负数</td><td><strong>没有！</strong></td><td><strong>有一个（∛a &lt; 0）</strong></td></tr>
+        </table>
+      </div>
+      <p><strong>为什么负数没有平方根？</strong>任何实数的平方都 ≥ 0，不可能等于负数。所以 x² = −4 无解。</p>
+      <p><strong>为什么负数有立方根？</strong>(−2)³ = −8，所以 ∛(−8) = −2。负数的立方仍然是负数。</p>
+      <div class="example">
+        <div class="ex-body">
+          <p><strong>例：</strong>求下列各式的值：(1) √(−4)²　(2) ∛(−27)　(3) √(−5) 有意义吗？</p>
+          <span class="solution-label">解</span>
+          <p>(1) √(−4)² = √16 = <span class="answer">4</span>（先平方再开方，取绝对值）</p>
+          <p>(2) ∛(−27) = <span class="answer">−3</span>（因为 (−3)³ = −27）</p>
+          <p>(3) √(−5) <span class="answer">没有意义</span>（负数没有算术平方根）</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4.3 -->
+    <div class="section">
+      <h3><span class="sec-icon">4.3</span> 夹逼法估算 — "√7 到底等于多少？"</h3>
+      <h4>方法</h4>
+      <ol>
+        <li><strong>找范围：</strong>找两个连续整数 a 和 b，使得 a² &lt; n &lt; b²</li>
+        <li><strong>夹逼：</strong>则 a &lt; √n &lt; b</li>
+        <li><strong>精确到 0.1：</strong>再比较 a.1², a.2², ..., a.9² 哪个最接近 n</li>
+      </ol>
+      <div class="example">
+        <div class="ex-body">
+          <p><strong>例 1：</strong>估算 √7 在哪两个连续整数之间。</p>
+          <span class="solution-label">解</span>
+          <p>2² = 4 &lt; 7 &lt; 9 = 3² → 所以 <span class="answer">2 &lt; √7 &lt; 3</span></p>
+        </div>
+      </div>
+      <div class="example">
+        <div class="ex-body">
+          <p><strong>例 2：</strong>估算 √20 的值（精确到个位）。</p>
+          <span class="solution-label">解</span>
+          <p>4² = 16 &lt; 20 &lt; 25 = 5² → 4 &lt; √20 &lt; 5</p>
+          <p>20 更接近 16（差4）还是 25（差5）？→ 更接近 16</p>
+          <p>所以 √20 ≈ <span class="answer">4</span>（精确到个位，精确值 ≈ 4.47）</p>
+        </div>
+      </div>
+      <div class="example">
+        <div class="ex-body">
+          <p><strong>例 3：</strong>估算 √50 的值（精确到 0.1）。</p>
+          <span class="solution-label">解</span>
+          <p>7² = 49 &lt; 50 &lt; 64 = 8² → 7 &lt; √50 &lt; 8</p>
+          <p>再精确：7.0² = 49，7.1² = 50.41</p>
+          <p>因为 49 &lt; 50 &lt; 50.41，所以 7.0 &lt; √50 &lt; 7.1</p>
+          <p>更精确：7.07² = 49.98 ≈ 50 → √50 ≈ <span class="answer">7.1</span>（精确到 0.1）</p>
+        </div>
+      </div>
+      <div class="callout"><strong>速记：</strong>背熟 1~20 的平方数，估算就靠它！</div>
+    </div>
+
+    <!-- 4.4 -->
+    <div class="section">
+      <h3><span class="sec-icon">4.4</span> 实数运算律</h3>
+      <h4>核心公式</h4>
+      <div class="tbl-wrapper">
+        <table>
+          <tr><th>公式</th><th>条件</th></tr>
+          <tr><td>√a × √b = √(ab)</td><td>a ≥ 0, b ≥ 0</td></tr>
+          <tr><td>√a ÷ √b = √(a/b)</td><td>a ≥ 0, b &gt; 0</td></tr>
+          <tr><td>(√a)² = a</td><td>a ≥ 0</td></tr>
+          <tr><td>√(a²) = |a|</td><td>任意实数</td></tr>
+          <tr><td>(√a + √b)(√a − √b) = a − b</td><td>平方差公式</td></tr>
+        </table>
+      </div>
+      <div class="example">
+        <div class="ex-body">
+          <p><strong>例 1：</strong>计算 (√3 + √2)(√3 − √2)</p>
+          <span class="solution-label">解</span>
+          <p>用平方差公式：(√3)² − (√2)² = 3 − 2 = <span class="answer">1</span></p>
+        </div>
+      </div>
+      <div class="example">
+        <div class="ex-body">
+          <p><strong>例 2：</strong>计算 √48 ÷ √3 + √2 × √6</p>
+          <span class="solution-label">解</span>
+          <p>√48 ÷ √3 = √(48/3) = √16 = 4</p>
+          <p>√2 × √6 = √12 = √(4×3) = 2√3</p>
+          <p>原式 = 4 + 2√3 = <span class="answer">4 + 2√3</span></p>
+        </div>
+      </div>
+      <div class="example">
+        <div class="ex-body">
+          <p><strong>例 3：</strong>已知 √(a−1) + √(1−a) = 0，求 a 的值。</p>
+          <span class="solution-label">解</span>
+          <p>√(a−1) 有意义 → a − 1 ≥ 0 → a ≥ 1</p>
+          <p>√(1−a) 有意义 → 1 − a ≥ 0 → a ≤ 1</p>
+          <p>两个条件同时满足 → <span class="answer">a = 1</span></p>
+          <p>验证：√(1−1) + √(1−1) = 0 + 0 = 0 ✓</p>
+        </div>
+      </div>
+      <div class="callout"><strong>技巧：</strong>两个非负数之和 = 0 → 每个都 = 0。但前提是各自有意义。</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- ==================== 第五章 位置与坐标 ========================== -->
+<!-- ================================================================ -->
+<section class="chapter" id="ch5">
+  <div class="chapter-banner">
+    <div class="ch-num">5</div>
+    <div>
+      <div class="ch-title">位置与坐标</div>
+      <div class="ch-subtitle">平面直角坐标系 · 对称变换 · 距离与中点</div>
+    </div>
+  </div>
+  <div class="chapter-content">
+
+    <!-- 5.1 -->
+    <div class="section">
+      <h3><span class="sec-icon">5.1</span> 平面直角坐标系基础</h3>
+      <h4>四个象限</h4>
+      <div class="figure">
+        <svg viewBox="0 0 360 320" width="360" xmlns="http://www.w3.org/2000/svg">
+          <!-- 象限背景色 -->
+          <rect x="180" y="20" width="160" height="140" fill="rgba(6,182,212,0.06)"/>
+          <rect x="20" y="20" width="160" height="140" fill="rgba(6,182,212,0.06)"/>
+          <rect x="20" y="160" width="160" height="140" fill="rgba(6,182,212,0.06)"/>
+          <rect x="180" y="160" width="160" height="140" fill="rgba(6,182,212,0.06)"/>
+          <!-- 坐标轴 -->
+          <line x1="20" y1="160" x2="340" y2="160" stroke="#1e293b" stroke-width="2.5"/>
+          <polygon points="340,160 332,156 332,164" fill="#1e293b"/>
+          <line x1="180" y1="300" x2="180" y2="20" stroke="#1e293b" stroke-width="2.5"/>
+          <polygon points="180,20 176,28 184,28" fill="#1e293b"/>
+          <!-- 轴标签 -->
+          <text x="332" y="178" font-size="15" fill="#1e293b" font-weight="bold">x</text>
+          <text x="190" y="28" font-size="15" fill="#1e293b" font-weight="bold">y</text>
+          <text x="183" y="178" font-size="13" fill="#64748b">O</text>
+          <!-- 象限标注 -->
+          <text x="80" y="80" font-size="16" fill="#06b6d4" font-weight="bold">第二象限</text>
+          <text x="80" y="100" font-size="13" fill="#64748b">(−, +)</text>
+          <text x="240" y="80" font-size="16" fill="#06b6d4" font-weight="bold">第一象限</text>
+          <text x="245" y="100" font-size="13" fill="#64748b">(+, +)</text>
+          <text x="80" y="230" font-size="16" fill="#06b6d4" font-weight="bold">第三象限</text>
+          <text x="85" y="250" font-size="13" fill="#64748b">(−, −)</text>
+          <text x="240" y="230" font-size="16" fill="#06b6d4" font-weight="bold">第四象限</text>
+          <text x="245" y="250" font-size="13" fill="#64748b">(+, −)</text>
+        </svg>
+        <div class="figure-caption">图 5.1  平面直角坐标系的四个象限及坐标符号</div>
+      </div>
+
+      <h4>坐标轴上的点</h4>
+      <div class="tbl-wrapper">
+        <table>
+          <tr><th>位置</th><th>特征</th><th>例子</th></tr>
+          <tr><td>x 轴上</td><td><strong>y = 0</strong></td><td>(5, 0), (−3, 0)</td></tr>
+          <tr><td>y 轴上</td><td><strong>x = 0</strong></td><td>(0, 4), (0, −2)</td></tr>
+          <tr><td>原点</td><td>x = 0 且 y = 0</td><td>(0, 0)</td></tr>
+        </table>
+      </div>
+      <div class="callout"><strong>重要：</strong>坐标轴上的点<strong>不属于任何象限</strong>！</div>
+
+      <div class="example">
+        <div class="ex-body">
+          <p><strong>例 1：</strong>点 A(3, −2) 在第几象限？点 B(0, 5) 在哪里？</p>
+          <span class="solution-label">解</span>
+          <p>A(3, −2)：x &gt; 0，y &lt; 0 → <span class="answer">第四象限</span></p>
+          <p>B(0, 5)：x = 0 → <span class="answer">在 y 轴上</span>（不属于任何象限）</p>
+        </div>
+      </div>
+      <div class="example">
+        <div class="ex-body">
+          <p><strong>例 2：</strong>若点 P(a, 3) 在 y 轴上，求 a 的值。</p>
+          <span class="solution-label">解</span>
+          <p>y 轴上的点 x = 0 → <span class="answer">a = 0</span></p>
+        </div>
+      </div>
+      <div class="example">
+        <div class="ex-body">
+          <p><strong>例 3：</strong>若点 Q(2, b) 在 x 轴上，求 b 的值。</p>
+          <span class="solution-label">解</span>
+          <p>x 轴上的点 y = 0 → <span class="answer">b = 0</span></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5.2 -->
+    <div class="section">
+      <h3><span class="sec-icon">5.2</span> 坐标系中的对称 — "谁对称谁不变"</h3>
+      <h4>三种对称的坐标规律</h4>
+      <div class="tbl-wrapper">
+        <table>
+          <tr><th>对称类型</th><th>变化规则</th><th>例子 (3, 5)</th></tr>
+          <tr><td>关于 <strong>x 轴</strong> 对称</td><td>x <strong>不变</strong>，y <strong>变号</strong></td><td>(3, −5)</td></tr>
+          <tr><td>关于 <strong>y 轴</strong> 对称</td><td>y <strong>不变</strong>，x <strong>变号</strong></td><td>(−3, 5)</td></tr>
+          <tr><td>关于 <strong>原点</strong> 对称</td><td>x 和 y <strong>都变号</strong></td><td>(−3, −5)</td></tr>
+        </table>
+      </div>
+      <div class="callout"><strong>记忆口诀：</strong>"关于谁对称谁不变"——关于 x 轴，x 不变；关于 y 轴，y 不变。原点最狠，全变。</div>
+      <div class="example">
+        <div class="ex-body">
+          <p><strong>例：</strong>点 A(−2, 3) 关于 x 轴、y 轴、原点对称的点分别是？</p>
+          <span class="solution-label">解</span>
+          <p>关于 x 轴：(−2, <span class="answer">−3</span>)</p>
+          <p>关于 y 轴：(2, 3) → <span class="answer">(2, 3)</span></p>
+          <p>关于原点：(2, −3) → <span class="answer">(2, −3)</span></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5.3 -->
+    <div class="section">
+      <h3><span class="sec-icon">5.3</span> 两点间距离公式 — 本质是勾股定理</h3>
+      <h4>推导</h4>
+      <p>设 A(x₁, y₁)、B(x₂, y₂)。从 A 到 B，水平方向走了 |x₂ − x₁|，竖直方向走了 |y₂ − y₁|。这两段和 AB 构成一个直角三角形！</p>
+      <p>由勾股定理：<strong>d = √[(x₂ − x₁)² + (y₂ − y₁)²]</strong></p>
+      <div class="callout"><strong>特殊情况：</strong>AB ∥ x 轴 → d = |x₂ − x₁|；AB ∥ y 轴 → d = |y₂ − y₁|</div>
+      <div class="example">
+        <div class="ex-body">
+          <p><strong>例 1：</strong>求 A(1, 2) 和 B(4, 6) 之间的距离。</p>
+          <span class="solution-label">解</span>
+          <p>d = √[(4−1)² + (6−2)²] = √[9 + 16] = √25 = <span class="answer">5</span></p>
+        </div>
+      </div>
+      <div class="example">
+        <div class="ex-body">
+          <p><strong>例 2：</strong>在坐标系中，A(−3, 0)、B(0, 4)，求 AB。</p>
+          <span class="solution-label">解</span>
+          <p>A 在 x 轴上，B 在 y 轴上，AB 是直角三角形的斜边。</p>
+          <p>d = √[(0−(−3))² + (4−0)²] = √[9 + 16] = <span class="answer">5</span></p>
+        </div>
+      </div>
+      <div class="callout"><strong>巧算：</strong>两点分别在坐标轴上时，距离 = √(x² + y²)。</div>
+    </div>
+
+    <!-- 5.4 -->
+    <div class="section">
+      <h3><span class="sec-icon">5.4</span> 中点坐标公式</h3>
+      <h4>公式</h4>
+      <p>A(x₁, y₁) 和 B(x₂, y₂) 的中点 M：</p>
+      <p><strong>M = ((x₁ + x₂)/2, (y₁ + y₂)/2)</strong></p>
+      <div class="callout"><strong>理解：</strong>中点就是两端点坐标的"平均值"。</div>
+      <div class="example">
+        <div class="ex-body">
+          <p><strong>例：</strong>A(2, 5) 和 B(8, 1) 的中点坐标是？</p>
+          <span class="solution-label">解</span>
+          <p>M = ((2+8)/2, (5+1)/2) = (10/2, 6/2) = <span class="answer">(3, 3)</span></p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- ==================== 第六章 一次函数 ============================ -->
+<!-- ================================================================ -->
+<section class="chapter" id="ch6">
+  <div class="chapter-banner">
+    <div class="ch-num">6</div>
+    <div>
+      <div class="ch-title">一次函数</div>
+      <div class="ch-subtitle">函数概念 · k 和 b 的意义 · 待定系数法 · 实际应用</div>
+    </div>
+  </div>
+  <div class="chapter-content">
+
+    <!-- 6.1 -->
+    <div class="section">
+      <h3><span class="sec-icon">6.1</span> 什么是函数？</h3>
+      <div class="callout"><strong>函数：</strong>两个变量 x 和 y，如果对于 x 的每一个值，y 都有<strong>唯一确定</strong>的值与之对应，那么 y 就是 x 的函数。</div>
+      <p>关键词是<strong>"唯一确定"</strong>——一个 x 只能对应一个 y。</p>
+      <h4>判断练习</h4>
+      <div class="tbl-wrapper">
+        <table>
+          <tr><th>关系</th><th>是函数吗？</th><th>为什么？</th></tr>
+          <tr><td>y = 2x + 1</td><td>✅</td><td>每个 x 对应唯一 y</td></tr>
+          <tr><td>y² = x</td><td>❌</td><td>x = 4 时，y = ±2，不唯一</td></tr>
+          <tr><td>y = |x|</td><td>✅</td><td>每个 x 对应唯一 y</td></tr>
+          <tr><td>x² + y² = 1</td><td>❌</td><td>x = 0 时，y = ±1，不唯一</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- 6.2 -->
+    <div class="section">
+      <h3><span class="sec-icon">6.2</span> k 和 b 的几何意义</h3>
+      <h4>y = kx + b 中，k 和 b 分别决定什么？</h4>
+      <p><strong>k（斜率）决定增减性和倾斜方向：</strong></p>
+      <ul>
+        <li>k &gt; 0 → 直线从左下到右上，y 随 x 增大而<strong>增大</strong></li>
+        <li>k &lt; 0 → 直线从左上到右下，y 随 x 增大而<strong>减小</strong></li>
+        <li>|k| 越大 → 直线越<strong>陡</strong></li>
+      </ul>
+      <p><strong>b（截距）决定与 y 轴的交点：</strong></p>
+      <ul>
+        <li>b &gt; 0 → 直线与 y 轴交于<strong>正半轴</strong>（上方）</li>
+        <li>b &lt; 0 → 直线与 y 轴交于<strong>负半轴</strong>（下方）</li>
+        <li>b = 0 → 直线<strong>过原点</strong>（正比例函数）</li>
+      </ul>
+      <h4>图象经过哪些象限？</h4>
+      <div class="tbl-wrapper">
+        <table>
+          <tr><th>k 的符号</th><th>b 的符号</th><th>经过的象限</th><th>不经过的象限</th></tr>
+          <tr><td>+</td><td>+</td><td>一、二、三</td><td>四</td></tr>
+          <tr><td>+</td><td>−</td><td>一、三、四</td><td>二</td></tr>
+          <tr><td>−</td><td>+</td><td>一、二、四</td><td>三</td></tr>
+          <tr><td>−</td><td>−</td><td>二、三、四</td><td>一</td></tr>
+        </table>
+      </div>
+      <div class="callout">
+        <strong>快速判断法：</strong><br>
+        1. k &gt; 0 → 一定过一、三象限<br>
+        2. k &lt; 0 → 一定过二、四象限<br>
+        3. b &gt; 0 → 再加上方　　4. b &lt; 0 → 再加下方
+      </div>
+      <div class="example">
+        <div class="ex-body">
+          <p><strong>例：</strong>y = −2x + 3 的图象不经过第几象限？</p>
+          <span class="solution-label">解</span>
+          <p>k = −2 &lt; 0 → 过二、四象限</p>
+          <p>b = 3 &gt; 0 → 与 y 轴交于正半轴，过第二象限</p>
+          <p>组合：过一、二、四象限 → <span class="answer">不经过第三象限</span></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6.3 -->
+    <div class="section">
+      <h3><span class="sec-icon">6.3</span> 怎么画一次函数图象？ — 两点法</h3>
+      <p>一次函数的图象是<strong>一条直线</strong>，所以只需要确定两个点，连线即可。</p>
+      <p><strong>选点技巧：</strong>优先选与坐标轴的交点（最好算）。</p>
+      <div class="tbl-wrapper">
+        <table>
+          <tr><th>步骤</th><th>操作</th><th>例子：y = 2x − 4</th></tr>
+          <tr><td>第一步</td><td>令 x = 0，求 y</td><td>y = 2×0 − 4 = −4 → (0, −4)</td></tr>
+          <tr><td>第二步</td><td>令 y = 0，求 x</td><td>0 = 2x − 4 → x = 2 → (2, 0)</td></tr>
+          <tr><td>第三步</td><td>在坐标系中描出两点</td><td>描 (0, −4) 和 (2, 0)</td></tr>
+          <tr><td>第四步</td><td>连成直线</td><td>过两点画直线并向两端延伸</td></tr>
+        </table>
+      </div>
+      <div class="callout"><strong>注意：</strong>图象是<strong>直线</strong>不是线段！要向两端无限延伸（应用题中根据实际范围截取）。</div>
+      <div class="example">
+        <div class="ex-body">
+          <p><strong>例：</strong>画出一次函数 y = −x + 3 的图象。</p>
+          <span class="solution-label">解</span>
+          <p>令 x = 0 → y = 3 → (0, 3)</p>
+          <p>令 y = 0 → x = 3 → (3, 0)</p>
+          <p>在坐标系中描出 (0, 3) 和 (3, 0)，连线。</p>
+          <p>图象从左上方（第二象限）到右下方（第一象限），经过一、二、四象限，不经过第三象限。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6.4 -->
+    <div class="section">
+      <h3><span class="sec-icon">6.4</span> 待定系数法 — 怎么求一次函数表达式？</h3>
+      <h4>四步法：设 → 代 → 解 → 写</h4>
+      <div class="example">
+        <div class="ex-body">
+          <p><strong>例 1：</strong>一次函数 y = kx + b 的图象经过点 (1, 3) 和 (−1, −1)，求表达式。</p>
+          <span class="solution-label">解</span>
+          <p><strong>第一步：设</strong> y = kx + b</p>
+          <p><strong>第二步：代</strong> 将两点代入：</p>
+          <ul>
+            <li>过 (1, 3)：k + b = 3 ……①</li>
+            <li>过 (−1, −1)：−k + b = −1 ……②</li>
+          </ul>
+          <p><strong>第三步：解</strong> ① + ②：2b = 2，b = 1；代入①：k + 1 = 3，k = 2</p>
+          <p><strong>第四步：写</strong> y = <span class="answer">2x + 1</span></p>
+        </div>
+      </div>
+      <div class="example">
+        <div class="ex-body">
+          <p><strong>例 2（更快的方法）：</strong>已知两点 (2, 5) 和 (4, 9)，求一次函数表达式。</p>
+          <span class="solution-label">解</span>
+          <p>先求 k = (y₂ − y₁) / (x₂ − x₁) = (9 − 5) / (4 − 2) = 4/2 = <strong>2</strong></p>
+          <p>再代入任一点求 b：5 = 2×2 + b → b = 1</p>
+          <p>∴ y = <span class="answer">2x + 1</span></p>
+        </div>
+      </div>
+      <div class="callout"><strong>速度技巧：</strong>两点求斜率 k = Δy/Δx，比解方程组快。</div>
+    </div>
+
+    <!-- 6.5 -->
+    <div class="section">
+      <h3><span class="sec-icon">6.5</span> 两直线平行的条件</h3>
+      <p>两条一次函数 y₁ = k₁x + b₁ 和 y₂ = k₂x + b₂ 平行的条件：</p>
+      <p><strong>k₁ = k₂ 且 b₁ ≠ b₂</strong></p>
+      <div class="callout"><strong>为什么 b 不能相等？</strong>如果 k 和 b 都相同，两条线重合，不是平行。</div>
+      <div class="example">
+        <div class="ex-body">
+          <p><strong>例：</strong>直线 y = 3x − 2 与 y = 3x + 5 平行吗？</p>
+          <span class="solution-label">解</span>
+          <p>k₁ = k₂ = 3，b₁ = −2 ≠ b₂ = 5</p>
+          <p>∴ 两直线<span class="answer">平行</span> ✅</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6.6 -->
+    <div class="section">
+      <h3><span class="sec-icon">6.6</span> 两函数图象的交点</h3>
+      <p>两条直线的交点坐标<strong>同时满足两个函数表达式</strong>。所以求交点 = <strong>联立两个方程组成方程组</strong>求解。</p>
+      <div class="example">
+        <div class="ex-body">
+          <p><strong>例：</strong>求 y = 2x − 1 和 y = −x + 5 的交点坐标。</p>
+          <span class="solution-label">解</span>
+          <p>令 2x − 1 = −x + 5 → 3x = 6 → x = 2</p>
+          <p>代入任一方程：y = 2×2 − 1 = 3</p>
+          <p>∴ 交点坐标为 <span class="answer">(2, 3)</span></p>
+          <p>验证：代入另一个方程：y = −2 + 5 = 3 ✓</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6.7 -->
+    <div class="section">
+      <h3><span class="sec-icon">6.7</span> 一次函数的实际应用</h3>
+      <h4>建模四步</h4>
+      <ol>
+        <li><strong>找变量</strong> — x 代表什么？y 代表什么？</li>
+        <li><strong>找关系</strong> — 从题目中提取等量关系</li>
+        <li><strong>写表达式</strong> — 化为 y = kx + b 的形式</li>
+        <li><strong>验范围</strong> — x 的实际取值范围</li>
+      </ol>
+      <div class="example">
+        <div class="ex-body">
+          <p><strong>例：</strong>出租车收费标准：3km 以内（含 3km）收费 10 元，超过 3km 的部分每 km 加收 2 元。写出车费 y 与行驶路程 x（x &gt; 3）的函数关系式。</p>
+          <span class="solution-label">解</span>
+          <p>当 x &gt; 3 时：y = 10 + 2 × (x − 3) = 10 + 2x − 6 = <span class="answer">2x + 4（x &gt; 3）</span></p>
+        </div>
+      </div>
+      <div class="callout"><strong>注意：</strong>不要忘记写自变量范围！x &gt; 3，不是 x ≥ 0。</div>
+    </div>
+
+    <!-- 6.8 -->
+    <div class="section">
+      <h3><span class="sec-icon">6.8</span> 一次函数与一元一次方程的关系</h3>
+      <h4>核心联系</h4>
+      <p>y = kx + b，当 <strong>y = 0</strong> 时：kx + b = 0 → x = −b/k</p>
+      <p>这说明：<strong>一次函数图象与 x 轴交点的横坐标，就是方程 kx + b = 0 的解。</strong></p>
+      <div class="example">
+        <div class="ex-body">
+          <p><strong>例：</strong>一次函数 y = 2x − 4，求图象与 x 轴的交点坐标，并说明对应的方程的解。</p>
+          <span class="solution-label">解</span>
+          <p>令 y = 0：2x − 4 = 0 → x = 2</p>
+          <p>与 x 轴交点为 <span class="answer">(2, 0)</span></p>
+          <p>对应方程 2x − 4 = 0 的解为 <span class="answer">x = 2</span></p>
+        </div>
+      </div>
+      <div class="callout"><strong>几何意义：</strong>函数图象上，y = 0 的点就是图象与 x 轴的"交叉点"。</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- ==================== 附录 ====================================== -->
+<!-- ================================================================ -->
+<section class="appendix" id="appendix">
+  <div class="appendix-banner">
+    <div class="ch-num">★</div>
+    <div>
+      <div class="ch-title">附录 · 解题思维速查</div>
+      <div class="ch-subtitle">看到什么 → 立刻想到什么</div>
+    </div>
+  </div>
+  <div class="chapter-content">
+    <div class="section" style="margin-bottom: 0;">
+      <div class="tbl-wrapper">
+        <table>
+          <tr><th>看到什么</th><th>立刻想到</th></tr>
+          <tr><td>三角形</td><td>内角和 = 180°</td></tr>
+          <tr><td>等腰三角形</td><td>等边对等角 / 三线合一 / <strong>分类讨论</strong></td></tr>
+          <tr><td>直角三角形</td><td>勾股定理 a² + b² = c²</td></tr>
+          <tr><td>全等证明</td><td>先找公共边、对顶角，再匹配判定</td></tr>
+          <tr><td>角平分线</td><td>到两边距离<strong>垂直</strong>相等</td></tr>
+          <tr><td>垂直平分线</td><td>到两端距离相等</td></tr>
+          <tr><td>坐标对称</td><td>"谁对称谁不变"</td></tr>
+          <tr><td>一次函数</td><td>先看 k 和 b 的符号</td></tr>
+          <tr><td>动点问题</td><td>设时间 t，用 t 表示线段长</td></tr>
+          <tr><td>存在性问题</td><td>假设存在 → 列方程 → 验证 → 结论</td></tr>
+          <tr><td>等腰 + 给角</td><td><strong>分两种情况！</strong></td></tr>
+        </table>
+      </div>
+      <div class="callout" style="margin-top: 16px;">
+        本文档配合《公式定理速查卡》和《易错点清单》使用效果最佳。建议打印为 A4 纸 6-8 页，按章节分册装订。
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="page-footer">
+  <p>鲁教版（山东教育出版社）七年级上册 · 核心知识点精讲与典型例题　|　打印建议：A4 纸纵向，每章分页</p>
+</footer>
+
+<script>
+const sections = document.querySelectorAll('.chapter, .appendix');
+const navLinks = document.querySelectorAll('.nav-bar a');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+      });
+    }
+  });
+}, { threshold: 0.15, rootMargin: '-80px 0px -50% 0px' });
+sections.forEach(section => observer.observe(section));
+navLinks.forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    const target = document.querySelector(link.getAttribute('href'));
+    if (target) {
+      const offset = 60;
+      const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  });
+});
+</script>
+
+</body>
+</html>

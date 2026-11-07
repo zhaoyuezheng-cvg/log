@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>10-3 培优 · Unit 2 Rain or Shine（精读精讲）</title>
+<style>
+  :root{
+    --bg:#eef1f8;--bg2:#e6ebf5;--card:#ffffff;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;
+    --line:#e5e7eb;--brand:#4f46e5;--brand-2:#0d9488;--brand-soft:rgba(79,70,229,.08);
+    --accent:#f59e0b;--accent-soft:#fef3c7;--ok:#16a34a;--ok-soft:rgba(22,163,74,.10);--rose:#e11d48;
+    --shadow:0 10px 30px rgba(30,41,59,.10);--shadow-sm:0 4px 14px rgba(30,41,59,.08);--radius:18px;
+    --font:"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",system-ui,-apple-system,sans-serif;
+  }
+  body.dark{
+    --bg:#0f172a;--bg2:#0b1220;--card:#131c31;--ink:#e5edf7;--ink2:#cbd5e1;--muted:#94a3b8;
+    --line:#243049;--brand:#818cf8;--brand-2:#2dd4bf;--brand-soft:rgba(129,140,248,.14);
+    --accent:#fbbf24;--accent-soft:rgba(251,191,36,.16);--ok:#4ade80;--ok-soft:rgba(74,222,128,.12);
+    --rose:#fb7185;--shadow:0 10px 30px rgba(0,0,0,.45);--shadow-sm:0 4px 14px rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:var(--font);color:var(--ink);
+    background:radial-gradient(1100px 500px at 12% -10%, rgba(79,70,229,.16), transparent 60%),
+      radial-gradient(900px 480px at 100% 0%, rgba(13,148,136,.14), transparent 55%),
+      linear-gradient(180deg,var(--bg),var(--bg2));
+    min-height:100vh;line-height:1.75;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 18px 60px}
+  header.hero{position:relative;overflow:hidden;border-radius:0 0 30px 30px;
+    background:linear-gradient(135deg,#4f46e5 0%,#6d28d9 45%,#0d9488 100%);color:#fff;
+    padding:42px 26px 34px;margin-bottom:22px;box-shadow:var(--shadow);}
+  header.hero::after{content:"";position:absolute;inset:0;opacity:.35;
+    background-image:radial-gradient(rgba(255,255,255,.35) 1px,transparent 1px);
+    background-size:22px 22px;mask-image:linear-gradient(180deg,rgba(0,0,0,.6),transparent 75%);}
+  .hero-in{position:relative;z-index:2;max-width:1080px;margin:0 auto}
+  .kicker{display:inline-flex;align-items:center;gap:8px;font-size:.82rem;letter-spacing:.12em;
+    text-transform:uppercase;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);
+    padding:6px 14px;border-radius:999px;backdrop-filter:blur(6px)}
+  h1{margin:16px 0 8px;font-size:clamp(1.5rem,4vw,2.15rem);line-height:1.3;letter-spacing:.01em}
+  h1 .sub{display:block;font-size:.55em;font-weight:500;opacity:.9;margin-top:8px;letter-spacing:.02em}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+  .chip{font-size:.78rem;padding:5px 12px;border-radius:999px;background:rgba(255,255,255,.16);
+    border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(6px)}
+  .hero-note{margin-top:16px;font-size:.85rem;opacity:.9;max-width:760px;line-height:1.7}
+  .toolbar{position:sticky;top:0;z-index:60;display:flex;flex-wrap:wrap;gap:8px;align-items:center;
+    padding:10px 12px;margin:0 0 20px;border-radius:14px;
+    background:color-mix(in srgb,var(--card) 88%,transparent);
+    border:1px solid var(--line);box-shadow:var(--shadow-sm);backdrop-filter:blur(10px);}
+  .toolbar .grow{flex:1}
+  .tool-btn{font-family:inherit;font-size:.82rem;font-weight:600;color:var(--ink);
+    background:var(--brand-soft);border:1px solid transparent;border-radius:10px;
+    padding:8px 13px;cursor:pointer;transition:.18s;display:inline-flex;align-items:center;gap:6px;}
+  .tool-btn:hover{transform:translateY(-1px);box-shadow:var(--shadow-sm)}
+  .tool-btn.on{background:var(--brand);color:#fff}
+  .tool-btn.ghost{background:transparent;border-color:var(--line)}
+  .navlinks{display:flex;gap:6px;flex-wrap:wrap}
+  .navlinks a{font-size:.82rem;font-weight:600;text-decoration:none;color:var(--brand);
+    padding:7px 11px;border-radius:9px;border:1px solid var(--line);background:transparent;transition:.18s;white-space:nowrap}
+  .navlinks a:hover{background:var(--brand-soft)}
+  section.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);padding:26px 26px 30px;margin-bottom:26px;position:relative;overflow:hidden;
+    animation:rise .5s ease both;}
+  @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  section.card::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;
+    background:linear-gradient(90deg,var(--brand),var(--brand-2))}
+  .sec-head{display:flex;align-items:flex-start;gap:14px;flex-wrap:wrap;margin-bottom:6px}
+  .sec-no{flex:0 0 auto;width:44px;height:44px;border-radius:13px;display:grid;place-items:center;
+    font-weight:800;font-size:1.15rem;color:#fff;background:linear-gradient(135deg,var(--brand),var(--brand-2));
+    box-shadow:0 6px 16px rgba(79,70,229,.35)}
+  .sec-title{margin:0;font-size:1.3rem}
+  .sec-title small{display:block;font-weight:500;color:var(--muted);font-size:.8rem;margin-top:3px}
+  .sec-meta{display:flex;flex-wrap:wrap;gap:7px;margin:14px 0 4px}
+  .badge{font-size:.75rem;font-weight:600;padding:4px 11px;border-radius:999px;
+    background:var(--brand-soft);color:var(--brand);border:1px solid transparent}
+  .badge.warm{background:var(--accent-soft);color:#b45309}
+  .badge.gray{background:color-mix(in srgb,var(--muted) 14%,transparent);color:var(--muted)}
+  .badge.ok{background:var(--ok-soft);color:var(--ok)}
+  .lead{color:var(--muted);font-size:.92rem;margin:10px 0 18px}
+  .passage{background:linear-gradient(180deg,color-mix(in srgb,var(--brand) 5%,var(--card)),var(--card));
+    border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:8px 0 18px;
+    font-size:1.06rem;line-height:2.05;letter-spacing:.005em;}
+  .passage p{margin:0 0 14px}
+  .passage p:last-child{margin-bottom:0}
+  .passage .tag{font-size:.72em;color:var(--muted);vertical-align:super}
+  .passage .h{font-weight:800;color:var(--brand)}
+  .w{position:relative;cursor:pointer;color:inherit;border-radius:3px;padding:0 1px;
+    border-bottom:2px solid var(--accent);background:linear-gradient(transparent 60%,var(--accent-soft) 60%);
+    transition:.15s;white-space:nowrap;}
+  .w:hover{filter:brightness(.96);box-shadow:0 2px 0 -1px var(--accent)}
+  .w.active{background:var(--accent);color:#3b2a04;border-bottom-color:#b45309}
+  .gloss{display:none}
+  body.showall .gloss{display:inline;font-size:.8em;color:var(--brand-2);font-weight:600;
+    padding:0 3px;border-bottom:0;white-space:normal}
+  .blank{display:inline-block;min-width:2.4em;text-align:center;font-weight:800;color:var(--brand);
+    background:var(--brand-soft);border-bottom:2px solid var(--brand);border-radius:6px 6px 3px 3px;
+    padding:0 8px;margin:0 2px;cursor:pointer;transition:.15s;font-size:.94em;}
+  .blank:hover{background:color-mix(in srgb,var(--brand) 18%,transparent)}
+  .blank b{font-weight:800}
+  .blank i{display:none;font-style:normal;color:var(--ok);font-weight:800}
+  .blank.open{background:var(--ok-soft);border-bottom-color:var(--ok);color:var(--ok)}
+  .blank.open b{display:none}
+  .blank.open i{display:inline}
+  body.showans .blank{background:var(--ok-soft);border-bottom-color:var(--ok);color:var(--ok)}
+  body.showans .blank b{display:none}
+  body.showans .blank i{display:inline}
+  #pop{position:absolute;z-index:200;width:min(330px,88vw);background:var(--card);
+    border:1px solid var(--line);border-top:4px solid var(--accent);border-radius:14px;
+    box-shadow:0 18px 45px rgba(15,23,42,.28);padding:14px 16px;display:none;}
+  #pop.show{display:block;animation:pop .18s ease}
+  @keyframes pop{from{opacity:0;transform:translateY(6px) scale(.98)}to{opacity:1;transform:none}}
+  #pop .pw{font-size:1.12rem;font-weight:800;color:var(--ink);display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+  #pop .pph{font-size:.82rem;color:var(--brand-2);font-weight:600}
+  #pop .pcn{margin-top:7px;font-size:1rem;font-weight:700;color:var(--brand)}
+  #pop .pnote{margin-top:7px;font-size:.86rem;color:var(--muted);line-height:1.65}
+  #pop .pex{margin-top:10px;padding-top:9px;border-top:1px dashed var(--line);font-size:.9rem}
+  #pop .pex b{color:var(--brand-2)}
+  #pop .pex .cn{color:var(--muted);font-size:.85rem;display:block;margin-top:3px}
+  .pos{display:inline-block;font-size:.72rem;font-weight:700;color:#fff;background:var(--brand-2);
+    border-radius:6px;padding:2px 8px;margin-left:2px}
+  .qstem{font-weight:700;color:var(--ink);margin:2px 0 6px;font-size:1.02rem}
+  .qopts{margin:2px 0 0;padding-left:2px;color:var(--muted);font-size:.92rem}
+  .qopts div{margin:3px 0}
+  .qopts .picked{color:var(--ok);font-weight:800}
+  h3.ans-h{margin:26px 0 12px;font-size:1.05rem;display:flex;align-items:center;gap:9px}
+  h3.ans-h::before{content:"";width:10px;height:10px;border-radius:3px;background:var(--ok);display:inline-block}
+  .ans-list{display:grid;gap:10px}
+  .ans-item{border:1px solid var(--line);border-left:4px solid var(--ok);border-radius:12px;
+    padding:12px 15px;background:color-mix(in srgb,var(--ok) 4%,var(--card))}
+  .ans-item .top{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+  .ans-item .num{font-weight:800;color:var(--ok)}
+  .ans-item .key{font-weight:800;font-size:1.05rem;color:var(--ink);background:var(--ok-soft);
+    padding:1px 10px;border-radius:7px}
+  .ans-item .kt{font-size:.72rem;font-weight:700;color:#fff;background:var(--brand);border-radius:6px;padding:2px 8px}
+  .ans-item ul{margin:8px 0 0;padding-left:20px;color:var(--muted);font-size:.9rem}
+  .ans-item ul li{margin:3px 0}
+  .ans-item .sent{font-size:.92rem;color:var(--ink2);margin-top:6px}
+  .vgroup{margin-top:18px}
+  .vgroup > h3{margin:0 0 10px;font-size:1.02rem;color:var(--brand);display:flex;gap:9px;align-items:center}
+  .vgroup > h3 .dot{width:9px;height:9px;border-radius:50%;background:var(--brand-2)}
+  .vcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px}
+  .vcard{border:1px solid var(--line);border-radius:13px;padding:13px 15px;background:var(--card);
+    box-shadow:var(--shadow-sm);transition:.18s;position:relative;overflow:hidden}
+  .vcard::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--accent)}
+  .vcard:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+  .vcard .hw{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+  .vcard .en{font-weight:800;font-size:1.04rem;color:var(--ink)}
+  .vcard .ph{font-size:.8rem;color:var(--brand-2);font-weight:600}
+  .vcard .cn{margin-top:5px;font-weight:700;color:var(--brand);font-size:.98rem}
+  .vcard .nt{margin-top:5px;font-size:.84rem;color:var(--muted);line-height:1.6}
+  .vcard .ex{margin-top:8px;font-size:.88rem;border-top:1px dashed var(--line);padding-top:8px}
+  .vcard .ex .ecn{display:block;color:var(--muted);font-size:.82rem;margin-top:2px}
+  .callout{border:1px dashed var(--accent);background:var(--accent-soft);border-radius:12px;
+    padding:12px 15px;font-size:.9rem;color:#92400e;margin:12px 0;line-height:1.9}
+  body.dark .callout{color:#fcd34d}
+  details.more{margin-top:14px;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  details.more>summary{cursor:pointer;padding:11px 15px;font-weight:700;color:var(--brand);
+    background:var(--brand-soft);list-style:none;display:flex;justify-content:space-between;align-items:center}
+  details.more>summary::-webkit-details-marker{display:none}
+  details.more>summary::after{content:"▾";transition:.2s;font-size:.9em}
+  details.more[open]>summary::after{transform:rotate(180deg)}
+  details.more .body{padding:14px 16px;font-size:.95rem;line-height:1.9;color:var(--ink2)}
+  details.more .body p{margin:0 0 10px}
+  footer{text-align:center;color:var(--muted);font-size:.82rem;padding:26px 10px 10px;line-height:1.8}
+  kbd{background:var(--brand-soft);border-radius:5px;padding:1px 6px;font-size:.8em;font-weight:700;color:var(--brand)}
+  header.hero kbd{background:rgba(255,255,255,.22);color:#fff;border:1px solid rgba(255,255,255,.45);white-space:nowrap}
+  .jilei{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:22px}
+  .jilei .jh{background:linear-gradient(135deg,#7c3aed,#0d9488);color:#fff;padding:10px 16px;
+    font-weight:800;font-size:.95rem}
+  .jilei .jb{padding:14px 16px}
+  .jilei .qb{padding:10px 12px;border-radius:10px;margin:6px 0;background:var(--brand-soft)}
+  .jilei .qb .q{color:var(--muted);font-size:.9rem}
+  .jilei .qb .a{font-weight:700;color:var(--ok);font-size:1rem;margin-top:3px}
+  .jilei .qb .a u{text-decoration:none;border-bottom:2px solid var(--ok);padding-bottom:1px}
+  .jilei .qb .nt{font-size:.85rem;color:var(--muted);margin-top:5px}
+  .optbox{border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin:8px 0 14px;
+    background:var(--card);font-size:.95rem;line-height:2}
+  .optbox b{color:var(--brand)}
+  .rolecard{border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:0 0 12px;background:var(--card)}
+  .rolecard .who{font-weight:800;color:var(--brand);margin-bottom:4px}
+  .passage table.wtable{width:100%;border-collapse:collapse;margin:14px 0;font-size:.95em}
+  .passage table.wtable caption{caption-side:top;font-size:.82rem;color:var(--muted);margin-bottom:6px;text-align:left}
+  .passage table.wtable th,.passage table.wtable td{border:1px solid var(--line);padding:.5em .65em;text-align:left;vertical-align:top;line-height:1.7}
+  .passage table.wtable thead th{background:var(--brand-soft);color:var(--brand);font-weight:700}
+  .passage table.wtable tbody tr:nth-child(even){background:color-mix(in srgb,var(--brand) 4%,transparent)}
+  @media (max-width:560px){
+    section.card{padding:18px 15px 22px}
+    .passage{padding:15px 14px;font-size:1rem;line-height:1.95}
+    header.hero{padding:30px 18px 26px;border-radius:0 0 22px 22px}
+    .vcards{grid-template-columns:1fr}
+    .sec-no{width:38px;height:38px;font-size:1rem}
+  }
+  @media print{
+    .toolbar,#pop{display:none!important}.spk{display:none!important}body{background:#fff}
+    section.card{box-shadow:none;break-inside:avoid}
+    .w{border-bottom:1px solid #d97706;background:none}
+    body:not(.showall) .gloss{display:inline;color:#0d9488}
+  }
+  .spk{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border:none;border-radius:50%;
+    background:var(--brand-soft);color:var(--brand);cursor:pointer;font-size:.95rem;line-height:1;transition:.15s;flex:0 0 auto}
+  .spk:hover{background:var(--brand);color:#fff;transform:scale(1.08)}
+  .spk:active{transform:scale(.94)}
+  .pw .spk{margin-left:auto;align-self:center}.hw .spk{margin-left:auto}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <div class="hero-in">
+      <span class="kicker">📘 七年级上册 · 英语培优</span>
+      <h1>10-3 培优 · Unit 2 Rain or Shine<span class="sub">第10周三 · 阅读理解（北极熊 / 东明粮食画 / 季节谚语 / 雨天犯困）</span></h1>
+      <div class="hero-meta">
+        <span class="chip">📄 源 PDF：10-3培优.pdf（扫描件 4 页）</span>
+        <span class="chip">📚 4 篇阅读理解</span>
+        <span class="chip">🔤 67 生词短语</span>
+        <span class="chip">✅ 16 道选择题</span>
+      </div>
+      <p class="hero-note">本页为单文件交互式精讲：生词已用 <span style="border-bottom:2px solid #f59e0b">黄线</span> 嵌入原文，点击可展开音标 / 释义 / 例句并 🔊 发音；题目附逐项解析；文末按篇章汇总全部生词。北极熊 / 东明 / 雨天篇附「积累小栈」。</p>
+    </div>
+  </header>
+
+  <div class="toolbar">
+    <button class="tool-btn" id="btnAllWords" type="button">👁 显示全部释义</button>
+    <button class="tool-btn ghost" id="btnAllAns" type="button">✅ 显示全部答案</button>
+    <button class="tool-btn ghost" id="btnTheme" type="button">🌙 夜间</button>
+    <span class="grow"></span>
+    <nav class="navlinks">
+      <a href="#passA">C 北极熊</a>
+      <a href="#passB">D 粮食画</a>
+      <a href="#passC">C 季节谚语</a>
+      <a href="#passD">D 雨天</a>
+      <a href="#vocab">生词汇总</a>
+    </nav>
+  </div>
+
+  <!-- ============ A 篇：北极熊 ============ -->
+  <section class="card" id="passA">
+    <div class="sec-head">
+      <div class="sec-no">一</div>
+      <div><h2 class="sec-title">阅读 C · 北极熊（Polar Bears） <small>阅读下面短文，从每题 A、B、C 三个选项中选出最佳答案。</small></h2></div>
+    </div>
+    <div class="sec-meta">
+      <span class="badge">主题：人与自然——自然生态</span>
+      <span class="badge gray">语篇类型：说明文</span>
+      <span class="badge gray">词数 240</span>
+      <span class="badge warm">难度 ★★★★☆</span>
+      <span class="badge ok">4 题</span>
+    </div>
+
+    <article class="passage">
+      <p><span class="w" data-k="polarbears">Polar bears</span> are facing hard times as their <span class="w" data-k="icy">icy</span> home <span class="w" data-k="goaway">goes away</span>. Scientists found that as the <span class="w" data-k="arctic">Arctic</span> <span class="w" data-k="seaice">sea ice</span> <span class="w" data-k="goaway">goes away</span> because of <span class="w" data-k="rising">rising</span> temperatures, it is hard for these bears to find their most important food—<span class="w" data-k="ringedseals">ringed seals</span> (环斑海豹), which they usually hunt on the ice.</p>
+      <p>With less ice, polar bears are spending more time on land, trying to eat things like birds' eggs, <span class="w" data-k="berries">berries</span> and grass. But this <span class="w" data-k="diet">diet</span> isn't good enough for them, and they start to <span class="w" data-k="loseweight">lose weight</span> quickly, which can <span class="w" data-k="leadto">lead to</span> serious problems.</p>
+      <p>The things happening in Western Manitoba, an important place for these bears, show just <b>▲</b>. Here, the time without ice grew by three weeks from 1979 to 2015. To better understand what's happening to the bears, scientists followed 20 of them over three summers to see what they were doing and eating.</p>
+      <p>What they found wasn't very hopeful. Almost all the bears in the study were trying different ways to <span class="w" data-k="keepawayfrom">keep away from</span> <span class="w" data-k="hunger">hunger</span>, like resting to save energy or looking for berries, but they still lost weight, some <span class="w" data-k="upto">up to</span> 11% of their <span class="w" data-k="bodyweight">body weight</span>.</p>
+      <p>The story of the polar bears is a clear sign of how changes in the earth's weather are <span class="w" data-k="affecting">affecting</span> our <span class="w" data-k="planet">planet</span>.</p>
+      <p>While hunting once was a big problem for these bears, it's now the <span class="w" data-k="warmingworld">warming world</span> that's their biggest problem, changing the very nature of their Arctic home and making it hard for them to live.</p>
+
+      <details class="more">
+        <summary>📖 参考译文（点击展开）</summary>
+        <div class="body">
+          <p>随着冰雪家园消失，北极熊正面临艰难时刻。科学家发现，由于气温上升，北极海冰融化，这些熊很难找到它们最重要的食物——环斑海豹（它们通常在冰上捕猎海豹）。</p>
+          <p>随着冰越来越少，北极熊花更多时间在陆地上，试图吃鸟蛋、浆果和草之类的东西。但这种饮食对它们不够好，它们开始迅速减重，这可能导致严重问题。</p>
+          <p>马尼托巴省西部（北极熊的重要栖息地）发生的事情恰好说明了情况有多严重。这里，从 1979 到 2015 年，无冰期增加了三周。为了更好地了解熊的处境，科学家连续三个夏天追踪了 20 只熊，观察它们在做什么、吃什么。</p>
+          <p>他们的发现并不乐观。研究中几乎所有熊都在用不同方式逃避饥饿，比如休息来保存能量、寻找浆果，但它们仍然减重，一些减重多达体重的 11%。</p>
+          <p>北极熊的故事清楚地表明，地球气候变化正在如何影响我们的星球。</p>
+          <p>虽然打猎曾经是这些熊的大问题，但如今变暖的世界才是它们最大的问题，它正改变着北极家园的本质，让它们难以生存。</p>
+        </div>
+      </details>
+    </article>
+
+    <h3 class="ans-h">题目与选项</h3>
+    <div class="ans-list" id="qA"></div>
+
+    <h3 class="ans-h">答案与详解</h3>
+    <div class="ans-list" id="ansA"></div>
+
+    <div class="jilei">
+      <div class="jh">🐻 积累小栈（阅读 C · 北极熊）</div>
+      <div class="jb" id="jileiA"></div>
+    </div>
+  </section>
+
+  <!-- ============ B 篇：东明粮食画 ============ -->
+  <section class="card" id="passB">
+    <div class="sec-head">
+      <div class="sec-no">二</div>
+      <div><h2 class="sec-title">阅读 D · 东明粮食画 <small>阅读下面短文，从每题 A、B、C 三个选项中选出最佳答案。</small></h2></div>
+    </div>
+    <div class="sec-meta">
+      <span class="badge">主题：人与社会——传统文化</span>
+      <span class="badge gray">语篇类型：说明文</span>
+      <span class="badge gray">词数 201</span>
+      <span class="badge warm">难度 ★★★★☆</span>
+      <span class="badge ok">4 题</span>
+    </div>
+
+    <article class="passage">
+      <p>Do you know that <span class="w" data-k="seeds">seeds</span> (种子) can be used to make beautiful <span class="w" data-k="paintings">paintings</span>? <span class="w" data-k="grainpainting">Dongming grain painting</span> is a good <span class="w" data-k="example">example</span>.</p>
+      <p><span class="w" data-k="grainpainting">Dongming grain painting</span> has a <span class="w" data-k="history">history</span> of <span class="w" data-k="morethan">more than</span> 200 years. In 2016, it was named Shandong's <span class="w" data-k="heritage">intangible cultural heritage</span> (非物质文化遗产). In the past, people gave grain paintings as important <span class="w" data-k="gifts">gifts</span> when it was time for the "Three-Animal Sacrifice" (三牲祭祀).</p>
+      <p>Han Guorui, 44, started learning Dongming grain paintings when he was 8. During these years, he saw the art become <span class="w" data-k="lesspopular">less popular</span>. People are <span class="w" data-k="loseinterest">losing interest</span> in it, maybe because it takes much time and work to make one. It usually takes 27 <span class="w" data-k="steps">steps</span> <b>▲</b>. For example, Han spent five years growing <span class="w" data-k="redcorn">red corn</span> (玉米) for making <span class="w" data-k="plumpetals">plum blossom petals</span> (梅花花瓣).</p>
+      <p>To keep people interested, Han thought of some <span class="w" data-k="thinkofideas">new ideas</span>. And they are working too. In 2014, he made a grain painting of <span class="w" data-k="monalisa">the Mona Lisa</span>. Hopefully, it sold for much money, and he <span class="w" data-k="succeedin">succeeded in</span> making more people know about Chinese culture!</p>
+
+      <details class="more">
+        <summary>📖 参考译文（点击展开）</summary>
+        <div class="body">
+          <p>你知道种子可以用来制作美丽的画吗？东明粮食画就是一个好例子。</p>
+          <p>东明粮食画有 200 多年的历史。2016 年，它被命名为山东非物质文化遗产。过去，在"三牲祭祀"的时候，人们把粮食画作为重要礼物相赠。</p>
+          <p>韩国瑞，44 岁，8 岁开始学习东明粮食画。这些年来，他看到这门艺术变得不那么受欢迎。人们正对它失去兴趣，也许是因为制作一幅作品需要花费大量时间和精力。它通常需要 27 道工序。例如，韩国瑞花了五年时间种植红玉米来制作梅花花瓣。</p>
+          <p>为了让人们保持兴趣，韩国瑞想出了一些新主意，而且它们奏效了。2014 年，他制作了一幅《蒙娜丽莎》粮食画。幸运的是，它卖了很多钱，他也成功地让更多人了解了中国文化！</p>
+        </div>
+      </details>
+    </article>
+
+    <h3 class="ans-h">题目与选项</h3>
+    <div class="ans-list" id="qB"></div>
+
+    <h3 class="ans-h">答案与详解</h3>
+    <div class="ans-list" id="ansB"></div>
+
+    <div class="jilei">
+      <div class="jh">🎨 积累小栈（阅读 D · 东明粮食画）</div>
+      <div class="jb" id="jileiB"></div>
+    </div>
+  </section>
+
+  <!-- ============ C 篇：季节谚语 ============ -->
+  <section class="card" id="passC">
+    <div class="sec-head">
+      <div class="sec-no">三</div>
+      <div><h2 class="sec-title">阅读 C · 季节谚语（Seasonal Sayings） <small>阅读下面短文，从每题 A、B、C 三个选项中选出最佳答案。</small></h2></div>
+    </div>
+    <div class="sec-meta">
+      <span class="badge">主题：人与社会——语言与文化</span>
+      <span class="badge gray">语篇类型：说明文</span>
+      <span class="badge gray">词数 235</span>
+      <span class="badge warm">难度 ★★★☆☆</span>
+      <span class="badge ok">4 题</span>
+    </div>
+
+    <article class="passage">
+      <p>Every <span class="w" data-k="seasons">season</span> brings special things—flowers in spring, sunshine in summer, colourful leaves in autumn, and snow in winter. There are many fun <span class="w" data-k="sayings">sayings</span> and <span class="w" data-k="expressions">expressions</span> about these seasons. Let's get to know some of them!</p>
+      <table class="wtable">
+        <caption>四季谚语对照（原文四格排版）</caption>
+        <tr>
+          <td><span class="h">Spring: A Fresh Start</span><br>Spring is all about <span class="w" data-k="newbeginnings">new beginnings</span>, so people often say, "<span class="w" data-k="aprilshowers">April showers bring May flowers</span>." This means the rain in April helps flowers <span class="w" data-k="bloom">bloom</span> (开花) in May. It's a way of telling us that good things often come after a little <span class="w" data-k="trouble">trouble</span>.</td>
+          <td><span class="h">Summer: Fun in the Sun</span><br>Summer is hot, sunny, and full of life. A popular saying is "<span class="w" data-k="makehay">Make hay while the sun shines</span>." This means to make good use of a good <span class="w" data-k="situation">situation</span> (形势) while it <span class="w" data-k="lasts">lasts</span>. Farmers often say this because they can only dry hay on sunny days.</td>
+        </tr>
+        <tr>
+          <td><span class="h">Autumn: A Time for Change</span><br>When leaves turn red, orange and yellow, people often say, "The <span class="w" data-k="autumnoflife">autumn of one's life</span>." It <span class="w" data-k="refersto">refers to</span> the later years of a person's life, as autumn is later in the year.</td>
+          <td><span class="h">Winter: Comfortable and Cold</span><br>Winter can be hard, but people <span class="w" data-k="makethebest">make the best of</span> it. You may hear someone say, "<span class="w" data-k="snowedunder">snowed under</span>." It means being very busy, like when snow piles up (堆积) all around you.</td>
+        </tr>
+      </table>
+      <p>Seasonal sayings are like little pieces of <span class="w" data-k="wisdom">wisdom</span> (智慧) in fun words. So next time you hear one, smile and think about how it works in the world around you!</p>
+
+      <details class="more">
+        <summary>📖 参考译文（点击展开）</summary>
+        <div class="body">
+          <p>每个季节都带来特别的事物——春天的花、夏天的阳光、秋天多彩的叶子、冬天的雪。关于这些季节有许多有趣的谚语和表达。让我们来了解其中一些！</p>
+          <p>春·新的开始：春天一切都是新的开始，所以人们常说"四月阵雨带来五月花"。意思是四月的雨帮助花在五月盛开。这是一种告诉人们"好事往往在一点困难之后到来"的方式。</p>
+          <p>夏·阳光中的乐趣：夏天炎热、阳光充足、充满生机。一句流行的谚语是"趁热打铁（晒草要趁天晴）"。意思是趁好形势持续时好好利用它。农民常这么说，因为他们只能在晴天晒干草料。</p>
+          <p>秋·改变的时节：当叶子变红、橙、黄时，人们常说"人生的秋天"。它指的是一个人晚年的岁月，因为秋天是一年中较晚的时候。</p>
+          <p>冬·舒适与寒冷：冬天可能很难熬，但人们充分利用它。你可能听到有人说"snowed under（被雪埋/忙得不可开交）"。意思是非常忙碌，就像雪在你四周堆积一样。</p>
+          <p>季节谚语就像是用有趣的话说出的小块智慧。所以下次你听到一句时，微笑并想想它在你周围的世界里如何起作用！</p>
+        </div>
+      </details>
+    </article>
+
+    <h3 class="ans-h">题目与选项</h3>
+    <div class="ans-list" id="qC"></div>
+
+    <h3 class="ans-h">答案与详解</h3>
+    <div class="ans-list" id="ansC"></div>
+
+    <div class="jilei">
+      <div class="jh">🍂 谚语寓意归纳（阅读 C · 季节谚语）</div>
+      <div class="jb" id="jileiC"></div>
+    </div>
+  </section>
+
+  <!-- ============ D 篇：雨天犯困 ============ -->
+  <section class="card" id="passD">
+    <div class="sec-head">
+      <div class="sec-no">四</div>
+      <div><h2 class="sec-title">阅读 D · 雨天犯困（Sleepy on Rainy Days） <small>阅读下面短文，从每题 A、B、C 三个选项中选出最佳答案。</small></h2></div>
+    </div>
+    <div class="sec-meta">
+      <span class="badge">主题：人与自然——人类活动</span>
+      <span class="badge gray">语篇类型：说明文</span>
+      <span class="badge gray">词数 259</span>
+      <span class="badge warm">难度 ★★★★☆</span>
+      <span class="badge ok">4 题</span>
+    </div>
+
+    <article class="passage">
+      <p>Do you <span class="w" data-k="feelsleepy">feel sleepy</span> on <span class="w" data-k="rainydays">rainy days</span>? If the answer is yes, you are not alone. Many people feel the same way. But do you know why?</p>
+      <p>One of the reasons is that there is <span class="w" data-k="littlesunshine">little sunshine</span> on rainy days. Our <span class="w" data-k="brain">brain</span> (大脑) will have less <span class="w" data-k="serotonin">serotonin</span> (血清素) and more <span class="w" data-k="melatonin">melatonin</span> (褪黑素) if there is not <span class="w" data-k="enoughsunlight">enough sunlight</span>. Serotonin helps us feel good and <span class="w" data-k="energetic">energetic</span>, while melatonin makes us feel sleepy. <span class="w" data-k="asaresult">As a result</span>, we may want to go to sleep and even feel a bit sad when it is rainy.</p>
+      <p>The <span class="w" data-k="humidity">humidity</span> (湿度) of a rainy day is another reason. As it rains, the air becomes wetter than usual. It's more difficult for our <span class="w" data-k="sweat">sweat</span> (汗水) to dry in weather like this, so our body has to work harder to <span class="w" data-k="staycool">stay cool</span>. This can make us feel tired.</p>
+      <p><span class="w" data-k="moreover">Moreover</span> (此外), the sound of rain, a type of <span class="w" data-k="pinknoise">pink noise</span>, will make us feel sleepy too. Like <span class="w" data-k="whitenoise">white noise</span>, pink noise includes all the <span class="w" data-k="soundfrequencies">sound frequencies</span> (频率) humans can hear, but it has fewer high frequencies (频率) than white noise. This makes pink noise sound softer. Studies show that people's <span class="w" data-k="brainwaves">brain waves</span> (脑电波) will become fewer when they hear pink noise, so they will <span class="w" data-k="fallasleep">fall asleep</span> more easily.</p>
+      <p>Now you can understand why you are sleepy on rainy days. Then what can you do if you don't like that feeling? Well, you can get as much <span class="w" data-k="naturallight">natural light</span> as possible and keep yourself busy. Also, you can use a machine to make your room dry. <span class="w" data-k="inthisway">In this way</span>, you won't feel sleepy any more.</p>
+
+      <details class="more">
+        <summary>📖 参考译文（点击展开）</summary>
+        <div class="body">
+          <p>你在下雨天感到困倦吗？如果是，你并不孤单。很多人有同样的感觉。但你知道为什么吗？</p>
+          <p>原因之一是雨天阳光很少。如果阳光不足，我们的大脑会分泌较少的血清素和较多的褪黑素。血清素让我们感觉良好、精力充沛，而褪黑素让我们困倦。结果，下雨时我们可能想睡觉，甚至觉得有点悲伤。</p>
+          <p>雨天的湿度是另一个原因。下雨时，空气比平时更潮湿。在这种天气里我们的汗水更难干，所以身体必须更努力地保持凉爽。这会让我们感到疲惫。</p>
+          <p>此外，雨声（一种粉红噪音）也会让我们困倦。像白噪音一样，粉红噪音包含人类能听到的所有声音频率，但它的高频比白噪音少。这使粉红噪音听起来更柔和。研究表明，人们听到粉红噪音时脑电波会变少，因此更容易入睡。</p>
+          <p>现在你能理解为什么雨天会困了。那么如果你不喜欢那种感觉该怎么办？嗯，你可以尽可能多地获取自然光，并让自己保持忙碌。此外，你可以用一台机器让房间保持干燥。用这种方法，你就不会再感到困倦了。</p>
+        </div>
+      </details>
+    </article>
+
+    <h3 class="ans-h">题目与选项</h3>
+    <div class="ans-list" id="qD"></div>
+
+    <h3 class="ans-h">答案与详解</h3>
+    <div class="ans-list" id="ansD"></div>
+
+    <div class="jilei">
+      <div class="jh">🌧 积累小栈（阅读 D · 雨天犯困）</div>
+      <div class="jb" id="jileiD"></div>
+    </div>
+  </section>
+
+  <!-- ============ 生词汇总 ============ -->
+  <section class="card" id="vocab">
+    <div class="sec-head">
+      <div class="sec-no">词</div>
+      <div><h2 class="sec-title">生词与短语汇总 <small>按七年级英语词汇水平整理 · 每条含音标、释义、用法与例句 · 点击 🔊 可发音。</small></h2></div>
+    </div>
+    <div id="vocabBox"></div>
+  </section>
+
+  <footer>
+    本页由 PDF 扫描件提取并整理为交互式精讲 · 生词标注以七年级词汇水平为参考 · 点击 <kbd>显示全部释义</kbd> 可在原文直接显示中文对照，<kbd>显示全部答案</kbd> 可一次性展开解析。<br>
+    _unit: Unit 2 Rain or Shine · 第10周三_
+  </footer>
+
+  <div id="pop"></div>
+</div>
+
+<script>
+const VOCAB = [
+  /* ===== A 组：阅读 C（北极熊） ===== */
+  {k:"polarbears",g:"A",en:"polar bears",ph:"/ˈpəʊlə beəz/",pos:"n.",cn:"北极熊",note:"polar（极地的）+ bears（熊，复数）。",ex:"Polar bears are facing hard times.",exCn:"北极熊正面临艰难时刻。"},
+  {k:"icy",g:"A",en:"icy",ph:"/ˈaɪsi/",pos:"adj.",cn:"冰封的；冰冷的",note:"ice（n. 冰）的形容词形式。",ex:"their icy home goes away",exCn:"它们的冰雪家园消失"},
+  {k:"goaway",g:"A",en:"go away",ph:"/ɡəʊ əˈweɪ/",pos:"短语",cn:"消失；离去",note:"文中指冰雪「消失、融化」。",ex:"the Arctic sea ice goes away",exCn:"北极海冰消失"},
+  {k:"arctic",g:"A",en:"Arctic",ph:"/ˈɑːktɪk/",pos:"adj.",cn:"北极的",note:"the Arctic 北极（地区）；Arctic sea ice 北极海冰。",ex:"the Arctic sea ice",exCn:"北极海冰"},
+  {k:"seaice",g:"A",en:"sea ice",ph:"/siː aɪs/",pos:"n.",cn:"海冰",note:"sea（海）+ ice（冰）；海水结成的冰。",ex:"as the Arctic sea ice goes away",exCn:"随着北极海冰消失"},
+  {k:"rising",g:"A",en:"rising",ph:"/ˈraɪzɪŋ/",pos:"adj.",cn:"上升的；上涨的",note:"rise（v. 上升）的现在分词；rising temperatures 气温上升。",ex:"because of rising temperatures",exCn:"因为气温上升"},
+  {k:"ringedseals",g:"A",en:"ringed seals",ph:"/rɪŋd siːlz/",pos:"n.",cn:"环斑海豹",note:"北极熊的主要食物；seal（海豹）。",ex:"their food—ringed seals",exCn:"它们的食物——环斑海豹"},
+  {k:"berries",g:"A",en:"berries",ph:"/ˈberiz/",pos:"n.",cn:"浆果",note:"berry（浆果）的复数。",ex:"trying to eat things like berries",exCn:"试图吃浆果之类的东西"},
+  {k:"diet",g:"A",en:"diet",ph:"/ˈdaɪət/",pos:"n.",cn:"饮食；食物",note:"文中考词义：this diet isn't good enough（这种饮食不够好）。",ex:"this diet isn't good enough for them",exCn:"这种饮食对它们不够好"},
+  {k:"loseweight",g:"A",en:"lose weight",ph:"/luːz weɪt/",pos:"短语",cn:"减重；减肥",note:"lose（失去）+ weight（体重）；反义词 put on weight 增重。",ex:"they start to lose weight quickly",exCn:"它们开始迅速减重"},
+  {k:"leadto",g:"A",en:"lead to",ph:"/liːd tuː/",pos:"短语",cn:"导致；通向",note:"lead to + 名词，表因果「导致」。",ex:"which can lead to serious problems",exCn:"这可能导致严重问题"},
+  {k:"keepawayfrom",g:"A",en:"keep away from",ph:"/kiːp əˈweɪ frɒm/",pos:"短语",cn:"远离；避开",note:"keep away from hunger 远离饥饿。",ex:"trying to keep away from hunger",exCn:"试图逃避饥饿"},
+  {k:"hunger",g:"A",en:"hunger",ph:"/ˈhʌŋɡə(r)/",pos:"n.",cn:"饥饿",note:"hungry（adj. 饥饿的）的名词。",ex:"keep away from hunger",exCn:"远离饥饿"},
+  {k:"upto",g:"A",en:"up to",ph:"/ʌp tuː/",pos:"短语",cn:"多达；直到",note:"up to 11% 多达 11%。",ex:"some up to 11% of their body weight",exCn:"一些减重多达体重的 11%"},
+  {k:"bodyweight",g:"A",en:"body weight",ph:"/ˈbɒdi weɪt/",pos:"n.",cn:"体重",note:"body（身体）+ weight（重量）；lose body weight 减重。",ex:"11% of their body weight",exCn:"体重的 11%"},
+  {k:"affecting",g:"A",en:"affecting",ph:"/əˈfektɪŋ/",pos:"v.",cn:"影响（现在分词）",note:"affect（v. 影响）的现在分词；affect = have an effect on。",ex:"are affecting our planet",exCn:"正在影响我们的星球"},
+  {k:"planet",g:"A",en:"planet",ph:"/ˈplænɪt/",pos:"n.",cn:"行星；地球",note:"our planet 我们的星球（指地球）。",ex:"affecting our planet",exCn:"影响我们的星球"},
+  {k:"warmingworld",g:"A",en:"warming world",ph:"/ˈwɔːmɪŋ wɜːld/",pos:"n.",cn:"变暖的世界",note:"warming（变暖的）+ world；指全球气候变暖。",ex:"it's now the warming world that's their biggest problem",exCn:"如今变暖的世界才是它们最大的问题"},
+
+  /* ===== B 组：阅读 D（东明粮食画） ===== */
+  {k:"seeds",g:"B",en:"seeds",ph:"/siːdz/",pos:"n.",cn:"种子",note:"seed 的复数；seeds can be used to make paintings 种子可用来作画。",ex:"seeds can be used to make beautiful paintings",exCn:"种子可以用来制作美丽的画"},
+  {k:"paintings",g:"B",en:"paintings",ph:"/ˈpeɪntɪŋz/",pos:"n.",cn:"画；绘画",note:"paint（v. 画）的名词 painting 的复数。",ex:"make beautiful paintings",exCn:"制作美丽的画"},
+  {k:"grainpainting",g:"B",en:"grain painting",ph:"/ɡreɪn ˈpeɪntɪŋ/",pos:"n.",cn:"粮食画",note:"用粮食种子拼贴成的画；东明（山东）非遗。",ex:"Dongming grain painting is a good example.",exCn:"东明粮食画是个好例子。"},
+  {k:"example",g:"B",en:"example",ph:"/ɪɡˈzɑːmpl/",pos:"n.",cn:"例子；榜样",note:"a good example 一个好例子；for example 例如。",ex:"is a good example",exCn:"是个好例子"},
+  {k:"history",g:"B",en:"history",ph:"/ˈhɪstri/",pos:"n.",cn:"历史",note:"have a history of ... years 有……年的历史。",ex:"has a history of more than 200 years",exCn:"有 200 多年的历史"},
+  {k:"morethan",g:"B",en:"more than",ph:"/mɔː ðæn/",pos:"短语",cn:"超过；多于",note:"= over；more than 200 years 超过 200 年。",ex:"a history of more than 200 years",exCn:"超过 200 年的历史"},
+  {k:"heritage",g:"B",en:"intangible cultural heritage",ph:"/ɪnˈtændʒəbl/",pos:"n.",cn:"非物质文化遗产",note:"intangible（无形的）+ cultural（文化的）+ heritage（遗产）。",ex:"named Shandong's intangible cultural heritage",exCn:"被命名为山东非物质文化遗产"},
+  {k:"gifts",g:"B",en:"gifts",ph:"/ɡɪfts/",pos:"n.",cn:"礼物",note:"= presents；gift 的复数。",ex:"gave grain paintings as important gifts",exCn:"把粮食画作为重要礼物相赠"},
+  {k:"lesspopular",g:"B",en:"less popular",ph:"/les ˈpɒpjələ(r)/",pos:"短语",cn:"不那么受欢迎",note:"less + 形容词 = 没那么……；popular 受欢迎的。",ex:"he saw the art become less popular",exCn:"他看到这门艺术变得不那么受欢迎"},
+  {k:"loseinterest",g:"B",en:"lose interest",ph:"/luːz ˈɪntrəst/",pos:"短语",cn:"失去兴趣",note:"lose interest in... 对……失去兴趣；反义 take interest in。",ex:"People are losing interest in it",exCn:"人们正对它失去兴趣"},
+  {k:"steps",g:"B",en:"steps",ph:"/steps/",pos:"n.",cn:"步骤；脚步",note:"step 的复数；27 steps 27 道工序。",ex:"It usually takes 27 steps",exCn:"它通常需要 27 道工序"},
+  {k:"redcorn",g:"B",en:"red corn",ph:"/red kɔːn/",pos:"n.",cn:"红玉米",note:"corn（玉米）；文中指为做梅花花瓣而种的红玉米。",ex:"spent five years growing red corn",exCn:"花了五年种红玉米"},
+  {k:"plumpetals",g:"B",en:"plum blossom petals",ph:"/plʌm ˈblɒsəm ˈpetlz/",pos:"n.",cn:"梅花花瓣",note:"plum（梅花）+ blossom（花）+ petals（花瓣）。",ex:"for making plum blossom petals",exCn:"用来制作梅花花瓣"},
+  {k:"thinkofideas",g:"B",en:"think of new ideas",ph:"/θɪŋk ɒv/",pos:"短语",cn:"想出新主意",note:"think of 想到、想出；come up with 也是「想出」。",ex:"Han thought of some new ideas",exCn:"韩国瑞想出一些新主意"},
+  {k:"monalisa",g:"B",en:"the Mona Lisa",ph:"/ˈməʊnə ˈliːsə/",pos:"n.",cn:"《蒙娜丽莎》",note:"达·芬奇名画；文中指用粮食画重现的《蒙娜丽莎》。",ex:"made a grain painting of the Mona Lisa",exCn:"制作了一幅《蒙娜丽莎》粮食画"},
+  {k:"succeedin",g:"B",en:"succeed in",ph:"/səkˈsiːd ɪn/",pos:"短语",cn:"成功做某事",note:"succeed in doing sth. 成功做某事；success（n. 成功）。",ex:"he succeeded in making more people know",exCn:"他成功让更多人了解"},
+
+  /* ===== C 组：阅读 C（季节谚语） ===== */
+  {k:"seasons",g:"C",en:"seasons",ph:"/ˈsiːznz/",pos:"n.",cn:"季节",note:"season 的复数；four seasons 四季。",ex:"Every season brings special things.",exCn:"每个季节都带来特别的事物。"},
+  {k:"sayings",g:"C",en:"sayings",ph:"/ˈseɪɪŋz/",pos:"n.",cn:"谚语；俗语",note:"saying 的复数；a popular saying 一句流行谚语。",ex:"many fun sayings about these seasons",exCn:"关于这些季节的许多有趣谚语"},
+  {k:"expressions",g:"C",en:"expressions",ph:"/ɪkˈspreʃnz/",pos:"n.",cn:"表达；说法",note:"expression 的复数。",ex:"sayings and expressions about seasons",exCn:"关于季节的谚语和表达"},
+  {k:"newbeginnings",g:"C",en:"new beginnings",ph:"/njuː bɪˈɡɪnɪŋz/",pos:"n.",cn:"新的开端",note:"beginning（开端）的复数；a fresh start 新的开始。",ex:"Spring is all about new beginnings",exCn:"春天一切都是新的开始"},
+  {k:"aprilshowers",g:"C",en:"April showers bring May flowers",ph:"",pos:"谚语",cn:"四月阵雨带来五月花（好事多磨）",note:"寓意：good things often come after a little trouble（好事往往在困难后到来）。",ex:"April showers bring May flowers.",exCn:"四月阵雨带来五月花。"},
+  {k:"bloom",g:"C",en:"bloom",ph:"/bluːm/",pos:"v.",cn:"开花；盛开",note:"= come into flower；flowers bloom 花儿盛开。",ex:"helps flowers bloom in May",exCn:"帮助花在五月盛开"},
+  {k:"trouble",g:"C",en:"trouble",ph:"/ˈtrʌbl/",pos:"n.",cn:"麻烦；困难",note:"a little trouble 一点困难；in trouble 陷入困境。",ex:"good things often come after a little trouble",exCn:"好事往往在一点困难之后到来"},
+  {k:"makehay",g:"C",en:"Make hay while the sun shines",ph:"",pos:"谚语",cn:"趁热打铁；晒草要趁天晴",note:"寓意：make good use of a good situation while it lasts（趁好形势持续时充分利用）。",ex:"Make hay while the sun shines.",exCn:"趁热打铁。"},
+  {k:"situation",g:"C",en:"situation",ph:"/ˌsɪtʃuˈeɪʃn/",pos:"n.",cn:"形势；处境",note:"a good situation 好形势。",ex:"make good use of a good situation",exCn:"好好利用好形势"},
+  {k:"lasts",g:"C",en:"lasts",ph:"/lɑːsts/",pos:"v.",cn:"持续（第三人称单数）",note:"last（v. 持续）；while it lasts 趁它持续时。",ex:"while it lasts",exCn:"趁它持续时"},
+  {k:"autumnoflife",g:"C",en:"the autumn of one's life",ph:"",pos:"短语",cn:"人生的秋天（晚年）",note:"喻指人晚年的岁月，因秋天是一年中较晚时节。",ex:"The autumn of one's life.",exCn:"人生的秋天。"},
+  {k:"refersto",g:"C",en:"refers to",ph:"/rɪˈfɜːz tuː/",pos:"短语",cn:"指的是",note:"refer to 指的是、涉及；单数 refers，过去式 referred。",ex:"It refers to the later years of a person's life.",exCn:"它指的是一个人晚年的岁月。"},
+  {k:"makethebest",g:"C",en:"make the best of",ph:"/meɪk ðə best ɒv/",pos:"短语",cn:"充分利用",note:"make the best of it 既来之则安之 / 充分利用。",ex:"people make the best of it",exCn:"人们充分利用它"},
+  {k:"snowedunder",g:"C",en:"snowed under",ph:"/snəʊd ˈʌndə(r)/",pos:"短语",cn:"被雪埋；忙得不可开交",note:"像被雪埋住一样，形容非常忙碌。",ex:"You may hear someone say, snowed under.",exCn:"你可能听人说 snowed under。"},
+  {k:"wisdom",g:"C",en:"wisdom",ph:"/ˈwɪzdəm/",pos:"n.",cn:"智慧",note:"wise（adj. 智慧的）的名词；pieces of wisdom 小块智慧。",ex:"little pieces of wisdom",exCn:"小块的智慧"},
+
+  /* ===== D 组：阅读 D（雨天犯困） ===== */
+  {k:"feelsleepy",g:"D",en:"feel sleepy",ph:"/fiːl ˈsliːpi/",pos:"短语",cn:"感到困倦",note:"sleepy（adj. 困倦的）；feel + 形容词。",ex:"Do you feel sleepy on rainy days?",exCn:"你在下雨天感到困倦吗？"},
+  {k:"rainydays",g:"D",en:"rainy days",ph:"/ˈreɪni deɪz/",pos:"n.",cn:"雨天",note:"rainy（下雨的）+ days；on rainy days 在下雨天。",ex:"on rainy days",exCn:"在下雨天"},
+  {k:"littlesunshine",g:"D",en:"little sunshine",ph:"/ˈlɪtl ˈsʌnʃaɪn/",pos:"短语",cn:"很少的阳光",note:"little + 不可数名词表「很少」（否定意义）；a little 有一点。",ex:"there is little sunshine on rainy days",exCn:"雨天阳光很少"},
+  {k:"brain",g:"D",en:"brain",ph:"/breɪn/",pos:"n.",cn:"大脑",note:"the human brain 人脑。",ex:"Our brain will have less serotonin.",exCn:"我们的大脑会分泌较少的血清素。"},
+  {k:"serotonin",g:"D",en:"serotonin",ph:"/ˌserəˈtəʊnɪn/",pos:"n.",cn:"血清素",note:"帮助人感觉良好、精力充沛的神经递质。",ex:"less serotonin and more melatonin",exCn:"较少的血清素和较多的褪黑素"},
+  {k:"melatonin",g:"D",en:"melatonin",ph:"/ˌmeləˈtəʊnɪn/",pos:"n.",cn:"褪黑素",note:"让人困倦、促进睡眠的激素。",ex:"more melatonin if there is not enough sunlight",exCn:"阳光不足时褪黑素更多"},
+  {k:"enoughsunlight",g:"D",en:"enough sunlight",ph:"/ɪˈnʌf ˈsʌnlaɪt/",pos:"短语",cn:"足够的阳光",note:"enough + 名词放前；形容词 + enough 放后。",ex:"if there is not enough sunlight",exCn:"如果阳光不足"},
+  {k:"energetic",g:"D",en:"energetic",ph:"/ˌenəˈdʒetɪk/",pos:"adj.",cn:"精力充沛的",note:"energy（n. 能量）的形容词；文中考词义 = active。",ex:"Serotonin helps us feel good and energetic.",exCn:"血清素让我们感觉良好、精力充沛。"},
+  {k:"asaresult",g:"D",en:"as a result",ph:"/æz ə rɪˈzʌlt/",pos:"短语",cn:"结果；因此",note:"表因果的结果状语，常放句首。",ex:"As a result, we may want to go to sleep.",exCn:"结果，我们可能想睡觉。"},
+  {k:"humidity",g:"D",en:"humidity",ph:"/hjuːˈmɪdəti/",pos:"n.",cn:"湿度",note:"humid（adj. 潮湿的）的名词。",ex:"The humidity of a rainy day is another reason.",exCn:"雨天的湿度是另一个原因。"},
+  {k:"sweat",g:"D",en:"sweat",ph:"/swet/",pos:"n./v.",cn:"汗水；出汗",note:"sweaty（adj. 出汗的）；our sweat 我们的汗水。",ex:"more difficult for our sweat to dry",exCn:"我们的汗水更难干"},
+  {k:"staycool",g:"D",en:"stay cool",ph:"/steɪ kuːl/",pos:"短语",cn:"保持凉爽",note:"stay + 形容词，表「保持某种状态」。",ex:"our body has to work harder to stay cool",exCn:"身体必须更努力地保持凉爽"},
+  {k:"moreover",g:"D",en:"Moreover",ph:"/mɔːrˈəʊvə(r)/",pos:"adv.",cn:"此外；而且",note:"用于递进，补充另一个理由；= besides。",ex:"Moreover, the sound of rain...",exCn:"此外，雨声……"},
+  {k:"pinknoise",g:"D",en:"pink noise",ph:"/pɪŋk nɔɪz/",pos:"n.",cn:"粉红噪音",note:"一种让人放松、助眠的声音（含雨声等）。",ex:"the sound of rain, a type of pink noise",exCn:"雨声，一种粉红噪音"},
+  {k:"whitenoise",g:"D",en:"white noise",ph:"/waɪt nɔɪz/",pos:"n.",cn:"白噪音",note:"包含各种频率的均匀噪音；文中与粉红噪音对比。",ex:"Like white noise, pink noise includes...",exCn:"像白噪音一样，粉红噪音包含……"},
+  {k:"soundfrequencies",g:"D",en:"sound frequencies",ph:"/saʊnd ˈfriːkwənsiz/",pos:"n.",cn:"声音频率",note:"frequency（频率）的复数；high frequencies 高频。",ex:"includes all the sound frequencies humans can hear",exCn:"包含人类能听到的所有声音频率"},
+  {k:"brainwaves",g:"D",en:"brain waves",ph:"/breɪn weɪvz/",pos:"n.",cn:"脑电波",note:"brain（脑）+ waves（波）；brain waves become fewer 脑电波变少。",ex:"people's brain waves will become fewer",exCn:"人们的脑电波会变少"},
+  {k:"fallasleep",g:"D",en:"fall asleep",ph:"/fɔːl əˈsliːp/",pos:"短语",cn:"入睡",note:"fall asleep 睡着（动作）；be asleep 睡着的（状态）。",ex:"they will fall asleep more easily",exCn:"它们会更容易入睡"},
+  {k:"naturallight",g:"D",en:"natural light",ph:"/ˈnætʃrəl laɪt/",pos:"n.",cn:"自然光",note:"natural（自然的）+ light（光）；get natural light 获取自然光。",ex:"get as much natural light as possible",exCn:"尽可能多地获取自然光"},
+  {k:"inthisway",g:"D",en:"in this way",ph:"/ɪn ðɪs weɪ/",pos:"短语",cn:"用这种方法；这样",note:"用来引出方法、途径。",ex:"In this way, you won't feel sleepy any more.",exCn:"用这种方法，你就不会再感到困倦了。"}
+];
+const V={}; VOCAB.forEach(o=>V[o.k]=o);
+const GROUP_NAME={
+  A:"阅读 C · 北极熊（Polar Bears）",
+  B:"阅读 D · 东明粮食画",
+  C:"阅读 C · 季节谚语",
+  D:"阅读 D · 雨天犯困"
+};
+
+/* ===== 四篇选择题题目与选项 ===== */
+const Q_A=[
+  {n:1,q:"What does the underlined word \"diet\" in Paragraph 2 mean in Chinese?",opts:["污染","饮食","活动"],ans:1},
+  {n:2,q:"(新考法·信息还原题) Which of the following is the best to be put in \"▲\" in Paragraph 3?",opts:["what made the problem","how serious things have become","why they are facing the problem"],ans:1},
+  {n:3,q:"What did scientists find out about polar bears in the study?",opts:["They all lost weight.","They all liked resting.","They all liked eating berries."],ans:0},
+  {n:4,q:"What does the passage mainly tell us?",opts:["Polar bears are facing hunger.","Polar bears need good weather.","Polar bears have different eating habits."],ans:0}
+];
+const Q_B=[
+  {n:1,q:"What do you know about Dongming grain paintings?",opts:["People use seeds to make Dongming grain paintings.","People still give Dongming grain paintings as gifts today.","Dongming grain painting has a history of about 100 years."],ans:0},
+  {n:2,q:"(新考法·信息还原题) Which of the following sentence can be put in \"▲\"?",opts:["and it needs much money","and people help each other","and some seeds are difficult to get"],ans:2},
+  {n:3,q:"Why did Han Guorui make a grain painting of the Mona Lisa?",opts:["To show a new kind of art.","To make money only for himself.","To make people interested in grain paintings."],ans:2},
+  {n:4,q:"(新考法·写作意图题) What's the purpose of the passage?",opts:["To show different kinds of paintings.","To tell people about the grain paintings.","To tell how Han Guorui learnt painting."],ans:1}
+];
+const Q_C=[
+  {n:1,q:"(新考法·跨学科知识题) What is the best Chinese meaning for the underlined sentence?",opts:["停车坐爱枫林晚，霜叶红于二月花。","人间四月芳菲尽，山寺桃花始盛开。","宝剑锋从磨砺出，梅花香自苦寒来。"],ans:2},
+  {n:2,q:"(新考法·句意理解题) What can we learn from \"Make hay while the sun shines.\"?",opts:["It teaches us to work when having a chance.","It tells us to rest on sunny days.","It tells people to dry some grass in spring."],ans:0},
+  {n:3,q:"What is the main idea of the passage?",opts:["People should enjoy all the seasons.","Different seasons have their own weather.","Seasonal sayings help us understand life and nature."],ans:2},
+  {n:4,q:"(新考法·文章出处题) In which part of a website can we find the passage?",opts:["Health.","Story.","Nature."],ans:2}
+];
+const Q_D=[
+  {n:1,q:"(新考法·开篇方式题) How does the writer start the passage?",opts:["By asking a question.","By telling a story.","By using a picture."],ans:0},
+  {n:2,q:"What does the underlined word \"energetic\" in Paragraph 2 probably mean?",opts:["Cold.","Active.","Tired."],ans:1},
+  {n:3,q:"From the fourth paragraph, we can learn ________.",opts:["white noise includes fewer high frequencies than pink noise","people will have more brain waves when they hear pink noise","the softer the noise sounds, the more easily people will feel sleepy"],ans:2},
+  {n:4,q:"What does the passage mainly about?",opts:["Some facts about different kinds of noises.","The reasons why people need enough sleep.","The reasons why people are sleepy in rainy weather."],ans:2}
+];
+
+/* ===== 四篇答案与详解 ===== */
+const ANS_A=[
+  {n:1,key:"B",tag:"词义猜测题",sent:"What does the underlined word \"diet\" in Paragraph 2 mean in Chinese?",ana:["第二段：But this diet isn't good enough for them（但这种饮食对它们不够好）。","上文说它们改吃鸟蛋、浆果、草，下文说减重——diet 指它们的「饮食、食物」。","A（污染）、C（活动）均不符；答案：B（饮食）。"]},
+  {n:2,key:"B",tag:"信息还原题",sent:"Which is the best to be put in \"▲\" in Paragraph 3?",ana:["第三段空后：Here, the time without ice grew by three weeks from 1979 to 2015（无冰期增加了三周）。","这是在说明「情况变得有多严重」，呼应 how serious things have become。","A（什么造成问题）、C（为何面临问题）均与后文「具体数据说明严重程度」不符；答案：B。"]},
+  {n:3,key:"A",tag:"细节理解题",sent:"What did scientists find out about polar bears in the study?",ana:["第四段：but they still lost weight, some up to 11% of their body weight。","研究发现：这些熊仍然减重，一些多达体重 11%。","B（都喜欢休息）、C（都喜欢吃浆果）只是文中提到的「方式之一」，不是研究发现的核心；答案：A。"]},
+  {n:4,key:"A",tag:"主旨大意题",sent:"What does the passage mainly tell us?",ana:["全文：气候变暖→冰消失→找不到海豹→改吃鸟蛋浆果→减重→面临饥饿与生存困境。","A（北极熊正面临饥饿）最贴近主旨。","B（需要好天气）不准确（是需要冰、不再变暖）；C（不同饮食习惯）片面；答案：A。"]}
+];
+const ANS_B=[
+  {n:1,key:"A",tag:"细节理解题",sent:"What do you know about Dongming grain paintings?",ana:["第一段：seeds can be used to make beautiful paintings（种子可用来作画）。","A（人们用种子制作东明粮食画）正确。","B 错（原文是过去 give as gifts，非 today）；C 错（more than 200 years，非约 100 年）；答案：A。"]},
+  {n:2,key:"C",tag:"信息还原题",sent:"Which sentence can be put in \"▲\"?",ana:["空前：制作一幅作品需大量时间精力、27 道工序；空后：韩花五年种红玉米做梅花花瓣。","举例说明「有些种子难得」（需花五年才能种出），呼应 some seeds are difficult to get。","A（需要很多钱）后文未强调；B（互相帮助）无关；答案：C。"]},
+  {n:3,key:"C",tag:"推理判断题",sent:"Why did Han Guorui make a grain painting of the Mona Lisa?",ana:["第四段：To keep people interested, Han thought of some new ideas... he made a grain painting of the Mona Lisa。","他制作《蒙娜丽莎》粮食画是为「让人们保持兴趣」这一新主意。","A（展示新艺术种类）不准确；B（只为自己赚钱）错（卖钱是结果，非唯一目的）；答案：C。"]},
+  {n:4,key:"B",tag:"写作意图题",sent:"What's the purpose of the passage?",ana:["全文介绍东明粮食画：历史、非遗、传统用途、传承人韩、创新（蒙娜丽莎）、成功。","写作目的是「让人们了解粮食画」，选 B。","A（展示不同画种）、C（只讲韩如何学画）均片面；答案：B。"]}
+];
+const ANS_C=[
+  {n:1,key:"C",tag:"跨学科知识题",sent:"What is the best Chinese meaning for the underlined sentence?",ana:["划线句 April showers bring May flowers = 四月阵雨带来五月花。","原文解释：good things often come after a little trouble（好事往往在困难之后到来，即「苦尽甘来」）。","C（宝剑锋从磨砺出，梅花香自苦寒来）正是「磨砺后出成果、苦尽甘来」，最契合。A 是秋景、B 讲地势差异，均不符；答案：C。"]},
+  {n:2,key:"A",tag:"句意理解题",sent:"What can we learn from \"Make hay while the sun shines.\"?",ana:["原文：This means to make good use of a good situation while it lasts（趁好形势持续时好好利用）。","谚语寓意是「趁机做事、抓住机会」，对应 work when having a chance。","B（晴天休息）反了；C（春天晒草）是字面、非寓意；答案：A。"]},
+  {n:3,key:"C",tag:"主旨大意题",sent:"What is the main idea of the passage?",ana:["结尾：Seasonal sayings are like little pieces of wisdom（季节谚语是小块的智慧），帮我们理解生活与自然。","主旨是「季节谚语帮助我们理解生活与自然」，选 C。","A（应该享受所有季节）、B（不同季节有不同天气）均非主旨；答案：C。"]},
+  {n:4,key:"C",tag:"文章出处题",sent:"In which part of a website can we find the passage?",ana:["文章围绕四季、自然现象与谚语智慧展开。","网站栏目 Health（健康）、Story（故事）、Nature（自然）中，Nature（自然）最贴切。","A（健康）、B（故事）均不沾边；答案：C。"]}
+];
+const ANS_D=[
+  {n:1,key:"A",tag:"开篇方式题",sent:"How does the writer start the passage?",ana:["开篇：Do you feel sleepy on rainy days? If the answer is yes...（你下雨天困吗？如果是……）。","这是用「提问」的方式开篇，引起读者思考。","B（讲故事）、C（用图片）均不符；答案：A。"]},
+  {n:2,key:"B",tag:"词义猜测题",sent:"What does the underlined word \"energetic\" in Paragraph 2 probably mean?",ana:["第二段：Serotonin helps us feel good and energetic（血清素让我们感觉良好、精力充沛）。","energetic 意为「精力充沛的」，与 active（活跃的）最接近。","A（冷的）、C（累的）均不符；答案：B（Active）。"]},
+  {n:3,key:"C",tag:"推理判断题",sent:"From the fourth paragraph, we can learn ________.",ana:["第四段：pink noise has fewer high frequencies than white noise... sound softer... fall asleep more easily。","C（声音越柔和，人越易入睡）符合原文：粉红噪音更柔和→更容易入睡。","A 错（原文是 pink noise 高频更少，非 white noise）；B 错（脑电波变少，非变多）；答案：C。"]},
+  {n:4,key:"C",tag:"主旨大意题",sent:"What does the passage mainly about?",ana:["全文逐段解释雨天犯困的三个原因：血清素/褪黑素、湿度、粉红噪音。","主旨是「人们在雨天犯困的原因」，选 C。","A（不同噪音的事实）片面、B（为何需充足睡眠）不沾边；答案：C。"]}
+];
+
+/* ===== 积累小栈 / 谚语归纳 ===== */
+const JILEI_A=[
+  {q:"短语互译 1：go away",a:"消失；离去",note:"文中指冰雪「消失、融化」。"},
+  {q:"短语互译 2：体重减轻 / 减肥",a:"lose weight",note:"lose weight 减重；反义 put on weight 增重。"},
+  {q:"短语互译 3：keep away from",a:"远离；避开",note:"keep away from hunger 远离饥饿。"},
+  {q:"短语互译 4：多达",a:"up to",note:"up to 11% 多达 11%。"},
+  {q:"完成句子 5：Amy did very well in her report. She is ________ to pay attention to every detail.（埃米的报告写得很好。她足够细心，能注意到每一个细节。）",a:"careful enough",note:"adj. + enough to do sth. 足够……能做某事；careful 细心的。"},
+  {q:"完成句子 6：If we work hard together, our actions can make a difference to the world and ________ ________ a better future.（如果我们共同努力，我们的行动可以为世界带来改变并通向一个更美好的未来。）",a:"lead to",note:"lead to 导致 / 通向；make a difference 带来改变。"}
+];
+const JILEI_B=[
+  {q:"短语互译 1：超过；多于",a:"more than",note:"= over；more than 200 years 超过 200 年。"},
+  {q:"短语互译 2：lose interest in...",a:"对……失去兴趣",note:"反义 take interest in... 对……感兴趣。"},
+  {q:"短语互译 3：think of new ideas",a:"想出新主意",note:"think of 想到、想出；= come up with。"},
+  {q:"短语互译 4：成功做某事",a:"succeed in doing sth.",note:"= be successful in doing sth.；success（n. 成功）。"},
+  {q:"仿写 5：（用 It takes sb... to do sth.）我每天早上花一小时锻炼身体。",a:"It takes me an hour to exercise every morning.",note:"It takes sb. + 时间 + to do sth. 花费某人……时间做某事。"},
+  {q:"仿写 6：（用 spend... doing sth.）她利用空闲时间画画。",a:"She spends her free time drawing / painting.",note:"spend + 时间 + doing sth. 花费……时间做某事。"}
+];
+const JILEI_C=[
+  {q:"谚语 1：April showers bring May flowers",a:"四月阵雨带来五月花（苦尽甘来）",note:"good things often come after a little trouble——好事往往在困难之后到来。"},
+  {q:"谚语 2：Make hay while the sun shines",a:"趁热打铁；晒草要趁天晴",note:"make good use of a good situation while it lasts——趁好形势持续时充分利用。"},
+  {q:"谚语 3：the autumn of one's life",a:"人生的秋天（晚年）",note:"秋天是一年中较晚的时节，喻指人的晚年。"},
+  {q:"谚语 4：snowed under",a:"被雪埋；忙得不可开交",note:"像被雪埋住一样，形容非常忙碌。"}
+];
+const JILEI_D=[
+  {q:"短语互译 1：feel sleepy",a:"感到困倦",note:""},
+  {q:"短语互译 2：在下雨天",a:"on rainy days",note:""},
+  {q:"短语互译 3：little sunshine",a:"很少的阳光",note:"little + 不可数名词表「很少」（否定意义）。"},
+  {q:"短语互译 4：enough sunlight",a:"足够的阳光",note:"enough 修饰名词放前，修饰形容词放后。"},
+  {q:"短语互译 5：feel good and energetic",a:"感觉良好且精力充沛",note:"energetic 精力充沛的。"},
+  {q:"短语互译 6：as a result",a:"结果；因此",note:"表因果的结果状语。"},
+  {q:"短语互译 7：stay cool",a:"保持凉爽",note:""},
+  {q:"短语互译 8：使某人感到疲惫",a:"make sb. feel tired",note:"make + 宾语 + 动词原形。"},
+  {q:"短语互译 9：入睡",a:"fall asleep",note:"be asleep 睡着的（状态）。"},
+  {q:"短语互译 10：保持忙碌",a:"keep busy / keep yourself busy",note:"keep + 形容词 / 宾语 + 形容词。"},
+  {q:"短语互译 11：in this way",a:"用这种方法；这样",note:""},
+  {q:"短语互译 12：not... any more",a:"不再……",note:"= no more；表程度或次数不再。"}
+];
+
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");}
+
+function renderQ(box, arr){
+  arr.forEach(o=>{
+    const d=document.createElement("div"); d.className="ans-item";
+    const opts=o.opts.map((t,i)=>`<div${i===o.ans?' class="picked"':''}>${esc(t)}</div>`).join("");
+    d.innerHTML = `<div class="top"><span class="num">${o.n}.</span><span class="kt">第 ${o.n} 题</span></div>`+
+      `<div class="qstem">${esc(o.q)}</div><div class="qopts">${opts}</div>`;
+    box.appendChild(d);
+  });
+}
+renderQ(document.getElementById("qA"), Q_A);
+renderQ(document.getElementById("qB"), Q_B);
+renderQ(document.getElementById("qC"), Q_C);
+renderQ(document.getElementById("qD"), Q_D);
+
+function renderAns(box, arr){
+  arr.forEach(o=>{
+    const d=document.createElement("div"); d.className="ans-item";
+    d.innerHTML = `<div class="top"><span class="num">${o.n}.</span><span class="key">${esc(o.key)}</span><span class="kt">${esc(o.tag)}</span></div>`+
+      `<div class="sent">📌 ${esc(o.sent)}</div>`+
+      `<ul>${o.ana.map(a=>`<li>${esc(a)}</li>`).join("")}</ul>`;
+    box.appendChild(d);
+  });
+}
+renderAns(document.getElementById("ansA"), ANS_A);
+renderAns(document.getElementById("ansB"), ANS_B);
+renderAns(document.getElementById("ansC"), ANS_C);
+renderAns(document.getElementById("ansD"), ANS_D);
+
+function renderJilei(box, arr){
+  arr.forEach(o=>{
+    const d=document.createElement("div"); d.className="qb";
+    d.innerHTML = `<div class="q">${esc(o.q)}</div><div class="a">${o.a}</div>`+
+      (o.note?`<div class="nt">${esc(o.note)}</div>`:"");
+    box.appendChild(d);
+  });
+}
+renderJilei(document.getElementById("jileiA"), JILEI_A);
+renderJilei(document.getElementById("jileiB"), JILEI_B);
+renderJilei(document.getElementById("jileiC"), JILEI_C);
+renderJilei(document.getElementById("jileiD"), JILEI_D);
+
+/* ================= 生词汇总（按语篇分组） ================= */
+const vocabBox = document.getElementById("vocabBox");
+["A","B","C","D"].forEach(g=>{
+  const wrap=document.createElement("div"); wrap.className="vgroup";
+  const h=document.createElement("h3"); h.innerHTML=`<span class="dot"></span>${GROUP_NAME[g]}`;
+  wrap.appendChild(h);
+  const cards=document.createElement("div"); cards.className="vcards";
+  VOCAB.filter(v=>v.g===g).forEach(v=>{
+    const c=document.createElement("div"); c.className="vcard";
+    c.innerHTML = `<div class="hw"><span class="en">${esc(v.en)}</span>`+
+      (v.ph?`<span class="ph">${esc(v.ph)}</span>`:"")+
+      `<span class="pos">${esc(v.pos)}</span><button class="spk" type="button" data-word="${esc(v.en)}" title="点击发音" aria-label="发音">🔊</button></div>`+
+      `<div class="cn">${esc(v.cn)}</div>`+
+      `<div class="nt">${esc(v.note)}</div>`+
+      `<div class="ex">e.g. ${esc(v.ex)}<span class="ecn">${esc(v.exCn)}</span></div>`;
+    cards.appendChild(c);
+  });
+  wrap.appendChild(cards);
+  vocabBox.appendChild(wrap);
+});
+
+/* ================= 交互：划线词弹出 / 内联对照 ================= */
+const words = [...document.querySelectorAll(".w")];
+words.forEach(w=>{
+  const d=V[w.dataset.k]; if(!d) return;
+  const g=document.createElement("span"); g.className="gloss"; g.textContent="（"+d.cn+"）";
+  w.after(g);
+});
+
+const pop=document.getElementById("pop");
+let cur=null;
+function closePop(){ pop.classList.remove("show"); if(cur) cur.classList.remove("active"); cur=null; }
+function openPop(el){
+  const d=V[el.dataset.k]; if(!d) return;
+  if(cur===el){ closePop(); return; }
+  closePop();
+  cur=el; el.classList.add("active");
+  pop.innerHTML =
+    `<div class="pw">${esc(d.en)}${d.ph?`<span class="pph">${esc(d.ph)}</span>`:""}<span class="pos">${esc(d.pos)}</span><button class="spk" type="button" data-word="${esc(d.en)}" title="点击发音" aria-label="发音">🔊</button></div>`+
+    `<div class="pcn">${esc(d.cn)}</div>`+
+    `<div class="pnote">${esc(d.note)}</div>`+
+    `<div class="pex"><b>例：</b> ${esc(d.ex)}<span class="cn">${esc(d.exCn)}</span></div>`;
+  pop.classList.add("show");
+  const r=el.getBoundingClientRect();
+  const pw=pop.offsetWidth, ph=pop.offsetHeight;
+  let left=r.left + r.width/2 - pw/2 + window.scrollX;
+  left=Math.max(12+window.scrollX, Math.min(left, window.scrollX + document.documentElement.clientWidth - pw - 12));
+  let top=r.top + window.scrollY - ph - 12;
+  if(top < window.scrollY + 8){ top = r.bottom + window.scrollY + 12; }
+  pop.style.left=left+"px"; pop.style.top=top+"px";
+}
+words.forEach(w=>w.addEventListener("click",e=>{e.stopPropagation();openPop(w);}));
+document.addEventListener("click",e=>{ if(!pop.contains(e.target)) closePop(); });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape") closePop(); });
+window.addEventListener("scroll",closePop,{passive:true});
+window.addEventListener("resize",closePop);
+
+const btnAllWords=document.getElementById("btnAllWords");
+btnAllWords.addEventListener("click",()=>{
+  const on=document.body.classList.toggle("showall");
+  btnAllWords.classList.toggle("on",on);
+  btnAllWords.textContent = on ? "🙈 隐藏全部释义" : "👁 显示全部释义";
+  if(on) closePop();
+});
+const btnAllAns=document.getElementById("btnAllAns");
+btnAllAns.addEventListener("click",()=>{
+  const on=document.body.classList.toggle("showans");
+  btnAllAns.classList.toggle("on",on);
+  btnAllAns.textContent = on ? "🔒 隐藏全部答案" : "✅ 显示全部答案";
+});
+const btnTheme=document.getElementById("btnTheme");
+btnTheme.addEventListener("click",()=>{
+  const on=document.body.classList.toggle("dark");
+  btnTheme.textContent = on ? "☀️ 日间" : "🌙 夜间";
+});
+
+function speak(text){
+  if(!('speechSynthesis' in window)){
+    alert('当前浏览器不支持语音朗读，请用 Chrome / Edge / Safari 打开本页。');
+    return;
+  }
+  const u=new SpeechSynthesisUtterance(text);
+  u.lang='en-US'; u.rate=0.92; u.pitch=1;
+  window.speechSynthesis.cancel();
+  window.speechSynthesis.speak(u);
+}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('.spk');
+  if(b){ e.stopPropagation(); speak(b.dataset.word); }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>墨卷精解 · 七年级语文试卷全解</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f4eee0; --paper-2:#ece2cd; --card:#fbf7ed;
+  --ink:#241f19; --ink-2:#4c4339; --ink-3:#877b6b;
+  --red:#b0392a; --red-deep:#87271b; --gold:#b98a3e; --blue:#2e4a5c;
+  --line:rgba(36,31,25,.14); --line-2:rgba(36,31,25,.28);
+  --shadow:0 22px 48px -28px rgba(70,52,25,.55);
+  --serif:'Noto Serif SC',serif; --kai:'Ma Shan Zheng',cursive; --num:'Cormorant Garamond',serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--serif); color:var(--ink); background:var(--paper);
+  line-height:1.95; letter-spacing:.015em; -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+body::before{
+  content:''; position:fixed; inset:0; pointer-events:none; z-index:1; opacity:.5;
+  background:
+    radial-gradient(ellipse at 12% 8%, rgba(176,57,42,.07), transparent 55%),
+    radial-gradient(ellipse at 88% 22%, rgba(46,74,92,.08), transparent 50%),
+    radial-gradient(ellipse at 50% 110%, rgba(185,138,62,.10), transparent 60%);
+}
+body::after{
+  content:''; position:fixed; inset:0; pointer-events:none; z-index:2; opacity:.055;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+::selection{background:rgba(176,57,42,.22)}
+
+/* ===== 进度条 ===== */
+.progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:99;background:rgba(36,31,25,.08)}
+.progress-bar{height:100%;width:0;background:linear-gradient(90deg,var(--red),var(--gold));transition:width .12s linear}
+
+/* ===== 页首 ===== */
+.hero{position:relative;z-index:3;padding:clamp(56px,9vw,110px) clamp(20px,6vw,86px) clamp(40px,6vw,70px);max-width:1320px;margin:0 auto}
+.hero-kicker{display:flex;align-items:center;gap:14px;font-size:.78rem;letter-spacing:.42em;color:var(--red);text-transform:uppercase;font-weight:600}
+.hero-kicker::before{content:'';width:52px;height:1px;background:var(--red)}
+.hero h1{font-family:var(--kai);font-size:clamp(3.4rem,10vw,7.6rem);line-height:.98;font-weight:400;margin:.28em 0 .1em;letter-spacing:.04em}
+.hero h1 .accent{color:var(--red);position:relative}
+.hero h1 .accent::after{content:'';position:absolute;left:0;right:0;bottom:.06em;height:.07em;background:var(--red);opacity:.35}
+.hero-sub{font-size:clamp(1rem,1.9vw,1.22rem);color:var(--ink-2);max-width:44ch;font-weight:300}
+.hero-meta{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:30px;font-size:.83rem;color:var(--ink-3);letter-spacing:.12em}
+.hero-meta span{display:inline-flex;align-items:center;gap:9px}
+.hero-meta span::before{content:'';width:6px;height:6px;transform:rotate(45deg);background:var(--gold)}
+.hero-grid{display:grid;grid-template-columns:1fr auto;gap:30px;align-items:start}
+.vtext{writing-mode:vertical-rl;letter-spacing:.42em;font-size:.86rem;color:var(--ink-3);border-right:1px solid var(--line-2);padding-right:16px;height:clamp(180px,26vw,290px);white-space:nowrap}
+.seal{margin-top:26px;width:92px;height:92px;background:var(--red);color:#f7e9d8;font-family:var(--kai);font-size:1.55rem;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.15;transform:rotate(-5deg);box-shadow:var(--shadow);letter-spacing:.05em}
+.rule-orn{display:flex;align-items:center;gap:16px;margin:clamp(30px,5vw,54px) 0 0}
+.rule-orn::before,.rule-orn::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--line-2),transparent)}
+.rule-orn i{width:9px;height:9px;background:var(--red);transform:rotate(45deg);display:block}
+
+/* ===== 导航 ===== */
+.chipbar{position:sticky;top:0;z-index:60;background:rgba(244,238,224,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line);box-shadow:0 10px 30px -26px rgba(60,45,25,.6)}
+.chipwrap{max-width:1320px;margin:0 auto;display:flex;align-items:center;gap:10px;padding:11px clamp(16px,4vw,40px)}
+.chiplabel{font-size:.72rem;letter-spacing:.32em;color:var(--ink-3);white-space:nowrap;font-weight:600}
+.chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;flex:1;padding:2px 0}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;font-size:.82rem;padding:7px 15px;border:1px solid var(--line-2);border-radius:999px;color:var(--ink-2);text-decoration:none;white-space:nowrap;transition:all .28s cubic-bezier(.2,.7,.2,1);background:transparent}
+.chip:hover{border-color:var(--red);color:var(--red);transform:translateY(-2px)}
+.chip.active{background:var(--red);border-color:var(--red);color:#fbf3e6}
+.btn-mini{flex:none;font-family:var(--serif);font-size:.78rem;letter-spacing:.12em;padding:8px 16px;border:1px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer;border-radius:999px;transition:.25s}
+.btn-mini:hover{background:var(--ink);color:var(--paper)}
+
+/* ===== 主体 ===== */
+main{position:relative;z-index:3;max-width:1320px;margin:0 auto;padding:0 clamp(16px,4.4vw,56px) 90px}
+section{scroll-margin-top:86px}
+
+/* 说明卡 */
+.notice{margin:44px 0 10px;background:var(--card);border:1px solid var(--line);border-left:5px solid var(--gold);padding:26px 30px;box-shadow:var(--shadow);position:relative}
+.notice h2{font-size:1.02rem;letter-spacing:.22em;color:var(--red-deep);margin-bottom:10px;font-weight:700}
+.notice p{font-size:.92rem;color:var(--ink-2);font-weight:300}
+.notice ul{margin-top:8px;padding-left:1.2em;font-size:.88rem;color:var(--ink-2);font-weight:300}
+.notice li{margin:3px 0}
+
+/* 速查 */
+.quick{margin:38px 0 8px}
+.quick h2{font-family:var(--kai);font-size:2rem;font-weight:400;letter-spacing:.06em;display:flex;align-items:baseline;gap:16px}
+.quick h2 small{font-family:var(--num);font-style:italic;font-size:1rem;letter-spacing:.22em;color:var(--red)}
+.qgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px;margin-top:20px}
+.qitem{background:var(--card);border:1px solid var(--line);padding:14px 16px;text-decoration:none;color:var(--ink);transition:.3s cubic-bezier(.2,.7,.2,1);position:relative;overflow:hidden}
+.qitem::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--red);transform:scaleY(0);transform-origin:bottom;transition:transform .35s}
+.qitem:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--line-2)}
+.qitem:hover::before{transform:scaleY(1)}
+.qitem b{display:block;font-family:var(--num);font-size:1.5rem;color:var(--red);line-height:1;font-style:italic}
+.qitem span{display:block;font-size:.86rem;color:var(--ink-2);margin-top:5px}
+.qitem em{display:block;font-size:.72rem;letter-spacing:.16em;color:var(--ink-3);margin-top:7px;font-style:normal}
+
+/* 题卡 */
+.qcard{background:var(--card);border:1px solid var(--line);margin:46px 0;box-shadow:var(--shadow);position:relative}
+.qcard-head{display:flex;gap:clamp(14px,2.5vw,30px);padding:clamp(22px,3.4vw,38px) clamp(20px,3.4vw,40px) 0}
+.qnum{font-family:var(--num);font-style:italic;font-size:clamp(3rem,7vw,5.2rem);line-height:.8;color:var(--red);opacity:.92;flex:none}
+.qtitle{flex:1}
+.qtags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.tag{font-size:.71rem;letter-spacing:.22em;padding:4px 11px;border:1px solid var(--line-2);color:var(--ink-3)}
+.tag.hot{border-color:var(--red);color:var(--red)}
+.qcard h3{font-size:clamp(1.12rem,2.3vw,1.45rem);font-weight:700;letter-spacing:.05em;line-height:1.55}
+.stem{padding:20px clamp(20px,3.4vw,40px) 6px;font-size:.98rem;color:var(--ink-2);font-weight:300}
+.stem p{margin:9px 0}
+.opts{list-style:none;margin:14px 0 4px}
+.opts li{padding:9px 14px 9px 38px;position:relative;margin:7px 0;border:1px solid transparent;border-radius:2px;transition:.25s;font-size:.95rem;color:var(--ink-2)}
+.opts li::before{content:attr(data-k);position:absolute;left:12px;top:9px;font-family:var(--num);font-style:italic;font-size:1.05rem;color:var(--red);font-weight:600}
+.opts li:hover{border-color:var(--line-2);background:rgba(255,255,255,.5)}
+.opts li.right{border-color:var(--red);background:rgba(176,57,42,.07)}
+.sub{margin:22px 0 0;padding:18px 20px;border:1px dashed var(--line-2);background:rgba(255,255,255,.35)}
+.sub h4{font-size:.94rem;font-weight:600;letter-spacing:.06em;margin-bottom:8px;display:flex;align-items:center;gap:10px}
+.sub h4 i{font-family:var(--num);font-style:italic;color:var(--red);font-size:1.05rem}
+.blank{display:inline-block;min-width:110px;border-bottom:1.5px solid var(--red);margin:0 6px}
+
+/* 答案 */
+.ans{margin:22px clamp(20px,3.4vw,40px) 0;background:linear-gradient(180deg,rgba(176,57,42,.09),rgba(176,57,42,.04));border:1px solid rgba(176,57,42,.32);padding:18px 22px 18px 26px;position:relative}
+.ans::before{content:'答';position:absolute;left:-1px;top:-1px;width:34px;height:34px;background:var(--red);color:#f8ead6;font-family:var(--kai);font-size:1.15rem;display:flex;align-items:center;justify-content:center}
+.ans .inner{padding-left:38px}
+.ans b{color:var(--red-deep);font-size:1.02rem;letter-spacing:.06em}
+.ans .inner p{font-size:.93rem;color:var(--ink-2);margin:6px 0;font-weight:300}
+
+/* 解析 */
+.toggle{margin:18px clamp(20px,3.4vw,40px) 0;display:inline-flex;align-items:center;gap:12px;font-family:var(--serif);font-size:.84rem;letter-spacing:.24em;padding:11px 24px;border:1px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer;transition:.3s}
+.toggle:hover{background:var(--ink);color:var(--paper);letter-spacing:.32em}
+.toggle .arw{display:inline-block;transition:transform .35s}
+.toggle.open .arw{transform:rotate(180deg)}
+.panel{max-height:0;overflow:hidden;transition:max-height .55s cubic-bezier(.2,.7,.2,1),opacity .4s;opacity:0}
+.panel.open{opacity:1}
+.panel-inner{padding:22px clamp(20px,3.4vw,40px) 34px;font-size:.94rem;color:var(--ink-2);font-weight:300}
+.panel-inner h5{font-size:.82rem;letter-spacing:.26em;color:var(--red);margin:20px 0 9px;font-weight:700;display:flex;align-items:center;gap:10px}
+.panel-inner h5::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--line-2),transparent)}
+.panel-inner p{margin:8px 0}
+.panel-inner ul,.panel-inner ol{padding-left:1.35em;margin:8px 0}
+.panel-inner li{margin:6px 0}
+.kpoint{background:rgba(185,138,62,.12);border-left:3px solid var(--gold);padding:12px 16px;margin:14px 0;font-size:.9rem}
+.formula{font-family:var(--num);font-style:italic;font-size:1.02rem;color:var(--blue);letter-spacing:.04em}
+
+/* 引文块 */
+.quote{font-family:var(--serif);font-weight:400;font-size:1.06rem;line-height:2.25;letter-spacing:.05em;color:var(--ink);background:rgba(255,255,255,.42);border:1px solid var(--line);padding:24px clamp(18px,3vw,32px);margin:16px 0;position:relative}
+.quote::before{content:'「';position:absolute;left:10px;top:2px;font-family:var(--kai);font-size:2.4rem;color:var(--red);opacity:.35;line-height:1}
+.quote .line{display:block;padding-left:22px}
+.unclear{border-bottom:1px dotted var(--red);cursor:help}
+.pinyin{font-family:var(--num);font-style:italic;font-size:.82em;color:var(--red-deep);letter-spacing:0}
+.src{font-size:.78rem;letter-spacing:.18em;color:var(--ink-3);margin-top:12px;text-align:right}
+
+/* 表格 */
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:.9rem;background:rgba(255,255,255,.42)}
+th,td{border:1px solid var(--line);padding:11px 14px;text-align:left;vertical-align:top}
+th{background:rgba(176,57,42,.1);font-size:.79rem;letter-spacing:.22em;color:var(--red-deep);font-weight:700;white-space:nowrap}
+td:first-child{white-space:nowrap;color:var(--red-deep);font-weight:600}
+tbody tr:nth-child(even){background:rgba(185,138,62,.07)}
+tbody tr{transition:background .25s}
+tbody tr:hover{background:rgba(176,57,42,.09)}
+
+/* 流程图 */
+.flow{display:flex;flex-direction:column;gap:12px;margin:18px 0}
+.flow-row{display:grid;grid-template-columns:1.15fr 34px 1.15fr;align-items:stretch;gap:8px}
+.flow-\boxed{background:rgba(255,255,255,.6);border:1px solid var(--line-2);padding:13px 16px;font-size:.88rem;line-height:1.7}
+.flow-box .cap{display:block;font-size:.71rem;letter-spacing:.22em;color:var(--ink-3);margin-bottom:4px}
+.flow-box.fill{border-color:var(--gold);background:rgba(185,138,62,.13)}
+.flow-box.blank{border:1.5px dashed var(--red);background:rgba(176,57,42,.06)}
+.flow-box.blank .cap{color:var(--red)}
+.flow-arrow{display:flex;align-items:center;justify-content:center;color:var(--red);font-size:1.15rem}
+.flow-end{margin-top:6px;background:var(--ink);color:var(--paper);padding:12px 18px;text-align:center;letter-spacing:.3em;font-size:.84rem}
+
+/* 附录 */
+.appendix{margin-top:80px}
+.apx-head{text-align:center;padding:clamp(40px,7vw,86px) 0 clamp(24px,4vw,48px)}
+.apx-head .kicker{font-family:var(--num);font-style:italic;letter-spacing:.5em;color:var(--red);font-size:.95rem}
+.apx-head h2{font-family:var(--kai);font-size:clamp(2.5rem,6vw,4.4rem);font-weight:400;letter-spacing:.08em;margin:10px 0 12px}
+.apx-head p{color:var(--ink-2);font-weight:300;max-width:52ch;margin:0 auto;font-size:.98rem}
+.work{background:var(--card);border:1px solid var(--line);margin:38px 0;box-shadow:var(--shadow);overflow:hidden}
+.work-head{padding:clamp(22px,3.4vw,36px);background:linear-gradient(120deg,rgba(176,57,42,.1),rgba(185,138,62,.05));border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;align-items:flex-end}
+.work-head h3{font-size:clamp(1.35rem,3vw,1.95rem);letter-spacing:.14em;font-weight:700}
+.work-head .by{font-size:.86rem;color:var(--ink-3);letter-spacing:.28em;margin-top:6px}
+.badge{font-size:.72rem;letter-spacing:.26em;padding:6px 13px;border:1px solid var(--red);color:var(--red);white-space:nowrap}
+.work-body{padding:clamp(22px,3.4vw,38px)}
+.work-body h4{font-size:.85rem;letter-spacing:.32em;color:var(--red);margin:28px 0 12px;font-weight:700;display:flex;align-items:center;gap:12px}
+.work-body h4:first-child{margin-top:0}
+.work-body h4::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--line-2),transparent)}
+.poem{font-size:clamp(1.15rem,2.6vw,1.55rem);line-height:2.35;letter-spacing:.14em;text-align:center;padding:26px 10px;margin:14px 0;background:rgba(255,255,255,.45);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.poem .pl{display:block}
+.trans{background:rgba(46,74,92,.06);border-left:3px solid var(--blue);padding:16px 20px;margin:14px 0;font-size:.94rem;font-weight:300;color:var(--ink-2)}
+.trans b{color:var(--blue);letter-spacing:.2em;font-size:.8rem;display:block;margin-bottom:6px}
+.check{background:rgba(176,57,42,.07);border:1px dashed rgba(176,57,42,.4);padding:16px 20px;margin:16px 0;font-size:.89rem;font-weight:300;color:var(--ink-2)}
+.check b{color:var(--red-deep);letter-spacing:.22em;font-size:.79rem;display:block;margin-bottom:6px}
+
+/* 页脚 */
+footer{position:relative;z-index:3;border-top:1px solid var(--line);margin-top:60px;padding:46px clamp(20px,5vw,60px) 60px;text-align:center}
+footer .fmark{font-family:var(--kai);font-size:2.2rem;letter-spacing:.18em;color:var(--red)}
+footer p{font-size:.82rem;color:var(--ink-3);letter-spacing:.16em;margin-top:10px;font-weight:300}
+
+/* 回顶 */
+.totop{position:fixed;right:22px;bottom:26px;width:52px;height:52px;border-radius:50%;background:var(--ink);color:var(--paper);border:none;cursor:pointer;font-size:1.15rem;opacity:0;pointer-events:none;transform:translateY(14px);transition:.4s cubic-bezier(.2,.7,.2,1);z-index:80;box-shadow:var(--shadow)}
+.totop.show{opacity:1;pointer-events:auto;transform:none}
+.totop:hover{background:var(--red);transform:translateY(-4px)}
+
+/* 动效 */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+@media(max-width:760px){
+  .hero-grid{grid-template-columns:1fr}
+  .vtext{display:none}
+  .qcard-head{flex-direction:column;gap:6px}
+  .flow-row{grid-template-columns:1fr;}
+  .flow-arrow{transform:rotate(90deg);height:22px}
+  .chipwrap{gap:8px}
+  .btn-mini{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="progress"><div class="progress-bar" id="pbar"></div></div>
+
+<header class="hero">
+  <div class="hero-grid">
+    <div>
+      <div class="hero-kicker">卷宗 · 逐题精解</div>
+      <h1>墨卷<span class="accent">精解</span></h1>
+      <p class="hero-sub">七年级上册语文试卷全卷拆解：答案、考点、详析、课外古诗文译注与校勘，一卷在手，题题可查。</p>
+      <div class="hero-meta">
+        <span>共 12 大题 / 32 小题</span>
+        <span>含课外古诗文精讲</span>
+        <span>已据《世说新语》《宋史》核校</span>
+      </div>
+      <div class="seal">精<br>解</div>
+    </div>
+    <div class="vtext">语　文　·　七　年　级　上　册　·　期　中　复　习　专　辑</div>
+  </div>
+  <div class="rule-orn"><i></i></div>
+</header>
+
+<div class="chipbar">
+  <div class="chipwrap">
+    <div class="chiplabel">目录</div>
+    <div class="chips" id="chips">
+      <a class="chip" href="#q1">1 谦敬辞</a>
+      <a class="chip" href="#q2">2 标点</a>
+      <a class="chip" href="#q3">3 文常</a>
+      <a class="chip" href="#q4">4 综合</a>
+      <a class="chip" href="#q5">5 名著·书</a>
+      <a class="chip" href="#q6">6 名著·图</a>
+      <a class="chip" href="#q7">7 名著·仿写</a>
+      <a class="chip" href="#q8">8 外婆的手</a>
+      <a class="chip" href="#q9">9 春天的节奏</a>
+      <a class="chip" href="#q10">10 诗歌</a>
+      <a class="chip" href="#q11">11 赵普</a>
+      <a class="chip" href="#q12">12 世说</a>
+      <a class="chip" href="#apx">附录·译注</a>
+    </div>
+    <button class="btn-mini" id="expandAll">展开全部解析</button>
+  </div>
+</div>
+
+<main>
+
+<!-- ====== 说明 ====== -->
+<section class="notice reveal">
+  <h2>整理与校勘说明</h2>
+  <p>本页内容依据试卷原件图片逐题整理，参考答案与评分要点以原卷所附答案为准，并作了必要的文字校订与补充阐释。</p>
+  <ul>
+    <li>凡原卷图片中字迹漫漶、印刷模糊之处，均据上下文意校订，并以<u style="text-decoration-style:dotted">虚线下划</u>标出，悬停可见说明。</li>
+    <li>课外古诗文部分（李白《闻王昌龄左迁龙标遥有此寄》、王维《送别》、《宋史·赵普传》选段、《世说新语》三则）均已联网核对通行原文，附重点词语、全文翻译与校勘记。</li>
+    <li>阅读题解析含结构梳理、词句赏析、朗读设计、拓展探究等常考题型的答题范式，可直接迁移运用。</li>
+  </ul>
+</section>
+
+<!-- ====== 速查 ====== -->
+<section class="quick reveal">
+  <h2>答案速查 <small>ANSWER SHEET</small></h2>
+  <div class="qgrid">
+    <a class="qitem" href="#q1"><b>1</b><span>谦辞敬辞</span><em>A</em></a>
+    <a class="qitem" href="#q2"><b>2</b><span>标点符号</span><em>B</em></a>
+    <a class="qitem" href="#q3"><b>3</b><span>文学常识</span><em>D</em></a>
+    <a class="qitem" href="#q4"><b>4</b><span>综合学习</span><em>A / B / C</em></a>
+    <a class="qitem" href="#q5"><b>5</b><span>名著·以书为友</span><em>山海经 / 二十四孝图</em></a>
+    <a class="qitem" href="#q6"><b>6</b><span>名著·插图</span><em>老鼠成亲 / 长毛 / 老莱娱亲</em></a>
+    <a class="qitem" href="#q7"><b>7</b><span>名著·仿写</span><em>开放作答</em></a>
+    <a class="qitem" href="#q8"><b>8</b><span>外婆的手</span><em>结构 / 赏析 / 朗读 / 评价</em></a>
+    <a class="qitem" href="#q9"><b>9</b><span>春天的节奏</span><em>C / 赏析 / 朗读 / 探究</em></a>
+    <a class="qitem" href="#q10"><b>10</b><span>诗歌比较</span><em>B / 表情推测</em></a>
+    <a class="qitem" href="#q11"><b>11</b><span>赵普传</span><em>A / D / C / B·E</em></a>
+    <a class="qitem" href="#q12"><b>12</b><span>世说三则</span><em>③患而俄而 / A</em></a>
+  </div>
+</section>
+
+<!-- ================= 第1题 ================= -->
+<section class="qcard reveal" id="q1">
+  <div class="qcard-head">
+    <div class="qnum">01</div>
+    <div class="qtitle">
+      <div class="qtags"><span class="tag hot">语言运用</span><span class="tag">谦辞与敬辞</span></div>
+      <h3>下列句子中谦辞、敬辞使用正确的一项是（　　）</h3>
+    </div>
+  </div>
+  <div class="stem">
+    <ul class="opts">
+      <li data-k="A" class="right">先生大名，真是如雷贯耳，小弟献丑，真是班门弄斧。</li>
+      <li data-k="B">这是我家母托我买的，您直接交给她老人家就行了。</li>
+      <li data-k="C">我因临时有急事要办，不能光临贵校座谈会，深表歉意。</li>
+      <li data-k="D">您能在百忙之中有幸接受我的采访，我表示感谢。</li>
+    </ul>
+  </div>
+  <div class="ans"><div class="inner"><b>答案：A</b></div></div>
+  <button class="toggle" data-toggle="p1"><span class="arw">▼</span> 展开解析</button>
+  <div class="panel" id="p1"><div class="panel-inner">
+    <h5>逐项辨析</h5>
+    <ul>
+      <li><b>A 正确。</b>「如雷贯耳」是敬辞，称对方名声大，用于「先生」；「小弟」「献丑」「班门弄斧」都是谦辞，用于自称，谦敬各得其所。</li>
+      <li><b>B 错误。</b>「家母」是对自己母亲的谦称，其中「家」已含「我的」之意，前面不能再加「我」。应说「这是<u>家母</u>托我买的」。</li>
+      <li><b>C 错误。</b>「光临」是敬辞，称宾客来到，只能用于对方，不能用来说自己。应改为「不能<u>出席（前往）</u>贵校座谈会」。</li>
+      <li><b>D 错误。</b>「有幸」是谦辞，表示自己很幸运；说「您有幸接受我的采访」变成抬高自己、贬低对方。应说「您能在百忙之中接受我的采访，我<u>深感荣幸</u>」。</li>
+    </ul>
+    <div class="kpoint"><b>方法点拨：</b>谦辞贬己、敬辞尊人。常见谦辞：家父、家母、舍弟、拙见、鄙人、愚见、寒舍、薄礼、献丑、抛砖引玉；常见敬辞：令尊、令堂、贵校、惠存、斧正、雅正、莅临、恭候、光临、高寿、垂询。判断时先看对象是「己」还是「人」。</div>
+  </div></div>
+</section>
+
+<!-- ================= 第2题 ================= -->
+<section class="qcard reveal" id="q2">
+  <div class="qcard-head">
+    <div class="qnum">02</div>
+    <div class="qtitle">
+      <div class="qtags"><span class="tag hot">语言运用</span><span class="tag">标点符号</span></div>
+      <h3>下列各句标点符号使用不规范的一项是（　　）</h3>
+    </div>
+  </div>
+  <div class="stem">
+    <ul class="opts">
+      <li data-k="A">春天是美丽的，三月如桃花一样，<span class="unclear" title="原卷字迹漫漶，据文意校订">红均均</span>的；四月则似青柳，绿悠悠的。</li>
+      <li data-k="B" class="right"><span class="unclear" title="原卷此句部分字迹漫漶，据文意校订">徘徊在礁湖面前，你是做怯懦退缩的懦夫？还是奋起搏击的勇士？</span></li>
+      <li data-k="C">「我这样用药还会不大见效。」陈莲河先生说，「我想，可以请人看一看……」</li>
+      <li data-k="D">鲁迅《朝花夕拾》收录了《五猖会》《父亲的病》《藤野先生》等多篇散文。</li>
+    </ul>
+  </div>
+  <div class="ans"><div class="inner"><b>答案：B</b></div></div>
+  <button class="toggle" data-toggle="p2"><span class="arw">▼</span> 展开解析</button>
+  <div class="panel" id="p2"><div class="panel-inner">
+    <h5>解析</h5>
+    <ul>
+      <li><b>B 有误。</b>「你是……还是……」是<b>选择疑问句</b>，全句只是一个问句：句中各选择项之间用逗号停顿，<b>只在句末用一个问号</b>。应改为：「徘徊在礁湖面前，你是做怯懦退缩的懦夫<u>，</u>还是奋起搏击的勇士？」</li>
+      <li><b>A 正确。</b>分号用在并列分句之间，层次清楚。</li>
+      <li><b>C 正确。</b>提示语「陈莲河先生说」插在引文中间，前后引文同属一人的话，前引文末标点置于引号内，用法规范（引自《父亲的病》）。</li>
+      <li><b>D 正确。</b>书名号连用标示同一篇文章内的多篇篇目，中间不加顿号，符合《标点符号用法》。</li>
+    </ul>
+    <div class="kpoint"><b>易混辨析：</b>选择疑问句（一个问号，在句末）≠ 连续问句（每个问句后都用问号）。如：「你是去北京，还是去上海？」（选择）／「你叫什么？哪里人？做什么工作？」（连续）</div>
+  </div></div>
+</section>
+
+<!-- ================= 第3题 ================= -->
+<section class="qcard reveal" id="q3">
+  <div class="qcard-head">
+    <div class="qnum">03</div>
+    <div class="qtitle">
+      <div class="qtags"><span class="tag hot">积累</span><span class="tag">文学文化常识</span></div>
+      <h3>下列各项中表述不正确的一项是（　　）</h3>
+    </div>
+  </div>
+  <div class="stem">
+    <ul class="opts">
+      <li data-k="A">《秋天的怀念》作者史铁生，代表作有小说《我的遥远的清平湾》，散文《我与地坛》《合欢树》等。</li>
+      <li data-k="B">老舍的代表作有长篇小说《骆驼祥子》《四世同堂》，另外还有话剧《茶馆》《龙须沟》等。</li>
+      <li data-k="C">古诗词的意象内涵丰富，如「月亮」常代表思念，「鸿鹄」可抒发乡愁，「梅花」有高洁之感。</li>
+      <li data-k="D" class="right">朱自清的散文，朴素优美，清雅细腻，语言清丽，<span class="unclear" title="原卷作「建设了一篇纯正朴实的新鲜作风」，据意校订">建立起一种纯正朴实的新鲜作风</span>，极富高雅质感。他是新中国第一位获得「人民艺术家」称号的作家。</li>
+    </ul>
+  </div>
+  <div class="ans"><div class="inner"><b>答案：D</b></div></div>
+  <button class="toggle" data-toggle="p3"><span class="arw">▼</span> 展开解析</button>
+  <div class="panel" id="p3"><div class="panel-inner">
+    <h5>解析</h5>
+    <ul>
+      <li><b>D 有误。</b>新中国第一位获得「人民艺术家」称号的是<b>老舍</b>（1951 年北京市人民政府授予），不是朱自清。朱自清的代表作有散文《春》《背影》《荷塘月色》《绿》等。</li>
+      <li><b>A、B、C 正确。</b>史铁生、老舍的代表作表述无误；「月亮」寄托思念、「鸿鹄」喻志向高远或寄托乡思、「梅花」象征高洁坚韧，均合古诗词意象惯例。</li>
+    </ul>
+  </div></div>
+</section>
+
+<!-- ================= 第4题 ================= -->
+<section class="qcard reveal" id="q4">
+  <div class="qcard-head">
+    <div class="qnum">04</div>
+    <div class="qtitle">
+      <div class="qtags"><span class="tag hot">综合性学习</span><span class="tag">开场白</span><span class="tag">字音字形 / 成语 / 谦敬辞</span></div>
+      <h3>「走进四季」班级诗文诵读会 · 主持开场白</h3>
+    </div>
+  </div>
+  <div class="stem">
+    <div class="quote">
+      <span class="line">亲爱的同学们，大家好！四季风景美不胜收。春是朱自清笔下的风，<b>酝酿</b><span class="pinyin">（yùn niàng）</span>着青草味儿和花香，温柔而和煦；夏是刘湛秋笔下的雨，<b>淅淅沥沥</b>，热烈而<b>粗犷</b><span class="pinyin">（cū kuàng）</span>；秋是史铁生笔下的菊花，泼泼洒洒，烂漫盛开；冬是老舍笔下的济南，水藻把终年<b>贮蓄</b><span class="pinyin">（zhù xù）</span>的绿色全拿出来了，没有咄咄逼人的寒气……愿我们在四季轮回里<b>和睦</b><span class="pinyin">（hé jù）</span>共读。</span>
+      <span class="line">为了激发同学们对大自然的热爱和对文学阅读的兴趣，我们今天欢聚在此，开展「走进四季」班级诵读会。这次活动感谢语文老师的<b>莅临</b>指导，你们的到来让我们感到无比荣幸；同学们也早早来到教室<b>恭候</b>，共赴这场与四季的约会。下面我先<b>抛砖引玉</b>，谈一点粗浅的体会。最后，<b>恭祝</b>这次诵读会圆满成功！让我们共同走入四季天地，共享文学魅力。</span>
+      <div class="src">—— 主持人开场白（据试卷图片整理）</div>
+    </div>
+    <div class="sub">
+      <h4><i>(1)</i>开场白中加点字的音、形完全正确的一项是</h4>
+      <ul class="opts">
+        <li data-k="A" class="right">酝酿（yùn niàng）</li>
+        <li data-k="B">和睦（hé jù）</li>
+        <li data-k="C">粗犷（cū kuàng）</li>
+        <li data-k="D">贮蓄（zhù xù）<span class="unclear" title="据参考答案，该选项字形有误（应作「贮蓄」）">（字形）</span></li>
+      </ul>
+    </div>
+    <div class="sub">
+      <h4><i>(2)</i>开场白中画横线的成语使用不恰当的一项是</h4>
+      <ul class="opts">
+        <li data-k="A">美不胜收</li>
+        <li data-k="B" class="right">淅淅沥沥</li>
+        <li data-k="C">泼泼洒洒</li>
+        <li data-k="D">咄咄逼人</li>
+      </ul>
+    </div>
+    <div class="sub">
+      <h4><i>(3)</i>开场白中画波浪线的谦辞敬辞使用不符合情境的一项是</h4>
+      <ul class="opts">
+        <li data-k="A">莅临</li>
+        <li data-k="B">恭候</li>
+        <li data-k="C" class="right">恭祝</li>
+        <li data-k="D">抛砖引玉</li>
+      </ul>
+    </div>
+  </div>
+  <div class="ans"><div class="inner">
+    <b>答案：(1) A　(2) B　(3) C</b>
+    <p>（1）B「和睦」读 hé mù；C「粗犷」读 cū guǎng；D「贮蓄」之「贮」读 zhù，且字形应作「贮」。</p>
+  </div></div>
+  <button class="toggle" data-toggle="p4"><span class="arw">▼</span> 展开解析</button>
+  <div class="panel" id="p4"><div class="panel-inner">
+    <h5>（1）字音字形</h5>
+    <ul>
+      <li>「酝酿」yùn niàng —— 正确。</li>
+      <li>「和睦」的「睦」读 <b>mù</b>，不读 jù。</li>
+      <li>「粗犷」的「犷」读 <b>guǎng</b>，不读 kuàng（「旷」才读 kuàng）。</li>
+      <li>「贮蓄」的「贮」读 <b>zhù</b>，从「贝」，与「伫立」的「伫」形近易混。</li>
+    </ul>
+    <h5>（2）成语运用</h5>
+    <ul>
+      <li><b>淅淅沥沥</b>：形容轻微的风雨声、落叶声等细碎之声，多写春雨、秋雨之绵密轻柔。<b>用错对象</b>——夏天的雨在《雨的四季》中是「热烈而又粗犷」的，不能用「淅淅沥沥」形容。故选 B。</li>
+      <li>美不胜收：美好的东西太多，一时看不过来（形容四季风景，恰当）。</li>
+      <li>泼泼洒洒：形容花开得繁盛、舒展（《秋天的怀念》写菊花「泼泼洒洒，秋风中正开得烂漫」，恰当）。</li>
+      <li>咄咄逼人：形容气势汹汹、盛气凌人；「没有咄咄逼人的寒气」写济南冬天的温晴，恰当。</li>
+    </ul>
+    <h5>（3）谦辞敬辞</h5>
+    <ul>
+      <li>莅临：敬辞，称来到（用于老师），恰当。</li>
+      <li>恭候：谦敬辞，恭敬地等候（用于自己等候他人），恰当。</li>
+      <li><b>恭祝</b>：恭敬地<b>祝贺</b>，用于向他人祝贺节日喜事（如「恭祝新春快乐」）。此处是自己班级筹办的活动，属<b>用错对象</b>，应改为「预祝／祝愿」。</li>
+      <li>抛砖引玉：谦辞，用自己粗浅的意见引出别人的高见（用于主持人自谦），恰当。</li>
+    </ul>
+    <div class="kpoint"><b>开场白答题套路：</b>①称呼问候 → ②点明活动主题与目的 → ③铺陈情境（多用排比、引用）→ ④谦敬得体地致谢与自谦 → ⑤发出号召、宣布开始。注意谦敬辞的对象、音形书写与成语的对象色彩。</div>
+  </div></div>
+</section>
+
+<!-- ================= 第5题 ================= -->
+<section class="qcard reveal" id="q5">
+  <div class="qcard-head">
+    <div class="qnum">05</div>
+    <div class="qtitle">
+      <div class="qtags"><span class="tag hot">名著阅读</span><span class="tag">《朝花夕拾》</span></div>
+      <h3>整本书阅读 · 以书为友，以人为友</h3>
+    </div>
+  </div>
+  <div class="stem">
+    <p>童年时，选择什么为友，就是选择让什么力量滋养我们的生命。真正的朋友不在远近，而在我们与之每一次对话里。</p>
+    <div class="sub">
+      <h4><i>(1)</i>以书为友</h4>
+      <p>在《朝花夕拾》中，鲁迅的读书经历对他产生了深远的影响。其中《<span class="blank"></span>》一书激发了他的想象力，成为他「最心爱的宝书」；而《<span class="blank"></span>》则让他初次深刻地认识到封建孝道思想的虚伪与残酷，奠定了他日后作为批判者的立场；《五猖会》中背诵《鉴略》的经历，则让他体会到了<span class="blank" style="min-width:200px"></span>。</p>
+    </div>
+    <div class="sub">
+      <h4><i>(2)</i>以人为友</h4>
+      <p>鲁迅不仅是横眉冷对的斗士，更是一位深情的朋友。在《朝花夕拾》中，他教会我们：要用眼睛去发现并珍视生命中那些善良、真诚的灵魂。请从下列人物中任选一人，说说他成为鲁迅「朋友」的原因。</p>
+      <p style="margin-top:10px"><b>A.</b> 藤野先生　　<b>B.</b> 范爱农</p>
+    </div>
+  </div>
+  <div class="ans"><div class="inner">
+    <b>答案</b>
+    <p><b>(1)</b> ①《山海经》　②《二十四孝图》　③封建家长制（强权）教育对儿童天性的压制与摧残（由此生发出对封建教育的强烈批判意识）。</p>
+    <p><b>(2)</b> 示例一（藤野先生）：藤野先生是鲁迅在日本仙台学医时的解剖学老师。他治学严谨、为人正直、毫无民族偏见——为鲁迅认真添改讲义、纠正解剖图，关心他的解剖实习，询问中国女人裹脚的情形。在鲁迅身处异乡、备受冷眼的艰难时期，这份尊重与关爱成为温暖而坚定的精神力量。鲁迅多年后仍将他的照片挂在书房，称「他是最使我感激，给我鼓励的一个」。</p>
+    <p>示例二（范爱农）：范爱农是一位正直倔强的爱国知识分子。起初他与鲁迅因误会而存有芥蒂，冰释前嫌后成为知己。他不满黑暗的旧社会、愤恨封建势力，内心始终坚守正直。鲁迅与他在风雨中相互理解、彼此牵挂，有着共同的家国忧思。他落水身亡后，鲁迅写下《范爱农》深情怀念这位友人。</p>
+  </div></div>
+  <button class="toggle" data-toggle="p5"><span class="arw">▼</span> 展开解析</button>
+  <div class="panel" id="p5"><div class="panel-inner">
+    <h5>《朝花夕拾》要点回顾</h5>
+    <ul>
+      <li><b>《阿长与〈山海经〉》</b>：长妈妈为「我」买来带画的《山海经》，「我」称之为「最为心爱的宝书」——此前「我」念念不忘的正是「三哼经」（《山海经》）。</li>
+      <li><b>《二十四孝图》</b>：「老莱娱亲」「郭巨埋儿」等故事让幼年鲁迅感到肉麻与恐惧，由此看清封建孝道的虚伪与残酷，埋下批判的种子。</li>
+      <li><b>《五猖会》</b>：临出发看赛会前，父亲突然命「我」背《鉴略》，「我」只得强记硬背；背完后兴致全无。作品批判了封建家长制教育对儿童天性的压制。</li>
+      <li><b>《藤野先生》《范爱农》</b>：写「我」人生旅途中的两位师友，一个跨越国界、毫无偏见，一个倔强正直、忧国忧民——正是「以人为友」的典范。</li>
+    </ul>
+    <div class="kpoint"><b>答题范式：</b>人物 + 典型事件（1-2 处）+ 品质概括 + 对鲁迅的影响（情感态度）。名著题要落到「具体情节」，忌空贴标签。</div>
+  </div></div>
+</section>
+
+<!-- ================= 第6题 ================= -->
+<section class="qcard reveal" id="q6">
+  <div class="qcard-head">
+    <div class="qnum">06</div>
+    <div class="qtitle">
+      <div class="qtags"><span class="tag hot">名著阅读</span><span class="tag">插图与情节</span></div>
+      <h3>这是出自《朝花夕拾》前三篇里的插图，请写出相关内容</h3>
+    </div>
+  </div>
+  <div class="stem">
+    <p>三幅插图依次描绘：①众人吹吹打打抬花轿的「老鼠成亲」场面；②灯下妇人给小孩子讲故事；③孩子在父母跟前扮老莱子戏彩娱亲。</p>
+  </div>
+  <div class="ans"><div class="inner">
+    <b>答案</b>
+    <p><b>(1)</b> 老鼠成亲（迎亲）——《狗·猫·鼠》。原文：「别的一张『老鼠成亲』却可爱，自新郎、新妇以至傧相、宾客、执事，没有一个不是尖腮细腿，像煞读书人的，但都穿的红衫绿裤……」</p>
+    <p><b>(2)</b> 长妈妈给「我」讲「长毛」的故事——《阿长与〈山海经〉》。原文：「她常常对我讲『长毛』。她之所谓『长毛』者，不但洪秀全军，似乎连后来一切土匪强盗都在内，但除却革命党，因为那时还没有。」</p>
+    <p><b>(3)</b> 老莱娱亲（戏彩娱亲）——《二十四孝图》。原文：「其中最使我不解，甚至于发生反感的，是『老莱娱亲』和『郭巨埋儿』两件事。」</p>
+  </div></div>
+  <button class="toggle" data-toggle="p6"><span class="arw">▼</span> 展开解析</button>
+  <div class="panel" id="p6"><div class="panel-inner">
+    <h5>情节梳理</h5>
+    <p>《朝花夕拾》前三篇依次是<b>《狗·猫·鼠》《阿长与〈山海经〉》《二十四孝图》</b>：</p>
+    <ul>
+      <li>《狗·猫·鼠》由「老鼠成亲」的年画谈起，写童年时对隐鼠的喜爱、对猫的仇视，其间夹着对「正人君子」的辛辣讽刺。</li>
+      <li>《阿长与〈山海经〉》写长妈妈的诸多「规矩」与讲「长毛」故事的荒诞，最终以她买来《山海经》的深情收束。</li>
+      <li>《二十四孝图》从一本劣质的儿童读物入手，批判「老莱娱亲」的肉麻虚伪与「郭巨埋儿」的残忍冷酷。</li>
+    </ul>
+    <div class="kpoint"><b>图片题答题法：</b>先看画面细节（人物动作、道具、场景）→ 定位篇目 → 用「人物 + 事件」概括内容 → 必要时引用原句佐证。</div>
+  </div></div>
+</section>
+
+<!-- ================= 第7题 ================= -->
+<section class="qcard reveal" id="q7">
+  <div class="qcard-head">
+    <div class="qnum">07</div>
+    <div class="qtitle">
+      <div class="qtags"><span class="tag hot">名著阅读</span><span class="tag">仿写与探究</span></div>
+      <h3>走进文学巨匠鲁迅的童年生活 · 仿照示例写下阅读发现</h3>
+    </div>
+  </div>
+  <div class="stem">
+    <p>「走近鲁迅」发现卡可选角度：<b>活泼贪玩 / 好奇心强 / 爱怜万物（同情心强）/ 渴求自由 / ……</b></p>
+    <div class="sub">
+      <h4><i>示例</i>活泼贪玩</h4>
+      <p>在《从百草园到三味书屋》中，鲁迅会在先生读书入神时偷偷描画绣像，在课堂上偶尔做小动作。我发现童年的鲁迅活泼贪玩，原来贪玩是儿童的天性。</p>
+    </div>
+    <div class="sub">
+      <h4><i>我的阅读发现</i></h4>
+      <p><span class="blank" style="min-width:120px"></span>在《<span class="blank" style="min-width:170px"></span>》中，鲁迅<span class="blank" style="min-width:230px"></span>。</p>
+    </div>
+  </div>
+  <div class="ans"><div class="inner">
+    <b>答案（示例，任选其一）</b>
+    <p><b>好奇心强</b>——在《阿长与〈山海经〉》中，鲁迅十分渴望阅读带画的《山海经》，对其中人面的兽、九头的蛇等奇幻图画念念不忘。我发现童年的鲁迅好奇心强，原来好奇是儿童的天性。</p>
+    <p><b>同情心强</b>——在《二十四孝图》中，鲁迅听到郭巨埋儿的残忍故事，不觉攥紧了小拳头，为孩子鸣不平。我发现童年的鲁迅富有同情心，原来悲悯是儿童的天性。</p>
+    <p><b>渴求自由</b>——在《从百草园到三味书屋》中，被送进书塾后，鲁迅仍深深怀念百草园里翻断砖、按斑蝥、拔何首乌的自在时光。我发现童年的鲁迅热爱自由，原来热爱自由是儿童的天性。</p>
+  </div></div>
+  <button class="toggle" data-toggle="p7"><span class="arw">▼</span> 展开解析</button>
+  <div class="panel" id="p7"><div class="panel-inner">
+    <h5>仿写要领</h5>
+    <ul>
+      <li>句式须仿照示例：<b>「特点词 + 在《篇目》中 + 情节概述 + 发现与感悟」</b>。</li>
+      <li>情节必须来自《朝花夕拾》真实篇目，概述要具体（有动作、有细节），不能只写篇目名。</li>
+      <li>感悟句要由「个别的鲁迅」上升到「儿童的天性」，形成点题的哲理句。</li>
+    </ul>
+  </div></div>
+</section>
+
+<!-- ================= 第8题 ================= -->
+<section class="qcard reveal" id="q8">
+  <div class="qcard-head">
+    <div class="qnum">08</div>
+    <div class="qtitle">
+      <div class="qtags"><span class="tag hot">现代文阅读</span><span class="tag">散文</span><span class="tag">结构 / 赏析 / 朗读 / 探究</span></div>
+      <h3>外婆的手　<span style="font-weight:400;font-size:.86em;color:var(--ink-3)">蔡淼</span></h3>
+    </div>
+  </div>
+  <div class="stem">
+    <div class="quote" style="font-size:.96rem;line-height:2.15">
+      <span class="line">①外婆那双手伸过来时，我总会先看见那些横斜的、土黄色的膏药。几经风雨后微皱，老屋纸似的勉强贴在裂开口子的手背上。膏药剪成一段段的，严丝合缝地贴在那裂开的口子上。掌心是粗糙的，指节有些肿大，用指甲轻刮，能听见细碎的「沙沙」声，像是秋叶掠过地面的轻响。</span>
+      <span class="line">②可就是这样一双手，在那些浸透着汗水与无尽劳苦的日子里，却能捏出满屋的温热与安适。午后的水汽蒸得人发蒙。我坐在宽大的木椅里，外婆总在灶台边忙碌着。她起身掀开那把锃亮的水壶盖，轻吹一吹，一股带着食物清香的微风便拂面而来。那风是柔的、软的，像暖融融的阳光在脸颊上爬过，拂过身子，仿佛有了生命；时而急，如山间咆哮的猛兽；时而缓，又像屋檐下的细雨。我在她安稳的风里沉沉睡去。那「呼呼」的声响，和着柴火与风箱厚重的「沙沙」声，便成了童年里最绵长的催眠曲。</span>
+      <span class="line">③寒冬里她送我过马路，见有车来，便把我往怀里揽得更紧些。出门时，她总是伸出右手，将我的小手<b>整个儿地</b>、<b>牢牢地</b>握在掌心。那种温暖触感，至今想来仍清晰无比。她的手是温柔的羽翼，将我小小的身体护在其中；又像一个小小的堡垒，将所有的不安与恐惧全部抵挡起来。进了楼道，上下楼时，她也总会把手再用力地握一下，我便靠着那温热，稳稳当当走了过去。</span>
+      <span class="line">④平日里，这双手更像个神奇的魔术师，能翻出洁白的米糕粑，能切出细如发丝的咸菜，能熬出油润喷香的小葱糯米饭。我尤其爱她炒的小炒牛肉丝：切好的肉丝放入洁白的瓷碗，倒入些许酱油，拌匀自制的红薯粉，再撒上淀粉拌匀。铁锅烧得滚烫，清油滑入，「刺啦」一声，腾起一股温热的清香。肉丝在滚烫的锅间一鼓一鼓的，蒜蓉的香气慢慢炸开，充斥了整个灶间。琥珀色的肉在锅中翻飞，油盐的香味若隐若现，混着一丝苦甜夹杂的、淡淡的香的气息。那成了我记忆中最独特的味道。</span>
+      <span class="line">⑤然而最盛大的仪式，总要等到熬麦芽糖的时节——熬蔗糖的日子，是整座屋子最暖和、最香甜的一天。热灶熬糖，是属于外婆的。糖浆在锅里咕嘟咕嘟吐着细碎的泡泡，蒸汽裹着香，把她的身影蒸成一幅淡黄色的水墨画，满屋都是甜丝丝的香气。外婆总在灶台的蒸汽里忙着煮糖浆，熬着浓浓稠稠的糖。等熬到好火候，外婆总会顾不上擦手，用勺子飞快地舀起一勺，向我的方向递来。我便心领神会地跑过去，像完成一个神圣的交接。那勺糖浆慢慢地流进我嘴里，透着清亮，仿佛尝了一汪流动的月光。它化成绵密的糖丝慢慢分明，而后柔软的、清甜的，带着那刚刚离火的余温。</span>
+      <span class="line">⑥年岁渐长，外婆那双带着病痛的手，终年缠着厚厚的膏药。她把一整年的疲惫，都熬进了那勺金黄里；把所有说不出口的牵挂，都凝成了我喉中这不会凝固的温柔。</span>
+      <span class="line">⑦而现在，我再也见不到那双手了。只是在某个午后，忽然起了一阵凉风，惊动了屋檐的风铃，那「叮咚」的脆响，竟让我恍惚间又听见了熬糖的声音。我终于明白，外婆的手，从未在我的生命里真正消失。它化作了夏日午后的风、冬日灶间的暖，化作了她牵我走过无数人生门槛的那股沉稳的力量。而那<b>丝丝缕缕缠缠绕绕</b>的麦芽糖的甜，早已<b>渗入</b>我的骨血中，成了我粗粝漫长人生初始的也是最终的滋味。</span>
+      <div class="src">——《绍兴晚报》2025 年 10 月 26 日，有删改</div>
+    </div>
+
+    <div class="sub">
+      <h4><i>(1)</i>梳理全文，将下面的结构图补充完整</h4>
+      <div class="flow">
+        <div class="flow-row">
+          <div class="flow-box blank"><span class="cap">① 情节（第②段）</span>灶间烧水，「呼呼」风箱声声催眠</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box fill"><span class="cap">给予</span>呵护（信任感）</div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-box fill"><span class="cap">情节（第③段）</span>寒冬握手，送「我」过马路</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box blank"><span class="cap">② 给予</span>温暖与安全感（勇气）</div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-box blank"><span class="cap">③ 情节（第④段）</span>灶间烹制美味（小炒牛肉丝）</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box fill"><span class="cap">给予</span>美味（烟火气）</div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-box fill"><span class="cap">情节（第⑤段）</span>年关熬麦芽糖</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box blank"><span class="cap">④ 给予</span>甜蜜与慰藉</div>
+        </div>
+        <div class="flow-end">永存流淌 · 流入骨血（第⑥⑦段 · 主旨升华）</div>
+      </div>
+      <p style="font-size:.86rem;color:var(--ink-3)">（原卷结构图空格编号以原卷版式为准，此处按「情节—给予」的对应关系梳理。）</p>
+    </div>
+
+    <div class="sub">
+      <h4><i>(2)</i>说说下列句中加点词语的表达效果</h4>
+      <p>①出门时，她总是伸出右手，将我的小手<b>整个儿地</b>、<b>牢牢地</b>握在掌心。</p>
+      <p>②而那<b>丝丝缕缕缠缠绕绕</b>的麦芽糖的甜，早已<b>渗入</b>我的骨血中，成了我粗粝漫长人生初始的也是最终的滋味。</p>
+    </div>
+
+    <div class="sub">
+      <h4><i>(3)</i>朗读下面的句子，你想强调哪两个词语？简述理由</h4>
+      <p>我于是明白，外婆的手，从未在我的生命里真正消失。</p>
+    </div>
+
+    <div class="sub">
+      <h4><i>(4)</i>小语认为把第⑤段第一句改成「年关的时候，这双手会给我熬麦芽糖」会更流畅。你是否同意？请从结构和内容两方面阐述理由。</h4>
+    </div>
+  </div>
+
+  <div class="ans"><div class="inner">
+    <b>答案要点</b>
+    <p><b>(1)</b> ①灶间烧水、风箱声声催眠（水壶烧水）　②给予温暖与安全感（勇气）　③灶间烹制美味　④给予甜蜜与慰藉</p>
+    <p><b>(2)</b> ①「整个儿地」从范围上写外婆把「我」的手完全包住；「牢牢地」从力度上写握得紧而稳。两词叠用，生动写出外婆牵手时的用力与用心，突出她对「我」的细心呵护，也传达出「我」由此获得的安全感与温暖。</p>
+    <p>②「丝丝缕缕、缠缠绕绕」化无形为有形，既写糖丝绵长不断，也象征外婆的爱绵绵不绝；「渗入」化抽象为具象，写糖的甜与外婆的爱已深深融入「我」的生命。「初始的也是最终的滋味」表明这种滋味贯穿「我」的一生，表达对外婆深切的怀念与感恩。</p>
+    <p><b>(3)</b> 强调「从未」「真正」。理由：「从未」从时间上强调外婆的手（的爱与力量）一直都在、从未离开；「真正」强调手看似已消失，实质上从未消失，突出「我」对这份爱的确认。两词读重音，语气深沉笃定，最能传达「我」的感悟与思念。</p>
+    <p><b>(4)</b> 不同意。①结构上，原句「然而最盛大的仪式，总要等到……」用「然而」一转，承接上文日常的忙碌，引出下文熬糖的盛况；「最盛大的仪式」制造悬念、为下文铺垫，使行文有起伏。②内容上，原句「最盛大的仪式」「最暖和、最香甜」等词语饱含感情，把熬糖写得神圣隆重，烘托出外婆与「我」之间浓浓的亲情，突出这一时刻在「我」心中的分量；改句只是平实叙述，缺少情感的韵味与仪式感，与全文温情的抒情笔调不一致。</p>
+  </div></div>
+  <button class="toggle" data-toggle="p8"><span class="arw">▼</span> 展开解析</button>
+  <div class="panel" id="p8"><div class="panel-inner">
+    <h5>结构与主旨</h5>
+    <p>文章以<b>「外婆的手」</b>为线索：先特写手的粗糙与膏药（第①段）→ 回忆手给予的呵护、温暖、美味与甜蜜（第②—⑤段）→ 由实入虚，写手化作风、暖与力量，甜「渗入骨血」（第渗入骨血」（第⑥⑦段）。层层递进，由「形」到「神」，表达了对外婆的怀念与感恩，歌颂了朴素而深沉的亲情。</p>
+    <h5>题型方法</h5>
+    <ul>
+      <li><b>词语赏析</b>：释义（结合语境）→ 手法（叠词、化虚为实等）→ 写出了…… → 表达了……感情。</li>
+      <li><b>朗读设计</b>：先定重音（动词、副词、反复出现的关键词），再定语气（深沉、喜悦、赞美、期待），理由须与情感主旨挂钩。</li>
+      <li><b>词句换改题</b>：表态 + 结构作用（承接、铺垫、照应、线索）+ 内容情感（词义、手法、情感浓度、语体风格）。</li>
+    </ul>
+    <div class="kpoint"><b>答题提醒：</b>「不同意」的理由要「原句好在哪」与「改句差在哪」双向对比，切忌只夸原句。</div>
+  </div></div>
+</section>
+
+<!-- ================= 第9题 ================= -->
+<section class="qcard reveal" id="q9">
+  <div class="qcard-head">
+    <div class="qnum">09</div>
+    <div class="qtitle">
+      <div class="qtags"><span class="tag hot">现代文阅读</span><span class="tag">散文</span><span class="tag">赏析 / 朗读 / 拓展探究</span></div>
+      <h3>春天的节奏</h3>
+    </div>
+  </div>
+  <div class="stem">
+    <div class="quote" style="font-size:.96rem;line-height:2.15">
+      <span class="line">①北京的春天，总是从容不迫地带着自己的节奏。农历二月、三月、四月，一步步走来，顾盼生辉。</span>
+      <span class="line">②早春二月，我路过公园的土坡旁，发现有明亮的小花在悄然绽放，一点、几点、一小片、一大片……就像一张张调皮的孩子的灿烂笑脸，天真无邪又肆无忌惮地<span class="unclear" title="原卷作「惹您」，据意校订为「惹眼」">惹眼</span>，似乎都能听见花丛中传出的咯咯的笑声。</span>
+      <span class="line">③时令进入三月，草色一天比一天无边，明丽可人了。一枝小桃树就会直了腰身。桃花经这阵细雨催出花苞，透着新鲜闪亮，是努力生长的样子。几片小树林整体绿了春意，一棵棵新竹一天天长高不少，发出油亮亮柔美的光泽。那欣欣然的神情，是努力生长的样子，是抬头微笑的样子。几株小桃树已然爆出花苞，鼓鼓的、胀胀的，即将炸裂开来。一朵一朵，一树一树，高高低低开，袅袅婷婷不辍。园中湖畔和池塘边水清见底，层层叠叠圆圆的杂花，居然还偶有几声零零散散的虫鸣，呈现出一派静谧灵动之趣。林荫、花丛、河边、路上，各色好听的小鸟落下、飞起、掠过，三五成群，啾啾喳喳，七嘴八舌，很热闹的样子。</span>
+      <span class="line">④四月芳菲，已至暮春，绿色蓬勃的程度已大大推进，到了前所未有的繁盛。所有的空间乃至所有的角落都是绿色满满，满涨的绿意急剧地往外涨，在地上膨胀溢出，还须往天上去。于是，看那遍地的绿荫，漫无边际的绿海荡漾着飞上天去了。一树一树成排连片，翩跹绿色透出新鲜的蓬勃，被枝条舒展的绿叶传唱着一个接一个的新意。此时的春天，是青草拔节，是百花吐芳，是生机勃发，热情奔放，活力无限。</span>
+      <span class="line">⑤春意渐浓，花事更盛，大地像一个大花园。这时节，有花开，也有花落。一朵接着一朵，这边厢花开次第，那边厢落英缤纷。花开有落，不过太不必感伤，在当下尚是明丽温柔，到前方更有炙人的热烈，新陈代谢更加蓬勃，生命会加倍成长。</span>
+      <span class="line">⑥人们感念春雨、夸赞春雨，喜看雨落油然，心里美滋滋的。这雨适合远行人在途中遇春雨，是为了让春雨滋润心田，给生活添些诗意；四季忙碌的农人在春耕时也期盼春雨，是为了让春雨滋润禾苗，给一年好收成打下根基。「好雨知时节，当春乃发生。」经过雨水洗过的大地，水珠闪烁，草色清新，水汽氤氲于天地之间，不外是浓浓的春天的气息。</span>
+      <span class="line">⑦人们在春天做出各种计划，播撒希望的种子，心心念念是向着前方和未来。一年又一年，人们期盼、迎春、惜春，是因为春天总是凝结着一整年的奋斗与创造。</span>
+    </div>
+
+    <div class="sub">
+      <h4><i>(1)</i>下列对文章写作手法与主旨的赏析，不正确的一项是</h4>
+      <ul class="opts">
+        <li data-k="A">文章开篇将北京的春天拟人化，说它「从容不迫地带着自己的节奏……顾盼生辉」，奠定了全文生动、亲切的感情基调。</li>
+        <li data-k="B">文中多处运用比喻，如将小花比作「孩子灿烂的笑脸」，使描写对象具体可感，富有趣味和美感。</li>
+        <li data-k="C" class="right">文章通过描绘草木由萌芽到繁盛的过程，意在强调北方的春天比南方的春天更具层次感和节奏感。</li>
+        <li data-k="D">全文以「节奏」为核心，捕捉春天不同阶段的典型意象，表达了作者对自然之美的细致观察与热爱之情。</li>
+      </ul>
+    </div>
+    <div class="sub">
+      <h4><i>(2)</i>请从修辞手法的角度赏析文章第②段画横线的句子</h4>
+    </div>
+    <div class="sub">
+      <h4><i>(3)</i>请从重音、语气两个角度为文中写春雨的画线句进行朗读设计，并简要说明理由</h4>
+    </div>
+    <div class="sub">
+      <h4><i>(4)</i>本文能不能作为朱自清《春》的拓展阅读篇目？请从两篇散文的主题方面简要说明理由</h4>
+    </div>
+  </div>
+
+  <div class="ans"><div class="inner">
+    <b>答案要点</b>
+    <p><b>(1)</b> C（无中生有：全文只写北京的春天，并未与南方春天比较。）</p>
+    <p><b>(2)</b> 运用比喻、拟人。把绽放的小花比作「一张张调皮的孩子的灿烂笑脸」，又赋予小花以「调皮」「天真无邪」「肆无忌惮」的情态和「咯咯的笑声」，生动形象地写出早春小花竞相绽放的繁密、明艳与蓬勃生机，表现「我」发现春色时的惊喜与对春天的喜爱之情。</p>
+    <p><b>(3)</b> 重音：「美滋滋」「夸赞」「期盼」；语气：喜悦、赞美、充满期待。理由：「美滋滋」读出春雨带来的喜悦与满足；「夸赞」读出人们对春雨的喜爱与感激；「期盼」要读出农人盼望春雨的急切与对丰收的渴望。用赞美、期待的语气朗读，能更好地传达作者对春雨的赞美和对春天的热爱。</p>
+    <p><b>(4)</b> 可以。两文都以春天为题材，都展现了春天的生机与活力，抒发对春天的热爱与赞颂。朱自清《春》中「小草偷偷地从土里钻出来，嫩嫩的，绿绿的」写春草勃发的生命力，「桃树、杏树、梨树，你不让我，我不让你，都开满了花赶趟儿」写春花繁盛热闹；《春天的节奏》则写北京的春天从二月到四月「从容不迫」地推进，写小花绽放、草色无边、绿意满涨，同样充满蓬勃的生命力。两文主题相通、互为补充，可作为《春》的拓展阅读，帮助读者加深对春天之美的感受。</p>
+  </div></div>
+  <button class="toggle" data-toggle="p9"><span class="arw">▼</span> 展开解析</button>
+  <div class="panel" id="p9"><div class="panel-inner">
+    <h5>文章思路</h5>
+    <p>以「节奏」为文眼，按<b>二月—三月—四月</b>的时间顺序铺展：初春小花（点）→ 仲春草木鸟虫（面）→ 暮春满眼浓绿（势）→ 春雨与人的期盼（情）→ 升华「春天凝结着一整年的奋斗与创造」。写景有层次、有节奏，情景理交融。</p>
+    <h5>答题方法</h5>
+    <ul>
+      <li><b>选择题</b>：逐项回原文找依据。「无中生有」「拔高主旨」「意象张冠李戴」是最常见的错项设置。</li>
+      <li><b>赏析题</b>：修辞 + 内容（写出……）+ 情感。若兼用两种修辞，要分别点明其作用。</li>
+      <li><b>朗读设计</b>：重音多选副词、叠词、抒情性关键词；语气与情感一致，理由必须落到「情感表达」。</li>
+    </ul>
+    <div class="kpoint"><b>拓展探究题</b>（能否作为拓展篇目）：表态 + 共同点（题材、主题、情感）+ 结合两文语句分析 + 补充价值（加深理解、拓展视野）。</div>
+  </div></div>
+</section>
+
+<!-- ================= 第10题 ================= -->
+<section class="qcard reveal" id="q10">
+  <div class="qcard-head">
+    <div class="qnum">10</div>
+    <div class="qtitle">
+      <div class="qtags"><span class="tag hot">古诗词阅读</span><span class="tag">比较阅读</span></div>
+      <h3>【甲】李白《闻王昌龄左迁龙标遥有此寄》　【乙】王维《送别》</h3>
+    </div>
+  </div>
+  <div class="stem">
+    <div class="quote">
+      <span class="line"><b>【甲】闻王昌龄左迁龙标遥有此寄　〔唐〕李白</b></span>
+      <span class="line">杨花落尽子规啼，闻道龙标过五溪。</span>
+      <span class="line">我寄愁心与明月，随君直到夜郎西。</span>
+      <span class="line" style="margin-top:18px"><b>【乙】送别　〔唐〕王维</b></span>
+      <span class="line">下马饮君酒，问君何所之？</span>
+      <span class="line">君言不得意，归卧南山陲。</span>
+      <span class="line">但去莫复问，白云无尽时。</span>
+    </div>
+    <div class="sub">
+      <h4><i>(1)</i>对于诗歌的解析赏析错误的一项是</h4>
+      <ul class="opts">
+        <li data-k="A">「我寄愁心与明月，随君直到夜郎西」一句，运用了拟人的修辞，表达了作者对朋友的思念和关切。</li>
+        <li data-k="B" class="right">诗中「但去莫复问，白云无尽时」暗示了时间的漫长，前途的渺茫。</li>
+        <li data-k="C">诗中「归卧南山陲」指朋友因为生活不得意而想要归隐。</li>
+        <li data-k="D">甲诗采用借景抒情的手法，既点明了时令又表达了思念之情；乙诗采用问答的方式，从友人口中说出归隐的原因，也表现了诗人复杂的感情思绪。</li>
+      </ul>
+    </div>
+    <div class="sub">
+      <h4><i>(2)</i>李白和王维各发一条朋友圈，两人在文字最后都配了一个表情。请根据诗歌猜测两人分别会配上什么表情？结合诗句阐述理由。</h4>
+    </div>
+  </div>
+  <div class="ans"><div class="inner">
+    <b>答案要点</b>
+    <p><b>(1)</b> B（「但去莫复问，白云无尽时」是说：你只管去吧，我不必再问了，山中白云悠悠、无穷无尽——表达对友人归隐的理解与宽慰，也寄寓着对自由自在的隐居生活的向往，不是「前途渺茫」。）</p>
+    <p><b>(2)</b> 【甲】配<b>愁苦／难过／担忧</b>的表情。理由：「杨花落尽子规啼」以飘零的杨花、悲啼的子规渲染凄凉氛围；「闻道龙标过五溪」写友人远谪荒僻之地，令人担忧；「我寄愁心与明月」直抒「愁心」，因不能相伴，只能托明月相随，愁情深重。</p>
+    <p>【乙】配<b>微笑／释然／从容</b>的表情。理由：「君言不得意」虽写友人失意，「归卧南山陲」却写出归隐的安然；「但去莫复问」是洒脱的宽慰；「白云无尽时」以悠悠白云作结，寄寓隐居之乐无穷、对自由生活的向往，语气冲淡平和。</p>
+  </div></div>
+  <button class="toggle" data-toggle="p10"><span class="arw">▼</span> 展开解析</button>
+  <div class="panel" id="p10"><div class="panel-inner">
+    <h5>比较赏析</h5>
+    <ul>
+      <li><b>抒情方式</b>：甲诗借景抒情、想象奇特（明月寄愁心，人格化），情意绵长凄婉；乙诗以问答叙事，语言平淡而意在言外，情调冲淡旷达。</li>
+      <li><b>情感基调</b>：甲是贬谪之痛中的牵挂担忧；乙是失意归隐的宽慰与向往。</li>
+      <li><b>意象</b>：杨花、子规、明月、五溪、夜郎（甲）；酒、南山、白云（乙）。</li>
+    </ul>
+    <div class="kpoint"><b>「表情包」类创新题</b>：实质是情感概括题。答题＝表情词 + 诗句依据（引原句）+ 情感分析，切忌只写表情不析诗。</div>
+  </div></div>
+</section>
+
+<!-- ================= 第11题 ================= -->
+<section class="qcard reveal" id="q11">
+  <div class="qcard-head">
+    <div class="qnum">11</div>
+    <div class="qtitle">
+      <div class="qtags"><span class="tag hot">文言文阅读</span><span class="tag">《论语》+《宋史·赵普传》</span></div>
+      <h3>课内外文言文比较阅读</h3>
+    </div>
+  </div>
+  <div class="stem">
+    <p><b>【甲】</b>《〈论语〉十二章》（略）</p>
+    <div class="quote" style="font-size:.98rem">
+      <span class="line"><b>【乙】</b>赵普，字则平，幽州蓟人。少习吏事，寡学术，及为相，太祖常劝以读书。晚年手不释卷，每归私第，阖户启箧取书，读之竟日。及次日临政，处决如流。既薨，家人发箧视之，则《论语》二十篇也。</span>
+      <span class="line">普性深沉有岸谷，虽多忌克，而能以天下事为己任。宋初，在相位者多龌龊循默，普刚毅果断，未有其比。尝奏荐某人为某官，太祖不用。普明日复奏其人，亦不用。明日，普又以其人奏，太祖怒，碎裂奏牍掷地，普颜色不变，跪而拾之以归。他日补缀旧纸，复奏如初。太祖乃悟，卒用其人。</span>
+      <div class="src">——节选自《宋史·赵普传》</div>
+    </div>
+    <p style="font-size:.88rem;color:var(--ink-3)">【注释】①箧：qiè，小箱子。②薨：hōng，古时指诸侯或大官僚去世。③龌龊循默：形容人过分拘谨、拘于小节，按常规办事、不多言语。</p>
+
+    <div class="sub">
+      <h4><i>(1)</i>下列对文中加点字的解说，不正确的一项是</h4>
+      <ul class="opts">
+        <li data-k="A" class="right">「传不习乎」与成语「言传身教」中的两个「传」，意思相同。</li>
+        <li data-k="B">「吾日三省吾身」与「他日补缀旧纸」中的两个「日」，意思不同。</li>
+        <li data-k="C">「普颜色不变」中的「颜色」与现代汉语的意思不同。</li>
+        <li data-k="D">「学而时习之」与「少习吏事」中的两个「习」，意思不同。</li>
+      </ul>
+    </div>
+    <div class="sub">
+      <h4><i>(2)</i>下列对文中词语及相关内容的解说，不正确的一项是</h4>
+      <ul class="opts">
+        <li data-k="A">「为人谋而不忠乎」中的「为」与「及为相」中的「为」意义和用法不同。</li>
+        <li data-k="B">「太祖乃悟」与「去后乃至」中的「乃」意义和用法相同。</li>
+        <li data-k="C">《论语》是儒家经典著作，与《大学》《中庸》《孟子》合称为「四书」。</li>
+        <li data-k="D" class="right">「可以为师矣」中的「以」与「跪而拾之以归」中的「以」用法相同。</li>
+      </ul>
+    </div>
+    <div class="sub">
+      <h4><i>(3)</i>下列关于甲、乙两文相关内容理解和分析，不正确的一项是</h4>
+      <ul class="opts">
+        <li data-k="A">甲文「知之者不如好之者，好之者不如乐之者」阐述了兴趣对于学习的重要性。</li>
+        <li data-k="B">乙文叙述赵普处理政事得心应手（「处决如流」），可见其勤学之后的长进。</li>
+        <li data-k="C" class="right">甲文「吾十有五而志于学」一句讲的是学习方法，强调要循序渐进，进而有成。</li>
+        <li data-k="D">乙文运用对比，突出了赵普性格刚毅果断，在众多官员中脱颖而出。</li>
+      </ul>
+    </div>
+    <div class="sub">
+      <h4><i>(4)</i>乙文画线部分有两处需要断句，请选择相应选项</h4>
+      <p class="formula">每 归 A 私 第 B 阖 户 C 启 箧 D 取 书 E 读 之 F 竟 日</p>
+    </div>
+    <div class="sub">
+      <h4><i>(5)</i>用现代汉语翻译下面的句子</h4>
+      <p>①择其善者而从之，其不善者而改之。</p>
+      <p>②及次日临政，处决如流。</p>
+    </div>
+  </div>
+
+  <div class="ans"><div class="inner">
+    <b>答案</b>
+    <p><b>(1)</b> A　<b>(2)</b> D　<b>(3)</b> C　<b>(4)</b> B、E（每归私第／阖户启箧取书／读之竟日）</p>
+    <p><b>(5)</b> ①（我）选取他们的优点来学习，（如果）看到他们的缺点（自己身上也有），就加以改正。②等到第二天处理政务，（赵普）处理决断像流水一样（迅速顺畅）。</p>
+  </div></div>
+  <button class="toggle" data-toggle="p11"><span class="arw">▼</span> 展开解析</button>
+  <div class="panel" id="p11"><div class="panel-inner">
+    <h5>逐项解析</h5>
+    <ul>
+      <li><b>(1) A 错。</b>「传不习乎」的「传」指<b>老师传授的知识</b>（动词作名词）；「言传身教」的「传」是<b>传授、教导</b>（动词），二者意思不同。B：「吾日」的「日」是「每天」（名作状），「他日」的「日」是「天、日子」，不同，正确。C：「颜色」古义为<b>脸色</b>，今义为色彩，不同，正确。D：「时习」的「习」是温习、复习，「少习吏事」的「习」是熟悉、通晓，不同，正确。</li>
+      <li><b>(2) D 错。</b>「可以为师矣」的「以」是介词，<b>凭借</b>；「跪而拾之以归」的「以」是连词，<b>表承接</b>（相当于「而」），用法不同。A：「为人谋」的「为」是替、给；「及为相」的「为」是担任，不同，正确。B：两处「乃」均为「才」，相同，正确。C：「四书」之说正确。</li>
+      <li><b>(3) C 错。</b>「吾十有五而志于学」是孔子自述<b>一生为学进德的成长历程</b>，不是「学习方法」。A、B、D 理解正确。</li>
+      <li><b>(4) 断句：</b>每归私第／阖户启箧取书／读之竟日。译：每次回到家里，就关上门，打开书箱取出书来，读上一整天。</li>
+      <li><b>(5) 关键词：</b>①择（选取）、善者（优点/好的方面）、从（跟从、学习）、改（改正）；②及（等到）、次日（第二天）、临政（处理政务）、处决（处理决断）、如流（像流水一样）。</li>
+    </ul>
+    <h5>赵普形象</h5>
+    <p>晚年手不释卷、《论语》不离手——<b>勤学不辍</b>；「以天下事为己任」「刚毅果断」——<b>以天下为己任、刚毅果断</b>；碎裂奏牍仍「颜色不变」「补缀旧纸，复奏如初」——<b>意志坚定、坚持原则、沉着冷静</b>。</p>
+  </div></div>
+</section>
+
+<!-- ================= 第12题 ================= -->
+<section class="qcard reveal" id="q12">
+  <div class="qcard-head">
+    <div class="qnum">12</div>
+    <div class="qtitle">
+      <div class="qtags"><span class="tag hot">文言文阅读</span><span class="tag">《世说新语》三则</span></div>
+      <h3>谢安与谢玄 · 一组材料阅读</h3>
+    </div>
+  </div>
+  <div class="stem">
+    <div class="quote" style="font-size:.98rem">
+      <span class="line"><b>【甲】</b>谢太傅寒雪日内集，与儿女讲论文义。俄而雪骤，公欣然曰：「白雪纷纷何所似？」兄子胡儿曰：「撒盐空中差可拟。」兄女曰：「未若柳絮因风起。」公大笑乐。即公大兄无奕女，左将军王凝之妻也。</span>
+      <span class="line"><b>【乙】</b>谢玄少时好著紫罗香囊，垂覆手。太傅患之，而不欲伤其意，乃谲与赌，得即烧之。</span>
+      <span class="line"><b>【丙】</b>谢公与人围棋，俄而谢玄淮上信至。看书竟，默然无言，徐向局。客问淮上利害，答曰：「小儿辈大破贼。」意色举止，不异于常。</span>
+      <div class="src">——节选自《世说新语》（甲：言语；乙：假谲；丙：雅量）</div>
+    </div>
+    <p style="font-size:.88rem;color:var(--ink-3)">【注释】①谢玄：东晋名将，太傅谢安之侄（小字遏）。②紫罗香囊：用紫罗缝制的香囊，系于腰间。③谲：jué，欺诈、耍手段。④淮上：淮河前线，此指淝水之战战场。⑤向局：面向棋局。</p>
+
+    <div class="sub">
+      <h4><i>(1)</i>根据提示解释加点字</h4>
+      <table>
+        <thead><tr><th>方法</th><th>联系内容</th><th>释义</th></tr></thead>
+        <tbody>
+          <tr><td>字典释义</td><td>著：①显扬，显著　②写作　③附着</td><td>好<b>著</b>紫罗香囊：　<span class="blank" style="min-width:60px"></span>（写序号）</td></tr>
+          <tr><td>成语推断</td><td>患得患失</td><td>太傅<b>患</b>之：　<span class="blank"></span></td></tr>
+          <tr><td>课内迁移</td><td>树在道边而多子（《王戎不取道旁李》）</td><td><b>而</b>不欲伤其意：　<span class="blank"></span></td></tr>
+          <tr><td>课内迁移</td><td>俄而雪骤（《咏雪》）</td><td><b>俄而</b>谢玄淮上信至：　<span class="blank"></span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sub">
+      <h4><i>(2)</i>下列选项中「之」字用法与其他三项不同的是（　　）</h4>
+      <ul class="opts">
+        <li data-k="A" class="right">左将军王凝之妻也</li>
+        <li data-k="B">得即烧之</li>
+        <li data-k="C">太傅患之</li>
+        <li data-k="D">思援弓缴而射之</li>
+      </ul>
+    </div>
+    <div class="sub">
+      <h4><i>(3)</i>翻译句子</h4>
+      <p>①未若柳絮因风起。</p>
+      <p>②意色举止，不异于常。</p>
+    </div>
+    <div class="sub">
+      <h4><i>(4)</i>读完以上三段，我认为谢安是一个了不起的人。你赞同吗？说说你的理由。</h4>
+    </div>
+  </div>
+
+  <div class="ans"><div class="inner">
+    <b>答案</b>
+    <p><b>(1)</b> ①<b>③</b>（附着，此处指佩戴）　②<b>担心、忧虑</b>　③<b>却、但是（表转折）</b>　④<b>不久、一会儿</b></p>
+    <p><b>(2)</b> A（「王凝之」的「之」是人名用字，无实义；B、C、D 三处均为代词。）</p>
+    <p><b>(3)</b> ①不如比作柳絮乘风漫天飞舞。②（谢安的）神情举止，与平时没有什么不同。</p>
+    <p><b>(4)</b> 赞同。①甲文：谢安在雪天与子侄辈讲论文义、即景命题，见其重视家教、富有文人雅趣，且欣赏晚辈才华（「公大笑乐」）。②乙文：面对谢玄少年喜好佩戴香囊，他忧虑却不直接批评，而是「谲与赌」巧计赢得并烧掉，既不伤孩子的自尊心，又达到引导的目的——教子有方、宽容而有智慧。③丙文：淝水大捷的消息传来，他「默然无言，徐向局」，答客问时「意色举止，不异于常」——沉着冷静、有大将风度与名士雅量。三则材料从不同侧面塑造了一位重视教育、教子有方、沉稳有雅量的名士形象，所以说谢安是一个了不起的人。</p>
+  </div></div>
+  <button class="toggle" data-toggle="p12"><span class="arw">▼</span> 展开解析</button>
+  <div class="panel" id="p12"><div class="panel-inner">
+    <h5>断句与句式</h5>
+    <p>「每归私第／阖户启箧取书／读之竟日」——按「行为」划分层次：归家 → 关门取书 → 整日攻读。</p>
+    <h5>人物比较</h5>
+    <ul>
+      <li>谢安：善于教育引导（乙）、沉着有雅量（丙）、风雅重才（甲）。</li>
+      <li>谢玄：少时有少年习气（好佩香囊），后为淝水之战主将（丙文「小儿辈大破贼」即指谢玄等大破前秦）。</li>
+      <li>谢道韫：「未若柳絮因风起」——才思敏捷，后世称「咏絮之才」。</li>
+    </ul>
+    <div class="kpoint"><b>人物评价题</b>：表态（赞同/不赞同）+ 分则概括事件 + 每则点出品质 + 总结回扣观点。事件与品质一一对应，切忌空泛。</div>
+  </div></div>
+</section>
+
+<!-- ================= 附录 ================= -->
+<section class="appendix" id="apx">
+  <div class="apx-head reveal">
+    <div class="kicker">APPENDIX</div>
+    <h2>课外古诗文 · 译注与校勘</h2>
+    <p>重点词语、全文翻译、文本校对三合一。所录原文已与《世说新语》《宋史》通行本及《全唐诗》核校，凡与试卷文字有出入处，均出校记。</p>
+  </div>
+
+  <!-- 古诗甲 -->
+  <article class="work reveal">
+    <div class="work-head">
+      <div>
+        <h3>闻王昌龄左迁龙标遥有此寄</h3>
+        <div class="by">〔唐〕李白 · 七绝</div>
+      </div>
+      <div class="badge">古诗精讲 · 一</div>
+    </div>
+    <div class="work-body">
+      <h4>原文</h4>
+      <div class="poem">
+        <span class="pl">杨花落尽子规啼，闻道龙标过五溪。</span>
+        <span class="pl">我寄愁心与明月，随君直到夜郎西。</span>
+      </div>
+      <h4>重点词语</h4>
+      <table>
+        <thead><tr><th>词语</th><th>释义</th></tr></thead>
+        <tbody>
+          <tr><td>杨花</td><td>柳絮。点明暮春时令，兼寓飘零之感。</td></tr>
+          <tr><td>子规</td><td>杜鹃鸟，又称杜宇、望帝，啼声悲切，如曰「不如归去」，古诗中常寓悲凉离愁。</td></tr>
+          <tr><td>闻道</td><td>听说。表示此事出乎意料，含惊惜之情。</td></tr>
+          <tr><td>龙标</td><td>指王昌龄。王昌龄被贬为龙标（今湖南黔阳）尉，诗中以任职之地代称其人，是古诗中常见的以官地/官职代称之法。</td></tr>
+          <tr><td>五溪</td><td>辰溪、酉溪、巫溪、武溪、沅溪的合称，在今湖南西部，唐时属荒僻僻远之地。</td></tr>
+          <tr><td>与</td><td>给，托付。</td></tr>
+          <tr><td>夜郎</td><td>指唐代夜郎县，在今湖南芷江西南一带（龙标尉辖地附近），并非古夜郎国（今贵州西北）。</td></tr>
+          <tr><td>随君</td><td>伴随你。一作「随风」。</td></tr>
+        </tbody>
+      </table>
+      <h4>全文翻译</h4>
+      <div class="trans">
+        <b>译文</b>
+        杨花落尽了，杜鹃一声声悲啼；听说你被贬到龙标，要途经那荒远的五溪。我把这颗忧愁的心寄托给明月，让它伴随你一直走到夜郎的西边。
+      </div>
+      <h4>赏析要点</h4>
+      <div class="trans">
+        <b>技法与情感</b>
+        首句借景抒情，以「杨花落尽」「子规啼」点明暮春、渲染悲凉气氛；次句叙事，「过五溪」见贬所之荒远、跋涉之艰辛；后两句想象奇特，将明月人格化（拟人），让「愁心」随月光千里相随——人隔两地，月可共赏，情深意挚。全诗以「愁心」为核心，融叙事、写景、抒情于一炉。
+      </div>
+      <div class="check">
+        <b>校勘记</b>
+        ①「随君直到夜郎西」——通行本一作「随风直到夜郎西」，统编教材作「随君」。②「夜郎」当指唐时夜郎县（今湖南境内），与李白长流夜郎之「夜郎」（古夜郎国地，今贵州）非同一处，注释时宜辨。③「龙标」为人之代称，非地名直指，翻译时应补出「你（王昌龄）」。
+      </div>
+    </div>
+  </article>
+
+  <!-- 古诗乙 -->
+  <article class="work reveal">
+    <div class="work-head">
+      <div>
+        <h3>送　别</h3>
+        <div class="by">〔唐〕王维 · 五古</div>
+      </div>
+      <div class="badge">古诗精讲 · 二</div>
+    </div>
+    <div class="work-body">
+      <h4>原文</h4>
+      <div class="poem">
+        <span class="pl">下马饮君酒，问君何所之？</span>
+        <span class="pl">君言不得意，归卧南山陲。</span>
+        <span class="pl">但去莫复问，白云无尽时。</span>
+      </div>
+      <h4>重点词语</h4>
+      <table>
+        <thead><tr><th>词语</th><th>释义</th></tr></thead>
+        <tbody>
+          <tr><td>饮（yìn）君酒</td><td>请你饮酒。「饮」为使动用法，使……饮；「饮君酒」即「拿酒请你喝」。</td></tr>
+          <tr><td>何所之</td><td>到哪里去。「之」，动词，往、到；「所之」即所往之处。</td></tr>
+          <tr><td>不得意</td><td>不得志，仕途失意。</td></tr>
+          <tr><td>归卧</td><td>归隐。「卧」字见闲居之态。</td></tr>
+          <tr><td>南山陲</td><td>南山，指终南山；陲（chuí），边侧、山脚下。</td></tr>
+          <tr><td>但去</td><td>只管去吧。「但」，只、只管。</td></tr>
+          <tr><td>莫复问</td><td>不要再问（我）了。</td></tr>
+          <tr><td>白云无尽时</td><td>山中白云悠悠、无穷无尽。既写眼前景，又寓隐居之乐无穷、足以自慰之意。</td></tr>
+        </tbody>
+      </table>
+      <h4>全文翻译</h4>
+      <div class="trans">
+        <b>译文</b>
+        我下马请你饮一杯酒，问你要到哪里去？你说仕途不得志，要回到终南山脚下归隐。你只管去吧，不必再问我了——山中的白云悠悠无尽（那里的隐居之乐也是无穷无尽的）。
+      </div>
+      <h4>赏析要点</h4>
+      <div class="trans">
+        <b>技法与情感</b>
+        全诗以问答成篇：起句叙事（下马饯别），二、四句问「何所之」，三、五句作答；末句以景结情，「白云无尽时」既宽慰友人，又寄寓对自由自在的隐居生活的向往，语淡情深、含蓄不尽。友人因「不得意」而归隐，诗人的劝慰中亦含着自己的感慨与羡慕，情感复杂而平和。
+      </div>
+      <div class="check">
+        <b>校勘记</b>
+        ①「饮君酒」之「饮」读 yìn，为使动用法，注音、释义均不可误作「喝」。②「南山」一般注为终南山，「陲」为山脚、山边，非「边疆」。③末句以景结情，是全诗诗眼，赏析题常考，注意「白云」的双关（实景 + 自由无尽之隐趣）。
+      </div>
+    </div>
+  </article>
+
+  <!-- 赵普 -->
+  <article class="work reveal">
+    <div class="work-head">
+      <div>
+        <h3>《宋史·赵普传》选段</h3>
+        <div class="by">〔元〕脱脱等 · 纪传体史书</div>
+      </div>
+      <div class="badge">古文精讲 · 一</div>
+    </div>
+    <div class="work-body">
+      <h4>原文（校订后）</h4>
+      <div class="quote" style="font-size:1.02rem">
+        <span class="line">赵普，字则平，幽州蓟人。少习吏事，寡学术，及为相，太祖常劝以读书。晚年手不释卷，每归私第，阖户启箧取书，读之竟日。及次日临政，处决如流。既薨，家人发箧视之，则《论语》二十篇也。</span>
+        <span class="line">普性深沉有岸谷，虽多忌克，而能以天下事为己任。宋初，在相位者多龌龊循默，普刚毅果断，未有其比。尝奏荐某人为某官，太祖不用。普明日复奏其人，亦不用。明日，普又以其人奏，太祖怒，碎裂奏牍掷地，普颜色不变，跪而拾之以归。他日补缀旧纸，复奏如初。太祖乃悟，卒用其人。</span>
+      </div>
+      <h4>重点词语</h4>
+      <table>
+        <thead><tr><th>词语</th><th>释义</th></tr></thead>
+        <tbody>
+          <tr><td>少习吏事</td><td>少（shào），年轻时；习，熟悉、通晓；吏事，官务、政事。</td></tr>
+          <tr><td>寡学术</td><td>寡，少；学术，学问、学识。</td></tr>
+          <tr><td>及为相</td><td>及，等到；为，担任；相，宰相。</td></tr>
+          <tr><td>劝以读书</td><td>即「以读书劝之」，拿读书来劝勉他。以，介词。</td></tr>
+          <tr><td>手不释卷</td><td>释，放下；卷，书卷。</td></tr>
+          <tr><td>每归私第</td><td>每，每次；私第，自己的住宅、家里。</td></tr>
+          <tr><td>阖户启箧</td><td>阖（hé），关闭；户，门；启，打开；箧（qiè），小箱子。</td></tr>
+          <tr><td>读之竟日</td><td>竟日，终日、整天。</td></tr>
+          <tr><td>及次日临政</td><td>及，等到；次日，第二天；临政，处理政务。</td></tr>
+          <tr><td>处决如流</td><td>处决，处理决断；如流，像流水一样（形容迅速而顺畅）。</td></tr>
+          <tr><td>既薨</td><td>既，……之后；薨（hōng），古代诸侯或大官去世。</td></tr>
+          <tr><td>发箧视之</td><td>发，打开。</td></tr>
+          <tr><td>深沉有岸谷</td><td>岸谷，形容人严肃刚正、有气度与操守。</td></tr>
+          <tr><td>多忌克</td><td>忌克，忌妒刻薄（对人猜忌好胜）。</td></tr>
+          <tr><td>以天下事为己任</td><td>以……为……，把……当作；任，责任。</td></tr>
+          <tr><td>龌龊循默</td><td>龌龊（chuò chuò），过分拘谨、拘于小节；循默，按常规办事、不多言语。</td></tr>
+          <tr><td>尝奏荐</td><td>尝，曾经；奏荐，上奏推荐。</td></tr>
+          <tr><td>明日复奏</td><td>明日，第二天；复，又、再。</td></tr>
+          <tr><td>碎裂奏牍</td><td>奏牍（dú），臣子呈递的奏章文书；碎裂，撕碎（使动）。</td></tr>
+          <tr><td>颜色不变</td><td>颜色，脸色（古义；今义为色彩，古今异义）。</td></tr>
+          <tr><td>拾之以归</td><td>以，连词，表承接，相当于「而」。</td></tr>
+          <tr><td>他日补缀</td><td>他日，过了几天、后来；补缀（zhuì），修补连缀。</td></tr>
+          <tr><td>复奏如初</td><td>如初，像当初一样。</td></tr>
+          <tr><td>乃悟 / 卒用</td><td>乃，才；卒，最终；用，任用。</td></tr>
+        </tbody>
+      </table>
+      <h4>全文翻译</h4>
+      <div class="trans">
+        <b>译文</b>
+        赵普，字则平，是幽州蓟地人。年轻时就熟悉官务，学问不多，等到做了宰相，宋太祖常用读书来劝勉他。（赵普）晚年读书手不释卷，每次回到家里，就关上门，打开书箱取出书来，读上一整天。等到第二天处理政务，处理决断像流水一样顺畅。（他）去世以后，家里人打开书箱一看，原来是一部《论语》（共二十篇）。<br><br>
+        赵普性情深沉，严肃刚正，虽然对人猜忌刻薄，却能把天下大事当作自己的责任。宋朝初年，身居相位的人大多拘谨守常、沉默寡言，赵普却刚毅果断，没有人能跟他相比。（他）曾经上奏推荐某人担任某官，太祖不采用。赵普第二天又上奏这个人，（太祖）还是不用。到了第三天，赵普再一次把这个人奏上，太祖大怒，把奏章撕碎了扔在地上，赵普脸色不变，跪下来把碎纸片拾起来带回了家。过了些日子，（他）把旧纸片修补连缀好，像当初一样重新上奏。太祖这才醒悟，最终任用了那个人。
+      </div>
+      <div class="check">
+        <b>校勘记</b>
+        ①《宋史》通行本作「普性深<b>沈</b>有岸谷」，「沈」同「沉」；试卷作「深沉」，为今通行写法，义同。②「尝奏荐某人为某官……卒用其人」一段与《宋史》原文相合。③《赵普传》另有「有群臣当迁官，太祖素恶其人，不与。普坚以为请……」一段，与本卷选文不同，注意勿混。④「颜色」「明日」「他日」均为古今异义词，翻译时须按古义。
+      </div>
+    </div>
+  </article>
+
+  <!-- 世说 -->
+  <article class="work reveal">
+    <div class="work-head">
+      <div>
+        <h3>《世说新语》三则</h3>
+        <div class="by">〔南朝宋〕刘义庆 · 志人小说</div>
+      </div>
+      <div class="badge">古文精讲 · 二</div>
+    </div>
+    <div class="work-body">
+
+      <h4>甲 · 《咏雪》（言语）</h4>
+      <div class="quote" style="font-size:1rem">
+        <span class="line">谢太傅寒雪日内集，与儿女讲论文义。俄而雪骤，公欣然曰：「白雪纷纷何所似？」兄子胡儿曰：「撒盐空中差可拟。」兄女曰：「未若柳絮因风起。」公大笑乐。即公大兄无奕女，左将军王凝之妻也。</span>
+      </div>
+      <table>
+        <thead><tr><th>词语</th><th>释义</th></tr></thead>
+        <tbody>
+          <tr><td>内集</td><td>把家里人聚集在一起（家庭聚会）。</td></tr>
+          <tr><td>儿女</td><td>子女，此泛指小辈（包括侄儿侄女），非专指儿子女儿。</td></tr>
+          <tr><td>讲论文义</td><td>谈论文章的义理。</td></tr>
+          <tr><td>俄而雪骤</td><td>俄而，不久、一会儿；骤，急、紧（雪下得急了）。</td></tr>
+          <tr><td>欣然</td><td>高兴的样子。</td></tr>
+          <tr><td>何所似</td><td>像什么。</td></tr>
+          <tr><td>差可拟</td><td>差（chā），大体、差不多；拟，相比。</td></tr>
+          <tr><td>未若柳絮因风起</td><td>未若，不如；因，趁、乘、凭借。</td></tr>
+          <tr><td>即公大兄无奕女</td><td>即，就是；无奕，谢无奕（谢安长兄）；女，女儿，即谢道韫。</td></tr>
+        </tbody>
+      </table>
+      <div class="trans"><b>译文</b>谢太傅在寒冷的雪天把家里人聚集在一起，和小辈们谈论文章的义理。不久雪下得急了，太傅高兴地说：「这纷纷扬扬的白雪像什么呢？」他哥哥的长子胡儿说：「跟在空中撒盐大体可以相比。」他哥哥的女儿说：「不如比作柳絮乘风飞舞。」太傅大笑起来，非常高兴。（谢道韫）就是谢太傅长兄谢无奕的女儿，左将军王凝之的妻子。</div>
+
+      <h4>乙 · 《谢玄好著紫罗香囊》（假谲）</h4>
+      <div class="quote" style="font-size:1rem">
+        <span class="line">谢玄少时好著紫罗香囊，垂覆手。太傅患之，而不欲伤其意，乃谲与赌，得即烧之。</span>
+      </div>
+      <table>
+        <thead><tr><th>词语</th><th>释义</th></tr></thead>
+        <tbody>
+          <tr><td>少时</td><td>年轻时。少（shào）。</td></tr>
+          <tr><td>好著</td><td>好（hào），喜欢；著（zhuó），同「着」，佩戴。</td></tr>
+          <tr><td>紫罗香囊</td><td>用紫罗（一种丝织品）缝制的香囊，魏晋士人佩于腰间。</td></tr>
+          <tr><td>垂覆手</td><td>垂挂着覆手（覆手即手巾、佩巾一类饰物）。</td></tr>
+          <tr><td>太傅患之</td><td>太傅，指谢安；患，担忧、忧虑；之，代这件事。</td></tr>
+          <tr><td>不欲伤其意</td><td>欲，想；伤，伤害；意，心意、自尊心。</td></tr>
+          <tr><td>乃谲与赌</td><td>乃，于是、就；谲（jué），欺诈、耍手段；与（之）赌，同他打赌。</td></tr>
+          <tr><td>得即烧之</td><td>得，（赢）得到；即，就；之，代香囊。</td></tr>
+        </tbody>
+      </table>
+      <div class="trans"><b>译文</b>谢玄年轻时喜欢佩戴紫罗香囊，还垂挂着覆手（手巾）。谢安（太傅）对此感到担忧，却又不想伤害他的自尊心，于是就耍了个手段同他打赌，（谢安）赢得了香囊，便把它烧掉了。</div>
+
+      <h4>丙 · 《谢公与人围棋》（雅量）</h4>
+      <div class="quote" style="font-size:1rem">
+        <span class="line">谢公与人围棋，俄而谢玄淮上信至。看书竟，默然无言，徐向局。客问淮上利害，答曰：「小儿辈大破贼。」意色举止，不异于常。</span>
+      </div>
+      <table>
+        <thead><tr><th>词语</th><th>释义</th></tr></thead>
+        <tbody>
+          <tr><td>谢公</td><td>指谢安。</td></tr>
+          <tr><td>围棋</td><td>下围棋（名词用作动词）。</td></tr>
+          <tr><td>俄而</td><td>不久、一会儿。</td></tr>
+          <tr><td>淮上信至</td><td>淮上，淮河前线（淝水之战战场）；信，信使（送信的人）；至，到。</td></tr>
+          <tr><td>看书竟</td><td>书，信；竟，完毕。</td></tr>
+          <tr><td>徐向局</td><td>徐，慢慢地；向，面向；局，棋局。</td></tr>
+          <tr><td>淮上利害</td><td>利害，（战事的）胜负与形势。</td></tr>
+          <tr><td>小儿辈大破贼</td><td>小儿辈，子侄一辈（指谢玄等）；大破，大败；贼，指敌军（前秦军队）。</td></tr>
+          <tr><td>意色举止</td><td>意色，神情、神色；举止，举动、行为。</td></tr>
+          <tr><td>不异于常</td><td>异，不同；常，平常、平时。</td></tr>
+        </tbody>
+      </table>
+      <div class="trans"><b>译文</b>谢安和别人下围棋，不久，谢玄从淮河前线派来的信使到了。谢安看完信，沉默不语，从容地转向棋局。客人问淮河战事的胜负情况，（谢安）回答说：「孩子们已经大破贼兵。」他的神情举止，与平时没有什么不同。</div>
+
+      <div class="check">
+        <b>校勘记</b>
+        ①乙则出自《世说新语·假谲第二十七》，原文作「<b>谢遏</b>年少时，好著紫罗香囊，垂覆手。太傅患之，而不欲伤其意。乃谲与赌，得即烧之。」——谢遏即谢玄的小名（字幼度，小字遏），试卷以本名「谢玄」代小字，属编者改写，非原文。<br>
+        ②「著」读 zhuó，同「着」，意为佩戴；不可读 zhù，亦不可解作「写作」。<br>
+        ③「垂覆手」三字《世说》原文即如此，「覆手」为手巾、佩巾之类饰物；另有注家疑为衍文或异文，中学阶段按「垂挂着覆手」理解即可。<br>
+        ④丙则出自《世说新语·雅量第六》，与通行本完全一致。「淮上信至」之「信」指<b>信使</b>，下文「看书竟」之「书」才指书信，切勿互训。<br>
+        ⑤甲则《咏雪》出自《世说新语·言语》，为统编教材七年级上册课文；「王凝之妻」指谢道韫，「之」为人名用字。<br>
+        ⑥试卷注释①作「谢太傅：即谢玄，太傅谢安之侄」有误，应为「谢太傅：即谢安；谢玄：谢安之侄」。
+      </div>
+    </div>
+  </article>
+</section>
+
+</main>
+
+<footer>
+  <div class="fmark">墨卷精解</div>
+  <p>七年级语文试卷 · 逐题答案与详解 · 课外古诗文译注校勘</p>
+  <p>据试卷图片整理，参考答案以原卷所附为准 · 古籍原文已核校《世说新语》《宋史·赵普传》</p>
+</footer>
+
+<button class="totop" id="toTop" aria-label="回到顶部">↑</button>
+
+<script>
+(function(){
+  var pbar = document.getElementById('pbar');
+  var toTop = document.getElementById('toTop');
+  function onScroll(){
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    var p = h > 0 ? (window.scrollY / h) * 100 : 0;
+    pbar.style.width = p + '%';
+    toTop.classList.toggle('show', window.scrollY > 700);
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+  toTop.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+
+  /* 出现动画 */
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {threshold:0.06, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  /* 折叠解析 */
+  var buttons = document.querySelectorAll('.toggle');
+  buttons.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var panel = document.getElementById(btn.dataset.toggle);
+      var open = panel.classList.toggle('open');
+      btn.classList.toggle('open', open);
+      if(open){
+        panel.style.maxHeight = panel.scrollHeight + 'px';
+        btn.innerHTML = '<span class="arw">▲</span> 收起解析';
+      }else{
+        panel.style.maxHeight = '0px';
+        btn.innerHTML = '<span class="arw">▼</span> 展开解析';
+      }
+    });
+  });
+  window.addEventListener('resize', function(){
+    document.querySelectorAll('.panel.open').forEach(function(p){ p.style.maxHeight = p.scrollHeight + 'px'; });
+  });
+
+  /* 全部展开 / 收起 */
+  var expandAll = document.getElementById('expandAll');
+  var allOpen = false;
+  expandAll.addEventListener('click', function(){
+    allOpen = !allOpen;
+    buttons.forEach(function(btn){
+      var panel = document.getElementById(btn.dataset.toggle);
+      if(allOpen && !panel.classList.contains('open')){ btn.click(); }
+      if(!allOpen && panel.classList.contains('open')){ btn.click(); }
+    });
+    expandAll.textContent = allOpen ? '收起全部解析' : '展开全部解析';
+  });
+
+  /* 目录高亮 */
+  var chips = Array.prototype.slice.call(document.querySelectorAll('.chip'));
+  var map = {};
+  chips.forEach(function(c){ map[c.getAttribute('href').slice(1)] = c; });
+  var spy = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        chips.forEach(function(c){ c.classList.remove('active'); });
+        var c = map[e.target.id];
+        if(c){
+          c.classList.add('active');
+          var wrap = document.getElementById('chips');
+          var left = c.offsetLeft - wrap.clientWidth/2 + c.clientWidth/2;
+          wrap.scrollTo({left: Math.max(0,left), behavior:'smooth'});
+        }
+      }
+    });
+  }, {rootMargin:'-45% 0px -50% 0px', threshold:0});
+  document.querySelectorAll('section[id]').forEach(function(s){ spy.observe(s); });
+})();
+</script>
+</body>
+</html>

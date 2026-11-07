@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Unit 3 · A Day to Remember ｜ 精读解析与词汇手册</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Noto+Serif+SC:wght@300;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f6f1e6; --paper-2:#efe7d6; --card:#fffdf7;
+  --ink:#1c2a21; --ink-soft:#5a6a5e;
+  --forest:#16382a; --moss:#2f6a4a; --amber:#c26a26; --amber-2:#e0a04a;
+  --line:rgba(22,56,42,.16); --line-strong:rgba(22,56,42,.34);
+  --shadow:0 30px 70px -46px rgba(18,42,28,.6);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Noto Serif SC',Georgia,serif;color:var(--ink);background:var(--paper);
+  background-image:
+    radial-gradient(80% 55% at 8% 12%, rgba(47,106,74,.10) 0%, transparent 62%),
+    radial-gradient(65% 50% at 95% 38%, rgba(194,106,38,.10) 0%, transparent 60%),
+    radial-gradient(90% 60% at 50% 105%, rgba(22,56,42,.08) 0%, transparent 55%);
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+body::after{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:200;opacity:.055;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+::selection{background:rgba(194,106,38,.28)}
+
+/* ---------- progress ---------- */
+.progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:150;background:rgba(22,56,42,.10)}
+.progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--amber),var(--amber-2),var(--moss))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:94vh;display:flex;flex-direction:column;justify-content:center;
+  padding:clamp(30px,7vw,110px);overflow:hidden;color:#f2e8d3;isolation:isolate}
+.hero-bg{position:absolute;inset:0;z-index:-2;
+  background:
+   radial-gradient(58% 72% at 12% 22%, #2c6446 0%, transparent 62%),
+   radial-gradient(52% 62% at 88% 12%, #245238 0%, transparent 58%),
+   radial-gradient(78% 82% at 72% 98%, #10271b 0%, transparent 62%),
+   linear-gradient(160deg,#123526 0%,#0d2419 100%);}
+.hero-bg::after{content:'';position:absolute;inset:0;opacity:.22;
+  background-image:repeating-linear-gradient(115deg, rgba(255,255,255,.07) 0 1px, transparent 1px 16px);}
+.hero-inner{position:relative;z-index:2;max-width:1000px}
+.kicker{display:flex;align-items:center;gap:14px;font-family:'DM Mono',monospace;font-size:.72rem;
+  letter-spacing:.32em;text-transform:uppercase;color:rgba(240,228,205,.72)}
+.kicker i{width:60px;height:1px;background:rgba(240,228,205,.42)}
+.hero-title{font-family:'Fraunces',serif;font-weight:300;line-height:.92;letter-spacing:-.02em;
+  font-size:clamp(3.1rem,10vw,8.2rem);margin:.22em 0 .18em;}
+.hero-title em{font-style:italic;font-weight:600;color:var(--amber-2);display:inline-block;position:relative}
+.hero-title em::after{content:'';position:absolute;left:-2%;right:-2%;bottom:.06em;height:.10em;
+  background:var(--amber);opacity:.85;transform:rotate(-1.1deg)}
+.hero-sub{font-size:clamp(1rem,2.1vw,1.32rem);max-width:62ch;line-height:1.85;color:rgba(242,232,211,.86)}
+.hero-chips{display:flex;flex-wrap:wrap;gap:10px;list-style:none;margin-top:30px}
+.hero-chips li{font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;
+  padding:9px 16px;border:1px solid rgba(240,228,205,.3);border-radius:100px;color:rgba(242,232,211,.85)}
+.hero-note{margin-top:34px;max-width:56ch;font-size:.96rem;line-height:1.95;color:rgba(242,232,211,.72);
+  padding-left:18px;border-left:2px solid var(--amber)}
+.demo-v{color:#ffd9a8;border-bottom:1.5px solid var(--amber-2)}
+.hero-num{position:absolute;right:-2vw;bottom:-6vh;z-index:1;font-family:'Fraunces',serif;font-weight:700;
+  font-size:clamp(160px,34vw,460px);line-height:.8;color:transparent;-webkit-text-stroke:1.6px rgba(240,228,205,.24);
+  transform:rotate(-8deg);pointer-events:none;user-select:none}
+.scroll-hint{position:absolute;left:clamp(30px,7vw,110px);bottom:34px;z-index:3;color:rgba(242,232,211,.8);
+  text-decoration:none;font-family:'DM Mono',monospace;font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;
+  display:flex;align-items:center;gap:12px}
+.scroll-hint span{display:inline-block;animation:bob 1.9s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
+
+/* ---------- rail nav ---------- */
+.rail{position:sticky;top:0;z-index:120;display:flex;flex-wrap:wrap;gap:6px;align-items:center;
+  padding:14px clamp(18px,5vw,70px);background:rgba(246,241,230,.9);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line)}
+.rail a{font-family:'DM Mono',monospace;font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink-soft);text-decoration:none;padding:8px 15px;border-radius:100px;border:1px solid transparent;transition:.25s}
+.rail a:hover{color:var(--forest);border-color:var(--line-strong)}
+.rail a.on{background:var(--forest);color:#f6ecd8;border-color:var(--forest)}
+.rail .rail-tag{margin-left:auto;font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--ink-soft);opacity:.75}
+
+/* ---------- sections ---------- */
+.section{padding:clamp(58px,9vw,124px) clamp(20px,6vw,88px);position:relative}
+.sec-head{display:flex;flex-wrap:wrap;align-items:flex-end;gap:clamp(16px,3vw,38px);margin-bottom:clamp(30px,5vw,58px)}
+.sec-num{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(56px,10vw,138px);line-height:.78;
+  color:transparent;-webkit-text-stroke:1.5px var(--moss);opacity:.55}
+.sec-titles h2{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.85rem,4.3vw,3.15rem);
+  letter-spacing:-.015em;line-height:1.12}
+.sec-titles p{margin-top:10px;color:var(--ink-soft);font-size:.98rem;line-height:1.9;max-width:60ch}
+.sec-rule{flex:1;height:1px;background:var(--line-strong);min-width:60px;margin-bottom:14px}
+
+/* ---------- passage ---------- */
+.passage{position:relative;background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);
+  padding:clamp(22px,4.2vw,58px);margin-bottom:clamp(28px,4vw,54px);overflow:hidden}
+.passage::before{content:'';position:absolute;left:0;top:0;bottom:0;width:7px;
+  background:linear-gradient(180deg,var(--moss),var(--amber) 65%,var(--amber-2))}
+.passage::after{content:'';position:absolute;right:-70px;top:-70px;width:210px;height:210px;border-radius:50%;
+  background:radial-gradient(circle,rgba(47,106,74,.13),transparent 70%)}
+.p-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:14px;margin-bottom:22px;position:relative;z-index:2}
+.p-idx{font-family:'DM Mono',monospace;font-size:.76rem;letter-spacing:.26em;color:var(--amber);text-transform:uppercase}
+.p-head h3{font-family:'Fraunces',serif;font-size:clamp(1.35rem,2.9vw,2.15rem);font-weight:600;letter-spacing:-.01em}
+.meta{display:flex;flex-wrap:wrap;gap:8px;width:100%;margin-top:4px}
+.meta span{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.12em;padding:6px 12px;
+  border:1px solid var(--line);border-radius:100px;color:var(--ink-soft);background:rgba(47,106,74,.05)}
+.para{font-size:clamp(1.02rem,1.55vw,1.19rem);line-height:2.18;letter-spacing:.005em;margin-bottom:1.35em;
+  text-align:justify;position:relative;z-index:2}
+.para:last-of-type{margin-bottom:0}
+.toolbar{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px;padding-top:20px;border-top:1px dashed var(--line-strong)}
+.btn{font-family:'DM Mono',monospace;font-size:.73rem;letter-spacing:.13em;text-transform:uppercase;
+  padding:11px 20px;border:1px solid var(--forest);background:transparent;color:var(--forest);cursor:pointer;
+  border-radius:100px;transition:.28s}
+.btn:hover{background:var(--forest);color:#f4ead6;letter-spacing:.2em}
+.btn.amber{border-color:var(--amber);color:var(--amber)}
+.btn.amber:hover{background:var(--amber);color:#fff6e8}
+
+/* inline vocab */
+.v{font:inherit;color:inherit;background:none;border:0;cursor:pointer;padding:0 1px;
+  background-image:linear-gradient(transparent 64%,rgba(194,106,38,.30) 64%);
+  border-bottom:1.6px solid rgba(194,106,38,.8);transition:.22s;border-radius:2px}
+.v:hover,.v.active{color:#a4511a;background-image:linear-gradient(transparent 0,rgba(224,160,74,.42) 0)}
+.v::after{content:'\25B8';font-family:'DM Mono',monospace;font-size:.58em;vertical-align:super;
+  color:var(--amber);margin-left:2px;opacity:.75}
+
+/* blanks */
+.blank{display:inline-flex;align-items:baseline;justify-content:center;gap:5px;min-width:70px;padding:0 8px 2px;
+  border:0;border-bottom:2px solid rgba(22,56,42,.55);background:rgba(47,106,74,.07);cursor:pointer;
+  font-family:'DM Mono',monospace;font-size:.83em;color:var(--amber);transition:.25s;border-radius:3px 3px 0 0}
+.blank .a{display:none}
+.blank .no{opacity:.7}
+.blank:hover{background:rgba(194,106,38,.14)}
+.blank.show{background:rgba(194,106,38,.2);border-bottom-color:var(--amber)}
+.blank.show .a{display:inline;animation:pop .32s cubic-bezier(.2,.9,.3,1)}
+.blank.show .no{display:none}
+@keyframes pop{from{opacity:0;transform:translateY(6px) scale(.9)}to{opacity:1;transform:none}}
+
+/* mcq */
+.mcq-list{margin-top:28px;display:grid;gap:10px}
+.mcq{display:grid;grid-template-columns:52px repeat(3,1fr);gap:10px;align-items:stretch}
+.mcq-no{display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;
+  font-size:.86rem;color:var(--moss);border:1px solid var(--line);background:rgba(47,106,74,.06)}
+.mcq-opt{text-align:left;font-family:'Noto Serif SC',serif;font-size:.94rem;padding:12px 15px;cursor:pointer;
+  border:1px solid var(--line);background:var(--card);color:var(--ink);transition:.22s}
+.mcq-opt:hover{border-color:var(--moss);transform:translateX(3px)}
+.mcq-opt.right{background:rgba(47,106,74,.16);border-color:var(--moss);color:#1b4a32;font-weight:500}
+.mcq-opt.wrong{background:rgba(194,106,38,.14);border-color:var(--amber);color:#9c4c17;text-decoration:line-through}
+
+/* ---------- answers ---------- */
+.ans-block{margin-bottom:clamp(30px,4vw,52px)}
+.ans-block h3{font-family:'Fraunces',serif;font-size:clamp(1.25rem,2.6vw,1.85rem);font-weight:600;
+  padding-bottom:12px;border-bottom:2px solid var(--forest);display:flex;align-items:baseline;gap:12px}
+.ans-block h3 small{font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.22em;
+  color:var(--amber);text-transform:uppercase}
+.key-strip{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 24px}
+.key-strip b{font-family:'DM Mono',monospace;font-size:.76rem;font-weight:500;padding:8px 13px;
+  background:var(--forest);color:#f3e9d5;border-radius:3px;letter-spacing:.06em}
+.ans-item{display:grid;grid-template-columns:auto 1fr;gap:16px;padding:18px 20px;margin-bottom:10px;
+  background:rgba(255,253,247,.86);border:1px solid var(--line);border-left:3px solid var(--amber)}
+.ans-item .n{font-family:'DM Mono',monospace;font-size:.82rem;color:#fff;background:var(--moss);
+  width:32px;height:32px;display:flex;align-items:center;justify-content:center}
+.ans-item .res{font-size:1.02rem;line-height:1.9}
+.ans-item .res b{color:#a4511a;font-family:'DM Mono',monospace;font-size:.95em;letter-spacing:.03em}
+.ans-item .exp{margin-top:10px;font-size:.93rem;line-height:1.95;color:var(--ink-soft);
+  padding-left:14px;border-left:1px dashed var(--line-strong)}
+body.compact .ans-item .exp{display:none}
+.proof{margin-top:26px;padding:20px 24px;background:rgba(47,106,74,.09);border:1px solid var(--line);
+  font-size:.93rem;line-height:1.95;color:var(--ink-soft)}
+.proof b{color:var(--forest)}
+
+/* ---------- drill ---------- */
+.drill-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:clamp(18px,3vw,32px)}
+.drill{background:var(--card);border:1px solid var(--line);padding:clamp(20px,3vw,34px);box-shadow:var(--shadow)}
+.drill h4{font-family:'Fraunces',serif;font-size:1.22rem;font-weight:600;margin-bottom:6px}
+.drill .sub{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--amber);margin-bottom:18px}
+.drill ol{list-style:none;display:grid;gap:11px}
+.drill li{display:grid;grid-template-columns:26px 1fr;gap:10px;font-size:.97rem;line-height:1.85}
+.drill li i{font-style:normal;font-family:'DM Mono',monospace;font-size:.78rem;color:var(--moss);padding-top:4px}
+.drill .ans-line{color:#a4511a;font-family:'DM Mono',monospace;font-size:.92em}
+.drill .hid{display:none}
+.drill.on .hid{display:inline;animation:pop .3s ease}
+
+/* ---------- vocab ---------- */
+.vocab-tools{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:30px}
+.chip{font-family:'DM Mono',monospace;font-size:.71rem;letter-spacing:.12em;text-transform:uppercase;
+  padding:9px 16px;border:1px solid var(--line-strong);border-radius:100px;background:transparent;
+  color:var(--ink-soft);cursor:pointer;transition:.24s}
+.chip:hover{border-color:var(--moss);color:var(--forest)}
+.chip.on{background:var(--amber);border-color:var(--amber);color:#fff7ea}
+.search{flex:1;min-width:210px;display:flex;align-items:center;gap:10px;padding:10px 16px;
+  border:1px solid var(--line-strong);background:rgba(255,253,247,.7)}
+.search input{flex:1;border:0;background:transparent;outline:none;font-family:'DM Mono',monospace;
+  font-size:.82rem;color:var(--ink);letter-spacing:.05em}
+.search span{font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.18em;color:var(--ink-soft)}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.vcard{position:relative;background:var(--card);border:1px solid var(--line);padding:22px 22px 20px;
+  transition:transform .32s cubic-bezier(.2,.9,.3,1),box-shadow .32s}
+.vcard:hover{transform:translateY(-5px);box-shadow:0 28px 48px -32px rgba(18,42,28,.5);border-color:var(--moss)}
+.vcard-top{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+.vcard-top h4{font-family:'Fraunces',serif;font-size:1.32rem;font-weight:600;letter-spacing:-.01em;line-height:1.25}
+.say{border:1px solid var(--line-strong);background:transparent;width:32px;height:32px;border-radius:50%;
+  cursor:pointer;color:var(--moss);font-size:.95rem;flex:none;transition:.24s}
+.say:hover{background:var(--moss);color:#f6ecd8;border-color:var(--moss)}
+.vcard-meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0 12px}
+.ipa{font-family:'DM Mono',monospace;font-size:.75rem;color:var(--ink-soft)}
+.pos{font-family:'DM Mono',monospace;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;
+  padding:4px 9px;background:rgba(47,106,74,.12);color:var(--moss);border-radius:3px}
+.tg{font-family:'DM Mono',monospace;font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;
+  padding:4px 9px;background:rgba(194,106,38,.14);color:#a4511a;border-radius:3px}
+.vcard-cn{font-size:1.02rem;line-height:1.8;font-weight:500}
+.vcard-note{font-size:.87rem;line-height:1.85;color:var(--ink-soft);margin:8px 0 12px}
+.vcard-ex{padding:12px 14px;background:rgba(47,106,74,.07);border-left:2px solid var(--moss)}
+.vcard-ex .en{font-size:.93rem;line-height:1.75;font-style:italic}
+.vcard-ex .cn{font-size:.84rem;line-height:1.75;color:var(--ink-soft);margin-top:4px}
+.empty{grid-column:1/-1;padding:40px;text-align:center;color:var(--ink-soft);font-family:'DM Mono',monospace;
+  letter-spacing:.16em;text-transform:uppercase;font-size:.78rem}
+
+/* ---------- popover ---------- */
+.pop{position:fixed;z-index:180;width:min(340px,88vw);background:#12291d;color:#f2e8d3;padding:20px 22px;
+  opacity:0;pointer-events:none;transform:translateY(10px) scale(.97);transition:opacity .22s ease,transform .22s ease;
+  box-shadow:0 34px 70px -28px rgba(8,24,16,.75);border:1px solid rgba(224,160,74,.35)}
+.pop.on{opacity:1;pointer-events:auto;transform:none}
+.pop-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.pop-head h5{font-family:'Fraunces',serif;font-size:1.32rem;font-weight:600;letter-spacing:-.01em}
+.pop-say{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;
+  padding:7px 13px;border:1px solid rgba(224,160,74,.5);background:transparent;color:var(--amber-2);cursor:pointer;
+  border-radius:100px;transition:.24s}
+.pop-say:hover{background:var(--amber-2);color:#12291d}
+.pop-meta{display:flex;gap:12px;align-items:center;margin:10px 0 12px;font-family:'DM Mono',monospace;font-size:.74rem}
+.pop-meta span{opacity:.72}
+.pop-meta b{color:var(--amber-2);font-weight:500;letter-spacing:.12em;text-transform:uppercase}
+.pop-cn{font-size:1.02rem;line-height:1.75}
+.pop-note{font-size:.84rem;line-height:1.8;opacity:.72;margin:8px 0 12px}
+.pop-ex{padding:12px 14px;background:rgba(255,255,255,.07);border-left:2px solid var(--amber-2)}
+.pop-ex p:first-child{font-style:italic;font-size:.92rem;line-height:1.72}
+.pop-ex p:last-child{font-size:.82rem;opacity:.72;margin-top:5px;line-height:1.7}
+
+/* ---------- footer ---------- */
+footer{background:var(--forest);color:rgba(242,232,211,.82);padding:clamp(40px,7vw,80px) clamp(20px,6vw,88px)}
+.foot-grid{display:flex;flex-wrap:wrap;gap:26px;justify-content:space-between;align-items:flex-end}
+footer h4{font-family:'Fraunces',serif;font-size:clamp(1.5rem,3.4vw,2.35rem);color:#f4ead6;font-weight:300;letter-spacing:-.01em}
+footer h4 em{font-style:italic;color:var(--amber-2)}
+footer p{font-family:'DM Mono',monospace;font-size:.73rem;letter-spacing:.16em;text-transform:uppercase;opacity:.66;line-height:2.2}
+
+/* ---------- reveal ---------- */
+[data-reveal]{opacity:0;transform:translateY(24px);
+  transition:opacity .78s cubic-bezier(.22,.9,.25,1),transform .78s cubic-bezier(.22,.9,.25,1)}
+[data-reveal].in{opacity:1;transform:none}
+
+/* ---------- responsive ---------- */
+@media(max-width:820px){
+  .mcq{grid-template-columns:44px 1fr}
+  .mcq-no{grid-row:span 3}
+  .hero-num{font-size:clamp(140px,42vw,260px);opacity:.85}
+  .rail .rail-tag{display:none}
+}
+@media(max-width:520px){
+  .sec-num{opacity:.38}
+  .para{line-height:2.05}
+  .ans-item{grid-template-columns:1fr}
+  .ans-item .n{width:28px;height:28px}
+}
+</style>
+</head>
+<body>
+
+<div class="progress"><i id="bar"></i></div>
+
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div class="kicker"><span>初中英语话题阅读</span><i></i><span>七年级上册</span></div>
+    <h1 class="hero-title">A Day<br><em>to Remember</em></h1>
+    <p class="hero-sub">Unit 3 ｜ 语法填空 · 完形填空 · 阅读表达 —— 全文提取 · 逐题解析 · 生词生短语手册</p>
+    <ul class="hero-chips">
+      <li>语篇类型 · 记叙文</li><li>三大板块</li><li>答案详解</li><li>词汇 60+</li><li>点击可发音</li>
+    </ul>
+    <p class="hero-note">正文中带<span class="demo-v">下划线</span>的生词与短语均可点击，弹出音标、词性、用法与例句；每篇下方的横线空格点击即可显示答案。</p>
+  </div>
+  <div class="hero-num">03</div>
+  <a class="scroll-hint" href="#reading">向下阅读 <span>↓</span></a>
+</header>
+
+<nav class="rail" id="rail">
+  <a href="#reading">01 原文精读</a>
+  <a href="#answers">02 答案解析</a>
+  <a href="#drill">03 积累小练</a>
+  <a href="#vocab">04 词汇手册</a>
+  <span class="rail-tag">Unit 3 · A Day to Remember</span>
+</nav>
+
+<main>
+
+<!-- ============ 01 原文精读 ============ -->
+<section class="section" id="reading">
+  <div class="sec-head" data-reveal>
+    <div class="sec-num">01</div>
+    <div class="sec-titles">
+      <h2>原文精读</h2>
+      <p>三篇短文完整呈现。带下划线处为生词与短语，点击可查看释义、用法与例句；数字横线处点击可显示答案。</p>
+    </div>
+    <div class="sec-rule"></div>
+  </div>
+
+  <!-- Passage A -->
+  <article class="passage" id="pA" data-reveal>
+    <div class="p-head">
+      <div class="p-idx">Text 01 / 语法填空</div>
+      <h3>Tom's Diary — A Day in the Forest</h3>
+      <div class="meta">
+        <span>主题 · 人与自然</span><span>语篇类型 · 记叙文</span><span>词数 · 221</span><span>建议用时 · 7′</span><span>正确率 ／10</span>
+      </div>
+    </div>
+    <p class="para">On a <button class="v" data-k="warm_spring">warm spring day</button>, the sun <button class="v" data-k="shone">shone</button> brightly. Tom sat <button class="blank" data-no="1"><span class="no">1</span><span class="a">under</span></button> a tree and began writing his <button class="v" data-k="diary">diary</button>. He wrote, “Today, my friends and I <button class="blank" data-no="2"><span class="no">2</span><span class="a">explored</span></button> (<button class="v" data-k="explore">explore</button>) the forest. Deep in the <button class="v" data-k="woods">woods</button>, we discovered an <button class="v" data-k="ancient">ancient</button> tree <button class="v" data-k="whose">whose</button> <button class="blank" data-no="3"><span class="no">3</span><span class="a">branches</span></button> (<button class="v" data-k="branch">branch</button>) <button class="v" data-k="seem_like">seemed like</button> <button class="v" data-k="pages_history">pages of history</button>, and it was <button class="v" data-k="tell_stories">telling stories of the past</button>.”</p>
+
+    <p class="para">Tom's grandfather <button class="blank" data-no="4"><span class="no">4</span><span class="a">taught</span></button> (<button class="v" data-k="teach">teach</button>) him how to <button class="v" data-k="identify">identify</button>(识别) the age of trees by their <button class="v" data-k="ring">rings</button>(年轮). He touched the <button class="v" data-k="bark">bark</button>, feeling <button class="v" data-k="passage_time">the passage of time</button> through nature. After a day's <button class="v" data-k="adventure">adventure</button>, they <button class="blank" data-no="5"><span class="no">5</span><span class="a">filled</span></button> (<button class="v" data-k="fill_with">fill</button>) their <button class="v" data-k="backpack">backpacks</button> with <button class="blank" data-no="6"><span class="no">6</span><span class="a">fresh</span></button> (fresh) flowers and <button class="v" data-k="seed">seeds</button>.</p>
+
+    <p class="para">Back home, Tom used these seeds to plant a small garden. He knew they would <button class="v" data-k="grow_up">grow up</button> in the sun and rain. He believed these seeds of nature would bring <button class="blank" data-no="7"><span class="no">7</span><span class="a">him</span></button> (he) more <button class="v" data-k="surprise">surprises</button> <button class="v" data-k="future">in the future</button>. He wrote about this experience <button class="blank" data-no="8"><span class="no">8</span><span class="a">happily</span></button> (happy).</p>
+
+    <p class="para">On <button class="blank" data-no="9"><span class="no">9</span><span class="a">the</span></button> last page of his diary, Tom <button class="v" data-k="note">noted</button>, “Today, I <button class="v" data-k="not_only">not only</button> used my eyes to see <button class="blank" data-no="10"><span class="no">10</span><span class="a">but</span></button> also used my heart to feel.” He closed the diary, <button class="v" data-k="look_forward">looking forward to</button> his next forest adventure.</p>
+
+    <div class="toolbar">
+      <button class="btn amber" data-show="#pA">显示全部答案</button>
+      <button class="btn" onclick="document.getElementById('ansA').scrollIntoView({behavior:'smooth'})">查看解析</button>
+      <button class="btn" onclick="document.getElementById('vocab').scrollIntoView({behavior:'smooth'})">词汇手册</button>
+    </div>
+  </article>
+
+  <!-- Passage B -->
+  <article class="passage" id="pB" data-reveal>
+    <div class="p-head">
+      <div class="p-idx">Text 02 / 完形填空</div>
+      <h3>A Study Trip to Zhoucun District</h3>
+      <div class="meta">
+        <span>主题 · 人与自然（饮食文化）</span><span>语篇类型 · 记叙文</span><span>词数 · 180</span><span>建议用时 · 5′</span><span>正确率 ／10</span>
+      </div>
+    </div>
+    <p class="para">A group of <button class="v" data-k="international">international</button> students studying in Zibo took a trip to Zhoucun <button class="v" data-k="district">district</button> in Zibo. <button class="blank" data-no="1"><span class="no">1</span><span class="a">B. They</span></button> went there to <button class="v" data-k="explore">explore</button> the district's special culture and food made by <button class="v" data-k="local">local</button> people.</p>
+
+    <p class="para">The students visited many <button class="blank" data-no="2"><span class="no">2</span><span class="a">C. places</span></button> in Zhoucun. They went to the Zhoucun Pancake(烧饼) Museum, a <button class="v" data-k="vegetarian">vegetarian</button>(素食的) <button class="v" data-k="restaurant">restaurant</button> called Yibaisui, and the Zhiyin Tea House. At the Zhoucun Pancake Museum, students <button class="blank" data-no="3"><span class="no">3</span><span class="a">A. learnt about</span></button> <button class="v" data-k="history_of">the history of</button> Zhoucun pancakes <button class="v" data-k="past_hundred">over the past hundred years</button>. And they tasted the <button class="v" data-k="thin">thin</button> and <button class="blank" data-no="4"><span class="no">4</span><span class="a">A. delicious</span></button> pancakes. Then, they went to the Yibaisui vegetarian <button class="blank" data-no="5"><span class="no">5</span><span class="a">C. restaurant</span></button> for lunch and ate vegetarian meat <button class="v" data-k="product">products</button>. One student said they were <button class="v" data-k="same_as">the same as</button> the <button class="blank" data-no="6"><span class="no">6</span><span class="a">B. real</span></button> meat. And they thought they were not only <button class="v" data-k="delicious">delicious</button> but also <button class="v" data-k="good_for">good</button> <button class="blank" data-no="7"><span class="no">7</span><span class="a">A. for</span></button> health. They <button class="blank" data-no="8"><span class="no">8</span><span class="a">A. showed</span></button> <button class="v" data-k="show_love">their love for</button> vegetarian food. <button class="v" data-k="end_of">At the end of</button> the trip, they <button class="blank" data-no="9"><span class="no">9</span><span class="a">B. enjoyed</span></button> the tea at Zhiyin Tea House.</p>
+
+    <p class="para">The <button class="blank" data-no="10"><span class="no">10</span><span class="a">C. activity</span></button> lets students see and feel the <button class="v" data-k="traditional">traditional</button> Chinese food and tea <button class="v" data-k="culture">culture</button> in Zhoucun district. Students want to go there again.</p>
+
+    <div class="mcq-list">
+      <div class="mcq"><div class="mcq-no">1</div><button class="mcq-opt">A. We</button><button class="mcq-opt" data-ok="1">B. They</button><button class="mcq-opt">C. He</button></div>
+      <div class="mcq"><div class="mcq-no">2</div><button class="mcq-opt">A. parks</button><button class="mcq-opt">B. cities</button><button class="mcq-opt" data-ok="1">C. places</button></div>
+      <div class="mcq"><div class="mcq-no">3</div><button class="mcq-opt" data-ok="1">A. learnt about</button><button class="mcq-opt">B. cared about</button><button class="mcq-opt">C. thought about</button></div>
+      <div class="mcq"><div class="mcq-no">4</div><button class="mcq-opt" data-ok="1">A. delicious</button><button class="mcq-opt">B. true</button><button class="mcq-opt">C. fun</button></div>
+      <div class="mcq"><div class="mcq-no">5</div><button class="mcq-opt">A. station</button><button class="mcq-opt">B. hotel</button><button class="mcq-opt" data-ok="1">C. restaurant</button></div>
+      <div class="mcq"><div class="mcq-no">6</div><button class="mcq-opt">A. clean</button><button class="mcq-opt" data-ok="1">B. real</button><button class="mcq-opt">C. beautiful</button></div>
+      <div class="mcq"><div class="mcq-no">7</div><button class="mcq-opt" data-ok="1">A. for</button><button class="mcq-opt">B. of</button><button class="mcq-opt">C. about</button></div>
+      <div class="mcq"><div class="mcq-no">8</div><button class="mcq-opt" data-ok="1">A. showed</button><button class="mcq-opt">B. lost</button><button class="mcq-opt">C. stopped</button></div>
+      <div class="mcq"><div class="mcq-no">9</div><button class="mcq-opt">A. spent</button><button class="mcq-opt" data-ok="1">B. enjoyed</button><button class="mcq-opt">C. asked</button></div>
+      <div class="mcq"><div class="mcq-no">10</div><button class="mcq-opt">A. job</button><button class="mcq-opt">B. problem</button><button class="mcq-opt" data-ok="1">C. activity</button></div>
+    </div>
+
+    <div class="toolbar">
+      <button class="btn amber" data-show="#pB">显示全部答案</button>
+      <button class="btn" onclick="document.getElementById('ansB').scrollIntoView({behavior:'smooth'})">查看解析</button>
+    </div>
+  </article>
+
+  <!-- Passage C -->
+  <article class="passage" id="pC" data-reveal>
+    <div class="p-head">
+      <div class="p-idx">Text 03 / 阅读表达</div>
+      <h3>No Matter What Happens</h3>
+      <div class="meta">
+        <span>主题 · 人与自我（做人与做事）</span><span>语篇类型 · 记叙文</span><span>词数 · 219</span><span>建议用时 · 7′</span><span>正确率 ／5</span>
+      </div>
+    </div>
+    <p class="para">In 1989, a <button class="v" data-k="huge">huge</button> <button class="v" data-k="earthquake">earthquake</button> <button class="v" data-k="hit">hit</button> a small town <button class="v" data-k="suddenly">suddenly</button>. After it happened, a father <button class="v" data-k="rush_to">rushed to</button> his son's school, only to <button class="v" data-k="discover">discover</button> that all the buildings <button class="v" data-k="fall_down">fell down</button>. The father remembered his <button class="v" data-k="promise">promise</button> to his son: “<button class="v" data-k="no_matter">No matter what happens</button>, I'll always <button class="v" data-k="there_for">be there for you</button>!” With <button class="v" data-k="tears">tears</button> in his eyes, he started to <button class="v" data-k="dig">dig</button>(挖) through the <button class="v" data-k="ruins">ruins</button>(废墟).</p>
+
+    <p class="para">As he was digging, other parents tried to stop him, saying, “It's too late. They're all <button class="v" data-k="gone">gone</button>.” The father asked, “Will you help me now?” But no one answered, so he <button class="v" data-k="keep_doing">kept digging</button> alone.</p>
+
+    <p class="para"><button class="v" data-k="firefighter">Firefighters</button> and police came, telling him it was <button class="v" data-k="dangerous">dangerous</button>, but he asked, “Will you help me now?” No one helped, so he dug alone.</p>
+
+    <p class="para">He dug for 8 hours… 12 hours… 24 hours… 36 hours… Then, after 38 hours of digging, he <button class="v" data-k="pull_back">pulled back</button> a large stone and heard his son's <button class="v" data-k="voice">voice</button>.</p>
+
+    <p class="para">He <button class="v" data-k="scream">screamed</button> his son's name, “Tom!”</p>
+
+    <p class="para">He heard back, “Dad?! It's me, Dad! And 14 other kids here. I told them not to worry. I told them that if you were <button class="v" data-k="alive">alive</button>, you'd <button class="v" data-k="save">save</button> me. And when you saved me, they'll be saved.”</p>
+
+    <p class="para">“Come out, my boy!”</p>
+
+    <p class="para">“No, Dad! <button class="v" data-k="let_out">Let the other kids out first</button>, because you know you'll save me! <button class="v" data-k="no_matter">No matter what happens</button>, you know I'll always be there for you!”</p>
+
+    <div class="toolbar">
+      <button class="btn amber" onclick="document.getElementById('ansC').scrollIntoView({behavior:'smooth'})">查看参考答案</button>
+      <button class="btn" onclick="document.getElementById('vocab').scrollIntoView({behavior:'smooth'})">词汇手册</button>
+    </div>
+  </article>
+</section>
+
+<!-- ============ 02 答案解析 ============ -->
+<section class="section" id="answers" style="background:linear-gradient(180deg,transparent,rgba(47,106,74,.07) 22%,rgba(47,106,74,.07) 78%,transparent)">
+  <div class="sec-head" data-reveal>
+    <div class="sec-num">02</div>
+    <div class="sec-titles">
+      <h2>答案与详细解析</h2>
+      <p>逐题给出答案与考查要点，涵盖时态、词性、固定搭配、上下文逻辑与开放性作答思路。</p>
+    </div>
+    <div class="sec-rule"></div>
+    <button class="btn" id="compactBtn">简洁模式：隐藏解析</button>
+  </div>
+
+  <!-- A -->
+  <div class="ans-block" id="ansA" data-reveal>
+    <h3>语法填空 <small>Grammar Cloze · 10 items</small></h3>
+    <div class="key-strip">
+      <b>1. under</b><b>2. explored</b><b>3. branches</b><b>4. taught</b><b>5. filled</b>
+      <b>6. fresh</b><b>7. him</b><b>8. happily</b><b>9. the</b><b>10. but</b>
+    </div>
+    <div class="ans-item"><div class="n">1</div><div class="res"><b>under</b> — 考查介词。<div class="exp">sit <b>under</b> a tree 表示“坐在树下”，用介词 under 表示在……下方。</div></div></div>
+    <div class="ans-item"><div class="n">2</div><div class="res"><b>explored</b> — 考查动词时态。<div class="exp">全文为一般过去时叙事（shone、sat、began），引语讲述当天已经发生的事情，故 explore 变为过去式 <b>explored</b>。</div></div></div>
+    <div class="ans-item"><div class="n">3</div><div class="res"><b>branches</b> — 考查名词单复数。<div class="exp">whose 引导定语从句修饰 tree；后文 seemed like <b>pages</b> of history（许多“页”）提示树枝不止一根，故用复数 <b>branches</b>。</div></div></div>
+    <div class="ans-item"><div class="n">4</div><div class="res"><b>taught</b> — 考查不规则动词过去式。<div class="exp">teach 的过去式是 <b>taught</b>，符合记叙文的过去时语境。</div></div></div>
+    <div class="ans-item"><div class="n">5</div><div class="res"><b>filled</b> — 考查时态与固定搭配。<div class="exp">fill 的过去式为 filled；<b>fill … with …</b> 意为“用……装满……”，此处指把背包装满鲜花和种子。</div></div></div>
+    <div class="ans-item"><div class="n">6</div><div class="res"><b>fresh</b> — 考查词性。<div class="exp">括号中为形容词 fresh，直接修饰 flowers and seeds，“新鲜的花和种子”，无需变形。</div></div></div>
+    <div class="ans-item"><div class="n">7</div><div class="res"><b>him</b> — 考查人称代词。<div class="exp">bring 是动词，其后用宾格形式 <b>him</b> 指代 Tom。</div></div></div>
+    <div class="ans-item"><div class="n">8</div><div class="res"><b>happily</b> — 考查形容词变副词。<div class="exp">修饰动词 wrote 需用副词，happy → <b>happily</b>，“高兴地写下这段经历”。</div></div></div>
+    <div class="ans-item"><div class="n">9</div><div class="res"><b>the</b> — 考查冠词。<div class="exp">on <b>the</b> last page of … 特指“日记的最后一页”，用定冠词 the。</div></div></div>
+    <div class="ans-item"><div class="n">10</div><div class="res"><b>but</b> — 考查连词。<div class="exp">固定结构 <b>not only … but also …</b> “不仅……而且……”，故填 but。</div></div></div>
+  </div>
+
+  <!-- B -->
+  <div class="ans-block" id="ansB" data-reveal>
+    <h3>完形填空 <small>Cloze Test · 10 items</small></h3>
+    <div class="key-strip">
+      <b>1. B</b><b>2. C</b><b>3. A</b><b>4. A</b><b>5. C</b>
+      <b>6. B</b><b>7. A</b><b>8. A</b><b>9. B</b><b>10. C</b>
+    </div>
+    <div class="ans-item"><div class="n">1</div><div class="res"><b>B. They</b><div class="exp">指代前文 a group of international students（一群国际学生），应用复数代词 They；We 与人称不符，He 不能指代一群人。</div></div></div>
+    <div class="ans-item"><div class="n">2</div><div class="res"><b>C. places</b><div class="exp">后文具体列举了烧饼博物馆、素食餐馆、茶馆，泛指“很多地方”用 places 最贴切；parks、cities 范围不符。</div></div></div>
+    <div class="ans-item"><div class="n">3</div><div class="res"><b>A. learnt about</b><div class="exp">learn about 意为“了解”，learnt about the history of … “了解……的历史”；care about 关心、think about 考虑，均不符合“参观博物馆了解历史”的语境。</div></div></div>
+    <div class="ans-item"><div class="n">4</div><div class="res"><b>A. delicious</b><div class="exp">与下文 “not only <b>delicious</b> but also good for health” 相呼应，thin and delicious“薄而美味”。true、fun 与食物评价无关。</div></div></div>
+    <div class="ans-item"><div class="n">5</div><div class="res"><b>C. restaurant</b><div class="exp">上文已交代 Yibaisui 是 a vegetarian <b>restaurant</b>，属原词复现。</div></div></div>
+    <div class="ans-item"><div class="n">6</div><div class="res"><b>B. real</b><div class="exp">素肉“与真正的肉一样”（the same as the <b>real</b> meat），clean“干净的”、beautiful“美丽的”不合逻辑。</div></div></div>
+    <div class="ans-item"><div class="n">7</div><div class="res"><b>A. for</b><div class="exp">固定搭配 <b>be good for</b> health “对健康有益”。</div></div></div>
+    <div class="ans-item"><div class="n">8</div><div class="res"><b>A. showed</b><div class="exp"><b>show one's love for</b> “表达对……的喜爱”；lost“丢失”、stopped“停止”与文意相反。</div></div></div>
+    <div class="ans-item"><div class="n">9</div><div class="res"><b>B. enjoyed</b><div class="exp">enjoy the tea “品茶、享受茶”；spend 需接时间或金钱，ask“询问”不合语境。</div></div></div>
+    <div class="ans-item"><div class="n">10</div><div class="res"><b>C. activity</b><div class="exp">“这次<b>活动</b>让学生看到并感受到中华饮食与茶文化”，与末句 Students want to go there again 呼应；job、problem 均不成立。</div></div></div>
+  </div>
+
+  <!-- C -->
+  <div class="ans-block" id="ansC" data-reveal>
+    <h3>阅读表达 <small>Reading Response · 5 questions</small></h3>
+    <div class="ans-item"><div class="n">1</div><div class="res"><b>He went to his son's school at once.</b>（地震后他立刻去了儿子的学校。）<div class="exp">依据原文 “a father <b>rushed to his son's school</b>”，rush to = go to … at once。</div></div></div>
+    <div class="ans-item"><div class="n">2</div><div class="res"><b>He kept digging (alone) through the ruins for 38 hours, and finally pulled back a large stone.</b><div class="exp">依据 “he started to dig through the ruins”“he kept digging alone”“after 38 hours of digging, he pulled back a large stone”，回答“做了什么”要概括其救援动作与坚持的时长。</div></div></div>
+    <div class="ans-item"><div class="n">3</div><div class="res"><b>No one. / Nobody — he saved his son alone.</b><div class="exp">依据 “But no one answered”“No one helped, so he dug alone”。其他家长、消防员和警察都未出手相助，是父亲独自挖了 38 小时。</div></div></div>
+    <div class="ans-item"><div class="n">4</div><div class="res"><b>After 38 hours of digging (when he pulled back a large stone).</b><div class="exp">依据 “Then, after 38 hours of digging, he pulled back a large stone and <b>heard his son's voice</b>”。注意 when/after 引导的时间状语。</div></div></div>
+    <div class="ans-item"><div class="n">5</div><div class="res"><b>开放性设问示例：</b><div class="exp">From the father, we learn that we should <b>never give up</b> and always <b>keep our promises</b>. From the son, we learn that we should be <b>brave</b> and <b>think of others first</b>.（从父亲身上学到：永不放弃、信守承诺；从儿子身上学到：勇敢无畏、先为他人着想。也可围绕“家人的爱与陪伴”“遇到困难要有信心”作答，言之有理即可。）</div></div></div>
+
+    <div class="proof"><b>校对说明：</b>语法填空已逐题核对时态（一般过去时）、词性转换（形容词→副词、代词宾格）与固定搭配（fill … with …、not only … but also …）；完形填空逐题核对上下文逻辑与原词复现（restaurant、delicious）；阅读表达答案均可在原文找到直接依据，开放题提供了可迁移的作答模板。</div>
+  </div>
+</section>
+
+<!-- ============ 03 积累小练 ============ -->
+<section class="section" id="drill">
+  <div class="sec-head" data-reveal>
+    <div class="sec-num">03</div>
+    <div class="sec-titles">
+      <h2>积累小练</h2>
+      <p>每篇短文后的短语互译与仿写句子，点击“显示答案”即可查看参考答案。</p>
+    </div>
+    <div class="sec-rule"></div>
+  </div>
+
+  <div class="drill-grid">
+    <div class="drill" data-reveal>
+      <div class="sub">Text 01 · 语法填空配套</div>
+      <h4>短语互译 &amp; 仿写句子</h4>
+      <ol>
+        <li><i>01</i><div>tell stories of the past <span class="hid ans-line">→ 讲述过去的故事</span></div></li>
+        <li><i>02</i><div>look forward to doing sth <span class="hid ans-line">→ 期待 / 盼望做某事</span></div></li>
+        <li><i>03</i><div>长大；成长 <span class="hid ans-line">→ grow up</span></div></li>
+        <li><i>04</i><div>用……装满…… <span class="hid ans-line">→ fill … with …</span></div></li>
+        <li><i>05</i><div>在一个温暖的春日 <span class="hid ans-line">→ on a warm spring day</span></div></li>
+        <li><i>06</i><div>仿写（use sth to do sth）：我们用词典来查阅新的英语单词。<span class="hid ans-line"><br>We use dictionaries to look up new English words.</span></div></li>
+      </ol>
+      <div class="toolbar"><button class="btn amber" data-drill>显示答案</button></div>
+    </div>
+
+    <div class="drill" data-reveal>
+      <div class="sub">Text 02 · 完形填空配套</div>
+      <h4>短语互译 &amp; 完成句子</h4>
+      <ol>
+        <li><i>01</i><div>international students <span class="hid ans-line">→ 国际学生</span></div></li>
+        <li><i>02</i><div>……的来历（历史）<span class="hid ans-line">→ the history of …</span></div></li>
+        <li><i>03</i><div>人们热爱大自然。<br>People ____ ____ nature.<span class="hid ans-line"><br>→ love（People love nature.）</span></div></li>
+        <li><i>04</i><div>不仅彼得而且他的父亲也喜欢运动。<br>____ Peter ____ his father ____ sports.<span class="hid ans-line"><br>→ Not only / but also / likes<br>Not only Peter but also his father likes sports.<br>（就近原则：谓语与靠近的主语 his father 保持一致）</span></div></li>
+      </ol>
+      <div class="toolbar"><button class="btn amber" data-drill>显示答案</button></div>
+    </div>
+
+    <div class="drill" data-reveal>
+      <div class="sub">Text 03 · 阅读表达配套</div>
+      <h4>动词与名词要点</h4>
+      <ol>
+        <li><i>01</i><div><b>hit</b>：“打击；碰撞”，文中 a huge earthquake hit a small town 表示“袭击；侵袭”，过去式为 hit。同类词 strike（过去式 struck）：A typhoon struck the coastal city.（台风袭击了这座沿海城市。）</div></li>
+        <li><i>02</i><div><b>remember</b>：“记得；想起”。remember to do sth 记得去做某事（未做）；remember doing sth 记得做过某事（已做）。例：Remember to close the door when you leave.（离开时记得关门。）I remember seeing him before.（我记得以前见过他。）</div></li>
+        <li><i>03</i><div><b>ruins</b>：名词 ruin 的复数形式，表示“废墟”。<b>in ruins</b> 意为“成为废墟；破败不堪”：The old building is in ruins.（这座旧建筑已成废墟。）ruin 也可作动词，表示“毁坏；破坏”。</div></li>
+        <li><i>04</i><div><b>voice</b>：“声音”，常指人的嗓音，区别于 sound（泛指各种声音）和 noise（噪音）。</div></li>
+      </ol>
+      <div class="toolbar"><button class="btn amber" data-drill>显示答案</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 词汇手册 ============ -->
+<section class="section" id="vocab" style="background:linear-gradient(180deg,transparent,rgba(194,106,38,.07) 18%,rgba(194,106,38,.07) 82%,transparent)">
+  <div class="sec-head" data-reveal>
+    <div class="sec-num">04</div>
+    <div class="sec-titles">
+      <h2>生词 · 生短语手册</h2>
+      <p>按词性或篇目筛选，支持搜索与点击发音。所有词条均配中文释义、用法提示与七年级水平例句。</p>
+    </div>
+    <div class="sec-rule"></div>
+  </div>
+
+  <div class="vocab-tools" data-reveal>
+    <button class="chip on" data-filter="all">全部</button>
+    <button class="chip" data-filter="cat:n">名词</button>
+    <button class="chip" data-filter="cat:v">动词</button>
+    <button class="chip" data-filter="cat:adj">形容词</button>
+    <button class="chip" data-filter="cat:adv">副词</button>
+    <button class="chip" data-filter="cat:phr">短语与句型</button>
+    <button class="chip" data-filter="tag:p1">第一篇</button>
+    <button class="chip" data-filter="tag:p2">第二篇</button>
+    <button class="chip" data-filter="tag:p3">第三篇</button>
+    <label class="search"><span>SEARCH</span><input id="q" type="text" placeholder="输入单词或中文释义…"></label>
+  </div>
+
+  <div class="vgrid" id="vgrid"></div>
+</section>
+
+</main>
+
+<footer>
+  <div class="foot-grid">
+    <div>
+      <h4>Unit 3 · <em>A Day to Remember</em></h4>
+      <p>语法填空 · 完形填空 · 阅读表达 ／ 答案解析 · 积累小练 · 词汇手册</p>
+    </div>
+    <div>
+      <p>内容依据文档1整理<br>七年级上册 · 初中英语话题阅读<br>点击生词即可查看释义与例句</p>
+    </div>
+  </div>
+</footer>
+
+<div class="pop" id="pop"></div>
+
+<script>
+/* =========================================================
+   ① 滚动动效（必须在首次 render() 之前定义，
+      否则 observeAll() 引用 io 会触发 TDZ 报错）
+   ========================================================= */
+const io = new IntersectionObserver(function(es){
+  es.forEach(function(e, i){
+    if (e.isIntersecting){
+      e.target.style.transitionDelay = (Math.min(i, 6) * 70) + 'ms';
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    }
+  });
+}, {threshold: 0.1, rootMargin: '0px 0px -6% 0px'});
+
+function observeAll(){
+  document.querySelectorAll('[data-reveal]:not(.in)').forEach(function(el){ io.observe(el); });
+}
+
+/* =========================================================
+   ② 词汇数据（含撇号的字符串一律用双引号包裹）
+   ========================================================= */
+const TAG = {p1:'第一篇', p2:'第二篇', p3:'第三篇'};
+const VOCAB = {
+  shone:{w:'shone',ipa:'/ʃəʊn/',pos:'v.',cat:'v',tag:'p1',cn:'照耀；发光（shine 的过去式）',note:'shine—shone—shone，注意读音 /ʃəʊn/。',ex:'The sun shone brightly yesterday.',exc:'昨天阳光明媚。'},
+  diary:{w:'diary',ipa:'/ˈdaɪəri/',pos:'n.',cat:'n',tag:'p1',cn:'日记；日记本',note:'keep a diary 意为“写日记”。',ex:'Tom began writing his diary after the trip.',exc:'旅行后汤姆开始写日记。'},
+  explore:{w:'explore',ipa:'/ɪkˈsplɔː(r)/',pos:'v.',cat:'v',tag:'p1',cn:'探索；考察',note:'名词形式是 exploration；也可用于 explore a place。',ex:'We want to explore the forest this weekend.',exc:'这个周末我们想去森林探险。'},
+  woods:{w:'woods',ipa:'/wʊdz/',pos:'n.',cat:'n',tag:'p1',cn:'树林；森林',note:'常用复数形式，比 forest 小一些。',ex:'We walked deep into the woods.',exc:'我们走进了树林深处。'},
+  ancient:{w:'ancient',ipa:'/ˈeɪnʃənt/',pos:'adj.',cat:'adj',tag:'p1',cn:'古老的；古代的',note:'常修饰建筑、树木、城市等。',ex:'There is an ancient tree behind our school.',exc:'我们学校后面有一棵古树。'},
+  whose:{w:'whose',ipa:'/huːz/',pos:'pron.',cat:'phr',tag:'p1',cn:'谁的（引导定语从句）',note:'whose + 名词，用来说明前面名词的所属关系。',ex:'This is the boy whose father is a teacher.',exc:'这就是那个爸爸是老师的男孩。'},
+  branch:{w:'branch',ipa:'/brɑːntʃ/',pos:'n.',cat:'n',tag:'p1',cn:'树枝；分支',note:'复数形式为 branches。',ex:'A little bird is singing on the branch.',exc:'一只小鸟在树枝上唱歌。'},
+  seem_like:{w:'seem like',ipa:'/siːm laɪk/',pos:'短语',cat:'phr',tag:'p1',cn:'好像；仿佛',note:'seem + 形容词 / seem like + 名词。',ex:'It seems like a good idea.',exc:'这似乎是个好主意。'},
+  pages_history:{w:'pages of history',ipa:'',pos:'短语',cat:'phr',tag:'p1',cn:'历史的篇章（比喻用法）',note:'把老树比作一页页历史，是拟人化的表达。',ex:'These old photos are like pages of history.',exc:'这些老照片就像一页页历史。'},
+  tell_stories:{w:'tell stories of the past',ipa:'',pos:'短语',cat:'phr',tag:'p1',cn:'讲述过去的故事',note:'tell sb sth / tell stories about … 都很常用。',ex:'Grandpa likes to tell stories of the past.',exc:'爷爷喜欢讲述过去的故事。'},
+  teach:{w:'teach',ipa:'/tiːtʃ/',pos:'v.',cat:'v',tag:'p1',cn:'教；讲授',note:'过去式 taught；teach sb (how) to do sth 教某人（如何）做某事。',ex:'My grandfather taught me to read tree rings.',exc:'爷爷教我辨认树的年轮。'},
+  identify:{w:'identify',ipa:'/aɪˈdentɪfaɪ/',pos:'v.',cat:'v',tag:'p1',cn:'识别；辨认',note:'名词形式 identity（身份）。',ex:'Can you identify this kind of tree?',exc:'你能认出这种树吗？'},
+  ring:{w:'ring',ipa:'/rɪŋ/',pos:'n.',cat:'n',tag:'p1',cn:'年轮；环；戒指',note:'文中 tree rings 指“年轮”，可用来判断树龄。',ex:'We can tell the age of a tree by its rings.',exc:'我们可以通过年轮判断树的年龄。'},
+  bark:{w:'bark',ipa:'/bɑːk/',pos:'n.',cat:'n',tag:'p1',cn:'树皮',note:'bark 也可作动词，意为“（狗）吠叫”。',ex:'The bark of the tree is very rough.',exc:'这棵树的树皮很粗糙。'},
+  passage_time:{w:'the passage of time',ipa:'',pos:'短语',cat:'phr',tag:'p1',cn:'时光的流逝',note:'passage 在此意为“流逝、推移”。',ex:'We can feel the passage of time in the old town.',exc:'在这座古镇里我们能感受到时光的流逝。'},
+  adventure:{w:'adventure',ipa:'/ədˈventʃə(r)/',pos:'n.',cat:'n',tag:'p1',cn:'冒险；奇遇',note:'形容词 adventurous“爱冒险的”。',ex:'The trip to the forest was a great adventure.',exc:'这次森林之旅是一次很棒的奇遇。'},
+  fill_with:{w:'fill … with …',ipa:'',pos:'短语',cat:'phr',tag:'p1',cn:'用……装满……',note:'be filled with = be full of“装满、充满”。',ex:'She filled the bottle with water.',exc:'她把瓶子装满了水。'},
+  backpack:{w:'backpack',ipa:'/ˈbækpæk/',pos:'n.',cat:'n',tag:'p1',cn:'背包',note:'由 back（背）+ pack（包）构成。',ex:'He put the books in his backpack.',exc:'他把书放进背包里。'},
+  seed:{w:'seed',ipa:'/siːd/',pos:'n.',cat:'n',tag:'p1',cn:'种子',note:'常用复数 seeds；plant seeds 播种。',ex:'We planted some seeds in the garden.',exc:'我们在花园里播下了一些种子。'},
+  fresh:{w:'fresh',ipa:'/freʃ/',pos:'adj.',cat:'adj',tag:'p1',cn:'新鲜的',note:'可形容空气、食物、花等。',ex:'The fresh flowers smell nice.',exc:'这些新鲜的花闻起来很香。'},
+  grow_up:{w:'grow up',ipa:'',pos:'短语',cat:'phr',tag:'p1',cn:'长大；成长',note:'grow up to be … 长大后成为……',ex:'I want to be a doctor when I grow up.',exc:'我长大后想当医生。'},
+  surprise:{w:'surprise',ipa:'/səˈpraɪz/',pos:'n.',cat:'n',tag:'p1',cn:'惊喜；惊奇',note:'to one’s surprise 令某人惊讶的是；surprised“感到惊讶的”。',ex:'The trip gave me a big surprise.',exc:'这次旅行给了我一个大惊喜。'},
+  future:{w:'in the future',ipa:'',pos:'短语',cat:'phr',tag:'p1',cn:'在未来',note:'in future（英式）意为“今后”，注意区别。',ex:'I hope to travel around the world in the future.',exc:'我希望将来能环游世界。'},
+  happily:{w:'happily',ipa:'/ˈhæpɪli/',pos:'adv.',cat:'adv',tag:'p1',cn:'高兴地；快乐地',note:'happy（形容词）→ happily（副词）→ happiness（名词）。',ex:'The children are playing happily in the park.',exc:'孩子们在公园里快乐地玩耍。'},
+  note:{w:'note',ipa:'/nəʊt/',pos:'v. / n.',cat:'v',tag:'p1',cn:'记下；指出；笔记',note:'note down 记下；take notes 做笔记。',ex:'Please note the new words in your notebook.',exc:'请在笔记本上记下这些生词。'},
+  not_only:{w:'not only … but also …',ipa:'',pos:'句型',cat:'phr',tag:'p1',cn:'不仅……而且……',note:'连接两个并列主语时，谓语动词遵循“就近原则”。',ex:'She not only sings well but also dances well.',exc:'她不仅歌唱得好，舞也跳得好。'},
+  look_forward:{w:'look forward to doing sth',ipa:'',pos:'短语',cat:'phr',tag:'p1',cn:'期待 / 盼望做某事',note:'to 是介词，后接名词或动名词（-ing）。',ex:"I'm looking forward to visiting the museum.",exc:'我期待着参观这座博物馆。'},
+  warm_spring:{w:'on a warm spring day',ipa:'',pos:'短语',cat:'phr',tag:'p1',cn:'在一个温暖的春日',note:'具体到某一天用介词 on。',ex:'We went on a picnic on a warm spring day.',exc:'在一个温暖的春日我们去野餐了。'},
+  use_to:{w:'use sth to do sth',ipa:'',pos:'句型',cat:'phr',tag:'p1',cn:'用某物做某事',note:'相当于 use sth for doing sth。',ex:'We use dictionaries to look up new words.',exc:'我们用词典来查生词。'},
+
+  international:{w:'international',ipa:'/ˌɪntəˈnæʃnəl/',pos:'adj.',cat:'adj',tag:'p2',cn:'国际的',note:'由 inter-（相互）+ national（国家的）构成。',ex:'There are many international students in our school.',exc:'我们学校有许多国际学生。'},
+  district:{w:'district',ipa:'/ˈdɪstrɪkt/',pos:'n.',cat:'n',tag:'p2',cn:'区；区域',note:'常指城市中的“区”，如 Zhoucun district。',ex:'Zhoucun district is famous for its pancakes.',exc:'周村区以烧饼闻名。'},
+  local:{w:'local',ipa:'/ˈləʊkl/',pos:'adj.',cat:'adj',tag:'p2',cn:'当地的；本地的',note:'local people 当地人；local food 当地美食。',ex:'The local people are very friendly.',exc:'当地人非常友好。'},
+  vegetarian:{w:'vegetarian',ipa:'/ˌvedʒəˈteəriən/',pos:'adj. / n.',cat:'adj',tag:'p2',cn:'素食的；素食者',note:'词根 vegetable（蔬菜）。',ex:'She is a vegetarian and never eats meat.',exc:'她是素食者，从不吃肉。'},
+  restaurant:{w:'restaurant',ipa:'/ˈrestrɒnt/',pos:'n.',cat:'n',tag:'p2',cn:'餐馆；饭店',note:'注意重音在第一个音节。',ex:'We had lunch in a small restaurant.',exc:'我们在一家小餐馆吃了午饭。'},
+  history_of:{w:'the history of …',ipa:'',pos:'短语',cat:'phr',tag:'p2',cn:'……的历史（来历）',note:'learn about the history of … 了解……的历史。',ex:'We learnt about the history of our school.',exc:'我们了解了学校的历史。'},
+  past_hundred:{w:'over the past hundred years',ipa:'',pos:'短语',cat:'phr',tag:'p2',cn:'在过去的一百年里',note:'over the past + 时间，常与现在完成时连用。',ex:'Great changes have taken place here.',exc:'这里发生了巨大的变化。'},
+  thin:{w:'thin',ipa:'/θɪn/',pos:'adj.',cat:'adj',tag:'p2',cn:'薄的；瘦的',note:'反义词 thick“厚的”、fat“胖的”。',ex:'The pancake is thin and delicious.',exc:'烧饼又薄又好吃。'},
+  delicious:{w:'delicious',ipa:'/dɪˈlɪʃəs/',pos:'adj.',cat:'adj',tag:'p2',cn:'美味的；可口的',note:'比 tasty 语气更强，通常不用于比较级。',ex:'The vegetables are really delicious.',exc:'这些蔬菜真的很美味。'},
+  product:{w:'product',ipa:'/ˈprɒdʌkt/',pos:'n.',cat:'n',tag:'p2',cn:'产品；制品',note:'meat products 肉制品；produce 作动词意为“生产”。',ex:'The shop sells many local products.',exc:'这家商店出售许多当地产品。'},
+  same_as:{w:'the same as …',ipa:'',pos:'短语',cat:'phr',tag:'p2',cn:'与……相同',note:'反义短语 be different from“与……不同”。',ex:'My bag is the same as yours.',exc:'我的包和你的一样。'},
+  good_for:{w:'be good for',ipa:'',pos:'短语',cat:'phr',tag:'p2',cn:'对……有好处 / 有益',note:'be good at 擅长；be good to 对……友好。',ex:'Walking is good for our health.',exc:'散步对我们的健康有益。'},
+  show_love:{w:"show one's love for …",ipa:'',pos:'短语',cat:'phr',tag:'p2',cn:'表达对……的喜爱',note:'show 还有“展示、表明”的意思。',ex:'They showed their love for vegetarian food.',exc:'他们表达了对素食的喜爱。'},
+  end_of:{w:'at the end of …',ipa:'',pos:'短语',cat:'phr',tag:'p2',cn:'在……结束时；在……尽头',note:'in the end 最后（单独使用）；by the end of 到……为止。',ex:'At the end of the trip, we took many photos.',exc:'旅行结束时我们拍了很多照片。'},
+  enjoy:{w:'enjoy',ipa:'/ɪnˈdʒɔɪ/',pos:'v.',cat:'v',tag:'p2',cn:'喜爱；享受；欣赏',note:'enjoy + 名词 / doing sth，不能接 to do。',ex:'We enjoyed the tea at the tea house.',exc:'我们在茶馆里品了茶。'},
+  traditional:{w:'traditional',ipa:'/trəˈdɪʃnəl/',pos:'adj.',cat:'adj',tag:'p2',cn:'传统的',note:'名词 tradition“传统”。',ex:'People eat traditional food during the festival.',exc:'节日期间人们吃传统食物。'},
+  culture:{w:'culture',ipa:'/ˈkʌltʃə(r)/',pos:'n.',cat:'n',tag:'p2',cn:'文化',note:'形容词 cultural“文化的”。',ex:'We should learn about Chinese tea culture.',exc:'我们应该了解中国茶文化。'},
+
+  huge:{w:'huge',ipa:'/hjuːdʒ/',pos:'adj.',cat:'adj',tag:'p3',cn:'巨大的',note:'相当于 very big，语气更强。',ex:'A huge dog is running in the yard.',exc:'一只大狗在院子里跑。'},
+  earthquake:{w:'earthquake',ipa:'/ˈɜːθkweɪk/',pos:'n.',cat:'n',tag:'p3',cn:'地震',note:'由 earth（大地）+ quake（震动）构成。',ex:'A big earthquake hit the city in 1989.',exc:'1989 年一场大地震袭击了这座城市。'},
+  hit:{w:'hit',ipa:'/hɪt/',pos:'v.',cat:'v',tag:'p3',cn:'打击；碰撞；（灾害）袭击、侵袭',note:'过去式、过去分词均为 hit。同类“侵袭”可用 strike（struck）。',ex:'A typhoon struck the coastal city.',exc:'台风袭击了这座沿海城市。'},
+  suddenly:{w:'suddenly',ipa:'/ˈsʌdənli/',pos:'adv.',cat:'adv',tag:'p3',cn:'突然地',note:'sudden（形容词）→ suddenly（副词）。',ex:'Suddenly, it began to rain.',exc:'突然下起雨来。'},
+  rush_to:{w:'rush to …',ipa:'',pos:'短语',cat:'phr',tag:'p3',cn:'冲向；赶快去……',note:'rush = go / run quickly。',ex:'He rushed to school after breakfast.',exc:'早饭后他冲向学校。'},
+  discover:{w:'discover',ipa:'/dɪˈskʌvə(r)/',pos:'v.',cat:'v',tag:'p3',cn:'发现',note:'名词 discovery“发现”；discover 指发现原本存在但未知的事物。',ex:'They discovered a small door behind the tree.',exc:'他们发现了树后的一扇小门。'},
+  fall_down:{w:'fall down',ipa:'',pos:'短语',cat:'phr',tag:'p3',cn:'倒塌；跌倒',note:'fall—fell—fallen。',ex:'Many old buildings fell down in the earthquake.',exc:'地震中许多旧建筑倒塌了。'},
+  promise:{w:'promise',ipa:'/ˈprɒmɪs/',pos:'n. / v.',cat:'n',tag:'p3',cn:'承诺；许诺',note:'keep a promise 信守承诺；promise to do sth 承诺做某事。',ex:'He kept his promise to his son.',exc:'他信守了对儿子的承诺。'},
+  no_matter:{w:'no matter what happens',ipa:'',pos:'句型',cat:'phr',tag:'p3',cn:'无论发生什么',note:'no matter + 疑问词 = 疑问词 + ever（whatever）。',ex:'No matter what happens, I will help you.',exc:'无论发生什么，我都会帮你。'},
+  there_for:{w:'be there for you',ipa:'',pos:'短语',cat:'phr',tag:'p3',cn:'支持你；陪伴你；为你而在',note:'口语常用，表示“随时支持、守护你”。',ex:"Don't worry. I'll always be there for you.",exc:'别担心，我会一直陪着你。'},
+  tears:{w:'tears',ipa:'/tɪəz/',pos:'n.',cat:'n',tag:'p3',cn:'眼泪（tear 的复数）',note:"with tears in one's eyes 意为“眼含泪水”。",ex:'With tears in his eyes, he said nothing.',exc:'他眼含泪水，什么也没说。'},
+  dig:{w:'dig',ipa:'/dɪɡ/',pos:'v.',cat:'v',tag:'p3',cn:'挖；挖掘',note:'过去式 dug；dig a hole 挖坑。',ex:'He dug a hole and planted a tree.',exc:'他挖了个坑，种下一棵树。'},
+  ruins:{w:'ruins',ipa:'/ˈruːɪnz/',pos:'n.',cat:'n',tag:'p3',cn:'废墟',note:'in ruins 成为废墟、破败不堪；ruin 也可作动词“毁坏、破坏”。',ex:'The old building is in ruins.',exc:'这座旧建筑已成废墟。'},
+  gone:{w:'gone',ipa:'/ɡɒn/',pos:'adj.',cat:'adj',tag:'p3',cn:'不在的；消失了的',note:'go—went—gone，作表语表示“不在了”。',ex:'The birds are gone.',exc:'鸟儿都飞走了。'},
+  keep_doing:{w:'keep doing sth',ipa:'',pos:'短语',cat:'phr',tag:'p3',cn:'继续 / 一直做某事',note:'keep sb doing sth 让某人一直做；keep + adj. 保持某种状态。',ex:'He kept digging for hours.',exc:'他连续挖了好几个小时。'},
+  firefighter:{w:'firefighter',ipa:'/ˈfaɪəfaɪtə(r)/',pos:'n.',cat:'n',tag:'p3',cn:'消防员',note:'由 fire（火）+ fighter（战斗者）构成。',ex:'The firefighters saved the little boy.',exc:'消防员救了这个小男孩。'},
+  dangerous:{w:'dangerous',ipa:'/ˈdeɪndʒərəs/',pos:'adj.',cat:'adj',tag:'p3',cn:'危险的',note:'名词 danger；be in danger 处于危险中。',ex:"It's dangerous to play on the road.",exc:'在马路上玩耍很危险。'},
+  pull_back:{w:'pull back',ipa:'',pos:'短语',cat:'phr',tag:'p3',cn:'拉回；拖开（文中指搬开大石头）',note:'pull 拉、拖；push 推。',ex:'They pulled the big stone back.',exc:'他们把大石头搬开了。'},
+  scream:{w:'scream',ipa:'/skriːm/',pos:'v. / n.',cat:'v',tag:'p3',cn:'尖叫；大声喊',note:'强调因恐惧、激动而发出的大声呼喊。',ex:"He screamed his son's name.",exc:'他大声呼喊儿子的名字。'},
+  voice:{w:'voice',ipa:'/vɔɪs/',pos:'n.',cat:'n',tag:'p3',cn:'嗓音；声音',note:'voice 常指人的嗓音；sound 泛指各种声音；noise 指噪音。',ex:"I heard my mother's voice.",exc:'我听到了妈妈的声音。'},
+  alive:{w:'alive',ipa:'/əˈlaɪv/',pos:'adj.',cat:'adj',tag:'p3',cn:'活着的；在世的',note:'常作表语，如 stay alive、be alive。',ex:'The little cat is still alive.',exc:'这只小猫还活着。'},
+  save:{w:'save',ipa:'/seɪv/',pos:'v.',cat:'v',tag:'p3',cn:'拯救；挽救；节省',note:"save one's life 意为“救某人的命”。",ex:"The doctor saved the old man's life.",exc:'医生救了这位老人的命。'},
+  let_out:{w:'let … out',ipa:'',pos:'短语',cat:'phr',tag:'p3',cn:'让……出去',note:'let sb do sth（省略 to 的不定式）。',ex:'Let the other kids out first.',exc:'先让其他孩子出去。'},
+  remember_doing:{w:'remember to do / doing sth',ipa:'',pos:'短语',cat:'phr',tag:'p3',cn:'记得去做某事（未做）／记得做过某事（已做）',note:'forget to do / doing sth 用法相同。',ex:'Remember to close the door when you leave.',exc:'离开时记得关门。I remember seeing him before.（我记得以前见过他。）'}
+};
+
+/* =========================================================
+   ③ 渲染词汇卡片
+   ========================================================= */
+const grid = document.getElementById('vgrid');
+
+function card(k, v){
+  return '<article class="vcard" data-reveal data-cat="' + v.cat + '" data-tag="' + v.tag + '">'
+    + '<div class="vcard-top"><h4>' + v.w + '</h4><button class="say" data-say="' + v.w + '" aria-label="朗读">♪</button></div>'
+    + '<div class="vcard-meta"><span class="ipa">' + (v.ipa || '') + '</span><span class="pos">' + v.pos + '</span><span class="tg">' + TAG[v.tag] + '</span></div>'
+    + '<p class="vcard-cn">' + v.cn + '</p>'
+    + '<p class="vcard-note">' + v.note + '</p>'
+    + '<div class="vcard-ex"><p class="en">' + v.ex + '</p><p class="cn">' + v.exc + '</p></div>'
+    + '</article>';
+}
+
+function render(){
+  const q = document.getElementById('q').value.trim().toLowerCase();
+  const f = window.__filter || 'all';
+  const list = Object.entries(VOCAB).filter(function(kv){
+    const v = kv[1];
+    let ok = true;
+    if (f !== 'all'){
+      const p = f.split(':');
+      ok = (p[0] === 'cat') ? (v.cat === p[1]) : (v.tag === p[1]);
+    }
+    if (ok && q){
+      ok = (v.w + ' ' + v.cn + ' ' + v.pos).toLowerCase().indexOf(q) > -1;
+    }
+    return ok;
+  });
+  grid.innerHTML = list.length
+    ? list.map(function(kv){ return card(kv[0], kv[1]); }).join('')
+    : '<div class="empty">未找到匹配的词条</div>';
+  observeAll();
+}
+
+window.__filter = 'all';
+document.querySelectorAll('.chip[data-filter]').forEach(function(c){
+  c.addEventListener('click', function(){
+    document.querySelectorAll('.chip[data-filter]').forEach(function(x){ x.classList.remove('on'); });
+    c.classList.add('on');
+    window.__filter = c.dataset.filter;
+    render();
+  });
+});
+document.getElementById('q').addEventListener('input', render);
+render();   /* 此时 io 已初始化，安全 */
+
+/* =========================================================
+   ④ 发音
+   ========================================================= */
+function say(t){
+  if (!('speechSynthesis' in window)) return;
+  const u = new SpeechSynthesisUtterance(t);
+  u.lang = 'en-US';
+  u.rate = 0.88;
+  speechSynthesis.cancel();
+  speechSynthesis.speak(u);
+}
+
+/* =========================================================
+   ⑤ 生词弹出卡片
+   ========================================================= */
+const pop = document.getElementById('pop');
+
+function showPop(k, anchor){
+  const v = VOCAB[k];
+  if (!v) return;
+  pop.innerHTML = '<div class="pop-head"><h5>' + v.w + '</h5><button class="pop-say" data-say="' + v.w + '">朗读</button></div>'
+    + '<div class="pop-meta"><span>' + (v.ipa || '&nbsp;') + '</span><b>' + v.pos + '</b><b>' + TAG[v.tag] + '</b></div>'
+    + '<p class="pop-cn">' + v.cn + '</p>'
+    + '<p class="pop-note">' + v.note + '</p>'
+    + '<div class="pop-ex"><p>' + v.ex + '</p><p>' + v.exc + '</p></div>';
+  pop.classList.add('on');
+  const r = anchor.getBoundingClientRect();
+  const pw = pop.offsetWidth, ph = pop.offsetHeight;
+  const left = Math.min(Math.max(12, r.left), window.innerWidth - pw - 12);
+  let top = r.bottom + 12;
+  if (top + ph > window.innerHeight - 12) top = Math.max(12, r.top - ph - 12);
+  pop.style.left = left + 'px';
+  pop.style.top = top + 'px';
+  document.querySelectorAll('.v.active').forEach(function(x){ x.classList.remove('active'); });
+  anchor.classList.add('active');
+}
+
+/* =========================================================
+   ⑥ 全局点击
+   ========================================================= */
+document.addEventListener('click', function(e){
+  const s = e.target.closest('[data-say]');
+  if (s){ e.stopPropagation(); say(s.dataset.say); return; }
+
+  const v = e.target.closest('.v');
+  if (v){ e.stopPropagation(); showPop(v.dataset.k, v); return; }
+
+  const b = e.target.closest('.blank');
+  if (b){ e.stopPropagation(); b.classList.toggle('show'); return; }
+
+  if (!e.target.closest('#pop')){
+    pop.classList.remove('on');
+    document.querySelectorAll('.v.active').forEach(function(x){ x.classList.remove('active'); });
+  }
+});
+
+window.addEventListener('scroll', function(){
+  pop.classList.remove('on');
+  document.querySelectorAll('.v.active').forEach(function(x){ x.classList.remove('active'); });
+}, {passive: true});
+
+document.addEventListener('keydown', function(e){
+  if (e.key === 'Escape') pop.classList.remove('on');
+});
+
+/* =========================================================
+   ⑦ 答案批量显示 / 完形选项 / 积累小练 / 简洁模式
+   ========================================================= */
+document.querySelectorAll('[data-show]').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    const t = document.querySelector(btn.dataset.show);
+    const on = !(t.dataset.all === '1');
+    t.dataset.all = on ? '1' : '0';
+    t.querySelectorAll('.blank').forEach(function(b){ b.classList.toggle('show', on); });
+    btn.textContent = on ? '隐藏答案' : '显示全部答案';
+  });
+});
+
+document.querySelectorAll('.mcq').forEach(function(row){
+  row.querySelectorAll('.mcq-opt').forEach(function(b){
+    b.addEventListener('click', function(){
+      row.querySelectorAll('.mcq-opt').forEach(function(x){ x.classList.remove('right', 'wrong'); });
+      if (b.dataset.ok){
+        b.classList.add('right');
+      } else {
+        b.classList.add('wrong');
+        const c = row.querySelector('[data-ok]');
+        if (c) c.classList.add('right');
+      }
+    });
+  });
+});
+
+document.querySelectorAll('[data-drill]').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    const box = btn.closest('.drill');
+    const on = !box.classList.contains('on');
+    box.classList.toggle('on', on);
+    btn.textContent = on ? '隐藏答案' : '显示答案';
+  });
+});
+
+document.getElementById('compactBtn').addEventListener('click', function(){
+  const on = document.body.classList.toggle('compact');
+  this.textContent = on ? '完整模式：显示解析' : '简洁模式：隐藏解析';
+});
+
+/* =========================================================
+   ⑧ 进度条与导航高亮
+   ========================================================= */
+const bar = document.getElementById('bar');
+const links = Array.prototype.slice.call(document.querySelectorAll('.rail a'));
+const secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+
+window.addEventListener('scroll', function(){
+  const st = window.scrollY;
+  const h = document.documentElement.scrollHeight - window.innerHeight;
+  bar.style.width = (h > 0 ? (st / h * 100) : 0) + '%';
+  let idx = 0;
+  secs.forEach(function(s, i){
+    if (s && s.getBoundingClientRect().top <= 140) idx = i;
+  });
+  links.forEach(function(a, i){ a.classList.toggle('on', i === idx); });
+}, {passive: true});
+</script>
+</body>
+</html>

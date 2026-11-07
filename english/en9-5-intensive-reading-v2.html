@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>七年级英语培优练习解析与互动学习</title>
+    <style>
+        :root {
+            --primary-color: #4A90E2;
+            --secondary-color: #F39C12;
+            --bg-color: #F8F9FA;
+            --card-bg: #FFFFFF;
+            --text-main: #333333;
+            --text-muted: #666666;
+            --border-color: #E0E0E0;
+            --highlight-bg: #EAF2F8;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-main);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--primary-color), #8E44AD);
+            color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        header p {
+            margin: 10px 0 0;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-color);
+        }
+
+        .card h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--highlight-bg);
+            padding-bottom: 10px;
+            margin-top: 0;
+            font-size: 20px;
+        }
+
+        .card h3 {
+            color: var(--secondary-color);
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        /* 生词样式 */
+        .vocab-word {
+            text-decoration: underline;
+            text-decoration-style: wavy;
+            text-decoration-color: var(--secondary-color);
+            cursor: pointer;
+            color: #2980B9;
+            font-weight: 500;
+            transition: background-color 0.3s;
+            display: inline-block;
+            position: relative;
+        }
+
+        .vocab-word:hover {
+            background-color: var(--highlight-bg);
+        }
+
+        /* 生词弹窗面板 */
+        .vocab-panel {
+            display: none;
+            background-color: #FFF9E6;
+            border-left: 4px solid var(--secondary-color);
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 4px;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .vocab-panel.active {
+            display: block;
+        }
+
+        .vocab-panel .phonetic {
+            color: var(--text-muted);
+            font-family: "Times New Roman", serif;
+        }
+
+        .vocab-panel .example {
+            color: #27AE60;
+            font-style: italic;
+            margin-top: 5px;
+        }
+
+        .btn-speak {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            color: var(--primary-color);
+            margin-left: 10px;
+            vertical-align: middle;
+            transition: transform 0.2s;
+        }
+
+        .btn-speak:hover {
+            transform: scale(1.2);
+        }
+
+        /* 解析部分 */
+        .answer-section {
+            background-color: #F4F6F7;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .answer-section strong {
+            color: #E74C3C;
+        }
+
+        .explanation {
+            margin-top: 10px;
+            padding-left: 15px;
+            border-left: 3px solid var(--primary-color);
+            color: var(--text-muted);
+            font-size: 15px;
+        }
+
+        .explanation p {
+            margin: 5px 0;
+        }
+
+        /* 汇总表 */
+        .vocab-summary {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+        }
+
+        .vocab-summary li {
+            background-color: var(--highlight-bg);
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #D6EAF8;
+        }
+
+        .vocab-summary .word-title {
+            font-weight: bold;
+            color: #2980B9;
+            font-size: 16px;
+        }
+
+        .vocab-summary .word-detail {
+            font-size: 14px;
+            margin-top: 5px;
+            color: var(--text-muted);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 响应式 */
+        @media (max-width: 600px) {
+            body { padding: 10px; }
+            .card { padding: 15px; }
+            .vocab-summary { grid-template-columns: 1fr; }
+        }
+
+        .instruction {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>七年级英语培优精讲 (第9周)</h1>
+        <p>交互式学习 · 生词点击查词 · 语音朗读 · 深度解析</p>
+    </header>
+
+    <!-- 第一部分：语法填空 -->
+    <div class="card">
+        <h2>四、语法填空</h2>
+        <p class="instruction">阅读下面短文，在空白处填入一个适当的单词或括号内单词的正确形式。</p>
+        <p style="font-size: 14px; color: #666;">主题：人与自我——优秀品行 | 语篇类型：记叙文 | 词数：167 | 难度：★★★☆☆</p>
+        
+        <div class="text-content" id="text1">
+            <p>Peter <span class="vocab-word" onclick="toggleVocab(this, 'look')">1. (look)</span> at his new <span class="vocab-word" onclick="toggleVocab(this, 'sports shoes')">sports shoes</span> now. They are the third pair he gets this <span class="vocab-word" onclick="toggleVocab(this, 'term')">term</span>. The first pair is red and the <span class="vocab-word" onclick="toggleVocab(this, 'two')">2. (two)</span> pair is blue. Now he <span class="vocab-word" onclick="toggleVocab(this, 'have')">3. (have)</span> the black shoes. "Next time I want white ones," Peter thinks.</p>
+            <p>Peter's parents are busy. They <span class="vocab-word" onclick="toggleVocab(this, 'not have')">4. (not, have)</span> much time to be with Peter. They feel sorry for that, <span class="vocab-word" onclick="toggleVocab(this, 'so')">5. (so)</span> they buy <span class="vocab-word" onclick="toggleVocab(this, 'a lot of')">a lot of</span> things he wants for him.</p>
+            <p>Peter sees his classmate Sam's pencil box. Sam's parents have good jobs. Why does Sam use <span class="vocab-word" onclick="toggleVocab(this, 'an')">6. (an)</span> old pencil box? Peter doesn't <span class="vocab-word" onclick="toggleVocab(this, 'understand')">understand</span>.</p>
+            <p>"Hey, Sam," Peter says. "Why not buy a new pencil box?"</p>
+            <p>"This one is still nice," Sam says. "And I <span class="vocab-word" onclick="toggleVocab(this, 'save')">7. (save)</span> money."</p>
+            <p>"For what?" Peter asks.</p>
+            <p>"I want to save 200 dollars this year <span class="vocab-word" onclick="toggleVocab(this, 'help')">8. (help)</span> some children in villages," Sam says.</p>
+            <p>Peter is <span class="vocab-word" onclick="toggleVocab(this, 'surprised')">surprised</span>. Sam is doing a <span class="vocab-word" onclick="toggleVocab(this, 'real')">9. (real)</span> great thing. Then he starts thinking: Does he really need those new shoes, clothes and <span class="vocab-word" onclick="toggleVocab(this, 'toy')">10. (toy)</span>?</p>
+        </div>
+
+        <div class="answer-section">
+            <h3>答案与解析</h3>
+            <p><strong>1. is looking</strong> <span style="font-size:12px; color:#888;">(提示词：look)</span></p>
+            <div class="explanation">
+                <p><strong>解析：</strong>句末有时间状语 <em>now</em>，表示正在进行的动作，主语 Peter 是第三人称单数，所以用现在进行时 is looking。</p>
+            </div>
+            <p><strong>2. second</strong> <span style="font-size:12px; color:#888;">(提示词：two)</span></p>
+            <div class="explanation">
+                <p><strong>解析：</strong>前文提到 first pair，此处指“第二双”，需用序数词 second。</p>
+            </div>
+            <p><strong>3. has</strong> <span style="font-size:12px; color:#888;">(提示词：have)</span></p>
+            <div class="explanation">
+                <p><strong>解析：</strong>表示现在的状态，主语 he 是第三人称单数，用 has。</p>
+            </div>
+            <p><strong>4. don't have</strong> <span style="font-size:12px; color:#888;">(提示词：not, have)</span></p>
+            <div class="explanation">
+                <p><strong>解析：</strong>描述一般情况，主语 They 是复数，否定句借助助动词 don't，后接动词原形 have。</p>
+            </div>
+            <p><strong>5. so</strong> <span style="font-size:12px; color:#888;">(无提示词)</span></p>
+            <div class="explanation">
+                <p><strong>解析：</strong>前句“父母感到抱歉”，后句“买很多东西”是结果，前后为因果关系，填 so（所以）。</p>
+            </div>
+            <p><strong>6. an</strong> <span style="font-size:12px; color:#888;">(无提示词)</span></p>
+            <div class="explanation">
+                <p><strong>解析：</strong>修饰单数可数名词 old pencil box，old 以元音音素开头，用不定冠词 an。</p>
+            </div>
+            <p><strong>7. am saving</strong> <span style="font-size:12px; color:#888;">(提示词：save)</span></p>
+            <div class="explanation">
+                <p><strong>解析：</strong>结合语境，Sam 正在攒钱，用现在进行时表示当前阶段正在进行的动作，主语 I，用 am saving。</p>
+            </div>
+            <p><strong>8. to help</strong> <span style="font-size:12px; color:#888;">(提示词：help)</span></p>
+            <div class="explanation">
+                <p><strong>解析：</strong>“攒钱”的目的是“帮助”孩子，动词不定式 to do 作目的状语。</p>
+            </div>
+            <p><strong>9. really</strong> <span style="font-size:12px; color:#888;">(提示词：real)</span></p>
+            <div class="explanation">
+                <p><strong>解析：</strong>修饰形容词 great，需用副词形式，real 的副词是 really。</p>
+            </div>
+            <p><strong>10. toys</strong> <span style="font-size:12px; color:#888;">(提示词：toy)</span></p>
+            <div class="explanation">
+                <p><strong>解析：</strong>与前面的 shoes, clothes 并列，表示泛指，用复数形式 toys。</p>
+            </div>
+        </div>
+
+        <div class="answer-section" style="background-color: #FFF;">
+            <h3>积累小技</h3>
+            <p>☆短语互译</p>
+            <p>1. 运动鞋 <strong>sports shoes</strong></p>
+            <p>2. a lot of <strong>许多</strong></p>
+            <p>3. 铅笔盒 <strong>pencil box</strong></p>
+            <p>4. save money <strong>存钱</strong></p>
+            <p>☆完成句子</p>
+            <p>5. 这副眼镜很漂亮，但是很贵。<br>This <strong>pair</strong> of glasses <strong>is</strong> nice, but <strong>very</strong> expensive.</p>
+            <p>6. 晚饭后为什么不出去散步呢？<br><strong>Why not go</strong> out for a walk after supper?</p>
+        </div>
+    </div>
+
+    <!-- 第二部分：阅读表达 -->
+    <div class="card">
+        <h2>五、阅读表达</h2>
+        <p class="instruction">阅读短文，根据短文内容回答下列问题。</p>
+        <p style="font-size: 14px; color: #666;">主题：人与社会——文化遗产 | 语篇类型：记叙文 | 词数：183 | 难度：★★★☆☆</p>
+        
+        <div class="text-content" id="text2">
+            <p>An old woman is wearing a <span class="vocab-word" onclick="toggleVocab(this, 'cockscomb-shaped')">cockscomb-shaped</span> hat and black, red, yellow and green clothes and walking to people. She is showing Yi people's clothes to them.</p>
+            <p>The woman is Li Ruxiu. She is 63 years old. She lives in a small <span class="vocab-word" onclick="toggleVocab(this, 'village')">village</span> in Yunnan. Yunnan is home to about 5,000,000 Yi people. Yi people are good at <span class="vocab-word" onclick="toggleVocab(this, 'embroidery')">embroidery</span> work. Like many Yi people, Li is good at making clothes. She learnt to do embroidery work <span class="vocab-word" onclick="toggleVocab(this, 'at the age of')">at the age of</span> eight and could make clothes at 12.</p>
+            <p>Li also likes collecting Yi people's clothes. In Li's house, there are over 7,000 pieces of Yi people's clothes. The clothes are very beautiful. There are nice <span class="vocab-word" onclick="toggleVocab(this, 'pattern')">patterns</span> of flowers, birds, tigers and cats on them. Li gets some of the clothes from other people <span class="vocab-word" onclick="toggleVocab(this, 'for free')">for free</span>, and she buys some from the shops. She spends lots of money buying them, but she is happy to do that. She loves Yi people's clothes and</p>
+        </div>
+
+        <div class="answer-section">
+            <h3>答案与解析</h3>
+            <p><strong>1. What is Li doing in beautiful clothes?</strong></p>
+            <p><strong>答案：</strong>She is showing Yi people's clothes to people.</p>
+            <div class="explanation"><p><strong>解析：</strong>定位第一段第一、二句“...and walking to people. She is showing Yi people's clothes to them.” 直接提取答案。</p></div>
+
+            <p><strong>2. Where does Li live?</strong></p>
+            <p><strong>答案：</strong>She lives in a small village in Yunnan.</p>
+            <div class="explanation"><p><strong>解析：</strong>定位第二段第二句“She lives in a small village in Yunnan.” 直接提取。</p></div>
+
+            <p><strong>3. What's Li good at?</strong></p>
+            <p><strong>答案：</strong>She is good at making clothes (and embroidery work).</p>
+            <div class="explanation"><p><strong>解析：</strong>定位第二段“Like many Yi people, Li is good at making clothes.” 也可结合前文“good at embroidery work”，回答 making clothes 即可。</p></div>
+
+            <p><strong>4. How many pieces of Yi people's clothes are there in Li's house?</strong></p>
+            <p><strong>答案：</strong>Over 7,000 pieces.</p>
+            <div class="explanation"><p><strong>解析：</strong>定位第三段第二句“there are over 7,000 pieces of Yi people's clothes.” 直接获取数字信息。</p></div>
+
+            <p><strong>5. (新考法·句子补全题)根据文章内容，续写句子。</strong></p>
+            <p><strong>答案：</strong>...she is happy to collect them / she wants to protect the culture. (言之有理即可)</p>
+            <div class="explanation"><p><strong>解析：</strong>文章最后一句“She loves Yi people's clothes and...”不完整，结合前文她花大量钱购买衣服并且感到快乐（happy to do that），可以合理续写她喜欢收集这些衣服，或者她想要传承这种文化。</p></div>
+        </div>
+        
+        <div class="answer-section" style="background-color: #FFF;">
+            <h3>积累小传</h3>
+            <p>☆短语互译</p>
+            <p>1. make clothes <strong>做衣服</strong></p>
+            <p>2. 在……岁时 <strong>at the age of</strong></p>
+            <p>☆完成句子</p>
+            <p>3. 中国擅长修建桥梁和铁路。<br>China <strong>is good at building</strong> bridges and railways.</p>
+            <p>4. 迈克只有一点钱，所以他只能买得起一块面包。<br>Mike only has a little money, so he can only afford <strong>a piece of bread</strong>.</p>
+        </div>
+    </div>
+
+    <!-- 第三部分：阅读理解 -->
+    <div class="card">
+        <h2>Test 1 一、阅读理解</h2>
+        <p class="instruction">阅读下面短文，从每题A、B、C三个选项中选出一个能回答所提问题或完成所给句子的最佳答案。</p>
+        <p style="font-size: 14px; color: #666;">主题：人与自然——自然科学 | 语篇类型：说明文 | 词数：263 | 难度：★★★☆☆</p>
+        
+        <div class="text-content" id="text3">
+            <p>① At 4:00 p.m., you are watching a football game live(现场直播) from Europe. At the same time, your friend in New York is sleeping—it's 4:00 a.m. there! Why is the time so different? Why do people in other places start their day when we are already in the middle of ours?</p>
+            <p>② That's because of <span class="vocab-word" onclick="toggleVocab(this, 'time zone')">time zones</span>. Even though we live on the same <span class="vocab-word" onclick="toggleVocab(this, 'planet')">planet</span>(行星), people in different places are doing different things at the same time.</p>
+            <p>③ How do time zones work? The earth is like a big spinning(旋转的) ball. It turns from west to east. That's why the sun is coming up in the east first. The world is <span class="vocab-word" onclick="toggleVocab(this, 'divide')">divided into</span>(被分成) 24 time zones. Every time zone is one hour different from the next.</p>
+            <p>④ Let's look at some examples. In China, people in the East 8 time zone are getting up early and going to school or work. In London, people are enjoying afternoon tea at around 4 p.m. In New York, many people have just finished lunch at that time.</p>
+            <p>⑤ Time zones also bring some problems to our <span class="vocab-word" onclick="toggleVocab(this, 'modern')">modern</span> life. For example, a video(视频) meeting may start at 10 a.m. in Beijing, but it's <span class="vocab-word" onclick="toggleVocab(this, 'midnight')">midnight</span> in New York. These time <span class="vocab-word" onclick="toggleVocab(this, 'difference')">differences</span>(时差) make it important to plan carefully and <span class="vocab-word" onclick="toggleVocab(this, 'respect')">respect</span> others' time.</p>
+            <p>⑥ Time zones don't just change the clock—they change our daily life. Time makes us different—but it also makes the world colorful and fun.</p>
+        </div>
+
+        <div class="answer-section">
+            <h3>答案与解析</h3>
+            <p><strong>1. (新考法·写作手法题)How does the writer start Paragraph ①?</strong></p>
+            <p><strong>答案：A</strong></p>
+            <div class="explanation">
+                <p><strong>解析：</strong>第一段通过描述一个具体的场景（下午4点你在看球赛，而纽约的朋友在睡觉），即“举例（giving an example）”的方式引出时差的话题，吸引读者兴趣。</p>
+            </div>
+
+            <p><strong>2. (新考法·写作意图题)Why does the writer talk about a video meeting?</strong></p>
+            <p><strong>答案：B</strong></p>
+            <div class="explanation">
+                <p><strong>解析：</strong>定位第五段第一句“Time zones also bring some problems to our modern life.”（时区也给我们的现代生活带来了一些问题），紧接着用视频会议举例说明时差带来的不便，因此是为了说明时区可能是个问题（To show time zones can be a problem）。</p>
+            </div>
+
+            <p><strong>3. (新考法·图文匹配题)Which paragraph does this following picture come from?</strong></p>
+            <p><strong>答案：B</strong></p>
+            <div class="explanation">
+                <p><strong>解析：</strong>图片展示了地球（The earth）、东西方向（West, East）以及太阳（The sun）的光线。这与第三段内容“The earth is like a big spinning ball. It turns from west to east. That's why the sun is coming up in the east first.”（地球像一个大旋转球，自西向东转，这就是为什么太阳先从东方升起）完全吻合。故选B。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 生词汇总区 -->
+    <div class="card" id="vocab-summary">
+        <h2>📚 生词与短语汇总表</h2>
+        <p class="instruction">本页所有标注的生词与短语集中汇总，方便复习巩固。</p>
+        <ul class="vocab-summary">
+            <!-- 由 JS 动态生成 -->
+        </ul>
+    </div>
+
+</div>
+
+<script>
+    // 词汇库数据
+    const vocabData = {
+        'look': {
+            word: 'look',
+            phonetic: '/lʊk/',
+            meaning: 'v. 看；注视',
+            usage: 'look at 表示“看着……”，强调看的动作。现在进行时为 looking。',
+            example: 'Look at the blackboard, please. (请看黑板。)'
+        },
+        'sports shoes': {
+            word: 'sports shoes',
+            phonetic: '/spɔːrts ʃuːz/',
+            meaning: 'n. 运动鞋',
+            usage: 'sports 作定语修饰 shoes，常用复数形式。',
+            example: 'He is wearing a pair of new sports shoes. (他穿着一双新运动鞋。)'
+        },
+        'term': {
+            word: 'term',
+            phonetic: '/tɜːrm/',
+            meaning: 'n. 学期',
+            usage: '常见搭配：this term (这学期)，next term (下学期)。',
+            example: 'We have many interesting activities this term. (这学期我们有很多有趣的活动。)'
+        },
+        'two': {
+            word: 'two',
+            phonetic: '/tuː/',
+            meaning: 'num. 二；两个',
+            usage: '此处需用序数词 second 表示“第二”。',
+            example: 'The second book is more interesting. (第二本书更有趣。)'
+        },
+        'have': {
+            word: 'have',
+            phonetic: '/hæv/',
+            meaning: 'v. 有；拥有',
+            usage: '第三人称单数形式为 has。表示状态。',
+            example: 'She has a beautiful voice. (她有一副好嗓音。)'
+        },
+        'not have': {
+            word: "don't have",
+            phonetic: '/doʊnt hæv/',
+            meaning: '没有',
+            usage: '复数主语 They 的否定形式，助动词 don\'t + 动词原形。',
+            example: "They don't have enough time to finish the work. (他们没有足够的时间完成工作。)"
+        },
+        'so': {
+            word: 'so',
+            phonetic: '/soʊ/',
+            meaning: 'conj. 所以',
+            usage: '表示因果关系，连接前后两个句子。',
+            example: 'It was raining, so we stayed at home. (下雨了，所以我们待在家里。)'
+        },
+        'a lot of': {
+            word: 'a lot of',
+            phonetic: '/ə lɒt ɒv/',
+            meaning: '许多；大量',
+            usage: '既可修饰可数名词复数，也可修饰不可数名词。相当于 lots of。',
+            example: 'There are a lot of books in the library. (图书馆里有许多书。)'
+        },
+        'an': {
+            word: 'an',
+            phonetic: '/ən/',
+            meaning: 'art. 一个',
+            usage: '不定冠词，用于元音音素开头的单数可数名词前。此处修饰 old。',
+            example: 'He is an honest boy. (他是一个诚实的男孩。)'
+        },
+        'understand': {
+            word: 'understand',
+            phonetic: '/ˌʌndərˈstænd/',
+            meaning: 'v. 理解；明白',
+            usage: '常见搭配：understand sb./sth. (理解某人/某事)。',
+            example: 'I can understand your feelings. (我能理解你的感受。)'
+        },
+        'save': {
+            word: 'save',
+            phonetic: '/seɪv/',
+            meaning: 'v. 节省；存钱',
+            usage: '此处指存钱 (save money)。也可表示“拯救”。',
+            example: 'She is saving money to buy a new bike. (她正在攒钱买一辆新自行车。)'
+        },
+        'help': {
+            word: 'help',
+            phonetic: '/help/',
+            meaning: 'v. 帮助',
+            usage: '此处用不定式 to help 作目的状语。',
+            example: 'I want to help you with your English. (我想帮你学英语。)'
+        },
+        'surprised': {
+            word: 'surprised',
+            phonetic: '/sərˈpraɪzd/',
+            meaning: 'adj. 惊讶的',
+            usage: '主语通常是人，be surprised at/by sth. 对……感到惊讶。',
+            example: 'We were surprised at the news. (我们对这个消息感到惊讶。)'
+        },
+        'real': {
+            word: 'real',
+            phonetic: '/ˈriːəl/',
+            meaning: 'adj. 真正的',
+            usage: '此处修饰形容词 great，需用副词形式 really (非常，真正地)。',
+            example: 'This is a really good idea. (这是一个非常好的主意。)'
+        },
+        'toy': {
+            word: 'toy',
+            phonetic: '/tɔɪ/',
+            meaning: 'n. 玩具',
+            usage: '此处与 shoes, clothes 并列，表示泛指，用复数形式 toys。',
+            example: 'The children are playing with toys. (孩子们正在玩玩具。)'
+        },
+        'cockscomb-shaped': {
+            word: 'cockscomb-shaped',
+            phonetic: '/ˈkɑːkskoʊm ʃeɪpt/',
+            meaning: 'adj. 鸡冠状的',
+            usage: '复合形容词，由名词 cockscomb (鸡冠) + 过去分词 shaped (具有……形状的) 构成。',
+            example: 'She wears a cockscomb-shaped hat. (她戴着一顶鸡冠状的帽子。)'
+        },
+        'village': {
+            word: 'village',
+            phonetic: '/ˈvɪlɪdʒ/',
+            meaning: 'n. 村庄',
+            usage: '常见搭配：in a village (在村庄里)。',
+            example: 'My grandparents live in a small village. (我的祖父母住在一个小村庄里。)'
+        },
+        'embroidery': {
+            word: 'embroidery',
+            phonetic: '/ɪmˈbrɔɪdəri/',
+            meaning: 'n. 刺绣',
+            usage: 'do embroidery work 做刺绣工作。',
+            example: 'Chinese embroidery is famous all over the world. (中国刺绣闻名世界。)'
+        },
+        'at the age of': {
+            word: 'at the age of',
+            phonetic: '/æt ðə eɪdʒ ɒv/',
+            meaning: '在……岁时',
+            usage: '常用来引出某人做某事的年龄，后接基数词。',
+            example: 'He started to learn English at the age of six. (他六岁开始学英语。)'
+        },
+        'pattern': {
+            word: 'pattern',
+            phonetic: '/ˈpætərn/',
+            meaning: 'n. 图案；花纹',
+            usage: '可数名词，常用于描述衣服、布料等上面的花纹。',
+            example: 'The dress has a beautiful floral pattern. (这条裙子有漂亮的花卉图案。)'
+        },
+        'for free': {
+            word: 'for free',
+            phonetic: '/fɔːr friː/',
+            meaning: '免费',
+            usage: '介词短语，表示不花钱地。',
+            example: 'You can download this app for free. (你可以免费下载这个应用程序。)'
+        },
+        'time zone': {
+            word: 'time zone',
+            phonetic: '/taɪm zoʊn/',
+            meaning: '时区',
+            usage: '名词短语，地球被划分为24个时区。',
+            example: 'China is in the East 8 time zone. (中国在东八区。)'
+        },
+        'planet': {
+            word: 'planet',
+            phonetic: '/ˈplænɪt/',
+            meaning: 'n. 行星',
+            usage: '常见搭配：on the planet (在行星上)，the Earth is a planet (地球是一颗行星)。',
+            example: 'Mars is the fourth planet from the Sun. (火星是离太阳第四近的行星。)'
+        },
+        'divide': {
+            word: 'divide',
+            phonetic: '/dɪˈvaɪd/',
+            meaning: 'v. 划分；分开',
+            usage: '常与 into 连用：divide... into... (把……分成……)。',
+            example: 'The teacher divided the class into four groups. (老师把班级分成了四个小组。)'
+        },
+        'modern': {
+            word: 'modern',
+            phonetic: '/ˈmɑːdərn/',
+            meaning: 'adj. 现代的',
+            usage: '常修饰 life, technology, history 等。',
+            example: 'We live in a modern society. (我们生活在现代社会。)'
+        },
+        'midnight': {
+            word: 'midnight',
+            phonetic: '/ˈmɪdnaɪt/',
+            meaning: 'n. 午夜；子夜',
+            usage: 'at midnight (在午夜)。',
+            example: 'The train leaves at midnight. (火车在午夜出发。)'
+        },
+        'difference': {
+            word: 'difference',
+            phonetic: '/ˈdɪfrəns/',
+            meaning: 'n. 差异；不同',
+            usage: '复数 differences。常见搭配：the difference between A and B。',
+            example: 'What is the difference between these two words? (这两个词之间有什么区别？)'
+        },
+        'respect': {
+            word: 'respect',
+            phonetic: '/rɪˈspekt/',
+            meaning: 'v. 尊重',
+            usage: 'respect others (尊重他人)。',
+            example: 'We should respect our teachers. (我们应该尊敬老师。)'
+        }
+    };
+
+    // 点击显示生词解释
+    function toggleVocab(element, key) {
+        const data = vocabData[key];
+        if (!data) return;
+
+        // 检查后面是否已经有面板
+        let panel = element.nextElementSibling;
+        if (panel && panel.classList.contains('vocab-panel')) {
+            panel.classList.toggle('active');
+            return;
+        }
+
+        // 创建新面板
+        panel = document.createElement('div');
+        panel.className = 'vocab-panel active';
+        panel.innerHTML = `
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <strong style="font-size: 16px; color: #2980B9;">${data.word}</strong>
+                    <span class="phonetic">${data.phonetic}</span>
+                    <button class="btn-speak" onclick="speakText('${data.word}')" title="朗读">🔊</button>
+                </div>
+                <button onclick="this.parentElement.parentElement.classList.remove('active')" style="background: none; border: none; cursor: pointer; color: #999; font-size: 18px;">&times;</button>
+            </div>
+            <div style="margin-top: 8px;"><strong>释义：</strong>${data.meaning}</div>
+            <div style="margin-top: 5px;"><strong>用法：</strong>${data.usage}</div>
+            <div class="example"><strong>例句：</strong>${data.example}</div>
+        `;
+
+        // 插入面板
+        element.after(panel);
+    }
+
+    // 语音朗读功能
+    function speakText(text) {
+        if ('speechSynthesis' in window) {
+            // 取消当前正在播放的语音
+            window.speechSynthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'en-US'; // 设置美式英语发音
+            utterance.rate = 0.9; // 语速稍微慢一点
+            window.speechSynthesis.speak(utterance);
+        } else {
+            alert('您的浏览器不支持语音朗读功能，请尝试使用最新版 Chrome 或 Edge 浏览器。');
+        }
+    }
+
+    // 页面加载完成后，生成汇总表
+    window.onload = function() {
+        const summaryList = document.querySelector('.vocab-summary');
+        // 去重并提取所有生词
+        const uniqueKeys = Object.keys(vocabData);
+        
+        uniqueKeys.forEach(key => {
+            const data = vocabData[key];
+            const li = document.createElement('li');
+            li.innerHTML = `
+                <div class="word-title">${data.word} <span class="phonetic" style="font-weight: normal; font-size: 12px;">${data.phonetic}</span></div>
+                <div class="word-detail">
+                    <strong>释义：</strong>${data.meaning}<br>
+                    <strong>例句：</strong><span style="color: #27AE60; font-style: italic;">${data.example}</span>
+                    <button class="btn-speak" onclick="speakText('${data.word}')" title="朗读单词" style="font-size: 14px; margin-left: 5px;">🔊</button>
+                </div>
+            `;
+            summaryList.appendChild(li);
+        });
+    };
+</script>
+
+</body>
+</html>

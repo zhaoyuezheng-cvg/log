@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>9-1培优 · 精读精讲 | Unit 1 Here and Now</title>
+<style>
+  :root{
+    --bg:#eef1f8;--bg2:#e6ebf5;--card:#ffffff;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;
+    --line:#e5e7eb;--brand:#4f46e5;--brand-2:#0d9488;--brand-soft:rgba(79,70,229,.08);
+    --accent:#f59e0b;--accent-soft:#fef3c7;--ok:#16a34a;--ok-soft:rgba(22,163,74,.10);--rose:#e11d48;
+    --shadow:0 10px 30px rgba(30,41,59,.10);--shadow-sm:0 4px 14px rgba(30,41,59,.08);--radius:18px;
+    --font:"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",system-ui,-apple-system,sans-serif;
+  }
+  body.dark{
+    --bg:#0f172a;--bg2:#0b1220;--card:#131c31;--ink:#e5edf7;--ink2:#cbd5e1;--muted:#94a3b8;
+    --line:#243049;--brand:#818cf8;--brand-2:#2dd4bf;--brand-soft:rgba(129,140,248,.14);
+    --accent:#fbbf24;--accent-soft:rgba(251,191,36,.16);--ok:#4ade80;--ok-soft:rgba(74,222,128,.12);
+    --rose:#fb7185;--shadow:0 10px 30px rgba(0,0,0,.45);--shadow-sm:0 4px 14px rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:var(--font);color:var(--ink);
+    background:radial-gradient(1100px 500px at 12% -10%, rgba(79,70,229,.16), transparent 60%),
+      radial-gradient(900px 480px at 100% 0%, rgba(13,148,136,.14), transparent 55%),
+      linear-gradient(180deg,var(--bg),var(--bg2));
+    min-height:100vh;line-height:1.75;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 18px 60px}
+  header.hero{position:relative;overflow:hidden;border-radius:0 0 30px 30px;
+    background:linear-gradient(135deg,#4f46e5 0%,#6d28d9 45%,#0d9488 100%);color:#fff;
+    padding:42px 26px 34px;margin-bottom:22px;box-shadow:var(--shadow);}
+  header.hero::after{content:"";position:absolute;inset:0;opacity:.35;
+    background-image:radial-gradient(rgba(255,255,255,.35) 1px,transparent 1px);
+    background-size:22px 22px;mask-image:linear-gradient(180deg,rgba(0,0,0,.6),transparent 75%);}
+  .hero-in{position:relative;z-index:2;max-width:1080px;margin:0 auto}
+  .kicker{display:inline-flex;align-items:center;gap:8px;font-size:.82rem;letter-spacing:.12em;
+    text-transform:uppercase;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);
+    padding:6px 14px;border-radius:999px;backdrop-filter:blur(6px)}
+  h1{margin:16px 0 8px;font-size:clamp(1.5rem,4vw,2.15rem);line-height:1.3;letter-spacing:.01em}
+  h1 .sub{display:block;font-size:.55em;font-weight:500;opacity:.9;margin-top:8px;letter-spacing:.02em}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+  .chip{font-size:.78rem;padding:5px 12px;border-radius:999px;background:rgba(255,255,255,.16);
+    border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(6px)}
+  .hero-note{margin-top:16px;font-size:.85rem;opacity:.9;max-width:760px;line-height:1.7}
+  .toolbar{position:sticky;top:0;z-index:60;display:flex;flex-wrap:wrap;gap:8px;align-items:center;
+    padding:10px 12px;margin:0 0 20px;border-radius:14px;
+    background:color-mix(in srgb,var(--card) 88%,transparent);
+    border:1px solid var(--line);box-shadow:var(--shadow-sm);backdrop-filter:blur(10px);}
+  .toolbar .grow{flex:1}
+  .tool-btn{font-family:inherit;font-size:.82rem;font-weight:600;color:var(--ink);
+    background:var(--brand-soft);border:1px solid transparent;border-radius:10px;
+    padding:8px 13px;cursor:pointer;transition:.18s;display:inline-flex;align-items:center;gap:6px;}
+  .tool-btn:hover{transform:translateY(-1px);box-shadow:var(--shadow-sm)}
+  .tool-btn.on{background:var(--brand);color:#fff}
+  .tool-btn.ghost{background:transparent;border-color:var(--line)}
+  .navlinks{display:flex;gap:6px;flex-wrap:wrap}
+  .navlinks a{font-size:.82rem;font-weight:600;text-decoration:none;color:var(--brand);
+    padding:7px 11px;border-radius:9px;border:1px solid var(--line);background:transparent;transition:.18s;white-space:nowrap}
+  .navlinks a:hover{background:var(--brand-soft)}
+  section.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);padding:26px 26px 30px;margin-bottom:26px;position:relative;overflow:hidden;
+    animation:rise .5s ease both;}
+  @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  section.card::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;
+    background:linear-gradient(90deg,var(--brand),var(--brand-2))}
+  .sec-head{display:flex;align-items:flex-start;gap:14px;flex-wrap:wrap;margin-bottom:6px}
+  .sec-no{flex:0 0 auto;width:44px;height:44px;border-radius:13px;display:grid;place-items:center;
+    font-weight:800;font-size:1.15rem;color:#fff;background:linear-gradient(135deg,var(--brand),var(--brand-2));
+    box-shadow:0 6px 16px rgba(79,70,229,.35)}
+  .sec-title{margin:0;font-size:1.3rem}
+  .sec-title small{display:block;font-weight:500;color:var(--muted);font-size:.8rem;margin-top:3px}
+  .sec-meta{display:flex;flex-wrap:wrap;gap:7px;margin:14px 0 4px}
+  .badge{font-size:.75rem;font-weight:600;padding:4px 11px;border-radius:999px;
+    background:var(--brand-soft);color:var(--brand);border:1px solid transparent}
+  .badge.warm{background:var(--accent-soft);color:#b45309}
+  .badge.gray{background:color-mix(in srgb,var(--muted) 14%,transparent);color:var(--muted)}
+  .badge.ok{background:var(--ok-soft);color:var(--ok)}
+  .lead{color:var(--muted);font-size:.92rem;margin:10px 0 18px}
+  .passage{background:linear-gradient(180deg,color-mix(in srgb,var(--brand) 5%,var(--card)),var(--card));
+    border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:8px 0 18px;
+    font-size:1.06rem;line-height:2.05;letter-spacing:.005em;}
+  .passage p{margin:0 0 14px}
+  .passage p:last-child{margin-bottom:0}
+  .passage .tag{font-size:.72em;color:var(--muted);vertical-align:super}
+  .passage .h{font-weight:800;color:var(--brand)}
+  .w{position:relative;cursor:pointer;color:inherit;border-radius:3px;padding:0 1px;
+    border-bottom:2px solid var(--accent);background:linear-gradient(transparent 60%,var(--accent-soft) 60%);
+    transition:.15s;white-space:nowrap;}
+  .w:hover{filter:brightness(.96);box-shadow:0 2px 0 -1px var(--accent)}
+  .w.active{background:var(--accent);color:#3b2a04;border-bottom-color:#b45309}
+  .gloss{display:none}
+  body.showall .gloss{display:inline;font-size:.8em;color:var(--brand-2);font-weight:600;
+    padding:0 3px;border-bottom:0;white-space:normal}
+  .blank{display:inline-block;min-width:2.4em;text-align:center;font-weight:800;color:var(--brand);
+    background:var(--brand-soft);border-bottom:2px solid var(--brand);border-radius:6px 6px 3px 3px;
+    padding:0 8px;margin:0 2px;cursor:pointer;transition:.15s;font-size:.94em;}
+  .blank:hover{background:color-mix(in srgb,var(--brand) 18%,transparent)}
+  .blank b{font-weight:800}
+  .blank i{display:none;font-style:normal;color:var(--ok);font-weight:800}
+  .blank.open{background:var(--ok-soft);border-bottom-color:var(--ok);color:var(--ok)}
+  .blank.open b{display:none}
+  .blank.open i{display:inline}
+  body.showans .blank{background:var(--ok-soft);border-bottom-color:var(--ok);color:var(--ok)}
+  body.showans .blank b{display:none}
+  body.showans .blank i{display:inline}
+  #pop{position:absolute;z-index:200;width:min(330px,88vw);background:var(--card);
+    border:1px solid var(--line);border-top:4px solid var(--accent);border-radius:14px;
+    box-shadow:0 18px 45px rgba(15,23,42,.28);padding:14px 16px;display:none;}
+  #pop.show{display:block;animation:pop .18s ease}
+  @keyframes pop{from{opacity:0;transform:translateY(6px) scale(.98)}to{opacity:1;transform:none}}
+  #pop .pw{font-size:1.12rem;font-weight:800;color:var(--ink);display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+  #pop .pph{font-size:.82rem;color:var(--brand-2);font-weight:600}
+  #pop .pcn{margin-top:7px;font-size:1rem;font-weight:700;color:var(--brand)}
+  #pop .pnote{margin-top:7px;font-size:.86rem;color:var(--muted);line-height:1.65}
+  #pop .pex{margin-top:10px;padding-top:9px;border-top:1px dashed var(--line);font-size:.9rem}
+  #pop .pex b{color:var(--brand-2)}
+  #pop .pex .cn{color:var(--muted);font-size:.85rem;display:block;margin-top:3px}
+  .pos{display:inline-block;font-size:.72rem;font-weight:700;color:#fff;background:var(--brand-2);
+    border-radius:6px;padding:2px 8px;margin-left:2px}
+  .qstem{font-weight:700;color:var(--ink);margin:2px 0 6px;font-size:1.02rem}
+  .qopts{margin:2px 0 0;padding-left:2px;color:var(--muted);font-size:.92rem}
+  .qopts div{margin:3px 0}
+  .qopts .picked{color:var(--ok);font-weight:800}
+  h3.ans-h{margin:26px 0 12px;font-size:1.05rem;display:flex;align-items:center;gap:9px}
+  h3.ans-h::before{content:"";width:10px;height:10px;border-radius:3px;background:var(--ok);display:inline-block}
+  .ans-list{display:grid;gap:10px}
+  .ans-item{border:1px solid var(--line);border-left:4px solid var(--ok);border-radius:12px;
+    padding:12px 15px;background:color-mix(in srgb,var(--ok) 4%,var(--card))}
+  .ans-item .top{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+  .ans-item .num{font-weight:800;color:var(--ok)}
+  .ans-item .key{font-weight:800;font-size:1.05rem;color:var(--ink);background:var(--ok-soft);
+    padding:1px 10px;border-radius:7px}
+  .ans-item .kt{font-size:.72rem;font-weight:700;color:#fff;background:var(--brand);border-radius:6px;padding:2px 8px}
+  .ans-item ul{margin:8px 0 0;padding-left:20px;color:var(--muted);font-size:.9rem}
+  .ans-item ul li{margin:3px 0}
+  .ans-item .sent{font-size:.92rem;color:var(--ink2);margin-top:6px}
+  .vgroup{margin-top:18px}
+  .vgroup > h3{margin:0 0 10px;font-size:1.02rem;color:var(--brand);display:flex;gap:9px;align-items:center}
+  .vgroup > h3 .dot{width:9px;height:9px;border-radius:50%;background:var(--brand-2)}
+  .vcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px}
+  .vcard{border:1px solid var(--line);border-radius:13px;padding:13px 15px;background:var(--card);
+    box-shadow:var(--shadow-sm);transition:.18s;position:relative;overflow:hidden}
+  .vcard::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--accent)}
+  .vcard:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+  .vcard .hw{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+  .vcard .en{font-weight:800;font-size:1.04rem;color:var(--ink)}
+  .vcard .ph{font-size:.8rem;color:var(--brand-2);font-weight:600}
+  .vcard .cn{margin-top:5px;font-weight:700;color:var(--brand);font-size:.98rem}
+  .vcard .nt{margin-top:5px;font-size:.84rem;color:var(--muted);line-height:1.6}
+  .vcard .ex{margin-top:8px;font-size:.88rem;border-top:1px dashed var(--line);padding-top:8px}
+  .vcard .ex .ecn{display:block;color:var(--muted);font-size:.82rem;margin-top:2px}
+  .callout{border:1px dashed var(--accent);background:var(--accent-soft);border-radius:12px;
+    padding:12px 15px;font-size:.9rem;color:#92400e;margin:12px 0;line-height:1.9}
+  body.dark .callout{color:#fcd34d}
+  details.more{margin-top:14px;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  details.more>summary{cursor:pointer;padding:11px 15px;font-weight:700;color:var(--brand);
+    background:var(--brand-soft);list-style:none;display:flex;justify-content:space-between;align-items:center}
+  details.more>summary::-webkit-details-marker{display:none}
+  details.more>summary::after{content:"▾";transition:.2s;font-size:.9em}
+  details.more[open]>summary::after{transform:rotate(180deg)}
+  details.more .body{padding:14px 16px;font-size:.95rem;line-height:1.9;color:var(--ink2)}
+  details.more .body p{margin:0 0 10px}
+  footer{text-align:center;color:var(--muted);font-size:.82rem;padding:26px 10px 10px;line-height:1.8}
+  kbd{background:var(--brand-soft);border-radius:5px;padding:1px 6px;font-size:.8em;font-weight:700;color:var(--brand)}
+  header.hero kbd{background:rgba(255,255,255,.22);color:#fff;border:1px solid rgba(255,255,255,.45);white-space:nowrap}
+  .jilei{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:22px}
+  .jilei .jh{background:linear-gradient(135deg,#7c3aed,#0d9488);color:#fff;padding:10px 16px;
+    font-weight:800;font-size:.95rem}
+  .jilei .jb{padding:14px 16px}
+  .jilei .qb{padding:10px 12px;border-radius:10px;margin:6px 0;background:var(--brand-soft)}
+  .jilei .qb .q{color:var(--muted);font-size:.9rem}
+  .jilei .qb .a{font-weight:700;color:var(--ok);font-size:1rem;margin-top:3px}
+  .jilei .qb .a u{text-decoration:none;border-bottom:2px solid var(--ok);padding-bottom:1px}
+  .jilei .qb .nt{font-size:.85rem;color:var(--muted);margin-top:5px}
+  .infocard{border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:0 0 14px;
+    background:var(--card);line-height:1.95}
+  .infocard b{color:var(--brand)}
+  .picgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin:10px 0 4px}
+  .picgrid .pc{border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:.92rem;
+    background:var(--card);line-height:1.7}
+  .picgrid .pc .no{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;
+    border-radius:50%;background:var(--brand-soft);color:var(--brand);font-weight:800;font-size:.82rem;margin-right:6px}
+  .rolecard{border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:0 0 12px;background:var(--card)}
+  .rolecard .who{font-weight:800;color:var(--brand);margin-bottom:4px}
+  @media (max-width:560px){
+    section.card{padding:18px 15px 22px}
+    .passage{padding:15px 14px;font-size:1rem;line-height:1.95}
+    header.hero{padding:30px 18px 26px;border-radius:0 0 22px 22px}
+    .vcards{grid-template-columns:1fr}
+    .sec-no{width:38px;height:38px;font-size:1rem}
+  }
+  @media print{
+    .toolbar,#pop{display:none!important}.spk{display:none!important}body{background:#fff}
+    section.card{box-shadow:none;break-inside:avoid}
+    .w{border-bottom:1px solid #d97706;background:none}
+    body:not(.showall) .gloss{display:inline;color:#0d9488}
+  }
+  .spk{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border:none;border-radius:50%;
+    background:var(--brand-soft);color:var(--brand);cursor:pointer;font-size:.95rem;line-height:1;transition:.15s;flex:0 0 auto}
+  .spk:hover{background:var(--brand);color:#fff;transform:scale(1.08)}
+  .spk:active{transform:scale(.94)}
+  .pw .spk{margin-left:auto;align-self:center}.hw .spk{margin-left:auto}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-in">
+    <span class="kicker">✦ 初中英语 · 话题阅读精讲</span>
+    <h1>9-1培优 · 精读精讲
+      <span class="sub">第一部分 单元阅读与写作 · Unit 1 Here and Now · 阅读理解 3 篇 · 七年级上册</span>
+    </h1>
+    <div class="hero-meta">
+      <span class="chip">3 篇语篇</span>
+      <span class="chip">3 + 4 + 4 道题</span>
+      <span class="chip">55+ 生词短语</span>
+      <span class="chip">含答案 · 逐题解析 · 积累小栈</span>
+    </div>
+    <p class="hero-note">
+      页面把每篇语篇中的<b>生词与生短语</b>用<span style="border-bottom:2px solid #fbbf24;background:linear-gradient(transparent 60%,rgba(254,243,199,.55) 60%)">黄线下划线</span>标出——<b>点击任意划线词</b>即可弹出释义、读音、用法与例句；也可用上方按钮 <kbd>显示全部释义</kbd> 一键对照阅读。每篇附<b>积累小栈</b>（短语互译 / 完成句子 / 翻译 / 仿写），点击文中序号可直观显示答案。
+    </p>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="toolbar">
+    <div class="navlinks">
+      <a href="#passA">A · 龙猫电影</a>
+      <a href="#passB">B · 三国节日时差</a>
+      <a href="#passC">C · 义演筹款</a>
+      <a href="#vocab">生词汇总</a>
+    </div>
+    <span class="grow"></span>
+    <button class="tool-btn" id="btnAllWords" type="button">👁 显示全部释义</button>
+    <button class="tool-btn ghost" id="btnAllAns" type="button">✅ 显示全部答案</button>
+    <button class="tool-btn ghost" id="btnTheme" type="button">🌙 夜间</button>
+  </div>
+
+  <!-- ============ A篇 ============ -->
+  <section class="card" id="passA">
+    <div class="sec-head">
+      <div class="sec-no">A</div>
+      <div><h2 class="sec-title">My Neighbour Totoro 《龙猫》 <small>阅读下面短文，从每题 A、B、C 三个选项中选出一个能回答所提问题或完成所给句子的最佳答案。</small></h2></div>
+    </div>
+    <div class="sec-meta">
+      <span class="badge">主题：人与社会——影视事业</span>
+      <span class="badge gray">语篇类型：应用文</span>
+      <span class="badge gray">词数：110</span>
+      <span class="badge warm">难度 ★★☆☆☆</span>
+      <span class="badge gray">建议用时 6′</span>
+      <span class="badge ok">正确率 △</span>
+    </div>
+
+    <article class="passage">
+      <div class="infocard">
+        <div><b>Movie name:</b> <span class="w" data-k="neighbour">My Neighbour</span> Totoro</div>
+        <div><b>Year:</b> 1988</div>
+        <div><b>Time:</b> 86 <span class="w" data-k="minute">minutes</span></div>
+        <div><b>Story:</b> Two <span class="w" data-k="young">young</span> girls, Satsuki and Mei, <span class="w" data-k="goto">go to</span> a new place with their father. Their mother is <span class="w" data-k="ill">ill</span> <span class="w" data-k="inhospital">in hospital</span> near it. <span class="w" data-k="oneday">One day</span>, Mei <span class="w" data-k="find">finds</span> Totoro and only <span class="w" data-k="kindchildren">kind children</span> can see him. Totoro looks <span class="w" data-k="kindof">kind of</span> big and <span class="w" data-k="terrible">terrible</span>, but he always helps them when they are <span class="w" data-k="introuble">in trouble</span>.</div>
+      </div>
+      <p class="h">Pictures from the movie:</p>
+      <div class="picgrid">
+        <div class="pc"><span class="no">①</span>Mei finds Totoro and she is <span class="w" data-k="sleeping">sleeping</span> on Totoro.</div>
+        <div class="pc"><span class="no">②</span>Satsuki and Mei are <span class="w" data-k="standing">standing</span> with Totoro <span class="w" data-k="intherain">in the rain</span>.</div>
+        <div class="pc"><span class="no">③</span>Satsuki and Mei are <span class="w" data-k="takebus">taking Totoro's bus</span> to <span class="w" data-k="see">see</span> their mother.</div>
+        <div class="pc"><span class="no">④</span>Totoro is taking Satsuki and Mei <span class="w" data-k="flying">flying</span> <span class="w" data-k="through">through</span> the <span class="w" data-k="nightsky">night sky</span>.</div>
+      </div>
+    </article>
+
+    <details class="more">
+      <summary>📖 参考译文（点击展开）</summary>
+      <div class="body">
+        <p>电影名：《我的邻居龙猫》　上映年份：1988　片长：86 分钟</p>
+        <p>故事：两个小女孩草和梅跟随父亲来到一个新地方。她们的妈妈就住在附近的医院里，生着病。有一天，梅发现了龙猫，只有善良的孩子才能看见它。龙猫看上去又大又吓人，但每当她们遇到困难时，它总是帮助她们。</p>
+        <p>电影剧照说明：① 梅发现了龙猫，正睡在它身上。② 草和梅与龙猫一起站在雨中。③ 草和梅正坐着龙猫巴士去看妈妈。④ 龙猫正带着草和梅飞过夜空。</p>
+      </div>
+    </details>
+
+    <h3 class="ans-h">题目与选项</h3>
+    <div class="ans-list" id="qA"></div>
+
+    <h3 class="ans-h">答案与详解</h3>
+    <div class="ans-list" id="ansA"></div>
+
+    <div class="jilei">
+      <div class="jh">✎ 积累小栈 · 参考答案</div>
+      <div class="jb" id="jileiA"></div>
+    </div>
+  </section>
+
+  <!-- ============ B篇 ============ -->
+  <section class="card" id="passB">
+    <div class="sec-head">
+      <div class="sec-no">B</div>
+      <div><h2 class="sec-title">三国少年谈节日与时差 <small>阅读下面短文，从每题 A、B、C 三个选项中选出最佳答案。</small></h2></div>
+    </div>
+    <div class="sec-meta">
+      <span class="badge">主题：人与社会——文化习俗</span>
+      <span class="badge gray">语篇类型：记叙文</span>
+      <span class="badge gray">词数：176</span>
+      <span class="badge warm">难度 ★★★★☆</span>
+      <span class="badge gray">建议用时 6′</span>
+      <span class="badge ok">正确率 △</span>
+    </div>
+
+    <article class="passage">
+      <div class="rolecard">
+        <div class="who">Calvin（新西兰）</div>
+        <p style="margin:0">I'm Calvin and I <span class="w" data-k="comefrom">come from</span> <span class="w" data-k="newzealand">New Zealand</span>. Our <span class="w" data-k="christmas">Christmas</span> is in <span class="w" data-k="summer">summer</span>, so we have <span class="w" data-k="beachparty">beach parties</span> <span class="w" data-k="underthestars">under the stars</span>. Christmas here is really <span class="w" data-k="differentfrom">different from</span> Christmas in places where it <span class="w" data-k="snow">snows</span>.</p>
+      </div>
+      <div class="rolecard">
+        <div class="who">Maria（澳大利亚）</div>
+        <p style="margin:0">I, Maria, come from <span class="w" data-k="australia">Australia</span>. People in China are <span class="w" data-k="celebrate">celebrating</span> the <span class="w" data-k="springfestival">Spring Festival</span> and <span class="w" data-k="familymember">family members</span> are <span class="w" data-k="reuniting">reuniting</span> for a <span class="w" data-k="newyearseve">New Year's Eve dinner</span>, while people in Australia may be <span class="w" data-k="takeawalk">taking a walk</span> to <span class="w" data-k="enjoy">enjoy</span> the cool summer night or <span class="w" data-k="preparefor">preparing for</span> their New Year celebrations. This gives me a deep <span class="w" data-k="understanding">understanding</span> of how <span class="w" data-k="timezone">time zones</span> <span class="w" data-k="affect">affect</span> people's <span class="w" data-k="dailylife">daily life</span>.</p>
+      </div>
+      <div class="rolecard">
+        <div class="who">Huck（西班牙）</div>
+        <p style="margin:0">I, Huck, am from <span class="w" data-k="spain">Spain</span>. Now I'll tell you about <span class="w" data-k="siesta">siesta</span><span class="tag">（午休）</span> time—our special <span class="w" data-k="break">break</span> <span class="w" data-k="inthemiddleof">in the middle of</span> the day. We sit down with family for a <span class="w" data-k="relaxing">relaxing</span> meal, <span class="w" data-k="unlike">unlike</span> the quick lunches in other places. We usually have lunch and <span class="w" data-k="haveanap">have a nap</span><span class="tag">（小睡）</span> from 2:00 to 5:00 in the <span class="w" data-k="afternoon">afternoon</span>. And at night, Barcelona really <span class="w" data-k="cometolife">comes to life</span>! The sun <span class="w" data-k="set">sets</span> late, so we <span class="w" data-k="holdparties">hold parties</span> and <span class="w" data-k="enjoyoneself">enjoy ourselves</span> at <span class="w" data-k="midnight">midnight</span>.</p>
+      </div>
+    </article>
+
+    <details class="more">
+      <summary>📖 参考译文（点击展开）</summary>
+      <div class="body">
+        <p><b>卡尔文（新西兰）：</b>我是卡尔文，来自新西兰。我们的圣诞节在夏天，所以我们在星空下举办海滩派对。这里的圣诞节和下雪地方的圣诞节很不一样。</p>
+        <p><b>玛丽亚（澳大利亚）：</b>我是玛丽亚，来自澳大利亚。中国人正在庆祝春节、家人团聚吃年夜饭，而澳大利亚人可能正在散步享受凉爽的夏夜，或者在为他们的新年庆祝活动做准备。这让我对时区如何影响人们的日常生活有了深刻的理解。</p>
+        <p><b>赫克（西班牙）：</b>我是赫克，来自西班牙。现在我来给你讲讲午休时间——我们一天中间特殊的休息。我们和家人坐下来享用一顿轻松的饭菜，不像其他地方那样匆匆吃个快餐。我们通常吃午饭，下午 2 点到 5 点小睡一会儿。到了晚上，巴塞罗那真正活跃起来！太阳落山很晚，所以我们举办聚会，在午夜玩得开心。</p>
+      </div>
+    </details>
+
+    <h3 class="ans-h">题目与选项</h3>
+    <div class="ans-list" id="qB"></div>
+
+    <h3 class="ans-h">答案与详解</h3>
+    <div class="ans-list" id="ansB"></div>
+
+    <div class="jilei">
+      <div class="jh">✎ 积累小栈 · 参考答案</div>
+      <div class="jb" id="jileiB"></div>
+    </div>
+  </section>
+
+  <!-- ============ C篇 ============ -->
+  <section class="card" id="passC">
+    <div class="sec-head">
+      <div class="sec-no">C</div>
+      <div><h2 class="sec-title">为 Nick 义演筹款 <small>阅读下面短文，从每题 A、B、C 三个选项中选出最佳答案。</small></h2></div>
+    </div>
+    <div class="sec-meta">
+      <span class="badge">主题：人与社会——公益事业</span>
+      <span class="badge gray">语篇类型：记叙文</span>
+      <span class="badge gray">词数：162</span>
+      <span class="badge warm">难度 ★★★☆☆</span>
+      <span class="badge gray">建议用时 7′</span>
+      <span class="badge ok">正确率 △</span>
+    </div>
+
+    <article class="passage">
+      <p>It is Saturday today. Steven doesn't need to go to school. But he and his classmates still <span class="w" data-k="meet">meet</span> at the <span class="w" data-k="schoolgate">school gate</span> at 8:00 in the morning. Why? Because they have to go to the City Park.</p>
+      <p>They <span class="w" data-k="takeabus">take a bus</span> and <span class="w" data-k="getto">get to</span> the park at 8:30 a.m. At 9 o'clock, the students are <span class="w" data-k="giveaconcert">giving a concert</span>. Steven is <span class="w" data-k="playpiano">playing the piano</span>. He does it well. Diana, Steven's <span class="w" data-k="deskmate">deskmate</span>, is <span class="w" data-k="sing">singing</span> an English song. Jenny is <span class="w" data-k="begoodat">good at</span> <span class="w" data-k="playviolin">playing the violin</span>, and she is playing it now. David is <span class="w" data-k="playdrums">playing the drums</span>. Many people in the park are <span class="w" data-k="listento">listening to</span> their music.</p>
+      <p>Why do the children give this concert? They do <u>it</u> for Nick, a boy in their class. Nick is ill <span class="w" data-k="inhospital2">in hospital</span>. The students want to help him. They give this concert to <span class="w" data-k="raisemoney">raise money</span> for him. They hope Nick can <span class="w" data-k="getwell">get well</span> and <span class="w" data-k="comeback">come back</span> to school early.</p>
+    </article>
+
+    <details class="more">
+      <summary>📖 参考译文（点击展开）</summary>
+      <div class="body">
+        <p>今天是星期六。史蒂文不用上学。但他和同学们仍然早上 8 点在校门口集合。为什么？因为他们要去城市公园。</p>
+        <p>他们乘公共汽车，上午 8:30 到达公园。9 点钟，学生们正在举办一场音乐会。史蒂文在弹钢琴，弹得很好。黛安娜是史蒂文的同桌，正在唱一首英文歌。珍妮擅长拉小提琴，现在正在拉。大卫在打鼓。公园里的许多人都在听他们的音乐。</p>
+        <p>孩子们为什么要举办这场音乐会？他们是为了尼克才这样做的。尼克是他们班的一个男孩，生病住院了。学生们想帮助他。他们举办这场音乐会是为他筹款。他们希望尼克能早日康复，早点回到学校。</p>
+      </div>
+    </details>
+
+    <h3 class="ans-h">题目与选项</h3>
+    <div class="ans-list" id="qC"></div>
+
+    <h3 class="ans-h">答案与详解</h3>
+    <div class="ans-list" id="ansC"></div>
+
+    <div class="jilei">
+      <div class="jh">✎ 积累小栈 · 参考答案</div>
+      <div class="jb" id="jileiC"></div>
+    </div>
+  </section>
+
+  <!-- ============ 生词汇总 ============ -->
+  <section class="card" id="vocab">
+    <div class="sec-head">
+      <div class="sec-no">✦</div>
+      <div><h2 class="sec-title">生词与短语汇总 <small>按七年级英语词汇水平整理 · 每条含音标、释义、用法与例句 · 点击 🔊 可发音。</small></h2></div>
+    </div>
+    <div id="vocabBox"></div>
+  </section>
+
+  <footer>
+    9-1培优 · 精读精讲 ｜ Unit 1 Here and Now ｜ 单文件 · 纯前端 · 离线可用<br>
+    生词划线点击展开 · 答案与逐题解析 · 积累小栈 · 夜间模式 · 打印友好
+  </footer>
+</div>
+
+<div id="pop"></div>
+
+<script>
+/* ================= 生词数据 ================= */
+const VOCAB = [
+/* ---- A 篇：《龙猫》电影介绍 ---- */
+{k:"neighbour",g:"A",en:"neighbour",ph:"/ˈneɪbə(r)/",pos:"n.",cn:"邻居",note:"美式拼写 neighbor；my neighbour 我的邻居。",ex:"My Neighbour Totoro is a famous movie.",exCn:"《我的邻居龙猫》是一部著名的电影。"},
+{k:"minute",g:"A",en:"minute",ph:"/ˈmɪnɪt/",pos:"n.",cn:"分钟",note:"可数名词；86 minutes 86 分钟；in a minute 马上。",ex:"The movie is 86 minutes long.",exCn:"这部电影长 86 分钟。"},
+{k:"young",g:"A",en:"young",ph:"/jʌŋ/",pos:"adj.",cn:"年轻的；幼小的",note:"反义 old 年老的；young girls 小女孩们。",ex:"Two young girls go to a new place.",exCn:"两个小女孩来到一个新地方。"},
+{k:"goto",g:"A",en:"go to",ph:"",pos:"短语",cn:"去……",note:"go to + 地点名词；go home/there 等副词前不加 to。",ex:"We go to the park on Saturday.",exCn:"我们周六去公园。"},
+{k:"ill",g:"A",en:"ill",ph:"/ɪl/",pos:"adj.",cn:"生病的",note:"= sick；be ill in hospital 生病住院；ill 只能作表语。",ex:"His mother is ill in hospital.",exCn:"他妈妈生病住院了。"},
+{k:"inhospital",g:"A",en:"in hospital",ph:"",pos:"短语",cn:"住院（生病）",note:"注意区分 in the hospital 在医院里（工作/探望等，不一定生病）。",ex:"Nick is ill in hospital.",exCn:"尼克生病住院了。"},
+{k:"oneday",g:"A",en:"one day",ph:"",pos:"短语",cn:"一天；有一天",note:"可指过去某一天，也可指将来有一天；some day 多指将来。",ex:"One day, Mei finds Totoro.",exCn:"有一天，梅发现了龙猫。"},
+{k:"find",g:"A",en:"find",ph:"/faɪnd/",pos:"v.",cn:"找到；发现",note:"过去式 found；find 强调找到的结果，look for 强调寻找的过程。",ex:"Mei finds Totoro in the forest.",exCn:"梅在森林里发现了龙猫。"},
+{k:"kindchildren",g:"A",en:"kind children",ph:"",pos:"短语",cn:"善良的孩子",note:"kind 作形容词善良的、友好的，也可作名词种类（a kind of）。",ex:"Only kind children can see Totoro.",exCn:"只有善良的孩子才能看见龙猫。"},
+{k:"kindof",g:"A",en:"kind of",ph:"",pos:"短语",cn:"有点儿；有几分",note:"= a little / a bit，修饰形容词或副词，表程度。",ex:"Totoro looks kind of big and terrible.",exCn:"龙猫看上去又大又有点吓人。"},
+{k:"terrible",g:"A",en:"terrible",ph:"/ˈterəbl/",pos:"adj.",cn:"可怕的；糟糕的",note:"副词 terribly；look terrible 看上去很吓人。",ex:"The big cat looks terrible.",exCn:"那只大猫看上去很吓人。"},
+{k:"introuble",g:"A",en:"in trouble",ph:"",pos:"短语",cn:"处于困境中",note:"get into trouble 陷入困境；be in trouble 处于困境；help sb out of trouble 帮某人脱离困境。",ex:"He always helps them when they are in trouble.",exCn:"当她们遇到困难时，他总是帮助她们。"},
+{k:"sleeping",g:"A",en:"sleeping",ph:"/ˈsliːpɪŋ/",pos:"v.-ing",cn:"睡觉（进行时）",note:"sleep 的现在分词；be sleeping 正在睡觉；fall asleep 睡着。",ex:"Mei is sleeping on Totoro.",exCn:"梅正睡在龙猫身上。"},
+{k:"standing",g:"A",en:"standing",ph:"/ˈstændɪŋ/",pos:"v.-ing",cn:"站立（进行时）",note:"stand 的现在分词；stand up 起立。",ex:"They are standing in the rain.",exCn:"他们正站在雨中。"},
+{k:"intherain",g:"A",en:"in the rain",ph:"",pos:"短语",cn:"在雨中",note:"in + 天气/环境；in the sun 在阳光下；in the snow 在雪中。",ex:"Satsuki and Mei are standing in the rain.",exCn:"草和梅正站在雨中。"},
+{k:"takebus",g:"A",en:"take Totoro's bus",ph:"",pos:"短语",cn:"乘坐龙猫巴士",note:"take + 交通工具 = by + 交通工具；take a bus 乘公共汽车。",ex:"They are taking Totoro's bus to see their mother.",exCn:"她们正坐着龙猫巴士去看妈妈。"},
+{k:"see",g:"A",en:"see",ph:"/siː/",pos:"v.",cn:"看见；探望",note:"see 还有看望、探望之意；see a doctor 看医生。",ex:"They go to see their mother in hospital.",exCn:"他们去医院看望妈妈。"},
+{k:"flying",g:"A",en:"flying",ph:"/ˈflaɪɪŋ/",pos:"v.-ing",cn:"飞行（进行时）",note:"fly 的现在分词；take sb flying 带某人飞行。",ex:"Totoro is taking the girls flying.",exCn:"龙猫正带着女孩们飞行。"},
+{k:"through",g:"A",en:"through",ph:"/θruː/",pos:"prep.",cn:"穿过；通过",note:"指从物体内部穿过；across 指从表面横过。",ex:"They fly through the night sky.",exCn:"他们飞过夜空。"},
+{k:"nightsky",g:"A",en:"night sky",ph:"",pos:"短语",cn:"夜空",note:"night + 名词作定语；night sky 夜空；night market 夜市。",ex:"Totoro takes them flying through the night sky.",exCn:"龙猫带她们飞过夜空。"},
+
+/* ---- B 篇：三国节日与时差 ---- */
+{k:"comefrom",g:"B",en:"come from",ph:"",pos:"短语",cn:"来自",note:"= be from；come from New Zealand 来自新西兰。",ex:"I come from New Zealand.",exCn:"我来自新西兰。"},
+{k:"newzealand",g:"B",en:"New Zealand",ph:"/ˌnjuː ˈziːlənd/",pos:"n.",cn:"新西兰",note:"国家名，首字母大写；新西兰人 New Zealander。",ex:"New Zealand is a beautiful country.",exCn:"新西兰是一个美丽的国家。"},
+{k:"christmas",g:"B",en:"Christmas",ph:"/ˈkrɪsməs/",pos:"n.",cn:"圣诞节",note:"at Christmas 在圣诞节期间；Merry Christmas! 圣诞快乐！注意不加 the。",ex:"Christmas here is in summer.",exCn:"这里的圣诞节在夏天。"},
+{k:"summer",g:"B",en:"summer",ph:"/ˈsʌmə(r)/",pos:"n.",cn:"夏天",note:"四季前一般不加 the；in summer 在夏天；summer holiday 暑假。",ex:"Our Christmas is in summer.",exCn:"我们的圣诞节在夏天。"},
+{k:"beachparty",g:"B",en:"beach party",ph:"",pos:"短语",cn:"海滩聚会",note:"beach 海滩；have a beach party 举办海滩聚会。",ex:"We have beach parties under the stars.",exCn:"我们在星空下举办海滩聚会。"},
+{k:"underthestars",g:"B",en:"under the stars",ph:"",pos:"短语",cn:"在星空下",note:"under 在……之下；under the tree 在树下。",ex:"They sit under the stars and talk.",exCn:"他们坐在星空下聊天。"},
+{k:"differentfrom",g:"B",en:"be different from",ph:"",pos:"短语",cn:"与……不同",note:"be different from 与……不同；the same as 与……相同。",ex:"Christmas here is different from Christmas in places where it snows.",exCn:"这里的圣诞节和下雪地方的圣诞节很不一样。"},
+{k:"snow",g:"B",en:"snow",ph:"/snəʊ/",pos:"v./n.",cn:"下雪；雪",note:"作动词：It snows. 下雪；作名词（不可数）：There is a lot of snow. 有很多雪。",ex:"It often snows in winter here.",exCn:"这里冬天经常下雪。"},
+{k:"australia",g:"B",en:"Australia",ph:"/ɒˈstreɪliə/",pos:"n.",cn:"澳大利亚",note:"国家名；澳大利亚人 Australian；位于南半球，季节与北半球相反。",ex:"Australia is in the southern hemisphere.",exCn:"澳大利亚位于南半球。"},
+{k:"celebrate",g:"B",en:"celebrate",ph:"/ˈselɪbreɪt/",pos:"v.",cn:"庆祝",note:"celebrate + 节日；celebration n. 庆祝活动。",ex:"People in China are celebrating the Spring Festival.",exCn:"中国人正在庆祝春节。"},
+{k:"springfestival",g:"B",en:"the Spring Festival",ph:"",pos:"短语",cn:"春节",note:"中国新年；也说 Chinese New Year；at the Spring Festival 在春节期间。",ex:"The Spring Festival is very important in China.",exCn:"春节在中国非常重要。"},
+{k:"familymember",g:"B",en:"family member",ph:"",pos:"短语",cn:"家庭成员",note:"可数名词，复数 family members。",ex:"Family members are reuniting for dinner.",exCn:"家人们团聚在一起吃晚饭。"},
+{k:"reuniting",g:"B",en:"reuniting",ph:"/ˌriːjuːˈnaɪtɪŋ/",pos:"v.-ing",cn:"团聚；重聚（进行时）",note:"reunite v. 重聚；re + unite（联合）；family reunion 家庭团聚。",ex:"Family members are reuniting for a New Year's Eve dinner.",exCn:"家人们正团聚吃年夜饭。"},
+{k:"newyearseve",g:"B",en:"New Year's Eve dinner",ph:"",pos:"短语",cn:"除夕年夜饭",note:"New Year's Eve 除夕夜；eve 前夜（Christmas Eve 平安夜）。",ex:"We have a big New Year's Eve dinner.",exCn:"我们吃一顿丰盛的年夜饭。"},
+{k:"takeawalk",g:"B",en:"take a walk",ph:"",pos:"短语",cn:"散步",note:"= go for a walk / go walking；take a walk after dinner 饭后散步。",ex:"People in Australia may be taking a walk.",exCn:"澳大利亚人可能正在散步。"},
+{k:"enjoy",g:"B",en:"enjoy",ph:"/ɪnˈdʒɔɪ/",pos:"v.",cn:"享受；喜爱",note:"enjoy + 名词/doing sth 喜爱（做）某事；enjoy oneself 玩得开心。",ex:"They enjoy the cool summer night.",exCn:"他们享受凉爽的夏夜。"},
+{k:"preparefor",g:"B",en:"prepare for",ph:"",pos:"短语",cn:"为……做准备",note:"prepare sth for sb 为某人准备某物；prepare to do sth 准备做某事。",ex:"They are preparing for their New Year celebrations.",exCn:"他们正在为新年庆祝活动做准备。"},
+{k:"understanding",g:"B",en:"understanding",ph:"/ˌʌndəˈstændɪŋ/",pos:"n.",cn:"理解；了解",note:"a deep understanding of 对……的深刻理解；understand v. 理解。",ex:"This gives me a deep understanding of the world.",exCn:"这让我对世界有了深刻的理解。"},
+{k:"timezone",g:"B",en:"time zone",ph:"",pos:"短语",cn:"时区",note:"time 时间 + zone 区域；不同国家时区不同，导致同一时刻的白天黑夜不同。",ex:"How time zones affect people's daily life.",exCn:"时区如何影响人们的日常生活。"},
+{k:"affect",g:"B",en:"affect",ph:"/əˈfekt/",pos:"v.",cn:"影响",note:"= have an effect on；注意与 effect（n. 影响）区分。",ex:"Time zones affect people's daily life.",exCn:"时区影响人们的日常生活。"},
+{k:"dailylife",g:"B",en:"daily life",ph:"",pos:"短语",cn:"日常生活",note:"daily = everyday 每天的；daily life 日常生活。",ex:"Time zones affect people's daily life.",exCn:"时区影响人们的日常生活。"},
+{k:"siesta",g:"B",en:"siesta",ph:"/siˈestə/",pos:"n.",cn:"午休；午睡",note:"源自西班牙语，指午后的长时间休息，常见于西班牙等国。",ex:"Spain is famous for siesta time.",exCn:"西班牙以午休时间闻名。"},
+{k:"spain",g:"B",en:"Spain",ph:"/speɪn/",pos:"n.",cn:"西班牙",note:"国家名，首字母大写；西班牙人 Spanish（也可作形容词西班牙的）；首都 Madrid 马德里。",ex:"I, Huck, am from Spain.",exCn:"我，赫克，来自西班牙。"},
+{k:"break",g:"B",en:"break",ph:"/breɪk/",pos:"n./v.",cn:"休息；打破",note:"作名词休息：have a break 休息一下；作动词打破：break the record 破纪录。",ex:"We have a special break in the middle of the day.",exCn:"我们在一天中间有一次特别的休息。"},
+{k:"inthemiddleof",g:"B",en:"in the middle of",ph:"",pos:"短语",cn:"在……中间",note:"in the middle of the day 在一天中间（中午前后）；in the middle of the room 在房间中央。",ex:"We have a break in the middle of the day.",exCn:"我们在一天中间休息一下。"},
+{k:"relaxing",g:"B",en:"relaxing",ph:"/rɪˈlæksɪŋ/",pos:"adj.",cn:"轻松的；令人放松的",note:"修饰事物；relaxed 感到放松的（修饰人）；relax v. 放松。",ex:"We sit down for a relaxing meal.",exCn:"我们坐下来吃一顿轻松的饭。"},
+{k:"unlike",g:"B",en:"unlike",ph:"/ʌnˈlaɪk/",pos:"prep.",cn:"不像；与……不同",note:"反义 like 像；unlike other places 不像其他地方。",ex:"Unlike the quick lunches in other places, we take our time.",exCn:"不像其他地方匆匆吃午饭，我们慢慢享用。"},
+{k:"haveanap",g:"B",en:"have a nap",ph:"",pos:"短语",cn:"小睡；打盹",note:"= take a nap；have a nap after lunch 午饭后小睡。",ex:"We usually have a nap from 2:00 to 5:00.",exCn:"我们通常从 2 点到 5 点小睡一会儿。"},
+{k:"afternoon",g:"B",en:"afternoon",ph:"/ˌɑːftəˈnuːn/",pos:"n.",cn:"下午",note:"in the afternoon 在下午；this afternoon 今天下午。",ex:"We have lunch in the afternoon.",exCn:"我们下午吃午饭。"},
+{k:"cometolife",g:"B",en:"come to life",ph:"",pos:"短语",cn:"苏醒；活跃起来",note:"指变得有生气、热闹起来；come alive 也有此意。",ex:"Barcelona really comes to life at night.",exCn:"巴塞罗那到了夜晚真正活跃起来。"},
+{k:"set",g:"B",en:"set",ph:"/set/",pos:"v.",cn:"（太阳）落下；放置",note:"过去式 set；the sun sets 太阳落山；set 还有放置、设定之意。",ex:"The sun sets late in summer.",exCn:"夏天太阳落山很晚。"},
+{k:"holdparties",g:"B",en:"hold parties",ph:"",pos:"短语",cn:"举办聚会",note:"hold = have / give，有举行、举办之意；hold a meeting 开会。",ex:"We hold parties and enjoy ourselves.",exCn:"我们举办聚会，玩得开心。"},
+{k:"enjoyoneself",g:"B",en:"enjoy oneself",ph:"",pos:"短语",cn:"玩得开心",note:"= have a good time / have fun；oneself 随主语变化（myself/yourself/themselves）。",ex:"We enjoy ourselves at midnight.",exCn:"我们在午夜玩得开心。"},
+{k:"midnight",g:"B",en:"midnight",ph:"/ˈmɪdnaɪt/",pos:"n.",cn:"午夜；半夜",note:"at midnight 在午夜；反义 midday 正午。",ex:"They enjoy themselves at midnight.",exCn:"他们在午夜玩得开心。"},
+
+/* ---- C 篇：为 Nick 义演筹款 ---- */
+{k:"meet",g:"C",en:"meet",ph:"/miːt/",pos:"v.",cn:"见面；集合",note:"过去式 met；meet sb at + 地点 在某地与某人见面。",ex:"They meet at the school gate at 8:00.",exCn:"他们 8 点在校门口集合。"},
+{k:"schoolgate",g:"C",en:"school gate",ph:"",pos:"短语",cn:"校门；学校门口",note:"at the school gate 在校门口；gate 大门（entrance 入口）。",ex:"We meet at the school gate.",exCn:"我们在校门口集合。"},
+{k:"takeabus",g:"C",en:"take a bus",ph:"",pos:"短语",cn:"乘公共汽车",note:"= by bus；take a bus to school = go to school by bus。",ex:"They take a bus to the park.",exCn:"他们乘公共汽车去公园。"},
+{k:"getto",g:"C",en:"get to",ph:"",pos:"短语",cn:"到达",note:"get to + 地点 = arrive in/at = reach；get home/here/there 不加 to。",ex:"They get to the park at 8:30 a.m.",exCn:"他们上午 8:30 到达公园。"},
+{k:"giveaconcert",g:"C",en:"give a concert",ph:"",pos:"短语",cn:"举办音乐会",note:"= have/hold a concert；concert 音乐会，可数名词。",ex:"The students are giving a concert.",exCn:"学生们正在举办一场音乐会。"},
+{k:"playpiano",g:"C",en:"play the piano",ph:"",pos:"短语",cn:"弹钢琴",note:"play + the + 乐器；play the guitar/piano/violin；球类前不加 the。",ex:"Steven is playing the piano.",exCn:"史蒂文正在弹钢琴。"},
+{k:"deskmate",g:"C",en:"deskmate",ph:"/ˈdeskmeɪt/",pos:"n.",cn:"同桌",note:"desk（课桌）+ mate（伙伴）；classmate 同班同学。",ex:"Diana is Steven's deskmate.",exCn:"黛安娜是史蒂文的同桌。"},
+{k:"sing",g:"C",en:"sing",ph:"/sɪŋ/",pos:"v.",cn:"唱歌",note:"过去式 sang；sing a song 唱一首歌；sing an English song 唱英文歌。",ex:"Diana is singing an English song.",exCn:"黛安娜正在唱一首英文歌。"},
+{k:"begoodat",g:"C",en:"be good at",ph:"",pos:"短语",cn:"擅长",note:"= do well in；be good at + 名词/doing sth 擅长（做）某事。",ex:"Jenny is good at playing the violin.",exCn:"珍妮擅长拉小提琴。"},
+{k:"playviolin",g:"C",en:"play the violin",ph:"",pos:"短语",cn:"拉小提琴",note:"play + the + 乐器；violin 小提琴；violinist 小提琴手。",ex:"She is playing the violin now.",exCn:"她现在正在拉小提琴。"},
+{k:"playdrums",g:"C",en:"play the drums",ph:"",pos:"短语",cn:"打鼓",note:"drum 常用复数 the drums；play the drums 打鼓。",ex:"David is playing the drums.",exCn:"大卫正在打鼓。"},
+{k:"listento",g:"C",en:"listen to",ph:"",pos:"短语",cn:"听",note:"listen to + 宾语（听的过程）；hear 听见（结果）；listen to music 听音乐。",ex:"Many people are listening to their music.",exCn:"许多人在听他们的音乐。"},
+{k:"inhospital2",g:"C",en:"in hospital",ph:"",pos:"短语",cn:"住院",note:"英式用法；美式常用 in the hospital 表示住院。与 A 篇同义。",ex:"Nick is ill in hospital.",exCn:"尼克生病住院了。"},
+{k:"raisemoney",g:"C",en:"raise money",ph:"",pos:"短语",cn:"筹款；募捐",note:"raise 筹集、募集；raise money for sb 为某人筹款。",ex:"They give this concert to raise money for Nick.",exCn:"他们举办这场音乐会为尼克筹款。"},
+{k:"getwell",g:"C",en:"get well",ph:"",pos:"短语",cn:"康复；痊愈",note:"get + 形容词变得……；get well 变好、康复；well 作形容词健康的。",ex:"They hope Nick can get well soon.",exCn:"他们希望尼克能早日康复。"},
+{k:"comeback",g:"C",en:"come back",ph:"",pos:"短语",cn:"回来",note:"come back to + 地点 回到某地；come back to school 回到学校。",ex:"Nick can come back to school early.",exCn:"尼克可以早点回到学校。"}
+];
+
+const V={}; VOCAB.forEach(o=>V[o.k]=o);
+
+const GROUP_NAME={
+  A:"A 篇 · My Neighbour Totoro《龙猫》",
+  B:"B 篇 · 三国少年谈节日与时差",
+  C:"C 篇 · 为 Nick 义演筹款"
+};
+
+/* ================= 题目数据 ================= */
+const Q_A=[
+ {n:1,q:"Totoro is always ______ Satsuki and Mei.",opts:["kind to","strict(严厉的) with","sorry for"],ans:0},
+ {n:2,q:"(新考法·图文匹配题) In Picture ______, Satsuki and Mei are going to the hospital.",opts:["①","②","③"],ans:2},
+ {n:3,q:"What can we learn from the text?",opts:["Anyone can see Totoro.","The movie is about twenty years old.","Totoro takes the two sisters to do some interesting things."],ans:2}
+];
+const Q_B=[
+ {n:1,q:"How does New Zealand celebrate Christmas according to the passage?",opts:["By eating delicious food.","By holding beach parties.","By inviting people to dance."],ans:1},
+ {n:2,q:"(新考法·跨学科知识题) In which season is New Year in Australia?",opts:["Spring.","Summer.","Autumn."],ans:1},
+ {n:3,q:"If you call Huck at 3:30 p.m. in Spain and he doesn't pick up, what might he be doing?",opts:["He is having lunch or sleeping.","He is having a party or sleeping.","He is having dinner or holding a party."],ans:0},
+ {n:4,q:"What is the passage mainly about?",opts:["Different festivals and daily habits in different countries.","How people celebrate Christmas around the world.","Special lunch time in Spain."],ans:0}
+];
+const Q_C=[
+ {n:1,q:"Where do the students meet?",opts:["At the concert.","At the City Park.","At the school gate."],ans:2},
+ {n:2,q:"(新考法·图文匹配题) What is Steven doing at 9:00 a.m.?",opts:["弹钢琴（钢琴图片）","拉小提琴（小提琴图片）","唱歌（麦克风图片）"],ans:0},
+ {n:3,q:"What does the underlined word “it” in Paragraph 3 refer to?",opts:["Playing music.","Raising money.","Giving the concert."],ans:2},
+ {n:4,q:"(新考法·推断人物特征题) Which word can best describe the students?",opts:["Strict.","Kind.","Quiet."],ans:1}
+];
+
+/* ================= 答案与详解 ================= */
+const ANS_A=[
+ {n:1,key:"A",tag:"词义理解",sent:"Totoro looks kind of big and terrible, but he always helps them when they are in trouble.",
+  ana:["原文转折句说明：龙猫虽然看起来又大又吓人，但总在她们遇到困难时伸出援手——可见它对姐妹俩很友好，be kind to sb 意为对某人友好，选 A。",
+       "B. be strict with 意为对……严格，与文意相反；C. be sorry for 意为为……难过/抱歉，文中并无此意。",
+       "解题关键：抓住 but 后的 always helps，判断人物态度为友善。"]},
+ {n:2,key:"C",tag:"图文匹配",sent:"Satsuki and Mei are taking Totoro's bus to see their mother.",
+  ana:["题干问哪幅图中姐妹俩正要去医院。图③的说明是坐龙猫巴士去看妈妈——妈妈住院，看妈妈即去医院，故选 C。",
+       "图①是梅睡在龙猫身上；图②是雨中站立；图④是夜空飞行，均与去医院无关。",
+       "解题关键：图文匹配题先读题干关键词 going to the hospital，再回图注找看妈妈/去医院的同义表达。"]},
+ {n:3,key:"C",tag:"推理判断",sent:"he always helps them when they are in trouble / taking Satsuki and Mei flying through the night sky",
+  ana:["C. 正确。龙猫带姐妹俩飞行、在困难时帮忙，即带她们做有趣的事。",
+       "A. 错误。原文说 only kind children can see him（只有善良的孩子才能看见），并非 anyone can see。",
+       "B. 错误。电影 1988 年上映，距今约 40 年，不是 about twenty years old。",
+       "解题关键：推理判断题要逐项回原文核对，注意 only 等限定词和年份等数字细节。"]}
+];
+const ANS_B=[
+ {n:1,key:"B",tag:"细节理解",sent:"Our Christmas is in summer, so we have beach parties under the stars.",
+  ana:["Calvin 明确说新西兰的圣诞节在夏天，人们在星空下举办海滩派对（beach parties），故选 B。",
+       "A 吃美食、C 邀请人跳舞文中均未提及。",
+       "解题关键：题干问 How（方式），直接定位 Calvin 的话中的 so 结果句。"]},
+ {n:2,key:"B",tag:"跨学科（地理）",sent:"people in Australia may be taking a walk to enjoy the cool summer night or preparing for their New Year celebrations",
+  ana:["澳大利亚位于南半球，季节与北半球相反。新年（1 月 1 日前后）北半球是冬季，而南半球的澳大利亚正是夏季——文中 cool summer night 正是提示，故选 B。",
+       "这正是 Maria 感叹的 time zones（时区/半球差异）影响日常生活。",
+       "解题关键：跨学科题联系地理知识——南北半球季节相反，再回文找 summer 等提示词。"]},
+ {n:3,key:"A",tag:"细节理解",sent:"We usually have lunch and have a nap from 2:00 to 5:00 in the afternoon.",
+  ana:["下午 3:30 正处于 Huck 的午餐 + 午睡时段（2:00–5:00 p.m.），所以他可能在吃饭或睡觉，电话没人接，选 A。",
+       "B 办派对、C 吃晚餐/办派对都是晚上的活动（at night, at midnight），可排除。",
+       "解题关键：数字时间定位——3:30 p.m. 落在 2:00–5:00 的区间内。"]},
+ {n:4,key:"A",tag:"主旨大意",sent:"Calvin(New Zealand) / Maria(Australia) / Huck(Spain)",
+  ana:["三位少年分别来自新西兰、澳大利亚、西班牙，讲述各自的节日习俗与日常生活习惯，A 概括全面。",
+       "B 只讲圣诞，太窄；C 只讲西班牙午餐时间，以偏概全。",
+       "解题关键：主旨题看全文结构——并列介绍多国多方面，选涵盖面最全且无偏颇的选项。"]}
+];
+const ANS_C=[
+ {n:1,key:"C",tag:"细节理解",sent:"meet at the school gate at 8:00 in the morning",
+  ana:["原文直接给出：早上 8 点在校门口（school gate）集合，故选 C。",
+       "音乐会在公园举行，是集合之后的活动；City Park 是目的地，不是集合地点。",
+       "解题关键：Where 问地点，锁定 meet 后的地点状语。"]},
+ {n:2,key:"A",tag:"图文匹配",sent:"Steven is playing the piano. He does it well.",
+  ana:["原文写明 Steven 在弹钢琴（playing the piano），对应钢琴图片，选 A。",
+       "B 小提琴是 Jenny 在拉；C 麦克风/唱歌是 Diana 在唱。",
+       "解题关键：图文匹配先锁定人物 Steven，再找对应动作。"]},
+ {n:3,key:"C",tag:"词义猜测（代词指代）",sent:"Why do the children give this concert? They do it for Nick.",
+  ana:["it 指代前一句的动作 give this concert（举办这场音乐会），故选 C。",
+       "句意：孩子们为什么举办这场音乐会？他们是为了尼克才举办的。",
+       "A 演奏音乐、B 筹钱都不是 it 的指代对象——筹款是音乐会的目的，不是 it 本身。",
+       "解题关键：代词指代题往上看前一句，找同义的名词或动词短语。"]},
+ {n:4,key:"B",tag:"推断人物特征",sent:"Nick is ill in hospital. The students want to help him. They give this concert to raise money for him.",
+  ana:["学生们周末为住院同学办音乐会筹款，是热心助人的表现，Kind（善良的）最符合，选 B。",
+       "Strict（严格的）、Quiet（安静的）都不能概括他们主动帮同学筹款的行为。",
+       "解题关键：人物特征题从做了什么推断什么样的人——帮助他人 → 善良。"]}
+];
+
+/* ================= 积累小栈 ================= */
+const JILEI_A=[
+ {q:"1. in hospital ______",a:"在住院"},
+ {q:"2. 一天 ______",a:"<u>one day</u>"},
+ {q:"3. 完成句子：考拉有点意思，但老虎真的很吓人。Koalas are ______ interesting but tigers are really scary.",a:"<u>kind of</u>（也可填 a bit / a little）",
+  note:"kind of = a bit / a little，意为有点儿，修饰形容词 interesting。"},
+ {q:"4. 完成句子：我父亲总是告诉我，遇到困难时，永远不要放弃。My father always tells me never to give up when I am ______ ______.",a:"<u>in</u> <u>trouble</u>",
+  note:"be in trouble 处于困境中；give up 放弃（后接名词或 doing）。"}
+];
+const JILEI_B=[
+ {q:"1. 来自 ______",a:"<u>come from</u>"},
+ {q:"2. 与……不同 ______",a:"<u>be different from</u>"},
+ {q:"3. the Spring Festival ______",a:"春节"},
+ {q:"4. New Year's Eve dinner ______",a:"年夜饭（除夕晚餐）"},
+ {q:"5. 为……做准备 ______",a:"<u>prepare for</u>"},
+ {q:"6. have a nap ______",a:"小睡；打盹"},
+ {q:"7. come to life ______",a:"苏醒；活跃起来"},
+ {q:"8. 玩得开心 ______",a:"<u>enjoy oneself</u> / have a good time / have fun"},
+ {q:"9. 翻译句子：This gives me a deep understanding of how time zones affect people's daily life.",a:"这让我对时区如何影响人们的日常生活有了深刻的理解。"},
+ {q:"10. 仿写句子：原句 Christmas here is really different from Christmas in places where it snows.（这里的圣诞节和下雪地区的圣诞节大不相同。be different from 和……不同）仿写：这里的生活和大城市的生活大不相同。",a:"<u>Life here is really different from life in big cities.</u>",
+  note:"套用 be different from 结构：A is different from B。也可以说 Life here is really different from that in big cities.（用 that 代替前面的 life，避免重复。）"}
+];
+const JILEI_C=[
+ {q:"1. take a bus ______",a:"乘公共汽车"},
+ {q:"2. 弹钢琴 ______",a:"<u>play the piano</u>"},
+ {q:"3. play the violin ______",a:"拉小提琴"},
+ {q:"4. 打鼓 ______",a:"<u>play the drums</u>"},
+ {q:"5. 完成句子：为了学好英语，他必须每天都听磁带。To learn English well, he ______ ______ tapes every day.",a:"<u>must</u> <u>listen to</u>",
+  note:"情态动词 must 后接动词原形；listen to tapes 听磁带。"},
+ {q:"6. 完成句子：你的同学们是怎样为那位住院的贫困老人筹款的？How did your classmates ______ ______ for the poor old man ______?",a:"<u>raise money</u>……<u>in hospital</u>",
+  note:"raise money 筹款；in hospital 住院。完整句：How did your classmates raise money for the poor old man in hospital?"}
+];
+
+/* ================= 渲染 ================= */
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");}
+
+function renderQ(box, arr){
+  arr.forEach(o=>{
+    const d=document.createElement("div"); d.className="ans-item";
+    const opts=o.opts.map((t,i)=>`<div${i===o.ans?' class="picked"':''}>${"ABC"[i]}. ${esc(t)}</div>`).join("");
+    d.innerHTML = `<div class="top"><span class="num">${o.n}.</span><span class="kt">第 ${o.n} 题</span></div>`+
+      `<div class="qstem">${esc(o.q)}</div><div class="qopts">${opts}</div>`;
+    box.appendChild(d);
+  });
+}
+renderQ(document.getElementById("qA"), Q_A);
+renderQ(document.getElementById("qB"), Q_B);
+renderQ(document.getElementById("qC"), Q_C);
+
+function renderAns(box, arr){
+  arr.forEach(o=>{
+    const d=document.createElement("div"); d.className="ans-item";
+    d.innerHTML = `<div class="top"><span class="num">${o.n}.</span><span class="key">${esc(o.key)}</span><span class="kt">${esc(o.tag)}</span></div>`+
+      `<div class="sent">📌 ${esc(o.sent)}</div>`+
+      `<ul>${o.ana.map(a=>`<li>${esc(a)}</li>`).join("")}</ul>`;
+    box.appendChild(d);
+  });
+}
+renderAns(document.getElementById("ansA"), ANS_A);
+renderAns(document.getElementById("ansB"), ANS_B);
+renderAns(document.getElementById("ansC"), ANS_C);
+
+function renderJilei(box, arr){
+  arr.forEach(o=>{
+    const d=document.createElement("div"); d.className="qb";
+    d.innerHTML = `<div class="q">${esc(o.q)}</div><div class="a">${o.a}</div>`+
+      (o.note?`<div class="nt">${esc(o.note)}</div>`:"");
+    box.appendChild(d);
+  });
+}
+renderJilei(document.getElementById("jileiA"), JILEI_A);
+renderJilei(document.getElementById("jileiB"), JILEI_B);
+renderJilei(document.getElementById("jileiC"), JILEI_C);
+
+/* 生词汇总（按语篇分组） */
+const vocabBox = document.getElementById("vocabBox");
+["A","B","C"].forEach(g=>{
+  const wrap=document.createElement("div"); wrap.className="vgroup";
+  const h=document.createElement("h3"); h.innerHTML=`<span class="dot"></span>${GROUP_NAME[g]}`;
+  wrap.appendChild(h);
+  const cards=document.createElement("div"); cards.className="vcards";
+  VOCAB.filter(v=>v.g===g).forEach(v=>{
+    const c=document.createElement("div"); c.className="vcard";
+    c.innerHTML = `<div class="hw"><span class="en">${esc(v.en)}</span>`+
+      (v.ph?`<span class="ph">${esc(v.ph)}</span>`:"")+
+      `<span class="pos">${esc(v.pos)}</span><button class="spk" type="button" data-word="${esc(v.en)}" title="点击发音" aria-label="发音">🔊</button></div>`+
+      `<div class="cn">${esc(v.cn)}</div>`+
+      `<div class="nt">${esc(v.note)}</div>`+
+      `<div class="ex">e.g. ${esc(v.ex)}<span class="ecn">${esc(v.exCn)}</span></div>`;
+    cards.appendChild(c);
+  });
+  wrap.appendChild(cards);
+  vocabBox.appendChild(wrap);
+});
+
+/* ================= 交互：划线词弹出 / 内联对照 ================= */
+const words = [...document.querySelectorAll(".w")];
+words.forEach(w=>{
+  const d=V[w.dataset.k]; if(!d) return;
+  const g=document.createElement("span"); g.className="gloss"; g.textContent="（"+d.cn+"）";
+  w.after(g);
+});
+
+const pop=document.getElementById("pop");
+let cur=null;
+function closePop(){ pop.classList.remove("show"); if(cur) cur.classList.remove("active"); cur=null; }
+function openPop(el){
+  const d=V[el.dataset.k]; if(!d) return;
+  if(cur===el){ closePop(); return; }
+  closePop();
+  cur=el; el.classList.add("active");
+  pop.innerHTML =
+    `<div class="pw">${esc(d.en)}${d.ph?`<span class="pph">${esc(d.ph)}</span>`:""}<span class="pos">${esc(d.pos)}</span><button class="spk" type="button" data-word="${esc(d.en)}" title="点击发音" aria-label="发音">🔊</button></div>`+
+    `<div class="pcn">${esc(d.cn)}</div>`+
+    `<div class="pnote">${esc(d.note)}</div>`+
+    `<div class="pex"><b>例：</b> ${esc(d.ex)}<span class="cn">${esc(d.exCn)}</span></div>`;
+  pop.classList.add("show");
+  const r=el.getBoundingClientRect();
+  const pw=pop.offsetWidth, ph=pop.offsetHeight;
+  let left=r.left + r.width/2 - pw/2 + window.scrollX;
+  left=Math.max(12+window.scrollX, Math.min(left, window.scrollX + document.documentElement.clientWidth - pw - 12));
+  let top=r.top + window.scrollY - ph - 12;
+  if(top < window.scrollY + 8){ top = r.bottom + window.scrollY + 12; }
+  pop.style.left=left+"px"; pop.style.top=top+"px";
+}
+words.forEach(w=>w.addEventListener("click",e=>{e.stopPropagation();openPop(w);}));
+document.addEventListener("click",e=>{ if(!pop.contains(e.target)) closePop(); });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape") closePop(); });
+window.addEventListener("scroll",closePop,{passive:true});
+window.addEventListener("resize",closePop);
+
+document.querySelectorAll(".blank").forEach(b=>{
+  b.addEventListener("click",e=>{e.stopPropagation(); b.classList.toggle("open");});
+});
+
+const btnAllWords=document.getElementById("btnAllWords");
+btnAllWords.addEventListener("click",()=>{
+  const on=document.body.classList.toggle("showall");
+  btnAllWords.classList.toggle("on",on);
+  btnAllWords.textContent = on ? "🙈 隐藏全部释义" : "👁 显示全部释义";
+  if(on) closePop();
+});
+const btnAllAns=document.getElementById("btnAllAns");
+btnAllAns.addEventListener("click",()=>{
+  const on=document.body.classList.toggle("showans");
+  btnAllAns.classList.toggle("on",on);
+  btnAllAns.textContent = on ? "🔒 隐藏全部答案" : "✅ 显示全部答案";
+});
+const btnTheme=document.getElementById("btnTheme");
+btnTheme.addEventListener("click",()=>{
+  const on=document.body.classList.toggle("dark");
+  btnTheme.textContent = on ? "☀️ 日间" : "🌙 夜间";
+});
+
+function speak(text){
+  if(!('speechSynthesis' in window)){
+    alert('当前浏览器不支持语音朗读，请用 Chrome / Edge / Safari 打开本页。');
+    return;
+  }
+  const u=new SpeechSynthesisUtterance(text);
+  u.lang='en-US'; u.rate=0.92; u.pitch=1;
+  window.speechSynthesis.cancel();
+  window.speechSynthesis.speak(u);
+}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('.spk');
+  if(b){ e.stopPropagation(); speak(b.dataset.word); }
+});
+</script>
+</body>
+</html>

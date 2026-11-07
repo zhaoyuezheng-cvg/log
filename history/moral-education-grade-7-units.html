@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>道德与法治（七年级上册）单元思维导图</title>
+<style>
+/* ============================================================
+   SECTION: tokens —— 全局变量与单元主题色
+   ============================================================ */
+:root{
+  --bg:#f2f4f8;
+  --bg2:#e8ecf4;
+  --card:#ffffff;
+  --ink:#1f2937;
+  --ink2:#4b5563;
+  --ink3:#6b7280;
+  --line:#d8dee9;
+  --line2:#e6eaf1;
+  --radius:16px;
+  --shadow:0 6px 22px rgba(31,41,55,.07);
+  --shadow-h:0 10px 30px rgba(31,41,55,.12);
+  --sans:"PingFang SC","Microsoft YaHei","Hiragino Sans GB","Source Han Sans SC","Noto Sans CJK SC",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+
+  /* 单元主题色 */
+  --u-indigo:#4338ca;  --u-indigo-soft:#eef2ff;  --u-indigo-line:#c7d2fe;
+  --u-amber:#b45309;   --u-amber-soft:#fffbeb;   --u-amber-line:#fde68a;
+  --u-rose:#be123c;    --u-rose-soft:#fff1f2;    --u-rose-line:#fecdd3;
+  --u-violet:#6d28d9;  --u-violet-soft:#f5f3ff;  --u-violet-line:#ddd6fe;
+  --u-sky:#0369a1;     --u-sky-soft:#f0f9ff;     --u-sky-line:#bae6fd;
+  --u-emerald:#047857; --u-emerald-soft:#ecfdf5; --u-emerald-line:#a7f3d0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family:var(--sans);
+  color:var(--ink);
+  background:
+    radial-gradient(1100px 520px at 12% -8%,#ffffff 0%,rgba(255,255,255,0) 60%),
+    linear-gradient(160deg,var(--bg) 0%,var(--bg2) 100%);
+  background-attachment:fixed;
+  -webkit-font-smoothing:antialiased;
+  line-height:1.6;
+}
+button{font-family:inherit}
+[hidden]{display:none !important}
+
+/* ============================================================
+   SECTION: topbar —— 顶部工具栏
+   ============================================================ */
+.app{max-width:1560px;margin:0 auto;padding:22px 20px 46px}
+.topbar{
+  position:sticky;top:0;z-index:60;
+  display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;
+  padding:14px 18px;margin-bottom:20px;
+  background:rgba(255,255,255,.9);
+  backdrop-filter:blur(10px);
+  border:1px solid var(--line2);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+}
+.brand{display:flex;align-items:center;gap:13px;min-width:0}
+.brand-mark{
+  flex:0 0 auto;width:44px;height:44px;border-radius:13px;
+  display:grid;place-items:center;
+  font-size:22px;font-weight:800;color:#fff;letter-spacing:0;
+  background:linear-gradient(140deg,#4338ca,#7c3aed 55%,#be123c);
+  box-shadow:0 5px 14px rgba(79,70,229,.32);
+}
+.brand h1{margin:0;font-size:19px;font-weight:800;letter-spacing:.3px;white-space:nowrap}
+.brand .sub{margin:2px 0 0;font-size:12.5px;color:var(--ink3);white-space:nowrap}
+.controls{display:flex;flex-wrap:wrap;gap:9px;align-items:center}
+.seg{display:flex;padding:3px;background:#eef1f6;border-radius:11px;gap:2px}
+.seg-btn{
+  border:0;background:transparent;cursor:pointer;
+  padding:7px 15px;border-radius:9px;
+  font-size:13.5px;font-weight:600;color:var(--ink3);
+  transition:.18s;
+}
+.seg-btn:hover{color:var(--ink)}
+.seg-btn.is-on{background:#fff;color:#3730a3;box-shadow:0 2px 7px rgba(31,41,55,.14)}
+.btn{
+  cursor:pointer;border:1px solid var(--line);background:#fff;color:var(--ink2);
+  padding:8px 15px;border-radius:11px;font-size:13.5px;font-weight:600;
+  transition:.18s;white-space:nowrap;
+}
+.btn:hover{border-color:#b9c2d4;color:var(--ink);background:#f8fafc;transform:translateY(-1px)}
+.btn:active{transform:translateY(0)}
+.btn-primary{
+  border-color:transparent;color:#fff;
+  background:linear-gradient(135deg,#4338ca,#6d28d9);
+  box-shadow:0 5px 14px rgba(79,70,229,.3);
+}
+.btn-primary:hover{color:#fff;background:linear-gradient(135deg,#3730a3,#5b21b6);border-color:transparent}
+
+/* ============================================================
+   SECTION: overview —— 概览统计与单元导航
+   ============================================================ */
+.stats{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:14px;
+}
+.stat{
+  background:var(--card);border:1px solid var(--line2);border-radius:13px;
+  padding:12px 15px;box-shadow:var(--shadow);
+  display:flex;align-items:baseline;gap:8px;
+}
+.stat b{font-size:24px;font-weight:800;color:#3730a3;line-height:1.1;font-variant-numeric:tabular-nums}
+.stat span{font-size:12.5px;color:var(--ink3)}
+.unit-nav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.chip{
+  cursor:pointer;border:1px solid var(--line);background:#fff;
+  padding:6px 13px;border-radius:999px;font-size:13px;font-weight:600;color:var(--ink2);
+  display:inline-flex;align-items:center;gap:7px;transition:.18s;
+}
+.chip:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(31,41,55,.1)}
+.chip i{width:8px;height:8px;border-radius:50%;display:block;background:var(--c,#4338ca)}
+
+/* ============================================================
+   SECTION: unit-card —— 屏幕版单元卡片
+   ============================================================ */
+.unit-card{
+  background:var(--card);border:1px solid var(--line2);border-radius:var(--radius);
+  box-shadow:var(--shadow);margin-bottom:20px;overflow:hidden;
+  transition:box-shadow .2s;
+}
+.unit-card:hover{box-shadow:var(--shadow-h)}
+.unit-head{
+  display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  padding:15px 20px;
+  background:linear-gradient(100deg,var(--soft),#ffffff 78%);
+  border-bottom:1px solid var(--line2);
+  border-left:6px solid var(--c);
+}
+.unit-badge{
+  flex:0 0 auto;min-width:38px;height:30px;padding:0 10px;border-radius:9px;
+  display:grid;place-items:center;
+  background:var(--c);color:#fff;font-size:14.5px;font-weight:800;
+}
+.unit-name{font-size:19px;font-weight:800;color:var(--ink);letter-spacing:.4px}
+.unit-tag{
+  margin-left:auto;font-size:12px;color:var(--ink3);
+  background:#fff;border:1px solid var(--line);border-radius:999px;padding:3px 11px;
+}
+.tree-scroll{overflow-x:auto;padding:22px 20px 24px}
+.tree-scroll::-webkit-scrollbar{height:9px}
+.tree-scroll::-webkit-scrollbar-thumb{background:#cdd5e2;border-radius:9px}
+.tree-scroll::-webkit-scrollbar-track{background:#f1f4f9;border-radius:9px}
+
+/* ============================================================
+   SECTION: tree —— 横向思维导图树（连接线绘制）
+   ============================================================ */
+.tree{display:flex;align-items:center;min-width:max-content}
+.node{display:flex;align-items:center;position:relative}
+.kids{position:relative;margin-left:30px;display:flex;flex-direction:column;justify-content:center}
+/* 父节点 → 主干 的横向短线 */
+.kids::before{content:'';position:absolute;left:-30px;top:50%;width:30px;height:2px;background:var(--cl,var(--line));border-radius:2px}
+/* 主干竖线（由每个子节点各画一段拼接） */
+.kids>.node::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--cl,var(--line));border-radius:2px}
+.kids>.node:first-child::before{top:50%}
+.kids>.node:last-child::before{bottom:50%}
+.kids>.node:only-child::before{display:none}
+/* 主干 → 子节点 的横向短线 */
+.kids>.node::after{content:'';position:absolute;left:0;top:50%;width:30px;height:2px;background:var(--cl,var(--line));border-radius:2px}
+.kids>.node{padding-left:30px}
+
+.box{
+  position:relative;display:inline-flex;align-items:center;gap:7px;
+  margin:5px 0;padding:7px 13px;border-radius:11px;
+  border:1px solid var(--line2);background:#fff;
+  max-width:400px;
+}
+.box .num{
+  flex:0 0 auto;font-size:12px;font-weight:800;color:var(--c,#4338ca);
+  font-variant-numeric:tabular-nums;
+}
+.box .txt{font-size:13.5px;font-weight:600;color:var(--ink);line-height:1.45}
+.box .pg{
+  flex:0 0 auto;font-size:11px;font-weight:700;color:var(--c,#4338ca);
+  background:var(--soft,#eef2ff);border-radius:6px;padding:1px 7px;
+  font-variant-numeric:tabular-nums;white-space:nowrap;
+}
+.box .mk{flex:0 0 auto;font-size:11px;color:var(--ink3);white-space:nowrap}
+.box .note{flex:0 0 auto;font-size:11px;color:var(--ink3);white-space:nowrap}
+.box .note::before{content:'·';margin-right:5px;color:var(--line)}
+
+/* 层级样式 */
+.lv-root{background:linear-gradient(135deg,var(--c),var(--cd));border-color:transparent;color:#fff;padding:11px 18px;border-radius:13px;box-shadow:0 5px 15px var(--cs)}
+.lv-root .txt{color:#fff;font-size:16px;font-weight:800;letter-spacing:.5px}
+.lv-root .num,.lv-root .pg,.lv-root .mk,.lv-root .note{color:#fff}
+.lv-root .pg{background:rgba(255,255,255,.2)}
+.lv-root .note{color:rgba(255,255,255,.85)}
+.lv-lesson{background:var(--soft);border-color:var(--cl);padding:9px 15px}
+.lv-lesson .txt{font-size:14.5px;font-weight:800;color:var(--c)}
+.lv-k{background:#fbfcfe;border-color:var(--line2)}
+.lv-k .txt{font-weight:700}
+.lv-leaf{background:#fff;border-style:dashed;border-color:var(--line2);padding:5px 11px}
+.lv-leaf .txt{font-size:13px;font-weight:500;color:var(--ink2)}
+
+/* 折叠按钮 */
+.tw{
+  flex:0 0 auto;width:19px;height:19px;margin-left:2px;padding:0;
+  border:1px solid var(--cl,var(--line));border-radius:6px;background:#fff;
+  color:var(--c,#4338ca);font-size:13px;font-weight:800;line-height:1;
+  cursor:pointer;display:grid;place-items:center;transition:.16s;
+}
+.tw:hover{background:var(--soft);transform:scale(1.08)}
+.lv-root .tw{border-color:rgba(255,255,255,.5);background:rgba(255,255,255,.16);color:#fff}
+.count-tip{
+  font-size:10.5px;font-weight:700;color:var(--c,#4338ca);
+  background:var(--soft);border-radius:6px;padding:1px 6px;white-space:nowrap;
+}
+.lv-root .count-tip{background:rgba(255,255,255,.2);color:#fff}
+.node.collapsed>.kids{display:none}
+
+/* ============================================================
+   SECTION: a4-view —— A4 打印版（屏幕预览 + 打印）
+   ============================================================ */
+.paper-hint{
+  display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;
+  background:#fff8e6;border:1px solid #fde68a;border-radius:13px;
+  padding:11px 16px;margin-bottom:16px;font-size:13px;color:#92400e;
+}
+.paper-hint b{font-weight:800}
+.a4-wrap{overflow:hidden;padding-bottom:10px}
+.a4{
+  --pf:1;            /* 正文字号自适应系数 */
+  --ph:1;            /* 页眉/页脚字号系数（受限，把空间留给正文） */
+  width:210mm;
+  min-height:297mm;
+  margin:0 auto;
+  padding:8mm 8mm 6mm;
+  background:#fff;
+  box-shadow:0 12px 40px rgba(31,41,55,.18);
+  border:1px solid #e3e7ee;
+  transform-origin:top left;
+  color:#111827;
+  -webkit-print-color-adjust:exact;print-color-adjust:exact;
+}
+.p-head{
+  display:flex;align-items:flex-end;justify-content:space-between;gap:8px;
+  border-bottom:1.6pt solid #4338ca;padding-bottom:2.2mm;margin-bottom:2.6mm;
+}
+.p-title{font-size:calc(12.5pt * var(--ph));font-weight:800;letter-spacing:.2pt;color:#1e1b4b;line-height:1.25}
+.p-sub{font-size:calc(7pt * var(--ph));color:#6b7280;margin-top:.6mm}
+.p-meta{font-size:calc(6.6pt * var(--ph));color:#6b7280;text-align:right;line-height:1.5;white-space:nowrap}
+.p-cols{column-count:3;column-gap:3.6mm;column-fill:balance}
+
+.pu{
+  break-inside:avoid;-webkit-column-break-inside:avoid;page-break-inside:avoid;
+  margin:0 0 2.6mm;border:.6pt solid #dfe3ea;border-radius:1.6mm;overflow:hidden;
+}
+.pu-h{
+  display:flex;align-items:center;gap:1.6mm;
+  padding:1.1mm 1.8mm;color:#fff;
+  background:var(--c);
+}
+.pu-i{
+  flex:0 0 auto;width:4.6mm;height:4.6mm;border-radius:1mm;
+  display:grid;place-items:center;
+  background:rgba(255,255,255,.24);
+  font-size:calc(7.4pt * var(--pf));font-weight:800;
+}
+.pu-t{font-size:calc(9pt * var(--pf));font-weight:800;letter-spacing:.2pt}
+.pu-b{padding:1.4mm 1.8mm 1.6mm;background:var(--soft)}
+
+.pl+.pl{margin-top:1.6mm;padding-top:1.4mm;border-top:.5pt dashed var(--cl)}
+.pl-t{
+  font-size:calc(7.6pt * var(--pf));font-weight:800;color:var(--c);
+  margin-bottom:.9mm;display:flex;align-items:center;gap:1.2mm;
+}
+.pl-t::before{content:'';flex:0 0 auto;width:1.5mm;height:1.5mm;border-radius:50%;background:var(--c)}
+
+.pn{list-style:none;margin:0;padding:0}
+.pn>.pn-i{position:relative;padding-left:2.6mm;margin-bottom:.5mm}
+.pn>.pn-i::before{content:'';position:absolute;left:.6mm;top:calc(1.05em * .62);width:1.5mm;height:.45pt;background:var(--cl)}
+.pn>.pn-i::after{content:'';position:absolute;left:.6mm;top:calc(1.05em * .62);bottom:-.5mm;width:.45pt;background:var(--cl)}
+.pn>.pn-i:last-child::after{display:none}
+.pn-row{display:flex;align-items:baseline;gap:1.1mm;flex-wrap:wrap;line-height:1.34}
+.pn-txt{font-size:calc(6.9pt * var(--pf));color:#1f2937;font-weight:500}
+.pn-num{font-size:calc(6.5pt * var(--pf));font-weight:800;color:var(--c);flex:0 0 auto}
+.pn-tag{
+  font-size:calc(5.9pt * var(--pf));font-weight:700;color:var(--c);
+  background:#fff;border:.4pt solid var(--cl);border-radius:.7mm;
+  padding:0 .8mm;white-space:nowrap;flex:0 0 auto;
+}
+.pn-note{font-size:calc(5.9pt * var(--pf));color:#6b7280;white-space:nowrap}
+/* 知识点层（有子级） */
+.pn-l1>.pn-i>.pn-row>.pn-txt{font-size:calc(7.1pt * var(--pf));font-weight:800;color:#111827}
+.pn-l1>.pn-i{padding-left:0;margin-bottom:1mm}
+.pn-l1>.pn-i::before,.pn-l1>.pn-i::after{display:none}
+.pn-l1>.pn-i>.pn-row{
+  background:#fff;border-left:1.4pt solid var(--c);
+  border-radius:0 .8mm .8mm 0;padding:.5mm 1.4mm;margin-bottom:.6mm;
+}
+.pn-l2{margin-left:1.6mm;margin-top:.4mm}
+.pn-l3{margin-left:1.6mm;margin-top:.3mm}
+.pn-l3>.pn-i>.pn-row>.pn-txt{color:#374151}
+
+.p-foot{
+  margin-top:2.4mm;padding-top:1.4mm;border-top:.5pt solid #dfe3ea;
+  display:flex;justify-content:space-between;gap:6px;
+  font-size:calc(6pt * var(--ph));color:#9ca3af;
+}
+
+/* ============================================================
+   SECTION: footer + responsive
+   ============================================================ */
+.pagefoot{
+  text-align:center;color:var(--ink3);font-size:12.5px;margin-top:26px;line-height:1.9;
+}
+.pagefoot b{color:var(--ink2)}
+.toast{
+  position:fixed;left:50%;bottom:30px;transform:translate(-50%,14px);
+  background:#1f2937;color:#fff;padding:10px 20px;border-radius:11px;
+  font-size:13.5px;font-weight:600;box-shadow:0 10px 26px rgba(0,0,0,.24);
+  opacity:0;pointer-events:none;transition:.24s;z-index:200;
+}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+@media (max-width:1100px){
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .brand h1{font-size:17px}
+}
+@media (max-width:760px){
+  .app{padding:14px 11px 34px}
+  .topbar{position:static;padding:12px 13px;gap:11px}
+  .brand-mark{width:38px;height:38px;font-size:19px;border-radius:11px}
+  .brand h1{font-size:15.5px;white-space:normal}
+  .brand .sub{white-space:normal;font-size:11.5px}
+  .controls{width:100%}
+  .seg{flex:1}
+  .seg-btn{flex:1;padding:7px 8px;font-size:12.5px}
+  .btn{flex:1;padding:8px 8px;font-size:12.5px;text-align:center}
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .stat{padding:9px 12px}
+  .stat b{font-size:19px}
+  .kids{margin-left:20px}
+  .kids::before{left:-20px;width:20px}
+  .kids>.node{padding-left:20px}
+  .kids>.node::after{width:20px}
+  .box{padding:6px 10px;max-width:none}
+  .box .txt{font-size:12.8px}
+  .box .mk,.box .note{display:none}
+  .unit-name{font-size:16.5px}
+  .unit-tag{margin-left:0}
+  .tree-scroll{padding:15px 12px 17px}
+}
+
+/* ============================================================
+   SECTION: print —— 打印时只输出单张 A4
+   ============================================================ */
+@media print{
+  @page{size:A4 portrait;margin:0}
+  html,body{background:#fff !important;margin:0;padding:0}
+  .app{max-width:none;padding:0;margin:0}
+  .topbar,.stats,.unit-nav,.pagefoot,.paper-hint,.toast,#view-screen{display:none !important}
+  #view-print{display:block !important}
+  .a4-wrap{display:block;overflow:visible;padding:0;height:auto !important}
+  .a4{
+    width:210mm;min-height:297mm;
+    margin:0 !important;margin-left:0 !important;
+    border:0;border-radius:0;
+    box-shadow:none;transform:none !important;
+    padding:8mm 8mm 6mm;
+  }
+  .pu{break-inside:avoid;page-break-inside:avoid}
+  .p-cols{break-inside:auto}
+}
+</style>
+</head>
+<body>
+<div class="app">
+
+  <!-- SECTION: topbar -->
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark">道</div>
+      <div>
+        <h1>道德与法治 · 七年级上册</h1>
+        <p class="sub">单元知识思维导图 · 屏幕阅读版 + A4 单页打印版</p>
+      </div>
+    </div>
+    <div class="controls">
+      <div class="seg" role="tablist" aria-label="视图切换">
+        <button class="seg-btn is-on" type="button" role="tab" data-view="screen" id="tab-screen">屏幕阅读版</button>
+        <button class="seg-btn" type="button" role="tab" data-view="print" id="tab-print">A4 打印版</button>
+      </div>
+      <button class="btn" type="button" id="btn-expand">全部展开</button>
+      <button class="btn" type="button" id="btn-collapse">全部折叠</button>
+      <button class="btn btn-primary" type="button" id="btn-print" data-primary-action="print-a4">打印 A4 版</button>
+    </div>
+  </header>
+
+  <!-- SECTION: overview -->
+  <section id="view-screen" class="view">
+    <div class="stats" id="stats"></div>
+    <nav class="unit-nav" id="unit-nav" aria-label="单元导航"></nav>
+    <div id="screen-cards"></div>
+    <footer class="pagefoot">
+      <div><b>阅读提示：</b>点击节点右侧的 <b>−</b> / <b>+</b> 可折叠或展开该分支；方框内为教材页码，圆圈数字为教材该页要点序号。</div>
+      <div id="foot-src"></div>
+    </footer>
+  </section>
+
+  <!-- SECTION: a4-view -->
+  <section id="view-print" class="view" hidden>
+    <div class="paper-hint">
+      <span>这是<b>单张 A4 竖版</b>的完整打印稿：三栏六单元，全部知识点、教材页码与要点序号均完整保留，字号会自动校准到刚好铺满一页。</span>
+      <span>建议打印设置：<b>A4 / 纵向 / 边距「无」或「默认」/ 勾选「背景图形」</b>，缩放选 <b>100%</b>。</span>
+    </div>
+    <div class="a4-wrap" id="a4-wrap">
+      <div class="a4" id="a4-sheet"></div>
+    </div>
+  </section>
+
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* SECTION: mindmap-data —— 道德与法治（七年级上册）单元知识点数据
+   字段说明：
+   n     = 节点自身序号（①②③…，来自原提纲编号）
+   t     = 节点文字
+   p     = 教材页码
+   m     = 教材该页内的要点标记（如 “P9 ①②③” 中的 ①②③）
+   note  = 补充说明（原提纲中的括注）
+   children = 下级节点
+*/
+window.MINDMAP_DATA = {
+  meta: {
+    subject: '道德与法治',
+    grade: '七年级上册',
+    title: '单元知识思维导图',
+    source: '依据《道德与法治（七年级上册）单元思维导图》整理',
+    pageRange: 'P3 - P47'
+  },
+  units: [
+    {
+      id: 'u1',
+      index: '一',
+      title: '认识自我',
+      theme: 'indigo',
+      lessons: [
+        {
+          title: '认识自己',
+          nodes: [
+            { t: '为什么（意义）', p: 'P9', m: '①②③' },
+            {
+              t: '如何认识（途径）', p: 'P3-4', children: [
+                { n: '①', t: '自我分析', p: 'P3', m: '①②③' },
+                { n: '②', t: '他人评价', p: 'P3', note: '意义 / 方法', m: '①③' },
+                { n: '③', t: '生活实践', p: 'P4' },
+                { n: '④', t: '认识自我的意义', p: 'P30 + P10', m: '①②③④' }
+              ]
+            },
+            {
+              t: '如何做更好的自己', p: 'P5-8', children: [
+                { n: '1', t: '做更好的自己', p: 'P5', m: '①②③' },
+                {
+                  n: '2', t: '怎样做', children: [
+                    { n: '①', t: '欣赏自己', p: 'P5', note: '做法', m: '①②' },
+                    { n: '②', t: '接纳自己', p: 'P5', note: '做法', m: '①②' },
+                    { n: '③', t: '完善自己', p: 'P5', note: '做法', m: '①②' },
+                    { n: '④', t: '潜能', p: 'P5', note: '做法', m: '①②' },
+                    { n: '⑤', t: '扬长避短', p: 'P5' }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id: 'u2',
+      index: '二',
+      title: '梦想始于当下',
+      theme: 'teal',
+      lessons: [
+        {
+          title: '做有梦想的少年',
+          nodes: [
+            { t: '为什么做有梦想的少年', p: 'P10', m: '①②' },
+            {
+              t: '如何做有梦想的少年', p: 'P11', children: [
+                { n: '①', t: '树立远大志向' },
+                { n: '②', t: '紧扣时代脉搏' }
+              ]
+            }
+          ]
+        },
+        {
+          title: '学习成就梦想',
+          nodes: [
+            {
+              t: '学习的意义', p: 'P12', children: [
+                { n: '①', t: '立身做人之本，报国之志' },
+                { n: '②', t: '未来，重要路径' },
+                { n: '③', t: '思想品德，精神境界' },
+                { n: '④', t: '关于个人，关乎民族' }
+              ]
+            },
+            { t: '正确认识学习', p: 'P12', m: '①②③', note: '是什么' },
+            {
+              t: '如何学习', p: 'P14', children: [
+                { n: '①', t: '发现并保持对学习的兴趣' },
+                { n: '②', t: '掌握科学的学习方法' },
+                { n: '③', t: '运用多种学习方式' },
+                { n: '④', t: '善于运用，获取力量' }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id: 'u3',
+      index: '三',
+      title: '幸福和睦的家庭',
+      theme: 'rose',
+      lessons: [
+        {
+          title: '家的意味',
+          nodes: [
+            {
+              t: '家的特点', p: 'P9', children: [
+                { n: '①', t: '居所，港湾', p: 'P9' },
+                { n: '②', t: '血脉，亲情', p: 'P9' },
+                { n: '③', t: '修身之所', p: 'P20' },
+                { n: '④', t: '传承血脉', p: 'P30' },
+                { n: '⑤', t: '共同体', p: 'P21' }
+              ]
+            }
+          ]
+        },
+        {
+          title: '让家更美好',
+          nodes: [
+            {
+              t: '为什么要传承家风', p: 'P24', children: [
+                { n: '①', t: '家庭' },
+                { n: '②', t: '国家' },
+                { n: '③', t: '传承亲情', p: 'P22' },
+                { n: '④', t: '长者智慧', p: 'P24' },
+                { n: '⑤', t: '家庭发展', p: 'P25' },
+                { n: '⑥', t: '家庭风尚', p: 'P25' },
+                { n: '⑦', t: '传统美德' },
+                { n: '⑧', t: '家道兴旺' }
+              ]
+            },
+            {
+              t: '如何让家更美好', p: 'P22-25', children: [
+                { n: '①', t: '互相信任' },
+                { n: '②', t: '相互理解' },
+                { n: '③', t: '相互包容' },
+                { n: '④', t: '相互关爱' }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id: 'u4',
+      index: '四',
+      title: '和谐师生关系',
+      theme: 'violet',
+      lessons: [
+        {
+          title: '走近老师',
+          nodes: [
+            { t: '职业特点', p: 'P27', m: '①②' },
+            { t: '老师作用', p: 'P28', m: '①②③④', note: '为什么 · “四有”引路人' },
+            { t: '新时代要求', p: 'P28', m: '①②③④', note: '“四有”好老师' }
+          ]
+        },
+        {
+          title: '珍惜师生情谊',
+          nodes: [
+            { t: '理想关系', p: 'P30' },
+            {
+              t: '构建良好师生关系', note: '怎么做', children: [
+                { n: '①', t: '理解关心', p: 'P30' },
+                { n: '②', t: '真诚接受', p: 'P31' },
+                { n: '③', t: '求同存异', p: 'P31' },
+                { n: '④', t: '尊重适应', p: 'P32、33' },
+                { n: '⑤', t: '正确对待', note: '原因 + 做法' }
+              ]
+            },
+            { t: '怎样处理与老师间的矛盾', p: 'P31', note: '怎么做' }
+          ]
+        }
+      ]
+    },
+    {
+      id: 'u5',
+      index: '五',
+      title: '友谊之树常青',
+      theme: 'sky',
+      lessons: [
+        {
+          title: '交友的智慧',
+          nodes: [
+            {
+              t: '交友的原则', p: 'P37-39', children: [
+                { n: '①', t: '志趣相投', p: 'P37' },
+                { n: '②', t: '互相尊重', p: 'P37' },
+                { n: '③', t: '平等互惠', p: 'P37' },
+                { n: '④', t: '真诚', p: 'P37' },
+                { n: '⑤', t: '友谊是心灵的相遇', p: 'P37' }
+              ]
+            },
+            {
+              t: '友谊的作用', p: 'P37', children: [
+                { n: '①', t: '见证成长' },
+                { n: '②', t: '体悟人生' }
+              ]
+            },
+            {
+              t: '如何建立友谊', p: 'P38、39', children: [
+                { n: '①', t: '真诚热情', p: 'P38' },
+                { n: '②', t: '慎重选择', p: 'P38' },
+                { n: '③', t: '关心支持', p: 'P39' },
+                { n: '④', t: '处理矛盾', p: 'P39' },
+                { n: '⑤', t: '讲究原则', p: 'P40' }
+              ]
+            },
+            {
+              t: '怎样呵护友谊', p: 'P39', children: [
+                { n: '①', t: '关怀', p: 'P39' },
+                { n: '②', t: '尊重', p: 'P39' },
+                { n: '③', t: '正确处理冲突', p: 'P39' },
+                { n: '④', t: '讲原则', p: 'P40' }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id: 'u6',
+      index: '六',
+      title: '在集体中成长',
+      theme: 'emerald',
+      lessons: [
+        {
+          title: '集体生活成就我',
+          nodes: [
+            {
+              t: '集体的作用', p: 'P42', note: '为什么', children: [
+                { n: '①', t: '安全感', p: 'P42' },
+                { n: '②', t: '归属感', p: 'P42' },
+                { n: '③', t: '荣誉感', p: 'P44' },
+                { n: '④', t: '温暖', p: 'P43' },
+                { n: '⑤', t: '改变', p: 'P42' },
+                { n: '⑥', t: '影响', p: 'P43' }
+              ]
+            },
+            {
+              t: '集体生活的作用', p: 'P42-44', note: '为什么', children: [
+                { n: '①', t: '交往', p: 'P44' },
+                { n: '②', t: '获得帮助', p: 'P44' },
+                { n: '③', t: '责任感', p: 'P44' },
+                { n: '④', t: '个性', p: 'P44' },
+                { n: '⑤', t: '完善', p: 'P44' },
+                { n: '⑥', t: '发展', p: 'P44' }
+              ]
+            }
+          ]
+        },
+        {
+          title: '共建美好集体',
+          nodes: [
+            {
+              t: '美好集体的意义', p: 'P45', note: '为什么', children: [
+                { n: '①', t: '愿景', p: 'P45' },
+                { n: '②', t: '民主', p: 'P45' },
+                { n: '③', t: '友善', p: 'P45' },
+                { n: '④', t: '活力', p: 'P45' },
+                { n: '⑤', t: '合力', p: 'P45' }
+              ]
+            },
+            {
+              t: '如何建设美好集体', p: 'P45-47', note: '怎么做', children: [
+                { n: '①', t: '愿景', p: 'P45' },
+                { n: '②', t: '主人翁', p: 'P46' },
+                { n: '③', t: '集体环境', p: 'P46' },
+                { n: '④', t: '正气', p: 'P47' },
+                { n: '⑤', t: '集体主义', p: 'P47' },
+                { n: '⑥', t: '做法 A、B', p: 'P47' },
+                { n: '⑦', t: '做法 A、B、C', p: 'P47' }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+
+</script>
+<!-- SECTION: app-script -->
+<script>
+(function(){
+  'use strict';
+  var DATA = window.MINDMAP_DATA;
+  if(!DATA){ document.body.innerHTML = '<p style="padding:40px;font:16px sans-serif">内容数据未能加载。</p>'; return; }
+
+  var THEME = {
+    indigo : {c:'#4338ca', cd:'#312e81', cs:'rgba(67,56,202,.30)', soft:'#eef2ff', line:'#c7d2fe'},
+    amber  : {c:'#b45309', cd:'#7c3f06', cs:'rgba(180,83,9,.30)',  soft:'#fffbeb', line:'#fde68a'},
+    rose   : {c:'#be123c', cd:'#881337', cs:'rgba(190,18,60,.30)', soft:'#fff1f2', line:'#fecdd3'},
+    violet : {c:'#6d28d9', cd:'#4c1d95', cs:'rgba(109,40,217,.30)',soft:'#f5f3ff', line:'#ddd6fe'},
+    sky    : {c:'#0369a1', cd:'#0c4a6e', cs:'rgba(3,105,161,.30)', soft:'#f0f9ff', line:'#bae6fd'},
+    emerald: {c:'#047857', cd:'#064e3b', cs:'rgba(4,120,87,.30)',  soft:'#ecfdf5', line:'#a7f3d0'}
+  };
+  var STORE_VIEW = 'dfz7a-mindmap-view';
+  var STORE_FOLD = 'dfz7a-mindmap-folded';
+
+  function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,function(m){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]; }); }
+  function themeOf(u){ return THEME[u.theme] || THEME.indigo; }
+
+  /* ---------- 折叠状态持久化 ---------- */
+  var folded = {};
+  try{ var raw = localStorage.getItem(STORE_FOLD); if(raw){ folded = JSON.parse(raw) || {}; } }catch(e){ folded = {}; }
+  function saveFold(){ try{ localStorage.setItem(STORE_FOLD, JSON.stringify(folded)); }catch(e){} }
+
+  /* ---------- 统计 ---------- */
+  function countTree(nodes){
+    var leaves = 0, kn = 0;
+    (function walk(list, isTop){
+      list.forEach(function(n){
+        if(n.children && n.children.length){ kn++; walk(n.children,false); }
+        else { leaves++; }
+      });
+    })(nodes,true);
+    return {leaves:leaves, kn:kn};
+  }
+  var stat = {units:DATA.units.length, lessons:0, kn:0, leaves:0};
+  DATA.units.forEach(function(u){
+    u.lessons.forEach(function(l){ stat.lessons++; var r = countTree(l.nodes); stat.kn += r.kn; stat.leaves += r.leaves; });
+  });
+
+  /* ---------- 屏幕版渲染 ---------- */
+  function nodeParts(n){
+    var h = '';
+    if(n.n) h += '<span class="num">'+esc(n.n)+'</span>';
+    h += '<span class="txt">'+esc(n.t)+'</span>';
+    if(n.p) h += '<span class="pg">'+esc(n.p)+'</span>';
+    var tail = [];
+    if(n.note) tail.push(esc(n.note));
+    if(n.m) tail.push(esc(n.m));
+    if(tail.length) h += '<span class="mk">'+tail.join(' · ')+'</span>';
+    return h;
+  }
+  function countDesc(n){
+    if(!n.children) return 0;
+    var c = 0;
+    n.children.forEach(function(k){ c += 1 + countDesc(k); });
+    return c;
+  }
+  function buildScreenNode(n, level, id){
+    var hasKids = n.children && n.children.length;
+    var cls = hasKids ? 'lv-k' : 'lv-leaf';
+    var el = document.createElement('div');
+    el.className = 'node' + ((hasKids && folded[id]) ? ' collapsed' : '');
+    el.setAttribute('data-id', id);
+    var inner = '<div class="box '+cls+'">'
+      + (hasKids ? '<button class="tw" type="button" aria-label="折叠或展开">'+((folded[id])?'+':'−')+'</button>' : '')
+      + nodeParts(n)
+      + (hasKids && folded[id] ? '<span class="count-tip">'+countDesc(n)+' 项</span>' : '')
+      + '</div>';
+    if(hasKids){
+      inner += '<div class="kids">';
+      n.children.forEach(function(k,i){ inner += buildScreenNode(k, level+1, id+'-'+(i+1)).outerHTML; });
+      inner += '</div>';
+    }
+    el.innerHTML = inner;
+    return el;
+  }
+
+  var cardsWrap = document.getElementById('screen-cards');
+  var navWrap = document.getElementById('unit-nav');
+  var frag = document.createDocumentFragment();
+
+  DATA.units.forEach(function(u, ui){
+    var th = themeOf(u);
+    /* 导航 chip */
+    var chip = document.createElement('button');
+    chip.type = 'button'; chip.className = 'chip';
+    chip.style.setProperty('--c', th.c);
+    chip.innerHTML = '<i></i>'+esc(u.index)+' · '+esc(u.title);
+    chip.addEventListener('click', function(){
+      var t = document.getElementById(u.id);
+      if(t){ t.scrollIntoView({behavior:'smooth', block:'start'}); }
+    });
+    navWrap.appendChild(chip);
+
+    /* 单元卡片 */
+    var card = document.createElement('article');
+    card.className = 'unit-card'; card.id = u.id;
+    card.style.setProperty('--c', th.c);
+    card.style.setProperty('--cd', th.cd);
+    card.style.setProperty('--cs', th.cs);
+    card.style.setProperty('--soft', th.soft);
+    card.style.setProperty('--cl', th.line);
+    var lessonTotal = u.lessons.length;
+    var head = '<div class="unit-head">'
+      + '<span class="unit-badge">'+esc(u.index)+'</span>'
+      + '<span class="unit-name">'+esc(u.title)+'</span>'
+      + '<span class="unit-tag">第 '+esc(u.index)+' 单元 · '+lessonTotal+' 课</span>'
+      + '</div>';
+    var body = '<div class="tree-scroll"><div class="tree">'
+      + '<div class="node"><div class="box lv-root"><span class="txt">'+esc(u.title)+'</span></div><div class="kids">';
+    u.lessons.forEach(function(l, li){
+      var lid = u.id+'-l'+(li+1);
+      body += '<div class="node'+(folded[lid]?' collapsed':'')+'" data-id="'+lid+'">'
+        + '<div class="box lv-lesson">'
+        + (l.nodes.length ? '<button class="tw" type="button" aria-label="折叠或展开">'+(folded[lid]?'+':'−')+'</button>' : '')
+        + '<span class="txt">'+esc((li+1)+'. '+l.title)+'</span>'
+        + (folded[lid] ? '<span class="count-tip">'+countAll(l.nodes)+' 项</span>' : '')
+        + '</div>';
+      if(l.nodes.length){
+        body += '<div class="kids">';
+        l.nodes.forEach(function(n, ni){ body += buildScreenNode(n, 0, lid+'-n'+(ni+1)).outerHTML; });
+        body += '</div>';
+      }
+      body += '</div>';
+    });
+    body += '</div></div></div></div>';
+    card.innerHTML = head + body;
+    frag.appendChild(card);
+  });
+  cardsWrap.appendChild(frag);
+
+  function countAll(nodes){
+    var c = 0;
+    nodes.forEach(function(n){ c += 1 + (n.children ? countAll(n.children) : 0); });
+    return c;
+  }
+
+  /* ---------- A4 打印版渲染 ---------- */
+  function a4Node(n, level){
+    var hasKids = n.children && n.children.length;
+    var row = '<div class="pn-row">'
+      + (n.n ? '<span class="pn-num">'+esc(n.n)+'</span>' : '')
+      + '<span class="pn-txt">'+esc(n.t)+'</span>'
+      + (n.p ? '<span class="pn-tag">'+esc(n.p)+(n.m?' '+esc(n.m):'')+'</span>' : (n.m?'<span class="pn-tag">'+esc(n.m)+'</span>':''))
+      + (n.note ? '<span class="pn-note">'+esc(n.note)+'</span>' : '')
+      + '</div>';
+    var inner = '';
+    if(hasKids){
+      inner += '<ul class="pn pn-l'+Math.min(level+1,3)+'">';
+      n.children.forEach(function(k){ inner += a4Node(k, level+1); });
+      inner += '</ul>';
+    }
+    return '<li class="pn-i'+(level===0?' pn-top':'')+'">'+row+inner+'</li>';
+  }
+  var sheet = document.getElementById('a4-sheet');
+  var unitsHtml = '';
+  DATA.units.forEach(function(u, ui){
+    var th = themeOf(u);
+    unitsHtml += '<section class="pu" style="--c:'+th.c+';--soft:'+th.soft+';--cl:'+th.line+'">'
+      + '<div class="pu-h"><span class="pu-i">'+esc(u.index)+'</span><span class="pu-t">'+esc(u.title)+'</span></div>'
+      + '<div class="pu-b">';
+    u.lessons.forEach(function(l, li){
+      unitsHtml += '<div class="pl"><div class="pl-t">'+esc((li+1)+'. '+l.title)+'</div><ul class="pn pn-l1">';
+      l.nodes.forEach(function(n){ unitsHtml += a4Node(n, 0); });
+      unitsHtml += '</ul></div>';
+    });
+    unitsHtml += '</div></section>';
+  });
+  sheet.innerHTML =
+      '<div class="p-head">'
+    +   '<div><div class="p-title">'+esc(DATA.meta.subject)+'（'+esc(DATA.meta.grade)+'）'+esc(DATA.meta.title)+'</div>'
+    +   '<div class="p-sub">单元复习提纲 · 含教材页码与要点序号</div></div>'
+    +   '<div class="p-meta">'+stat.units+' 个单元 / '+stat.lessons+' 课<br>知识点 '+stat.kn+' 个 / 细项 '+stat.leaves+' 条<br>教材 '+esc(DATA.meta.pageRange)+'</div>'
+    + '</div>'
+    + '<div class="p-cols">'+unitsHtml+'</div>'
+    + '<div class="p-foot"><span>'+esc(DATA.meta.source)+'</span><span>圈号 = 教材该页要点序号 · 单张 A4 打印</span></div>';
+
+  /* ---------- 概览统计与页脚 ---------- */
+  var statsEl = document.getElementById('stats');
+  statsEl.innerHTML =
+      '<div class="stat"><b>'+stat.units+'</b><span>个单元</span></div>'
+    + '<div class="stat"><b>'+stat.lessons+'</b><span>篇课文</span></div>'
+    + '<div class="stat"><b>'+stat.kn+'</b><span>个知识点</span></div>'
+    + '<div class="stat"><b>'+stat.leaves+'</b><span>条细项</span></div>';
+  document.getElementById('foot-src').textContent = DATA.meta.source + ' · 教材页码范围 ' + DATA.meta.pageRange;
+
+  /* ---------- A4 单页自动适配（双向：富余放大字号，超出才压缩） ---------- */
+  var A4_H_MM = 297;
+  function mmToPx(mm){ return mm * 96 / 25.4; }
+  function contentHeight(){
+    /* min-height 会让 offsetHeight 恒等于 297mm，测量内容真实高度时先临时置 0 */
+    var prev = sheet.style.minHeight;
+    sheet.style.minHeight = '0px';
+    var h = sheet.offsetHeight;
+    sheet.style.minHeight = prev;
+    return h;
+  }
+  function applyPf(s){
+    /* 页眉/页脚只做部分放大：正文放大时标题按 45% 比例跟随，压缩时同步压缩 */
+    var h = s > 1 ? (1 + (s - 1) * 0.45) : s;
+    sheet.style.setProperty('--pf', String(Math.round(s * 1000) / 1000));
+    sheet.style.setProperty('--ph', String(Math.round(h * 1000) / 1000));
+  }
+  function fitA4(){
+    /* 视图隐藏时 offsetHeight 恒为 0，测量会失真；此时保持原系数，等可见后再算 */
+    if(!sheet.offsetParent){ return parseFloat(sheet.style.getPropertyValue('--pf')) || 1; }
+    var limit = mmToPx(A4_H_MM - 1.2);   /* 留 1.2mm 安全余量，避免溢出到第二页 */
+    var MIN = 0.72, MAX = 1.45, STEP = 0.03;
+    var s = 1, last = 1, guard = 0;
+
+    applyPf(1);
+    var base = contentHeight();
+
+    if(base <= limit){
+      /* 有富余：逐步放大字号，直到再放大就会超出单页 */
+      while(guard++ < 40 && s + STEP <= MAX){
+        s = Math.round((s + STEP) * 1000) / 1000;
+        applyPf(s);
+        if(contentHeight() > limit){ s = last; break; }
+        last = s;
+      }
+    }else{
+      /* 已超出：逐步压缩字号 */
+      while(guard++ < 40 && s - STEP >= MIN){
+        s = Math.round((s - STEP) * 1000) / 1000;
+        applyPf(s);
+        if(contentHeight() <= limit){ break; }
+      }
+    }
+    applyPf(s);
+    return s;
+  }
+  function scalePreview(){
+    var wrap = document.getElementById('a4-wrap');
+    var avail = wrap.clientWidth;
+    var w = mmToPx(210);
+    var k = Math.min(1, avail / w);
+    if(k < 1){
+      sheet.style.transform = 'scale('+k+')';
+      sheet.style.marginLeft = Math.max(0,(avail - w*k)/2) + 'px';
+      wrap.style.height = (sheet.offsetHeight * k + 8) + 'px';
+    }else{
+      sheet.style.transform = 'none';
+      sheet.style.marginLeft = '';
+      wrap.style.height = '';
+    }
+  }
+
+  /* ---------- 交互 ---------- */
+  var toastEl = document.getElementById('toast'), toastTimer = null;
+  function toast(msg){
+    toastEl.textContent = msg;
+    toastEl.classList.add('on');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ toastEl.classList.remove('on'); }, 1900);
+  }
+
+  /* REQ-001 节点折叠展开（事件委托） */
+  cardsWrap.addEventListener('click', function(e){
+    var btn = e.target.closest ? e.target.closest('.tw') : null;
+    if(!btn) return;
+    var nodeEl = btn.closest('.node');
+    if(!nodeEl) return;
+    var id = nodeEl.getAttribute('data-id');
+    var nowCollapsed = !nodeEl.classList.contains('collapsed');
+    nodeEl.classList.toggle('collapsed', nowCollapsed);
+    btn.textContent = nowCollapsed ? '+' : '−';
+    var tip = nodeEl.querySelector(':scope > .box > .count-tip');
+    if(nowCollapsed){
+      folded[id] = true;
+      if(!tip){
+        var box = btn.parentNode;
+        var span = document.createElement('span');
+        span.className = 'count-tip';
+        var kids = nodeEl.querySelector(':scope > .kids');
+        span.textContent = (kids ? kids.querySelectorAll('.node, .box.lv-lesson').length : 0) + ' 项';
+        box.appendChild(span);
+      }
+    }else{
+      delete folded[id];
+      if(tip) tip.remove();
+    }
+    saveFold();
+  });
+
+  /* REQ-005 全局展开 / 折叠 */
+  document.getElementById('btn-expand').addEventListener('click', function(){
+    folded = {}; saveFold();
+    cardsWrap.querySelectorAll('.node.collapsed').forEach(function(n){ n.classList.remove('collapsed'); });
+    cardsWrap.querySelectorAll('.tw').forEach(function(b){ b.textContent = '−'; });
+    cardsWrap.querySelectorAll('.count-tip').forEach(function(t){ t.remove(); });
+    toast('已展开全部分支');
+  });
+  document.getElementById('btn-collapse').addEventListener('click', function(){
+    /* 折叠到「课文层」：收起每篇课文下的知识点分支 */
+    cardsWrap.querySelectorAll('.node[data-id]').forEach(function(n){
+      var id = n.getAttribute('data-id');
+      if(/-l\d+$/.test(id)){
+        n.classList.add('collapsed'); folded[id] = true;
+        var b = n.querySelector(':scope > .box > .tw'); if(b) b.textContent = '+';
+        var box = n.querySelector(':scope > .box');
+        if(box && !box.querySelector('.count-tip')){
+          var kids = n.querySelector(':scope > .kids');
+          var span = document.createElement('span');
+          span.className = 'count-tip';
+          span.textContent = (kids ? kids.children.length : 0) + ' 个知识点';
+          box.appendChild(span);
+        }
+      }
+    });
+    saveFold();
+    toast('已折叠到课文层');
+  });
+
+  /* REQ-002 视图切换（偏好记忆） */
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.seg-btn'));
+  function setView(v, silent){
+    var isPrint = (v === 'print');
+    document.getElementById('view-screen').hidden = isPrint;
+    document.getElementById('view-print').hidden = !isPrint;
+    tabs.forEach(function(t){
+      var on = t.getAttribute('data-view') === v;
+      t.classList.toggle('is-on', on);
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+    document.getElementById('btn-expand').style.display = isPrint ? 'none' : '';
+    document.getElementById('btn-collapse').style.display = isPrint ? 'none' : '';
+    try{ localStorage.setItem(STORE_VIEW, v); }catch(e){}
+    if(isPrint){ fitA4(); requestAnimationFrame(scalePreview); if(!silent) toast('已切换到 A4 打印版'); }
+  }
+  tabs.forEach(function(t){
+    t.addEventListener('click', function(){ setView(t.getAttribute('data-view')); });
+  });
+
+  /* REQ-003 一键打印：强制切到 A4 版后调起打印 */
+  document.getElementById('btn-print').addEventListener('click', function(){
+    setView('print', true);
+    fitA4(); scalePreview();
+    setTimeout(function(){ window.print(); }, 220);
+  });
+  window.addEventListener('beforeprint', function(){
+    document.getElementById('view-print').hidden = false;
+    document.getElementById('view-screen').hidden = true;
+    fitA4();
+  });
+  window.addEventListener('afterprint', function(){
+    var v = 'screen';
+    try{ v = localStorage.getItem(STORE_VIEW) || 'screen'; }catch(e){}
+    setView(v, true);
+  });
+
+  var rz;
+  window.addEventListener('resize', function(){
+    clearTimeout(rz);
+    rz = setTimeout(function(){ if(!document.getElementById('view-print').hidden){ fitA4(); scalePreview(); } }, 160);
+  });
+
+  /* 初始化 */
+  var init = 'screen';
+  try{ var sv = localStorage.getItem(STORE_VIEW); if(sv === 'print' || sv === 'screen') init = sv; }catch(e){}
+  setView(init, true);
+  if(init === 'screen'){ fitA4(); }
+})();
+</script>
+</body>
+</html>
