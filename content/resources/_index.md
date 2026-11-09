@@ -41,6 +41,7 @@ HTML 学习资料，按学科分类。
 
 ## 历史、道法、 地理
 
+- [中国近现代史纲要笔记](/history/modern-chinese-history-review-notes.html)
 - [八上历史期中模拟 v1](/history/grade-8-history-midterm-v1.html)、[v2](/history/grade-8-history-midterm-v2.html)
 - [八上历史知识清单](/history/8th-grade-history-knowledge-list)
 - [八上历史考点研究](/history/8th-grade-history-key-points)
