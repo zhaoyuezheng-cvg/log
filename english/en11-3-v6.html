@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第11周三培优 · 七年级英语交互学习页</title>
+<style>
+:root{
+  --navy:#153b5b; --teal:#1f7f86; --teal-d:#166268; --amber:#d97a3c;
+  --ink:#20313f; --muted:#66788a; --line:#dfe7ec; --bg:#f4f7f9;
+  --paper:#ffffff; --soft:#eef5f4; --accent:#d97a3c; --accent-ink:#9c4e18;
+  --shadow:0 10px 30px rgba(21,59,91,.08); --radius:16px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);line-height:1.8;
+  font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+  -webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit}
+.hero{position:relative;overflow:hidden;color:#fff;padding:54px 20px 44px;
+  background:linear-gradient(125deg,#12324f 0%,#1a6b7d 52%,#d98143 130%)}
+.hero::after{content:"";position:absolute;right:-120px;top:-140px;width:420px;height:420px;
+  border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.16),transparent 68%)}
+.hero::before{content:"";position:absolute;left:-60px;bottom:-180px;width:360px;height:360px;
+  border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.10),transparent 70%)}
+.hero-in{max-width:1180px;margin:0 auto;position:relative;z-index:1}
+.kicker{font-size:13px;letter-spacing:.22em;text-transform:uppercase;opacity:.85;margin:0 0 10px}
+.hero h1{margin:0 0 12px;font-size:clamp(28px,4.2vw,44px);line-height:1.25;font-weight:800;letter-spacing:.01em}
+.hero .sub{margin:0 0 22px;max-width:760px;font-size:16px;opacity:.92}
+.chips{display:flex;flex-wrap:wrap;gap:9px}
+.chip{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);
+  padding:5px 13px;border-radius:999px;font-size:13px;backdrop-filter:blur(4px)}
+.hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.btn{border:1px solid transparent;border-radius:10px;padding:9px 16px;font-size:14px;
+  font-weight:600;cursor:pointer;transition:.18s ease;display:inline-flex;align-items:center;gap:7px}
+.btn-primary{background:#fff;color:var(--navy)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.18)}
+.btn-ghost{background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.4)}
+.btn-ghost:hover{background:rgba(255,255,255,.22)}
+.btn-mini{padding:5px 11px;font-size:12.5px;border-radius:8px;background:var(--soft);
+  color:var(--teal-d);border-color:#cfe3e1}
+.btn-mini:hover{background:#dceeeb}
+.toolbar{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.92);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.toolbar-in{max-width:1180px;margin:0 auto;padding:9px 20px;display:flex;align-items:center;
+  gap:8px;flex-wrap:wrap}
+.navlinks{display:flex;gap:4px;flex-wrap:wrap;flex:1}
+.navlinks a{font-size:13.5px;color:var(--muted);padding:6px 11px;border-radius:8px;font-weight:600}
+.navlinks a:hover,.navlinks a.on{background:var(--soft);color:var(--teal-d)}
+.speed{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--muted);white-space:nowrap}
+.speed input{width:88px;accent-color:var(--teal)}
+.layout{max-width:1180px;margin:0 auto;padding:30px 20px 70px;display:grid;
+  grid-template-columns:210px minmax(0,1fr);gap:34px;align-items:start}
+.side{position:sticky;top:74px;font-size:13.5px}
+.side .side-t{font-size:12px;letter-spacing:.16em;color:var(--muted);margin:0 0 12px;text-transform:uppercase}
+.side a{display:block;padding:7px 0 7px 14px;border-left:2px solid var(--line);color:var(--muted)}
+.side a:hover,.side a.on{border-left-color:var(--amber);color:var(--navy);font-weight:700}
+.side .tip{margin-top:22px;background:#fff;border:1px solid var(--line);border-radius:12px;
+  padding:13px;font-size:12.5px;color:var(--muted);line-height:1.7}
+.section{scroll-margin-top:84px;margin-bottom:48px}
+.sec-head{display:flex;align-items:baseline;gap:12px;margin:0 0 18px}
+.sec-num{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;
+  border-radius:10px;background:var(--navy);color:#fff;font-size:15px;font-weight:800;flex:none;line-height:1}
+.sec-head h2{margin:0;font-size:clamp(21px,2.6vw,27px);letter-spacing:.01em}
+.sec-head .en{font-size:13px;color:var(--muted);font-weight:500}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px 24px;box-shadow:var(--shadow);margin-bottom:18px}
+.card h3{margin:0 0 12px;font-size:18px;color:var(--navy)}
+.card h4{margin:20px 0 8px;font-size:15.5px;color:var(--teal-d)}
+.paper{background:#fffdf9;border:1px solid #e8e1d4}
+.page-tag{display:inline-block;font-size:12px;color:#8a6d3b;background:#fbf1dc;
+  border:1px solid #ecd9b0;border-radius:6px;padding:2px 9px;margin-bottom:14px}
+.bookhead{font-size:13px;color:var(--muted);border-bottom:1px solid var(--line);
+  padding-bottom:8px;margin-bottom:14px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.ti{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:0 0 8px}
+.ti h3{margin:0;font-size:19px}
+.ans-mark{font-size:12.5px;color:var(--amber);font-weight:700;background:#fff5e9;
+  border:1px solid #f2d8b8;padding:2px 9px;border-radius:999px}
+.instruction{font-size:14px;color:var(--ink);margin:0 0 10px}
+.meta{font-size:12.8px;color:var(--muted);border-bottom:1px dashed #cbd7de;
+  padding-bottom:10px;margin-bottom:16px;line-height:1.9}
+.passage{font-size:16.5px;line-height:2.05;letter-spacing:.005em}
+.passage p{margin:0 0 9px}
+.passage .ph{font-size:12px;color:var(--muted);font-weight:600;letter-spacing:.08em;
+  text-transform:uppercase;margin:14px 0 4px}
+.blank{display:inline-block;min-width:74px;border-bottom:1.6px solid #94a3b8;
+  color:#7b8b99;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;
+  text-align:center;margin:0 3px;line-height:1.2}
+.read-row{display:flex;justify-content:flex-end;gap:8px;margin:4px 0 12px}
+.pic-note{float:right;width:190px;margin:0 0 10px 16px;background:linear-gradient(160deg,#dceaf0,#f3f7f4);
+  border:1px solid #d4e2e7;border-radius:12px;padding:12px;font-size:12px;color:var(--muted);line-height:1.6}
+.pic-note .pic{height:74px;border-radius:8px;margin-bottom:8px;
+  background:linear-gradient(180deg,#9fc3d4 0%,#dce9e4 48%,#8fae94 49%,#6f947f 100%);position:relative;overflow:hidden}
+.pic-note .pic::after{content:"";position:absolute;left:-10%;right:-10%;bottom:-18px;height:56px;
+  background:linear-gradient(160deg,transparent 40%,rgba(255,255,255,.75) 41%,rgba(255,255,255,.75) 47%,transparent 48%)}
+.opt-box{border:1px solid #b9cbd3;border-radius:10px;padding:12px 16px;background:#f9fbfc;margin-top:14px}
+.opt{display:grid;grid-template-columns:28px 1fr;gap:6px;padding:3px 0;font-size:15px}
+.opt b{color:var(--teal-d)}
+.cloze{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px 18px;
+  border:1px solid #b9cbd3;border-radius:10px;padding:14px 16px;background:#f9fbfc;margin-top:14px;font-size:14.5px}
+.cloze div{white-space:nowrap}
+.callout{background:linear-gradient(180deg,#eef6f3,#ffffff);border:1px solid #d6e8e2;
+  border-left:5px solid var(--teal);border-radius:12px;padding:16px 20px;margin-top:18px;font-size:14px}
+.callout .ct{font-weight:800;color:var(--teal-d);margin:0 0 8px;font-size:15px}
+.callout ul{margin:6px 0 0;padding-left:20px}
+.callout li{margin:3px 0}
+.callout .sub-t{font-weight:700;color:var(--navy);margin:10px 0 2px}
+.foot-note{font-size:12px;color:var(--muted);border-top:1px dashed var(--line);
+  margin-top:16px;padding-top:10px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.term{border:0;background:transparent;padding:0 1px;margin:0;font:inherit;color:var(--accent-ink);
+  border-bottom:2px dashed var(--accent);border-radius:2px;cursor:pointer;line-height:inherit;transition:.15s}
+.term:hover,.term.active{background:#fff1df;border-bottom-style:solid}
+.term.flash{background:#ffe3ae;box-shadow:0 0 0 4px #ffe3ae;border-radius:3px;transition:.3s}
+.term:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+.popover{position:fixed;z-index:200;width:min(340px,calc(100vw - 28px));max-height:64vh;overflow:auto;
+  background:#fff;border:1px solid #e3d4c0;border-radius:14px;padding:16px 17px;
+  box-shadow:0 18px 48px rgba(21,59,91,.22);animation:pop .16s ease-out}
+@keyframes pop{from{opacity:0;transform:translateY(6px) scale(.98)}to{opacity:1;transform:none}}
+.pop-head{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin-bottom:6px}
+.pop-en{font-size:17px;font-weight:800;color:var(--navy)}
+.pop-ipa{font-size:12px;color:var(--muted)}
+.pop-grp{margin-left:auto;font-size:11px;color:var(--teal-d);background:var(--soft);
+  padding:2px 8px;border-radius:999px}
+.pop-cn{font-weight:700;color:var(--accent-ink);margin:0 0 8px;font-size:14.5px}
+.pop-use{font-size:13.3px;color:var(--ink);margin:0 0 10px}
+.pop-ex{background:#f7f9fa;border-radius:9px;padding:9px 11px;font-size:13.3px;margin:0 0 12px}
+.pop-ex .cn{display:block;color:var(--muted);font-size:12.5px;margin-top:3px}
+.pop-actions{display:flex;gap:8px;flex-wrap:wrap}
+.toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%);z-index:300;
+  background:rgba(21,49,73,.94);color:#fff;padding:9px 18px;border-radius:999px;font-size:13px;
+  opacity:0;pointer-events:none;transition:.25s}
+.toast.show{opacity:1}
+details.proof{background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:0 22px;box-shadow:var(--shadow)}
+details.proof summary{cursor:pointer;padding:16px 0;font-weight:700;color:var(--navy);font-size:15.5px}
+.tbl{width:100%;border-collapse:collapse;font-size:13.6px;margin:8px 0 14px}
+.tbl th{background:var(--soft);color:var(--navy);text-align:left;padding:10px 12px;font-weight:700}
+.tbl td{border-bottom:1px solid var(--line);padding:10px 12px;vertical-align:top}
+.tbl tr:last-child td{border-bottom:0}
+.tbl .bad{color:#b4533c}
+.tbl .good{color:var(--teal-d);font-weight:700}
+.answer-strip{display:flex;flex-wrap:wrap;gap:9px;margin:4px 0 16px}
+.ans{background:#e9f5ee;border:1px solid #c8e6d3;color:#195c3a;border-radius:10px;
+  padding:7px 13px;font-size:14px;font-weight:700}
+.ans.extra{background:#fff2e5;border-color:#f0d3ae;color:#9c4e18}
+.timeline{position:relative;border-left:2px solid #cfe0e4;margin:12px 0 4px 8px;padding-left:0}
+.tl{position:relative;padding:0 0 18px 24px}
+.tl::before{content:"";position:absolute;left:-8px;top:8px;width:12px;height:12px;
+  border-radius:50%;background:var(--amber);border:2px solid #fff;box-shadow:0 0 0 2px #f0cfae}
+.tl:last-child{padding-bottom:2px}
+.tl .tt{font-weight:800;color:var(--navy);font-size:14.5px}
+.tl .quote{font-size:13.2px;color:var(--muted);background:#f7f9fa;border-radius:8px;
+  padding:7px 10px;margin:5px 0;display:block;font-style:italic}
+.tl p{margin:4px 0 0;font-size:14px}
+.solve-wrap{overflow-x:auto}
+.key-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-top:12px}
+.key{background:#f8fbfb;border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:13.5px}
+.key b{display:block;color:var(--teal-d);margin-bottom:4px}
+.searchbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:16px}
+.searchbar input{flex:1;min-width:220px;padding:10px 14px;border:1px solid var(--line);
+  border-radius:10px;font-size:14px;background:#fff;outline:none}
+.searchbar input:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(31,127,134,.12)}
+.count{font-size:13px;color:var(--muted)}
+.vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:14px}
+.vocab-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:15px 16px;
+  box-shadow:0 4px 14px rgba(21,59,91,.05);display:flex;flex-direction:column;gap:7px}
+.vc-top{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.vocab-jump{border:0;background:none;padding:0;font-size:16px;font-weight:800;color:var(--accent-ink);
+  border-bottom:2px dashed var(--accent);cursor:pointer;line-height:1.3;text-align:left}
+.vocab-jump:hover{background:#fff1df;border-bottom-style:solid}
+.vc-ipa{font-size:12px;color:var(--muted)}
+.vc-grp{margin-left:auto;font-size:11px;color:var(--teal-d);background:var(--soft);padding:2px 8px;border-radius:999px}
+.vc-cn{font-size:14px;font-weight:700;color:var(--navy)}
+.vc-use{font-size:12.9px;color:var(--ink)}
+.vc-ex{font-size:12.9px;background:#f7f9fa;border-radius:9px;padding:8px 10px;margin-top:auto}
+.vc-ex .cn{display:block;color:var(--muted);font-size:12.2px;margin-top:3px}
+.vc-ex .btn-mini{margin-top:7px}
+.group-title{grid-column:1/-1;font-size:14px;font-weight:800;color:var(--teal-d);
+  margin:10px 0 0;padding-left:10px;border-left:3px solid var(--teal)}
+.empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:36px 0}
+footer{border-top:1px solid var(--line);background:#fff;padding:22px 20px;font-size:12.5px;color:var(--muted)}
+footer .fin{max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media(max-width:960px){
+  .layout{grid-template-columns:1fr;gap:0}
+  .side{display:none}
+  .cloze{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:640px){
+  .hero{padding:38px 18px 34px}
+  .hero h1{font-size:clamp(25px,7vw,34px)}
+  .card{padding:18px 16px}
+  .toolbar-in{padding:8px 12px;gap:6px}
+  .speed{order:1;flex:0 0 auto;margin-left:auto}
+  .navlinks{order:2;flex:0 0 100%;width:100%;overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch}
+  .navlinks a{white-space:nowrap;flex:0 0 auto}
+  .sec-head{flex-wrap:wrap;gap:8px}
+  .sec-head .en{display:none}
+  .sec-head h2{font-size:21px}
+  .layout{padding:22px 12px 54px}
+  .cloze{grid-template-columns:1fr}
+  .pic-note{float:none;width:100%;margin:0 0 12px}
+  .vocab-grid{grid-template-columns:1fr}
+  .popover{left:12px!important;right:12px;top:auto!important;bottom:12px;width:auto;max-height:58vh}
+  .tbl{font-size:12.6px}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}}
+@media print{
+  .toolbar,.hero-actions,.popover,.toast,.side,.read-row{display:none!important}
+  .layout{display:block;padding:0}
+  .hero{padding:24px;background:#fff;color:var(--ink);border-bottom:2px solid var(--navy)}
+  .hero::before,.hero::after{display:none}
+  .chip{border-color:#ccc;color:#555}
+  .card,.vocab-card{box-shadow:none;break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-in">
+    <p class="kicker">Grade 7 · Unit 2 Rain or Shine · Week 11 Wednesday</p>
+    <h1>第 11 周三 · 培优题交互学习页</h1>
+    <p class="sub">初中英语话题阅读（七年级上册）｜阅读还原六选五 + 完形填空｜全文校对、完整解答、逐段精讲、生词点击释义与语音朗读</p>
+    <div class="chips">
+      <span class="chip">2 篇语篇</span><span class="chip">15 道题</span>
+      <span class="chip">45 条生词 / 生短语</span><span class="chip">点击划线词查释义</span>
+      <span class="chip">支持英文朗读</span>
+    </div>
+    <div class="hero-actions">
+      <button class="btn btn-primary" data-read="full">🔊 朗读完整范文（已填答案）</button>
+      <button class="btn btn-ghost" id="stopBtn">⏹ 停止朗读</button>
+      <a class="btn btn-ghost" href="#vocab">📖 直达词汇表</a>
+    </div>
+  </div>
+</header>
+<div class="toolbar">
+  <div class="toolbar-in">
+    <nav class="navlinks" id="nav">
+      <a href="#full">文档全文</a><a href="#proof">内容校对</a>
+      <a href="#answers">完整解答</a><a href="#analysis">逐段精讲</a>
+      <a href="#vocab">生词汇总</a>
+    </nav>
+    <label class="speed">语速 <input type="range" id="rate" min="60" max="130" value="90"><span id="rateVal">0.9×</span></label>
+  </div>
+</div>
+<div class="layout">
+  <aside class="side">
+    <p class="side-t">Contents</p>
+    <a href="#full">01 文档全文（校对版）</a>
+    <a href="#proof">02 内容校对说明</a>
+    <a href="#answers">03 答案速查</a>
+    <a href="#analysis">04 逐段 / 逐题精讲</a>
+    <a href="#vocab">05 生词汇总</a>
+    <div class="tip">💡 英文原文里带<b>橙色虚线</b>的词或短语都可以点开：中文释义、用法、例句一键展开，还能逐条朗读。右上角可调语速。</div>
+  </aside>
+  <main>
+
+<section class="section" id="full">
+  <div class="sec-head"><span class="sec-num">1</span><h2>文档全文（校对版）</h2><span class="en">Full text · checked against the scan</span></div>
+
+  <article class="card paper annotatable">
+    <span class="page-tag">扫描第 1 页</span>
+    <div class="bookhead"><span>初中英语话题阅读｜七年级上册</span><span>答案：P1</span></div>
+    <div class="ti"><h3>二、阅读还原六选五</h3><span class="ans-mark">答案：P1</span></div>
+    <p class="instruction">根据短文内容，从短文后的选项中选出能填入空白处的最佳选项。选项中有一项为多余选项。</p>
+    <div class="meta">主题：人与自然——自然生态　语篇类型：说明文　词数：130　难度：★☆☆☆☆　建议用时：5′　正确率：/5</div>
+
+    <div class="pic-note"><div class="pic"></div>原页右侧配图：青藏高原雪山、湖泊与草甸插画（初始文字转写未识别，已补注）。</div>
+
+    <div class="passage" id="p1">
+      <p>There is a very special place in China. It is the Qinghai-Xizang Plateau (青藏高原). <span class="blank">1. ______</span> You can experience “four seasons” in just one day.</p>
+      <p>When the sun comes out, the weather there becomes warm, just like spring. <span class="blank">2. ______</span></p>
+      <p>The weather at noon is very different from that in the morning. <span class="blank">3. ______</span> Because it is hot and the sunlight is so strong, you had better wear sunglasses. Sometimes it rains, but the rain doesn’t last long.</p>
+      <p><span class="blank">4. ______</span> As the sun goes down, the temperature goes down too. It becomes cool again, just like autumn. If you don’t keep warm, you may catch a cold.</p>
+      <p>At night, the temperature gets very low, just like winter. <span class="blank">5. ______</span></p>
+    </div>
+    <div class="read-row"><button class="btn btn-mini" data-read="p1">🔊 朗读本段</button></div>
+
+    <div class="opt-box">
+      <div class="opt"><b>A.</b><span>You may feel like it’s summer.</span></div>
+      <div class="opt"><b>B.</b><span>You need to wear warm clothes.</span></div>
+      <div class="opt"><b>C.</b><span>It’s a good time to take a walk in the morning.</span></div>
+      <div class="opt"><b>D.</b><span>The weather there changes a lot in summer.</span></div>
+      <div class="opt"><b>E.</b><span>You have to be careful about the weather in the afternoon.</span></div>
+      <div class="opt"><b>F.</b><span>You can only wear cool clothes.</span></div>
+    </div>
+
+    <div class="callout">
+      <p class="ct">📒 积累小筏　青藏高原</p>
+      <div class="sub-t">☆ 地理别称与地位</div>
+      <ul>
+        <li>1. “世界屋脊”(the Roof of the World)：世界海拔最高高原（平均海拔 4 000 米以上）</li>
+        <li>2. “第三极”(the Third Pole)：全球仅次于南极、北极的冰雪储区（冰川面积约 10 万平方千米）</li>
+      </ul>
+      <div class="sub-t">☆ 高原反应机制</div>
+      <ul><li>科学解释：低氧环境（含氧量仅为海平面 40%～60%）→ 血氧饱和度下降 → 人体红细胞代偿性增加</li></ul>
+      <div class="sub-t">☆ 特有物种</div>
+      <ul><li>藏羚羊（国家一级保护动物）、雪豹（高原顶级捕食者）</li></ul>
+    </div>
+    <div class="foot-note"><span>页码：16</span><span>页脚：二维码 +「扫描全能王 · 3 亿人都在用的扫描 App」水印（扫描工具标记，非教材正文）</span></div>
+  </article>
+
+  <article class="card paper annotatable">
+    <span class="page-tag">扫描第 2 页</span>
+    <div class="bookhead"><span>Unit 2　Rain or Shine</span><span>答案：P4</span></div>
+    <div class="ti"><h3>三、完形填空</h3><span class="ans-mark">答案：P4</span></div>
+    <p class="instruction">阅读下面短文，从每小题所给的 A、B、C 三个选项中选出一个最佳选项。</p>
+    <div class="meta">主题：人与社会——志愿服务　语篇类型：记叙文　词数：150　难度：★★★☆☆　建议用时：7′　正确率：/10</div>
+
+    <div class="passage" id="p2">
+      <p>It’s a rainy afternoon. Gina and her sister Anna are walking home.</p>
+      <p>Then, they <span class="blank">1 ______</span> Grandma Maria. She is looking for something everywhere. Gina walks to her and asks, “Grandma Maria, <span class="blank">2 ______</span> are you looking for?”</p>
+      <p>Grandma Maria <span class="blank">3 ______</span> Gina and Anna, saying, “I can’t find my pet <span class="blank">4 ______</span> Mimi. I’m looking for it.” Gina says to Anna, “It’s raining and very cold now. Grandma Maria is old. She needs <span class="blank">5 ______</span> help.” “Yes, Gina, you’re <span class="blank">6 ______</span>. Let’s go to look for Mimi,” says Anna.</p>
+      <p>The two sisters tell Grandma Maria to go home first. Then, they go to look for Mimi. They soon <span class="blank">7 ______</span> the cat under a tree and take it to Grandma Maria.</p>
+      <p>Seeing how <span class="blank">8 ______</span> Grandma Maria is, Anna says to Gina, “You know, I don’t like rainy days, <span class="blank">9 ______</span> I’m happy to help Grandma Maria today. Helping someone in need really makes me <span class="blank">10 ______</span> good.”</p>
+    </div>
+    <div class="read-row"><button class="btn btn-mini" data-read="p2">🔊 朗读本段</button></div>
+
+    <div class="cloze">
+      <div>(　) 1. A. see　　B. know　　C. miss</div>
+      <div>(　) 2. A. what　 B. why　　C. where</div>
+      <div>(　) 3. A. looks at　B. listens to　C. looks after</div>
+      <div>(　) 4. A. fox　　B. dog　　C. cat</div>
+      <div>(　) 5. A. his　　B. her　　C. our</div>
+      <div>(　) 6. A. shy　　B. right　 C. strict</div>
+      <div>(　) 7. A. find　 B. keep　 C. forget</div>
+      <div>(　) 8. A. smart　B. healthy　C. happy</div>
+      <div>(　) 9. A. so　　B. and　　C. but</div>
+      <div>(　) 10. A. feel　B. sound　C. look</div>
+    </div>
+
+    <div class="callout">
+      <p class="ct">📒 积累小筏</p>
+      <div class="sub-t">☆ 短语互译</div>
+      <ul>
+        <li>1. walk home ____________　　2. 寻找 ____________</li>
+        <li>3. under a tree ____________　　4. 有需要的 ____________</li>
+      </ul>
+      <div class="sub-t">☆ 完成句子</div>
+      <ul>
+        <li>5. 孩子们在游乐室里把玩具扔得到处都是。<br>The kids put their toys <span class="blank">______</span> in the playroom.</li>
+        <li>6. 汤姆很高兴有机会为校队踢足球。<br>Tom <span class="blank">______</span> <span class="blank">______</span> <span class="blank">______</span> <span class="blank">______</span> a chance to play football for the school team.</li>
+      </ul>
+    </div>
+    <div class="foot-note"><span>本页扫描件未显示页码</span><span>页脚：二维码 +「扫描全能王 · 3 亿人都在用的扫描 App」水印</span></div>
+  </article>
+</section>
+
+<section class="section" id="proof">
+  <div class="sec-head"><span class="sec-num">2</span><h2>内容校对说明</h2><span class="en">Proofreading notes</span></div>
+  <details class="proof" open>
+    <summary>以 2 页扫描件为准，共订正 10 处（点击折叠 / 展开）</summary>
+    <table class="tbl">
+      <thead><tr><th style="width:20%">位置</th><th style="width:38%">初始文字转写</th><th>扫描件核对结果 / 处理</th></tr></thead>
+      <tbody>
+        <tr><td>第 1 页答案标注</td><td class="bad">答案：内</td><td class="good">答案：P1</td></tr>
+        <tr><td>阅读还原 · 难度</td><td class="bad">★★★★★</td><td class="good">★☆☆☆☆</td></tr>
+        <tr><td>阅读还原 · 正确率</td><td class="bad">缺失</td><td class="good">补「正确率：/5」</td></tr>
+        <tr><td>完形填空 · 难度</td><td class="bad">★★★ ★★（符号混乱）</td><td class="good">★★★☆☆</td></tr>
+        <tr><td>完形第 10 题选项</td><td class="bad">A. feel　C. look（缺 B 项）</td><td class="good">A. feel　B. sound　C. look</td></tr>
+        <tr><td>完成句子第 5 题</td><td class="bad">The kids put their toys in the playroom.（漏空）</td><td class="good">The kids put their toys ______ in the playroom.</td></tr>
+        <tr><td>完成句子第 6 题</td><td class="bad">Tom a chance to ...（漏谓语与空）</td><td class="good">Tom ______ ______ ______ ______ a chance to ...（4 空）</td></tr>
+        <tr><td>第 1 页插图</td><td class="bad">未识别</td><td class="good">补注「青藏高原雪山湖泊插画」</td></tr>
+        <tr><td>书眉 / 页码 / 水印</td><td class="bad">零散、缺 Unit 信息</td><td class="good">补「初中英语话题阅读｜七年级上册」「Unit 2 Rain or Shine」、页码 16 及扫描水印说明</td></tr>
+        <tr><td>栏目与标点</td><td class="bad">☑积累小筏 / 人与自然-自然生态</td><td class="good">「积累小筏」为栏目标识（非勾选框）；主题用破折号「——」；10 处空位线已还原</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:13px;color:var(--muted);margin:0 0 16px">说明：第 1 页右上角答案页码印刷略模糊，形似「P1」，依同册第 2 页「答案：P4」的体例校订；初始转写误作「内」。两处难度星级以扫描件实心／空心星为准。扫描 App 二维码与广告语属于工具水印，保留说明但不计入教材正文。</p>
+  </details>
+</section>
+
+<section class="section" id="answers">
+  <div class="sec-head"><span class="sec-num">3</span><h2>完整解答 · 答案速查</h2><span class="en">Answer key</span></div>
+  <div class="card">
+    <h3>二、阅读还原六选五</h3>
+    <div class="answer-strip">
+      <span class="ans">1 – D</span><span class="ans">2 – C</span><span class="ans">3 – A</span>
+      <span class="ans">4 – E</span><span class="ans">5 – B</span><span class="ans extra">多余项：F</span>
+    </div>
+    <p style="font-size:14px;margin:0">填入后全文按 <b>夏（总起）→ 春（清晨）→ 夏（正午）→ 多雨午后 → 秋（傍晚）→ 冬（夜晚）</b> 推进，正好呼应开头的 “four seasons in just one day”。</p>
+
+    <h3 style="margin-top:24px">三、完形填空</h3>
+    <div class="answer-strip">
+      <span class="ans">1 A</span><span class="ans">2 A</span><span class="ans">3 A</span><span class="ans">4 C</span><span class="ans">5 C</span>
+      <span class="ans">6 B</span><span class="ans">7 A</span><span class="ans">8 C</span><span class="ans">9 C</span><span class="ans">10 A</span>
+    </div>
+    <p style="font-size:14px;margin:0">1–5：A A A C C　｜　6–10：B A C C A</p>
+
+    <h3 style="margin-top:24px">📒 积累小筏 · 参考答案</h3>
+    <div class="solve-wrap">
+    <table class="tbl">
+      <thead><tr><th style="width:9%">题号</th><th style="width:42%">答案</th><th>要点</th></tr></thead>
+      <tbody>
+        <tr><td>短语 1</td><td class="good">步行回家 / 走回家</td><td>home 是副词，不加 to</td></tr>
+        <tr><td>短语 2</td><td class="good">look for</td><td>强调「找」的动作，与 find（结果）相对</td></tr>
+        <tr><td>短语 3</td><td class="good">在一棵树下</td><td>under + 泛指 a tree</td></tr>
+        <tr><td>短语 4</td><td class="good">in need</td><td>someone in need 有需要的人</td></tr>
+        <tr><td>完成 5</td><td class="good">everywhere</td><td>The kids put their toys <b>everywhere</b> in the playroom.</td></tr>
+        <tr><td>完成 6</td><td class="good">is happy to have</td><td>Tom <b>is happy to have</b> a chance to play football for the school team.（4 空恰好 4 词）</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p style="font-size:13px;color:var(--muted);margin:0">第 6 题也可写 <b>is glad to have</b>；结合本单元 “I’m happy to help…” 的复现，优先用 is happy to have。</p>
+  </div>
+</section>
+
+<section class="section" id="analysis">
+  <div class="sec-head"><span class="sec-num">4</span><h2>逐段详细解析</h2><span class="en">Passage-by-passage &amp; item-by-item</span></div>
+
+  <div class="card">
+    <h3>二、阅读还原六选五 · 逐段精讲</h3>
+    <p style="font-size:13.6px;color:var(--muted);margin:0 0 10px">解题主线：<b>时间轴 + 季节比喻</b>。先抓 morning / at noon / in the afternoon / As the sun goes down / At night 五个时间信号，再把选项按「春—夏—提防—秋—冬」对号入座。</p>
+    <div class="solve-wrap"><table class="tbl">
+      <thead><tr><th>时间信号</th><th>文中天气</th><th>季节比喻</th><th>对应选项</th></tr></thead>
+      <tbody>
+        <tr><td>in summer（总起）</td><td>changes a lot</td><td>一天四季</td><td class="good">1 → D</td></tr>
+        <tr><td>When the sun comes out（清晨）</td><td>warm</td><td>spring</td><td class="good">2 → C</td></tr>
+        <tr><td>at noon</td><td>hot, strong sunlight</td><td>summer</td><td class="good">3 → A</td></tr>
+        <tr><td>Sometimes it rains（午后）</td><td>雨短、要当心</td><td>过渡</td><td class="good">4 → E</td></tr>
+        <tr><td>As the sun goes down（傍晚）</td><td>cool</td><td>autumn</td><td>本段自带</td></tr>
+        <tr><td>At night</td><td>very low</td><td>winter</td><td class="good">5 → B</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="timeline">
+      <div class="tl"><div class="tt">第 1 段 · 引入 + 空 1 → D</div>
+        <span class="quote">There is a very special place in China. It is the Qinghai-Xizang Plateau. 1. ______ You can experience “four seasons” in just one day.</span>
+        <p>前两句只交代「地点」，空后突然说「一天能体验四季」，中间缺一个<b>总起句</b>把「高原」和「天气多变」连起来。D「那里夏天天气变化很大」正好解释为什么一天能过四季，且 in summer 限定了全文讨论的季节背景。</p>
+        <p>排除：C 已经跳到「早上」，A 跳到「夏天正午」，B/E/F 都是具体建议，放在开头没有着落。</p></div>
+      <div class="tl"><div class="tt">第 2 段 · 清晨如春 + 空 2 → C</div>
+        <span class="quote">When the sun comes out, the weather there becomes warm, just like spring. 2. ______ The weather at noon is very different from that in the morning.</span>
+        <p>空后马上把 noon 与 morning 对比，说明空里必须<b>先落回 morning</b>。C「早上是散步的好时候」承接 warm / just like spring，又用 in the morning 给下句提供对比对象，逻辑最顺。</p>
+        <p>排除：A「像夏天」应留给正午；D 已在开头用过；E 讲下午；B/F 讲穿衣，与「暖如春」不搭。</p></div>
+      <div class="tl"><div class="tt">第 3 段 · 正午如夏 + 空 3 → A</div>
+        <span class="quote">The weather at noon is very different from that in the morning. 3. ______ Because it is hot and the sunlight is so strong, you had better wear sunglasses.</span>
+        <p>空后 Because 解释「热、阳光强」，所以空里要先给出<b>结论：像夏天</b>。A「你可能觉得是夏天」与 Because 构成「结论—原因」，wear sunglasses 也顺理成章。</p>
+        <p>排除：E 的「小心天气」放在 Because 前会变成「因为热所以要小心」，与后文「有时下雨」衔接不如 A 紧密；B/F 与「热」矛盾。</p></div>
+      <div class="tl"><div class="tt">第 4 段 · 午后多雨 + 空 4 → E；傍晚如秋</div>
+        <span class="quote">Sometimes it rains, but the rain doesn’t last long. 4. ______ As the sun goes down, the temperature goes down too. It becomes cool again, just like autumn.</span>
+        <p>上句说「偶尔下雨、很快停」，下句说「太阳一落就降温」——两头都在讲<b>下午到傍晚的多变</b>，E「下午你得留意天气」正好承上启下，并引出 keep warm / catch a cold 的提醒。</p>
+        <p>排除：C 的 morning 时间已过；A 已用于正午；B 应留给夜晚；F 与 cool / keep warm 直接冲突。</p></div>
+      <div class="tl"><div class="tt">第 5 段 · 夜晚如冬 + 空 5 → B；多余项 F</div>
+        <span class="quote">At night, the temperature gets very low, just like winter. 5. ______</span>
+        <p>「气温极低，像冬天」之后最自然的建议是 B「你需要穿暖和的衣服」，与前文 If you don’t keep warm, you may catch a cold 形成首尾呼应。</p>
+        <p><b>F 为什么多余：</b>You can only wear cool clothes（只能穿凉快衣服）与 just like winter、wear warm clothes 完全相反；only 又过于绝对，故为干扰项。</p></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>三、完形填空 · 逐段剧情梳理</h3>
+    <div class="timeline">
+      <div class="tl"><div class="tt">段 1 · 场景（rainy afternoon / walking home）</div>
+        <span class="quote">It’s a rainy afternoon. Gina and her sister Anna are walking home.</span>
+        <p>一句话交代时间、天气、人物、动作。rainy + cold 为后文「奶奶年纪大、需要帮助」埋下理由，也和结尾 I don’t like rainy days 呼应。</p></div>
+      <div class="tl"><div class="tt">段 2 · 遇见与询问（题 1、2）</div>
+        <span class="quote">Then, they ___ Grandma Maria. She is looking for something everywhere. Gina walks to her and asks, “Grandma Maria, ___ are you looking for?”</span>
+        <p>动作链：see → walk to → ask。look for 缺宾语，用 what 提问；everywhere 写出奶奶的着急，为「志愿服务」做铺垫。</p></div>
+      <div class="tl"><div class="tt">段 3 · 说明困难、决定帮忙（题 3–6）</div>
+        <span class="quote">“I can’t find my pet ___ Mimi … She needs ___ help.” “Yes, Gina, you’re ___. Let’s go to look for Mimi.”</span>
+        <p>奶奶「看着」两人说明情况；猫在后文以 the cat 复现；Gina 用 our 把妹妹拉进来；Anna 用 you’re right 表示赞同，于是从「看见」转向「行动」。</p></div>
+      <div class="tl"><div class="tt">段 4 · 行动与结果（题 7）</div>
+        <span class="quote">The two sisters tell Grandma Maria to go home first. … They soon ___ the cat under a tree and take it to Grandma Maria.</span>
+        <p>先安顿老人，再去找猫；look for（过程）终于变成 find（结果），under a tree 给出地点，take it to 完成「物归原主」。</p></div>
+      <div class="tl"><div class="tt">段 5 · 情感升华（题 8–10）</div>
+        <span class="quote">Seeing how ___ Grandma Maria is … I don’t like rainy days, ___ I’m happy to help … Helping someone in need really makes me ___ good.</span>
+        <p>看到奶奶 happy → Anna 承认「不喜欢雨天」却「今天很开心」，but 一转，主题落到 Helping someone in need makes me feel good。全文由「雨」开始，以「心晴」收尾，正好点题 Unit 2 Rain or Shine。</p></div>
+    </div>
+
+    <h4>逐题精讲（定位句 · 考点 · 排除）</h4>
+    <div class="solve-wrap"><table class="tbl">
+      <thead><tr><th style="width:6%">题</th><th style="width:8%">答案</th><th style="width:30%">回文定位</th><th>解析与排除</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td class="good">A see</td><td>Then, they ___ Grandma Maria.</td><td>路上「看见」某人用 see（结果）。know 认识、miss 想念/错过，都不能接「突然遇见」的场景。</td></tr>
+        <tr><td>2</td><td class="good">A what</td><td>___ are you looking for?</td><td>look for 缺「找的东西」，用 what。why 问原因（应说 Why are you looking for it?），where 问地点，与 something everywhere 不配。</td></tr>
+        <tr><td>3</td><td class="good">A looks at</td><td>Grandma Maria ___ Gina and Anna, saying…</td><td>说话时「看着两人」用 look at。listens to 听……（后面应是声音），look after 照顾，均不合；say 的伴随动作是看，不是听。</td></tr>
+        <tr><td>4</td><td class="good">C cat</td><td>I can’t find my pet ___ Mimi. → They soon ___ <b>the cat</b>…</td><td>后文 the cat 是原词复现，最硬的线索。fox / dog 与下文矛盾。</td></tr>
+        <tr><td>5</td><td class="good">C our</td><td>Gina says to Anna … She needs ___ help.</td><td>Gina 对妹妹说「她需要<b>我们的</b>帮助」，用 our 才引出两人一起找。his 人称错，her 会变成「奶奶需要她自己的帮助」。</td></tr>
+        <tr><td>6</td><td class="good">B right</td><td>Yes, Gina, you’re ___. Let’s go…</td><td>Yes + Let’s 表示赞同，you’re right 是固定口语。shy 害羞的、strict 严格的，都不能回应姐姐的提议。</td></tr>
+        <tr><td>7</td><td class="good">A find</td><td>They soon ___ the cat under a tree</td><td>look for 是「找」，find 是「找到」；soon + 地点说明已有结果。keep 饲养/保留、forget 忘记，与 take it to 冲突。</td></tr>
+        <tr><td>8</td><td class="good">C happy</td><td>Seeing how ___ Grandma Maria is</td><td>猫找回来了，奶奶自然 happy；这也触发 Anna 的感悟。smart / healthy 与「失而复得」无关。</td></tr>
+        <tr><td>9</td><td class="good">C but</td><td>I don’t like rainy days, ___ I’m happy to help…</td><td>前半否定、后半肯定，是转折用 but。so 表结果、and 表并列，都抹掉了「虽然…但是…」的语气。</td></tr>
+        <tr><td>10</td><td class="good">A feel</td><td>makes me ___ good</td><td>make sb. do sth. 后接动词原形；help 带来的是心里的感受 → feel good。sound good「听起来不错」、look good「看起来不错」都不描写内心；B 项 sound 是扫描件补全的干扰项。</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="key-grid">
+      <div class="key"><b>look for ↔ find</b>look for 强调过程，find 强调结果。第 2 题问「找什么」，第 7 题「找到了」。</div>
+      <div class="key"><b>make sb. do sth.</b>make + 宾语 + 动词原形，不加 to：makes me feel good / makes me happy。</div>
+      <div class="key"><b>感官系动词 + adj.</b>feel / sound / look / smell / taste + 形容词。第 10 题三选项正是这一组。</div>
+      <div class="key"><b>but 转折</b>not … but … 形成「不喜欢雨天 → 却开心帮忙」的情感落差，点题 Rain or Shine。</div>
+      <div class="key"><b>物主代词</b>our / his / her 看说话人：Gina 对 Anna 说话，用 our 才把两人都算进去。</div>
+      <div class="key"><b>原词复现</b>pet ___ Mimi → the cat；完形里后文出现的名词常常就是前一空的答案。</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="vocab">
+  <div class="sec-head"><span class="sec-num">5</span><h2>生词与生短语 · 集中汇总</h2><span class="en">Vocabulary bank</span></div>
+  <div class="card">
+    <p style="font-size:13.6px;color:var(--muted);margin:0 0 14px">依据七年级上册词汇水平筛出超纲词、易混词与重点词块，共 <b id="totalCount">—</b> 条。上方英文原文中已用橙色虚线标注，点击即可展开；此处可按英文或中文检索，点词条名可跳回原文并展开卡片。</p>
+    <div class="searchbar">
+      <input id="vocabSearch" type="search" placeholder="搜索单词 / 短语 / 中文释义，例如：look for、感冒、make">
+      <button class="btn btn-mini" id="clearSearch">清空</button>
+      <span class="count" id="visibleCount"></span>
+    </div>
+    <div class="vocab-grid" id="vocabGrid"></div>
+  </div>
+</section>
+
+  </main>
+</div>
+<footer><div class="fin">
+  <span>资料：11-3培优.pdf（2 页扫描件）｜初中英语话题阅读 · 七年级上册 · Unit 2 Rain or Shine</span>
+  <span>语音朗读使用浏览器内置英文语音；若无声，请检查系统音量或换用 Chrome / Edge。</span>
+</div></footer>
+<div class="popover" id="popover" hidden></div>
+<div class="toast" id="toast"></div>
+
+<script>
+const TERMS = [{"id": "a1", "group": "p1", "en": "special", "ipa": "/ˈspeʃl/", "cn": "adj. 特别的；特殊的", "usage": "形容词，放在名词前修饰：a very special place；very 可加强语气。也可作名词表示「特价／特别节目」（了解即可）。", "ex": "This is a very special place in China.", "exCn": "这是中国一个非常特别的地方。"}, {"id": "a2", "group": "p1", "en": "the Qinghai-Xizang Plateau", "ipa": "专有名词", "cn": "青藏高原", "usage": "实词首字母大写，前面常加 the；plateau 意为「高原」，别和 plain（平原）混淆。", "ex": "It is the Qinghai-Xizang Plateau.", "exCn": "它就是青藏高原。"}, {"id": "a3", "group": "p1", "en": "experience", "ipa": "/ɪkˈspɪəriəns/", "cn": "v. 体验；经历　n. 经验；经历", "usage": "作动词时直接加宾语：experience four seasons；作名词时「经验」不可数、「一次经历」可数。", "ex": "You can experience \"four seasons\" in just one day.", "exCn": "你能在短短一天里体验「四季」。"}, {"id": "a4", "group": "p1", "en": "just like", "ipa": "/dʒʌst laɪk/", "cn": "就像；正如", "usage": "just 加强语气，like 在此是介词，后接名词或代词；后接从句时表示「感觉／看起来像」。", "ex": "The weather becomes warm, just like spring.", "exCn": "天气变暖，就像春天。"}, {"id": "a5", "group": "p1", "en": "come out", "ipa": "/kʌm aʊt/", "cn": "（太阳、月亮、花）出来；出现", "usage": "不及物短语，不接宾语；主语是 the sun 时三单用 comes out。也可指书、电影「出版／上映」。", "ex": "When the sun comes out, the weather becomes warm.", "exCn": "太阳出来时，天气就变暖了。"}, {"id": "a6", "group": "p1", "en": "become", "ipa": "/bɪˈkʌm/", "cn": "v. 变得；成为", "usage": "系动词，后接形容词：become warm / become cool；与 get 近义，become 更书面。", "ex": "It becomes cool again, just like autumn.", "exCn": "天气又变凉爽了，就像秋天。"}, {"id": "a7", "group": "p1", "en": "be different from", "ipa": "/ˈdɪfrənt frɒm/", "cn": "与……不同", "usage": "固定搭配 be different from + 比较对象；反义 the same as。句中 that 代替前面出现过的 weather，避免重复。", "ex": "The weather at noon is very different from that in the morning.", "exCn": "中午的天气和早上大不相同。"}, {"id": "a8", "group": "p1", "en": "sunlight", "ipa": "/ˈsʌnlaɪt/", "cn": "n. 阳光（不可数）", "usage": "不可数名词，不加 a/an；近义词 sunshine。常用 strong / bright 修饰。", "ex": "The sunlight is so strong at noon.", "exCn": "中午阳光特别强。"}, {"id": "a9", "group": "p1", "en": "strong", "ipa": "/strɒŋ/", "cn": "adj. 强烈的；强壮的；擅长的", "usage": "修饰阳光、风译为「强烈的」，修饰人译为「强壮的」；be strong in / at 擅长……。反义 weak。", "ex": "You had better wear sunglasses because the sunlight is strong.", "exCn": "因为阳光很强，你最好戴上太阳镜。"}, {"id": "a10", "group": "p1", "en": "had better", "ipa": "/hæd ˈbetə(r)/", "cn": "最好（做某事）", "usage": "had better + 动词原形，否定 had better not do；可缩写为 ’d better。形式像过去式，说的却是现在或将来的建议。", "ex": "You had better wear sunglasses.", "exCn": "你最好戴上太阳镜。"}, {"id": "a11", "group": "p1", "en": "sunglasses", "ipa": "/ˈsʌnɡlɑːsɪz/", "cn": "n. 太阳镜（常用复数）", "usage": "常以复数出现；「一副」用 a pair of sunglasses。同类：glasses, trousers, shoes。", "ex": "I wear a pair of sunglasses on sunny days.", "exCn": "晴天我戴一副太阳镜。"}, {"id": "a12", "group": "p1", "en": "last long", "ipa": "/lɑːst lɒŋ/", "cn": "持续很久", "usage": "last 作动词「持续」，long 是副词；doesn’t last long = 持续不了多久。last (for) two hours 持续两小时。", "ex": "Sometimes it rains, but the rain doesn’t last long.", "exCn": "有时下雨，但雨不会下太久。"}, {"id": "a13", "group": "p1", "en": "go down", "ipa": "/ɡəʊ daʊn/", "cn": "（太阳）落下；（温度、价格）下降", "usage": "不及物短语；反义 go up（上升）。文中两个 goes down 分别指太阳落山、气温下降。", "ex": "As the sun goes down, the temperature goes down too.", "exCn": "太阳落山时，气温也随之下降。"}, {"id": "a14", "group": "p1", "en": "temperature", "ipa": "/ˈtemprətʃə(r)/", "cn": "n. 气温；温度；体温", "usage": "说温度「高／低」用 high / low，不用 hot / cold 直接修饰；take one’s temperature 量体温。", "ex": "The temperature gets very low at night.", "exCn": "夜里气温变得很低。"}, {"id": "a15", "group": "p1", "en": "keep warm", "ipa": "/kiːp wɔːm/", "cn": "保暖；保持暖和", "usage": "keep + 形容词 = 保持某种状态：keep quiet / keep clean / keep healthy。", "ex": "If you don’t keep warm, you may catch a cold.", "exCn": "不注意保暖，你可能会感冒。"}, {"id": "a16", "group": "p1", "en": "catch a cold", "ipa": "/kætʃ ə kəʊld/", "cn": "感冒；着凉", "usage": "catch 强调「染上」；have a cold 强调「正感冒」的状态。cold 还可作形容词「冷的」。", "ex": "Keep warm, or you may catch a cold.", "exCn": "注意保暖，否则可能感冒。"}, {"id": "a17", "group": "p1", "en": "at noon / at night", "ipa": "/ət nuːn / ət naɪt/", "cn": "在中午 / 在夜里", "usage": "at + 时间点（noon, night, six o’clock）；in + 较长时段（the morning / afternoon, summer）；on + 具体某一天。", "ex": "At noon it is hot; at night it is cold.", "exCn": "中午很热，夜里很冷。"}, {"id": "a18", "group": "p1", "en": "feel like", "ipa": "/fiːl laɪk/", "cn": "感觉像；想要", "usage": "feel like + 名词／从句 = 感觉像……；feel like doing sth. = 想做某事。注意与 would like to do 区分。", "ex": "You may feel like it’s summer.", "exCn": "你可能会觉得像到了夏天。"}, {"id": "a19", "group": "p1", "en": "take a walk", "ipa": "/teɪk ə wɔːk/", "cn": "散步", "usage": "take a walk = have a walk = go for a walk；It’s a good time to do sth. 表示「做某事的好时候」。", "ex": "It’s a good time to take a walk in the morning.", "exCn": "早上是散步的好时候。"}, {"id": "a20", "group": "p1", "en": "be careful about", "ipa": "/bi ˈkeəfl əˈbaʊt/", "cn": "当心；留意", "usage": "be careful about / of / with + 名词；be careful to do sth. 小心去做；单独用 Be careful! 提醒别人。", "ex": "You have to be careful about the weather in the afternoon.", "exCn": "下午你得留意天气变化。"}, {"id": "a21", "group": "p1", "en": "change a lot", "ipa": "/tʃeɪndʒ ə lɒt/", "cn": "变化很大", "usage": "a lot 作副词短语修饰动词，放动词后；a lot of + 名词才是「许多」。have to 表示「不得不／必须」。", "ex": "The weather there changes a lot in summer.", "exCn": "那里夏天的天气变化很大。"}, {"id": "a22", "group": "p1", "en": "cool", "ipa": "/kuːl/", "cn": "adj. 凉爽的；酷的；冷静的", "usage": "一词多义：cool again = 又变凉爽；cool clothes = 凉快的衣服；口语 That’s cool! = 太酷了。反义 warm。", "ex": "It becomes cool again, just like autumn.", "exCn": "天气又变凉爽，就像秋天。"}, {"id": "b1", "group": "p2", "en": "rainy", "ipa": "/ˈreɪni/", "cn": "adj. 下雨的；多雨的", "usage": "rain（n./v. 雨／下雨）+ y → 形容词；同类：windy, cloudy, sunny, snowy。", "ex": "It’s a rainy afternoon.", "exCn": "这是一个下雨的下午。"}, {"id": "b2", "group": "p2", "en": "walk home", "ipa": "/wɔːk həʊm/", "cn": "步行回家；走回家", "usage": "home 在此是副词，前面不加 to：walk home / go home / get home；walk to school 才有 to。", "ex": "Gina and her sister Anna are walking home.", "exCn": "吉娜和妹妹安娜正步行回家。"}, {"id": "b3", "group": "p2", "en": "look for", "ipa": "/lʊk fɔː(r)/", "cn": "寻找（强调动作）", "usage": "look for + 找的对象；与 find（找到，强调结果）成对考：What are you looking for? / I can’t find it. 三单 looks for，现在分词 looking for。", "ex": "She is looking for something everywhere.", "exCn": "她正到处找东西。"}, {"id": "b4", "group": "p2", "en": "everywhere", "ipa": "/ˈevriweə(r)/", "cn": "adv. 到处；处处", "usage": "副词，前面不加介词；放句末或动词后。近义 here and there。", "ex": "The kids put their toys everywhere in the playroom.", "exCn": "孩子们把玩具在游乐室里扔得到处都是。"}, {"id": "b5", "group": "p2", "en": "pet", "ipa": "/pet/", "cn": "n. 宠物；adj. 心爱的", "usage": "可数名词：a pet cat / my pet dog；pet 也可作动词「抚摸」（了解即可）。", "ex": "I can’t find my pet cat Mimi.", "exCn": "我找不到我的宠物猫咪咪了。"}, {"id": "b6", "group": "p2", "en": "look at", "ipa": "/lʊk æt/", "cn": "看……；注视", "usage": "look at + 看的对象，强调「看」的动作；see 强调「看见」的结果；look after = 照顾。", "ex": "Grandma Maria looks at Gina and Anna.", "exCn": "玛丽亚奶奶看着吉娜和安娜。"}, {"id": "b7", "group": "p2", "en": "listen to", "ipa": "/ˈlɪsn tuː/", "cn": "听……", "usage": "listen 是不及物动词，接对象必须加 to；hear 强调「听到」的结果。", "ex": "She listens to the radio every morning.", "exCn": "她每天早上听收音机。"}, {"id": "b8", "group": "p2", "en": "look after", "ipa": "/lʊk ˈɑːftə(r)/", "cn": "照顾；照看", "usage": "look after sb./sth. = take care of，宾语不能丢。文中是干扰项：奶奶在「看着」姐妹俩说话，不是照顾她们。", "ex": "I look after my little sister after school.", "exCn": "放学后我照看妹妹。"}, {"id": "b9", "group": "p2", "en": "in need", "ipa": "/ɪn niːd/", "cn": "有需要的；需要帮助的", "usage": "介词短语作后置定语：someone in need = 有需要的人；in need of + 名词 = 需要……。", "ex": "Helping someone in need really makes me feel good.", "exCn": "帮助有需要的人真的让我感觉很好。"}, {"id": "b10", "group": "p2", "en": "under a tree", "ipa": "/ˈʌndə(r) ə triː/", "cn": "在一棵树下", "usage": "under 表示「在……正下方」；a tree 是泛指，若特指那棵树才用 the tree。", "ex": "They soon find the cat under a tree.", "exCn": "他们很快在一棵树下找到了猫。"}, {"id": "b11", "group": "p2", "en": "find", "ipa": "/faɪnd/", "cn": "v. 找到；发现（强调结果）", "usage": "find + 宾语，过去式 found。与 look for 对比：look for 是「找」的过程，find 是「找到」的结果。", "ex": "I can’t find my pet cat Mimi.", "exCn": "我找不到我的宠物猫咪咪了。"}, {"id": "b12", "group": "p2", "en": "soon", "ipa": "/suːn/", "cn": "adv. 不久；很快", "usage": "常与一般将来时或一般过去时连用；as soon as 表示「一……就……」（拓展）。", "ex": "They soon find the cat under a tree.", "exCn": "他们很快在树下找到了猫。"}, {"id": "b13", "group": "p2", "en": "take … to …", "ipa": "/teɪk … tuː …/", "cn": "把……带到／带给……", "usage": "take + 物 + to + 人／地点，表示从说话处「带去」；bring 表示「带来」。", "ex": "They take it to Grandma Maria.", "exCn": "他们把它带给玛丽亚奶奶。"}, {"id": "b14", "group": "p2", "en": "tell sb. to do sth.", "ipa": "/tel … tə duː …/", "cn": "告诉某人做某事", "usage": "tell + 人 + to + 动词原形；否定 tell sb. not to do；first 是副词「先」。", "ex": "The two sisters tell Grandma Maria to go home first.", "exCn": "姐妹俩让玛丽亚奶奶先回家。"}, {"id": "b15", "group": "p2", "en": "you’re right", "ipa": "/jɔː(r) raɪt/", "cn": "你说得对；你是对的", "usage": "口语固定回应，right = correct；right 还有「右边／正好／权利」等义。That’s right. / Right! 也常用。", "ex": "Yes, Gina, you’re right. Let’s go to look for Mimi.", "exCn": "没错，吉娜，你说得对。我们去找咪咪吧。"}, {"id": "b16", "group": "p2", "en": "make sb. do sth.", "ipa": "/meɪk … duː …/", "cn": "使某人做某事；让某人……", "usage": "make + 宾语 + 动词原形（不加 to）：makes me feel good；也可 make + 宾语 + 形容词：make me happy。", "ex": "Helping someone in need really makes me feel good.", "exCn": "帮助有需要的人真的让我心情很好。"}, {"id": "b17", "group": "p2", "en": "feel / sound / look", "ipa": "/fiːl / saʊnd / lʊk/", "cn": "感觉 / 听起来 / 看起来", "usage": "感官系动词，后接形容词：feel good, sound good, look good。第 10 题选 feel，因为「帮助别人」带来的是心里的感受，不是「听起来」或「看起来」。", "ex": "The idea sounds good, and I feel good today.", "exCn": "这个主意听起来不错，我今天感觉也很好。"}, {"id": "b18", "group": "p2", "en": "shy · strict · smart · healthy", "ipa": "/ʃaɪ / strɪkt / smɑːt / ˈhelθi/", "cn": "害羞的 · 严格的 · 聪明的 · 健康的", "usage": "四个描述人的形容词：shy（怕生）、strict（要求严，be strict with sb.）、smart（= clever）、healthy（= in good health，名词 health）。完形第 6、8 题用它们作干扰项。", "ex": "The shy boy is smart and healthy, but his teacher is strict.", "exCn": "那个害羞的男孩聪明又健康，不过他的老师很严格。"}, {"id": "b19", "group": "p2", "en": "have a chance to do sth.", "ipa": "/hæv ə tʃɑːns tə duː …/", "cn": "有机会做某事", "usage": "chance 是可数名词；have a chance to do sth. = have a chance of doing sth.，a chance 前用不定冠词 a。", "ex": "Tom is happy to have a chance to play football for the school team.", "exCn": "汤姆很高兴有机会为校队踢足球。"}, {"id": "b20", "group": "p2", "en": "be happy to do sth.", "ipa": "/bi ˈhæpi tə duː …/", "cn": "很高兴做某事", "usage": "be happy to + 动词原形；同义 be glad / pleased to do。to 后不接 doing。", "ex": "I’m happy to help Grandma Maria today.", "exCn": "我今天很高兴能帮玛丽亚奶奶。"}, {"id": "b21", "group": "p2", "en": "playroom", "ipa": "/ˈpleɪruːm/", "cn": "n. 游乐室；游戏室", "usage": "合成词：play（玩）+ room（房间）；同类 classroom, bedroom, bathroom。", "ex": "The kids put their toys everywhere in the playroom.", "exCn": "孩子们把玩具在游乐室里放得到处都是。"}, {"id": "c1", "group": "p3", "en": "the Roof of the World", "ipa": "/ðə ruːf əv ðə wɜːld/", "cn": "世界屋脊（青藏高原别称）", "usage": "roof 屋顶，of the World 作后置定语；专名首字母大写，常加 the。", "ex": "The Qinghai-Xizang Plateau is called the Roof of the World.", "exCn": "青藏高原被称为「世界屋脊」。"}, {"id": "c2", "group": "p3", "en": "the Third Pole", "ipa": "/ðə θɜːd pəʊl/", "cn": "第三极（南极、北极之外的冰雪储区）", "usage": "the + 序数词 third + Pole；the South Pole 南极，the North Pole 北极。", "ex": "People also call it the Third Pole.", "exCn": "人们也称它为「第三极」。"}];
+const PATTERNS = [{"id": "b14", "raw": "tell Grandma Maria to go home first", "p": "tell Grandma Maria to go home first"}, {"id": "a2", "raw": "the Qinghai-Xizang Plateau", "p": "the Qinghai\\-Xizang Plateau"}, {"id": "c1", "raw": "the Roof of the World", "p": "the Roof of the World"}, {"id": "b20", "raw": "I’m happy to help", "p": "I’m happy to help"}, {"id": "a20", "raw": "be careful about", "p": "be careful about"}, {"id": "b20", "raw": "is happy to have", "p": "is happy to have"}, {"id": "a7", "raw": "different from", "p": "different from"}, {"id": "c2", "raw": "the Third Pole", "p": "the Third Pole"}, {"id": "a21", "raw": "changes a lot", "p": "changes a lot"}, {"id": "a16", "raw": "catch a cold", "p": "catch a cold"}, {"id": "a21", "raw": "change a lot", "p": "change a lot"}, {"id": "b2", "raw": "walking home", "p": "walking home"}, {"id": "b10", "raw": "under a tree", "p": "under a tree"}, {"id": "a14", "raw": "temperature", "p": "temperature"}, {"id": "a19", "raw": "take a walk", "p": "take a walk"}, {"id": "b3", "raw": "looking for", "p": "looking for"}, {"id": "b8", "raw": "looks after", "p": "looks after"}, {"id": "b19", "raw": "a chance to", "p": "a chance to"}, {"id": "a3", "raw": "experience", "p": "experience"}, {"id": "a10", "raw": "had better", "p": "had better"}, {"id": "a11", "raw": "sunglasses", "p": "sunglasses"}, {"id": "b4", "raw": "everywhere", "p": "everywhere"}, {"id": "b7", "raw": "listens to", "p": "listens to"}, {"id": "b8", "raw": "look after", "p": "look after"}, {"id": "b13", "raw": "take it to", "p": "take it to"}, {"id": "a4", "raw": "just like", "p": "just like"}, {"id": "a5", "raw": "comes out", "p": "comes out"}, {"id": "a12", "raw": "last long", "p": "last long"}, {"id": "a13", "raw": "goes down", "p": "goes down"}, {"id": "a15", "raw": "keep warm", "p": "keep warm"}, {"id": "a18", "raw": "feel like", "p": "feel like"}, {"id": "b2", "raw": "walk home", "p": "walk home"}, {"id": "b7", "raw": "listen to", "p": "listen to"}, {"id": "a5", "raw": "come out", "p": "come out"}, {"id": "a8", "raw": "sunlight", "p": "sunlight"}, {"id": "a17", "raw": "at night", "p": "at night"}, {"id": "b3", "raw": "look for", "p": "look for"}, {"id": "b6", "raw": "looks at", "p": "looks at"}, {"id": "b16", "raw": "makes me", "p": "makes me"}, {"id": "b20", "raw": "happy to", "p": "happy to"}, {"id": "b21", "raw": "playroom", "p": "playroom"}, {"id": "a1", "raw": "special", "p": "special"}, {"id": "a6", "raw": "becomes", "p": "becomes"}, {"id": "a13", "raw": "go down", "p": "go down"}, {"id": "a17", "raw": "at noon", "p": "at noon"}, {"id": "b6", "raw": "look at", "p": "look at"}, {"id": "b9", "raw": "in need", "p": "in need"}, {"id": "b18", "raw": "healthy", "p": "healthy"}, {"id": "a6", "raw": "become", "p": "become"}, {"id": "a9", "raw": "strong", "p": "strong"}, {"id": "b18", "raw": "strict", "p": "strict"}, {"id": "b1", "raw": "rainy", "p": "rainy"}, {"id": "b15", "raw": "right", "p": "right"}, {"id": "b17", "raw": "sound", "p": "sound"}, {"id": "b18", "raw": "smart", "p": "smart"}, {"id": "a22", "raw": "cool", "p": "cool"}, {"id": "b11", "raw": "find", "p": "find"}, {"id": "b12", "raw": "soon", "p": "soon"}, {"id": "b17", "raw": "feel", "p": "feel"}, {"id": "b17", "raw": "look", "p": "look"}, {"id": "b5", "raw": "pet", "p": "pet"}, {"id": "b18", "raw": "shy", "p": "shy"}];
+const GROUPS = {"p1": "阅读还原 · 高原四季", "p2": "完形填空 · 雨中助人", "p3": "积累小筏 · 文化拓展"};
+const FULL1 = "There is a very special place in China. It is the Qinghai-Xizang Plateau. The weather there changes a lot in summer. You can experience four seasons in just one day. When the sun comes out, the weather there becomes warm, just like spring. It's a good time to take a walk in the morning. The weather at noon is very different from that in the morning. You may feel like it's summer. Because it is hot and the sunlight is so strong, you had better wear sunglasses. Sometimes it rains, but the rain doesn't last long. You have to be careful about the weather in the afternoon. As the sun goes down, the temperature goes down too. It becomes cool again, just like autumn. If you don't keep warm, you may catch a cold. At night, the temperature gets very low, just like winter. You need to wear warm clothes.";
+const FULL2 = "It's a rainy afternoon. Gina and her sister Anna are walking home. Then, they see Grandma Maria. She is looking for something everywhere. Gina walks to her and asks, Grandma Maria, what are you looking for? Grandma Maria looks at Gina and Anna, saying, I can't find my pet cat Mimi. I'm looking for it. Gina says to Anna, It's raining and very cold now. Grandma Maria is old. She needs our help. Yes, Gina, you're right. Let's go to look for Mimi, says Anna. The two sisters tell Grandma Maria to go home first. Then, they go to look for Mimi. They soon find the cat under a tree and take it to Grandma Maria. Seeing how happy Grandma Maria is, Anna says to Gina, You know, I don't like rainy days, but I'm happy to help Grandma Maria today. Helping someone in need really makes me feel good.";
+const TMAP = Object.fromEntries(TERMS.map(t => [t.id, t]));
+const PMAP = Object.fromEntries(PATTERNS.map(p => [p.raw.toLowerCase(), p.id]));
+
+/* ---------- 原文标注 ---------- */
+const RE = new RegExp('(^|[^A-Za-z])(' + PATTERNS.map(p => p.p).join('|') + ')(?=[^A-Za-z]|$)', 'gi');
+function annotate(root){
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+    acceptNode(n){
+      if(!n.nodeValue || !n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+      const p = n.parentElement;
+      if(!p || p.closest('.term, .no-annotate, button, script, style, .popover, input, textarea')) return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  });
+  const nodes = [];
+  while(walker.nextNode()) nodes.push(walker.currentNode);
+  nodes.forEach(node => {
+    const text = node.nodeValue;
+    if(!RE.test(text)) { RE.lastIndex = 0; return; }
+    RE.lastIndex = 0;
+    const frag = document.createDocumentFragment();
+    let last = 0, m;
+    while((m = RE.exec(text)) !== null){
+      const start = m.index + m[1].length;
+      const hit = m[2];
+      if(start > last) frag.append(document.createTextNode(text.slice(last, start)));
+      const id = PMAP[hit.toLowerCase()];
+      if(id){
+        const btn = document.createElement('button');
+        btn.type = 'button'; btn.className = 'term'; btn.dataset.id = id;
+        btn.textContent = hit;
+        btn.setAttribute('aria-label', '查看 ' + hit + ' 的释义');
+        frag.append(btn);
+      } else {
+        frag.append(document.createTextNode(hit));
+      }
+      last = start + hit.length;
+    }
+    if(last < text.length) frag.append(document.createTextNode(text.slice(last)));
+    node.replaceWith(frag);
+  });
+}
+document.querySelectorAll('.annotatable').forEach(annotate);
+
+/* ---------- 词条弹卡 ---------- */
+const pop = document.getElementById('popover');
+let activeTerm = null;
+function esc(s){ return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function openPop(id, anchor){
+  const t = TMAP[id]; if(!t) return;
+  if(activeTerm) activeTerm.classList.remove('active');
+  activeTerm = (anchor && anchor.classList && anchor.classList.contains('term')) ? anchor : null;
+  if(activeTerm) activeTerm.classList.add('active');
+  pop.innerHTML =
+    '<div class="pop-head"><span class="pop-en">' + esc(t.en) + '</span>' +
+    '<span class="pop-ipa">' + esc(t.ipa) + '</span>' +
+    '<span class="pop-grp">' + esc(GROUPS[t.group]) + '</span></div>' +
+    '<p class="pop-cn">' + esc(t.cn) + '</p>' +
+    '<p class="pop-use"><b>用法：</b>' + esc(t.usage) + '</p>' +
+    '<div class="pop-ex"><b>例句：</b>' + esc(t.ex) + '<span class="cn">' + esc(t.exCn) + '</span></div>' +
+    '<div class="pop-actions">' +
+      '<button class="btn btn-mini" data-speak="term" data-id="' + id + '">🔊 读词条</button>' +
+      '<button class="btn btn-mini" data-speak="example" data-id="' + id + '">🔊 读例句</button>' +
+      '<button class="btn btn-mini" id="popClose">收起 ✕</button>' +
+    '</div>';
+  pop.hidden = false;
+  if(window.innerWidth > 640 && anchor){
+    const r = anchor.getBoundingClientRect();
+    const w = pop.offsetWidth, h = pop.offsetHeight;
+    let left = Math.min(r.left, window.innerWidth - w - 14);
+    left = Math.max(14, left);
+    let top = r.bottom + 10;
+    if(top + h > window.innerHeight - 12) top = Math.max(12, r.top - h - 10);
+    pop.style.left = left + 'px'; pop.style.top = top + 'px';
+  } else {
+    pop.style.left = ''; pop.style.top = '';
+  }
+}
+function closePop(){
+  pop.hidden = true;
+  if(activeTerm) activeTerm.classList.remove('active');
+  activeTerm = null;
+}
+function jumpTo(id){
+  const el = document.querySelector('.term[data-id="' + id + '"]');
+  if(!el){ toast('该词条在原文中未出现，可直接看下方汇总卡片'); return; }
+  el.scrollIntoView({behavior:'smooth', block:'center'});
+  el.classList.add('flash');
+  setTimeout(() => el.classList.remove('flash'), 1200);
+  setTimeout(() => openPop(id, el), 320);
+}
+
+/* ---------- 语音朗读 ---------- */
+const synth = window.speechSynthesis;
+let rate = 0.9, queue = [], speaking = false;
+function normalize(s){
+  return s.replace(/sb\./g,'someone').replace(/sth\./g,'something')
+          .replace(/[…·]/g,' ').replace(/\s+/g,' ').trim();
+}
+function clean(s){
+  return s.replace(/\([^)]*[\u4e00-\u9fff][^)]*\)/g,' ')
+          .replace(/[\u4e00-\u9fff]/g,' ')
+          .replace(/\d+\.\s*_{2,}/g,' ')
+          .replace(/\d+\s+_{2,}/g,' ')
+          .replace(/_{2,}/g,' ')
+          .replace(/[“”‘’]/g,'')
+          .replace(/\s+/g,' ').trim();
+}
+function toast(msg){
+  const el = document.getElementById('toast');
+  el.textContent = msg; el.classList.add('show');
+  clearTimeout(el._t); el._t = setTimeout(() => el.classList.remove('show'), 2200);
+}
+function speak(text, fromQueue){
+  if(!synth){ toast('当前浏览器不支持语音朗读，请使用 Chrome / Edge'); return; }
+  if(!fromQueue) queue = [];
+  synth.cancel();
+  const u = new SpeechSynthesisUtterance(normalize(text));
+  u.lang = 'en-US'; u.rate = rate; u.pitch = 1;
+  u.onend = () => { speaking = false; if(queue.length) speak(queue.shift(), true); };
+  u.onerror = () => { speaking = false; };
+  speaking = true; synth.speak(u);
+}
+function speakFull(){
+  queue = [FULL2]; speak(FULL1, true);
+}
+function stopSpeak(){ queue = []; speaking = false; if(synth) synth.cancel(); toast('已停止朗读'); }
+
+/* ---------- 事件委托 ---------- */
+document.addEventListener('click', e => {
+  const sp = e.target.closest('[data-speak]');
+  if(sp){
+    const t = TMAP[sp.dataset.id];
+    if(t) speak(sp.dataset.speak === 'term' ? t.en : t.ex);
+    return;
+  }
+  if(e.target.closest('#popClose')){ closePop(); return; }
+  const rd = e.target.closest('[data-read]');
+  if(rd){
+    if(rd.dataset.read === 'full') speakFull();
+    else { const el = document.getElementById(rd.dataset.read); if(el) speak(clean(el.innerText)); }
+    return;
+  }
+  if(e.target.closest('#stopBtn')){ stopSpeak(); return; }
+  const term = e.target.closest('.term');
+  if(term){ e.stopPropagation(); openPop(term.dataset.id, term); return; }
+  const jump = e.target.closest('.vocab-jump');
+  if(jump){ jumpTo(jump.dataset.id); return; }
+  if(e.target.closest('#clearSearch')){
+    const i = document.getElementById('vocabSearch'); i.value = ''; filterVocab(); return;
+  }
+  if(!e.target.closest('.popover')) closePop();
+});
+document.addEventListener('keydown', e => { if(e.key === 'Escape'){ closePop(); stopSpeak(); } });
+const rateInput = document.getElementById('rate');
+rateInput.addEventListener('input', () => {
+  rate = Number(rateInput.value) / 100;
+  document.getElementById('rateVal').textContent = rate.toFixed(1) + '×';
+});
+
+/* ---------- 词汇汇总 ---------- */
+const grid = document.getElementById('vocabGrid');
+function cardHtml(t){
+  return '<article class="vocab-card" data-key="' + esc((t.en + ' ' + t.cn + ' ' + t.usage + ' ' + t.ex).toLowerCase()) + '">' +
+    '<div class="vc-top"><button class="vocab-jump" data-id="' + t.id + '">' + esc(t.en) + '</button>' +
+    '<span class="vc-ipa">' + esc(t.ipa) + '</span><span class="vc-grp">' + esc(GROUPS[t.group]) + '</span></div>' +
+    '<div class="vc-cn">' + esc(t.cn) + '</div>' +
+    '<div class="vc-use"><b>用法：</b>' + esc(t.usage) + '</div>' +
+    '<div class="vc-ex"><b>例：</b>' + esc(t.ex) + '<span class="cn">' + esc(t.exCn) + '</span>' +
+    '<button class="btn btn-mini" data-speak="example" data-id="' + t.id + '">🔊 读例句</button></div>' +
+    '</article>';
+}
+function renderVocab(){
+  let h = '', last = '';
+  TERMS.forEach(t => {
+    if(t.group !== last){ h += '<div class="group-title">' + esc(GROUPS[t.group]) + '</div>'; last = t.group; }
+    h += cardHtml(t);
+  });
+  grid.innerHTML = h;
+  document.getElementById('totalCount').textContent = TERMS.length;
+  filterVocab();
+}
+function filterVocab(){
+  const q = document.getElementById('vocabSearch').value.trim().toLowerCase();
+  let n = 0;
+  grid.querySelectorAll('.vocab-card').forEach(c => {
+    const ok = !q || c.dataset.key.includes(q);
+    c.style.display = ok ? '' : 'none';
+    if(ok) n++;
+  });
+  grid.querySelectorAll('.group-title').forEach(g => {
+    let sib = g.nextElementSibling, any = false;
+    while(sib && !sib.classList.contains('group-title')){
+      if(sib.classList.contains('vocab-card') && sib.style.display !== 'none') any = true;
+      sib = sib.nextElementSibling;
+    }
+    g.style.display = any ? '' : 'none';
+  });
+  let empty = grid.querySelector('.empty');
+  if(!n){
+    if(!empty){ empty = document.createElement('div'); empty.className = 'empty'; empty.textContent = '没有匹配的词条，换个关键词试试～'; grid.append(empty); }
+  } else if(empty) empty.remove();
+  document.getElementById('visibleCount').textContent = q ? ('显示 ' + n + ' / ' + TERMS.length + ' 条') : ('共 ' + TERMS.length + ' 条');
+}
+document.getElementById('vocabSearch').addEventListener('input', filterVocab);
+renderVocab();
+
+/* ---------- 导航高亮 ---------- */
+const links = [...document.querySelectorAll('#nav a, .side a')];
+const secs = [...document.querySelectorAll('section[id]')];
+const obs = new IntersectionObserver(es => {
+  es.forEach(en => {
+    if(en.isIntersecting){
+      links.forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + en.target.id));
+    }
+  });
+}, {rootMargin:'-20% 0px -70% 0px', threshold:0});
+secs.forEach(s => obs.observe(s));
+</script>
+</body>
+</html>
