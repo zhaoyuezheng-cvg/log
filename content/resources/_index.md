@@ -11,6 +11,7 @@ HTML 学习资料，按学科分类。
 - [9周5英语培优v1](/english/en9-5-learning.html)、[v](/english/en9-5-intensive-reading.html)2、[精读精讲 ](/english/en9-5-intensive-reading-v2.html)、[精讲与解析](/english/en9-5-analysis.html)
 - [10周一英语培优 v1](/english/en10-1-v1.html)、[v2](/english/en10-1-v2.html)、[v3](/english/en10-1-v3.html)
 - [10周3英语培优 v1](/english/en10-3-v1.html)、[v2](/english/en10-3-v2.html)、[v3](/english/en10-3-v3.html)
+- [11周3英语培优 v1（精读精讲）](/english/en11-3-v1.html)、[v2（英语交互学习）](/english/en11-3-v2.html)、[v3（全解与词汇交互）](/english/en11-3-v3.html)、[v4（阅读还原与完形）](/english/en11-3-v4.html)
 - [8周1培优 v1](/english/en8_1.html)、[v2](/english/en8_1_v2.html)、[v3](/english/en8_1_v3.html)、[v4](/english/en8_1_v4.html)
 - [8周3培优 v1](/english/en8-3.html)、[v2](/english/en8-3-v2.html)、[v3](/english/en8-3-v3.html)
 - [8周4培优](/english/en8-4-v1.html)、[11月21日作业](/english/en-1121.html)、[10月21日作业](/english/en-1021-1.html)

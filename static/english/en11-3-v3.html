@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第9周五培优题 · 11-3 培优 · 全解与词汇交互</title>
+<style>
+  :root{
+    --bg:#eef4fb;
+    --card:#ffffff;
+    --text:#1f2937;
+    --muted:#6b7280;
+    --primary:#2563eb;
+    --primary-dark:#1d4ed8;
+    --orange:#d97706;
+    --orange-bg:#fff7ed;
+    --green:#059669;
+    --border:#dbe4f0;
+    --shadow:0 12px 30px rgba(30,64,175,.10);
+    --radius:18px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
+    background:
+      radial-gradient(circle at 10% 0%, rgba(37,99,235,.12), transparent 30%),
+      radial-gradient(circle at 100% 10%, rgba(217,119,6,.10), transparent 26%),
+      var(--bg);
+    color:var(--text);
+    line-height:1.75;
+  }
+  .container{width:min(1120px, calc(100% - 28px)); margin:0 auto;}
+  .site-header{
+    background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 48%,#2563eb 100%);
+    color:#fff;
+    padding:34px 0 28px;
+    box-shadow:0 10px 30px rgba(15,23,42,.22);
+  }
+  .header-inner{display:flex; gap:22px; align-items:flex-end; justify-content:space-between; flex-wrap:wrap;}
+  .site-header h1{margin:0 0 6px; font-size:clamp(1.55rem,3.4vw,2.5rem); letter-spacing:.4px;}
+  .site-header p{margin:0; color:#dbeafe;}
+  .toolbar{display:flex; gap:10px; flex-wrap:wrap;}
+  button{font:inherit; border:0; cursor:pointer; transition:.18s ease;}
+  .toolbar button, .read-section{
+    background:#fff; color:#1e3a8a; border-radius:999px;
+    padding:9px 16px; font-weight:700;
+    box-shadow:0 6px 16px rgba(15,23,42,.16);
+  }
+  .toolbar button:hover, .read-section:hover{transform:translateY(-1px); background:#eff6ff;}
+  .toc{
+    display:flex; gap:10px; flex-wrap:wrap;
+    margin:18px auto 0; padding:12px 16px;
+    background:rgba(255,255,255,.86);
+    border:1px solid var(--border); border-radius:999px;
+    backdrop-filter: blur(8px);
+    position:sticky; top:8px; z-index:30;
+    box-shadow:0 8px 22px rgba(30,64,175,.08);
+  }
+  .toc a{color:#1e40af; text-decoration:none; font-weight:700; font-size:.92rem; padding:5px 10px; border-radius:999px;}
+  .toc a:hover{background:#e0ecff;}
+  main{padding:22px 0 50px;}
+  .card{
+    background:var(--card); border:1px solid var(--border);
+    border-radius:var(--radius); box-shadow:var(--shadow);
+    padding:clamp(18px,3vw,30px); margin:20px 0; overflow:visible;
+  }
+  .section-head{display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:10px;}
+  .section-head h2{margin:0; color:#0f172a; font-size:clamp(1.2rem,2.4vw,1.55rem);}
+  .meta{
+    color:var(--muted); font-size:.92rem;
+    background:#f8fafc; border:1px dashed #cbd5e1;
+    padding:9px 12px; border-radius:12px;
+  }
+  .instruction{color:#334155; font-weight:600;}
+  .en-text{font-size:1.03rem; line-height:2; margin:12px 0;}
+  .vocab{
+    color:#9a3412; font-weight:700;
+    border-bottom:2px dashed #f59e0b;
+    cursor:pointer; padding:0 1px; border-radius:4px;
+    transition:.15s;
+  }
+  .vocab:hover,.vocab:focus{background:var(--orange-bg); outline:none; border-bottom-style:solid;}
+  .blank{
+    display:inline-block; min-width:58px; text-align:center;
+    color:#b45309; font-weight:800;
+    border-bottom:2px solid #f59e0b;
+    padding:0 4px; background:#fffbeb; border-radius:4px;
+  }
+  .table-wrap{width:100%; overflow-x:auto; margin:14px 0; border-radius:14px;}
+  table{border-collapse:collapse; width:100%; min-width:680px; background:#fff;}
+  th,td{border:1px solid #cbd5e1; padding:11px 12px; text-align:left; vertical-align:top;}
+  th{background:#dbeafe; color:#1e3a8a;}
+  tr:nth-child(even) td{background:#f8fbff;}
+  .note{font-size:.9rem; color:#92400e; background:#fffbeb; border-left:4px solid #f59e0b; padding:9px 12px; border-radius:8px;}
+  .options-list{display:grid; gap:8px; margin:12px 0; padding-left:0; list-style:none;}
+  .options-list li{background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:9px 12px;}
+  .options-list b{color:#1e3a8a; margin-right:6px;}
+  .mc-options{display:grid; gap:6px; margin-top:6px; color:#334155; font-weight:500;}
+  .mc-options span{background:#f8fafc; border:1px solid #e2e8f0; padding:3px 9px; border-radius:999px;}
+  .sub-card{
+    background:#f8fafc; border:1px solid #e2e8f0;
+    border-radius:14px; padding:14px 16px; margin-top:16px;
+  }
+  .sub-card h3{margin:0 0 8px; color:#1e3a8a; font-size:1.05rem;}
+  .answer-table td:first-child{font-weight:700; color:#1e3a8a;}
+  .answer-table .ans{font-weight:800; color:#b45309;}
+  details{
+    background:#f8fafc; border:1px solid #e2e8f0;
+    border-radius:14px; padding:12px 16px; margin:12px 0;
+  }
+  details[open]{background:#fff;}
+  summary{cursor:pointer; font-weight:800; color:#1e3a8a;}
+  summary::marker{color:#f59e0b;}
+  .analysis p{margin:8px 0;}
+  .analysis ul{margin:8px 0 8px 20px; padding:0;}
+  .analysis li{margin:6px 0;}
+  .vocab-grid{
+    display:grid; grid-template-columns:repeat(auto-fill,minmax(285px,1fr));
+    gap:14px; margin-top:16px;
+  }
+  .vocab-card{
+    border:1px solid #e2e8f0; border-radius:16px; padding:14px;
+    background:linear-gradient(180deg,#ffffff,#f8fbff);
+    box-shadow:0 6px 16px rgba(30,64,175,.06);
+  }
+  .vocab-card-head{display:flex; align-items:center; justify-content:space-between; gap:8px;}
+  .vocab-card h3{margin:0; color:#9a3412; font-size:1.02rem; word-break:break-word;}
+  .vocab-card p{margin:6px 0; font-size:.93rem;}
+  .vocab-card .cn{color:#1e40af; font-weight:700;}
+  .vocab-card .usage,.vocab-card .example{color:#475569;}
+  .card-actions{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px;}
+  .mini-btn{
+    background:#eff6ff; color:#1d4ed8; border:1px solid #bfdbfe;
+    border-radius:999px; padding:5px 11px; font-size:.85rem; font-weight:700;
+  }
+  .mini-btn:hover{background:#dbeafe;}
+  .plateau-figure{
+    margin:14px 0; border-radius:16px; overflow:hidden;
+    border:1px solid #cbd5e1; background:#dbeafe;
+  }
+  .plateau-figure svg{display:block; width:100%; height:auto;}
+  .plateau-figure figcaption{font-size:.86rem; color:#475569; padding:7px 12px; background:#f8fafc;}
+  .modal{
+    position:fixed; inset:0; z-index:100;
+    display:none; align-items:center; justify-content:center; padding:18px;
+  }
+  .modal.show{display:flex;}
+  .modal-backdrop{position:absolute; inset:0; background:rgba(15,23,42,.55); backdrop-filter:blur(3px);}
+  .modal-panel{
+    position:relative; width:min(520px,100%);
+    background:#fff; border-radius:20px; padding:24px;
+    box-shadow:0 25px 60px rgba(2,6,23,.35);
+    animation:pop .18s ease-out;
+  }
+  @keyframes pop{from{transform:translateY(8px) scale(.98); opacity:.5;} to{transform:none; opacity:1;}}
+  .modal-close{
+    position:absolute; right:12px; top:10px;
+    width:34px; height:34px; border-radius:50%;
+    background:#f1f5f9; color:#334155; font-size:1.35rem; line-height:1;
+  }
+  .modal-close:hover{background:#e2e8f0;}
+  .modal-panel h3{margin:0 34px 8px 0; color:#9a3412; font-size:1.4rem; word-break:break-word;}
+  .modal-cn{color:#1d4ed8; font-weight:800; margin:6px 0 12px;}
+  .modal-usage,.modal-example{background:#f8fafc; border:1px solid #e2e8f0; padding:10px 12px; border-radius:12px; margin:9px 0; color:#334155;}
+  .modal-actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px;}
+  .modal-actions button{background:var(--primary); color:#fff; border-radius:999px; padding:9px 15px; font-weight:800;}
+  .modal-actions button:hover{background:var(--primary-dark);}
+  .hint{color:#64748b; font-size:.9rem;}
+  .footer{color:#64748b; text-align:center; padding:22px 0 36px; font-size:.9rem;}
+  @media (max-width:720px){
+    .site-header{padding:26px 0 22px;}
+    .toc{position:static; border-radius:16px;}
+    .mc-options{display:grid; gap:6px;}
+    .mc-options span{width:100%;}
+    .modal-panel{padding:20px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <div>
+      <h1>第9周五培优题 · 11-3 培优</h1>
+      <p>阅读还原六选五 · 完形填空 · 全解解析 · 生词短语交互 · 支持语音朗读</p>
+    </div>
+    <div class="toolbar">
+      <button id="readAll">🔊 朗读全部英文原文</button>
+      <button id="stopRead">⏹ 停止朗读</button>
+    </div>
+  </div>
+</header>
+
+<nav class="toc container" aria-label="页面导航">
+  <a href="#passage1">阅读还原六选五</a>
+  <a href="#passage2">完形填空</a>
+  <a href="#answers">答案速查</a>
+  <a href="#analysis">逐题解析</a>
+  <a href="#vocab">生词汇总</a>
+</nav>
+
+<main class="container">
+
+  <!-- ================= 阅读还原六选五 ================= -->
+  <section class="card" id="passage1">
+    <div class="section-head">
+      <h2>二、阅读还原六选五</h2>
+      <button class="read-section" data-target="p1-en">🔊 朗读本篇原文与选项</button>
+    </div>
+    <p class="meta">主题：人与自然——自然生态　语篇类型：说明文　词数：130　难度：★★☆☆☆　建议用时：5′　正确率：/5</p>
+    <p class="instruction">根据短文内容，从短文后的选项中选出能填入空白处的最佳选项。选项中有一项为多余选项。</p>
+    <p class="hint">提示：点击文中带虚线的英文生词或短语，可查看中文翻译、用法解析与例句。</p>
+
+    <div id="p1-en">
+      <p class="en-text readable">There is a very <span class="vocab" data-key="special" tabindex="0" role="button">special</span> place in China. It is the Qinghai-Xizang <span class="vocab" data-key="plateau" tabindex="0" role="button">Plateau</span>(青藏高原). <span class="blank">1. ______</span> You can <span class="vocab" data-key="experience" tabindex="0" role="button">experience</span> "four <span class="vocab" data-key="season" tabindex="0" role="button">seasons</span>" in just one day.</p>
+
+      <figure class="plateau-figure no-read">
+        <svg viewBox="0 0 800 300" role="img" aria-label="青藏高原雪山湖泊示意图">
+          <defs>
+            <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#dbeafe"/>
+              <stop offset="100%" stop-color="#f8fafc"/>
+            </linearGradient>
+            <linearGradient id="lake" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#93c5fd"/>
+              <stop offset="100%" stop-color="#bfdbfe"/>
+            </linearGradient>
+          </defs>
+          <rect width="800" height="300" fill="url(#sky)"/>
+          <path d="M0 210 L120 120 L210 190 L320 70 L430 175 L540 95 L650 170 L800 80 L800 300 L0 300 Z" fill="#94a3b8"/>
+          <path d="M320 70 L350 105 L310 105 Z M540 95 L570 130 L515 130 Z" fill="#f8fafc" opacity=".92"/>
+          <path d="M0 240 L110 200 L220 250 L350 210 L480 255 L610 205 L800 250 L800 300 L0 300 Z" fill="#cbd5e1"/>
+          <ellipse cx="400" cy="250" rx="190" ry="30" fill="url(#lake)"/>
+          <path d="M260 245 Q400 220 540 245" fill="none" stroke="#60a5fa" stroke-width="3" opacity=".7"/>
+        </svg>
+        <figcaption>原文配图意境：青藏高原雪山与湖泊</figcaption>
+      </figure>
+
+      <p class="en-text readable">When the sun comes out, the weather there becomes warm, just like spring. <span class="blank">2. ______</span></p>
+      <p class="en-text readable">The weather at noon is very different from that in the morning. <span class="blank">3. ______</span> Because it is hot and the <span class="vocab" data-key="sunlight" tabindex="0" role="button">sunlight</span> is so strong, you had better wear <span class="vocab" data-key="sunglasses" tabindex="0" role="button">sunglasses</span>. Sometimes it rains, but the rain doesn't <span class="vocab" data-key="last long" tabindex="0" role="button">last long</span>.</p>
+      <p class="en-text readable"><span class="blank">4. ______</span> As the sun <span class="vocab" data-key="go down" tabindex="0" role="button">goes down</span>, the <span class="vocab" data-key="temperature" tabindex="0" role="button">temperature</span> goes down too. It becomes cool again, just like autumn. If you don't <span class="vocab" data-key="keep warm" tabindex="0" role="button">keep warm</span>, you may <span class="vocab" data-key="catch a cold" tabindex="0" role="button">catch a cold</span>.</p>
+      <p class="en-text readable">At night, the temperature gets very <span class="vocab" data-key="low" tabindex="0" role="button">low</span>, just like winter. <span class="blank">5. ______</span></p>
+
+      <ul class="options-list readable">
+        <li><b>A.</b> You may <span class="vocab" data-key="feel" tabindex="0" role="button">feel</span> like it's summer.</li>
+        <li><b>B.</b> You need to wear <span class="vocab" data-key="warm clothes" tabindex="0" role="button">warm clothes</span>.</li>
+        <li><b>C.</b> It's a good time to <span class="vocab" data-key="take a walk" tabindex="0" role="button">take a walk</span> in the morning.</li>
+        <li><b>D.</b> The weather there changes a lot in summer.</li>
+        <li><b>E.</b> You have to <span class="vocab" data-key="be careful about" tabindex="0" role="button">be careful about</span> the weather in the <span class="vocab" data-key="afternoon" tabindex="0" role="button">afternoon</span>.</li>
+        <li><b>F.</b> You can only wear cool clothes.</li>
+      </ul>
+    </div>
+
+    <div class="sub-card">
+      <h3>青藏高原</h3>
+      <p><b>☆ 地理别称与地位</b></p>
+      <p>1. “世界屋脊”(the Roof of the World)：世界海拔最高高原(平均海拔4000米以上)</p>
+      <p>2. “第三极”(the Third Pole)：全球仅次于南极、北极的冰雪储区(冰川面积约10万平方米)</p>
+      <p><b>☆ 高原反应机制</b></p>
+      <p>科学解释：低氧环境(含氧量仅为海平面 40%～60%) → 血氧饱和度下降 → 人体红细胞代偿性增加</p>
+      <p><b>☆ 特有物种</b></p>
+      <p>藏羚羊(国家一级保护动物)、雪豹(高原顶级捕食者)</p>
+    </div>
+  </section>
+
+  <!-- ================= 完形填空 ================= -->
+  <section class="card" id="passage2">
+    <div class="section-head">
+      <h2>三、完形填空</h2>
+      <button class="read-section" data-target="p2-en">🔊 朗读本篇原文与选项</button>
+    </div>
+    <p class="meta">主题：人与社会——志愿服务　语篇类型：记叙文　词数：150　难度：★★★☆☆　建议用时：7′　正确率：/10</p>
+    <p class="instruction">阅读下面短文，从每小题所给的 A、B、C 三个选项中选出一个最佳选项。</p>
+
+    <div id="p2-en">
+      <p class="en-text readable">It's a <span class="vocab" data-key="rainy" tabindex="0" role="button">rainy</span> afternoon. Gina and her sister Anna are <span class="vocab" data-key="walk home" tabindex="0" role="button">walking home</span>.</p>
+      <p class="en-text readable">Then, they <span class="blank">1. ______</span> Grandma Maria. She is <span class="vocab" data-key="look for" tabindex="0" role="button">looking for</span> something <span class="vocab" data-key="everywhere" tabindex="0" role="button">everywhere</span>. Gina walks to her and asks, "Grandma Maria, <span class="blank">2. ______</span> are you looking for?"</p>
+      <p class="en-text readable">Grandma Maria <span class="blank">3. ______</span> Gina and Anna, saying, "I can't <span class="vocab" data-key="find" tabindex="0" role="button">find</span> my <span class="vocab" data-key="pet" tabindex="0" role="button">pet</span> <span class="blank">4. ______</span> Mimi. I'm looking for it."</p>
+      <p class="en-text readable">Gina says to Anna, "It's raining and very cold now. Grandma Maria is old. She needs <span class="blank">5. ______</span> help." "Yes, Gina, you're <span class="blank">6. ______</span>. Let's go to look for Mimi," says Anna.</p>
+      <p class="en-text readable">The two sisters tell Grandma Maria to go home first. Then, they go to look for Mimi. They soon <span class="blank">7. ______</span> the <span class="vocab" data-key="cat" tabindex="0" role="button">cat</span> <span class="vocab" data-key="under a tree" tabindex="0" role="button">under a tree</span> and take it to Grandma Maria.</p>
+      <p class="en-text readable">Seeing how <span class="blank">8. ______</span> Grandma Maria is, Anna says to Gina, "You know, I don't like rainy days, <span class="blank">9. ______</span> I'm happy to help Grandma Maria today. <span class="vocab" data-key="help someone in need" tabindex="0" role="button">Helping someone in need</span> really <span class="vocab" data-key="make sb feel good" tabindex="0" role="button">makes me feel good</span>."</p>
+
+      <div class="sub-card">
+        <h3>完形填空选项</h3>
+        <ol class="options-list readable">
+          <li><b>1.</b> A. see　B. know　C. miss</li>
+          <li><b>2.</b> A. what　B. why　C. where</li>
+          <li><b>3.</b> A. <span class="vocab" data-key="look at" tabindex="0" role="button">looks at</span>　B. <span class="vocab" data-key="listen to" tabindex="0" role="button">listens to</span>　C. <span class="vocab" data-key="look after" tabindex="0" role="button">looks after</span></li>
+          <li><b>4.</b> A. <span class="vocab" data-key="fox" tabindex="0" role="button">fox</span>　B. <span class="vocab" data-key="dog" tabindex="0" role="button">dog</span>　C. <span class="vocab" data-key="cat" tabindex="0" role="button">cat</span></li>
+          <li><b>5.</b> A. his　B. her　C. our</li>
+          <li><b>6.</b> A. <span class="vocab" data-key="shy" tabindex="0" role="button">shy</span>　B. right　C. <span class="vocab" data-key="strict" tabindex="0" role="button">strict</span></li>
+          <li><b>7.</b> A. <span class="vocab" data-key="find" tabindex="0" role="button">find</span>　B. keep　C. forget</li>
+          <li><b>8.</b> A. <span class="vocab" data-key="smart" tabindex="0" role="button">smart</span>　B. <span class="vocab" data-key="healthy" tabindex="0" role="button">healthy</span>　C. happy</li>
+          <li><b>9.</b> A. so　B. and　C. but</li>
+          <li><b>10.</b> A. <span class="vocab" data-key="feel" tabindex="0" role="button">feel</span>　B. <span class="vocab" data-key="sound" tabindex="0" role="button">sound</span>　C. <span class="vocab" data-key="look" tabindex="0" role="button">look</span></li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="sub-card">
+      <h3>积累小卷</h3>
+      <p><b>☆ 短语互译</b></p>
+      <p>1. <span class="vocab" data-key="walk home" tabindex="0" role="button">walk home</span>　2. 寻找 <span class="vocab" data-key="look for" tabindex="0" role="button">look for</span></p>
+      <p>3. <span class="vocab" data-key="under a tree" tabindex="0" role="button">under a tree</span>　4. 有需要的 <span class="vocab" data-key="in need" tabindex="0" role="button">in need</span></p>
+      <p><b>☆ 完成句子</b></p>
+      <p>5. 孩子们在游乐室里把玩具扔得到处都是。<br>The kids put their toys <span class="blank">______</span> in the playroom.</p>
+      <p>6. 汤姆很高兴有机会为校队踢足球。<br>Tom <span class="blank">______</span> a <span class="vocab" data-key="chance" tabindex="0" role="button">chance</span> to play football for the <span class="vocab" data-key="school team" tabindex="0" role="button">school team</span>.</p>
+    </div>
+  </section>
+
+  <!-- ================= 答案速查 ================= -->
+  <section class="card" id="answers">
+    <div class="section-head"><h2>答案速查</h2></div>
+    <div class="table-wrap">
+      <table class="answer-table">
+        <thead><tr><th>题型</th><th>答案</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>阅读还原六选五</td>
+            <td>1. <span class="ans">D</span>　2. <span class="ans">C</span>　3. <span class="ans">A</span>　4. <span class="ans">E</span>　5. <span class="ans">B</span>　多余选项：<span class="ans">F</span></td>
+          </tr>
+          <tr>
+            <td>完形填空</td>
+            <td>1. <span class="ans">A</span>　2. <span class="ans">A</span>　3. <span class="ans">A</span>　4. <span class="ans">C</span>　5. <span class="ans">B</span><br>6. <span class="ans">B</span>　7. <span class="ans">A</span>　8. <span class="ans">C</span>　9. <span class="ans">C</span>　10. <span class="ans">A</span></td>
+          </tr>
+          <tr>
+            <td>积累小卷·短语互译</td>
+            <td>1. 步行回家　2. look for　3. 在树下　4. in need</td>
+          </tr>
+          <tr>
+            <td>积累小卷·完成句子</td>
+            <td>5. <span class="ans">everywhere</span>　6. <span class="ans">is happy to have</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ================= 逐题解析 ================= -->
+  <section class="card analysis" id="analysis">
+    <div class="section-head"><h2>逐题详细解析</h2></div>
+
+    <details open>
+      <summary>阅读还原六选五 逐段解析与答题依据</summary>
+      <p><b>第一段：</b>There is a very special place in China. It is the Qinghai-Xizang Plateau. 文章开篇介绍青藏高原，并说“一天可以经历四季”。空1后是 You can experience "four seasons" in just one day. 空1应总起“那里天气变化很大”，选 <b>D. The weather there changes a lot in summer.</b>。</p>
+      <p><b>第二段：</b>When the sun comes out, the weather there becomes warm, just like spring. 太阳出来后天气变暖，像春天。空2选 <b>C. It's a good time to take a walk in the morning.</b>。C 中的 morning 与下一段“中午天气和早晨不同”形成自然衔接。</p>
+      <p><b>第三段：</b>The weather at noon is very different from that in the morning. 中午天气与早晨不同。空3后说 Because it is hot and the sunlight is so strong... 说明中午很热、阳光强，因此空3选 <b>A. You may feel like it's summer.</b>。后面“有时下雨，但雨不会持续很久”说明下午天气也要小心，空4选 <b>E. You have to be careful about the weather in the afternoon.</b>。</p>
+      <p><b>第四段：</b>As the sun goes down, the temperature goes down too. 太阳落山后温度下降，变凉如秋；如果不保暖可能感冒。</p>
+      <p><b>第五段：</b>At night, the temperature gets very low, just like winter. 夜晚温度很低，像冬天。空5选 <b>B. You need to wear warm clothes.</b>。F 项“只能穿凉快衣服”与夜晚寒冷矛盾，是多余选项。</p>
+      <p><b>校对说明：</b>本题按“一天四季”的行文顺序：早晨如春→中午如夏→下午天气多变→傍晚如秋→夜晚如冬。答案 D-C-A-E-B，多余 F。</p>
+    </details>
+
+    <details>
+      <summary>完形填空 逐题解析</summary>
+      <ul>
+        <li><b>第1题：</b>Then, they ______ Grandma Maria. 他们“看到”玛丽亚奶奶。see 看到；know 认识；miss 想念/错过。选 <b>A. see</b>。</li>
+        <li><b>第2题：</b>Grandma Maria, ______ are you looking for? 问“你在找什么”，用 what。选 <b>A. what</b>。</li>
+        <li><b>第3题：</b>Grandma Maria ______ Gina and Anna, saying... 奶奶“看着”吉娜和安娜说话。looks at 看着；listens to 听；looks after 照顾。选 <b>A. looks at</b>。</li>
+        <li><b>第4题：</b>I can't find my pet ______ Mimi. 后文出现 the cat，因此 Mimi 是宠物猫。fox 狐狸；dog 狗；cat 猫。选 <b>C. cat</b>。</li>
+        <li><b>第5题：</b>She needs ______ help. 玛丽亚奶奶是女性，用 her。选 <b>B. her</b>。</li>
+        <li><b>第6题：</b>Yes, Gina, you're ______. 安娜赞同吉娜“奶奶需要帮助”，说“你说得对”。shy 害羞；right 正确的；strict 严格的。选 <b>B. right</b>。</li>
+        <li><b>第7题：</b>They soon ______ the cat under a tree. 她们很快“找到”猫。find 找到；keep 保持；forget 忘记。选 <b>A. find</b>。</li>
+        <li><b>第8题：</b>Seeing how ______ Grandma Maria is... 奶奶找到猫后很“高兴”。smart 聪明；healthy 健康；happy 高兴。选 <b>C. happy</b>。</li>
+        <li><b>第9题：</b>I don't like rainy days, ______ I'm happy to help Grandma Maria today. 前后转折：不喜欢雨天，但今天帮助奶奶很开心。选 <b>C. but</b>。</li>
+        <li><b>第10题：</b>Helping someone in need really makes me ______ good. 帮助有需要的人让“我”感觉很好。feel good 感觉好；sound 听起来；look 看起来。选 <b>A. feel</b>。</li>
+      </ul>
+    </details>
+
+    <details>
+      <summary>积累小卷 答案与解析</summary>
+      <p><b>☆ 短语互译：</b></p>
+      <ul>
+        <li>1. walk home —— 步行回家</li>
+        <li>2. 寻找 —— look for</li>
+        <li>3. under a tree —— 在树下</li>
+        <li>4. 有需要的 —— in need（如 people in need 有需要的人）</li>
+      </ul>
+      <p><b>☆ 完成句子：</b></p>
+      <p>5. The kids put their toys <b>everywhere</b> in the playroom.<br>解析：everywhere 表示“到处；处处”，put sth everywhere 表示“把某物放/扔得到处都是”。</p>
+      <p>6. Tom <b>is happy to have</b> a chance to play football for the school team.<br>解析：be happy to do sth 表示“很高兴做某事”；have a chance to do sth 表示“有机会做某事”。原句空格处需补全 is happy to have。</p>
+    </details>
+  </section>
+
+  <!-- ================= 生词汇总 ================= -->
+  <section class="card" id="vocab">
+    <div class="section-head">
+      <h2>生词与生短语汇总</h2>
+      <span class="hint">点击“查看”或文中划线词可打开释义弹窗；可朗读单词与例句。</span>
+    </div>
+    <div id="vocabGrid" class="vocab-grid"></div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  第9周五培优题 · 11-3 培优 · 阅读还原六选五 + 完形填空全解与词汇交互页面
+</footer>
+
+<!-- 词汇弹窗 -->
+<div class="modal" id="vocabModal" aria-hidden="true">
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modalWord">
+    <button class="modal-close" data-close aria-label="关闭">×</button>
+    <h3 id="modalWord"></h3>
+    <p class="modal-cn"></p>
+    <div class="modal-usage"></div>
+    <div class="modal-example"></div>
+    <div class="modal-actions">
+      <button id="modalSpeakWord">🔊 朗读单词</button>
+      <button id="modalSpeakExample">🔊 朗读例句</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const VOCAB = {
+  "special": {
+    cn: "特殊的；特别的",
+    usage: "形容词，常修饰名词，如 a special place。",
+    example: "There is a very special place in China."
+  },
+  "plateau": {
+    cn: "高原",
+    usage: "可数名词，复数 plateaus 或 plateaux。",
+    example: "The Qinghai-Xizang Plateau is a special place."
+  },
+  "experience": {
+    cn: "经历；体验",
+    usage: "此处作动词，表示“经历；体验”；也可作名词“经历”。",
+    example: "You can experience four seasons in one day."
+  },
+  "season": {
+    cn: "季节",
+    usage: "可数名词，复数 seasons；four seasons 四季。",
+    example: "You can experience four seasons in just one day."
+  },
+  "sunlight": {
+    cn: "阳光",
+    usage: "不可数名词。",
+    example: "The sunlight is very strong at noon."
+  },
+  "sunglasses": {
+    cn: "太阳镜；墨镜",
+    usage: "常用复数形式 sunglasses；wear sunglasses 戴墨镜。",
+    example: "You had better wear sunglasses."
+  },
+  "last long": {
+    cn: "持续很久",
+    usage: "last 作动词表示“持续”；long 表示“长久”。",
+    example: "Sometimes it rains, but the rain doesn't last long."
+  },
+  "go down": {
+    cn: "下降；落下",
+    usage: "动词短语，可指温度下降、太阳落下等。",
+    example: "As the sun goes down, the temperature goes down too."
+  },
+  "temperature": {
+    cn: "温度；气温",
+    usage: "可数名词，常与 go down / get low 搭配。",
+    example: "At night, the temperature gets very low."
+  },
+  "keep warm": {
+    cn: "保暖；保持温暖",
+    usage: "keep + 形容词，表示“保持某种状态”。",
+    example: "If you don't keep warm, you may catch a cold."
+  },
+  "catch a cold": {
+    cn: "感冒",
+    usage: "固定搭配，cold 前常加 a；catch 的过去式是 caught。",
+    example: "If you don't keep warm, you may catch a cold."
+  },
+  "low": {
+    cn: "低的",
+    usage: "形容词，可形容温度、声音等。",
+    example: "At night, the temperature gets very low."
+  },
+  "warm clothes": {
+    cn: "暖和的衣服",
+    usage: "warm 作形容词修饰 clothes；clothes 常用复数。",
+    example: "You need to wear warm clothes at night."
+  },
+  "be careful about": {
+    cn: "小心……；注意……",
+    usage: "be careful about + 名词/动名词，表示对某事小心。",
+    example: "You have to be careful about the weather in the afternoon."
+  },
+  "afternoon": {
+    cn: "下午",
+    usage: "可数名词，in the afternoon 在下午。",
+    example: "You have to be careful about the weather in the afternoon."
+  },
+  "take a walk": {
+    cn: "散步",
+    usage: "固定短语，take a walk = go for a walk。",
+    example: "It's a good time to take a walk in the morning."
+  },
+  "walk home": {
+    cn: "步行回家",
+    usage: "home 在此作副词，前面不加 to。",
+    example: "Gina and Anna are walking home."
+  },
+  "look for": {
+    cn: "寻找",
+    usage: "动词短语，强调寻找的动作或过程。",
+    example: "She is looking for her pet cat."
+  },
+  "look at": {
+    cn: "看着；注视",
+    usage: "look at + 名词/代词。",
+    example: "Grandma Maria looks at Gina and Anna."
+  },
+  "look after": {
+    cn: "照顾；照看",
+    usage: "look after + 人或物。",
+    example: "She looks after her pet cat."
+  },
+  "listen to": {
+    cn: "听……",
+    usage: "listen 是不及物动词，接宾语时加 to。",
+    example: "Grandma Maria listens to Gina and Anna."
+  },
+  "under a tree": {
+    cn: "在树下",
+    usage: "under 表示“在……下面”。",
+    example: "They find the cat under a tree."
+  },
+  "in need": {
+    cn: "需要帮助的；有需要的",
+    usage: "常用 people in need 表示“有需要的人”。",
+    example: "Helping someone in need really makes me feel good."
+  },
+  "help someone in need": {
+    cn: "帮助有需要的人",
+    usage: "help sb 帮助某人；someone in need 有需要的人。",
+    example: "Helping someone in need is a good thing."
+  },
+  "make sb feel good": {
+    cn: "使某人感觉很好",
+    usage: "make + 宾语 + 动词原形/形容词；feel good 感觉好。",
+    example: "Helping others makes me feel good."
+  },
+  "pet": {
+    cn: "宠物",
+    usage: "可数名词。",
+    example: "I can't find my pet cat Mimi."
+  },
+  "everywhere": {
+    cn: "到处；处处",
+    usage: "副词，表示“在每个地方”。",
+    example: "She is looking for something everywhere."
+  },
+  "chance": {
+    cn: "机会",
+    usage: "可数名词，have a chance to do sth 有机会做某事。",
+    example: "Tom is happy to have a chance to play football."
+  },
+  "school team": {
+    cn: "校队",
+    usage: "名词短语，play for the school team 为校队效力。",
+    example: "He plays football for the school team."
+  },
+  "rainy": {
+    cn: "下雨的",
+    usage: "形容词，由 rain + y 构成。",
+    example: "It's a rainy afternoon."
+  },
+  "find": {
+    cn: "找到；发现",
+    usage: "动词，强调寻找的结果；过去式 found。",
+    example: "They soon find the cat under a tree."
+  },
+  "feel": {
+    cn: "感觉；觉得",
+    usage: "动词，feel good 感觉好；feel like 感觉像。",
+    example: "You may feel like it's summer."
+  },
+  "sound": {
+    cn: "听起来",
+    usage: "连系动词，后接形容词，如 sound good。",
+    example: "That sounds good."
+  },
+  "look": {
+    cn: "看起来",
+    usage: "连系动词，后接形容词，如 look happy。",
+    example: "You look happy today."
+  },
+  "shy": {
+    cn: "害羞的",
+    usage: "形容词。",
+    example: "The little girl is a bit shy."
+  },
+  "strict": {
+    cn: "严格的",
+    usage: "形容词，be strict with sb 对某人严格。",
+    example: "Our teacher is strict with us."
+  },
+  "healthy": {
+    cn: "健康的",
+    usage: "形容词，名词形式 health。",
+    example: "Grandma Maria looks healthy."
+  },
+  "smart": {
+    cn: "聪明的",
+    usage: "形容词。",
+    example: "The smart girl finds the cat quickly."
+  },
+  "fox": {
+    cn: "狐狸",
+    usage: "可数名词，复数 foxes。",
+    example: "A fox is not a pet cat."
+  },
+  "dog": {
+    cn: "狗",
+    usage: "可数名词。",
+    example: "The dog is under the tree."
+  },
+  "cat": {
+    cn: "猫",
+    usage: "可数名词。",
+    example: "They find the cat under a tree."
+  }
+};
+
+function esc(s){
+  return String(s).replace(/[&<>"']/g, m => ({
+    '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'
+  }[m]));
+}
+
+/* 生成汇总卡片 */
+function renderVocab(){
+  const grid = document.getElementById('vocabGrid');
+  grid.innerHTML = Object.entries(VOCAB).map(([key, v]) => `
+    <article class="vocab-card">
+      <div class="vocab-card-head">
+        <h3>${esc(key)}</h3>
+        <button class="mini-btn" data-open-key="${esc(key)}">查看</button>
+      </div>
+      <p class="cn">${esc(v.cn)}</p>
+      <p class="usage"><b>用法：</b>${esc(v.usage)}</p>
+      <p class="example"><b>例句：</b>${esc(v.example)}</p>
+      <div class="card-actions">
+        <button class="mini-btn" data-speak="${esc(key)}">🔊 单词</button>
+        <button class="mini-btn" data-speak="${esc(v.example)}">🔊 例句</button>
+      </div>
+    </article>
+  `).join('');
+}
+
+/* 语音朗读 */
+function speak(text){
+  if (!('speechSynthesis' in window)) {
+    alert('当前浏览器不支持语音朗读，请使用 Chrome / Edge 等现代浏览器。');
+    return;
+  }
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'en-US';
+  u.rate = 0.9;
+  u.pitch = 1;
+  window.speechSynthesis.speak(u);
+}
+
+function stopSpeak(){
+  if ('speechSynthesis' in window) {
+    window.speechSynthesis.cancel();
+  }
+}
+
+/* 朗读元素中的英文文本 */
+function readElement(el){
+  if (!el) return;
+  const clone = el.cloneNode(true);
+  clone.querySelectorAll('button, .no-read, .modal').forEach(n => n.remove());
+  speak(clone.textContent.replace(/\s+/g, ' ').trim());
+}
+
+/* 弹窗 */
+const modal = document.getElementById('vocabModal');
+let currentKey = '';
+
+function openModal(key){
+  const v = VOCAB[key];
+  if (!v) return;
+  currentKey = key;
+  document.getElementById('modalWord').textContent = key;
+  document.querySelector('.modal-cn').textContent = v.cn;
+  document.querySelector('.modal-usage').innerHTML = '<b>用法：</b>' + esc(v.usage);
+  document.querySelector('.modal-example').innerHTML = '<b>例句：</b>' + esc(v.example);
+  modal.classList.add('show');
+  modal.setAttribute('aria-hidden', 'false');
+}
+
+function closeModal(){
+  modal.classList.remove('show');
+  modal.setAttribute('aria-hidden', 'true');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderVocab();
+
+  // 文中划线词点击与键盘操作
+  document.querySelectorAll('.vocab').forEach(el => {
+    el.addEventListener('click', e => {
+      e.stopPropagation();
+      openModal(el.dataset.key);
+    });
+    el.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openModal(el.dataset.key);
+      }
+    });
+  });
+
+  // 汇总卡片与弹窗事件委托
+  document.addEventListener('click', e => {
+    const speakBtn = e.target.closest('[data-speak]');
+    if (speakBtn) {
+      e.stopPropagation();
+      speak(speakBtn.dataset.speak);
+      return;
+    }
+    const openBtn = e.target.closest('[data-open-key]');
+    if (openBtn) {
+      e.stopPropagation();
+      openModal(openBtn.dataset.openKey);
+      return;
+    }
+    if (e.target.closest('[data-close]')) {
+      closeModal();
+    }
+  });
+
+  document.getElementById('modalSpeakWord').addEventListener('click', () => {
+    if (currentKey) speak(currentKey);
+  });
+
+  document.getElementById('modalSpeakExample').addEventListener('click', () => {
+    const v = VOCAB[currentKey];
+    if (v) speak(v.example);
+  });
+
+  // 每篇朗读
+  document.querySelectorAll('.read-section').forEach(btn => {
+    btn.addEventListener('click', () => {
+      readElement(document.getElementById(btn.dataset.target));
+    });
+  });
+
+  // 全部英文原文朗读
+  document.getElementById('readAll').addEventListener('click', () => {
+    const parts = Array.from(document.querySelectorAll('.readable'))
+      .map(el => {
+        const clone = el.cloneNode(true);
+        clone.querySelectorAll('button, .no-read, .modal').forEach(n => n.remove());
+        return clone.textContent.replace(/\s+/g, ' ').trim();
+      })
+      .filter(Boolean);
+    speak(parts.join(' '));
+  });
+
+  document.getElementById('stopRead').addEventListener('click', stopSpeak);
+
+  // ESC 关闭弹窗
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeModal();
+  });
+});
+</script>
+</body>
+</html>
