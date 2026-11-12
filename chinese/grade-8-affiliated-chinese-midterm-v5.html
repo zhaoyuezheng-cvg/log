@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>初二语文期中试卷 · 逐题解析</title>
+<meta name="description" content="2026—2027学年第一学期期中考试初二语文试题全卷还原、答案与解析">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F5F4EE'/%3E%3Crect x='4' y='4' width='24' height='24' fill='none' stroke='%23B03A2B' stroke-width='1.6'/%3E%3Cpath d='M9 23V9h4l3 7 3-7h4v14' fill='none' stroke='%231B1C1E' stroke-width='1.6'/%3E%3C/svg%3E">
+<style>
+:root{
+ --paper:#F5F4EE; --paper-2:#FFFDF7; --paper-3:#EFEDE3;
+ --ink:#1B1C1E; --ink-2:#484C54; --ink-3:#878B93;
+ --line:#D9D5C7; --line-2:#E7E3D7;
+ --red:#B03A2B; --red-2:#8B2A1D; --red-wash:rgba(176,58,43,.065);
+ --green:#2C5A4C; --blue:#2A4B6B;
+ --serif:"Source Han Serif SC","Noto Serif CJK SC","Songti SC",SimSun,"Times New Roman",serif;
+ --sans:"Source Han Sans SC","Noto Sans CJK SC","PingFang SC","Microsoft YaHei","Hiragino Sans GB",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+ margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);
+ font-size:16px;line-height:1.75;
+ background-image:linear-gradient(90deg,rgba(27,28,30,.022) 1px,transparent 1px);
+ background-size:34px 100%;
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+
+/* ---------- 阅读进度 ---------- */
+.progress{position:fixed;inset:0 auto auto 0;height:2px;width:0;background:var(--red);z-index:70}
+
+/* ---------- 顶栏（窄屏） ---------- */
+.topbar{display:none;position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:1px solid var(--line)}
+.tb-inner{display:flex;align-items:center;justify-content:space-between;height:52px;padding:0 16px}
+.tb-brand{display:flex;align-items:center;gap:9px;min-width:0}
+.tb-seal{width:24px;height:24px;flex:none;display:grid;place-items:center;background:var(--red);color:#fff;font-family:var(--serif);font-size:14px;line-height:1}
+.tb-title{font-family:var(--serif);font-size:15px;letter-spacing:.04em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tb-btn{height:38px;padding:0 14px;border:1px solid var(--line);background:var(--paper-2);color:var(--ink);font:500 14px/1 var(--sans);cursor:pointer}
+@media (max-width:1023px){.topbar{display:block}}
+
+/* ---------- 布局 ---------- */
+.shell{max-width:1180px;margin:0 auto;padding:0 30px}
+.layout{display:grid;grid-template-columns:238px minmax(0,1fr);gap:52px;padding:34px 0 90px}
+@media (max-width:1023px){
+ .shell{padding:0 18px}
+ .layout{grid-template-columns:1fr;gap:0;padding:16px 0 78px}
+ .sidebar{display:none}
+}
+
+/* ---------- 侧栏 ---------- */
+.sidebar{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;padding:6px 4px 24px 0}
+.side-label{font-size:11px;letter-spacing:.28em;color:var(--ink-3);margin:0 0 12px}
+.nav-group{margin-bottom:20px}
+.nav-group-title{display:flex;align-items:baseline;gap:8px;font-family:var(--serif);font-size:14.5px;color:var(--ink);padding:0 0 7px;border-bottom:1px solid var(--line-2);margin-bottom:8px}
+.nav-group-title span{font-size:11px;color:var(--ink-3);font-family:var(--sans)}
+.nav-nums{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.n{aspect-ratio:1/1;border:1px solid var(--line);background:var(--paper-2);color:var(--ink-2);
+ font:500 12px/1 var(--serif);cursor:pointer;padding:0;transition:.15s}
+.n:hover{border-color:var(--ink);color:var(--ink)}
+.n.active{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.n.done{border-color:var(--green);color:var(--green)}
+.n.active.done{background:var(--green);color:#fff;border-color:var(--green)}
+.tools{border-top:1px solid var(--line-2);padding-top:14px;margin-top:6px}
+.tool{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 9px}
+.tool-label{font-size:12.5px;color:var(--ink-2)}
+.switch{position:relative;width:42px;height:23px;border:1px solid var(--ink-3);background:var(--paper-2);cursor:pointer;padding:0}
+.switch i{position:absolute;top:2px;left:2px;width:17px;height:17px;background:var(--ink-3);transition:.18s}
+.switch.on{border-color:var(--red);background:var(--red-wash)}
+.switch.on i{left:21px;background:var(--red)}
+.tool-btn{width:100%;height:36px;margin-bottom:8px;border:1px solid var(--line);background:var(--paper-2);
+ font:500 13px/1 var(--sans);color:var(--ink);cursor:pointer;text-align:left;padding:0 11px;transition:.15s}
+.tool-btn:hover{border-color:var(--ink)}
+.score{margin-top:14px;font-size:12.5px;color:var(--ink-2);border-top:1px dashed var(--line);padding-top:12px}
+.score b{font-family:var(--serif);color:var(--red);font-size:19px;margin-right:2px}
+
+/* ---------- 卷首 ---------- */
+.masthead{position:relative;padding:26px 0 26px;border-bottom:3px double var(--ink)}
+.eyebrow{margin:0;font-size:12px;letter-spacing:.18em;color:var(--ink-3)}
+h1{font-family:var(--serif);font-weight:700;font-size:clamp(36px,5.4vw,60px);letter-spacing:.05em;line-height:1.12;margin:8px 0 0}
+h1 em{font-style:normal;color:var(--red)}
+.subtitle{margin:12px 0 0;font-size:13.5px;color:var(--ink-2);letter-spacing:.02em}
+.stat-row{display:flex;flex-wrap:wrap;gap:10px 36px;margin:22px 0 0;list-style:none;padding:0}
+.stat{display:flex;align-items:baseline;gap:8px}
+.stat dt{font-size:11.5px;letter-spacing:.16em;color:var(--ink-3)}
+.stat dd{margin:0;font-family:var(--serif);font-size:20px;line-height:1}
+.seal{position:absolute;right:0;top:34px;width:88px;height:88px;border:2px solid rgba(176,58,43,.55);border-radius:50%;
+ display:grid;place-items:center;color:rgba(176,58,43,.8);transform:rotate(-13deg);font-family:var(--serif);
+ font-size:13px;line-height:1.35;text-align:center;letter-spacing:.1em;pointer-events:none}
+.seal b{display:block;font-size:22px;letter-spacing:.16em}
+@media (max-width:640px){.seal{display:none}}
+
+/* ---------- 导语 ---------- */
+.intro{margin:30px 0 0;font-size:15px;color:var(--ink-2);max-width:62em}
+.intro p{margin:0 0 .8em}
+.intro strong{color:var(--ink);font-weight:600}
+
+/* ---------- 分值条 ---------- */
+.overview{margin:26px 0 0;padding:20px 0 24px;border-bottom:1px solid var(--line)}
+.ov-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:14px}
+.ov-title{font-family:var(--serif);font-size:15px;letter-spacing:.08em}
+.bars{display:flex;height:13px;border:1px solid var(--line);background:var(--paper-2);overflow:hidden}
+.bar{height:100%;flex:0 0 var(--w);background:var(--c)}
+.bar.b1{--w:12%;--c:#DBD6C8}
+.bar.b2{--w:23%;--c:#B7B2A4}
+.bar.b3{--w:5%;--c:#95917F}
+.bar.b4{--w:20%;--c:#5D5B52}
+.bar.b5{--w:40%;--c:var(--red)}
+.legend{display:flex;flex-wrap:wrap;gap:5px 20px;margin-top:11px;font-size:12.5px;color:var(--ink-2);line-height:1.6}
+.legend span{display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
+.legend i{width:8px;height:8px;background:var(--c);flex:none}
+
+/* ---------- 答案速查 ---------- */
+.quick{margin:16px 0 0;border:1px solid var(--line);background:var(--paper-2)}
+.quick summary{list-style:none;cursor:pointer;padding:12px 16px;display:flex;align-items:center;gap:10px;font-family:var(--serif);font-size:14px;letter-spacing:.06em}
+.quick summary::-webkit-details-marker{display:none}
+.quick summary i{font-style:normal;font-size:11px;color:var(--ink-3);font-family:var(--sans);letter-spacing:.1em}
+.quick[open] summary{border-bottom:1px solid var(--line-2)}
+.qgrid{display:grid;grid-template-columns:repeat(8,1fr);border-top:1px solid var(--line-2)}
+.qcell{padding:9px 3px 10px;text-align:center;border-right:1px solid var(--line-2);border-bottom:1px solid var(--line-2)}
+.qn{display:block;font-size:11.5px;color:var(--ink-3);letter-spacing:.08em;margin-bottom:3px}
+.qv{display:block;font-family:var(--serif);color:var(--red);font-size:14.5px;line-height:1.45;word-break:break-word}
+@media (max-width:640px){.qgrid{grid-template-columns:repeat(4,1fr)}
+.qcell:last-child{border-right:1px solid var(--line-2)}}
+
+/* ---------- 板块标题 ---------- */
+.section{margin:56px 0 0;scroll-margin-top:24px}
+.section-head{border-bottom:1px solid var(--ink);padding-bottom:10px;display:flex;align-items:flex-end;justify-content:space-between;gap:14px}
+.section-head h2{font-family:var(--serif);font-size:clamp(21px,2.4vw,27px);font-weight:700;margin:0;letter-spacing:.04em}
+.section-head .s-sub{font-size:12px;color:var(--ink-3);letter-spacing:.06em;white-space:nowrap}
+.section-note{font-size:13.5px;color:var(--ink-2);margin:12px 0 0;padding-left:14px;border-left:2px solid var(--line);line-height:1.8}
+
+/* ---------- 材料 ---------- */
+.material{margin:22px 0 6px;background:var(--paper-2);border:1px solid var(--line);border-top:3px solid var(--ink);padding:22px 26px 24px}
+.mat-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:14px}
+.mat-head h3{font-family:var(--serif);font-size:19px;margin:0;letter-spacing:.03em;font-weight:600}
+.mat-head .src{font-size:11.5px;color:var(--ink-3);letter-spacing:.04em;white-space:nowrap}
+.mat-body{font-family:var(--serif);font-size:16.5px;line-height:2.05;color:#202226;text-align:justify}
+.mat-body p{margin:0 0 .75em;text-indent:2em}
+.mat-body p:last-child{margin-bottom:0}
+.poem{text-align:center;text-indent:0!important;margin:.2em 0!important;font-size:18px;letter-spacing:.06em}
+.poem .pl{display:block;line-height:2.1}
+.poem .ptitle{font-size:15px;color:var(--ink-3);letter-spacing:.1em;margin-bottom:6px}
+.notes{border-top:1px dashed var(--line);margin-top:16px;padding-top:12px;font-size:13px;color:var(--ink-2);line-height:1.85}
+.notes b{color:var(--ink);font-weight:600}
+.mat-actions{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+.mini{height:32px;padding:0 12px;border:1px solid var(--line);background:transparent;font:500 12.5px/1 var(--sans);color:var(--ink-2);cursor:pointer;transition:.15s}
+.mini:hover{border-color:var(--ink);color:var(--ink)}
+.mini.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.trans{display:none;opacity:0}
+.trans.open{display:block;opacity:1;animation:fadeIn .22s ease}
+.trans > div{overflow:hidden}
+.trans-inner{border-top:1px dashed var(--line);margin-top:14px;padding-top:14px;font-size:15px;line-height:1.95;color:var(--ink-2);font-family:var(--sans)}
+.trans-inner p{margin:0 0 .7em;text-indent:0}
+.trans-inner b{color:var(--red);font-weight:600}
+
+/* ---------- 题目 ---------- */
+.question{padding:32px 0 26px;border-top:1px solid var(--line-2);scroll-margin-top:80px}
+.question:first-of-type{border-top:0}
+.q-head{display:flex;gap:14px;align-items:flex-start}
+.q-no{font-family:var(--serif);font-size:31px;line-height:1;color:var(--red);min-width:54px;letter-spacing:.02em;font-variant-numeric:tabular-nums}
+.q-meta{min-width:0;flex:1}
+.q-type{font-size:11.5px;letter-spacing:.14em;color:var(--ink-3)}
+.q-stem{font-family:var(--serif);font-size:17.5px;line-height:1.85;font-weight:600;margin:5px 0 0;letter-spacing:.01em}
+.q-body{padding-left:68px;margin-top:14px}
+@media (max-width:1023px){.q-body{padding-left:0}.q-no{min-width:0;font-size:25px}.q-head{gap:11px}.q-stem{font-size:16.5px}}
+
+.opts{margin:0 0 4px}
+.opt{display:flex;gap:11px;width:100%;text-align:left;padding:9px 10px;margin:5px 0;border:1px solid transparent;background:transparent;
+ font-family:var(--serif);font-size:16px;line-height:1.75;color:var(--ink);cursor:pointer;transition:background .15s,border-color .15s;align-items:flex-start}
+.opt .k{flex:none;color:var(--ink-2);font-weight:600;width:1.1em}
+.opt .mark{margin-left:auto;flex:none;font-family:var(--sans);font-size:12px;letter-spacing:.06em;opacity:0;transition:.2s}
+@media (hover:hover){.opt:hover{background:var(--paper-2);border-color:var(--line-2)}}
+.opt.right{background:rgba(44,90,76,.07);border-color:rgba(44,90,76,.32)}
+.opt.right .mark{opacity:1;color:var(--green)}
+.opt.wrong{background:var(--red-wash);border-color:rgba(176,58,43,.3)}
+.opt.wrong .mark{opacity:1;color:var(--red)}
+.opt.locked{cursor:default}
+
+/* 答案与解析 */
+.answer{margin-top:20px}
+.ans-line{display:flex;align-items:baseline;gap:11px;flex-wrap:wrap;padding:10px 0 0;border-top:1px dashed var(--line)}
+.tag{background:var(--red);color:#fff;font:600 11.5px/1 var(--sans);letter-spacing:.16em;padding:4px 8px;flex:none}
+.ans-text{font-family:var(--serif);font-size:17px;color:var(--red);font-weight:600;line-height:1.6}
+.ans-text .blank{color:var(--red);border-bottom:1px solid var(--red);padding:0 6px}
+.reveal{margin-left:auto;border:0;background:transparent;color:var(--ink-2);font:500 12.5px/1 var(--sans);
+ letter-spacing:.08em;cursor:pointer;padding:6px 2px;display:flex;align-items:center;gap:6px}
+.reveal:hover{color:var(--red)}
+.reveal .ar{display:inline-block;transition:transform .25s;font-size:10px}
+.reveal.open .ar{transform:rotate(180deg)}
+.ana{display:none;opacity:0}
+.ana.open{display:block;opacity:1;animation:fadeIn .22s ease}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.ana-in{padding:14px 0 4px;margin-top:8px;border-top:1px dotted var(--line);font-size:15px;line-height:1.9;color:var(--ink-2);max-width:60em}
+.ana-in p{margin:0 0 .62em}
+.ana-in .h{font-family:var(--serif);font-size:13.5px;color:var(--ink);letter-spacing:.1em;margin:16px 0 8px;display:flex;align-items:center;gap:8px}
+.ana-in .h::before{content:"";width:4px;height:4px;background:var(--red);flex:none}
+.ana-in ul{margin:0 0 .6em;padding-left:1.15em}
+.ana-in li{margin:0 0 .38em}
+.ana-in b{color:var(--ink);font-weight:600}
+.ana-in .bad{color:var(--red-2)}
+.ana-in .good{color:var(--green)}
+.ana-in table{width:100%;border-collapse:collapse;margin:6px 0 10px;font-size:13.5px;table-layout:fixed}
+.ana-in th,.ana-in td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top;line-height:1.7}
+.ana-in th{background:var(--paper-3);font-weight:600;color:var(--ink);font-size:12.5px;letter-spacing:.05em}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.tag-k{font-size:11.5px;color:var(--ink-2);border:1px solid var(--line);background:var(--paper-2);padding:3px 8px;letter-spacing:.04em}
+
+/* 着重号与波浪线 */
+.dot{font-style:normal;-webkit-text-emphasis:dot;text-emphasis:dot;-webkit-text-emphasis-position:under;-webkit-text-emphasis-color:var(--red);text-emphasis-position:under;text-emphasis-color:var(--red)}
+.wavy{text-decoration:underline wavy var(--red);text-decoration-thickness:.8px;text-underline-offset:5px;text-decoration-skip-ink:none}
+.quote{display:block;font-family:var(--serif);font-size:16.5px;line-height:2;background:var(--paper-2);border-left:2px solid var(--line);
+ padding:12px 16px;margin:2px 0 12px;text-indent:2em}
+
+/* 高亮模式 */
+.key{transition:background .2s}
+body.hl .key{background:linear-gradient(180deg,transparent 58%,rgba(232,180,60,.42) 58%)}
+
+/* 答案虚化 */
+.ans-text.veiled{color:transparent;background:var(--paper-3);padding:2px 10px;cursor:pointer;user-select:none;
+ border:1px solid var(--line-2);transition:background .18s ease}
+.ans-text.veiled:hover{background:#E7E4D6}
+.ans-text.veiled::after{content:"点击显示";color:var(--ink-3);font-family:var(--sans);font-size:11px;letter-spacing:.08em;
+ margin-left:9px;font-weight:400}
+@media print{.ans-text.veiled{color:inherit;background:none;border:0}.ans-text.veiled::after{content:"";margin:0}}
+
+/* 名著引文 */
+.names{margin:2px 0 6px}
+.nitem{display:grid;grid-template-columns:26px minmax(0,1fr);column-gap:10px;padding:12px 0;border-top:1px dashed var(--line)}
+.nitem:first-child{border-top:0;padding-top:2px}
+.nlab{font-family:var(--serif);color:var(--red);font-size:16px;font-weight:600;line-height:1.9}
+.ntext{font-family:var(--serif);font-size:15.5px;line-height:1.95;margin:0;color:#202226}
+.nsrc{grid-column:2;font-size:11.5px;color:var(--ink-3);margin:2px 0 0;letter-spacing:.04em}
+
+/* 特殊题型：链条 / 表格 */
+.chain{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:6px 0 12px;font-family:var(--serif);font-size:16px}
+.chain .step{padding:5px 10px;border:1px solid var(--line);background:var(--paper-2)}
+.chain .blank{min-width:74px;text-align:center;color:var(--red);border-bottom:1px solid var(--red);padding:5px 10px}
+.chain .arrow{color:var(--ink-3);font-family:var(--sans);font-size:13px}
+
+/* 底部 */
+.colophon{margin:64px 0 0;padding:22px 0 0;border-top:3px double var(--ink);font-size:12.5px;color:var(--ink-3);line-height:1.9}
+.colophon b{color:var(--ink-2)}
+
+/* 浮动导航 */
+.navigator{position:fixed;right:24px;bottom:24px;z-index:45;display:flex;align-items:center;gap:2px;
+ background:var(--paper-2);border:1px solid var(--line);box-shadow:0 8px 24px rgba(27,28,30,.08);padding:5px}
+.navigator button{width:38px;height:38px;border:0;background:transparent;color:var(--ink);cursor:pointer;font-size:15px;transition:.15s}
+.navigator button:hover:not(:disabled){background:var(--paper-3)}
+.navigator button:disabled{color:var(--line);cursor:not-allowed}
+.navigator .pos{font:500 12px/1 var(--sans);color:var(--ink-2);padding:0 8px;letter-spacing:.04em;min-width:52px;text-align:center}
+@media (max-width:1023px){
+ .navigator{left:0;right:0;bottom:0;border-left:0;border-right:0;border-bottom:0;padding:6px 12px;
+  justify-content:space-between;box-shadow:0 -4px 16px rgba(27,28,30,.07)}
+ .navigator button{width:40px;height:36px}
+ .navigator .pos{min-width:auto}
+ body{padding-bottom:52px}
+}
+
+/* 移动端抽屉 */
+.drawer{position:fixed;inset:0;z-index:80;display:none}
+.drawer .scrim{position:absolute;inset:0;background:rgba(27,28,30,.34)}
+.drawer .panel{position:absolute;inset:0 0 auto 0;background:var(--paper);max-height:86vh;overflow:auto;padding:18px 18px 26px;
+ border-bottom:1px solid var(--line);animation:slide .25s ease}
+@keyframes slide{from{transform:translateY(-8px);opacity:.6}to{transform:none;opacity:1}}
+.drawer.open{display:block}
+body.drawer-open{overflow:hidden}
+body.drawer-open .navigator{display:none}
+.dr-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.dr-head span{font-family:var(--serif);font-size:15px;letter-spacing:.1em}
+.dr-close{width:38px;height:38px;border:1px solid var(--line);background:var(--paper-2);font-size:16px;cursor:pointer;color:var(--ink)}
+.drawer .nav-nums{grid-template-columns:repeat(6,1fr)}
+.drawer .n{aspect-ratio:auto;height:42px;font-size:12.5px}
+.drawer .nav-group-title{font-size:13.5px}
+.drawer .tools{margin-top:18px}
+
+/* 打印 */
+@media print{
+ .topbar,.sidebar,.navigator,.drawer,.progress{display:none!important}
+ .layout{grid-template-columns:1fr;padding:0}
+ .shell{padding:0}
+ .ana,.trans{display:block!important;opacity:1!important}
+ body{background:#fff;background-image:none}
+ .material,.question{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="topbar">
+ <div class="tb-inner">
+  <div class="tb-brand"><span class="tb-seal">语</span><span class="tb-title">初二语文 · 期中试卷解析</span></div>
+  <button class="tb-btn" id="openDrawer">目录与工具</button>
+ </div>
+</header>
+
+<div class="shell">
+ <div class="layout">
+  <aside class="sidebar" id="sidebar" aria-label="目录"></aside>
+  <main class="main">
+   <header class="masthead">
+    <p class="eyebrow">2026—2027 学年第一学期期中考试</p>
+    <h1>初二语文试题<em>·</em>解析</h1>
+    <p class="subtitle">济宁学院附属中学等校 · 扫描件全卷还原 · 23 题 · 满分 100 分</p>
+    <ul class="stat-row">
+     <li class="stat"><dt>题量</dt><dd>23</dd></li>
+     <li class="stat"><dt>满分</dt><dd>100</dd></li>
+     <li class="stat"><dt>板块</dt><dd>5</dd></li>
+     <li class="stat"><dt>版面</dt><dd>8</dd></li>
+    </ul>
+    <div class="seal"><b>已校对</b>原卷核字</div>
+   </header>
+
+   <section class="intro">
+    <p>本页依据试卷扫描件逐字识读，<strong>题干、选项、注释、加点字与划线句均按原卷呈现</strong>；加点字保留着重号，划线句保留波浪线。每道题给出答案与解析，文言文、古诗另附重点词释义与白话译文。</p>
+    <p>参考答案已与公开的同卷解析资料逐题比对；发现的两处原卷疏漏整理在文末<strong>“校勘记”</strong>中，不影响作答。点击选项可即时判分，点击“解析”逐题展开，右下角悬浮按钮可连续翻题。</p>
+   </section>
+
+   <section class="overview">
+    <div class="ov-head"><span class="ov-title">分值分布</span><span class="s-sub" style="font-size:12px;color:var(--ink-3)">合计 100 分</span></div>
+    <div class="bars">
+     <div class="bar b1"></div><div class="bar b2"></div><div class="bar b3"></div><div class="bar b4"></div><div class="bar b5"></div>
+    </div>
+    <div class="legend">
+     <span style="--c:#DBD6C8"><i></i>基础积累 12</span>
+     <span style="--c:#B7B2A4"><i></i>古诗文 23</span>
+     <span style="--c:#95917F"><i></i>名著与语用 5</span>
+     <span style="--c:#5D5B52"><i></i>现代文 20</span>
+     <span style="--c:#B03A2B"><i></i>写作 40</span>
+    </div>
+    <details class="quick">
+     <summary>答案速查 <i>点击展开 · 选择题与默写</i></summary>
+     <div id="quickWrap"></div>
+    </details>
+   </section>
+
+   <div id="sections"></div>
+
+   <footer class="colophon" id="colophon"></footer>
+  </main>
+ </div>
+</div>
+
+<div class="navigator" id="navigator">
+ <button id="prevQ" aria-label="上一题">‹</button>
+ <span class="pos" id="pos">1 / 23</span>
+ <button id="nextQ" aria-label="下一题">›</button>
+</div>
+
+<div class="drawer" id="drawer">
+ <div class="scrim" data-close></div>
+ <div class="panel">
+  <div class="dr-head"><span>目录与工具</span><button class="dr-close" data-close aria-label="关闭">×</button></div>
+  <div id="drawerBody"></div>
+ </div>
+</div>
+
+<script>
+"use strict";
+/* ===== 材料原文 ===== */
+const MAT = {
+jia:{
+ kind:"prose", tag:"jia", title:"【甲】陈太丘与友期行", src:"选自《世说新语·方正》",
+ paras:[
+  `陈太丘与友期行，期日中。过中不至，太丘舍去，去后乃至。元方时年七岁，门外戏。客问元方：“尊君在不？”答曰：“待君久不至，已去。”友人便怒曰：“非人哉！与人期行，相委而去。”元方曰：“君与家君期日中。日中不至，则是无信；对子骂父，则是无礼。”友人惭，下车引之。元方入门不顾。`
+ ],
+ notes:[],
+ trans:`<p>陈太丘和朋友相约同行，约定的时间是正午。过了正午朋友还没有到，陈太丘不再等候就走了，他走之后朋友才到。元方当时七岁，正在门外玩耍。那位朋友问元方：“你父亲在家吗？”元方回答：“我父亲等您很久您都没到，已经走了。”朋友便生气地说：“真不是人啊！和别人约好一起走，却丢下我自己走了。”元方说：“您和我父亲约在正午。正午您没到，就是不讲信用；对着孩子骂他的父亲，就是没有礼貌。”朋友很惭愧，下车来拉他。元方头也不回地进了门。</p>`
+},
+yi:{
+ kind:"prose", tag:"yi", title:"【乙】王华六岁", src:"选自《玉堂丛语》（明·焦竑）",
+ paras:[
+  `王华六岁，与群儿戏水滨，见一客来濯足，以大醉，去，遗所提囊。取视之，数十金也。公度其醒必复来，<span class="wavy">恐人持去以投水中坐守之</span>。少顷，其人果号而至。公迎谓曰：“求尔金耶？”为指其处。其人喜，以一铤为谢，却不受。`
+ ],
+ notes:[
+  `<b>① 濯：</b>洗涤。　<b>② 以：</b>因为。　<b>③ 度：</b>估计，思考。　<b>④ 号：</b>大声哭喊。　<b>⑤ 却：</b>推辞。`
+ ],
+ trans:`<p>王华六岁时，和一群小孩在水边嬉戏，看见一位客人来洗脚。客人因为喝得大醉，离开时把随身提着的袋子落下了。（王华）拿过来一看，里面有几十两金子。王华估计他酒醒后一定会回来，担心别人把金子拿走，就把金子投入水中，坐在那里守着它。不一会儿，那个人果然号哭着赶来。王华迎上前对他说：“您是来找您的金子吗？”并为他指明了放金子的地方。那人很高兴，拿出一铤金子作酬谢，（王华）推辞不受。</p>`
+},
+shi:{
+ kind:"poem", tag:"shi", title:"秋浦途中①", src:"唐 · 杜牧",
+ paras:[
+  `<span class="pl">萧萧山路穷秋雨，淅淅溪风一岸蒲。</span><span class="pl">为问寒沙新到雁，来时还下杜陵②无？</span>`
+ ],
+ notes:[
+  `<b>① 秋浦：</b>唐时为池州州治所在，诗人被贬官外放时途经此地。<br><b>② 杜陵：</b>在长安西南，诗人家乡樊川所在地。`
+ ],
+ trans:`<p>山路上雨声萧萧，深秋的雨下个不停；溪风淅淅，吹动满岸的蒲草。我想问一问寒沙上新飞来的大雁：你们飞来的时候，可曾经过、落脚在我的家乡杜陵？</p>`
+},
+tg:{
+ kind:"prose", tag:"tg", title:"低头的甜瓜", src:"崔安宁 · 选自《邵阳晚报》，有删改",
+ paras:[
+  `每年春天，母亲都会种一棚甜瓜。`,
+  `去年，母亲忙着走亲戚，便嘱咐我来移植甜瓜苗。在移苗的过程中，我发现有一棵甜瓜苗不仅细弱瘦小，还一直卷着叶子低着头。虽然家里种植甜瓜，但我却没有太多的管理经验。经过一番思索，我还是把这棵甜瓜苗移进了大棚里。`,
+  `将所有甜瓜苗都移植好后，我开始在手机里搜索甜瓜苗低头的原因。大多数人说，缺水会导致甜瓜苗营养缺失，从而使它低头。于是，我从家里提来一桶水，让这棵苗喝个痛快。几天后，所有的甜瓜苗都在茁壮成长，唯独那棵低头的甜瓜苗，垂头丧气地站在那里，毫无生机。母亲见它如此颓废，急忙去药店配了些甜瓜专用的生长素和常用药，给它反复喷了好几次。`,
+  `一周之后，所有的甜瓜苗都长大了。那棵低头的瓜苗好像积攒了无数个愁心事，虽然它的叶片平整，但还没有改掉爱低头的毛病。母亲见状，又请来亲戚们来帮忙看瓜苗。<span class="wavy">亲戚们来了一波又一波，他们给这棵甜瓜苗开了很多治疗偏方，还拿来了不少甜瓜的特效药。</span>经过我们的多次实验，什么效果都没有。最后，母亲只能去请教我们村里的种植能手王大爷。经过一番描述，王大爷认为这棵瓜苗在育苗前就损坏了根基，所以后期也供不上养分，没有力气抬头。母亲对王大爷的话深信不疑，于是我们又开始马不停蹄地给这棵低头苗灌生根的肥料，以此帮助这棵瓜苗快速“昂首挺胸”。`,
+  `就算如此悉心照料，这棵甜瓜苗的情况也从未好转。为了不影响其他瓜苗的生长，我们只好把它种在棚外一个向阳的地方，任其生长。`,
+  `几个月后，棚里的甜瓜已经成熟，采摘工作也渐渐提上了日程。当我们的甜瓜采摘结束后，我突然在棚边看到那棵爱低头的甜瓜。此时的它早已萎靡不堪，所有的叶子枯黄地蜷缩着，低头的病也更加严重。整棵甜瓜的枝蔓都软软地趴在地上，犹如一条没有灵魂的绳子。于我而言，这棵甜瓜早已没有存在的意义。出于清扫障碍的目的，我把整棵瓜都拔了起来。`,
+  `就在此时，我发现这棵瓜藤上，竟然长着一个圆润饱满的甜瓜。这个甜瓜不仅瓜型漂亮，吃起来更是甘甜多汁。甜瓜的味道不仅弥漫在我的嘴里，也抚慰了我的心头。这棵甜瓜因为低头而被我们放弃，它在我们的有色眼镜下，并没有自暴自弃，反而努力积蓄力量，奋力生长。生活中的我们，又何尝没有过低头的经历？假如我们也如这棵甜瓜一样，在有限的条件内，低头修行，积累力量，是不是也会结出自己的硕果呢？`,
+  `如今，每当我觉得生活不尽人意时，总会想一想这棵低头的甜瓜。我想，低头并不是狼狈不堪，也不代表丢盔弃甲，反而是勇往直前的开始。就像这棵甜瓜苗一样，终会结出最美的果实！`
+ ],
+ notes:[`本文为散文，无注释。文中的“低头”既是瓜苗的真实姿态，也是作者对人生姿态的隐喻。`],
+ trans:null
+},
+xs:{
+ kind:"prose", tag:"xs", title:"理发师小宋", src:"常运锋 · 原文有删改",
+ paras:[
+  `县城街道上，门店鳞次栉比。众多门店中有一家叫“小宋发艺”，我多次路过时，目光总被吸引，只因此门店理发师的形象特别：身体瘦削，脸庞窄尖，头发偏黄，尤为扎眼的是他头顶上往后扎着的一撮头发。这装扮，实在是有点小众。我总以为这样的人不好打交道，故虽经常路过却从未踏入其店。`,
+  `没想到，我还是跟这位有点“特别”的理发师相遇了。一次，我们爱心团队去西阳寺村协助村“两委”开展敬老活动，为村里老人唱歌、按摩、理发、包水饺。待到场地，一个似曾相识的身影蓦现眼前：身体瘦削、尖脸、黄发、头顶扎一撮头发。他？我心里有点诧异。`,
+  `队友向我介绍：“小宋师傅也来参加我们的爱心活动！”`,
+  `“哦，欢迎！欢迎！”我忙与他握手，来做公益的我们一律表示欢迎。“宋师傅是哪儿的人？”我问。“俺老家是魏县哩，来成安县二三十年啦！”他边与我握手，边用地地道道的方言回答。哦，来自邻县！听他说话口气倒显老实，不过，一个人偶尔做件好事并不难，难的是经常做好事，保不齐他就是那个“偶尔”呢。`,
+  `然而，事情并没按我的猜想发展，后来又一次公益活动——下乡为孤寡老人和残疾人服务，小宋又来了，还专门准备了一个理发包。在给一位脑瘫患者服务时，听说这位残疾人的父母都已去世，他又无兄弟姐妹孤身一人，小宋师傅眼窝竟涌出了泪花。小宋从理发包里拿出推子、剪子，边给他理发，边说着宽心的话。本来我们已经送了米、面、油等慰问品，但理完发小宋又跑到小卖部买来饼干、面包，临走还留下100元钱。我对他的印象大为改观。`,
+  `自此，这位小宋师傅加入了我们团队。我向他表明，我们做公益活动是纯义务，只讲奉献，没有报酬，他也没有犹豫，还专门在理发包上写了“志愿服务”4个字。虽说是志愿服务，他可是一丝不苟，和在门店里一样认真。有一位女智障者头发乱得像鸟窝，而且不配合，头一直晃动。小宋师傅也不急，耐心地哄劝道：“不要动，动就扎破头了！”也怪，家人说她，她抗拒，小宋师傅说她，她果真听话不乱动了。小宋轻轻地给她梳理、剪发、洗头，她一直很安稳。一通收拾，嘿，人一下子精神了，哪儿还有原来的呆模样？<span class="wavy">也许她也知道自己变模样了，脸上开出了一朵花，很享受的样子。</span>`,
+  `理发师都要干净，小宋师傅也不例外，我注意到他每次出发前都忙着洗漱，把自己捯饬得清清爽爽。但一迈进村落家院，从来没见他嫌弃过谁，总是麻利地翻开理发包，该推的推该剪的剪。`,
+  `某次有个连续3天的公益活动，他天天参加，我说：“宋师傅，不要求你天天来啊，毕竟你还要营业，老关着门也不妥。”他说：“我愿意做公益，人不能光想着赚钱。”`,
+  `接触得多了，我得知他是一个单亲爸爸，经济并不宽裕，一个人将一双儿女抚养大，又给他们成了家。而且，他不光随团队做公益，还向他门店所在的西街村承诺：70岁以上老人理发一律免费。为此西街村委会给他赠送了锦旗，以示表彰、感谢。`,
+  `还是那句话：<span class="wavy">一个人偶尔做件好事并不难，难的是经常做、处处做。</span>当我陪同他接受锦旗的时候，忽然觉得这位小宋师傅有点帅！`
+ ],
+ notes:[`全文以“我”的观察视角展开，写“我”对小宋由误解到敬重的过程。画波浪线的句子是命题人指定的赏析、理解句。`],
+ trans:null
+}
+};
+
+/* ===== 题目 ===== */
+const QS = [
+{n:1, pts:2, type:"选择题", stem:`下列词语中加点字字音<b>全部正确</b>的一项是（　）`,
+ opts:[
+  `抖<em class="dot">擞</em>（shǒu）　<em class="dot">莅</em>临（lì）　<em class="dot">贮</em>蓄（chǔ）　<em class="dot">咄</em>咄逼人（duō）`,
+  `呻<em class="dot">吟</em>（yín）　酝<em class="dot">酿</em>（liàng）　静<em class="dot">谧</em>（mì）　镶<em class="dot">嵌</em>（xiāng）`,
+  `粗<em class="dot">犷</em>（guǎng）　一<em class="dot">髻</em>儿（jì）　高<em class="dot">邈</em>（mào）　<em class="dot">憔</em>悴（qiáo）`,
+  `<em class="dot">倜</em>傥（tǎng）　分<em class="dot">歧</em>（qí）　<em class="dot">攲</em>斜（qī）　<em class="dot">沁</em>凉（qìn）`
+ ], correct:"D", ans:`D`,
+ ana:`<p>A. 抖<b>擞</b>读 sǒu（“抖擞精神”），非 shòu；<b>贮</b>蓄读 zhù（“贮”即储存），非 chǔ。两处皆误。</p>
+ <p>B. 酝<b>酿</b>读 niàng；“酿”是形声字，声旁“良”并不提示读音，不能读作 liàng。</p>
+ <p>C. 高<b>邈</b>读 miǎo，意为遥远，非 mào；同项的粗犷 guǎng、一髻儿 jì、憔悴 qiáo 均正确，但仍有一处误读。</p>
+ <p>D. 倜傥 tǎng、分歧 qí、攲斜 qī、沁凉 qìn，四处读音<b>全部正确</b>。</p>
+ <div class="h">知识点</div>
+ <ul><li>“擞”只读 sǒu；“贮”读 zhù，与“储”同义，是典型的“声旁不表音”字。</li><li>“犷”读 guǎng，易误读 kuàng；“攲”读 qī，意为倾斜；“邈”读 miǎo。</li></ul>
+ <div class="h">易错提醒</div>
+ <p class="bad">本题三处错音（shòu、chǔ、liàng、mào）都源自方言习惯与“认半边”的误读，正是命题人设置的陷阱。</p>`,
+ tags:["字音","形声字","七上词语积累"]
+},
+{n:2, pts:2, type:"选择题", stem:`下列词语中书写<b>没有错误</b>的一项是（　）`,
+ opts:[
+  `浩渺　徜徉　渊博　云宵`,
+  `攫住　绽放　茫然无措　阐释`,
+  `确凿　鸦鹊无声　鉴赏　吞噬`,
+  `匿笑　徘徊　瘫痪　骄媚`
+ ], correct:"B", ans:`B`,
+ ana:`<p>A. “<b class="bad">云宵</b>”应为“云<b>霄</b>”。“宵”指夜晚（元宵、通宵达旦），“霄”指云气、天空（云霄、九霄），二字形近义远。</p>
+ <p>B. 攫住、绽放、茫然无措、阐释，四词书写<b class="good">全部正确</b>。</p>
+ <p>C. “<b class="bad">鸦鹊无声</b>”应为“鸦<b>雀</b>无声”。成语取“鸦与雀”俱静之意，写作“鹊”（喜鹊）则失据。</p>
+ <p>D. “<b class="bad">骄媚</b>”应为“<b>娇</b>媚”。“娇”含柔美可爱之意，“骄”指骄傲自满，与“媚”不能搭配。</p>
+ <div class="h">知识点</div>
+ <ul><li>同音形近字辨析：宵／霄、鹊／雀、骄／娇，都是“读音相同、偏旁不同、意义不同”的典型对子。</li><li>成语有固定字形，不能凭音随意改字。</li></ul>
+ <div class="h">辨析口诀</div>
+ <p>雨头为“霄”接云天，宝盖为“宵”指夜半；鸟旁“鹊”是喜鹊叫，隹旁“雀”才聚成“鸦雀无声”；“骄”从马旁气昂昂，“娇”从女旁态柔婉。</p>`,
+ tags:["字形","同音字","成语定形"]
+},
+{n:3, pts:2, type:"选择题", stem:`下列句子中加点成语使用<b>恰当</b>的一项是（　）`,
+ opts:[
+  `正如演出前预料的那样，他将歌曲演绎得荡气回肠，这让导演<em class="dot">喜出望外</em>。`,
+  `李明在课堂上<em class="dot">翻来覆去</em>，精神恍惚，老师讲的知识他一点儿也没有听进去。`,
+  `城市里到处人头攒动，<em class="dot">人声鼎沸</em>，济南的郊外别有一番情趣。`,
+  `昨天听了关于中学生成长的专题报告，主讲人<em class="dot">淅淅沥沥</em>的声音、娓娓道来的故事，让我深受鼓舞和教育。`
+ ], correct:"C", ans:`C`,
+ ana:`<p>A. <b>喜出望外</b>：遇到意想不到的喜事而格外高兴。句中前面明说“正如演出前预料的那样”，结果并非意外，前后自相矛盾，使用不当。</p>
+ <p>B. <b>翻来覆去</b>：多指躺在床上来回翻身睡不着，或反复多次地做某事。用来形容课堂上坐立不安、心神不宁，属于对象误用。</p>
+ <p>C. <b>人声鼎沸</b>：形容人声喧闹，像水在锅里沸腾一样。用来写城市街头人流密集、喧闹嘈杂，语境贴合，使用恰当。</p>
+ <p>D. <b>淅淅沥沥</b>：拟声词，摹写小雨、落叶等细碎连绵的声响，不能形容人的说话声，对象误用。</p>
+ <div class="h">知识点</div>
+ <ul><li>成语题四条判断线：<b>语义是否与语境矛盾</b>（A）、<b>适用对象是否错位</b>（B、D）、<b>语境氛围是否贴合</b>（C）。</li><li>“喜出望外”必须建立在“意料之外”这一前提上，是最常考的矛盾点。</li></ul>`,
+ tags:["成语运用","语境判断","对象误用"]
+},
+{n:4, pts:2, type:"选择题", stem:`下列四个句子中，<b>没有语病</b>的一项是（　）`,
+ opts:[
+  `通过这次社会实践活动，使我们磨练了意志，增长了见识。`,
+  `是否具备良好的心理素质，是我们考试取得好成绩的关键。`,
+  `众多景区的免费开放是济宁市打造国家级旅游城市的一项重大举措。`,
+  `我们在心里由衷地感谢老师多年来的默默付出。`
+ ], correct:"C", ans:`C`,
+ ana:`<p>A. <b>成分残缺（主语淹没）</b>。“通过……使……”连用，句子的主语被介词结构吞掉，全句没有动作的发出者。删去“通过”或“使”即可。</p>
+ <p>B. <b>两面对一面</b>。“是否”包含正反两面，“取得好成绩”只有一面，前后不能对应。删去“是否”，或在“取得”前补“能否”。</p>
+ <p>C. 主干为“免费开放是举措”，主谓宾齐全，搭配得当，<b class="good">没有语病</b>。</p>
+ <p>D. <b>语义重复</b>。“由衷”本身就含“发自内心”之意，与前文“在心里”重复，删去其一。</p>
+ <div class="h">知识点</div>
+ <ul><li>常见病句六型：成分残缺、搭配不当、语序不当、结构混乱、语义重复、两面对一面。</li><li>“通过……使……”是中考高频“主语残缺”标志，见到就要警觉。</li></ul>`,
+ tags:["病句辨析","成分残缺","两面对一面"]
+},
+{n:5, pts:2, type:"选择题", stem:`下列标点符号使用<b>正确</b>的句子是（　）`,
+ opts:[
+  `你明天是去爬山？还是去看电影？`,
+  `我国南海有动力资源，如潮汐能、波能等……`,
+  `课本收录了《春》《济南的冬天》《雨的四季》等优美的写景散文。`,
+  `“你知道吗？”爸爸兴奋地说道：“这人形机器人能起卧、行走，甚至还能进行武术表演呢。”`
+ ], correct:"C", ans:`C`,
+ ana:`<p>A. 这是<b>选择问句</b>，两个分句合起来才是一个完整的问题，只在句末用一个问号，分句之间用逗号：你明天是去爬山，还是去看电影？</p>
+ <p>B. “等”已表示列举未尽，与省略号功能重复，二者只能留一个。</p>
+ <p>C. 并列的书名号之间<b>不用顿号</b>，直接相连即可，本句标点使用正确。</p>
+ <p>D. 提示语“爸爸兴奋地说道”位于两句引语的<b>中间</b>，其后应用逗号，不能用冒号（冒号只用于提示语在前、引出下文时）。</p>
+ <div class="h">知识点</div>
+ <ul><li>问号三规则：选择问只在句末用问号；倒装问句问号在句末；连续问各句都用问号。</li><li>引语位置三情形：提示语在前用冒号，在中用逗号，在后用句号。</li></ul>`,
+ tags:["标点符号","问号","引语位置"]
+},
+{n:6, pts:2, type:"选择题", stem:`下列说法中<b>有误</b>的一项是（　）`,
+ opts:[
+  `舅舅帮我补习功课，我道谢说“承蒙舅舅赐教，您的高见让我茅塞顿开”，这段敬辞里藏着我对舅舅的感激。`,
+  `古代常见的敬辞中，“令堂”指的是对方的母亲，“令郎”指的是对方的儿子，“令爱”指的是对方的妻子。`,
+  `古代有许多表示敬称的特定字词。例如：“惠”用于对方对待自己的行为动作，如“惠存”“惠赠”；“贵”用于与对方有关的事物，如“贵庚”。`,
+  `“尊君”是敬辞，是对别人父亲的一种尊称；“家君”是谦辞，是对别人称自己的父亲。`
+ ], correct:"B", ans:`B`,
+ ana:`<p>B 项错误。“<b>令爱</b>”（也作“令嫒”）专指对方的<b>女儿</b>，不是妻子；尊称对方的妻子，一般用“<b>令正</b>”（或“令阃”）。该项中“令堂指母亲”“令郎指儿子”两句是对的，错在最后一处。</p>
+ <p>A. “承蒙”“赐教”“高见”“茅塞顿开”均为敬辞，用于称对方给予自己的教益，得体。</p>
+ <p>C. “惠存”“惠赠”之“惠”表示对方施惠于己，“贵庚”之“贵”用于与对方相关的事物，解说正确。</p>
+ <p>D. “尊君”称对方父亲，“家君”称自己父亲，一敬一谦，正确。</p>
+ <div class="h">知识点：令字家族</div>
+ <table><colgroup><col style="width:22%"><col style="width:38%"><col style="width:40%"></colgroup>
+ <tr><th>称谓</th><th>所指</th><th>备注</th></tr>
+ <tr><td>令堂</td><td>对方的母亲</td><td>“堂”指内堂，母亲所居</td></tr>
+ <tr><td>令尊</td><td>对方的父亲</td><td>与“令堂”相对</td></tr>
+ <tr><td>令郎</td><td>对方的儿子</td><td>“郎”为少年美称</td></tr>
+ <tr><td>令爱（令嫒）</td><td>对方的女儿</td><td>本题的考点</td></tr>
+ <tr><td>令正</td><td>对方的妻子</td><td>“正”指正室</td></tr>
+ </table>`,
+ tags:["文化常识","敬辞谦辞","令字家族"]
+},
+{n:7, pts:2, type:"选择题", stem:`下列加点词解释<b>不正确</b>的一项是（　）`,
+ opts:[
+  `太丘<em class="dot">舍</em>去　舍：丢下`,
+  `元方入门不<em class="dot">顾</em>　顾：顾及`,
+  `公度<em class="dot">其</em>醒必复来　其：代词，指前来濯足的醉客`,
+  `<em class="dot">以</em>一铤为谢　以：介词，用、拿`
+ ], correct:"B", ans:`B`,
+ ana:`<p>B 项错。“元方入门不<b>顾</b>”意为“元方头也不回地进了门”，“顾”是<b>回头看</b>，不是“顾及”。这一“顾”字最见人物性情：不理会、不纠缠，正是七岁元方的分寸与骨气。</p>
+ <p>A. “舍”释为“丢下、舍弃”正确——“太丘舍去”即丢下（友人）离开了。</p>
+ <p>C. “其”是第三人称代词，指前文那位“来濯足”的醉客——王华估计<b>他</b>酒醒后必会回来，不是指王华自己。</p>
+ <p>D. “以”是介词“用、拿”，“以一铤为谢”即拿一铤金子作酬谢。</p>
+ <div class="h">知识点：一词多义</div>
+ <table><colgroup><col style="width:18%"><col style="width:44%"><col style="width:38%"></colgroup>
+ <tr><th>字</th><th>义项</th><th>例句</th></tr>
+ <tr><td rowspan="2">顾</td><td>回头看（本义）</td><td>元方入门不<b>顾</b></td></tr>
+ <tr><td>拜访</td><td>三<b>顾</b>臣于草庐之中</td></tr>
+ <tr><td rowspan="2">舍</td><td>丢下、舍弃</td><td>太丘<b>舍</b>去</td></tr>
+ <tr><td>房屋（shè）</td><td>屋<b>舍</b>俨然</td></tr>
+ </table>
+ <div class="h">方法</div>
+ <p>解释文言实词，先“代入原句翻一遍”，再核对词性。凡译文读不通的义项，基本可以断定有误——“顾及”代入后成了“进门不顾及”，语义别扭，即可锁定 B。</p>`,
+ tags:["文言实词","一词多义","古今异义"]
+},
+{n:8, pts:2, type:"选择题", stem:`乙文中画波浪线的句子有两处需要断句，正确的一项是（　）`,
+ opts:[
+  `恐人持／去以投水中／坐守之`,
+  `恐人持去／以投水中坐／守之`,
+  `恐人持去／以投水中／坐守之`,
+  `恐人持／去以投水中坐／守之`
+ ], correct:"C", ans:`C`,
+ ana:`<p>先通读句意：“（王华）担心别人拿走（金子），就把金子投到水里，坐在那里守着它。”句子由三层意思构成：</p>
+ <table><colgroup><col style="width:26%"><col style="width:34%"><col style="width:40%"></colgroup>
+ <tr><th>断句单位</th><th>句意</th><th>语法提示</th></tr>
+ <tr><td>恐人持去</td><td>担心别人拿走</td><td>“恐”带宾语从句，表心理活动，意思完整</td></tr>
+ <tr><td>以投水中</td><td>把（金子）投进水里</td><td>“以”后省略宾语“之”，是处置办法</td></tr>
+ <tr><td>坐守之</td><td>坐在那里守着它</td><td>“坐”表方式，“之”指金子，是后续行为</td></tr>
+ </table>
+ <p>B 项“以投水中坐”把处置动作和守候姿态黏在一起，“守之”又孤悬句末，读来不成话；A、D 把“持／去”割开，“持去”是一个整体（拿着离开、拿走），不能拆。故选 C。</p>
+ <div class="h">断句方法三步</div>
+ <ul><li>先译句意，凭意义切分（意义断句优先于语法）。</li><li>再看虚词：“以”常领起一个动作，“之”常收束一个动宾。</li><li>最后验读：断完朗读一遍，凡读来“上气不接下气”处，必有误断。</li></ul>`,
+ tags:["文言断句","省略句","句意切分"]
+},
+{n:9, pts:2, type:"翻译题", stem:`用现代汉语翻译下面的句子。<br><span class="quote">日中不至，则是无信；对子骂父，则是无礼。</span>`,
+ ans:`正午时分您没到，就是不讲信用；对着孩子骂他的父亲，就是没有礼貌。`,
+ ana:`<p>这是一处<b>针锋相对的反驳</b>，元方抓住友人“失约”“失礼”两点，一句一断，语气干脆。翻译要守住两个分句的对举结构。</p>
+ <div class="h">重点词逐个落实</div>
+ <table><colgroup><col style="width:18%"><col style="width:30%"><col style="width:52%"></colgroup>
+ <tr><th>词</th><th>释义</th><th>说明</th></tr>
+ <tr><td>日中</td><td>正午</td><td>不能译成“中午的太阳”</td></tr>
+ <tr><td>至</td><td>到达</td><td>“不至”即（您）没有到</td></tr>
+ <tr><td>则</td><td>就</td><td>“则是”构成判断，译为“就是”</td></tr>
+ <tr><td>信</td><td>信用</td><td>“无信”即不讲信用</td></tr>
+ <tr><td>对</td><td>对着、当着</td><td>“对子”是当着孩子的面</td></tr>
+ <tr><td>礼</td><td>礼貌、礼节</td><td>“无礼”即没有礼貌</td></tr>
+ </table>
+ <div class="h">句式与省略</div>
+ <p>“日中不至”承前省略主语，指“您（日中）没有到”；“对子骂父”的主语也是“您”。译文补出“您”，句子才顺。</p>
+ <div class="h">评分要点</div>
+ <p>两个分句各 1 分：关键词“日中”“信”“对”“礼”译对即可得分，句意通顺为隐含要求。常见失分是把“则”译成“那么”，或漏译“对子”而写成“骂他父亲”。</p>`,
+ tags:["文言翻译","判断句","省略句"]
+},
+{n:10, pts:4, type:"简答题", stem:`甲、乙两文都讲述了古代儿童“方正”的故事，结合文本内容说说陈元方和王华的“方正”各体现在什么地方？`,
+ ans:`陈元方：守信知礼，面对父亲友人的怒骂据理反驳、不卑不亢，维护了自己与父亲的尊严。<br>王华：拾金不昧、正直善良，捡到金子后投入水中并守候失主，归还后拒收酬谢。`,
+ ana:`<p>“方正”出自《世说新语·方正》篇，指<b>品行端方、守礼持正、不阿不屈</b>。答题不能空贴标签，必须“<b>品格词 + 文本依据 + 一句分析</b>”，两文各写一层。</p>
+ <div class="h">甲文 · 陈元方</div>
+ <ul>
+  <li><b>抓住友人两处过失</b>——“日中不至”是无信，“对子骂父”是无礼，一句一驳，逻辑清楚，是<b>明辨是非</b>。</li>
+  <li><b>面对怒骂不慌不惧</b>，以七岁之身与长辈对答，语带锋芒而不失礼节，是<b>不卑不亢</b>。</li>
+  <li><b>“入门不顾”</b>——道理已明，便不再纠缠，既维护父亲尊严，也守住自己的体面，是<b>有节</b>。</li>
+ </ul>
+ <div class="h">乙文 · 王华</div>
+ <ul>
+  <li><b>“取视之，数十金也”而不动心</b>，先想到的是失主会回来，是<b>拾金不昧</b>。</li>
+  <li><b>“恐人持去，以投水中，坐守之”</b>——既防他人觊觎，又亲自守候，虑事周全、行事笃实，是<b>诚实负责</b>。</li>
+  <li><b>“以一铤为谢，却不受”</b>——归还财物本无所求，酬谢亦不取，是<b>不贪利、守本心</b>。</li>
+ </ul>
+ <div class="h">答题模板</div>
+ <p>“方正”体现在①（品格）＋文中“（原句）”写他……；②（品格）＋文中“（原句）”写他……。两文分述，各两句即可满分。只写“他很正直”而不引原文，通常只得一半分。</p>`,
+ tags:["文言文内容理解","人物形象","概括分析"]
+},
+{n:11, pts:2, type:"选择题", stem:`下列对这首诗的理解和赏析，<b>不恰当</b>的一项是（　）`,
+ opts:[
+  `前两句中“萧萧”描写雨点纷飞之状，“淅淅”状秋风飒飒之态，于细微处传精神。`,
+  `前两句运用叠词，兼写声与态，视听结合，增强音韵美感。`,
+  `后两句写诗人问雁而雁不能答，使情感表达含蓄深沉。`,
+  `全诗多处运用夸张的修辞手法，极写秋雨之大、溪风之猛。`
+ ], correct:"D", ans:`D`,
+ ana:`<p>D 项错。全诗写的是<b>深秋细雨、溪风微寒</b>，用的是“萧萧”“淅淅”两个<b>叠词摹声</b>，再加“穷秋”“一岸蒲”点染，笔致细腻收敛，并无一处夸张，更没有“极写秋雨之大、溪风之猛”。说“夸张”“极写”，与全诗清冷低回的格调正相反。</p>
+ <p>A. “萧萧”状雨声雨态，“淅淅”状风声，两句于细微处见精神，赏析准确。</p>
+ <p>B. 叠词既摹声又写态，耳听风雨、眼见蒲草，视听交织，音韵回环，正确。</p>
+ <p>C. 末句以问作结，雁不能答，诗人也不追问，情意留在言外，正是“含蓄深沉”，正确。</p>
+ <div class="h">知识点</div>
+ <ul><li>叠词的两种功能：<b>摹声</b>（萧萧、淅淅）与<b>写态</b>（萧萧状雨丝、淅淅状风势），并形成音韵之美。</li><li>绝句末句用问句收束，往往“问而不答”，把情绪推向言外，是常见的含蓄手法。</li></ul>`,
+ tags:["古诗鉴赏","叠词","表现手法"]
+},
+{n:12, pts:3, type:"简答题", stem:`全诗表达了诗人怎样的情感？请结合诗句简要分析。`,
+ ans:`表达了诗人贬官外放、羁旅途中的孤寂失意与深切的思乡之情。<br>前两句以“萧萧”秋雨、“淅淅”溪风、“一岸蒲”渲染凄清萧瑟的环境，暗写心境；后两句托“寒沙新到雁”问讯“来时还下杜陵无”，借雁寄情，把对家乡杜陵（樊川）的思念与漂泊无依的怅惘写得含蓄深沉。`,
+ ana:`<p>解诗先看“人”与“境”：诗题下注“诗人被贬官外放时途经此地”，身份是<b>贬谪之人</b>；时令是“穷秋”，地点是“山路”“溪”畔，处境是<b>羁旅漂泊</b>。情感由此定为“<b>贬谪失意 + 羁旅思乡</b>”两层。</p>
+ <div class="h">逐句落实</div>
+ <table><colgroup><col style="width:26%"><col style="width:34%"><col style="width:40%"></colgroup>
+ <tr><th>诗句</th><th>写了什么</th><th>作用</th></tr>
+ <tr><td>萧萧山路穷秋雨</td><td>山路上秋雨绵绵，“萧萧”摹声，“穷秋”点深秋</td><td>以景起兴，定下凄清基调</td></tr>
+ <tr><td>淅淅溪风一岸蒲</td><td>溪风淅淅，吹动满岸蒲草</td><td>视听交织，愈显空旷冷寂</td></tr>
+ <tr><td>为问寒沙新到雁</td><td>向寒沙上新落的大雁发问</td><td>由景转情，雁是传书之使</td></tr>
+ <tr><td>来时还下杜陵无</td><td>你们来时，可曾落脚我的家乡杜陵</td><td>以问作结，思乡之情尽在言外</td></tr>
+ </table>
+ <div class="h">为什么问雁</div>
+ <p>古人以雁传书，“雁”是故乡与游子之间唯一的信使。诗人不写“我想家”，而问雁“可曾经过杜陵”，把无处安放的乡愁托付给一只路过的大雁；雁不能答，正暗示“归期无望”。这一问，既见思乡之切，也见贬谪之无奈。</p>
+ <div class="h">答题结构</div>
+ <p>情感判断（两层，2 分）＋ 结合诗句分析（前两句景、后两句情，1—2 分）。只写“思念家乡”而不提“贬谪失意”，往往扣分；只抄诗句不作分析，不得分析分。</p>`,
+ tags:["诗歌情感","借景抒情","托物寄情"]
+},
+{n:13, pts:8, type:"默写题", kind:"memo",
+ stem:`吟诵诗文，是与先贤对话，更是为青春赋能。当我们渴望探索自然时，“①________，山岛竦峙”（《观沧海》）唤起我们对山海的向往；当我们思念远方朋友时，“我寄愁心与明月，②________”（《峨眉山月歌》）牵动我们的牵挂；当我们眺望江景时，“潮平两岸阔，③________”（《次北固山下》）拓展我们的视野；当我们品味秋意时，“④________，小桥流水人家”（《天净沙·秋思》）触动我们的情思；当我们思考学习之道时，“⑤________，思而不学则殆”（《〈论语〉十二章》）启迪我们的智慧；当我们面对别人的优缺点时，“⑥________，⑦________”（《〈论语〉十二章》）参照别人完善自己；当别人不理解我们时，“⑧________，不亦君子乎”（《〈论语〉十二章》）告诉我们要正确对待别人的不理解。`,
+ rows:[
+  ["①","________，山岛竦峙","水何澹澹","《观沧海》曹操"],
+  ["②","我寄愁心与明月，________","随君直到夜郎西","原卷标注《峨眉山月歌》，实出《闻王昌龄左迁龙标遥有此寄》"],
+  ["③","潮平两岸阔，________","风正一帆悬","《次北固山下》王湾"],
+  ["④","________，小桥流水人家","枯藤老树昏鸦","《天净沙·秋思》马致远"],
+  ["⑤","________，思而不学则殆","学而不思则罔","《〈论语〉十二章》"],
+  ["⑥","________，⑦________（参照别人完善自己）","择其善者而从之；其不善者而改之","《〈论语〉十二章》"],
+  ["⑧","________，不亦君子乎","人不知而不愠","《〈论语〉十二章》"]
+ ],
+ ans:`①水何澹澹　②随君直到夜郎西　③风正一帆悬　④枯藤老树昏鸦　⑤学而不思则罔　⑥择其善者而从之　⑦其不善者而改之　⑧人不知而不愠`,
+ ana:`<p>八空全是七年级上册的“硬核默写”，考查的不是记忆量，而是<b>易错字</b>与<b>前后句的对应关系</b>。</p>
+ <div class="h">逐空提示</div>
+ <table><colgroup><col style="width:10%"><col style="width:34%"><col style="width:30%"><col style="width:26%"></colgroup>
+ <tr><th>空</th><th>答案</th><th>易错字</th><th>记忆抓手</th></tr>
+ <tr><td>①</td><td>水何澹澹</td><td>澹（不是“淡”）</td><td>“澹澹”写水波荡漾，氵旁不可少</td></tr>
+ <tr><td>②</td><td>随君直到夜郎西</td><td>郎（不是“朗”）</td><td>“夜郎”是地名，与“朗”无关</td></tr>
+ <tr><td>③</td><td>风正一帆悬</td><td>悬</td><td>“潮平”对“风正”，“两岸阔”对“一帆悬”</td></tr>
+ <tr><td>④</td><td>枯藤老树昏鸦</td><td>藤（艹头）、鸦</td><td>“枯藤—老树—昏鸦”三意象叠加</td></tr>
+ <tr><td>⑤</td><td>学而不思则罔</td><td>罔（不是“惘”）</td><td>“罔”意为迷惑无所得</td></tr>
+ <tr><td>⑥⑦</td><td>择其善者而从之，其不善者而改之</td><td>“其”两处都不能漏</td><td>两句结构对称，一“从”一“改”</td></tr>
+ <tr><td>⑧</td><td>人不知而不愠</td><td>愠（忄旁，不读 wēn）</td><td>“愠”即恼怒</td></tr>
+ </table>
+ <div class="h">校勘提示</div>
+ <p>②处原卷标示出处为《峨眉山月歌》，而“我寄愁心与明月，随君直到夜郎西”实出李白《闻王昌龄左迁龙标遥有此寄》。此处仅影响“出处”标注，不影响所填诗句。详见文末“校勘记”。</p>
+ <div class="h">失分提醒</div>
+ <p>默写按空给分，写错一个字该空即不得分。最常错的是“澹”“罔”“愠”“藤”四字，都是形近或音近字，抄写时要“<b>看偏旁、想字义</b>”。</p>`,
+ tags:["古诗文默写","易错字","七上必背"]
+},
+{n:14, pts:3, type:"名著阅读", kind:"names",
+ stem:`班刊“研经典”栏目登载了《朝花夕拾》主题阅读任务单，意在引领学生从经典中汲取成长养料，请你闻声识人填一填。`,
+ quotes:[
+  ["A","她穿着新的蓝布衫回来了，一见面，就将一包书递给我，高兴地说道：“哥儿，有画的‘三哼经’，我给你买来了！”","阿长（长妈妈）","《阿长与〈山海经〉》"],
+  ["B","（他）仍用了极有抑扬的声调对我说道：“我因为听说中国人是很敬重鬼的，所以很担心，怕你不肯解剖尸体……”","藤野先生","《藤野先生》"],
+  ["C","“杀的杀掉了，死的死掉了，还发什么屁电报呢。”这是一个高大身材，长头发，眼球白多黑少的人，看人总像在渺视。","范爱农","《范爱农》"]
+ ],
+ ans:`A. 阿长（长妈妈）　B. 藤野先生　C. 范爱农`,
+ ana:`<p>三则材料都抓住了人物的“<b>标志性细节</b>”——一句话、一个称谓、一副相貌。这正是《朝花夕拾》写人的高明处：不靠长篇介绍，靠细节立人。</p>
+ <div class="h">逐则对应</div>
+ <table><colgroup><col style="width:8%"><col style="width:30%"><col style="width:18%"><col style="width:44%"></colgroup>
+ <tr><th>选项</th><th>关键细节</th><th>人物</th><th>辨识依据</th></tr>
+ <tr><td>A</td><td>蓝布衫、“哥儿”、“三哼经”</td><td>阿长</td><td>“三哼经”是阿长把《山海经》念成的音；她一个不识字的下层妇女，却记着“我”心心念念的书，请假回家还买了回来。这一声“哥儿”，是全文最暖的一笔。</td></tr>
+ <tr><td>B</td><td>“极有抑扬的声调”、担心“不肯解剖尸体”</td><td>藤野先生</td><td>日本仙台医专的解剖学教师藤野严九郎。他担心中国学生因敬重鬼神而不肯解剖，故特意关心——这是超越国界的师者之心。</td></tr>
+ <tr><td>C</td><td>“眼球白多黑少”“看人总像在渺视”、骂电报</td><td>范爱农</td><td>鲁迅笔下的范爱农，耿直孤傲、不合流俗，“白多黑少”正是他冷眼看世的神态。辛亥革命后他一度振奋，终又落魄。</td></tr>
+ </table>
+ <div class="h">备考延伸</div>
+ <p>《朝花夕拾》十篇中，常考人物还有：寿镜吾（《从百草园到三味书屋》）、衍太太（《琐记》《父亲的病》）、陈莲河（《父亲的病》）、无常（《无常》）。识人题的解法就是“<b>找细节 → 归篇目 → 定人物</b>”。</p>`,
+ tags:["名著阅读","《朝花夕拾》","人物辨识"]
+},
+{n:15, pts:2, type:"语言运用", stem:`班级要开展“我的英雄梦”主题演讲会，请你为演讲会设计一段开场白，50字左右，至少使用一种修辞。<br><span style="color:var(--ink-3);font-size:13.5px">亲爱的同学们，大家好！_________________________________________________</span>`,
+ ans:`示例：英雄是暗夜里的灯，是寒冬里的火。今天，让我们把心中的英雄梦点亮，一起讲述属于我们的追梦故事！`,
+ ana:`<p>开场白有三个固定动作：<b>称呼问候 → 点明主题 → 引出活动</b>。题干已给出“亲爱的同学们，大家好！”，续写部分只需完成后两步，50 字左右，至少一种修辞。</p>
+ <div class="h">示例拆解</div>
+ <table><colgroup><col style="width:34%"><col style="width:66%"></colgroup>
+ <tr><th>成分</th><th>文字</th></tr>
+ <tr><td>比喻（修辞）</td><td>英雄是暗夜里的灯，是寒冬里的火。</td></tr>
+ <tr><td>点题</td><td>让我们把心中的英雄梦点亮</td></tr>
+ <tr><td>引出活动</td><td>一起讲述属于我们的追梦故事</td></tr>
+ </table>
+ <div class="h">其他可选句式</div>
+ <ul><li>排比：英雄是危难时挺身而出的身影，是平凡中默默坚守的执着，是我们心中不灭的光。</li><li>设问：什么样的人称得上英雄？答案，或许就藏在我们今天的讲述里。</li><li>引用： “江山代有才人出”，每个时代都有自己的英雄。今天，我们来讲讲心中的英雄梦。</li></ul>
+ <div class="h">评分要点</div>
+ <p>称呼得体、主题明确各占基础分；修辞恰当、语言有感染力是加分点。常见失分：只喊口号不点主题，或超字数太多（应控制在 45—60 字）。</p>`,
+ tags:["语言运用","开场白","修辞"]
+},
+{n:16, pts:3, type:"填空题", kind:"chain",
+ stem:`梳理文章内容，根据提示在横线上填写一个合适的动词。`,
+ chain:["种植甜瓜","移进大棚","①","移出大棚","②","品尝甜瓜"],
+ ans:`① 照料（管理、救治、打理）　② 收获（采摘、采收、摘下）`,
+ ana:`<p>这是一道“<b>行文脉络 + 动词填空</b>”题。链条的每一环都对应原文的一个段落，找到段落，动词自然浮出。</p>
+ <div class="h">段落与环节对照</div>
+ <table><colgroup><col style="width:26%"><col style="width:30%"><col style="width:44%"></colgroup>
+ <tr><th>链条环节</th><th>对应段落</th><th>依据</th></tr>
+ <tr><td>种植甜瓜</td><td>①</td><td>“每年春天，母亲都会种一棚甜瓜”</td></tr>
+ <tr><td>移进大棚</td><td>②</td><td>“我还是把这棵甜瓜苗移进了大棚里”</td></tr>
+ <tr><td><b>① 照料</b></td><td>③④</td><td>提水、喷生长素、请亲戚开偏方、灌生根肥——全是在“治”“管”“养”</td></tr>
+ <tr><td>移出大棚</td><td>⑤</td><td>“只好把它种在棚外一个向阳的地方”</td></tr>
+ <tr><td><b>② 收获</b></td><td>⑥⑦</td><td>“采摘结束后”“把整棵瓜都拔了起来”，随后发现并摘下甜瓜</td></tr>
+ <tr><td>品尝甜瓜</td><td>⑦</td><td>“吃起来更是甘甜多汁”</td></tr>
+ </table>
+ <div class="h">为什么是这两个动词</div>
+ <p>填动词要过两关：<b>搭配</b>（动词 + 甜瓜）与<b>阶段</b>（在链条中的位置）。①处在“移进大棚”之后、“移出大棚”之前，正是精心侍弄的阶段，“照料”“救治”都贴切；②处在“移出大棚”之后、“品尝”之前，是把瓜取下来的动作，“收获”“采摘”最准。</p>
+ <div class="h">评分</div>
+ <p>每空 1.5 分，意思对即可。“浇水”“施肥”“拔起”“摘下”一类具体动作，只要合于阶段与搭配，同样给分；填“看”“想”等与“甜瓜”搭配不当的动词不得分。</p>`,
+ tags:["行文脉络","动词填空","信息梳理"]
+},
+{n:17, pts:3, type:"朗读设计题",
+ stem:`朗读下面这句话，你会把重音落在哪些词语上？请选择两处朗读重音，并联系上下文说明理由。`,
+ quote:`亲戚们来了一波又一波，他们给这棵甜瓜苗开了很多治疗偏方，还拿来了不少甜瓜的特效药。`,
+ ans:`重音可落在“一波又一波”“很多”“不少”（也可落在“偏方”“特效药”）。<br>理由：这些词写亲戚来得频繁、办法出得之多，越是写得热闹尽心，越与下文“什么效果都没有”形成反差，突出这棵苗病得重、众人束手无策，也为后文“被放弃却结出甜瓜”蓄势。`,
+ ana:`<p>重音不是“声音大”，而是<b>语义重心</b>所在。判断重音，先问“这句话想说清什么”。</p>
+ <div class="h">三层意思，三个重心</div>
+ <ul>
+  <li>“<b>一波又一波</b>”——写<b>频率</b>：亲戚来了一趟又一趟，热心之切。</li>
+  <li>“<b>很多</b>”“<b>不少</b>”——写<b>数量</b>：偏方多、特效药多，办法想到头了。</li>
+  <li>若把重音放在“<b>偏方</b>”“<b>特效药</b>”，则突出“连特效药都试过”，同样成立。</li>
+ </ul>
+ <div class="h">为什么要这样读</div>
+ <p>这句话在结构上是<b>“用力”的一端</b>：来的人多、办法多、药多；紧接的一句却是“经过我们的多次实验，什么效果都没有”——<b>用力越足，落空越重</b>。重音落在那几个数量词上，才能把这份“白忙一场”的无奈读出来，也才能让后文那棵被拔起的瓜苗结出甜瓜时，反差更有力量。</p>
+ <div class="h">朗读处理建议</div>
+ <p>“一波又一波”可稍快、连读；“很多”“不少”可稍顿、加重；全句语速中等偏快，语气是“忙着想办法”的急切，句末“特效药”略降，透出一点无计可施。</p>
+ <div class="h">评分</div>
+ <p>指出两处重音（1 分）＋结合语境说明理由（2 分）。只说“强调”而不联系“下文没有效果”的反差，通常只得一半。</p>`,
+ tags:["朗读设计","重音","语境分析"]
+},
+{n:18, pts:3, type:"简答题", stem:`结合文章内容，谈谈《低头的甜瓜》这一标题的妙处。`,
+ ans:`①点明写作对象，全文围绕一棵“低着头”的甜瓜展开，是贯穿全文的线索；②“低头”一语双关，既写瓜苗的姿态，又喻人在困境中谦卑蓄力、不事张扬；③设置悬念，引人追问“低头的瓜为何值得写”；④暗含主旨——低头并不狼狈，而是勇往直前的开始，终会结出最美的果实。`,
+ ana:`<p>标题妙处题有固定的四个观察角度：<b>内容（对象）／结构（线索）／手法（双关、悬念）／主旨（点睛）</b>。四点各一，答题时每点都要带上文本依据。</p>
+ <div class="h">四点落实</div>
+ <table><colgroup><col style="width:20%"><col style="width:80%"></colgroup>
+ <tr><th>角度</th><th>具体分析</th></tr>
+ <tr><td>内容</td><td>标题即写作对象。“细弱瘦小”“一直卷着叶子低着头”是这棵瓜苗的写照，全文因它而起。</td></tr>
+ <tr><td>结构</td><td>“低头”贯穿全篇：发现低头→治低头→放弃低头→低头者结果，一线到底，是叙事线索。</td></tr>
+ <tr><td>手法</td><td>“低头”双关：实指瓜苗姿态，虚指人在逆境中的姿态——收敛、蓄力、不张扬。标题还制造悬念：低头的瓜，凭什么值得写？</td></tr>
+ <tr><td>主旨</td><td>结尾点破：“低头并不是狼狈不堪，也不代表丢盔弃甲，反而是勇往直前的开始。”标题正是主旨的浓缩。</td></tr>
+ </table>
+ <div class="h">答题模板</div>
+ <p>“标题妙在：①（内容上）……；②（结构上）……；③（手法上）……；④（主旨上）……。”四点不必平均用力，<b>双关与主旨两点最能得分</b>，务必写透。</p>`,
+ tags:["标题作用","双关","线索"]
+},
+{n:19, pts:2, type:"选择题", stem:`下列对文章内容的理解，<b>不正确</b>的一项是（　）`,
+ opts:[
+  `遇到小宋师傅后，他的行为和表现使“我”的心理发生了一系列变化。`,
+  `小宋师傅加入爱心团队后，在理发包上写“志愿服务”，体现他对公益的认同。`,
+  `文章以小见大，巧用欲抑先扬的手法叙事，使文章具有感染力。`,
+  `开头描写小宋“小众”的外貌，结尾却说“小宋师傅有点帅”，突出小宋师傅的人格魅力。`
+ ], correct:"C", ans:`C`,
+ ana:`<p>C 项把手法说<b>反</b>了。文章开头写小宋“身体瘦削，脸庞窄尖，头发偏黄”“头顶扎一撮头发”“实在是有点小众”，并直言“我总以为这样的人不好打交道”——这是<b>先抑</b>；后文写他落泪、买饼干、留钱、耐心哄劝、连续三天参加，形象一步步抬高，结尾“忽然觉得这位小宋师傅有点帅”——这是<b>后扬</b>。所以是<b>欲扬先抑</b>，不是“欲抑先扬”。</p>
+ <p>A. “诧异—不以为然—印象改观—敬重”，心理线索清晰，正确。</p>
+ <p>B. 在理发包上写“志愿服务”，是他对“纯义务、无报酬”的认同与自我提醒，正确。</p>
+ <p>D. 首尾的“小众”与“有点帅”形成对照，落点在人格魅力，正确。</p>
+ <div class="h">知识点：欲扬先抑</div>
+ <ul><li>“抑”是铺垫，“扬”是目的；抑得越自然，扬得越有力。</li><li>判断“欲扬先抑”还是“欲抑先扬”，只需看<b>最终落点</b>：作者最后让读者喜欢、敬重这个人，就是欲扬先抑。</li></ul>`,
+ tags:["内容理解","欲扬先抑","表现手法"]
+},
+{n:20, pts:3, type:"赏析题",
+ stem:`品析下面的句子，按要求作答。`,
+ quote:`也许她也知道自己变模样了，脸上开出了一朵花，很享受的样子。（从修辞手法的角度赏析）`,
+ ans:`运用比喻（暗喻），把智障者理发后绽开的笑容比作“开出的一朵花”。化抽象为具体，生动写出她内心的欢喜、羞涩与满足；“开出”又与上文的“梳理、剪发、洗头”“人一下子精神了”相呼应，写出理发带来的改变，侧面表现小宋师傅的耐心与爱心让她重获尊严。`,
+ ana:`<p>赏析句子三步走：<b>判定手法 → 说出写出了什么 → 落到人物或主旨</b>。本题已限定“修辞手法”，第一步必须点明“比喻”。</p>
+ <div class="h">第一步：手法判定</div>
+ <p>“脸上开出<b>一朵花</b>”——脸不会开花，笑才像花。本体是“她绽开的笑容”，喻体是“一朵花”，中间没有“像”“仿佛”，是<b>暗喻（隐喻）</b>。</p>
+ <div class="h">第二步：效果分析</div>
+ <ul>
+  <li><b>化抽象为具体</b>：笑容本难描摹，“一朵花”让读者看见了那份舒展、明丽。</li>
+  <li><b>写出心理层次</b>：“也许她也知道自己变模样了”是<b>羞涩</b>，“很享受的样子”是<b>满足</b>，一朵花的“开”，正含着这份由内而外的舒展。</li>
+  <li><b>呼应前文</b>：前文写她“头发乱得像鸟窝”“不配合”“头一直晃动”“呆模样”，此处“开出花”，前后判若两人。</li>
+ </ul>
+ <div class="h">第三步：落到人物与主旨</div>
+ <p>花是别人替她开的——小宋“不急”“耐心哄劝”“轻轻地梳理、剪发、洗头”。写她的笑，其实是<b>侧面写他的手</b>：一个被忽视的智障者，在他手里重新有了体面与尊严。这也是全文“平凡人的善意”这一主旨的一次具体显影。</p>
+ <div class="h">常见失分</div>
+ <p class="bad">只写“运用比喻，生动形象”——没有点出“写出了什么”，等于没答。比喻题必须写出<b>相似点</b>与<b>表达效果</b>两层。</p>`,
+ tags:["句子赏析","比喻","侧面描写"]
+},
+{n:21, pts:4, type:"简答题", stem:`小宋师傅是一个怎样的人？请结合具体内容简要分析。`,
+ ans:`①热心公益、无私奉献：义务理发、不要报酬，在理发包上写“志愿服务”，连续 3 天参加活动。<br>②善良体贴、富有同情心：为孤寡脑瘫患者落泪，自买饼干面包并留下 100 元。<br>③耐心细致、手艺精湛：哄劝不配合的女智障者，梳理、剪发、洗头一丝不苟。<br>④朴实诚信、不图名利：拒收酬谢，承诺 70 岁以上老人理发免费。<br>⑤自强自立、有担当：单亲爸爸，独自将一双儿女抚养成人、成家。`,
+ ana:`<p>人物形象题的关键是“<b>品质词 + 具体事例</b>”一一对应，不能只贴标签。全文写小宋的材料可分五组，正好对应五种品质。</p>
+ <div class="h">材料与品质对照</div>
+ <table><colgroup><col style="width:40%"><col style="width:60%"></colgroup>
+ <tr><th>原文材料</th><th>人物品质</th></tr>
+ <tr><td>“我们做公益活动是纯义务……没有报酬，他也没有犹豫”；理发包上写“志愿服务”；连续 3 天的活动“天天参加”</td><td><b>热心公益、无私奉献</b></td></tr>
+ <tr><td>听说脑瘫患者父母双亡、孤身一人，“眼窝竟涌出了泪花”；理完发跑去买饼干面包，“临走还留下100元钱”</td><td><b>善良体贴、富有同情心</b></td></tr>
+ <tr><td>女智障者“头发乱得像鸟窝”“头一直晃动”，他“不急”“耐心地哄劝”“轻轻地……梳理、剪发、洗头”</td><td><b>耐心细致、手艺精湛</b></td></tr>
+ <tr><td>做公益分文不取，上门服务不谈钱，还向西街村承诺“70岁以上老人理发一律免费”，村委会因此送来锦旗</td><td><b>朴实诚信、不图名利</b></td></tr>
+ <tr><td>“单亲爸爸，经济并不宽裕，一个人将一双儿女抚养大，又给他们成了家”</td><td><b>自强自立、有担当</b></td></tr>
+ </table>
+ <div class="h">答题建议</div>
+ <p>四点即可满分，宁可“四点写透”，不要“六点蜻蜓点水”。每条按“<b>他是一个……的人。文中他……（事例），可见……</b>”的句式写，条理最清楚。</p>
+ <div class="h">易错</div>
+ <p class="bad">把“我”的感受当作小宋的品质（如“他让我很感动”）；或只抄原文不提炼品质词。</p>`,
+ tags:["人物形象","概括分析","文本依据"]
+},
+{n:22, pts:2, type:"简答题", stem:`第⑩段提到“一个人偶尔做件好事并不难，难的是经常做、处处做。”结合全文，谈谈你对这句话的理解。`,
+ ans:`偶发的善举只需要一时热心，长期坚持、处处随手的善行才真正显出品格。小宋多年随团队下乡，为孤寡老人、残疾人服务，连续 3 天参加活动，又承诺为 70 岁以上老人免费理发，正是“经常做、处处做”的写照。这句话在第④段与第⑩段两次出现，前后照应，由“我”的观感升华为全文主旨，赞颂平凡人持久而具体的善意。`,
+ ana:`<p>句子理解题答四层：<b>表层含义 → 深层含义 → 结构作用 → 主旨关联</b>。</p>
+ <div class="h">四层拆解</div>
+ <table><colgroup><col style="width:22%"><col style="width:78%"></colgroup>
+ <tr><th>层次</th><th>内容</th></tr>
+ <tr><td>表层</td><td>“偶尔”与“经常、处处”对举：做一件好事容易，一直做、到处做很难。</td></tr>
+ <tr><td>深层</td><td>“偶尔”靠的是冲动与场合，“经常、处处”靠的是<b>品性</b>。善不是表演，而是习惯。</td></tr>
+ <tr><td>结构</td><td>第④段首次出现，是“我”的<b>怀疑</b>（“保不齐他就是那个‘偶尔’”）；第⑩段再次出现，是“我”的<b>确认与敬佩</b>。同一句话前后翻转，构成全文的情感弧线。</td></tr>
+ <tr><td>主旨</td><td>以小宋这一平凡人为例，赞颂不张扬、不间断的善意——它比一时的壮举更难得，也更能改变他人的处境。</td></tr>
+ </table>
+ <div class="h">必须“结合全文”</div>
+ <p>题干要求结合全文，就要举出“经常、处处”的实证：随团队下乡多次、连续 3 天参加、为脑瘫患者留钱、为 70 岁以上老人免费——这些是“经常做、处处做”的具体注脚，缺了它们，答案就空了。</p>`,
+ tags:["句子含义","反复照应","主旨理解"]
+},
+{n:23, pts:40, type:"写作", kind:"write",
+ stem:`阅读下面文字，按要求作文。<br><span class="quote" style="text-indent:0">翻开语文课本，那些隽永的画面触动了我们的心灵：我们跟着朱自清的《春》欣赏春日盛景；在《秋天的怀念》里体会深沉母爱；从《再塑生命的人》中看见陪伴与希望。文字里动人的画面，在现实中也时常出现。总有一幕景象，刹那间触动我们的心灵，留在记忆中。</span>请以《触动我心灵的一幕》为题，写一篇记叙文。<br><span style="font-size:14px;color:var(--ink-2)">要求：（1）内容具体，中心突出，语句流畅，写出真情实感；（2）文中不得出现真实的人名、校名、地名；（3）字数在600字以上。</span>`,
+ ans:`写作指导：抓住“一幕”的瞬间性，用细节与心理变化写出“触动”，以小见大。`,
+ ana:`<p>这道题的限制在<b>两个词</b>上：“<b>一幕</b>”与“<b>触动</b>”。写偏一个，分数就下来。</p>
+ <div class="h">一、审题：三个关键</div>
+ <table><colgroup><col style="width:18%"><col style="width:82%"></colgroup>
+ <tr><th>关键词</th><th>要求</th></tr>
+ <tr><td>一幕</td><td>一个<b>具体、短暂、可定格</b>的场景（几秒到几分钟），不是一天的经历、不是一段故事的全过程。要能让读者“看见画面”。</td></tr>
+ <tr><td>触动</td><td>必须有<b>情感冲击</b>与<b>心理变化</b>：由不解到理解、由漠然到感动、由烦躁到愧疚。没有“我”的变化，就没有“触动”。</td></tr>
+ <tr><td>记叙文</td><td>以叙述、描写为主，议论抒情只在结尾点睛，不能写成议论文或抒情散文。</td></tr>
+ </table>
+ <div class="h">二、选材：五个方向</div>
+ <ul>
+  <li><b>亲情</b>：父亲深夜蹲在门口修书包带；母亲把伞一路偏向“我”那侧；奶奶择菜时那双手。</li>
+  <li><b>校园</b>：老师弯腰捡起半截粉笔头；同学默默把摔倒的人扶起又走开。</li>
+  <li><b>陌生人的善意</b>：外卖员绕了两条街送回遗落的作业本；路口有人扶住将要跌倒的老人。</li>
+  <li><b>平凡劳动者</b>：清洁工天没亮扫落叶的背影；修鞋匠低头穿针的专注。</li>
+  <li><b>生命与自然</b>：石缝里钻出的一株草；雨停后蜗牛爬过水洼。</li>
+ </ul>
+ <div class="h">三、结构：五段式（约 700 字）</div>
+ <table><colgroup><col style="width:14%"><col style="width:56%"><col style="width:30%"></colgroup>
+ <tr><th>段落</th><th>写什么</th><th>字数</th></tr>
+ <tr><td>①</td><td>倒叙定格：先写那一幕的结果或一个特写镜头，制造悬念</td><td>80</td></tr>
+ <tr><td>②</td><td>场景还原：时间、地点、人物、当时的“我”在做什么、心情如何</td><td>150</td></tr>
+ <tr><td>③</td><td>慢镜头：把那个瞬间拆成动作、神态、声音、光线，逐笔细写</td><td>260</td></tr>
+ <tr><td>④</td><td>心灵触动：心理描写，写出“我”的震动与转变</td><td>120</td></tr>
+ <tr><td>⑤</td><td>收束升华：回到画面，一两句点题，不空喊口号</td><td>90</td></tr>
+ </table>
+ <div class="h">四、技法：让“一幕”立起来</div>
+ <ul>
+  <li><b>慢镜头</b>：把两三秒拆开写——“她的手停在半空，指节发白，又慢慢松开”。</li>
+  <li><b>五感</b>：声音（雨打铁皮棚）、气味（消毒水混着饭菜香）、触感（冰凉的手背）、光线（走廊尽头的灯）。</li>
+  <li><b>以小见大</b>：不写惊天动地，写一个动作、一个眼神、一句没说出口的话。</li>
+  <li><b>欲扬先抑</b>：先写“我”的轻视、不耐烦，再写被触动——本卷第19题考的正是这个手法，可现学现用。</li>
+ </ul>
+ <div class="h">五、避坑清单</div>
+ <ul>
+  <li class="bad">写成“一天发生的事”流水账——没有“一幕”，只有“一天”。</li>
+  <li class="bad">结尾大段议论、堆名言——议论超过三句就抢了记叙的戏。</li>
+  <li class="bad">出现真实校名、人名、地名——按题意直接扣分。</li>
+  <li class="bad">不足 600 字，或开头铺陈过长（三段还没进入“那一幕”）。</li>
+ </ul>
+ <div class="h">六、评分参考</div>
+ <table><colgroup><col style="width:26%"><col style="width:44%"><col style="width:30%"></colgroup>
+ <tr><th>项目</th><th>要求</th><th>分值</th></tr>
+ <tr><td>内容</td><td>切题、具体、有真情实感，中心突出</td><td>20</td></tr>
+ <tr><td>表达</td><td>描写细致、结构完整、语言通顺</td><td>15</td></tr>
+ <tr><td>卷面</td><td>书写工整、标点规范、字数达标</td><td>5</td></tr>
+ </table>
+ <div class="h">七、一个可用的开头</div>
+ <p>“那天的风很大，卷着梧桐叶贴在玻璃上，一下，又一下。我隔着教室的窗，看见父亲蹲在传达室门口，正把什么东西往怀里塞——那一幕，我至今没敢忘。”</p>`,
+ tags:["命题作文","记叙文","细节描写"]
+},
+
+];
+
+/* ===== 版面结构 ===== */
+const BLOCKS = [
+{id:"sec-1", title:"一、基础积累", sub:"12 分｜第 1—6 题，每题 2 分", note:"六道小题依次考查字音、字形、成语、病句、标点与文化常识，全部取材于七年级上册的字词与课文，是开学阶段的“回望式”检测。", items:[{q:1},{q:2},{q:3},{q:4},{q:5},{q:6}]},
+{id:"sec-2", title:"二、古诗文积累与阅读", sub:"23 分｜第 7—13 题", note:"文言文 10 分（甲文《陈太丘与友期行》、乙文《王华六岁》），古诗 5 分（杜牧《秋浦途中》），默写 8 分。甲乙两文同写古代儿童的“方正”，是比较阅读的设计。", items:[{mat:"jia"},{mat:"yi"},{q:7},{q:8},{q:9},{q:10},{mat:"shi"},{q:11},{q:12},{q:13}]},
+{id:"sec-3", title:"三、名著和语言运用", sub:"5 分｜第 14—15 题", note:"名著题以三则引文考查《朝花夕拾》的人物辨识；语言运用题要求写一段带修辞的演讲开场白。", items:[{q:14},{q:15}]},
+{id:"sec-4", title:"四、现代文阅读", sub:"20 分｜第 16—22 题", note:"两篇散文：《低头的甜瓜》9 分，考脉络、朗读与标题；《理发师小宋》11 分，考理解、赏析、人物与主旨句。两文都写“平凡事物／平凡人”，形成呼应。", items:[{mat:"tg"},{q:16},{q:17},{q:18},{mat:"xs"},{q:19},{q:20},{q:21},{q:22}]},
+{id:"sec-5", title:"五、写作", sub:"40 分｜第 23 题", note:"命题作文《触动我心灵的一幕》，限定记叙文、600 字以上，重点在“一幕”的瞬间性与“触动”的心理变化。", items:[{q:23}]}
+];
+
+/* ===== 校勘记 ===== */
+const CORRECTIONS = [
+ {t:"第 13 题 ② 处出处标注", d:`原卷标为“（《峨眉山月歌》）”，而“我寄愁心与明月，随君直到夜郎西”实出李白《闻王昌龄左迁龙标遥有此寄》。公开的同卷解析版本此处即作《闻王昌龄左迁龙标遥有此寄》。本页保留原卷字面，并在解析中标注，作答不受影响（填句仍为“随君直到夜郎西”）。`},
+ {t:"乙文“以一铤为谢”的字形", d:`原卷扫描字迹近于“锭”，古文多写作“铤”（量词，用于金银），二者相通。本页从“铤”，与同卷解析一致；答题时释为“一锭（块）金子”即可。`},
+ {t:"第 7 题 C 项的指代", d:`原卷 C 项为“其：代词，指前来濯足的醉客”，与文意相合；本题答案仍为 B（“顾”应释为“回头看”）。若见“指王华”的版本，属讹传，勿据以改答。`},
+ {t:"《低头的甜瓜》个别字词", d:`该文原刊《邵阳晚报》，原报第⑥段有“与我而言”，规范写法为“于我而言”；本页按规范字呈现。全卷其余文字均依扫描件校读。`}
+];
+
+
+/* ===== 工具函数 ===== */
+const $ = (s, r) => (r || document).querySelector(s);
+const $$ = (s, r) => Array.prototype.slice.call((r || document).querySelectorAll(s));
+const mk = html => { const t = document.createElement("template"); t.innerHTML = String(html).trim(); return t.content.firstElementChild; };
+const pad = n => (n < 10 ? "0" + n : "" + n);
+const SHORT = {1:"D",2:"B",3:"C",4:"C",5:"C",6:"B",7:"B",8:"C",9:"翻译",10:"简答",11:"D",12:"情感",13:"默写",14:"阿长等3人",15:"开场白",16:"照料·收获",17:"重音",18:"标题",19:"C",20:"比喻",21:"形象",22:"主旨",23:"作文"};
+const TOTAL = QS.length;
+
+/* ===== 侧栏 / 抽屉内容 ===== */
+function navHTML(){
+ let s = `<p class="side-label">目 录</p>`;
+ BLOCKS.forEach(b=>{
+  const qn = b.items.filter(i=>i.q).map(i=>i.q);
+  if(!qn.length) return;
+  s += `<div class="nav-group"><div class="nav-group-title">${b.title}<span>${qn.length} 题</span></div>
+   <div class="nav-nums">${qn.map(n=>`<button class="n" data-jump="${n}">${n}</button>`).join("")}</div></div>`;
+ });
+ return s;
+}
+function toolsHTML(){
+ return `<div class="tools">
+  <button class="tool-btn" data-act="expand">全部展开解析</button>
+  <button class="tool-btn" data-act="collapse">全部收起解析</button>
+  <div class="tool"><span class="tool-label">重点高亮</span><button class="switch" data-act="hl" aria-label="重点高亮"><i></i></button></div>
+  <button class="tool-btn" data-act="reset">重置自测记录</button>
+  <div class="score" data-score>已答 0 题　正确 0 题</div>
+ </div>`;
+}
+
+/* ===== 材料 ===== */
+function matEl(m){
+ const notesHTML = (m.notes && m.notes.length)
+   ? `<div class="notes">${m.notes.map(n=>`<p style="margin:0 0 .35em;text-indent:0">${n}</p>`).join("")}</div>` : "";
+ const paras = m.paras.map(p => m.kind === "poem" ? `<p class="poem">${p}</p>` : `<p>${p}</p>`).join("");
+ const trans = m.trans ? `<div class="mat-actions"><button class="mini" data-trans type="button">显示白话译文</button></div>
+   <div class="trans"><div><div class="trans-inner">${m.trans}</div></div></div>` : "";
+ const node = mk(`<article class="material" id="mat-${m.tag}">
+   <div class="mat-head"><h3>${m.title}</h3><span class="src">${m.src}</span></div>
+   <div class="mat-body">${paras}</div>${notesHTML}${trans}</article>`);
+ if(m.trans){
+  const btn = $("[data-trans]", node), box = $(".trans", node);
+  btn.addEventListener("click", ()=>{
+   const on = box.classList.toggle("open");
+   btn.classList.toggle("on", on);
+   btn.textContent = on ? "收起译文" : "显示白话译文";
+  });
+ }
+ return node;
+}
+
+/* ===== 题目 ===== */
+function qEl(q){
+ const chain = q.chain ? `<div class="chain">${q.chain.map(s=> /^[①②③]/.test(s) ? `<span class="blank">${s}</span>` : `<span class="step">${s}</span>`).join('<span class="arrow">→</span>')}</div>` : "";
+ const opts = q.opts ? `<div class="opts">${q.opts.map((o,i)=>{
+   const k = "ABCD"[i];
+   return `<button class="opt" type="button" data-k="${k}"><span class="k">${k}</span><span class="tx">${o}</span><span class="mark"></span></button>`;
+  }).join("")}</div>` : "";
+ const quote = q.quote ? `<blockquote class="quote">${q.quote}</blockquote>` : "";
+ const names = q.quotes ? `<div class="names">${q.quotes.map(it=>`<div class="nitem"><span class="nlab">${it[0]}</span><p class="ntext">${it[1]}</p><p class="nsrc">《${it[3].replace(/(《|》)/g,"")}》</p></div>`).join("")}</div>` : "";
+ const qtype = q.kind === "write" ? "写作" : q.type;
+ const plain = q.ans.replace(/<[^>]+>/g, "");
+ const short = plain.length <= 26;
+
+ const card = mk(`<article class="question" id="q${q.n}" data-n="${q.n}" data-pts="${q.pts}">
+  <div class="q-head">
+   <div class="q-no">${pad(q.n)}</div>
+   <div class="q-meta"><div class="q-type">${qtype}　·　${q.pts} 分</div><h3 class="q-stem">${q.stem}</h3></div>
+  </div>
+  <div class="q-body">${opts}${quote}${names}${chain}
+   <div class="answer">
+    <div class="ans-line"><span class="tag">答案</span><span class="ans-text${short ? " veiled" : ""}" title="点击查看答案">${q.ans}</span><button class="reveal" type="button">解析 <span class="ar">▼</span></button></div>
+    <div class="ana"><div><div class="ana-in">${q.ana}</div>
+     <div class="tags">${(q.tags||[]).map(t=>`<span class="tag-k">${t}</span>`).join("")}</div></div></div>
+   </div>
+  </div></article>`);
+
+ /* 答案虚化：点击显形 */
+ const ans = $(".ans-text", card);
+ ans.addEventListener("click", ()=> ans.classList.remove("veiled"));
+
+ /* 展开解析 */
+ const btn = $(".reveal", card), panel = $(".ana", card);
+ btn.addEventListener("click", ()=>{
+  const on = panel.classList.toggle("open");
+  btn.classList.toggle("open", on);
+  ans.classList.remove("veiled");
+  if(on) setTimeout(()=>{}, 0);
+ });
+
+ /* 自测判分 */
+ if(q.opts && q.correct){
+  $$(".opt", card).forEach(opt=>{
+   opt.addEventListener("click", ()=>{
+    if(card.dataset.judged) return;
+    card.dataset.judged = "1";
+    const k = opt.dataset.k, ok = k === q.correct;
+    const chosen = $('.opt[data-k="'+k+'"]', card);
+    chosen.classList.add(ok ? "right" : "wrong");
+    $(".mark", chosen).textContent = ok ? "答对" : "答错";
+    if(!ok){
+     const right = $('.opt[data-k="'+q.correct+'"]', card);
+     if(right){ right.classList.add("right"); $(".mark", right).textContent = "正确答案"; }
+    }
+    $$(".opt", card).forEach(o=>o.classList.add("locked"));
+    panel.classList.add("open"); btn.classList.add("open"); ans.classList.remove("veiled");
+    answered++; if(ok) right++;
+    score();
+    const nav = $('.n[data-jump="'+q.n+'"]');
+    if(nav && ok) nav.classList.add("done");
+   });
+  });
+ }
+ return card;
+}
+
+/* ===== 渲染板块 ===== */
+const QMAP = {}; QS.forEach(q=>QMAP[q.n]=q);
+function renderSections(){
+ const host = $("#sections");
+ BLOCKS.forEach(b=>{
+  const sec = mk(`<section class="section" id="${b.id}">
+    <div class="section-head"><h2>${b.title}</h2><span class="s-sub">${b.sub}</span></div>
+    ${b.note?`<p class="section-note">${b.note}</p>`:""}
+    <div class="sec-body"></div></section>`);
+  const body = $(".sec-body", sec);
+  b.items.forEach(it=>{
+   if(it.mat) body.appendChild(matEl(MAT[it.mat]));
+   else if(QMAP[it.q]) body.appendChild(qEl(QMAP[it.q]));
+  });
+  host.appendChild(sec);
+ });
+}
+
+/* ===== 答案速查 ===== */
+function renderQuick(){
+ const cells = QS.map(q=>`<div class="qcell"><span class="qn">${q.n}</span><span class="qv">${SHORT[q.n]||"—"}</span></div>`).join("");
+ const total = `<div class="qcell qtotal"><span class="qn">合</span><span class="qv">计 100 分</span></div>`;
+ $("#quickWrap").innerHTML = `<div class="qgrid">${cells}${total}</div>`;
+}
+
+/* ===== 得分 ===== */
+let answered = 0, right = 0;
+function score(){
+ $$("[data-score]").forEach(s=>{ s.innerHTML = `已答 <b style="font-family:var(--serif);color:var(--red);font-size:17px;margin:0 2px">${answered}</b> 题　正确 <b style="font-family:var(--serif);color:var(--green);font-size:17px;margin:0 2px">${right}</b> 题`; });
+}
+
+/* ===== 交互 ===== */
+let active = 1;
+function setActive(n){
+ active = n;
+ $$(".n").forEach(b=>b.classList.toggle("active", +b.dataset.jump === n));
+ $("#pos").textContent = n + " / " + TOTAL;
+ $("#prevQ").disabled = n <= 1;
+ $("#nextQ").disabled = n >= TOTAL;
+}
+function jump(n){
+ n = Math.max(1, Math.min(TOTAL, n));
+ const t = document.getElementById("q"+n);
+ if(!t) return;
+ t.scrollIntoView({behavior:"smooth", block:"start"});
+ setActive(n);
+ closeDrawer();
+}
+
+document.addEventListener("click", e=>{
+ const j = e.target.closest("[data-jump]");
+ if(j){ jump(+j.dataset.jump); return; }
+ const a = e.target.closest("[data-act]");
+ if(a){
+  const act = a.dataset.act;
+  if(act === "expand" || act === "collapse"){
+   $$(".question").forEach(card=>{
+    const panel = $(".ana", card), btn = $(".reveal", card), ans = $(".ans-text", card);
+    if(!panel) return;
+    panel.classList.toggle("open", act === "expand");
+    if(btn) btn.classList.toggle("open", act === "expand");
+    if(ans) ans.classList.remove("veiled");
+   });
+  }
+  if(act === "hl"){ const on = document.body.classList.toggle("hl"); $$('[data-act="hl"]').forEach(s=>s.classList.toggle("on", on)); }
+  if(act === "reset"){
+   answered = 0; right = 0; score();
+   $$(".question").forEach(card=>{
+    delete card.dataset.judged;
+    $$(".opt", card).forEach(o=>{ o.classList.remove("right","wrong","locked"); const m=$(".mark",o); if(m) m.textContent=""; });
+    const panel=$(".ana", card), btn=$(".reveal", card), ans=$(".ans-text", card);
+    if(panel) panel.classList.remove("open");
+    if(btn) btn.classList.remove("open");
+    if(ans) ans.classList.add("veiled");
+   });
+   $$(".n").forEach(b=>b.classList.remove("done"));
+  }
+  return;
+ }
+ if(e.target.closest("[data-close]")) closeDrawer();
+});
+
+/* 抽屉 */
+function openDrawer(){ $("#drawer").classList.add("open"); document.body.classList.add("drawer-open"); document.body.style.overflow="hidden"; }
+function closeDrawer(){ $("#drawer").classList.remove("open"); document.body.classList.remove("drawer-open"); document.body.style.overflow=""; }
+$("#openDrawer").addEventListener("click", openDrawer);
+
+/* 翻题 */
+$("#prevQ").addEventListener("click", ()=>jump(active-1));
+$("#nextQ").addEventListener("click", ()=>jump(active+1));
+document.addEventListener("keydown", e=>{
+ if(/^(INPUT|TEXTAREA)$/.test(e.target.tagName)) return;
+ if(e.key === "ArrowLeft") jump(active-1);
+ if(e.key === "ArrowRight") jump(active+1);
+});
+
+/* 滚动：进度与定位 */
+let ticking = false;
+function onScroll(){
+ const st = window.scrollY || document.documentElement.scrollTop;
+ const max = document.documentElement.scrollHeight - window.innerHeight;
+ $("#progress").style.width = (max > 0 ? (st / max) * 100 : 0) + "%";
+ let cur = 1;
+ QS.forEach(q=>{
+  const el = document.getElementById("q"+q.n);
+  if(el && el.getBoundingClientRect().top <= 150) cur = q.n;
+ });
+ if(cur !== active) setActive(cur);
+ ticking = false;
+}
+window.addEventListener("scroll", ()=>{ if(!ticking){ ticking = true; requestAnimationFrame(onScroll); } }, {passive:true});
+
+/* 校勘记 */
+function renderColophon(){
+ const items = CORRECTIONS.map((c,i)=>`<p style="margin:0 0 .7em"><b>${i+1}. ${c.t}</b>　${c.d}</p>`).join("");
+ $("#colophon").innerHTML = `<div class="ov-title" style="margin-bottom:12px">校勘记 · 五处细节说明</div>
+  <div style="font-size:13px;line-height:1.95;color:var(--ink-2)">${items}
+   <p style="margin:14px 0 0">参考答案与公开的同卷解析资料逐题比对，解析文字为本页撰写。全卷题干、选项、注释依扫描件逐字校读；试卷来源为本地 PDF 扫描件（8 个考试版面）。</p>
+  </div>`;
+
+}
+
+/* 启动 */
+renderSections();
+renderQuick();
+renderColophon();
+$("#sidebar").innerHTML = navHTML() + toolsHTML();
+$("#drawerBody").innerHTML = navHTML() + toolsHTML();
+score();
+setActive(1);
+onScroll();
+window.addEventListener("load", onScroll);
+</script>
+</body>
+</html>

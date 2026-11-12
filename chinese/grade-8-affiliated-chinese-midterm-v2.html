@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>初二语文期中试卷 · 完整题目、答案解析与方法归纳</title>
+<style>
+  :root{
+    --bg:#f5f2ec; --paper:#fffdf8; --ink:#2b2b2b; --muted:#6f6a62;
+    --line:#e2dcd0; --accent:#8a5a3b; --accent-soft:#f0e4d8;
+    --green:#3d6b4f; --green-soft:#e4efe6; --blue:#3b5d7a; --blue-soft:#e4ecf3;
+    --gold:#a3641f; --gold-soft:#fdf3e3;
+    --radius:14px;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:"Noto Serif SC","Songti SC","SimSun",Georgia,serif;
+    line-height:1.85; font-size:16px; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1000px;margin:0 auto;padding:28px 18px 80px;}
+  header{text-align:center;padding:26px 18px 20px;border-bottom:2px solid var(--line);margin-bottom:20px;}
+  header h1{margin:0 0 10px;font-size:clamp(1.3rem,4vw,1.75rem);letter-spacing:0.03em;}
+  header p{margin:0;color:var(--muted);font-size:0.9rem;}
+  .toolbar{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:16px 0 8px;}
+  .btn{
+    border:1px solid var(--line);background:var(--paper);color:var(--ink);
+    padding:8px 16px;border-radius:999px;cursor:pointer;font-family:inherit;
+    font-size:0.88rem;transition:all .2s;
+  }
+  .btn:hover{border-color:var(--accent);color:var(--accent);}
+  .btn.primary{background:var(--accent);color:#fff;border-color:var(--accent);}
+  .btn.primary:hover{opacity:.9;color:#fff;}
+  .tabs{
+    display:flex;gap:6px;overflow-x:auto;padding:8px 2px 14px;
+    border-bottom:1px solid var(--line);margin-bottom:20px;-webkit-overflow-scrolling:touch;
+  }
+  .tab{
+    flex:0 0 auto;border:none;background:transparent;color:var(--muted);
+    padding:8px 12px;border-radius:8px;cursor:pointer;font-family:inherit;
+    font-size:0.9rem;white-space:nowrap;
+  }
+  .tab.active{background:var(--accent-soft);color:var(--accent);font-weight:700;}
+  .section{display:none;animation:fade .25s ease;}
+  .section.show{display:block;}
+  @keyframes fade{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+  .sec-title{
+    font-size:1.12rem;margin:30px 0 14px;padding-left:12px;
+    border-left:4px solid var(--accent);font-weight:700;
+  }
+  .sub-title{font-size:1rem;margin:22px 0 10px;color:var(--accent);font-weight:700;}
+  .q{
+    background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+    padding:18px 20px;margin:0 0 18px;box-shadow:0 1px 3px rgba(0,0,0,0.03);
+  }
+  .q-head{display:flex;align-items:flex-start;gap:10px;margin-bottom:6px;}
+  .q-num{flex:0 0 auto;font-weight:700;color:var(--accent);font-size:0.98rem;}
+  .q-stem{font-size:0.98rem;}
+  .q-stem p{margin:6px 0;}
+  .options{margin:10px 0 0 2px;padding-left:22px;}
+  .options li{margin:4px 0;font-size:0.95rem;}
+  .article{
+    background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+    padding:18px 22px;margin:0 0 18px;
+  }
+  .article h3{margin:0 0 10px;font-size:1.05rem;color:var(--accent);}
+  .article p{margin:8px 0;text-indent:2em;font-size:0.95rem;}
+  .article .note-line{text-indent:0;font-size:0.86rem;color:var(--muted);}
+  .poem{text-align:center;font-size:1.02rem;margin:14px 0;line-height:2;}
+  .poem-title{text-align:center;font-weight:700;font-size:1.05rem;margin:4px 0;}
+  .poem-author{text-align:center;color:var(--muted);font-size:0.9rem;margin-bottom:8px;}
+  .transbox{
+    background:#fbf8f2;border:1px solid var(--line);border-radius:var(--radius);
+    padding:14px 18px;margin:12px 0 18px;font-size:0.92rem;
+  }
+  .transbox h4{margin:0 0 8px;font-size:0.95rem;color:var(--accent);}
+  .transbox p{margin:6px 0;}
+  .toggle{
+    display:inline-flex;align-items:center;gap:6px;margin-top:14px;
+    border:1px dashed var(--line);background:transparent;color:var(--accent);
+    padding:6px 13px;border-radius:999px;cursor:pointer;font-family:inherit;
+    font-size:0.86rem;
+  }
+  .toggle::after{content:"▾";font-size:0.75rem;transition:transform .2s;}
+  .toggle.open::after{transform:rotate(180deg);}
+  .answer{
+    display:none;margin-top:14px;padding:14px 16px;background:var(--green-soft);
+    border-left:3px solid var(--green);border-radius:0 10px 10px 0;font-size:0.94rem;
+  }
+  .answer.show{display:block;}
+  .answer strong{color:var(--green);}
+  .answer .key{background:#fff6c9;padding:0 3px;border-radius:3px;font-weight:700;}
+  .analysis{color:#33475a;font-size:0.9rem;margin-top:8px;}
+  .analysis strong{color:var(--blue);}
+  .method{
+    margin-top:12px;padding:11px 14px;background:var(--gold-soft);
+    border-left:3px solid var(--gold);border-radius:0 10px 10px 0;
+    font-size:0.88rem;color:#5a4427;
+  }
+  .method .label{
+    display:inline-block;font-weight:700;color:var(--gold);
+    margin-right:4px;font-size:0.9rem;
+  }
+  .method p{margin:5px 0;}
+  .method ul{margin:5px 0;padding-left:20px;}
+  .method li{margin:3px 0;}
+  .note{
+    font-size:0.86rem;color:var(--muted);background:#faf7f1;border:1px solid var(--line);
+    border-radius:10px;padding:10px 14px;margin:0 0 18px;
+  }
+  .fill{color:var(--accent);font-weight:700;}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:0.9rem;}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top;}
+  th{background:var(--accent-soft);font-weight:700;}
+
+  .model-essay{
+    background:#fbf8f2;border:1px solid var(--line);border-radius:var(--radius);
+    padding:16px 20px;margin:14px 0;
+  }
+  .model-essay h4{
+    margin:0 0 4px;font-size:1rem;color:var(--accent);
+    text-align:center;
+  }
+  .model-essay .essay-tag{
+    text-align:center;color:var(--muted);font-size:0.82rem;margin-bottom:10px;
+  }
+  .model-essay p{text-indent:2em;margin:8px 0;font-size:0.94rem;line-height:1.9;}
+  .model-essay .essay-title{
+    text-align:center;text-indent:0;font-weight:700;font-size:1rem;margin:6px 0 10px;
+  }
+
+  @media(max-width:560px){
+    .wrap{padding:16px 10px 60px;}
+    .q,.article,.model-essay{padding:14px 13px;}
+    .q-stem{font-size:0.93rem;}
+    .options{padding-left:16px;}
+    body{font-size:15px;}
+    .article p{text-indent:2em;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>2026—2027学年第一学期期中考试<br>初二语文 · 完整题目、答案解析与方法归纳</h1>
+  <p>保留全部题目内容 · 每题附题型解法 · 作文附两篇范文 · 支持折叠</p>
+  <div class="toolbar">
+    <button class="btn primary" onclick="expandAll()">展开全部答案</button>
+    <button class="btn" onclick="collapseAll()">收起全部答案</button>
+  </div>
+</header>
+
+<nav class="tabs" id="tabs">
+  <button class="tab active" data-target="s1">一、基础积累</button>
+  <button class="tab" data-target="s2">二、古诗文阅读</button>
+  <button class="tab" data-target="s3">三、名著与语用</button>
+  <button class="tab" data-target="s4">四、现代文阅读</button>
+  <button class="tab" data-target="s5">五、写作与范文</button>
+  <button class="tab" data-target="s6">附录：翻译与校读</button>
+</nav>
+
+<!-- ================= 一、基础积累 ================= -->
+<section id="s1" class="section show">
+  <div class="note">校读说明：原卷个别拼音、字形为OCR识别结果，页面按规范读音与教材字形校读，题目内容不删减。</div>
+
+  <div class="q">
+    <div class="q-head"><span class="q-num">1.</span><span class="q-stem">下列词语中加点字字音全部正确的一项是（　　）（2分）</span></div>
+    <ul class="options">
+      <li>A. 抖擞（sǒu）　莅临（lì）　贮蓄（zhù）　咄咄逼人（duō）</li>
+      <li>B. 呻吟（yín）　酝酿（niàng）　静谧（mì）　镶嵌（xiāng）</li>
+      <li>C. 粗犷（guǎng）　一髻儿（jì）　高邈（miǎo）　憔悴（qiáo）</li>
+      <li>D. 粗犷（tǎng）　分歧（qí）　攲斜（qī）　沁凉（qìn）</li>
+    </ul>
+    <button class="toggle" onclick="toggleNext(this)">查看答案与解析</button>
+    <div class="answer">
+      <p><strong>答案：B</strong></p>
+      <p class="analysis"><strong>解析：</strong>A项“抖擞”应读sǒu，不是shǒu；C项“一髻儿”应读jì，“高邈”读miǎo，“憔悴”读qiáo，“粗犷”读guǎng，该项读音基本正确，但B项四个读音均规范无误；D项“粗犷”绝不能读tǎng，应读guǎng。B项“呻吟yín、酝酿niàng、静谧mì、镶嵌xiāng”全部正确。关键：粗犷guǎng、抖擞sǒu、酝酿niàng、静谧mì。</p>
+      <div class="method">
+        <p><span class="label">题型解法｜字音辨析</span></p>
+        <ul>
+          <li><strong>抓形声字声旁：</strong>声旁不一定等于读音，如“犷”读guǎng不读kuàng/tǎng，“擞”读sǒu不读shǒu。</li>
+          <li><strong>辨多音字：</strong>先想常见义项与读音，再代入词语检验，如“贮”只读zhù，“谧”只读mì。</li>
+          <li><strong>防方言干扰：</strong>平翘舌、前后鼻音、n/l易混，平时把易错字做成小卡片。</li>
+          <li><strong>排除法：</strong>逐项找“最确定错”的一个，先删后选，比逐字纠结更高效。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="q">
+    <div class="q-head"><span class="q-num">2.</span><span class="q-stem">下列词语中书写没有错误的一项是（　　）（2分）</span></div>
+    <ul class="options">
+      <li>A. 浩渺　徜徉　渊博　云宵</li>
+      <li>B. 搜住　绽放　茫然无措　阐释</li>
+      <li>C. 确凿　鸦鹊无声　鉴赏　吞噬</li>
+      <li>D. 匿笑　徘徊　瘫痪　娇媚</li>
+    </ul>
+    <button class="toggle" onclick="toggleNext(this)">查看答案与解析</button>
+    <div class="answer">
+      <p><strong>答案：D</strong></p>
+      <p class="analysis"><strong>解析：</strong>A项“云宵”应为“云霄”；B项“搜住”应为“攥住/拽住”一类词，属形近错误；C项“鸦鹊无声”应为“鸦雀无声”；D项“匿笑、徘徊、瘫痪、娇媚”书写正确。易错：云霄（非“宵”）、鸦雀无声（非“鹊”）、娇媚（教材常用字形）。</p>
+      <div class="method">
+        <p><span class="label">题型解法｜字形辨析</span></p>
+        <ul>
+          <li><strong>以义辨形：</strong>“云霄”与天空有关，用“霄”（雨字头）；“宵”指夜晚。</li>
+          <li><strong>抓形旁：</strong>“鸦雀”是鸟，故用“雀”；“鹊”指喜鹊，成语固定为“鸦雀无声”。</li>
+          <li><strong>回归教材词表：</strong>课后“读读写写”是命题主仓库，考前逐课过关。</li>
+          <li><strong>同类归纳：</strong>把“娇/骄”“霄/宵”“雀/鹊”等易混字成组记忆。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="q">
+    <div class="q-head"><span class="q-num">3.</span><span class="q-stem">下列句子中加点成语使用恰当的一项是（　　）（2分）</span></div>
+    <ul class="options">
+      <li>A. 正如演出前预料的那样，他将歌曲演绎得荡气回肠，这让导演喜出望外。</li>
+      <li>B. 李明在课堂上翻来覆去，精神恍惚，老师讲的知识他一点儿也没有听进去。</li>
+      <li>C. 城市里到处人头攒动，人声鼎沸，济南的郊外别有一番情趣。</li>
+      <li>D. 昨天听了关于中学生成长的专题报告，主讲人渐渐沥沥的声音、娓娓道来的故事，让我深受鼓舞和教育。</li>
+    </ul>
+    <button class="toggle" onclick="toggleNext(this)">查看答案与解析</button>
+    <div class="answer">
+      <p><strong>答案：C</strong></p>
+      <p class="analysis"><strong>解析：</strong>A项“喜出望外”指遇到出乎意料的喜事而特别高兴，与“正如演出前预料的那样”矛盾；B项“翻来覆去”多形容睡不着觉或反复多次，不能形容课堂上身体晃动、精神不集中；D项“淅淅沥沥”形容雨声，不能修饰人的声音；C项“人声鼎沸”形容人声嘈杂喧闹，与“人头攒动”搭配自然，符合城市街景。</p>
+      <div class="method">
+        <p><span class="label">题型解法｜成语运用</span></p>
+        <ul>
+          <li><strong>五查：</strong>查词义（是否望文生义）、查对象（适用范围）、查褒贬、查重复（是否与句中词语赘余）、查语境（与前后逻辑是否矛盾）。</li>
+          <li><strong>抓矛盾词：</strong>如“预料”与“喜出望外”天然冲突，一眼可判。</li>
+          <li><strong>看修饰对象：</strong>“淅淅沥沥”只能修饰雨声，不能修饰人声。</li>
+          <li><strong>代入读一遍：</strong>把成语换成一个近义大白话，看句子是否通顺合理。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="q">
+    <div class="q-head"><span class="q-num">4.</span><span class="q-stem">下列四个句子中，没有语病的一项是（　　）（2分）</span></div>
+    <ul class="options">
+      <li>A. 通过这次社会实践活动，使我们磨练了意志，增长了见识。</li>
+      <li>B. 是否具备良好的心理素质，是我们考试取得好成绩的关键。</li>
+      <li>C. 众多景区的免费开放是济宁市打造国家级旅游城市的一项重大举措。</li>
+      <li>D. 我们在心里由衷地感谢老师多年来的默默付出。</li>
+    </ul>
+    <button class="toggle" onclick="toggleNext(this)">查看答案与解析</button>
+    <div class="answer">
+      <p><strong>答案：C</strong></p>
+      <p class="analysis"><strong>解析：</strong>A项“通过……使……”连用，导致主语残缺；B项“是否”与“取得好成绩”两面对一面，搭配不当；D项“在心里”与“由衷”语义重复；C项主谓宾完整，搭配恰当，无语病。</p>
+      <div class="method">
+        <p><span class="label">题型解法｜病句辨析</span></p>
+        <ul>
+          <li><strong>先找主干：</strong>压缩出“谁—做什么/是什么—怎么样”，看成分是否残缺、搭配是否得当。</li>
+          <li><strong>盯标志词：</strong>“通过……使……”“由于……导致……”多主语残缺；“是否/能否/好坏”多两面对一面；“避免/防止/切忌/以免”多否定不当；“大约……左右”“约……余”多重复。</li>
+          <li><strong>六类口诀：</strong>成分残缺、搭配不当、语序不当、结构混乱、表意不明、不合逻辑。</li>
+          <li><strong>修改原则：</strong>能改一处不改两处，不改原意，不添新病。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="q">
+    <div class="q-head"><span class="q-num">5.</span><span class="q-stem">下列标点符号使用正确的句子是（　　）（2分）</span></div>
+    <ul class="options">
+      <li>A. 你明天是去爬山？还是去看电影？</li>
+      <li>B. 我国南海蕴动力资源，如潮汐能、波能等……</li>
+      <li>C. 课本收录了《春》《济南的冬天》《雨的四季》等优美的写景散文。</li>
+      <li>D. “你知道吗？”爸爸兴奋地说道：“这人形机器人能起卧、行走，甚至还能进行武术表演呢。”</li>
+    </ul>
+    <button class="toggle" onclick="toggleNext(this)">查看答案与解析</button>
+    <div class="answer">
+      <p><strong>答案：C</strong></p>
+      <p class="analysis"><strong>解析：</strong>A项选择问句中间应用逗号，不能用问号，应改为“你明天是去爬山，还是去看电影？”；B项“等”与省略号不能连用，应删去省略号；D项提示语在中间，冒号应改为逗号；C项并列书名号之间不用顿号，使用正确。</p>
+      <div class="method">
+        <p><span class="label">题型解法｜标点符号</span></p>
+        <ul>
+          <li><strong>问号：</strong>选择问只在句末用问号，中间用逗号；连续问则每问都用问号。</li>
+          <li><strong>顿号：</strong>并列词语之间用顿号，但并列书名号、引号之间一般不加顿号。</li>
+          <li><strong>冒号：</strong>提示语在前用冒号；提示语在中间用逗号；提示语在后用句号。</li>
+          <li><strong>省略号：</strong>不能与“等”“等等”同时使用。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="q">
+    <div class="q-head"><span class="q-num">6.</span><span class="q-stem">下列说法中有误的一项是（　　）（2分）</span></div>
+    <ul class="options">
+      <li>A. 舅舅帮我补习功课，我道谢说“承蒙舅舅赐教，您的高见让我茅塞顿开”，这段敬辞里藏着我对舅舅的感激。</li>
+      <li>B. 古代常见的敬辞中，“令堂”指的是对方的母亲，“令郎”指的是对方的儿子，“令爱”指的是对方的妻子。</li>
+      <li>C. 古代有许多表示敬称的特定字词。例如：“惠”用于对方对待自己的行为动作，如“惠存”“惠赠”；“贵”用于与对方有关的事物，如“贵庚”。</li>
+      <li>D. “尊君”是敬辞，是对别人父亲的一种尊称；“家君”是谦辞，是对别人称自己的父亲。</li>
+    </ul>
+    <button class="toggle" onclick="toggleNext(this)">查看答案与解析</button>
+    <div class="answer">
+      <p><strong>答案：B</strong></p>
+      <p class="analysis"><strong>解析：</strong>B项错误。“令爱”尊称的是对方的<span class="key">女儿</span>，不是“妻子”。对方的妻子可称“令阃（kǔn）”或“尊夫人”。令堂——对方母亲，令郎——对方儿子；惠存、惠赠属于“惠”字敬辞；尊君/家君分别是尊称对方父亲与谦称自己父亲。</p>
+      <div class="method">
+        <p><span class="label">题型解法｜文化常识与敬辞谦辞</span></p>
+        <ul>
+          <li><strong>“令”字族：</strong>令尊（父）、令堂（母）、令郎（子）、令爱/令媛（女）、令兄/令弟（兄弟）——都指<strong>对方</strong>亲属。</li>
+          <li><strong>“家”字族：</strong>家父、家母、家兄——谦称<strong>自己</strong>长辈或平辈年长者。</li>
+          <li><strong>“舍”字族：</strong>舍弟、舍妹——谦称自己平辈年幼者。</li>
+          <li><strong>“惠”字族：</strong>惠存、惠赠、惠顾——对方对自己的行为。</li>
+          <li><strong>速记口诀：</strong>“令尊令堂敬对方，家父家母谦自方；惠字多谢对方意，贵字多指对方事。”</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 二、古诗文阅读 ================= -->
+<section id="s2" class="section">
+  <div class="sec-title">二、古诗文积累与阅读（23分）</div>
+
+  <div class="sub-title">（一）阅读下列文言文，完成7—10题（10分）</div>
+
+  <div class="article">
+    <h3>【甲】</h3>
+    <p>陈太丘与友期行，期日中。过中不至，太丘舍去，去后乃至。元方时年七岁，门外戏。客问元方：“尊君在不？”答曰：“待君久不至，已去。”友人便怒曰：“非人哉！与人期行，相委而去。”元方曰：“君与家君期日中。日中不至，则是无信；对子骂父，则是无礼。”友人惭，下车引之。元方入门不顾。</p>
+    <p class="note-line">（选自《陈太丘与友期行》）</p>
+  </div>
+
+  <div class="article">
+    <h3>【乙】</h3>
+    <p>王华六岁，与群儿戏水滨。见一客来濯足。以大醉，去，遗所提囊。取视之，数十金也。公度其醒必复来，恐人持去以投水中坐守之。少顷，其人果号泣而至。公迎谓曰：“求尔金邪？”为指其处。其人喜，以一锭为谢，却不受。</p>
+    <p class="note-line">（选自焦兹《玉堂丛语》）</p>
+    <p class="note-line">［注］①濯：洗涤。②以：因为。③度：估计，思考。④号：大声哭喊。⑤却：推辞。</p>
+  </div>
+
+  <div class="q">
+    <div class="q-head"><span class="q-num">7.</span><span class="q-stem">下列加点词解释不正确的一项是（　　）（2分）</span></div>
+    <ul class="options">
+      <li>A. 太丘舍去——舍：丢下</li>
+      <li>B. 元方入门不顾——顾：顾及</li>
+      <li>C. 公度其醒必复来——其：代词，指王华</li>
+      <li>D. 以一锭为谢——以：介词，用、拿</li>
+    </ul>
+    <button class="toggle" onclick="toggleNext(this)">查看答案与解析</button>
+    <div class="answer">
+      <p><strong>答案：B</strong></p>
+      <p class="analysis"><strong>解析：</strong>B项“顾”在“元方入门不顾”中是“<span class="key">回头看</span>”的意思，不是“顾及”。A项“舍”为“丢下、舍弃”，正确；C项“其”代指那位醉客（失主），不是王华；D项“以”为介词“用、拿”，正确。本题选解释不正确的一项，B项错误最明显。</p>
+      <div class="method">
+        <p><span class="label">题型解法｜文言实词与虚词</span></p>
+        <ul>
+          <li><strong>语境代入法：</strong>把选项释义放回原句，读一遍看是否通顺。</li>
+          <li><strong>课内迁移法：</strong>“顾”在《陈太丘与友期行》中即“回头看”，与“三顾茅庐”的“拜访”不同，要一词多义积累。</li>
+          <li><strong>词性判断：</strong>“其”若修饰名词多为代词；“以”后接名词多为介词。</li>
+          <li><strong>警惕古今异义：</strong>“去”古义“离开”，“顾”古义常为“回头看/拜访”。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="q">
+    <div class="q-head"><span class="q-num">8.</span><span class="q-stem">乙文画线句有两处需要断句，正确的一项是（　　）（2分）</span></div>
+    <ul class="options">
+      <li>A. 恐人持/去以投水中/坐守之</li>
+      <li>B. 恐人持去/以投水中坐/守之</li>
+      <li>C. 恐人持去/以投水中/坐守之</li>
+      <li>D. 恐人持/去以投水中坐/守之</li>
+    </ul>
+    <button class="toggle" onclick="toggleNext(this)">查看答案与解析</button>
+    <div class="answer">
+      <p><strong>答案：C</strong></p>
+      <p class="analysis"><strong>解析：</strong>句意是“担心别人拿走（金子），（王华）把金子投到水里，坐在那里守着它”。“恐人持去”是一个完整语义，“以投水中”表示目的/方式，“坐守之”是结果状态。因此在“去”后和“中”后断句，即“恐人持去/以投水中/坐守之”。</p>
+      <div class="method">
+        <p><span class="label">题型解法｜文言断句</span></p>
+        <ul>
+          <li><strong>先通读、再断句：</strong>先大体翻译，按“谁—做什么”切分，不要一上来就抠字。</li>
+          <li><strong>找动词谓语：</strong>“持去”“投”“守”是三个连续动作，动作之间有先后，往往就是断点。</li>
+          <li><strong>找虚词标志：</strong>“以”常领起目的/方式；“之”后常收束一个短语。</li>
+          <li><strong>断后回读：</strong>断完再读一遍，看是否“一句一意”、是否与选项吻合。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="q">
+    <div class="q-head"><span class="q-num">9.</span><span class="q-stem">用现代汉语翻译下面的句子。（2分）</span></div>
+    <p class="q-stem">日中不至，则是无信；对子骂父，则是无礼。</p>
+    <button class="toggle" onclick="toggleNext(this)">查看答案与解析</button>
+    <div class="answer">
+      <p><strong>答案：</strong>正午您没有到，就是<span class="key">不讲信用</span>；对着儿子骂他的父亲，就是<span class="key">没有礼貌</span>。</p>
+      <p class="analysis"><strong>解析：</strong>“日中”即正午；“则”是“就是”；“信”指信用；“无礼”指没有礼貌。翻译时须补出主语“您”，并保持前后两句的对称语气。</p>
+      <div class="method">
+        <p><span class="label">题型解法｜文言翻译</span></p>
+        <ul>
+          <li><strong>五字诀：</strong>留（人名、地名、年号）、删（发语词、语气词）、换（古今异义、通假）、调（倒装句）、补（省略成分）。</li>
+          <li><strong>直译为主：</strong>字字落实，不随意增删；遇到省略主语要补出。</li>
+          <li><strong>保持句式：</strong>原句对称，译文也尽量对称，如“就是……；就是……”。</li>
+          <li><strong>检查关键词：</strong>“日中”“信”“礼”是得分点，必须译准。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="q">
+    <div class="q-head"><span class="q-num">10.</span><span class="q-stem">甲、乙两文都讲述了古代儿童“方正”的故事，结合文本内容说说陈元方和王华的“方正”各体现在什么地方？（4分）</span></div>
+    <button class="toggle" onclick="toggleNext(this)">查看答案与解析</button>
+    <div class="answer">
+      <p><strong>答案要点：</strong></p>
+      <p>①陈元方的“方正”：面对父亲友人的无理指责，他以“日中不至，则是无信；对子骂父，则是无礼”直接指出对方<span class="key">失信、无礼</span>，并以“入门不顾”保持自己的立场，<span class="key">坚持原则、不畏长者的无理</span>。</p>
+      <p>②王华的“方正”：拾到醉客遗落的数十金，不占为己有，担心被别人拿走而“<span class="key">以投水中，坐守之</span>”，一直等到失主哭寻而来；失主以金相谢，他“<span class="key">却不受</span>”。体现<span class="key">诚实不贪、守信负责</span>的品格。</p>
+      <p class="analysis"><strong>解析：</strong>“方正”指人行为、品性正直，合乎道义。元方之“方正”侧重言语守礼、坚持是非；王华之“方正”侧重行动上的诚信与不贪。答题须结合具体语句，不能只贴标签。</p>
+      <div class="method">
+        <p><span class="label">题型解法｜文意概括与人物形象</span></p>
+        <ul>
+          <li><strong>两步走：</strong>先定位区间（甲文找元方语言与动作，乙文找王华“守金”“却谢”），再提炼品质词。</li>
+          <li><strong>答题格式：</strong>品质词 + 原文依据 + 简要分析，分点作答。</li>
+          <li><strong>不贴空标签：</strong>“正直”“诚信”必须落在具体语句上，否则不得分。</li>
+          <li><strong>比较题：</strong>先分别说，再点出“同中有异”，如都“方正”，但一元方重“言礼”，一王华重“行廉”。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub-title">（二）阅读下面这首诗，回答问题（5分）</div>
+
+  <div class="article">
+    <div class="poem-title">秋浦途中</div>
+    <div class="poem-author">杜牧</div>
+    <div class="poem">
+      萧萧山路穷秋雨，淅淅溪风一岸蒲。<br>
+      为问寒沙新到雁，来时还下杜陵无？
+    </div>
+    <p class="note-line">【注释】①秋浦，唐时为池州州治所在，诗人被贬官外放时途经此地。②杜陵，在长安西南，诗人家乡樊川所在地。</p>
+  </div>
+
+  <div class="q">
+    <div class="q-head"><span class="q-num">11.</span><span class="q-stem">下列对这首诗的理解和赏析，不恰当的一项是（　　）（2分）</span></div>
+    <ul class="options">
+      <li>A. 前两句中“萧萧”描写雨点纷飞之状，“淅淅”状秋风飒飒之态，于细微处传精神。</li>
+      <li>B. 前两句运用叠词兼写声与态，视听结合，增强音韵美感。</li>
+      <li>C. 后两句写诗人问雁而雁不能答，使情感表达含蓄深沉。</li>
+      <li>D. 全诗多处运用夸张的修辞手法，极写秋雨之大、溪风之猛。</li>
+    </ul>
+    <button class="toggle" onclick="toggleNext(this)">查看答案与解析</button>
+    <div class="answer">
+      <p><strong>答案：D</strong></p>
+      <p class="analysis"><strong>解析：</strong>D项“多处运用夸张的修辞手法”不正确。前两句“萧萧”“淅淅”是<span class="key">叠词</span>，兼有拟声与写态的作用，并非夸张；“穷秋雨”“一岸蒲”也是写实性景物描写，没有“极写秋雨之大、溪风之猛”的夸张效果。A、B、C三项均符合诗歌表达特点。</p>
+      <div class="method">
+        <p><span class="label">题型解法｜古诗鉴赏选择题</span></p>
+        <ul>
+          <li><strong>逐项回诗：</strong>每个选项都要在诗中找到对应词句，不能凭印象。</li>
+          <li><strong>警惕手法误判：</strong>叠词≠夸张，比喻≠拟人，借景抒情≠直抒胸臆。</li>
+          <li><strong>警惕程度词：</strong>“多处”“极写”“全都”“只有”等绝对化表述常是错误点。</li>
+          <li><strong>看注释：</strong>注释往往提示写作背景与情感方向，不能忽略。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="q">
+    <div class="q-head"><span class="q-num">12.</span><span class="q-stem">全诗表达了诗人怎样的情感？请结合诗句简要分析。（3分）</span></div>
+    <button class="toggle" onclick="toggleNext(this)">查看答案与解析</button>
+    <div class="answer">
+      <p><strong>答案要点：</strong></p>
+      <p>①<span class="key">羁旅孤寂与凄凉</span>。前两句以“萧萧”秋雨、“淅淅”溪风、岸边蒲草等深秋景物，营造出萧瑟凄凉的意境，映衬诗人被贬外放途中的孤独愁苦。</p>
+      <p>②<span class="key">思乡怀亲、欲归不能的无奈</span>。后两句问新到寒雁“来时还下杜陵无”，雁本不能答，诗人却殷勤相问，委婉含蓄地表达了对长安家乡（杜陵）的思念，以及身不由己、归期难料的苦闷。</p>
+      <p class="analysis"><strong>解析：</strong>答题要扣住“景”与“情”的关系：前两句<span class="key">借景抒情</span>，后两句<span class="key">借物（问雁）抒情</span>。问雁实为诗人自言自语，不是真有雁作答，这种“无答之问”正是含蓄深沉之处。</p>
+      <div class="method">
+        <p><span class="label">题型解法｜诗歌情感分析</span></p>
+        <ul>
+          <li><strong>四看：</strong>看题目（“途中”暗示羁旅）、看作者与注释（被贬外放）、看意象（秋雨、溪风、寒雁）、看关键词（“为问”“还下……无”）。</li>
+          <li><strong>答题格式：</strong>情感词 + 诗句依据 + 简要分析，分点写。</li>
+          <li><strong>景情关系：</strong>先答“写了什么景”，再答“营造什么氛围”，最后答“抒发什么情”。</li>
+          <li><strong>含蓄手法：</strong>问雁、借物、以景结情，都要点出手法名，不能只翻译。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="q">
+    <div class="q-head"><span class="q-num">13.</span><span class="q-stem">补出下列句子中的空缺部分。（8分）</span></div>
+    <p class="q-stem">吟诵诗文，是与先贤对话，更是为青春赋能。当我们渴望探索自然时，“①________，山岛竦峙”（《观沧海》）唤起我们对山海的向往；当我们思念远方朋友时，“我寄愁心与明月，②________”（《峨眉山月歌》）牵动我们的牵挂；当我们眺望江景时，“潮平两岸阔，③________”（《次北固山下》）拓展我们的视野；当我们品味秋意时，“④________，小桥流水人家”（《天净沙·秋思》）触动我们的情思；当我们思考学习之道时，“⑤________，思而不学则殆”（《〈论语〉十二章》）启迪我们的智慧；当我们面对别人的优缺点时，“⑥________，⑦________”（《〈论语〉十二章》）参照别人完善自己；当别人不理解我们时，“⑧________，不亦君子乎”（《〈论语〉十二章》）告诉我们要正确对待别人的不理解。</p>
+    <button class="toggle" onclick="toggleNext(this)">查看答案与解析</button>
+    <div class="answer">
+      <p>① <span class="fill">水何澹澹</span>，山岛竦峙。（《观沧海》）</p>
+      <p>② 我寄愁心与明月，<span class="fill">随君直到夜郎西</span>。（《峨眉山月歌》）</p>
+      <p>③ 潮平两岸阔，<span class="fill">风正一帆悬</span>。（《次北固山下》）</p>
+      <p>④ <span class="fill">枯藤老树昏鸦</span>，小桥流水人家。（《天净沙·秋思》）</p>
+      <p>⑤ <span class="fill">学而不思则罔</span>，思而不学则殆。（《〈论语〉十二章》）</p>
+      <p>⑥ <span class="fill">择其善者而从之</span>，⑦ <span class="fill">其不善者而改之</span>。（《〈论语〉十二章》）</p>
+      <p>⑧ <span class="fill">人不知而不愠</span>，不亦君子乎？（《〈论语〉十二章》）</p>
+      <p class="analysis"><strong>易错字：</strong>澹、竦峙、罔、愠。“随君直到夜郎西”不要误写为“随风直到夜郎西”（教材版本差异，本题依《峨眉山月歌》通行本为“随君”）。</p>
+      <div class="method">
+        <p><span class="label">题型解法｜理解性默写</span></p>
+        <ul>
+          <li><strong>抓提示语：</strong>题干中的“渴望探索自然”“思念远方朋友”“眺望江景”就是定位关键词。</li>
+          <li><strong>先背后写：</strong>默写前先在心里背全诗，防止“提笔忘句”。</li>
+          <li><strong>专攻易错字：</strong>澹、竦峙、罔、愠、藤、鸦、悬，逐字抄写三遍。</li>
+          <li><strong>写完回读：</strong>检查是否漏字、错字、颠倒，尤其是上下句的先后。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 三、名著与语用 ================= -->
+<section id="s3" class="section">
+  <div class="sec-title">三、名著和语言运用（5分）</div>
+
+  <div class="q">
+    <div class="q-head"><span class="q-num">14.</span><span class="q-stem">班刊“研经典”栏目登载了《朝花夕拾》主题阅读任务单，意在引领学生从经典中汲取成长养料，请你闻声识人填一填。（3分）</span></div>
+    <div class="transbox">
+      <p>“她穿着新的蓝布衫回来了，一见面，就将一包书递给我，高兴地说道：‘哥儿，有画儿的“三哼经”，我给你买来了！’” → A.“她”是______</p>
+      <p>“（他）仍用了极有抑扬的声调对我说道：‘杀的杀掉了，死的死掉了，还发什么屁电报呢。’” → B.“他”是______</p>
+      <p>“一个高大身材，长头发，眼球白多黑少的人，看人总像在渺视。” → C.“这人”指______</p>
+    </div>
+    <button class="toggle" onclick="toggleNext(this)">查看答案与解析</button>
+    <div class="answer">
+      <p><strong>A. 阿长（长妈妈）　　B. 范爱农　　C. 范爱农</strong></p>
+      <p class="analysis"><strong>解析：</strong>“穿着新的蓝布衫”“哥儿”“三哼经”出自《阿长与〈山海经〉》，人物是阿长（长妈妈）。“杀的杀掉了，死的死掉了，还发什么屁电报呢”与“高大身材，长头发，眼球白多黑少”均出自《范爱农》，说话者与外貌描写对象都是范爱农。</p>
+      <div class="method">
+        <p><span class="label">题型解法｜名著阅读·人物辨识</span></p>
+        <ul>
+          <li><strong>抓“专属细节”：</strong>“三哼经”“蓝布衫”只属于阿长；“眼球白多黑少”是范爱农的标志性外貌。</li>
+          <li><strong>抓“语言风格”：</strong>阿长质朴、方言味浓；范爱农冷峻、带愤激。</li>
+          <li><strong>建立人物卡：</strong>每人一张卡，写“篇目—外貌—语言—事件—性格”，考前过一遍。</li>
+          <li><strong>注意篇目对应：</strong>同一人物可能出现在多篇，要能说出主要篇目。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="q">
+    <div class="q-head"><span class="q-num">15.</span><span class="q-stem">班级要开展“我的英雄梦”主题演讲会，请你为演讲会设计一段开场白，50字左右，至少使用一种修辞。（2分）</span></div>
+    <button class="toggle" onclick="toggleNext(this)">查看答案与解析</button>
+    <div class="answer">
+      <p><strong>示例：</strong>亲爱的同学们，大家好！英雄是一束光，照亮平凡的日子；英雄是一粒种，在少年心中生根。今天，让我们走上讲台，说出属于自己的英雄梦！</p>
+      <p class="analysis"><strong>解析：</strong>开场白须有称呼、问候，点明“英雄梦”主题，语言简洁有感染力。示例使用了<span class="key">比喻</span>（“英雄是一束光”“英雄是一粒种”）和<span class="key">排比</span>，符合“至少一种修辞”的要求，字数也在50字左右。</p>
+      <div class="method">
+        <p><span class="label">题型解法｜口语交际·开场白</span></p>
+        <ul>
+          <li><strong>四要素：</strong>称呼问候 + 点明主题 + 修辞渲染 + 引出活动/号召。</li>
+          <li><strong>控制字数：</strong>题干说“50字左右”，就不要写成200字；先打腹稿再落笔。</li>
+          <li><strong>修辞要自然：</strong>比喻、排比、引用最常用，但不要堆砌。</li>
+          <li><strong>语言得体：</strong>面向同学，用“我们”“大家”，不用命令口吻。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 四、现代文阅读 ================= -->
+<section id="s4" class="section">
+  <div class="sec-title">四、现代文阅读（20分）</div>
+
+  <div class="sub-title">（一）阅读下面文章，完成16—18题（9分）</div>
+
+  <div class="article">
+    <h3>低头的甜瓜</h3>
+    <p class="note-line" style="text-align:center;">崔安宁</p>
+    <p>①每年春天，母亲都会种一棚甜瓜。</p>
+    <p>②去年，母亲忙着走亲戚，便嘱咐我来移植甜瓜苗。在移苗的过程中，我发现有一棵甜瓜苗不仅细弱瘦小，还一直卷着叶子低着头。虽然家里种植甜瓜，但我却没有太多的管理经验，经过一番思索，我还是把这棵甜瓜苗移进了大棚里。</p>
+    <p>③将所有甜瓜苗都移植好后，我开始在手机里搜索甜瓜苗低头的原因。大多数人说，缺水会导致甜瓜苗营养缺失，从而使它低头。于是，我从家里提来一桶水，让这棵苗喝了个痛快。几天后，所有的甜瓜苗都在茁壮成长，唯独那棵低头的甜瓜苗，垂头丧气地站在那里，毫无生机。母亲见它如此颓废，急忙去药店配了些甜瓜专用的生长素和常用药，给它反复喷了好几次。</p>
+    <p>④一周之后，所有的甜瓜苗都长大了。那棵低头的瓜苗好像积攒了无数个愁心事，虽然它的叶片平整，但还没有改掉爱低头的毛病。母亲见状，又请来亲戚们来帮忙看瓜苗。亲戚们来了一波又一波，他们给这棵甜瓜苗开了很多治疗偏方，还拿来了不少甜瓜的特效药。经过我们的多次实验，什么效果都没有。最后，母亲只能去请教我们村里的种植能手王大爷。经过一番描述，王大爷认为这棵瓜苗在育苗前就损坏了根基，所以后期也供不上养分，没有力气抬头。母亲对王大爷的话深信不疑，于是我们又开始马不停蹄地给这棵低头苗灌生根的肥料，以此帮助这棵瓜苗快速“昂首挺胸”。</p>
+    <p>⑤就算如此悉心照料，这棵甜瓜苗的情况也从未好转。为了不影响其他瓜苗的生长，我们只好把它种在棚外一个向阳的地方，任其自由生长。</p>
+    <p>⑥几个月后，棚里的甜瓜已经成熟，采摘工作也渐渐提上了日程。当我们的甜瓜采摘结束后，我突然在棚边看到那棵爱低头的甜瓜。此时的它早已萎靡不堪，所有的叶子枯黄地蜷缩着，低头的病也更加严重，整棵甜瓜的枝蔓都软软地趴在地上，犹如一条没有灵魂的绳子。于我而言，这棵甜瓜早已没有存在的意义，出于清扫障碍的目的，我把整棵瓜都拔了起来。</p>
+    <p>⑦就在此时，我发现这棵瓜苗的藤上，竟然长着一个圆润饱满的甜瓜。这个甜瓜不仅瓜型漂亮，吃起来更是甘甜多汁。甜瓜的味道不仅弥漫在我的嘴里，也抚慰了我的心头。这棵甜瓜因为低头而被我们放弃，但它在我们的有色眼镜下，并没有自暴自弃，反而努力积蓄力量，奋力生长。生活中的我们，又何尝没有过低头的经历？假如我们也如这棵甜瓜一样，在有限的条件内，低头修行，积累力量，是不是也会结出自己的硕果呢？</p>
+    <p>⑧如今，每当我觉得生活不尽如人意时，总会想一想这棵低头的甜瓜。我想，低头并不是狼狈不堪，也不代表丢盔弃甲，反而是勇往直前的开始。就像这棵甜瓜苗一样，终会结出最美的果实！</p>
+  </div>
+
+  <div class="q">
+    <div class="q-head"><span class="q-num">16.</span><span class="q-stem">梳理文章内容，根据提示在横线上填写一个合适的动词。（2分）</span></div>
+    <p class="q-stem">种植甜瓜 → 移进大棚 → （1）______甜瓜 → 移出大棚 → （2）______甜瓜 → 品尝甜瓜</p>
+    <button class="toggle" onclick="toggleNext(this)">查看答案与解析</button>
+    <div class="answer">
+      <p><strong>（1）救治（照料/医治）　（2）拔起（拔掉/清理）</strong></p>
+      <p class="analysis"><strong>解析：</strong>第③—⑤段写“我”和母亲给低头的瓜苗浇水、喷药、灌生根肥料，并请亲戚和王大爷帮忙，可概括为“救治”或“照料”。第⑥段写“我”认为这棵瓜已无存在意义，“把整棵瓜都拔了起来”，可概括为“拔起/拔掉”。</p>
+      <div class="method">
+        <p><span class="label">题型解法｜情节梳理填空</span></p>
+        <ul>
+          <li><strong>先分段：</strong>按时间或事件发展把文章切成若干层，再对应题干已给的动词。</li>
+          <li><strong>找动词、抓动作：</strong>填空要求“动词”，就回原文找最关键的动作词。</li>
+          <li><strong>保持句式一致：</strong>题干是“动词+甜瓜”，所填词也要能带宾语“甜瓜”。</li>
+          <li><strong>回头验一遍：</strong>把所填词代入链条，读起来是否顺畅、是否概括了整层意思。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="q">
+    <div class="q-head"><span class="q-num">17.</span><span class="q-stem">朗读下面这句话，你会把重音落在哪些词语上？请选择两处朗读重音，并联系上下文说明理由。（3分）</span></div>
+    <p class="q-stem">亲戚们来了一波又一波，他们给这棵甜瓜苗开了很多治疗偏方，还拿来了不少甜瓜的特效药。</p>
+    <button class="toggle" onclick="toggleNext(this)">查看答案与解析</button>
+    <div class="answer">
+      <p><strong>示例：</strong>重音落在“<span class="key">一波又一波</span>”和“<span class="key">很多</span>”（或“不少”）。“一波又一波”强调来帮忙的人接连不断，突出大家对这棵瓜苗的重视和投入之多；“很多”“不少”强调偏方和特效药的数量之多，与后文“什么效果都没有”形成<span class="key">强烈反差</span>，更突出这棵甜瓜“低头”问题的顽固，也为后文它被放弃、却在棚外结出果实作铺垫。</p>
+      <p class="analysis"><strong>解析：</strong>重音选择要服务于情感或语义表达。此处“一波又一波”“很多”“不少”都在渲染人力、物力的巨大投入，而投入越大、结果越无效，后文的转折就越有力。</p>
+      <div class="method">
+        <p><span class="label">题型解法｜朗读设计·重音</span></p>
+        <ul>
+          <li><strong>三找：</strong>找情感聚焦点、找对比点、找强调数量/程度的词。</li>
+          <li><strong>说清理由：</strong>不能只说“读重”，要答出“强调什么—与上下文什么关系—达到什么效果”。</li>
+          <li><strong>联系上下文：</strong>重音往往为后文的转折、对比、铺垫服务。</li>
+          <li><strong>可配合停连、语气：</strong>如“一波又一波”可稍慢、加重，读出人数之多。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="q">
+    <div class="q-head"><span class="q-num">18.</span><span class="q-stem">结合文章内容，谈谈《低头的甜瓜》这一标题的妙处。（4分）</span></div>
+    <button class="toggle" onclick="toggleNext(this)">查看答案与解析</button>
+    <div class="answer">
+      <p><strong>答案要点（答出三点即可）：</strong></p>
+      <p>①<span class="key">点明写作对象与线索</span>。文章从发现一棵“低着头”的甜瓜苗写起，移栽、救治、弃置、拔起、发现果实，全部围绕这棵“低头的甜瓜”展开，标题贯穿全文，使结构紧凑。</p>
+      <p>②<span class="key">设置悬念，吸引读者</span>。“甜瓜”本是结果植物，“低头”却暗示病弱、萎靡，二者组合打破常规认知，引发“甜瓜为什么会低头”“低头之后怎样”的阅读兴趣。</p>
+      <p>③<span class="key">具有象征意义，深化主旨</span>。“低头的甜瓜”象征身处逆境、不被看好却默默积蓄力量的人；结尾“低头并不是狼狈不堪，反而是勇往直前的开始”由物及人，标题含蓄地寄托了“在低谷中沉淀蓄力，终会结出果实”的人生道理。</p>
+      <p class="analysis"><strong>解析：</strong>标题妙处一般从“内容/对象—结构/线索—表达效果/悬念—主旨/象征”几个层面思考。本文标题的独特性在于“低头”与“甜瓜”的反常搭配，以及由植物到人生的象征升华。</p>
+      <div class="method">
+        <p><span class="label">题型解法｜标题妙处</span></p>
+        <ul>
+          <li><strong>四角度：</strong>内容（写了什么、是否点明对象）、结构（是否线索、是否照应）、手法（悬念、双关、比喻、象征）、主旨（是否寄托情感或哲理）。</li>
+          <li><strong>答题模板：</strong>“标题……，表面上写……，实际上（象征）……，表达了……，吸引读者……”。</li>
+          <li><strong>结合文本：</strong>每个角度都要落到文中具体情节，不能空谈。</li>
+          <li><strong>分点作答：</strong>4分题一般答3—4点，每点一句话概括+一句分析。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub-title">（二）阅读下面文章，完成19—23题（11分）</div>
+
+  <div class="article">
+    <h3>理发师小宋</h3>
+    <p class="note-line" style="text-align:center;">常运锋</p>
+    <p>①县城街道上，门店鳞次栉比。众多门店中有一家叫“小宋发艺”，我多次路过时，目光总被吸引，只因此门店理发师的形象有些特别：身体瘦削，脸庞窄尖，头发偏黄，尤为扎眼的是他头顶上往后扎着的一撮头发。这装扮，实在是有点小众。我总以为这样的人不好打交道，故虽经常路过却从未踏入其店。</p>
+    <p>②没想到，我还是跟这位有点“特别”的理发师相遇了。一次，我们爱心团队去西阳寺村协助村“两委”开展敬老活动，为村里老人唱歌、按摩、理发、包水饺。待到场地，一个似曾相识的身影蓦现眼前：身体瘦削、尖脸、黄发、头顶扎一撮头发。他？我心里有点诧异。</p>
+    <p>③队友向我介绍：“小宋师傅也来参加我们的爱心活动！”</p>
+    <p>④“哦，欢迎！欢迎！”我忙与他握手，来做公益的我们一律表示欢迎。“宋师傅是哪儿的人？”我问。“俺老家是魏县哩，来成安县二三十年啦！”他边与我握手，边用地地道道的方言回答。哦，来自邻县！听他说话口气倒显老实，不过，一个人偶尔做件好事并不难，难的是经常做好事，保不齐他就是那个“偶尔”呢。</p>
+    <p>⑤然而，事情并没按我的猜想发展，后来又一次公益活动——下乡为孤寡老人和残疾人服务，小宋又来了，还专门准备了一个理发包。在给一位脑瘫患者服务时，听说这位残疾人的父母都已去世，他又无兄弟姐妹孤身一人，小宋师傅眼窝里竟淌出了泪花。小宋从理发包里拿出推子、剪子，边给他理发，边说着宽心的话。本来我们已经送了米、面、油等慰问品，但理完发小宋又跑到小卖部买来饼干、面包，临走还留下100元钱。我对他的印象大为改观。</p>
+    <p>⑥自此，这位小宋师傅加入了我们团队。我向他表明，我们做公益活动是纯义务，只讲奉献，没有报酬，他也没有犹豫，还专门在理发包上写了“志愿服务”4个字。虽说是志愿服务，他可是一丝不苟，和在门店里一样认真。有一位女智障者头发乱得像鸟窝，而且不配合，头一直晃动。小宋师傅也不急，耐心地哄劝道：“不要动，动就扎破头了！”也怪，家人说她，她抗拒，小宋师傅说她，她果真听话不乱动了。小宋轻轻地给她梳理、剪发、洗头，她一直很安稳。一通收拾，嘿，人一下子精神了，哪儿还有原来的呆模样？也许她也知道自己变模样了，脸上开出了一朵花，很享受的样子。</p>
+    <p>⑦理发师都爱干净，小宋师傅也不例外，我注意到他每次出发前都忙着洗漱，把自己捯饬得清清爽爽。但一迈进村落家院，从来没见他嫌弃过谁，总是麻利地翻开理发包，该推的推该剪的剪。</p>
+    <p>⑧某次有个连续3天的公益活动，他天天参加，我说：“宋师傅，不要求你天天来啊，毕竟你还要营业，老关着门也不妥。”他说：“我愿意做公益，人不能光想着赚钱。”</p>
+    <p>⑨接触得多了，我得知他是一个单亲爸爸，经济并不宽裕，一个人将一双儿女抚养大，又给他们成了家。而且，他不光随团队做公益，还向他门店所在的西街村承诺：70岁以上老人理发一律免费。为此西街村委会给他赠送了锦旗，以示表彰、感谢。</p>
+    <p>⑩还是那句话：一个人偶尔做件好事并不难，难的是经常做、处处做。当我陪同他接受锦旗的时候，忽然觉得这位小宋师傅有点帅！</p>
+  </div>
+
+  <div class="q">
+    <div class="q-head"><span class="q-num">19.</span><span class="q-stem">下列对文章内容的理解，不正确的一项是（　　）（2分）</span></div>
+    <ul class="options">
+      <li>A. 遇到小宋师傅后，他的行为和表现使“我”的心理发生了一系列变化。</li>
+      <li>B. 小宋师傅加入爱心团队后，在理发包上写“志愿服务”，体现他对公益的认同。</li>
+      <li>C. 文章以小见大，巧用欲抑先扬的手法叙事，使文章具有感染力。</li>
+      <li>D. 开头描写小宋“小众”的外貌，结尾却说“小宋师傅有点帅”，突出小宋师傅的人格魅力。</li>
+    </ul>
+    <button class="toggle" onclick="toggleNext(this)">查看答案与解析</button>
+    <div class="answer">
+      <p><strong>答案：C</strong></p>
+      <p class="analysis"><strong>解析：</strong>C项“欲抑先扬”判断错误。文章开头写小宋外貌“小众”、“我”以为他“不好打交道”，这是<span class="key">先抑</span>；后文通过他参加公益、为脑瘫患者落泪、耐心理发、免费为老人服务等事迹，逐渐展现其善良与担当，这是<span class="key">后扬</span>。因此手法是“<span class="key">欲扬先抑</span>”，不是“欲抑先扬”。</p>
+      <div class="method">
+        <p><span class="label">题型解法｜现代文内容理解选择题</span></p>
+        <ul>
+          <li><strong>选项回文定位：</strong>每个选项都要找到原文对应段落，逐字比对。</li>
+          <li><strong>警惕六种错误：</strong>偷换概念、以偏概全、张冠李戴、无中生有、强加因果、手法误判。</li>
+          <li><strong>手法题要准：</strong>“欲扬先抑”是“先贬后褒”，“欲抑先扬”是“先褒后贬”，方向不能倒。</li>
+          <li><strong>绝对化词语：</strong>“全部”“完全”“始终”等要特别警惕。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="q">
+    <div class="q-head"><span class="q-num">20.</span><span class="q-stem">品析下面的句子，按要求作答。（3分）</span></div>
+    <p class="q-stem">也许她也知道自己变模样了，脸上开出了一朵花，很享受的样子。（从修辞手法的角度赏析）</p>
+    <button class="toggle" onclick="toggleNext(this)">查看答案与解析</button>
+    <div class="answer">
+      <p><strong>答案：</strong>运用<span class="key">比喻</span>（也可兼及拟人）的修辞，把女智障者理发后脸上的笑容比作“开出了一朵花”，生动形象地写出她容貌变整洁后发自内心的<span class="key">喜悦与满足</span>，也从侧面表现出小宋师傅耐心、细致的理发服务给他人带来的改变与温暖。</p>
+      <p class="analysis"><strong>解析：</strong>“脸上开出了一朵花”是比喻中的暗喻，本体是“脸上的笑容/神情”，喻体是“花”。赏析时要落到表达效果：写出了人物怎样的状态，对表现小宋师傅有何作用。</p>
+      <div class="method">
+        <p><span class="label">题型解法｜句子赏析</span></p>
+        <ul>
+          <li><strong>四步走：</strong>判手法（修辞/描写/用词/句式）→ 释内容（写出了什么）→ 析效果（生动形象/突出强调/含蓄深沉）→ 点作用（情感、人物、主旨）。</li>
+          <li><strong>答题模板：</strong>“运用……手法，把……比作……（或写出……），生动形象地表现了……，表达了……”。</li>
+          <li><strong>修辞优先：</strong>题干已点明“从修辞角度”，就不要跑题去谈“动作描写”。</li>
+          <li><strong>兼顾侧面：</strong>写他人笑容，往往也在侧面烘托主人公，要答出这一层。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="q">
+    <div class="q-head"><span class="q-num">21.</span><span class="q-stem">小宋师傅是一个怎样的人？请结合具体内容简要分析。（3分）</span></div>
+    <button class="toggle" onclick="toggleNext(this)">查看答案与解析</button>
+    <div class="answer">
+      <p><strong>答案要点（答出三点、结合内容即可）：</strong></p>
+      <p>①<span class="key">善良、有同情心</span>。给脑瘫患者理发时听说对方孤身一人，他“眼窝里竟淌出了泪花”，理完发还买饼干、面包并留下100元钱。</p>
+      <p>②<span class="key">热心公益、无私奉献</span>。他加入爱心团队，在理发包上写“志愿服务”，连续3天公益活动天天参加，说“人不能光想着赚钱”；还向门店所在村承诺70岁以上老人理发免费。</p>
+      <p>③<span class="key">做事认真、耐心细致</span>。为不配合的女智障者理发时，他耐心哄劝，“轻轻地给她梳理、剪发、洗头”，和在门店里一样一丝不苟。</p>
+      <p>（也可答“信守承诺、有责任感”“生活不易却乐观担当”等，结合单亲爸爸、抚养儿女等内容分析。）</p>
+      <div class="method">
+        <p><span class="label">题型解法｜人物形象分析</span></p>
+        <ul>
+          <li><strong>三找：</strong>找事件（他做了什么）、找描写（语言、动作、神态、心理）、找评价（作者或他人的议论句）。</li>
+          <li><strong>答题格式：</strong>性格词 + 具体事例 + 简要分析，分点作答。</li>
+          <li><strong>避免空泛：</strong>只写“善良”“热心”不给分，必须带原文细节。</li>
+          <li><strong>多角度：</strong>对家人、对服务对象、对公益、对金钱，不同侧面可概括不同品质。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="q">
+    <div class="q-head"><span class="q-num">22.</span><span class="q-stem">第⑩段提到“一个人偶尔做件好事并不难，难的是经常做、处处做。”结合全文，谈谈你对这句话的理解。（3分）</span></div>
+    <button class="toggle" onclick="toggleNext(this)">查看答案与解析</button>
+    <div class="answer">
+      <p><strong>答案要点：</strong></p>
+      <p>①这句话在文中<span class="key">反复出现</span>，是“我”对小宋师傅认识深化后的感慨，也是全文<span class="key">点题</span>之笔。</p>
+      <p>②小宋师傅的可贵不在于一次偶然的善举，而在于把公益<span class="key">常态化</span>：他多次随团队下乡，连续3天活动天天参加，在门店也长期为70岁以上老人免费理发，收到村委会锦旗。偶尔做一件好事容易，长期坚持、处处践行却需要真正的善良与担当。</p>
+      <p>③这句话也<span class="key">升华了主旨</span>：评价一个人，不能只看一时一事，而要看其行为是否具有一贯性；小宋师傅“有点帅”，正是因为他把善意变成了日常。</p>
+      <div class="method">
+        <p><span class="label">题型解法｜句子含义理解</span></p>
+        <ul>
+          <li><strong>由表及里：</strong>先解释字面意思，再结合语境说深层含义。</li>
+          <li><strong>联系上下文：</strong>这句话前面写了什么、后面又写了什么，往往就是答案依据。</li>
+          <li><strong>结合主旨：</strong>结尾议论句多有点题、升华作用，要答出来。</li>
+          <li><strong>分点作答：</strong>句意 + 文中依据 + 主旨作用，三层最稳。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 五、写作与范文 ================= -->
+<section id="s5" class="section">
+  <div class="sec-title">五、写作（40分）</div>
+  <div class="q">
+    <div class="q-head"><span class="q-num">23.</span><span class="q-stem">阅读下面文字，按要求作文。</span></div>
+    <p class="q-stem">翻开语文课本，那些隽永的画面触动了我们的心灵：我们跟着朱自清的《春》欣赏春日盛景；在《秋天的怀念》里体会深沉母爱；从《再塑生命的人》中看见陪伴与希望。文字里动人的画面，在现实中也时常出现。总有一幕景象，刹那间触动我们的心灵，留在记忆中。</p>
+    <p class="q-stem">请以《触动我心灵的一幕》为题，写一篇记叙文。</p>
+    <p class="q-stem">要求：（1）内容具体，中心突出，语句流畅，写出真情实感；（2）文中不得出现真实的人名、校名、地名；（3）字数在600字以上。</p>
+    <button class="toggle" onclick="toggleNext(this)">查看写作提示、方法归纳与范文</button>
+    <div class="answer">
+      <p><strong>审题要点：</strong>①“一幕”指向<span class="key">一个具体的场景/画面</span>，不宜写成多件事的流水账；②“触动我心灵”要求写出情感变化与内心震动，不能只叙事不抒情；③记叙文，须有细节描写（动作、神态、语言、环境），字数600字以上。</p>
+      <p><strong>选材建议：</strong>可从家庭、校园、社会生活中选取一个“刹那间”打动自己的画面，如亲人的一个背影、陌生人的一次援手、老师的一句轻声鼓励、比赛失利后同伴的沉默陪伴等。关键是写出“为什么触动”以及“触动之后我有什么变化”。</p>
+      <p><strong>结构参考：</strong>倒叙开头，定格画面 → 交代背景，推进到触动瞬间 → 放慢镜头，细写“一幕”（多感官、多角度） → 写出心理震动与感悟 → 结尾回扣标题，升华但不空泛。</p>
+
+      <div class="method">
+        <p><span class="label">题型解法｜命题记叙文写作</span></p>
+        <ul>
+          <li><strong>抓题眼：</strong>“触动”是情感核心，“一幕”是场景限制。写“一件事”可以，但要有一两个“定格镜头”式的细描。</li>
+          <li><strong>选真事、小切口：</strong>越是具体的小场景，越容易写出真情；不要贪多写“从小到大”。</li>
+          <li><strong>慢镜头描写：</strong>把关键几秒拆开写——动作、神态、声音、光线、气味，让读者“看见”。</li>
+          <li><strong>写出“变化”：</strong>触动之前“我”怎样，触动之后“我”怎样，前后对比才有感染力。</li>
+          <li><strong>结尾忌空喊：</strong>用画面或细节收束，再由事及理，一句话点出感悟即可。</li>
+          <li><strong>规避失分：</strong>不出现真实人名、校名、地名；字数600字以上；书写工整，段落清晰。</li>
+        </ul>
+      </div>
+
+      <div class="model-essay">
+        <h4>范文一</h4>
+        <div class="essay-tag">家庭亲情类 · 约850字</div>
+        <p class="essay-title">触动我心灵的一幕</p>
+
+        <p>记忆像一只旧木箱，里面塞满了大大小小的画面。多数已经褪色，唯有那一幕，每次想起，仍带着冬日清晨的寒气，和一股热腾腾的包子香。</p>
+
+        <p>那是初二期中考后的一天。成绩单发下来，数学只有六十八分。回家的路上，我把卷子揉成一团塞进书包最底层，心里像堵了一团湿棉花。晚饭时，母亲照例问我考得怎么样，我含糊地应了一声。她又追问，我忽然烦躁起来，把筷子一摔：“问什么问！烦不烦！”母亲愣了一下，嘴唇动了动，没再说话，只是低头把碗里的菜往我这边推了推。</p>
+
+        <p>第二天清晨，天还没亮透。我赌气没吃早饭，抓起书包就往外走。母亲在身后喊：“吃点再走——”我头也没回，用力带上门。</p>
+
+        <p>巷子里的风像刀子，刮在脸上生疼。我缩着脖子走到巷口，肚子不争气地咕咕叫起来。就在我犹豫要不要折回去的时候，身后传来一阵急促的脚步声，还有拖鞋拍打地面的“啪嗒”声。</p>
+
+        <p>我回头。</p>
+
+        <p>那一幕，我至今记得清清楚楚。</p>
+
+        <p>母亲穿着那件洗得发白的薄毛衣，外面连件外套都没顾上披。她的头发被风吹得乱蓬蓬的，几缕贴在冻得发红的脸上。她一只手高高举着两个包子，塑料袋外面裹了又裹，怕凉了；另一只手还在围裙上胡乱擦着。她的脚上，一只棉拖鞋跑掉了，另一只也歪歪斜斜，脚后跟露在外面，踩在冰凉的水泥地上。</p>
+
+        <p>“拿着……趁热……”她跑到我面前，喘着气，把包子往我手里塞，“妈没别的意思，就是想让你吃口热的……考不好就考不好，下回再来……”</p>
+
+        <p>包子的热气一下子涌上我的脸，也涌进我的眼眶。我低着头，看见她脚背上冻得通红，脚趾蜷缩着。刚才那点赌气的理直气壮，忽然像被这团热气蒸化了，只剩下满心的酸涩。</p>
+
+        <p>“妈……”我张了张嘴，声音哑得厉害。</p>
+
+        <p>“快吃，别迟到了。”她笑着推我一把，转身往回走。晨光刚刚爬上巷子尽头，她的背影被拉得很长，那只跑掉拖鞋的脚，一瘸一拐地踩在冰冷的地面上。</p>
+
+        <p>我站在原地，咬了一口包子。很烫，很香，眼泪却一颗一颗掉在塑料袋上。</p>
+
+        <p>那一幕，让我忽然明白：母亲的爱，从来不在什么惊天动地的大事里，它就藏在一声没说完的叮嘱里，藏在一双跑掉的拖鞋里，藏在两个被裹了又裹、怕凉了的包子里。</p>
+
+        <p>后来我又考过很多次试，有得意，也有失意。每当我心里发堵、想要对最亲的人发脾气时，那个冬日清晨的画面就会浮上来——风很冷，母亲举着包子的手，却很暖。</p>
+      </div>
+
+      <div class="model-essay">
+        <h4>范文二</h4>
+        <div class="essay-tag">社会温情类 · 约830字</div>
+        <p class="essay-title">触动我心灵的一幕</p>
+
+        <p>每天上学，我都要经过街角那个烤红薯的摊子。摊主是位老人，脸被炉火和风霜熏得黝黑，手背上裂着一道道口子。我常在他那儿买红薯，却从没多看过他一眼。直到那个冬天的清晨，我看见了让我久久不能忘的一幕。</p>
+
+        <p>那天特别冷，天还没亮透，风卷着枯叶在街面上打转。我缩着脖子走到街角，老人已经支好了炉子，铁皮桶里炭火红亮，红薯的甜香一阵阵往外冒。</p>
+
+        <p>就在我掏钱的时候，我注意到墙角蜷着一个人。他裹着一床看不出颜色的旧棉被，头发结成一缕一缕，脸埋在膝盖里，只露出一双冻得发紫的手。是常在这条街上流浪的那个人。</p>
+
+        <p>老人也看见了他。他停下手里的活儿，从炉子上挑了一个最大的红薯，用报纸包了两层，又套上塑料袋，然后绕过摊子，走到墙角。</p>
+
+        <p>“兄弟，吃口热的。”老人蹲下身，把红薯递过去。</p>
+
+        <p>流浪汉抬起头，愣愣地看着他，没伸手。</p>
+
+        <p>老人也不催，就那么蹲着，把红薯往他怀里又送了送：“拿着吧，不要钱。天冷，暖暖手也是好的。”</p>
+
+        <p>流浪汉这才抖着手接过去。红薯的热气从袋口冒出来，模糊了他脏兮兮的脸。他低下头，肩膀忽然一抽一抽地动起来。</p>
+
+        <p>我以为事情到这儿就完了。可老人站起身，又回头看了一眼，忽然解开自己身上那件旧棉袄的扣子，脱下来，轻轻盖在了流浪汉的腿上。</p>
+
+        <p>“我炉子边不冷。”老人说。</p>
+
+        <p>他自己只剩一件单薄的中衣，风一吹，衣服贴在瘦削的背上。他搓了搓手，回到摊子前，若无其事地翻动着炉子上的红薯，好像刚才什么都没发生。</p>
+
+        <p>我站在不远处，手里攥着买红薯的钱，忽然觉得那几张纸币有点发烫。</p>
+
+        <p>我见过很多“大场面”：电视里的捐款仪式，横幅下的合影，闪光灯里的笑脸。可那一刻，一个衣衫朴素的老人，一个最大号的红薯，一件还带着体温的旧棉袄，却比那些场面更结实地震了我一下。</p>
+
+        <p>我走过去，多买了两个红薯。老人笑着问：“吃得了吗？”我说：“带给同学。”他“哎”了一声，挑了两个最饱满的，还多塞了一个小的：“这个送你，刚出炉的。”</p>
+
+        <p>那天早晨，我捧着热乎乎的红薯走进校门，心里也揣着一团火。</p>
+
+        <p>我常想，善良到底是什么模样？它也许不是多么宏大的词，它就是街角一个烤红薯的老人，蹲下身，把热乎的东西，递给一个冷了很久的人。</p>
+
+        <p>那一幕，像一粒火种，落在我心里。它让我相信：再普通的人，也能在寒风中，为别人点亮一小片暖。</p>
+      </div>
+
+      <div class="method" style="margin-top:16px;">
+        <p><span class="label">范文点评与借鉴</span></p>
+        <ul>
+          <li><strong>范文一：</strong>以“追出来送包子”为核心画面，用“跑掉的拖鞋”“裹了又裹的塑料袋”“冻红的脚背”等细节放大“一幕”，先写“我”的烦躁，再写触动后的酸涩，情感有转折。结尾由事及理，不空喊口号。</li>
+          <li><strong>范文二：</strong>选取陌生人的善举，用“最大号的红薯”“脱下的旧棉袄”“只剩单薄中衣”形成对比，突出善良的分量。结尾用“火种”“一小片暖”收束，意象统一。</li>
+          <li><strong>共同可学：</strong>①只写一个核心场景；②慢镜头细描；③写出“我”的心理变化；④结尾用画面或比喻收束，点出感悟；⑤不出现真实人名、校名、地名。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 附录 ================= -->
+<section id="s6" class="section">
+  <div class="sec-title">附录一：《王华还金》重点词语释义</div>
+  <div class="transbox">
+    <table>
+      <tr><th>词语</th><th>释义</th><th>说明</th></tr>
+      <tr><td>濯（zhuó）</td><td>洗</td><td>“濯足”即洗脚</td></tr>
+      <tr><td>以</td><td>因为</td><td>“以大醉”＝因为大醉</td></tr>
+      <tr><td>遗（yí）</td><td>遗失，留下</td><td>“遗所提囊”</td></tr>
+      <tr><td>度（duó）</td><td>估计，揣测</td><td>“度其醒必复来”</td></tr>
+      <tr><td>其</td><td>代词，他（那位客人）</td><td>“度其醒”</td></tr>
+      <tr><td>复</td><td>再，又</td><td>“必复来”</td></tr>
+      <tr><td>持</td><td>拿，拿走</td><td>“恐人持去”</td></tr>
+      <tr><td>少顷</td><td>不一会儿</td><td>时间副词</td></tr>
+      <tr><td>号（háo）</td><td>大声哭喊</td><td>“号泣而至”</td></tr>
+      <tr><td>尔</td><td>你，你的</td><td>“求尔金邪”</td></tr>
+      <tr><td>为（wèi）</td><td>替，给</td><td>“为指其处”</td></tr>
+      <tr><td>却</td><td>推辞，拒绝</td><td>“却不受”</td></tr>
+      <tr><td>锭</td><td>量词，计量金银的单位</td><td>“以一锭为谢”</td></tr>
+    </table>
+  </div>
+
+  <div class="sec-title">附录二：《王华还金》全文现代汉语翻译</div>
+  <div class="transbox">
+    <p>王华六岁的时候，和一群小孩在水边嬉戏。看见一个客人来洗脚，因为大醉的缘故，离开时留下了他携带的包裹。王华拿来一看，里面有几十两金子。王华估计他酒醒后必定会再回来，担心别人把金子拿走，就把金子投到水里，坐在那里守着。不一会儿，那个人果然大声哭喊着来了。王华迎上前去对他说：“您是在找您的金子吗？”于是为他指明了投金的地方。那个人很高兴，拿出一锭金子作为酬谢，王华推辞没有接受。</p>
+  </div>
+
+  <div class="sec-title">附录三：《秋浦途中》补充</div>
+  <div class="transbox">
+    <p><strong>重点词语：</strong>穷秋——深秋；萧萧——形容雨声/落叶声；淅淅——形容风声；蒲——蒲草；为问——借问，请问；杜陵——在长安西南，此处借指诗人家乡一带。</p>
+    <p><strong>参考译文：</strong>山路上秋雨萧萧，深秋的雨下个不停；溪风吹来淅淅作响，吹动满岸的蒲草。我想问一问那寒沙上新飞来的大雁：你们来的时候，可曾经过我的家乡杜陵吗？</p>
+  </div>
+
+  <div class="sec-title">附录四：校读与答案说明</div>
+  <div class="transbox">
+    <p>①第1题原卷拼音存在OCR识别干扰，答案依据规范读音判定（粗犷guǎng、抖擞sǒu、酝酿niàng、静谧mì）。</p>
+    <p>②第2题D项按教材词形校读为“娇媚”，该项书写正确。</p>
+    <p>③第6题B项“令爱指对方的妻子”为明确错误，令爱指女儿；本题选“有误”项，答案B。</p>
+    <p>④第8题断句依据句意“恐人持去 / 以投水中 / 坐守之”，与原卷选项C一致。</p>
+    <p>⑤第19题手法判定为“欲扬先抑”，原卷C项表述“欲抑先扬”颠倒了抑扬顺序，故为错误项。</p>
+  </div>
+</section>
+
+</div>
+
+<script>
+  const tabs = document.querySelectorAll('.tab');
+  const sections = document.querySelectorAll('.section');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      sections.forEach(s => s.classList.remove('show'));
+      tab.classList.add('active');
+      document.getElementById(tab.dataset.target).classList.add('show');
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    });
+  });
+
+  function toggleNext(btn){
+    const answer = btn.nextElementSibling;
+    const willShow = !answer.classList.contains('show');
+    answer.classList.toggle('show', willShow);
+    btn.classList.toggle('open', willShow);
+    btn.textContent = willShow ? '收起答案与解析' : '查看答案与解析';
+    if(!willShow && btn.textContent === '收起答案与解析'){
+      btn.textContent = '查看答案与解析';
+    }
+    // 作文按钮文字特殊处理
+    if(btn.dataset.writing === '1' || btn.textContent.indexOf('范文') > -1 || btn.textContent.indexOf('写作') > -1){
+      btn.textContent = willShow ? '收起写作提示、方法归纳与范文' : '查看写作提示、方法归纳与范文';
+    }
+  }
+
+  function expandAll(){
+    document.querySelectorAll('.section.show .toggle').forEach(btn => {
+      if(!btn.classList.contains('open')) btn.click();
+    });
+  }
+  function collapseAll(){
+    document.querySelectorAll('.section.show .toggle.open').forEach(btn => btn.click());
+  }
+</script>
+</body>
+</html>
