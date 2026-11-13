@@ -45,6 +45,7 @@ HTML 学习资料，按学科分类。
 ## 历史、道法、 地理
 
 - [中国近现代史纲要笔记](/history/modern-chinese-history-review-notes.html)
+- [23–24年初二历史期中试题 v1（交互式精讲）](/history/grade-8-history-midterm-2023-2024-v1.html)、[v2（全卷解析）](/history/grade-8-history-midterm-2023-2024-v2.html)、[v3（详解版）](/history/grade-8-history-midterm-2023-2024-v3.html)
 - [八上历史期中模拟 v1](/history/grade-8-history-midterm-v1.html)、[v2](/history/grade-8-history-midterm-v2.html)
 - [八上历史知识清单](/history/8th-grade-history-knowledge-list)
 - [八上历史考点研究](/history/8th-grade-history-key-points)
