@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>11-5 培优 + 冲刺试卷1 · 精读精讲（合订本）</title>
+<style>
+  :root{
+    --paper:#f4f0e6;--paper2:#ebe5d6;--sheet:#fffdf8;--sheet2:#faf6ec;
+    --ink:#22303f;--ink2:#3e4c5c;--muted:#857f70;--faint:#a49d8c;
+    --line:#ded4bd;--line2:#eae2d0;
+    --navy:#1f3a5f;--navy2:#2c4f78;--navy-soft:rgba(31,58,95,.07);
+    --gold:#8a6a3b;--gold2:#b08d55;--gold-soft:#f3ead6;
+    --ok:#1d6b4f;--ok-soft:rgba(29,107,79,.10);
+    --no:#a63d33;--no-soft:rgba(166,61,51,.10);
+    --shadow:0 12px 34px rgba(58,48,30,.10);--shadow-sm:0 3px 12px rgba(58,48,30,.07);
+    --radius:6px;--fs:16px;
+    --serif:"Noto Serif SC","Source Han Serif SC","Songti SC","STSong","SimSun",Georgia,"Times New Roman",serif;
+    --sans:"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",system-ui,-apple-system,sans-serif;
+  }
+  body.dark{
+    --paper:#151c26;--paper2:#111823;--sheet:#1c2531;--sheet2:#202b39;
+    --ink:#ece5d6;--ink2:#c9c1b0;--muted:#a0998a;--faint:#7c7565;
+    --line:#33404f;--line2:#2a3542;
+    --navy:#9dbde0;--navy2:#b9d2ef;--navy-soft:rgba(157,189,224,.12);
+    --gold:#d3ae72;--gold2:#e0c391;--gold-soft:rgba(211,174,114,.14);
+    --ok:#68c39c;--ok-soft:rgba(104,195,156,.14);
+    --no:#ef8f84;--no-soft:rgba(239,143,132,.14);
+    --shadow:0 12px 34px rgba(0,0,0,.45);--shadow-sm:0 3px 12px rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;font-size:var(--fs)}
+  body{margin:0;font-family:var(--sans);color:var(--ink);line-height:1.8;
+    background:var(--paper);
+    background-image:radial-gradient(circle at 18% 6%,rgba(138,106,59,.07),transparent 42%),
+      radial-gradient(circle at 88% 22%,rgba(31,58,95,.06),transparent 46%),
+      repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(138,106,59,.012) 3px,rgba(138,106,59,.012) 4px);
+    min-height:100vh;-webkit-font-smoothing:antialiased;}
+  #bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--gold),var(--navy2));z-index:300;transition:width .1s}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 20px 80px}
+
+  /* ===== Hero：深墨蓝封面 ===== */
+  header.hero{position:relative;overflow:hidden;background:linear-gradient(150deg,#16283f 0%,#1f3a5f 55%,#244a63 100%);
+    color:#f6f0e2;padding:48px 40px 40px;margin:22px 0 0;border-radius:3px;box-shadow:var(--shadow)}
+  header.hero::before{content:"";position:absolute;inset:0;opacity:.5;
+    background-image:repeating-linear-gradient(90deg,transparent,transparent 26px,rgba(211,174,114,.05) 26px,rgba(211,174,114,.05) 27px);}
+  header.hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:linear-gradient(90deg,var(--gold2),transparent 70%)}
+  .hero-in{position:relative;z-index:2;max-width:1000px;margin:0 auto}
+  .folio{display:flex;justify-content:space-between;align-items:center;font-family:var(--serif);
+    font-size:.78rem;letter-spacing:.22em;color:var(--gold2);border-bottom:1px solid rgba(211,174,114,.35);padding-bottom:12px;text-transform:uppercase}
+  h1{font-family:var(--serif);font-size:clamp(1.85rem,4.2vw,2.9rem);line-height:1.35;margin:22px 0 10px;font-weight:700;letter-spacing:.02em}
+  h1 .sub{display:block;font-family:var(--sans);font-size:.52em;font-weight:400;opacity:.82;margin-top:12px;letter-spacing:.03em;line-height:1.7}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:9px;margin-top:22px}
+  .chip{font-size:.76rem;padding:5px 13px;border:1px solid rgba(211,174,114,.45);color:#efe4cd;border-radius:2px;letter-spacing:.04em}
+  .hero-note{margin-top:20px;font-size:.86rem;opacity:.86;max-width:820px;line-height:1.85;border-left:2px solid var(--gold2);padding-left:14px}
+
+  /* ===== 工具条 ===== */
+  .toolbar{position:sticky;top:0;z-index:120;display:flex;flex-wrap:wrap;gap:7px;align-items:center;
+    padding:9px 12px;margin:16px 0 22px;background:var(--sheet);border:1px solid var(--line);
+    border-top:2px solid var(--gold);border-radius:2px;box-shadow:var(--shadow-sm)}
+  .toolbar .grow{flex:1}
+  .tool-btn{font-family:inherit;font-size:.78rem;font-weight:600;color:var(--ink2);background:transparent;
+    border:1px solid var(--line);border-radius:2px;padding:7px 11px;cursor:pointer;transition:.16s;white-space:nowrap}
+  .tool-btn:hover{border-color:var(--gold2);color:var(--gold);background:var(--gold-soft)}
+  .tool-btn.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+  body.dark .tool-btn.on{background:var(--gold);color:#1a1a1a;border-color:var(--gold)}
+  .navlinks{display:flex;gap:5px;flex-wrap:wrap}
+  .navlinks a{font-size:.76rem;font-weight:600;text-decoration:none;color:var(--navy);padding:6px 9px;
+    border:1px solid var(--line2);border-radius:2px;transition:.16s;white-space:nowrap}
+  .navlinks a:hover{background:var(--gold-soft);border-color:var(--gold2)}
+
+  /* ===== 卷别分隔 ===== */
+  .part{display:flex;align-items:center;gap:16px;margin:38px 0 22px}
+  .part .pn{font-family:var(--serif);font-size:2.4rem;font-weight:700;color:var(--gold);line-height:1}
+  .part .pt{flex:1}
+  .part .pt b{display:block;font-family:var(--serif);font-size:1.22rem;color:var(--ink);letter-spacing:.04em}
+  .part .pt span{font-size:.8rem;color:var(--muted)}
+  .part .line{flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+
+  /* ===== 卡片 ===== */
+  section.card{background:var(--sheet);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);padding:28px 30px 32px;margin-bottom:26px;position:relative}
+  section.card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,var(--gold2),var(--navy))}
+  .sec-head{display:flex;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:4px}
+  .sec-no{flex:0 0 auto;width:46px;height:46px;display:grid;place-items:center;font-family:var(--serif);
+    font-size:1.05rem;font-weight:700;color:#f7efdd;background:var(--navy);border:1px solid var(--gold2);
+    border-radius:2px;box-shadow:2px 2px 0 var(--gold-soft)}
+  body.dark .sec-no{color:#1a1a1a;background:var(--gold2);border-color:var(--gold)}
+  .sec-title{font-family:var(--serif);margin:0;font-size:1.32rem;font-weight:700;letter-spacing:.02em;line-height:1.5}
+  .sec-title small{display:block;font-family:var(--sans);font-weight:400;color:var(--muted);font-size:.78rem;margin-top:5px;letter-spacing:0}
+  .sec-meta{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 6px}
+  .badge{font-size:.72rem;font-weight:600;padding:3px 10px;border:1px solid var(--line);color:var(--navy);border-radius:2px;background:var(--navy-soft)}
+  .badge.warm{background:var(--gold-soft);color:var(--gold);border-color:var(--line)}
+  .badge.gray{color:var(--muted);background:transparent}
+  .badge.ok{background:var(--ok-soft);color:var(--ok)}
+  .lead{color:var(--muted);font-size:.88rem;margin:12px 0 18px;padding-bottom:12px;border-bottom:1px solid var(--line2)}
+
+  /* ===== 原文 ===== */
+  .passage{background:var(--sheet2);border:1px solid var(--line2);border-left:3px solid var(--gold2);
+    padding:20px 24px;margin:10px 0 18px;font-size:1.02rem;line-height:2.15;letter-spacing:.005em}
+  .passage p{margin:0 0 13px}
+  .passage p:last-child{margin-bottom:0}
+  .passage .h{font-weight:800;color:var(--navy);font-family:var(--serif)}
+  .passage .tag{font-size:.74em;color:var(--muted)}
+  .passage .qbox{border:1px solid var(--line);background:var(--sheet);padding:12px 16px;margin:12px 0;border-radius:3px}
+  .passage .qbox .who{font-weight:800;color:var(--navy);font-family:var(--serif);margin-right:6px}
+  .passage .qbox p{margin:0 0 9px}
+  .passage .qbox p:last-child{margin:0}
+  .w{position:relative;cursor:pointer;border-bottom:2px solid var(--gold2);background:linear-gradient(transparent 62%,var(--gold-soft) 62%);
+    padding:0 1px;border-radius:1px;transition:.15s;white-space:nowrap}
+  .w:hover{background:var(--gold2);color:#fff;border-bottom-color:var(--gold)}
+  .w.active{background:var(--gold2);color:#fff}
+  .gloss{display:none}
+  body.showall .gloss{display:inline;font-size:.78em;color:var(--ok);font-weight:600;padding:0 2px;white-space:normal}
+  .blank{display:inline-block;min-width:2.3em;text-align:center;font-weight:800;color:var(--navy);
+    background:var(--navy-soft);border-bottom:2px dashed var(--navy);border-radius:2px;padding:0 7px;margin:0 2px;cursor:pointer;font-size:.9em}
+  .blank:hover{background:var(--gold-soft)}
+  .blank i{display:none;font-style:normal;color:var(--ok);font-weight:800}
+  .blank.open{background:var(--ok-soft);border-bottom-color:var(--ok);color:var(--ok)}
+  .blank.open b{display:none}.blank.open i{display:inline}
+  body.showans .blank{background:var(--ok-soft);border-bottom-color:var(--ok);color:var(--ok)}
+  body.showans .blank b{display:none}body.showans .blank i{display:inline}
+
+  /* ===== 选项框 ===== */
+  .optbox{border:1px solid var(--line);background:var(--sheet2);padding:14px 18px;margin:10px 0 16px;border-radius:3px;font-size:.94rem;line-height:2.05}
+  .optbox>b{display:block;font-family:var(--serif);color:var(--navy);margin-bottom:6px;font-size:.96rem}
+  .optbox .row{display:flex;gap:8px}
+  .optbox .row .lt{font-family:var(--serif);font-weight:800;color:var(--gold);min-width:1.4em}
+  .optbox .extra{font-size:.78rem;color:var(--no);font-weight:700;margin-left:8px}
+
+  /* ===== 题目（自测） ===== */
+  h3.ans-h{font-family:var(--serif);margin:26px 0 12px;font-size:1.05rem;display:flex;align-items:center;gap:10px;color:var(--ink)}
+  h3.ans-h::before{content:"";width:16px;height:2px;background:var(--gold2);display:inline-block}
+  .ans-list{display:grid;gap:11px}
+  .ans-item{border:1px solid var(--line);border-left:3px solid var(--line);border-radius:3px;padding:13px 16px;background:var(--sheet2)}
+  .ans-item .top{display:flex;flex-wrap:wrap;align-items:center;gap:9px}
+  .ans-item .num{font-family:var(--serif);font-weight:800;color:var(--gold)}
+  .ans-item .key{font-weight:800;color:var(--ink);background:var(--gold-soft);padding:1px 9px;border-radius:2px;font-size:.98rem}
+  .ans-item .kt{font-size:.7rem;font-weight:700;color:#fff;background:var(--navy);border-radius:2px;padding:2px 8px}
+  body.dark .ans-item .kt{color:#1a1a1a;background:var(--gold2)}
+  .ans-item ul{margin:9px 0 0;padding-left:19px;color:var(--ink2);font-size:.88rem}
+  .ans-item ul li{margin:4px 0}
+  .ans-item .sent{font-size:.9rem;color:var(--ink2);margin-top:7px}
+  .qstem{font-weight:700;color:var(--ink);margin:3px 0 8px;font-size:.98rem}
+  .qopts{display:grid;gap:5px;margin:2px 0 0}
+  .qopts .opt{font-size:.88rem;color:var(--ink2);padding:6px 11px;border:1px solid var(--line2);border-radius:2px;
+    cursor:default;transition:.15s;background:var(--sheet)}
+  .qopts .opt .lt{font-family:var(--serif);font-weight:800;color:var(--gold);margin-right:8px}
+  body.quiz .qopts .opt{cursor:pointer}
+  body.quiz .qopts .opt:hover{border-color:var(--gold2);background:var(--gold-soft)}
+  .qopts .opt.picked{color:var(--ok);font-weight:800;background:var(--ok-soft);border-color:var(--ok)}
+  body.quiz .qopts .opt.picked{color:var(--ink2);font-weight:400;background:var(--sheet);border-color:var(--line2)}
+  .qopts .opt.right{color:var(--ok);font-weight:800;background:var(--ok-soft);border-color:var(--ok)}
+  .qopts .opt.wrong{color:var(--no);font-weight:700;background:var(--no-soft);border-color:var(--no)}
+  .qopts .opt.done{pointer-events:none;opacity:.95}
+  .qfb{font-size:.78rem;margin-top:7px;min-height:0}
+  .qfb .yes{color:var(--ok);font-weight:700}.qfb .nope{color:var(--no);font-weight:700}
+
+  /* ===== 弹窗（五层解析） ===== */
+  #pop{position:absolute;z-index:250;width:min(390px,90vw);background:var(--sheet);
+    border:1px solid var(--gold2);border-top:3px solid var(--gold);border-radius:3px;
+    box-shadow:0 20px 52px rgba(35,28,15,.30);padding:16px 18px;display:none}
+  #pop.show{display:block;animation:pop .16s ease}
+  @keyframes pop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  #pop .pw{font-family:var(--serif);font-size:1.14rem;font-weight:800;color:var(--ink);display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+  #pop .pph{font-family:var(--sans);font-size:.78rem;color:var(--ok);font-weight:600}
+  #pop .pcn{margin-top:6px;font-size:1rem;font-weight:700;color:var(--navy)}
+  #pop .pdef{margin-top:9px;font-size:.84rem;color:var(--ink2);line-height:1.75}
+  #pop .prow{margin-top:8px;font-size:.83rem;line-height:1.7;color:var(--ink2)}
+  #pop .prow b{color:var(--gold);font-weight:700;margin-right:5px}
+  #pop .pex{margin-top:10px;padding-top:9px;border-top:1px dashed var(--line);font-size:.87rem}
+  #pop .pex b{color:var(--ok)}
+  #pop .pex .cn{color:var(--muted);font-size:.81rem;display:block;margin-top:2px}
+  .pos{display:inline-block;font-size:.68rem;font-weight:700;color:#fff;background:var(--navy);border-radius:2px;padding:2px 7px}
+  body.dark .pos{color:#1a1a1a;background:var(--gold2)}
+
+  /* ===== 生词汇总 ===== */
+  .vtools{display:flex;flex-wrap:wrap;gap:9px;align-items:center;margin:16px 0 8px}
+  .vsearch{font-family:inherit;font-size:.86rem;padding:8px 12px;border:1px solid var(--line);border-radius:2px;
+    background:var(--sheet);color:var(--ink);min-width:230px;flex:1;max-width:340px}
+  .vsearch:focus{outline:none;border-color:var(--gold2)}
+  .fchip{font-family:inherit;font-size:.76rem;padding:6px 11px;border:1px solid var(--line);background:transparent;
+    color:var(--ink2);border-radius:2px;cursor:pointer;transition:.15s}
+  .fchip:hover{border-color:var(--gold2)}
+  .fchip.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+  body.dark .fchip.on{background:var(--gold);color:#1a1a1a;border-color:var(--gold)}
+  .vstat{font-size:.78rem;color:var(--muted);margin:6px 0 14px}
+  .vstat b{color:var(--ok);font-weight:800}
+  .vgroup{margin-top:22px}
+  .vgroup>h3{font-family:var(--serif);margin:0 0 10px;font-size:1rem;color:var(--navy);
+    display:flex;gap:9px;align-items:center;border-bottom:1px solid var(--line2);padding-bottom:7px}
+  .vgroup>h3 .dot{width:7px;height:7px;background:var(--gold2);transform:rotate(45deg)}
+  .vcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:12px}
+  .vcard{border:1px solid var(--line);border-top:2px solid var(--gold2);border-radius:3px;padding:14px 16px;
+    background:var(--sheet);box-shadow:var(--shadow-sm);position:relative}
+  .vcard.mastered{opacity:.58;background:var(--sheet2)}
+  .vcard .hw{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;padding-right:64px}
+  .vcard .en{font-family:var(--serif);font-weight:800;font-size:1.03rem;color:var(--ink)}
+  .vcard .ph{font-size:.76rem;color:var(--ok);font-weight:600}
+  .vcard .cn{margin-top:5px;font-weight:700;color:var(--navy);font-size:.94rem}
+  .vcard .def{margin-top:6px;font-size:.81rem;color:var(--ink2);line-height:1.7}
+  .vcard .row{margin-top:6px;font-size:.78rem;color:var(--ink2);line-height:1.65}
+  .vcard .row b{color:var(--gold);font-weight:700}
+  .vcard .ex{margin-top:8px;font-size:.82rem;border-top:1px dashed var(--line2);padding-top:7px}
+  .vcard .ex .ecn{display:block;color:var(--muted);font-size:.77rem;margin-top:2px}
+  .vcard .acts{position:absolute;right:10px;top:10px;display:flex;gap:4px}
+  .mini{width:26px;height:26px;border:1px solid var(--line);border-radius:2px;background:var(--sheet);
+    color:var(--muted);cursor:pointer;font-size:.8rem;line-height:1;display:grid;place-items:center;transition:.15s}
+  .mini:hover{border-color:var(--gold2);color:var(--gold)}
+  .mini.star.on{color:var(--gold);background:var(--gold-soft);border-color:var(--gold2)}
+  .noresult{padding:24px;text-align:center;color:var(--muted);font-size:.9rem;display:none}
+
+  /* ===== 积累 / 译文 / 范文 ===== */
+  .jilei{border:1px solid var(--line);border-top:2px solid var(--navy);border-radius:3px;overflow:hidden;margin-top:22px}
+  .jilei .jh{font-family:var(--serif);background:var(--navy);color:#f4ecda;padding:9px 16px;font-weight:700;font-size:.92rem;letter-spacing:.03em}
+  body.dark .jilei .jh{background:var(--gold);color:#1a1a1a}
+  .jilei .jb{padding:14px 16px}
+  .jilei .qb{padding:9px 12px;border-left:2px solid var(--gold2);margin:7px 0;background:var(--sheet2)}
+  .jilei .qb .q{color:var(--muted);font-size:.86rem}
+  .jilei .qb .a{font-weight:700;color:var(--ok);font-size:.96rem;margin-top:3px}
+  .jilei .qb .nt{font-size:.8rem;color:var(--muted);margin-top:4px}
+  details.more{margin-top:14px;border:1px solid var(--line);border-radius:3px;overflow:hidden}
+  details.more>summary{cursor:pointer;padding:10px 15px;font-family:var(--serif);font-weight:700;color:var(--navy);
+    background:var(--gold-soft);list-style:none;display:flex;justify-content:space-between;align-items:center;font-size:.9rem}
+  details.more>summary::-webkit-details-marker{display:none}
+  details.more>summary::after{content:"▾";transition:.2s}
+  details.more[open]>summary::after{transform:rotate(180deg)}
+  details.more .body{padding:14px 17px;font-size:.92rem;line-height:1.95;color:var(--ink2)}
+  details.more .body p{margin:0 0 9px}
+  .wordgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:6px;margin-top:10px}
+  .wordgrid span{font-size:.8rem;padding:5px 9px;border:1px solid var(--line2);background:var(--sheet);border-radius:2px;color:var(--ink2)}
+  .wordgrid span b{color:var(--navy);font-weight:700}
+  .callout{border:1px dashed var(--gold2);background:var(--gold-soft);border-radius:3px;padding:12px 15px;
+    font-size:.88rem;color:var(--ink2);margin:13px 0;line-height:1.9}
+  .callout b{color:var(--gold)}
+
+  /* ===== 侧边目录 / 计分板 / 回顶 ===== */
+  #toc{position:fixed;right:14px;top:50%;transform:translateY(-50%);z-index:110;background:var(--sheet);
+    border:1px solid var(--line);border-left:2px solid var(--gold2);border-radius:2px;padding:10px 8px;
+    box-shadow:var(--shadow-sm);display:none;max-height:76vh;overflow:auto}
+  @media(min-width:1320px){#toc{display:block}}
+  #toc .tt{font-family:var(--serif);font-size:.7rem;color:var(--gold);letter-spacing:.16em;text-align:center;margin-bottom:7px}
+  #toc a{display:block;font-size:.72rem;color:var(--muted);text-decoration:none;padding:3px 7px;white-space:nowrap;border-radius:2px}
+  #toc a:hover{color:var(--navy);background:var(--gold-soft)}
+  #toc a.cur{color:#fff;background:var(--navy)}
+  body.dark #toc a.cur{color:#1a1a1a;background:var(--gold)}
+  #score{position:fixed;right:16px;bottom:74px;z-index:130;background:var(--navy);color:#f4ecda;
+    border:1px solid var(--gold2);border-radius:3px;padding:10px 14px;font-size:.82rem;box-shadow:var(--shadow);display:none}
+  body.dark #score{background:var(--gold);color:#1a1a1a}
+  #score b{font-family:var(--serif);font-size:1.15rem;color:var(--gold2)}
+  body.dark #score b{color:#1a1a1a}
+  #top{position:fixed;right:16px;bottom:20px;z-index:130;width:38px;height:38px;border:1px solid var(--gold2);
+    background:var(--sheet);color:var(--navy);border-radius:2px;cursor:pointer;font-size:1rem;display:none;box-shadow:var(--shadow-sm)}
+  #top:hover{background:var(--gold-soft)}
+  footer{text-align:center;color:var(--muted);font-size:.8rem;padding:30px 10px 10px;line-height:1.9;border-top:1px solid var(--line);margin-top:34px}
+  kbd{background:var(--gold-soft);border:1px solid var(--line);border-radius:2px;padding:1px 5px;font-size:.78em;font-weight:700;color:var(--gold)}
+  .spk{display:inline-grid;place-items:center;width:26px;height:26px;border:1px solid var(--line);border-radius:2px;
+    background:var(--sheet);color:var(--navy);cursor:pointer;font-size:.82rem;transition:.15s}
+  .spk:hover{background:var(--gold-soft);border-color:var(--gold2)}
+  #pop .pw .spk{margin-left:auto}
+  @media(max-width:640px){
+    .wrap{padding:0 12px 60px}header.hero{padding:30px 20px 28px}
+    section.card{padding:18px 15px 22px}.passage{padding:15px 15px;font-size:.98rem}
+    .vcards{grid-template-columns:1fr}.sec-no{width:38px;height:38px;font-size:.9rem}
+    .toolbar{padding:8px}.navlinks{display:none}
+  }
+  @media print{
+    #bar,#toc,#score,#top,.toolbar,#pop,.spk,.mini,.vtools{display:none!important}
+    body{background:#fff;color:#111;font-size:12.5pt;line-height:1.75}
+    .wrap{max-width:100%;padding:0}
+    header.hero{background:#fff;color:#111;border:2px solid #111;box-shadow:none;padding:16px}
+    header.hero::before,header.hero::after{display:none}
+    h1,.sec-title,.part .pt b{color:#111}
+    .folio,.chip,.hero-note{color:#333}
+    section.card{box-shadow:none;border:1px solid #999;break-inside:avoid;padding:14px;margin-bottom:12px}
+    .passage{background:#fff;border:1px solid #999;font-size:12.5pt;line-height:1.85}
+    .w{border-bottom:1px solid #333;background:none;color:#000}
+    body:not(.showall) .gloss{display:inline;color:#1d6b4f;font-weight:700}
+    .blank i{display:inline;color:#1d6b4f}.blank b{display:none}
+    .qopts .opt.picked,.qopts .opt.right{color:#1d6b4f;font-weight:800;background:none;border-color:#999}
+    .vcard,.ans-item,.jilei{box-shadow:none;break-inside:avoid}
+    details.more>.body{display:block!important}
+    details.more{break-inside:avoid}
+    .vcard.mastered{opacity:1}
+  }
+</style>
+</head>
+<body>
+<div id="bar"></div>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="hero-in">
+      <div class="folio"><span>英语培优 · 精读精讲 · 合订本</span><span>Vol. 11–5 / Mock 1</span></div>
+      <h1>Unit 2 Rain or Shine · 第 11 周五<span class="sub">11-5 培优题 ＋ 冲刺试卷 1 合订精讲 · 7 个板块 · 全文精读 · 逐题解析 · 生词五层详解</span></h1>
+      <div class="hero-meta">
+        <span class="chip">📄 源：11-5培优.pdf + 冲刺试卷1.pdf（扫描件 6 页）</span>
+        <span class="chip">📚 7 个板块</span>
+        <span class="chip">✍️ 35 个可点击答案空</span>
+        <span class="chip">🎯 15 道自测题</span>
+        <span class="chip">🔤 73 条生词短语</span>
+      </div>
+      <p class="hero-note">本册把两份材料合为一页：上半卷为 <b>11-5 培优</b>（Unit 2 Rain or Shine，含阅读还原六选五 / 语法填空 / 阅读表达），下半卷为 <b>冲刺试卷 1</b>（初二英语试题第 6–8 页，含完形填空 / 语法填空 / 阅读表达 / 书面表达）。生词用 <span style="border-bottom:2px solid #d3ae72">金线</span> 划入原文，点击展开音标、释义、用法、搭配词族、易错提示与例句；文中蓝色序号点击即显答案。</p>
+    </div>
+  </header>
+
+  <div class="toolbar">
+    <button class="tool-btn" id="btnAllWords" type="button">👁 全部释义</button>
+    <button class="tool-btn" id="btnAllAns" type="button">✅ 全部答案</button>
+    <button class="tool-btn" id="btnQuiz" type="button">🎯 自测模式</button>
+    <button class="tool-btn" id="btnFold" type="button">📂 展开译文</button>
+    <button class="tool-btn ghost" id="btnTheme" type="button">🌙 夜间</button>
+    <button class="tool-btn ghost" id="btnFsMinus" type="button">A−</button>
+    <button class="tool-btn ghost" id="btnFsPlus" type="button">A＋</button>
+    <span class="grow"></span>
+    <nav class="navlinks">
+      <a href="#pA">阅读还原</a><a href="#pB">语法填空</a><a href="#pC">阅读表达</a>
+      <a href="#pD">完形</a><a href="#pE">语法填空</a><a href="#pF">阅读表达</a><a href="#pG">写作</a>
+      <a href="#vocab">生词汇总</a>
+    </nav>
+  </div>
+
+  <!-- ==================== 上卷 ==================== -->
+  <div class="part" id="part1"><div class="pn">壹</div><div class="pt"><b>11-5 培优 · Unit 2 Rain or Shine</b><span>扫描件 3 页 · 阅读还原六选五 / 语法填空 / 阅读表达</span></div><div class="line"></div></div>
+
+  <!-- A 阅读还原 -->
+  <section class="card" id="pA">
+    <div class="sec-head"><div class="sec-no">二</div><div><h2 class="sec-title">阅读还原六选五 · 雷殿生徒步中国<small>根据短文内容，从短文后的选项中选出能填入空白处的最佳选项。选项中有一项为多余选项。</small></h2></div></div>
+    <div class="sec-meta"><span class="badge">主题：人与社会——社会热点</span><span class="badge gray">记叙文</span><span class="badge gray">词数 275</span><span class="badge warm">难度 ★★★★☆</span><span class="badge ok">5 空 · 6 选 5</span></div>
+
+    <article class="passage">
+      <p>(原创) Lei Diansheng is a famous Chinese <span class="w" data-k="explorer">explorer</span> and <span class="w" data-k="envprotector">environmental protector</span> (环保人士). Born in 1963 in a small village near Harbin, he is <span class="w" data-k="becalled">called</span> "the modern Xu Xiake" for his great walking journey. Before his trip, he spent 10 years preparing: he ran every day to <span class="w" data-k="buildup">build up</span> his strength and read books on <span class="w" data-k="wildsurvival">wild survival</span> (野外生存) to learn how to <span class="w" data-k="dealwith">deal with</span> dangers.</p>
+      <p>From 1998 to 2008, Lei walked across China for 10 years. <span class="blank" data-n="1"><b>1</b><i>B</i></span> During the trip, he <span class="w" data-k="wearout">wore out</span> 52 pairs of shoes and lost 19 toenails (脚指甲). He faced many dangers, like mudslides (泥石流) and wolf attacks, but he never <span class="w" data-k="giveup">gave up</span>. <span class="blank" data-n="2"><b>2</b><i>D</i></span></p>
+      <p>Lei did more than just walk. <span class="blank" data-n="3"><b>3</b><i>E</i></span> He also helped poor students and joined in <span class="w" data-k="floodrescue">flood rescue</span> work in Hunan.</p>
+      <p>Now, Lei still works for nature and education. <span class="blank" data-n="4"><b>4</b><i>C</i></span> He works with artists to turn his <span class="w" data-k="travelnotes">travel notes</span> into art, so more people learn about <span class="w" data-k="envprotection">environmental protection</span>. <span class="blank" data-n="5"><b>5</b><i>F</i></span></p>
+      <p>Lei's story tells us: true adventure is not just about walking far. It's about loving our land and protecting it.</p>
+    </article>
+
+    <div class="optbox"><b>📋 备选选项（六选五，其中一项多余）</b>
+      <div class="row"><span class="lt">A</span><span>He sold his house to get money for his long trip. <span class="extra">← 多余项</span></span></div>
+      <div class="row"><span class="lt">B</span><span>He travelled about 81,000 kilometres, almost twice around the Equator (赤道).</span></div>
+      <div class="row"><span class="lt">C</span><span>He leads teams to study the environment, like protecting <span class="w" data-k="yangtze">the source of the Yangtze River</span>.</span></div>
+      <div class="row"><span class="lt">D</span><span>In 2008, he became the first person to walk alone through the dangerous Lop Nur (罗布泊).</span></div>
+      <div class="row"><span class="lt">E</span><span>He visited all 56 <span class="w" data-k="ethnicgroups">ethnic groups</span> (民族) in China, took 40,000 photos and wrote 3.2 million words in his notes.</span></div>
+      <div class="row"><span class="lt">F</span><span>For students, he organizes <span class="w" data-k="hikingcamps">hiking camps</span> in Heilongjiang's forests, where they learn about wild plants and local cultures.</span></div>
+    </div>
+
+    <details class="more"><summary>📖 参考译文（点击展开）</summary><div class="body">
+      <p>（原创）雷殿生是中国著名的探险家和环保人士。1963 年生于哈尔滨附近一个小村庄，因伟大的徒步之旅被誉为"当代徐霞客"。出发前他准备了十年：每天跑步增强体质，阅读野外生存书籍学习应对危险。</p>
+      <p>1998 至 2008 年，雷殿生用十年走遍中国。他行程约 8.1 万公里，几乎绕赤道两圈。途中穿坏 52 双鞋、脱落 19 个脚趾甲。他面对泥石流、狼群袭击等诸多危险，却从未放弃。2008 年，他成为独自穿越危险罗布泊的第一人。</p>
+      <p>雷殿生做的不只是走路。他走访了中国全部 56 个民族，拍摄 4 万张照片，写下 320 万字笔记。他还资助贫困学生，并参与湖南的抗洪救援。</p>
+      <p>如今，雷殿生仍为自然与教育奔走。他带队考察环境，例如保护长江源头。他与艺术家合作，把旅行笔记变成艺术作品，让更多人了解环保。他还为学生组织黑龙江森林徒步夏令营，让他们认识野生植物与当地文化。</p>
+      <p>雷殿生的故事告诉我们：真正的冒险不只是走得多远，而是热爱并守护这片土地。</p>
+    </div></details>
+
+    <h3 class="ans-h">题目与选项（开启「🎯 自测模式」可点击作答）</h3>
+    <div class="ans-list" id="qA"></div>
+    <h3 class="ans-h">答案与详解</h3>
+    <div class="ans-list" id="ansA"></div>
+
+    <div class="jilei"><div class="jh">🏔 积累小栈 · 集有所用（8 条）＋ 识有所悟</div><div class="jb" id="jileiA"></div></div>
+  </section>
+
+  <!-- B 语法填空 -->
+  <section class="card" id="pB">
+    <div class="sec-head"><div class="sec-no">四</div><div><h2 class="sec-title">语法填空 · 南北半球的天气差异<small>阅读下面短文，在空白处填入一个适当的单词或括号内单词的正确形式。</small></h2></div></div>
+    <div class="sec-meta"><span class="badge">主题：人与自然——自然生态</span><span class="badge gray">说明文</span><span class="badge gray">词数 170</span><span class="badge warm">难度 ★★★☆☆</span><span class="badge ok">10 空</span></div>
+
+    <article class="passage">
+      <p>The weather in the Northern and Southern <span class="w" data-k="hemisphere">Hemispheres</span> (半球) is different. It is fun <span class="blank" data-n="1"><b>1</b><i>to think</i></span> (think) that when it is cold in one place, it is hot in another. The Earth's <span class="w" data-k="tilt">tilt</span> (地球轴线) is the <span class="w" data-k="reasonfor">reason for</span> the different <span class="blank" data-n="2"><b>2</b><i>seasons</i></span> (season). This means that while one hemisphere is <span class="w" data-k="tiltedtowards">tilted towards</span> <span class="blank" data-n="3"><b>3</b><i>the</i></span> Sun, the other is tilted away from it.</p>
+      <p><span class="blank" data-n="4"><b>4</b><i>When</i></span> it's winter in the North, it's summer in the South. Students in the Southern Hemisphere <span class="w" data-k="lookforward">look forward to</span> <span class="blank" data-n="5"><b>5</b><i>spending</i></span> (spend) summer vacation <span class="w" data-k="atthebeach">at the beach</span>, while those in the Northern Hemisphere enjoy building snowmen during <span class="blank" data-n="6"><b>6</b><i>their</i></span> (they) winter holidays.</p>
+      <p>There <span class="blank" data-n="7"><b>7</b><i>are</i></span> (be) holidays in both hemispheres, but the weather makes them different. For example, <span class="blank" data-n="8"><b>8</b><i>on</i></span> special nights like New Year's Eve, people all over the world get together. Because of the different weather, fireworks might <span class="w" data-k="gooff">go off</span> over <span class="blank" data-n="9"><b>9</b><i>snowy</i></span> (snow) places or near the beach, making each <span class="blank" data-n="10"><b>10</b><i>celebration</i></span> (celebrate) special.</p>
+      <p>So, the Earth's tilt not only gives us different weather but also makes our <span class="w" data-k="tradition">traditions</span> <span class="w" data-k="unique">unique</span>.</p>
+    </article>
+
+    <details class="more"><summary>📖 参考译文（点击展开）</summary><div class="body">
+      <p>南北半球的天气并不相同。想想这一点很有趣：一个地方寒冷时，另一个地方却炎热。地球轴线的倾斜正是四季不同的原因。这意味着，当一个半球朝向太阳倾斜时，另一个半球则背向太阳。</p>
+      <p>当北方是冬天，南方就是夏天。南半球的学生期待在海滩度过暑假，而北半球的学生则乐意在寒假堆雪人。</p>
+      <p>两个半球都有节日，但天气让它们各不相同。例如，在除夕这样的特殊夜晚，全世界的人们欢聚一堂。由于天气不同，烟花可能在雪地上空、也可能在海滩附近绽放，让每一次庆祝都独具特色。</p>
+      <p>所以，地球轴线的倾斜不仅带来不同的天气，也让我们的传统独一无二。</p>
+    </div></details>
+
+    <h3 class="ans-h">答案与详解（点击文中蓝色序号可显答案）</h3>
+    <div class="ans-list" id="ansB"></div>
+
+    <div class="jilei"><div class="jh">🌦 积累小栈 · 天气妙语（Weather Idioms 9 条，金线词可点击看详解）</div>
+      <div class="jb" id="jileiB">
+        <div class="qb"><div class="q">1. <span class="w" data-k="raincatsdogs">rain cats and dogs</span></div><div class="a">下倾盆大雨</div><div class="nt">主语固定用 it：It's raining cats and dogs.</div></div>
+        <div class="qb"><div class="q">2. <span class="w" data-k="stormteacup">a storm in a teacup</span></div><div class="a">小题大做（茶杯里的风暴）</div><div class="nt">美式：a tempest in a teapot。</div></div>
+        <div class="qb"><div class="q">3. <span class="w" data-k="rainyday">save for a rainy day</span></div><div class="a">未雨绸缪（为困难时期存钱）</div><div class="nt">rainy day 比喻艰难时刻。</div></div>
+        <div class="qb"><div class="q">4. <span class="w" data-k="cloudnine">on cloud nine</span></div><div class="a">非常开心；欣喜若狂</div><div class="nt">介词用 on，cloud 前不加冠词。</div></div>
+        <div class="qb"><div class="q">5. take a rain check</div><div class="a">改天再做某事</div><div class="nt">原指因雨天比赛延期后的「补票」，引申为婉拒并约下次。</div></div>
+        <div class="qb"><div class="q">6. It's raining buckets.</div><div class="a">雨下得很大（像倒水桶一样）</div><div class="nt">= rain cats and dogs。</div></div>
+        <div class="qb"><div class="q">7. <span class="w" data-k="silverlining">Every cloud has a silver lining</span>.</div><div class="a">黑暗中总有一线光明</div><div class="nt">lining 衬里；比喻坏事中也有希望。</div></div>
+        <div class="qb"><div class="q">8. Make hay while the sun shines.</div><div class="a">趁热打铁，把握机会</div><div class="nt">hay 干草；与 10-3 卷 C 篇谚语同源，可联记。</div></div>
+        <div class="qb"><div class="q">9. Lightning never strikes the same place twice.</div><div class="a">倒霉事不会重复发生</div><div class="nt">注：科学上闪电可能多次击中同一地点，此处只是习语。</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- C 阅读表达 -->
+  <section class="card" id="pC">
+    <div class="sec-head"><div class="sec-no">五</div><div><h2 class="sec-title">阅读表达 · 四地天气直播间<small>阅读短文，根据短文内容回答下列问题。</small></h2></div></div>
+    <div class="sec-meta"><span class="badge">主题：人与自然——不同地区的生态特征</span><span class="badge gray">应用文</span><span class="badge gray">词数 185</span><span class="badge warm">难度 ★★★☆☆</span><span class="badge ok">5 题（含开放题）</span></div>
+
+    <article class="passage">
+      <p>It's 3:00 p.m. now. Four students are talking about the weather in their places on the Internet.</p>
+      <div class="qbox">
+        <p><span class="who">Laura:</span> It is raining. I'm just standing in my room and <span class="w" data-k="lookoutof">looking out of</span> the window. Some people are walking on the street. They're all <span class="w" data-k="holdumbrellas">holding umbrellas</span>. The umbrellas have different colours. The <span class="w" data-k="colourful">colourful</span> umbrellas make me feel a little better.</p>
+        <p><span class="who">Jim:</span> I am in the mountains with my cousins. It's not warm here. It's −10℃ <span class="w" data-k="daytime">in the daytime</span>. Nights and early mornings are −20℃. But the snow here is very beautiful! It's a great place to <span class="w" data-k="goskiing">go skiing</span> and <span class="w" data-k="goskating">skating</span>.</p>
+        <p><span class="who">Bob:</span> There are many <span class="w" data-k="blackclouds">black clouds</span> in the sky. The wind is strong and the trees are <span class="w" data-k="bend">bending</span>. The birds cannot fly. And it's hard for people to walk and to drive. I think heavy rain is coming. It's <span class="w" data-k="dangerous">dangerous</span> to go out of the house right now.</p>
+        <p><span class="who">Linda:</span> It's hot here today. The sky looks very blue, and there are no clouds. I am <span class="w" data-k="goboating">boating</span> on a lake with my family. The water is clean and warm. It's really a good day for <span class="w" data-k="relaxing">relaxing</span>.</p>
+      </div>
+    </article>
+
+    <details class="more"><summary>📖 参考译文（点击展开）</summary><div class="body">
+      <p>现在是下午三点。四名学生正在网上聊各自所在地的天气。</p>
+      <p>劳拉：正在下雨。我就站在房间里望向窗外。街上有人在走，都撑着伞。伞有各种颜色，五彩缤纷的伞让我心情好了一点。</p>
+      <p>吉姆：我和表兄弟在山里。这里不暖和，白天零下 10℃，夜里和清晨零下 20℃。但这里的雪非常美！是滑雪滑冰的好地方。</p>
+      <p>鲍勃：天上有很多乌云。风很大，树都被吹弯了，鸟也飞不起来，人走路、开车都困难。我想大雨要来了，现在出门很危险。</p>
+      <p>琳达：今天这里很热。天空很蓝，没有云。我正和家人湖上划船，湖水干净温暖，真是放松的好日子。</p>
+    </div></details>
+
+    <h3 class="ans-h">题目与参考答案</h3>
+    <div class="ans-list" id="ansC"></div>
+
+    <div class="jilei"><div class="jh">🌈 积累小栈 · Weather Vocabulary（天气词汇图 20 词）</div><div class="jb" id="jileiC"></div></div>
+  </section>
+
+  <!-- ==================== 下卷 ==================== -->
+  <div class="part" id="part2"><div class="pn">贰</div><div class="pt"><b>冲刺试卷 1 · 初二英语（第 6–8 页）</b><span>第三部分 语言运用 ＋ 第四部分 写作 · 完形 / 语法填空 / 阅读表达 / 书面表达</span></div><div class="line"></div></div>
+
+  <!-- D 完形 -->
+  <section class="card" id="pD">
+    <div class="sec-head"><div class="sec-no">三·一</div><div><h2 class="sec-title">完形填空 41–50 · 一次糟糕的郊游<small>第三部分 语言运用 · 第一节（共 10 小题；每小题 1 分，满分 10 分）从每题所给的 A、B、C 三个选项中选出可以填入空白处的最佳选项。</small></h2></div></div>
+    <div class="sec-meta"><span class="badge">主题：人与社会——假日出行</span><span class="badge gray">记叙文</span><span class="badge warm">初二试题</span><span class="badge ok">10 题 / 10 空</span></div>
+
+    <article class="passage">
+      <p>Many people don't like to <span class="w" data-k="stayathome">stay at home</span> for their <span class="w" data-k="onvacation">vacation</span>. They want to go out to see different things or do something <span class="blank" data-n="41"><b>41</b><i>exciting</i></span>. So people in the <span class="w" data-k="countryside">countryside</span> go to the city and people from big cities go to the countryside on vacation. During the holidays, trains, buses and planes are all <span class="blank" data-n="42"><b>42</b><i>busy</i></span>. It is a little difficult to <span class="blank" data-n="43"><b>43</b><i>buy</i></span> train tickets, bus tickets or plane tickets. Many people <span class="w" data-k="takecars">take their cars</span> for travelling.</p>
+      <p>Last summer vacation, my family went to the countryside by <span class="blank" data-n="44"><b>44</b><i>car</i></span>. There was too much <span class="w" data-k="traffic">traffic</span> on the road, so we had to move very <span class="blank" data-n="45"><b>45</b><i>slowly</i></span>. It took us about an hour to <span class="w" data-k="getoutof">get out of</span> the city. After some time, we came to a farm. It was clean and beautiful. The animals were very cute. We thought it was a nice place for a <span class="w" data-k="picnic">picnic</span>, so we <span class="blank" data-n="46"><b>46</b><i>stopped</i></span> and took the food, fruit and drinks out of the car. We <span class="blank" data-n="47"><b>47</b><i>sat down</i></span> under a big tree. <span class="w" data-k="suddenly">Suddenly</span>, a strong wind blew and soon it <span class="blank" data-n="48"><b>48</b><i>started</i></span> to rain. We had to run back to our car and have our <span class="blank" data-n="49"><b>49</b><i>picnic</i></span> in the car. Then we drove back home. What a <span class="blank" data-n="50"><b>50</b><i>terrible</i></span> trip!</p>
+    </article>
+
+    <details class="more"><summary>📖 参考译文（点击展开）</summary><div class="body">
+      <p>许多人不喜欢假期待在家里，想出门看看不同的事物，或做点令人兴奋的事。于是乡下人进城，城里人下乡度假。假期里火车、公交、飞机都很繁忙，买车票、机票有点难，很多人便开车出行。</p>
+      <p>去年暑假，我们一家开车去乡下。路上车太多，只能开得很慢，出城就花了大约一小时。过了一会儿我们来到一个农场，干净又漂亮，动物们很可爱。我们觉得这是野餐的好地方，就停下来，把食物、水果和饮料从车里拿出来，在大树下坐定。突然刮起大风，很快下起雨来。我们只好跑回车里，在车里完成了野餐，然后就开车回家了。多么糟糕的一次旅行！</p>
+    </div></details>
+
+    <h3 class="ans-h">题目与选项（开启「🎯 自测模式」可点击作答）</h3>
+    <div class="ans-list" id="qD"></div>
+    <h3 class="ans-h">答案与详解</h3>
+    <div class="ans-list" id="ansD"></div>
+  </section>
+
+  <!-- E 语法填空 -->
+  <section class="card" id="pE">
+    <div class="sec-head"><div class="sec-no">三·二</div><div><h2 class="sec-title">语法填空 51–60 · 爷爷的生日<small>第三部分 语言运用 · 第二节（共 10 小题；每小题 1 分，满分 10 分）如有提示词，填入其正确形式；如无提示词，填入 1 个适当的单词。</small></h2></div></div>
+    <div class="sec-meta"><span class="badge">主题：人与自我——家庭生活</span><span class="badge gray">记叙文</span><span class="badge warm">初二试题</span><span class="badge ok">10 空</span></div>
+
+    <article class="passage">
+      <p>In my family, the <span class="w" data-k="oldest">oldest</span> (年纪最大的) man is my grandpa. He is very <span class="w" data-k="kind">kind</span>. Everyone likes <span class="blank" data-n="51"><b>51</b><i>him</i></span> (he). My grandpa has many <span class="blank" data-n="52"><b>52</b><i>hobbies</i></span> (hobby) like fishing and reading. He often reads the books about Chinese history.</p>
+      <p>These days, my family are very happy because my grandpa's birthday is coming soon. We will have a big party for him on November the <span class="blank" data-n="53"><b>53</b><i>eighth</i></span> (eight). We must make the birthday party wonderful. We also prepare some <span class="blank" data-n="54"><b>54</b><i>gifts</i></span> (gift) for my grandpa.</p>
+      <p>Now we are <span class="w" data-k="discuss">discussing</span> (讨论) what we can give him. My mom usually <span class="blank" data-n="55"><b>55</b><i>cooks</i></span> (cook) his <span class="w" data-k="favourite">favourite</span> noodles. But this year she <span class="w" data-k="wouldlike">would like</span> <span class="blank" data-n="56"><b>56</b><i>to make</i></span> (make) a birthday cake with his name on it. Look, my father is <span class="blank" data-n="57"><b>57</b><i>buying</i></span> (buy) a new brown <span class="w" data-k="bookcase">bookcase</span> online. <span class="w" data-k="asforme">As for me</span>, I want to draw <span class="blank" data-n="58"><b>58</b><i>a</i></span> picture of my grandpa. In the picture, my family is standing around him. I can write "I <span class="blank" data-n="59"><b>59</b><i>really</i></span> (real) love you, Grandpa!" on the picture. I think it is interesting <span class="blank" data-n="60"><b>60</b><i>to have</i></span> (have) a birthday party.</p>
+    </article>
+
+    <details class="more"><summary>📖 参考译文（点击展开）</summary><div class="body">
+      <p>我们家年纪最大的是爷爷。他很和善，人人都喜欢他。爷爷有很多爱好，比如钓鱼和读书，他常读中国历史方面的书。</p>
+      <p>这些天全家都很开心，因为爷爷的生日快到了。我们将在 11 月 8 日为他办一场大聚会，一定要把生日会办得精彩，还准备了一些礼物。</p>
+      <p>现在我们正在讨论送什么。妈妈通常会煮他最爱吃的面；但今年她想做一个写着他名字的生日蛋糕。看，爸爸正在网上买一个新的棕色书柜。至于我，我想画一幅爷爷的画像：画里全家人围着他，我还要在画上写"爷爷，我真的爱您！"我觉得办生日会很有意思。</p>
+    </div></details>
+
+    <h3 class="ans-h">答案与详解（点击文中蓝色序号可显答案）</h3>
+    <div class="ans-list" id="ansE"></div>
+  </section>
+
+  <!-- F 阅读表达 -->
+  <section class="card" id="pF">
+    <div class="sec-head"><div class="sec-no">四·一</div><div><h2 class="sec-title">阅读表达 61–65 · 法国公园的乌鸦清洁工<small>第四部分 写作 · 第一节（共 5 小题；每小题 2 分，满分 10 分）阅读下面短文，按照题目要求用英语回答问题。</small></h2></div></div>
+    <div class="sec-meta"><span class="badge">主题：人与自然——动物与环保</span><span class="badge gray">说明文</span><span class="badge warm">初二试题</span><span class="badge ok">5 题（含开放题）</span></div>
+
+    <article class="passage">
+      <p><span class="w" data-k="cleaner">Cleaners</span> help to keep cities clean. This month a park in France welcomed six very special cleaners. They are <span class="w" data-k="crow">crows</span> (乌鸦)!</p>
+      <p>Workers at the park teach the crows to <span class="w" data-k="pickup">pick up</span> small pieces of <span class="w" data-k="trash">trash</span> (垃圾). And they also teach the crows to move the trash into a small box. After helping clean the park they get bird food for their hard work, the BBC reported.</p>
+      <p>"This shows that nature (自然) itself can teach us to <span class="w" data-k="takecare">take care of</span> the <span class="w" data-k="environment">environment</span> (环境)." Nicolas de Villiers, <span class="w" data-k="headofthepark">head of the park</span>, told AFP.</p>
+      <p>The park chose crows because they are <span class="w" data-k="smarter">smarter than</span> other birds. Earlier this year, scientists made a special <span class="w" data-k="vending">vending machine</span> (自动贩卖机) for crows. The machine only works when a piece of paper of <span class="w" data-k="rightsize">the right size</span> is put inside it.</p>
+      <p>The scientists found that crows could remember the right size of paper and put it in the machine to get food. This is a good example of how <span class="w" data-k="clever">clever</span> these birds can be.</p>
+    </article>
+
+    <details class="more"><summary>📖 参考译文（点击展开）</summary><div class="body">
+      <p>清洁工帮助保持城市整洁。本月，法国一家公园迎来了六位非常特别的清洁工——它们是乌鸦！</p>
+      <p>公园工作人员教乌鸦捡起小片垃圾，还教它们把垃圾放进一个小箱子。据 BBC 报道，帮忙清理完公园后，它们会得到鸟食作为劳动报酬。</p>
+      <p>公园负责人 Nicolas de Villiers 告诉法新社："这表明，大自然本身就能教会我们爱护环境。"</p>
+      <p>公园选择乌鸦，是因为它们比其他鸟更聪明。今年早些时候，科学家为乌鸦制作了一台特殊的自动贩卖机：只有把尺寸合适的纸片投进去，机器才会工作。</p>
+      <p>科学家发现，乌鸦能记住纸片的正确尺寸，并把它投进机器换取食物。这很好地说明了这些鸟有多聪明。</p>
+    </div></details>
+
+    <h3 class="ans-h">题目与参考答案</h3>
+    <div class="ans-list" id="ansF"></div>
+  </section>
+
+  <!-- G 书面表达 -->
+  <section class="card" id="pG">
+    <div class="sec-head"><div class="sec-no">四·二</div><div><h2 class="sec-title">书面表达 · 精彩瞬间（满分 15 分）<small>第四部分 写作 · 第二节。英语俱乐部"精彩瞬间"评选：描述李华上午十点在学校的活动，以及好友 Mike 在美国同一时刻（晚上十点）的生活，词数 70 左右，开头已给出不计入总词数。</small></h2></div></div>
+    <div class="sec-meta"><span class="badge">主题：人与自我——跨时差生活</span><span class="badge gray">应用文 / 描写文</span><span class="badge warm">提示词：skip rope · play hide and seek</span><span class="badge ok">含范文 + 写作点拨</span></div>
+
+    <div class="callout"><b>写作要点</b>　① 介绍人物、时间、地点与活动；② 描述"精彩瞬间"正在发生的事（<b>现在进行时 be + doing</b>）；③ 适当加入感受。<br>
+      <b>图画信息</b>　Li Hua（10:00 a.m. 学校操场：跳绳、捉迷藏、踢球、乒乓等）｜ Mike（10:00 p.m. 家中：伏案写作业、沙发上看电视/看书、家人用电脑）。<b>关键</b>：同一时刻、两地钟点不同（时差），用 <span class="w" data-k="atthesametime">at the same time</span> / but 连接。</div>
+
+    <article class="passage">
+      <p>Hi, I'm Li Hua from Class 1. I'm happy to <span class="w" data-k="sharewith">share</span> my American friend Mike's life and my <span class="w" data-k="colourfullife">colourful life</span> with you.</p>
+      <p>It's 10:00 a.m. in China. I am on the <span class="w" data-k="playground">playground</span> with my classmates. Look! Some are <span class="w" data-k="skiprope">skipping rope</span>, some are <span class="w" data-k="hideandseek">playing hide and seek</span>, and others are playing football. We are having a great time. But in America, it's 10:00 p.m. now. My friend Mike is at home. He is sitting on the sofa and watching TV while his father is working on the computer. What a <span class="w" data-k="wmoment">wonderful moment</span>! Though we are <span class="w" data-k="faraway">far away</span> from each other, we are both enjoying our life.</p>
+    </article>
+
+    <details class="more"><summary>📖 范文译文（点击展开）</summary><div class="body">
+      <p>大家好，我是一班的李华。很高兴和大家分享我的美国朋友 Mike 的生活，以及我多彩的生活。</p>
+      <p>中国现在是上午十点，我和同学们在操场上。看！有人在跳绳，有人在玩捉迷藏，还有人在踢足球，我们玩得很开心。而美国现在是晚上十点，我的朋友 Mike 在家里：他正坐在沙发上看电视，他爸爸在用电脑工作。多么精彩的瞬间！虽然我们相隔很远，但都在享受自己的生活。</p>
+    </div></details>
+
+    <div class="jilei"><div class="jh">✍️ 写作点拨 · 得分要点与易错提醒</div><div class="jb" id="jileiG"></div></div>
+  </section>
+
+  <!-- ==================== 生词汇总 ==================== -->
+  <section class="card" id="vocab">
+    <div class="sec-head"><div class="sec-no">词</div><div><h2 class="sec-title">生词与短语汇总 · 五层详解<small>按七年级词汇水平识别 · 每条含音标、词性、释义、用法搭配、词族拓展、易错提示与例句 · 点击 ☆ 标记「已掌握」（本地保存）</small></h2></div></div>
+    <div class="vtools">
+      <input class="vsearch" id="vsearch" type="search" placeholder="🔍 搜索单词 / 释义 / 用法（实时过滤）">
+      <button class="fchip on" data-g="all" type="button">全部</button>
+      <button class="fchip" data-g="A" type="button">A 阅读还原</button>
+      <button class="fchip" data-g="B" type="button">B 语法·半球</button>
+      <button class="fchip" data-g="C" type="button">C 天气表达</button>
+      <button class="fchip" data-g="D" type="button">D 完形</button>
+      <button class="fchip" data-g="E" type="button">E 语法·生日</button>
+      <button class="fchip" data-g="F" type="button">F 乌鸦</button>
+      <button class="fchip" data-g="G" type="button">G 写作</button>
+      <button class="fchip" id="onlyNew" type="button">仅看未掌握</button>
+    </div>
+    <div class="vstat" id="vstat"></div>
+    <div id="vocabBox"></div>
+    <div class="noresult" id="noresult">没有匹配的生词，换个关键词试试。</div>
+  </section>
+
+  <footer>
+    本合订本由两份 PDF 扫描件逐页转录、校对后整理为单文件交互式精讲 · 生词判定以七年级英语词汇水平为参考 · 点击 <kbd>全部释义</kbd> 可在原文显示中文对照，<kbd>全部答案</kbd> 展开全部答案空，<kbd>自测模式</kbd> 可点选作答并实时计分。<br>
+    数据只保存在本机浏览器（已掌握标记、字号），不上传任何内容 ｜ Unit 2 Rain or Shine · 第 11 周五 ＋ 冲刺试卷 1
+  </footer>
+</div>
+
+<nav id="toc"><div class="tt">目 录</div>
+  <a href="#pA">二 · 阅读还原</a><a href="#pB">四 · 语法填空</a><a href="#pC">五 · 阅读表达</a>
+  <a href="#pD">三·一 完形</a><a href="#pE">三·二 语法填空</a><a href="#pF">四·一 阅读表达</a><a href="#pG">四·二 写作</a>
+  <a href="#vocab">生词汇总</a>
+</nav>
+<div id="score"></div>
+<button id="top" type="button" title="回到顶部">↑</button>
+<div id="pop"></div>
+
+<script>
+/* ============ 生词库：五层详解 ============ */
+const VOCAB = [
+  /* ===== A 阅读还原·雷殿生 ===== */
+  {k:"explorer",g:"A",en:"explorer",ph:"/ɪkˈsplɔːrə(r)/",pos:"n.",cn:"探险家；探索者",def:"指到未知或未充分开发的地区进行考察、探险的人；也可引申为「开拓者、探索者」。",use:"a famous Chinese explorer 一位著名的中国探险家；an Arctic explorer 北极探险家。",coll:"explore(v. 探险/探索) → exploration(n. 探索) → explorer(n. 探险家)；近义 adventurer（冒险家，更强调刺激）。",tip:"-er 表「做某事的人」；注意与 explore 的名词 exploration 区分，别写成 exploror。",ex:"Lei Diansheng is a famous Chinese explorer.",exCn:"雷殿生是中国著名的探险家。"},
+  {k:"envprotector",g:"A",en:"environmental protector",ph:"/ɪnˌvaɪrənˈmentl prəˈtektə(r)/",pos:"n.",cn:"环保人士",def:"environmental 是「环境的」形容词，protector 是「保护者」；合指致力于保护环境的人。",use:"a famous environmental protector；work as an environmental protector 做环保工作者。",coll:"environment(n. 环境) → environmental(adj.)；protect(v.) → protector(n.) → protection(n.)。",tip:"不要写错拼写：environ-ment-al（有 -n-）；中文「环保人士」也可说 environmentalist。",ex:"He is an explorer and environmental protector.",exCn:"他既是探险家，也是环保人士。"},
+  {k:"becalled",g:"A",en:"be called",ph:"/bi kɔːld/",pos:"短语",cn:"被称为；被叫作",def:"call 的被动式，后接名称或称号，表示「人们称他为……」。",use:"be called + 名称；He is called \"the modern Xu Xiake\". 他被称为「当代徐霞客」。",coll:"call sb. + 名称（主动）→ sb. be called + 名称（被动）；近义 be known as / be named。",tip:"易错：be called 后直接跟称号，不加 as（be known as 才加 as）。",ex:"He is called \"the modern Xu Xiake\".",exCn:"他被誉为「当代徐霞客」。"},
+  {k:"buildup",g:"A",en:"build up",ph:"/bɪld ʌp/",pos:"短语动词",cn:"增强；逐步建立",def:"指通过持续努力使体质、力量、信心等逐渐增强，或逐步建立事业/声誉。",use:"build up one's strength 增强体质；build up confidence 建立信心；build up a business 逐步做大生意。",coll:"build(v. 建造) + up(向上/累积)；名词 buildup（增强、积累）。",tip:"宾语可放中间：build his strength up ≠ build up it（代词必须放中间，说 build it up）。",ex:"He ran every day to build up his strength.",exCn:"他每天跑步增强体质。"},
+  {k:"wildsurvival",g:"A",en:"wild survival",ph:"/waɪld səˈvaɪvl/",pos:"n.",cn:"野外生存",def:"wild 指「野外的、荒野的」，survival 指「存活、生存（技能）」；合指在野外环境下的求生本领。",use:"read books on wild survival 读野外生存的书；wild survival skills 野外生存技能。",coll:"survive(v. 幸存) → survival(n.) → survivor(n. 幸存者)；wild(adj. 野生的) → wilderness(n. 荒野)。",tip:"survival 是不可数/抽象名词；注意 survive 是动词，不要混用。",ex:"He read books on wild survival.",exCn:"他阅读野外生存方面的书籍。"},
+  {k:"dealwith",g:"A",en:"deal with",ph:"/diːl wɪð/",pos:"短语动词",cn:"应对；处理；对付",def:"表示采取措施处理问题、困难或与人打交道；宾语常是 danger / problem / trouble。",use:"deal with dangers 应对危险；deal with a problem 处理问题；How do you deal with...? 你怎么处理……？",coll:"deal—dealt—dealt（不规则动词）；近义 cope with / handle（handle 更口语）。",tip:"易错：疑问词用 what 搭配 do with、用 how 搭配 deal with（How do you deal with it?）。",ex:"He learnt how to deal with dangers.",exCn:"他学会了如何应对危险。"},
+  {k:"wearout",g:"A",en:"wear out",ph:"/weə(r) aʊt/",pos:"短语动词",cn:"穿破；用坏；使筋疲力尽",def:"指衣物等因长期使用而磨损报废，也可指「把人累垮」。",use:"wear out 52 pairs of shoes 穿坏 52 双鞋；be worn out 精疲力尽 / 破旧不堪。",coll:"wear—wore—worn；worn-out(adj. 破旧的/累坏的)。",tip:"注意不规则变化：文中用过去式 wore out，不是 weared。",ex:"He wore out 52 pairs of shoes.",exCn:"他穿坏了 52 双鞋。"},
+  {k:"giveup",g:"A",en:"give up",ph:"/ɡɪv ʌp/",pos:"短语动词",cn:"放弃；认输",def:"指停止尝试、不再坚持；也可表示「戒掉（习惯）」。",use:"never give up 永不放弃；give up smoking 戒烟；give up doing sth. 放弃做某事。",coll:"give—gave—given；反义 keep doing / stick to（坚持）。",tip:"后接动词必须用 -ing：give up trying，不能写 give up to try。",ex:"He faced many dangers but never gave up.",exCn:"他面对许多危险却从未放弃。"},
+  {k:"floodrescue",g:"A",en:"flood rescue",ph:"/flʌd ˈreskjuː/",pos:"n.",cn:"抗洪救援；洪灾抢险",def:"flood 洪水 + rescue 救援，指洪涝灾害中的抢险救人工作。",use:"join in flood rescue work 参加抗洪救援工作；flood rescue team 抗洪救援队。",coll:"flood(n./v. 洪水/淹没)；rescue(v./n. 营救) → rescuer(n. 救援者)。",tip:"rescue 拼写注意 -scue 结尾；join in + 活动（参加），join + 组织（加入）。",ex:"He joined in flood rescue work in Hunan.",exCn:"他参与了湖南的抗洪救援工作。"},
+  {k:"travelnotes",g:"A",en:"travel notes",ph:"/ˈtrævl nəʊts/",pos:"n.",cn:"旅行笔记；游记",def:"travel 旅行 + notes 笔记，指旅途中写下的记录；也可理解为游记素材。",use:"turn his travel notes into art 把旅行笔记变成艺术品；keep travel notes 记旅行笔记。",coll:"note(n. 笔记/便条) → notebook(n. 笔记本)；《徐霞客游记》英译常作 The Travel Notes of Xu Xiake。",tip:"note 表「笔记」时常用复数 notes。",ex:"He works with artists to turn his travel notes into art.",exCn:"他与艺术家合作把旅行笔记变成艺术品。"},
+  {k:"envprotection",g:"A",en:"environmental protection",ph:"/ɪnˌvaɪrənˈmentl prəˈtekʃn/",pos:"n.",cn:"环境保护；环保",def:"指保护自然与环境免受污染和破坏的理念或行动。",use:"learn about environmental protection 了解环保；environmental protection laws 环保法规。",coll:"protect → protection(n.)；environmental(adj.) + protection(n.) 构成复合名词。",tip:"注意 protection 是名词，动词是 protect；别写成 environment protection（常用 environmental）。",ex:"More people learn about environmental protection.",exCn:"更多人了解了环境保护。"},
+  {k:"yangtze",g:"A",en:"the source of the Yangtze River",ph:"/sɔːs/",pos:"n.",cn:"长江源头",def:"source 意为「源头、来源」，the Yangtze River 是长江；合指长江发源地。",use:"protect the source of the Yangtze River 保护长江源；the source of a river 河源。",coll:"source(n. 来源/源头)；近义 origin（起源）；Yangtze River = Changjiang River。",tip:"江河、山脉、海洋等专有名词前通常加 the：the Yangtze River。",ex:"He protects the source of the Yangtze River.",exCn:"他保护长江源头。"},
+  {k:"ethnicgroups",g:"A",en:"ethnic groups",ph:"/ˈeθnɪk ɡruːps/",pos:"n.",cn:"民族；族群",def:"ethnic 指「民族的、族群的」，group 指群体；中国有 56 个 ethnic groups。",use:"all 56 ethnic groups 全部 56 个民族；ethnic cultures 民族文化。",coll:"ethnic(adj.) → ethnicity(n. 族裔)；group(n. 群/组) → a group of 一群。",tip:"ethnic 读 /ˈeθnɪk/，th 清辅音；注意用复数 groups。",ex:"He visited all 56 ethnic groups in China.",exCn:"他走访了中国全部 56 个民族。"},
+  {k:"hikingcamps",g:"A",en:"hiking camps",ph:"/ˈhaɪkɪŋ kæmps/",pos:"n.",cn:"徒步夏令营；远足营地",def:"hiking 徒步远足 + camps 营地/夏令营，指组织学生在户外徒步学习的活动。",use:"organize hiking camps 组织徒步夏令营；go hiking 去远足。",coll:"hike(v./n.) → hiking(n.) → hiker(n. 徒步者)；camp(n./v. 营地/露营) → camping。",tip:"go + doing 表去从事某活动：go hiking / go camping / go skiing。",ex:"He organizes hiking camps for students.",exCn:"他为学生组织徒步夏令营。"},
+
+  /* ===== B 语法填空·南北半球 ===== */
+  {k:"hemisphere",g:"B",en:"hemisphere",ph:"/ˈhemɪsfɪə(r)/",pos:"n.",cn:"半球",def:"hemi-「半」+ sphere「球体」，指地球被赤道分为南北两半，或被本初子午线分为东西两半。",use:"the Northern / Southern Hemisphere 北/南半球；in both hemispheres 在两个半球。",coll:"hemi-(半) + sphere(球)；相关 equator(n. 赤道)、the Earth's tilt(地轴倾斜)。",tip:"专有化用法首字母常大写；第 2 空考 different + 复数名词 seasons。",ex:"The weather in the Northern and Southern Hemispheres is different.",exCn:"南北半球的天气不同。"},
+  {k:"tilt",g:"B",en:"tilt",ph:"/tɪlt/",pos:"n./v.",cn:"倾斜；地轴倾角",def:"既作名词「倾斜（度）」，也作动词「使倾斜」；文中指地球自转轴相对于公转轨道面的倾斜。",use:"the Earth's tilt 地球轴线的倾斜；be tilted towards the Sun 朝向太阳倾斜。",coll:"tilted(adj. 倾斜的)；近义 lean(v. 倾斜/倚靠)、slope(n. 斜坡)。",tip:"tilt 是四季成因的关键；被动结构 be tilted towards…… 要记住介词 towards。",ex:"The Earth's tilt is the reason for the different seasons.",exCn:"地球轴线的倾斜是四季不同的原因。"},
+  {k:"reasonfor",g:"B",en:"the reason for",ph:"/ˈriːzn fɔː(r)/",pos:"短语",cn:"……的原因",def:"reason 表「原因、理由」，后接名词/动名词时用介词 for。",use:"the reason for the different seasons 季节不同的原因；the reason for doing sth. 做某事的原因。",coll:"reason(n.) → reasonable(adj. 合理的)；句型 The reason why... is that...（……的原因是……）。",tip:"易错：reason 后接名词用 for，不接 of；「……的原因」不说 the reason of。",ex:"It is the reason for the different seasons.",exCn:"这就是四季不同的原因。"},
+  {k:"tiltedtowards",g:"B",en:"be tilted towards",ph:"/ˈtɪltɪd təˈwɔːdz/",pos:"短语",cn:"朝……倾斜",def:"被动结构，表示某物朝向某一方向倾斜；文中指一个半球朝向太阳。",use:"one hemisphere is tilted towards the Sun；the other is tilted away from it（背向）。",coll:"towards(朝向) ↔ away from(远离)，二者成对出现是本文关键对照。",tip:"towards（英式）/ toward（美式）皆可；注意与 be tilted away from 的反义配对。",ex:"One hemisphere is tilted towards the Sun.",exCn:"一个半球朝向太阳倾斜。"},
+  {k:"lookforward",g:"B",en:"look forward to",ph:"/lʊk ˈfɔːwəd tuː/",pos:"短语",cn:"期待；盼望",def:"表示高兴地等待某事发生；注意这里的 to 是介词，后接名词或动名词。",use:"look forward to + 名词 / doing；look forward to summer vacation 期待暑假。",coll:"近义 expect(v. 预料/期待)、can't wait to do（迫不及待）。",tip:"★高频考点：to 是介词，后面动词必须加 -ing（第 5 空 spending），不能用原形。",ex:"Students look forward to spending summer vacation at the beach.",exCn:"学生们期待在海滩度过暑假。"},
+  {k:"atthebeach",g:"B",en:"at the beach",ph:"/æt ðə biːtʃ/",pos:"短语",cn:"在海滩",def:"表示在海滩这一地点度过时光或进行活动。",use:"spend summer vacation at the beach 在海滩过暑假；on the beach 在沙滩上（更强调表面）。",coll:"beach(n. 海滩) → go to the beach 去海滩；相关 coast(n. 海岸)、seaside(n. 海边)。",tip:"at 表「在某地点（活动）」，on 表「在沙滩表面上」，日常常可互换。",ex:"They spend summer vacation at the beach.",exCn:"他们在海滩度过暑假。"},
+  {k:"gooff",g:"B",en:"go off",ph:"/ɡəʊ ɒf/",pos:"短语动词",cn:"（烟花）燃放、爆炸；（警报）响起",def:"多义短语：烟花/爆竹「绽放、引爆」，闹钟/警报「响」，还可指食物「变质」、灯「熄灭」。",use:"fireworks might go off 烟花可能绽放；The alarm went off. 闹钟响了。",coll:"go—went—gone；firework(n. 烟花，常用复数 fireworks)。",tip:"一词多义，需按语境判断；文中主语是 fireworks，取「燃放」义。",ex:"Fireworks might go off over snowy places.",exCn:"烟花可能在雪地上空绽放。"},
+  {k:"tradition",g:"B",en:"tradition",ph:"/trəˈdɪʃn/",pos:"n.",cn:"传统；风俗",def:"指长期传承下来的做法、习俗或观念，常用复数 traditions 表示各种传统。",use:"make our traditions unique 让我们的传统独一无二；keep a tradition 保持传统。",coll:"traditional(adj. 传统的) → traditionally(adv.)；近义 custom(n. 习俗)。",tip:"拼写 -tion 结尾；第 10 空的 celebration 也是 -tion 名词，可一起记。",ex:"The tilt makes our traditions unique.",exCn:"地轴倾斜让我们的传统独一无二。"},
+  {k:"unique",g:"B",en:"unique",ph:"/juˈniːk/",pos:"adj.",cn:"独一无二的；独特的",def:"强调「只有一个、无可比拟」，语义上已含最高级意味。",use:"make sth. unique 使某物独特；be unique to... 为……所特有。",coll:"uniqueness(n. 独特性)；近义 special / unusual，反义 common / ordinary。",tip:"严格语法中不用 more unique / most unique（本身已含「唯一」）；但日常可见。",ex:"It makes our traditions unique.",exCn:"它让我们的传统独一无二。"},
+
+  /* ===== C 天气表达 ===== */
+  {k:"lookoutof",g:"C",en:"look out of",ph:"/lʊk aʊt ɒv/",pos:"短语",cn:"从……向外看",def:"指从窗户、门等内部空间往外看；与 look out（当心）只差一个介词，含义不同。",use:"look out of the window 往窗外看；look out of the door 从门口往外望。",coll:"近义 look through the window（透过窗户看）；look out! = Watch out! 小心！",tip:"★易混：look out of（向外看）≠ look out（小心）≠ look for（寻找）。",ex:"I'm standing in my room and looking out of the window.",exCn:"我站在房间里望向窗外。"},
+  {k:"holdumbrellas",g:"C",en:"hold umbrellas",ph:"/həʊld ʌmˈbreləz/",pos:"短语",cn:"撑着伞",def:"hold 表「拿着、撑着」，umbrella 是雨伞；文中用现在进行时 are holding。",use:"hold an umbrella 撑伞；They're all holding umbrellas. 他们都撑着伞。",coll:"hold—held—held；umbrella(n.)；相关 raincoat(n. 雨衣)、rain boots 雨靴。",tip:"umbrella 以元音音素开头，单数前用 an：an umbrella。",ex:"They're all holding umbrellas.",exCn:"他们都撑着伞。"},
+  {k:"colourful",g:"C",en:"colourful",ph:"/ˈkʌləfl/",pos:"adj.",cn:"五彩缤纷的；色彩鲜艳的",def:"colour（颜色）+ -ful（充满……的），形容颜色丰富、鲜艳夺目。",use:"colourful umbrellas 五彩的伞；a colourful garden 五彩缤纷的花园。",coll:"美式拼 colorful；colour(n.) → colour(v. 涂色) → colourful(adj.)；反义 colourless。",tip:"英式 colour / 美式 color 两种拼写都对，同一篇内保持一致即可。",ex:"The colourful umbrellas make me feel a little better.",exCn:"五彩缤纷的伞让我心情好了一点。"},
+  {k:"daytime",g:"C",en:"in the daytime",ph:"/ɪn ðə ˈdeɪtaɪm/",pos:"短语",cn:"在白天",def:"daytime 指「白天、日间」，与 night / early morning 相对。",use:"in the daytime 在白天（用介词 in）；during the day 同义。",coll:"day(n.) + time(n.) → daytime(n.)；反义 at night 在夜里。",tip:"易错介词：in the daytime / in the day / during the day，但 at night。",ex:"It's −10℃ in the daytime.",exCn:"白天零下 10℃。"},
+  {k:"goskiing",g:"C",en:"go skiing",ph:"/ɡəʊ ˈskiːɪŋ/",pos:"短语",cn:"去滑雪",def:"go + doing 表示去从事某项（多为户外/休闲）活动。",use:"a great place to go skiing 滑雪的好地方；go skiing in winter 冬天去滑雪。",coll:"ski(v./n.) → skiing(n.) → skier(n. 滑雪者)；同类 go skating / swimming / hiking / fishing。",tip:"ski 的 -ing 直接加 ing（skiing，双 i）；不要写成 sking。",ex:"It's a great place to go skiing.",exCn:"这是滑雪的好地方。"},
+  {k:"goskating",g:"C",en:"go skating",ph:"/ɡəʊ ˈskeɪtɪŋ/",pos:"短语",cn:"去滑冰",def:"skate 滑冰/溜冰，go skating 去滑冰；与 go skiing 常一起出现在雪地活动语境。",use:"go skating on the ice 在冰上滑冰；go skiing and skating 滑雪和滑冰。",coll:"skate(v./n.) → skating → skater(n.)；相关 ice(n. 冰)、icy(adj. 结冰的)。",tip:"skate 去 e 加 -ing：skating（不是 skateing）。",ex:"It's a great place to go skiing and skating.",exCn:"这是滑雪滑冰的好地方。"},
+  {k:"blackclouds",g:"C",en:"black clouds",ph:"/blæk klaʊdz/",pos:"n.",cn:"乌云",def:"颜色发黑的云，通常预示大雨或暴风雨将至。",use:"There are many black clouds in the sky. 天上有很多乌云。",coll:"cloud(n.) → cloudy(adj. 多云的)；相关 heavy rain 大雨、storm(n. 暴风雨)。",tip:"cloud 表「云朵」时可数，用复数 clouds；cloudy 才是形容词。",ex:"There are many black clouds in the sky.",exCn:"天上有很多乌云。"},
+  {k:"bend",g:"C",en:"bend",ph:"/bend/",pos:"v.",cn:"（使）弯曲；弯下",def:"指物体受力变弯或人弯身；文中描写树被大风吹弯。",use:"The trees are bending. 树被吹弯了；bend down 弯腰。",coll:"bend—bent—bent；bend(n. 弯道)；近义 curve(v. 弯曲)。",tip:"过去式/过去分词是 bent（不是 bended）。",ex:"The wind is strong and the trees are bending.",exCn:"风很大，树都被吹弯了。"},
+  {k:"dangerous",g:"C",en:"dangerous",ph:"/ˈdeɪndʒərəs/",pos:"adj.",cn:"危险的",def:"danger（危险）+ -ous（形容词后缀），表示「有危险的、不安全的」。",use:"It's dangerous to do sth. 做某事很危险（it 作形式主语）；a dangerous place 危险的地方。",coll:"danger(n.) → dangerous(adj.) → dangerously(adv.)；反义 safe(adj. 安全的)。",tip:"★句型 It is + adj. + to do sth.；别写成 It's danger to go out。",ex:"It's dangerous to go out of the house right now.",exCn:"现在出门很危险。"},
+  {k:"goboating",g:"C",en:"go boating",ph:"/ɡəʊ ˈbəʊtɪŋ/",pos:"短语",cn:"去划船",def:"boat 作动词指「划船、乘船游玩」，go boating 去划船。",use:"be boating on a lake 正在湖上划船；go boating with my family 和家人去划船。",coll:"boat(n. 小船 / v. 划船) → boating(n.)；同类 go fishing / go camping。",tip:"注意 boat 既可作名词也可作动词；文中 I am boating 是现在进行时。",ex:"I am boating on a lake with my family.",exCn:"我正和家人在湖上划船。"},
+  {k:"relaxing",g:"C",en:"relaxing",ph:"/rɪˈlæksɪŋ/",pos:"adj.",cn:"令人放松的",def:"由 relax（放松）加 -ing 构成，修饰事物，表示「使人感到轻松的」。",use:"a good day for relaxing 适合放松的一天；a relaxing holiday 轻松的假期。",coll:"relax(v.) → relaxing(adj. 令人放松的，修饰物) / relaxed(adj. 感到放松的，修饰人)。",tip:"★-ing 修饰物、-ed 修饰人：relaxing / relaxed，exciting / excited 同理。",ex:"It's really a good day for relaxing.",exCn:"真是适合放松的好日子。"},
+  {k:"raincatsdogs",g:"C",en:"rain cats and dogs",ph:"/reɪn kæts ənd dɒɡz/",pos:"习语",cn:"下倾盆大雨",def:"英语固定习语，形容雨下得极大；并非真的下猫下狗，不能逐字理解。",use:"It's raining cats and dogs. 正下着倾盆大雨。（只能用 it 作主语）",coll:"同义 It's raining buckets. / heavy rain / pour down（倾盆而下）。",tip:"主语固定用 it；同类天气习语还有 save for a rainy day（未雨绸缪）。",ex:"Take an umbrella — it's raining cats and dogs.",exCn:"带把伞吧，正下着倾盆大雨。"},
+  {k:"stormteacup",g:"C",en:"a storm in a teacup",ph:"/ə stɔːm ɪn ə ˈtiːkʌp/",pos:"习语",cn:"小题大做；茶杯里的风波",def:"比喻为一点小事大惊小怪、掀起不必要风波；美式常说 a tempest in a teapot。",use:"Don't worry — it's just a storm in a teacup. 别担心，这只是小题大做。",coll:"近义 make a fuss over nothing / much ado about nothing。",tip:"中文常译「小题大做」，注意 teacup 是「茶杯」不是「茶壶」。",ex:"Their quarrel was only a storm in a teacup.",exCn:"他们的争执不过是小题大做。"},
+  {k:"rainyday",g:"C",en:"save for a rainy day",ph:"/seɪv fɔːr ə ˈreɪni deɪ/",pos:"习语",cn:"未雨绸缪；存钱以备不时之需",def:"rainy day 比喻「困难时期、需要用钱的时候」；整句指平时储蓄以备将来。",use:"save (money) for a rainy day 存钱以备不时之需。",coll:"rain(n./v.) → rainy(adj.)；相关 save(v. 储蓄/节省)、savings(n. 存款)。",tip:"a rainy day 是比喻义，不是真的「下雨天」。",ex:"My grandma always saves for a rainy day.",exCn:"我奶奶总是未雨绸缪地存钱。"},
+  {k:"cloudnine",g:"C",en:"on cloud nine",ph:"/ɒn klaʊd naɪn/",pos:"习语",cn:"欣喜若狂；非常开心",def:"形容高兴得像站在九重云霄上，情绪极佳。",use:"be on cloud nine 乐不可支；She was on cloud nine after the news.",coll:"近义 over the moon / very happy / delighted；cloud(n.) → cloudy(adj.)。",tip:"介词固定用 on；cloud 前不加冠词（on cloud nine，不是 on the cloud nine）。",ex:"He was on cloud nine when he won the prize.",exCn:"获奖时他欣喜若狂。"},
+  {k:"silverlining",g:"C",en:"Every cloud has a silver lining",ph:"/ˈsɪlvə ˈlaɪnɪŋ/",pos:"谚语",cn:"黑暗中总有一线光明",def:"每朵乌云都镶着银边，比喻再坏的处境也有希望、坏事中也有好的一面。",use:"常独立成句用于安慰：Don't give up — every cloud has a silver lining.",coll:"lining(n. 衬里/内衬)；silver(adj. 银色的)；近义 Look on the bright side.",tip:"常缩略说 Every cloud... 或 a silver lining（一线希望）。",ex:"Every cloud has a silver lining.",exCn:"黑暗中总有一线光明。"},
+
+  /* ===== D 完形·假期出游 ===== */
+  {k:"stayathome",g:"D",en:"stay at home",ph:"/steɪ æt həʊm/",pos:"短语",cn:"待在家里",def:"stay 表「停留、保持」，at home 在家；合指不外出的状态。",use:"stay at home for their vacation 假期待在家里；stay at home all day 一整天待在家。",coll:"stay(v. 停留) → stay up(熬夜) / stay away from(远离)；home 作副词时不加 to（go home）。",tip:"home 前用 at：stay at home；但 go home 不加介词。",ex:"Many people don't like to stay at home for their vacation.",exCn:"许多人不喜欢假期待在家里。"},
+  {k:"onvacation",g:"D",en:"on vacation",ph:"/ɒn vəˈkeɪʃn/",pos:"短语",cn:"在度假",def:"美式表达，英式常说 on holiday；指在休假期间。",use:"for their vacation 为了度假；go on vacation 去度假；on vacation 在度假中。",coll:"vacation(n. 假期，美) = holiday(n. 英)；vacation → vacationer(n. 度假者)。",tip:"介词用 on：on vacation / on holiday，不用 in。",ex:"People go to the countryside on vacation.",exCn:"人们去乡下度假。"},
+  {k:"countryside",g:"D",en:"countryside",ph:"/ˈkʌntrisaɪd/",pos:"n.",cn:"乡村；农村",def:"指城市以外的田野、村庄地区，通常带自然风光意味。",use:"in the countryside 在乡下；go to the countryside 去乡下。",coll:"country(n. 国家/乡下) + side(n. 边) → countryside；反义 city / town。",tip:"易混：country 可指「国家」也可指「乡下」，countryside 只指「乡村地区」。",ex:"People in the countryside go to the city.",exCn:"乡下的人进城去。"},
+  {k:"takecars",g:"D",en:"take their cars",ph:"/teɪk ðeə(r) kɑːz/",pos:"短语",cn:"开自己的车（出行）",def:"take + 交通工具，表示选用某种交通方式出行；此处指自驾。",use:"take their cars for travelling 开车出行；take a bus / take a plane 乘公交/飞机。",coll:"同义 drive (one's car) / by car；by + 交通工具（中间无冠词）：by car。",tip:"★易混：take a car（乘/开车） vs by car（介词短语作状语）；第 44 空答案即 car。",ex:"Many people take their cars for travelling.",exCn:"很多人自己开车出行。"},
+  {k:"traffic",g:"D",en:"traffic",ph:"/ˈtræfɪk/",pos:"n.",cn:"交通；车流",def:"不可数名词，指道路上往来的车辆与行人；too much traffic 即「堵车、车太多」。",use:"too much traffic on the road 路上车太多；heavy traffic 拥堵的交通。",coll:"traffic lights 红绿灯；traffic jam 交通堵塞；traffic rules 交通规则。",tip:"★不可数：用 much / a lot of 修饰，不能说 many traffics。",ex:"There was too much traffic on the road.",exCn:"路上车太多了。"},
+  {k:"getoutof",g:"D",en:"get out of",ph:"/ɡet aʊt ɒv/",pos:"短语",cn:"从……出来；离开",def:"指从某空间或范围中出来，文中指「驶出城区」。",use:"get out of the city 出城；get out of the car 下车；get out of bed 起床。",coll:"get(v.) 多义：get up(起床)/get on(上车)/get off(下车)/get to(到达)。",tip:"反义 get into（进入）；下车小汽车用 get out of，下公交/火车用 get off。",ex:"It took us about an hour to get out of the city.",exCn:"出城花了我们大约一小时。"},
+  {k:"picnic",g:"D",en:"picnic",ph:"/ˈpɪknɪk/",pos:"n.",cn:"野餐",def:"指在户外（公园、郊外）自带食物进餐的活动。",use:"a nice place for a picnic 野餐的好地方；have a picnic 举行野餐；go on a picnic 去野餐。",coll:"picnic → picnicked / picnicking（动词变位加 k）；picnicker(n. 野餐者)。",tip:"★第 49 空答案也是 picnic（回车里继续野餐），前后呼应，是解题线索。",ex:"We thought it was a nice place for a picnic.",exCn:"我们觉得这是野餐的好地方。"},
+  {k:"suddenly",g:"D",en:"suddenly",ph:"/ˈsʌdənli/",pos:"adv.",cn:"突然；忽然",def:"表示事情发生得急促、出乎意料，常用于叙事中引出转折。",use:"句首加逗号：Suddenly, a strong wind blew. 突然刮起一阵大风。",coll:"sudden(adj. 突然的) → suddenly(adv.)；近义 all of a sudden（短语）。",tip:"修饰整句时放句首并用逗号隔开；别写成 sudden（那是形容词）。",ex:"Suddenly, a strong wind blew and soon it started to rain.",exCn:"突然刮起大风，很快下起雨来。"},
+
+  /* ===== E 语法填空·爷爷生日 ===== */
+  {k:"oldest",g:"E",en:"the oldest",ph:"/ði ˈəʊldɪst/",pos:"adj. 最高级",cn:"年纪最大的；最年长的",def:"old 的最高级，表示三者及以上中年龄最大；常与 the 连用。",use:"the oldest man in my family 家里年纪最大的人；the oldest of the three 三人中最年长的。",coll:"old → older → oldest；表家庭成员长幼也可用 eldest（更正式）。",tip:"★最高级前通常加 the；比较范围是 in + 群体 / of + 数量。",ex:"The oldest man in my family is my grandpa.",exCn:"我们家年纪最大的是爷爷。"},
+  {k:"kind",g:"E",en:"kind",ph:"/kaɪnd/",pos:"adj./n.",cn:"和善的；种类",def:"作形容词指「友善、体贴」；作名词指「种类」。两种词性都很常用。",use:"be kind to sb. 对某人和善；It's kind of you to... 你真好……；a kind of 一种。",coll:"kind(adj.) → kindness(n. 善意) → kindly(adv.)；反义 unkind / cruel。",tip:"★易混：kind of（有点儿，副词短语）vs a kind of（一种）。",ex:"He is very kind. Everyone likes him.",exCn:"他很和善，人人都喜欢他。"},
+  {k:"discuss",g:"E",en:"discuss",ph:"/dɪˈskʌs/",pos:"v.",cn:"讨论；商量",def:"指就某话题交换意见；及物动词，后面直接接宾语或 wh- 从句。",use:"be discussing what we can give him 正在讨论送他什么；discuss a problem 讨论问题。",coll:"discuss(v.) → discussion(n. 讨论)；近义 talk about（更口语）。",tip:"★discuss 是及物动词，不加 about（不说 discuss about sth.）；名词 discussion 才接 about。",ex:"Now we are discussing what we can give him.",exCn:"我们正在讨论送他什么。"},
+  {k:"favourite",g:"E",en:"favourite",ph:"/ˈfeɪvərɪt/",pos:"adj./n.",cn:"最喜爱的（人或物）",def:"英式拼写，美式作 favorite；本身含「最」的意思。",use:"his favourite noodles 他最爱吃的面；my favourite subject 我最喜欢的科目。",coll:"favour(n. 帮忙/偏爱) → favourite → favouritism(n. 偏袒)。",tip:"英式 favourite / 美式 favorite；因本身含最高级意味，一般不加 most。",ex:"My mom usually cooks his favourite noodles.",exCn:"妈妈通常煮他最爱吃的面。"},
+  {k:"wouldlike",g:"E",en:"would like",ph:"/wʊd laɪk/",pos:"短语",cn:"想要；愿意",def:"比 want 更委婉客气的说法；后接名词或 to do。",use:"would like to do sth. 想要做某事（第 56 空 to make）；would like sth. 想要某物。",coll:"would like = want（更礼貌）；Would you like...? 用于邀请/提议。",tip:"★would like 后接动词必须用 to do，不能接 doing 或原形。",ex:"She would like to make a birthday cake.",exCn:"她想做一个生日蛋糕。"},
+  {k:"bookcase",g:"E",en:"bookcase",ph:"/ˈbʊkkeɪs/",pos:"n.",cn:"书柜；书架",def:"book（书）+ case（柜/箱），指放书的柜子（通常带门或多层）。",use:"a new brown bookcase 一个新的棕色书柜；put books in the bookcase。",coll:"近义 bookshelf(n. 书架，敞开式)；合成词：book + case。",tip:"注意与 bookshelf 区分：bookcase 多为带门柜体；多个形容词顺序：a new brown bookcase（新旧→颜色）。",ex:"My father is buying a new brown bookcase online.",exCn:"爸爸正在网上买一个新的棕色书柜。"},
+  {k:"asforme",g:"E",en:"as for me",ph:"/æz fɔː(r) miː/",pos:"短语",cn:"至于我；对我来说",def:"用于转换话题或引出自己的看法，相当于「说到我」。",use:"As for me, I want to draw a picture. 至于我，我想画一幅画。",coll:"近义 as for / as to（至于）；for me（对我来说，侧重感受）。",tip:"as for 后接名词/代词宾格（me，不是 I）。",ex:"As for me, I want to draw a picture of my grandpa.",exCn:"至于我，我想画一幅爷爷的画像。"},
+
+  /* ===== F 乌鸦清洁工 ===== */
+  {k:"cleaner",g:"F",en:"cleaner",ph:"/ˈkliːnə(r)/",pos:"n.",cn:"清洁工；清洁器",def:"clean（打扫）+ -er，指做清洁工作的人，也可指清洁剂/清洁设备。",use:"six very special cleaners 六位特别的清洁工；work as a cleaner 做清洁工。",coll:"clean(v./adj.) → cleaner(n.) → cleaning(n. 打扫)；近义 street cleaner 环卫工。",tip:"文中一词双关：前面说 cleaners（人），后面揭晓它们是 crows（乌鸦）。",ex:"Cleaners help to keep cities clean.",exCn:"清洁工帮助保持城市整洁。"},
+  {k:"crow",g:"F",en:"crow",ph:"/krəʊ/",pos:"n.",cn:"乌鸦",def:"一种黑色、聪明且适应能力强的鸟类，被认为记忆力与解决问题能力很强。",use:"They are crows! 它们是乌鸦！；a flock of crows 一群乌鸦。",coll:"crow(n. 乌鸦 / v. 啼叫)；相关 raven(n. 渡鸦)、bird food 鸟食。",tip:"注意与 crowed / crowd（人群）区分拼写。",ex:"This month a park in France welcomed six crows.",exCn:"本月法国一家公园迎来了六只乌鸦。"},
+  {k:"pickup",g:"F",en:"pick up",ph:"/pɪk ʌp/",pos:"短语动词",cn:"捡起；拾起",def:"多义：捡起（物品）、接（人）、学会（语言）、顺便买。文中取「捡起垃圾」。",use:"pick up small pieces of trash 捡起小片垃圾；pick up the phone 接电话。",coll:"pick(v. 捡/挑) + up；代词宾语放中间：pick it up。",tip:"★一词多义需看语境；代词必须放 pick 与 up 中间。",ex:"Workers teach the crows to pick up small pieces of trash.",exCn:"工作人员教乌鸦捡起小片垃圾。"},
+  {k:"trash",g:"F",en:"trash",ph:"/træʃ/",pos:"n.",cn:"垃圾；废物",def:"美式常用词，英式多说 rubbish / litter；不可数名词。",use:"small pieces of trash 小片垃圾；take out the trash 倒垃圾。",coll:"trash(n.) → trash can/bin 垃圾桶；同义 rubbish(英) / litter(散落垃圾) / garbage(美)。",tip:"★不可数：借助 pieces of 表数量（small pieces of trash）。",ex:"They pick up small pieces of trash.",exCn:"它们捡起小片垃圾。"},
+  {k:"takecare",g:"F",en:"take care of",ph:"/teɪk keə(r) ɒv/",pos:"短语",cn:"爱护；照顾；处理",def:"表示照料、看护某人某物，也可指「负责处理某事」。",use:"take care of the environment 爱护环境；take care of a baby 照看婴儿。",coll:"care(n./v.) → careful(adj.) → carefully(adv.)；近义 look after / care for。",tip:"★易混：take care of（照顾）vs take care（当心，单独使用）= be careful。",ex:"Nature itself can teach us to take care of the environment.",exCn:"大自然本身能教会我们爱护环境。"},
+  {k:"environment",g:"F",en:"environment",ph:"/ɪnˈvaɪrənmənt/",pos:"n.",cn:"环境",def:"指周围的自然与社会条件；此处侧重自然环境。",use:"protect the environment 保护环境；a clean environment 干净的环境。",coll:"environment(n.) → environmental(adj.) → environmentally(adv.)。",tip:"拼写注意 environ-ment（与 A 组 environmental protector 同源，可联记）。",ex:"This shows we should take care of the environment.",exCn:"这说明我们应当爱护环境。"},
+  {k:"headofthepark",g:"F",en:"head of the park",ph:"/hed ɒv ðə pɑːk/",pos:"n.",cn:"公园负责人；园长",def:"head 在此指「负责人、首脑」，为同位语，说明 Nicolas de Villiers 的身份。",use:"Nicolas de Villiers, head of the park, told AFP.（同位语，前后加逗号）",coll:"head(n. 头/首领) → headmaster(n. 校长) / head teacher；the head of... ……的负责人。",tip:"★第 63 题答案关键：head of the park 前不加冠词（表唯一职务的同位语）。",ex:"Nicolas de Villiers, head of the park, told AFP.",exCn:"公园负责人 Nicolas de Villiers 告诉法新社。"},
+  {k:"smarter",g:"F",en:"smarter than",ph:"/ˈsmɑːtə ðæn/",pos:"比较级",cn:"比……更聪明",def:"smart 的比较级 + than，用于两者比较；文中比较乌鸦与其他鸟。",use:"They are smarter than other birds. 它们比其他鸟更聪明。",coll:"smart → smarter → smartest；smart(adj. 聪明/机灵) 近义 clever / intelligent。",tip:"★比较级 + than；注意与 A 组 clever 联记（第 5 段 how clever these birds can be）。",ex:"The park chose crows because they are smarter than other birds.",exCn:"公园选乌鸦是因为它们比其他鸟更聪明。"},
+  {k:"vending",g:"F",en:"vending machine",ph:"/ˈvendɪŋ məˈʃiːn/",pos:"n.",cn:"自动贩卖机",def:"vend（售卖）+ -ing + machine（机器），指投币/投纸后自动出货的机器。",use:"a special vending machine for crows 为乌鸦特制的自动贩卖机。",coll:"vend(v. 售卖) → vending(n.) → vendor(n. 小贩)；machine(n. 机器)。",tip:"合成名词重音在 vending；第 64 题答案即 a special vending machine。",ex:"Scientists made a special vending machine for crows.",exCn:"科学家为乌鸦制作了一台特殊的自动贩卖机。"},
+  {k:"rightsize",g:"F",en:"the right size",ph:"/ðə raɪt saɪz/",pos:"短语",cn:"合适的尺寸；正确的大小",def:"right 在此意为「合适的、恰当的」，不是「右边」；size 是尺寸。",use:"a piece of paper of the right size 一张尺寸合适的纸；the right size of paper。",coll:"right(adj. 正确的/合适的/右边的) 多义；size(n. 尺寸) → sized(adj. …尺寸的)。",tip:"★多义词：right 还有「右边、权利、恰好」等义，此处取「合适的」。",ex:"The machine only works when a piece of paper of the right size is put inside it.",exCn:"只有把尺寸合适的纸投进去，机器才会工作。"},
+  {k:"clever",g:"F",en:"clever",ph:"/ˈklevə(r)/",pos:"adj.",cn:"聪明的；机灵的",def:"指学习快、会想办法，尤其强调解决实际问题的机敏。",use:"how clever these birds can be 这些鸟能有多聪明（感叹/宾语从句）。",coll:"clever(adj.) → cleverly(adv.) → cleverness(n.)；近义 smart / bright / intelligent。",tip:"★how + adj. + 主语 + be 构成感叹式宾语从句：how clever these birds can be。",ex:"This is a good example of how clever these birds can be.",exCn:"这很好地说明了这些鸟有多聪明。"},
+
+  /* ===== G 书面表达 ===== */
+  {k:"sharewith",g:"G",en:"share ... with",ph:"/ʃeə(r) wɪð/",pos:"短语",cn:"与……分享",def:"share 表「分享、共用」，with 引出分享的对象。",use:"share sth. with sb. 与某人分享某物；share my life with you 和你分享我的生活。",coll:"share(v./n.) → sharing(n.)；相关 share a room 合住、share an idea 分享想法。",tip:"★固定搭配 share sth. with sb.，介词用 with 不用 to。",ex:"I'm happy to share my American friend Mike's life with you.",exCn:"很高兴和大家分享我美国朋友 Mike 的生活。"},
+  {k:"colourfullife",g:"G",en:"colourful life",ph:"/ˈkʌləfl laɪf/",pos:"n.",cn:"多彩的生活",def:"colourful 引申为「丰富多彩的」，修饰 life 表示生活充实有趣。",use:"my colourful life 我多彩的生活；lead a colourful life 过着丰富多彩的生活。",coll:"美式 colorful；与 C 组 colourful umbrellas 同源（本义→引申义）。",tip:"写作亮点词：colourful 比 interesting 更有画面感，可作标题/收尾。",ex:"I'm happy to share my colourful life with you.",exCn:"很高兴和大家分享我多彩的生活。"},
+  {k:"playground",g:"G",en:"playground",ph:"/ˈpleɪɡraʊnd/",pos:"n.",cn:"操场；游乐场",def:"play（玩）+ ground（场地），指学校或公园里供活动的场地。",use:"on the playground 在操场上；in the playground（英式也可见）。",coll:"play(v.) + ground(n.)；相关 sports field 运动场、court 球场。",tip:"介词通常用 on：on the playground。",ex:"I am on the playground with my classmates.",exCn:"我和同学们在操场上。"},
+  {k:"skiprope",g:"G",en:"skip rope",ph:"/skɪp rəʊp/",pos:"短语",cn:"跳绳",def:"skip 指「轻跳、跳过」，skip rope 即跳绳（英式也说 skip / jump rope 美式）。",use:"Some are skipping rope. 有些人在跳绳。（提示词，写作必用）",coll:"skip → skipping（双写 p 加 -ing）；同类 play hide and seek / play football。",tip:"★现在分词要双写 p：skipping（不是 skiping）；这是写作易错点。",ex:"Some are skipping rope, some are playing hide and seek.",exCn:"有人在跳绳，有人在玩捉迷藏。"},
+  {k:"hideandseek",g:"G",en:"play hide and seek",ph:"/pleɪ haɪd ənd siːk/",pos:"短语",cn:"玩捉迷藏",def:"儿童游戏：一人藏、他人找；固定说法，中间用 and。",use:"play hide and seek 玩捉迷藏；Some are playing hide and seek.",coll:"hide(v. 躲藏) → hid → hidden；seek(v. 寻找) → sought。",tip:"★游戏名称前不加冠词：play hide and seek（不是 play the hide and seek）。",ex:"Some children are playing hide and seek.",exCn:"一些孩子在玩捉迷藏。"},
+  {k:"atthesametime",g:"G",en:"at the same time",ph:"/æt ðə seɪm taɪm/",pos:"短语",cn:"与此同时；同一时刻",def:"强调两件事在同一时间点发生；本文用来表现中美的时差对照。",use:"At the same time, it's 10:00 p.m. in America. 同一时刻美国是晚上十点。",coll:"same 前通常加 the；近义 meanwhile(adv.) / at the same moment。",tip:"★本文核心逻辑词：中国 10:00 a.m. ↔ 美国 10:00 p.m.，与 B 卷「半球/时差」主题呼应。",ex:"At the same time, it's 10:00 p.m. in America.",exCn:"同一时刻，美国是晚上十点。"},
+  {k:"wmoment",g:"G",en:"wonderful moment",ph:"/ˈwʌndəfl ˈməʊmənt/",pos:"n.",cn:"精彩瞬间",def:"wonderful 精彩的 + moment 时刻，正好扣住作文题「精彩瞬间」评选主题。",use:"What a wonderful moment! 多么精彩的瞬间！（what 引导感叹句）",coll:"wonder(n./v.) → wonderful(adj.)；moment(n. 片刻) → 近义 instant。",tip:"★感叹句 What a + adj. + 可数单数名词! 用于收尾加感受，是得分句。",ex:"What a wonderful moment!",exCn:"多么精彩的瞬间！"},
+  {k:"faraway",g:"G",en:"be far away from",ph:"/fɑː(r) əˈweɪ frɒm/",pos:"短语",cn:"离……很远",def:"far away 表示距离遥远，from 引出参照对象；文中表达两人相隔两地。",use:"be far away from each other 彼此相距很远；far away from home 离家很远。",coll:"far(adj./adv.) → farther/further（比较级）；反义 near / close to。",tip:"far away 后接 from + 地点；不与具体数字连用（具体距离用 ... kilometres away）。",ex:"Though we are far away from each other, we are both enjoying our life.",exCn:"虽然我们相隔很远，但都在享受自己的生活。"}
+];
+const V={}; VOCAB.forEach(o=>V[o.k]=o);
+const GROUP_NAME={A:"上卷 · 阅读还原六选五（雷殿生）",B:"上卷 · 语法填空（南北半球天气）",C:"上卷 · 阅读表达（四地天气）＋ 天气妙语",D:"下卷 · 完形填空（假期出游）",E:"下卷 · 语法填空（爷爷的生日）",F:"下卷 · 阅读表达（乌鸦清洁工）",G:"下卷 · 书面表达（精彩瞬间）"};
+const GROUP_ORDER=["A","B","C","D","E","F","G"];
+
+/* ============ 自测题目 ============ */
+const Q_A=[
+  {n:1,q:"第 1 空应填入哪一项？（承接 'walked across China for 10 years'，后接 'During the trip...'）",opts:["A. He sold his house to get money for his long trip.","B. He travelled about 81,000 kilometres, almost twice around the Equator.","C. He leads teams to study the environment.","D. In 2008, he became the first person to walk alone through the Lop Nur.","E. He visited all 56 ethnic groups in China.","F. He organizes hiking camps for students."],ans:1},
+  {n:2,q:"第 2 空应填入哪一项？（前句 'many dangers... but he never gave up'）",opts:["A. He sold his house.","B. He travelled about 81,000 kilometres.","C. He leads teams to study the environment.","D. In 2008, he became the first person to walk alone through the dangerous Lop Nur.","E. He visited all 56 ethnic groups.","F. He organizes hiking camps."],ans:3},
+  {n:3,q:"第 3 空应填入哪一项？（前句 'Lei did more than just walk'，后句 'He also helped poor students...'）",opts:["A. He sold his house.","B. He travelled about 81,000 kilometres.","C. He leads teams to study the environment.","D. In 2008, he walked through the Lop Nur.","E. He visited all 56 ethnic groups, took 40,000 photos and wrote 3.2 million words.","F. He organizes hiking camps."],ans:4},
+  {n:4,q:"第 4 空应填入哪一项？（前句 'works for nature and education'）",opts:["A. He sold his house.","B. He travelled about 81,000 kilometres.","C. He leads teams to study the environment, like protecting the source of the Yangtze River.","D. In 2008, he walked through the Lop Nur.","E. He visited all 56 ethnic groups.","F. He organizes hiking camps."],ans:2},
+  {n:5,q:"第 5 空应填入哪一项？（段末，需与首句 'education' 呼应）",opts:["A. He sold his house.","B. He travelled about 81,000 kilometres.","C. He leads teams to study the environment.","D. In 2008, he walked through the Lop Nur.","E. He visited all 56 ethnic groups.","F. For students, he organizes hiking camps in Heilongjiang's forests."],ans:5}
+];
+const Q_D=[
+  {n:41,q:"41. do something ______",opts:["A. exciting","B. useless","C. boring"],ans:0},
+  {n:42,q:"42. trains, buses and planes are all ______",opts:["A. busy","B. free","C. slow"],ans:0},
+  {n:43,q:"43. It is a little difficult to ______ train tickets",opts:["A. sell","B. buy","C. make"],ans:1},
+  {n:44,q:"44. my family went to the countryside by ______",opts:["A. ship","B. plane","C. car"],ans:2},
+  {n:45,q:"45. we had to move very ______（too much traffic）",opts:["A. quickly","B. slowly","C. happily"],ans:1},
+  {n:46,q:"46. so we ______ and took the food out of the car",opts:["A. stopped","B. left","C. arrived"],ans:0},
+  {n:47,q:"47. We ______ under a big tree.",opts:["A. got up","B. sat down","C. came from"],ans:1},
+  {n:48,q:"48. soon it ______ to rain",opts:["A. started","B. wanted","C. learned"],ans:0},
+  {n:49,q:"49. have our ______ in the car",opts:["A. class","B. work","C. picnic"],ans:2},
+  {n:50,q:"50. What a ______ trip!",opts:["A. funny","B. terrible","C. great"],ans:1}
+];
+
+/* ============ 答案与详解 ============ */
+const ANS_A=[
+  {n:1,key:"B",tag:"承上启下",sent:"From 1998 to 2008, Lei walked across China for 10 years. ___ During the trip, he wore out 52 pairs of shoes...",ana:["空前是「十年走遍中国」的总述，空后 'During the trip...' 转入旅途细节，中间需要一句概括行程规模的话。","B「行程约 8.1 万公里，几乎绕赤道两圈」正好承接 10 年的徒步总成果，再引出穿坏 52 双鞋等细节。","A（卖房筹钱）属行前准备，但本段已在讲旅途中，时间线不符；C/F 是「现在」的工作，时态与语境均不符。"]},
+  {n:2,key:"D",tag:"段末收束",sent:"He faced many dangers, like mudslides and wolf attacks, but he never gave up. ___",ana:["前句强调「许多危险……却从未放弃」，段末宜给出一个标志性的、克服危险的成果。","D「2008 年成为独自穿越危险罗布泊第一人」既呼应 dangers（dangerous Lop Nur），又与本段开头 'From 1998 to 2008' 的收官年份吻合。","E 是走访成果、更适合放在 'did more than just walk' 之后；A 属准备阶段，放在此处时间倒错。"]},
+  {n:3,key:"E",tag:"并列递进",sent:"Lei did more than just walk. ___ He also helped poor students and joined in flood rescue work.",ana:["主题句「雷殿生做的不只是走路」后需先举一例，再由 'also' 补举另一例，形成并列。","E「走访 56 个民族、拍 4 万张照片、写 320 万字笔记」是超越「走路」的考察记录成果，与后文 'also helped poor students' 并列顺畅。","C/F 都是 'Now, Lei still works...' 段的现在时内容，放这里时态错乱。"]},
+  {n:4,key:"C",tag:"总分对应",sent:"Now, Lei still works for nature and education. ___ He works with artists to turn his travel notes into art...",ana:["段首给出两个关键词 nature 与 education，后文应分别举例。","C「带队考察环境、保护长江源」对应 nature，随后「与艺术家合作让更多人了解环保」仍是 nature 侧的第二例。","F 讲 education，应留到段末（第 5 空）；E/D 都是过去旅程的事，与本段 'Now, still works' 的现在时不符。"]},
+  {n:5,key:"F",tag:"首尾呼应",sent:"...so more people learn about environmental protection. ___ Lei's story tells us: ...",ana:["段首 'nature and education' 中，前两例都落在 nature，段末需补上 education 一例才完整。","F「为学生组织黑龙江森林徒步夏令营」正是教育面向的活动，收束全段并衔接下段「热爱并守护土地」的总结。","多余项 A「卖房筹钱」虽属行前准备，但第 1 段没有设空，故无处可填 —— 这就是六选五的干扰项。"]}
+];
+const ANS_B=[
+  {n:1,key:"to think",tag:"非谓语",sent:"It is fun ___ (think) that when it is cold in one place, it is hot in another.",ana:["固定句型 It is + adj. + to do sth.，it 是形式主语，真正主语是不定式。","故填 to think（想想……很有趣）。"]},
+  {n:2,key:"seasons",tag:"名词复数",sent:"the reason for the different ___ (season)",ana:["different（不同的）后接可数名词时通常用复数，四季不同 → seasons。","若说 the different season 则只指一个季节，与「四季成因」语义不符。"]},
+  {n:3,key:"the",tag:"冠词",sent:"tilted towards ___ Sun",ana:["Sun（太阳）是独一无二的天体，前面必须加定冠词 the。","同类：the Moon / the Earth / the sky。"]},
+  {n:4,key:"When",tag:"连词",sent:"___ it's winter in the North, it's summer in the South.",ana:["引导时间状语从句「当……时候」，用 When，句首首字母大写。","While 在此也可表「与此同时」，语义可通；本题标准答案取 When（注意上文 while 已用于 'while one hemisphere is tilted...'，避免重复）。"]},
+  {n:5,key:"spending",tag:"介词+动名词",sent:"look forward to ___ (spend) summer vacation",ana:["★核心考点：look forward to 中的 to 是介词，后接名词或动名词。","故 spend → spending，不能写 to spend 或 spend。"]},
+  {n:6,key:"their",tag:"物主代词",sent:"during ___ (they) winter holidays",ana:["空格后有名词短语 winter holidays，需用形容词性物主代词 their（他们的）。","they 是主格、them 是宾格，都不能直接修饰名词。"]},
+  {n:7,key:"are",tag:"there be",sent:"There ___ (be) holidays in both hemispheres",ana:["there be 句型就近一致：主语 holidays 是复数，且全文为一般现在时。","故填 are。"]},
+  {n:8,key:"on",tag:"介词",sent:"___ special nights like New Year's Eve",ana:["表示「在某个具体的夜晚 / 特殊日子的晚上」用介词 on（on Christmas Eve / on Monday night）。","in the evening 用于泛指，at night 表「在夜里」，均不搭配 special nights。"]},
+  {n:9,key:"snowy",tag:"词性转换",sent:"over ___ (snow) places",ana:["修饰名词 places 需要形容词；snow → snowy（下雪的、被雪覆盖的）。","与后半句 'or near the beach'（雪地 vs 海滩）形成南北对照。"]},
+  {n:10,key:"celebration",tag:"词性转换",sent:"making each ___ (celebrate) special",ana:["each 后接单数名词，make + 宾语 + 形容词（宾补）结构，需名词作宾语。","celebrate(v.) → celebration(n. 庆祝活动)，与第 9 空的 snowy 同属「给提示词变词性」考点。"]}
+];
+const ANS_C=[
+  {n:1,key:"In her room",tag:"细节理解",sent:"Where is Laura?",ana:["定位 Laura 部分首句：I'm just standing in my room and looking out of the window.","她在自己房间里（在家），故答 She is in her room. / In her room (at home)."]},
+  {n:2,key:"His cousins",tag:"细节理解",sent:"Who does Jim go to the mountains with?",ana:["定位 Jim 部分首句：I am in the mountains with my cousins.","故答 (With) his cousins. / He goes there with his cousins."]},
+  {n:3,key:"Windy and cloudy; heavy rain is coming",tag:"信息整合",sent:"What's the weather like now according to Bob?",ana:["Bob 提到 many black clouds（乌云）、the wind is strong（大风）、trees are bending、I think heavy rain is coming。","需整合为「多云/有乌云、风很大，大雨将至」：It's windy and cloudy (with many black clouds), and heavy rain is coming.","只答 It's rainy 不准确 —— 此刻还没下，是「快要下」。"]},
+  {n:4,key:"Boating on a lake",tag:"细节理解",sent:"What is Linda doing now?",ana:["定位 Linda 部分：I am boating on a lake with my family.","注意用现在进行时回答：She is boating on a lake with her family."]},
+  {n:5,key:"（开放题）",tag:"开放表达",sent:"What's the weather like in your city? How do you like it?",ana:["两问都要答：先描述天气，再谈感受/原因，合理即可。","示例：It's sunny and warm in my city. I like it very much because I can do sports outside with my friends.","提醒：主语用 it 表天气；How do you like...? 问的是「你觉得……怎么样」，要用 I like it... 回应，不要答成天气状况。"]}
+];
+const ANS_D=[
+  {n:41,key:"A",tag:"形容词辨析",sent:"do something ___",ana:["前句「人们不愿待在家，想出门看不同事物」，语境是积极求新 → exciting（令人兴奋的）。","B useless（无用的）、C boring（无聊的）与「想出门」矛盾。"]},
+  {n:42,key:"A",tag:"语境推理",sent:"trains, buses and planes are all ___",ana:["后句「买票有点难」说明假期交通繁忙、票紧张 → busy。","B free（空闲/免费）、C slow（慢）都不导致「买票难」。"]},
+  {n:43,key:"B",tag:"动词辨析",sent:"It is a little difficult to ___ train tickets",ana:["与 tickets 搭配且与「难」呼应的是 buy（买票）。","A sell（卖）主语应是售票方；C make（制作）不合语境。"]},
+  {n:44,key:"C",tag:"前后照应",sent:"went to the countryside by ___",ana:["上段末句 'Many people take their cars for travelling' 已铺垫，本段又出现 'took the food... out of the car'。","故为 by car（乘/开小汽车）。by + 交通工具中间不加冠词。"]},
+  {n:45,key:"B",tag:"逻辑推理",sent:"There was too much traffic... so we had to move very ___",ana:["「路上车太多」→ 只能慢慢挪 → slowly。","A quickly（快）与堵车矛盾；C happily（开心地）不修饰移动速度。"]},
+  {n:46,key:"A",tag:"动词辨析",sent:"so we ___ and took the food, fruit and drinks out of the car",ana:["要「把东西从车里拿出来」，先得停车 → stopped。","B left（离开）、C arrived（到达）与后面拿东西的动作不连贯。"]},
+  {n:47,key:"B",tag:"动词短语",sent:"We ___ under a big tree.",ana:["野餐时在树下「坐下」→ sat down（sit 的过去式 sat）。","A got up（起身）、C came from（来自）均不合语境。"]},
+  {n:48,key:"A",tag:"固定搭配",sent:"soon it ___ to rain",ana:["start to do sth. 开始做某事；start to rain 开始下雨，过去式 started。","B wanted to rain / C learned to rain 语义不通。"]},
+  {n:49,key:"C",tag:"前后照应",sent:"have our ___ in the car",ana:["上文 'a nice place for a picnic' 已点题，跑回车里继续「野餐」→ picnic。","have a picnic 是固定搭配，此处 our picnic 呼应前文。"]},
+  {n:50,key:"B",tag:"主旨情感",sent:"What a ___ trip!",ana:["全文串起来：堵车一小时 → 刚摆好野餐就刮风下雨 → 躲进车里吃 → 直接回家，是一次扫兴的旅行 → terrible。","A funny（滑稽可笑）侧重「好笑」而非「糟糕」；C great 与一路不顺相矛盾。"]}
+];
+const ANS_E=[
+  {n:51,key:"him",tag:"代词宾格",sent:"Everyone likes ___ (he).",ana:["及物动词 like 后接宾语，人称代词用宾格 him。","主格 he 只能作主语。"]},
+  {n:52,key:"hobbies",tag:"名词复数",sent:"has many ___ (hobby) like fishing and reading",ana:["many 后接可数名词复数；hobby 以「辅音字母 + y」结尾，变 y 为 i 加 es → hobbies。"]},
+  {n:53,key:"eighth",tag:"序数词",sent:"on November the ___ (eight)",ana:["日期用序数词：11 月 8 日 → November the eighth。","eight → eighth 拼写特殊（只加 -h，不重复 t），是易错点。"]},
+  {n:54,key:"gifts",tag:"名词复数",sent:"prepare some ___ (gift) for my grandpa",ana:["some + 可数名词复数 → gifts；gift = present（礼物）。"]},
+  {n:55,key:"cooks",tag:"主谓一致",sent:"My mom usually ___ (cook) his favourite noodles.",ana:["usually 表一般现在时，主语 My mom 第三人称单数 → cooks。"]},
+  {n:56,key:"to make",tag:"非谓语",sent:"she would like ___ (make) a birthday cake",ana:["would like to do sth. 想要做某事，to 是不定式符号 → to make。","★与 B 卷第 5 空 look forward to doing 对比：两个 to 词性不同，是高频对比考点。"]},
+  {n:57,key:"buying",tag:"现在进行时",sent:"Look, my father is ___ (buy) a new brown bookcase online.",ana:["Look 是现在进行时标志词，已有 is，故填 buying。"]},
+  {n:58,key:"a",tag:"冠词（无提示词）",sent:"I want to draw ___ picture of my grandpa.",ana:["picture 是可数名词单数、此处首次提及且非特指 → 不定冠词 a。","draw a picture of... 画一幅……的画。"]},
+  {n:59,key:"really",tag:"词性转换",sent:"I ___ (real) love you, Grandpa!",ana:["修饰动词 love 需要副词 → really（真地、确实）。","real 是形容词，只能修饰名词。"]},
+  {n:60,key:"to have",tag:"固定句型",sent:"I think it is interesting ___ (have) a birthday party.",ana:["It is + adj. + to do sth.（it 形式主语）→ to have。","与 B 卷第 1 空 It is fun to think 属同一句型，可联记。"]}
+];
+const ANS_F=[
+  {n:61,key:"Six",tag:"细节理解",sent:"How many special cleaners arrived at the park in France this month?",ana:["首段：a park in France welcomed six very special cleaners.","故答 Six. / Six (special) cleaners. 简答用数字即可。"]},
+  {n:62,key:"Pick up trash and put it into a box",tag:"细节整合",sent:"What do workers at the park teach the crows to do?",ana:["第 2 段两句：teach the crows to pick up small pieces of trash；teach them to move the trash into a small box。","需合并两点：They teach them to pick up small pieces of trash and (to) move the trash into a small box."]},
+  {n:63,key:"Head of the park",tag:"细节理解",sent:"Who is Nicolas de Villiers?",ana:["第 3 段同位语 'Nicolas de Villiers, head of the park, told AFP' 直接给出身份。","答 He is (the) head of the park (in France). 注意同位语前不加冠词。"]},
+  {n:64,key:"A special vending machine",tag:"细节理解",sent:"What did scientists make for crows earlier this year?",ana:["第 4 段：scientists made a special vending machine for crows.","答 A special vending machine (for crows). / They made a special vending machine."]},
+  {n:65,key:"（开放题）",tag:"观点表达",sent:"The park uses crows to pick up trash. Do you like this idea? Why?",ana:["先明确表态 Yes/No，再给理由，两句以上更稳妥。","示例（赞成）：Yes, I do. Because it's a clever and green way to keep the park clean, and it shows we can work with nature.","示例（保留）：No, I don't. Because wild birds should live freely and people should clean up their own trash."]}
+];
+
+/* ============ 积累小栈 ============ */
+const JILEI_A=[
+  {q:"集有所用 1：environmental protector",a:"环保人士",note:"environment(n.) → environmental(adj.)；protect → protector。"},
+  {q:"集有所用 2：wild survival",a:"野外生存",note:"survive(v.) → survival(n.)；wild survival skills 野外生存技能。"},
+  {q:"集有所用 3：deal with dangers",a:"应对危险",note:"deal—dealt—dealt；How do you deal with...?"},
+  {q:"集有所用 4：give up",a:"放弃",note:"give up doing sth. 放弃做某事；反义 never give up。"},
+  {q:"集有所用 5：ethnic groups",a:"民族",note:"中国有 56 个 ethnic groups。"},
+  {q:"集有所用 6：flood rescue work",a:"抗洪工作",note:"flood(n. 洪水) + rescue(n./v. 救援)。"},
+  {q:"集有所用 7：the source of the Yangtze River",a:"长江源头",note:"source 源头；江河名前加 the。"},
+  {q:"集有所用 8：hiking camps",a:"徒步夏令营",note:"go hiking 去远足；camp 营地/露营。"},
+  {q:"识有所悟 · 徐霞客",a:"明代著名旅行家、地理学家",note:"他一生游历四方、不畏艰险，对山脉、河流、岩溶、气候、植物等做了大量实地考察，纠正了古代地理典籍中的多处错误；耗费心血写下约 60 万字的《徐霞客游记》，既是珍贵的地理学名著，也是文笔优美的散文作品，被誉为「千古奇书」。其勇于探索、求真务实的精神为后人敬仰 —— 这正是雷殿生被称为「当代徐霞客」的原因。"}
+];
+const WEATHER_WORDS=[
+  ["Hot","热的"],["Warm","温暖的"],["Cold","冷的"],["Freezing","极冷的"],["Tornado","龙卷风"],
+  ["Icy","结冰的"],["Thunder","雷"],["Sunny","晴朗的"],["Cloudy","多云的"],["Partly Cloudy","局部多云"],
+  ["Foggy","有雾的"],["Stormy","暴风雨的"],["Lightning","闪电"],["Hailing","下冰雹的"],["Sleeting","下雨夹雪的"],
+  ["Snowy","下雪的"],["Rainy","下雨的"],["Windy","有风的"],["Clear Sky","晴空"],["Rainbow","彩虹"]
+];
+const JILEI_G=[
+  {q:"要点 1 · 人物 / 时间 / 地点 / 活动",a:"Li Hua（10:00 a.m.，学校操场）｜ Mike（10:00 p.m.，家中）",note:"开头已给，正文需分别点明两地钟点，形成时差对照。"},
+  {q:"要点 2 · 描述正在发生的事",a:"全程用现在进行时 be + doing",note:"Some are skipping rope, some are playing hide and seek, and others are playing football. 用 Some... some... others... 铺开画面。"},
+  {q:"要点 3 · 加入感受",a:"What a wonderful moment! / We are having a great time.",note:"感叹句或 Though... 让步句收尾，既扣「精彩瞬间」又升格。"},
+  {q:"★ 易错 1 · 现在分词拼写",a:"skipping（双写 p）、sitting（双写 t）",note:"重读闭音节末尾单辅音字母要双写；skiping / siting 都是错的。"},
+  {q:"★ 易错 2 · 时差表达",a:"10:00 a.m. in China ↔ 10:00 p.m. in America",note:"a.m. 上午 / p.m. 下午晚上；用 But / At the same time 转折衔接。"},
+  {q:"★ 易错 3 · 主谓一致与连接",a:"Some are ... / He is ... while his father is ...",note:"Some 作主语指「一些人」用复数 are；while 表「与此同时」连接两个正在进行的动作。"},
+  {q:"★ 易错 4 · 词数控制",a:"70 词左右（开头不计）",note:"要点齐全优先，别堆砌；写完后数一遍词数并检查时态统一。"}
+];
+
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");}
+
+/* ============ 渲染：题目（自测） ============ */
+let QUIZ={total:0,right:0,done:new Set()};
+function renderQ(box, arr, bank){
+  arr.forEach(o=>{
+    const d=document.createElement("div"); d.className="ans-item";
+    const opts=o.opts.map((t,i)=>`<div class="opt${i===o.ans?' picked':''}" data-bank="${bank}" data-n="${o.n}" data-i="${i}" data-ok="${i===o.ans?1:0}"><span class="lt">${"ABCDEF"[i]}.</span>${esc(t.replace(/^[A-F]\.\s*/,""))}</div>`).join("");
+    d.innerHTML=`<div class="top"><span class="num">${o.n}.</span><span class="kt">第 ${o.n} 题</span></div>`+
+      `<div class="qstem">${esc(o.q)}</div><div class="qopts">${opts}</div><div class="qfb" id="fb-${bank}-${o.n}"></div>`;
+    box.appendChild(d);
+  });
+  QUIZ.total+=arr.length;
+}
+renderQ(document.getElementById("qA"),Q_A,"A");
+renderQ(document.getElementById("qD"),Q_D,"D");
+
+function renderAns(box,arr){
+  arr.forEach(o=>{
+    const d=document.createElement("div"); d.className="ans-item";
+    d.innerHTML=`<div class="top"><span class="num">${o.n}.</span><span class="key">${esc(o.key)}</span><span class="kt">${esc(o.tag)}</span></div>`+
+      `<div class="sent">📌 ${esc(o.sent)}</div><ul>${o.ana.map(a=>`<li>${esc(a)}</li>`).join("")}</ul>`;
+    box.appendChild(d);
+  });
+}
+renderAns(document.getElementById("ansA"),ANS_A);
+renderAns(document.getElementById("ansB"),ANS_B);
+renderAns(document.getElementById("ansC"),ANS_C);
+renderAns(document.getElementById("ansD"),ANS_D);
+renderAns(document.getElementById("ansE"),ANS_E);
+renderAns(document.getElementById("ansF"),ANS_F);
+
+function renderJilei(box,arr){
+  arr.forEach(o=>{
+    const d=document.createElement("div"); d.className="qb";
+    d.innerHTML=`<div class="q">${esc(o.q)}</div><div class="a">${esc(o.a)}</div>`+(o.note?`<div class="nt">${esc(o.note)}</div>`:"");
+    box.appendChild(d);
+  });
+}
+renderJilei(document.getElementById("jileiA"),JILEI_A);
+renderJilei(document.getElementById("jileiG"),JILEI_G);
+document.getElementById("jileiC").innerHTML='<div style="font-size:.84rem;color:var(--muted);margin-bottom:6px">图中 20 个天气词汇（英汉对照）：</div><div class="wordgrid">'+WEATHER_WORDS.map(w=>`<span><b>${esc(w[0])}</b> ${esc(w[1])}</span>`).join("")+"</div>";
+
+/* ============ 生词汇总（五层详解 + 掌握度） ============ */
+const LS_KEY="wb115_mastered";
+let mastered={}; try{mastered=JSON.parse(localStorage.getItem(LS_KEY)||"{}");}catch(e){mastered={};}
+const vocabBox=document.getElementById("vocabBox");
+GROUP_ORDER.forEach(g=>{
+  const wrap=document.createElement("div"); wrap.className="vgroup"; wrap.dataset.g=g;
+  const h=document.createElement("h3"); h.innerHTML=`<span class="dot"></span>${GROUP_NAME[g]}`; wrap.appendChild(h);
+  const cards=document.createElement("div"); cards.className="vcards";
+  VOCAB.filter(v=>v.g===g).forEach(v=>{
+    const c=document.createElement("div"); c.className="vcard"+(mastered[v.k]?" mastered":""); c.dataset.k=v.k; c.dataset.g=g;
+    c.dataset.search=(v.en+" "+v.cn+" "+v.def+" "+v.use+" "+v.coll).toLowerCase();
+    c.innerHTML=`<div class="acts"><button class="mini star${mastered[v.k]?' on':''}" type="button" data-star="${v.k}" title="标记已掌握">${mastered[v.k]?'★':'☆'}</button>`+
+      `<button class="mini spk" type="button" data-word="${esc(v.en)}" title="点击发音">🔊</button></div>`+
+      `<div class="hw"><span class="en">${esc(v.en)}</span>${v.ph?`<span class="ph">${esc(v.ph)}</span>`:""}<span class="pos">${esc(v.pos)}</span></div>`+
+      `<div class="cn">${esc(v.cn)}</div><div class="def">${esc(v.def)}</div>`+
+      `<div class="row"><b>用法</b>${esc(v.use)}</div><div class="row"><b>词族/搭配</b>${esc(v.coll)}</div>`+
+      `<div class="row"><b>易错</b>${esc(v.tip)}</div>`+
+      `<div class="ex">e.g. ${esc(v.ex)}<span class="ecn">${esc(v.exCn)}</span></div>`;
+    cards.appendChild(c);
+  });
+  wrap.appendChild(cards); vocabBox.appendChild(wrap);
+});
+
+let curFilter="all", onlyNew=false;
+function applyFilter(){
+  const q=document.getElementById("vsearch").value.trim().toLowerCase();
+  let shown=0;
+  document.querySelectorAll(".vcard").forEach(c=>{
+    const okG=(curFilter==="all"||c.dataset.g===curFilter);
+    const okQ=(!q||c.dataset.search.includes(q));
+    const okM=(!onlyNew||!mastered[c.dataset.k]);
+    const ok=okG&&okQ&&okM; c.style.display=ok?"":"none"; if(ok)shown++;
+  });
+  document.querySelectorAll(".vgroup").forEach(w=>{
+    const any=[...w.querySelectorAll(".vcard")].some(c=>c.style.display!=="none");
+    w.style.display=any?"":"none";
+  });
+  document.getElementById("noresult").style.display=shown?"none":"block";
+  const total=VOCAB.length, m=Object.keys(mastered).filter(k=>mastered[k]).length;
+  document.getElementById("vstat").innerHTML=`共 <b>${total}</b> 条生词短语 · 已掌握 <b>${m}</b> 条（${Math.round(m/total*100)}%）· 当前显示 <b>${shown}</b> 条 · 点击 ☆ 可标记，标记保存在本机浏览器`;
+}
+document.getElementById("vsearch").addEventListener("input",applyFilter);
+document.querySelectorAll(".fchip[data-g]").forEach(b=>b.addEventListener("click",()=>{
+  document.querySelectorAll(".fchip[data-g]").forEach(x=>x.classList.remove("on"));
+  b.classList.add("on"); curFilter=b.dataset.g; applyFilter();
+}));
+document.getElementById("onlyNew").addEventListener("click",e=>{
+  onlyNew=!onlyNew; e.target.classList.toggle("on",onlyNew); applyFilter();
+});
+vocabBox.addEventListener("click",e=>{
+  const s=e.target.closest("[data-star]"); if(!s)return;
+  const k=s.dataset.star; mastered[k]=!mastered[k];
+  if(!mastered[k])delete mastered[k];
+  try{localStorage.setItem(LS_KEY,JSON.stringify(mastered));}catch(err){}
+  const card=s.closest(".vcard");
+  card.classList.toggle("mastered",!!mastered[k]);
+  s.classList.toggle("on",!!mastered[k]); s.textContent=mastered[k]?"★":"☆";
+  applyFilter();
+});
+applyFilter();
+
+/* ============ 划线词弹窗（五层） / 内联释义 ============ */
+const words=[...document.querySelectorAll(".w")];
+words.forEach(w=>{
+  const d=V[w.dataset.k]; if(!d)return;
+  const g=document.createElement("span"); g.className="gloss"; g.textContent="（"+d.cn+"）"; w.after(g);
+});
+const pop=document.getElementById("pop"); let cur=null;
+function closePop(){pop.classList.remove("show"); if(cur)cur.classList.remove("active"); cur=null;}
+function openPop(el){
+  const d=V[el.dataset.k]; if(!d)return;
+  if(cur===el){closePop();return;}
+  closePop(); cur=el; el.classList.add("active");
+  pop.innerHTML=`<div class="pw">${esc(d.en)}${d.ph?`<span class="pph">${esc(d.ph)}</span>`:""}<span class="pos">${esc(d.pos)}</span>`+
+    `<button class="spk" type="button" data-word="${esc(d.en)}" title="点击发音">🔊</button></div>`+
+    `<div class="pcn">${esc(d.cn)}</div><div class="pdef">${esc(d.def)}</div>`+
+    `<div class="prow"><b>用法</b>${esc(d.use)}</div><div class="prow"><b>词族/搭配</b>${esc(d.coll)}</div>`+
+    `<div class="prow"><b>易错</b>${esc(d.tip)}</div>`+
+    `<div class="pex"><b>例：</b>${esc(d.ex)}<span class="cn">${esc(d.exCn)}</span></div>`;
+  pop.classList.add("show");
+  const r=el.getBoundingClientRect(), pw=pop.offsetWidth, ph=pop.offsetHeight;
+  let left=r.left+r.width/2-pw/2+window.scrollX;
+  left=Math.max(12+window.scrollX,Math.min(left,window.scrollX+document.documentElement.clientWidth-pw-12));
+  let top=r.top+window.scrollY-ph-12;
+  if(top<window.scrollY+8)top=r.bottom+window.scrollY+12;
+  pop.style.left=left+"px"; pop.style.top=top+"px";
+}
+words.forEach(w=>w.addEventListener("click",e=>{e.stopPropagation();openPop(w);}));
+document.addEventListener("click",e=>{if(!pop.contains(e.target))closePop();});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closePop();});
+window.addEventListener("scroll",closePop,{passive:true});
+window.addEventListener("resize",closePop);
+
+/* ============ 答案空点击 ============ */
+document.querySelectorAll(".blank").forEach(b=>b.addEventListener("click",e=>{e.stopPropagation();b.classList.toggle("open");}));
+
+/* ============ 自测评判 ============ */
+const scoreEl=document.getElementById("score");
+function updateScore(){
+  scoreEl.innerHTML=`🎯 自测　答对 <b>${QUIZ.right}</b> / ${QUIZ.total} 题`+(QUIZ.done.size?`　已答 ${QUIZ.done.size} 题`:"");
+}
+document.addEventListener("click",e=>{
+  const opt=e.target.closest(".qopts .opt");
+  if(!opt||!document.body.classList.contains("quiz"))return;
+  const key=opt.dataset.bank+"-"+opt.dataset.n;
+  if(QUIZ.done.has(key))return;
+  QUIZ.done.add(key);
+  const ok=opt.dataset.ok==="1";
+  const sibs=[...opt.parentElement.querySelectorAll(".opt")];
+  sibs.forEach(x=>x.classList.add("done"));
+  opt.classList.add(ok?"right":"wrong");
+  if(!ok){const r=sibs.find(x=>x.dataset.ok==="1"); if(r)r.classList.add("right");}
+  else QUIZ.right++;
+  document.getElementById("fb-"+opt.dataset.bank+"-"+opt.dataset.n).innerHTML=
+    ok?`<span class="yes">✓ 回答正确！</span>`:`<span class="nope">✗ 不对，正确答案是 ${"ABCDEF"[+sibs.find(x=>x.dataset.ok==="1").dataset.i]} 项</span>`;
+  updateScore();
+});
+document.getElementById("btnQuiz").addEventListener("click",e=>{
+  const on=document.body.classList.toggle("quiz");
+  e.target.classList.toggle("on",on); e.target.textContent=on?"🔚 结束自测":"🎯 自测模式";
+  scoreEl.style.display=on?"block":"none";
+  if(on){document.body.classList.remove("showans");document.getElementById("btnAllAns").classList.remove("on");document.getElementById("btnAllAns").textContent="✅ 全部答案";updateScore();}
+});
+updateScore();
+
+/* ============ 工具按钮 ============ */
+const btnAllWords=document.getElementById("btnAllWords");
+btnAllWords.addEventListener("click",()=>{
+  const on=document.body.classList.toggle("showall");
+  btnAllWords.classList.toggle("on",on); btnAllWords.textContent=on?"🙈 隐藏释义":"👁 全部释义";
+  if(on)closePop();
+});
+const btnAllAns=document.getElementById("btnAllAns");
+btnAllAns.addEventListener("click",()=>{
+  const on=document.body.classList.toggle("showans");
+  btnAllAns.classList.toggle("on",on); btnAllAns.textContent=on?"🔒 隐藏答案":"✅ 全部答案";
+});
+const btnTheme=document.getElementById("btnTheme");
+let darkSaved="0"; try{darkSaved=localStorage.getItem("wb115_dark")||"0";}catch(e){}
+if(darkSaved==="1"){document.body.classList.add("dark");btnTheme.textContent="☀️ 日间";}
+btnTheme.addEventListener("click",()=>{
+  const on=document.body.classList.toggle("dark");
+  btnTheme.textContent=on?"☀️ 日间":"🌙 夜间";
+  try{localStorage.setItem("wb115_dark",on?"1":"0");}catch(e){}
+});
+const btnFold=document.getElementById("btnFold");
+btnFold.addEventListener("click",()=>{
+  const ds=[...document.querySelectorAll("details.more")];
+  const openAll=ds.some(d=>!d.open);
+  ds.forEach(d=>d.open=openAll);
+  btnFold.classList.toggle("on",openAll); btnFold.textContent=openAll?"📁 收起译文":"📂 展开译文";
+});
+let fs=16; try{fs=+(localStorage.getItem("wb115_fs")||16);}catch(e){}
+function setFs(){
+  document.documentElement.style.setProperty("--fs",fs+"px");
+  try{localStorage.setItem("wb115_fs",String(fs));}catch(e){}
+}
+setFs();
+document.getElementById("btnFsPlus").addEventListener("click",()=>{fs=Math.min(21,fs+1);setFs();});
+document.getElementById("btnFsMinus").addEventListener("click",()=>{fs=Math.max(13,fs-1);setFs();});
+
+/* ============ 发音 ============ */
+function speak(text){
+  if(!("speechSynthesis" in window)){alert("当前浏览器不支持语音朗读，请用 Chrome / Edge / Safari 打开本页。");return;}
+  const u=new SpeechSynthesisUtterance(text); u.lang="en-US"; u.rate=.92; u.pitch=1;
+  window.speechSynthesis.cancel(); window.speechSynthesis.speak(u);
+}
+document.addEventListener("click",e=>{const b=e.target.closest(".spk"); if(b){e.stopPropagation();speak(b.dataset.word);}});
+
+/* ============ 进度条 / 目录高亮 / 回顶 ============ */
+const bar=document.getElementById("bar"), topBtn=document.getElementById("top");
+function onScroll(){
+  const h=document.documentElement.scrollHeight-window.innerHeight;
+  bar.style.width=(h>0?Math.min(100,window.scrollY/h*100):0)+"%";
+  topBtn.style.display=window.scrollY>420?"block":"none";
+  let curId="";
+  document.querySelectorAll("section.card").forEach(s=>{if(s.getBoundingClientRect().top<180)curId=s.id;});
+  document.querySelectorAll("#toc a").forEach(a=>a.classList.toggle("cur",a.getAttribute("href")==="#"+curId));
+}
+window.addEventListener("scroll",onScroll,{passive:true}); onScroll();
+topBtn.addEventListener("click",()=>window.scrollTo({top:0,behavior:"smooth"}));
+</script>
+</body>
+</html>

@@ -1,0 +1,1703 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>11-5 英语培优讲练 · 阅读词汇互动课堂</title>
+<style>
+:root{
+  --bg:#f3f8f7; --paper:#ffffff; --ink:#1c2b29; --sub:#586d69; --line:#d7e5e1;
+  --teal:#1f7a72; --teal-d:#135952; --teal-soft:#e3f1ee; --teal-pale:#f0f8f6;
+  --amber:#df8334; --amber-soft:#fdf0e2; --green:#2f8f5e; --red:#bd5139;
+  --radius:16px; --shadow:0 8px 24px rgba(24,74,68,.10);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Segoe UI","Microsoft YaHei","PingFang SC",system-ui,sans-serif;
+  background:var(--bg); color:var(--ink); line-height:1.75; font-size:16px;
+}
+.wrap{max-width:980px;margin:0 auto;padding:0 18px}
+
+/* ===== 顶部 ===== */
+header.hero{
+  background:linear-gradient(135deg,var(--teal-d),var(--teal));
+  color:#fff;padding:34px 0 26px;position:relative;overflow:hidden;
+}
+header.hero::after{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,.08)}
+.hero h1{font-size:26px;letter-spacing:.5px;margin-bottom:8px}
+.hero p{opacity:.9;font-size:15px;max-width:640px}
+.hero .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.hero .meta span{background:rgba(255,255,255,.16);border-radius:999px;padding:4px 13px;font-size:13px}
+
+/* ===== 目录 ===== */
+nav.toc{position:sticky;top:0;z-index:30;background:var(--paper);border-bottom:1px solid var(--line);box-shadow:0 2px 10px rgba(0,0,0,.05)}
+.toc-inner{display:flex;gap:8px;overflow-x:auto;padding:12px 18px;max-width:980px;margin:0 auto;scrollbar-width:thin}
+.toc-inner a{flex:0 0 auto;text-decoration:none;color:var(--teal-d);background:var(--teal-soft);border-radius:10px;padding:7px 13px;font-size:14px;font-weight:600;white-space:nowrap}
+.toc-inner a:active{background:var(--teal);color:#fff}
+
+/* ===== 模块卡片 ===== */
+section.module{margin:30px 0}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+.card-head{padding:18px 22px;border-bottom:1px solid var(--line);background:var(--teal-pale)}
+.card-head .tag{display:inline-block;background:var(--teal);color:#fff;font-size:12px;font-weight:700;border-radius:8px;padding:3px 10px;margin-right:8px;letter-spacing:.5px}
+.card-head h2{font-size:19px;display:inline;color:var(--teal-d)}
+.card-head .info{margin-top:8px;font-size:13px;color:var(--sub)}
+.card-body{padding:20px 22px}
+
+/* 阅读原文 */
+.passage{margin:6px 0 16px}
+.passage p{font-family:Georgia,"Times New Roman","Microsoft YaHei",serif;font-size:16.5px;margin:12px 0;color:#243431;line-height:1.9}
+.para-bar{display:flex;align-items:center;gap:10px;margin:14px 0 2px}
+.para-label{font-size:13px;font-weight:700;color:var(--teal);flex:0 0 auto}
+.speak-btn{flex:0 0 auto;border:1px solid var(--teal-soft);background:var(--teal-soft);color:var(--teal-d);border-radius:9px;padding:5px 11px;font-size:13px;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:6px}
+.speak-btn:hover{background:var(--teal);color:#fff}
+.speak-btn svg{width:15px;height:15px;fill:currentColor}
+
+/* 词汇标记 */
+button.vocab{background:none;border:none;padding:0;font:inherit;color:var(--teal-d);font-weight:600;border-bottom:1.5px dashed var(--teal);cursor:pointer;font-family:inherit}
+button.vocab:hover{color:var(--amber);border-color:var(--amber)}
+.vocab.pop{color:var(--amber);border-bottom-style:solid}
+
+/* 词汇浮层卡片 */
+.vpop{margin:8px 0 12px;background:var(--amber-soft);border-left:4px solid var(--amber);border-radius:12px;padding:14px 16px;animation:fade .18s ease}
+.vpop .v-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px;margin-bottom:6px}
+.vpop .v-word{font-weight:800;font-size:17px;color:var(--ink)}
+.vpop .v-pos{background:var(--amber);color:#fff;border-radius:7px;font-size:12px;padding:2px 9px}
+.vpop .v-cn{font-weight:700;color:var(--red)}
+.vpop .v-usage{font-size:14px;color:var(--sub);margin:6px 0}
+.vpop .v-sub{margin:6px 0;font-size:13.5px;color:var(--ink)}
+.vpop .v-sub b{color:var(--teal-d);margin-right:4px}
+.vcard .v-sub{font-size:13px;color:var(--sub);margin:5px 0}
+.vcard .v-sub b{color:var(--teal-d)}
+.vpop .v-ex{margin-top:8px;padding-top:8px;border-top:1px dashed #ecc9a4}
+.vpop .v-ex-en{font-family:Georgia,serif;font-size:15.5px}
+.vpop .v-ex-cn{font-size:13px;color:var(--sub);margin-top:2px}
+.mini-speak{border:none;background:var(--paper);border-radius:7px;padding:3px 8px;cursor:pointer;color:var(--teal-d);font-size:12px;display:inline-flex;gap:5px;align-items:center}
+.mini-speak svg{width:13px;height:13px;fill:currentColor}
+
+/* 题目与答案 */
+.q-block{margin-top:18px}
+.q-list{list-style:none}
+.q-list li{margin:12px 0;padding:14px 16px;background:var(--teal-pale);border-radius:12px}
+.q-stem{font-weight:600;margin-bottom:6px}
+.q-ans{display:inline-block;background:var(--teal-soft);color:var(--teal-d);border-radius:8px;padding:3px 11px;font-weight:700;font-size:14px;margin:4px 0}
+.q-ans .ok{color:var(--green)}
+details.analysis{margin-top:8px}
+details.analysis summary{cursor:pointer;font-size:14px;color:var(--teal-d);font-weight:600;list-style:none;display:inline-flex;align-items:center;gap:6px}
+details.analysis summary::before{content:"▸";transition:transform .15s;display:inline-block}
+details.analysis[open] summary::before{transform:rotate(90deg)}
+details.analysis .a-body{margin-top:8px;font-size:14.5px;color:var(--ink)}
+details.analysis .a-body p{margin:6px 0}
+.note{font-size:13.5px;color:var(--sub)}
+
+/* 段落精讲 */
+.deeptalk{margin-top:20px;border-top:1px dashed var(--line);padding-top:16px}
+.deeptalk h3{font-size:16px;color:var(--teal-d);margin-bottom:10px}
+.deeptalk dl{margin:10px 0}
+.deeptalk dt{font-weight:700;color:var(--teal);margin-top:10px}
+.deeptalk dd{font-size:14.5px;color:var(--ink);margin:4px 0 0 2px}
+
+/* 写作范文 */
+.essay{background:var(--teal-pale);border-radius:12px;padding:16px 18px;font-family:Georgia,"Microsoft YaHei",serif;font-size:16px;line-height:1.95}
+.essay p{margin:10px 0}
+
+/* 词汇总表 */
+#vocab-table{margin:34px 0 50px}
+.search-box{margin:14px 0}
+.search-box input{width:100%;max-width:360px;font-size:15px;padding:10px 14px;border:1px solid var(--line);border-radius:12px;font-family:inherit;background:var(--paper);color:var(--ink)}
+.search-box input:focus{outline:2px solid var(--teal-soft);border-color:var(--teal)}
+.vgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:16px}
+.vcard{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:15px 17px}
+.vcard .vc-top{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.vcard .vc-word{font-weight:800;font-size:16.5px}
+.vcard .vc-pos{font-size:12px;color:#fff;background:var(--teal);border-radius:7px;padding:2px 9px}
+.vcard .vc-cn{font-weight:700;color:var(--red);margin-left:auto}
+.vcard .vc-use{font-size:13.5px;color:var(--sub);margin:7px 0}
+.vcard .vc-ex{font-size:14px;font-family:Georgia,serif}
+.vcard .vc-excn{font-size:12.5px;color:var(--sub)}
+.vcard .vc-row{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
+
+footer{text-align:center;color:var(--sub);font-size:13px;padding:26px 0 40px}
+
+/* ===== 响应式 ===== */
+@media (max-width:720px){
+  .vgrid{grid-template-columns:1fr}
+  .card-body{padding:16px}
+  .card-head{padding:15px 17px}
+  .hero h1{font-size:22px}
+  .passage p{font-size:15.5px}
+}
+@keyframes fade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <h1>11-5 英语培优讲练 · 阅读词汇互动课堂</h1>
+    <p>精选两份培优试卷全部题型：语法填空、阅读表达、六选五还原、完形填空与书面表达。点击文中带下划线的生词可查看释义、用法与例句，喇叭按钮支持语音朗读；页末附全部词汇复习总表。</p>
+    <div class="meta"><span>共 7 个讲练模块</span><span>生词 / 短语即点即学</span><span>中英朗读 · 电脑手机通用</span></div>
+  </div>
+</header>
+
+<nav class="toc">
+  <div class="toc-inner">
+    <a href="#m1">① 半球天气·语法填空</a>
+    <a href="#m2">② 四方天气·阅读表达</a>
+    <a href="#m3">③ 雷殿生·六选五</a>
+    <a href="#m4">④ 乡村度假·完形</a>
+    <a href="#m5">⑤ 爷爷生日·语法填空</a>
+    <a href="#m6">⑥ 乌鸦清洁工·阅读表达</a>
+    <a href="#m7">⑦ 精彩瞬间·书面表达</a>
+    <a href="#vocab-table">词汇总表</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<!-- ============ 模块一 ============ -->
+<section class="module" id="m1">
+  <div class="card">
+    <div class="card-head">
+      <span class="tag">四 · 语法填空</span><h2>南北半球的天气差异</h2>
+      <div class="info">主题：人与自然——自然生态 ｜ 语篇类型：说明文 ｜ 词数：170 ｜ 10 空</div>
+    </div>
+    <div class="card-body">
+      <div class="passage" id="passage-m1">
+        <div class="para-bar"><span class="para-label">第 1 段</span><button class="speak-btn" data-talk="The weather in the Northern and Southern Hemispheres is different. It is fun to think that when it is cold in one place, it is hot in another. The Earth's tilt is the reason for the different seasons. This means that while one hemisphere is tilted towards the Sun, the other is tilted away from it."><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z"/></svg>朗读本段</button></div>
+        <p>The weather in the Northern and Southern [[hemisphere|Hemispheres]]（半球）is different. It is fun 1. ______ (think) that when it is cold in one place, it is hot in another. The Earth's [[tilt]] is the reason for the different 2. ______ ([[season]]). This means that while one [[hemisphere]] is [[tilted]] [[towards]] 3. ______ Sun, the other is tilted away from it.</p>
+
+        <div class="para-bar"><span class="para-label">第 2 段</span><button class="speak-btn" data-talk="When it's winter in the North, it's summer in the South. Students in the Southern Hemisphere look forward to spending summer vacation at the beach, while those in the Northern Hemisphere enjoy building snowmen during their winter holidays."><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z"/></svg>朗读本段</button></div>
+        <p>4. ______ it's winter in the North, it's summer in the South. Students in the Southern Hemisphere [[look forward to]] 5. ______ ([[spend]] ) summer [[vacation]] at the beach, while those in the Northern Hemisphere enjoy building [[snowman|snowmen]] during 6. ______ ([[they]] ) winter holidays.</p>
+
+        <div class="para-bar"><span class="para-label">第 3 段</span><button class="speak-btn" data-talk="There are holidays in both hemispheres, but the weather makes them different. For example, on special nights like New Year's Eve, people all over the world get together. Because of the different weather, fireworks might go off over snowy places or near the beach, making each celebration special. So, the Earth's tilt not only gives us different weather but also makes our traditions unique."><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z"/></svg>朗读本段</button></div>
+        <p>There 7. ______ ([[be]] ) holidays in both [[hemisphere|hemispheres]], but the weather makes them different. For example, 8. ______ special nights like [[New Year's Eve]], people [[all over the world]] get together. Because of the different weather, [[fireworks]] might [[go off]] over 9. ______ ([[snow]] ) places or near the beach, making each 10. ______ ([[celebrate]] ) special.</p>
+        <p>So, the Earth's tilt not only gives us different weather but also makes our [[tradition|traditions]] [[unique]].</p>
+      </div>
+
+      <div class="q-block">
+        <h3 style="color:var(--teal-d);font-size:16px">完整解答（答案速览）</h3>
+        <ol class="q-list">
+          <li><div class="q-stem">1. It is fun 1. ______ (think)…</div><span class="q-ans">答案：to think</span>
+            <details class="analysis"><summary>逐空解析</summary><div class="a-body"><p>句型 <b>It is + 形容词 + to do sth.</b> 表示“做某事是……的”，it 是形式主语，真正主语是后面的动词不定式，故填 <b>to think</b>。句意：想到一个地方寒冷时另一个地方炎热，是很有趣的。</p></div></details></li>
+          <li><div class="q-stem">2. the different 2. ______ (season)</div><span class="q-ans">答案：seasons</span>
+            <details class="analysis"><summary>逐空解析</summary><div class="a-body"><p>different 后接可数名词时通常用复数，表示“不同的多个季节”，故 <b>season → seasons</b>。</p></div></details></li>
+          <li><div class="q-stem">3. tilted towards 3. ______ Sun</div><span class="q-ans">答案：the</span>
+            <details class="analysis"><summary>逐空解析</summary><div class="a-body"><p>世界上独一无二的事物（Sun 太阳、Moon 月亮、Earth 地球）前要加定冠词 <b>the</b>，属于固定用法。</p></div></details></li>
+          <li><div class="q-stem">4. ______ it's winter in the North, it's summer in the South.</div><span class="q-ans">答案：When</span>
+            <details class="analysis"><summary>逐空解析</summary><div class="a-body"><p>引导时间状语从句，句首首字母大写，表示“当……的时候”，填 <b>When</b>（While 也可表同时，但后多接延续性动作，此处 When 更贴切）。</p></div></details></li>
+          <li><div class="q-stem">5. look forward to 5. ______ (spend)…</div><span class="q-ans">答案：spending</span>
+            <details class="analysis"><summary>逐空解析</summary><div class="a-body"><p>固定搭配 <b>look forward to doing sth.</b>（盼望做某事），这里的 to 是介词，后接动名词，故 <b>spend → spending</b>。</p></div></details></li>
+          <li><div class="q-stem">6. during 6. ______ (they) winter holidays</div><span class="q-ans">答案：their</span>
+            <details class="analysis"><summary>逐空解析</summary><div class="a-body"><p>空格后是名词 winter holidays，前面需用形容词性物主代词修饰，<b>they → their</b>（他们的）。</p></div></details></li>
+          <li><div class="q-stem">7. There 7. ______ (be) holidays…</div><span class="q-ans">答案：are</span>
+            <details class="analysis"><summary>逐空解析</summary><div class="a-body"><p>There be 句型遵循“就近原则”，靠近 be 的主语 holidays 是复数，且全文为一般现在时，故填 <b>are</b>。</p></div></details></li>
+          <li><div class="q-stem">8. ______ special nights like New Year's Eve</div><span class="q-ans">答案：on</span>
+            <details class="analysis"><summary>逐空解析</summary><div class="a-body"><p>表示“在具体某一天的夜晚”用介词 <b>on</b>（on New Year's Eve 在新年前夜；on a cold night 在一个寒冷的夜晚）。泛指在晚上才用 in the evening。</p></div></details></li>
+          <li><div class="q-stem">9. over 9. ______ (snow) places</div><span class="q-ans">答案：snowy</span>
+            <details class="analysis"><summary>逐空解析</summary><div class="a-body"><p>修饰名词 places 需用形容词，<b>snow → snowy</b>（下雪的、多雪的）。</p></div></details></li>
+          <li><div class="q-stem">10. making each 10. ______ (celebrate) special</div><span class="q-ans">答案：celebration</span>
+            <details class="analysis"><summary>逐空解析</summary><div class="a-body"><p>each 后接可数名词单数；动词 celebrate 变为名词 <b>celebration</b>（庆祝活动）。</p></div></details></li>
+        </ol>
+      </div>
+
+      <div class="deeptalk">
+        <h3>段落精讲 · 逐段解析</h3>
+        <dl>
+          <dt>第 1 段：提出现象 + 科学原因</dt>
+          <dd>主旨：南北半球天气不同，根源是地轴倾斜。首句点题；第二句用 It is fun to think that… 引出对比；第三句给出原因 The Earth's tilt is the reason for…；末句用 while 对比两个半球“朝太阳 / 背太阳”。重点句型：<b>the reason for…（……的原因）</b>、<b>while 连接对比并列句</b>、<b>be tilted towards / away from（朝向 / 背离）</b>。</dd>
+          <dt>第 2 段：季节相反下的两类假期生活</dt>
+          <dd>主旨：北半球是冬季时南半球正是夏季，学生活动截然不同。用 look forward to doing、enjoy doing 两个动名词搭配；while 再次对比“在海滩度假”与“堆雪人”。注意 snowman 复数为 snowmen。</dd>
+          <dt>第 3 段：节日相同，天气不同 → 庆祝方式各异</dt>
+          <dd>主旨：两边都有假期，但天气使庆祝活动不同。举例 New Year's Eve 人们团聚；烟花可能在雪地或海滩上空燃放。末句用 <b>not only…but also…（不但……而且……）</b>总结：地轴既带来不同天气，也让传统独一无二。making each celebration special 是现在分词作伴随状语。</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 模块二 ============ -->
+<section class="module" id="m2">
+  <div class="card">
+    <div class="card-head">
+      <span class="tag">五 · 阅读表达</span><h2>四位网友眼中的天气</h2>
+      <div class="info">主题：人与自然——不同地区的生态特征 ｜ 语篇类型：应用文（网络聊天）｜ 词数：185 ｜ 5 题</div>
+    </div>
+    <div class="card-body">
+      <div class="passage">
+        <p>It's 3:00 p.m. now. Four students are talking about the weather in their places on the internet.</p>
+        <div class="para-bar"><span class="para-label">Laura</span><button class="speak-btn" data-talk="Laura: It is raining. I'm just standing in my room and looking out of the window. Some people are walking on the street. They're all holding umbrellas. The umbrellas have different colours. The colourful umbrellas make me feel a little better."><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z"/></svg>朗读</button></div>
+        <p><b>Laura:</b> It is raining. I'm just standing in my room and [[look out of]] the window. Some people are walking on the street. They're all [[hold|holding]] [[umbrella|umbrellas]]. The umbrellas have different colours. The [[colourful]] umbrellas make me feel a little better.</p>
+        <div class="para-bar"><span class="para-label">Jim</span><button class="speak-btn" data-talk="Jim: I am in the mountains with my cousins. It's not warm here. It's minus ten degrees in the daytime. Nights and early mornings are minus twenty degrees. But the snow here is very beautiful! It's a great place to go skiing and skating."><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z"/></svg>朗读</button></div>
+        <p><b>Jim:</b> I am in the mountains with my [[cousin|cousins]]. It's not warm here. It's -10℃ in the [[daytime]]. Nights and early mornings are -20℃. But the snow here is very beautiful! It's a great place to go [[skiing]] and [[skating]].</p>
+        <div class="para-bar"><span class="para-label">Bob</span><button class="speak-btn" data-talk="Bob: There are many black clouds in the sky. The wind is strong and the trees are bending. The birds cannot fly. And it's hard for people to walk and to drive. I think heavy rain is coming. It's dangerous to go out of the house right now."><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z"/></svg>朗读</button></div>
+        <p><b>Bob:</b> There are many black clouds in the sky. The wind is strong and the trees are [[bend|bending]]. The birds cannot fly. And it's hard for people to walk and to drive. I think heavy rain is coming. It's [[dangerous]] to go out of the house right now.</p>
+        <div class="para-bar"><span class="para-label">Linda</span><button class="speak-btn" data-talk="Linda: It's hot here today. The sky looks very blue, and there are no clouds. I am boating on a lake with my family. The water is clean and warm. It's really a good day for relaxing."><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z"/></svg>朗读</button></div>
+        <p><b>Linda:</b> It's hot here today. The sky looks very blue, and there are no clouds. I am [[boating]] on a lake with my family. The water is clean and warm. It's really a good day for [[relax|relaxing]].</p>
+      </div>
+
+      <div class="q-block">
+        <h3 style="color:var(--teal-d);font-size:16px">完整解答</h3>
+        <ol class="q-list">
+          <li><div class="q-stem">1. Where is Laura?</div><span class="q-ans">She is in her room (standing by the window).</span>
+            <details class="analysis"><summary>解析</summary><div class="a-body"><p>定位 Laura 句 “I'm just standing in my room and looking out of the window.” 用第三人称转述：主语 she，be 动词用 is。</p></div></details></li>
+          <li><div class="q-stem">2. Who does Jim go to the mountains with?</div><span class="q-ans">With his cousins. / He goes with his cousins.</span>
+            <details class="analysis"><summary>解析</summary><div class="a-body"><p>定位 Jim 句 “I am in the mountains with my cousins.” 回答用 with 短语即可；转述时 my 变 his。</p></div></details></li>
+          <li><div class="q-stem">3. What's the weather like now according to Bob?</div><span class="q-ans">There are many black clouds and the wind is strong; heavy rain is coming.</span>
+            <details class="analysis"><summary>解析</summary><div class="a-body"><p>整合 Bob 的三处描述：black clouds、strong wind、heavy rain is coming。句型 What's the weather like? = How is the weather?</p></div></details></li>
+          <li><div class="q-stem">4. What is Linda doing now?</div><span class="q-ans">She is boating on a lake with her family.</span>
+            <details class="analysis"><summary>解析</summary><div class="a-body"><p>定位 “I am boating on a lake with my family.” 现在进行时 be doing，转述保持进行时，my 变 her。</p></div></details></li>
+          <li><div class="q-stem">5.（开放性）What's the weather like in your city? How do you like it?</div><span class="q-ans">示例：It's sunny and warm in my city. I like it because I can play outside.</span>
+            <details class="analysis"><summary>答题要点</summary><div class="a-body"><p>两步作答：先用 It's + 天气形容词（sunny / cloudy / windy / rainy…）描述，再用 I like / don't like it because… 说明感受。避免只答一个词。</p></div></details></li>
+        </ol>
+      </div>
+
+      <div class="deeptalk">
+        <h3>段落精讲 · 逐段解析</h3>
+        <dl>
+          <dt>开场句：交代时间、人物、方式</dt>
+          <dd>“It's 3:00 p.m. now. Four students are talking about the weather in their places on the internet.” 现在进行时 are talking 点明“正在聊天”，为四段人物描述定下进行时基调；in their places 指各自所在地。</dd>
+          <dt>Laura · 雨天（房间内）</dt>
+          <dd>顺序：下雨 → 站在房间窗边 → 街上行人撑伞 → 彩色雨伞让心情好一点。语言点：look out of the window（向窗外看）；现在进行时 standing / walking / holding；make sb. feel + 形容词（使某人感到……）。</dd>
+          <dt>Jim · 雪天（山里）</dt>
+          <dd>顺序：与表亲在山里 → 白天 -10℃、夜里清晨 -20℃ → 雪很美 → 适合滑雪滑冰。语言点：with 表伴随；go skiing / go skating（go + 动词-ing 表示去从事某项运动）；a great place to do sth.。</dd>
+          <dt>Bob · 风雨欲来（屋外危险）</dt>
+          <dd>顺序：乌云密布 → 大风折树 → 鸟飞不起来 → 行人难走难驾 → 大雨将至 → 不宜出门。语言点：It's hard for sb. to do sth.（对某人来说做某事很难）；It's dangerous to do sth.；right now（此刻）。</dd>
+          <dt>Linda · 晴热（湖上划船）</dt>
+          <dd>顺序：天热天蓝无云 → 与家人湖上划船 → 水又干净又暖和 → 适合放松。语言点：go boating / be boating；a good day for doing sth.；relaxing（事物令人放松的）区别于 relaxed（人感到放松的）。</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 模块三 ============ -->
+<section class="module" id="m3">
+  <div class="card">
+    <div class="card-head">
+      <span class="tag">二 · 阅读还原（六选五）</span><h2>“当代徐霞客”雷殿生</h2>
+      <div class="info">主题：人与社会——社会热点 ｜ 语篇类型：记叙文 ｜ 词数：275 ｜ 5 空，1 项多余</div>
+    </div>
+    <div class="card-body">
+      <div class="passage">
+        <div class="para-bar"><span class="para-label">第 1 段</span><button class="speak-btn" data-talk="Lei Diansheng is a famous Chinese explorer and environmental protector. Born in 1963 in a small village near Harbin, he is called the modern Xu Xiake for his great walking journey. Before his trip, he spent ten years preparing: he ran every day to build up his strength and read books on wild survival to learn how to deal with dangers."><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z"/></svg>朗读本段</button></div>
+        <p>Lei Diansheng is a famous Chinese [[explorer]] and [[environmental protector]]. Born in 1963 in a small village near Harbin, he is called “the modern Xu Xiake” for his great walking journey. Before his trip, he spent 10 years [[prepare|preparing]]: he ran every day to build up his [[strength]] and read books on [[wild survival]] to learn how to [[deal with]] dangers.</p>
+
+        <div class="para-bar"><span class="para-label">第 2 段</span><button class="speak-btn" data-talk="From 1998 to 2008, Lei walked across China for ten years. During the trip, he wore out fifty-two pairs of shoes and lost nineteen toenails. He faced many dangers, like mudslides and wolf attacks, but he never gave up."><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z"/></svg>朗读本段</button></div>
+        <p>From 1998 to 2008, Lei walked across China for 10 years. <b>1. ______</b> During the trip, he [[wear out|wore out]] 52 pairs of shoes and lost 19 [[toenail|toenails]]. He faced many dangers, like [[mudslide|mudslides]] and wolf [[attack|attacks]], but he never [[give up|gave up]]. <b>2. ______</b></p>
+
+        <div class="para-bar"><span class="para-label">第 3 段</span><button class="speak-btn" data-talk="Lei did more than just walk. He also helped poor students and joined in flood rescue work in Hunan."><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z"/></svg>朗读本段</button></div>
+        <p>Lei did more than just walk. <b>3. ______</b> He also helped poor students and joined in [[flood rescue work]] in Hunan.</p>
+
+        <div class="para-bar"><span class="para-label">第 4 段</span><button class="speak-btn" data-talk="Now, Lei still works for nature and education. He works with artists to turn his travel notes into art, so more people learn about environmental protection."><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z"/></svg>朗读本段</button></div>
+        <p>Now, Lei still works for nature and education. <b>4. ______</b> He works with artists to turn his [[travel notes]] into art, so more people learn about environmental protection. <b>5. ______</b></p>
+
+        <div class="para-bar"><span class="para-label">第 5 段</span><button class="speak-btn" data-talk="Lei's story tells us: true adventure is not just about walking far. It's about loving our land and protecting it."><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z"/></svg>朗读本段</button></div>
+        <p>Lei's story tells us: true [[adventure]] is not just about walking far. It's about loving our land and [[protect|protecting]] it.</p>
+      </div>
+
+      <div class="q-block">
+        <h3 style="color:var(--teal-d);font-size:16px">备选选项</h3>
+        <ol class="q-list">
+          <li><b>A.</b> He sold his house to get money for his long trip.</li>
+          <li><b>B.</b> He traveled about 81,000 kilometres, almost [[twice]] around the Equator（赤道）.</li>
+          <li><b>C.</b> He leads teams to study the environment, like protecting the [[source]] of the Yangtze River.</li>
+          <li><b>D.</b> In 2008, he became the first person to walk alone through the dangerous Lop Nur（罗布泊）.</li>
+          <li><b>E.</b> He visited all 56 [[ethnic group|ethnic groups]] in China, took 40,000 photos and wrote 3.2 million words in his notes.</li>
+          <li><b>F.</b> For students, he organizes [[hiking camp|hiking camps]] in Heilongjiang's forests, where they learn about wild plants and local cultures.</li>
+        </ol>
+        <h3 style="color:var(--teal-d);font-size:16px;margin-top:18px">完整解答</h3>
+        <p><span class="q-ans">1. B　2. D　3. E　4. C　5. F　｜ 多余项：A</span></p>
+        <ol class="q-list">
+          <li><div class="q-stem">第 1 空：walked across China for 10 years → ______</div><span class="q-ans">B</span>
+            <details class="analysis"><summary>解析</summary><div class="a-body"><p>前句讲“用 10 年走遍中国”，B 项承接里程：约 81,000 公里、几乎绕赤道两周，与“走了多远”直接对应；后句 During the trip 也指向行程数据。</p></div></details></li>
+          <li><div class="q-stem">第 2 空：faced many dangers… never gave up → ______</div><span class="q-ans">D</span>
+            <details class="analysis"><summary>解析</summary><div class="a-body"><p>前句强调不畏艰险，D 项给出最危险的代表性成就：2008 年成为独自穿越罗布泊第一人，与 dangers、gave up 形成语义呼应。</p></div></details></li>
+          <li><div class="q-stem">第 3 空：did more than just walk. ______ He also helped poor students…</div><span class="q-ans">E</span>
+            <details class="analysis"><summary>解析</summary><div class="a-body"><p>本段讲“不止走路”，E 项是路上额外完成的事：走访 56 个民族、拍 4 万张照片、写 320 万字笔记；后句 He also 与其并列，共同说明奉献。</p></div></details></li>
+          <li><div class="q-stem">第 4 空：works for nature and education. ______ environmental protection</div><span class="q-ans">C</span>
+            <details class="analysis"><summary>解析</summary><div class="a-body"><p>本段分“自然”和“教育”两条线。C 项带队研究环境、保护长江源头，对应 nature / environmental protection。</p></div></details></li>
+          <li><div class="q-stem">第 5 空（承接教育线）→ ______</div><span class="q-ans">F</span>
+            <details class="analysis"><summary>解析</summary><div class="a-body"><p>F 项为学生组织森林徒步夏令营，学生了解野生动植物与当地文化，对应 education；where 引导定语从句说明营地活动。</p></div></details></li>
+          <li><div class="q-stem">多余项判断</div><span class="q-ans">A</span>
+            <details class="analysis"><summary>解析</summary><div class="a-body"><p>A“卖房筹款长途旅行”属于出发前准备，而文中准备阶段只写了锻炼身体、阅读野外生存书籍，未涉及卖房；五个空均已有更紧密承接的选项，故 A 为多余项。</p></div></details></li>
+        </ol>
+      </div>
+
+      <div class="deeptalk">
+        <h3>段落精讲 · 逐段解析</h3>
+        <dl>
+          <dt>第 1 段：人物名片 + 出发前准备</dt>
+          <dd>开头用“身份（explorer / protector）—出生（Born in 1963…）—称号（modern Xu Xiake）—准备（10 年体能与知识储备）”的顺序勾勒人物。语言点：be called… for…（因……被称为）；spend time doing；build up strength（增强体力）；read books on…（读……方面的书）；how to deal with dangers（“疑问词+不定式”作宾语）。</dd>
+          <dt>第 2 段：十年徒步与艰险</dt>
+          <dd>按“时间跨度 → 里程（B）→ 艰苦细节（鞋、指甲）→ 危险类型 → 不放弃 → 标志性穿越（D）”推进。wear out（穿破）、like 举例、but 转折是关键信号词。</dd>
+          <dt>第 3 段：旅途之外的奉献</dt>
+          <dd>主题句 did more than just walk 领起，E 项记录文化与笔记成果，后句 also 并列助学、抗洪。注意 flood rescue work、poor students 等并列信息。</dd>
+          <dt>第 4 段：如今工作——自然与教育双线</dt>
+          <dd>now 切换到当下；C 对应自然保护，F 对应学生教育；中间插入与艺术家合作把游记变艺术的细节。so 引导结果状语从句：让更多人了解环保。</dd>
+          <dt>第 5 段：结尾升华</dt>
+          <dd>用 not just about… It's about…（不只是……更是……）点明主旨：真正的冒险在于热爱并守护土地。protecting 与 loving 并列作 about 的宾语。</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 模块四 ============ -->
+<section class="module" id="m4">
+  <div class="card">
+    <div class="card-head">
+      <span class="tag">完形填空</span><h2>一次狼狈的乡村野餐</h2>
+      <div class="info">第一部分 · 语言运用 ｜ 记叙文 ｜ 10 题，每题 A / B / C 三选一</div>
+    </div>
+    <div class="card-body">
+      <div class="passage">
+        <p>Many people don't like to stay at home for their vacation. They want to go out to see different things or do something 41. ______. So people in the [[countryside]] go to the city and people from big cities go to the countryside on vacation. During the holidays, trains, buses and planes are all 42. ______. It is a little difficult to 43. ______ train tickets, bus tickets or plane tickets. Many people take their cars for [[travel|travelling]].</p>
+        <p>Last summer vacation, my family went to the countryside by 44. ______. There was too much [[traffic]] on the road, so we had to [[move]] very 45. ______. It took us about an hour to get out of the city. After some time, we came to a farm. It was clean and beautiful. The animals were very cute. We thought it was a nice place for a [[picnic]], so we 46. ______ and took the food, fruit and drinks out of the car. We 47. ______ under a big tree. [[Suddenly]], a strong wind blew and soon it 48. ______ to rain. We had to run back to our car and have our 49. ______ in the car. Then we drove back home. What a 50. ______ trip!</p>
+      </div>
+
+      <div class="q-block">
+        <h3 style="color:var(--teal-d);font-size:16px">完整解答</h3>
+        <ol class="q-list">
+          <li><div class="q-stem">41. something ______（A. exciting　B. useless　C. boring）</div><span class="q-ans">A. exciting</span>
+            <details class="analysis"><summary>解析</summary><div class="a-body"><p>前文 go out to see different things，人们想做“令人兴奋的”事；useless（无用的）、boring（无聊的）与出游愿望相悖。形容词修饰不定代词时后置：something exciting。</p></div></details></li>
+          <li><div class="q-stem">42. trains, buses and planes are all ______（A. busy　B. free　C. slow）</div><span class="q-ans">A. busy</span>
+            <details class="analysis"><summary>解析</summary><div class="a-body"><p>节假日交通工具都“繁忙”，与下句买票难连贯；free（空闲 / 免费）、slow（慢）不构成因果。</p></div></details></li>
+          <li><div class="q-stem">43. difficult to ______ tickets（A. sell　B. buy　C. make）</div><span class="q-ans">B. buy</span>
+            <details class="analysis"><summary>解析</summary><div class="a-body"><p>语境是出行买票，“买票难”选 buy；sell（卖）、make（制作）不合常理。It's difficult to do sth.。</p></div></details></li>
+          <li><div class="q-stem">44. went to the countryside by ______（A. ship　B. plane　C. car）</div><span class="q-ans">C. car</span>
+            <details class="analysis"><summary>解析</summary><div class="a-body"><p>后文 took… out of the car、drove back home 明确提示是开车，by car 固定搭配。</p></div></details></li>
+          <li><div class="q-stem">45. move very ______（A. quickly　B. slowly　C. happily）</div><span class="q-ans">B. slowly</span>
+            <details class="analysis"><summary>解析</summary><div class="a-body"><p>路上车流太多，只能“缓慢”行进；slowly 副词修饰 move。与后句“花了一小时才出城”一致。</p></div></details></li>
+          <li><div class="q-stem">46. so we ______ and took food out（A. stopped　B. left　C. arrived）</div><span class="q-ans">A. stopped</span>
+            <details class="analysis"><summary>解析</summary><div class="a-body"><p>要从车里拿食物，先得“停车”；stop 与 took 并列过去式。leave（离开）、arrive（到达）不接“拿食物”的动作链。</p></div></details></li>
+          <li><div class="q-stem">47. We ______ under a big tree（A. got up　B. sat down　C. came from）</div><span class="q-ans">B. sat down</span>
+            <details class="analysis"><summary>解析</summary><div class="a-body"><p>野餐场景：在大树下“坐下”享用；get up（起床）、come from（来自）与语境不符。</p></div></details></li>
+          <li><div class="q-stem">48. soon it ______ to rain（A. started　B. wanted　C. learned）</div><span class="q-ans">A. started</span>
+            <details class="analysis"><summary>解析</summary><div class="a-body"><p>start to do sth. 开始做某事；“风突然变大，很快开始下雨”。want to do（想做）、learn to do（学着做）主语为人，且语义不通。</p></div></details></li>
+          <li><div class="q-stem">49. have our ______ in the car（A. class　B. work　C. picnic）</div><span class="q-ans">C. picnic</span>
+            <details class="analysis"><summary>解析</summary><div class="a-body"><p>上下文一直围绕野餐，下雨后只能在车里吃野餐；class（上课）、work（工作）无关。</p></div></details></li>
+          <li><div class="q-stem">50. What a ______ trip!（A. funny　B. terrible　C. great）</div><span class="q-ans">B. terrible</span>
+            <details class="analysis"><summary>解析</summary><div class="a-body"><p>堵车、树下遇雨、退回车里吃饭，全程狼狈，结局是“糟糕的”旅行，选 terrible。funny（滑稽好笑的）、great（很棒的）与经历相反。</p></div></details></li>
+        </ol>
+      </div>
+
+      <div class="deeptalk">
+        <h3>段落精讲 · 逐段解析</h3>
+        <dl>
+          <dt>第 1 段：度假趋势与出行方式</dt>
+          <dd>先讲“不爱待在家 → 想去看新鲜事物”，城乡互游；再讲节假日交通繁忙、票难买，所以很多人自驾。逻辑链：趋势 → 交通状况 → 方式选择。语言点：something + 形容词；be busy；It's difficult to do；take cars for travelling。</dd>
+          <dt>第 2 段：一次自驾乡村经历（按时间顺序）</dt>
+          <dd>出城堵车（slowly）→ 到达农场、环境可爱 → 停车树下准备野餐 → 突然刮风下雨 → 退回车内野餐 → 扫兴回家。全程过去时；suddenly 是情节转折信号；What a + 形容词 + 名词! 感叹句收束全文，定调 terrible。</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 模块五 ============ -->
+<section class="module" id="m5">
+  <div class="card">
+    <div class="card-head">
+      <span class="tag">语法填空</span><h2>为爷爷准备生日派对</h2>
+      <div class="info">第二部分 · 语言运用 ｜ 记叙文 ｜ 10 空：有提示词填正确形式，无提示词填一词</div>
+    </div>
+    <div class="card-body">
+      <div class="passage">
+        <p>In my family, the [[oldest]] man is my grandpa. He is very [[kind]]. Everyone likes 51. ______ (he). My grandpa has many 52. ______ ([[hobby]]) like fishing and reading. He often reads the books about Chinese [[history]].</p>
+        <p>These days, my family are very happy because my grandpa's birthday is coming soon. We will have a big party for him on November the 53. ______ ([[eight]]). We must make a birthday party [[wonderful]]. We also prepare some 54. ______ ([[gift]]) for my grandpa.</p>
+        <p>Now we are [[discuss|discussing]] what we can give him. My mom usually 55. ______ ([[cook]]) his [[favourite]] noodles. But this year she would like 56. ______ ([[make]]) a birthday cake with his name on it. Look, my father is 57. ______ ([[buy]]) a new brown [[bookcase]] [[online]]. As for me, I want to draw 58. ______ picture of my grandpa. In the picture, my family is standing [[around]] him. I can write “I 59. ______ ([[real]]) love you, Grandpa!” on the picture. I think it is interesting 60. ______ (have) a birthday party.</p>
+      </div>
+
+      <div class="q-block">
+        <h3 style="color:var(--teal-d);font-size:16px">完整解答</h3>
+        <ol class="q-list">
+          <li><div class="q-stem">51. Everyone likes ______ (he)</div><span class="q-ans">him</span>
+            <details class="analysis"><summary>逐空解析</summary><div class="a-body"><p>动词 likes 后接宾格作宾语，<b>he → him</b>。</p></div></details></li>
+          <li><div class="q-stem">52. many ______ (hobby)</div><span class="q-ans">hobbies</span>
+            <details class="analysis"><summary>逐空解析</summary><div class="a-body"><p>many 后接可数名词复数；hobby 以“辅音+y”结尾，变 y 为 i 加 -es：<b>hobbies</b>。</p></div></details></li>
+          <li><div class="q-stem">53. November the ______ (eight)</div><span class="q-ans">eighth</span>
+            <details class="analysis"><summary>逐空解析</summary><div class="a-body"><p>日期用序数词，<b>eight → eighth</b>；写法 November 8th / November the eighth。</p></div></details></li>
+          <li><div class="q-stem">54. some ______ (gift)</div><span class="q-ans">gifts</span>
+            <details class="analysis"><summary>逐空解析</summary><div class="a-body"><p>some 后接可数名词复数，<b>gift → gifts</b>。</p></div></details></li>
+          <li><div class="q-stem">55. My mom usually ______ (cook)…</div><span class="q-ans">cooks</span>
+            <details class="analysis"><summary>逐空解析</summary><div class="a-body"><p>usually 表通常习惯，用一般现在时；主语 my mom 第三人称单数，<b>cook → cooks</b>。</p></div></details></li>
+          <li><div class="q-stem">56. would like ______ (make) a cake</div><span class="q-ans">to make</span>
+            <details class="analysis"><summary>逐空解析</summary><div class="a-body"><p>固定搭配 <b>would like to do sth.</b>（想要做某事），用动词不定式 <b>to make</b>。</p></div></details></li>
+          <li><div class="q-stem">57. my father is ______ (buy)… Look!</div><span class="q-ans">buying</span>
+            <details class="analysis"><summary>逐空解析</summary><div class="a-body"><p>Look! 提示现在进行时 be + doing，<b>buy → buying</b>。</p></div></details></li>
+          <li><div class="q-stem">58. draw ______ picture of my grandpa</div><span class="q-ans">a</span>
+            <details class="analysis"><summary>逐空解析</summary><div class="a-body"><p>泛指“一幅画”，picture 以辅音音素开头，填不定冠词 <b>a</b>。</p></div></details></li>
+          <li><div class="q-stem">59. I ______ (real) love you</div><span class="q-ans">really</span>
+            <details class="analysis"><summary>逐空解析</summary><div class="a-body"><p>修饰动词 love 需用副词，<b>real → really</b>（真正地、非常）。</p></div></details></li>
+          <li><div class="q-stem">60. interesting ______ (have) a party</div><span class="q-ans">to have</span>
+            <details class="analysis"><summary>逐空解析</summary><div class="a-body"><p>句型 <b>It is + 形容词 + to do sth.</b>，it 为形式主语，填不定式 <b>to have</b>。</p></div></details></li>
+        </ol>
+      </div>
+
+      <div class="deeptalk">
+        <h3>段落精讲 · 逐段解析</h3>
+        <dl>
+          <dt>第 1 段：介绍爷爷其人其好</dt>
+          <dd>顺序：家中最年长者 → 性格善良 → 大家喜欢他 → 爱好（钓鱼、阅读）→ 读历史类书籍。语言点：最高级 oldest；宾格 him；many + 复数；the books about Chinese history。</dd>
+          <dt>第 2 段：生日将近，全家筹备</dt>
+          <dd>情感 happy 领起；日期用序数词；make sth. + 形容词（让派对精彩）；prepare some gifts。will 表将来计划。</dd>
+          <dt>第 3 段：各自准备的礼物（现在进行 + 一般现在对比）</dt>
+          <dd>Now 总起正在讨论；妈妈平时做面条（usually 一般现在时），今年想做蛋糕（would like to do）；爸爸正网购书柜（Look! 进行时）；“我”要画全家福卡片（draw a picture；around 围绕）；结尾 It is interesting to have… 抒发感受。三种时态（一般现在、现在进行、不定式）交织是本段考查重点。</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 模块六 ============ -->
+<section class="module" id="m6">
+  <div class="card">
+    <div class="card-head">
+      <span class="tag">阅读表达</span><h2>会捡垃圾的乌鸦清洁工</h2>
+      <div class="info">第四部分 · 第一节 ｜ 说明文 ｜ 5 题（含 1 道开放题）</div>
+    </div>
+    <div class="card-body">
+      <div class="passage">
+        <div class="para-bar"><span class="para-label">第 1 段</span><button class="speak-btn" data-talk="Cleaners help to keep cities clean. This month a park in France welcomed six very special cleaners. They are crows!"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z"/></svg>朗读本段</button></div>
+        <p>[[Cleaner|Cleaners]] help to keep cities clean. This month a park in France welcomed six very [[special]] cleaners. They are [[crow|crows]]（乌鸦）!</p>
+
+        <div class="para-bar"><span class="para-label">第 2 段</span><button class="speak-btn" data-talk="Workers at the park teach the crows to pick up small pieces of trash. And they also teach the crows to move the trash into a small box. After helping clean the park, they get bird food for their hard work, the BBC reported."><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z"/></svg>朗读本段</button></div>
+        <p>Workers at the park teach the crows to [[pick up]] small [[piece|pieces]] of [[trash]]（垃圾）. And they also teach the crows to move the trash into a small box. After helping clean the park, they get bird food for their [[hard work]], the BBC reported.</p>
+
+        <div class="para-bar"><span class="para-label">第 3 段</span><button class="speak-btn" data-talk="This shows that nature itself can teach us to take care of the environment, Nicolas de Villiers, head of the park, told AFP."><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z"/></svg>朗读本段</button></div>
+        <p>This shows that “[[nature]] itself can teach us to [[take care of]] the [[environment]]（环境）,” Nicolas de Villiers, [[head]] of the park, told AFP.</p>
+
+        <div class="para-bar"><span class="para-label">第 4 段</span><button class="speak-btn" data-talk="The park chose crows because they are smarter than other birds. Earlier this year, scientists made a special vending machine for crows. The machine only works when a piece of paper of the right size is put inside it."><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z"/></svg>朗读本段</button></div>
+        <p>The park [[choose|chose]] crows because they are [[smart|smarter]] than other birds. Earlier this year, [[scientist|scientists]] made a special [[vending machine]] for crows. The machine only works when a piece of paper of the right [[size]] is put inside it.</p>
+
+        <div class="para-bar"><span class="para-label">第 5 段</span><button class="speak-btn" data-talk="The scientists found that crows could remember the right size of paper and put it in the machine to get food. This is a good example of how clever these birds can be."><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z"/></svg>朗读本段</button></div>
+        <p>The scientists found that crows could [[remember]] the right size of paper and put it in the machine to get food. This is a good example of how [[clever]] these birds can be.</p>
+      </div>
+
+      <div class="q-block">
+        <h3 style="color:var(--teal-d);font-size:16px">完整解答</h3>
+        <ol class="q-list">
+          <li><div class="q-stem">61. How many special cleaners arrived at the park in France this month?</div><span class="q-ans">Six. / Six crows arrived at the park.</span>
+            <details class="analysis"><summary>解析</summary><div class="a-body"><p>定位首段 “welcomed six very special cleaners. They are crows!” 数量题直接答 Six 即可，补充主语更完整。</p></div></details></li>
+          <li><div class="q-stem">62. What do workers at the park teach the crows to do?</div><span class="q-ans">To pick up small pieces of trash and move the trash into a small box.</span>
+            <details class="analysis"><summary>解析</summary><div class="a-body"><p>定位第二段两个 teach…to do：pick up small pieces of trash 与 move the trash into a small box，用 and 并列整合。</p></div></details></li>
+          <li><div class="q-stem">63. Who is Nicolas de Villiers?</div><span class="q-ans">He is the head of the park.</span>
+            <details class="analysis"><summary>解析</summary><div class="a-body"><p>定位第三段插入语 “head of the park”；head 此处指负责人，不是“头”。</p></div></details></li>
+          <li><div class="q-stem">64. What did scientists make for crows earlier this year?</div><span class="q-ans">A special vending machine (for crows).</span>
+            <details class="analysis"><summary>解析</summary><div class="a-body"><p>定位第四段 “scientists made a special vending machine for crows.” 一般过去时，回答用名词短语即可。</p></div></details></li>
+          <li><div class="q-stem">65. The park uses crows to pick up trash. Do you like this idea? Why?</div><span class="q-ans">示例：Yes, I do. It's a clever idea. The park stays clean, and the crows get bird food for their hard work.</span>
+            <details class="analysis"><summary>答题要点</summary><div class="a-body"><p>先表态 Yes / No，再给理由；可结合双赢：环境变干净 + 乌鸦得到食物。若否定也需自圆其说（如担心训练动物不人道），考试中推荐肯定观点、贴合文本。</p></div></details></li>
+        </ol>
+      </div>
+
+      <div class="deeptalk">
+        <h3>段落精讲 · 逐段解析</h3>
+        <dl>
+          <dt>第 1 段：人物（动物）登场</dt>
+          <dd>由普通清洁工过渡到“六位特殊清洁工是乌鸦”，制造悬念。special 是文眼词；keep cities clean 搭配。</dd>
+          <dt>第 2 段：训练内容与报酬</dt>
+          <dd>两个 teach 并列说明训练动作；After helping clean… 是现在分词短语作时间状语；get bird food for their hard work（劳动换取食物），the BBC reported 为插入的信息来源。</dd>
+          <dt>第 3 段：负责人观点</dt>
+          <dd>引语点明主旨：自然本身教会我们爱护环境。head of the park 是同位语身份说明；take care of = look after。</dd>
+          <dt>第 4 段：为何选乌鸦 + 实验装置</dt>
+          <dd>because 给出原因：比其他鸟聪明；介绍专为乌鸦设计的自动贩卖机；only works when… 时间状语从句说明启动条件——投入大小合适的纸片。</dd>
+          <dt>第 5 段：实验结果与评价</dt>
+          <dd>found that… 宾语从句说明乌鸦能记住纸的大小、投机取食；how clever these birds can be 作 example of 的宾语从句，收束于对乌鸦聪明的赞叹。</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 模块七 ============ -->
+<section class="module" id="m7">
+  <div class="card">
+    <div class="card-head">
+      <span class="tag">书面表达</span><h2>“精彩瞬间”：两地同时生活对比</h2>
+      <div class="info">第二部分 · 15 分 ｜ 词数 70 左右（开头已给出，不计入）｜ 提示词：skip rope 跳绳；play hide and seek 捉迷藏</div>
+    </div>
+    <div class="card-body">
+      <div class="q-block">
+        <h3 style="color:var(--teal-d);font-size:16px">题目要点</h3>
+        <ol class="q-list">
+          <li><div class="q-stem">1. 介绍人物、时间、地点和活动；</div></li>
+          <li><div class="q-stem">2. 描述精彩瞬间正在发生的事情（现在进行时）；</div></li>
+          <li><div class="q-stem">3. 适当加入感受；</div></li>
+          <li><div class="q-stem">时间对比：上午 10:00 李华在学校；同一时刻晚上 10:00 Mike 在美国家中。</div></li>
+        </ol>
+      </div>
+
+      <div class="essay">
+        <p>Hi, I'm Li Hua from Class 1. I'm happy to [[share]] my American friend Mike's life and my [[colourful]] life with you.</p>
+        <p>It's 10:00 am on the school [[playground]]. Some boys are playing football, and two girls are [[skip rope|skipping rope]]. I am [[play hide and seek|playing hide and seek]] with my classmates under the big tree. We are laughing and having a good time.</p>
+        <p>[[At the same time]], it is 10:00 pm in Mike's home in the US. Mike is reading a book in his room, and his parents are watching TV on the sofa. They are [[enjoy]] a quiet evening.</p>
+        <p>I think it's wonderful to know what friends are doing far away.</p>
+      </div>
+
+      <div class="q-block" style="margin-top:18px">
+        <h3 style="color:var(--teal-d);font-size:16px">范文解析</h3>
+        <ol class="q-list">
+          <li><div class="q-stem">时态：现在进行时 be + doing</div><span class="q-ans">are playing / are skipping / am playing / are laughing / are reading / are watching</span>
+            <details class="analysis"><summary>解析</summary><div class="a-body"><p>描述“正在发生的瞬间”一律用现在进行时；注意 skip 的现在分词双写 p：skipping；play hide and seek 中 play 变为 playing。</p></div></details></li>
+          <li><div class="q-stem">时间与地点表达</div><span class="q-ans">on the school playground / in his room / on the sofa / in Mike's home in the US</span>
+            <details class="analysis"><summary>解析</summary><div class="a-body"><p>场所介词搭配准确；上下午用 am / pm；At the same time 连接两地同一时刻，体现时差对比。</p></div></details></li>
+          <li><div class="q-stem">感受句收尾</div><span class="q-ans">I think it's wonderful to know what friends are doing far away.</span>
+            <details class="analysis"><summary>解析</summary><div class="a-body"><p>用 I think… 表达主观感受；what friends are doing 是宾语从句；far away（遥远）呼应两地距离，点题“精彩瞬间”。</p></div></details></li>
+          <li><div class="q-stem">得分提醒</div><span class="q-ans">要点齐全 · 时态一致 · 词数达标</span>
+            <details class="analysis"><summary>解析</summary><div class="a-body"><p>勿漏人物（Li Hua、Mike、家人/同学）；动作与图片对应（踢球、跳绳、捉迷藏、看书、看电视）；全文一般现在时用于开头介绍，瞬间动作用进行时，勿混用。</p></div></details></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<!-- ============ 词汇总表 ============ -->
+<section id="vocab-table" class="card">
+  <div class="card-head">
+    <span class="tag">复习</span><h2>全部生词与生短语汇总</h2>
+    <div class="info">按词条检索，点击“朗读”听发音；每个词条含词性、释义、用法与例句</div>
+  </div>
+  <div class="card-body">
+    <div class="search-box"><input id="vsearch" type="text" placeholder="输入英文单词或短语检索…" autocomplete="off"></div>
+    <div class="vgrid" id="vgrid"></div>
+  </div>
+</section>
+
+<footer>本页面依据所提供两份培优试卷整理 · 答案与讲解供复习核对使用</footer>
+
+<script>
+/* ===== 词汇数据（key 与文中标记一致）===== */
+const VOCAB = {
+  "hemisphere": {
+    "pos": "n. 名词",
+    "cn": "半球",
+    "usage": "指地球被赤道等平分成的两个半球之一。文中 Northern / Southern Hemisphere 即北半球与南半球，是阅读中反复出现的核心地域词。",
+    "coll": "the Northern Hemisphere 北半球；the Southern Hemisphere 南半球；in the hemisphere 在该半球",
+    "form": "复数 hemispheres；形容词 hemispheric（半球的，初中阶段不要求）",
+    "note": "首字母在大写地域名称中大写；不要与 sphere（球体）混淆，半球是在 sphere 基础上加 hemi-（半）。",
+    "example": "The Northern Hemisphere has four seasons.",
+    "excn": "北半球有四季。"
+  },
+  "tilt": {
+    "pos": "n. 名词",
+    "cn": "（地球）轴线；倾斜",
+    "usage": "文中 Earth's tilt 指地轴——地球绕转时倾斜的轴线，正是南北半球季节相反的科学原因。tilt 也可作动词，表示“倾斜”。",
+    "coll": "the Earth's tilt 地轴；be tilted towards… 朝向……倾斜；be tilted away from… 背离……",
+    "form": "动词 tilt；形容词 tilted（倾斜的）",
+    "note": "阅读中先看到名词 tilt，第二段再次出现动词过去分词 tilted，属于同根复现，要能联系起来理解。",
+    "example": "The Earth's tilt causes different seasons.",
+    "excn": "地轴倾斜造成了不同的季节。"
+  },
+  "season": {
+    "pos": "n. 名词",
+    "cn": "季节",
+    "usage": "一年中的某一段自然时段。本文讲半球季节相反，season 是主题词；different 后若表示“不同的多个季节”要用复数。",
+    "coll": "spring / summer / autumn / winter season；in different seasons；the season for… ……的季节",
+    "form": "复数 seasons；形容词 seasonal（季节的）",
+    "note": "autumn 英式，fall 美式；季节名词前一般不加冠词，如 in summer。",
+    "example": "There are four seasons in a year.",
+    "excn": "一年有四个季节。"
+  },
+  "towards": {
+    "pos": "prep. 介词",
+    "cn": "朝，向；接近",
+    "usage": "表示运动或朝向的方向，后接地点、对象或方向名词。文中 one hemisphere is tilted towards the Sun 指一个半球朝太阳倾斜。",
+    "coll": "walk towards… 朝……走去；tilt towards… 朝向……；from…towards… 从……朝向……",
+    "form": "toward（美式，可互换）；反义词 (away) from",
+    "note": "towards 是介词，不是副词，后面必须接宾语；不要写成 to wards 两个词。",
+    "example": "He walked towards the school gate.",
+    "excn": "他朝校门走去。"
+  },
+  "tilted": {
+    "pos": "adj. 形容词",
+    "cn": "倾斜的",
+    "usage": "由动词 tilt 加 -ed 转化而来，描述物体处于歪斜的状态。文中 be tilted towards / away from it 描述两个半球分别朝向、背离太阳。",
+    "coll": "be tilted towards…；be tilted away from…；a tilted picture 一幅歪了的画",
+    "form": "动词 tilt；比较级 more tilted；过去式 / 过去分词 tilted",
+    "note": "-ed 形容词多描述“被弄得处于某状态”，区别于 -ing 形容词描述事物本身特性。",
+    "example": "The picture on the wall is tilted.",
+    "excn": "墙上的画歪了。"
+  },
+  "look forward to": {
+    "pos": "短语",
+    "cn": "盼望，期待",
+    "usage": "表达对将来某事的期待。本短语中 to 是介词而不是不定式符号，这是七年级高频考点：后面要接名词或动名词 doing，不能接动词原形。",
+    "coll": "look forward to sth.；look forward to doing sth.；I'm looking forward to… 我正期待……",
+    "form": "进行时 am/is/are looking forward to；过去式 looked forward to",
+    "note": "易错：to 后误写动词原形（×look forward to spend），正确为 spending。类似 to 作介词的短语还有 be good at、be interested in 后接 doing。",
+    "example": "I look forward to seeing you.",
+    "excn": "我盼望着见到你。"
+  },
+  "spend": {
+    "pos": "v. 动词",
+    "cn": "度过；花费",
+    "usage": "指花费时间或金钱，也可指“度过（假期）”。本文 spend summer vacation 即度过暑假。注意 spend 的两种句型搭配。",
+    "coll": "spend time / money on sth. 在某物上花费时间金钱；spend time (in) doing sth. 花时间做某事；spend the holiday 度假",
+    "form": "过去式 / 过去分词 spent；现在分词 spending；三单 spends",
+    "note": "辨析 spend / take / cost / pay：spend 主语是人；take 常用 It takes sb. time to do；cost 主语是物；pay 常与 for 搭配。",
+    "example": "We spent the holiday at the beach.",
+    "excn": "我们在海滩度过了假期。"
+  },
+  "vacation": {
+    "pos": "n. 名词",
+    "cn": "假期",
+    "usage": "美式英语常用词，指休假、假期；文中 summer vacation 即暑假。与英式 holiday 意思基本对应，可互换。",
+    "coll": "summer / winter vacation 暑 / 寒假；on vacation 在度假；take a vacation 休假",
+    "form": "复数 vacations；动词 vacate（不要求掌握）",
+    "note": "on vacation 中不加冠词；“在度假”不说 in vacation。vacation 偏较长假期，holiday 还可指单日节日。",
+    "example": "They are on summer vacation.",
+    "excn": "他们正在放暑假。"
+  },
+  "snowman": {
+    "pos": "n. 名词",
+    "cn": "雪人",
+    "usage": "用雪堆成的人形。文中 build snowmen 指堆雪人，与南半球海滩度假形成对比。",
+    "coll": "build / make a snowman 堆雪人；a big snowman 一个大雪人",
+    "form": "复数不规则变化 snowmen（同 man→men）",
+    "note": "复数不是 snowmans；同类不规则：woman→women, child→children。",
+    "example": "The children are making a snowman.",
+    "excn": "孩子们正在堆雪人。"
+  },
+  "they": {
+    "pos": "pron. 代词",
+    "cn": "他 / 她 / 它们",
+    "usage": "人称代词主格，在句中作主语，指代复数的人或物。本模块考点是其物主代词形式 their，用于修饰后面的名词。",
+    "coll": "they + 动词（作主语）；their + 名词（他们的……）；them 作宾语",
+    "form": "主格 they；宾格 them；形容词性物主代词 their；名词性物主代词 theirs",
+    "note": "区分主格 / 宾格 / 物主代词：动词前用 they，动词或介词后用 them，名词前用 their。",
+    "example": "They enjoy their winter holidays.",
+    "excn": "他们享受着寒假。"
+  },
+  "be": {
+    "pos": "v. 动词",
+    "cn": "是；存在",
+    "usage": "连系动词 be 的各种形式。本模块重点考查 There be 句型：根据靠近 be 的主语（就近原则）选 is 或 are，全文为一般现在时。",
+    "coll": "There is + 单数 / 不可数；There are + 复数；be going to be；will be",
+    "form": "形式 am / is / are；过去式 was / were；过去分词 been",
+    "note": "There be 与 have 不连用：×There are have…；就近原则：There is a pen and two books（看 a pen）。",
+    "example": "There are many books on the desk.",
+    "excn": "桌上有很多书。"
+  },
+  "New Year's Eve": {
+    "pos": "短语",
+    "cn": "新年前夜，除夕",
+    "usage": "指 12 月 31 日夜晚，是重要节日夜晚。文中 on special nights like New Year's Eve 举例说明“在特定夜晚”的表达。",
+    "coll": "on New Year's Eve 在跨年夜；stay up on New Year's Eve 跨年夜熬夜",
+    "form": "对应 New Year's Day 元旦；New Year 新年",
+    "note": "具体某一天的夜晚用介词 on，不用 at；Eve 指节日前夕，首字母大写。",
+    "example": "We stay up late on New Year's Eve.",
+    "excn": "我们在跨年夜熬夜。"
+  },
+  "all over the world": {
+    "pos": "短语",
+    "cn": "全世界",
+    "usage": "范围短语，相当于 around the world，说明动作发生在全球范围，在句中作地点状语，可放句首或句末。",
+    "coll": "people all over the world 全世界人民；all over the world = around the world",
+    "form": "无词形变化",
+    "note": "all over 还有“遍及、浑身”之意；不要漏写 the，×all over world。",
+    "example": "People all over the world love music.",
+    "excn": "全世界的人都热爱音乐。"
+  },
+  "fireworks": {
+    "pos": "n. 名词（常用复数）",
+    "cn": "烟花，焰火",
+    "usage": "节日燃放的烟火，英语通常以复数形式出现。文中 fireworks might go off 指烟花可能燃放。",
+    "coll": "set off / light / let off fireworks 放烟花；watch fireworks 看烟花；fireworks go off 烟花燃放",
+    "form": "复数 fireworks；单数 firework 较少单独使用",
+    "note": "作主语时按复数看待：Fireworks are…；“放烟花”动词用 set off，不说 open fireworks。",
+    "example": "The fireworks went off over the city.",
+    "excn": "烟花在城市上空燃放。"
+  },
+  "go off": {
+    "pos": "短语动词",
+    "cn": "（烟花）燃放；（闹钟）响起",
+    "usage": "不及物短语动词，主语常是 fireworks、alarm、bell 等，表示“自行响起 / 燃放”。文中承接 fireworks 说明燃放动作。",
+    "coll": "The alarm / bell / fireworks go off；go off at + 时间",
+    "form": "过去式 went off；现在分词 going off",
+    "note": "go off 还有“离开、断电”等义，需按上下文判断；它后面不接宾语。",
+    "example": "The alarm went off at six.",
+    "excn": "闹钟六点响了。"
+  },
+  "snow": {
+    "pos": "n. / v.",
+    "cn": "雪；下雪",
+    "usage": "既可作不可数名词“雪”，也可作动词“下雪”。本模块考点是其形容词 snowy，用于修饰名词 places。",
+    "coll": "heavy snow 大雪；It snows…；snowy places 多雪的地方",
+    "form": "名词 snow；动词 snows / snowed；形容词 snowy；snowman 雪人",
+    "note": "表示“下雪天”用 snowy day；名词 snow 不能直接修饰另一名词作天气形容词。",
+    "example": "It is a snowy day.",
+    "excn": "今天是个下雪天。"
+  },
+  "celebrate": {
+    "pos": "v. 动词",
+    "cn": "庆祝",
+    "usage": "及物动词，后接节日、生日等对象。本模块考查其名词形式 celebration：each 后接可数名词单数。",
+    "coll": "celebrate sth.；celebrate a festival / birthday；celebrate with… 用……庆祝",
+    "form": "名词 celebration（庆祝活动）；复数 celebrations；三单 celebrates",
+    "note": "celebrate 是动词，celebration 是名词；文中 making each celebration special 用名词作宾语。",
+    "example": "We celebrate the Spring Festival.",
+    "excn": "我们庆祝春节。"
+  },
+  "tradition": {
+    "pos": "n. 名词",
+    "cn": "传统",
+    "usage": "代代相传的习俗或信念。文中 makes our traditions unique 指使各地传统独具特色。",
+    "coll": "a Chinese tradition 中国传统；by tradition 按传统；keep up a tradition 保持传统",
+    "form": "复数 traditions；形容词 traditional；副词 traditionally",
+    "note": "traditional 是阅读和写作高频形容词；traditional Chinese culture 中国传统文化。",
+    "example": "Making dumplings is a Chinese tradition.",
+    "excn": "包饺子是中国传统。"
+  },
+  "unique": {
+    "pos": "adj. 形容词",
+    "cn": "独特的，独一无二的",
+    "usage": "形容人或事物与众不同、具有唯一性。文中总结地轴不仅带来不同天气，也让各地传统独一无二。",
+    "coll": "be unique to… 为……所独有；a unique tradition 独特传统；quite / very unique",
+    "form": "副词 uniquely；无比较级、最高级（本身已含“唯一”义）",
+    "note": "unique 一般不加 more / most；发音 /juˈniːk/，注意 u 开头辅音音素，前冠词用 a。",
+    "example": "Each country has its own unique traditions.",
+    "excn": "每个国家都有自己独特的传统。"
+  },
+  "look out of": {
+    "pos": "短语",
+    "cn": "向……外面看",
+    "usage": "由 look + 副词 out + 介词 of 构成，后接 window、door 等，表示视线朝外。文中 Laura 站在房间窗边向外看。",
+    "coll": "look out of the window / door；look out of… at… 朝……外看……",
+    "form": "进行时 looking out of；过去式 looked out of",
+    "note": "反义短语 look into（向里看）；look out 单独用是“当心”，意思不同，不要混淆。",
+    "example": "Don't look out of the window in class.",
+    "excn": "上课不要向窗外看。"
+  },
+  "hold": {
+    "pos": "v. 动词",
+    "cn": "拿着，握着；举行",
+    "usage": "用手握住、撑住某物，也可表示“举办（会议）”。文中 holding umbrellas 指撑着雨伞。",
+    "coll": "hold an umbrella 撑伞；hold hands 牵手；hold a meeting 开会；hold a book 拿书",
+    "form": "过去式 / 过去分词 held；现在分词 holding；三单 holds",
+    "note": "hold 是不规则动词，过去式不是 holded；“撑伞”用 hold 而不是 take。",
+    "example": "She is holding a colourful umbrella.",
+    "excn": "她撑着一把彩色雨伞。"
+  },
+  "umbrella": {
+    "pos": "n. 名词",
+    "cn": "雨伞",
+    "usage": "防雨用具。文中行人都撑着雨伞，彩色雨伞让 Laura 心情稍好。",
+    "coll": "open / close an umbrella 撑开 / 收伞；hold an umbrella；take an umbrella 带伞",
+    "form": "复数 umbrellas",
+    "note": "umbrella 以辅音音素 /ʌm/ 开头，前冠词用 an：an umbrella。",
+    "example": "Take an umbrella. It's raining.",
+    "excn": "带把伞吧，下雨了。"
+  },
+  "colourful": {
+    "pos": "adj. 形容词",
+    "cn": "色彩鲜艳的；丰富多彩的",
+    "usage": "由名词 colour 加后缀 -ful 构成，形容颜色丰富好看；引申义指生活丰富多彩。",
+    "coll": "colourful flowers / umbrellas / life；a colourful garden 五彩花园",
+    "form": "英式 colourful；美式 colorful；名词 colour / color",
+    "note": "-ful 意为“充满……的”，同类：helpful, useful, wonderful；区别 -less“无”：useless。",
+    "example": "The garden is full of colourful flowers.",
+    "excn": "花园里开满了五颜六色的花。"
+  },
+  "cousin": {
+    "pos": "n. 名词",
+    "cn": "堂 / 表兄弟姐妹",
+    "usage": "父母兄弟姐妹的子女，不分男女、不分年长年幼。文中 Jim 和表亲们在山里。",
+    "coll": "my cousin 我的堂 / 表亲；a cousin of mine；cousin brothers 表兄弟",
+    "form": "复数 cousins",
+    "note": "不要把 cousin 译成“哥哥/姐姐”；兄弟姐妹是 brother / sister。",
+    "example": "I often play with my cousins.",
+    "excn": "我常和表兄弟姐妹一起玩。"
+  },
+  "daytime": {
+    "pos": "n. 名词",
+    "cn": "白天",
+    "usage": "日出到日落的时段，与夜晚相对。文中对比白天 -10℃、夜里和清晨 -20℃。",
+    "coll": "in the daytime 在白天；during the daytime；in the daytime vs at night",
+    "form": "由 day + time 合成；反义 nighttime",
+    "note": "搭配介词 in；in the daytime 不与 at 连用。",
+    "example": "It's cold in the daytime here.",
+    "excn": "这里白天很冷。"
+  },
+  "skiing": {
+    "pos": "n. 名词",
+    "cn": "滑雪",
+    "usage": "滑雪运动，常用于 go skiing 结构。文中说这里适合滑雪和滑冰。",
+    "coll": "go skiing 去滑雪；do skiing；skiing season 滑雪季",
+    "form": "动词 ski；现在分词 skiing；指人 skier；名词 skiing",
+    "note": "go + 动词-ing 表示从事某项运动：go swimming / fishing / shopping。",
+    "example": "We go skiing in winter.",
+    "excn": "我们冬天去滑雪。"
+  },
+  "skating": {
+    "pos": "n. 名词",
+    "cn": "滑冰",
+    "usage": "在冰上滑行的运动，常用于 go skating。",
+    "coll": "go skating 去滑冰；ice skating 滑冰；roller skating 滑旱冰",
+    "form": "动词 skate；现在分词 skating；指人 skater",
+    "note": "skate 去掉 e 再加 -ing（skating）；同类：make→making, write→writing。",
+    "example": "They are skating on the ice.",
+    "excn": "他们正在冰上滑冰。"
+  },
+  "bend": {
+    "pos": "v. 动词",
+    "cn": "弯曲；（使）弯折",
+    "usage": "身体或物体由直变弯。文中 trees are bending 指树被大风吹得弯下腰。",
+    "coll": "bend down 弯腰；bend over 俯身；trees bend in the wind",
+    "form": "过去式 / 过去分词 bent；现在分词 bending",
+    "note": "bend 是不规则动词；bent 既是过去式也是过去分词。",
+    "example": "The strong wind is bending the trees.",
+    "excn": "大风把树吹弯了。"
+  },
+  "dangerous": {
+    "pos": "adj. 形容词",
+    "cn": "危险的",
+    "usage": "形容事物或情形可能造成伤害。文中 It's dangerous to go out 指此时出门有危险。",
+    "coll": "It's dangerous to do sth.；a dangerous place / road；dangerous for sb.",
+    "form": "名词 danger；副词 dangerously；反义 safe（安全的）",
+    "note": "-ous 是常见形容词后缀；区分 dangerous（事物危险）与 in danger（人处于危险中）。",
+    "example": "It's dangerous to swim here.",
+    "excn": "在这里游泳很危险。"
+  },
+  "boating": {
+    "pos": "n. 名词",
+    "cn": "划船（活动）",
+    "usage": "划船这项休闲活动，常用于 go boating 或 be boating。文中 Linda 与家人在湖上划船。",
+    "coll": "go boating 去划船；be boating on the lake；boating on a lake",
+    "form": "动词 boat（划船）；现在分词 boating",
+    "note": "boat 作名词是“小船”，作动词才是“划船”；go boating 同 go skiing 结构。",
+    "example": "They are boating on the lake.",
+    "excn": "他们正在湖上划船。"
+  },
+  "relax": {
+    "pos": "v. 动词",
+    "cn": "放松，休息",
+    "usage": "使身心放松、休息下来。文中 a good day for relaxing 指适合放松的一天；介词 for 后接动名词。",
+    "coll": "relax oneself 放松自己；relax after work；a good day for relaxing",
+    "form": "形容词 relaxed（人感到放松的）；relaxing（事物令人放松的）；名词 relaxation",
+    "note": "辨析 -ed / -ing：I feel relaxed（我感到放松）；The trip is relaxing（旅途令人放松）。",
+    "example": "This is a good day for relaxing.",
+    "excn": "这是放松的好天气。"
+  },
+  "explorer": {
+    "pos": "n. 名词",
+    "cn": "探险家，考察者",
+    "usage": "进行长途或未知地区考察的人。文中称雷殿生为 famous Chinese explorer，是人物身份定位词。",
+    "coll": "a famous / great explorer；an explorer of…；a modern explorer",
+    "form": "动词 explore（探险、考察）；名词 exploration；指人 explorer",
+    "note": "-er / -or 后缀表示“做……的人”：teacher, actor, explorer；不要漏写 e。",
+    "example": "The explorer walked across the desert.",
+    "excn": "这位探险家徒步穿越了沙漠。"
+  },
+  "environmental protector": {
+    "pos": "短语",
+    "cn": "环保人士",
+    "usage": "从事环境保护的人。environmental 修饰 protector，说明保护的对象是环境；文中与 explorer 并列介绍雷殿生双重身份。",
+    "coll": "an environmental protector；environmental protection 环境保护；protect the environment",
+    "form": "形容词 environmental；名词 protector；动词 protect；同义词 environmentalist",
+    "note": "protector 由 protect + -or 构成；“环境保护”是 environmental protection（名词短语），不要写成 environment protect。",
+    "example": "He is an environmental protector in his city.",
+    "excn": "他是本市的一名环保人士。"
+  },
+  "prepare": {
+    "pos": "v. 动词",
+    "cn": "准备",
+    "usage": "为将来的事情预先安排、锻炼或学习。文中 he spent 10 years preparing 指出发前用十年做准备。",
+    "coll": "prepare for sth. 为某事准备；prepare to do sth. 准备做某事；prepare sth. 准备某物；spend time preparing",
+    "form": "现在分词 preparing；过去式 prepared；名词 preparation",
+    "note": "prepare sth. 准备某物（直接宾语）；prepare for sth. 为某事做准备（for 表目的），两者介词不同。",
+    "example": "She is preparing for the exam.",
+    "excn": "她正在为考试做准备。"
+  },
+  "strength": {
+    "pos": "n. 名词",
+    "cn": "体力；力量；长处",
+    "usage": "身体或精神上的力量。文中 build up his strength 指通过跑步增强体能；strength 还可指“优点、长处”。",
+    "coll": "build up one's strength 增强体力；physical strength 体力；strengths and weaknesses 优缺点",
+    "form": "形容词 strong；副词 strongly；动词 strengthen 加强",
+    "note": "strong（形容词）→ strength（名词）是不规则派生，拼写变化较大，需单独记忆。",
+    "example": "Running every day builds up his strength.",
+    "excn": "每天跑步增强了他的体力。"
+  },
+  "wild survival": {
+    "pos": "短语",
+    "cn": "野外生存",
+    "usage": "在自然荒野中活下去所需的知识与技能。文中雷殿生阅读此类书籍，学习应对危险。",
+    "coll": "books on wild survival；wild survival skills 野外生存技能；wild animals 野生动物",
+    "form": "形容词 wild；名词 survival；动词 survive（幸存）",
+    "note": "wild 此处指“野外的、野生的”；survival 是名词，survive 才是动词，不要混用。",
+    "example": "They read books on wild survival.",
+    "excn": "他们阅读野外生存方面的书籍。"
+  },
+  "deal with": {
+    "pos": "短语动词",
+    "cn": "处理，应对",
+    "usage": "对付、解决问题或危险。文中 how to deal with dangers 指学习如何应对危险；常与 how 搭配。",
+    "coll": "deal with a problem / danger / question；how to deal with…；deal with sb. 对付某人",
+    "form": "过去式 dealt with；现在分词 dealing with",
+    "note": "辨析 deal with 与 do with：deal with 常与 how 连用，do with 常与 what 连用；deal 过去式 dealt 不规则。",
+    "example": "We must learn to deal with dangers.",
+    "excn": "我们必须学会应对危险。"
+  },
+  "wear out": {
+    "pos": "短语动词",
+    "cn": "穿破，磨坏；使疲惫",
+    "usage": "衣物等因长期使用被磨穿，也可指人累坏。文中 wore out 52 pairs of shoes 指走坏 52 双鞋。",
+    "coll": "wear out shoes / clothes；be worn out 被磨坏；wear sb. out 使某人疲惫",
+    "form": "过去式 wore out；过去分词 worn out；现在分词 wearing out",
+    "note": "wear 不规则变化 wear→wore→worn；wear out 宾语是代词时放中间：wear them out。",
+    "example": "He wore out many pairs of shoes.",
+    "excn": "他磨破了很多双鞋。"
+  },
+  "toenail": {
+    "pos": "n. 名词",
+    "cn": "脚指甲",
+    "usage": "脚趾上的指甲。文中 lost 19 toenails 是徒步艰辛的具体细节。",
+    "coll": "toenail 脚指甲；fingernail 手指甲；cut toenails 剪脚指甲",
+    "form": "复数 toenails；由 toe + nail 合成",
+    "note": "合成词 toe（脚趾）+ nail（指甲）；同类：fingernail, hairpin。",
+    "example": "He lost some toenails on the trip.",
+    "excn": "旅途中他掉了一些脚指甲。"
+  },
+  "mudslide": {
+    "pos": "n. 名词",
+    "cn": "泥石流",
+    "usage": "暴雨引发的泥浆沿山坡滑落的地质灾害。文中与 wolf attacks 并列，说明旅途遇到的危险类型。",
+    "coll": "a mudslide；be blocked by a mudslide；mudslide risk 泥石流风险",
+    "form": "复数 mudslides；由 mud（泥浆）+ slide（滑落）合成",
+    "note": "slide 在此是名词“滑落”；mud 不可数，不加 s。",
+    "example": "The road was blocked by a mudslide.",
+    "excn": "道路被泥石流阻断了。"
+  },
+  "attack": {
+    "pos": "n. / v. 名词 / 动词",
+    "cn": "攻击，袭击",
+    "usage": "主动发起的伤害行为。文中 wolf attacks 指狼群袭击；可作名词也可作动词。",
+    "coll": "an attack on… 对……的袭击；wolf / animal attacks；attack sb. 袭击某人",
+    "form": "复数 attacks；过去式 attacked；现在分词 attacking",
+    "note": "作名词接介词 on；作动词直接接宾语，不加 on：attack the sheep。",
+    "example": "They faced wolf attacks in the forest.",
+    "excn": "他们在森林里遭遇狼群袭击。"
+  },
+  "give up": {
+    "pos": "短语动词",
+    "cn": "放弃",
+    "usage": "停止尝试、不再坚持。文中 he never gave up 是人物精神核心：面对危险不放弃。",
+    "coll": "give up doing sth. 放弃做某事；give up hope 放弃希望；never give up 永不放弃",
+    "form": "过去式 gave up；现在分词 giving up；反义 keep on / stick to",
+    "note": "give up 后接动名词：give up smoking；代词宾语放中间：give it up。",
+    "example": "He never gave up his dream.",
+    "excn": "他从未放弃自己的梦想。"
+  },
+  "flood rescue work": {
+    "pos": "短语",
+    "cn": "抗洪（防汛）救援工作",
+    "usage": "洪水发生时开展的救助工作。文中 joined in flood rescue work 是雷殿生除徒步外的公益奉献。",
+    "coll": "join in rescue work；flood rescue 抗洪救援；rescue workers 救援人员",
+    "form": "flood 洪水；rescue 救援；work 此处不可数，不加 s",
+    "note": "work 表“工作”不可数；表“作品 / 工厂”才可数。rescue 可作动词或名词。",
+    "example": "He joined in flood rescue work in Hunan.",
+    "excn": "他参加了湖南的抗洪救援工作。"
+  },
+  "travel notes": {
+    "pos": "短语",
+    "cn": "游记，旅行笔记",
+    "usage": "旅途中记录见闻、数据的文字。文中 turn his travel notes into art 指把游记转化为艺术作品。",
+    "coll": "write travel notes；turn travel notes into…；keep travel notes 记游记",
+    "form": "note 此处用复数 notes；travel 作定语",
+    "note": "note 作“笔记”常用复数 notes；作“便条”可数单数。",
+    "example": "He wrote lots of travel notes.",
+    "excn": "他写下大量游记。"
+  },
+  "adventure": {
+    "pos": "n. 名词",
+    "cn": "冒险，奇遇",
+    "usage": "充满刺激与未知的经历。文中 true adventure 点明主旨：冒险不只是走得远，更在于热爱并守护土地。",
+    "coll": "a great / true adventure；have an adventure；an adventure story 冒险故事",
+    "form": "复数 adventures；形容词 adventurous（爱冒险的）",
+    "note": "adventure 前冠词用 an：an adventure；发音 /ədˈventʃə(r)/。",
+    "example": "Their trip was a great adventure.",
+    "excn": "他们的旅途是一场精彩的冒险。"
+  },
+  "protect": {
+    "pos": "v. 动词",
+    "cn": "保护",
+    "usage": "使免受伤害或破坏。文中 loving our land and protecting it 并列作 about 的宾语，用动名词形式。",
+    "coll": "protect…from / against… 保护……免受……；protect the environment / land；protect animals",
+    "form": "名词 protection；形容词 protective；过去式 protected",
+    "note": "protect 后接 from：protect sb. from danger；文中 and 连接 loving 与 protecting，形式要一致。",
+    "example": "We should protect our land.",
+    "excn": "我们应该保护我们的土地。"
+  },
+  "almost": {
+    "pos": "adv. 副词",
+    "cn": "几乎，差不多",
+    "usage": "表示接近但未完全达到。文中 almost twice around the Equator 指里程几乎绕赤道两周。",
+    "coll": "almost + 数词 / 形容词 / 动词；almost every day 几乎每天；almost nine o'clock",
+    "form": "无词形变化；同义词 nearly",
+    "note": "almost 置于被修饰成分之前；不与否定词 not 直接连用（不说 almost not）。",
+    "example": "It's almost nine o'clock.",
+    "excn": "差不多九点了。"
+  },
+  "twice": {
+    "pos": "adv. 副词",
+    "cn": "两次；两倍",
+    "usage": "表示动作次数或倍数。文中 almost twice around 指绕两周；once 一次，three times 三次。",
+    "coll": "once / twice / three times；twice a week 一周两次；twice around 绕两周",
+    "form": "无词形变化；对应 once, three times",
+    "note": "“两次”用 twice，不用 two times；“两次”的倍数表达 twice as…as。",
+    "example": "I have been there twice.",
+    "excn": "我去过那里两次。"
+  },
+  "source": {
+    "pos": "n. 名词",
+    "cn": "源头；来源",
+    "usage": "河流等的发源地，也指信息、资料来源。文中 the source of the Yangtze River 即长江源头。",
+    "coll": "the source of the river；the source of information；water source 水源",
+    "form": "复数 sources",
+    "note": "source 与 resource（资源）拼写相近，注意区分；source 是“源头 / 来源”。",
+    "example": "They protect the source of the river.",
+    "excn": "他们保护这条河的源头。"
+  },
+  "ethnic group": {
+    "pos": "短语",
+    "cn": "民族，族群",
+    "usage": "具有共同文化、语言的人群。文中 all 56 ethnic groups 指中国五十六个民族。",
+    "coll": "56 ethnic groups；ethnic groups in China；ethnic culture 民族文化",
+    "form": "ethnic 形容词；group 复数 groups",
+    "note": "ethnic 首字母不大写（非国名）；“民族”不用 nationality 直译，ethnic group 更贴切。",
+    "example": "China has 56 ethnic groups.",
+    "excn": "中国有五十六个民族。"
+  },
+  "hiking camp": {
+    "pos": "短语",
+    "cn": "徒步夏令营",
+    "usage": "以徒步远足为内容的集体营地活动。文中为学生组织此类营地，对应“教育”这条工作线。",
+    "coll": "organize / join a hiking camp；hiking camps in the forest；summer camp 夏令营",
+    "form": "hiking（徒步）；camp 复数 camps",
+    "note": "hiking 由 hike 去 e 加 -ing；camp 可作名词“营地”或动词“露营”。",
+    "example": "They join a hiking camp in the forest.",
+    "excn": "他们参加森林徒步夏令营。"
+  },
+  "countryside": {
+    "pos": "n. 名词",
+    "cn": "乡村，农村",
+    "usage": "城市以外的农业地区。文中城乡互游：乡下人进城、城里人下乡。",
+    "coll": "in the countryside 在乡村；the Chinese countryside；countryside life 乡村生活",
+    "form": "由 country + side 合成；不可数名词",
+    "note": "countryside 前常加 the；country 单独还可指“国家”，注意语境区分。",
+    "example": "We spent the holiday in the countryside.",
+    "excn": "我们在乡村度过了假期。"
+  },
+  "travel": {
+    "pos": "v. / n.",
+    "cn": "旅行；行进",
+    "usage": "动词指到各地旅行、出行；名词指出行活动。文中 take their cars for travelling 指驾车出行。",
+    "coll": "travel by car / train；travel around the country；air travel 航空旅行",
+    "form": "现在分词 travelling（英式）/ traveling（美式）；过去式 travelled；名词 traveller",
+    "note": "travel 偏长途、远距离旅行；trip 指短途往返行程；journey 指旅程。",
+    "example": "Many people travel by car on holiday.",
+    "excn": "假期很多人自驾出行。"
+  },
+  "traffic": {
+    "pos": "n. 名词（不可数）",
+    "cn": "交通，车流",
+    "usage": "道路上的车辆流动情况。文中 too much traffic 导致行进缓慢；traffic 是不可数名词。",
+    "coll": "too much / heavy traffic 车流很大；traffic jam 交通堵塞；traffic lights 红绿灯",
+    "form": "不可数，不加 s；形容词 trafficked（不要求）",
+    "note": "车流多用 heavy / much 修饰，不用 many；×many traffic。",
+    "example": "There was heavy traffic on the road.",
+    "excn": "路上车流很大。"
+  },
+  "move": {
+    "pos": "v. 动词",
+    "cn": "移动，行进；搬家",
+    "usage": "改变位置或居住地点。文中 move very slowly 指车辆缓慢前行；move to 指搬到某地。",
+    "coll": "move slowly / fast；move to + 地点；move away 搬走；move forward 前进",
+    "form": "过去式 moved；现在分词 moving；名词 movement",
+    "note": "move 是多义词，按语境判断是“行进”还是“搬家”；文中修饰 move 的是副词 slowly。",
+    "example": "The bus moved very slowly.",
+    "excn": "公交车缓慢地向前开。"
+  },
+  "picnic": {
+    "pos": "n. 名词",
+    "cn": "野餐",
+    "usage": "在户外就餐的休闲活动。全文情节围绕野餐展开：选地点、停车、取食物、树下就餐、退回车内。",
+    "coll": "have / go for a picnic 去野餐；a nice place for a picnic；have our picnic 吃野餐",
+    "form": "复数 picnics",
+    "note": "picnic 现在分词要加 k：picnicking；冠词 a 不能省：have a picnic。",
+    "example": "We had a picnic under the tree.",
+    "excn": "我们在树下野餐。"
+  },
+  "suddenly": {
+    "pos": "adv. 副词",
+    "cn": "突然",
+    "usage": "表示事情意外发生，常置于句首并用逗号隔开，修饰整个句子。文中风大、雨来都很突然。",
+    "coll": "Suddenly,… 突然……；happen suddenly 突然发生",
+    "form": "形容词 sudden；副词 suddenly",
+    "note": "句首作状语时后加逗号；sudden 是形容词，不能直接修饰句子。",
+    "example": "Suddenly, it began to rain.",
+    "excn": "突然下起了雨。"
+  },
+  "blow": {
+    "pos": "v. 动词",
+    "cn": "吹；刮（风）",
+    "usage": "风或气流吹动。文中 a strong wind blew 指刮起大风；blow 是不规则动词。",
+    "coll": "the wind blows / blew；blow hard 刮得猛；blow away 吹走",
+    "form": "过去式 blew；过去分词 blown；现在分词 blowing",
+    "note": "blow→blew→blown 不规则；主语是 wind 时，不用被动。",
+    "example": "The wind blew hard all night.",
+    "excn": "风刮了一整夜。"
+  },
+  "terrible": {
+    "pos": "adj. 形容词",
+    "cn": "糟糕的；可怕的",
+    "usage": "形容经历差、感受不好，也可指可怕的。文末 What a terrible trip! 总结这次旅途狼狈扫兴。",
+    "coll": "a terrible trip / day / meal；terrible weather；feel terrible 感觉很糟",
+    "form": "副词 terribly；比较级 more terrible",
+    "note": "terrible 口语中也表“非常”；近义 bad / awful；区别 terrific（极好的，易混）。",
+    "example": "The trip was terrible because of the rain.",
+    "excn": "因为下雨，这次旅行很糟糕。"
+  },
+  "exciting": {
+    "pos": "adj. 形容词",
+    "cn": "令人兴奋的",
+    "usage": "修饰事物，指让人感到兴奋。完形首空：人们想出去看新鲜事、做令人兴奋的事。",
+    "coll": "something / anything exciting；an exciting game / trip；exciting news",
+    "form": "动词 excite；形容词 exciting（令人…）/ excited（感到…）；名词 excitement",
+    "note": "区分 -ing / -ed：exciting game（令人兴奋的比赛）；I am excited（我感到兴奋）。形容词修饰不定代词后置。",
+    "example": "The game was really exciting.",
+    "excn": "这场比赛真令人兴奋。"
+  },
+  "useless": {
+    "pos": "adj. 形容词",
+    "cn": "无用的",
+    "usage": "由 use 加否定后缀 -less 构成，表示没有用处。完形中作干扰项，与 exciting 反义方向不符。",
+    "coll": "be useless (for sth.)；a useless thing；useless information 无用信息",
+    "form": "use 用处；-less 无；反义 useful；副词 uselessly",
+    "note": "-less 表否定：useless, hopeless, careless；反义后缀 -ful：useful, hopeful。",
+    "example": "This broken pen is useless.",
+    "excn": "这支坏钢笔没用了。"
+  },
+  "oldest": {
+    "pos": "adj. 形容词最高级",
+    "cn": "最年长的；最老的",
+    "usage": "old 的最高级，用于三者以上比较。文中 the oldest man 指家中最年长的人。",
+    "coll": "the oldest + 名词；the oldest in the family；one of the oldest…",
+    "form": "原级 old；比较级 older / elder；最高级 oldest / eldest；反义 youngest",
+    "note": "最高级前通常加 the；elder 多用于家庭成员长幼排序，older 指年龄较大。",
+    "example": "My grandpa is the oldest in the family.",
+    "excn": "爷爷是家里最年长的人。"
+  },
+  "kind": {
+    "pos": "adj. 形容词",
+    "cn": "善良的，友善的",
+    "usage": "形容人心地好、待人温和。文中 He is very kind 介绍爷爷性格。",
+    "coll": "be kind to sb. 对某人友善；a kind person；It's kind of you 你真好",
+    "form": "副词 kindly；名词 kindness",
+    "note": "kind 还可作名词“种类”：a kind of；一词多义，按词性判断。",
+    "example": "She is kind to everyone.",
+    "excn": "她对每个人都很友善。"
+  },
+  "hobby": {
+    "pos": "n. 名词",
+    "cn": "爱好",
+    "usage": "业余喜欢做的事。文中 many hobbies like fishing and reading 列举爷爷的爱好。",
+    "coll": "have many hobbies；one's hobby is…；a favourite hobby；hobbies and interests",
+    "form": "复数 hobbies（辅音字母 + y，变 y 为 i + es）",
+    "note": "以 y 结尾的名词复数规则：y 前是元音直接加 s（boys），是辅音变 ies（hobbies, cities）。",
+    "example": "Fishing is his favourite hobby.",
+    "excn": "钓鱼是他最大的爱好。"
+  },
+  "history": {
+    "pos": "n. 名词",
+    "cn": "历史",
+    "usage": "过去事件的记录与研究。文中 books about Chinese history 指历史类书籍。",
+    "coll": "Chinese / world history；a book about history；in history 在历史上",
+    "form": "复数 histories；形容词 historical（历史的）；historian 历史学家",
+    "note": "history 不可数时指“历史”整体；the history of… ……的历史。",
+    "example": "He likes books about history.",
+    "excn": "他喜欢历史方面的书。"
+  },
+  "wonderful": {
+    "pos": "adj. 形容词",
+    "cn": "精彩的，极好的",
+    "usage": "形容非常好、令人愉快。文中 make a birthday party wonderful 指把派对办得精彩。",
+    "coll": "a wonderful party / time / day；wonderful news；make sth. wonderful",
+    "form": "副词 wonderfully；近义 great / nice / excellent",
+    "note": "wonder（惊奇）+ -ful 构成；-ful 形容词后缀同 helpful, colourful。",
+    "example": "We had a wonderful party.",
+    "excn": "我们办了一场精彩的派对。"
+  },
+  "discuss": {
+    "pos": "v. 动词",
+    "cn": "讨论",
+    "usage": "就某事交换意见。文中 we are discussing what to give him；discuss 直接接宾语。",
+    "coll": "discuss sth.；discuss with sb.；discuss what / how…；discuss a problem",
+    "form": "现在分词 discussing；名词 discussion；过去式 discussed",
+    "note": "×discuss about sth.（英语中 discuss 直接接宾语）；“和某人讨论”才用 with。",
+    "example": "We are discussing the birthday gift.",
+    "excn": "我们正在讨论生日礼物。"
+  },
+  "cook": {
+    "pos": "v. 动词 / n.",
+    "cn": "烹饪；厨师",
+    "usage": "作动词做饭、煮菜；作名词指厨师。文中 Mom usually cooks noodles 是一般现在时三单。",
+    "coll": "cook noodles / meals；cook for sb.；a good cook 一位好厨师",
+    "form": "三单 cooks；过去式 cooked；名词 cook（厨师）；cooker 是炊具，不是人",
+    "note": "易错：cooker 指“厨具”，厨师是 cook；不要把“厨师”译成 cooker。",
+    "example": "Mom cooks noodles for us.",
+    "excn": "妈妈给我们煮面条。"
+  },
+  "favourite": {
+    "pos": "adj. 形容词",
+    "cn": "最喜欢的",
+    "usage": "表示最喜爱的，修饰名词。文中 his favourite noodles 指爷爷最爱的面条。",
+    "coll": "one's favourite + 名词；favourite food / colour / book",
+    "form": "英式 favourite；美式 favorite；名词 favourite（最喜爱的人 / 物）",
+    "note": "favourite 本身已含“最”意，前面不再加 most；my favourite 后直接接名词。",
+    "example": "Noodles are his favourite food.",
+    "excn": "面条是他最喜欢的食物。"
+  },
+  "bookcase": {
+    "pos": "n. 名词",
+    "cn": "书柜，书架",
+    "usage": "存放书籍的柜子。文中爸爸网购一个棕色新书柜。",
+    "coll": "a new / brown bookcase；put books in the bookcase",
+    "form": "复数 bookcases；由 book + case 合成",
+    "note": "= bookshelf；case 此处指“柜子、箱子”；别与 box（盒子）混淆。",
+    "example": "Dad bought a new bookcase online.",
+    "excn": "爸爸网购了一个新书柜。"
+  },
+  "online": {
+    "pos": "adv. / adj.",
+    "cn": "在线地（的）；网上",
+    "usage": "副词修饰动作，表示通过网络进行。文中 buy a bookcase online 即网购。",
+    "coll": "shop / buy online；online shopping 网购；an online course 在线课程",
+    "form": "无词形变化；= on the Internet",
+    "note": "online 作副词位于动词后；作形容词位于名词前：online shopping。",
+    "example": "She often buys clothes online.",
+    "excn": "她经常在网上买衣服。"
+  },
+  "around": {
+    "pos": "prep. 介词",
+    "cn": "围绕；在……周围",
+    "usage": "表示环绕某事物的四周。文中 family standing around him 指家人围着他站成一圈。",
+    "coll": "stand / sit around sb.；around the table；around the world",
+    "form": "around 还可作副词“大约”；同义词 round（英式）",
+    "note": "around 兼“围绕”与“大约”：around him 围着他；around ten 大约十点。",
+    "example": "The children sat around the table.",
+    "excn": "孩子们围桌而坐。"
+  },
+  "real": {
+    "pos": "adj. 形容词",
+    "cn": "真实的",
+    "usage": "形容真实存在、不是假的。本模块考点是副词 really 修饰动词 love。",
+    "coll": "real love；a real story；real life 现实生活",
+    "form": "副词 really；名词 reality；区别 true（符合事实的）",
+    "note": "real 修饰名词，really 修饰动词 / 形容词；I really love… 中 really 不可省为 real。",
+    "example": "I really love you, Grandpa!",
+    "excn": "爷爷，我真的爱您！"
+  },
+  "gift": {
+    "pos": "n. 名词",
+    "cn": "礼物；天赋",
+    "usage": "赠送的物品，= present。文中 prepare some gifts 指为爷爷准备礼物。",
+    "coll": "prepare / buy / give a gift；a birthday gift；some gifts",
+    "form": "复数 gifts",
+    "note": "gift 与 present 同义；gift 略正式；some 后用复数 gifts。",
+    "example": "We prepare gifts for Grandpa.",
+    "excn": "我们为爷爷准备礼物。"
+  },
+  "eight": {
+    "pos": "num. 数词",
+    "cn": "八",
+    "usage": "基数词，表数量。本模块考点：日期要用序数词 eighth（第八）。",
+    "coll": "eight books；eight o'clock；November the eighth",
+    "form": "基数词 eight；序数词 eighth；8th",
+    "note": "日期“几月几日”用序数词：November 8th / November the eighth；eighth 拼写要记得 h。",
+    "example": "His birthday is on November 8th.",
+    "excn": "他的生日在十一月八日。"
+  },
+  "make": {
+    "pos": "v. 动词",
+    "cn": "制作；使",
+    "usage": "制造、做成某物，或使处于某种状态。文中 make a birthday cake 做蛋糕；would like to make。",
+    "coll": "make a cake / card；make sb. + adj.；make a party wonderful；would like to make",
+    "form": "过去式 made；现在分词 making；三单 makes",
+    "note": "make→made→made 不规则；make 后接双宾语：make sb. a cake。",
+    "example": "She wants to make a birthday cake.",
+    "excn": "她想做一个生日蛋糕。"
+  },
+  "buy": {
+    "pos": "v. 动词",
+    "cn": "买",
+    "usage": "用钱换取物品。文中 Look! 提示现在进行时 is buying；buy sb. sth. 给某人买某物。",
+    "coll": "buy sth. online；buy sb. sth.；buy sth. for sb.",
+    "form": "过去式 bought；现在分词 buying；三单 buys",
+    "note": "buying 直接加 -ing（y 不变）；过去式 bought 不规则；反义词 sell。",
+    "example": "He is buying a bookcase online.",
+    "excn": "他正在网购书柜。"
+  },
+  "noodle": {
+    "pos": "n. 名词",
+    "cn": "面条",
+    "usage": "面粉做的长条食物，通常以复数出现。文中 his favourite noodles 指爷爷爱吃的面条。",
+    "coll": "beef / egg noodles；a bowl of noodles；cook noodles",
+    "form": "通常复数 noodles；单数 noodle 较少单独用",
+    "note": "noodle 常用复数；一碗面 a bowl of noodles，量词用 bowl。",
+    "example": "He had beef noodles for lunch.",
+    "excn": "他午饭吃了牛肉面。"
+  },
+  "cleaner": {
+    "pos": "n. 名词",
+    "cn": "清洁工；清洁工具",
+    "usage": "从事打扫的人，由 clean 加 -er 构成。文中 six very special cleaners 指六位特殊清洁工——乌鸦。",
+    "coll": "a street / park cleaner；special cleaners；cleaners keep…clean",
+    "form": "复数 cleaners；动词 clean；名词 cleaning",
+    "note": "-er 表示“做……的人”：cleaner, teacher, worker；cleaner 也可指吸尘器等清洁工具。",
+    "example": "The cleaners keep the street clean.",
+    "excn": "清洁工保持街道整洁。"
+  },
+  "special": {
+    "pos": "adj. 形容词",
+    "cn": "特别的，特殊的",
+    "usage": "不同于一般、值得注意的。文中 special cleaners 强调乌鸦不是普通清洁工。",
+    "coll": "a special day / place / cleaner；special for sb.；nothing special 没什么特别",
+    "form": "副词 specially；名词 speciality（特长）",
+    "note": "special 修饰名词；副词 specially 修饰形容词 / 动词；反义 ordinary / common。",
+    "example": "Today is a special day for us.",
+    "excn": "今天对我们来说是特别的一天。"
+  },
+  "crow": {
+    "pos": "n. 名词",
+    "cn": "乌鸦",
+    "usage": "黑色、智商较高的鸟类。全文说明乌鸦经训练可捡拾垃圾。",
+    "coll": "a crow；crows are smart；a flock of crows 一群乌鸦",
+    "form": "复数 crows",
+    "note": "发音 /krəʊ/，注意 w 不发音；crow 与 cow（奶牛）拼写相近，勿混。",
+    "example": "Crows are very smart birds.",
+    "excn": "乌鸦是很聪明的鸟。"
+  },
+  "pick up": {
+    "pos": "短语动词",
+    "cn": "捡起，拾起；接人",
+    "usage": "从地上拿起某物，也可指开车接人。文中 pick up small pieces of trash 指捡起小块垃圾。",
+    "coll": "pick up sth.；pick it / them up；pick up trash；pick up sb. 接人",
+    "form": "过去式 picked up；现在分词 picking up",
+    "note": "代词宾语必须放中间：pick it up（×pick up it）；名词宾语可中可后。",
+    "example": "Please pick up the trash on the floor.",
+    "excn": "请捡起地上的垃圾。"
+  },
+  "piece": {
+    "pos": "n. 名词",
+    "cn": "片，块，件；条",
+    "usage": "整体分出的一小部分。文中 small pieces of trash 指小块垃圾；a piece of 是高频量词搭配。",
+    "coll": "a piece of paper / bread / cake；small pieces of；pieces of trash",
+    "form": "复数 pieces",
+    "note": "a piece of 后接不可数名词；复数时 pieces of + 不可数名词。",
+    "example": "Give me a piece of paper.",
+    "excn": "给我一张纸。"
+  },
+  "trash": {
+    "pos": "n. 名词（不可数）",
+    "cn": "垃圾",
+    "usage": "美式英语指废弃物。文中 pieces of trash 即垃圾；与 rubbish、garbage 同义。",
+    "coll": "pick up / throw trash；trash can 垃圾桶；pieces of trash",
+    "form": "不可数，不加 s",
+    "note": "trash（美）= rubbish（英）= garbage；“扔垃圾”用 throw trash，不说 throw rubbish 混用也可，注意地域。",
+    "example": "Don't throw trash on the ground.",
+    "excn": "别把垃圾扔在地上。"
+  },
+  "hard work": {
+    "pos": "短语",
+    "cn": "辛勤工作",
+    "usage": "付出努力的劳动。文中 get bird food for their hard work 指乌鸦凭辛勤劳动得到食物。",
+    "coll": "for one's hard work；hard work pays off；do hard work",
+    "form": "work 不可数；hard 此处是形容词修饰 work",
+    "note": "辨析 hard work（辛勤工作，hard 形容词）与 work hard（努力工作，hard 副词）；语序不同词性不同。",
+    "example": "They get food for their hard work.",
+    "excn": "它们因辛勤工作得到食物。"
+  },
+  "nature": {
+    "pos": "n. 名词",
+    "cn": "自然；本性",
+    "usage": "自然界，也指天性。文中 nature itself can teach us 指自然本身能教会我们。",
+    "coll": "in nature 在自然界；learn from nature；human nature 人性",
+    "form": "形容词 natural；副词 naturally",
+    "note": "nature 指“大自然”时常不加 the；指“本性”时可加 the / one's nature。",
+    "example": "We should learn from nature.",
+    "excn": "我们应向自然学习。"
+  },
+  "take care of": {
+    "pos": "短语",
+    "cn": "照顾；爱护",
+    "usage": "照料某人某物，或爱护环境。文中 take care of the environment 即爱护环境。",
+    "coll": "take care of sb. / sth.；take care of the environment / pets",
+    "form": "过去式 took care of；= look after",
+    "note": "= look after；take care（单独用）是“当心”；of 后必须接宾语。",
+    "example": "We must take care of our environment.",
+    "excn": "我们必须爱护环境。"
+  },
+  "environment": {
+    "pos": "n. 名词",
+    "cn": "环境",
+    "usage": "周围的自然与生活条件。文中 protect the environment 是环保核心搭配。",
+    "coll": "protect / keep the environment；the natural environment；environmental protection",
+    "form": "形容词 environmental；复数 environments",
+    "note": "environment 前常加 the；environmental 是形容词，不要写成 environment protection。",
+    "example": "We should protect the environment.",
+    "excn": "我们应该保护环境。"
+  },
+  "head": {
+    "pos": "n. 名词",
+    "cn": "负责人；头；领导",
+    "usage": "本义“头”，引申为机构负责人。文中 head of the park 即公园负责人。",
+    "coll": "the head of the park / school；head teacher 校长；use one's head 动脑筋",
+    "form": "复数 heads；动词 head（领导、带队）",
+    "note": "head 此处不是“头”；the head of + 机构表示“……的负责人”。",
+    "example": "Who is the head of your school?",
+    "excn": "你们学校的负责人是谁？"
+  },
+  "choose": {
+    "pos": "v. 动词",
+    "cn": "选择",
+    "usage": "从若干对象中挑出。文中 The park chose crows 指公园选定乌鸦来做清洁工。",
+    "coll": "choose sb. / sth.；choose sb. to do；choose A from B；choose between",
+    "form": "过去式 chose；过去分词 chosen；名词 choice",
+    "note": "choose→chose→chosen 不规则；make a choice 做选择（名词搭配）。",
+    "example": "They chose crows for the job.",
+    "excn": "他们选择乌鸦来做这项工作。"
+  },
+  "smart": {
+    "pos": "adj. 形容词",
+    "cn": "聪明的；时髦的",
+    "usage": "头脑灵活、聪明。文中 smarter than other birds 用比较级说明乌鸦比其他鸟聪明。",
+    "coll": "a smart bird / boy；smarter than；smart clothes 时髦衣服",
+    "form": "比较级 smarter；最高级 smartest；= clever / bright",
+    "note": "smart 多义：聪明的、时髦的、整洁的；比较级直接加 -er。",
+    "example": "Crows are smarter than other birds.",
+    "excn": "乌鸦比其他鸟更聪明。"
+  },
+  "scientist": {
+    "pos": "n. 名词",
+    "cn": "科学家",
+    "usage": "从事科学研究的人。文中 scientists made a vending machine 指科学家设计装置。",
+    "coll": "a famous scientist；scientists study / make…；a team of scientists",
+    "form": "复数 scientists；science 科学；形容词 scientific",
+    "note": "-ist 表示“从事……的人”：scientist, artist, pianist；science 是学科名词。",
+    "example": "The scientists study bird behaviour.",
+    "excn": "科学家研究鸟类行为。"
+  },
+  "vending machine": {
+    "pos": "短语",
+    "cn": "自动贩卖机",
+    "usage": "投币或扫码后自动出货的机器。文中专为乌鸦设计，投入合适纸片可得食物。",
+    "coll": "a vending machine；put paper into the machine；work only when…",
+    "form": "复数 vending machines；vend 售卖 + -ing",
+    "note": "vending 来自 vend（售卖）；machine 机器；别与 washing machine（洗衣机）混淆。",
+    "example": "There is a vending machine near the door.",
+    "excn": "门口附近有一台自动贩卖机。"
+  },
+  "size": {
+    "pos": "n. 名词",
+    "cn": "尺寸，大小",
+    "usage": "物体的大小、规格。文中 the right size 指纸片大小正合适；购物时 what size 问尺码。",
+    "coll": "the right / wrong size；what size；size of the paper；a size of…",
+    "form": "复数 sizes",
+    "note": "size 指大小 / 尺码；“合适大小”用 the right size，不说 the right big。",
+    "example": "This paper is the right size.",
+    "excn": "这张纸大小正合适。"
+  },
+  "remember": {
+    "pos": "v. 动词",
+    "cn": "记住，记得",
+    "usage": "把信息留在记忆中。文中 crows could remember the right size 指乌鸦能记住纸片大小。",
+    "coll": "remember sth.；remember to do 记得去做；remember doing 记得做过；remember that…",
+    "form": "过去式 remembered；反义 forget",
+    "note": "remember to do（未做，记得去做）与 remember doing（已做，记得做过）含义不同；宾语从句用 that。",
+    "example": "She remembered his birthday.",
+    "excn": "她记得他的生日。"
+  },
+  "clever": {
+    "pos": "adj. 形容词",
+    "cn": "聪明的",
+    "usage": "头脑灵活、学得快。文末 how clever these birds can be 赞叹乌鸦聪明。",
+    "coll": "a clever boy / bird；clever at maths；how clever…",
+    "form": "比较级 cleverer / more clever；最高级 cleverest；= smart",
+    "note": "clever 英式常用，smart 美式常用；be clever at 擅长，同 be good at。",
+    "example": "The boy is clever at maths.",
+    "excn": "这个男孩擅长数学。"
+  },
+  "share": {
+    "pos": "v. 动词",
+    "cn": "分享；共用",
+    "usage": "把内容或物品与他人共有。开头 share my friend Mike's life and my life with you 即向大家分享。",
+    "coll": "share sth. with sb.；share ideas / books / life；share a room 共用房间",
+    "form": "过去式 shared；现在分词 sharing；名词 sharing",
+    "note": "share 后接 with：share A with B；不能说 share B A 而省略 with。",
+    "example": "I share my books with my friends.",
+    "excn": "我和朋友分享书籍。"
+  },
+  "playground": {
+    "pos": "n. 名词",
+    "cn": "操场，运动场",
+    "usage": "学校供运动游戏的场地。范文中 on the school playground 描述上午活动地点。",
+    "coll": "on the playground；school playground；run / play on the playground",
+    "form": "复数 playgrounds；由 play + ground 合成",
+    "note": "地点介词用 on：on the playground；不要用 in。",
+    "example": "The kids are running on the playground.",
+    "excn": "孩子们在操场上奔跑。"
+  },
+  "skip rope": {
+    "pos": "短语",
+    "cn": "跳绳",
+    "usage": "双脚随绳索跃起的运动，= jump rope。范文中女孩们在跳绳。",
+    "coll": "skip / jump rope；go skipping；skip rope with friends",
+    "form": "现在分词 skipping rope（skip 双写 p）",
+    "note": "重读闭音节双写末尾辅音：skip→skipping, run→running；rope 绳索。",
+    "example": "The girls are skipping rope.",
+    "excn": "女孩们正在跳绳。"
+  },
+  "play hide and seek": {
+    "pos": "短语",
+    "cn": "玩捉迷藏",
+    "usage": "一人找、多人藏的儿童游戏。hide 躲藏，seek 寻找；范文中“我”和同学玩捉迷藏。",
+    "coll": "play hide and seek；play hide-and-seek in the garden",
+    "form": "现在分词 playing hide and seek",
+    "note": "固定游戏名，中间不加冠词；hide 与 seek 都是动词，此处构成游戏名词短语。",
+    "example": "They are playing hide and seek in the garden.",
+    "excn": "他们正在花园里捉迷藏。"
+  },
+  "at the same time": {
+    "pos": "短语",
+    "cn": "同时",
+    "usage": "连接两个同一时刻发生的场景，体现时差对比。范文用它衔接李华上午与 Mike 晚上的活动。",
+    "coll": "at the same time；at the same time,…（句首状语）",
+    "form": "无词形变化",
+    "note": "same 前必加 the；“同时”不说 in the same time；可作插入语。",
+    "example": "At the same time, his sister is reading.",
+    "excn": "与此同时，他的妹妹正在读书。"
+  },
+  "enjoy": {
+    "pos": "v. 动词",
+    "cn": "享受；喜爱",
+    "usage": "从中获得愉悦。范文 They are enjoying a quiet evening 指享受安静夜晚；后接动名词。",
+    "coll": "enjoy doing sth.；enjoy oneself = have a good time；enjoy a quiet evening",
+    "form": "过去式 enjoyed；现在分词 enjoying；形容词 enjoyable",
+    "note": "enjoy 后接动名词：enjoy reading；enjoy oneself 中 oneself 随主语变化；不可说 enjoy to do。",
+    "example": "We enjoy a quiet evening at home.",
+    "excn": "我们在家享受安静的夜晚。"
+  }
+};
+
+/* 小写索引，匹配时忽略大小写 */
+const VC = {};
+for(const k in VOCAB){ VC[k.toLowerCase()] = VOCAB[k]; }
+
+/* ===== 标记解析：[[key|显示文本]] 或 [[key]] ===== */
+function renderVocab(root){
+  root.querySelectorAll("p, .essay p, .q-stem, .q-list li").forEach(p=>{
+    walkNode(p);
+  });
+}
+function walkNode(node){
+  Array.from(node.childNodes).forEach(child=>{
+    if(child.nodeType===3){ replaceText(child); }
+    else if(child.nodeType===1 && !child.classList.contains("vpop")){ walkNode(child); }
+  });
+}
+function replaceText(textNode){
+  const text=textNode.nodeValue;
+  if(!text||text.indexOf("[[")<0) return;
+  const frag=document.createDocumentFragment();
+  const re=/\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g; let last=0,m;
+  while((m=re.exec(text))){
+    if(m.index>last) frag.appendChild(document.createTextNode(text.slice(last,m.index)));
+    const key=m[1].trim(), label=m[2]?m[2]:key;
+    const btn=document.createElement("button");
+    btn.type="button"; btn.className="vocab"; btn.dataset.w=key; btn.textContent=label;
+    frag.appendChild(btn); last=re.lastIndex;
+  }
+  if(last<text.length) frag.appendChild(document.createTextNode(text.slice(last)));
+  textNode.parentNode.replaceChild(frag,textNode);
+}
+
+/* ===== 语音朗读 ===== */
+let zhTalk=null;
+function speak(text,lang){
+  if(!("speechSynthesis" in window)){alert("当前浏览器不支持语音朗读");return;}
+  speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(text);
+  u.lang=lang||"en-US"; u.rate=0.9;
+  speechSynthesis.speak(u);
+}
+
+/* 搭配 / 词形 / 辨析 可选栏目 */
+function extraBlocks(v){
+  let h="";
+  if(v.coll) h+=`<div class="v-sub"><b>常见搭配</b>${v.coll}</div>`;
+  if(v.form) h+=`<div class="v-sub"><b>词形派生</b>${v.form}</div>`;
+  if(v.note) h+=`<div class="v-sub"><b>辨析提醒</b>${v.note}</div>`;
+  return h;
+}
+
+/* ===== 词条点击：展开释义并朗读 ===== */
+document.addEventListener("click",function(e){
+  const vocabBtn=e.target.closest(".vocab");
+  if(vocabBtn){
+    const key=vocabBtn.dataset.w; const info=VC[key.toLowerCase()];
+    if(!info){return;}
+    const already=vocabBtn.nextElementSibling && vocabBtn.nextElementSibling.classList.contains("vpop");
+    // 关闭其它展开
+    document.querySelectorAll(".vpop").forEach(n=>n.remove());
+    document.querySelectorAll(".vocab.pop").forEach(b=>b.classList.remove("pop"));
+    if(already){return;}
+    vocabBtn.classList.add("pop");
+    const pop=document.createElement("div"); pop.className="vpop";
+    pop.innerHTML=`<div class="v-head"><span class="v-word">${key}</span><span class="v-pos">${info.pos}</span><span class="v-cn">${info.cn}</span></div>
+      <div class="v-usage">用法：${info.usage}</div>
+      ${extraBlocks(info)}
+      <div class="v-ex"><div class="v-ex-en">${info.example}</div><div class="v-ex-cn">${info.excn}</div>
+      <button class="mini-speak" data-speak="${info.example.replace(/"/g,"&quot;")}"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg>读例句</button></div>`;
+    vocabBtn.after(pop);
+    speak(key);
+    return;
+  }
+  const mini=e.target.closest(".mini-speak");
+  if(mini){ speak(mini.dataset.speak); return; }
+  const sb=e.target.closest(".speak-btn");
+  if(sb){ speak(sb.dataset.talk); }
+});
+
+/* ===== 词汇总表 ===== */
+function buildVocabTable(){
+  const box=document.getElementById("vgrid"); if(!box) return;
+  Object.keys(VOCAB).forEach(k=>{
+    const v=VOCAB[k];
+    const card=document.createElement("div"); card.className="vcard"; card.dataset.k=k.toLowerCase();
+    card.innerHTML=`<div class="vc-top"><span class="vc-word">${k}</span><span class="vc-pos">${v.pos}</span><span class="vc-cn">${v.cn}</span></div>
+      <div class="vc-use">${v.usage}</div>
+      ${extraBlocks(v)}
+      <div class="vc-ex">${v.example}</div><div class="vc-excn">${v.excn}</div>
+      <div class="vc-row"><button class="mini-speak" data-speak="${k}"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg>朗读单词</button>
+      <button class="mini-speak" data-speak="${v.example.replace(/"/g,"&quot;")}">读例句</button></div>`;
+    box.appendChild(card);
+  });
+  const input=document.getElementById("vsearch");
+  input.addEventListener("input",function(){
+    const q=input.value.trim().toLowerCase();
+    document.querySelectorAll(".vcard").forEach(c=>{
+      c.style.display=(!q||c.dataset.k.includes(q))?"":"none";
+    });
+  });
+}
+
+renderVocab(document);
+buildVocabTable();
+</script>
+</body>
+</html>

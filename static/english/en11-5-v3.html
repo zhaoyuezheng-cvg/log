@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>英语培优题精讲 | 七年级上册 + 初二英语试题</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..900&family=DM+Mono:wght@400;500&family=Noto+Serif+SC:wght@300;400;500;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,300..700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f7f1e6;--paper-2:#fffdf7;--ink:#1c1712;--ink-soft:#6b6055;--line:#e0d4c0;
+  --accent:#1d5c63;--accent-2:#c07034;--gold:#e0a537;--rain:#2f6d8c;
+  --shadow:0 26px 60px -42px rgba(52,36,18,.55);--radius:18px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:radial-gradient(ellipse at 12% -8%,rgba(224,165,55,.20),transparent 55%),
+  radial-gradient(ellipse at 92% 12%,rgba(47,109,140,.16),transparent 52%),var(--paper);
+  color:var(--ink);font-family:"Source Serif 4","Noto Serif SC",Georgia,serif;
+  font-size:17px;line-height:1.85;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:999;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+  opacity:.055;mix-blend-mode:multiply}
+::selection{background:var(--gold);color:#20180c}
+#progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:1000;
+  background:linear-gradient(90deg,var(--accent),var(--gold),var(--accent-2));transition:width .12s linear}
+
+.hero{position:relative;padding:clamp(52px,9vw,116px) clamp(20px,6vw,84px) clamp(34px,5vw,62px);overflow:hidden}
+.hero-grid{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1.35fr .65fr;gap:40px;align-items:center}
+.kicker{font-family:"DM Mono",monospace;font-size:11.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--accent);
+  display:flex;align-items:center;gap:12px;margin-bottom:22px}
+.kicker::before{content:"";width:52px;height:1px;background:var(--accent)}
+.hero h1{font-family:"Fraunces","Noto Serif SC",serif;font-weight:900;letter-spacing:-.025em;
+  font-size:clamp(38px,7vw,86px);line-height:.98}
+.hero h1 .en{font-style:italic;font-weight:600;color:var(--accent)}
+.hero h1 .no{display:block;font-family:"DM Mono",monospace;font-size:clamp(12px,1.5vw,16px);
+  letter-spacing:.3em;color:var(--accent-2);font-weight:500;margin-bottom:18px}
+.hero p.lede{margin-top:26px;max-width:48ch;font-size:clamp(16px,1.5vw,19px);color:var(--ink-soft)}
+.hero .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.chip{font-family:"DM Mono",monospace;font-size:11.5px;letter-spacing:.12em;padding:7px 14px;border-radius:999px;
+  border:1px solid var(--line);background:rgba(255,253,247,.72);color:var(--ink-soft)}
+.chip b{color:var(--accent);font-weight:500}
+.weather-stack{position:relative;display:flex;flex-direction:column;gap:18px;align-items:flex-end}
+.wx{width:clamp(72px,10vw,116px);height:clamp(72px,10vw,116px);border-radius:22px;display:grid;place-items:center;
+  border:1px solid var(--line);background:rgba(255,253,247,.66);box-shadow:var(--shadow);color:var(--accent);
+  animation:floaty 7s ease-in-out infinite}
+.wx:nth-child(2){color:var(--rain);animation-delay:-2.2s}
+.wx:nth-child(3){color:var(--accent-2);animation-delay:-4.4s}
+.wx svg{width:52%;height:52%}
+@keyframes floaty{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-14px) rotate(1.5deg)}}
+
+.nav{position:sticky;top:0;z-index:80;background:rgba(247,241,230,.88);backdrop-filter:blur(14px);
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.nav-inner{max-width:1240px;margin:0 auto;display:flex;align-items:center;gap:8px;
+  padding:12px clamp(16px,5vw,60px);overflow-x:auto;scrollbar-width:none}
+.nav-inner::-webkit-scrollbar{display:none}
+.nav a{flex:0 0 auto;font-family:"DM Mono",monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink-soft);text-decoration:none;padding:8px 13px;border-radius:999px;transition:.28s;white-space:nowrap}
+.nav a:hover{color:var(--accent);background:rgba(29,92,99,.09)}
+.nav a.active{background:var(--accent);color:#fff}
+.nav .toggle-ans{margin-left:auto;flex:0 0 auto;font-family:"DM Mono",monospace;font-size:11.5px;letter-spacing:.12em;
+  padding:9px 17px;border-radius:999px;border:1px solid var(--accent);background:transparent;color:var(--accent);
+  cursor:pointer;transition:.28s;white-space:nowrap}
+.nav .toggle-ans:hover{background:var(--accent);color:#fff;letter-spacing:.2em}
+
+.sec{max-width:1240px;margin:0 auto;padding:clamp(52px,7vw,104px) clamp(20px,6vw,84px) clamp(20px,3vw,40px)}
+.sec-head{display:flex;gap:clamp(18px,3vw,38px);align-items:flex-start;flex-wrap:wrap;
+  border-top:2px solid var(--ink);padding-top:22px;margin-bottom:clamp(28px,4vw,48px)}
+.sec-num{font-family:"Fraunces",serif;font-weight:900;font-size:clamp(44px,6.2vw,78px);line-height:.82;color:var(--accent-2)}
+.sec-title{flex:1;min-width:260px}
+.sec-title h2{font-family:"Fraunces","Noto Serif SC",serif;font-size:clamp(26px,3.3vw,42px);line-height:1.1;letter-spacing:-.015em}
+.sec-title h2 em{font-style:italic;color:var(--accent)}
+.sec-title .sub{margin-top:8px;color:var(--ink-soft);font-family:"Noto Serif SC",serif;font-size:15px}
+.meta{display:flex;flex-wrap:wrap;gap:8px 10px;margin-top:16px}
+.meta span{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.08em;color:var(--ink-soft);
+  border:1px dashed var(--line);padding:5px 11px;border-radius:8px;background:rgba(255,253,247,.6)}
+.meta span b{color:var(--accent);font-weight:500}
+.src-badge{display:inline-block;font-family:"DM Mono",monospace;font-size:10.5px;letter-spacing:.16em;
+  padding:4px 11px;border-radius:999px;background:var(--accent);color:#fff;margin-bottom:10px}
+.src-badge.b{background:var(--accent-2)}
+
+.passage{position:relative;background:var(--paper-2);border:1px solid var(--line);border-radius:var(--radius);
+  padding:clamp(22px,3.6vw,46px);box-shadow:var(--shadow)}
+.passage + .passage{margin-top:22px}
+.block-bar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+.block-bar .tag{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-2)}
+.speak-btn{display:inline-flex;align-items:center;gap:7px;font-family:"DM Mono",monospace;font-size:11px;
+  letter-spacing:.12em;padding:7px 13px;border-radius:999px;border:1px solid var(--line);background:transparent;
+  color:var(--ink-soft);cursor:pointer;transition:.25s}
+.speak-btn:hover{border-color:var(--accent);color:var(--accent);background:rgba(29,92,99,.08);transform:translateY(-2px)}
+.speak-btn svg{width:13px;height:13px}
+.en{font-family:"Source Serif 4",Georgia,serif;font-size:clamp(16.5px,1.55vw,19.5px);line-height:2.05;letter-spacing:.004em}
+.en + .en{margin-top:16px}
+.gloss{color:var(--accent-2);font-family:"Noto Serif SC",serif;font-size:.86em;opacity:.85}
+
+.w{position:relative;cursor:pointer;border-bottom:2px solid var(--accent-2);padding:0 1px;
+  background:linear-gradient(transparent 64%,rgba(224,165,55,.32) 64%);border-radius:2px;
+  transition:background .25s ease,color .25s ease}
+.w:hover{background:rgba(224,165,55,.5)}
+.w.active{background:var(--accent-2);color:#fffdf7;border-bottom-color:var(--accent-2)}
+.w::after{content:attr(data-cn);position:absolute;left:50%;bottom:calc(100% + 10px);transform:translate(-50%,6px);
+  background:var(--ink);color:#fdf6e8;font-family:"Noto Serif SC",serif;font-size:12.5px;letter-spacing:.05em;
+  padding:6px 11px;border-radius:8px;white-space:nowrap;opacity:0;pointer-events:none;transition:.24s;z-index:20}
+.w:hover::after{opacity:1;transform:translate(-50%,0)}
+
+.blank{display:inline-block;cursor:pointer;padding:0 4px;border-radius:6px;transition:.25s}
+.blank:hover{background:rgba(29,92,99,.1)}
+.bnum{font-family:"DM Mono",monospace;color:var(--accent-2);font-size:.92em;letter-spacing:.06em}
+.hint{color:var(--ink-soft);font-family:"Source Serif 4",serif;font-style:italic}
+.blank .ans{display:none;font-family:"Source Serif 4",serif;font-weight:600;color:var(--accent);
+  border-bottom:2px solid var(--gold);padding:0 2px}
+body.show-ans .blank .ans,.blank.reveal .ans{display:inline;animation:pop .34s ease}
+body.show-ans .blank .hint,.blank.reveal .hint{display:none}
+@keyframes pop{from{opacity:0;transform:translateY(-4px) scale(.94)}to{opacity:1;transform:none}}
+
+.talk{border-left:3px solid var(--gold);padding:4px 0 4px 20px;margin:18px 0}
+.talk .who{font-family:"DM Mono",monospace;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent)}
+.talk .en{margin-top:6px}
+
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(288px,1fr));gap:14px;margin-top:22px}
+.opt{background:var(--paper-2);border:1px solid var(--line);border-left:4px solid var(--accent-2);border-radius:12px;
+  padding:16px 18px;transition:.3s cubic-bezier(.2,.8,.2,1)}
+.opt:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.opt .letter{font-family:"DM Mono",monospace;color:var(--accent-2);font-size:13px;letter-spacing:.16em}
+.opt p{margin-top:6px;font-size:15.5px;line-height:1.75}
+.opt.used{background:rgba(29,92,99,.1);border-left-color:var(--accent)}
+.choices{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:10px;margin-top:18px}
+.choice{background:var(--paper);border:1px solid var(--line);border-radius:11px;padding:11px 15px;
+  font-family:"Source Serif 4",serif;font-size:15.5px;display:flex;gap:12px;align-items:baseline;transition:.25s}
+.choice:hover{border-color:var(--gold);transform:translateX(4px)}
+.choice .no{font-family:"DM Mono",monospace;color:var(--accent-2);font-size:12px;letter-spacing:.12em;flex:0 0 auto}
+.choice .op{color:var(--ink-soft)}
+.choice .op b{color:var(--accent);font-weight:600}
+
+.panel{margin-top:26px;border-radius:var(--radius);border:1px solid var(--line);background:rgba(255,253,247,.8);overflow:hidden}
+.panel-head{display:flex;align-items:center;gap:12px;padding:16px clamp(18px,3vw,28px);background:var(--accent);color:#fffdf7}
+.panel-head h3{font-family:"Noto Serif SC",serif;font-size:17px;font-weight:500;letter-spacing:.06em}
+.panel-head .n{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.24em;opacity:.85}
+.panel-body{padding:clamp(18px,3vw,30px)}
+.ans-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(232px,1fr));gap:12px}
+.ans-item{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.ans-item .q{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.18em;color:var(--accent-2)}
+.ans-item .a{font-family:"Fraunces",serif;font-size:19px;font-weight:600;margin-top:4px;color:var(--accent)}
+.ans-item .why{margin-top:8px;font-family:"Noto Serif SC",serif;font-size:13.5px;line-height:1.8;color:var(--ink-soft)}
+
+.explain{counter-reset:step;margin-top:22px}
+.explain li{list-style:none;position:relative;padding-left:44px;margin-bottom:18px;
+  font-family:"Noto Serif SC",serif;font-size:15px;line-height:1.95;color:#2e251c}
+.explain li::before{counter-increment:step;content:counter(step,decimal-leading-zero);position:absolute;left:0;top:2px;
+  font-family:"DM Mono",monospace;font-size:12px;letter-spacing:.1em;color:#fff;background:var(--accent-2);
+  width:30px;height:26px;display:grid;place-items:center;border-radius:7px}
+.explain li b{color:var(--accent);font-weight:600}
+.para-title{font-family:"Fraunces","Noto Serif SC",serif;font-size:20px;margin:26px 0 10px;color:var(--ink)}
+.para-title span{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.22em;color:var(--accent-2);display:block;margin-bottom:4px}
+
+.tools{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:18px}
+.search{position:relative;flex:1;min-width:230px}
+.search input{width:100%;padding:13px 18px 13px 44px;border-radius:999px;border:1px solid var(--line);
+  background:var(--paper-2);font-family:"Noto Serif SC",serif;font-size:15px;color:var(--ink);outline:none;transition:.28s}
+.search input:focus{border-color:var(--accent);box-shadow:0 0 0 4px rgba(29,92,99,.12)}
+.search svg{position:absolute;left:17px;top:50%;transform:translateY(-50%);width:16px;height:16px;color:var(--ink-soft)}
+.filters{display:flex;flex-wrap:wrap;gap:8px}
+.filters button{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.12em;padding:9px 15px;border-radius:999px;
+  border:1px solid var(--line);background:transparent;color:var(--ink-soft);cursor:pointer;transition:.25s}
+.filters button:hover{border-color:var(--accent);color:var(--accent)}
+.filters button.on{background:var(--ink);border-color:var(--ink);color:#fdf6e8}
+.count{font-family:"DM Mono",monospace;font-size:11.5px;letter-spacing:.14em;color:var(--ink-soft);margin-bottom:16px}
+
+.vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:16px}
+.vcard{position:relative;background:var(--paper-2);border:1px solid var(--line);border-radius:16px;padding:20px 21px;
+  transition:.34s cubic-bezier(.2,.8,.2,1)}
+.vcard:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:var(--gold)}
+.vcard .top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.vcard .word{font-family:"Fraunces",serif;font-size:21px;font-weight:600;line-height:1.25;letter-spacing:-.01em}
+.vcard .ph{font-family:"DM Mono",monospace;font-size:11px;color:var(--ink-soft);margin-top:5px;letter-spacing:.05em}
+.icon-btn{flex:0 0 auto;width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:transparent;
+  display:grid;place-items:center;cursor:pointer;color:var(--accent);transition:.26s}
+.icon-btn:hover{background:var(--accent);color:#fff;transform:rotate(-8deg) scale(1.08)}
+.icon-btn svg{width:15px;height:15px}
+.tagrow{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0 8px}
+.pos,.src-t{display:inline-block;font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  padding:4px 10px;border-radius:999px;background:rgba(29,92,99,.11);color:var(--accent)}
+.src-t{background:rgba(192,112,52,.14);color:var(--accent-2)}
+.vcard .cn{font-family:"Noto Serif SC",serif;font-size:16.5px;color:var(--accent-2);font-weight:500}
+.dline{margin-top:11px;padding-top:11px;border-top:1px dashed var(--line)}
+.dlabel{font-family:"DM Mono",monospace;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);
+  display:inline-block;margin-bottom:5px}
+.dbody{font-family:"Noto Serif SC",serif;font-size:13px;line-height:1.9;color:var(--ink-soft)}
+.dbody b{color:var(--accent);font-weight:600}
+.dbody .exen{font-family:"Source Serif 4",serif;font-style:italic;font-size:14px;color:#2e251c}
+
+.idiom-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:16px}
+.idiom{background:var(--paper-2);border:1px solid var(--line);border-radius:16px;padding:20px 21px;transition:.3s}
+.idiom:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:var(--accent-2)}
+.idiom .en-i{font-family:"Fraunces",serif;font-style:italic;font-size:19px;font-weight:600;line-height:1.35}
+.idiom .cn-i{font-family:"Noto Serif SC",serif;font-size:14.5px;color:var(--accent-2);margin-top:7px}
+.idiom .ex-i{font-size:13.5px;color:var(--ink-soft);margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);line-height:1.8}
+.wx-words{display:flex;flex-wrap:wrap;gap:10px}
+.wx-word{display:flex;align-items:center;gap:9px;padding:11px 16px;border-radius:999px;border:1px solid var(--line);
+  background:var(--paper-2);cursor:pointer;transition:.28s}
+.wx-word:hover{background:var(--accent);border-color:var(--accent);transform:translateY(-3px)}
+.wx-word:hover .en-w{color:#fff}.wx-word:hover .cn-w{color:rgba(255,255,255,.82)}
+.wx-word .en-w{font-family:"Source Serif 4",serif;font-size:15px;font-weight:600}
+.wx-word .cn-w{font-family:"Noto Serif SC",serif;font-size:12.5px;color:var(--ink-soft)}
+
+.note{margin-top:20px;padding:16px 20px;border-radius:14px;background:rgba(224,165,55,.14);
+  border:1px solid rgba(192,112,52,.32);font-family:"Noto Serif SC",serif;font-size:13.5px;line-height:1.9;color:#4a3c2c}
+.note b{color:var(--accent-2)}
+
+#wordCard{position:fixed;right:22px;bottom:22px;width:min(420px,calc(100vw - 32px));z-index:200;max-height:78vh;overflow-y:auto;
+  background:var(--paper-2);border:1px solid var(--line);border-radius:20px;box-shadow:0 34px 70px -30px rgba(40,26,10,.5);
+  padding:24px;opacity:0;transform:translateY(26px) scale(.97);pointer-events:none;
+  transition:.42s cubic-bezier(.2,.85,.25,1)}
+#wordCard.open{opacity:1;transform:none;pointer-events:auto}
+#wordCard .wc-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+#wordCard .wc-word{font-family:"Fraunces",serif;font-size:25px;font-weight:700;line-height:1.18;letter-spacing:-.015em}
+#wordCard .wc-ph{font-family:"DM Mono",monospace;font-size:11.5px;color:var(--ink-soft);margin-top:6px}
+#wordCard .wc-close{width:32px;height:32px;border-radius:50%;border:1px solid var(--line);background:transparent;
+  cursor:pointer;font-size:17px;line-height:1;color:var(--ink-soft);transition:.25s;flex:0 0 auto}
+#wordCard .wc-close:hover{background:var(--ink);color:#fff;transform:rotate(90deg)}
+#wordCard .wc-cn{font-family:"Noto Serif SC",serif;font-size:19px;color:var(--accent-2);margin-top:12px;font-weight:500}
+#wordCard .wc-sec{margin-top:12px}
+#wordCard .wc-sec .lbl{font-family:"DM Mono",monospace;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--accent);display:block;margin-bottom:4px}
+#wordCard .wc-sec .txt{font-family:"Noto Serif SC",serif;font-size:13.5px;line-height:1.9;color:var(--ink-soft)}
+#wordCard .wc-sec .txt b{color:var(--accent);font-weight:600}
+#wordCard .wc-ex{margin-top:13px;padding-top:12px;border-top:1px dashed var(--line)}
+#wordCard .wc-ex i{font-family:"Source Serif 4",serif;font-style:italic;font-size:14.5px;line-height:1.8;display:block}
+#wordCard .wc-ex .cn-s{font-family:"Noto Serif SC",serif;font-size:12.5px;color:var(--ink-soft);margin-top:3px;display:block}
+#wordCard .wc-actions{display:flex;gap:10px;margin-top:16px}
+#wordCard .wc-actions button{flex:1;font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.13em;padding:11px;
+  border-radius:11px;border:1px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer;transition:.26s}
+#wordCard .wc-actions button:hover{background:transparent;color:var(--accent);letter-spacing:.22em}
+
+#toast{position:fixed;left:50%;bottom:30px;transform:translate(-50%,22px);background:var(--ink);color:#fdf6e8;
+  font-family:"Noto Serif SC",serif;font-size:13.5px;padding:12px 22px;border-radius:999px;opacity:0;
+  pointer-events:none;transition:.34s;z-index:300}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+
+footer{margin-top:clamp(46px,6vw,86px);border-top:1px solid var(--line);padding:clamp(30px,5vw,54px) clamp(20px,6vw,84px)}
+.foot-inner{max-width:1240px;margin:0 auto;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center}
+.foot-inner p{font-family:"Noto Serif SC",serif;font-size:13px;color:var(--ink-soft);line-height:1.9;max-width:62ch}
+.foot-mark{font-family:"Fraunces",serif;font-style:italic;font-size:clamp(20px,3vw,30px);color:var(--accent)}
+#toTop{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.18em;padding:11px 20px;border-radius:999px;
+  border:1px solid var(--ink);background:transparent;cursor:pointer;transition:.28s}
+#toTop:hover{background:var(--ink);color:#fdf6e8;letter-spacing:.28em}
+
+.reveal{opacity:1;transform:none}
+html.anim .reveal{opacity:0;transform:translateY(26px);
+  transition:opacity .75s ease,transform .75s cubic-bezier(.2,.8,.2,1)}
+html.anim .reveal.in{opacity:1;transform:none}
+
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr}
+  .weather-stack{flex-direction:row;justify-content:flex-start;align-items:center;margin-top:8px}
+  .wx{width:72px;height:72px;border-radius:18px}}
+@media(max-width:620px){body{font-size:16px}.sec-num{font-size:42px}.nav .toggle-ans{margin-left:0}
+  #wordCard{right:12px;left:12px;bottom:12px;width:auto;padding:20px;max-height:72vh}.w::after{display:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:.01ms!important}
+  html.anim .reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<noscript><style>.reveal{opacity:1!important;transform:none!important}
+.blank .ans{display:inline!important}.blank .hint{display:none!important}</style></noscript>
+
+<div id="progress"></div>
+
+<header class="hero">
+  <div class="hero-grid">
+    <div>
+      <div class="kicker">英语培优 · 七年级上册 Unit 2 ＋ 初二英语试题（第 6—8 页）</div>
+      <h1>
+        <span class="no">Week 09 · Friday</span>
+        <span class="en">Rain or Shine</span><br>两套试题精讲合集
+      </h1>
+      <p class="lede">共 7 个题型全解；生词与生短语均提供「构词法 + 常用搭配 + 易错辨析 + 双例句」深度解析。正文中带横线的生词可点击展开，支持语音朗读；文末集中汇总全部 78 个词条。</p>
+      <div class="chips">
+        <span class="chip"><b>2</b> 份试题</span>
+        <span class="chip"><b>7</b> 个题型</span>
+        <span class="chip"><b>78</b> 生词条目</span>
+        <span class="chip"><b>156</b> 例句</span>
+        <span class="chip"><b>9</b> 天气妙语</span>
+        <span class="chip"><b>20</b> 天气词汇</span>
+      </div>
+    </div>
+    <div class="weather-stack" aria-hidden="true">
+      <div class="wx"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"/></svg></div>
+      <div class="wx"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M7 15.4a3.9 3.9 0 0 1 .5-7.77A5.2 5.2 0 0 1 17.4 9.2 3.4 3.4 0 0 1 17 15.4Z"/><path d="M8.4 18.2 7.6 20.6M12.4 18.2l-.8 2.4M16.4 18.2l-.8 2.4"/></svg></div>
+      <div class="wx"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><path d="M13.4 2.6 6.6 13h4.3l-1.3 8.4L17.4 11h-4.3z"/></svg></div>
+    </div>
+  </div>
+</header>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#s1">01 七上·语法填空</a>
+    <a href="#s2">02 七上·阅读表达</a>
+    <a href="#s3">03 七上·阅读还原</a>
+    <a href="#s4">04 初二·完形填空</a>
+    <a href="#s5">05 初二·语篇填空</a>
+    <a href="#s6">06 初二·阅读回答</a>
+    <a href="#s7">07 初二·书面表达</a>
+    <a href="#s8">08 生词汇总</a>
+    <a href="#s9">09 积累小袋</a>
+    <button class="toggle-ans" id="toggleAns">显示全部答案</button>
+  </div>
+</nav>
+
+<main>
+
+<!-- ========= 01 ========= -->
+<section class="sec" id="s1">
+  <div class="sec-head reveal">
+    <div class="sec-num">01</div>
+    <div class="sec-title">
+      <div class="src-badge">来源：七年级上册 · 第 19 页</div>
+      <h2>四、语法填空 <em>Grammar Cloze</em></h2>
+      <div class="sub">阅读短文，在空白处填入一个适当的单词或括号内单词的正确形式。</div>
+      <div class="meta">
+        <span>主题：<b>人与自然——自然生态</b></span><span>语篇类型：<b>说明文</b></span>
+        <span>词数：<b>170</b></span><span>难度：<b>★★★★☆</b></span>
+        <span>建议用时：<b>7′</b></span><span>正确率：<b>/10</b></span><span>答案：<b>P4</b></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="passage reveal">
+    <div class="block-bar"><span class="tag">Original Text · 原文</span>
+      <button class="speak-btn" data-read="textA"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6.5 9H3v6h3.5L11 19z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.4 5.6a9 9 0 0 1 0 12.8"/></svg>朗读本段</button>
+    </div>
+    <div id="textA">
+      <p class="en">The weather in the Northern and Southern <span class="w" data-w="hemisphere">Hemispheres</span><span class="gloss">(半球)</span> is different. It is fun <span class="blank"><span class="bnum">1.</span><span class="hint">(think)</span><span class="ans">to think</span></span> that when it is cold in one place, it is hot in another. The Earth's <span class="w" data-w="tilt">tilt</span><span class="gloss">(地球轴线)</span> is the reason for the different <span class="blank"><span class="bnum">2.</span><span class="hint">(season)</span><span class="ans">seasons</span></span>. This means that while one <span class="w" data-w="hemisphere">hemisphere</span> is <span class="w" data-w="tilt">tilted</span><span class="gloss">(倾斜)</span> towards <span class="blank"><span class="bnum">3.</span><span class="ans">the</span></span> Sun, the other is tilted away from it.</p>
+      <p class="en"><span class="blank"><span class="bnum">4.</span><span class="ans">When</span></span> it's winter in the North, it's summer in the South. Students in the Southern Hemisphere <span class="w" data-w="look forward to">look forward to</span> <span class="blank"><span class="bnum">5.</span><span class="hint">(spend)</span><span class="ans">spending</span></span> summer vacation at the beach, while those in the Northern Hemisphere enjoy building <span class="w" data-w="snowman">snowmen</span> during <span class="blank"><span class="bnum">6.</span><span class="hint">(they)</span><span class="ans">their</span></span> winter holidays.</p>
+      <p class="en">There <span class="blank"><span class="bnum">7.</span><span class="hint">(be)</span><span class="ans">are</span></span> <span class="w" data-w="holiday">holidays</span> in both hemispheres, but the weather makes them different. For example, <span class="blank"><span class="bnum">8.</span><span class="ans">on</span></span> special nights like New Year's Eve, people all over the world get together. Because of the different weather, <span class="w" data-w="firework">fireworks</span> might <span class="w" data-w="go off">go off</span> over <span class="blank"><span class="bnum">9.</span><span class="hint">(snow)</span><span class="ans">snowy</span></span> places or near the beach, making each <span class="blank"><span class="bnum">10.</span><span class="hint">(celebrate)</span><span class="ans">celebration</span></span> special.</p>
+      <p class="en">So, the Earth's tilt not only gives us different weather but also makes our <span class="w" data-w="tradition">traditions</span> <span class="w" data-w="unique">unique</span>.</p>
+    </div>
+    <div class="note">提示：点击空格可单独显示该空答案；点击带横线的生词可查看「构词法 + 搭配 + 辨析 + 例句」。</div>
+  </div>
+
+  <div class="panel reveal">
+    <div class="panel-head"><span class="n">Answers</span><h3>参考答案（10 空）</h3></div>
+    <div class="panel-body">
+      <div class="ans-list">
+        <div class="ans-item"><div class="q">01</div><div class="a">to think</div><div class="why">It is + adj. + to do sth.，it 为形式主语。</div></div>
+        <div class="ans-item"><div class="q">02</div><div class="a">seasons</div><div class="why">different 后接可数名词复数。</div></div>
+        <div class="ans-item"><div class="q">03</div><div class="a">the</div><div class="why">独一无二的天体名词前用定冠词。</div></div>
+        <div class="ans-item"><div class="q">04</div><div class="a">When / While</div><div class="why">引导时间状语从句，表「当……时」。</div></div>
+        <div class="ans-item"><div class="q">05</div><div class="a">spending</div><div class="why">look forward to 中 to 为介词 + v-ing。</div></div>
+        <div class="ans-item"><div class="q">06</div><div class="a">their</div><div class="why">形容词性物主代词修饰 winter holidays。</div></div>
+        <div class="ans-item"><div class="q">07</div><div class="a">are</div><div class="why">there be 与复数主语 holidays 一致。</div></div>
+        <div class="ans-item"><div class="q">08</div><div class="a">on</div><div class="why">具体某日/某夜前用介词 on。</div></div>
+        <div class="ans-item"><div class="q">09</div><div class="a">snowy</div><div class="why">名词 snow 变形容词 snowy 作定语。</div></div>
+        <div class="ans-item"><div class="q">10</div><div class="a">celebration</div><div class="why">each + 单数名词；celebrate 变 celebration。</div></div>
+      </div>
+      <div class="para-title"><span>Paragraph 1 · 南北半球为何相反</span>逐句解析</div>
+      <ul class="explain">
+        <li><b>It is fun to think that...</b>：句型 <b>It is + adj. + (for sb) + to do</b>，it 作形式主语，真正主语是后面的不定式；that 引导宾语从句。</li>
+        <li><b>different seasons</b>：different 后接可数名词复数形式。</li>
+        <li><b>the Sun</b>：sun、moon、Earth 等世界上独一无二的事物前加定冠词 the。</li>
+        <li><b>段意</b>：南北半球天气相反，原因是<b>地轴倾斜（the Earth's tilt）</b>——一个半球朝向太阳，另一个背向太阳。</li>
+      </ul>
+      <div class="para-title"><span>Paragraph 2 · 相反的季节与假期</span>逐句解析</div>
+      <ul class="explain">
+        <li><b>When / While</b>：引导时间状语从句，While 更强调两件事同时发生、彼此对照。</li>
+        <li><b>look forward to spending</b>：短语中的 to 是介词，后接名词或动词-ing，不能接动词原形。</li>
+        <li><b>their winter holidays</b>：they 变 their（形容词性物主代词），修饰名词 holidays。</li>
+        <li><b>段意</b>：南半球学生盼望去海滩度暑假，北半球学生喜欢在寒假堆雪人。</li>
+      </ul>
+      <div class="para-title"><span>Paragraph 3 &amp; Ending · 节日与传统</span>逐句解析</div>
+      <ul class="explain">
+        <li><b>There are holidays</b>：there be 句型中 be 动词与后面的名词保持一致，holidays 是复数，故用 are。</li>
+        <li><b>on special nights</b>：在具体某一天、某个节日、某个夜晚前用介词 on（如 on New Year's Eve）。</li>
+        <li><b>snowy places</b>：snow 是名词，修饰另一个名词要用形容词 snowy（多雪的）。</li>
+        <li><b>making each celebration special</b>：each 后接可数名词单数；make + 宾语 + 形容词（宾语补足语）。</li>
+        <li><b>not only ... but also ...</b>：不仅……而且……，点明主旨。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ========= 02 ========= -->
+<section class="sec" id="s2">
+  <div class="sec-head reveal">
+    <div class="sec-num">02</div>
+    <div class="sec-title">
+      <div class="src-badge">来源：七年级上册 · 第 19 页</div>
+      <h2>五、阅读表达 <em>Unit 2 · Rain or Shine</em></h2>
+      <div class="sub">阅读短文，根据短文内容回答下列问题。</div>
+      <div class="meta">
+        <span>主题：<b>人与自然——不同地区的气候特征</b></span><span>语篇类型：<b>应用文</b></span>
+        <span>词数：<b>185</b></span><span>难度：<b>★★★☆☆</b></span>
+        <span>建议用时：<b>6′</b></span><span>正确率：<b>/5</b></span><span>答案：<b>P4</b></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="passage reveal">
+    <div class="block-bar"><span class="tag">Original Text · 原文</span>
+      <button class="speak-btn" data-read="textB"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6.5 9H3v6h3.5L11 19z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.4 5.6a9 9 0 0 1 0 12.8"/></svg>朗读本段</button>
+    </div>
+    <div id="textB">
+      <p class="en">It's 3:00 p.m. now. Four students are talking about the weather in their places on the internet.</p>
+      <div class="talk"><div class="who">Laura</div>
+        <p class="en">It is raining. I'm just standing in my room and <span class="w" data-w="look out of">looking out of</span> the window. Some people are walking on the street. They're all holding <span class="w" data-w="umbrella">umbrellas</span>. The umbrellas have different colours. The <span class="w" data-w="colourful">colourful</span> umbrellas make me feel a little better.</p></div>
+      <div class="talk"><div class="who">Jim</div>
+        <p class="en">I am in the mountains with my <span class="w" data-w="cousin">cousins</span>. It's not warm here. It's -10℃ in the <span class="w" data-w="daytime">daytime</span>. Nights and early mornings are -20℃. But the snow here is very beautiful! It's a great place to <span class="w" data-w="go skiing / go skating">go skiing and skating</span>.</p></div>
+      <div class="talk"><div class="who">Bob</div>
+        <p class="en">There are many black clouds in the sky. The wind is strong and the trees are <span class="w" data-w="bend">bending</span>. The birds cannot fly. It's hard for people to walk and to drive. I think <span class="w" data-w="heavy rain">heavy rain</span> is coming. It's <span class="w" data-w="dangerous">dangerous</span> to go out of the house right now.</p></div>
+      <div class="talk"><div class="who">Linda</div>
+        <p class="en">It's hot here today. The sky looks very blue, and there are no clouds. I am <span class="w" data-w="go boating">boating</span> on a lake with my family. The water is clean and warm. It's really a good day for <span class="w" data-w="relax">relaxing</span>.</p></div>
+    </div>
+  </div>
+
+  <div class="panel reveal">
+    <div class="panel-head"><span class="n">Answers</span><h3>参考答案（5 题）</h3></div>
+    <div class="panel-body">
+      <div class="ans-list">
+        <div class="ans-item"><div class="q">Q1 · Where is Laura?</div><div class="a">She is in her room.</div><div class="why">依据：I'm just standing in my room and looking out of the window.</div></div>
+        <div class="ans-item"><div class="q">Q2 · Who does Jim go to the mountains with?</div><div class="a">His cousins.</div><div class="why">依据：I am in the mountains with my cousins.</div></div>
+        <div class="ans-item"><div class="q">Q3 · What's the weather like now according to Bob?</div><div class="a">Cloudy and windy. Heavy rain is coming.</div><div class="why">依据 many black clouds、The wind is strong、I think heavy rain is coming.</div></div>
+        <div class="ans-item"><div class="q">Q4 · What is Linda doing now?</div><div class="a">She is boating on a lake with her family.</div><div class="why">依据：I am boating on a lake with my family.（现在进行时）</div></div>
+        <div class="ans-item"><div class="q">Q5 · 开放性设问（示例）</div><div class="a">It's sunny and warm in my city. I like it very much.</div><div class="why">结构：It's + 天气形容词 + 地点；I like / don't like it + because + 理由。</div></div>
+      </div>
+      <div class="para-title"><span>Paragraph Guide · 逐段解析</span>四地天气实况</div>
+      <ul class="explain">
+        <li><b>总起句</b>：下午 3 点，四位同学在<b>互联网上</b>谈论各自所在地的天气，全文用<b>现在进行时</b>描述正在发生的场景。</li>
+        <li><b>Laura（雨天·城市）</b>：下雨，站在房间看窗外；行人撑伞，五颜六色的雨伞 make me feel a little better——make + 宾语 + 形容词。</li>
+        <li><b>Jim（雪天·山区）</b>：与 cousins 在山里，白天 -10℃、夜里 -20℃；雪景很美，适合 <b>go skiing and skating</b>（go + v-ing 表活动）。</li>
+        <li><b>Bob（暴风雨前）</b>：乌云密布、大风、树被吹弯，判断 <b>heavy rain is coming</b>，现在出门很 <b>dangerous</b>。</li>
+        <li><b>Linda（晴热·湖上）</b>：天空湛蓝无云、天气炎热，正在湖上与家人划船，是 relaxing 的好日子。</li>
+        <li><b>第 5 题（开放性设问）</b>：写清天气状况（It's + adj.）与个人感受（I like/dislike it because ...），用一般现在时。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ========= 03 ========= -->
+<section class="sec" id="s3">
+  <div class="sec-head reveal">
+    <div class="sec-num">03</div>
+    <div class="sec-title">
+      <div class="src-badge">来源：七年级上册 · 第 19 页</div>
+      <h2>二、阅读还原六选五 <em>Six for Five</em></h2>
+      <div class="sub">根据短文内容，从短文后的选项中选出能填入空白处的最佳选项。选项中有一项为多余选项。</div>
+      <div class="meta">
+        <span>主题：<b>人与社会——社会热点</b></span><span>语篇类型：<b>记叙文</b></span>
+        <span>词数：<b>275</b></span><span>难度：<b>★★★★☆</b></span>
+        <span>建议用时：<b>8′</b></span><span>正确率：<b>/5</b></span><span>答案：<b>P18</b></span><span>标注：<b>（原创）</b></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="passage reveal">
+    <div class="block-bar"><span class="tag">Original Text · 原文</span>
+      <button class="speak-btn" data-read="textC"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6.5 9H3v6h3.5L11 19z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.4 5.6a9 9 0 0 1 0 12.8"/></svg>朗读本段</button>
+    </div>
+    <div id="textC">
+      <p class="en">(Original) Lei Dianhai is a famous Chinese <span class="w" data-w="explorer">explorer</span> and <span class="w" data-w="environmental protector">environmental protector</span><span class="gloss">(环保人士)</span>. Born in 1963 in a small village near Harbin, he is called the modern Xu Xiake for his great walking <span class="w" data-w="journey">journey</span>. Before his trip, he spent 10 years preparing: he ran every day to build up his <span class="w" data-w="strength">strength</span> and read books on <span class="w" data-w="wild survival">wild survival</span><span class="gloss">(野外生存)</span> to learn how to deal with dangers.</p>
+      <p class="en">From 1998 to 2008, Lei walked across China for 10 years. <span class="blank"><span class="bnum">1.</span><span class="ans">B</span></span> During the trip, they wore out 52 pairs of shoes and lost 19 <span class="w" data-w="toenail">toenails</span><span class="gloss">(脚指甲)</span>. He faced many dangers, like <span class="w" data-w="mudslide">mudslides</span><span class="gloss">(泥石流)</span> and wolf attacks, but he never <span class="w" data-w="give up">gave up</span>. <span class="blank"><span class="bnum">2.</span><span class="ans">D</span></span></p>
+      <p class="en">Lei did more than just walk. <span class="blank"><span class="bnum">3.</span><span class="ans">C</span></span> He also helped poor students and joined in <span class="w" data-w="flood rescue work">flood rescue work</span> in Hunan.</p>
+      <p class="en">Now, Lei still works for nature and education. <span class="blank"><span class="bnum">4.</span><span class="ans">F</span></span> He works with artists to turn his <span class="w" data-w="travel notes">travel notes</span> into art, so more people can learn about <span class="w" data-w="environmental protection">environmental protection</span>.</p>
+      <p class="en">Lei's story tells us: true <span class="w" data-w="adventure">adventure</span> is not about walking far. It's about loving our land and protecting it.</p>
+    </div>
+    <div class="opts" id="optBox">
+      <div class="opt" data-l="A"><div class="letter">A</div><p>He sold his house to get money for his long trip.</p></div>
+      <div class="opt used" data-l="B"><div class="letter">B · 第 1 空</div><p>He traveled about 81,000 kilometres, almost twice around the <span class="w" data-w="the Equator">Equator</span><span class="gloss">(赤道)</span>.</p></div>
+      <div class="opt used" data-l="C"><div class="letter">C · 第 3 空</div><p>He leads teams to study the environment, like protecting <span class="w" data-w="the source of the Yangtze River">the source of the Yangtze River</span>.</p></div>
+      <div class="opt used" data-l="D"><div class="letter">D · 第 2 空</div><p>In 2008, he became the first person to walk alone through the dangerous Lop Nur<span class="gloss">(罗布泊)</span>.</p></div>
+      <div class="opt" data-l="E"><div class="letter">E</div><p>He visited all 56 <span class="w" data-w="ethnic groups">ethnic groups</span><span class="gloss">(民族)</span> in China, took 40,000 photos and wrote 3.2 million words in his notes.</p></div>
+      <div class="opt used" data-l="F"><div class="letter">F · 第 4 空</div><p>For students, he organizes <span class="w" data-w="hiking camps">hiking camps</span> in Heilongjiang's forests, where they learn about wild plants and local cultures.</p></div>
+    </div>
+    <div class="note"><b>校对说明</b>：本页图片中可清晰辨认的空格编号为 <b>1—4</b>；题目为「六选五」（正确率栏标注 /5，即共 5 空），第五空位置因图片清晰度限制无法完整辨认，故不作臆造。若原题第五空位于第四段 his travel notes 之前，则 <b>E</b> 与下文 travel notes 衔接最紧密，<b>A</b> 为多余选项。</div>
+  </div>
+
+  <div class="panel reveal">
+    <div class="panel-head"><span class="n">Answers</span><h3>参考答案与逻辑线索</h3></div>
+    <div class="panel-body">
+      <div class="ans-list">
+        <div class="ans-item"><div class="q">Blank 1</div><div class="a">B</div><div class="why">前后均为旅程数据：10 年 → 81,000 公里（约绕赤道两圈）→ 磨坏 52 双鞋、掉 19 片脚趾甲。</div></div>
+        <div class="ans-item"><div class="q">Blank 2</div><div class="a">D</div><div class="why">段末收束：以 2008 年独自穿越罗布泊这一壮举作结，与段首 From 1998 to 2008 首尾呼应。</div></div>
+        <div class="ans-item"><div class="q">Blank 3</div><div class="a">C</div><div class="why">主题句 more than just walk：带队研究环境、保护长江源头，与后句公益行动并列。</div></div>
+        <div class="ans-item"><div class="q">Blank 4</div><div class="a">F</div><div class="why">对应 nature and education：为学生组织徒步夏令营，后句讲与艺术家合作推广环保。</div></div>
+        <div class="ans-item"><div class="q">Unused</div><div class="a">A / E</div><div class="why">图片中未见第 5 空；若原题存在第 5 空，E 与 travel notes 衔接最紧密，A 为多余选项。</div></div>
+      </div>
+      <div class="para-title"><span>Paragraph Guide · 逐段解析</span>现代徐霞客 · 雷殿生</div>
+      <ul class="explain">
+        <li><b>第 1 段（人物介绍）</b>：身份为 <b>explorer</b> 与 <b>environmental protector</b>；1963 年生于哈尔滨附近小村庄；因伟大的徒步旅程被称为现代徐霞客；出发前用 10 年准备——每天跑步 <b>build up his strength</b>，读<b>野外生存</b>书籍学习应对危险。</li>
+        <li><b>第 2 段（1998—2008 徒步中国）</b>：空 1 选 <b>B</b>（数字链条：10 年 / 81,000 公里 / 52 双鞋 / 19 片脚趾甲）；but he never gave up 体现坚持；段末选 <b>D</b>，以穿越罗布泊的第一人成就收束。</li>
+        <li><b>第 3 段（不只是走路）</b>：主题句 Lei did more than just walk 统领全段，空 3 选 <b>C</b>，与下句帮助贫困学生、参加湖南抗洪构成并列的公益行动。</li>
+        <li><b>第 4 段（现在的他）</b>：关键词 nature and education，空 4 选 <b>F</b>；随后写与艺术家合作，把游记变成艺术以推广<b>环境保护</b>。</li>
+        <li><b>第 5 段（升华主旨）</b>：true adventure 不在于走得多远，而在于<b>热爱并保护我们的土地</b>。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ========= 04 ========= -->
+<section class="sec" id="s4">
+  <div class="sec-head reveal">
+    <div class="sec-num">04</div>
+    <div class="sec-title">
+      <div class="src-badge b">来源：初二英语试题 · 第 6 页</div>
+      <h2>第三部分 第一节 · 完形填空 <em>Cloze Test (41—50)</em></h2>
+      <div class="sub">阅读下面短文，从每题所给的 A、B、C 三个选项中，选出可以填入空白处的最佳选项，并在答题卡上将该项涂黑。</div>
+      <div class="meta">
+        <span>题量：<b>10 小题</b></span><span>分值：<b>每小题 1 分，满分 10 分</b></span>
+        <span>题型：<b>三选一完形填空</b></span><span>主题：<b>旅行与度假</b></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="passage reveal">
+    <div class="block-bar"><span class="tag">Original Text · 原文</span>
+      <button class="speak-btn" data-read="textD"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6.5 9H3v6h3.5L11 19z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.4 5.6a9 9 0 0 1 0 12.8"/></svg>朗读本段</button>
+    </div>
+    <div id="textD">
+      <p class="en">Many people don't like to stay at home for their <span class="w" data-w="vacation">vacation</span>. They want to go out to see different things or do something <span class="blank"><span class="bnum">41.</span><span class="ans">A. exciting</span></span>. So people in the <span class="w" data-w="countryside">countryside</span> go to the city and people from big cities go to the countryside on vacation. <span class="w" data-w="during">During</span> the holidays, trains, buses and planes are all <span class="blank"><span class="bnum">42.</span><span class="ans">A. busy</span></span>. It is a little <span class="w" data-w="difficult">difficult</span> to <span class="blank"><span class="bnum">43.</span><span class="ans">B. buy</span></span> train <span class="w" data-w="ticket">tickets</span>, bus tickets or plane tickets. Many people take their cars for travelling.</p>
+      <p class="en">Last summer vacation, my family went to the countryside by <span class="blank"><span class="bnum">44.</span><span class="ans">C. car</span></span>. There was too much <span class="w" data-w="traffic">traffic</span> on the road, so we had to move very <span class="blank"><span class="bnum">45.</span><span class="ans">B. slowly</span></span>. It took us about an hour to <span class="w" data-w="get out of">get out of</span> the city. After some time, we came to a farm. It was clean and beautiful. The animals were very <span class="w" data-w="cute">cute</span>. We thought it was a nice place for a <span class="w" data-w="picnic">picnic</span>, so we <span class="blank"><span class="bnum">46.</span><span class="ans">A. stopped</span></span> and took the food, fruit and drinks out of the car. We <span class="blank"><span class="bnum">47.</span><span class="ans">B. sat down</span></span> under a big tree. Suddenly, a strong wind <span class="w" data-w="blow">blew</span> and soon it <span class="blank"><span class="bnum">48.</span><span class="ans">A. started</span></span> to rain. We had to run back to our car and have our <span class="blank"><span class="bnum">49.</span><span class="ans">C. picnic</span></span> in the car. We <span class="w" data-w="drive">drove</span> back home. What a <span class="blank"><span class="bnum">50.</span><span class="ans">B. terrible</span></span> trip!</p>
+    </div>
+
+    <div class="choices">
+      <div class="choice"><span class="no">41</span><span class="op"><b>A. exciting</b>　B. useless　C. boring</span></div>
+      <div class="choice"><span class="no">42</span><span class="op"><b>A. busy</b>　B. free　C. slow</span></div>
+      <div class="choice"><span class="no">43</span><span class="op">A. sell　<b>B. buy</b>　C. make</span></div>
+      <div class="choice"><span class="no">44</span><span class="op">A. ship　B. plane　<b>C. car</b></span></div>
+      <div class="choice"><span class="no">45</span><span class="op">A. quickly　<b>B. slowly</b>　C. happily</span></div>
+      <div class="choice"><span class="no">46</span><span class="op"><b>A. stopped</b>　B. left　C. arrived</span></div>
+      <div class="choice"><span class="no">47</span><span class="op">A. got up　<b>B. sat down</b>　C. came from</span></div>
+      <div class="choice"><span class="no">48</span><span class="op"><b>A. started</b>　B. wanted　C. learned</span></div>
+      <div class="choice"><span class="no">49</span><span class="op">A. class　B. work　<b>C. picnic</b></span></div>
+      <div class="choice"><span class="no">50</span><span class="op">A. funny　<b>B. terrible</b>　C. great</span></div>
+    </div>
+  </div>
+
+  <div class="panel reveal">
+    <div class="panel-head"><span class="n">Answers</span><h3>参考答案与逐段解析（41—50）</h3></div>
+    <div class="panel-body">
+      <div class="ans-list">
+        <div class="ans-item"><div class="q">41</div><div class="a">A. exciting</div><div class="why">与 see different things 并列，应为褒义；useless / boring 与「想出去」矛盾。</div></div>
+        <div class="ans-item"><div class="q">42</div><div class="a">A. busy</div><div class="why">假期交通工具「繁忙」，才有下文票难买。</div></div>
+        <div class="ans-item"><div class="q">43</div><div class="a">B. buy</div><div class="why">buy tickets（买票）；sell 主语应为售票方，make 不合语意。</div></div>
+        <div class="ans-item"><div class="q">44</div><div class="a">C. car</div><div class="why">下文 out of the car / run back to our car / drove back home 复现。</div></div>
+        <div class="ans-item"><div class="q">45</div><div class="a">B. slowly</div><div class="why">too much traffic 是因果线索，只能慢慢移动。</div></div>
+        <div class="ans-item"><div class="q">46</div><div class="a">A. stopped</div><div class="why">停车后才能把食物搬出车；left 与语意相反。</div></div>
+        <div class="ans-item"><div class="q">47</div><div class="a">B. sat down</div><div class="why">在大树下「坐下」准备野餐。</div></div>
+        <div class="ans-item"><div class="q">48</div><div class="a">A. started</div><div class="why">start to do = begin to do，「天开始下雨」。</div></div>
+        <div class="ans-item"><div class="q">49</div><div class="a">C. picnic</div><div class="why">上文 a nice place for a picnic 复现。</div></div>
+        <div class="ans-item"><div class="q">50</div><div class="a">B. terrible</div><div class="why">野餐被雨搅乱只能在车里吃，情绪为负面。</div></div>
+      </div>
+      <div class="para-title"><span>Paragraph 1 · 度假流动现象</span>逐句解析</div>
+      <ul class="explain">
+        <li><b>do something exciting</b>：形容词修饰不定代词 something 时<b>后置</b>（something exciting）。</li>
+        <li><b>During the holidays</b>：during 表「在……期间」，后接时间段名词。</li>
+        <li><b>It is a little difficult to buy ...</b>：It is + adj. + to do（形式主语）；a little 修饰 difficult 表「有点难」。</li>
+        <li><b>段意</b>：城里人下乡、乡下人进城，假期交通 busy、票难买，很多人选择<b>自驾游（take their cars）</b>。</li>
+      </ul>
+      <div class="para-title"><span>Paragraph 2 · 一次被雨打乱的郊游</span>逐句解析</div>
+      <ul class="explain">
+        <li><b>by car</b>：by + 交通工具，中间不加冠词（by car / by bus）。</li>
+        <li><b>had to move very slowly</b>：have to 表「不得不」，修饰动词 move 用副词 slowly。</li>
+        <li><b>It took us about an hour to get out of the city.</b>：It takes sb + 时间 + to do（花某人多长时间做某事）。</li>
+        <li><b>start to rain</b>：start / begin to do 与 doing 均可；Suddenly 提示时态为一般过去时。</li>
+        <li><b>What a terrible trip!</b>：感叹句 What + a/an + adj. + 单数名词。</li>
+        <li><b>段意</b>：开车下乡 → 路堵 → 到农场 → 停车野餐 → 突然下雨 → 在车里吃 → 糟糕的旅行。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ========= 05 ========= -->
+<section class="sec" id="s5">
+  <div class="sec-head reveal">
+    <div class="sec-num">05</div>
+    <div class="sec-title">
+      <div class="src-badge b">来源：初二英语试题 · 第 7 页</div>
+      <h2>第三部分 第二节 · 语篇填空 <em>Passage Filling (51—60)</em></h2>
+      <div class="sub">阅读下面短文并填空，然后将答案写到答题卡的相应位置（如有提示词，则填入提示词的正确形式；如无提示词，则填入 1 个适当的单词）。</div>
+      <div class="meta">
+        <span>题量：<b>10 小题</b></span><span>分值：<b>每小题 1 分，满分 10 分</b></span>
+        <span>题型：<b>提示词填空 + 无提示词填空</b></span><span>主题：<b>家庭与生日</b></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="passage reveal">
+    <div class="block-bar"><span class="tag">Original Text · 原文</span>
+      <button class="speak-btn" data-read="textE"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6.5 9H3v6h3.5L11 19z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.4 5.6a9 9 0 0 1 0 12.8"/></svg>朗读本段</button>
+    </div>
+    <div id="textE">
+      <p class="en">In my family, the oldest (年龄最大的) man is my grandpa. He is very kind. Everyone likes <span class="blank"><span class="bnum">51.</span><span class="hint">(he)</span><span class="ans">him</span></span>. My grandpa has many <span class="blank"><span class="bnum">52.</span><span class="hint">(hobby)</span><span class="ans">hobbies</span></span> like fishing and reading. He often reads the books about Chinese history.</p>
+      <p class="en">These days, my family are very happy because grandpa's <span class="w" data-w="birthday">birthday</span> is coming soon. We will have a big party for him on November the <span class="blank"><span class="bnum">53.</span><span class="hint">(eight)</span><span class="ans">eighth</span></span>. We must make birthday party wonderful. We also <span class="w" data-w="prepare">prepare</span> some <span class="blank"><span class="bnum">54.</span><span class="hint">(gift)</span><span class="ans">gifts</span></span> for my grandpa.</p>
+      <p class="en">Now we are <span class="w" data-w="discuss">discussing</span> (讨论) what we can give him. My mom usually <span class="blank"><span class="bnum">55.</span><span class="hint">(cook)</span><span class="ans">cooks</span></span> his <span class="w" data-w="favourite">favourite</span> noodles. But this year she would like <span class="blank"><span class="bnum">56.</span><span class="hint">(make)</span><span class="ans">to make</span></span> a birthday cake with his name on it. Look, my father is <span class="blank"><span class="bnum">57.</span><span class="hint">(buy)</span><span class="ans">buying</span></span> a new brown <span class="w" data-w="bookcase">bookcase</span> <span class="w" data-w="online">online</span>. As for me, I want to draw <span class="blank"><span class="bnum">58.</span><span class="ans">a</span></span> picture of my grandpa. In the picture, my family is standing around him. I can write &quot;I <span class="blank"><span class="bnum">59.</span><span class="hint">(real)</span><span class="ans">really</span></span> love you, Grandpa!&quot; on the picture. I think it is <span class="w" data-w="interesting">interesting</span> <span class="blank"><span class="bnum">60.</span><span class="hint">(have)</span><span class="ans">to have</span></span> a birthday party.</p>
+    </div>
+    <div class="note"><b>校对说明</b>：第 59 题所在句的引语开头在原图中字迹较模糊，已按上下文与语法补全；答案 <b>really</b> 不受影响。</div>
+  </div>
+
+  <div class="panel reveal">
+    <div class="panel-head"><span class="n">Answers</span><h3>参考答案与逐段解析（51—60）</h3></div>
+    <div class="panel-body">
+      <div class="ans-list">
+        <div class="ans-item"><div class="q">51</div><div class="a">him</div><div class="why">like 后接人称代词宾格。</div></div>
+        <div class="ans-item"><div class="q">52</div><div class="a">hobbies</div><div class="why">many + 可数名词复数；y 变 i 加 es。</div></div>
+        <div class="ans-item"><div class="q">53</div><div class="a">eighth</div><div class="why">日期用序数词：on November the eighth。</div></div>
+        <div class="ans-item"><div class="q">54</div><div class="a">gifts</div><div class="why">some + 可数名词复数。</div></div>
+        <div class="ans-item"><div class="q">55</div><div class="a">cooks</div><div class="why">主语 My mom 三单，usually 表习惯，一般现在时加 -s。</div></div>
+        <div class="ans-item"><div class="q">56</div><div class="a">to make</div><div class="why">would like to do sth.（想要做某事）。</div></div>
+        <div class="ans-item"><div class="q">57</div><div class="a">buying</div><div class="why">Look! 提示用现在进行时 is buying。</div></div>
+        <div class="ans-item"><div class="q">58</div><div class="a">a</div><div class="why">draw a picture of ...；无提示词填冠词。</div></div>
+        <div class="ans-item"><div class="q">59</div><div class="a">really</div><div class="why">real + -ly 变副词修饰动词 love。</div></div>
+        <div class="ans-item"><div class="q">60</div><div class="a">to have</div><div class="why">It is + adj. + to do sth.（形式主语）。</div></div>
+      </div>
+      <div class="para-title"><span>Paragraph 1 · 家里的长者</span>逐句解析</div>
+      <ul class="explain">
+        <li><b>the oldest man</b>：形容词最高级前加 the；oldest 是 old 的最高级。</li>
+        <li><b>Everyone likes him</b>：everyone 作主语，谓语用单数 likes；动词后用宾格 him。</li>
+        <li><b>many hobbies</b>：many 后接可数名词复数，hobby → hobbies（辅音字母 + y 结尾，变 y 为 i 加 es）。</li>
+      </ul>
+      <div class="para-title"><span>Paragraph 2 · 生日准备</span>逐句解析</div>
+      <ul class="explain">
+        <li><b>on November the eighth</b>：具体日期前用 on；日期用序数词（eight → eighth）。</li>
+        <li><b>prepare some gifts</b>：prepare sth for sb（为某人准备某物）；some 后接复数名词或不可数名词。</li>
+      </ul>
+      <div class="para-title"><span>Paragraph 3 · 家人的礼物</span>逐句解析</div>
+      <ul class="explain">
+        <li><b>usually cooks</b>：频率副词提示一般现在时；主语为第三人称单数，动词加 -s。</li>
+        <li><b>would like to make</b>：would like to do = want to do，但更委婉。</li>
+        <li><b>is buying ... online</b>：Look! 与 now 提示现在进行时（be + v-ing）；online 表「在网上」。</li>
+        <li><b>draw a picture of</b>：a picture of sb（某人的画像）；无提示词的空常考冠词、介词、连词、代词。</li>
+        <li><b>really love</b>：副词修饰动词，real（形容词）→ really（副词）。</li>
+        <li><b>It is interesting to have ...</b>：与本套第 41 题同源句型 It is + adj. + to do。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ========= 06 ========= -->
+<section class="sec" id="s6">
+  <div class="sec-head reveal">
+    <div class="sec-num">06</div>
+    <div class="sec-title">
+      <div class="src-badge b">来源：初二英语试题 · 第 7—8 页</div>
+      <h2>第四部分 第一节 · 阅读回答 <em>Reading &amp; Answering (61—65)</em></h2>
+      <div class="sub">阅读下面短文，按照短文要求用英语回答问题，并将答案写到答题卡的相应位置。</div>
+      <div class="meta">
+        <span>题量：<b>5 小题</b></span><span>分值：<b>每小题 2 分，满分 10 分</b></span>
+        <span>题型：<b>任务型阅读（含 1 道开放题）</b></span><span>主题：<b>人与动物 · 环保</b></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="passage reveal">
+    <div class="block-bar"><span class="tag">Original Text · 原文</span>
+      <button class="speak-btn" data-read="textF"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6.5 9H3v6h3.5L11 19z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.4 5.6a9 9 0 0 1 0 12.8"/></svg>朗读本段</button>
+    </div>
+    <div id="textF">
+      <p class="en"><span class="w" data-w="cleaner">Cleaners</span> help to keep cities clean. This month a park in France <span class="w" data-w="welcome">welcomed</span> six very <span class="w" data-w="special">special</span> cleaners. They are crows (乌鸦)!</p>
+      <p class="en">Workers at the park teach the crows to <span class="w" data-w="pick up">pick up</span> small <span class="w" data-w="piece">pieces</span> of <span class="w" data-w="trash">trash</span> (垃圾). And they also teach the crows to move the trash into a small box. After helping clean the park they get bird food for their <span class="w" data-w="hard work">hard work</span>, the BBC <span class="w" data-w="report">reported</span>.</p>
+      <p class="en">This shows that &quot;<span class="w" data-w="nature">nature</span> (自然) itself can teach us to <span class="w" data-w="take care of">take care of</span> the <span class="w" data-w="environment">environment</span> (环境).&quot; Nicolas de Villiers, head of the park, told AFP.</p>
+      <p class="en">The park chose crows because they are <span class="w" data-w="smart">smarter</span> than other birds. Earlier this year, <span class="w" data-w="scientist">scientists</span> made a special <span class="w" data-w="vending machine">vending machine</span> (自动贩卖机) for crows. The machine only works when a piece of paper of the right size is put inside it.</p>
+      <p class="en">The scientists found that crows could <span class="w" data-w="remember">remember</span> the right size of paper and put it in the machine to get food. This is a good <span class="w" data-w="example">example</span> of how <span class="w" data-w="smart">clever</span> these birds can be.</p>
+    </div>
+
+    <div class="choices">
+      <div class="choice"><span class="no">61</span><span class="op">How many special cleaners arrived at the park in France this month?</span></div>
+      <div class="choice"><span class="no">62</span><span class="op">What do workers at the park teach the crows to do?</span></div>
+      <div class="choice"><span class="no">63</span><span class="op">Who is Nicolas de Villiers?</span></div>
+      <div class="choice"><span class="no">64</span><span class="op">What did scientists make for crows earlier this year?</span></div>
+      <div class="choice"><span class="no">65</span><span class="op">The park uses crows to pick up trash. Do you like this idea? Why?</span></div>
+    </div>
+  </div>
+
+  <div class="panel reveal">
+    <div class="panel-head"><span class="n">Answers</span><h3>参考答案与逐段解析（61—65）</h3></div>
+    <div class="panel-body">
+      <div class="ans-list">
+        <div class="ans-item"><div class="q">61 · How many ...?</div><div class="a">Six. / Six crows.</div><div class="why">原文：This month a park in France welcomed six very special cleaners.</div></div>
+        <div class="ans-item"><div class="q">62 · teach the crows to do?</div><div class="a">To pick up small pieces of trash and move the trash into a small box.</div><div class="why">原文两句合并回答（teach sb to do sth）。</div></div>
+        <div class="ans-item"><div class="q">63 · Who is Nicolas de Villiers?</div><div class="a">He is the head of the park.</div><div class="why">原文：Nicolas de Villiers, head of the park, told AFP.</div></div>
+        <div class="ans-item"><div class="q">64 · What did scientists make ...?</div><div class="a">A special vending machine (for crows).</div><div class="why">原文：scientists made a special vending machine for crows.</div></div>
+        <div class="ans-item"><div class="q">65 · 开放题（示例）</div><div class="a">Yes, I like it. Because it helps keep the park clean.</div><div class="why">先表明观点，再给理由；言之有理、语法正确即可。</div></div>
+      </div>
+      <div class="para-title"><span>Paragraph Guide · 逐段解析</span>会捡垃圾的乌鸦</div>
+      <ul class="explain">
+        <li><b>第 1 段</b>：本月法国一座公园迎来六位<b>特殊清洁工——乌鸦</b>，感叹句 They are crows! 引出话题。</li>
+        <li><b>第 2 段</b>：训练内容——<b>捡起小片垃圾</b>并<b>投入小箱子</b>；奖励是<b>鸟食</b>；信息来源 the BBC。</li>
+        <li><b>第 3 段</b>：公园负责人引语点题：<b>自然本身能教我们爱护环境</b>。</li>
+        <li><b>第 4 段</b>：选乌鸦因为它们<b>比其他鸟更聪明</b>（smarter，比较级）；举<b>自动贩卖机实验</b>为例。</li>
+        <li><b>第 5 段</b>：实验结论——乌鸦能记住正确的纸张尺寸换食物，是 <b>a good example of</b> 它们有多聪明。</li>
+        <li><b>答题技巧</b>：61—64 为细节题，用<b>完整句</b>作答；65 为开放题，结构为「观点 + 理由（because 从句）」。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ========= 07 ========= -->
+<section class="sec" id="s7">
+  <div class="sec-head reveal">
+    <div class="sec-num">07</div>
+    <div class="sec-title">
+      <div class="src-badge b">来源：初二英语试题 · 第 8 页</div>
+      <h2>第四部分 第二节 · 书面表达 <em>Writing (15 分)</em></h2>
+      <div class="sub">英语俱乐部举办的「精彩瞬间」评选活动正在进行中。李华向我们描述了在上午十点钟他在学校的生活，同时介绍了他的好朋友 Mike 在美国同一时刻晚上十点钟的生活。</div>
+      <div class="meta">
+        <span>分值：<b>满分 15 分</b></span><span>词数：<b>70 左右（开头已给，不计入）</b></span>
+        <span>文体：<b>看图作文（对比描写）</b></span><span>时态：<b>现在进行时</b></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="passage reveal">
+    <div class="block-bar"><span class="tag">Task · 题目要求</span>
+      <button class="speak-btn" data-read="textG"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6.5 9H3v6h3.5L11 19z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.4 5.6a9 9 0 0 1 0 12.8"/></svg>朗读题干</button>
+    </div>
+    <div id="textG">
+      <p class="en"><b>Points:</b> 1. introduce the people, time, place and activities; 2. describe what is happening at the wonderful moment; 3. add your feelings.</p>
+      <p class="en"><b>Useful words:</b> <span class="w" data-w="skip rope">skip rope</span> 跳绳, <span class="w" data-w="play hide and seek">play hide and seek</span> 玩捉迷藏游戏</p>
+      <p class="en"><b>Given beginning:</b> Hi, I'm Li Hua from Class 1. I'm happy to <span class="w" data-w="share">share</span> my American friend Mike's life and my <span class="w" data-w="colourful">colourful</span> life with you.</p>
+      <div class="note"><b>图片信息</b>：Li Hua｜10:00 a.m.｜学校操场——同学们在跳绳、踢球、玩捉迷藏、在树下活动等；Mike｜10:00 p.m.｜家中客厅——有人在书桌前看书/写作业，有人坐在沙发上看电视等（细节以试卷原图为准）。</div>
+    </div>
+  </div>
+
+  <div class="panel reveal">
+    <div class="panel-head"><span class="n">Model</span><h3>范文与写作框架</h3></div>
+    <div class="panel-body">
+      <div class="para-title"><span>Model Essay · 范文</span>（约 70 词，不含已给开头）</div>
+      <ul class="explain">
+        <li>It's 10:00 a.m. now. I'm at school with my classmates on the playground. Some are <b>skipping rope</b>, some are <b>playing hide and seek</b>, and others are playing ball games. Everyone is having a great time.</li>
+        <li><b>At the same time</b>, it's 10:00 p.m. in America. Mike is at home with his family. His parents are sitting on the sofa and watching TV, and he is reading at the desk.</li>
+        <li>What a colourful and exciting moment! I really enjoy sharing our lives with you.</li>
+      </ul>
+      <div class="para-title"><span>Structure · 写作框架</span>三段式</div>
+      <ul class="explain">
+        <li><b>第一段</b>：介绍人物、时间、地点和活动——It's + 时间 + now. I'm at ... with .... Some are ...ing, some are ...ing.</li>
+        <li><b>第二段</b>：对比同一时刻的另一边——At the same time, it's + 时间 + in .... sb is/are ...ing.</li>
+        <li><b>第三段</b>：感受收尾——What a ... moment! / I really enjoy ... / I'm happy to share ....</li>
+        <li><b>高分句型</b>：Some are ...ing, others are ...ing.；At the same time（衔接对比）；What a + adj. + noun!（感叹句收尾）。</li>
+        <li><b>注意事项</b>：全文用<b>现在进行时</b>（be + v-ing）；注意中国上午 10 点＝美国晚上 10 点的<b>时差</b>表述；词数控制在 70 左右。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ========= 08 生词汇总 ========= -->
+<section class="sec" id="s8">
+  <div class="sec-head reveal">
+    <div class="sec-num">08</div>
+    <div class="sec-title">
+      <h2>生词与生短语深度解析 <em>Vocabulary Bank</em></h2>
+      <div class="sub">共 78 条，每条含：构词法 / 常用搭配 / 易错辨析 / 双例句（英中对照）。可按词性与来源筛选，支持搜索与朗读。</div>
+    </div>
+  </div>
+
+  <div class="tools reveal">
+    <div class="search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6"/></svg>
+      <input type="text" id="searchInput" placeholder="搜索英文、中文、搭配或辨析，例如 spend / 花费 / 花费四兄弟">
+    </div>
+    <div class="filters" id="filters">
+      <button class="on" data-f="all">全部词性</button>
+      <button data-f="n.">名词</button>
+      <button data-f="v.">动词</button>
+      <button data-f="adj.">形容词</button>
+      <button data-f="phr.">短语</button>
+    </div>
+    <div class="filters" id="filtersSrc">
+      <button class="on" data-s="all">两份试卷</button>
+      <button data-s="a">七年级上册</button>
+      <button data-s="b">初二试题</button>
+    </div>
+  </div>
+  <div class="count" id="count">— 共 78 个词条 —</div>
+  <div class="vocab-grid" id="vocabGrid"></div>
+  <noscript><div class="note">当前浏览器未启用 JavaScript：生词卡与朗读功能需要脚本支持；上方题目、原文与答案均已完整显示。</div></noscript>
+</section>
+
+<!-- ========= 09 积累小袋 ========= -->
+<section class="sec" id="s9">
+  <div class="sec-head reveal">
+    <div class="sec-num">09</div>
+    <div class="sec-title">
+      <h2>积累小袋 <em>Weather Idioms &amp; Words</em></h2>
+      <div class="sub">天气妙语 9 条（附中文释义与例句）＋ Weather Vocabulary 20 词（点击可朗读）。</div>
+    </div>
+  </div>
+  <div class="idiom-grid reveal" id="idiomGrid"></div>
+  <div class="para-title reveal" style="margin-top:44px"><span>Weather Vocabulary</span>天气词汇（20 词）</div>
+  <div class="wx-words reveal" id="wxWords"></div>
+  <div class="panel reveal">
+    <div class="panel-head"><span class="n">Knowledge</span><h3>识有所得 · 徐霞客与《徐霞客游记》</h3></div>
+    <div class="panel-body">
+      <ul class="explain">
+        <li>徐霞客是<b>明代著名旅行家、地理学家</b>，一生游历四方，不畏险阻、长途跋涉。</li>
+        <li>他对<b>山脉、河流、岩洞、气候、植物</b>等开展大量实地考察，纠正了古代地理记载中的多处错误。</li>
+        <li>他耗尽心血，写下约 <b>60 万字</b>的《徐霞客游记》，既是珍贵的<b>地理学名著</b>，也是文笔优美的<b>散文作品</b>，被誉为<b>「千古奇书」</b>。</li>
+        <li>徐霞客<b>勇于探索、求真务实</b>的精神一直为后人所敬佩与学习——这也是雷殿生被称为现代徐霞客的原因。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="foot-inner">
+    <p>本页整合两份资料：①《初中英语话题阅读 · 七年级上册》第 19 页；②《初二英语试题》第 6—8 页。78 个生词条目均提供构词法、常用搭配、易错辨析与双例句解析，供学习使用。</p>
+    <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">
+      <div class="foot-mark">Rain or Shine</div>
+      <button id="toTop">回到顶部</button>
+    </div>
+  </div>
+</footer>
+
+<aside id="wordCard" aria-live="polite">
+  <div class="wc-top">
+    <div><div class="wc-word" id="wcWord"></div><div class="wc-ph" id="wcPh"></div></div>
+    <button class="wc-close" id="wcClose" aria-label="关闭">×</button>
+  </div>
+  <div class="tagrow" style="margin:12px 0 0"><span class="pos" id="wcPos"></span></div>
+  <div class="wc-cn" id="wcCn"></div>
+  <div class="wc-sec"><span class="lbl">Word Building · 构词法</span><div class="txt" id="wcBuild"></div></div>
+  <div class="wc-sec"><span class="lbl">Collocations · 常用搭配</span><div class="txt" id="wcColl"></div></div>
+  <div class="wc-sec"><span class="lbl">Common Errors · 易错辨析</span><div class="txt" id="wcNote"></div></div>
+  <div class="wc-ex">
+    <i id="wcEx1"></i><span class="cn-s" id="wcEx1Cn"></span>
+    <i id="wcEx2" style="margin-top:9px"></i><span class="cn-s" id="wcEx2Cn"></span>
+  </div>
+  <div class="wc-actions">
+    <button id="wcSpeak">朗读单词</button>
+    <button id="wcSpeakEx">朗读例句</button>
+  </div>
+</aside>
+
+<div id="toast"></div>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ===== 词库：[英文,音标,词性,中文,构词法,搭配,易错辨析,例句1,例句1中译,例句2,例句2中译,来源] ===== */
+  var W = [
+["hemisphere","/ˈhemɪsfɪə(r)/","n.","（地球的）半球","hemi-（半）＋ sphere（球体），字面「半个球体」；同源词：atmosphere（大气层）、sphere（球体）。","the Northern / Southern / Eastern / Hemisphere；in the Northern Hemisphere（在北半球）。","world 指「世界」，hemisphere 指「地球的一半」；注意前常加 the，且南北方大写：the Southern Hemisphere。","China is in the Northern Hemisphere.","中国位于北半球。","The Southern Hemisphere has summer in January.","南半球在一月份是夏天。","a"],
+["tilt","/tɪlt/","n. & v.","倾斜；使倾斜","可作名词与动词；过去式/分词 tilted，现在分词 tilting（双写 t）。","the Earth's tilt（地轴倾斜）；be tilted towards / away from（朝向／背离……倾斜）；tilt your head（歪头）。","tilt 强调「轴向倾斜」，lean 指「倚靠、身体前倾」；be tilted to 与 be tilted towards 同义。","One hemisphere is tilted towards the Sun.","一个半球朝向太阳。","He tilted his head and smiled.","他歪着头笑了。","a"],
+["season","/ˈsiːzn/","n.","季节","seasonal（adj. 季节的）；season + -al；派生：seasoning（调味品）。","four seasons（四季）：spring, summer, autumn(英)/fall(美), winter；in season（当季、旺季）；out of season（过季）。","weather 指短期「天气」，climate 指长期「气候」，season 指「季节」；三者不可混用。","There are four seasons in a year.","一年有四个季节。","Strawberries are in season now.","草莓现在正当季。","a"],
+["look forward to","/lʊk ˈfɔːwəd tuː/","phr.","期待，盼望","look（看）＋ forward（向前）＋ to（介词），字面「向前看」→ 引申「期盼」。","look forward to sth.（期盼某事）；look forward to doing sth.（期盼做某事）；书信结尾常用 I'm looking forward to your reply.","① to 是介词，后接名词或 v-ing，不可接动词原形（误 look forward to hear）；② expect 表「预料」（中性），look forward to 表「满怀愉快地期待」。","I look forward to visiting the Great Wall.","我期盼去长城参观。","She is looking forward to the summer holiday.","她正盼着暑假。","a"],
+["spend","/spend/","v.","度过；花费","本身为词根词，过去式/过去分词均为 spent（特殊变化，需记忆）。","spend time/money on sth.；spend time (in) doing sth.；spend the weekend/holiday（度周末/度假）。","「花费」四兄弟：人 spend / 物 cost / It takes / 人 pay。I spent 10 yuan on the book. = The book cost me 10 yuan. = It took me 10 yuan to buy the book. = I paid 10 yuan for the book.","He spends two hours reading every day.","他每天花两小时读书。","We spent the summer holiday in the countryside.","我们在乡下度过了暑假。","a"],
+["snowman","/ˈsnəʊmæn/","n.","雪人","snow（雪）＋ man（人），合成词；复数为 snowmen（man 变 men）。","build / make a snowman（堆雪人）；make snowmen（堆雪人，复数）；snowball（雪球）；snowball fight（打雪仗）。","复数变化是 man→men，类似：policeman→policemen、postman→postmen；不要写成 snowmans。","The children built a snowman in the yard.","孩子们在院子里堆了个雪人。","We had a snowball fight after making snowmen.","堆完雪人后我们打了雪仗。","a"],
+["holiday","/ˈhɒlədeɪ/","n.","假期，假日","holy（神圣）＋ day（日子），原指「神圣的日子」→ 节日 → 假期。","on holiday（在度假）；have / take a holiday（休假）；winter / summer holidays（寒/暑假）；public holiday（法定假日）。","holiday（英式常用）/ vacation（美式常用）/ festival（传统节日，如 Spring Festival）/ leave（工作请假）。","We enjoy building snowmen during winter holidays.","我们喜欢在寒假堆雪人。","My family went to Hainan on holiday last winter.","去年冬天我们家去海南度假了。","a"],
+["firework","/ˈfaɪəwɜːk/","n.","烟花，烟火","fire（火）＋ work（作品），「火的作品」→ 烟花；常用复数 fireworks。","set off / light / set off fireworks（放烟花）；a fireworks display（烟花表演）；firecracker（鞭炮）。","firework 常用复数形式 fireworks；fire 指「火、火灾」，二者含义差别大。","The fireworks went off at midnight.","烟花在午夜绽放。","We watched a fireworks display on New Year's Eve.","除夕夜我们看了烟花表演。","a"],
+["go off","/ɡəʊ ɒf/","phr.","（警报）响起；（烟花）燃放；（灯）熄灭","go（变得）＋ off（离开/停止），含义随语境变化，是多义短语动词。","The alarm / bell goes off（闹钟/铃响）；The lights went off（灯灭了）；The fireworks went off（烟花燃放）；The milk has gone off（牛奶变质了，英式）。","go off 不表示「离开」，离开用 go away / leave；注意多义，须靠上下文判断。","The alarm went off at six in the morning.","闹钟早上六点响了。","Suddenly the lights went off in the whole building.","突然整栋楼的灯都灭了。","a"],
+["celebration","/ˌselɪˈbreɪʃn/","n.","庆祝；庆祝活动","celebrate（v. 庆祝）去 e 加 -ion；构词：celebration / celebration（名词）。","in celebration of（为庆祝……）；hold / have a celebration（举行庆祝活动）；a birthday celebration。","congratulate sb on sth（恭喜某人）用于「贺喜」；celebrate（庆祝）用于「举行庆祝活动」，宾语是节日或事件。","The town held a celebration for the new year.","全镇举行了新年庆祝活动。","They had a party in celebration of his success.","他们为庆祝他的成功举办了聚会。","a"],
+["tradition","/trəˈdɪʃn/","n.","传统","traditional（adj. 传统的）；traditional food（传统食物）。","a tradition of ...（……的传统）；by tradition（按照传统）；keep up a tradition（保持传统）。","tradition 指代代相传的「传统」，custom 指社会「习俗、风俗」；festival 指「节日」。","Eating dumplings is a Spring Festival tradition.","吃饺子是春节的传统。","It is a tradition in China to respect the old.","尊老是中国的传统。","a"],
+["unique","/juˈniːk/","adj.","独特的，独一无二的","源自拉丁语 unus（一）；uniquely（adv.）；uniqueness（n. 独特性）。","be unique to ...（是……特有的）；a unique experience（独特的经历）。","unique 表「独一无二」，不用 very / quite 修饰（不用 very unique）；unusual 表「不寻常」，程度弱于 unique。","Every snowflake is unique.","每一片雪花都是独一无二的。","This custom is unique to this small town.","这个习俗是这个小镇特有的。","a"],
+["umbrella","/ʌmˈbrelə/","n.","雨伞","源自意大利语 ombrella（影子），与 shadow 同源，最初指「遮阳伞」。","take / carry an umbrella（带伞）；open / put up an umbrella（撑伞）；fold an umbrella（收伞）。","umbrella 泛指「伞」，parasol 专指「遮阳伞」；raincoat 是「雨衣」。","Take an umbrella with you when you go out.","出门带把伞。","She opened her colourful umbrella in the rain.","她在雨中撑开了五颜六色的伞。","a"],
+["colourful","/ˈkʌləfl/","adj.","色彩鲜艳的；丰富多彩的","colour（颜色）＋ -ful（充满……的）；英式 colourful，美式 colorful。","a colourful dress / picture（鲜艳的裙子/画）；a colourful life（丰富多彩的生活）。","colourful（多彩的）↔ colorless（无色的）；注意英美拼写差异（ou 与 o）。","The colourful umbrellas make me feel better.","五颜六色的雨伞让我心情好些。","He has lived a colourful life.","他过着丰富多彩的生活。","a"],
+["look out of","/lʊk aʊt ɒv/","phr.","从……向外看","look（看）＋ out（向外）＋ of（从），三词搭配固定。","look out of the window（看窗外）；look out!（小心！）；look out for（提防、留意）。","look out of（从……向外看）与 look out!（小心）意义完全不同；勿混淆。look/watch/see/read：look（看，动作）、watch（观看，持续）、see（看见，结果）、read（阅读）。","I like looking out of the window at the rain.","我喜欢看窗外的雨。","Look out! The bus is coming.","小心！公交车来了。","a"],
+["cousin","/ˈkʌzn/","n.","堂（表）兄弟姐妹","不分性别，可指堂兄弟、表姐妹等；复数 cousins。","my cousin（我的堂/表亲）；first cousin（堂/表兄弟姐妹）。","cousin 指叔伯姑舅姨的子女；brother / sister 指同父母的兄弟姐妹；sibling 是「兄弟姐妹」的统称。","I am in the mountains with my cousins.","我和堂（表）兄弟姐妹在山里。","My cousin is the same age as me.","我堂（表）兄弟/姐妹和我同龄。","a"],
+["daytime","/ˈdeɪtaɪm/","n.","白天，日间","day（白天）＋ time（时间），合成词。","in the daytime（在白天）= during the day；at night（在夜里）。","daytime 与 night 相对；morning / afternoon 是更细的时间划分。","It is warm in the daytime but cold at night.","白天暖和，夜里寒冷。","Owls sleep in the daytime and work at night.","猫头鹰白天睡觉夜里活动。","a"],
+["go skiing / go skating","/ɡəʊ ˈskiːɪŋ/","phr.","去滑雪 / 去滑冰","go + v-ing 表示「去做某项活动」，同类：go swimming / boating / hiking / fishing。","go skiing（滑雪）；go skating（滑冰）；go ice-skating（滑冰，更明确）。","ski 用滑雪板（snow skiing / water skiing）；skate 用冰刀或旱冰鞋（ice-skating / roller-skating）。","It's a great place to go skiing and skating.","那是滑雪和滑冰的好地方。","We went skating on the lake last weekend.","上周末我们在湖上滑了冰。","a"],
+["bend","/bend/","v.","弯曲；弯腰","过去式/过去分词 bent（特殊变化）；bendy（adj. 易弯的）。","bend down / over（弯腰）；bend your knees（弯膝盖）；The road bends to the left（路向左拐）。","bend 是「弯曲而不断」，break 是「折断」；注意 bent 的拼写（不是 bended）。","The trees are bending in the strong wind.","树在大风中被吹弯。","Bend down and pick up the book.","弯腰把书捡起来。","a"],
+["heavy rain","/ˈhevi reɪn/","phr.","大雨，暴雨","heavy（adj. 重的）＋ rain（雨），「重的雨」→ 大雨。","heavy rain / snow（大雨/大雪）；heavy traffic（拥堵的交通）；heavy wind（大风）；light rain（小雨）。","heavy 是「大」的地道说法；big rain 是中式英语，不正确。","I think heavy rain is coming.","我觉得大雨要来了。","There will be heavy rain and strong wind tomorrow.","明天会有大风大雨。","a"],
+["dangerous","/ˈdeɪndʒərəs/","adj.","危险的","danger（n. 危险）＋ -ous（形容词后缀）；反义 safe（安全的）。","a dangerous job / place（危险的工作/地方）；It is dangerous (for sb) to do sth（做某事很危险）。","dangerous（带来危险的）修饰事物或行为；in danger（处于危险中）描述状态：The boy is in danger.（男孩处境危险）。","It's dangerous to go out in the storm.","暴风雨天外出很危险。","Smoking is dangerous to your health.","吸烟有害健康。","a"],
+["go boating","/ɡəʊ ˈbəʊtɪŋ/","phr.","去划船","boat 可作名词（小船）也可作动词（划船）；go boating = go + v-ing。","go boating on a lake（在湖上划船）；row a boat（划船，用桨）；by boat（乘船）。","boat（小船）与 ship（大轮船）不同；go boating 强调活动，by boat 强调交通方式。","I am boating on a lake with my family.","我正和家人在湖上划船。","They went boating on the river last Sunday.","上周日他们去河上划船了。","a"],
+["relax","/rɪˈlæks/","v.","放松，休息","relaxing（adj. 令人放松的，修饰事物）；relaxed（adj. 感到放松的，修饰人）；relaxation（n.）。","relax yourself（放松自己）；a relaxing holiday（令人放松的假期）；feel relaxed（感到放松）。","-ing 形容词修饰「物」，-ed 形容词修饰「人」：The trip is relaxing.（旅行令人放松）/ I feel relaxed.（我感到放松）。","It's really a good day for relaxing.","这真是一个适合放松的好日子。","The music helps me relax after work.","音乐帮助我下班后放松。","a"],
+["explorer","/ɪkˈsplɔːrə(r)/","n.","探险家，考察者","explore（v. 探索）＋ -er（人）；exploration（n. 探索）。","a great / famous explorer（伟大的/著名的探险家）；explore the world（探索世界）。","explorer（探险家，人）/ exploration（探索，行为）/ exploratory（adj. 探索的）。","Lei Dianhai is a famous Chinese explorer.","雷殿生是一位著名的中国探险家。","Columbus was a great explorer.","哥伦布是一位伟大的探险家。","a"],
+["environmental protector","/ɪnˌvaɪrənˈmentl prəˈtektə(r)/","phr.","环保人士","environment（n. 环境）＋ -al（adj.）→ environmental；protect（v.）＋ -or（人）→ protector。","environmental protection（环境保护）；environmental problems（环境问题）；protect ... from ...（保护……免受……）。","protector（保护者，人）/ protection（保护，抽象名词）；environmental（环境的）勿与 enviroment 混拼（注意 n）。","He is an environmental protector.","他是一位环保人士。","We need more environmental protectors in the world.","世界上需要更多环保人士。","a"],
+["journey","/ˈdʒɜːni/","n.","旅行，旅程","journey 强调「从一地到另一地的漫长过程」；派生：journeyman（熟练工）。","go on a journey（踏上旅程）；a long / difficult journey（漫长/艰难的旅程）；a train journey（火车之旅）。","journey（长途旅程）/ trip（短途出行）/ travel（旅行，泛指）/ tour（游览、巡回）/ voyage（航海、航天）。","He is known for his great walking journey.","他因伟大的徒步旅程而出名。","The journey from Harbin to Beijing takes about 5 hours.","从哈尔滨到北京的旅程约需 5 小时。","a"],
+["strength","/streŋθ/","n.","力量，体力","strong（adj. 强壮的）→ strength（n.），注意拼写变化（o→e，加 -th）。","build up / gather one's strength（增强/聚集体力）；with all one's strength（用尽全力）。","strength（体力、力量）/ power（权力、电力）/ energy（能量、精力）；三者含义不同。","He ran every day to build up his strength.","他每天跑步以增强体力。","She lifted the box with all her strength.","她用尽全力举起了箱子。","a"],
+["wild survival","/waɪld səˈvaɪvl/","phr.","野外生存","wild（adj. 野外的、野生的）＋ survival（n. 生存）；survive（v. 幸存）→ survival。","wild animals（野生动物）；survival skills（生存技能）；survive the earthquake（在地震中幸存）。","survive（幸存、活下来）/ live（生活）；wild（野生的）/ mild（温和的），一字母之差。","He read books on wild survival before the trip.","出发前他读了有关野外生存的书。","Wild animals need space to live.","野生动物需要生存空间。","a"],
+["mudslide","/ˈmʌdslaɪd/","n.","泥石流","mud（泥）＋ slide（滑动），合成词；类似：landslide（山体滑坡）。","be caught in a mudslide（遭遇泥石流）；mud（泥）；slide（滑动、幻灯片）。","自然灾害词族：flood（洪水）、earthquake（地震）、typhoon（台风）、mudslide（泥石流）。","He faced dangers like mudslides and wolf attacks.","他面临过泥石流和狼群袭击等危险。","The mudslide destroyed many houses.","泥石流摧毁了许多房屋。","a"],
+["toenail","/ˈtəʊneɪl/","n.","脚趾甲","toe（脚趾）＋ nail（指甲），合成词；同类：fingernail（手指甲）。","cut your toenails（剪脚趾甲）；lose a toenail（掉一片脚趾甲）。","toe（脚趾）/ finger（手指）；toenail（脚趾甲）/ fingernail（手指甲），不要混用。","He lost 19 toenails during the trip.","旅途中他掉了 19 片脚趾甲。","He cut his toenails before the trip.","出发前他剪了脚趾甲。","a"],
+["the Equator","/ɪˈkweɪtə(r)/","n.","赤道","equator 源自拉丁语 aequalis（相等的），指「平分地球的线」；前加 the。","near / on the Equator（在赤道附近/上）；the Tropics（热带）。","注意大写与定冠词：the Equator；equator 是地理名词，不是普通名词。","It is always hot near the Equator.","赤道附近常年炎热。","The Equator divides the Earth into two halves.","赤道把地球分成两半。","a"],
+["give up","/ɡɪv ʌp/","phr.","放弃","give（给）＋ up（向上、完），「把……交出去」→ 放弃。","give up sth.（放弃某物）；give up doing sth.（放弃做某事）；never give up（永不放弃）。","give up（放弃）/ give in（屈服）/ give away（赠送、泄露）/ give out（分发、耗尽），四个短语动词含义差别大。","Don't give up your dream.","不要放弃你的梦想。","He gave up smoking last year.","他去年戒了烟。","a"],
+["ethnic groups","/ˈeθnɪk ɡruːps/","phr.","民族","ethnic（adj. 民族的、种族的）＋ group（n. 群、组），常用复数。","ethnic minorities（少数民族）；ethnic groups（民族）；56 ethnic groups in China。","ethnic（民族的）与 ethic（伦理的）拼写相近易混；group 作「民族」解时常用复数。","China has 56 ethnic groups.","中国有 56 个民族。","Each ethnic group has its own culture.","每个民族都有自己的文化。","a"],
+["flood rescue work","/flʌd ˈreskjuː wɜːk/","phr.","抗洪（救援）工作","flood（n. 洪水）＋ rescue（n./v. 救援）＋ work（n. 工作，不可数）。","flood（洪水）；rescue sb from ...（从……救出某人）；rescue work（救援工作）。","rescue（营救，强调从危险中救出）/ save（拯救，更广义）；work 作「工作」解时不可数。","He joined in flood rescue work in Hunan.","他在湖南参加了抗洪工作。","The soldiers took part in the rescue work after the flood.","洪水过后战士们参加了救援工作。","a"],
+["the source of the Yangtze River","/sɔːs/","phr.","长江源头","source（n. 来源、源头）；the source of ...（……的源头）。","the source of the Nile / the Yellow River（尼罗河/黄河的源头）；the source of information（信息来源）。","source（源头、来源）/ resource（资源，常用复数 resources）；一字母之差。","They work to protect the source of the Yangtze River.","他们致力于保护长江源头。","We should find the source of the problem.","我们应该找到问题的根源。","a"],
+["hiking camps","/ˈhaɪkɪŋ kæmps/","phr.","徒步夏令营","hike（v. 徒步）→ hiking（n.）；camp（n. 营地、夏令营）。","go hiking（去徒步）；summer camp（夏令营）；hiking boots（徒步靴）。","camp（营地）/ campus（校园）；hiking（徒步）/ walking（散步），hiking 更强调长途野外。","For students, he organizes hiking camps in the forests.","他为学生在森林里组织徒步夏令营。","We went hiking in the mountains last summer.","去年夏天我们去山里徒步了。","a"],
+["adventure","/ədˈventʃə(r)/","n.","冒险，奇遇","adventurer（n. 冒险家）；adventurous（adj. 爱冒险的）。","go on an adventure（去冒险）；an exciting adventure（一次刺激的冒险）。","adventure（冒险活动、奇遇）/ venture（商业冒险、企业）；adventurer（冒险家）勿与 adventurer 混。","True adventure is not about walking far.","真正的冒险不在于走得多远。","The children love stories about adventures.","孩子们喜欢冒险故事。","a"],
+["environmental protection","/prəˈtekʃn/","phr.","环境保护","environmental（adj. 环境的）＋ protection（n. 保护）；protect（v.）→ protection（n.）。","environmental protection（环境保护）；protect ... from / against ...（保护……免受……）；under the protection of（在……保护下）。","protection（保护，名词）/ protector（保护者）/ conservation（保护，侧重自然资源）。","More people can learn about environmental protection.","更多人可以了解环境保护。","We should protect the environment for future generations.","我们应该为后代保护环境。","a"],
+["travel notes","/ˈtrævl nəʊts/","phr.","游记，旅行笔记","travel（v./n. 旅行）＋ notes（n. 笔记），note 常用复数。","take notes（记笔记）；turn ... into ...（把……变成……）；write travel notes（写游记）。","notes（笔记）/ diary（日记）；travel notes 强调旅途记录，diary 强调每日记录。","He wrote 3.2 million words in his travel notes.","他在游记中写了 320 万字。","She took notes during the trip.","她在旅途中做了笔记。","a"],
+["vacation","/vəˈkeɪʃn/","n.","假期","vacation 源自拉丁语 vacare（空闲）；动词 vacate（腾出）。","on vacation（在度假）；summer / winter vacation（暑/假）；take a vacation（休假）。","holiday（英式）/ vacation（美式）/ leave（工作请假）；on vacation 与 on holiday 同义。","Many people don't like to stay at home for their vacation.","许多人不喜欢假期待在家里。","We are going to Beijing on vacation.","我们要去北京度假。","b"],
+["countryside","/ˈkʌntrisaɪd/","n.","乡村，农村","country（乡村、国家）＋ side（边），合成词；= rural area。","go to the countryside（去乡下）；in the countryside（在乡下）；beautiful countryside（美丽的乡村）。","country（国家/乡村，多义）/ countryside（乡村地区，仅此一义）；city（城市）相对。","People from big cities go to the countryside on vacation.","大城市的人去乡下度假。","The air is fresh in the countryside.","乡下空气清新。","b"],
+["during","/ˈdjʊərɪŋ/","prep.","在……期间","during + 名词（时间段）；during the day / holidays / the trip。","during the day（白天期间）；during the holidays（假期期间）；during the trip（旅途中）。","during（在……期间，后接名词）/ while（当……时，后接句子）：during the summer / while I was sleeping。","During the holidays, trains and buses are busy.","假期期间火车和汽车都很繁忙。","During the summer, we often go swimming.","夏天我们常去游泳。","b"],
+["ticket","/ˈtɪkɪt/","n.","票","ticket 指「票、券」；复数 tickets。","a train / bus / plane ticket（火车/汽车/飞机票）；buy / book a ticket（买/订票）；a return ticket（往返票）。","ticket（票）/ fare（票价）；ticket 指票本身，fare 指费用：a cheap ticket = a low fare。","It is difficult to buy train tickets.","买火车票有点难。","I booked two tickets for the movie.","我订了两张电影票。","b"],
+["difficult","/ˈdɪfɪkəlt/","adj.","困难的","difficulty（n. 困难）；反义 easy（容易的）。","It is difficult (for sb) to do sth（做某事很困难）；a difficult question / job（难题/难做的工作）。","difficult（困难的，正式）/ hard（困难的，口语）/ easy（容易的）；difficult 与 hard 常可互换。","It is a little difficult to get tickets.","弄到票有点困难。","This maths problem is too difficult for me.","这道数学题对我来说太难了。","b"],
+["traffic","/ˈtræfɪk/","n.","交通（不可数）","traffic 为不可数名词，不能加 s；traffic jam（堵车）。","too much / heavy traffic（交通拥挤）；light traffic（车流少）；traffic lights（红绿灯）。","traffic（道路上的车流）/ transport（运输、交通工具）；too much 修饰不可数名词。","There was too much traffic on the road.","路上车太多了。","The traffic is heavy during rush hour.","高峰期交通拥堵。","b"],
+["picnic","/ˈpɪknɪk/","n.","野餐","picnic 也可作动词（去野餐）；过去式 picnicked（双写 c）。","have / go for a picnic（去野餐）；a picnic basket（野餐篮）；picnic area（野餐区）。","picnic（野餐）/ camp（露营）/ barbecue（烧烤）；go for a picnic = have a picnic。","We had our picnic in the car.","我们在车里吃了野餐。","Let's go for a picnic by the lake.","我们去湖边野餐吧。","b"],
+["blow","/bləʊ/","v.","吹","过去式 blew /bluː/，过去分词 blown /bləʊn/（不规则变化）。","blow hard / strongly（刮大风）；blow away（吹走）；blow out（吹灭）；The wind blows（刮风）。","blow（吹）/ flow（流动）；blow 的过去式是 blew（不是 blowed）。","A strong wind blew and it started to rain.","一阵大风吹来，天开始下雨。","He blew out the candles on his cake.","他吹灭了蛋糕上的蜡烛。","b"],
+["drive","/draɪv/","v.","驾驶","过去式 drove /drəʊv/，过去分词 driven（不规则变化）；driver（n. 司机）。","drive a car（开车）；drive sb to sp（开车送某人去某地）；drive home（开车回家）；go for a drive（兜风）。","drive（开汽车）/ ride（骑自行车、马）；take a bus（乘公交）不可说 drive a bus（除非你是司机）。","We drove back home after the picnic.","野餐后我们开车回家。","My father drives me to school every day.","爸爸每天开车送我上学。","b"],
+["cute","/kjuːt/","adj.","可爱的","= lovely，口语常用；cutely（adv.）；cuteness（n. 可爱）。","a cute baby / animal / dog（可爱的宝宝/动物/狗）；look cute（看起来可爱）。","cute（可爱、小巧玲珑）/ lovely（可爱、令人愉快）/ pretty（漂亮）；cute 多用于小孩、动物、小物件。","The animals on the farm were very cute.","农场里的动物很可爱。","What a cute little cat!","多可爱的小猫啊！","b"],
+["get out of","/ɡet aʊt ɒv/","phr.","离开；从……出来","get（变得）＋ out of（从……出来），多义短语。","get out of the car（下车）；get out of bed（起床）；get out of the city（出城）；get out of doing sth（逃避做某事）。","get out of（从……出来）/ get off（下车，公交/火车）/ get on（上车）；小汽车用 get in / out of。","It took us an hour to get out of the city.","我们花了一小时才出城。","He got out of the car and ran into the house.","他下了车跑进屋里。","b"],
+["hobby","/ˈhɒbi/","n.","爱好","复数 hobbies（辅音字母 + y 结尾，变 y 为 i 加 es）；= interest。","have a hobby（有爱好）；hobby = interest（爱好）；collect stamps is his hobby（集邮是他的爱好）。","hobby（业余爱好，长期）/ habit（习惯）/ interest（兴趣，更广）；复数拼写易错。","My grandpa has many hobbies like fishing.","我爷爷有很多爱好，比如钓鱼。","Her hobbies are reading and dancing.","她的爱好是阅读和跳舞。","b"],
+["birthday","/ˈbɜːθdeɪ/","n.","生日","birth（出生）＋ day（日子），合成词；birthday party / cake / present。","birthday party（生日聚会）；birthday cake（生日蛋糕）；on one's birthday（在某人生日那天）；date of birth（出生日期）。","birthday（生日）/ date of birth（出生日期，更正式）；注意 on + 具体某天。","Grandpa's birthday is coming soon.","爷爷的生日快到了。","I got many presents on my birthday.","我生日那天收到了很多礼物。","b"],
+["discuss","/dɪˈskʌs/","v.","讨论","discussion（n. 讨论）；discuss sth with sb（与某人讨论某事）。","discuss sth with sb（与某人讨论某事）；discuss what to do（讨论做什么）；have a discussion（进行讨论）。","discuss 是及物动词，直接接宾语，不加 about（误 discuss about the plan）；talk about 才加 about。","We are discussing what to give him.","我们在讨论送他什么。","They discussed the plan for a long time.","他们讨论这个计划很久了。","b"],
+["favourite","/ˈfeɪvərɪt/","adj.","最喜欢的","= favorite（美式）；favourite 前加 one's（my / his / her favourite）。","one's favourite food / colour / subject（最喜欢的食物/颜色/科目）；favourite = like ... best。","favourite（最喜欢的）/ popular（流行的）；favourite 是「个人最爱」，popular 是「大众流行」。","Mom usually cooks his favourite noodles.","妈妈常做他最爱吃的面条。","Blue is my favourite colour.","蓝色是我最喜欢的颜色。","b"],
+["bookcase","/ˈbʊkkeɪs/","n.","书架，书柜","book（书）＋ case（柜子），合成词；= bookshelf（书架）。","a new / brown / big bookcase（新/棕色/大书柜）；put books in the bookcase（把书放进书柜）。","bookcase（书柜，带柜门）/ bookshelf（书架，敞开的架子）/ desk（书桌）；三个词易混。","My father is buying a new brown bookcase online.","爸爸正在网上买一个新棕色书柜。","There are many books in the bookcase.","书柜里有很多书。","b"],
+["online","/ˌɒnˈlaɪn/","adv. & adj.","在网上","on（在）＋ line（线），合成词；= on the internet。","shop / buy online（网购）；online shopping（网购）；online courses（网课）；work online（在线工作）。","online（在线）/ offline（离线）；online 作副词修饰动词，作形容词修饰名词。","He likes shopping online.","他喜欢网购。","We have online classes on rainy days.","雨天我们上网课。","b"],
+["prepare","/prɪˈpeə(r)/","v.","准备","pre-（预先）＋ pare（准备）；preparation（n. 准备）；prepared（adj. 准备好的）。","prepare sth for sb（为某人准备某物）；prepare to do sth（准备做某事）；prepare for（为……做准备）。","prepare（准备，动词，强调过程）/ ready（准备好的，形容词，强调状态）：prepare for the exam / be ready for the exam。","We also prepare some gifts for my grandpa.","我们也为爷爷准备了一些礼物。","Mom is preparing dinner in the kitchen.","妈妈正在厨房准备晚饭。","b"],
+["interesting","/ˈɪntrəstɪŋ/","adj.","有趣的","interest（n. 兴趣）＋ -ing；interested（adj. 感兴趣的）。","an interesting book / story / movie（有趣的书/故事/电影）；It is interesting to do sth（做某事很有趣）。","interesting（事物有趣，修饰物）/ interested（人感兴趣，修饰人）：The book is interesting. / I am interested in the book.","It is interesting to have a birthday party.","办生日聚会很有趣。","This is an interesting story about crows.","这是一个关于乌鸦的有趣故事。","b"],
+["cleaner","/ˈkliːnə(r)/","n.","清洁工","clean（v. 打扫）＋ -er（人）；clean 也可作 adj.（干净的）。","cleaners help to keep cities clean（清洁工帮助保持城市干净）；clean up（打扫干净）。","cleaner（清洁工）/ clean（干净的/打扫）；-er 表人：teacher、driver、cleaner。","Cleaners help to keep cities clean.","清洁工帮助保持城市干净。","The cleaner works early every morning.","清洁工每天清早工作。","b"],
+["special","/ˈspeʃl/","adj.","特别的","= unusual；specially（adv. 特别地）；specialist（n. 专家）。","a special day / price / guest（特别的日子/价格/客人）；special education（特殊教育）。","special（特别的）/ especial（尤其的）/ specific（具体的）；special 最常用，表示「与众不同」。","The park welcomed six very special cleaners.","公园迎来了六位特别的清洁工。","Today is a special day for our family.","今天对我们家来说是个特别的日子。","b"],
+["welcome","/ˈwelkəm/","v.","欢迎","well（好）＋ come（来），字面「来得好」→ 欢迎；可作动词、形容词、名词。","welcome sb to sp（欢迎某人到某地）；You're welcome（不客气）；a warm welcome（热烈欢迎）。","welcome（欢迎）/ greet（问候、迎接）；welcome 可作形容词（a welcome guest），greet 不可。","They welcomed the crows to the park.","他们把乌鸦引进了公园。","Welcome to our school!","欢迎来到我们学校！","b"],
+["pick up","/pɪk ʌp/","phr.","捡起；接（人）；学会","pick（捡）＋ up（向上），多义短语动词。","pick up trash（捡垃圾）；pick sb up（接某人）；pick up a language（学会一门语言）；pick up the phone（接电话）。","pick up（捡起、接人、学会）/ pick out（挑选、辨认出），两个短语含义不同。","The crows pick up small pieces of trash.","乌鸦捡起小片垃圾。","Can you pick me up at the airport?","你能到机场接我吗？","b"],
+["trash","/træʃ/","n.","垃圾（不可数）","= rubbish（英式）/ garbage（美式，厨余）/ litter（乱丢的垃圾）。","throw away trash（扔垃圾）；put the trash into ...（把垃圾放进……）；trash can（垃圾桶）。","trash（美式，垃圾）/ rubbish（英式，垃圾）/ litter（乱丢的垃圾，不可数）/ garbage（厨余垃圾）；均不可数。","Please put the trash into the small box.","请把垃圾放进小箱子。","Don't throw trash on the ground.","不要随地扔垃圾。","b"],
+["piece","/piːs/","n.","片；块","a piece of ...（一片/一张/一块/一条）；pieces of（复数）。","a piece of paper / cake / music / news（一张纸/一块蛋糕/一首曲子/一条新闻）；pieces of trash（小片垃圾）。","piece（片、块，通用）/ slice（薄片，如面包）/ bit（一点）；a piece of + 不可数名词。","The birds move small pieces of trash into a box.","小鸟把小片垃圾叼进箱子。","Would you like a piece of cake?","你想来块蛋糕吗？","b"],
+["hard work","/hɑːd wɜːk/","phr.","辛勤工作，努力","hard（adj. 努力的）＋ work（n. 工作，不可数）。","hard work（努力工作，名词短语）；work hard（努力工作，动词短语）；hard-working（adj. 勤奋的）。","hard work（名词短语，hard 是形容词）/ work hard（动词短语，hard 是副词）；语序不同，词性不同。","They get bird food for their hard work.","它们因辛勤工作得到鸟食。","Success comes from hard work.","成功来自努力工作。","b"],
+["report","/rɪˈpɔːt/","v. & n.","报道；报告","reporter（n. 记者）；report + -er；report card（成绩单）。","It is reported that ...（据报道）；report the news（报道新闻）；a weather report（天气预报）。","report（报道、报告）/ notice（通知）；report 强调「信息传递」，notice 强调「告知」。","The BBC reported the news about the crows.","英国广播公司报道了乌鸦的新闻。","It is reported that the park will open next month.","据报道公园下个月开放。","b"],
+["nature","/ˈneɪtʃə(r)/","n.","自然；本性","natural（adj. 自然的）；naturally（adv. 自然地）；natural resources（自然资源）。","nature itself（自然本身）；by nature（天生）；natural disasters（自然灾害）；in nature（在自然界中）。","nature（自然/本性）/ countryside（乡村）；nature 泛指「大自然」，countryside 指「乡村地区」。","Nature itself can teach us many things.","自然本身能教我们很多东西。","We should live in harmony with nature.","我们应该与自然和谐相处。","b"],
+["take care of","/teɪk keər ɒv/","phr.","照顾；照料","take（拿）＋ care（关心）＋ of（的），固定搭配；= look after。","take care of sb / sth（照顾某人/某物）；take care of the environment（爱护环境）；take care（小心，单独使用）。","take care of（照顾）/ care about（在乎）/ take care（小心）；三者含义不同，注意介词。","We should take care of the environment.","我们应该爱护环境。","She takes care of her little brother at home.","她在家照顾小弟弟。","b"],
+["environment","/ɪnˈvaɪrənmənt/","n.","环境","environ（围绕）＋ -ment（名词后缀）；environmental（adj.）；environmentally（adv.）。","protect / save the environment（保护环境）；environmental problems（环境问题）；a clean environment（干净的环境）。","environment（环境，泛指自然环境）/ surroundings（周围环境，小范围）；注意拼写 n。","We must protect the environment.","我们必须保护环境。","A clean environment is important for our health.","干净的环境对健康很重要。","b"],
+["smart","/smɑːt/","adj.","聪明的","比较级 smarter，最高级 smartest；smartly（adv.）；smartphone（智能手机）。","smart（聪明伶俐）/ clever（机灵）/ wise（智慧、明智）；smart 可指「聪明」也可指「时尚」。","smart（美式常用）/ clever（英式常用）/ wise（有智慧）；smart 还有「时尚」义（a smart dress）。","Crows are smarter than other birds.","乌鸦比其他鸟更聪明。","She is a smart student in our class.","她是我们班聪明的学生。","b"],
+["scientist","/ˈsaɪəntɪst/","n.","科学家","science（n. 科学）＋ -ist（人）；scientific（adj. 科学的）。","a famous / great scientist（著名/伟大的科学家）；-ist 表人：artist（艺术家）、tourist（游客）、scientist。","scientist（科学家）/ artist（艺术家）/ tourist（游客）；-ist 后缀统一表「从事某活动的人」。","Scientists made a special vending machine for crows.","科学家为乌鸦造了一台特殊的自动贩卖机。","Many scientists are working on environmental problems.","许多科学家在研究环境问题。","b"],
+["vending machine","/ˈvendɪŋ məˈʃiːn/","phr.","自动贩卖机","vend（v. 贩卖）＋ -ing；machine（n. 机器）；vending machine（贩卖机）。","a vending machine（自动贩卖机）；a washing machine（洗衣机）；a ticket machine（售票机）。","vending machine（自动贩卖机）/ washing machine（洗衣机）/ ticket machine（售票机）；machine 前加用途。","The vending machine gives food to the crows.","这台自动贩卖机给乌鸦食物。","I bought a drink from the vending machine.","我从自动贩卖机买了饮料。","b"],
+["remember","/rɪˈmembə(r)/","v.","记住","re-（再）＋ member（记忆），「再记起」；反义 forget（忘记）。","remember to do（记得要做，未做）；remember doing（记得做过）；remember sth（记住某事）。","remember to do（记得去做，动作未发生）/ remember doing（记得做过，动作已发生）；forget to do / doing 同理。","Crows could remember the right size of paper.","乌鸦能记住正确的纸张尺寸。","Remember to lock the door when you leave.","离开时记得锁门。","b"],
+["example","/ɪɡˈzɑːmpl/","n.","例子","ex-（出）＋ ample（拿），「拿出来」→ 例子；exemplify（v. 举例说明）。","for example（例如）；for instance（例如）；a good example of ...（……的好例子）；set an example（树立榜样）。","example（例子）/ model（榜样）；for example（例如）可互换 for instance。","This is a good example of how clever birds can be.","这是这些鸟有多聪明的好例子。","For example, crows can use tools.","例如，乌鸦会使用工具。","b"],
+["skip rope","/skɪp rəʊp/","phr.","跳绳","skip（跳）＋ rope（绳子），动词短语；= jump rope（美式）。","skip rope（跳绳）；skip class（逃课）；skip a meal（跳过一餐）；skipping rope（跳绳用的绳子）。","skip（跳过、跳绳）/ jump（跳）；skip rope 是固定搭配，美式说 jump rope。","Some students are skipping rope on the playground.","一些学生在操场上跳绳。","The girls like skipping rope at break time.","女孩们喜欢课间跳绳。","b"],
+["play hide and seek","/pleɪ haɪd ənd siːk/","phr.","玩捉迷藏游戏","hide（躲藏）＋ seek（寻找），游戏名；play + 游戏名。","play hide and seek（玩捉迷藏）；play + 球类（不加 the）：play football；play the + 乐器：play the piano。","play + 球类运动（不加 the）/ play the + 乐器（加 the）；hide and seek 是游戏名，不加 the。","The children are playing hide and seek under the trees.","孩子们在树下玩捉迷藏。","We often play hide and seek after school.","放学后我们常玩捉迷藏。","b"],
+["share","/ʃeə(r)/","v.","分享","share 也可作名词（份额）；sharer（n. 分享者）。","share sth with sb（与某人分享某物）；share a room（共用房间）；share happiness（分享快乐）。","share（分享，强调共同拥有）/ divide（分开，强调分成几份）；share sth with sb 搭配固定。","I'm happy to share my life with you.","我很高兴与你分享我的生活。","She shared her snacks with her friends.","她把零食和朋友们分享。","b"],
+["at the same time","/ət ðə seɪm taɪm/","phr.","同时","at（在）＋ the same（相同的）＋ time（时间），固定介词短语。","at the same time（同时，常用于对比）；at times（有时）；on time（准时）；in time（及时）。","at the same time（同时）/ at times（有时）/ on time（准时）/ at a time（一次）；介词不同，含义不同。","It is 10 a.m. in China and 10 p.m. in America at the same time.","中国上午 10 点时，美国是晚上 10 点。","He is smart and hard-working at the same time.","他既聪明又勤奋。","b"]
+  ];
+
+  var IDIOMS = [
+    {en:"rain cats and dogs",cn:"下倾盆大雨",ex:"It was raining cats and dogs, so we stayed at home.",excn:"雨下得像倒下来一样，所以我们待在家里。"},
+    {en:"a storm in a teacup",cn:"小题大做（茶杯里的风暴）",ex:"Don't be worried - it's just a storm in a teacup.",excn:"别担心，这只是小题大做。"},
+    {en:"save for a rainy day",cn:"未雨绸缪（为困难时期存钱）",ex:"I save some money every month for a rainy day.",excn:"我每月存些钱以备不时之需。"},
+    {en:"on cloud nine",cn:"非常开心，欣喜若狂",ex:"She was on cloud nine after she got the good news.",excn:"听到好消息后她欣喜若狂。"},
+    {en:"take a rain check",cn:"改天再做某事（原指因雨天比赛延期）",ex:"Sorry, I'm busy today. Can I take a rain check?",excn:"抱歉今天很忙，我们改天好吗？"},
+    {en:"It's raining buckets.",cn:"雨下得很大（像倒水桶一样）",ex:"Take an umbrella - it's raining buckets outside.",excn:"带把伞，外面雨下得像倒水一样。"},
+    {en:"Every cloud has a silver lining.",cn:"黑暗中总有一线光明",ex:"You failed this time, but every cloud has a silver lining.",excn:"这次没考好，但黑暗中总有一线光明。"},
+    {en:"Make hay while the sun shines.",cn:"趁热打铁，把握机会",ex:"The weather is fine - make hay while the sun shines!",excn:"天气正好，趁热打铁吧！"},
+    {en:"Lightning never strikes the same place twice.",cn:"倒霉事不会重复发生（但科学上闪电可能多次击中同一地点）",ex:"Try again - lightning never strikes the same place twice.",excn:"再试一次吧，倒霉事不会总找上你。"}
+  ];
+
+  var WXWORDS = [
+    ["Hot","热的"],["Warm","温暖的"],["Cold","冷的"],["Freezing","极冷的；冰冻的"],["Tornado","龙卷风"],
+    ["Icy","结冰的"],["Thunder","雷声"],["Sunny","晴朗的"],["Cloudy","多云的"],["Partly Cloudy","局部多云"],
+    ["Foggy","有雾的"],["Stormy","有暴风雨的"],["Lightning","闪电"],["Hailing","下冰雹"],["Sleeting","下冻雨／雨夹雪"],
+    ["Snowy","下雪的"],["Rainy","下雨的"],["Windy","有风的"],["Clear Sky","晴空"],["Rainbow","彩虹"]
+  ];
+
+  /* ===== 工具 ===== */
+  function $(id){ return document.getElementById(id); }
+  function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
+
+  var MAP = {};
+  for(var i=0;i<W.length;i++){ MAP[W[i][0]] = W[i]; }
+
+  var toastTimer = null;
+  function toast(msg){
+    var t = $("toast"); if(!t) return;
+    t.textContent = msg; t.classList.add("show");
+    if(toastTimer) clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ t.classList.remove("show"); }, 2200);
+  }
+  function speak(text, rate){
+    if(!("speechSynthesis" in window)){ toast("当前浏览器不支持语音朗读"); return; }
+    try{
+      window.speechSynthesis.cancel();
+      var u = new SpeechSynthesisUtterance(text);
+      u.lang = "en-US"; u.rate = rate || 0.88; u.pitch = 1;
+      var vs = window.speechSynthesis.getVoices();
+      for(var i=0;i<vs.length;i++){ if(/en[-_]US/i.test(vs[i].lang)){ u.voice = vs[i]; break; } }
+      window.speechSynthesis.speak(u);
+    }catch(e){ toast("朗读启动失败"); }
+  }
+  function cleanText(el){
+    var c = el.cloneNode(true);
+    var bad = c.querySelectorAll(".hint,.ans,.bnum,.gloss");
+    for(var i=0;i<bad.length;i++){ bad[i].parentNode.removeChild(bad[i]); }
+    return (c.innerText || c.textContent || "").replace(/\s+/g," ").trim();
+  }
+
+  /* ===== 1. 显示兜底 ===== */
+  function forceVisible(){
+    document.documentElement.classList.remove("anim");
+    var all = document.querySelectorAll(".reveal");
+    for(var i=0;i<all.length;i++){ all[i].classList.add("in"); }
+  }
+  try{
+    if(!("IntersectionObserver" in window)){ throw new Error("no-io"); }
+    document.documentElement.classList.add("anim");
+    var io = new IntersectionObserver(function(entries){
+      for(var i=0;i<entries.length;i++){
+        if(entries[i].isIntersecting){ entries[i].target.classList.add("in"); io.unobserve(entries[i].target); }
+      }
+    }, {threshold:0.08, rootMargin:"0px 0px -4% 0px"});
+    var revs = document.querySelectorAll(".reveal");
+    for(var r=0;r<revs.length;r++){ io.observe(revs[r]); }
+    window.__io = io;
+  }catch(e){ forceVisible(); window.__io = null; }
+
+  setTimeout(function(){
+    var els = document.querySelectorAll(".reveal:not(.in)");
+    for(var i=0;i<els.length;i++){
+      var rect = els[i].getBoundingClientRect();
+      if(rect.top < window.innerHeight + 120){ els[i].classList.add("in"); }
+    }
+    if(!("IntersectionObserver" in window)){ forceVisible(); }
+  }, 2000);
+
+  /* ===== 2. 生词提示与卡片 ===== */
+  var ws = document.querySelectorAll(".w");
+  for(var q=0;q<ws.length;q++){
+    var k = ws[q].getAttribute("data-w");
+    if(MAP[k]){ ws[q].setAttribute("data-cn", MAP[k][3]); }
+  }
+
+  var card = $("wordCard");
+  var currentWord = null;
+  function openWord(id, el){
+    var w = MAP[id]; if(!w) return;
+    currentWord = w;
+    $("wcWord").textContent = w[0];
+    $("wcPh").textContent = w[1];
+    $("wcPos").textContent = w[2];
+    $("wcCn").textContent = w[3];
+    $("wcBuild").innerHTML = w[4];
+    $("wcColl").innerHTML = w[5];
+    $("wcNote").innerHTML = w[6];
+    $("wcEx1").innerHTML = w[7];
+    $("wcEx1Cn").innerHTML = w[8];
+    $("wcEx2").innerHTML = w[9];
+    $("wcEx2Cn").innerHTML = w[10];
+    card.classList.add("open");
+    var act = document.querySelectorAll(".w.active");
+    for(var i=0;i<act.length;i++){ act[i].classList.remove("active"); }
+    if(el){ el.classList.add("active"); }
+  }
+  function closeWord(){
+    if(card) card.classList.remove("open");
+    var act = document.querySelectorAll(".w.active");
+    for(var i=0;i<act.length;i++){ act[i].classList.remove("active"); }
+  }
+  if($("wcClose")) $("wcClose").addEventListener("click", closeWord);
+  if($("wcSpeak")) $("wcSpeak").addEventListener("click", function(){ if(currentWord) speak(currentWord[0], 0.8); });
+  if($("wcSpeakEx")) $("wcSpeakEx").addEventListener("click", function(){ if(currentWord) speak(currentWord[7], 0.92); });
+  document.addEventListener("keydown", function(e){ if(e.key === "Escape") closeWord(); });
+
+  document.addEventListener("click", function(e){
+    var t = e.target;
+    var w = t.closest ? t.closest(".w") : null;
+    if(w && w.getAttribute("data-w")){ openWord(w.getAttribute("data-w"), w); return; }
+    var blank = t.closest ? t.closest(".blank") : null;
+    if(blank){ blank.classList.toggle("reveal"); return; }
+    var sp = t.closest ? t.closest(".speak-btn") : null;
+    if(sp){
+      var target = $(sp.getAttribute("data-read"));
+      if(target){ speak(cleanText(target), 0.86); toast("开始朗读该段落"); }
+      return;
+    }
+    if(!(t.closest && t.closest("#wordCard"))) closeWord();
+  });
+
+  /* ===== 3. 生词卡片渲染 ===== */
+  var SPEAK_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6.5 9H3v6h3.5L11 19z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.4 5.6a9 9 0 0 1 0 12.8"/></svg>';
+
+  function buildVocab(){
+    var grid = $("vocabGrid"); if(!grid) return;
+    var html = "";
+    for(var i=0;i<W.length;i++){
+      var w = W[i];
+      var srcLabel = w[11] === "a" ? "七上" : "初二";
+      html += '<article class="vcard" data-pos="' + esc(w[2]) + '" data-src="' + esc(w[11]) + '" data-text="' + esc((w[0]+" "+w[3]+" "+w[5]+" "+w[6]).toLowerCase()) + '">'
+        + '<div class="top"><div><div class="word">' + esc(w[0]) + '</div><div class="ph">' + esc(w[1]) + '</div></div>'
+        + '<button class="icon-btn" data-speak="' + esc(w[0]) + '" aria-label="朗读">' + SPEAK_ICON + '</button></div>'
+        + '<div class="tagrow"><span class="pos">' + esc(w[2]) + '</span><span class="src-t">' + srcLabel + '</span></div>'
+        + '<div class="cn">' + esc(w[3]) + '</div>'
+        + '<div class="dline"><span class="dlabel">Word Building · 构词法</span><div class="dbody">' + w[4] + '</div></div>'
+        + '<div class="dline"><span class="dlabel">Collocations · 常用搭配</span><div class="dbody">' + w[5] + '</div></div>'
+        + '<div class="dline"><span class="dlabel">Common Errors · 易错辨析</span><div class="dbody">' + w[6] + '</div></div>'
+        + '<div class="dline"><span class="dlabel">Examples · 例句</span><div class="dbody">'
+        + '<span class="exen">' + esc(w[7]) + '</span><br>' + esc(w[8]) + '<br>'
+        + '<span class="exen">' + esc(w[9]) + '</span><br>' + esc(w[10]) + '</div></div>'
+        + '</article>';
+    }
+    grid.innerHTML = html;
+    var vcs = grid.querySelectorAll(".vcard");
+    if(window.__io){
+      for(var j=0;j<vcs.length;j++){ window.__io.observe(vcs[j]); }
+    }
+    setTimeout(function(){
+      var hidden = grid.querySelectorAll(".vcard:not(.in)");
+      for(var k=0;k<hidden.length;k++){
+        var rect = hidden[k].getBoundingClientRect();
+        if(rect.top < window.innerHeight + 200){ hidden[k].classList.add("in"); }
+      }
+    }, 1500);
+    var all = grid.querySelectorAll(".vcard");
+    for(var m=0;m<all.length;m++){ all[m].style.opacity = "1"; all[m].style.transform = "none"; }
+  }
+  try{ buildVocab(); }catch(e){ }
+
+  if($("vocabGrid")){
+    $("vocabGrid").addEventListener("click", function(e){
+      var b = e.target.closest ? e.target.closest("[data-speak]") : null;
+      if(b){ speak(b.getAttribute("data-speak"), 0.8); }
+    });
+  }
+
+  var curFilter = "all", curSrc = "all", curKey = "";
+  function applyFilter(){
+    var cards = document.querySelectorAll("#vocabGrid .vcard");
+    var n = 0;
+    for(var i=0;i<cards.length;i++){
+      var okPos = (curFilter === "all") || (cards[i].getAttribute("data-pos").indexOf(curFilter) > -1);
+      var okSrc = (curSrc === "all") || (cards[i].getAttribute("data-src").indexOf(curSrc) > -1);
+      var okKey = (!curKey) || (cards[i].getAttribute("data-text").indexOf(curKey) > -1);
+      if(okPos && okSrc && okKey){ cards[i].style.display = ""; n++; }
+      else{ cards[i].style.display = "none"; }
+    }
+    var c = $("count");
+    if(c){ c.textContent = "— 共 " + n + " 个词条 —"; }
+  }
+  if($("searchInput")){
+    $("searchInput").addEventListener("input", function(e){
+      curKey = e.target.value.trim().toLowerCase(); applyFilter();
+    });
+  }
+  if($("filters")){
+    $("filters").addEventListener("click", function(e){
+      var b = e.target.closest ? e.target.closest("button") : null;
+      if(!b) return;
+      var btns = $("filters").querySelectorAll("button");
+      for(var i=0;i<btns.length;i++){ btns[i].classList.remove("on"); }
+      b.classList.add("on"); curFilter = b.getAttribute("data-f"); applyFilter();
+    });
+  }
+  if($("filtersSrc")){
+    $("filtersSrc").addEventListener("click", function(e){
+      var b = e.target.closest ? e.target.closest("button") : null;
+      if(!b) return;
+      var btns = $("filtersSrc").querySelectorAll("button");
+      for(var i=0;i<btns.length;i++){ btns[i].classList.remove("on"); }
+      b.classList.add("on"); curSrc = b.getAttribute("data-s"); applyFilter();
+    });
+  }
+
+  /* ===== 4. 天气妙语与天气词汇 ===== */
+  try{
+    var ig = $("idiomGrid");
+    if(ig){
+      var html = "";
+      for(var i=0;i<IDIOMS.length;i++){
+        var it = IDIOMS[i];
+        html += '<div class="idiom">'
+          + '<div class="top" style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start">'
+          + '<div class="en-i">' + esc(it.en) + '</div>'
+          + '<button class="icon-btn" data-speak="' + esc(it.en) + '" aria-label="朗读">' + SPEAK_ICON + '</button></div>'
+          + '<div class="cn-i">' + esc(it.cn) + '</div>'
+          + '<div class="ex-i"><i>' + esc(it.ex) + '</i><br>' + esc(it.excn) + '</div></div>';
+      }
+      ig.innerHTML = html;
+      ig.addEventListener("click", function(e){
+        var b = e.target.closest ? e.target.closest("[data-speak]") : null;
+        if(b){ speak(b.getAttribute("data-speak"), 0.85); }
+      });
+    }
+  }catch(e){ }
+
+  try{
+    var wx = $("wxWords");
+    if(wx){
+      for(var j=0;j<WXWORDS.length;j++){
+        (function(pair){
+          var d = document.createElement("button");
+          d.className = "wx-word";
+          d.innerHTML = '<span class="en-w">' + esc(pair[0]) + '</span><span class="cn-w">' + esc(pair[1]) + '</span>';
+          d.addEventListener("click", function(){ speak(pair[0], 0.82); });
+          wx.appendChild(d);
+        })(WXWORDS[j]);
+      }
+    }
+  }catch(e){ }
+
+  /* ===== 5. 答案开关 / 导航 / 进度条 ===== */
+  var toggleAns = $("toggleAns");
+  if(toggleAns){
+    toggleAns.addEventListener("click", function(){
+      var on = document.body.classList.toggle("show-ans");
+      toggleAns.textContent = on ? "隐藏全部答案" : "显示全部答案";
+      toast(on ? "已显示全部答案" : "已隐藏答案");
+    });
+  }
+
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll(".nav a"));
+  var sections = [];
+  for(var s=0;s<navLinks.length;s++){
+    var sec = document.querySelector(navLinks[s].getAttribute("href"));
+    if(sec) sections.push(sec);
+  }
+  function onScroll(){
+    var st = window.scrollY || document.documentElement.scrollTop;
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    var p = $("progress");
+    if(p){ p.style.width = (h > 0 ? (st / h) * 100 : 0) + "%"; }
+    var active = sections[0] || null;
+    for(var i=0;i<sections.length;i++){ if(sections[i].offsetTop - 150 <= st){ active = sections[i]; } }
+    for(var k=0;k<navLinks.length;k++){
+      var href = "#" + (active ? active.id : "");
+      if(navLinks[k].getAttribute("href") === href){ navLinks[k].classList.add("active"); }
+      else{ navLinks[k].classList.remove("active"); }
+    }
+  }
+  window.addEventListener("scroll", onScroll, {passive:true});
+  onScroll();
+
+  if($("toTop")){ $("toTop").addEventListener("click", function(){ window.scrollTo({top:0, behavior:"smooth"}); }); }
+})();
+</script>
+</body>
+</html>
