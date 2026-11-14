@@ -1,0 +1,1429 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>七年级英语期中 · 易错知识点精讲与逐条检验</title>
+<style>
+:root{
+  --bg:#f3f5fc; --surface:#ffffff; --surface2:#f8f9ff; --ink:#1c2338; --ink2:#414a66;
+  --muted:#77819c; --line:#e6e9f4; --brand:#4f46e5; --brand2:#7c3aed; --teal:#0d9488;
+  --ok:#0f9d76; --warn:#cf7a10; --fix:#d92d48; --amber:#d97706; --soft-ok:#e9f8f2; --soft-warn:#fff5e6;
+  --soft-fix:#ffeef0; --soft-brand:#eef0ff; --soft-teal:#e7f7f5;
+  --shadow:0 6px 26px rgba(28,35,56,.065); --shadow2:0 18px 46px rgba(28,35,56,.13);
+  --r:18px; --mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace;
+  --en:"Georgia","Times New Roman",serif;
+  --cn:"PingFang SC","Microsoft YaHei","Hiragino Sans GB","Noto Sans CJK SC",sans-serif;
+}
+html[data-theme="dark"]{
+  --bg:#0b1020; --surface:#151c30; --surface2:#1b2339; --ink:#e9edfa; --ink2:#c3cbe0;
+  --muted:#a4b0cd; --line:#283251; --brand:#8b83ff; --brand2:#a78bfa; --teal:#2dd4bf;
+  --ok:#34d399; --warn:#fbbf24; --fix:#fb7185; --soft-ok:#12362e; --soft-warn:#3a2d13;
+  --soft-fix:#3c1d28; --soft-brand:#232448; --soft-teal:#123634;
+  --shadow:0 6px 26px rgba(0,0,0,.25); --shadow2:0 18px 46px rgba(0,0,0,.4);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--cn);font-size:15px;line-height:1.75;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(900px 500px at 8% -10%,rgba(79,70,229,.10),transparent 70%),radial-gradient(800px 460px at 95% 8%,rgba(13,148,136,.09),transparent 70%)}
+button,input{font-family:inherit;font-size:inherit}
+button{cursor:pointer}
+a{color:var(--brand)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px 90px;position:relative;z-index:1}
+
+/* ===== Hero ===== */
+.hero{position:relative;overflow:hidden;color:#fff;padding:44px 0 88px;background:linear-gradient(118deg,#211b57 0%,#4338ca 46%,#0e7490 100%)}
+.hero::before{content:"";position:absolute;width:620px;height:620px;right:-120px;top:-300px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.20),transparent 66%)}
+.hero::after{content:"";position:absolute;width:420px;height:420px;left:-140px;bottom:-280px;border-radius:50%;background:radial-gradient(circle,rgba(45,212,191,.24),transparent 66%)}
+.hero .wrap{padding-bottom:0;z-index:2}
+.hero .kicker{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;letter-spacing:.14em;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.24);padding:6px 14px;border-radius:999px;backdrop-filter:blur(6px)}
+.hero h1{margin:18px 0 8px;font-size:clamp(27px,4.2vw,42px);font-weight:800;letter-spacing:.5px;line-height:1.3}
+.hero h1 em{font-style:normal;color:#a5f3ea}
+.hero p.sub{margin:0;color:rgba(255,255,255,.85);font-size:15px;max-width:720px}
+.hero .pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.hero .pills span{font-size:12.5px;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.22);padding:5px 13px;border-radius:999px}
+.dots{position:absolute;inset:0;pointer-events:none}
+.dots i{position:absolute;width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.45);animation:float 5s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0);opacity:.35}50%{transform:translateY(-14px);opacity:.9}}
+
+/* ===== Stats ===== */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:-52px;position:relative;z-index:3}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px 20px;box-shadow:var(--shadow)}
+.stat .n{font-size:29px;font-weight:800;line-height:1.2;font-variant-numeric:tabular-nums}
+.stat .l{font-size:12.5px;color:var(--muted);margin-top:2px}
+.stat:nth-child(1) .n{color:var(--brand)} .stat:nth-child(2) .n{color:var(--fix)}
+.stat:nth-child(3) .n{color:var(--warn)} .stat:nth-child(4) .n{color:var(--teal)}
+
+/* ===== Toolbar ===== */
+.toolbar{margin-top:26px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px;box-shadow:var(--shadow)}
+.toolrow{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.search{position:relative;flex:1 1 260px;min-width:190px}
+.search input{width:100%;padding:11px 14px 11px 38px;border:1.5px solid var(--line);background:var(--surface2);color:var(--ink);border-radius:11px;outline:none;transition:.2s}
+.search input:focus{border-color:var(--brand);box-shadow:0 0 0 3px rgba(79,70,229,.13)}
+.search .ico{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:15px}
+.btn{border:1.5px solid var(--line);background:var(--surface2);color:var(--ink2);padding:9px 14px;border-radius:11px;font-size:13.5px;white-space:nowrap;transition:.18s;display:inline-flex;align-items:center;gap:6px}
+.btn:hover{border-color:var(--brand);color:var(--brand);transform:translateY(-1px)}
+.btn.primary{background:linear-gradient(120deg,var(--brand),var(--brand2));color:#fff;border-color:transparent;box-shadow:0 6px 18px rgba(79,70,229,.28)}
+.btn.primary:hover{color:#fff;filter:brightness(1.08)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
+.chip{border:1.5px solid var(--line);background:transparent;color:var(--muted);font-size:12.5px;padding:5px 13px;border-radius:999px;transition:.18s}
+.chip:hover{color:var(--brand);border-color:var(--brand)}
+.chip.on{background:var(--soft-brand);border-color:var(--brand);color:var(--brand);font-weight:700}
+.chip .dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:5px;vertical-align:1px}
+
+/* ===== Tabs / progress ===== */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:26px 0 0}
+.tab{border:1.5px solid var(--line);background:var(--surface);color:var(--ink2);padding:10px 18px;border-radius:12px;font-size:14px;font-weight:600;transition:.18s;box-shadow:var(--shadow)}
+.tab:hover{transform:translateY(-2px);border-color:var(--brand)}
+.tab.on{background:linear-gradient(120deg,var(--brand),var(--brand2));color:#fff;border-color:transparent;box-shadow:0 8px 22px rgba(79,70,229,.25)}
+.tab small{opacity:.75;font-weight:400;margin-left:6px;font-size:12px}
+.prog{display:flex;align-items:center;gap:12px;margin:18px 0 8px;color:var(--muted);font-size:13px}
+.prog .track{flex:1;height:8px;background:var(--line);border-radius:99px;overflow:hidden}
+.prog .track i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--teal),var(--brand));border-radius:99px;transition:width .4s}
+.prog b{color:var(--teal);font-variant-numeric:tabular-nums}
+
+/* ===== Section head ===== */
+.sec-head{display:flex;align-items:baseline;gap:12px;margin:22px 0 14px;flex-wrap:wrap}
+.sec-head h2{margin:0;font-size:21px;font-weight:800}
+.sec-head .desc{color:var(--muted);font-size:13px}
+.sec-head .count{margin-left:auto;color:var(--muted);font-size:13px}
+
+/* ===== Cards ===== */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);margin-bottom:14px;box-shadow:var(--shadow);overflow:hidden;transition:.22s;position:relative}
+.card:hover{box-shadow:var(--shadow2);transform:translateY(-2px)}
+.card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--ok)}
+.card[data-s="warn"]::before{background:var(--warn)} .card[data-s="fix"]::before{background:var(--fix)}
+.card.done{opacity:.72}
+.card-head{display:flex;align-items:center;gap:14px;padding:16px 20px 14px 22px;cursor:pointer;user-select:none}
+.card-head:hover .chev{color:var(--brand)}
+.idx{flex:0 0 34px;height:34px;border-radius:10px;background:var(--soft-brand);color:var(--brand);display:grid;place-items:center;font-weight:800;font-size:13px;font-variant-numeric:tabular-nums}
+.ttl{flex:1;min-width:0}
+.ttl h3{margin:0;font-family:var(--en);font-size:22px;font-weight:700;letter-spacing:.2px;line-height:1.35;word-break:break-word}
+.ttl h3.sent{font-size:17.5px;line-height:1.5}
+.ttl p{margin:2px 0 0;color:var(--muted);font-size:13px}
+.badge{font-size:11.5px;padding:3px 10px;border-radius:999px;white-space:nowrap;font-weight:700;border:1px solid transparent}
+.badge.ok{background:var(--soft-ok);color:var(--ok)} .badge.warn{background:var(--soft-warn);color:var(--warn)}
+.badge.fix{background:var(--soft-fix);color:var(--fix)}
+.badges{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;max-width:270px}
+.badge.tag{background:var(--surface2);color:var(--muted);font-weight:500;border-color:var(--line)}
+.acts{display:flex;align-items:center;gap:8px}
+.star{border:1.5px solid var(--line);background:var(--surface2);color:var(--muted);width:32px;height:32px;border-radius:10px;font-size:15px;line-height:1;transition:.18s}
+.star:hover{border-color:var(--warn);color:var(--warn);transform:scale(1.08)}
+.star.on{background:var(--soft-warn);border-color:var(--warn);color:var(--warn)}
+.chev{color:var(--muted);font-size:17px;transition:transform .22s;display:inline-block;width:16px;text-align:center}
+.card.open .chev{transform:rotate(180deg)}
+.core{padding:0 22px 15px 70px;color:var(--ink2);font-size:14px;margin-top:-4px}
+.core b{color:var(--brand)}
+.detail{border-top:1px dashed var(--line);padding:18px 22px 22px;background:var(--surface2)}
+.detail.collapsed{display:none}
+.block{margin-bottom:16px}
+.block:last-child{margin-bottom:0}
+.blk-t{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:800;margin-bottom:8px;letter-spacing:.4px}
+.blk-t .bi{width:22px;height:22px;border-radius:7px;display:grid;place-items:center;font-size:12px;color:#fff;flex:0 0 22px}
+.b-check .bi{background:var(--ok)} .b-fix .bi{background:var(--fix)} .b-warn .bi{background:var(--warn)}
+.b-note .bi{background:#8b93ad} .b-exp .bi{background:var(--brand2)} .b-con .bi{background:var(--teal)} .b-ex .bi{background:var(--amber)}
+html[data-theme="dark"] .tip{color:#ffe7b3}
+html[data-theme="dark"] .blk-body{color:var(--ink)}
+.blk-body{border-radius:12px;padding:12px 15px;font-size:14px;line-height:1.85}
+.b-check .blk-body{background:var(--soft-ok);border-left:3px solid var(--ok)}
+.b-fix .blk-body{background:var(--soft-fix);border-left:3px solid var(--fix)}
+.b-warn .blk-body{background:var(--soft-warn);border-left:3px solid var(--warn)}
+.b-note .blk-body{background:var(--surface);border:1px solid var(--line)}
+.b-exp .blk-body{background:var(--soft-brand);border-left:3px solid var(--brand2)}
+.b-con .blk-body{background:var(--soft-teal);border-left:3px solid var(--teal)}
+.blk-body ul{margin:0;padding-left:19px} .blk-body li{margin:3px 0}
+.blk-body .en{font-family:var(--en);font-size:15px}
+.blk-body em{font-style:normal;color:var(--fix);font-weight:700}
+.blk-body strong{color:var(--brand)}
+.correction{display:flex;flex-direction:column;gap:7px;margin-top:9px}
+.corr-line{display:flex;gap:9px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:9px;padding:8px 11px;font-size:13.5px}
+.corr-line .lbl{flex:0 0 52px;font-weight:800;font-size:12px;padding-top:2px}
+.corr-line.bad .lbl{color:var(--fix)} .corr-line.good .lbl{color:var(--ok)}
+
+/* ===== Exercise ===== */
+.ex{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:13px 15px;margin-top:9px}
+.ex-q{font-size:14px;margin-bottom:9px;line-height:1.7}
+.ex-q .no{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:6px;background:var(--soft-brand);color:var(--brand);font-size:11px;font-weight:800;margin-right:7px}
+.ex-q .en{font-family:var(--en);font-size:15px}
+.opts{display:flex;flex-direction:column;gap:7px}
+.opt{text-align:left;border:1.5px solid var(--line);background:var(--surface2);color:var(--ink2);padding:8px 13px;border-radius:9px;font-size:13.5px;transition:.16s;line-height:1.6}
+.opt:hover{border-color:var(--brand);background:var(--soft-brand)}
+.opt.right{background:var(--soft-ok);border-color:var(--ok);color:var(--ok);font-weight:700}
+.opt.wrong{background:var(--soft-fix);border-color:var(--fix);color:var(--fix)}
+.opt.dim{opacity:.55}
+.opt .k{font-weight:800;margin-right:7px}
+.ex-e{margin-top:9px;padding:9px 12px;border-radius:9px;background:var(--soft-teal);color:var(--ink2);font-size:13px;line-height:1.75;display:none}
+.ex-e.show{display:block;animation:fade .25s}
+@keyframes fade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+
+/* ===== Report / Cheats ===== */
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px;box-shadow:var(--shadow);margin-bottom:16px}
+.panel h3{margin:0 0 4px;font-size:18px;font-weight:800}
+.panel .lead{color:var(--muted);font-size:13.5px;margin:0 0 16px}
+.rev{border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:12px;background:var(--surface2)}
+.rev.fix{border-left:4px solid var(--fix)} .rev.warn{border-left:4px solid var(--warn)}
+.rev .rh{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:10px}
+.rev .rh b{font-size:14.5px}
+.rev .rh .pos{font-size:11.5px;background:var(--soft-brand);color:var(--brand);padding:2px 9px;border-radius:999px;font-weight:700}
+.rev .rl{display:flex;gap:10px;font-size:13.5px;line-height:1.8;margin:5px 0}
+.rev .rl .t{flex:0 0 62px;font-weight:800;font-size:12.5px;padding-top:2px}
+.rev .rl.bad .t{color:var(--fix)} .rev .rl.good .t{color:var(--ok)} .rev .rl.why .t{color:var(--brand)}
+.rev .rl .c{flex:1}
+.rev .rl .c code{font-family:var(--en);font-size:14.5px;background:var(--surface);border:1px solid var(--line);padding:1px 6px;border-radius:6px}
+.miss-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px}
+.miss{background:var(--soft-brand);border:1px solid var(--line);border-radius:11px;padding:10px 13px;font-size:13.5px}
+.miss b{color:var(--brand)}
+.cheat-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.ctab{border:1.5px solid var(--line);background:var(--surface2);color:var(--ink2);padding:7px 13px;border-radius:10px;font-size:13px;transition:.18s}
+.ctab:hover{border-color:var(--teal)} .ctab.on{background:var(--soft-teal);border-color:var(--teal);color:var(--teal);font-weight:700}
+.tbl-wrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:420px}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;line-height:1.7}
+th{background:var(--soft-brand);color:var(--brand);font-weight:800;white-space:nowrap}
+td:first-child{font-family:var(--en);font-size:14.5px;white-space:nowrap}
+tr:nth-child(even) td{background:var(--surface2)}
+.tip{margin-top:12px;padding:10px 14px;background:var(--soft-warn);border-left:3px solid var(--warn);border-radius:9px;font-size:13.5px}
+
+/* ===== Quiz ===== */
+.quiz-mask{position:fixed;inset:0;background:rgba(13,18,38,.62);backdrop-filter:blur(5px);z-index:50;display:grid;place-items:center;padding:18px}
+.quiz-mask.hidden{display:none}
+.quiz-box{background:var(--surface);border:1px solid var(--line);border-radius:20px;width:min(620px,100%);max-height:88vh;overflow:auto;box-shadow:0 24px 70px rgba(0,0,0,.3);padding:22px}
+.quiz-top{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.quiz-top b{font-size:18px;flex:1}
+.quiz-top .p{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.quiz-top .x{border:none;background:var(--surface2);color:var(--muted);width:30px;height:30px;border-radius:9px;font-size:16px}
+.qbar{height:7px;background:var(--line);border-radius:99px;overflow:hidden;margin-bottom:18px}
+.qbar i{display:block;height:100%;background:linear-gradient(90deg,var(--teal),var(--brand));transition:width .3s}
+.q-title{font-size:16px;line-height:1.85;margin-bottom:6px}
+.q-src{font-size:12px;color:var(--muted);margin-bottom:14px}
+.q-score{text-align:center;padding:14px 0}
+.q-score .big{font-size:48px;font-weight:800;color:var(--brand);line-height:1.2}
+.q-score .msg{color:var(--muted);font-size:14px;margin-bottom:16px}
+.q-wrong{background:var(--soft-fix);border-radius:10px;padding:10px 13px;margin-top:8px;font-size:13px;text-align:left}
+.q-actions{display:flex;gap:9px;justify-content:center;margin-top:18px;flex-wrap:wrap}
+
+/* ===== misc ===== */
+.empty{text-align:center;padding:60px 20px;color:var(--muted);background:var(--surface);border:1px dashed var(--line);border-radius:var(--r)}
+.empty .big{font-size:38px;margin-bottom:8px}
+#toTop{position:fixed;right:22px;bottom:22px;width:44px;height:44px;border-radius:14px;border:none;background:linear-gradient(120deg,var(--brand),var(--brand2));color:#fff;font-size:18px;box-shadow:0 10px 26px rgba(79,70,229,.35);display:none;z-index:20}
+.foot{text-align:center;color:var(--muted);font-size:12.5px;padding:26px 0 0}
+.hidden{display:none!important}
+
+@media(max-width:760px){
+  .stats{grid-template-columns:repeat(2,1fr)} .badges{max-width:120px}
+  .card-head{padding:14px 14px 12px 16px;gap:10px} .core{padding-left:16px;padding-right:14px}
+  .detail{padding:16px 14px} .ttl h3{font-size:19px} .ttl h3.sent{font-size:15.5px}
+  .hero{padding:32px 0 76px} .wrap{padding:0 13px 70px}
+}
+@media print{
+  :root{--bg:#fff;--surface:#fff;--surface2:#fff;--ink:#111;--ink2:#222;--muted:#555;--line:#bbb;--shadow:none;--shadow2:none}
+  body{font-size:11.5pt;line-height:1.55;background:#fff}
+  body::before,.dots,.toolbar,.tabs,.prog,.acts,.hero .pills,#toTop,.foot,.quiz-mask,.ex .opts .opt:hover{display:none!important}
+  .hero{background:#fff!important;color:#111;padding:0 0 10px;border-bottom:2px solid #111}
+  .hero h1,.hero p.sub,.hero .kicker{color:#111!important;background:none;border:none;padding:0}
+  .hero h1 em{color:#111} .hero .kicker{letter-spacing:0}
+  .stats{margin-top:12px} .stat{box-shadow:none;border:1px solid #bbb;break-inside:avoid}
+  .wrap{max-width:100%;padding:0}
+  .detail.collapsed{display:block!important}
+  .card{break-inside:avoid;page-break-inside:avoid;box-shadow:none;border:1px solid #bbb;margin-bottom:9px}
+  .card::before{display:none} .card:hover{transform:none;box-shadow:none}
+  .block{break-inside:avoid} .blk-body{background:#fff!important;border:1px solid #ddd}
+  .ex{break-inside:avoid} .ex-e{display:block!important}
+  .opt{border:1px solid #ddd;background:#fff}
+  .sec-head{margin:12px 0 8px} .panel{box-shadow:none;border:1px solid #bbb}
+  @page{size:A4;margin:12mm}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="dots" id="dots"></div>
+  <div class="wrap">
+    <div class="kicker">📘 逐条核对 · 拓展精讲 · 交互练习</div>
+    <h1>七年级英语期中 <em>易错知识点</em> 精讲</h1>
+    <p class="sub">对孩子整理的笔记逐条检验，标出需要修正与澄清的地方，并补充拓展用法、易混辨析和即时可做的例题。</p>
+    <div class="pills">
+      <span>鲁教版（五四制）· 七年级上册</span>
+      <span>期中复习范围</span>
+      <span>92 条考点逐条核对</span>
+      <span>可搜索 / 可自测 / 可打印</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="stats" id="stats"></div>
+
+  <div class="toolbar">
+    <div class="toolrow">
+      <div class="search"><span class="ico">🔍</span><input id="q" type="search" placeholder="搜索单词、短语、考点……（按 / 快速定位）" autocomplete="off"></div>
+      <button class="btn" data-action="expand-all">📂 全部展开</button>
+      <button class="btn" data-action="collapse-all">📁 全部折叠</button>
+      <button class="btn" data-action="theme">🌗 深色 / 浅色</button>
+      <button class="btn" data-action="print">🖨️ 打印</button>
+      <button class="btn primary" data-action="quiz-start">✏️ 开始自测</button>
+    </div>
+    <div class="chips" id="chips"></div>
+  </div>
+
+  <div class="tabs" id="tabs"></div>
+
+  <div class="prog" id="prog"></div>
+
+  <main id="list"></main>
+
+  <div class="foot">本页为离线单文件，学习进度自动保存在本机浏览器；打印时会自动展开全部内容并切换为浅色高对比 A4 版式。</div>
+</div>
+
+<div class="quiz-mask hidden" id="quizMask">
+  <div class="quiz-box">
+    <div class="quiz-top"><b>✏️ 综合自测</b><span class="p" id="quizProg"></span><button class="x" data-action="quiz-close">✕</button></div>
+    <div class="qbar"><i id="quizBar"></i></div>
+    <div id="quizBody"></div>
+  </div>
+</div>
+
+<button id="toTop" title="回到顶部">↑</button>
+
+<script id="DATA" type="application/json">
+{
+  "meta": {"book":"鲁教版（五四制）七年级上册","scope":"期中复习","total":92},
+  "sections": [
+    {"key":"words","title":"核心单词","sub":"含同根词 / 易混辨析","items":[
+{"id":"w1","t":"feather","cn":"羽毛","s":"ok","tags":["拼写易混","可数名词"],
+"core":"可数名词，复数 <b>feathers</b>；重点区分 <span class='en'>feather / leather / weather / father</span> 的拼写。",
+"check":"✅ 核对无误：作「羽毛」讲是可数名词，复数直接加 -s；例句 <span class='en'>The bird has beautiful red feathers.</span> 语法与语义都正确。",
+"note":["可数名词，复数形式 feathers","易与 leather（皮革）拼写混淆","例句：The bird has beautiful red feathers. 这只鸟长着漂亮的红色羽毛。"],
+"expand":["串记一组 -eather 词：<span class='en'>father</span> 父亲 / <span class='en'>farther</span> 更远 / <span class='en'>weather</span> 天气 / <span class='en'>leather</span> 皮革 / <span class='en'>feather</span> 羽毛。可以记成「父亲看天气、穿皮革、捡羽毛」。","习语 <span class='en'>as light as a feather</span> 轻如鸿毛；<span class='en'>Birds of a feather flock together.</span> 物以类聚。","名词变复数一般加 -s；只有部分以 f / fe 结尾的词才变 -ves（见第 14 条 leaf）。"],
+"confuse":"<span class='en'>feather</span> 羽毛（可数）｜ <span class='en'>leather</span> 皮革（不可数）｜ <span class='en'>weather</span> 天气（不可数，问句用 What's the weather like?）。三个词拼写只差开头一两个字母，考拼写题时先看清句意再落笔。",
+"ex":[{"q":"The little bird has only a few ______ on its wings.","o":["feathers","leathers","weathers"],"a":0,"e":"句意为「翅膀上只有几根羽毛」，a few 后接可数名词复数，用 feathers；leather 皮革、weather 天气都不可数且不合句意。"}]},
+{"id":"w2","t":"die","cn":"死亡；去世","s":"ok","tags":["短暂性动词","词形变换"],
+"core":"非延续性（短暂）动词，<em>不能</em>与 for / since 引导的一段时间连用；延续状态用 <b>be dead</b>。",
+"check":"✅ 核对无误：变形 died / dying / dead / death 全部正确，<span class='en'>He has died for 3 years ✗ → He has been dead for 3 years ✓</span> 是标准改法，也是本条最值钱的一句话。",
+"note":["短暂性动词，不能与表示一段时间的状语连用","变形：died（过去式/过去分词）；dying（现在分词/adj. 垂死的）；dead（adj. 死的）；death（n. 死亡）","易错点：不能说 He has died for 3 years，应改为 He has been dead for 3 years","例句：The old man died last winter."],
+"expand":["拼写：<span class='en'>die → dying</span>（ie 变 y 再加 -ing），同类 <span class='en'>lie → lying</span>、<span class='en'>tie → tying</span>。","「他去世三年了」三种同义表达：<span class='en'>He died three years ago.</span> = <span class='en'>He has been dead for three years.</span> = <span class='en'>It is three years since he died.</span>","固定搭配：<span class='en'>die of</span>（内因：疾病、饥饿、衰老）／<span class='en'>die from</span>（外因：事故、外伤）／<span class='en'>die out</span> 灭绝。七年级了解即可。","一串同根词：<span class='en'>die</span>(v.) / <span class='en'>dead</span>(adj.) / <span class='en'>death</span>(n.) / <span class='en'>dying</span>(adj. 垂死的) / <span class='en'>deadly</span>(adj. 致命的)。"],
+"confuse":"句子里缺<strong>动词</strong>用 die，缺<strong>形容词</strong>用 dead（前面要有 be），缺<strong>名词</strong>用 death。特别注意不能说 <span class='en'>He is died</span>；表状态只能说 <span class='en'>He is dead</span>。",
+"ex":[{"q":"The old man ______ for three years.","o":["has died","has been dead","died"],"a":1,"e":"for three years 是一段时间，谓语必须用延续性状态 be dead；die 是瞬间动作，不能延续。若坚持用 died，时间状语要改成 three years ago。"},{"q":"His grandpa's ______ made the whole family sad.","o":["die","dead","death"],"a":2,"e":"名词所有格 grandpa's 后面要接名词，death 是名词「死亡」；die 是动词，dead 是形容词，都不能作宾语。"}]},
+{"id":"w3","t":"search","cn":"搜索；搜寻","s":"ok","tags":["动词搭配"],
+"core":"<b>search + 被搜查对象</b>（地点 / 人）；<b>search for + 要找的目标</b>。两者可以同时出现在一个句子里。",
+"check":"✅ 核对无误。例句 <span class='en'>The police searched the forest for the lost kid.</span> 同时用对了两个结构，是这条最典型的考法。",
+"note":["及物 / 不及物动词","search + 地点：搜查某地；search for + 目标：寻找某人/某物","易错点：直接加地点，加目标必须带 for","例句：The police searched the forest for the lost kid."],
+"expand":["<span class='en'>search sb. for sth.</span> 搜某人的身找某物：<span class='en'>The guard searched him for a knife.</span>","<span class='en'>in search of</span> 是介词短语「寻找」：<span class='en'>They went out in search of food.</span>","search 也可作名词：<span class='en'>a search for the missing boy</span>；<span class='en'>search the Internet for information</span> 上网查资料。"],
+"confuse":"<span class='en'>search + 地点</span>（搜查某处）／<span class='en'>search for + 目标</span>（寻找某物）／<span class='en'>look for</span>（找，强调过程）／<span class='en'>find</span>（找到，强调结果）／<span class='en'>find out</span>（查明真相、信息）。判断口诀：后面是<strong>地点</strong>不加 for，后面是<strong>想找的东西</strong>必须加 for。",
+"ex":[{"q":"They ______ the whole house, but still couldn't find the key.","o":["searched for","searched","found out"],"a":1,"e":"「搜查了整栋房子」，the whole house 是被搜查的地点，用 search + 地点；search for 后面要接想找的目标（the key）。"}]},
+{"id":"w4","t":"begin","cn":"开始","s":"ok","tags":["短暂性动词","拼写"],
+"core":"begin to do / begin doing 含义基本一致；非延续性动词，与时间段连用要换成 <b>be on</b>。",
+"check":"✅ 核对无误：begin with、began / begun、例句都正确。<strong>补充一个笔记漏掉的失分点</strong>：现在分词是 <span class='en'>beginning</span>（双写 n），很多孩子会写成 begining。",
+"note":["后可接 to do 或 doing，含义基本一致；常见搭配 begin with 以……开头","变形：began（过去式）；begun（过去分词）","易错点：短暂性动词，不与时间段连用","例句：The film will begin in ten minutes."],
+"expand":["现在分词 <span class='en'>beginning</span> 双写 n；名词 <span class='en'>beginning</span> 开头，<span class='en'>at the beginning of</span> 在……开始时。","与时间段连用要换延续表达：<span class='en'>The film has begun for ten minutes ✗ → The film has been on for ten minutes ✓</span>。","begin 后接 know / understand / realize 等心理活动动词时，通常用 <span class='en'>to do</span>；begin 本身用进行时，后面也多用 to do，避免两个 -ing 叠在一起：<span class='en'>It's beginning to rain.</span>","start 与 begin 大体同义，但 start 还有「出发、启动、开办」义：<span class='en'>start a club</span> 创办社团。"],
+"confuse":"<span class='en'>begin / start</span> 都是「瞬间开始」，因此不能说 <span class='en'>has begun for...</span>；描述「已经进行多久」要用 <span class='en'>be on</span>、<span class='en'>last</span> 或 <span class='en'>have been doing</span>。",
+"ex":[{"q":"Hurry up! The meeting ______ for twenty minutes.","o":["has begun","has been on","began"],"a":1,"e":"for twenty minutes 要求延续性表达，「会议已经开了 20 分钟」用 has been on；begin 是瞬间动词，不能与时间段连用。"},{"q":"It's ______ to rain. Take an umbrella.","o":["begining","beginning","begun"],"a":1,"e":"begin 重读闭音节结尾且末尾只有一个辅音字母，加 -ing 要双写 n：beginning。"}]},
+{"id":"w5","t":"hate","cn":"讨厌；憎恨","s":"ok","tags":["to do / doing"],
+"core":"<b>hate doing</b> 一贯、习惯性地讨厌；<b>hate to do</b> 具体某一次不愿意做。",
+"check":"✅ 核对无误。例句 <span class='en'>I hate getting up early on weekends.</span> 用 doing 表示长期习惯，与笔记的说明完全对应。",
+"note":["hate doing sth.（侧重习惯性厌恶）；hate to do sth.（侧重某次不想做）","易错点：七年级常考 doing 形式表习惯","例句：I hate getting up early on weekends."],
+"expand":["与 <span class='en'>like / love / prefer</span> 的 to do 与 doing 用法一致，可以成组记。","口语高频：<span class='en'>I hate to say it, but...</span>（我不太想说，但……）、<span class='en'>I'd hate to miss the show.</span> 这里都用 to do，因为是具体一次。","hate 也可接 that 从句：<span class='en'>She hates that it rains every day.</span>；hate 是状态动词，一般不用进行时。"],
+"confuse":"判断口诀：<strong>「一直讨厌」用 doing，「这一次不想」用 to do</strong>。看到 on weekends / every day / always 等习惯性标志，优先 doing；看到 would / 具体某件事，优先 to do。",
+"ex":[{"q":"I ______ to tell you this, but you failed the test.","o":["hate","am hating","hate telling"],"a":0,"e":"「具体这一次不愿说」用 hate to do；hate 是状态动词，不用于进行时。hate telling 表示一贯讨厌讲述，不合语境。"}]},
+{"id":"w6","t":"decide","cn":"决定","s":"ok","tags":["to do"],
+"core":"<b>decide to do</b> 决定做；<b>decide not to do</b> 决定不做；<em>不接 doing</em>。名词 decision。",
+"check":"✅ 核对无误：搭配、否定形式、decision / make a decision、例句都准确。「不能接 decide doing」是最常考的一句。",
+"note":["decide to do sth. 决定做某事；decide not to do sth. 决定不做某事","拓展：decision n. 决定；make a decision 做决定","易错点：不能接 decide doing","例句：She decided to join the English club."],
+"expand":["<span class='en'>decide on sth.</span> 选定某物：<span class='en'>We decided on the blue one.</span>","<span class='en'>decide + 疑问词 + to do</span>：<span class='en'>They haven't decided where to go.</span>","<span class='en'>decide + that 从句</span>：<span class='en'>He decided that he would study harder.</span>","同义替换 <span class='en'>make a decision / make up one's mind</span> 下决心。"],
+"confuse":"否定词位置：<span class='en'>decide <strong>not to</strong> do ✓</span>，不能写成 <span class='en'>decide to don't</span> 或 <span class='en'>don't decide to do</span>（后者意思变成「没决定做」）。同类否定还有 <span class='en'>pretend not to do</span>、<span class='en'>tell sb. not to do</span>。",
+"ex":[{"q":"At last she decided ______ the English club.","o":["joining","to join","join"],"a":1,"e":"decide 后接不定式 to do，不能接动名词或动词原形。同类的还有 hope / plan / want / would like。"}]},
+{"id":"w7","t":"suddenly","cn":"突然地","s":"ok","tags":["词性","拼写"],
+"core":"副词，可放句首（逗号隔开）或句中修饰动词；形容词 <b>sudden</b>。",
+"check":"✅ 核对无误：词性、位置说明和例句 <span class='en'>Suddenly, it began to rain heavily.</span> 都规范。",
+"note":["副词，可放句首（用逗号隔开）或句中修饰动词","拓展：sudden adj. 突然的","例句：Suddenly, it began to rain heavily."],
+"expand":["同义短语 <span class='en'>all of a sudden</span> = suddenly，注意中间的 <strong>a</strong> 不能少。","拼写关：<span class='en'>sudden + ly = suddenly</span>，常见错写 <span class='en'>suddently / suddenlly</span>。","suddenly 常与一般过去时搭配，叙述过去突然发生的事：<span class='en'>Suddenly, the lights went out.</span>"],
+"confuse":"<span class='en'>sudden</span>(adj.) 修饰名词：<span class='en'>a sudden change</span> 突然的变化；<span class='en'>suddenly</span>(adv.) 修饰动词或整句。判断看后面接的是名词还是句子。",
+"ex":[{"q":"______, it began to rain heavily.","o":["Sudden","Suddenly","All of sudden"],"a":1,"e":"修饰整个句子要用副词 Suddenly；all of a sudden 必须带冠词 a，选项 C 缺 a。形容词 Sudden 不能单独修饰句子。"}]},
+{"id":"w8","t":"emperor","cn":"皇帝","s":"ok","tags":["文化背景","可数名词"],
+"core":"可数名词，复数 <b>emperors</b>；出自本单元《皇帝的新装》<span class='en'>The Emperor's New Clothes</span>。",
+"check":"✅ 核对无误，释义与例句正确。这条可以顺势把整篇课文的词串起来复习。",
+"note":["可数名词，复数 emperors","例句：The emperor lived in a great palace."],
+"expand":["同根与相关：<span class='en'>empire</span> 帝国、<span class='en'>empress</span> 女皇 / 皇后。","人物名词对照：<span class='en'>emperor</span> 皇帝（统治 empire）／<span class='en'>king</span> 国王（统治 kingdom）／<span class='en'>queen</span> 女王、王后／<span class='en'>president</span> 总统。","《皇帝的新装》配套高频词：<span class='en'>silk</span> 丝绸、<span class='en'>gold</span> 金子、<span class='en'>cheat</span> 欺骗、<span class='en'>pretend</span> 假装、<span class='en'>stupid</span> 愚蠢的、<span class='en'>praise</span> 赞美。笔记第 8、31 条与第三部分多句都出自这一课。"],
+"confuse":"所有格 <span class='en'>the emperor's new clothes</span> 撇号加在单数名词后；若指多位皇帝则用 <span class='en'>the emperors'</span>。另外别把 emperor（人）与 empire（国家）混了。",
+"ex":[{"q":"The ______ walked through the street in his new clothes.","o":["empire","emperor","empress"],"a":1,"e":"句中需要指「人」的名词作主语，且后面是 his，用 emperor 皇帝；empire 是帝国，empress 是女皇 / 皇后。"}]},
+{"id":"w9","t":"neighbor / neighbour","cn":"邻居","s":"ok","tags":["英美拼写","可数名词"],
+"core":"美式 <b>neighbor</b> / 英式 <b>neighbour</b>；复数加 -s；<b>neighborhood</b> 街区、居民区。",
+"check":"✅ 核对无误，两种拼写都正确。补一条卷面细节：<strong>同一份作文里要自始至终用同一种拼写</strong>，一会儿 neighbor 一会儿 neighbour 会被扣印象分。",
+"note":["可数名词，复数 neighbors / neighbours","拓展：neighborhood n. 街区；居民区","例句：My next-door neighbor is a kind old lady."],
+"expand":["英式对应：<span class='en'>neighbour / neighbourhood</span>；美式：<span class='en'>neighbor / neighborhood</span>。类似的还有 <span class='en'>color / colour</span>、<span class='en'>favorite / favourite</span>。","<span class='en'>next-door neighbor</span> 隔壁邻居；<span class='en'>in the neighborhood</span> 在附近。","neighbor 偶尔作动词「与……相邻」，七年级不考。"],
+"confuse":"<span class='en'>neighbor</span> 是「人」，<span class='en'>neighborhood</span> 是「地方」；<span class='en'>nearby</span> 是形容词 / 副词「附近的」。句子要人还是地方，先看谓语动词。",
+"ex":[{"q":"My ______ is a kind old lady. (美式拼写)","o":["neighbour","neighbor","neighborhood"],"a":1,"e":"题目指定美式拼写，用 neighbor；is a kind old lady 说明主语是人，不能用 neighborhood（街区）。"}]},
+{"id":"w10","t":"break","cn":"打破；打碎；违反","s":"ok","tags":["不规则动词","一词多义"],
+"core":"broke / broken；<b>break a rule</b> 违规、<b>break down</b> 出故障、<b>have a break</b> 休息一下。",
+"check":"✅ 变形、搭配、例句都正确，<span class='en'>The cup is broken.</span> 中 broken 作形容词的判断也准确。<strong>小建议</strong>：笔记写的 <span class='en'>break the rule</span> 更自然的形式是 <span class='en'>break a rule</span> 或 <span class='en'>break the rules</span>。",
+"note":["变形：broke（过去式）；broken（过去分词/adj. 破碎的）","搭配：break the rule 违反规则；break down 出故障","例句：He broke the window when he played football.","拓展：The cup is broken. 这个杯子碎了。（broken 作形容词）"],
+"expand":["<strong>七上高频义：名词「休息」</strong>——<span class='en'>have a break / take a break</span> 休息一下，<span class='en'>a ten-minute break</span> 十分钟的课间休息。笔记未提，务必补上。","<span class='en'>break one's promise / word</span> 食言（呼应第 11 条 promise 与短语第 1 条）。","短语家族：<span class='en'>break the law</span> 违法、<span class='en'>break into</span> 闯入、<span class='en'>break out</span> 爆发、<span class='en'>break off</span> 中断。","<span class='en'>broken</span> 可作定语：<span class='en'>a broken chair</span> 一把破椅子。"],
+"confuse":"<span class='en'>break</span>（打破 / 休息）与 <span class='en'>brake</span>（刹车）同音不同义；<span class='en'>break down</span> 是「（机器）出故障」，主语常是 car / bus / machine，不能用于人。",
+"ex":[{"q":"Let's have a ______ after two classes.","o":["break down","break","broken"],"a":1,"e":"have a break 是固定搭配「休息一下」；break down 意为出故障，broken 是形容词「破碎的」，都不能填入。"}]}
+
+,{"id":"w11","t":"promise","cn":"承诺；许诺","s":"ok","tags":["动词句型","名词搭配"],
+"core":"动词 <b>promise to do / promise that</b>；名词可数，<b>make / keep / break a promise</b>；<em>没有 promise sb. to do</em>。",
+"check":"✅ 核对无误，「无 promise sb. to do 结构」是这条最有价值的一句，两条例句也都正确。",
+"note":["词性：动词 / 名词","动词用法：promise to do sth.；promise that 从句","名词用法：表「诺言」，可数","易错点：无 promise sb. to do 结构","例句：He promised to come... / Don't break your promise."],
+"expand":["想带「人」要用双宾语或从句：<span class='en'>promise sb. sth.</span> = <span class='en'>promise sth. to sb.</span>（<span class='en'>He promised me a bike.</span>）；<span class='en'>promise sb. that 从句</span>（<span class='en'>He promised me that he would come.</span>）。","固定三件套：<span class='en'>make a promise</span> 许诺 / <span class='en'>keep a promise</span> 守信 / <span class='en'>break a promise</span> 失信，见短语第 1 条。","<span class='en'>promise</span> 作名词还可表「前途、希望」：<span class='en'>show great promise</span> 很有前途（了解）。"],
+"confuse":"<span class='en'>✗ He promised me to help.</span> → <span class='en'>✓ He promised to help me.</span> 或 <span class='en'>✓ He promised me that he would help.</span>。对比：wish / tell / ask 可以接「sb. + to do」，promise 不行。",
+"ex":[{"q":"Which sentence is RIGHT?","o":["He promised me to come.","He promised to come.","He promised coming."],"a":1,"e":"promise 后接不定式或 that 从句，不接动名词，也不能用 promise sb. to do。要带人可说 He promised me that he would come."}]},
+{"id":"w12","t":"diary","cn":"日记；日记本","s":"ok","tags":["拼写易混","名词复数"],
+"core":"可数名词，复数 <b>diaries</b>（辅音 + y 变 ies）；固定搭配 <b>keep a diary</b> 写日记。",
+"check":"✅ 核对无误：复数变化、keep a diary、与 dairy 的拼写辨析都准确，例句也规范。",
+"note":["可数名词，复数 diaries","搭配：keep a diary 写日记","易错点：易与 dairy（奶制品）拼写混淆","例句：She keeps a diary every day."],
+"expand":["记忆法：<span class='en'>di<b>a</b>ry</span> 日记里有「a day（一天）」；<span class='en'>d<b>ai</b>ry</span> 奶制品来自「牛奶 dairy products」。","同类 y → ies 的复数：<span class='en'>city → cities</span>、<span class='en'>story → stories</span>、<span class='en'>baby → babies</span>、<span class='en'>country → countries</span>。","<span class='en'>keep a diary in English</span> 用英语记日记；<span class='en'>write in one's diary</span> 写在日记本里。"],
+"confuse":"<span class='en'>diary</span> 日记（可数，写的东西/本子）｜ <span class='en'>dairy</span> 奶制品、乳品店。两个词字母完全相同、只换顺序，是拼写题最爱考的一对。",
+"ex":[{"q":"Keep a ______ in English, and you'll write better.","o":["dairy","diary","diaries"],"a":1,"e":"句意为「用英语记日记」，且不定冠词 a 后用单数名词；diary 是日记，dairy 是奶制品。"}]},
+{"id":"w13","t":"directly","cn":"直接地","s":"ok","tags":["词性","同根词"],
+"core":"副词，修饰动词或表示「径直」；adj. <b>direct</b> 直接的、v. 指导。",
+"check":"✅ 核对无误：词性与例句 <span class='en'>You can go directly to the teacher's office.</span> 都正确。",
+"note":["副词，修饰动词","拓展：direct adj. 直接的；v. 指导","例句：You can go directly to the teacher's office."],
+"expand":["同根词一串记：<span class='en'>direct</span>(adj./v.) / <span class='en'>directly</span>(adv.) / <span class='en'>direction</span>(n. 方向) / <span class='en'>director</span>(n. 导演、主任) / <span class='en'>indirect</span>(adj. 间接的)。","反义词 <span class='en'>indirectly</span>；<span class='en'>direct</span> 本身也可作副词「径直」：<span class='en'>go direct to the station</span>。","<span class='en'>in the direction of</span> 朝……方向；<span class='en'>in all directions</span> 四面八方。"],
+"confuse":"修饰<strong>名词</strong>用 direct（<span class='en'>a direct answer</span> 直截了当的回答），修饰<strong>动词/整句</strong>用 directly。别与 direction（方向，名词）混淆。",
+"ex":[{"q":"Go ______ to the teacher's office; don't wait here.","o":["direct","directly","direction"],"a":1,"e":"修饰动词 go 要用副词 directly；direct 是形容词，direction 是名词「方向」。"}]},
+{"id":"w14","t":"leaf","cn":"叶子","s":"ok","tags":["名词复数"],
+"core":"可数名词，复数 <b>leaves</b>；部分以 f / fe 结尾的名词变复数时改 f / fe 为 <b>ves</b>。",
+"check":"✅ 核对无误：复数形式与规律说明准确，例句 <span class='en'>The leaves turn yellow in autumn.</span> 中 turn + 颜色形容词的用法也正确。",
+"note":["可数名词，复数 leaves（f/fe 结尾变 ves）","例句：The leaves turn yellow in autumn."],
+"expand":["同类「f / fe → ves」口诀：<strong>小偷(thief)之妻(wife)用刀(knife)和树叶(leaf)结束狼(wolf)的生命(life)，把半(half)个架子(shelf)留给自己(self)</strong> → <span class='en'>thieves, wives, knives, leaves, wolves, lives, halves, shelves, selves</span>。","<strong>但有不变 ves 的例外</strong>（直接加 -s）：<span class='en'>roof → roofs</span>、<span class='en'>chief → chiefs</span>、<span class='en'>belief → beliefs</span>、<span class='en'>safe → safes</span>。考试常拿 roof 设陷阱。","<span class='en'>turn + 颜色</span> 表「变成……颜色」：<span class='en'>The leaves turn yellow / red.</span>"],
+"confuse":"<span class='en'>leaf → leaves</span> 是不规则变化；别与动词 <span class='en'>leave</span>（离开、留下）搞混，两者只差一个字母顺序。也别写成 <span class='en'>leafs</span>。",
+"ex":[{"q":"In autumn the ______ on the trees turn yellow.","o":["leafs","leaves","leafes"],"a":1,"e":"leaf 以 f 结尾，复数变 f 为 ves：leaves；谓语 turn 用原形也提示主语是复数。"}]},
+{"id":"w15","t":"realize","cn":"意识到；实现","s":"warn","tags":["时态","拼写易混"],
+"core":"及物动词，后接名词 / 代词 / <b>that 从句</b>；<b>realize one's dream</b> 实现梦想。",
+"check":"🟡 释义与搭配无误，但例句时态可以更严谨：<span class='en'>I realized I made a mistake.</span> 中「犯错」发生在「意识到」<strong>之前</strong>，规范写法是过去完成时 <span class='en'>had made</span>。七年级阶段用一般过去时常被接受，但按考试标准建议改。",
+"fix":{"bad":"<code>I realized I made a mistake.</code>","good":"<code>I realized (that) I had made a mistake.</code> 或 <code>I realized my mistake.</code>"},
+"note":["及物动词，后接名词、代词或 that 从句","搭配：realize one's dream 实现梦想","易错点：易与 recognize（认出）混淆","例句：I realized I made a mistake."],
+"expand":["英式拼写 <span class='en'>realise</span>，美式 <span class='en'>realize</span>，同一份卷子保持一致。","同根词：<span class='en'>real</span>(adj. 真的) / <span class='en'>really</span>(adv.) / <span class='en'>reality</span>(n. 现实) / <span class='en'>realization</span>(n. 领悟)。","「实现梦想」三种说法：<span class='en'>realize one's dream</span> = <span class='en'>achieve one's dream</span> = <span class='en'>make one's dream come true</span>。注意 <span class='en'>come true</span> 的主语必须是<strong>梦想本身</strong>，不能说 <span class='en'>come true a dream</span>。"],
+"confuse":"<span class='en'>realize</span> 意识到 / 实现 ｜ <span class='en'>recognize</span> 认出（认出某人、某物）。「我意识到错了」用 realize；「我没认出他」用 <span class='en'>I didn't recognize him.</span>",
+"ex":[{"q":"I didn't ______ that I had left my book at home.","o":["recognize","realize","remember"],"a":1,"e":"「没有意识到」用 realize + that 从句；recognize 是「认出（人或物）」，remember 是「记得」，都不合句意。"},{"q":"Which is the better sentence?","o":["I realized I made a mistake.","I realized that I had made a mistake.","I realize I make a mistake yesterday."],"a":1,"e":"「犯错」先于「意识到」，先发生的动作用过去完成时 had made；选项 C 时间词 yesterday 与一般现在时冲突。"}]},
+{"id":"w16","t":"mean / meaning / meaningful / meaningless","cn":"意思是 / 含义 / 有意义的 / 无意义的","s":"ok","tags":["同根词","to do / doing"],
+"core":"<b>mean to do</b> 打算做；<b>mean doing</b> 意味着；<em>过去式 / 过去分词是 meant</em>（不规则）。",
+"check":"✅ 词族、两个句型和例句都准确。<strong>补一个笔记漏掉的高频失分点</strong>：mean 的过去式是 <span class='en'>meant</span>，不是 <span class='en'>meaned</span>。",
+"note":["mean v. 意思是；意味着","mean to do 打算做；mean doing 意味着","meaning n.；meaningful adj.；meaningless adj.","例句：What does this word mean? / It's a meaningful book."],
+"expand":["三个同义问句：<span class='en'>What does this word mean?</span> = <span class='en'>What's the meaning of this word?</span> = <span class='en'>What do you mean by this word?</span>","不规则变形：<span class='en'>mean — meant — meant</span>；<span class='en'>I meant to call you, but I forgot.</span> 我本打算给你打电话。","后缀成对记：<span class='en'>careful / careless</span>、<span class='en'>hopeful / hopeless</span>、<span class='en'>useful / useless</span>、<span class='en'>helpful / helpless</span>、<span class='en'>meaningful / meaningless</span>。-ful 表「充满」，-less 表「没有」。","mean 还可作形容词「吝啬的、刻薄的」：<span class='en'>Don't be mean to others.</span>"],
+"confuse":"<span class='en'>mean to do</span>（主语是人，打算做）vs <span class='en'>mean doing</span>（主语常是事，意味着）：<span class='en'>Missing the bus means waiting another hour.</span> 错过公交意味着要再等一小时。",
+"ex":[{"q":"I ______ to call you yesterday, but I forgot.","o":["mean","meant","am meaning"],"a":1,"e":"yesterday 要求过去时，mean 的过去式是不规则的 meant，不能写 meaned。"},{"q":"Missing the bus means ______ for another hour.","o":["to wait","waiting","wait"],"a":1,"e":"mean doing 表示「意味着……」，主语 Missing the bus 是事情；mean to do 则表「某人打算做」。"}]},
+{"id":"w17","t":"dirty","cn":"脏的","s":"ok","tags":["形容词","比较级"],
+"core":"adj. 脏的 / v. 弄脏；反义词 <b>clean</b>；比较级 <b>dirtier</b>、最高级 <b>dirtiest</b>。",
+"check":"✅ 核对无误：词性、反义词与例句都正确。补充一条变形规律，考试常考。",
+"note":["形容词 / 动词","反义词：clean 干净的","例句：Your hands are dirty. Go and wash them."],
+"expand":["以「辅音字母 + y」结尾的形容词，变比较级 / 最高级要 <strong>把 y 变 i</strong>：<span class='en'>dirty → dirtier → dirtiest</span>，同类 <span class='en'>easy → easier</span>、<span class='en'>happy → happier</span>、<span class='en'>early → earlier</span>。","名词 <span class='en'>dirt</span> 污物、灰尘（不可数）；动词 <span class='en'>dirty</span> 弄脏：<span class='en'>Don't dirty your new coat.</span>","近义辨析：<span class='en'>clean</span> 干净的（对应 dirty），<span class='en'>tidy</span> 整洁的（强调整齐，反义 untidy）。"],
+"confuse":"<span class='en'>dirtier</span> 别写成 <span class='en'>dirtyer</span>；注意对比 <span class='en'>sad → sadder</span>（重读闭音节双写 d），两条规则不同：一个是 y 变 i，一个是双写末尾辅音。",
+"ex":[{"q":"Your hands are even ______ than mine. Go and wash them.","o":["dirty","dirtier","dirtiest"],"a":1,"e":"than 提示用比较级；dirty 以辅音 + y 结尾，变 y 为 i 再加 -er → dirtier。"}]},
+{"id":"w18","t":"temperature","cn":"温度；气温","s":"warn","tags":["可数性","固定搭配"],
+"core":"问温度用 <b>What's the temperature?</b>；高低用 <b>high / low</b>；<b>take one's temperature</b> 量体温。",
+"check":"🟡 「不可数名词」这个标注<strong>过于绝对</strong>，容易把孩子带偏。泛指「气温」时确实常用单数、不加冠词（<span class='en'>The temperature is low.</span>），但在 <span class='en'>take one's temperature</span>、<span class='en'>have a temperature</span>（发烧）、<span class='en'>a temperature of 30℃</span> 里是可数名词，也可以说 <span class='en'>high temperatures</span>。",
+"fix":{"bad":"不可数名词","good":"泛指气温时常用单数、不加冠词；<code>take one's temperature</code>、<code>have a temperature</code>、<code>a temperature of 30℃</code> 等搭配中作可数名词。"},
+"note":["用法：不可数名词","搭配：take one's temperature 量体温；below zero 零度以下","例句：The temperature is very low today."],
+"expand":["<strong>问句与描述词（高频）</strong>：问温度用 <span class='en'>What's the temperature?</span>（不用 How much）；描述温度<strong>高 / 低</strong>用 <span class='en'>high / low</span>（不用 big / small）；<span class='en'>hot / cold</span> 是形容<strong>天气</strong>，不形容 temperature。","拼写关：<span class='en'>tem-per-a-ture</span>，中间那个 a 最容易漏，别写成 <span class='en'>temprature / temperture</span>。","温度相关：<span class='en'>below zero</span> 零度以下 / <span class='en'>above zero</span> 零度以上 / <span class='en'>below freezing</span> 冰点以下 / <span class='en'>degree(s) centigrade</span> 摄氏度。","英式口语 <span class='en'>have a temperature</span> = 发烧（=<span class='en'>have a fever</span>）。"],
+"confuse":"<span class='en'>The temperature is very <strong>low</strong> today.</span> ✓（不说 very cold / very small）；<span class='en'>It's very <strong>cold</strong> today.</span> ✓（主语是天气 it）。主语是 temperature 用 high/low，主语是天气用 hot/cold。",
+"ex":[{"q":"— ______ the temperature today? — It's about 30℃.","o":["How much is","What's","How many is"],"a":1,"e":"问温度固定用 What's the temperature?；temperature 不是价格或数量，不用 How much / How many。"},{"q":"The nurse ______ my temperature and said I had a fever.","o":["took","made","did"],"a":0,"e":"「量体温」是固定搭配 take one's temperature；这里 temperature 前有 my，是可数用法的典型例子。"}]},
+{"id":"w19","t":"sad / sadness","cn":"难过的 / 悲伤","s":"ok","tags":["词缀","词性"],
+"core":"adj. <b>sad</b> / n. <b>sadness</b> / adv. <b>sadly</b>；<b>-ness</b> 是常见名词后缀。",
+"check":"✅ 核对无误：词族、后缀说明和例句都准确。",
+"note":["sad adj. 难过的；伤心的","sadness n. 悲伤；难过","拓展：sadly adv. 伤心地；-ness 是常见名词后缀","例句：She felt sad when she heard the bad news."],
+"expand":["变形：<span class='en'>sad → sadder → saddest</span>（重读闭音节，双写 d）；<span class='en'>sadly</span> 副词。","-ness 名词后缀一串记：<span class='en'>happy → happiness</span>、<span class='en'>kind → kindness</span>、<span class='en'>ill → illness</span>、<span class='en'>dark → darkness</span>、<span class='en'>careless → carelessness</span>。","<span class='en'>sadly</span> 也可置于句首修饰整句：<span class='en'>Sadly, he failed the exam.</span> 遗憾的是，他没考及格。","<span class='en'>feel + adj.</span> 系表结构：<span class='en'>She felt sad.</span> 不能说 <span class='en'>She felt sadly.</span>"],
+"confuse":"<span class='en'>to one's + 情感名词</span> 结构里必须用名词：<span class='en'>to my sadness</span>（令我难过的是），呼应短语第 33 条 <span class='en'>to one's surprise</span>。",
+"ex":[{"q":"To my ______, the little dog died last night.","o":["sad","sadly","sadness"],"a":2,"e":"to one's 后面接情感名词，sadness 是名词；sad 是形容词，sadly 是副词。"}]}
+
+,{"id":"w20","t":"amazing","cn":"令人惊叹的；惊人的","s":"ok","tags":["-ing / -ed"],
+"core":"<b>-ing</b> 令人……的（多修饰事物）／<b>-ed</b> 感到……的（多修饰人）。",
+"check":"✅ 核对无误：amazing / amazed / amazement 的词族与例句都正确。这条背后是一整类考点，值得成组记。",
+"note":["形容词，修饰事物","拓展：amazed adj. 感到惊奇的（修饰人）；amazement n. 惊奇","例句：We watched an amazing show last night."],
+"expand":["<strong>-ing / -ed 形容词全家福</strong>：<span class='en'>interesting / interested</span>、<span class='en'>exciting / excited</span>、<span class='en'>boring / bored</span>、<span class='en'>surprising / surprised</span>、<span class='en'>tiring / tired</span>、<span class='en'>relaxing / relaxed</span>、<span class='en'>disappointing / disappointed</span>、<span class='en'>moving / moved</span>。","搭配：<span class='en'>be amazed at / by sth.</span> 对……感到惊奇；<span class='en'>to one's amazement</span> 令某人惊讶的是。","进阶提醒：修饰「表情、眼神、声音」时按<strong>人的感受</strong>选 -ed：<span class='en'>a surprised look</span> 惊讶的表情、<span class='en'>an excited voice</span> 激动的声音。"],
+"confuse":"口诀：<strong>「物令人 -ing，人感到 -ed」</strong>。<span class='en'>The show was amazing.</span>（演出令人惊叹）vs <span class='en'>We were amazed.</span>（我们感到惊叹）。第三部分第 10、11、9 句分别考了 exciting / interesting / surprised，可以对照看。",
+"ex":[{"q":"We were all ______ at the ______ magic show.","o":["amazing; amazed","amazed; amazing","amazed; amazed"],"a":1,"e":"人「感到」惊奇用 amazed；演出「令人」惊奇用 amazing。顺序不能颠倒。"}]},
+{"id":"w21","t":"experience","cn":"经历；经验","s":"ok","tags":["可数性"],
+"core":"表「<b>经历</b>」时可数（an experience）；表「<b>经验</b>」时不可数（much experience）。",
+"check":"✅ 核对无误：可数性差异是这条的核心，两条例句分别对应两种含义，选得很准。",
+"note":["表「经历」时可数；表「经验」时不可数","易错点：七年级高频考点，注意可数性差异","例句（经历）：It was a terrible experience.","例句（经验）：He has much teaching experience."],
+"expand":["修饰词是判断线索：可数用 <span class='en'>a / an / many / a few</span>，不可数用 <span class='en'>much / a lot of / a little</span>，且<strong>不加 s</strong>。<span class='en'>much teaching experience ✓</span>，<span class='en'>many teaching experiences ✗</span>（此处指经验）。","也可作动词「经历、体验」：<span class='en'>We experienced a cold winter.</span>","形容词 <span class='en'>experienced</span> 有经验的：<span class='en'>an experienced teacher</span> 一位经验丰富的老师。"],
+"confuse":"<span class='en'>experience</span> 与 <span class='en'>experiment</span>（实验）拼写接近；另外「经验」不可数，与 <span class='en'>progress / homework / information / advice / news</span> 同属不可数名词家族，都不能加 a / -s。",
+"ex":[{"q":"Mr Li has a lot of teaching ______, so his classes are great.","o":["experience","experiences","an experience"],"a":0,"e":"这里指「教学经验」，不可数，不能加 -s，也不能用 a / an；a lot of 既可修饰可数也可修饰不可数。"}]},
+{"id":"w22","t":"explain","cn":"解释；说明","s":"ok","tags":["双宾语"],
+"core":"<b>explain sth. to sb.</b> 向某人解释某事；<em>不能说 explain sb. sth.</em>",
+"check":"✅ 核对无误：搭配与例句 <span class='en'>Can you explain this problem to me?</span> 完全正确。",
+"note":["explain sth. to sb. 向某人解释某事","易错点：不能说 explain sb. sth.","例句：Can you explain this problem to me?"],
+"expand":["<strong>同类「不能接双宾语」的动词</strong>（都要借介词 to）：<span class='en'>explain sth. to sb.</span>、<span class='en'>describe sth. to sb.</span>、<span class='en'>introduce sth. to sb.</span>、<span class='en'>say sth. to sb.</span>、<span class='en'>suggest sth. to sb.</span>、<span class='en'>report sth. to sb.</span>","对比<strong>可以接双宾语</strong>的动词：<span class='en'>give / tell / show / teach / buy / send sb. sth.</span>（= sth. to / for sb.）。","名词 <span class='en'>explanation</span> 解释——注意拼写去掉了 i：<span class='en'>explain → explanation</span>，别写成 explaination。","也可接从句：<span class='en'>explain that...</span> / <span class='en'>explain why...</span>"],
+"confuse":"<span class='en'>✗ Can you explain me this word?</span> → <span class='en'>✓ Can you explain this word to me?</span>。第三部分第 27 句正是这个考点。",
+"ex":[{"q":"Which sentence is RIGHT?","o":["Can you explain me this word?","Can you explain this word to me?","Can you explain this word me?"],"a":1,"e":"explain 不能接双宾语，必须用 explain sth. to sb.；物在前、人在后，介词 to 不能省。"}]},
+{"id":"w23","t":"freezing / frozen","cn":"极冷的 / 冻住的","s":"ok","tags":["词义辨析"],
+"core":"<b>freezing</b> 极冷的（天气、体感）／<b>frozen</b> 冻住、结冰的（物体）。",
+"check":"✅ 核对无误：两条例句把两个词的区别演示得很清楚。",
+"note":["freezing adj. 极冷的；冰冻的（修饰天气、体感）","frozen adj. 冻住的；结冰的（修饰物体）","例句：It's freezing outside today. / The lake is frozen in winter."],
+"expand":["动词 <span class='en'>freeze</span> 的不规则变形：<span class='en'>freeze — froze — frozen — freezing</span>（不是 freezed）。第三部分第 12 句 <span class='en'>If the temperature drops below zero, the water will freeze.</span> 用了原形。","<span class='en'>frozen food</span> 冷冻食品、<span class='en'>freezing cold</span> 极冷、<span class='en'>I'm freezing!</span> 我快冻僵了、<span class='en'>freezer</span> 冷冻室。","<span class='en'>below freezing</span> = <span class='en'>below zero</span> 零度以下。"],
+"confuse":"<span class='en'>It's freezing.</span>（天气 / 我觉得冷）vs <span class='en'>The river is frozen.</span>（河面结冰了）。一个说「冷的程度」，一个说「物体被冻住的状态」。",
+"ex":[{"q":"It's ______ outside; the lake is ______.","o":["frozen; freezing","freezing; frozen","freezing; freezing"],"a":1,"e":"前半句说天气极冷用 freezing，后半句说湖面结冰的状态用 frozen。"}]},
+{"id":"w24","t":"certainly","cn":"当然；无疑","s":"ok","tags":["口语应答"],
+"core":"副词，常用于口语应答，相当于 <b>sure / of course</b>；adj. <b>certain</b> 确定的。",
+"check":"✅ 核对无误：用法与对话例句都正确。",
+"note":["副词，常用于口语应答，相当于 sure / of course","例句：—Can I use your pen? —Certainly."],
+"expand":["同根词：<span class='en'>certain</span>(adj. 确定的) / <span class='en'>certainly</span>(adv.) / <span class='en'>uncertain</span>(adj. 不确定的)。","<span class='en'>be certain to do</span> 一定会…… / <span class='en'>be certain that...</span> 确信……；<span class='en'>I'm not certain.</span> 我不确定。","否定应答 <span class='en'>Certainly not.</span> 当然不行；位置通常在 be 动词 / 助动词之后、实义动词之前：<span class='en'>He will certainly come.</span>"],
+"confuse":"<span class='en'>Certainly.</span> / <span class='en'>Sure.</span> / <span class='en'>Of course.</span> 都可回答「可以吗」，语气依次更肯定；回答感谢要用 <span class='en'>You're welcome.</span> 而不是 Certainly。",
+"ex":[{"q":"—Could you help me with the box? —______","o":["Certainly","Never mind","You're welcome"],"a":0,"e":"对请求作肯定应答用 Certainly（=Sure / Of course）；Never mind 用于「没关系」，You're welcome 用于回应感谢。"}]},
+{"id":"w25","t":"true / truth / truly","cn":"真的 / 真相 / 真正地","s":"ok","tags":["词族","拼写"],
+"core":"adj. <b>true</b> / n. <b>truth</b> / adv. <b>truly</b>；<em>没有 truthly 这个词</em>。",
+"check":"✅ 核对无误：词族、例句与「不存在 truthly」的提醒都正确，这是拼写题的高频陷阱。",
+"note":["true adj. 真实的；真的","truth n. 真相；事实","truly adv. 真正地；真诚地","易错点：不存在 truthly 这个单词，正确拼写是 truly","例句：It's a true story. / Please tell me the truth."],
+"expand":["构词：<span class='en'>true → truly</span>（去 e 加 -ly）、<span class='en'>truth → truthful</span>（adj. 诚实的）。同类去 e 加 ly：<span class='en'>possible → possibly</span>、<span class='en'>gentle → gently</span>。","<span class='en'>come true</span> 实现，主语必须是梦想 / 愿望：<span class='en'>My dream came true.</span>（不能说 <span class='en'>I came true my dream</span>）。","<span class='en'>to tell (you) the truth</span> 说实话；<span class='en'>tell the truth</span> 讲真话（对应 <span class='en'>tell a lie</span> 撒谎）。"],
+"confuse":"<span class='en'>true</span> 强调「符合事实、不是假的」（a true story 真实故事）；<span class='en'>real</span> 强调「真实存在、不是仿造的」（a real diamond 真钻石）。另外别把 <span class='en'>truly</span> 写成 <span class='en'>truely / truthly</span>。",
+"ex":[{"q":"Please tell me the ______. I'm ______ sorry about it.","o":["true; truly","truth; truly","truth; truthly"],"a":1,"e":"第一空在 the 后要名词 truth；第二空修饰形容词 sorry 要副词 truly，且不存在 truthly 这个拼写。"}]},
+{"id":"w26","t":"other / others / another","cn":"其他的 / 其他人 / 另一个","s":"warn","tags":["代词辨析","句子标点"],
+"core":"<b>other</b> + 复数名词；<b>others</b> 后不接名词；<b>another</b> + 单数名词 / <b>another + 数词 + 复数名词</b>；<b>the other</b> 两者中的另一个。",
+"check":"🟡 词义与用法说明基本准确。两点补充：① another 更准确的说法是「不定数目中的再一个 / 另一个」，与「两者中的另一个 the other」相对；② 例句 <span class='en'>Some students are reading, others are writing.</span> 用逗号连接两个完整句子，属于逗号拼接（comma splice），书面考试里建议改成分号、句号或加 and。",
+"fix":{"bad":"<code>Some students are reading, others are writing.</code>","good":"<code>Some students are reading and others are writing.</code> 或用分号 / 句号分成两句。"},
+"note":["other adj. 其他的，后接复数名词","others pron. 其他的人/物，后不接名词","another adj./pron.（三者及以上中的）另一个；也可 another + 数词 + 名词","拓展：the other 特指两者中的另一个；the others 特指剩余的全部","例句：Some students are reading, others are writing. / Give me another apple, please."],
+"expand":["<strong>固定对照句型</strong>：<span class='en'>one... the other...</span>（两者：一个……另一个……）；<span class='en'>some... others...</span>（一些……另一些……）；<span class='en'>some... the others...</span>（一些……其余全部……）。","<span class='en'>another two apples</span> = <span class='en'>two more apples</span> 再来两个苹果；<span class='en'>another + 数词 + 复数名词</span> 是常考结构。","<span class='en'>each other</span> 互相（见短语第 9 条），不能作主语；<span class='en'>the other day</span> 几天前（<strong>过去时</strong>！别与 some day 混）。","<span class='en'>others</span> 泛指「别人」，<span class='en'>the others</span> 特指某一范围里「剩下的全部」，范围明确时才能用 the。"],
+"confuse":"<span class='en'>other</span> 后面<strong>必须</strong>跟名词，<span class='en'>others</span> 后面<strong>不能</strong>跟名词：<span class='en'>other students ✓ / others students ✗ / other students = others ✓</span>。判断看空格后面有没有名词。",
+"ex":[{"q":"Some students are reading, and ______ are writing.","o":["other","others","another"],"a":1,"e":"空格后没有名词，需要能单独作主语的代词 others；other 后必须接名词，another 表单数。"},{"q":"I have two pens. One is red; ______ is blue.","o":["another","the other","others"],"a":1,"e":"明确是「两支笔」这个范围，两者中的另一个用 the other；another 用于不定数目中的再一个。"}]},
+{"id":"w27","t":"a few / few / a little / little","cn":"几个 / 几乎没有 / 一点儿 / 几乎没有","s":"ok","tags":["数量词","可数性"],
+"core":"<b>a few / few</b> + 可数名词复数；<b>a little / little</b> + 不可数名词；带 <b>a</b> 表肯定，不带 <b>a</b> 表否定。",
+"check":"✅ 核对无误：四个词的搭配与肯定 / 否定含义全部正确，两条例句也很典型。",
+"note":["a few 一些；几个（+可数名词复数，肯定）","few 几乎没有（+可数名词复数，否定）","a little 一点儿（+不可数名词，肯定）","little 几乎没有（+不可数名词，否定）","例句：There are a few books... / There is little milk..."],
+"expand":["<strong>高频陷阱：quite a few = 很多</strong>（不是「很少」），后接可数复数：<span class='en'>Quite a few students joined the club.</span> 相当多学生参加了社团。同理 <span class='en'>only a few / very few</span> 才是「很少」。","<span class='en'>a little</span> 还可作副词修饰形容词或比较级：<span class='en'>a little tired</span> 有点累、<span class='en'>a little bigger</span> 大一点点。","比较级：<span class='en'>few → fewer → fewest</span>（修饰可数）、<span class='en'>little → less → least</span>（修饰不可数）。第三部分第 16 句 <span class='en'>less homework</span> 就是 little 的比较级。","<span class='en'>a bit of + 不可数名词</span> = a little + 不可数名词。"],
+"confuse":"两步判断：<strong>先看名词可不可数</strong>（决定 few / little），<strong>再看语气肯不肯</strong>（决定加不加 a）。<span class='en'>There is little milk.</span> 意思是「几乎没牛奶了」（否定），不是「有一点」。",
+"ex":[{"q":"There is ______ milk in the bottle. Let's buy some.","o":["a little","little","a few"],"a":1,"e":"后句「去买一些」说明几乎没了，是否定含义；milk 不可数，用 little。a little 表「还有一点」，与语境矛盾。"},{"q":"Quite ______ students took part in the sports meeting.","o":["a few","few","a little"],"a":0,"e":"quite a few 是固定表达，意为「相当多」，后接可数名词复数 students；few 单独用表否定，不能与 quite 搭配。"}]},
+{"id":"w28","t":"see","cn":"看见；明白","s":"ok","tags":["感官动词","被动语态"],
+"core":"saw / seen；<b>see sb. do</b> 看见全过程 / 经常做；<b>see sb. doing</b> 看见正在做；被动语态中要<strong>还原 to</strong>。",
+"check":"✅ 核对无误：变形、两个宾语补足语结构、被动还原 to、两条例句都准确。这是七上最难也最常考的动词句型之一。",
+"note":["变形：saw（过去式）；seen（过去分词）","see sb. do sth. 看见某人做某事（全过程/经常）","see sb. doing sth. 看见某人正在做某事","易错点：被动语态中要还原 to：sb. be seen to do","例句：I saw her cross the street. / I saw her dancing in the room."],
+"expand":["<strong>同类感官动词</strong>都适用 do / doing 的区别：<span class='en'>hear, watch, notice, feel, listen to, look at</span>。第三部分第 29 句 <span class='en'>heard two hunters discussing...</span> 就是 hear sb. doing。","被动还原 to <strong>只针对 do 形式</strong>：<span class='en'>He was seen to cross the street.</span>；doing 形式变被动时保持 -ing：<span class='en'>He was seen crossing the street.</span>","see 还有「明白」义：<span class='en'>I see.</span> 我明白了；<span class='en'>Let me see.</span> 让我想想；<span class='en'>see a doctor</span> 看医生；<span class='en'>see sb. off</span> 为某人送行。"],
+"confuse":"<span class='en'>see sb. do</span> 强调「看到动作从头到尾 / 经常性」；<span class='en'>see sb. doing</span> 强调「撞见那一刻正在进行」。看到 <span class='en'>when I passed by / at that moment / Listen!</span> 这类提示，优先用 doing。",
+"ex":[{"q":"When I passed the room, I saw her ______ a letter.","o":["write","writing","to write"],"a":1,"e":"「我经过房间时」强调那一刻正在进行的动作，用 see sb. doing；write 表全过程，to write 不能作 see 的宾补（被动才还原 to）。"},{"q":"He was seen ______ the street by a policeman.","o":["cross","to cross","crossing"],"a":1,"e":"感官动词 see 用于被动语态时，宾补的不带 to 不定式必须还原成 to do：be seen to do。"}]}
+]},
+    {"key":"phrases","title":"重点短语","sub":"固定搭配 / 句型结构","items":[
+{"id":"p1","t":"make a promise","cn":"许下诺言","s":"ok","tags":["固定搭配"],
+"core":"<b>make a promise</b> 许诺；<b>make a promise to sb.</b> 向某人许诺；<b>make a promise to do sth.</b> 许诺做某事。",
+"check":"✅ 核对无误：三个结构和 keep / break 的拓展都准确，例句也规范。",
+"note":["固定动宾短语","搭配：make a promise to sb.；make a promise to do sth.","拓展：keep a promise 遵守诺言；break a promise 违背诺言","例句：He made a promise to study harder."],
+"expand":["也可接从句：<span class='en'>He made a promise that he would study harder.</span>","三件套对照：<span class='en'>make</span>（许下）→ <span class='en'>keep</span>（遵守）→ <span class='en'>break</span>（违背）。呼应单词第 11 条 promise 与易错句第 6 句。","注意 <span class='en'>promise sb. to do</span> 是错误结构，但 <span class='en'>make a promise to do</span> 是对的——后者 to do 修饰 promise，不是「sb. + to do」。"],
+"confuse":"<span class='en'>make a promise to <strong>sb.</strong></span>（介词 to + 人）与 <span class='en'>make a promise to <strong>do</strong></span>（不定式 to + 动词原形）形似而功能不同，看 to 后面跟的是人还是动词。",
+"ex":[{"q":"If you ______ a promise, you must keep it.","o":["make","do","take"],"a":0,"e":"「许下诺言」固定用 make a promise；keep a promise 是遵守，break a promise 是违背，动词不能随意替换。"}]},
+{"id":"p2","t":"instead of","cn":"代替；而不是","s":"ok","tags":["介词短语","instead"],
+"core":"<b>instead of</b> 是介词短语，后接名词 / 代词 / <b>动名词 doing</b>；<b>instead</b> 是副词，单独使用。",
+"check":"✅ 核对无误：词性、后接成分、与 instead 的辨析、两条例句都正确。",
+"note":["介词短语，后接名词、代词或动名词 doing","辨析：instead 是副词，单独使用，放句首或句末","例句：I will go to the meeting instead of you. / He stayed at home instead."],
+"expand":["<strong>最常考的一句</strong>：<span class='en'>instead of + doing</span>，不能接 to do：<span class='en'>He stayed at home instead of going out.</span>","instead 放句首时常用逗号隔开：<span class='en'>Instead, he stayed at home.</span>","同义表达 <span class='en'>rather than</span>（而不是），后面常接并列成分：<span class='en'>I'd like tea rather than coffee.</span>","句型转换练习：<span class='en'>He didn't go out. He stayed at home instead.</span> = <span class='en'>He stayed at home instead of going out.</span>"],
+"confuse":"<span class='en'>instead of</span> 后面<strong>必须带宾语</strong>；<span class='en'>instead</span> 后面<strong>不接宾语</strong>。空后面有名词 / doing 就用 instead of，空在句末且后面没东西就用 instead。",
+"ex":[{"q":"He played computer games ______ doing his homework.","o":["instead","instead of","instead to"],"a":1,"e":"空格后有动名词 doing his homework，需要能带宾语的介词短语 instead of；instead 是副词，后面不能接宾语。"}]},
+{"id":"p3","t":"succeed in doing sth.","cn":"成功做成某事","s":"fix","tags":["固定搭配","已修正"],
+"core":"固定搭配 <b>succeed in doing sth.</b>，介词 <b>in 不能省略</b>；<em>没有 succeed to do sth.</em>；success / successful / successfully。",
+"check":"🔴 <strong>笔记这里写错了一处</strong>：原文标注「in 可省略」。标准搭配中 <span class='en'>succeed in doing sth.</span> 的 in 是介词，<strong>不能省</strong>；考试中写 <span class='en'>succeed doing sth.</span> 会判错。另外 <span class='en'>succeed to sth.</span> 是「继承（王位 / 财产）」，意思完全不同，不能混淆。笔记对「不能说 succeed to do sth.」的判断是正确的。<strong>补充一层</strong>：极随意的口语里偶尔能听到省略 in 的说法，但书面语、作文和考试一律要带 in，复习时按「不可省」记最稳妥。",
+"fix":{"bad":"用法：固定搭配，<code>in 可省略</code>","good":"用法：固定搭配 <code>succeed in doing sth.</code>，<code>in 不可省略</code>；后不能接不定式。"},
+"note":["用法：固定搭配，in 可省略 ←（此处有误）","拓展：success n. 成功；successful adj. 成功的","易错点：不能说 succeed to do sth.","例句：He succeeded in working out the math problem."],
+"expand":["词族完整版：<span class='en'>succeed</span>(v.) → <span class='en'>success</span>(n.) → <span class='en'>successful</span>(adj.) → <span class='en'>successfully</span>(adv.)。注意拼写 <span class='en'>suc<b>ceed</b></span> / <span class='en'>suc<b>cess</b></span>。","<span class='en'>success</span> 泛指成功时不可数，但表「一件成功的事 / 一个成功的人」可数：<span class='en'>The show was a great success.</span>","反义：<span class='en'>fail to do sth.</span> 未能做成 / <span class='en'>fail (in) doing</span>；<span class='en'>failure</span>(n.)。","<span class='en'>be successful in doing</span> = <span class='en'>succeed in doing</span>；第三部分第 26 句正是 <span class='en'>succeeded in climbing...</span>"],
+"confuse":"<span class='en'>succeed <strong>in</strong> doing ✓</span> ／ <span class='en'>succeed doing ✗</span> ／ <span class='en'>succeed to do ✗</span> ／ <span class='en'>succeed to the throne</span> 继承王位（另一义）。对比 <span class='en'>manage to do</span> 设法做成（后接 to do），别混。",
+"ex":[{"q":"At last he succeeded ______ out the math problem.","o":["in working","to work","working"],"a":0,"e":"succeed 后必须接 in + 动名词；不能接不定式，也不能省略 in。选 C 正是笔记原表述容易诱导出的错误答案。"},{"q":"The show was a great ______.","o":["success","succeed","successful"],"a":0,"e":"a great 后接名词；success 表「一件成功的事」时可数。succeed 是动词，successful 是形容词。"}]},
+{"id":"p4","t":"all over","cn":"到处；遍及","s":"ok","tags":["介词短语"],
+"core":"<b>all over + 地点名词</b> 遍及……；也可单独作副词「到处、全身」。",
+"check":"✅ 核对无误：用法与例句正确。提示：短语第 18 条 <span class='en'>all over the city</span> 与这条是同一结构，可以合并记忆。",
+"note":["后接地点名词","拓展：all over the world 全世界","例句：There are trees all over the mountain."],
+"expand":["常见组合：<span class='en'>all over the world / country / city / mountain</span>。","单独作副词：<span class='en'>He was wet all over.</span> 他全身湿透了；<span class='en'>I looked all over for my key.</span> 我到处找钥匙。","<span class='en'>all over again</span> 重新再来；<span class='en'>be all over</span> 结束了。"],
+"confuse":"<span class='en'>all over + 地点</span> 表「遍及某范围」，与 <span class='en'>everywhere</span>（到处，副词，前面不加 in / at）区分：<span class='en'>He looked everywhere.</span> 见易错句第 24 句。",
+"ex":[{"q":"English is spoken ______ the world.","o":["all over","all of","over all"],"a":0,"e":"「遍及全世界」固定说 all over the world；all of / over all 都不能表达这个意思。"}]},
+{"id":"p5","t":"hope to do sth.","cn":"希望做某事","s":"ok","tags":["动词句型"],
+"core":"<b>hope to do</b> / <b>hope + that 从句</b>；<em>没有 hope sb. to do sth.</em>",
+"check":"✅ 核对无误：「不存在 hope sb. to do sth.」是高频考点，笔记抓得很准；例句正确。",
+"note":["hope 后可接 to do 或 that 从句","易错点：不存在 hope sb. to do sth. 结构（高频考点）","例句：I hope to visit Beijing someday."],
+"expand":["想带「人」要改成从句：<span class='en'>✗ I hope you to come.</span> → <span class='en'>✓ I hope (that) you will come.</span>","<span class='en'>hope for sth.</span> 期待某事：<span class='en'>We are hoping for good weather.</span>；<span class='en'>I hope so. / I hope not.</span> 希望如此 / 希望不是。","<span class='en'>wish</span> 与 hope 不同：<span class='en'>wish sb. to do ✓</span>、<span class='en'>wish sb. sth.</span>（祝愿）、<span class='en'>wish + 虚拟语气</span>（但愿，难实现）。","hope 后不接动名词：<span class='en'>hope doing ✗</span>。"],
+"confuse":"<span class='en'>hope to do</span> 主语自己做；<span class='en'>hope that sb. will...</span> 希望别人做。<span class='en'>wish sb. to do</span> 可以带人，<span class='en'>hope sb. to do</span> 不行，这是选择题最爱设的陷阱。",
+"ex":[{"q":"Which sentence is RIGHT?","o":["I hope you to pass the exam.","I hope that you will pass the exam.","I hope you passing the exam."],"a":1,"e":"hope 不能接「sb. + to do」，也不接动名词；要表达希望别人做某事，必须用 that 从句。"}]},
+{"id":"p6","t":"walk on","cn":"继续走；在……上面走","s":"ok","tags":["on 的词性"],
+"core":"<b>on</b> 作副词时表「继续」，作介词时表「在……之上」——靠语境判断。",
+"check":"✅ 核对无误：两种词性的说明与例句都正确。",
+"note":["on 作副词时表「继续」；作介词时表「在……之上」","例句：Walk on, and you'll find the hospital."],
+"expand":["<strong>on 作副词「继续」的动词家族</strong>：<span class='en'>go on</span> 继续、<span class='en'>move on</span> 继续前进、<span class='en'>carry on</span> 继续、<span class='en'>keep on doing</span> 持续做、<span class='en'>read on</span> 继续读下去。","on 作介词：<span class='en'>walk on the grass</span> 在草地上走；<span class='en'>on the table</span> 在桌上。","祈使句 + and + 陈述句是高频句型：<span class='en'>Walk on, and you'll find the hospital.</span> = <span class='en'>If you walk on, you'll find the hospital.</span>"],
+"confuse":"<span class='en'>Walk on.</span>（继续走，on 是副词，后面无宾语）vs <span class='en'>Walk on the road.</span>（在马路上走，on 是介词，后面有地点）。看 on 后面有没有名词最直接。",
+"ex":[{"q":"______ on, and you will see the park at the end of the road.","o":["Walking","Walk","To walk"],"a":1,"e":"「祈使句 + and + 将来时」结构，句首用动词原形 Walk；这里 on 是副词，意为「继续」。"}]},
+{"id":"p7","t":"walk along","cn":"沿着……走","s":"ok","tags":["介词"],
+"core":"<b>along</b> 是介词，后接道路、河流等<strong>线状</strong>地点。",
+"check":"✅ 核对无误：词性说明与例句都正确。",
+"note":["along 为介词，后接道路、河流等线状地点","例句：Walk along the road, and you can see the park."],
+"expand":["同义表达：<span class='en'>walk along = go along = go down / walk down + 道路</span>。","along 也可作副词「一起、向前」：<span class='en'>Come along with us.</span> 跟我们一起走吧。","易混短语：<span class='en'>along with</span> 与……一起、<span class='en'>get along (well) with sb.</span> 与某人相处（融洽）、<span class='en'>all along</span> 一直。"],
+"confuse":"<span class='en'>walk along the road</span>（沿路走，线状）vs <span class='en'>walk across the road</span>（横穿马路）vs <span class='en'>walk through the forest</span>（穿过森林，立体空间）。三个介词考看图说话时经常一起出现。",
+"ex":[{"q":"______ along this street, and you'll find the bank on your left.","o":["Walk","Walking","To walk"],"a":0,"e":"祈使句句首用动词原形；along this street 表示「沿着这条街」。"}]},
+{"id":"p8","t":"lie to sb.","cn":"对某人撒谎；欺骗某人","s":"ok","tags":["不规则动词","词义辨析"],
+"core":"lie 作「撒谎」时是规则动词：<b>lied / lied / lying</b>；<b>tell a lie / tell lies</b> 撒谎。",
+"check":"✅ 核对无误：过去式 lied 的判断准确，与 cheat 的辨析也到位。<strong>建议把 lie / lay 的变形表补进笔记</strong>——易错句第 23 句正好考了 laid。",
+"note":["lie 此处为动词「撒谎」，过去式 lied","辨析：cheat sb. 多指骗取财物、作弊","例句：Don't lie to your parents."],
+"expand":["<strong>lie / lay 变形总表（务必背）</strong>：<span class='en'>lie(撒谎) — lied — lied — lying</span>；<span class='en'>lie(躺/位于) — lay — lain — lying</span>；<span class='en'>lay(下蛋/放置) — laid — laid — laying</span>。速记卡里有完整表格。","相关词：<span class='en'>liar</span> 骗子、<span class='en'>tell a lie / tell lies</span> 撒谎、<span class='en'>lie down</span> 躺下。","<span class='en'>cheat sb. (out) of sth.</span> 骗走某人某物、<span class='en'>cheat in the exam</span> 考试作弊；cheat 也可作名词「骗子」。","注意 <span class='en'>lying</span> 既是「撒谎」的动名词也是「躺」的现在分词，易错句第 17 句 <span class='en'>by lying to others</span> 是前者。"],
+"confuse":"<span class='en'>lie to sb.</span> 对某人说谎（说话内容不实）；<span class='en'>cheat sb.</span> 欺骗 / 骗取（多涉及财物、作弊）；<span class='en'>lie in / lie on</span> 则是「位于 / 躺在」。三个 lie 一定要靠搭配区分。",
+"ex":[{"q":"He ______ to his parents about the exam result yesterday.","o":["lay","lied","lain"],"a":1,"e":"「撒谎」的 lie 是规则动词，过去式 lied；lay 是「躺」的过去式或「放置」的原形，lain 是「躺」的过去分词。"},{"q":"Don't tell ______. We all know the truth.","o":["a lie","lie","lies'"],"a":0,"e":"「撒谎」的固定说法是 tell a lie 或 tell lies；lie 作名词「谎言」时可数，单数前要加 a。"}]},
+{"id":"p9","t":"look at each other","cn":"相互看看；彼此看着","s":"ok","tags":["相互代词"],
+"core":"<b>each other</b> 互相，作宾语；<b>one another</b> 彼此，初中阶段基本通用。",
+"check":"✅ 核对无误：用法、拓展与例句都正确。",
+"note":["each other 互相，作宾语","拓展：one another 彼此，初中阶段基本通用","例句：They looked at each other and laughed."],
+"expand":["所有格形式 <span class='en'>each other's</span>：<span class='en'>They borrowed each other's books.</span> 他们互借了对方的书。","<strong>each other 不能作主语</strong>（易错）：要说 <span class='en'>They help each other.</span> 不能说 <span class='en'>Each other help them.</span>","严格说 each other 多用于两者之间，one another 多用于三者以上，但初中阶段不作硬性区分。","与反身代词区分：<span class='en'>They looked at themselves.</span>（他们看自己）vs <span class='en'>They looked at each other.</span>（他们互相看）。"],
+"confuse":"<span class='en'>each other</span> 表「彼此互动」，<span class='en'>themselves / ourselves</span> 表「对自己做」。看动作是双向还是回到自身。",
+"ex":[{"q":"The two boys often help ______ with their homework.","o":["each other","themselves","one other"],"a":0,"e":"两人「互相」帮助用 each other；themselves 意为「他们自己」，语义不对；固定短语是 one another 而非 one other。"}]},
+{"id":"p10","t":"arrive in / arrive at / get to / reach","cn":"到达","s":"ok","tags":["动词辨析","介词"],
+"core":"<b>arrive in</b> + 大地点，<b>arrive at</b> + 小地点；<b>get to</b> + 地点；<b>reach</b> 是及物动词，直接加宾语。遇到 here / there / home 一律<strong>不加介词</strong>。",
+"check":"✅ 核对无误：四个词的区别与两条例句都正确。补一条笔记未写的规则，考试很爱考。",
+"note":["arrive in + 大地点（城市、国家）","arrive at + 小地点（车站、学校）","get to + 地点（接 here/there/home 时省略 to）","reach + 地点（及物动词，直接加宾语）","例句：We arrived in Shanghai yesterday. / She gets to school at 7."],
+"expand":["<strong>地点副词前零介词</strong>：<span class='en'>arrive home / get there / reach here</span> 都对，<span class='en'>arrive at home ✗ / get to there ✗ / reach to the station ✗</span>。","arrive 是<strong>不及物</strong>动词，若不指明地点可单用：<span class='en'>The train arrived late.</span>（易错句第 5 句正是这个用法）。","大 / 小是相对的：<span class='en'>arrive in Shanghai</span>（城市）但 <span class='en'>arrive at the airport / at the station</span>（具体场所）。","同义替换：<span class='en'>get to = arrive at/in = reach</span>；<span class='en'>reach</span> 后还可接「达到（数量、程度）」：<span class='en'>The temperature reached 30℃.</span>"],
+"confuse":"<span class='en'>reach</span> 后<strong>绝不</strong>加 at / in / to；<span class='en'>get</span> 后若不接 to，意思变成「得到」；<span class='en'>arrive</span> 后不接地点时不需要介词。",
+"ex":[{"q":"We ______ the small village at dusk yesterday.","o":["arrived","arrived at","reached to"],"a":1,"e":"小地点前用 arrive at；arrive 不及物不能直接接宾语，reach 是及物动词不能加 to。"},{"q":"When did you ______ home last night?","o":["get to","arrive at","reach"],"a":2,"e":"home 是地点副词，前面不加任何介词：reach home / get home / arrive home 都对；get to home、arrive at home 都错。"}]},
+{"id":"p11","t":"take turns to do sth.","cn":"轮流做某事","s":"ok","tags":["固定句型"],
+"core":"<b>take turns to do sth.</b> = <b>take turns (at) doing sth.</b> 轮流做；<b>It's one's turn to do sth.</b> 轮到某人做。",
+"check":"✅ 核对无误：句型与拓展都正确，例句规范。",
+"note":["take turns to do sth. 轮流做某事","拓展：It's one's turn to do sth. 轮到某人做某事","例句：We take turns to clean the classroom."],
+"expand":["两种形式都对：<span class='en'>take turns to do</span> / <span class='en'>take turns doing</span>（也可写 <span class='en'>take turns at doing</span>）。第三部分第 28 句考的是 to do 形式。","turn 作名词的其他用法：<span class='en'>It's your turn.</span> 轮到你了；<span class='en'>in turn</span> 依次；<span class='en'>by turns</span> 轮流；<span class='en'>turn left / right</span> 向左 / 右转。","turn 短语家族见短语第 25 条 <span class='en'>turn...into...</span> 与易错句第 15 句 <span class='en'>turn out</span>。"],
+"confuse":"<span class='en'>take turns <strong>to do</strong></span>（轮流做，主语是复数）vs <span class='en'>It's <strong>one's turn</strong> to do</span>（轮到某人，主语是形式主语 it）。别把 It's one's turn 写成 It's one's turns。",
+"ex":[{"q":"It's ______ turn to clean the blackboard today.","o":["you","your","yours"],"a":1,"e":"It's one's turn to do 中 one's 用形容词性物主代词 your；yours 是名词性物主代词，后面不能再接名词 turn。"}]},
+{"id":"p12","t":"used to do / be used to doing","cn":"过去常常做 / 习惯于做","s":"ok","tags":["三兄弟辨析"],
+"core":"<b>used to do</b> 过去常常（现在不做了）；<b>be used to doing</b> 习惯于（to 是介词）；<em>笔记漏了第三个</em>：<b>be used to do</b> 被用来做（被动）。",
+"check":"✅ 核对无误：两个结构的辨析与例句都准确，to 的词性判断（不定式符号 vs 介词）尤其到位。<strong>补上第三个结构</strong>，这三个几乎是必考题。",
+"note":["used to do：过去常常（现在不做了），to 是不定式符号，加动词原形","be used to doing：习惯于，to 是介词，加动名词","例句：He used to play football after school. / I am used to getting up early."],
+"expand":["<strong>三兄弟一次记全</strong>：① <span class='en'>used to do</span> 过去常常 → <span class='en'>He used to walk to school.</span> ② <span class='en'>be / get used to doing</span> 习惯于 → <span class='en'>He is used to walking to school.</span> ③ <span class='en'>be used to do</span> 被用来做 → <span class='en'>Wood is used to make paper.</span>","used to 的否定与疑问：<span class='en'>He didn't use to smoke.</span> / <span class='en'>Did you use to...?</span>（助动词 did 后还原为 use）；也可 <span class='en'>used not to</span>。","<span class='en'>There used to be...</span> 过去曾经有：<span class='en'>There used to be a river here.</span>","<span class='en'>be used for doing</span> = <span class='en'>be used to do</span> 被用来做某事；<span class='en'>be used as</span> 被当作……用。"],
+"confuse":"判断只看 <strong>to 后面</strong>：跟<strong>动词原形</strong>→ 过去常常 / 被用来；跟 <strong>doing / 名词</strong> → 习惯于。再看主语是<strong>人</strong>（过去常常、习惯）还是<strong>物</strong>（被用来）。",
+"ex":[{"q":"My father ______ smoke, but he gave it up last year.","o":["used to","is used to","was used to"],"a":0,"e":"「过去常常、现在不做了」用 used to do，后接动词原形 smoke；be used to 后要接动名词。"},{"q":"Wood is used ______ paper.","o":["to make","to making","for make"],"a":0,"e":"主语 Wood 是物，表「被用来制造纸」，用 be used to do（被动 + 不定式）；to making 是「习惯于」，语义不通。"}]}
+
+,{"id":"p13","t":"run into / come across","cn":"偶然碰见","s":"ok","tags":["短语动词"],
+"core":"后接<strong>人</strong>表意外遇见；同义 <b>meet... by chance / happen to meet</b>。",
+"check":"✅ 核对无误：用法与例句正确。补一组 run 短语，容易一起考。",
+"note":["后接某人，表意外遇见","例句：I ran into an old friend in the street."],
+"expand":["<span class='en'>run into</span> 还有「撞上、遇上（麻烦）」义：<span class='en'>run into trouble</span> 遇上麻烦；<span class='en'>The car ran into a tree.</span>","<span class='en'>come across</span> 也可指「偶然发现某物」：<span class='en'>I came across an old photo.</span>","run 短语家族：<span class='en'>run after</span> 追赶、<span class='en'>run away</span> 逃跑、<span class='en'>run out of</span> 用完、<span class='en'>run into</span> 偶遇 / 撞上。","同义表达：<span class='en'>happen to meet sb.</span> / <span class='en'>meet sb. by chance / by accident</span>。"],
+"confuse":"<span class='en'>run into sb.</span>（偶遇人）vs <span class='en'>run into sth.</span>（撞上物 / 遇到麻烦）；<span class='en'>run after</span> 是「追」，别与「偶遇」混。",
+"ex":[{"q":"Guess who I ______ in the supermarket yesterday!","o":["ran after","ran into","ran out of"],"a":1,"e":"「偶然碰见某人」用 run into sb.；run after 追赶，run out of 用完，都不合句意。"}]},
+{"id":"p14","t":"after all","cn":"毕竟；终究","s":"ok","tags":["all 短语"],
+"core":"副词短语，放句首或句末，用于<strong>缓和语气 / 补充说明原因</strong>。",
+"check":"✅ 核对无误：用法与例句都正确。笔记未提的是：这一组含 all 的短语最容易互相混淆，考试中常四个一起放选项里。",
+"note":["副词短语，放句首或句末，用于缓和语气","例句：Don't blame him. After all, he is only a child."],
+"expand":["<strong>all 短语四兄弟</strong>：<span class='en'>after all</span> 毕竟、终究／<span class='en'>above all</span> 最重要的是／<span class='en'>first of all</span> 首先（列顺序）／<span class='en'>in all</span> 总共／<span class='en'>at all</span> 根本（常用于否定句 not... at all）。","<span class='en'>all in all</span> 总而言之；<span class='en'>not at all</span> 一点也不 / 不客气。","after all 放句首时后面常用逗号隔开：<span class='en'>After all, he is only a child.</span>"],
+"confuse":"<span class='en'>After all</span>（毕竟，用于解释 / 让步）≠ <span class='en'>Above all</span>（最重要的是，用于强调）≠ <span class='en'>First of all</span>（首先，用于列举步骤）。看到「解释原因」选 after all，看到「列第一条」选 first of all。",
+"ex":[{"q":"Don't be angry with him. ______, he is only eight years old.","o":["Above all","After all","First of all"],"a":1,"e":"后句是解释「别生气」的原因，用「毕竟」after all；above all 表强调最重要，first of all 表列举顺序。"}]},
+{"id":"p15","t":"some day / someday","cn":"将来某一天","s":"ok","tags":["时间状语"],
+"core":"都表示<strong>将来</strong>有一天；<b>one day</b> 既可用于过去也可用于将来；<b>the other day</b> 只用于<strong>过去</strong>。",
+"check":"✅ 核对无误：辨析与「二者都不用于过去时态」的提醒准确，例句正确。",
+"note":["都表示将来有一天，初中阶段基本同义","辨析：some day 分开写更强调具体某一天；someday 合写更常用作副词","易错点：二者都不用于过去时态；one day 可用于过去或将来","例句：I will travel around the world some day."],
+"expand":["<span class='en'>some day / someday</span> 常与<strong>一般将来时</strong>连用：<span class='en'>I hope to visit Beijing <b>some day</b>.</span>（短语第 5 条例句正是这个用法）。","<span class='en'>one day</span> 可过去可将来：<span class='en'>One day last year, I met him.</span>（过去）／<span class='en'>One day you'll understand.</span>（将来）。","<strong>易混陷阱</strong>：<span class='en'>the other day</span> = a few days ago 几天前，只能用于<strong>过去时</strong>；<span class='en'>another day</span> 改天。","<span class='en'>some day</span> 与 <span class='en'>someday</span> 意义上可互换，但同一篇文章里保持写法一致。"],
+"confuse":"<span class='en'>some day</span>（将来）｜<span class='en'>one day</span>（过去或将来）｜<span class='en'>the other day</span>（过去，几天前）｜<span class='en'>some days</span>（几天，表一段时间，别误当「某天」）。",
+"ex":[{"q":"I met an old friend in the street ______. We had a long talk.","o":["some day","one day","someday"],"a":1,"e":"谓语 met / had 是过去时，要用可指过去的 one day；some day / someday 只用于将来。易混的 the other day 也可用于过去，但不在选项中。"}]},
+{"id":"p16","t":"pick sb. up","cn":"开车去接某人","s":"ok","tags":["动副短语"],
+"core":"动副短语；<strong>代词作宾语必须放中间</strong>（<span class='en'>pick you up ✓ / pick up you ✗</span>）；名词可中间可后面。",
+"check":"✅ 核对无误：搭配与例句都正确。补上 pick up 的其他常用义，阅读里很常见。",
+"note":["动副短语，代词作宾语必须放中间","例句：I will pick you up at the station."],
+"expand":["<span class='en'>pick up</span> 一词多义：① 开车接人 ② 捡起、拿起（<span class='en'>pick up the book</span>）③ 顺便学会（<span class='en'>pick up some English</span>）④ 接电话 ⑤ 好转。","<strong>代词放中间</strong>的动副短语还有：<span class='en'>hand it in</span>、<span class='en'>turn it on/off</span>、<span class='en'>put it on</span>、<span class='en'>take it off</span>、<span class='en'>give it up</span>、<span class='en'>look it up</span>、<span class='en'>wake me up</span>。见短语第 27 条。","名词宾语两种位置都行：<span class='en'>pick up the book = pick the book up</span>。"],
+"confuse":"<span class='en'>pick up <strong>sb.</strong></span> 接人（动副短语，代词居中）vs <span class='en'>pick <strong>sth.</strong></span> 挑选某物（pick 单独作及物动词）。别把 pick you up 写成 pick up you。",
+"ex":[{"q":"My father will ______ at the station at six.","o":["pick up me","pick me up","pick me"],"a":1,"e":"动副短语 pick up 中代词宾语必须放在 pick 与 up 中间：pick me up。"}]},
+{"id":"p17","t":"drive to work","cn":"开车去上班","s":"ok","tags":["交通表达"],
+"core":"<b>drive to work</b> = <b>go to work by car</b> = <b>go to work in a car</b>。",
+"check":"✅ 核对无误：同义表达与例句都正确。",
+"note":["同义表达：go to work by car","例句：My father drives to work every day."],
+"expand":["<span class='en'>by + 交通工具（单数、无冠词）</span>：<span class='en'>by car / by bus / by bike / by train / by plane</span>；换成 <span class='en'>in / on + a/the + 交通工具</span> 时要加冠词：<span class='en'>in a car / on a bus</span>。","<span class='en'>drive sb. to + 地点</span> 开车送某人去：<span class='en'>Mum drives me to school.</span>","同类结构：<span class='en'>walk to school = go to school on foot</span>、<span class='en'>ride a bike to school = go to school by bike</span>。","注意 <span class='en'>work</span> 在这里是<strong>名词</strong>（上班地点 / 工作），不是动词。"],
+"confuse":"<span class='en'>by car</span>（无冠词）vs <span class='en'>in a car / in his car</span>（有冠词或物主代词）；<span class='en'>on foot</span> 是固定说法，不能说 by foot。",
+"ex":[{"q":"My uncle goes to work ______ every day.","o":["by a car","by car","on car"],"a":1,"e":"by + 交通工具中间不加任何冠词：by car；也可说 in his car，但必须带限定词。"}]},
+{"id":"p18","t":"all over the city","cn":"遍及整个城市","s":"ok","tags":["结构复用"],
+"core":"<b>all over + 地点</b> 表范围，与短语第 4 条 <b>all over</b> 是<strong>同一结构</strong>。",
+"check":"✅ 核对无误：用法与例句正确。<strong>复习建议</strong>：这条与第 4 条重复，合并成一条记即可，把位置留给别的考点。",
+"note":["all over + 地点表范围","例句：There are many parks all over the city."],
+"expand":["可替换地点构成一串表达：<span class='en'>all over the world / country / city / school / mountain</span>。","<span class='en'>all over the world</span> 常与被动语态连用：<span class='en'>English is spoken all over the world.</span>","<span class='en'>throughout the city</span> 是更正式的同义表达（了解）。"],
+"confuse":"<span class='en'>all over the city</span>（遍及整个城市，强调范围）vs <span class='en'>in the city</span>（在城市里，只说位置）。句子强调「到处都有」时用 all over。",
+"ex":[{"q":"There are new parks ______ the city now.","o":["all over","all of","over"],"a":0,"e":"「整个城市到处都有」用 all over + 地点；all of the city 表示「城市的全部」，不表达「遍及」的含义。"}]},
+{"id":"p19","t":"such as","cn":"例如","s":"warn","tags":["举例表达","标点"],
+"core":"<b>such as</b> 用于列举<strong>部分</strong>例子，后接名词 / 短语，<strong>such as 与后面的例子之间不加逗号</strong>；<b>for example</b> 常举<strong>一个</strong>例子，用逗号隔开，位置灵活。",
+"check":"🟡 笔记写「不用逗号隔开」容易产生误导：<span class='en'>such as</span> <strong>后面</strong>紧跟例子确实不加逗号，但 <span class='en'>such as</span> <strong>前面</strong>通常有逗号——笔记自己的例句 <span class='en'>I like fruits, such as apples and bananas.</span> 里就有。建议把话说完整，否则孩子可能把例句里的逗号也当成错误。",
+"fix":{"bad":"后接名词/短语，<code>不用逗号隔开</code>","good":"<code>such as 后面紧跟例子，中间不加逗号</code>；<code>such as 前通常有逗号</code>：<code>I like fruits, such as apples and bananas.</code>"},
+"note":["用于列举多个例子，后接名词/短语，不用逗号隔开 ←（表述需澄清）","辨析：for example 举单个例子，常用逗号隔开，可放句首/句中/句末","例句：I like fruits, such as apples and bananas."],
+"expand":["<span class='en'>such as</span> 后<strong>不接句子</strong>，也不与 <span class='en'>and so on</span> 连用（因为它本身已表示不完全列举）。","<span class='en'>for example = for instance</span>，可放句首 / 句中 / 句末，前后常用逗号：<span class='en'>For example, apples are good for you.</span>","要<strong>列举全部</strong>时用 <span class='en'>namely</span> 或 <span class='en'>that is</span>（了解）。","标点对照：<span class='en'>I like fruits, such as apples and bananas.</span> ／ <span class='en'>I like apples, for example.</span>"],
+"confuse":"<span class='en'>such as</span>（列举同类中的几个，后面紧跟名词，无逗号）vs <span class='en'>for example</span>（举一个完整例子，用逗号隔开，可独立成句）。空格后是<strong>一串名词</strong>用 such as，空格后是<strong>一个句子</strong>用 for example。",
+"ex":[{"q":"I like ball games, ______ basketball and volleyball.","o":["such as","for example","such"],"a":0,"e":"空格后是一串名词短语（多个例子），且紧跟 such as 不加逗号，用 such as；for example 通常举一个例子并用逗号隔开。"},{"q":"He is very helpful. ______, he often helps old people cross the street.","o":["Such as","For example","Such as for"],"a":1,"e":"空格后是一个完整的句子，且用逗号隔开，要用 For example；such as 后面不能接句子。"}]},
+{"id":"p20","t":"get home from work","cn":"下班回家","s":"ok","tags":["地点副词"],
+"core":"<b>home</b> 在这里是<strong>副词</strong>，前面<em>不加 to / at</em>；<b>from work</b> 表「下班」。",
+"check":"✅ 核对无误：home 作副词的判断是关键，例句正确。",
+"note":["home 是副词，前面不加 to","例句：He usually gets home from work at 6."],
+"expand":["同类零介词搭配：<span class='en'>go home / get home / arrive home / come home / walk home / return home / reach home</span>。","但 home 作<strong>名词</strong>时要加介词或限定词：<span class='en'>at home</span> 在家、<span class='en'>at his home</span>、<span class='en'>in my home</span>、<span class='en'>to his home</span>。","<span class='en'>here / there / home / abroad / downtown</span> 都是地点副词，前面一律不加 to / at / in。呼应短语第 10 条。","<span class='en'>from work</span> 表来源：<span class='en'>on my way home from work</span> 下班回家的路上。"],
+"confuse":"<span class='en'>get home ✓ / get to home ✗</span>；<span class='en'>be at home ✓</span>（此时 home 是名词）。判断看动词：表「到达 / 去」用零介词，表「在」用 at。",
+"ex":[{"q":"My mother usually gets ______ from work at six.","o":["to home","home","at home"],"a":1,"e":"get 表「到达」时，home 是地点副词，前面不加 to；要说「在家」才是 at home。"}]},
+{"id":"p21","t":"sports park","cn":"运动公园","s":"ok","tags":["名词作定语"],
+"core":"<b>sports</b> 作定语时常用<strong>复数</strong>形式：<span class='en'>sports park / sports meeting / sports shoes</span>。",
+"check":"✅ 核对无误：用法说明与例句都正确。",
+"note":["sports 作定语常用复数形式","例句：There is a new sports park near my home."],
+"expand":["同类复数名词作定语：<span class='en'>sports meeting</span> 运动会、<span class='en'>sports shoes</span> 运动鞋、<span class='en'>sports news</span> 体育新闻、<span class='en'>a sports star</span> 体育明星、<span class='en'>sales department</span> 销售部。","一般名词作定语用<strong>单数</strong>：<span class='en'>a shoe shop</span>、<span class='en'>apple trees</span>、<span class='en'>a school bus</span>（对比 sports 是特例）。","名词作定语通常用单数，只有 man / woman 随后面名词一起变复数：<span class='en'>two women teachers</span>。"],
+"confuse":"<span class='en'>sport</span> 作名词「运动」是可数的（<span class='en'>My favorite sport is swimming.</span>），但作定语时习惯用 <span class='en'>sports</span>。别写成 <span class='en'>sport park</span>。",
+"ex":[{"q":"Our school will hold a ______ meeting next week.","o":["sport","sports","sport's"],"a":1,"e":"「运动会」固定说 sports meeting，sports 作定语用复数形式；不是所有格，不加撇号。"}]},
+{"id":"p22","t":"feel like","cn":"想要；感觉像","s":"ok","tags":["doing","would like"],
+"core":"<b>feel like doing sth.</b> 想要做（后接<strong>动名词</strong>，不接 to do）；<b>feel like + 名词 / 从句</b> 感觉好像。",
+"check":"✅ 核对无误：两个用法、「不接 to do」的提醒和例句都准确。",
+"note":["feel like doing sth. 想要做某事（高频考点）","feel like + 名词/从句 感觉好像……","易错点：后接 doing，不接 to do","例句：I feel like drinking a cup of tea."],
+"expand":["<strong>与 would like 对照（高频）</strong>：<span class='en'>feel like <strong>doing</strong></span> 想做 ≈ <span class='en'>would like <strong>to do</strong></span> 想做。<span class='en'>I feel like a cup of tea. = I'd like a cup of tea.</span>","否定：<span class='en'>I don't feel like eating anything.</span> 我什么都不想吃。","<span class='en'>feel + adj.</span> 是系表结构：<span class='en'>I feel tired / happy.</span>；<span class='en'>feel like + n.</span> 则是「感觉像 / 想要」。","<span class='en'>It feels like rain.</span> 感觉要下雨了；<span class='en'>I feel like a fool.</span> 我感觉自己像个傻瓜。"],
+"confuse":"<span class='en'>feel like doing ✓ / feel like to do ✗</span>；<span class='en'>would like to do ✓ / would like doing ✗</span>。两个「想要」后接形式相反，是选择题最爱设的一组。",
+"ex":[{"q":"It's so hot. I feel like ______ a glass of cold water.","o":["to drink","drinking","drink"],"a":1,"e":"feel like 后接动名词 doing；若换成 would like，则接 to drink。"}]},
+{"id":"p23","t":"get into trouble","cn":"陷入麻烦","s":"ok","tags":["trouble 家族"],
+"core":"<b>get into trouble</b> 陷入麻烦 / <b>be in trouble</b> 处于麻烦中 / <b>have trouble (in) doing sth.</b> 做某事有困难。",
+"check":"✅ 核对无误：例句正确。这条笔记内容偏薄，而 trouble 的搭配在七上考得很多，建议补下面三组。",
+"note":["例句：He often gets into trouble at school."],
+"expand":["<span class='en'>trouble</span> 一般作<strong>不可数名词</strong>：<span class='en'>much / a lot of trouble</span>，不说 <span class='en'>a trouble / troubles</span>（泛指时）。","<strong>have trouble / difficulty / problems (in) doing sth.</strong> 做某事有困难，in 常省略：<span class='en'>We had trouble (in) finding his house.</span>","固定问答：<span class='en'>What's the trouble (with you)? = What's the matter? = What's wrong?</span> 怎么了？","其他搭配：<span class='en'>make trouble</span> 惹麻烦、<span class='en'>get sb. into trouble</span> 让某人陷入麻烦、<span class='en'>out of trouble</span> 脱离麻烦。"],
+"confuse":"<span class='en'>get into trouble</span>（动作：陷入）vs <span class='en'>be in trouble</span>（状态：处于）。另外 <span class='en'>have trouble <strong>doing</strong></span> 后接动名词，不能接 to do。",
+"ex":[{"q":"We had a lot of trouble ______ the way to the museum.","o":["to find","finding","find"],"a":1,"e":"have trouble (in) doing sth. 是固定句型，后接动名词；介词 in 可省略，但动名词不能改成不定式。"}]}
+
+,{"id":"p24","t":"think of","cn":"想起；认为","s":"ok","tags":["think 短语"],
+"core":"<b>think of</b> 想起 / 认为；<b>think about</b> 思考、考虑；<b>think over</b> 仔细考虑。",
+"check":"✅ 核对无误：与 think about 的辨析和例句都正确。",
+"note":["辨析：think about 思考；考虑","例句：This photo makes me think of my grandma."],
+"expand":["<strong>问看法的句型</strong>：<span class='en'>What do you think of...? = How do you like...? = How do you find...?</span> 你觉得……怎么样？（不能用 How do you think of）","<span class='en'>think of ... as ...</span> 把……看作……；<span class='en'>think up</span> 想出（主意）。","<strong>否定转移（高频）</strong>：<span class='en'>I don't think he is right.</span> 意为「我认为他不对」，否定词放在主句，不写 <span class='en'>I think he isn't right.</span>","<span class='en'>think of</span> 常与 <span class='en'>make sb. do sth.</span> 连用：<span class='en'>This photo makes me think of my grandma.</span>（易错句第 3 句同理）"],
+"confuse":"<span class='en'>think <strong>of</strong></span> 想起 / 认为（一下子想到）vs <span class='en'>think <strong>about</strong></span> 考虑、琢磨（持续思考）vs <span class='en'>think <strong>over</strong></span> 仔细权衡。",
+"ex":[{"q":"— ______ do you think of the new film? — It's wonderful.","o":["How","What","Why"],"a":1,"e":"问看法固定用 What do you think of...?（= How do you like...?）；How 与 think of 不能搭配。"}]},
+{"id":"p25","t":"turn...into...","cn":"把……变成……","s":"ok","tags":["turn 短语"],
+"core":"<b>turn A into B</b> 把 A 变成 B；<b>turn into</b>（不带宾语）变成。",
+"check":"✅ 核对无误：搭配与例句都正确。顺手把 turn 短语家族补齐，因为本套笔记里考了好几个。",
+"note":["例句：The magician turned the paper into a bird."],
+"expand":["同义表达：<span class='en'>change A into B</span>；<span class='en'>Water turns into ice.</span> 水变成冰（不及物用法，无宾语）。","<strong>turn 短语家族</strong>：<span class='en'>turn on / off</span> 打开 / 关掉、<span class='en'>turn up / down</span> 调大 / 调小、<span class='en'>turn left / right</span> 左转 / 右转、<span class='en'>turn around</span> 转身、<span class='en'>turn over</span> 翻过来、<span class='en'>turn out (that...)</span> 结果证明（易错句第 15 句）、<span class='en'>take turns</span> 轮流（短语第 11 条）。","<span class='en'>turn + 颜色 / 形容词</span> 表变化：<span class='en'>The leaves turn yellow.</span>（单词第 14 条）"],
+"confuse":"<span class='en'>turn A <strong>into</strong> B</span>（及物，A、B 都出现）vs <span class='en'>A turns <strong>into</strong> B</span>（不及物，A 作主语）。别与 <span class='en'>turn out</span>（结果是）混。",
+"ex":[{"q":"The magician ______ the piece of paper ______ a beautiful flower.","o":["turned; into","turned; out","changed; in"],"a":0,"e":"「把纸变成花」用 turn A into B；turn out 意为「结果证明」，change 的搭配是 change A into B。"}]},
+{"id":"p26","t":"make sure","cn":"确保；查明","s":"ok","tags":["从句"],
+"core":"<b>make sure (that) + 从句</b> 确保……；<b>make sure of sth.</b>；<b>make sure to do</b>。",
+"check":"✅ 核对无误：例句 <span class='en'>Make sure you close the window before you leave.</span> 正确，从句用一般现在时表将来也很规范。",
+"note":["后可接从句","例句：Make sure you close the window before you leave."],
+"expand":["三种结构：<span class='en'>Make sure (that) you lock the door.</span> / <span class='en'>Make sure of the time.</span> / <span class='en'>Make sure to come early.</span>","从句里用<strong>一般现在时表将来</strong>：<span class='en'>Make sure you <b>close</b> the window before you <b>leave</b>.</span>（不说 will close / will leave）。","与 <span class='en'>be sure</span> 对照：<span class='en'>be sure of sth.</span> 对……有把握、<span class='en'>be sure to do</span> 一定会做、<span class='en'>be sure that...</span> 确信。","易错句第 13 句 <span class='en'>Remember to make sure you write your name again...</span> 把三个考点串在一起。"],
+"confuse":"<span class='en'>make sure</span> 是「<strong>务必做到</strong>」（动作，后接从句 / to do）；<span class='en'>be sure</span> 是「<strong>有把握</strong>」（心理状态）。祈使句开头用 Make sure。",
+"ex":[{"q":"______ sure you write your name before you hand in the paper.","o":["Make","Be","Do"],"a":0,"e":"「务必确保……」是祈使句，用 Make sure (that) 从句；Be sure 表示「确信」，语义不符。"}]},
+{"id":"p27","t":"hand in","cn":"上交；提交","s":"ok","tags":["动副短语"],
+"core":"动副短语；<strong>代词宾语放中间</strong>：<span class='en'>hand it in ✓ / hand in it ✗</span>；名词两种位置都可以。",
+"check":"✅ 核对无误：用法与例句都正确。",
+"note":["动副短语，代词放中间","例句：Please hand in your homework on time."],
+"expand":["美式同义 <span class='en'>turn in</span>；反义 / 相关 <span class='en'>hand out</span> 分发、<span class='en'>hand back</span> 归还。","<span class='en'>hand</span> 作动词还有「递给」义，可接双宾语：<span class='en'>Hand me the book. = Hand the book to me.</span>","<span class='en'>on time</span> 准时 ≠ <span class='en'>in time</span> 及时，例句里的 on time 别改错。"],
+"confuse":"<span class='en'>hand <strong>in</strong></span> 上交（给学生→老师）vs <span class='en'>hand <strong>out</strong></span> 分发（老师→学生）。方向相反，看主语是谁。",
+"ex":[{"q":"Here is your test paper. Please ______ before the bell rings.","o":["hand in it","hand it in","hand it out"],"a":1,"e":"代词 it 作宾语必须放在 hand 与 in 中间；hand out 是「分发」，方向不符。"}]},
+{"id":"p28","t":"stop sb. from doing sth.","cn":"阻止某人做某事","s":"ok","tags":["stop 句型"],
+"core":"<b>stop / prevent sb. (from) doing</b> 阻止某人做；<b>keep sb. from doing</b> 中的 from <em>不能省</em>。<strong>更要紧的一组辨析笔记未写：stop doing vs stop to do</strong>。",
+"check":"✅ 核对无误：搭配与例句正确。但这条旁边必须补上 stop doing / stop to do，否则易错句第 17 句的同源考点会漏。",
+"note":["例句：We should stop people from cutting down trees."],
+"expand":["<strong>stop doing vs stop to do（必考）</strong>：<span class='en'>stop doing</span> 停止正在做的事（<span class='en'>Stop talking, please.</span>）；<span class='en'>stop to do</span> 停下来<strong>去做另一件事</strong>（<span class='en'>He stopped to have a rest.</span> 他停下来去休息）。","同义结构：<span class='en'>stop / prevent sb. (from) doing</span> = <span class='en'>keep sb. from doing</span>。主动语态里 stop / prevent 后的 from 可省，keep 后的 from 不能省。","被动语态中 from 一般保留：<span class='en'>He was stopped from going out.</span>","<span class='en'>cut down trees</span> 砍树，易错句第 17 句 <span class='en'>stop them from doing this</span> 是同一结构。"],
+"confuse":"<span class='en'>stop <strong>doing</strong></span>「停下（这件事）」——doing 是被停止的动作；<span class='en'>stop <strong>to do</strong></span>「停下来（为了去做）」——to do 是停下来的目的。看到 <span class='en'>Class began. The students stopped ______</span> 选 talking。",
+"ex":[{"q":"The teacher came in, so the students stopped ______ at once.","o":["to talk","talking","talk"],"a":1,"e":"「停止说话」用 stop doing；stop to talk 是「停下来去说话」，意思正好相反。"},{"q":"We should stop people ______ down trees.","o":["from cutting","to cut","cut"],"a":0,"e":"「阻止某人做某事」用 stop sb. from doing sth.，from 后接动名词。"}]},
+{"id":"p29","t":"have...on","cn":"穿着；戴着（表状态）","s":"ok","tags":["穿戴表达"],
+"core":"<b>have ... on</b> = <b>be wearing</b> 表<strong>穿着的状态</strong>；<b>put on</b> 表<strong>穿的动作</strong>。",
+"check":"✅ 核对无误：例句正确，易错句第 18 句 <span class='en'>I don't have my glasses on</span> 正是这个用法。",
+"note":["例句：She has a red dress on today."],
+"expand":["<strong>穿戴四件套</strong>：<span class='en'>put on</span> 穿上（动作）/ <span class='en'>wear</span> 穿着（状态）/ <span class='en'>have ... on</span> 穿着（状态，无进行时）/ <span class='en'>be in + 颜色 / 衣服</span> 穿着（<span class='en'>The girl in red</span> 穿红衣的女孩）。","<span class='en'>dress</span> 的宾语是<strong>人</strong>：<span class='en'>dress oneself / dress the baby / be dressed in</span>，不能直接接衣服。","<span class='en'>glasses</span> 眼镜恒用复数，代词用 them；<span class='en'>a pair of glasses</span> 一副眼镜。","否定形式 <span class='en'>don't have ... on</span>：说明「没戴着」，呼应易错句第 18 句。"],
+"confuse":"<span class='en'>have ... on</span> 是状态，<strong>不能用于进行时</strong>（不说 <span class='en'>is having a hat on</span>）；<span class='en'>put on</span> 是瞬间动作，可与 <span class='en'>now / at that moment</span> 连用。",
+"ex":[{"q":"He can't see clearly because he doesn't have his glasses ______.","o":["in","on","up"],"a":1,"e":"have ... on 表「戴着」的状态；这里 on 是副词，不能换成 in / up。"}]},
+{"id":"p30","t":"make mistakes","cn":"犯错","s":"ok","tags":["固定搭配"],
+"core":"<b>make a mistake / make mistakes</b> 犯错；<b>by mistake</b> 错误地（无意中）；<b>mistake A for B</b> 把 A 错认成 B。",
+"check":"✅ 核对无误：搭配与例句都正确。",
+"note":["搭配：make a mistake 犯一个错误","例句：Everyone may make mistakes."],
+"expand":["<span class='en'>make a mistake <strong>in</strong> sth.</span> 在……方面犯错：<span class='en'>He made a mistake in spelling.</span>","<span class='en'>by mistake</span> 无意中弄错：<span class='en'>I took your umbrella by mistake.</span> 我错拿了你的伞。","<span class='en'>mistake</span> 也可作动词「误认」，不规则变形 <span class='en'>mistake — mistook — mistaken</span>：<span class='en'>I mistook him for his brother.</span>","易错句第 19 句 <span class='en'>make silly mistakes</span> 是同一搭配加了形容词。"],
+"confuse":"<span class='en'>make mistakes</span>（犯错，动词短语）vs <span class='en'>by mistake</span>（错误地，副词短语，修饰动作）。<span class='en'>make a mistake</span> 可数，别写成 <span class='en'>do a mistake</span>。",
+"ex":[{"q":"Sorry, I took your notebook ______ mistake.","o":["by","in","with"],"a":0,"e":"「无意中拿错」是固定短语 by mistake；make a mistake 才是「犯错」。"}]},
+{"id":"p31","t":"pretend to do sth.","cn":"假装做某事","s":"ok","tags":["不定式"],
+"core":"<b>pretend to do</b> 假装做；<b>pretend not to do</b> 假装没做；<b>pretend to be doing</b> 假装正在做。",
+"check":"✅ 核对无误：否定形式与例句 <span class='en'>He pretended to be sleeping.</span> 都正确，例句正是「假装正在做」的形式。",
+"note":["否定形式：pretend not to do","例句：He pretended to be sleeping."],
+"expand":["三种形式一次记：<span class='en'>pretend to do</span> 假装做 / <span class='en'>pretend to be doing</span> 假装正在做 / <span class='en'>pretend to have done</span> 假装已经做过（了解）。","也可接从句或名词：<span class='en'>He pretended that he was ill.</span> / <span class='en'>pretend illness</span> 装病。","否定词位置：<span class='en'>pretend <strong>not to</strong> do ✓</span>，不能写成 <span class='en'>pretend to don't</span>。易错句第 20 句 <span class='en'>pretended not to hear me</span> 是同一结构。","pretend 常见于《皇帝的新装》一课，与单词第 8 条 emperor、短语第 8 条 lie 一起复习。"],
+"confuse":"<span class='en'>pretend to do</span> 后接<strong>不定式</strong>，不接动名词（<span class='en'>pretend doing ✗</span>）。对比 <span class='en'>feel like / finish / enjoy</span> 后接 doing。",
+"ex":[{"q":"When I called his name, he pretended ______ me.","o":["not to hear","to not hear","not hearing"],"a":0,"e":"pretend 后接不定式，否定形式是 pretend not to do；不能接动名词，也不能把 not 放在 to 后面。"}]},
+{"id":"p32","t":"say to oneself","cn":"自言自语；心里暗想","s":"ok","tags":["反身代词","四大说"],
+"core":"<b>say to oneself</b> 心里想、自言自语；oneself 要随主语<strong>变反身代词</strong>。",
+"check":"✅ 核对无误：例句与直接引语用法都正确。补一组「说」的动词辨析，这是七上必考。",
+"note":["例句：He said to himself, I can do it."],
+"expand":["<strong>say / speak / tell / talk 四词辨析</strong>：<span class='en'>say sth. to sb.</span>（强调内容）/ <span class='en'>speak + 语言 / speak to sb.</span>（强调说话能力或动作）/ <span class='en'>tell sb. sth. = tell sth. to sb.</span>（告诉，可接双宾语；<span class='en'>tell a story / tell the truth / tell a lie</span>）/ <span class='en'>talk to / with sb. about sth.</span>（交谈）。","<strong>反身代词表</strong>：<span class='en'>myself, yourself, himself, herself, itself, ourselves, yourselves, themselves</span>。","直接引语标点：引号内句末用逗号 / 句号放在引号<strong>内</strong>；<span class='en'>Just one more month, he said to himself.</span>（易错句第 21 句）","<span class='en'>say to oneself = think to oneself</span>；<span class='en'>by oneself</span> 独自、<span class='en'>enjoy oneself</span> 玩得开心。"],
+"confuse":"<span class='en'>say to oneself</span>（对自己说）vs <span class='en'>say to each other</span>（互相说）vs <span class='en'>talk to sb.</span>（跟别人说）。反身代词必须与主语人称一致：I → myself，he → himself，they → themselves。",
+"ex":[{"q":"Just one more month, she said to ______.","o":["her","herself","she"],"a":1,"e":"主语是 she，对自己说话要用对应的反身代词 herself。"},{"q":"Can you ______ it in English?","o":["say","speak","tell"],"a":0,"e":"say sth. in English 强调「说的内容」；speak 后直接接语言（speak English），tell 需要接人作宾语。"}]},
+{"id":"p33","t":"to one's surprise","cn":"令某人惊讶的是","s":"ok","tags":["情感名词"],
+"core":"放句首、用逗号隔开；<b>to one's + 情感名词</b> 是一整类结构；修饰动作则用 <b>in surprise</b>。",
+"check":"✅ 核对无误：用法与例句都正确。三句易错句（第 9、22、25 句）都涉及 surprise 相关结构。",
+"note":["放句首，用逗号隔开","例句：To my surprise, he passed the exam."],
+"expand":["同结构一串记：<span class='en'>to one's surprise</span> 令……惊讶的是 / <span class='en'>to one's joy / delight</span> 令……高兴的是 / <span class='en'>to one's disappointment</span> 令……失望的是 / <span class='en'>to one's sadness</span> 令……难过的是（呼应单词第 19 条）。","<span class='en'>one's</span> 用<strong>形容词性物主代词</strong>：<span class='en'>to my / his / Tom's / everyone's surprise</span>。","<span class='en'>in surprise</span> 惊讶地（修饰动作）：<span class='en'>She looked at me in surprise.</span>；<span class='en'>be surprised at / by / to do / that 从句</span> 感到惊讶。","<span class='en'>surprising</span>（令人惊讶的，修饰物）vs <span class='en'>surprised</span>（感到惊讶的，修饰人），见单词第 20 条的 -ing/-ed 规律。"],
+"confuse":"<span class='en'>to one's surprise</span>（句首评注，用逗号隔开）vs <span class='en'>in surprise</span>（方式状语，修饰动词）vs <span class='en'>be surprised</span>（谓语）。三者在句中的位置完全不同。",
+"ex":[{"q":"______, the shy boy won the first prize.","o":["To my surprise","In surprise","To my surprised"],"a":0,"e":"放句首、用逗号隔开、表示「令我惊讶的是」用 to one's surprise；one's 后接名词 surprise，不能用形容词 surprised。"}]},
+{"id":"p34","t":"make progress","cn":"取得进步","s":"ok","tags":["不可数名词"],
+"core":"<b>progress</b> 是<strong>不可数名词</strong>：<em>不能加 a，也不能加 -s</em>；常说 <b>make great / much / a lot of progress</b>。",
+"check":"✅ 核对无误：「progress 不可数、不能加 a」是这条的关键，例句正确，易错句第 30 句也考了。",
+"note":["progress 是不可数名词，不能加 a","例句：You will make progress if you keep practicing."],
+"expand":["常用修饰语：<span class='en'>make <strong>great / much / a lot of / rapid</strong> progress</span>；<span class='en'>make progress <strong>in</strong> English</span> 在英语上取得进步。","<span class='en'>progress</span> 也可作动词「进展」：<span class='en'>The work is progressing well.</span>（了解）。","<strong>不可数名词家族（一起背）</strong>：<span class='en'>progress, homework, information, advice, news, weather, furniture, money, music, water, milk, experience（经验）</span>——都不加 a / -s。","<span class='en'>keep (on) doing sth.</span> 坚持做，例句里的 keep practicing 后接动名词。"],
+"confuse":"<span class='en'>make progress ✓ / make a progress ✗ / make progresses ✗</span>；要表达「很大进步」用 <span class='en'>make great progress</span>，不能在 progress 上加复数。",
+"ex":[{"q":"If you keep practicing, you will make ______.","o":["a great progress","great progress","great progresses"],"a":1,"e":"progress 不可数，不能加 a 或 -s；「很大进步」说 make great progress。"},{"q":"He has made much progress ______ English this term.","o":["in","on","at"],"a":0,"e":"表示「在某一方面取得进步」用介词 in：make progress in English。"}]}
+]},
+    {"key":"sentences","title":"高频易错句子","sub":"考点精讲 / 举一反三","items":[
+{"id":"s1","t":"He lost his friends because he lied.","cn":"他因撒谎失去了朋友。","sent":true,"s":"ok","tags":["状语从句","不规则动词"],
+"core":"<b>because</b> 引导原因状语从句；lie 作「撒谎」讲时过去式为 <b>lied</b>。",
+"check":"✅ 核对无误：句子、翻译与两条考点都准确。",
+"note":["because 引导原因状语从句","lie 作「撒谎」讲时过去式为 lied"],
+"expand":["<strong>中英文差异（必考）</strong>：英语里 <span class='en'>because</span> 与 <span class='en'>so</span> <strong>不能同时用</strong>。中文说「因为……所以……」，英语只能留一个：<span class='en'>Because he lied, he lost his friends.</span> 或 <span class='en'>He lied, so he lost his friends.</span>","<span class='en'>because + 完整句子</span> vs <span class='en'>because of + 名词 / 代词 / doing</span>：<span class='en'>He was late because of the heavy rain.</span>","<span class='en'>lose — lost — lost</span> 丢失、失去（及物）；<span class='en'>lose one's way</span> 迷路。注意与 <span class='en'>loose</span>（松的）拼写区分。","lie 变形见短语第 8 条与速记卡：<span class='en'>lie(撒谎) — lied — lied</span>。"],
+"confuse":"<span class='en'>because / so</span> 二选一；<span class='en'>although / though / but</span> 也二选一（易错句第 15 句的 however 同理，不与 but 连用）。",
+"ex":[{"q":"______ he lied, he lost all his friends.","o":["Because; so","Because","So"],"a":1,"e":"because 与 so 不能连用，只能保留一个；选项 A 同时出现两个连词是典型错误。"},{"q":"He didn't go to school ______ the heavy snow.","o":["because","because of","so"],"a":1,"e":"空格后是名词短语 the heavy snow，用介词短语 because of；because 后必须接完整句子。"}]},
+{"id":"s2","t":"I used to keep a diary every day.","cn":"过去我每天都写日记。","sent":true,"s":"ok","tags":["used to","固定搭配"],
+"core":"<b>used to do</b> 过去常常（<strong>暗含现在不这样了</strong>）；<b>keep a diary</b> 写日记。",
+"check":"✅ 核对无误：句子与考点都准确；used to 与 keep a diary 两个考点叠在一句里，是很好的复习句。",
+"note":["used to do 过去常常（现在不做了）","keep a diary 写日记"],
+"expand":["<span class='en'>used to do</span> 的否定 / 疑问：<span class='en'>I didn't use to keep a diary.</span> / <span class='en'>Did you use to keep a diary?</span>（did 后用 use）","与 <span class='en'>be used to doing</span>（习惯于）、<span class='en'>be used to do</span>（被用来）的三兄弟辨析见短语第 12 条。","<span class='en'>every day</span>（副词短语，每天，分开写）vs <span class='en'>everyday</span>（形容词，日常的，合写）：<span class='en'>everyday English</span> 日常英语。","<span class='en'>keep a diary</span> 也可说 <span class='en'>write in a diary / keep diaries</span>。"],
+"confuse":"<span class='en'>used to do</span> 强调「过去 vs 现在」的对比；如果只说过去某段时间反复做、不涉及现在，也可用一般过去时 + <span class='en'>often / every day</span>。看句子有没有「现在不再」的意味。",
+"ex":[{"q":"I ______ up late, but now I go to bed early.","o":["used to stay","am used to staying","was used to stay"],"a":0,"e":"后半句 but now 提示「过去常常、现在不这样」，用 used to do + 动词原形。"}]},
+{"id":"s3","t":"When I see this photo, I will think of my grandpa.","cn":"当我看到这张照片，我就会想起我的爷爷。","sent":true,"s":"ok","tags":["主将从现"],
+"core":"<strong>主将从现</strong>：when 引导的时间状语从句用一般现在时，主句用将来时。",
+"check":"✅ 核对无误：主将从现的判断与 think of 的释义都准确。",
+"note":["时间状语从句「主将从现」","think of 想起"],
+"expand":["<strong>适用连词一整组</strong>：<span class='en'>when, if, as soon as, until, before, after, unless, while</span> 引导的状语从句，都要「主将从现」：<span class='en'>I'll call you as soon as I arrive.</span>","<span class='en'>主句含情态动词（can / must / may）</span> 时，从句同样用一般现在时：<span class='en'>If you make a promise, you must keep it.</span>（易错句第 6 句）。","<span class='en'>主句是祈使句</span> 时也遵循：<span class='en'>Tell him when he comes.</span> / <span class='en'>Walk on, and you'll find it.</span>","<span class='en'>think of</span> 想起（短语第 24 条）；<span class='en'>make sb. do sth.</span> 使某人做（<span class='en'>This photo makes me think of my grandma.</span>）"],
+"confuse":"<span class='en'>When I <strong>see</strong>... I <strong>will</strong> think...</span> ✓；<span class='en'>When I <strong>will see</strong>...</span> ✗。从句里绝不能出现 will；判断哪半句是从句看连词。",
+"ex":[{"q":"I ______ you as soon as I ______ at the station.","o":["will call; will arrive","call; arrive","will call; arrive"],"a":2,"e":"as soon as 引导时间状语从句，遵循主将从现：主句 will call，从句用一般现在时 arrive。"}]},
+{"id":"s4","t":"He got into trouble because he didn't finish his homework yesterday.","cn":"他昨天因为没完成作业而陷入了麻烦。","sent":true,"s":"ok","tags":["一般过去时","状语从句"],
+"core":"<b>get into trouble</b> 陷入麻烦；<b>because</b> 引导原因状语从句；<b>yesterday</b> 提示一般过去时。",
+"check":"✅ 核对无误：三个考点与句子时态都正确。",
+"note":["get into trouble 陷入麻烦","because 引导原因状语从句","一般过去时"],
+"expand":["一般过去时的否定：<span class='en'>didn't + 动词原形</span>（<span class='en'>didn't finish ✓ / didn't finished ✗</span>），助动词 did 已承担过去，后面动词必须还原。","时间标志词：<span class='en'>yesterday, last..., ...ago, in 2020, just now, the other day</span>。","<span class='en'>finish doing sth.</span> 完成做某事（finish 后接动名词，不接 to do）：<span class='en'>He finished doing his homework.</span>","<span class='en'>get into trouble</span> 的更多搭配见短语第 23 条。"],
+"confuse":"<span class='en'>didn't finish</span> 里 finish 用原形；对比肯定句 <span class='en'>He finished his homework.</span> 才加 -ed。另外 because 与 so 不能连用（见第 1 句）。",
+"ex":[{"q":"He ______ his homework yesterday, so he got into trouble.","o":["didn't finished","didn't finish","wasn't finish"],"a":1,"e":"一般过去时否定用 didn't + 动词原形，did 已表过去，finish 不能再加 -ed。"}]},
+{"id":"s5","t":"The train arrived late at the station yesterday.","cn":"昨天火车到站晚点了。","sent":true,"s":"ok","tags":["词义辨析","副词"],
+"core":"<b>arrive at</b> + 小地点；<b>late</b> 作副词「晚、迟」；注意与 <b>lately</b>（最近）区分。",
+"check":"✅ 核对无误：句子、翻译与三个考点都准确。这条最适合把 late 家族一次补齐。",
+"note":["arrive at + 小地点","late 副词表「晚地」，注意与 lately（最近）区分"],
+"expand":["<strong>late 家族</strong>：<span class='en'>late</span> 迟的 / 晚地（adj. & adv.）｜ <span class='en'>lately</span> 最近（= recently，常与完成时连用）｜ <span class='en'>later</span> 稍后、以后（<span class='en'>two hours later</span>）｜ <span class='en'>latest</span> 最新的（<span class='en'>the latest news</span>）｜ <span class='en'>latter</span> 后者。","<span class='en'>be late for</span> 迟到：<span class='en'>Don't be late for school.</span>","arrive 也可不带介词单独用：<span class='en'>The train arrived late.</span>；四个「到达」的辨析见短语第 10 条。","<span class='en'>A few hours later</span>（易错句第 26 句）里的 later 正是「……之后」，与 late 不同。"],
+"confuse":"<span class='en'>late</span> 表「迟」，<span class='en'>lately</span> 表「最近」，只差一个 -ly 意思完全不同。<span class='en'>Have you seen him lately?</span> 你最近见过他吗？",
+"ex":[{"q":"Have you read any good books ______?","o":["late","lately","later"],"a":1,"e":"「最近」用 lately（= recently），常与现在完成时连用；late 是「迟的」，later 是「稍后」。"}]},
+{"id":"s6","t":"If you make a promise, you must keep it.","cn":"如果你许下诺言，就必须遵守。","sent":true,"s":"ok","tags":["条件状语从句"],
+"core":"<b>if</b> 引导条件状语从句，同样遵守<strong>主将从现</strong>；主句含情态动词 must 时，从句用一般现在时。",
+"check":"✅ 核对无误：考点与固定搭配都准确。",
+"note":["if 引导条件状语从句","make / keep a promise 固定搭配"],
+"expand":["主句不一定要用 will，<strong>情态动词或祈使句</strong>也符合「主将从现」：<span class='en'>If you study hard, you will make progress.</span>（易错句第 30 句）/ <span class='en'>If you need help, call me.</span>","<span class='en'>if</span> 还有「是否」义，引导宾语从句时可以用将来时：<span class='en'>I don't know if he <strong>will come</strong> tomorrow.</span> 这是与主将从现最容易混的地方。","三件套 <span class='en'>make / keep / break a promise</span>，见短语第 1 条；<span class='en'>promise</span> 后不接 sb. to do，见单词第 11 条。","<span class='en'>unless</span> = if... not 除非、如果不：<span class='en'>Unless you work hard, you'll fail.</span>"],
+"confuse":"<span class='en'>if</span> 表<strong>「如果」</strong>→ 主将从现；表<strong>「是否」</strong>（可换 whether）→ 宾语从句，时态按实际需要。判断看 if 前面有没有 <span class='en'>know / wonder / ask</span> 这类动词。",
+"ex":[{"q":"If it ______ tomorrow, we will stay at home.","o":["will rain","rains","rained"],"a":1,"e":"if 表「如果」引导条件状语从句，用一般现在时表将来：rains；主句用 will stay。"}]},
+{"id":"s7","t":"There are many white clouds in the sky.","cn":"天空中有很多白云。","sent":true,"s":"ok","tags":["There be","名词复数"],
+"core":"<b>cloud</b> 作「云朵」时可数；<b>in the sky</b> 固定搭配；<b>There be</b> 句型遵循就近原则。",
+"check":"✅ 核对无误：句子、翻译与考点都正确。",
+"note":["cloud 可数名词","in the sky 固定搭配"],
+"expand":["<strong>There be 就近原则</strong>：be 动词由<strong>紧跟着它的第一个名词</strong>决定：<span class='en'>There <strong>is</strong> a book and two pens on the desk.</span> / <span class='en'>There <strong>are</strong> two pens and a book...</span>","<span class='en'>cloud</span> 也可泛指「云层」作不可数，但七年级按可数掌握；形容词 <span class='en'>cloudy</span> 多云的：<span class='en'>It's cloudy today.</span>","<span class='en'>in the sky</span> 用定冠词 the；类似 <span class='en'>in the sun / in the rain / in the world</span>。","<span class='en'>There be</span> 的否定与疑问：<span class='en'>There aren't any clouds.</span> / <span class='en'>Are there any clouds?</span>"],
+"confuse":"<span class='en'>There be</span> 表「某处有」，<span class='en'>have / has</span> 表「某人拥有」，两者不能混用：<span class='en'>There are many clouds in the sky ✓ / The sky has many clouds ✗</span>（考试按 There be 判）。",
+"ex":[{"q":"There ______ a white cloud and some birds in the sky.","o":["are","is","have"],"a":1,"e":"There be 遵循就近原则，紧跟 be 的 a white cloud 是单数，用 is；不能与 have 混用。"}]},
+{"id":"s8","t":"It's a good day to climb the mountain.","cn":"今天是爬山的好日子。","sent":true,"s":"fix","tags":["形式主语","已修正"],
+"core":"这里的 <b>it</b> 是<strong>非人称 it（指时间 / 天气 / 日子）</strong>，<b>to climb the mountain</b> 是不定式作<strong>后置定语</strong>修饰 day——<em>不是形式主语</em>。",
+"check":"🔴 <strong>考点标注有误，需要改</strong>。笔记写「It's + 名词 + to do sth. 句型，it 作形式主语」。检验方法：把不定式提到句首，若能成立才是形式主语。<span class='en'>To climb the mountain is a good day.</span> ✗（爬山不是一个好日子）不成立，说明 it 不是形式主语，而是指「这天 / 天气」的非人称 it，to climb 作 day 的后置定语（「适合爬山的好日子」）。<strong>真正的 It's + adj. + to do 形式主语句是第 11 句</strong>：<span class='en'>It's interesting to have math lessons.</span> → <span class='en'>To have math lessons is interesting.</span> ✓。<strong>但要说清楚</strong>：不少教辅会把 <span class='en'>It is + n. + to do sth.</span> 统一归进「形式主语」来讲（像 <span class='en'>It's a good habit to do morning exercises.</span> 确实能还原），孩子按课堂口径记并不影响做题；本条真正要掌握的是会用 <span class='en'>a good day / place / way to do</span> 这个句型，并能分清第 11 句那种可还原的真正形式主语。",
+"fix":{"bad":"考点：<code>It's + 名词 + to do sth. 句型，it 作形式主语</code>","good":"考点：<code>it 为非人称代词，指时间 / 这天；to climb the mountain 作后置定语修饰 day</code>，意为「一个适合爬山的好日子」。"},
+"note":["考点：It's + 名词 + to do sth. 句型，it 作形式主语 ←（此处有误）"],
+"expand":["<strong>形式主语 it 的标准句式</strong>：<span class='en'>It's + adj. + (for sb.) + to do sth.</span>，如 <span class='en'>It's important to learn English well.</span>（= <span class='en'>To learn English well is important.</span>）","<strong>非人称 it</strong> 常指时间、天气、距离、温度：<span class='en'>It's five o'clock. / It's cold today. / It's a long way.</span> 这些 it 不指代任何具体名词，也不能还原成不定式主语。","<span class='en'>a good day / time / place / way <strong>to do</strong></span> 是「不定式作后置定语」的高频组合：<span class='en'>a good place to visit</span>、<span class='en'>a good way to learn English</span>。","第 15 句 <span class='en'>it was hard to live without electricity</span> 里的 it <strong>才是</strong>形式主语（<span class='en'>To live without electricity was hard.</span> ✓）。三句放一起对比最好记。"],
+"confuse":"判断形式主语只需一招：<strong>把 to do 短语挪到句首</strong>，句子仍成立 → 形式主语；不成立 → 非人称 it 或不定式作定语。<span class='en'>It's interesting to have math lessons ✓（形式主语）</span>／<span class='en'>It's a good day to climb...（定语）</span>。",
+"ex":[{"q":"Which sentence has a formal subject 'it'?","o":["It's a good day to climb the mountain.","It's interesting to have math lessons.","It's five o'clock now."],"a":1,"e":"只有 B 能把不定式提前：To have math lessons is interesting.（成立）。A 的 to climb 是 day 的后置定语，C 的 it 指时间，都不是形式主语。"}]},
+{"id":"s9","t":"I was surprised that my neighbor David was a famous actor.","cn":"我很惊讶，我的邻居大卫居然是一位著名演员。","sent":true,"s":"ok","tags":["-ing / -ed","同位语"],
+"core":"<b>be surprised that + 从句</b> 对……感到惊讶；<b>neighbor</b> 注意英美拼写；David 是 neighbor 的<strong>同位语</strong>。",
+"check":"✅ 核对无误：考点、翻译和句子都正确。",
+"note":["be surprised that 从句","neighbor 单词拼写"],
+"expand":["surprise 全套：<span class='en'>be surprised at / by sth.</span>、<span class='en'>be surprised to do</span>、<span class='en'>be surprised that...</span>、<span class='en'>to one's surprise</span>（短语第 33 条）、<span class='en'>in surprise</span> 惊讶地。","-ing / -ed 规律见单词第 20 条：<span class='en'>surprising</span> 令人惊讶的（物）/ <span class='en'>surprised</span> 感到惊讶的（人）。","<span class='en'>my neighbor David</span> 是「限定词 + 名词 + 人名」的同位结构，中间<strong>不加逗号</strong>；对比 <span class='en'>David, my neighbor,</span> 才用逗号。","<span class='en'>actor</span> 演员（男）/ <span class='en'>actress</span> 女演员；<span class='en'>famous = well-known</span> 著名的，<span class='en'>be famous for</span> 因……而著名。"],
+"confuse":"<span class='en'>I was <strong>surprised</strong>.</span>（我感到惊讶）vs <span class='en'>The news was <strong>surprising</strong>.</span>（消息令人惊讶）。另外 <span class='en'>neighbor</span> 与 <span class='en'>neighborhood</span> 一个指人、一个指地方。",
+"ex":[{"q":"We were ______ to hear the ______ news.","o":["surprising; surprised","surprised; surprising","surprised; surprised"],"a":1,"e":"人「感到」用 -ed：surprised；消息「令人」用 -ing：surprising。"}]},
+{"id":"s10","t":"The writer wrote an exciting novel.","cn":"这位作者创作了一部令人激动的小说。","sent":true,"s":"ok","tags":["-ing / -ed","构词法"],
+"core":"<b>exciting</b> 修饰事物（令人激动的），<b>excited</b> 修饰人（感到激动的）；<b>writer</b> = write + -er。",
+"check":"✅ 核对无误：考点与翻译都准确。",
+"note":["exciting 修饰事物；excited 修饰人，注意区分"],
+"expand":["<span class='en'>be excited about / at sth.</span> 对……感到兴奋；<span class='en'>be excited to do</span> 做某事很兴奋。","<strong>动词 + -er / -or 表「做这件事的人」</strong>：<span class='en'>write → writer</span>、<span class='en'>teach → teacher</span>、<span class='en'>work → worker</span>、<span class='en'>play → player</span>、<span class='en'>sing → singer</span>、<span class='en'>act → actor</span>、<span class='en'>visit → visitor</span>、<span class='en'>hunt → hunter</span>（易错句第 29 句）。","<span class='en'>write — wrote — written</span> 不规则变形；<span class='en'>novel</span> 小说（可数）。","-ing / -ed 全表见单词第 20 条与速记卡。"],
+"confuse":"<span class='en'>an exciting novel</span>（小说令人激动）vs <span class='en'>The readers were excited.</span>（读者感到激动）。同一句里可以同时出现两词，先判断修饰对象是人还是物。",
+"ex":[{"q":"The children were ______ about the ______ game.","o":["exciting; excited","excited; exciting","excited; excited"],"a":1,"e":"children 是人，用 excited；game 是事物，用 exciting。"}]}
+
+,{"id":"s11","t":"It's interesting to have math lessons.","cn":"上数学课很有趣。","sent":true,"s":"ok","tags":["形式主语"],
+"core":"这才是标准的 <b>It's + adj. + to do sth.</b> 形式主语句型；it 是<strong>形式主语</strong>，真正主语是后面的不定式。",
+"check":"✅ 核对无误：考点标注与 interesting 修饰事物的说明都准确。<strong>建议与第 8 句对照看</strong>：那一句的 it 不是形式主语，两句正好构成一组辨析。",
+"note":["It's + adj. + to do sth. 固定句型","interesting 修饰事物"],
+"expand":["还原检验：<span class='en'><strong>To have math lessons is interesting.</strong></span> 句子成立 → 证明 it 是形式主语。英语习惯把长主语后置，用 it 占位。","扩展句式 <span class='en'>It's + adj. + <strong>for sb.</strong> + to do sth.</span>：<span class='en'>It's important for us to learn English well.</span>","若形容词描述<strong>人的品质</strong>（kind, clever, nice, silly），介词用 <span class='en'>of</span>：<span class='en'>It's kind of you to help me.</span>","<span class='en'>have math lessons = have a math class = have math class</span> 上数学课。","-ing / -ed：<span class='en'>interesting</span> 令人感兴趣的（物）/ <span class='en'>interested</span> 感兴趣的（人），搭配 <span class='en'>be interested in</span>。"],
+"confuse":"对比第 8 句 <span class='en'>It's a good day to climb the mountain.</span>（it 指日子，to climb 作定语）。判断口诀还是「把 to do 提到句首看成立不成立」。",
+"ex":[{"q":"______ is important to learn English well.","o":["That","It","This"],"a":1,"e":"It's + adj. + to do 是形式主语固定句型，只能用 it 作形式主语；That / This 不能这样用。"}]},
+{"id":"s12","t":"If the temperature drops below zero, the water will freeze.","cn":"如果气温降到零度以下，水就会结冰。","sent":true,"s":"ok","tags":["主将从现","条件状语从句"],
+"core":"if 条件状语从句<strong>主将从现</strong>；<b>below zero</b> 零度以下；<b>freeze</b> 结冰。",
+"check":"✅ 核对无误：三个考点与句子都正确，从句 drops 用一般现在时、主句 will freeze 用将来时，很规范。",
+"note":["if 条件状语从句「主将从现」","below zero 零度以下"],
+"expand":["<span class='en'>drop</span> 在这里是动词「下降」；<span class='en'>temperature</span> 作主语时用 <span class='en'>high / low / drop / rise</span> 描述（见单词第 18 条）。","<span class='en'>freeze — froze — frozen</span>（单词第 23 条）；<span class='en'>below zero = below freezing</span> 零度以下。","<span class='en'>zero</span> 也常说 <span class='en'>zero degrees</span>；<span class='en'>above zero</span> 零度以上。","主将从现连词全家福见第 3 句；<span class='en'>unless = if... not</span>。"],
+"confuse":"<span class='en'>temperature</span> 用 <span class='en'>high / low</span> 描述，不用 <span class='en'>hot / cold</span>；<span class='en'>It</span> 作主语说天气时才用 hot / cold。",
+"ex":[{"q":"If the temperature ______ below zero, the water will freeze.","o":["will drop","drops","dropped"],"a":1,"e":"if 引导条件状语从句用一般现在时表将来：drops；主句已用 will freeze。"}]},
+{"id":"s13","t":"Remember to make sure you write your name again before you hand in your test paper.","cn":"交试卷前记得务必再写上你的名字。","sent":true,"s":"ok","tags":["remember","不定式"],
+"core":"<b>remember to do</b> 记得要去做（<strong>还没做</strong>）；<b>make sure + 从句</b>；<b>hand in</b> 上交。",
+"check":"✅ 核对无误：三个考点串联准确，从句中 write / hand in 用一般现在时表将来也很规范。",
+"note":["remember to do 记得要做（未做）","make sure 确保","hand in 上交"],
+"expand":["<strong>remember 两种结构（必考）</strong>：<span class='en'>remember <strong>to do</strong></span> 记得要去做（事情未发生）／<span class='en'>remember <strong>doing</strong></span> 记得做过（事情已发生）。<span class='en'>I remember locking the door.</span> 我记得锁过门了。","同类对比：<span class='en'>forget to do</span> 忘记要去做 / <span class='en'>forget doing</span> 忘记做过；<span class='en'>stop to do / stop doing</span>（短语第 28 条）。","<span class='en'>make sure</span> 三结构见短语第 26 条；<span class='en'>hand in</span> 代词宾语放中间见短语第 27 条。","<span class='en'>before</span> 引导的时间状语从句也遵循主将从现，这里主句是祈使句。"],
+"confuse":"<span class='en'>Remember to <strong>close</strong> the window.</span>（还没关，提醒去关）vs <span class='en'>I remember <strong>closing</strong> the window.</span>（记得已经关过了）。看到「交卷前 / 出门前」这类提醒，一律 to do。",
+"ex":[{"q":"Remember ______ the lights before you leave the classroom.","o":["turning off","to turn off","turned off"],"a":1,"e":"「离开前记得去关灯」是提醒做还没做的事，用 remember to do；turning off 表记得曾经关过。"}]},
+{"id":"s14","t":"He can turn the paper into a flower.","cn":"他能把这张纸变成花。","sent":true,"s":"ok","tags":["情态动词"],
+"core":"<b>turn A into B</b> 把 A 变成 B；情态动词 <b>can</b> 后接<strong>动词原形</strong>。",
+"check":"✅ 核对无误：两个考点判断准确。",
+"note":["turn A into B 固定搭配","情态动词 can 后加动词原形"],
+"expand":["<strong>情态动词后一律接动词原形</strong>：<span class='en'>can / may / must / should / will / would / could + do</span>，不加 -s、-ed、-ing，也不加 to（<span class='en'>can to do ✗</span>）。","否定与疑问：<span class='en'>He can't turn... / Can he turn...? — Yes, he can. / No, he can't.</span>","<span class='en'>be able to do</span> = can，但可用于更多时态：<span class='en'>He will be able to do it.</span>","turn 短语家族见短语第 25 条。"],
+"confuse":"<span class='en'>He can <strong>turn</strong>...</span> ✓ ／ <span class='en'>He can <strong>turns / to turn / turning</strong>...</span> ✗。注意对比第三人称单数一般现在时 <span class='en'>He turns the paper into a flower.</span> 才加 -s。",
+"ex":[{"q":"The little boy can ______ a piece of paper into a bird.","o":["turns","to turn","turn"],"a":2,"e":"情态动词 can 后必须接动词原形 turn；不能加 -s，也不能用不定式。"}]},
+{"id":"s15","t":"However, it turned out that it was hard to live without electricity.","cn":"然而事实证明，没有电很难生活。","sent":true,"s":"ok","tags":["形式主语","转折词"],
+"core":"<b>it turned out that...</b> 结果证明 / 原来是；第二个 <b>it</b> 是形式主语（真正主语是 <span class='en'>to live without electricity</span>）；<b>however</b> 用逗号隔开。",
+"check":"✅ 核对无误：三个考点都准确。这句里的 it 才是形式主语，与第 8 句形成对照，适合放一起讲。",
+"note":["turn out that 结果证明","it 作形式主语","however 用逗号隔开"],
+"expand":["<span class='en'>It turned out that + 从句</span> 是固定句型；也可说 <span class='en'>The plan turned out (to be) a success.</span> 结果证明计划很成功。","<strong>转折连词不能连用</strong>：<span class='en'>although / though</span> 不与 <span class='en'>but</span> 连用；<span class='en'>however</span> 是<strong>副词</strong>，不与 but 连用，且位置灵活、常用逗号隔开：<span class='en'>He worked hard. However, he failed.</span> / <span class='en'>He worked hard; however, he failed.</span>","<span class='en'>without + 名词 / 代词 / doing</span> 没有……：<span class='en'>without electricity / without asking</span>；<span class='en'>electricity</span> 不可数。","还原检验：<span class='en'>To live without electricity was hard.</span> ✓ 成立，说明第二个 it 是形式主语。"],
+"confuse":"<span class='en'>however</span>（副词，要用逗号 / 分号）vs <span class='en'>but</span>（连词，直接连接两句、不加逗号在句首）vs <span class='en'>although</span>（连词，引导让步从句）。三者<strong>一次只能用一个</strong>。",
+"ex":[{"q":"______ he was tired, he still went on working.","o":["Although; but","Although","But"],"a":1,"e":"although 与 but 不能连用，只能保留一个；句首引导让步从句用 Although。选项 C 放句首语义不通。"},{"q":"It was hard ______ without electricity.","o":["live","to live","living"],"a":1,"e":"It's + adj. + to do sth. 形式主语结构中，真正主语用不定式 to live。"}]},
+{"id":"s16","t":"The teacher decided to give us less homework.","cn":"老师决定给我们少布置一点作业。","sent":true,"s":"ok","tags":["比较级","双宾语"],
+"core":"<b>decide to do</b>；<b>less</b> 是 <b>little</b> 的比较级，修饰<strong>不可数名词</strong> homework；<b>give sb. sth.</b> 双宾语。",
+"check":"✅ 核对无误：三个考点判断全部准确，例句规范。",
+"note":["decide to do 结构","less 是 little 的比较级，修饰不可数名词 homework"],
+"expand":["<strong>比较级对照</strong>：<span class='en'>little → less → least</span>（不可数）／<span class='en'>few → fewer → fewest</span>（可数复数）／<span class='en'>much / many → more → most</span>。<span class='en'>less homework</span> 少作业、<span class='en'>fewer mistakes</span> 更少错误。","双宾语两种写法：<span class='en'>give us less homework = give less homework to us</span>；同类动词 <span class='en'>tell, show, teach, buy, send, make, cook</span>。","<span class='en'>homework</span> 不可数，<strong>不加 a / -s</strong>；不能说 <span class='en'>less homeworks</span>。","<span class='en'>a little / little / a few / few</span> 见单词第 27 条。"],
+"confuse":"<span class='en'>less + 不可数</span> vs <span class='en'>fewer + 可数复数</span>。口语里 less 有时也修饰复数，但考试按规则判：<span class='en'>less money / fewer people</span>。",
+"ex":[{"q":"The teacher gave us ______ homework today, so we can play outside.","o":["fewer","less","few"],"a":1,"e":"homework 不可数，用 little 的比较级 less；fewer 修饰可数名词复数。"}]},
+{"id":"s17","t":"They make a lot of money by lying to others. We should stop them from doing this.","cn":"他们靠欺骗别人赚了很多钱。我们应该阻止他们这样做。","sent":true,"s":"ok","tags":["by doing","动名词"],
+"core":"<b>by + doing</b> 表方式「通过做……」；<b>stop sb. from doing</b> 阻止某人做；<b>lying</b> 是 lie（撒谎）的动名词。",
+"check":"✅ 核对无误：两个考点、翻译与句子都正确。lying 的拼写（ie → y + ing）本身就是隐藏考点。",
+"note":["by + doing 表方式","stop sb. from doing 阻止某人做"],
+"expand":["<span class='en'>by + doing</span> 回答 <strong>How</strong> 的问题：<span class='en'>We learn English by reading aloud.</span> 类似结构 <span class='en'>by + 交通工具</span>（by bus）则是另一用法。","<strong>ie → y + ing</strong> 拼写规则：<span class='en'>lie → lying</span>、<span class='en'>die → dying</span>、<span class='en'>tie → tying</span>（见单词第 2 条）。","<span class='en'>make money</span> 赚钱、<span class='en'>a lot of / lots of + 可数复数或不可数</span>；<span class='en'>others</span> 泛指「别人」（单词第 26 条）。","<span class='en'>stop sb. from doing</span> 详见短语第 28 条，主动语态中 from 有时可省。"],
+"confuse":"<span class='en'>by <strong>doing</strong></span>（通过做某事，方式）vs <span class='en'>to do</span>（为了做，目的）。介词后面的动词<strong>一律用动名词</strong>：<span class='en'>by / in / at / for / of / about / without + doing</span>。",
+"ex":[{"q":"We can improve our English ______ aloud every morning.","o":["by reading","to read","read"],"a":0,"e":"介词 by 表方式，后面接动名词：by reading；to read 表目的，不能作 by 的宾语。"}]},
+{"id":"s18","t":"I couldn't see the words clearly, because I don't have my glasses on.","cn":"我看不清字，因为我没戴眼镜。","sent":true,"s":"fix","tags":["时态一致","标点","已修正"],
+"core":"主从句<strong>时态要一致</strong>：<span class='en'>couldn't see</span>（过去）应配 <span class='en'>didn't have</span>；<b>because</b> 前一般<strong>不加逗号</strong>。",
+"check":"🔴 <strong>这句有两处需要改</strong>。① 主句 <span class='en'>couldn't see</span> 是过去时，because 从句却用现在时 <span class='en'>don't have</span>，叙述同一件过去的事时不一致，应改为 <span class='en'>didn't have</span>（或把主句改成 <span class='en'>can't see</span> 表示现在的状态）。② <span class='en'>because</span> 引导原因状语从句时前面通常<strong>不加逗号</strong>，原句的逗号多余。考点里「clearly 副词修饰 see」「have...on 表戴着的状态」两条判断<strong>是正确的</strong>。",
+"fix":{"bad":"<code>I couldn't see the words clearly, because I don't have my glasses on.</code>","good":"<code>I couldn't see the words clearly because I didn't have my glasses on.</code>（或全句改现在时 <code>I can't see... because I don't have...</code>）"},
+"note":["考点：clearly 副词修饰动词 see","考点：have...on 表「戴着」的状态","原句：I couldn't see the words clearly, because I don't have my glasses on. ←（时态与标点需修正）"],
+"expand":["<strong>时态呼应</strong>：主句过去时，从句一般也要用相应的过去时态（客观真理除外）：<span class='en'>He said he <strong>was</strong> busy.</span>","<span class='en'>clearly</span> 是副词修饰动词 see；对应形容词 <span class='en'>clear</span> 修饰名词（<span class='en'>a clear answer</span>）。","<span class='en'>glasses</span> 眼镜恒用复数，代词用 them；<span class='en'>a pair of glasses</span> 一副眼镜。<span class='en'>have ... on</span> 表状态，见短语第 29 条。","<span class='en'>because</span> 前加逗号仅在「并非因为……」等特殊强调时用，初中阶段按「不加逗号」掌握。"],
+"confuse":"<span class='en'>couldn't ... because ... didn't have</span> ✓（同过去）／<span class='en'>can't ... because ... don't have</span> ✓（同现在）／<span class='en'>couldn't ... don't have</span> ✗（时态打架）。",
+"ex":[{"q":"Which sentence is RIGHT?","o":["I couldn't see the words clearly, because I don't have my glasses on.","I couldn't see the words clearly because I didn't have my glasses on.","I couldn't saw the words clearly because I didn't have my glasses on."],"a":1,"e":"B 时态一致且 because 前无多余逗号；A 主从句时态冲突，C 中 couldn't 后接了过去式 saw（应为动词原形 see）。"}]},
+{"id":"s19","t":"He decided not to make silly mistakes in the math test.","cn":"他决定不在数学测试中犯愚蠢的错误。","sent":true,"s":"ok","tags":["不定式否定"],
+"core":"<b>decide not to do</b> 决定不做；<b>make mistakes</b> 犯错；<b>in the math test</b> 在考试中。",
+"check":"✅ 核对无误：否定结构与搭配判断准确，介词 in 用得也对。",
+"note":["decide not to do 否定结构","make mistakes 犯错"],
+"expand":["<strong>不定式否定一律是 not to do</strong>：<span class='en'>decide not to do</span>（单词第 6 条）、<span class='en'>pretend not to do</span>（第 20 句）、<span class='en'>tell / ask sb. not to do</span>、<span class='en'>hope not to do</span>。不能写成 <span class='en'>to don't / don't to do</span>。","<span class='en'>make a mistake / make mistakes / make silly mistakes</span> 见短语第 30 条；<span class='en'>by mistake</span> 是「无意中弄错」。","<span class='en'>in the test / in the exam</span> 用介词 in；<span class='en'>on the test</span> 是美式口语，考试按 in 掌握。","<span class='en'>silly = foolish</span> 愚蠢的；<span class='en'>make sure</span> 等含 make 的搭配可一起复习。"],
+"confuse":"<span class='en'>decide <strong>not to</strong> make mistakes</span>（决定不犯错）≠ <span class='en'>didn't decide to make mistakes</span>（没决定要犯错）。否定词位置不同，意思完全不同。",
+"ex":[{"q":"He decided ______ silly mistakes in the math test again.","o":["to not make","not to make","not making"],"a":1,"e":"decide 后接不定式，否定形式是 decide not to do；不能接动名词，也不能把 not 放到 to 后面。"}]},
+{"id":"s20","t":"When I called his name, he pretended not to hear me.","cn":"当我叫他名字的时候，他假装没听见我说话。","sent":true,"s":"ok","tags":["时间状语从句","不定式否定"],
+"core":"<b>when</b> 引导时间状语从句；<b>pretend not to do</b> 假装没做；<b>hear sb.</b> 听见某人。",
+"check":"✅ 核对无误：句子、翻译与两个考点都准确。",
+"note":["when 引导时间状语从句","pretend not to do 否定结构"],
+"expand":["<span class='en'>when</span> 引导过去的时间状语从句时，主从句都用过去时：<span class='en'>When I called..., he pretended...</span>；若表将来则遵循主将从现（第 3 句）。","<strong>hear 的宾补</strong>：<span class='en'>hear sb. do</span> 听见某人做了（全过程）/ <span class='en'>hear sb. doing</span> 听见某人正在做（易错句第 29 句 <span class='en'>heard two hunters discussing</span>）。","<span class='en'>hear</span>（听见，结果）vs <span class='en'>listen to</span>（听，动作）：<span class='en'>I listened carefully but heard nothing.</span>","<span class='en'>hear from sb.</span> 收到某人来信 / <span class='en'>hear of / about</span> 听说。"],
+"confuse":"<span class='en'>pretend not to hear</span>（假装没听见）与 <span class='en'>pretend to be sleeping</span>（假装正在睡）都是不定式，形式不同：<span class='en'>pretend to be doing</span> 表「假装正在做」。",
+"ex":[{"q":"I heard someone ______ in the next room just now.","o":["sing","to sing","sings"],"a":0,"e":"hear sb. do 表听见全过程，宾补用不带 to 的动词原形 sing；若强调「正在唱」则用 singing。"}]}
+
+,{"id":"s21","t":"'Just one more month,' he said to himself.","cn":"「再多一个月。」他心里暗想。","sent":true,"s":"ok","tags":["直接引语","反身代词"],
+"core":"<b>say to oneself</b> 自言自语 / 心里想；<b>one more + 单数名词</b> = <b>another + 单数名词</b>「再一个」；直接引语的标点。",
+"check":"✅ 核对无误：考点与翻译准确。为了页面数据兼容，这里把原笔记的直接引语双引号写成了单引号，英文里两种引号都可用于直接引语，不影响考点。",
+"note":["say to oneself 自言自语/心里想","直接引语的用法"],
+"expand":["<span class='en'>one more month = another month</span> 再一个月；<span class='en'>another + 数词 + 复数名词</span> = <span class='en'>数词 + more + 复数名词</span>：<span class='en'>another two apples = two more apples</span>（单词第 26 条）。","<strong>直接引语标点</strong>：引号内的句末标点放在引号<strong>内</strong>；<span class='en'>'I can do it,' he said to himself.</span> 引语后 <span class='en'>he said</span> 用逗号隔开、said 小写。","转成间接引语：<span class='en'>He said to himself that he only had one more month.</span> 注意人称与时态的变化（了解）。","<span class='en'>say / speak / tell / talk</span> 四词辨析与反身代词表见短语第 32 条。"],
+"confuse":"<span class='en'>say to <strong>himself</strong></span>（对自己说）≠ <span class='en'>say to <strong>him</strong></span>（对他说）。主语与宾语是同一人时必须用反身代词。",
+"ex":[{"q":"'I can do it,' he said to ______.","o":["him","himself","his"],"a":1,"e":"主语 he 对自己说话，宾语用反身代词 himself；him 会变成「对另一个男性说」。"}]},
+{"id":"s22","t":"To everyone's surprise, he was the winner.","cn":"令所有人惊讶的是，他是获胜者。","sent":true,"s":"ok","tags":["固定短语","构词法"],
+"core":"<b>to one's surprise</b> 令某人惊讶的是；<b>winner</b> = win + n + er（<strong>双写 n</strong>）。",
+"check":"✅ 核对无误：考点与句子都正确。补一个拼写点：winner 的 n 要双写，很多孩子会写成 winer。",
+"note":["to one's surprise 固定短语，放句首用逗号隔开"],
+"expand":["<span class='en'>win — won — winner</span>；重读闭音节结尾、末尾只有一个辅音字母时双写：<span class='en'>win → winner</span>、<span class='en'>run → runner</span>、<span class='en'>swim → swimmer</span>、<span class='en'>begin → beginning</span>（单词第 4 条）。","<span class='en'>to everyone's surprise</span> 中 <span class='en'>everyone's</span> 是不定代词的所有格；同类 <span class='en'>to my / his / Tom's surprise</span>（短语第 33 条）。","<span class='en'>win + 比赛 / 奖品</span>（<span class='en'>win the game / win first prize</span>）vs <span class='en'>beat + 对手</span>（<span class='en'>beat the other team</span>），这是高频辨析。","<span class='en'>the winner</span> 与 <span class='en'>the loser</span>（失败者）成对记。"],
+"confuse":"<span class='en'>win</span> 的宾语是「比赛、奖项」，<span class='en'>beat / defeat</span> 的宾语是「人 / 队伍」；<span class='en'>winner</span> 双写 n，别漏。",
+"ex":[{"q":"Our team ______ the match and became the ______.","o":["won; winner","beat; winner","won; winer"],"a":0,"e":"宾语 the match 是比赛，用 win（过去式 won）；「获胜者」是 winner，末尾 n 要双写。"}]},
+{"id":"s23","t":"The hen laid an egg early this morning.","cn":"这只母鸡今天早上下了一个蛋。","sent":true,"s":"ok","tags":["lie / lay"],
+"core":"<b>lay</b>（下蛋 / 放置）的过去式是 <b>laid</b>；务必与 <b>lie</b>（躺 / 撒谎）的变形分开。",
+"check":"✅ 核对无误：laid 的判断与翻译都准确。笔记说「区分 lie（躺/撒谎）的变形」但没给表，这里补全，也请在原笔记上补上。",
+"note":["lay 下蛋，过去式 laid","区分 lie（躺/撒谎）的变形"],
+"expand":["<strong>lie / lay 变形总表（背下来）</strong>：<span class='en'>lie(撒谎) — lied — lied — lying</span>｜<span class='en'>lie(躺 / 位于) — lay — lain — lying</span>｜<span class='en'>lay(下蛋 / 放置) — laid — laid — laying</span>。速记卡里有完整表格。","<span class='en'>lay an egg</span> 下蛋、<span class='en'>lay the book on the desk</span> 把书放在桌上；<span class='en'>lie down</span> 躺下、<span class='en'>lie to sb.</span> 对某人撒谎（短语第 8 条）。","<span class='en'>hen</span> 母鸡 / <span class='en'>cock, rooster</span> 公鸡 / <span class='en'>chicken</span> 小鸡、鸡肉。","<span class='en'>early this morning</span> 今天一大早，是过去时标志（this morning 若已过去）。"],
+"confuse":"最容易错的是把 <span class='en'>lie(躺)</span> 的过去式 <span class='en'>lay</span> 当成 <span class='en'>lay(放置)</span> 的原形。<span class='en'>He lay on the bed.</span>（他躺在床上）vs <span class='en'>He laid the book on the bed.</span>（他把书放在床上）。",
+"ex":[{"q":"The hen ______ an egg this morning, and the farmer ______ it in the box.","o":["lay; lay","laid; laid","lied; laid"],"a":1,"e":"两个动作都是「下蛋 / 放置」的过去式，都用 laid；lay 是原形或 lie(躺) 的过去式，lied 是「撒谎」。"}]},
+{"id":"s24","t":"It looked everywhere for its glasses, but still couldn't find them.","cn":"它到处找它的眼镜，但还是找不到。","sent":true,"s":"ok","tags":["look for / find"],
+"core":"<b>look for</b> 强调<strong>寻找的过程</strong>；<b>find</b> 强调<strong>找到的结果</strong>；<b>everywhere</b> 到处；glasses 复数用 them 指代。",
+"check":"✅ 核对无误：三个考点与句子都正确。<span class='en'>looked everywhere for ... but ... couldn't find them</span> 把「过程 vs 结果」对比演示得很到位。",
+"note":["look for 强调寻找过程；find 强调结果；everywhere 到处"],
+"expand":["<strong>三个「找」</strong>：<span class='en'>look for</span>（找，过程）/ <span class='en'>find</span>（找到，结果）/ <span class='en'>find out</span>（查明真相、信息，<span class='en'>find out the answer</span>）。","<span class='en'>everywhere</span> 多用于肯定句，疑问句 / 否定句常用 <span class='en'>anywhere</span>；<span class='en'>everywhere</span> 前<strong>不加 in / at / to</strong>。","<span class='en'>glasses</span> 眼镜恒用复数，代词用 <span class='en'>them</span>；<span class='en'>a pair of glasses</span> 一副眼镜（呼应第 18 句）。","<span class='en'>but</span> 连接两个并列谓语，前后时态一致（looked / couldn't）。"],
+"confuse":"<span class='en'>I looked for my key everywhere, but I couldn't <strong>find</strong> it.</span> —— 「找」用 look for，「没找到」用 find，不能互换。也别说 <span class='en'>look for it everywhere</span> 之后用 <span class='en'>look for</span> 表结果。",
+"ex":[{"q":"I ______ my key everywhere, but I couldn't ______ it.","o":["found; look for","looked for; find","looked for; find out"],"a":1,"e":"前空是「寻找的过程」用 looked for，后空是「找到的结果」用 find；find out 指查明信息，不用于找东西。"}]},
+{"id":"s25","t":"To Tom's surprise, his father bought him a brand-new bike as his birthday gift.","cn":"令汤姆惊讶的是，他爸爸给他买了一辆崭新的自行车作为生日礼物。","sent":true,"s":"ok","tags":["双宾语","as"],
+"core":"<b>buy sb. sth. = buy sth. for sb.</b>；<b>as</b> 作为；<b>to one's surprise</b> 放句首用逗号隔开。",
+"check":"✅ 核对无误：三个考点与翻译都准确。",
+"note":["to one's surprise","buy sb. sth. = buy sth. for sb.","as 作为"],
+"expand":["<strong>双宾语动词</strong>（可接 sb. sth.）：<span class='en'>give, buy, tell, show, teach, send, make, cook, get</span>。改写规则：<span class='en'>buy sb. sth. = buy sth. <strong>for</strong> sb.</span>，而 <span class='en'>give sb. sth. = give sth. <strong>to</strong> sb.</span>（介词不同！）。","<strong>不能接双宾语的动词</strong>：<span class='en'>explain / describe / introduce / say sth. <strong>to</strong> sb.</span>（单词第 22 条、易错句第 27 句）。","<span class='en'>brand-new</span>（也写 brand new）崭新的；<span class='en'>gift = present</span> 礼物；<span class='en'>buy — bought — bought</span>。","<span class='en'>as</span> 作介词「作为」：<span class='en'>as a gift / as a teacher / work as a doctor</span>；别与 <span class='en'>like</span>（像）混。"],
+"confuse":"<span class='en'>buy <strong>him</strong> a bike = buy a bike <strong>for</strong> him</span> ✓；<span class='en'>buy a bike <strong>to</strong> him ✗</span>。改写时 buy / make / cook / get 用 for，give / tell / show / send / teach 用 to。",
+"ex":[{"q":"His father bought a new bike ______ him as a birthday gift.","o":["to","for","with"],"a":1,"e":"buy sth. for sb. 是双宾语改写形式，用介词 for；to 用于 give / tell / send 等动词。"}]},
+{"id":"s26","t":"A few hours later, he finally succeeded in climbing to the top of the mountain.","cn":"几个小时后，他终于成功爬上了山顶。","sent":true,"s":"ok","tags":["时间表达","固定搭配"],
+"core":"<b>a few + 可数复数</b>；<b>时间段 + later</b> 用于<strong>过去时</strong>；<b>succeed in doing</b>（in 不可省）。",
+"check":"✅ 核对无误：a few 与 succeed in doing 的判断准确，例句本身也正好给短语第 3 条提供了正确示范（in 没省略）。",
+"note":["a few 修饰可数名词复数","succeed in doing 成功做某事"],
+"expand":["<strong>时间段 + later vs in + 时间段（必考）</strong>：<span class='en'>two hours <strong>later</strong></span> 两小时后（用于<strong>过去</strong>时）/ <span class='en'><strong>in</strong> two hours</span> 两小时后（用于<strong>将来</strong>时）。<span class='en'>He came back two hours later.</span> / <span class='en'>He will come back in two hours.</span>","<span class='en'>finally = at last = in the end</span> 最后、终于；<span class='en'>finally</span> 常修饰整句。","<span class='en'>climb to the top of the mountain</span> 爬到山顶；<span class='en'>the top of...</span> ……的顶部。","<span class='en'>succeed in doing</span> 的 in <strong>不能省</strong>（短语第 3 条已修正）。"],
+"confuse":"<span class='en'>a few hours later</span>（过去）vs <span class='en'>in a few hours</span>（将来）。另外 <span class='en'>a few</span> 表肯定「几个」，<span class='en'>few</span> 表否定「几乎没有」（单词第 27 条）。",
+"ex":[{"q":"He finished the work half an hour ______ and will go home ______ ten minutes.","o":["later; later","later; in","in; later"],"a":1,"e":"前半句过去时用「时间段 + later」，后半句将来时用「in + 时间段」。"}]},
+{"id":"s27","t":"Can you explain this difficult sentence to me?","cn":"你能给我解释一下这个难句子吗？","sent":true,"s":"ok","tags":["双宾语"],
+"core":"<b>explain sth. to sb.</b> 向某人解释某事；<em>不能说 explain me this sentence</em>。",
+"check":"✅ 核对无误：考点与句子都准确，与单词第 22 条互为印证。",
+"note":["explain sth. to sb. 固定搭配"],
+"expand":["<span class='en'>explain <strong>sth.</strong> to <strong>sb.</strong></span> ——物在前、人在后，介词 to 不能省。同类还有 <span class='en'>describe / introduce / say / suggest sth. to sb.</span>","一般疑问句以 <span class='en'>Can / Could you...?</span> 开头表<strong>礼貌请求</strong>，回答可用 <span class='en'>Certainly. / Sure. / Of course.</span>（单词第 24 条）。","名词 <span class='en'>explanation</span>（注意去掉 i）；<span class='en'>explain + that / why 从句</span>。","<span class='en'>difficult = hard</span> 困难的；<span class='en'>sentence</span> 句子（可数）。"],
+"confuse":"<span class='en'>explain <strong>me</strong> this sentence ✗</span> → <span class='en'>explain this sentence <strong>to me</strong> ✓</span>。对比可以接双宾语的 <span class='en'>tell me the answer ✓</span>。",
+"ex":[{"q":"Can you ______?","o":["explain me this word","explain this word to me","explain this word me"],"a":1,"e":"explain 不能接双宾语，必须用 explain sth. to sb.；物在前，人放在 to 后面。"}]},
+{"id":"s28","t":"Did you take turns to clean the classroom last term?","cn":"你们上学期是轮流打扫教室吗？","sent":true,"s":"ok","tags":["一般过去时疑问句"],
+"core":"一般过去时的一般疑问句：<b>Did + 主语 + 动词原形</b>；<b>take turns to do</b> 轮流做。",
+"check":"✅ 核对无误：两个考点与句子都正确。",
+"note":["take turns to do 结构","一般过去时的一般疑问句"],
+"expand":["<strong>一般过去时疑问句三段式</strong>：<span class='en'>Did + 主语 + 动词原形...?</span> / <span class='en'>Yes, 主语 did. / No, 主语 didn't.</span> / 否定句 <span class='en'>主语 + didn't + 动词原形</span>。did 已表过去，后面动词必须还原。","<span class='en'>last term</span> 上学期，是过去时标志；同类 <span class='en'>last week / yesterday / ...ago / in 2020</span>。","<span class='en'>take turns to do = take turns doing</span>；<span class='en'>It's one's turn to do</span> 轮到某人（短语第 11 条）。","答句示例：<span class='en'>Yes, we did. / No, we didn't.</span> 不能答 <span class='en'>Yes, we took.</span>"],
+"confuse":"<span class='en'>Did you <strong>take</strong> turns...? ✓ / Did you <strong>took</strong> turns...? ✗ / Did you <strong>to take</strong>...? ✗</span>。助动词 did 后一律接动词原形。",
+"ex":[{"q":"— ______ you ______ turns to clean the classroom last term? — Yes, we did.","o":["Did; took","Did; take","Do; take"],"a":1,"e":"last term 提示过去时，用 Did 提问；did 后接动词原形 take，不能再用过去式 took。"}]},
+{"id":"s29","t":"One afternoon, he heard two hunters discussing their plan to catch turtles the next day.","cn":"一天下午，他听见两个猎人正在讨论第二天抓乌龟的计划。","sent":true,"s":"ok","tags":["感官动词","过去将来"],
+"core":"<b>hear sb. doing</b> 听见某人<strong>正在</strong>做；<b>the next day</b> 是<strong>过去语境</strong>中的「第二天」；<b>plan to do</b> 不定式作定语。",
+"check":"✅ 核对无误：两个考点与翻译都准确。这句是整份笔记里结构最复杂的一句，值得拆开讲。",
+"note":["hear sb. doing 听见某人正在做","the next day 第二天（过去语境）"],
+"expand":["<strong>感官动词 do / doing</strong>：<span class='en'>hear sb. do</span> 听见全过程 / <span class='en'>hear sb. doing</span> 听见正在进行。同类 <span class='en'>see, watch, notice, feel, listen to, look at</span>（单词第 28 条）。","<strong>时间表达对照</strong>：直接引语里的 <span class='en'>tomorrow</span>，转述为过去语境时用 <span class='en'>the next day / the following day</span>；<span class='en'>yesterday → the day before</span>。对比短语第 15 条的 <span class='en'>some day</span>（将来）。","<span class='en'>a / the plan <strong>to do</strong> sth.</span> 做某事的计划（不定式作后置定语）；同类 <span class='en'>a good way / place / time to do</span>（第 8 句）。","<span class='en'>hunter = hunt + -er</span> 猎人；<span class='en'>turtle</span> 龟；<span class='en'>one afternoon</span> 一个下午（过去叙事常用开头）。"],
+"confuse":"<span class='en'>hear sb. <strong>doing</strong></span>（正在讨论）vs <span class='en'>hear sb. <strong>do</strong></span>（听完整个过程）。另外 <span class='en'>the next day</span>（过去语境的第二天）≠ <span class='en'>next day</span> 用法，也 ≠ <span class='en'>tomorrow</span>（直接引语）。",
+"ex":[{"q":"When I passed by, I heard them ______ about the plan.","o":["discuss","discussing","to discuss"],"a":1,"e":"「经过时听见正在讨论」强调动作正在进行，用 hear sb. doing；discuss 表全过程，to discuss 不能作 hear 的宾补。"}]},
+{"id":"s30","t":"If you study hard, you will make progress.","cn":"如果你努力学习，你就会取得进步。","sent":true,"s":"ok","tags":["主将从现","不可数名词"],
+"core":"if 条件状语从句<strong>主将从现</strong>；<b>make progress</b> 取得进步，progress <strong>不可数</strong>（不加 a / -s）。",
+"check":"✅ 核对无误：两个考点判断准确，也与第 3、6、12 句的主将从现构成完整一组。",
+"note":["if 条件状语从句「主将从现」","make progress 取得进步（progress 不可数）"],
+"expand":["<strong>主将从现四句联动复习</strong>：第 3 句 <span class='en'>When I see..., I will think...</span>／第 6 句 <span class='en'>If you make..., you must keep...</span>／第 12 句 <span class='en'>If the temperature drops..., the water will freeze.</span>／本句。连起来记最省力。","<span class='en'>make great / much / a lot of progress <strong>in</strong> sth.</span>；不可数名词家族见短语第 34 条。","<span class='en'>study hard = work hard</span> 努力学习；<span class='en'>hard</span> 是副词「努力地」，<span class='en'>hardly</span> 是「几乎不」——只差 -ly 意思相反，是高频陷阱。","同义改写：<span class='en'>Work hard, and you will make progress.</span>（祈使句 + and + 将来时）。"],
+"confuse":"<span class='en'>hard</span>（努力地 / 困难的）vs <span class='en'>hardly</span>（几乎不）：<span class='en'>He studies hard.</span> 他学习努力 / <span class='en'>He hardly studies.</span> 他几乎不学习。",
+"ex":[{"q":"If you ______ hard, you ______ progress.","o":["will study; make","study; will make","will study; will make"],"a":1,"e":"if 引导条件状语从句遵循主将从现：从句用一般现在时 study，主句用 will make。"},{"q":"He works ______ and ______ has time to play.","o":["hard; hard","hardly; hard","hard; hardly"],"a":2,"e":"「努力工作」用 hard（副词），「几乎没时间」用 hardly（几乎不）。两词只差一个 -ly，意思完全不同。"}]}
+]}
+  ],
+  "report": {"fixes":[
+{"title":"succeed in doing 的 in 不能省略","pos":"二、重点短语 第 3 条","bad":"用法：固定搭配，<code>in 可省略</code>","good":"固定搭配 <code>succeed in doing sth.</code>，<code>in 不可省略</code>；也不能接不定式。","why":"succeed 表示「成功做成」时是不及物动词，必须靠介词 in 引出动名词。写成 <span class='en'>succeed doing sth.</span> 在考试中判错。<span class='en'>succeed to sth.</span> 只在「继承王位 / 财产」时使用，是另一个词义。笔记对「不能说 succeed to do sth.」的判断是对的。"},
+{"title":"It's a good day to climb... 里的 it 不是形式主语","pos":"三、高频易错句子 第 8 句","bad":"考点：<code>It's + 名词 + to do sth. 句型，it 作形式主语</code>","good":"<code>it 是非人称代词，指时间 / 这天</code>；<code>to climb the mountain 是不定式作后置定语修饰 day</code>，意为「一个适合爬山的好日子」。","why":"检验方法：把不定式提到句首。<span class='en'>To climb the mountain is a good day.</span> ✗ 不成立 → 不是形式主语。真正的 <span class='en'>It's + adj. + to do</span> 形式主语句是第 11 句 <span class='en'>It's interesting to have math lessons.</span>（可还原为 <span class='en'>To have math lessons is interesting.</span> ✓）。第 15 句的第二个 it 才是形式主语。这三句建议放一起讲。<strong>分寸说明</strong>：教辅常把 <span class='en'>It is + n. + to do sth.</span> 整体归入形式主语句型，考试不会直接考术语；孩子按老师口径记不影响得分，这里只是把概念说准确，重点是会用句型、会判断能不能还原。"},
+{"title":"主从句时态不一致 + because 前多余逗号","pos":"三、高频易错句子 第 18 句","bad":"<code>I couldn't see the words clearly, because I don't have my glasses on.</code>","good":"<code>I couldn't see the words clearly because I didn't have my glasses on.</code>（或全句统一改成现在时 <code>I can't see... because I don't have...</code>）","why":"主句 <span class='en'>couldn't see</span> 是过去时，原因从句却用现在时 <span class='en'>don't have</span>，叙述同一件过去的事时应统一为 <span class='en'>didn't have</span>。另外 <span class='en'>because</span> 引导原因状语从句时前面通常<strong>不加逗号</strong>。考点中「clearly 修饰 see」「have...on 表戴着的状态」两条判断是正确的，保留即可。"}
+],
+"clarify":[
+{"title":"temperature 不宜笼统标为「不可数名词」","pos":"一、核心单词 第 18 条","bad":"用法：<code>不可数名词</code>","good":"<code>泛指气温时常用单数、不加冠词</code>；<code>take one's temperature</code>、<code>have a temperature</code>（发烧）、<code>a temperature of 30℃</code> 中作可数名词。","why":"按原话记，孩子遇到 <span class='en'>The nurse took my temperature.</span> 会以为句子错了。更值得补的是另一组高频考点：问温度用 <span class='en'>What's the temperature?</span>，高低用 <span class='en'>high / low</span>（不用 big / small，也不用 hot / cold 形容 temperature）。"},
+{"title":"such as「不用逗号隔开」容易产生误导","pos":"二、重点短语 第 19 条","bad":"用于列举多个例子，后接名词/短语，<code>不用逗号隔开</code>","good":"<code>such as 后面紧跟例子，中间不加逗号</code>；但 <code>such as 前通常有逗号</code>：<span class='en'>I like fruits, such as apples and bananas.</span>","why":"笔记自己的例句里 such as 前面就有逗号。孩子在卷面上很可能因为「不用逗号」而把例句里的逗号也当成错误。把话说完整即可，词义与 for example 的辨析本身是准确的。"},
+{"title":"例句存在逗号拼接（comma splice）","pos":"一、核心单词 第 26 条","bad":"<code>Some students are reading, others are writing.</code>","good":"<code>Some students are reading and others are writing.</code> 或用分号 / 句号拆成两句。","why":"用逗号直接连接两个各自完整的句子，在书面英语里属于标点错误，作文里会被扣分。词义部分（other / others / another / the other / the others）说明基本准确，只需把例句标点改规范。"},
+{"title":"realize 例句的时态可以更严谨","pos":"一、核心单词 第 15 条","bad":"<code>I realized I made a mistake.</code>","good":"<code>I realized (that) I had made a mistake.</code> 或简洁写成 <code>I realized my mistake.</code>","why":"「犯错」发生在「意识到」之前，先发生的动作规范上用过去完成时 <span class='en'>had made</span>。七年级阶段写一般过去时常被接受，但既然是易错点笔记，建议按更标准的写法记。释义、搭配与 recognize 的辨析都正确。"}
+],
+"missing":[
+{"t":"mean 的过去式 meant","d":"<span class='en'>mean — meant — meant</span>，不规则变化，别写成 meaned；已补进单词第 16 条。"},
+{"t":"beginning 双写 n","d":"begin 的现在分词 / 名词是 beginning，重读闭音节双写末尾辅音；同类的 winner、runner、swimmer 见易错句第 22 句。"},
+{"t":"used to 三兄弟","d":"除 used to do、be used to doing 外，还有 <span class='en'>be used to do</span>「被用来做」（Wood is used to make paper.），是必考第三项。"},
+{"t":"lie / lay 变形总表","d":"lie(撒谎) lied / lie(躺) lay-lain / lay(放置、下蛋) laid，三种变形完全不同；已做成速记卡并补进短语第 8 条与第 23 句。"},
+{"t":"stop doing vs stop to do","d":"「停止正在做」与「停下来去做另一件事」，比 stop sb. from doing 更高频；补进短语第 28 条。"},
+{"t":"-ing / -ed 形容词体系","d":"interesting/interested、exciting/excited、surprising/surprised 等成组记；已做成速记卡。"},
+{"t":"主将从现连词清单","d":"when / if / as soon as / until / before / after / unless；主句含情态动词或祈使句时同样适用，见第 3、6、12、30 句。"},
+{"t":"连词不能连用","d":"because 与 so、although/though 与 but、however 与 but 都只能留一个；中文「因为…所以…」直译是典型错误。"},
+{"t":"remember / forget to do vs doing","d":"to do 表「还没做」，doing 表「已做过」；与 stop 的两种结构一起记，见第 13 句。"},
+{"t":"look for / find / find out","d":"过程、结果、查明信息三者不同；补进第 24 句。"},
+{"t":"say / speak / tell / talk","d":"四个「说」的宾语与搭配完全不同，另附反身代词表，见短语第 32 条。"},
+{"t":"双宾语动词 vs 需加 to 的动词","d":"give/tell/show/buy 可接 sb. sth.；explain/describe/introduce/say 必须用 sth. to sb.，见单词第 22 条与第 27 句。"},
+{"t":"f / fe → ves 及例外","d":"leaf, knife, wife, life, wolf, thief 变 ves；但 roof, chief, belief, safe 直接加 -s，是常设的陷阱。"},
+{"t":"不可数名词清单","d":"progress, homework, information, advice, news, weather, furniture, money, milk 等都不加 a / -s；补进短语第 34 条。"},
+{"t":"比较级 less / fewer","d":"little → less（不可数）vs few → fewer（可数复数），第 16 句考了 less homework。"},
+{"t":"later vs in + 时间段","d":"「时间段 + later」用于过去时，「in + 时间段」用于将来时，见第 26 句。"},
+{"t":"late 家族与 hard / hardly","d":"late / lately / later / latest；hard（努力地）与 hardly（几乎不）意思相反，见第 5、30 句。"},
+{"t":"There be 就近原则","d":"be 由紧跟其后的第一个名词决定，见第 7 句。"}
+]},
+  "cheats":[
+{"title":"① lie / lay 变形总表","head":["原形","词义","过去式","过去分词","现在分词"],"rows":[
+["lie","撒谎","lied","lied","lying"],
+["lie","躺；位于","lay","lain","lying"],
+["lay","放置；下蛋","laid","laid","laying"]],
+"tip":"口诀：<b>撒谎是规则的（lied），躺下是不规则的（lay / lain），下蛋放置又是规则的（laid）</b>。对照句：<span class='en'>He <b>lied</b> to me.</span>（他对我撒谎）／<span class='en'>He <b>lay</b> on the bed.</span>（他躺在床上）／<span class='en'>He <b>laid</b> the book on the bed.</span>（他把书放床上）。对应短语第 8 条、易错句第 23 句。"},
+{"title":"② -ing / -ed 形容词","head":["令人……（-ing，多修饰物）","感到……（-ed，多修饰人）","例句提示"],"rows":[
+["interesting 有趣的","interested 感兴趣的","be interested in"],
+["exciting 令人激动的","excited 感到激动的","be excited about"],
+["surprising 令人惊讶的","surprised 感到惊讶的","be surprised at / that"],
+["amazing 令人惊叹的","amazed 感到惊奇的","be amazed at / by"],
+["boring 无聊的","bored 感到无聊的","be bored with"],
+["tiring 累人的","tired 疲倦的","be tired of"],
+["relaxing 令人放松的","relaxed 感到放松的","feel relaxed"],
+["moving 感人的","moved 受感动的","be moved by"]],
+"tip":"口诀 <b>物 -ing，人 -ed</b>。进阶：<span class='en'>a surprised look</span>（惊讶的表情）、<span class='en'>an excited voice</span>（激动的声音）按「人的感受」用 -ed。对应单词第 20 条、易错句第 9 / 10 / 11 句。"},
+{"title":"③ used to 三兄弟","head":["结构","含义","to 的身份","后接","例句"],"rows":[
+["used to do","过去常常（现在不做）","不定式符号","动词原形","He used to walk to school."],
+["be / get used to doing","习惯于","介词","动名词 / 名词","He is used to walking to school."],
+["be used to do","被用来做（被动）","不定式符号","动词原形","Wood is used to make paper."],
+["be used for doing","被用来做","介词 for","动名词","Knives are used for cutting."]],
+"tip":"判断顺序：<b>先看 to 后面</b>——动词原形 → 过去常常 / 被用来；doing → 习惯于。<b>再看主语</b>——人 → 过去常常 / 习惯；物 → 被用来。否定：<span class='en'>didn't use to do</span>。对应短语第 12 条、易错句第 2 句。"},
+{"title":"④ 感官动词 do / doing","head":["结构","含义","典型提示","例句"],"rows":[
+["see / hear sb. do","看见 / 听见全过程、经常做","often, every day","I saw her cross the street."],
+["see / hear sb. doing","看见 / 听见正在做","when I passed by, at that moment","I saw her dancing in the room."],
+["sb. be seen / heard to do","被动语态要还原 to","被动句","He was seen to cross the street."],
+["sb. be seen / heard doing","被动语态中 -ing 不变","被动句","He was seen crossing the street."]],
+"tip":"适用动词：<b>see, hear, watch, notice, feel, listen to, look at</b>。被动还原 to <b>只针对 do 形式</b>。对应单词第 28 条、易错句第 20 / 29 句。"},
+{"title":"⑤ other 家族","head":["形式","含义","后接","例句"],"rows":[
+["other + 复数名词","其他的……","必须接复数名词","other students"],
+["others","其他的人 / 物","<b>不接</b>名词","Some are reading, and others are writing."],
+["the other","两者中的另一个","单数名词或单独用","One is red; the other is blue."],
+["the others","某一范围内剩余的全部","<b>不接</b>名词","Two are here; the others are in the library."],
+["another + 单数名词","不定数目中的再一个","单数名词","Give me another apple."],
+["another + 数词 + 复数名词","再 / 又……","复数名词","another two apples = two more apples"],
+["each other","互相","只作宾语，不能作主语","They looked at each other."]],
+"tip":"固定句型：<span class='en'>one... the other...</span>（两者）／<span class='en'>some... others...</span>（一些…另一些）／<span class='en'>some... the others...</span>（一些…其余全部）。注意 <span class='en'>the other day</span> = 几天前，只用于过去时。对应单词第 26 条。"},
+{"title":"⑥ a few / few / a little / little","head":["词","修饰","语气","例句"],"rows":[
+["a few","可数名词复数","肯定：有几个","There are a few books on the desk."],
+["few","可数名词复数","否定：几乎没有","Few students came to the party."],
+["a little","不可数名词","肯定：有一点儿","There is a little milk in the cup."],
+["little","不可数名词","否定：几乎没有","There is little milk in the bottle."],
+["quite a few","可数名词复数","<b>相当多</b>（不是很少！）","Quite a few students joined the club."]],
+"tip":"两步判断：<b>先看名词可不可数</b>（few / little），<b>再看语气肯不肯</b>（加不加 a）。比较级：<span class='en'>few → fewer</span>（可数）、<span class='en'>little → less</span>（不可数），见易错句第 16 句。a little 还可修饰形容词：<span class='en'>a little tired</span>。"},
+{"title":"⑦ 接 to do 还是 doing","head":["只接 to do","只接 doing","两者接、含义不同"],"rows":[
+["decide / hope / plan / want / pretend","enjoy / finish / practice / mind / keep","remember to do 记得要做 ↔ remember doing 记得做过"],
+["would like / agree / promise / refuse","feel like / give up / be good at / be busy","forget to do 忘记要做 ↔ forget doing 忘记做过"],
+["learn / choose / seem / be able to","succeed <b>in</b> doing / stop doing / by doing","stop to do 停下来去做 ↔ stop doing 停止正在做"],
+["ask / tell sb. to do","介词后一律 doing（in / at / for / of / about / without / by）","mean to do 打算做 ↔ mean doing 意味着"],
+["It's + adj. + to do","have trouble (in) doing / take turns doing","hate / like to do 某次 ↔ hate / like doing 一贯"]],
+"tip":"一句话：<b>介词后面永远是 doing</b>；<span class='en'>decide / hope / would like / pretend</span> 后面永远是 to do。否定一律 <b>not to do</b>（decide not to do、pretend not to do）。对应单词第 5 / 6 / 16 / 22 条，短语第 3 / 22 / 31 条。"},
+{"title":"⑧ 主将从现 & 连词禁忌","head":["规则 / 连词","说明","例句"],"rows":[
+["when / if / as soon as / until / before / after / unless","从句一般现在时，主句将来时","When I see this photo, I will think of my grandpa."],
+["主句含情态动词","从句仍用一般现在时","If you make a promise, you must keep it."],
+["主句是祈使句","从句仍用一般现在时","If you need help, call me."],
+["because ↔ so","<b>只能留一个</b>","Because he lied, he lost his friends."],
+["although / though ↔ but","<b>只能留一个</b>","Although he was tired, he went on working."],
+["however ↔ but","<b>只能留一个</b>；however 是副词，要用逗号 / 分号","He worked hard. However, he failed."],
+["because + 句子 / because of + 名词","后接成分不同","He was late because of the heavy snow."]],
+"tip":"例外：<span class='en'>if</span> 表「是否」引导宾语从句时可以用将来时：<span class='en'>I don't know if he <b>will come</b>.</span> 判断看 if 前有没有 know / wonder / ask。对应易错句第 1 / 3 / 6 / 12 / 15 / 30 句。"},
+{"title":"⑨ 易混时间表达","head":["表达","适用时态","含义 / 提示"],"rows":[
+["some day / someday","一般将来时","将来某一天（不用于过去）"],
+["one day","过去 或 将来","某一天（两种时态都可）"],
+["the other day","一般过去时","几天前（易错！不是将来）"],
+["时间段 + later","一般过去时","two hours later 两小时后（已发生）"],
+["in + 时间段","一般将来时","in two hours 两小时后（未发生）"],
+["the next day","过去语境","第二天（间接引语中替代 tomorrow）"],
+["late / lately / later / latest","—","迟的 / 最近 / 稍后 / 最新的"],
+["hard / hardly","—","努力地 / 几乎不（意思相反）"]],
+"tip":"最高频的两个坑：<b>the other day 是过去</b>、<b>later 与 in 的时态分工</b>。对应短语第 15 条、易错句第 5 / 26 / 29 / 30 句。"},
+{"title":"⑩ 本单元不规则动词","head":["原形","过去式","过去分词","中文 / 备注"],"rows":[
+["break","broke","broken","打破；broken 可作形容词"],
+["see","saw","seen","看见"],
+["write","wrote","written","写；writer 作者"],
+["freeze","froze","frozen","结冰；frozen 结冰的"],
+["begin","began","begun","开始；现在分词 beginning 双写 n"],
+["mean","meant","meant","意思是；<b>不是 meaned</b>"],
+["win","won","won","赢；winner 双写 n"],
+["buy","bought","bought","买"],
+["take","took","taken","拿；带走"],
+["make","made","made","做；制造"],
+["think","thought","thought","想；认为"],
+["lose","lost","lost","失去；丢失"],
+["tell","told","told","告诉"],
+["say","said","said","说"],
+["hear","heard","heard","听见"]],
+"tip":"另外三个规则的别记错：<b>lie(撒谎) → lied → lied</b>、<b>lay(放置/下蛋) → laid → laid</b>、<b>promise → promised</b>。搭配速记卡 ① 一起背。"},
+{"title":"⑪ 双宾语 & 不可数名词","head":["类别","成员","改写 / 规则"],"rows":[
+["可接 sb. sth.","give, tell, show, teach, send, buy, make, cook, get","give sb. sth. = give sth. <b>to</b> sb.；buy sb. sth. = buy sth. <b>for</b> sb."],
+["<b>不能</b>接双宾语","explain, describe, introduce, say, suggest, report","必须用 <b>sth. to sb.</b>：explain this word to me ✓ / explain me this word ✗"],
+["不可数名词","progress, homework, information, advice, news, weather, furniture, money, music, milk, experience(经验)","不加 a、不加 -s；用 much / a lot of / a little 修饰"],
+["常考固定搭配","make progress, take one's temperature, keep a diary, make a mistake, make a promise, have a break","搭配里的冠词 / 物主代词不能随意换"],
+["比较级","little → less → least / few → fewer → fewest / much·many → more → most","less + 不可数，fewer + 可数复数"]],
+"tip":"注意 <span class='en'>take one's temperature</span> 里 temperature 是<strong>可数</strong>用法——这正是检验报告里「temperature 不可笼统标为不可数」的原因。对应单词第 18 / 22 条、短语第 34 条、易错句第 16 / 25 / 27 / 30 句。"}
+]
+}
+</script>
+
+<script>
+(function(){
+  "use strict";
+  var D = JSON.parse(document.getElementById("DATA").textContent);
+  var $ = function(s){ return document.querySelector(s); };
+  var esc = function(s){ return String(s == null ? "" : s).replace(/[&<>"']/g, function(c){
+    return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c];
+  }); };
+  var store = {
+    get: function(k, d){ try { var v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); } catch(e){ return d; } },
+    set: function(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} }
+  };
+  var SECTIONS = D.sections;
+  var ALL = [];
+  SECTIONS.forEach(function(s){ s.items.forEach(function(it){ ALL.push(it); }); });
+  var ALL_EX = [];
+  ALL.forEach(function(it){ (it.ex || []).forEach(function(e, i){
+    ALL_EX.push({ q:e.q, o:e.o, a:e.a, e:e.e, from:it.t, id:it.id + "#" + i });
+  }); });
+  var state = {
+    view: "words", q: "", filter: "all",
+    open: new Set(),
+    mastered: new Set(store.get("eng7_mastered", [])),
+    answers: store.get("eng7_answers", {}),
+    cheat: 0,
+    quiz: null
+  };
+  var FILTERS = [
+    {k:"all",   t:"全部",       c:"var(--brand)"},
+    {k:"ok",    t:"✅ 核对无误", c:"var(--ok)"},
+    {k:"warn",  t:"🟡 需留意",   c:"var(--warn)"},
+    {k:"fix",   t:"🔴 已修正",   c:"var(--fix)"},
+    {k:"todo",  t:"⭐ 未掌握",   c:"var(--teal)"},
+    {k:"done",  t:"✓ 已掌握",   c:"var(--teal)"}
+  ];
+  var STATUS = {ok:{t:"✅ 核对无误",c:"ok"}, warn:{t:"🟡 需留意",c:"warn"}, fix:{t:"🔴 已修正",c:"fix"}};
+
+  /* ---------- 顶部统计 ---------- */
+  function renderStats(){
+    var fixes = ALL.filter(function(i){return i.s === "fix";}).length;
+    var warns = ALL.filter(function(i){return i.s === "warn";}).length;
+    var arr = [
+      [ALL.length, "条考点逐条核对"],
+      [fixes, "处表述已修正"],
+      [warns, "处表述需澄清"],
+      [ALL_EX.length, "道交互例题"]
+    ];
+    $("#stats").innerHTML = arr.map(function(a){
+      return '<div class="stat"><div class="n">' + a[0] + '</div><div class="l">' + a[1] + '</div></div>';
+    }).join("");
+  }
+
+  function renderChips(){
+    $("#chips").innerHTML = FILTERS.map(function(f){
+      return '<button class="chip' + (state.filter === f.k ? " on" : "") + '" data-action="filter" data-k="' + f.k + '">' +
+        '<span class="dot" style="background:' + f.c + '"></span>' + f.t + '</button>';
+    }).join("");
+  }
+
+  function renderTabs(){
+    var t = SECTIONS.map(function(s){
+      return '<button class="tab' + (state.view === s.key ? " on" : "") + '" data-action="view" data-k="' + s.key + '">' +
+        s.title + '<small>' + s.items.length + ' 条</small></button>';
+    });
+    t.push('<button class="tab' + (state.view === "report" ? " on" : "") + '" data-action="view" data-k="report">🔎 检验报告</button>');
+    t.push('<button class="tab' + (state.view === "cheats" ? " on" : "") + '" data-action="view" data-k="cheats">🗂️ 速记卡片</button>');
+    $("#tabs").innerHTML = t.join("");
+  }
+
+  function renderProg(){
+    var pct = ALL.length ? Math.round(state.mastered.size / ALL.length * 100) : 0;
+    $("#prog").innerHTML = '掌握进度 <b>' + state.mastered.size + ' / ' + ALL.length + '</b>（' + pct + '%）' +
+      '<div class="track"><i style="width:' + pct + '%"></i></div>' +
+      '<span style="font-size:12px">点击卡片右上角 ★ 标记已掌握</span>';
+  }
+
+  /* ---------- 卡片 ---------- */
+  function block(cls, icon, title, body){
+    return '<div class="block ' + cls + '"><div class="blk-t"><span class="bi">' + icon + '</span>' + title + '</div><div class="blk-body">' + body + '</div></div>';
+  }
+  function ul(arr){
+    return '<ul>' + arr.map(function(x){ return '<li>' + x + '</li>'; }).join("") + '</ul>';
+  }
+  function renderEx(it){
+    if (!it.ex || !it.ex.length) return "";
+    var html = '<div class="block b-ex"><div class="blk-t"><span class="bi">✎</span>例题 · 点击选项立即判分</div>';
+    html += it.ex.map(function(e, i){
+      var key = it.id + "#" + i;
+      var picked = state.answers[key];
+      var answered = picked !== undefined;
+      var opts = e.o.map(function(o, oi){
+        var cls = "opt";
+        if (answered){
+          if (oi === e.a) cls += " right";
+          else if (oi === picked) cls += " wrong";
+          else cls += " dim";
+        }
+        return '<button class="' + cls + '" data-action="answer" data-key="' + esc(key) + '" data-oi="' + oi + '">' +
+          '<span class="k">' + "ABCD".charAt(oi) + '.</span>' + esc(o) + '</button>';
+      }).join("");
+      return '<div class="ex"><div class="ex-q"><span class="no">' + (i + 1) + '</span><span class="en">' + esc(e.q) + '</span></div>' +
+        '<div class="opts">' + opts + '</div>' +
+        '<div class="ex-e' + (answered ? " show" : "") + '">💡 ' + esc(e.e) + '</div></div>';
+    }).join("");
+    return html + '</div>';
+  }
+  function renderCard(it, n){
+    var st = STATUS[it.s] || STATUS.ok;
+    var isOpen = state.open.has(it.id);
+    var done = state.mastered.has(it.id);
+    var sent = it.sent === true;
+    var tags = (it.tags || []).map(function(t){ return '<span class="badge tag">' + esc(t) + '</span>'; }).join("");
+    var h = '<article class="card' + (isOpen ? " open" : "") + (done ? " done" : "") + '" data-s="' + it.s + '" data-id="' + esc(it.id) + '">';
+    h += '<div class="card-head" data-action="toggle" data-id="' + esc(it.id) + '">' +
+      '<div class="idx">' + (n + 1) + '</div>' +
+      '<div class="ttl"><h3 class="' + (sent ? "sent" : "") + '">' + esc(it.t) + '</h3><p>' + esc(it.cn) + '</p></div>' +
+      '<div class="badges"><span class="badge ' + st.c + '">' + st.t + '</span>' + tags + '</div>' +
+      '<div class="acts"><button class="star' + (done ? " on" : "") + '" data-action="master" data-id="' + esc(it.id) + '" title="标记已掌握">' + (done ? "★" : "☆") + '</button><span class="chev">⌄</span></div>' +
+      '</div>';
+    h += '<div class="core">' + it.core + '</div>';
+    h += '<div class="detail' + (isOpen ? "" : " collapsed") + '">';
+    var checkCls = it.s === "fix" ? "b-fix" : (it.s === "warn" ? "b-warn" : "b-check");
+    var checkIcon = it.s === "fix" ? "!" : (it.s === "warn" ? "?" : "✓");
+    h += block(checkCls, checkIcon, "逐条核对结论", it.check);
+    if (it.fix) {
+      h += '<div class="correction">' +
+        '<div class="corr-line bad"><span class="lbl">原表述</span><span>' + it.fix.bad + '</span></div>' +
+        '<div class="corr-line good"><span class="lbl">建议改为</span><span>' + it.fix.good + '</span></div>' +
+        '</div>';
+    }
+    if (it.note && it.note.length) h += block("b-note", "≡", "原笔记要点", ul(it.note));
+    if (it.expand && it.expand.length) h += block("b-exp", "＋", "拓展用法 / 补充", ul(it.expand));
+    if (it.confuse) h += block("b-con", "⇄", "易错易混辨析", it.confuse);
+    h += renderEx(it);
+    h += '</div></article>';
+    return h;
+  }
+
+  /* ---------- 主列表 ---------- */
+  function matches(it){
+    if (state.filter === "todo" && state.mastered.has(it.id)) return false;
+    if (state.filter === "done" && !state.mastered.has(it.id)) return false;
+    if (["ok","warn","fix"].indexOf(state.filter) >= 0 && it.s !== state.filter) return false;
+    if (state.q){
+      var hay = [it.t, it.cn, it.core, it.check, it.confuse]
+        .concat(it.note || [], it.expand || [], it.tags || [])
+        .concat((it.ex || []).map(function(e){ return e.q + e.o.join(""); }))
+        .join(" ").toLowerCase();
+      if (hay.indexOf(state.q.toLowerCase()) < 0) return false;
+    }
+    return true;
+  }
+  function renderList(){
+    if (state.view === "report"){ renderReport(); return; }
+    if (state.view === "cheats"){ renderCheats(); return; }
+    var sec = SECTIONS.filter(function(s){ return s.key === state.view; })[0];
+    if (!sec) return;
+    var items = sec.items.filter(matches);
+    var head = '<div class="sec-head"><h2>' + sec.title + '</h2><span class="desc">' + sec.sub + '</span>' +
+      '<span class="count">显示 ' + items.length + ' / ' + sec.items.length + ' 条</span></div>';
+    $("#list").innerHTML = head + (items.length
+      ? items.map(function(it){ return renderCard(it, sec.items.indexOf(it)); }).join("")
+      : '<div class="empty"><div class="big">🔍</div>没有匹配的条目，换个关键词或筛选条件试试。</div>');
+  }
+
+  /* ---------- 检验报告 ---------- */
+  function revBlock(r, kind){
+    return '<div class="rev ' + kind + '"><div class="rh"><b>' + r.title + '</b><span class="pos">' + r.pos + '</span></div>' +
+      '<div class="rl bad"><span class="t">原表述</span><span class="c">' + r.bad + '</span></div>' +
+      '<div class="rl good"><span class="t">建议改为</span><span class="c">' + r.good + '</span></div>' +
+      '<div class="rl why"><span class="t">原因</span><span class="c">' + r.why + '</span></div></div>';
+  }
+  function renderReport(){
+    var R = D.report;
+    var h = '<div class="sec-head"><h2>🔎 逐条检验报告</h2><span class="desc">先看结论，再回卡片看细节</span></div>';
+    h += '<div class="panel"><h3>整体结论</h3><p class="lead">共核对 <b>' + ALL.length + '</b> 条（核心单词 28 · 重点短语 34 · 易错句子 30）。' +
+      '笔记整体质量很高：绝大多数释义、变形、搭配、例句和考点标注都准确。发现 <b style="color:var(--fix)">' + R.fixes.length + '</b> 处需要修正、' +
+      '<b style="color:var(--warn)">' + R.clarify.length + '</b> 处表述需要澄清，另补了一批七上期中高频但笔记未覆盖的考点。</p>' +
+      '<div class="tip">💡 建议：把下面「已修正」的 3 处直接改到孩子原笔记上，其余条目按卡片里的「拓展 / 例题」过一遍即可。</div></div>';
+    h += '<div class="panel"><h3 style="color:var(--fix)">🔴 需要修正（' + R.fixes.length + ' 处）</h3><p class="lead">这几处会直接影响做题判断，优先改。</p>' +
+      R.fixes.map(function(r){ return revBlock(r, "fix"); }).join("") + '</div>';
+    h += '<div class="panel"><h3 style="color:var(--warn)">🟡 表述需澄清（' + R.clarify.length + ' 处）</h3><p class="lead">不算错，但按原话记容易在考试里丢分，建议补完整。</p>' +
+      R.clarify.map(function(r){ return revBlock(r, "warn"); }).join("") + '</div>';
+    h += '<div class="panel"><h3>🟢 重要补充清单</h3><p class="lead">笔记未涉及、但同单元高频考查的内容，已写进各条卡片的「拓展用法」与速记卡片。</p>' +
+      '<div class="miss-grid">' + R.missing.map(function(m){
+        return '<div class="miss"><b>' + m.t + '</b><br>' + m.d + '</div>';
+      }).join("") + '</div></div>';
+    $("#list").innerHTML = h;
+  }
+
+  /* ---------- 速记卡片 ---------- */
+  function renderCheats(){
+    var C = D.cheats;
+    var h = '<div class="sec-head"><h2>🗂️ 速记卡片</h2><span class="desc">把易混点放一起记，考前 5 分钟过一遍</span></div>';
+    h += '<div class="panel"><div class="cheat-tabs">' + C.map(function(c, i){
+      return '<button class="ctab' + (state.cheat === i ? " on" : "") + '" data-action="cheat" data-i="' + i + '">' + esc(c.title) + '</button>';
+    }).join("") + '</div>';
+    var c = C[state.cheat] || C[0];
+    if (c){
+      h += '<h3>' + esc(c.title) + '</h3><div class="tbl-wrap"><table><thead><tr>' +
+        c.head.map(function(x){ return '<th>' + esc(x) + '</th>'; }).join("") + '</tr></thead><tbody>' +
+        c.rows.map(function(r){ return '<tr>' + r.map(function(x){ return '<td>' + x + '</td>'; }).join("") + '</tr>'; }).join("") +
+        '</tbody></table></div>';
+      if (c.tip) h += '<div class="tip">💡 ' + c.tip + '</div>';
+    }
+    h += '</div>';
+    $("#list").innerHTML = h;
+  }
+
+  /* ---------- 自测 ---------- */
+  function shuffle(a){
+    var x = a.slice();
+    for (var i = x.length - 1; i > 0; i--){ var j = Math.floor(Math.random() * (i + 1)); var t = x[i]; x[i] = x[j]; x[j] = t; }
+    return x;
+  }
+  function startQuiz(){
+    var qs = shuffle(ALL_EX).slice(0, 10);
+    state.quiz = {qs:qs, i:0, right:0, picked:null, wrong:[]};
+    $("#quizMask").classList.remove("hidden");
+    renderQuiz();
+  }
+  function renderQuiz(){
+    var z = state.quiz;
+    if (!z) return;
+    $("#quizProg").textContent = (z.i + 1) + " / " + z.qs.length;
+    $("#quizBar").style.width = Math.round(z.i / z.qs.length * 100) + "%";
+    if (z.i >= z.qs.length){
+      var pct = Math.round(z.right / z.qs.length * 100);
+      var msg = pct >= 90 ? "太棒了，这些易错点基本拿下了！" : pct >= 70 ? "不错，把错题对应的卡片再过一遍。" : "别急，回卡片把「辨析」和「例题」重做一遍。";
+      var h = '<div class="q-score"><div class="big">' + z.right + ' / ' + z.qs.length + '</div><div class="msg">' + msg + '</div></div>';
+      if (z.wrong.length){
+        h += '<div style="text-align:left"><b>错题回顾</b>' + z.wrong.map(function(w){
+          return '<div class="q-wrong"><b>' + esc(w.q) + '</b><br>正确答案：' + "ABCD".charAt(w.a) + '. ' + esc(w.o[w.a]) + '<br>' + esc(w.e) + '<br><span style="color:var(--muted)">来源：' + esc(w.from) + '</span></div>';
+        }).join("") + '</div>';
+      }
+      h += '<div class="q-actions"><button class="btn primary" data-action="quiz-start">🔁 再来一组</button><button class="btn" data-action="quiz-close">返回复习</button></div>';
+      $("#quizBody").innerHTML = h;
+      $("#quizBar").style.width = "100%";
+      $("#quizProg").textContent = "已完成";
+      return;
+    }
+    var e = z.qs[z.i];
+    var h = '<div class="q-title"><span class="en">' + esc(e.q) + '</span></div><div class="q-src">来自：' + esc(e.from) + '</div><div class="opts">';
+    h += e.o.map(function(o, i){
+      var cls = "opt";
+      if (z.picked !== null){
+        if (i === e.a) cls += " right";
+        else if (i === z.picked) cls += " wrong";
+        else cls += " dim";
+      }
+      return '<button class="' + cls + '" data-action="quiz-answer" data-oi="' + i + '"><span class="k">' + "ABCD".charAt(i) + '.</span>' + esc(o) + '</button>';
+    }).join("");
+    h += '</div>';
+    if (z.picked !== null){
+      h += '<div class="ex-e show">💡 ' + esc(e.e) + '</div>' +
+        '<div class="q-actions"><button class="btn primary" data-action="quiz-next">' + (z.i === z.qs.length - 1 ? "查看结果 →" : "下一题 →") + '</button></div>';
+    }
+    $("#quizBody").innerHTML = h;
+  }
+
+  /* ---------- 事件 ---------- */
+  document.addEventListener("click", function(ev){
+    var el = ev.target.closest("[data-action]");
+    if (!el) return;
+    var a = el.getAttribute("data-action"), k, id;
+    if (a === "toggle"){
+      id = el.getAttribute("data-id");
+      if (state.open.has(id)) state.open.delete(id); else state.open.add(id);
+      renderList();
+    } else if (a === "master"){
+      ev.stopPropagation();
+      id = el.getAttribute("data-id");
+      if (state.mastered.has(id)) state.mastered.delete(id); else state.mastered.add(id);
+      store.set("eng7_mastered", Array.from(state.mastered));
+      renderList(); renderProg();
+    } else if (a === "view"){
+      state.view = el.getAttribute("data-k"); renderTabs(); renderList();
+      window.scrollTo({top: $("#tabs").offsetTop - 16, behavior:"smooth"});
+    } else if (a === "filter"){
+      state.filter = el.getAttribute("data-k"); renderChips(); renderList();
+    } else if (a === "expand-all"){
+      SECTIONS.filter(function(s){ return s.key === state.view; }).forEach(function(s){ s.items.forEach(function(i){ state.open.add(i.id); }); });
+      renderList();
+    } else if (a === "collapse-all"){
+      state.open.clear(); renderList();
+    } else if (a === "answer"){
+      k = el.getAttribute("data-key");
+      state.answers[k] = parseInt(el.getAttribute("data-oi"), 10);
+      store.set("eng7_answers", state.answers);
+      renderList();
+    } else if (a === "theme"){
+      var cur = document.documentElement.getAttribute("data-theme");
+      var next = cur === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", next);
+      store.set("eng7_theme", next);
+    } else if (a === "print"){
+      window.print();
+    } else if (a === "cheat"){
+      state.cheat = parseInt(el.getAttribute("data-i"), 10); renderCheats();
+    } else if (a === "quiz-start"){
+      startQuiz();
+    } else if (a === "quiz-close"){
+      $("#quizMask").classList.add("hidden"); state.quiz = null;
+    } else if (a === "quiz-answer"){
+      var z = state.quiz; if (!z || z.picked !== null) return;
+      z.picked = parseInt(el.getAttribute("data-oi"), 10);
+      if (z.picked === z.qs[z.i].a) z.right++; else z.wrong.push(z.qs[z.i]);
+      renderQuiz();
+    } else if (a === "quiz-next"){
+      state.quiz.i++; state.quiz.picked = null; renderQuiz();
+    }
+  });
+
+  $("#q").addEventListener("input", function(e){ state.q = e.target.value.trim(); renderList(); });
+  document.addEventListener("keydown", function(e){
+    if (e.key === "/" && document.activeElement !== $("#q")){ e.preventDefault(); $("#q").focus(); }
+    if (e.key === "Escape"){
+      if (!$("#quizMask").classList.contains("hidden")){ $("#quizMask").classList.add("hidden"); state.quiz = null; }
+      else { $("#q").value = ""; state.q = ""; renderList(); }
+    }
+  });
+  window.addEventListener("scroll", function(){
+    $("#toTop").style.display = window.scrollY > 500 ? "block" : "none";
+  });
+  $("#toTop").addEventListener("click", function(){ window.scrollTo({top:0, behavior:"smooth"}); });
+  window.addEventListener("beforeprint", function(){
+    document.documentElement.setAttribute("data-theme", "light");
+  });
+
+  /* ---------- init ---------- */
+  var theme = store.get("eng7_theme", "light");
+  document.documentElement.setAttribute("data-theme", theme);
+  (function(){
+    var d = $("#dots"), s = "";
+    for (var i = 0; i < 22; i++){
+      s += '<i style="left:' + (4 + Math.random() * 92).toFixed(1) + '%;top:' + (8 + Math.random() * 78).toFixed(1) + '%;animation-delay:' + (Math.random() * 5).toFixed(1) + 's"></i>';
+    }
+    d.innerHTML = s;
+  })();
+  renderStats(); renderChips(); renderTabs(); renderProg(); renderList();
+})();
+</script>
+</body>
+</html>
