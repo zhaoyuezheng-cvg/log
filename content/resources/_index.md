@@ -7,6 +7,7 @@ HTML 学习资料，按学科分类。
 ## 英语
 
 - [六年级英语期末考点精讲](/english/grade-6-final-review.html)
+- [七年级英语期中易错知识点精讲](/english/grade-7-english-midterm-key-points.html)
 - [9周1培优](/english/unit-1-english-enrichment.html) [v2](/english/unit-1-english-analysis.html)  [v3](/english/unit-1-english-reading.html)
 - [9周5英语培优v1](/english/en9-5-learning.html)、[v](/english/en9-5-intensive-reading.html)2、[精读精讲 ](/english/en9-5-intensive-reading-v2.html)、[精讲与解析](/english/en9-5-analysis.html)
 - [10周一英语培优 v1](/english/en10-1-v1.html)、[v2](/english/en10-1-v2.html)、[v3](/english/en10-1-v3.html)
@@ -47,6 +48,7 @@ HTML 学习资料，按学科分类。
 - [中国近现代史纲要笔记](/history/modern-chinese-history-review-notes.html)
 - [23–24年初二历史期中试题 v1（交互式精讲）](/history/grade-8-history-midterm-2023-2024-v1.html)、[v2（全卷解析）](/history/grade-8-history-midterm-2023-2024-v2.html)、[v3（详解版）](/history/grade-8-history-midterm-2023-2024-v3.html)
 - [八上历史期中模拟 v1](/history/grade-8-history-midterm-v1.html)、[v2](/history/grade-8-history-midterm-v2.html)
+- [初二历史上册期中错题交互精讲](/history/grade-8-history-midterm-mistakes-2026-11-14.html)
 - [八上历史知识清单](/history/8th-grade-history-knowledge-list)
 - [八上历史考点研究](/history/8th-grade-history-key-points)
 - [八上历史核心考点及重难点突破](/history/grade-8-history-core-review.html)、[v2](/history/grade-8-history-core-review-v2.html)
@@ -54,6 +56,7 @@ HTML 学习资料，按学科分类。
 - [数学七上知识点](/history/grade-7-core-review.html)  [知识网络](/history/grade-7-knowledge-map.html)
 - [道法七上册思维导图](/history/moral-education-grade-7-units.html)  [屏幕版](/history/moral-education-grade-7-mindmap-screen.html)
 - [初二地理期中复习](/geography/geo-review-1.html)  [v2](/geography/geo-review-2.html)  [v3](/geography/geo-midterm-v2.html)
+- [初二地理期中试题精讲（2025–2026）](/geography/grade-8-geography-midterm-2025-2026.html)、[期中错题整理与精讲](/geography/grade-8-geography-midterm-mistakes-2026-11-14.html)
 
 ## 其他页面
 
