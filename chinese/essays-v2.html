@@ -1,1186 +1,413 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<script>
-!(function(j,a,g){j.__itrace_conf = {bid: 'f43basl8-6nqu7l3w',rel: '0.0.1', spa: true, uid: '', plugins:['jserror','interface','perf','resource','flow','blank']};var b = a.createElement("script");var d = a.getElementsByTagName("script")[0];b.type = "text/javascript";b.crossorigin = true;b.async = true;b.onload = function(){j.__itrace && j.__itrace.setReady()};d.parentNode.insertBefore(b,d);b.src = g})(window, document, "https://g.alicdn.com/woodpeckerx/itrace-next/itrace.iife.js")
-</script>
-
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>七年级作文范文阅读</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>七年级主题作文范文集</title>
 <style>
-:root {
-  --bg: #f7f3ee;
-  --bg-card: #ffffff;
-  --bg-sidebar: #faf6f0;
-  --text: #2c2418;
-  --text-light: #6b5d4f;
-  --text-lighter: #9a8b7a;
-  --accent: #c0502c;
-  --accent-light: #d4a574;
-  --border: #e8ddd0;
-  --shadow: 0 2px 12px rgba(140,120,90,0.08);
-  --shadow-hover: 0 4px 20px rgba(140,120,90,0.15);
-  --radius: 12px;
-  --font-serif: "Noto Serif SC","Source Han Serif SC","Songti SC","SimSun",serif;
-  --font-sans: "PingFang SC","Noto Sans SC","Microsoft YaHei",sans-serif;
-  --sidebar-w: 300px;
-  --base-size: 18px;
+:root{
+  --bg:#f7f4ef; --paper:#fffdf9; --ink:#3b3a36; --muted:#8a857c;
+  --accent:#b0563b; --accent-soft:#f3e2d9; --line:#e7e0d6;
+  --sidebar:#2f3a34; --sidebar-ink:#e9e4da;
+  --hl:#ffe9a8; --shadow:0 2px 14px rgba(90,70,50,.08);
 }
-[data-theme="dark"] {
-  --bg: #1a1714;
-  --bg-card: #252019;
-  --bg-sidebar: #1f1a15;
-  --text: #e8dfd0;
-  --text-light: #b0a290;
-  --text-lighter: #807060;
-  --accent: #e07b4a;
-  --accent-light: #c4a070;
-  --border: #3a3128;
-  --shadow: 0 2px 12px rgba(0,0,0,0.2);
-  --shadow-hover: 0 4px 20px rgba(0,0,0,0.35);
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg); color:var(--ink);
+  font-family:"Noto Serif SC","Source Han Serif SC","Songti SC","SimSun",Georgia,serif;
+  line-height:1.95; font-size:17px;
 }
-* { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior: smooth; }
-body {
-  font-family: var(--font-serif);
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.9;
-  font-size: var(--base-size);
-  transition: background 0.3s, color 0.3s;
+/* ====== 布局 ====== */
+.shell{display:flex;min-height:100vh}
+.sidebar{
+  width:280px;flex-shrink:0;background:var(--sidebar);color:var(--sidebar-ink);
+  position:sticky;top:0;height:100vh;overflow-y:auto;padding:26px 0 40px;
 }
-/* Progress Bar */
-#progress-bar {
-  position: fixed; top:0; left:0; height:3px; width:0%;
-  background: linear-gradient(90deg, var(--accent), var(--accent-light));
-  z-index: 1000; transition: width 0.1s;
+.brand{padding:0 24px 18px;border-bottom:1px solid rgba(255,255,255,.12)}
+.brand h1{font-size:21px;letter-spacing:2px;color:#fff;font-weight:700}
+.brand p{font-size:12.5px;color:#b9c2ba;letter-spacing:1px;margin-top:6px}
+.nav-group{padding:14px 0 6px}
+.nav-theme>a{
+  display:flex;justify-content:space-between;align-items:center;gap:8px;
+  padding:9px 24px;color:var(--sidebar-ink);text-decoration:none;
+  font-size:15.5px;letter-spacing:.5px;border-left:3px solid transparent;
+  transition:background .2s,border-color .2s;
 }
-/* Top Bar */
-.topbar {
-  position: fixed; top:0; left:0; right:0; height:56px;
-  background: var(--bg-sidebar);
-  border-bottom: 1px solid var(--border);
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0 20px; z-index: 100;
-  transition: background 0.3s, border-color 0.3s;
+.nav-theme>a:hover{background:rgba(255,255,255,.08)}
+.nav-theme>a.active{background:rgba(255,255,255,.12);border-left-color:#e8a87c;color:#fff}
+.nav-theme .cnt{font-size:11.5px;color:#a8b2a9;background:rgba(255,255,255,.12);
+  border-radius:99px;padding:1px 9px;flex-shrink:0}
+.nav-essays{list-style:none;max-height:0;overflow:hidden;transition:max-height .35s ease}
+.nav-theme.open .nav-essays{max-height:600px}
+.nav-essays li a{
+  display:block;padding:6px 24px 6px 38px;font-size:13.5px;color:#c3cbc4;
+  text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
 }
-.topbar-left { display:flex; align-items:center; gap:12px; }
-.topbar-title {
-  font-family: var(--font-sans); font-weight:600; font-size:17px;
-  color: var(--text); letter-spacing: 0.5px;
+.nav-essays li a:hover{color:#fff;background:rgba(255,255,255,.07)}
+.nav-essays li a.active{color:#ffd9b3}
+
+.main{flex:1;min-width:0;display:flex;flex-direction:column}
+/* ====== 顶栏 ====== */
+.topbar{
+  position:sticky;top:0;z-index:50;background:rgba(247,244,239,.92);
+  backdrop-filter:blur(8px);border-bottom:1px solid var(--line);
+  padding:12px 32px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;
 }
-.topbar-title .sub { color: var(--text-lighter); font-weight:400; font-size:13px; margin-left:6px; }
-.topbar-right { display:flex; align-items:center; gap:8px; }
-.btn-icon {
-  width:36px; height:36px; border-radius:8px; border:1px solid var(--border);
-  background: var(--bg-card); color: var(--text-light); cursor:pointer;
-  display:flex; align-items:center; justify-content:center; font-size:16px;
-  transition: all 0.2s; font-family: var(--font-sans);
+.menu-btn{display:none;background:none;border:1px solid var(--line);border-radius:8px;
+  padding:6px 12px;font-size:15px;cursor:pointer;color:var(--ink)}
+.search-box{position:relative;flex:1;max-width:460px;min-width:220px}
+.search-box input{
+  width:100%;padding:9px 38px 9px 16px;border:1.5px solid var(--line);border-radius:99px;
+  font-size:15px;background:var(--paper);color:var(--ink);outline:none;
+  font-family:inherit;transition:border-color .2s,box-shadow .2s;
 }
-.btn-icon:hover { border-color: var(--accent); color: var(--accent); box-shadow: var(--shadow); }
-.btn-text {
-  height:36px; padding:0 14px; border-radius:8px; border:1px solid var(--border);
-  background: var(--bg-card); color: var(--text-light); cursor:pointer;
-  display:flex; align-items:center; gap:4px; font-size:13px;
-  font-family: var(--font-sans); transition: all 0.2s;
+.search-box input:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.search-box .ic{position:absolute;right:14px;top:50%;transform:translateY(-50%);color:var(--muted)}
+.search-meta{font-size:13px;color:var(--muted)}
+.btn{
+  border:1.5px solid var(--line);background:var(--paper);color:var(--ink);
+  border-radius:99px;padding:7px 16px;font-size:13.5px;cursor:pointer;
+  font-family:inherit;transition:all .2s;white-space:nowrap;
 }
-.btn-text:hover { border-color: var(--accent); color: var(--accent); }
-.btn-text.active { background: var(--accent); color:#fff; border-color: var(--accent); }
-/* Sidebar */
-.sidebar {
-  position: fixed; top:56px; left:0; bottom:0; width: var(--sidebar-w);
-  background: var(--bg-sidebar); border-right: 1px solid var(--border);
-  overflow-y: auto; padding: 16px 0; z-index: 50;
-  transition: transform 0.3s, background 0.3s, border-color 0.3s;
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn.primary:hover{opacity:.88;color:#fff}
+
+/* ====== 主内容 ====== */
+.content{padding:36px 40px 80px;max-width:1080px;width:100%;margin:0 auto}
+.hero{
+  background:linear-gradient(135deg,#b0563b 0%,#c97b5c 60%,#d9a06c 100%);
+  color:#fff;border-radius:18px;padding:38px 42px;margin-bottom:34px;
+  box-shadow:var(--shadow);position:relative;overflow:hidden;
 }
-.sidebar::-webkit-scrollbar { width:5px; }
-.sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius:3px; }
-.cat-section { margin-bottom: 4px; }
-.cat-header {
-  display:flex; align-items:center; gap:8px;
-  padding: 10px 20px; cursor:pointer; user-select:none;
-  font-family: var(--font-sans); font-size:14px; font-weight:600;
-  color: var(--text-light); transition: color 0.2s;
+.hero h2{font-size:30px;letter-spacing:3px;margin-bottom:12px}
+.hero p{font-size:15.5px;opacity:.94;max-width:640px}
+.hero .stats{display:flex;gap:28px;margin-top:22px;flex-wrap:wrap}
+.hero .stat b{font-size:26px;display:block;font-weight:700}
+.hero .stat span{font-size:12.5px;opacity:.85;letter-spacing:1px}
+.hero::after{content:"📖";position:absolute;right:36px;top:50%;transform:translateY(-50%);
+  font-size:110px;opacity:.16}
+
+.theme-block{margin-bottom:46px;scroll-margin-top:90px}
+.theme-head{
+  display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;
+  padding-bottom:12px;border-bottom:2px solid var(--accent);margin-bottom:8px;
 }
-.cat-header:hover { color: var(--accent); }
-.cat-header .arrow { font-size:10px; transition: transform 0.2s; margin-left:auto; }
-.cat-header.open .arrow { transform: rotate(90deg); }
-.cat-header .icon { font-size:16px; }
-.cat-list { max-height:0; overflow:hidden; transition: max-height 0.3s ease; }
-.cat-list.open { max-height:2000px; }
-.essay-item {
-  padding: 8px 20px 8px 48px; cursor:pointer; font-size:14px;
-  color: var(--text-light); font-family: var(--font-sans);
-  border-left: 3px solid transparent; transition: all 0.2s;
-  line-height: 1.5;
+.theme-head h3{font-size:24px;letter-spacing:2px;color:var(--accent)}
+.theme-head .t-cnt{font-size:13px;color:var(--muted)}
+.theme-head .ops{margin-left:auto;display:flex;gap:8px}
+.prompt-card{
+  background:var(--accent-soft);border-left:4px solid var(--accent);
+  border-radius:0 12px 12px 0;padding:16px 22px;margin:14px 0 20px;
+  font-size:15px;color:#6b4a3a;
 }
-.essay-item:hover { color: var(--accent); background: rgba(192,80,44,0.05); }
-.essay-item.active { color: var(--accent); border-left-color: var(--accent); background: rgba(192,80,44,0.06); }
-.essay-item .who {
-  display:block; font-size:11px; color: var(--text-lighter);
-  margin-top:1px; line-height:1.4; font-weight:400;
+.prompt-card b{letter-spacing:1px}
+
+/* ====== 范文卡片 ====== */
+.essay{background:var(--paper);border:1px solid var(--line);border-radius:14px;
+  margin:16px 0;box-shadow:var(--shadow);overflow:hidden;scroll-margin-top:90px}
+.essay.hide{display:none}
+.essay summary{
+  list-style:none;cursor:pointer;padding:18px 24px;display:flex;align-items:center;
+  gap:14px;user-select:none;transition:background .2s;
 }
-.essay-item.active .who { color: var(--accent-light); }
-/* Main Content */
-.main {
-  margin-left: var(--sidebar-w); margin-top: 56px;
-  padding: 40px 60px 80px; max-width: 860px;
-  transition: margin 0.3s;
+.essay summary::-webkit-details-marker{display:none}
+.essay summary:hover{background:#faf6ef}
+.essay .no{
+  flex-shrink:0;width:40px;height:40px;border-radius:12px;background:var(--accent-soft);
+  color:var(--accent);display:flex;align-items:center;justify-content:center;
+  font-size:15px;font-weight:700;
 }
-/* Search */
-.search-box {
-  width:100%; padding:10px 16px; border-radius:8px;
-  border:1px solid var(--border); background: var(--bg-card);
-  color: var(--text); font-size:14px; font-family: var(--font-sans);
-  outline:none; margin-bottom:12px; transition: border-color 0.2s;
+.essay .t-wrap{flex:1;min-width:0}
+.essay .e-title{font-size:18.5px;font-weight:700;letter-spacing:1px;line-height:1.5}
+.essay .e-meta{font-size:12.5px;color:var(--muted);margin-top:2px}
+.essay .chev{flex-shrink:0;color:var(--muted);transition:transform .3s}
+.essay[open] .chev{transform:rotate(180deg)}
+.essay[open] summary{border-bottom:1px dashed var(--line);background:#faf6ef}
+.essay .body{padding:22px 30px 28px;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.essay .body p{text-indent:2em;margin:.85em 0;font-size:16.5px;letter-spacing:.3px}
+.essay .body p.no-indent{text-indent:0}
+.essay .foot{
+  margin-top:20px;padding-top:14px;border-top:1px dashed var(--line);
+  display:flex;gap:16px;font-size:12.5px;color:var(--muted);flex-wrap:wrap;
 }
-.search-box:focus { border-color: var(--accent); }
-.search-box::placeholder { color: var(--text-lighter); }
-/* Essay */
-.essay {
-  background: var(--bg-card); border-radius: var(--radius);
-  padding: 40px 48px; margin-bottom: 32px; box-shadow: var(--shadow);
-  transition: box-shadow 0.3s, background 0.3s;
-  scroll-margin-top: 72px;
+mark{background:var(--hl);border-radius:3px;padding:0 1px}
+
+/* ====== 返回顶部 ====== */
+#toTop{
+  position:fixed;right:28px;bottom:32px;z-index:99;width:50px;height:50px;border-radius:50%;
+  background:var(--accent);color:#fff;border:none;font-size:20px;cursor:pointer;
+  box-shadow:0 6px 18px rgba(176,86,59,.35);opacity:0;pointer-events:none;
+  transition:opacity .3s,transform .3s;transform:translateY(12px);
 }
-.essay:hover { box-shadow: var(--shadow-hover); }
-.essay-tag {
-  display:inline-block; padding:3px 12px; border-radius:20px;
-  font-size:12px; font-family: var(--font-sans); font-weight:500;
-  margin-bottom:12px;
+#toTop.show{opacity:1;pointer-events:auto;transform:none}
+#toTop:hover{background:#96452e}
+
+.empty-tip{display:none;text-align:center;color:var(--muted);padding:60px 0;font-size:16px}
+.empty-tip.show{display:block}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0}
+.chip{
+  border:1.5px solid var(--line);background:var(--paper);color:var(--ink);
+  border-radius:99px;padding:5px 14px;font-size:13px;cursor:pointer;
+  font-family:inherit;transition:all .2s;white-space:nowrap;
 }
-.tag-亲情 { background:rgba(192,80,44,0.1); color:#c0502c; }
-.tag-成长 { background:rgba(64,130,109,0.1); color:#40826d; }
-.tag-友情 { background:rgba(70,105,180,0.1); color:#4648b4; }
-.tag-想象 { background:rgba(156,89,169,0.1); color:#9c59a9; }
-[data-theme="dark"] .tag-亲情 { background:rgba(224,123,74,0.15); color:#e07b4a; }
-[data-theme="dark"] .tag-成长 { background:rgba(80,180,150,0.15); color:#50b496; }
-[data-theme="dark"] .tag-友情 { background:rgba(100,130,220,0.15); color:#6482dc; }
-[data-theme="dark"] .tag-想象 { background:rgba(186,109,199,0.15); color:#ba6dc7; }
-.essay-title {
-  font-size: 1.5em; font-weight:700; color: var(--text);
-  margin-bottom: 8px; line-height:1.4;
+.chip:hover{border-color:var(--accent);color:var(--accent)}
+.chip.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.site-foot{
+  margin-top:40px;padding:22px 26px;background:var(--paper);border:1px dashed var(--line);
+  border-radius:14px;font-size:13px;color:var(--muted);line-height:2;
 }
-.essay-author {
-  font-size: 14px; color: var(--text-lighter); font-family: var(--font-sans);
-  margin-bottom: 24px;
+
+/* ====== 响应式 ====== */
+@media (max-width:960px){
+  .shell{flex-direction:column}
+  .sidebar{
+    position:fixed;left:0;top:0;bottom:0;z-index:100;transform:translateX(-100%);
+    transition:transform .3s ease;width:80vw;max-width:320px;height:100vh;
+  }
+  .sidebar.open{transform:none;box-shadow:0 0 40px rgba(0,0,0,.35)}
+  .menu-btn{display:block}
+  .content{padding:24px 18px 70px}
+  .topbar{padding:10px 16px}
+  .hero{padding:26px 22px}
+  .hero h2{font-size:23px}
+  .hero::after{display:none}
+  .essay summary{padding:15px 16px;gap:10px}
+  .essay .e-title{font-size:16.5px}
+  .essay .body{padding:18px 18px 22px}
+  .essay .body p{font-size:16px}
+  #toTop{right:16px;bottom:20px;width:44px;height:44px}
 }
-.essay-body p {
-  margin-bottom: 1.2em; text-indent: 2em; color: var(--text);
-  line-height: 2; letter-spacing: 0.02em;
-}
-.essay-body p:first-child::first-letter {
-  font-size: 1.3em; font-weight: 700;
-}
-.essay-divider {
-  text-align:center; color: var(--text-lighter); font-size:20px;
-  margin: 24px 0; letter-spacing: 8px;
-}
-/* Section Title */
-.section-title {
-  font-family: var(--font-sans); font-size:22px; font-weight:700;
-  color: var(--text); padding: 20px 0 12px; margin-top: 8px;
-  display:flex; align-items:center; gap:10px;
-}
-.section-title .bar { width:4px; height:24px; border-radius:2px; background: var(--accent); }
-/* Mobile */
-.mobile-toggle {
-  display:none; font-size:20px;
-}
-@media (max-width: 900px) {
-  :root { --sidebar-w: 260px; --base-size: 17px; }
-  .main { padding: 24px 20px 60px; }
-  .essay { padding: 28px 24px; }
-  .mobile-toggle { display:flex; }
-}
-@media (max-width: 600px) {
-  :root { --base-size: 16px; }
-  .sidebar { transform: translateX(-100%); }
-  .sidebar.open { transform: translateX(0); }
-  .main { margin-left: 0; padding: 20px 16px 60px; }
-  .essay { padding: 24px 18px; }
-  .topbar-title .sub { display:none; }
-}
-/* Back to top */
-.back-top {
-  position: fixed; right: 24px; bottom: 24px; width: 44px; height: 44px;
-  border-radius: 50%; background: var(--accent); color: #fff;
-  border: none; cursor: pointer; font-size: 18px;
-  box-shadow: var(--shadow-hover); opacity:0; pointer-events:none;
-  transition: opacity 0.3s, transform 0.3s; z-index: 80;
-  display:flex; align-items:center; justify-content:center;
-}
-.back-top.show { opacity:1; pointer-events:auto; }
-.back-top:hover { transform: translateY(-3px); }
-/* Empty */
-.empty {
-  text-align:center; padding:60px 20px; color: var(--text-lighter);
-  font-family: var(--font-sans); font-size:15px;
-}
-/* Font size control */
-.font-control { display:flex; align-items:center; gap:2px; }
-.font-btn {
-  width:30px; height:30px; border-radius:6px; border:1px solid var(--border);
-  background: var(--bg-card); color: var(--text-light); cursor:pointer;
-  font-size:14px; font-family: var(--font-sans); transition: all 0.2s;
-}
-.font-btn:hover { border-color: var(--accent); color: var(--accent); }
+.mask{display:none;position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:90}
+.mask.show{display:block}
 </style>
 </head>
 <body>
-<div id="progress-bar"></div>
-
-<!-- Top Bar -->
-<div class="topbar">
-  <div class="topbar-left">
-    <button class="btn-icon mobile-toggle" onclick="toggleSidebar()" title="目录">☰</button>
-    <div class="topbar-title">七年级作文范文<span class="sub" id="total-count"></span></div>
-  </div>
-  <div class="topbar-right">
-    <div class="font-control">
-      <button class="font-btn" onclick="adjustFont(-1)" title="缩小字体">A-</button>
-      <button class="font-btn" onclick="adjustFont(0)" title="重置">A</button>
-      <button class="font-btn" onclick="adjustFont(1)" title="放大字体">A+</button>
+<div class="mask" id="mask"></div>
+<div class="shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <h1>七年级主题作文范文集</h1>
+      <p>THEME · ESSAY COLLECTION</p>
     </div>
-    <button class="btn-icon" onclick="toggleTheme()" id="theme-btn" title="深浅色切换">🌙</button>
+    <nav id="nav"></nav>
+  </aside>
+  <div class="main">
+    <header class="topbar">
+      <button class="menu-btn" id="menuBtn">☰ 目录</button>
+      <div class="search-box">
+        <input id="search" type="search" placeholder="搜索关键词：标题 / 主题 / 正文……" autocomplete="off">
+        <span class="ic">🔍</span>
+      </div>
+      <span class="search-meta" id="searchMeta"></span>
+      <button class="btn" id="expandAll">全部展开</button>
+      <button class="btn" id="collapseAll">全部收起</button>
+    </header>
+    <main class="content">
+      <section class="hero">
+        <h2>七年级主题作文范文集</h2>
+        <p>涵盖成长、亲情、师恩、友情、遇见与想象等多个主题，收录全部范文原文，供阅读、品析与借鉴。</p>
+        <div class="stats">
+          <div class="stat"><b>14</b><span>主 题</span></div>
+          <div class="stat"><b>49</b><span>范 文</span></div>
+          <div class="stat"><b>3.7</b><span>万字</span></div>
+        </div>
+      </section>
+      <div class="chips" id="chips"></div>
+      <div id="themes"></div>
+      <div class="empty-tip" id="emptyTip">😕 没有找到匹配的范文，换个关键词试试吧～</div>
+      <div class="site-foot">
+        <b>校对说明：</b>本页文字均从原始文档完整提取；已修复错别字与明显标点问题（如半角标点统一为全角、去除页眉页脚与旁批编号标记），并对分段、跨页断行进行了整理，原文语意与篇章结构未作改动。同题多篇的范文以“范文一、范文二……”标注区分。
+      </div>
+    </main>
   </div>
 </div>
+<button id="toTop" title="返回顶部">↑</button>
 
-<!-- Sidebar -->
-<div class="sidebar" id="sidebar">
-  <div style="padding:8px 20px 4px;">
-    <input type="text" class="search-box" id="search" placeholder="搜索标题或作者…" oninput="filterEssays()">
-  </div>
-  <div id="cat-container"></div>
-</div>
-
-<!-- Main Content -->
-<div class="main" id="main">
-  <div id="essay-container"></div>
-  <button class="back-top" id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-</div>
-
+<script id="essay-data" type="application/json">[{"theme": "AI时代的思考", "prompt": "阅读下面的文字，根据要求写作。（50分）\n在AI时代，人们借助智能工具便能生成各类精美的画作。然而，这些画作美则美矣，却少了几分“人味儿”，难以真正触动人心。面对“AI一键生万物”的效率，我们的审美想象力与创造力将会走向何方？这是一个值得深入思考的问题。\n以上文字引发了你怎样的联想和思考？请联系自己的生活经历和感受，写一篇文章。\n要求：①自拟标题，自选角度；②除诗歌外，文体不限；③不得套作、抄袭；④不得泄露个人信息；⑤不少于600字。", "essays": [{"title": "指尖有温度，笔下有山河", "meta": "", "paras": ["丰子恺说：“心小了，所有的小事就大了；心大了，所有的大事就小了；看淡世事沧桑，内心安然无恙。”AI能画出最标准的光影，却画不出藏在笔墨里的心跳，在一键生成的快时代里，我依然想念，手绘时指尖沾着的温度。", "去年学校办美术展，同桌用AI生成了一幅星空图，渐变蓝紫晕得恰到好处，星星的位置都符合天体运行规律，连老师都夸“比手绘的整齐多了”。可我站在展览的角落，盯着隔壁那幅水粉画挪不开脚——那是美术班一个女生画的老巷，墙皮掉了一块，瓦顶长了半棵野草，笔触歪歪扭扭，甚至还有一处颜料没抹开的痕迹，可我站在画前，好像能闻到老巷里槐树的花香，能听见卖冰棍的自行车铃铛响，那是她从小长大的地方，每一笔都带着她攒了十几年的回忆。", "那幅歪歪扭扭的老巷，最终拿了一等奖。评委老师说：“AI能算对每一块光影的比例，却算不出一个人站在老巷门口，想起奶奶喊她回家吃饭的心跳。”这话一下子戳中了我。我小时候学画，总嫌自己画的花朵不对称，叶子歪歪扭扭，不如AI生成的完美，可现在才懂，那些不完美的笔触里，藏着画画的人当时的心跳：画妈妈的手，我会特意把她掌心里的茧画重一点；画学校的梧桐树，我会把落在地上的影子画得歪一点，因为那就是我每天放学跑过的样子。这些带着情绪的不完美，是AI学不会的“人味儿”。", "AI能一键生成万张画，可生成不了我画错一笔后，重新改出的意外惊喜，生成不了我对着窗外慢慢晕开的晚霞，跟着心情调色的松弛，更生成不了我把画送给奶奶时，她摸着我起伏的笔触笑出来的温度。原来审美从不是对着一张完美的照片惊叹，是创作者把自己的心跳放进线条里，看画的人隔着纸张，接住那份跳动。", "风从展览厅的窗吹进来，掀起画纸的角，那幅老巷的画轻轻晃，像在对我招手。原来在AI时代，最珍贵的从来不是完美的作品，是创作者落在纸上的温度，是心跳碰着心跳的感动。我们从来不需要AI替我们想替我们画，因为我们指尖有温度，心中有山河，画出来的，就是独一份的感动。"], "num": 1, "chars": 801}, {"title": "关掉美颜，遇见真实之美", "meta": "", "paras": ["妈妈最近迷上了发朋友圈。自从我教她用美颜相机，她就像发现了新大陆：磨皮、大眼、瘦脸，一键就能完成精修，偶尔还会试试AI换装。她举着手机到处拍，照片里的她衣着时尚、皮肤光滑白皙，点赞数噌噌往上涨，老同事们纷纷留言“气色真好”“衣服真漂亮”，她乐得合不拢嘴，从此拍照必开美颜。", "上周末，外婆来家里小住。周日下午，妈妈靠在沙发上翻旧杂志，外婆蜷在旁边的小凳上择青菜，两人有一搭没一搭聊着年轻时厂里的趣事，春日的阳光透过阳台的梧桐，把她们的影子揉得软软的，拉得很长。我突然想拍下这个瞬间，举起手机，下意识地点开了美颜相机。", "取景框里，妈妈的皮肤立刻变得匀净光滑，外婆的白发被磨成柔和的灰棕，眼角的皱纹也淡得几乎看不见，一切都符合“完美”的标准，可在指尖即将按到快门时，我却犹豫了。", "我放下手机，静静看着眼前的她们：妈妈眼角的鱼尾纹，是十几年每天早起给我做早饭熬出来的，笑起来就像细碎的波纹；外婆的手背爬着浅褐色的老年斑，每一块都藏着几十年给家人洗衣做饭的细碎烟火。那些被美颜一键抹去的“瑕疵”，恰恰是生命最真实的印记啊。那一刻，我轻轻关掉美颜，按下了快门。", "这张没有修饰的照片里：妈妈的发丝被阳光染成浅金，鬓角几缕白发清清楚楚，在风里微微晃着；外婆低头择菜，侧脸的皱纹像老槐树的年轮，一圈一圈，安静又庄重。没有摆好的姿势，没有磨过的皮肤，却满是暖融融的生活气。", "我把照片发给妈妈。晚上吃饭时，她突然抬头问我：“今天那张照片，没开美颜吧？”我心里一紧：“不好看吗？”“不是。”她笑着擦了擦嘴角，“你外婆看了哭半天，说从来没拍过这么实在的照片，比那些磨得连亲妈都认不出来的好看多了。”说这话时，妈妈眼里泛着软乎乎的光。那天晚上，妈妈把这张关掉美颜的照片发了朋友圈，配文只有一句话：“今天闺女拍的。她外婆择菜，我看书。”", "那天点赞的人比往常多，留言也不一样：有人说“那几根白发看着真暖”，有人说“看见外婆择菜，突然想回家看我奶奶了”……睡前妈妈问我，为什么没美颜的照片反而更动人，我告诉她：“美颜的美是千篇一律的，光滑皮肤、精致五官，可没有故事，没有温度。真实的美不一样：外婆的白发藏着她纺织厂的青春，你的鱼尾纹藏着陪我长大的每一天，这些痕迹，才是真正活过的证明啊。”", "如今我们偶尔还是会用美颜找乐子，可我早已明白：真正的审美，从来不是用科技掩盖真实。AI能磨平所有皱纹，却磨不掉生活刻下的温度；滤镜能画出完美的脸，却画不出阳光下这团软乎乎的烟火。生活最动人的美，从来不在虚假的滤镜里，而在每一个不加修饰的、真实的美好瞬间里。"], "num": 2, "chars": 1049}, {"title": "烟火人心，AI画不出", "meta": "", "paras": ["AI能算出最精准的色彩配比，生成千万张挑不出错的画，可总有些藏在日常褶皱里的温热，是代码算不出、画笔描不出，只有我们亲手记下来，才会动人——那些沾着人心温度的碎片，本来就是独属于我们的宝藏。", "我见过AI生成成百上千张完美的饭食图，可最让我记挂的，是外婆手绘在旧日历上的家常菜谱。", "那一页歪歪扭扭的字，是AI算不出的疼爱。外婆眼睛花了，写“放少许盐”的“盐”，最后一点写歪了，“焖十分钟”的“焖”，偏旁都挤在了一起，可旁边还画了个小小的红烧肉，油汪汪的颜色，是她用蜡笔涂出来的。去年暑假我在外婆家学做饭，她怕我记不住步骤，特意把火候圈了又圈，说“火小才香，急不得”。AI能画出红烧肉最好看的光影，可它画不出外婆站在灶台边，拿着锅铲一点点拨肉的模样，那歪歪扭扭的字里，全是她攒了一辈子的疼爱。", "我看过AI生成成百上千张校园地图，可最让我心动的，是毕业时学长手绘给我的，标着“秘密基地”的小道。", "那一条歪歪扭扭的线，是AI算不出的心意。刚上初一我找不到安静背书的地方，学生会的学长怕我挤不到图书馆位置，特意在图书馆侧门的小道旁画了棵歪脖子槐树，标着“春天落槐花，香得很，背书超舒服”，还在角落画了个小小的笑脸。AI能画出最精准的比例尺，连每栋楼的间距都分毫不差，可它画不出我找到那棵槐树时，满树槐花落在我肩膀上的香，也画不出学长怕我害羞，悄悄躲在树后给我指路的温柔，那歪歪扭扭的线里，藏着独属于我们校园的暖意。", "我见过AI生成成百上千张运动会场图，可最让我感动的，是我自己手绘在笔记本上，终点线旁那一杯冒着热气的温水。", "那一团晕开的白汽，是AI算不出的情谊。初二运动会我跑八百米，冲过终点线就腿软蹲在地上，好朋友把温水塞进我手里，还帮我揉腿，我那天晚上回宿舍，掏出笔在笔记本上画了那杯温水，因为手还抖着，颜料晕开了一圈，反倒像真的冒着热气。AI能画出最热闹的运动场，欢呼的人群都整齐好看，可它画不出我蹲在地上喘气时，好朋友手心的温度，也画不出我咬着牙冲过终点时，耳边全班喊我名字的声响，那晕开的白汽里，藏着我和好朋友一起走过的青春。", "原来AI能生成一切完美的样子，可生成不了人心底里藏着的温度。那些我们亲手画下来的，带着情绪、带着回忆、带着爱的痕迹，才是这个世界上，最动人的美。哪怕AI能画得出万水千山，也画不出我们身边，这一点温热的人间烟火。"], "num": 3, "chars": 962}]}, {"theme": "餐桌前的谈话", "prompt": "", "essays": [{"title": "餐桌前的谈话", "author": "李瀚林 · 北京师范大学三帆中学朝阳学校", "paras": ["“老伙计，多吃几块肉。”李奶奶拿起了筷子，夹了一块肉放在对面碗里。", "鞭炮声响，除夕夜里，万家灯火，邻里欢声笑语，屋内热气腾腾。", "“真是太好了，大家能在这样的日子里一起吃饭。”李奶奶脸上堆满了笑容。饭桌上有好几盘菜，都是老伴和儿子爱吃的，还没怎么动过。", "“妈，您放心，我们以后会常这样聚的。”儿子略显疲惫地说道，“您看起来瘦了，也多吃点肉啊。”", "李奶奶夹了一根青菜放在自己碗里：“你也辛苦了，在外地工作这么久，也应该吃点好的啊。”", "李奶奶出神地回忆道：“还记得从前，我还不怎么会做菜，只是做碗面条，你们就高兴得不行。那时的日子真是艰苦而快乐啊。”", "儿子眼眶有些湿润：“我和我爸最爱吃您做的菜。任何一家餐馆也吃不到您做出来的那个味道。”", "老伴沉默不语，像是在默许。", "李奶奶继续说道：“现在我退休了，慢慢学做菜了。这一大桌子菜都是我从网上学来的。虽然你爸病了，可是我知道他爱吃这些菜，像这盘红烧排骨，我现在也常给他做……”", "“妈！您该休息休息了。”儿子有些心疼地说道，“您别老这么辛苦地做菜了，我以后会常回家给您做饭的。”", "李奶奶的眼神黯淡了下来，嘟囔了一句：“好吧，我等你以后回来。”", "屋子里只剩下碗筷碰撞的声音。", "就这样过了几分钟，儿子开口说道：“我想您了，以后肯定会常回家看看的。”", "李奶奶慈爱地说道：“你工作太忙了，要多注意休息。我相信你会回来陪我的。”", "“我爱您。”", "“我们也爱你。”", "李奶奶挂断了视频电话，屋子里一点儿声音也没有了，只剩下饭菜腾腾的热气。", "“老伙计，你盼望儿子回来吗？”李奶奶轻声问道。", "老伴在墙上的照片里看着李奶奶，默不作声。", "这世间存在着一种爱——你虽不在我身边，却是我一生一世的想念，我愿为你奉献一切！", "鞭炮声更加响了，灿烂的烟火把整个天空点缀得更亮了。“老伙计啊……”李奶奶又夹起一块肉，这次是放到了自己碗里。"], "meta": "李瀚林 · 北京师范大学三帆中学朝阳学校", "num": 1, "chars": 750}, {"title": "餐桌前的谈话", "author": "冯致远 · 北京师范大学三帆中学朝阳学校", "paras": ["斑驳的瓦片，泛黄的板砖，屋外的米缸。我回望这陪伴我十余载的故土，心中满是不舍。明天，我将踏上前往陌生城市的旅程，那里将有高楼大厦和无数新奇的事物等待着我，但此刻的我，却对这里的一切充满了眷恋。", "我低头看着手中紧攥的悠悠球，它陪伴了我的整个童年，尽管已经买了很多年，却依然崭新如初，这得益于我的细心呵护。曾经，我凭借着这村里转得最快最久的悠悠球，成了孩子们中的小领袖，它承载了我童年的无数欢乐时光。", "我又抬起右手，手中是刚刚从奶奶柜子里悄悄取出的磁带。这是奶奶最珍爱的磁带，她每个下午都会坐在躺椅上，抱着录音机，听着磁带里咿咿呀呀的戏曲。然而，随着时间的流逝，磁带已经老旧，唱出的戏曲也时断时续。", "我走在乡间的小路上，心中思绪万千。看着悠悠球，不禁想起前两周我还跟奶奶唠叨悠悠球的轴承生锈了，转不快也转不久了，可惜村里没有卖这种悠悠球的。拐过弯，我来到了村里的旧物品回收站，最后看了一眼我的悠悠球，狠下心问：“老板，这个能卖多少钱？”", "出来以后，我攥着手中仅有的二三十块钱，快步走向磁带铺。我想，虽然我可能永远无法理解戏曲的韵味，但奶奶每次听戏时那满足的表情，却深深印在我的心中。我想用这些钱为奶奶买一盘新的磁带，让她能够继续享受她钟爱的戏曲。", "夕阳剩下最后一丝余晖，天边火红火红的，我紧紧攥着新买的磁带，生怕它丢失。终于，我回到了家。", "“孙子，快来吃饭了！”刚推开院门，奶奶那熟悉的声音便传入耳中。", "餐桌上摆满了菜肴，奶奶为我夹了一块肉，温柔地说：“孙子啊，你明天就要走了，要好好学习，不要贪玩。奶奶为你准备了礼物，希望你在外面也能快快乐乐的。”说着，奶奶从口袋中掏出一个小盒子。我打开一看，里面竟然是我梦寐以求的悠悠球，是崭新的！我愣住了，泪水在眼眶中打转。", "看到我这样，奶奶疑惑道：“怎么了，不喜欢吗？”", "我擦了擦鼻子：“没有，奶奶，我真的很喜欢，我只是没想到，我刚把我的旧的悠悠球卖了。”", "“你当宝贝的悠悠球，怎么突然就卖了？”", "“我想给您买个礼物，我想着反正城里肯定还有各种各样的悠悠球。奶奶，不用担心我了，我给您准备了一个惊喜。”", "我掏出了磁带：“奶奶，我给您买了个新的磁带，这里面录的戏就是您最喜欢听的那出，以后您再也不用听断断续续的戏了。”", "奶奶什么也没有说，一把把我搂在怀里。", "“我的孙儿啊，有了你，奶奶就是全天下最幸福的人啦！”", "“奶奶，您快听听吧，肯定跟在现场听一模一样。”我激动地跟奶奶说。", "我们坐在餐桌前，奶奶将磁带放入录音机中，悠扬的戏曲声响起。我虽听不懂戏曲的内容，但能感受到奶奶那满足和幸福的神情。这一刻，我觉得自己是世界上最幸福的人。", "月亮高高地悬挂在空中，院子里洒满了皎洁的月光，我已经忘了后面和奶奶说了什么，只记得吃了人生中最美味的一次晚餐。"], "meta": "冯致远 · 北京师范大学三帆中学朝阳学校", "num": 2, "chars": 1122}, {"title": "餐桌前的谈话", "author": "", "paras": ["我家隔壁是家饭店，开了十几年，生意红火。从早到晚，顾客络绎不绝。", "因为爸妈下班晚，有时做饭来不及，我放学后便经常去这家店吃饭。这里的价钱不见得比别处便宜多少，生意却是这一带最好的，周围的老人都喜欢上这儿来。难道有专攻老年人的生意套路？我观察许久，也没见店里有对老人的“优惠”。", "有一天我刚来店里，便看见一位老人手里捏着一张发皱的五元纸币，颤颤巍巍地走来：“来碗素面。”老板笑吟吟地盛了一大碗面，又舀了几大块牛肉，说：“周叔，今天牛肉面不好卖，剩的多了，倒了也可惜，给您来一点儿吧？”老人一脸惊喜地道谢，端着面走了。老板还不忘扶他一把。一旁的我惊得睁大双眼：这家店牛肉面卖得极好，怎么会剩下？我满腹狐疑。", "几天后，我跟爸爸妈妈一起吃晚饭，忍不住在餐桌前说起这件事。“这是常有的事，我跟老板认识很久了，他人特别善良。”爸爸语气平淡，“有的老人无儿无女，有的子女不孝顺，吃不上饱饭。老板人厚道，能帮的就帮一把。”", "“那生活条件好的老人怎么也常来呢？”", "“应该不为别的，就图个舒服。有不少吃饭的地方，口味好，装修得也漂亮，大转桌红木椅，但是不接地气儿，老年人去了肯定不自在，也不好多待。在咱们家隔壁这家店这儿就不一样了，这里装修简单，但是温馨，老板人又客客气气的。老人约上几个老朋友一坐一上午，喝粥聊天。人老了没处去能在这儿打发时间，就够了。”妈妈微笑着告诉我。", "我听着妈妈的话，端着饭碗，想起上次在店里吃饭看到的情景：老板一边招待客人，一边时不时插上几句：“是吗，白菜又涨价了？”“考上大学了？好呀，大学生好！”平常寡言木讷的老人都健谈了不少，店里笑声一片。我突然意识到，这哪是一个小店，这分明是一个温暖的家。", "此时，饭店老板那瘦小的身形，在我心目中却伟岸起来了。", "“不求名与利，犹恐身心役……阴功暗心修，善行长日积。”是老板那十几年如一日的善意，让这些孤独的老人们有了欢笑和温暖。", "这次餐桌前的谈话，解开了我心中的疑团，也让我知道：一个人小小的善良之举，虽如烛火，但也能给他人带来温暖，也能照亮他人前行的路。"], "meta": "范文三 · 饭店老板的善意", "num": 3, "chars": 843}]}, {"theme": "藏在……里的友情", "prompt": "", "essays": [{"title": "藏在橘香里的友情", "meta": "", "paras": ["指尖轻触，金黄的表皮带着微凉的粗糙感，那是岁月沉淀下的纹理。指甲掐入果皮，“嗤”的一声轻响，清冽的香气瞬间迸发，如雾般弥漫。这熟悉的橘香，是一把钥匙，悄然打开了记忆的闸门，将我拉回那段被阳光浸透的午后时光。", "午后的教室静谧而慵懒。窗外的蝉鸣声嘶力竭，屋内却流淌着一种安宁的暖调。我的同桌是个爱笑的女孩，我们之间有个不成文的约定：每天带一个橘子，分享这份酸甜。", "一个深秋的午后，阳光透过斑驳的树影，在课桌上投下细碎的光斑。我小心翼翼地从书包里掏出那只圆润的橘子，它像个小太阳，温暖了微凉的空气。剥开果皮，嫩黄的橘瓣紧紧相拥，白色的橘络如丝如缕，缠绕着童年的纯真。我将橘瓣一分为二，一半推向她，一半留给自己。", "“干杯！”我们压低声音，举起手中的橘瓣轻轻相碰。那软软的触感，仿佛碰响了心底最清脆的风铃。橘瓣入口，薄皮破裂，汁水在舌尖炸裂，酸甜交织，顺着喉咙滑下，沁人心脾。我们小口咀嚼，细细剔除那些白色的筋络，眼神交汇间，满是无需多言的默契。偶尔抬头，看见老师趴在讲台上小憩，粉笔灰在光束中静静飞舞，空气中弥漫着橘子清香与淡淡书卷气的混合味道。那一刻，时间仿佛凝固，世界只剩下我们两人和这一瓣小小的甜蜜。", "如今，超市里的橘子品种繁多，包装精美，却再也找不回当年那份纯粹的甘甜。原来，香甜的从来不是食物本身，而是那份毫无保留的分享，是那段无忧无虑、有人相伴的时光。橘子易得，知音难寻；果味易散，情谊长存。", "每当秋风起，橘香再次萦绕鼻尖，我总会想起那个午后，想起那张笑脸，想起我们举着橘瓣“干杯”的模样。那不仅仅是一种味觉的记忆，更是一段关于友情、关于成长的温柔注脚。它在岁月的长河中，化作一抹永不褪色的金黄，温暖着我前行的路。", "时光匆匆，我们终将长大，各奔东西。但那份藏在橘子香里的旧时光，如同陈年的酒，愈久愈醇。它提醒我，在忙碌的生活中，别忘了停下脚步，去品味那些简单而真挚的美好，去珍惜身边每一个愿意与你分享“橘子”的人。因为，正是这些微小的瞬间，构成了生命中最动人的风景。"], "num": 1, "chars": 829}, {"title": "藏在桂香里的友情", "meta": "", "paras": ["秋风一过，满城桂花便开了。那香气不浓烈，却密密地、甜甜地漫过来，像一把细小的钥匙，轻轻一转，便打开了记忆深处那扇门。门后，是我和她共度的、浸在桂香里的秋天。", "那时，教室窗外有一排桂花树。每到课间，她总拉着我去树下捡桂花。她叫阿恬，笑起来眼睛弯弯的，像两枚刚剥开的橘瓣。地上铺着细细碎碎的金黄，我们蹲在树根旁，把完整的小花一粒粒收进掌心。她的掌心温热，桂花躺在里面，像一捧碎金。", "“回去做桂花书签。”她小声说，语气像在密谋一件大事。我们把桂花夹进字典，压在厚厚的作业本下。第二天翻开，花瓣薄而透明，香气却留住了。她把其中一页递给我，上面用铅笔写着：“愿你闻见桂花，就想起我。”我笑她矫情，却把那张纸夹进了最喜欢的书里。", "最难忘的是那个午后。她从家里带来一小块桂花糕，用白纸包着，偷偷塞进我抽屉。午托老师趴在讲台上打盹，我们低头分食。糕体松软，桂香清甜，碎屑落在课桌上，像撒了一把小小的星星。她掰下一角，举起来，轻轻碰了碰我手中的那一角：“干杯。”我们不敢笑出声，只把眼睛弯成月牙。窗外蝉声已远，风里全是桂花的甜香。", "后来小学毕业，她去了另一座城市。临别时，她送我一只小小的玻璃瓶，里面装着晒干的桂花。瓶身贴着标签：“别忘了我。”我点头，却说不出话。", "如今，街边桂花年年开，桂花糕也随处可见，包装精致，味道却总像缺了什么。原来，缺的是那个陪我在树下捡花的人，是那段不必言说便彼此懂得的时光。桂香易散，友情长存。每当秋风再起，我总会在桂香里停一停，仿佛一回头，还能看见她举着桂花糕，笑着对我说：“干杯。”"], "num": 2, "chars": 644}, {"title": "藏在薄荷糖里的友情", "meta": "", "paras": ["撕开那层银亮的锡纸，一股清凉的薄荷气便窜了出来，直冲鼻尖。那味道像一道微小的闪电，劈开岁月的幕布，把我带回蝉声轰鸣的夏天。那时，我和薄荷糖，和她，都在。", "她是转学来的，坐在我旁边，总爱在数学课上打瞌睡。老师的声音像催眠曲，她的脑袋一点一点，像小鸡啄米。我悄悄从笔袋里摸出一颗薄荷糖，推过“三八线”。她接过去，剥开，含进嘴里，整个人猛地一激灵。她转头看我，眼睛里有感激，也有狡黠。从那以后，薄荷糖成了我们之间的暗号。", "夏天午后，教室闷热，风扇吱呀转着，吹不散额角的汗。她总会带一盒薄荷糖，铁盒，圆圆的，摇起来哗啦响。下课铃一响，她就打开盒子，自己拿一颗，再递给我一颗。我们含着糖，走到走廊尽头，趴在栏杆上看操场。薄荷的凉意从舌尖漫到喉咙，像一阵小小的风，把困倦和烦躁都吹走了。", "有一次体育课跑完八百米，我瘫在树荫下，喉咙像着了火。她跑过来，蹲下，把一颗薄荷糖塞进我手心。糖纸被她的汗浸得有点潮。她说：“快吃，凉快。”我剥开，放进嘴里，那清凉瞬间炸开，竟比水还解渴。我们肩并肩坐着，看阳光把树叶照得透亮，谁也没说话。", "毕业那天，她送我一个同样的铁盒，里面装满薄荷糖。盒底压着一张纸条：“困了，就吃一颗。别忘了我。”我笑她连告别都带着凉意，却在转身时红了眼眶。", "如今，超市货架上的薄荷糖五花八门，有夹心的、有果味的，包装一个比一个漂亮。可含在嘴里，总觉得不够凉，也不够甜。原来，最好的味道，不是薄荷本身，而是她递来糖时的那份默契，是那个夏天我们共同含过的清凉。薄荷易化，情谊长存。每当困倦时，我仍会剥一颗薄荷糖，让那熟悉的气味，带我回到有她的教室。"], "num": 3, "chars": 666}, {"title": "藏在烤红薯里的友情", "meta": "", "paras": ["冬天的街头，只要闻到那股焦甜的香气，我就走不动路。烤红薯的炉子冒着白烟，红薯皮烤得皱皱的，裂开的地方淌出琥珀色的糖汁。那香气像一把暖烘烘的钥匙，一转，就打开了我小学门口的冬天。", "那时，我和阿禾是形影不离的朋友。放学后，我们总要在校门口那个老爷爷的烤红薯摊前站一会儿。零花钱不多，我们常常合买一个。阿禾把钱数了又数，递过去，接过那个滚烫的红薯，在手里倒来倒去，像捧着一只小刺猬。她掰开，金黄的瓤冒着热气，一人一半。她总把最甜、最软的心儿留给我，说自己喜欢挨着皮的那层。", "我们捧着红薯往家走，风刮得脸生疼，手心却暖乎乎的。咬一口，甜糯绵软，热气从喉咙一路暖到胃里。我们边走边吃，呼出的白气混在一起，分不清谁是谁的。有时她突然停下来，举起手里的红薯，轻轻碰一下我的：“干杯！”我们笑得前仰后合，连路边的枯树都像在跟着摇晃。", "后来，阿禾搬家了。临走前，她跑到我家楼下，塞给我一个烤红薯。红薯还热着，隔着纸袋烫着我的手。她说：“以后冬天，没人跟你分一个了。”我低头咬了一口，甜得发涩。", "如今，我依然会在冬天买烤红薯。摊主问要大的还是小的，我总说，一个。可一个人吃，再甜的瓤也像少了点滋味。我这才明白，烤红薯的暖，不只来自炭火，更来自那个愿意和你分食的人。红薯易凉，友情长存。每当寒风再起，我总会想起那个捧着红薯、笑着喊“干杯”的女孩。她像一团小小的火，藏在我记忆的冬天里，暖我至今。"], "num": 4, "chars": 582}]}, {"theme": "假如", "prompt": "", "essays": [{"title": "假如我变成了一缕月光", "meta": "", "paras": ["假如我变成了一缕月光，只是为了让你的夜晚不那么漫长，悄悄地，我从窗棂的缝隙里溜进来，不惊动你。", "妈妈，你会找我吗？你会说：“孩子，你在哪里呀？”我暗笑着，却不回答你。", "我要轻轻地，轻轻地落在你的枕边，趁你翻身的时候，吻一吻你疲惫的眼角。当你坐在灯下为我缝补那件磨破了袖口的外套，我会调皮地跃上你的针尖，在你的手指间跳着细碎的舞，让那根银针也闪着柔和的光。你一定会惊讶，今晚的灯怎么格外温柔。", "我要爬上你手边那杯渐渐凉去的茶，在杯沿上静静地坐着，看你低头沉思时垂下的发丝。那几根新添的白发，我会用最轻的光去抚摸它们，像小时候你用掌心抚过我的额头。", "当你起身去关窗，我就躲在窗帘的背后，看你望向夜空时，眼里有一片安静的湖。我会让湖面上浮起一层薄薄的银色的雾，像小时候你为我哼过的摇篮曲，软软的，远远的，却又一直都在。", "夜渐渐深了，你终于躺下。我就穿过窗纱，悄悄地，悄悄地覆在你的被子上，像小时候你为我掖好的那角棉被。我要在你的呼吸里，在你的梦里，安静地待上一整夜。", "但是，妈妈，当天边泛起第一丝鱼肚白，我就要变回来。变回那个睡在你身边、会踢被子、会在梦里咕哝着叫你的孩子。你会早早地醒来，看见我毛茸茸的脑袋歪在枕头上，呼吸均匀得像一只小兽。你会笑着叹一口气，伸手替我把被子拉好。", "妈妈，你要是问：“昨晚睡得好吗？”我会揉着眼睛，笑着说：“我梦见自己变成了一缕月光，去看了你好久好久呢。”", "那时你或许会轻轻地刮一下我的鼻子，说一句“傻孩子”。而我心里藏着一个秘密，藏着一整夜的温柔，像月光藏在云朵里那样，甜甜的，满满的，不说给你听。"], "num": 1, "chars": 655}, {"title": "假如我变成了一阵风", "meta": "", "paras": ["假如我变成了一阵风，只是为了让你的夏天不那么燥热，轻轻地，我从半开的窗户外溜进来，不惊动你。", "妈妈，你会找我吗？你会说：“孩子，你在哪里呀？”我偷偷地笑着，却不回答你。", "我要悄悄地，悄悄地绕过你的背后，趁你低头择菜的时候，把你额前汗湿的碎发撩起来。当你坐在院子里那棵槐树下为我织那件过冬的毛衣，我会顽皮地钻进你的毛线团里，把绒线吹得滚来滚去，让你追着它跑两步，又笑着骂一声“这阵风真淘气”。", "我要爬上你晾衣的竹竿，让那些湿漉漉的床单鼓成一面面白帆，在你头顶上飘啊飘。你抬头看的时候，阳光正好穿过我的身体，洒在你微微眯起的眼睛里，碎碎的，暖暖的，像你笑起来时眼角的纹路。", "当你端着簸箕去晒谷场上扬麦子，我就等在谷壳和麦粒分开的地方，轻轻一吹——麦子沉甸甸地落回地面，谷壳却飘向远处的夕阳。你一定会眯着眼说：“今天的风，真懂事啊。”", "黄昏时分，你坐在门槛上纳鞋底。我就穿过整片稻田，带着稻花的香味和青蛙的叫声，扑进你的怀里，像一个放学晚归的孩子。你把手里的针线搁一搁，自言自语：“是不是要下雨了？”可我只是想亲亲你被日头晒红的脸颊。", "夜深了，你摇着蒲扇给我赶蚊子。我就停在蒲扇的边缘，一圈一圈地转，把凉意均匀地送给你。你打着哈欠，渐渐睡去，嘴角还挂着半句话。我便蜷在你的枕头边，做一场没有形状的梦。", "但是，妈妈，当天亮的时候，我又会变回来。变回那个会赖床、会把早饭吃得满脸米粒、会缠着你要两毛钱买冰棍的孩子。", "你推开门，清晨的风吹了你一脸。你会说：“今天风真凉快。”而我坐在饭桌前，嘴里塞满了馒头，含含糊糊地笑。", "妈妈，你不知道，昨晚有一阵风，曾在你耳边说了一整夜“我爱你”。那是我，是我啊。"], "num": 2, "chars": 685}, {"title": "假如我变成了一棵桂花树", "meta": "", "paras": ["假如我变成了一棵桂花树，就长在你每天经过的路口，安安静静地站着，不惊动你。", "妈妈，你会认出我吗？你会说：“这棵树真香啊。”我摇着满枝的花，沙沙地笑，却不回答你。", "秋天来的时候，我把小小的黄花一粒一粒地攒在枝头，攒了满满一树。那是你最喜欢的味道啊。每年桂花开，你都要摘一小捧，用白手帕包着，放在枕边，说梦里都是甜的。", "现在，我就站在你必经的路口。你每天清早去买菜，蓝布衫子从我身边经过。我就把最香的那一枝，轻轻地，轻轻地垂下来，碰一碰你的发梢。", "你一定会停下来，仰起头，眯着眼在花枝间找啊找。阳光透过叶缝，在你脸上洒下细碎的光斑。你伸出手，接住几粒飘落的桂花，放在鼻尖闻了闻，笑得像个小姑娘。那一刻，我多想把所有花瓣都撒下来，撒成一场金色的雨，落在你的肩头、发间、菜篮子里。", "风起的时候，我抖落一地桂花，铺成薄薄的香毯。你从上面走过，脚步轻轻的，像怕踩疼了什么。你哪里知道，我正偷偷地把香气往上送，让它们爬上你的衣襟，缠着你不肯走。", "傍晚你回来，天边烧着晚霞。远远地，你就看见路口那棵桂花树下，满地都是碎金。你说：“今天落了好多花啊。”然后你放下菜篮，蹲下身，一粒一粒地捡。夕阳把你的影子拉得很长，长到我的树根这里。", "我多想弯下腰来，像小时候你抱我那样，抱一抱你。可我只是树啊，我只能让叶子轻轻地响，哗啦啦，哗啦啦，替我说那些说不出口的话。", "你捡了一小捧，用手帕仔细包好，放进口袋。你说：“带回去给丫头闻闻，她最爱这味道。”妈妈，你可知道，你手里捧着的那捧花，就是你那棵会走路的桂花树，喊你回家呢。", "月亮升起来的时候，你关了灯。我就让香气从窗缝里钻进去，萦绕在你的枕边。你翻了个身，在梦里笑了一下。是不是梦到我了呢，妈妈？", "天亮了，我变回来，还是那个睡在你隔壁、头发乱糟糟的孩子。你推开门进来喊我起床，手里还捏着那块白手帕，桂花香散了一屋子。", "你笑着说：“昨晚摘的桂花，香不香？”", "我凑过去闻了闻，使劲点头：“香！是妈妈的味道。”", "你哪里知道，那棵树，就是我啊。"], "num": 3, "chars": 817}]}, {"theme": "那一次，我真……", "prompt": "", "essays": [{"title": "那一次，我真难忘", "author": "张伊 · 北京师范大学三帆中学朝阳学校", "paras": ["人们的品格在时光的沙漏中是不会蒙尘的金。——题记", "阳光透过窗帘洒下斑驳的光影，我注视着窗台上的照片，陷入了回忆。", "那次我和爸爸妈妈一起出游。我们背着行囊，在黄昏时来到一处山脚下。因为错过了直通宾馆的大巴，而我们在的地方离最近的城镇也有百余里，一时间我们束手无策。", "正在着急之际，妈妈看到不远处有个村庄，我们赶过去后，见到一位老人正在张罗着馄饨摊。他那佝偻的身体好似一座俯伏的山丘，大地色的皮肤在村头黄色路灯的照射下现出筋脉的痕迹。虽然满脸的皱纹诉说着他年岁已高的事实，但他那坚实的臂膀却透着一股老当益壮的干劲。他身着白背心，像是刚干完活，额头上有细密的汗珠。他了解到我们的困境，便招呼我们来吃馄饨，并邀请我们到他的家过夜。", "我们各点了一碗馄饨，爸爸刚准备掏钱，他却摆摆手，爽快地说道：“没什么的，几碗馄饨而已，饿的话我再盛几碗。”", "这时，我看到他左小臂被全部截去。我不由得好奇他到底经历了什么，在这么寒冷的秋日，要一个人出来卖馄饨。", "馄饨皮薄馅鲜，入口鲜香无比，热乎的馄饨汤驱走了我们身体里的寒气。吃完馄饨后，爸爸问：“老人家，这么冷的天还出来卖馄饨啊？”老人靠在摊铺前，长舒了一口气，将他的故事娓娓道来。", "他干这行三十多年了。某一日，他蹬着三轮车带他的妻儿去县城的餐馆吃饭，不料半路出了车祸，妻儿抢救无效双双离世。说到这里时，他伸出自己的断臂，眼中划过一丝惆怅：“当时左臂伤得很严重，为了不恶化危及整条胳膊，只能截去了小臂。但我其实不在乎这只手，而是想着……既然我都半条腿迈进棺材了，更要用仅剩的力气为他人做些什么。”", "听着他的诉说，我心中泛起阵阵酸楚，失去了至亲和左小臂的老人，却依旧顽强地活着。", "天彻底黑了，老人带我们回了他家，那是个又矮又小的平屋，他给我们铺好了炕，温暖的炕让我们倍感温馨。", "次日临行之际，我们和老人拍了一张合影。他又往我们每人手里塞了一盒打包好的馄饨，而后目送我们离开。我回头看着老人矮小佝偻的身影，不禁热泪盈眶。", "回家后，我便将这张合影摆在了窗台上。时隔两年，我再次端详这张照片。我想，他大抵已经用勤劳致富，并在继续帮助那些有困难的人。老人没有沉浸在过去的伤痛中，而是勇敢地走向新生。他教会我勇于面对成长中的风雨，不畏艰难，努力取得成功。"], "meta": "张伊 · 北京师范大学三帆中学朝阳学校", "num": 1, "chars": 922}, {"title": "那一次，我真感动", "author": "", "paras": ["公交车是社会的一个小窗口，人们匆匆在此相聚，转眼又各奔东西，一切都平平常常。但有一件发生在公交车上的小事却让我难以忘怀。", "那是去年暑假的一个下午，正值下班高峰期，路上行人如织。公交车上，人声嘈杂，我不由得抱怨着：“这个时间段车上的人可真够多的。”", "到了一个站点，车门刚一打开，一个抱孩子的年轻妈妈就被人们挤进了车厢，踉跄着站到了我和另一个男孩的座位旁边。我本想站起来让座，可又想到站着的难受滋味，于是就把脸扭向窗外。而坐在我旁边的那个男孩，却在这时碰了碰我，微笑着对我说：“往里面挪一下，好吗？”我不满地瞥了他一眼，心想：“你又不起来让出座位，你想干吗？”", "那位年轻妈妈抱着胖乎乎的小孩，不方便抓车厢顶上的拉环，只能抓着座椅靠背，费力地稳住身子。就在我犹豫之际，身边的男孩突然伸出瘦瘦的双手，向那位年轻的妈妈说：“阿姨，我帮您抱着孩子吧！”我在心里暗笑：“真虚伪，把座位让出来不就得了？”那位年轻妈妈笑了笑，没说什么。男孩有点尴尬地收回了手。真是自讨没趣。", "过了一会儿，男孩再次伸出了双手，说：“阿姨，我帮您抱孩子吧！”那位年轻妈妈又冲他笑了笑，说：“不用了，谢谢你。”又过了一会儿，男孩终于扶着椅背站起身来，说：“来，阿姨，您坐这儿吧。”“不用了，不用了。”“没关系的，坐下吧。”说着，男孩硬是把抱小孩的年轻妈妈让到座位上，然后用手指轻刮了一下孩子的鼻尖，冲着孩子做了一个鬼脸，把孩子逗得咯咯笑。", "我暂时松了一口气，心里却越来越难受，虽然坐着，但裤子贴到了腿上，很不舒服，第一次体会到坐着比站着还难受的滋味。终于到站了，我站起来走到男孩旁边，准备逃离这个刺到我良心的地方。忽然，公交车猛地一颠簸，我没站稳，一脚踩在那男孩的脚上。我连忙向他道歉，可他竟没反应，有点茫然地看着我。我暗自纳闷：“这人真怪！”", "车停稳了，人们蜂拥而下，男孩缓缓地挪向车门。我忍不住又看了他一眼，突然发现他的一条腿直直地朝前挪动着，还发出了轻微的金属响声。我愣住了：“他，他原来是装着假肢的残疾人啊！”", "下车后，我目送男孩远去，觉得脸上热辣辣的，心里涌起的却是一股暖流……"], "meta": "", "num": 2, "chars": 867}, {"title": "那一次，我真明白了", "author": "", "paras": ["正是因为有千万绿色的无私奉献，那红色才显得如此娇美。——题记", "“你们两个换一下吧。”那个星期天，二胡老师正为乐团比赛排位置，我被调到了首席座位的旁边，而他却坐在了首席。在这个班，我们明明是一起训练的，我的技巧也不比他差，为什么首席的位置不是我？凭什么让我给他当陪衬？看着他嘴角露出的笑容，我心中愤愤不平。", "训练还没结束，我便独自离开了。走在回家的路上，刺眼的阳光毫不留情地烘烤着大地，似乎在以热浪嘲讽着我的遭遇。耐不住这炎热，我走到树荫下歇脚。伞状的树冠遮住了太阳，为大地赢得一片阴凉。在这树荫下，天不再是那样的炎热，微风轻拂，让我感到一丝惬意。不经意抬头，繁茂的绿色映入我的眼帘。", "是翠绿的叶子。它们随着风飒飒作响，无休无止地摇曳着，仿佛在向我大声诉说着自己的命运：我们从出生起便附着在这棵大树的枝枝杈杈上，用尽自己的一生，接受着每一份阳光，制造着每一份营养，为大树成长和花朵绽放默默地奉献出自己的力量。红色花朵在绿叶映衬下显得更加娇美，大树在绿色叶片的装饰下也显得格外挺拔。骄阳下的行人都愿意躲到树下纳凉，躲过烈阳的炙烤，在绿叶营造的阴凉环境下欣赏红花的娇艳。", "看着看着，我顿悟了！", "在乐团中，数种乐器相互配合，才能合奏出和谐的乐章。正如同树干、红花与绿叶相互配合，才会有这样繁茂的景象。坐不坐在首席位上有什么重要的呢？一场成功的表演，首席固然重要，但每一个参与者，不正像绿叶之于大树，又怎能缺得了呢？", "想到这里，我没有一丝犹豫，快步走出了阴凉，转身又朝着训练基地跑去。嫉妒与不满早已被我抛在脑后，心中只剩下一个想法：我要履行好自己“绿叶”的职责！", "接下来的训练很辛苦，但也很欢乐。我知道，我是一枚小小的“绿叶”，正是你付出，我付出，我们才会奏响一曲曲打动人心的乐章。"], "meta": "", "num": 3, "chars": 729}]}, {"theme": "难忘的成长经历", "prompt": "", "essays": [{"title": "花开不如期", "author": "陶宸熠 · 北京大学附属中学", "paras": ["八月到了，桂花没有开。", "我徘徊在院子门口，在桂花树的叶片间寻找着米黄色的花苞，想象着它能在一夜之间爆出满树的芬芳。然而，今年的桂花树让我失望了。那密密的绿叶间点缀着一些不显眼的花苞，似乎失去了盛放的勇气。发生了什么呢？", "回忆翻滚——", "春光来临的时候，桂花树像往年一样冒出新芽，然后在时光里摇身一变，让满树的绿意和盛夏撞了个满怀。我满心期待，内心充满无限憧憬。如今，眼前的桂花树却像个还未开战就败下阵来的士兵，空有一身绿色的皮囊。", "“桂花不会开了。”“也许只是时候未到吧。”“往年的八月，它不都准时开吗？”“再等等，总会开的。”", "这几乎成了我和妈妈每一天的“固定台词”。开或者不开，我们各自坚持着自己的判断。一周过去了，桂花没有动静；半个月过去了，桂花依然没有开放……看着它的模样，我不禁想起了自己：渴望在学习上能“春风得意马蹄疾”，期盼成绩能“扶摇直上九万里”，而新学期开始我的成绩却依然平平……这棵桂花树，不正是我当下的写照吗？", "中秋夜，月光如洁白的水袖覆在门前的桂花树上，映出了一地青黛的影子。突然，我的鼻尖捕捉到了一丝淡淡的桂花香。我起先疑惑，旋而惊喜，桂花！我赶紧用眼睛在绿叶间搜寻，果然，在一个不起眼的枝头上，我发现了最先开放的几朵桂花。它们小巧的样子惹人怜爱，我为自己早些时候的怀疑而感到满心愧疚。我轻轻凑近它们，摘下一朵放在手心，细细嗅着，那淡淡的香气从鼻尖流淌到心尖。这迟来的桂花是想告诉我什么吗？", "我心神一荡：也许，花开不如期，但美好终将到达。花如此，人亦然。我何必因为当下的平凡而自我怀疑呢？我相信，只要面朝希望的大海，终会有梦想的花开！花开虽不如期，但梦想不会失约——这才是真正的少年心啊！"], "meta": "陶宸熠 · 北京大学附属中学", "num": 1, "chars": 699}, {"title": "一路阳光一路情", "author": "", "paras": ["蓦然回首，才发现，原来我寻找的阳光一直照在我身上……——题记", "“要你管？烦不烦啊！”一脸不耐烦的我“砰”的一声摔上了房门，把妈妈关在屋外。", "发泄过后，我顿时失去了力气，靠着门滑坐到地上，泪水一颗一颗滑落。我是怎么了？我问自己。屋子里静悄悄的，没有人回答，只有几尾病恹恹的鱼在鱼缸里无力地摆动着尾巴。", "看着它们，白天发生的事浮上心头……", "我和我最好的朋友吵架了。前几天我借给她几本书，今天她却把涂得乱七八糟的书还给了我。我问她怎么回事，她说她小表弟画的，不关她的事……就这样，我们吵了起来。", "闷闷不乐的我拖着沉重的脚步推开了家门。妈妈看见我，很自然地接过我的书包，关切地问我：“上了一天学，累不累？”本来温暖的话语却让我感到一阵烦躁，我转过身来大声吼她：“要你管？烦不烦啊！”看着妈妈意外的表情，我突然有些内疚。为了掩饰内心的慌乱，我摔上了房门……", "刚摔上房门，我就后悔了：我怎么能这样对待生我养我的妈妈？怎么能把怒气发泄在她身上呢？我劝自己：下一秒就去道歉。可是，眼看着时间一分一秒过去了，我还是开不了口……", "一夜无眠。", "优美的钢琴声响起，在这个寂静的早晨显得有些突兀。睡眼惺忪的我按停了还在响的闹钟，音乐顿时停止了。一阵香气适时地传来，一缕阳光透过窗帘的缝隙射进了房间，床头柜上放着一杯热气腾腾的牛奶，旁边还有一张便利贴：“不管昨天发生了什么不开心的事情，都忘记它吧。希望今天的你是快乐的！——爱你的妈妈。”", "看着那仿佛还带着温度的字迹，我的眼睛湿润了……不知从什么时候起，我变得这么爱哭了……我迫不及待地打开房门，对着妈妈的背影喊道：“妈妈，我会的！”", "何必苦苦寻觅阳光？在我们成长的道路上，父母的关爱就像阳光一样，一路陪伴，一路呵护，一直暖暖地照在我们身上！"], "meta": "", "num": 2, "chars": 722}, {"title": "让我试一试", "author": "", "paras": ["“岱宗夫如何？齐鲁青未了。”琅琅的书声随风飘向窗外，也激荡起了我内心的波澜，诗歌里泰山的巍峨挺拔和秀丽编织出我对它的憧憬。", "“妈，带我去泰山好不好？我好想爬泰山啊……”我抓着妈妈的衣服不断地央求道。“泰山太高了，你还太小，等你长大再爬，好不好？”妈妈蹲下身试图劝服我。“您让我试试好不好？”不知怎的，我好像有一份执念。在我的央求下，妈妈终于答应了，于是我站在了泰山脚下。", "我抬头向上看去，泰山只是静静地与我对望。在我眼中，泰山不孤傲，也不是生人勿近的样子，而是像一位整装的将军屹立在此，欢迎着我的到来。依旧是那身绿铠甲，依旧是那条云腰带。我迫不及待地向上爬去，期待这位“将军”带我领略他的“造化钟神秀”。", "没过多久，我感受到了“将军”的威严。疲惫替代了激动，我重重地喘着粗气，速度越来越慢，脚底板的疼痛越来越强烈。妈妈看出我体力不支了：“要不我们坐个缆车？”我咬牙：“您让我试一试。”或许是对巍峨泰山的尊重，又或许是给自己的挑战，抱着那一份执念，我选择继续攀登。", "山太高了，劳累和疼痛拉扯着我的理智，放弃的念头像气球一样不断膨胀。看着依旧不见尽头的阶梯，我头上的汗珠不断滴落，回头望着走过的阶梯，又何尝不是不见尽头呢？雨果说过：“所谓活着的人，就是不断挑战的人，不断攀登命运峻峰的人。”看到妈妈担忧的眼神，我挤出了一个微笑：“让我试一试，我可以的！”", "我试着调整呼吸，尽量找到适合自己的速度，看着越来越多的岩石露出来，我知道“将军”在向我敞开心扉。停留休息的频率不断增加，身边的景物来了又去，但我未曾放弃，依旧选择向上。", "我拖着精疲力竭的身体登上山顶，心中满满的自豪。这份成就感成了恢复体力最好的良药。“将军”教给我尝试和坚持的意义，但我知道，我学会的远不止这些。", "眺望远方，是“会当凌绝顶，一览众山小”的气魄；注重脚下，是“纸上得来终觉浅，绝知此事要躬行”的顿悟。"], "meta": "", "num": 3, "chars": 776}]}, {"theme": "难忘师恩", "prompt": "", "essays": [{"title": "难忘师恩", "meta": "范文一 · 数学老师的温水", "paras": ["记忆如缓缓奔流的长河，许多往事都随流水渐渐消散，可那个冬日里一杯温水的暖意，却始终镌刻心底。每当朔风再起，我总会忆起我的数学老师，忆起那轻轻落在桌角，漫溢开来的融融温情。师恩浩荡，念念难忘。它没有轰轰烈烈的模样，却温柔熨帖了我少年时代沉默困顿的时光。", "那年深冬，我的数学成绩节节败退，接连两次小测都未能及格。试卷下发，满眼刺目的红叉，我羞愧地埋着头，下课便刻意躲避老师的目光。数学老师察觉到我的状态，轻声问我是不是课程听得吃力。我嗫嚅着，坦言自己渐渐跟不上课堂节奏。她只是静静颔首，没有过多苛责。", "一日正午，同学们纷纷奔赴食堂，唯有我伏在课桌前订正错题。耳畔传来极轻的响动，一杯氤氲着热气的温水，悄然搁在了我的桌角。抬眼望去，是数学老师，杯边压着一张素白便签。娟秀的字迹落在纸上：“不必畏惧错题，一步一道慢慢攻克，先喝口热水暖暖身子。——数学老师”", "水温刚刚好，温润入喉。我双手捧着玻璃杯，鼻尖蓦然泛起酸涩。自那以后，桌角时常会如期出现一杯温水。便签上的字句简短真挚，有时提醒我钻研课上的难题，叫我不懂便去办公室询问；有时留意到我咳嗽，叮嘱我多多饮水。我渐渐鼓起勇气，频繁去往办公室请教问题。她总是耐心演算，草稿纸上写满细密的推导，讲完后眉眼含笑：“你看，这不就豁然开朗了。”", "三周后的小测，我终于跨过及格线。班级宣读进步名单时，她的眼眸弯成一弯柔和的月牙。放学之后，我快步上前向她道谢，她轻轻拍了拍我的肩膀：“我始终相信，你只是需要一点时间沉淀。”", "时至今日，我总习惯在书桌摆放一杯温水。袅袅水汽升腾间，老师便签上的句句叮咛便浮现在脑海。难忘师恩，难忘那一杯温水无声的守护。原来最真挚的关怀，往往无需千言万语，便足以驱散漫漫长冬的寒凉。"], "num": 1, "chars": 714}, {"title": "难忘师恩", "meta": "范文二 · 语文老师的包子", "paras": ["岁月好似一缕掠过耳畔的清风，吹散无数细碎过往，可记忆里那一缕烧饼的香气，却久久不曾消散。每每路过语文办公室，我便会想起我的语文老师，想起他揣在包里温热的包子。师恩藏于烟火，质朴动人，如同一份干粮，不仅慰藉了我的饥腹，更丰盈了少年求知的心灵。", "语文老师年逾四十，冬日里常穿着一件洗得朴素的黑色羽绒服。步入初中，我的文言文功底薄弱，选择题屡屡出错，阅读作答也总是抓不住核心要点。老师将我唤至办公室，抽屉中取出一张褶皱的复习提纲，语气温和安稳：“不要焦虑，每天午休我抽半小时帮你梳理答题思路。”", "起初我只当是一句宽慰。可次日正午，用过午饭，他便端着茶杯如约而至。压低嗓音讲解文言实词，拆解阅读寻找中心句的技巧，生怕高声言语惊扰午休休憩的同学。讲到中途，他忽然停顿，从帆布包里拿出一个包子：“这是今早剩下的，要是没吃饱，就垫垫肚子。”我连忙摆手说已经吃过，他依旧把包子推到我的面前：“多少吃些，正是长身体的时候。”那是青椒鸡蛋馅的包子，已经微微发凉。我小口咬下，他露出浅浅笑意：“吃饱，才有心力钻研学业。”", "为期七天的补习，他每日都会带上一个包子，有时是香甜豆沙，有时是鲜香荠菜。最后一堂辅导结束，他掸去掌心沾染的粉笔灰：“知识点的思路已经理顺，余下便靠你多加温习。”后来的考试，我的语文取得年级第三的成绩。我兴冲冲跑去找他，依旧是那件旧羽绒服，他正蹲在花坛边拔除杂草。我告知喜讯，他只是淡淡摆手：“不错，往后也要勤勉不懈。”没有盛大的褒奖，如同解完一道习题，平淡自然地收尾。", "可我深深懂得，这份情谊恰似那微凉的包子，纵然褪去热度，余香绵长。难忘师恩，难忘午休时分压低的嗓音，与那递来的烟火暖意。真正的善意从不大肆宣扬，却会在岁月长河里，岁岁留香。"], "num": 2, "chars": 716}, {"title": "难忘师恩", "meta": "范文三 · 数学老师的红伞", "paras": ["每逢秋雨淅沥，我的脑海总会浮现那一把红色折叠伞。伞柄上一小块胶布，好似一枚温暖的印记，深深烙印在我初二的那个秋天。师恩无声，不必惊天动地，就像一柄雨伞，为我遮挡住青春路上阵阵凄冷风雨。", "那场突如其来的秋雨，我至今记忆犹新。初二秋日，大雨猝不及防倾盆而下。放学铃响起，窗外雨幕茫茫。我未曾备伞，伫立在教学楼门口一筹莫展。回家骑车需要二十分钟，若是冒雨前行，必定会染上风寒。正当我打算冲进雨幕，后领忽然被轻轻拉住。是数学老师，手中撑着一柄蓝色长柄雨伞，另一手递来那把红色折叠伞：“拿去用，明天记得归还就好。”", "我接过雨伞匆匆离去，仓促间连一句感谢都未曾说出口。翌日归还雨伞，我才留意到伞柄贴着一块胶布，圆珠笔写下一行小字：“雨天路滑，骑车务必慢行。”字迹小巧，恰似她平日里作业本上写下的批注。往后的雨天，我又两次借过这把红伞。最后一次归还，她正埋首伏案批改试卷，头也未抬：“放桌边就可以。”我转身准备离开，目光不经意落在她的脚上，雨靴沾满斑驳泥泞。原来，她将红伞借予我，自己却冒着风雨骑行回家。", "我怔在办公室门口。她抬眸望见我诧异的模样，疑惑发问。我酝酿许久，哽咽开口：“老师，往后雨天，您该把伞留给自己。”她莞尔一笑：“我淋些雨无妨，可你们孩子千万不能着凉。”那日，我将那把红伞仔细叠放整齐，安放在她的办公桌，底下压着一张纸条：“谢谢您曾为我挡过风雨，甘愿自己淋雨。”", "我不知道她是否读完那行文字，但那抹鲜亮的红色，永远珍藏在我的心底，如同一小片晴朗晴空。难忘师恩，难忘那把红伞，还有伞柄之上简短恳切的叮嘱。世间有一种温暖，是有人甘愿自己经受风雨，却笑着告诉你，他一切安好。"], "num": 3, "chars": 682}]}, {"theme": "亲情绵延", "prompt": "", "essays": [{"title": "粥香绵长，亲情未央", "meta": "", "paras": ["真正的亲情，从不在轰轰烈烈的表达里，而藏在日复一日细碎的陪伴中，沉淀成岁月里最温柔的暖意。", "清晨的天光还未完全穿透窗帘，整座城市尚陷在沉睡的静谧里，我家的厨房早已亮起一盏温柔的暖灯。那是奶奶又早早起身，为我熬一锅温热的小米粥。寒冬的清晨格外清冷，玻璃窗凝着薄薄的雾气，风从窗缝悄悄钻进屋子，带着刺骨的凉意。可灶台边，永远是温暖安稳的模样。", "奶奶佝偻着微微弯曲的脊背，站在灶台前，一手扶着锅沿，一手轻轻搅动锅中翻滚的米粥。银白色的发丝随意贴在额角，被氤氲的水汽濡湿，几缕碎发垂在眼前，她却顾不上整理。柴火温柔地跳动，锅里的米粒慢慢舒展、软糯，淡淡的米香一点点漫满整个房间，驱散了清晨所有的寒凉。", "我常常披着外套站在门口静静看着她。她的动作缓慢却娴熟，反复搅动，怕锅底糊掉，怕粥不够绵软，怕我入口不够温热。十几年如一日，无论寒冬酷暑，无论我上学早起或是疲惫低落，清晨的一碗热粥，永远准时等候在餐桌。她从不说挂念，从不讲深情的话语，却把所有的疼爱，都熬进了细细密密的粥粒里。", "每当捧起温热的白瓷碗，温热顺着指尖蔓延到心底。软糯的米粥入口清甜，熨帖了晨起的困倦，抚平了学习的焦躁。一碗简简单单的米粥，没有昂贵的滋味，却藏着世间最纯粹、最绵长的爱意。", "烟火寻常，粥香岁岁。平凡的朝夕里藏着最动人的亲情，温暖我的成长，温柔我的岁岁年年。"], "num": 1, "chars": 557}, {"title": "雨伞微倾，爱意满盈", "meta": "", "paras": ["亲情是藏在细微举动里的温柔，无需言说，却在风雨时刻，为我撑起一片永远晴朗的天地。", "深秋的午后，天色骤变。原本晴朗的天空瞬间被乌云遮蔽，狂风呼啸而过，树叶簌簌作响，细密的雨丝骤然坠落，转眼化作倾盆大雨。放学铃声响起，我站在教学楼门口，望着漫天雨幕满心焦灼。就在我不知所措时，人群尽头，我看见了撑伞等候的母亲。", "她站在风雨里，衣角被风吹得翻飞，眼神却始终紧紧望着教学楼的方向，在涌动的人群中，一眼锁定了我的身影。我快步冲进雨里，扑到伞下，母亲立刻将我揽在身侧，轻声问我冷不冷。", "并肩走在回家的路上，雨声淅沥，敲打伞面，发出细碎的声响。我无意间抬头，忽然发现头顶的雨伞始终稳稳向我这边倾斜。母亲的大半肩头暴露在风雨中，深色的外套早已被雨水浸透，贴在单薄的背上，发丝湿漉漉地贴在脸颊，微凉的雨水顺着发梢缓缓滑落。", "我心头骤然一酸，伸手轻轻摆正伞柄：“妈妈，伞歪了。”母亲却笑着轻轻推回去，语气温柔又坚定：“我没事，别淋着你。”短短的一句话，温柔地撞进心底。风雨再大，有她偏过来的伞，我便永远安稳无忧。", "漫漫归途，雨声未歇，倾斜的雨伞，遮住了所有风雨，留住了全部温柔。原来母爱从不是轰轰烈烈的奉献，只是一次次下意识的偏爱与守护。", "一伞微倾，藏尽深情。这无声的亲情，是岁月里最安稳的庇护，永远温暖明亮。"], "num": 2, "chars": 539}, {"title": "掌纹温热，父爱无声", "meta": "", "paras": ["世间最深沉的亲情，往往沉默无言。父亲笨拙温柔的守护，藏在粗糙的掌纹里，温暖我一路成长。", "我的父亲向来不善言辞，他从不会温柔絮叨，很少直白表达牵挂，却总在我需要的时候，默默撑起一片安稳的天地。上个周末，书桌的木质抽屉突然卡住，死死闭合，无论我如何用力推拉，始终纹丝不动。急躁之下，我满脸烦闷，忍不住轻轻叹气。", "父亲听见动静，默默走了过来。他没有责备我的毛躁，只是轻轻抬手示意我让开。他微微蹲下身子，宽厚的背影挡在灯光前，专注地打量着卡住的抽屉缝隙。常年劳作的手掌粗糙厚重，指腹布满细碎的薄茧，那是岁月和辛劳留下的痕迹。", "他小心翼翼捏住抽屉边缘，轻轻试探、微调力度，一点点调整错位的木板，动作轻柔又耐心。他屏住呼吸，慢慢推拉、调试，反复确认缝隙的位置。原本顽固卡死的抽屉，在他耐心的修整下，一点点恢复顺畅。", "修好的那一刻，他轻轻推拉两下确认无误，然后抬手，用粗糙的指尖轻轻拂去桌沿的浮尘，侧过头看向我，眼底是朴素又温柔的安心。他没有多说什么，只低声一句：“遇事别急，慢慢来。”", "简简单单的一句话，没有华丽的辞藻，却瞬间抚平了我所有的焦躁。掌心残留的温热，透过空气传递过来，安稳又踏实。原来父爱从不用言语修饰，所有的牵挂、包容与守护，都藏在默默付出的细节里。", "父爱无言，温情有度。朴素的掌纹藏着最动人的亲情，成为我成长路上最坚定的力量。"], "num": 3, "chars": 559}]}, {"theme": "往事依依", "prompt": "", "essays": [{"title": "往事依依", "meta": "范文一 · 写祖父与《溪岸图》", "paras": ["年华似流水。十几年过去，不少事情已经模糊，有的搜索枯肠而不可得，但有几件与读书有关的往事，仍历历在目，至今记忆犹新。", "小时候，我住在祖父的老屋里。堂屋墙上挂着一幅《溪岸图》，据说是祖父年轻时从旧书摊上淘来的。这只是一幅普通的山水画，清晨看到，傍晚看到，一天少说看三四次，竟百看不厌。有时凝视久了，自己也仿佛走进了画中——群山莽莽，溪水潺潺，山脚下几间茅屋，篱笆外一树杏花开得正盛。“千里莺啼绿映红，水村山郭酒旗风”，画中那面斜挑的酒旗，仿佛正在风中猎猎作响。入了神，自然乐在其中。祖父的书架上还有一部线装《宋词选》，一翻开，就被那些长短句勾住了魂。“大江东去，浪淘尽，千古风流人物”，我仿佛看见浩浩江面上一个青衫身影迎风而立；“昨夜西风凋碧树，独上高楼，望尽天涯路”，又好像自己正站在一座孤楼上，天高地远，满目苍凉。那时读宋词，会不知不觉把眼前的一切都染上了词的颜色。以后年岁增长，也曾重读《宋词选》，虽然理解比小时候深入，但那种初读时“山奔海立”般的震撼，却再也找不回来了。后来才懂得，这就是形象思维的作用，生动的形象可以形成深刻的记忆。", "学生时代的生活乐趣，很大程度也来自读书。书，给我以广阔的天地，而其中编织我少年美丽的生活花环的，竟是那一本翻得卷了边的《古文观止》。", "老师入情入理的讲课，也在我心上雕镂下深刻的印象。语文老师教古文喜欢大声吟诵。记得一次教范仲淹的《岳阳楼记》，老师吟到“先天下之忧而忧，后天下之乐而乐”时，声音陡然拔高，双目炯炯，仿佛范公就站在讲台之上。此后我每次读到这两句，耳畔就响起老师那苍劲的吟诵声，一股浩然之气油然而生。", "老师常对我们说：“多读书，读好书，能丰富知识，增添智慧，成为一个志趣高尚的人。”谆谆教诲铭刻在心，使我一生受用不尽。往事依依，那些与书相伴的日子，唤起我对知识的渴望，催我不断奋进。"], "num": 1, "chars": 763}, {"title": "往事依依", "meta": "范文二 · 写外婆与老纺车", "paras": ["年华似流水。十几年过去，不少事情已经模糊，有的搜索枯肠而不可得，但有几件与外婆有关的往事，仍历历在目，至今记忆犹新。", "小时候，外婆家有一架老纺车。枣木的架子，铜制的锭子，外婆摇起来，“嗡嗡嗡嗡”，像一只老蜂在耳边哼唱。这只是一架普通的纺车，清晨摇，傍晚摇，一天少说摇两个时辰，我竟百听不厌。有时趴在炕沿看久了，自己也仿佛融进了那团棉絮里，跟着纺锤一圈圈转，“唧唧复唧唧，木兰当户织”，仿佛看见了木兰当窗理云鬓的模样。入了神，自然乐在其中。外婆的笸箩里还有一本夹鞋样的《千家诗》，封面早已磨没了，里面的纸被剪得七零八落，可残留的诗句却像种子一样落进了我心里。“春眠不觉晓，处处闻啼鸟”，是外婆家后院杏树上麻雀的叽叽喳喳；“小荷才露尖尖角，早有蜻蜓立上头”，是村口池塘里夏天的模样。那时听外婆念诗，会不知不觉把整个院子都装进了诗里。以后回到城里读书，也曾重读《千家诗》，虽然理解比小时候深入，但那种诗句与泥土、炊烟融在一起的温润，却再也找不回来了。后来才懂得，那是生活与文字在童年里最美的相遇。", "中学时代的生活乐趣，很大程度也来自读书。书，给我以广阔的天地，而其中编织我少年美丽的生活花环的，竟是那本从旧书摊上淘来的《边城》。", "老师入情入理的讲课，也在我心上雕镂下深刻的印象。语文老师曾讲过一句让我记到今天的话：“文字是有温度的。你写风，风就吹在读者脸上；你写雨，雨就落在读者肩上。”此后我写作文，总想着要让自己笔下的字有温度、有呼吸。", "老师常对我们说：“多读书，读好书，能丰富知识，增添智慧，成为一个志趣高尚的人。”谆谆教诲铭刻在心，使我一生受用不尽。往事依依，那些与外婆和书相伴的时光，唤起我对生活的热爱，催我不断奋进。"], "num": 2, "chars": 706}, {"title": "往事依依", "meta": "范文三 · 写父亲与《傅雷家书》", "paras": ["年华似流水。十几年过去，不少事情已经模糊，有的搜索枯肠而不可得，但有几件与父亲有关的往事，仍历历在目，至今记忆犹新。", "小时候，父亲的书桌抽屉里锁着一本《傅雷家书》。这只是一本普通的书信集，父亲难得打开，可我总见他把钥匙小心翼翼地挂在腰间。一次趁他不在，我偷偷翻出来，就着窗外透进的阳光读了几页。“先做人，次为艺术家，再为音乐家，终为钢琴家”，这句话我半懂不懂，却莫名记在了心里。入了神，自然乐在其中。父亲的床头还放着一本翻旧了的《唐诗选》，每晚睡前他都要读上两页。有时我半夜醒来，还见他倚在床头，“星垂平野阔，月涌大江流”，他读得极慢，仿佛每一个字都要在舌尖上滚过才肯放出来。那声音在静夜里格外清晰，像溪水漫过卵石，像月光铺满大地。以后年龄增长，也曾重读《傅雷家书》，虽然理解比小时候深入，但那种偷偷翻书时心怦怦直跳的紧张与惊喜，却再也找不回来了。后来才懂得，那是一个少年第一次窥见父辈精神世界的悸动，而那份悸动本身，就是最深刻的记忆。", "学生时代的生活乐趣，很大程度也来自读书。书，给我以广阔的天地，而其中编织我少年美丽的生活花环的，竟是那本从父亲抽屉里“偷”来的《傅雷家书》。", "老师入情入理的讲课，也在我心上雕镂下深刻的印象。语文老师教鲁迅的《从百草园到三味书屋》时，忽然放下课本，讲起自己童年捉蟋蟀的趣事，讲着讲着，班上几个男生的眼睛都亮了。那一刻我明白了：好的文字，能唤醒每个人心里的百草园。", "老师常对我们说：“多读书，读好书，能丰富知识，增添智慧，成为一个志趣高尚的人。”谆谆教诲铭刻在心，使我一生受用不尽。往事依依，那些与父亲和书相伴的岁月，唤起我对成长的思索，催我不断奋进。"], "num": 3, "chars": 689}, {"title": "往事依依", "meta": "范文四 · 写老槐树下拾得《诗经》", "paras": ["年华似流水。十几年过去，不少事情已经模糊，有的搜索枯肠而不可得，但有几件与老槐树有关的往事，仍历历在目，至今记忆犹新。", "小时候，巷口有一棵要三个孩子才能合抱的老槐树。这只是一棵普通的树，春天看它抽芽，夏天看它浓荫，秋天看它落叶，一天少说路过三四次，竟百看不厌。有时坐在树下发呆，自己也仿佛生了根、长了叶，和它一起呼吸，“绿树村边合，青山郭外斜”，竟品出了几分田园诗的意境。入了神，自然乐在其中。树下的石凳上，常有人留下一两本翻旧的杂志或小人书。有一回我拾到一本《诗经》，封面早没了，前几页也残缺不全，可“蒹葭苍苍，白露为霜”那几行字还在。我坐在石凳上，就着槐叶间漏下的光斑读了一遍又一遍，仿佛看见一条白雾茫茫的河，河对岸站着一个人，怎么也走不到他身边。那种朦朦胧胧的惆怅，至今说不清道不明，却深深印在了心里。以后年岁增长，也曾重读《诗经》全文，虽然理解比小时候深入，但那种初读时如坠云雾、似懂非懂的朦胧美感，却再也找不回来了。后来才懂得，有些文字不需要全懂，那种“在水一方”的怅惘本身，就是最动人的启蒙。", "中学时代的生活乐趣，很大程度也来自读书。书，给我以广阔的天地，而其中编织我少年美丽的生活花环的，竟是那本在树下拾到的、残缺的《诗经》。", "老师入情入理的讲课，也在我心上雕镂下深刻的印象。语文老师讲《蒹葭》那一课，没有分析段落大意，只让我们全班轻声吟诵。几十个少年的声音叠在一起，像风吹过芦苇，像露水滑过草叶。那堂课结束时，窗外正好起了雾，老师指着窗外说：“看，那就是‘在水一方’。”", "老师常对我们说：“多读书，读好书，能丰富知识，增添智慧，成为一个志趣高尚的人。”谆谆教诲铭刻在心，使我一生受用不尽。往事依依，那棵老槐树和树下读诗的日子，唤起我对美的追寻，催我不断奋进。"], "num": 4, "chars": 733}, {"title": "往事依依", "meta": "范文五 · 写巷口修鞋声与《牡丹亭》", "paras": ["年华似流水。十几年过去，不少事情已经模糊，有的搜索枯肠而不可得，但有几件与“声音”有关的往事，仍历历在目，至今记忆犹新。", "小时候，我家住在一条临街的老巷里。巷子里有一位修鞋的老人，每天清晨，他“笃笃笃”的敲鞋掌声便准时响起。这只是一个普通的声音，天晴响，天阴也响，一天少说听几十下，竟百听不厌。有时躺在床上听久了，自己也仿佛变成了一枚鞋掌，被那“笃笃”声一下一下敲进鞋底，踏踏实实地落在土地上。“长安一片月，万户捣衣声”，我虽没见过捣衣，却觉得那“笃笃”声和诗里的声音一样，都是寻常日子里最安稳的节拍。入了神，自然乐在其中。老人的修鞋摊旁，还常放着一台小收音机，咿咿呀呀地唱戏。有一回放的是《牡丹亭》，“良辰美景奈何天，赏心乐事谁家院”，我一个字也听不懂，却被那婉转的腔调勾住了，站在摊前听了整整一下午。以后年岁增长，也曾再听《牡丹亭》，虽然唱词全懂了，但那种囫囵吞枣却如痴如醉的专注，却再也找不回来了。后来才懂得，那是对声音本身最纯粹的迷恋，比听懂更重要。", "中学时代的生活乐趣，很大程度也来自“听”。广播里的评书、电视里的诗词大会、老师讲台上的吟诵，都是我的“书”。而其中最令我沉醉的，竟是语文课上老师用方言念《将进酒》时那种“黄河之水天上来”的气势。", "老师入情入理的讲课，也在我心上雕镂下深刻的印象。语文老师有一次用方言朗诵《将进酒》，念到“君不见高堂明镜悲白发”时，声音忽然低下去，像一滴墨落入深水。全班鸦雀无声，窗外的蝉鸣那一刻格外清晰。", "老师常对我们说：“多读书，读好书，能丰富知识，增添智慧，成为一个志趣高尚的人。”谆谆教诲铭刻在心，使我一生受用不尽。往事依依，那些被声音点亮的岁月，唤起我对语言的敏感，催我不断奋进。"], "num": 5, "chars": 711}]}, {"theme": "我们是一家人", "prompt": "", "essays": [{"title": "我们是一家人", "author": "魏之涵 · 北京师范大学三帆中学朝阳学校", "paras": ["“清明时节雨纷纷，路上行人欲断魂。”乌云在空中飘荡，与劲风一同锁住了春日的暖阳。面前的一方矮矮的土丘，飘着青烟的三根香，摆放规整的石榴和柿子，似乎就是现在关于姥姥的全部了。", "踏进老宅，斑驳墙壁上的那幅十几年前的大合影的相框已经磨损，照片的边角已微微翘起，却记载着一家人的喜眉笑眼；拐角处的楼梯扶手上还绑着姥姥教我系的大红色蝴蝶结，再看却是室迩人远；餐厅中微微残损的圆木桌和旁边几把略微生锈的铁椅子，也因寂寞而无精打采地耷拉着脑袋。一阵风吹过，门口的风铃叮当作响，姥姥如春风般和煦的笑声仿佛又在我耳边响起。", "每逢亲人团聚，姥姥总是笑逐颜开，嘴里不停地向我们几个孙辈念叨着：“回来就好！回来就好！姥姥给你们包饺子吃！”听到这话，我总会小跑进厨房里，跟姥姥一起忙碌起来。“姥姥我帮您择菜！”“姥姥我帮您洗菜！”姥姥总是笑得合不拢嘴，慈祥地对我说：“慢点！别伤着了！”不一会儿，姥姥就会像变戏法般端上来一大盘饺子：“饺子来喽！多吃点！多吃点！”亲人们一起吃着热气腾腾的饺子，欢声笑语笼罩着整个房间。", "走出老宅，小小的院子里杂草丛生，哀叹着无人打理的愁闷；看似高大的柿子树上只零散地悬着几片残叶，羸弱不堪；一排低矮的石榴树上，没有叶子点缀的枝杈无序地生长，也在叫苦不迭。忆往昔，秋天收水果是一项必不可少的活动。那时我一手拿着盆提着剪子，一手抓着网兜，蹦蹦跳跳地跟在姥姥身后，先在茂密的枝叶中找到结着石榴果的枝条，再拿起剪子“咔嚓”一剪，石榴们就一个一个迫不及待地跑进了小盆子里，笑着向我们诉说丰收的喜悦。不一会儿，姥姥又会攀上树准备摘柿子。“沙沙，沙沙”，柿子骨碌碌掉在我们的网兜里，轻轻一闻，香气扑鼻。", "快要回屋时，调皮的我总会悄悄地走向小水池，冷不丁地打开水龙头，用手捧水一点点地泼向姥姥。姥姥像是早有准备，一手挡着脸，一手提着衣裙，咯咯笑着：“别闹了，别闹了，姥姥投降！姥姥投降！”看到姥姥笑了，我也总会捂着肚子咯咯笑起来，与姥姥端起垒得高高的水果盆，欢快地回到屋里去……", "“滴滴答，滴滴答”，雨水浇灭了幸福的回忆。墓碑上醒目的白字提醒我，姥姥已经离开了我们。我默默抚摸着姥姥的土坟，如同姥姥曾温柔抚摸我的模样。", "眼下院子里的果树上又长出了嫩芽，相信到了今年秋天，它们定会再次开花结果；正如我和姥姥，虽然已天人两隔，但我们之间的亲情早已生根发芽开花结果，我们始终是相亲相爱的一家人啊！"], "meta": "魏之涵 · 北京师范大学三帆中学朝阳学校", "num": 1, "chars": 984}, {"title": "我们是一家人", "author": "", "paras": ["家是圆心，爸爸、妈妈和我围着圆心走，一家人始终幸福美满。", "清风摇曳梧桐树的小时候——", "月亮又悄悄爬上了窗外的梧桐树，我靠在床头。是该听妈妈讲故事的时候了，可是妈妈又去晚督班了。妈妈是一名老师，每天兢兢业业，总有忙不完的事情。她每次回家，总是伴着匆匆的脚步声，脸上带着紧张的神情，有时怀里还抱着几本厚厚的书。", "“妈妈，你不爱我了吗？为什么不在我身边陪着我呢？”我赶忙拉住妈妈的手，她的手上还有白色的粉笔灰。“孩子……”妈妈哽咽了，转过头去，眼里饱含着透明的泪水。她摸了摸我的头，指了指窗外的月亮说：“月儿圆的时候，妈妈就会回来。”", "每到夜晚，我就飞快地跑到窗前，不停地寻找那圆圆的月亮——妈妈回来的希望。在梧桐摇曳，月儿圆圆缺缺的岁月里，充满了等待的苦涩和团聚的欢乐。", "星星点缀夜空的回家路——", "读初中时，我有时参加晚上的兴趣活动。为了节约时间，让我尽快回到家，爸爸担起了开车接我的任务，他推掉很多应酬，准时等我。看着熟悉又温暖的笑脸，吃着热乎乎的点心，与爸爸说说今天的烦恼和趣事，那条通往家的路上总是充满温馨欢乐。风里飘来槐花的清香，我望着车窗外，黑色的天幕上闪动着一颗颗明亮的星星，星星沿着它的轨迹运行，我们向着家的方向飞驰。", "白米粥飘香的寒夜——", "去年寒假的最后两天，妈妈旅游要回来了，说好晚上十点到的，不知怎么延迟了。爸爸关好我的房门，叮嘱我早点睡觉，他自己就在客厅等着。我在半梦半醒间听到一些细碎的声音，是妈妈回来了？我推开房门，果然，客厅里摆满了大包小包。初春的夜里颇有寒意，黑暗的夜晚，家中客厅里亮着一盏橘红的灯，灯下，有两碗热腾腾的白米粥，桌边是我的爸爸妈妈。", "看见我，他们惊讶于我居然醒了，随即，爸爸又盛来一碗白米粥，我们一家三口就在寒夜的灯下，一人捧一碗白米粥吃起来，笑容像灯光一样温暖。这碗白米粥啊，特别香甜，特别温暖，一直暖到心窝里，因为，里面有爱的味道。", "一路走来，日月轮回，春秋变换，我们一家一直沿着同一个圆心在走，无论风雨，不管苦乐，因为，我们是一家人。"], "meta": "范文二 · 月光、白米粥与团圆", "num": 2, "chars": 831}, {"title": "我们是一家人", "author": "", "paras": ["家人的意义在于我们可以相互搀扶，共同去经历这丰富多彩的人生。——题记", "去年四月中旬，阴影笼罩了我的家。", "奶奶突发脑出血，抢救后虽性命无虞，却半瘫在床，失去自理能力。以往可以奔走在田野、厨房的人，如今连独自站立都成问题。从震惊到悲伤，种种情绪伴随着整个治疗过程，我清楚地知道：这是奶奶的不幸，更是我们家要共渡的难关。", "奶奶出院后，我们全家决定帮助奶奶重新站起来，让她能够下地走路。奶奶是左半边身体瘫痪，完全使不上力。带她去康复中心的路上，奶奶趴在爸爸的背上，左手只能无力地搭着，身体不自觉地朝一边歪斜。到康复中心后，奶奶会经历一上午的针灸、按摩、协同锻炼。其中协同锻炼最为费力，需要有人在旁边搀扶着她，让她先下地站立，再慢慢从走几步到走一段路。", "奶奶第一次下地时，我、妈妈、弟弟三个人在旁边搀扶。我扶着右手，妈妈扶着奶奶最无力的左手，弟弟负责站在奶奶背后，用两只手扶正奶奶的腰。奶奶九十几斤的体重全部由我们三个人承担着。我们紧紧扶着她，心被奶奶那只使不上力的左脚牵绊着。奶奶走得不稳，颤颤巍巍、摇摇晃晃。她咬着牙，只走了几步，汗水就沾湿了额前的白发。“真跟小孩儿学走路一样……”她数次用颇为无奈的口吻这样叹息。", "可在我们小时候，她是我们强大的依靠，她用宽厚的手掌握着我们的手，牵着我们一步一步用脚探索这未知的天地。后来我们学会了奔跑，但时常摔倒，奶奶会心疼地扶起我们，边给我们拍土边说要用锄头把这块绊倒我们的土锄平。再后来，我们松开了奶奶的手，一个接一个奔向无边的广阔天地，那是奶奶未曾到过的地方。我们也会经历一些奶奶不曾体会的坎坷。我们回家不语忧愁，她却无声安慰，用一顿顿可口的饭菜，疗愈我们疲惫的身心。", "岁月可回首，前路犹可期。经过长时间的康复治疗，渐渐地，奶奶只需一人搀扶便可以行走。我记得那天夕阳正好，初夏的风轻柔拂过，奶奶和我一老一少，互相搀扶着，缓慢前进……", "有你同行，相互扶助，莫不静好。我们永远是这样相亲相爱的一家人。"], "meta": "范文三 · 奶奶康复的日子", "num": 3, "chars": 809}]}, {"theme": "相识缘分", "prompt": "", "essays": [{"title": "那一声怯怯的“姐姐”", "meta": "", "paras": ["世间声响万千，喧嚣嘈杂、热烈洪亮，唯独那个夏日午后的一声轻唤，轻轻落于心底，经年不散。那一声怯怯的“姐姐”，温柔了整个盛夏，也成为我岁月里最澄澈的温暖。", "去年盛夏，蝉鸣聒噪，我随母亲回到乡下外婆家。老树枝繁叶茂，浓密的绿荫遮盖了大半庭院，细碎的阳光穿过层层枝叶，在地面织出斑驳的光影。我铺一张凉席坐在树下，静静翻看着手中的书，享受夏日独有的慵懒与安宁。", "忽然，院门口传来细碎的响动。我抬眸望去，院门缝隙处探出一个小小的脑袋。小女孩睁着一双黑葡萄般澄澈的眼眸，怯生生地打量着我。她发丝微乱，身上的碎花裙子洗得发白，赤着的小脚微微蜷缩，局促又胆怯，像一只小心翼翼、随时会闪躲的林间小鹿。我放缓语调，温柔地朝她招手，邀她过来落座。她犹豫良久，才踏着细碎的步子，慢慢蹭到我身边。", "我轻声为她朗读《草房子》，温柔的字句流淌在微凉的风里。读到桑桑卧病的片段时，身旁的小姑娘忽然抬眸，澄澈的眼眸里盛满担忧，用细若蚊蚋的声音轻轻问道：“姐姐，桑桑会好起来吗？”", "软糯轻柔的一声“姐姐”，轻飘飘落在我的心上，温柔得让人心头一颤。简单的两个字，盛满了全然的信任与依赖，纯粹又滚烫。我温柔抚摸她的头顶，轻声安抚她，告诉她一切皆会向好。她安心地靠在我的肩头，静静聆听书页间的温柔。", "后来我知晓，她叫阿瑶。父母常年在外务工，她留守乡间，少有人陪伴，性格怯懦内向。余下的假期时光里，我常常陪伴着她，教她识字读书，陪她奔赴田埂，追逐蜻蜓、采摘野花。", "离别那日，阿瑶将一张皱巴巴的纸条塞到我手中，纸上歪歪扭扭的字迹，藏着最真挚的期许：“姐姐，我会好好读书。”回城之后，我们始终未曾断了联系。她每每取得进步，总会拍下奖状，发来软糯的语音与我分享喜悦。", "原来世间最好的相遇，从不是轰轰烈烈的邂逅，而是一场温柔的奔赴，一次纯粹的信任。那声怯怯的“姐姐”，是夏日最温柔的回音，让我明白：一场素未谋面的相识，足以成为温暖余生的珍贵馈赠。"], "num": 1, "chars": 790}, {"title": "琴房里的陌生人", "meta": "", "paras": ["人生路上，总有不期而遇的温暖。一次偶然的相逢，一句温柔的宽慰，便能拨开迷雾，治愈迷茫的时光。那个秋日午后，琴房里的相遇，让我读懂：热爱可抵岁月漫长，喜欢的事，慢慢来就好。", "那年，我满心期许备战数学竞赛，日夜刷题、反复钻研，熬过无数个挑灯夜读的夜晚。可全力以赴的奔赴，终以落选落幕。失利的挫败感裹挟着我，让我一蹶不振。那段日子，我消沉低落，满心迷茫，对热爱与坚持产生了怀疑。", "一个秋日午后，秋风微凉，我漫无目的地徘徊在校园。无意间，艺术楼一间常年紧锁的琴房虚掩着门，断断续续的琴声缓缓传出。我怀着好奇轻轻推门而入。逆光之中，一名身着白衬衫的少年端坐琴前，清瘦安静。见我闯入，他没有不悦，只是眉眼温和地笑了笑，露出浅浅的小虎牙，大方地邀我落座。", "他弹奏的是经典的《致爱丽丝》，琴声并不流畅，错音频频，却格外认真。他微微前倾身子，专注地盯着黑白琴键，轻声跟着旋律哼唱，沉浸在属于自己的一方天地里。阳光透过窗棂洒落，细碎的尘埃在光束中轻轻浮动，静谧又温柔。", "一曲终了，他坦然坦言，这首曲子他练习了整整两个月，依旧不够完美。他看出我眼底的低落，轻声劝慰：“不用着急，喜欢的事，慢慢来就好。”他温柔耐心地教我识谱、练指法，笨拙的我弹出的旋律断断续续，却在琴声里暂时卸下了所有的焦虑与挫败，久违地展露笑颜。", "此后，每周六的琴房，成了我们专属的温柔秘境。我渐渐知晓，他心怀音乐梦想，立志考入音乐学院。纵然起步较晚、天赋平平，他却始终脚踏实地、默默坚持。他从未急于求成，始终相信，时光不负深耕之人。", "秋去冬来，时光匆匆。后来他如愿考入心仪的音乐学院，离别前，他在琴房窗台留下一张纸条，依旧是那句温柔的期许：喜欢的事，慢慢来。", "如今每当我指尖触碰琴键，弹奏熟悉的旋律，总会想起那个秋日午后的温柔相逢。那场平淡的相遇，没有轰轰烈烈的故事，却治愈了迷茫怯懦的我。", "人生从无一蹴而就的成功，所有美好都需要沉淀与等待。那场琴房里的相遇，如一束微光，照亮我前行的路，让我始终笃定：步履缓缓，初心不改，终会奔赴热爱。"], "num": 2, "chars": 834}, {"title": "雨夜的伞", "meta": "", "paras": ["世间温暖，往往藏在不期而遇的善意里。一场突如其来的夜雨，一把温柔递送的雨伞，一次素昧平生的相逢，让我懂得：陌生人间的温柔，最是治愈人心。", "那个夜晚，至今镌刻在我的记忆深处。晚自习结束，白日晴朗的天气骤然变脸，滂沱大雨倾泻而下，豆大的雨点砸落地面，溅起层层水雾，风声呼啸，裹挟着寒意扑面而来。", "校门口人潮涌动，同学们陆续被家长接走，喧闹的校园很快归于寂静，只留我孤身一人伫立廊下。我紧紧抱着怀中的书本，生怕雨水打湿，心底满是焦灼与无助。冰冷的晚风夹杂着雨丝拂过脸颊，心底的委屈与凉意层层蔓延。", "就在我手足无措、满心茫然之时，一道温柔的声音在身后响起。我蓦然回头，看见一位身着校服、高马尾利落清爽的学姐，手持一把墨绿色长柄伞，眉眼弯弯，笑意温柔，自带让人安心的力量。", "得知我没有带伞，她没有丝毫犹豫，径直将伞柄塞进我的手中，语气坚定又温柔：“你拿去用，我家很近，跑几步就到了。”我连忙推辞，她却笑着报出自己的班级姓名，叮嘱我次日归还，随即头顶书包，义无反顾地冲进茫茫雨幕。冰冷的雨水瞬间打湿她的校服与发梢，背影却格外温暖耀眼。", "我握着温热的伞柄，撑着那把带着温度的雨伞，安然行走在雨夜之中。夜雨淅沥，伞下一方小小天地，隔绝了风雨寒凉，盛满了陌生人纯粹的善意。", "次日清晨，我准时前往初三教学楼归还雨伞。再次相逢，我们褪去陌生，相谈甚欢。意外发现，我们有着相同的爱好，同样痴迷于文学与经典书籍。走廊之上，我们畅聊书籍、畅谈热爱，寥寥数语，便拉近了彼此的距离。", "自此，一场雨夜相逢，让两个素不相识的人成为挚友。我们常常相约图书馆，静坐窗边，翻读书卷，静谧相伴，岁岁安然。那把老旧的墨绿色雨伞，我一直悉心珍藏。伞面虽历经风雨、渐渐陈旧，却承载着最纯粹的善意与温柔。", "原来人间最美的相遇，从不需要刻意安排。一场雨、一把伞、一份温柔的馈赠，便足以串联起两段平行的青春。那场雨夜的相逢，是青春里最温柔的馈赠，让我始终相信：世间温柔，无处不在，善意长存，温暖如初。"], "num": 3, "chars": 814}, {"title": "巷口的旧书摊", "meta": "", "paras": ["烟火寻常的街巷，藏着最动人的温柔；平淡朝夕的相逢，藏着最治愈的美好。我曾日日途经巷口，步履匆匆，从未驻足，直到那个失意黄昏，一场温柔的相遇，治愈了年少所有的委屈与迷茫。", "老街巷口，常年摆着一个朴素的旧书摊。一辆生锈的三轮车，满载各式各样的旧书，一位白发苍苍的老爷爷，每日黄昏准时出摊，静坐摊前，翻书度日。岁岁朝朝，平淡寻常，我始终行色匆匆，从未停留。", "那个秋日黄昏，我与挚友激烈争执，满心委屈与难过，红着眼眶独自归家。秋风萧瑟，暮色沉沉，昏黄的路灯拉长街巷的影子，也放大了我心底的低落。路过旧书摊时，老爷爷抬眸望向我，眉眼温和，眼底盛满善意，轻轻开口：“小姑娘，过来坐坐吧，我的书能治愈心事。”", "温柔的话语，瞬间击溃了我所有的倔强。我缓步上前，蹲在书摊前，指尖轻轻拂过泛黄的书页，淡淡的墨香与旧纸的温润气息萦绕鼻尖。我的目光最终停留在一本老旧的《城南旧事》上，简约的封面，沉淀着岁月的质感。", "老爷爷看出我的偏爱，笑着将书赠予我，轻声宽慰：“人与人相处，难免有磕碰，就像书页折角，轻轻抚平，依旧完好如初。不必耿耿于怀。”质朴的话语，温柔又通透，瞬间抚平了我心底的郁结。", "当夜，我细细品读《城南旧事》，在英子的故事里读懂聚散随缘、得失坦然。次日，我主动与好友和解，年少的别扭与隔阂，尽数烟消云散。", "此后，旧书摊成了我课余最爱的栖息地。每日放学，我总会驻足停留，陪老爷爷闲谈片刻。他曾是人民教师，饱读诗书，温柔通透，常常为我推荐好书，在书页扉页写下温柔寄语，教我读书，教我成长，教我温柔待人、从容处事。", "岁月流转，秋风依旧。不知从何时起，巷口的旧书摊悄然消失了。听闻老爷爷身体欠佳，被家人接往他乡安度晚年。如今我依旧日日途经这条老街，步履从容，心怀温柔。旧书摊早已不见踪影，可那段温柔的相遇、温暖的教诲，始终铭记于心。", "一场巷口相逢，一本旧书温情，治愈了年少迷茫。原来最珍贵的相遇，从不是轰轰烈烈的邂逅，而是平凡岁月里，一场温柔的救赎，一份岁岁绵长的成长。"], "num": 4, "chars": 817}, {"title": "新来的同桌", "meta": "", "paras": ["青春漫漫，岁月悠长，无数人途经我的青春，匆匆离去。唯有一场平淡温柔的同桌相逢，如清风入怀、星光落眸，丰盈了我的少年时光，成为青春里最珍贵的温柔印记。", "初秋，秋风送爽，崭新的学期悄然开启。安静的教室里，班主任领着一位陌生的女孩缓缓走入。她身形瘦小，低扎马尾，刘海轻垂，眉眼低垂，安静内敛，带着初来乍到的局促与腼腆。朴素干净的白衣，整齐简约的书包，处处透着温柔安静的气质。", "她轻轻落座，默默整理书本，全程安静无言，周身萦绕着淡淡的疏离感。起初的数日，我们鲜有交流。她沉默寡言，独来独往，课间静坐看书，从不参与嬉闹。班里同学对这位沉默的转学生颇多议论，而她始终淡然沉默，将自己小心翼翼地包裹起来。", "改变始于一节语文课。课堂之上，老师邀请同学分享心爱读物，教室瞬间鸦雀无声，气氛凝滞。就在此时，沉默的沈念缓缓抬手，从容起身。她声音轻柔却坚定，条理清晰地诉说着《活着》带给她的感悟。", "她所言的苦难与坚韧、平凡与从容，字字动人，句句入心。平淡的话语里，藏着远超同龄人的通透与温柔。话音落幕，教室掌声四起，我心底满是惊艳与动容。下课之后，我主动与她闲谈，惊喜地发现，我亦是《活着》的忠实读者。我们一见如故，畅谈书本感悟，聊聊作者笔下的人间百态。那一刻，她低垂的眼眸骤然亮起，眉眼舒展，露出了温柔浅浅的笑意。", "自此，我们慢慢熟络，成为朝夕相伴的同桌。我带她融入班级、嬉笑奔跑，她陪我品读诗书、沉淀心性。在我的陪伴下，她渐渐褪去怯懦，变得开朗明媚；在她的影响下，我学会沉静读书、静心成长。", "我曾问她，为何敢于主动举手发言。她温柔浅笑，答道：“我看见你桌上的《活着》，便知道你一定懂我。”原来世间最好的相逢，是灵魂契合，是恰逢知己。", "阳光依旧洒满教室，书页翻飞，岁岁安然。那场初秋的温柔相遇，让两个陌生的少年彼此治愈、彼此成长。这场平凡的同桌相逢，是青春赠予我的温柔宝藏，让漫漫少年时光，温暖绵长，岁岁生辉。"], "num": 5, "chars": 787}]}, {"theme": "遇见", "prompt": "世间万般，皆是遇见。我们于清秋风物间遇见江南的温婉，于古典诗文中遇见千古的情思；于朝花旧事里遇见人间百态，于霜月清辉下遇见岁月静美；于求索求知中遇见成长的力量，于魏晋风流里遇见名士的襟怀。\n在初中旅程中，你也一定拥有属于自己的遇见，或是一个人、一处风景，或是一段往事、一份感悟。请以“遇见____”为题，写一篇文章。\n要求：（1）请先将题目补充完整，再写作；（2）文章不少于500字；（3）文中不要出现含有考生信息的人名、校名、地名等。", "essays": [{"title": "遇见那束温暖的光", "meta": "侧重【人】与【往事】", "paras": ["世间万般，皆是遇见。冷遇见暖，有了雨；春遇见冬，有了岁月；而我遇见了那位卖糖画的老人，便在心底留住了一束温暖的光。", "那是去年初冬的傍晚，寒风刺骨，我裹紧了校服，缩着脖子走在放学回家的路上。街角的屋檐下，一盏昏黄的灯亮着，一位头发花白的老爷爷正守着他的糖画摊。铁皮炉子上架着小锅，麦芽糖在里面咕嘟咕嘟地冒着热气，甜丝丝的香味在寒风中飘散。", "我忍不住停下脚步。老爷爷正握着长柄铜勺，手腕轻转，金黄色的糖液如丝线般流出，落在光洁的大理石板上。须臾，一只展翅欲飞的“凤凰”便跃然板上。他捏起一根竹签，熟练地一压、一铲，递给了旁边眼巴巴看着的小女孩。", "“爷爷，您这手艺真好。”我由衷地赞叹。老爷爷抬起头，脸上的皱纹在灯光下像盛开的菊花：“老咯，做了一辈子，就图个大家高兴。”他笑着，又舀起一勺糖。我买了一只“小兔子”，他特意多绕了几圈，给它画了一个胖乎乎的身体。", "在攀谈中，我得知他在这里摆摊已有十几年。无论严寒酷暑，只要不下雨，他总会准时点亮那盏昏黄的灯。他说，现在的孩子零食多，这老手艺快没人学了，但他舍不得丢，他想让这街头巷尾多留一点甜味。", "那一刻，我看着他冻得通红的双手和专注的眼神，心中涌起一股莫名的感动。在这个快节奏的时代，这位平凡的老人，用最古朴的方式坚守着一份热爱。", "后来，老街改造，糖画摊不见了。但那个寒风中的傍晚，那盏昏黄的灯，那位老人的笑容，却成了我初中岁月里最美的遇见。它让我懂得，平凡的坚守亦能散发温暖的光芒。", "遇见您，真好。"], "num": 1, "chars": 614}, {"title": "遇见水墨般的江南", "meta": "侧重【景】与【感悟】", "paras": ["世间万般，皆是遇见。于清风秋月间遇见岁月的静美，而我最难忘的，是在一场烟雨中，遇见了那如诗如画的水墨江南。", "初二暑假，我随家人来到南方水乡。那日正逢阴雨，细雨如丝，密密匝匝地织在水面上。我避开喧嚣的人群，独自撑伞走在青石板铺就的小巷中。", "脚下的石板被岁月和雨水打磨得光滑温润，踩上去发出清脆的“笃笃”声。两旁是白墙黛瓦的民居，墙根处生着翠绿的青苔。雨水顺着错落有致的马头墙滴落，在檐下汇成一道道晶莹的水帘。", "走到一座石拱桥上，我凭栏远眺。河水静静流淌，几只乌篷船在雨中摇曳。船夫戴着斗笠，披着蓑衣，不紧不慢地摇着橹，船桨划过水面，荡起层层涟漪。远处的古塔在水雾中若隐若现，宛如一幅徐徐展开的泼墨山水画。", "巷子深处，飘来一阵桂花的清香。我寻香而去，见一位阿婆正坐在门槛上，用竹筛晾晒着刚采下的桂花。她见我看得出神，便笑着招呼：“小姑娘，来避避雨吧。”我坐在阿婆身边，听她讲这水乡的旧事，看雨滴从黑瓦上滑落，时光仿佛在这里放慢了脚步。", "在快节奏的现代生活中，我们习惯了步履匆匆。但在这江南的烟雨中，我遇见了另一种生活态度——不急不躁，静谧安然。这里的每一块青砖，每一滴雨水，都在诉说着岁月的从容。", "雨渐渐停了，阳光穿透云层，洒在湿漉漉的青石板上。遇见这水墨般的江南，让我在繁忙的学业之余，寻得了一处灵魂的栖息地，懂得了在喧嚣中保持内心的宁静。", "这，便是我最美的遇见。"], "num": 2, "chars": 574}, {"title": "遇见千年的墨香", "meta": "侧重【往事】与【感悟】", "paras": ["世间万般，皆是遇见。于古典诗文中遇见千古的情思，于我而言，最震撼人心的，是在泛黄的书页间，遇见那份跨越千年的孤勇。", "初一那年，我遭遇了成绩的滑铁卢。看着满是红叉的试卷，我心灰意冷，将自己关在房间里，随手抽出了一本《苏东坡传》。窗外夜雨绵绵，我翻动书页，渐渐走进了那个风雨飘摇的北宋。我仿佛看到，被贬黄州的苏轼，穿着粗布衣裳，在泥泞的沙湖道上艰难前行。没有随从，没有好马，只有满身的疲惫和仕途的失意。", "然而，当大雨倾盆而下，同行的人都狼狈躲雨时，他却拄着竹杖，穿着草鞋，在风雨中昂首阔步，吟诵出“竹杖芒鞋轻胜马，谁怕？一蓑烟雨任平生”的千古绝唱。那一刻，我仿佛看到了他眼底的豁达与不屈。", "我继续读着，读到他被贬惠州，依然能笑着写下“日啖荔枝三百颗，不辞长作岭南人”；读到他被贬儋州（海南），在蛮荒之地仍能开办学堂，教化百姓。他的一生，不是在贬谪之地，就是在前往贬谪之地的路上。但他没有沉沦，而是把苦难熬成了诗，把逆境活成了风景。", "合上书，我心中的阴霾早已一扫而空。比起苏轼一生的颠沛流离，我眼前的这点挫折又算得了什么？他那一身蓑衣、一腔孤勇，穿越千年的时光，重重地击中了我的心。", "遇见千年的墨香，遇见千古的旷达，让我明白：人生的风雨不可避免，只要心中有光，便能无惧风雨，从容前行。"], "num": 3, "chars": 534}, {"title": "遇见破茧成蝶的自己", "meta": "侧重【感悟】与【成长】", "paras": ["世间万般，皆是遇见。我们在求索求知中遇见成长的力量。在我刚刚开启的初中新旅程中，最让我骄傲的，是遇见了那个咬牙坚持、破茧成蝶的自己。", "初一时，我的体育成绩一塌糊涂。尤其是长跑，每次测验我都稳居倒数，那红色的跑道对我来说就像是无法逾越的鸿沟。望着同学们轻松冲过终点线，我暗下决心：我要战胜它！", "从那个夏天起，我开始了一段痛苦的蜕变之旅。清晨的操场上，总有我孤单的身影。刚开始，刚跑半圈我就气喘吁吁，双腿像灌了铅一样沉重。汗水顺着脸颊流进眼睛里，又涩又痛；喉咙里像有一团火在烧，每一次呼吸都带着血腥味。", "“放弃吧，你本来就不是长跑的料。”心里的退堂鼓敲得震天响。但我看着天边泛起的鱼肚白，咬紧牙关，硬是把后半圈给顶了下来。今天多跑一百米，明天多跑两百米。在无数个想放弃的瞬间，我都选择了再坚持一步。", "到了期末的体育测试，我又一次站在了起跑线上。发令枪响，我调整着呼吸，迈着稳健的步伐向前跑去。到了第三圈，那个熟悉的“极点”如期而至，双腿又开始发软。但这一次，我没有退缩，我听到了自己强有力的心跳，那股在无数个清晨积攒的力量瞬间爆发。我奋力摆臂，冲过了终点线。", "“3分42秒！”我及格了，而且比之前快了足足一分多钟！我躺在草坪上大口喘息，望着蔚蓝的天空，眼泪不自觉地流了下来。那是喜悦的泪水，是如释重负的泪水。", "这次经历，如同一次深刻的遇见。我遇见了操场上的朝阳，遇见了汗水交织的岁月，更重要的是，我遇见了那个不被困难打倒、敢于挑战极限的自己。成长，其实就是一场不断遇见更好自己的旅程。"], "num": 4, "chars": 634}, {"title": "遇见故乡的烟火人间", "meta": "综合【人、景、往事、感悟】", "paras": ["世间万般，皆是遇见。于朝花旧事里遇见人间百态，在我的记忆深处，最温情的遇见，是回老家时，遇见那热气腾腾的烟火人间。", "那是去年的国庆假期，我随父母回到了阔别已久的乡下老家。清晨，天蒙蒙亮，我便被一阵清脆的鸡鸣声唤醒。推开木窗，远处的青山笼罩在薄雾中，田野里绿浪翻滚，泥土的清香扑面而来。", "我信步走上小镇的早市。集市上早已熙熙攘攘，叫卖声、讨价还价声交织成一首充满生机的交响曲。胖乎乎的包子在蒸笼里冒着白气，刚出锅的油条在铁漏勺里滋滋作响。我买了一块刚出锅的豆腐脑，那浓郁的豆香瞬间唤醒了我的味蕾。", "在集市的拐角，我遇见了一位正在手工打糍粑的王大爷。他抡起沉重的木槌，一下一下地砸在石臼里的糯米上，旁边的老伴儿则在下面翻动。两人配合默契，汗水顺着王大爷的额头滴落，但他脸上却挂着满足的笑容。旁边围着一圈小孩子，眼巴巴地等着吃热乎乎的糍粑。", "我走上前，王大爷递给我一小块刚捏好的糍粑，裹上黄豆面和红糖，咬一口，软糯香甜，那是童年最熟悉的味道。王大爷笑呵呵地说：“现在年轻人都去城里了，但咱们这老手艺不能丢，逢年过节，大家还得吃这一口哩。”", "听着他朴实的话语，看着这充满市井气息的早市，我心中涌起一阵感动。这不仅仅是美食，更是乡愁的载体，是故乡人最踏实的生活态度。", "城市的高楼大厦里，我们习惯了外卖和便利店，却渐渐失去了对生活最原本的感知。而在这里，每一次炊烟升起，每一声亲切的乡音，都让我感受到生命最真实的温度。", "遇见故乡的烟火人间，让我在喧嚣之外，寻得了根的方向。这份温暖，将永远照亮我前行的路。"], "num": 5, "chars": 639}]}, {"theme": "这天，我回家晚了", "prompt": "", "essays": [{"title": "这天，我回家晚了", "author": "马可扬 · 北京大学附属中学", "paras": ["我忍着疼伸起胳膊，手表上的指针已经指向我平时到家的时间。我双手推着自行车，在车流纵横的马路边缓缓前行，天色逐渐暗下来，我却不想迈向回家的那条路。", "冷酷的风刮过胳膊和腿上的伤痕，风吹起的尘土在伤口上作乐，我只能紧锁眉头继续向前走去。看似遥不可及的路途已被我静静走过，我已然出现在家门口，左右徘徊，欲进又止。", "我也不明白我为什么不进入家门，只是想到爸爸严厉的眼神和妈妈焦虑的表情，就觉得带着摔坏的自行车回家不太好。我做了一次深呼吸，坐在门口的台阶上，重新梳理事情的脉络，好像是上法庭前的罪犯准备为自己做最后一次辩驳。时间不知不觉过去，黄昏的太阳在朦朦胧胧间沉下。而时间愈是紧迫，家长的训斥必愈是强烈。每次当我鼓起勇气掏出钥匙时，我都会重新退缩，再度考量。", "夜幕降临，黑暗迫使我从犹豫不决的懦夫变成勇赴沙场的壮士。我踏入了这个我无比向往而又无比畏惧的家。", "门打开后，不待家中人讲一句话，我便先开了口：“我有事，情况特殊，你们都走，离开客厅。”大概是太过于紧张，我嘴里只是磕绊蹦出几个词。说完，我悄悄溜进自己的房间，趴在门缝上确定客厅里绝对安全后，才蹑手蹑脚地走到客厅，从柜子中拿出碘酒和棉球，又蹑手蹑脚地回到房间，关紧门。", "不过一会儿，妈妈果不出所料地敲开房门，询问事件原委。我虽胆战心惊，却也无可奈何，只好向妈妈如实交代。", "“我知道你不想让我知道，摔了车妈妈不怪你，但是你得给我看看你摔哪了，要不然我放心不下……嗯，这得给你消消毒。”", "“我已经自己消过毒了，没事了。”", "“你这弄得不行，我给你拿酒精再清清创。”", "我的心咯噔了一下，预想中的呵斥没有出现，现实中温柔的话语，让我羞愧难当。我为我的犹豫而感到愧疚，为我对母爱的怀疑而感到羞耻。", "“我知道你在外面待着不敢回家，没事的。你要记住：我们永远是你可以依靠的避风港，这里永远是你温暖的家。”", "“给你把纱布裹上了。准备睡觉吧。”", "我躺下，看着那暖黄色的灯光，感觉疼痛在渐渐消失……", "这天，我回家晚了；但“家”，永远不嫌我回得晚。"], "meta": "马可扬 · 北京大学附属中学", "num": 1, "chars": 823}, {"title": "这天，我回家晚了", "author": "牟磊 · 北京大学附属中学", "paras": ["夕阳斜斜地挂在天边，把天空染成了金红色。我骑着自行车，穿行在回家的路上，心中满是急切。五点半了，我必须在夜幕降临前赶回家。", "此时电话响了：“淘儿啊，几点到家啊？”“我现在就往家骑呢，别急，估计半个小时吧，你们先吃，不用管我。”“那行，路上别贪玩，慢点骑啊。”", "挂断电话我就开始往家骑。路过公园时，我抬头望向天空，是风筝，顺着线往下看，便是一群孩子在你追我赶、争先恐后地抢着线轴。那风筝在空中翩翩起舞，仿佛是孩子们心中无忧无虑的梦想。不知不觉，我慢了下来，单脚踩在马路牙子上，心中涌起一阵儿时的回忆——那时的我，也曾如此天真烂漫，追逐着风筝，追逐着快乐。", "然而，现实却将我拉回。脚下一滑，我重重地摔在地上。疼痛瞬间传遍全身，我的手掌也被粗糙的地面划破了。我艰难地扶起车，顾不得被粗糙的柏油路面和被锋利树枝划伤的手，简单用纸巾止住血，重新踏上回家的路。", "这时，第二通电话来了：“淘儿啊，到哪了？我好看什么时候下面条。”“摔了一跤，估计骑的会慢点，你们真不用等我，先吃吧。”我匆匆挂断电话，继续骑。", "夜色渐浓，华灯初上。我拖着疲惫的身体骑过了小区西门，远远地看见姥姥正站在门口焦急地张望。她瘦弱的身影在昏黄的灯光下显得格外单薄，仿佛一座雕塑，在时间的流逝中默默等待着我的归来。我推着车缓缓走近，只见姥姥双手紧握在一起，不时地抬头望向远方，眼神中充满了担忧。她的眉头紧锁，仿佛在思考着我为何迟迟未归。每当有行人经过，她都会急忙抬头查看，希望是她熟悉的模样。", "和她隔着一条马路，我拨通姥姥的电话，声音有些颤抖：“姥姥，我回来了，刚才摔了一跤，手划破了，但没事，别担心。”电话那头，姥姥的声音带着责备和关切：“怎么这么不小心啊，摔疼了吧？快点回来吧，我给你准备了热乎乎的饭菜。”", "挂断电话，我看到姥姥缓缓转过身来，她的脸上写满了担忧和疲惫，但眼中却闪烁着见到我后的喜悦。她快步走过来，接过我手中的车，又抢过我身上的包。我握着她那双因等待而变得冰凉的手，心中涌起一股暖流。", "“怎么骑车这么不小心，让姥姥担心着急。”姥姥虽然责备着，但语气中却满是关心和疼爱。她仔细地检查我的伤口，眼中满是心疼。我望着她，心中涌起一股暖流。", "或许就像史铁生说的那样：“儿子的不幸在母亲那里总是加倍的。”外孙的不幸在姥姥那里又加了不知多少倍。那一刻，我再也压制不住我的情感，眼泪不由自主地流下来。", "那天，我回家晚了。但姥姥在灯下的等待，让我深刻感受到了家的温暖和家人的牵挂。无论多晚，总有一盏灯为我留着，总有一个人在等我。这份温暖和牵挂，是我前行路上最宝贵的财富。", "夜已深，星星点点的灯光在夜色中闪烁。我跟着姥姥的脚步，走进家门。那一刻，我明白了，家，永远是我最温暖的港湾。"], "meta": "牟磊 · 北京大学附属中学", "num": 2, "chars": 1108}, {"title": "这天，我回家晚了", "author": "", "paras": ["那一次的经历我至今还牢牢记在心里，因为那是我回家最晚的一次。我为此感到非常后悔，但是我没有办法改变我已经犯下的错误，我只能让自己以后不再犯这样的错了。", "那天下午放学，同桌王×对我说：“今晚我爸妈去加班，我有些害怕，你能陪我一起写作业吗？”接到朋友的邀请，我高兴极了，但仍是很犹豫——我的脑海里闪过爸爸平时叮嘱的话：“放学后不能在外面玩，一定要回家！”但我看到王×那期待的目光，心便软了下来。就陪她写一会儿吧，就一会儿，爸爸要是知道我是为了帮助同学才晚回家，一定不会批评我的。", "一进王×的家，那摆设得整整齐齐的书，便映入了我的眼帘。在书架的旁边有个遇见亮光就会说话的海绵宝宝玩具。她答应我，写完作业就让我玩一会。我和她写完作业，一看表，已经8点了。啊！这么晚了爸爸会说我吗？唉，反正都晚了，何不在这里玩个够呢，玩一会儿海绵宝宝再说。就这样，我沉迷玩具，忘记了时间。", "当我走出王×家，星星已挂满了天空，道路上一片漆黑，隐隐约约传来怪叫声。那边的草丛中好像有一个东西，会不会是……我不敢再想，脚下的步子不由得加快了，只想赶快到家。", "来到了楼下，我的恐惧消失了，但心情却没有半点放松。爸爸会怎么做呢？是一脸愤怒的表情，还是要扬起大手掌打我呢？我真想像孙悟空一样，有七十二变，那样我就会拔下一根毫毛，让它变成我去见爸爸。幻想终究不能成为现实，我必须独自面对自己犯下的错。唉，爸爸要是打就打吧，也算是给自己一个教训。我敲了门，爸爸开门后一怔，随后一下子将我搂在怀里：“宝贝，你上哪去了，担心死爸爸妈妈了。妈妈出去找你，现在还没有回来呢。”我支支吾吾地回答：“我去同学家写作业，又玩了一小会儿。”爸爸说：“以后晚回家一定要告诉我们，不要让家里人为你担心，好吗？”爸爸语气严肃，但并没有严厉批评我，而我心里却无法平静。我只顾着自己玩乐，竟没有顾及家里人的感受，我真是自私啊。", "这一次晚回家的经历让我明白了父母对我的爱。对不起，爸爸妈妈，我让你们担心了，我以后再也不会犯这种错误了。"], "meta": "范文三 · 在同学家玩到天黑", "num": 3, "chars": 827}]}, {"theme": "走出校园", "prompt": "", "essays": [{"title": "走出校园", "author": "高铭淇 · 北京市陈经纶中学", "paras": ["走出校园，在秋后的苹果园里，我捡起被同学抛弃的一个个苹果，也捡起了自己期中考试后暂时遗落的自信，收获了让我受益一生的道理——成长过程中，我们要学会接纳自己的瑕疵和缺点，接纳独一无二的自己。", "进入中学以来，我急切地渴望证明自己。过分地追求完美，让我时常处于焦虑和不安中，害怕自己的不足会被发现，害怕失败带来的嘲笑和否定。然而，尽管我付出了全部的努力，期中考试的成绩却并不如我所愿，我一度在深深的挫败感中沉沦。", "期中考试后，学校组织了“攀登·收获”的研学活动，带领我们走出校园，走进挂满苹果的果园。同学们兴高采烈地“开工”了：有的爬上树摘，有的拿着杆子够，有的拿坏苹果打……大家都抬头仰望着枝头完美无瑕的红苹果。我却发现地上有好多还不错的苹果，伴着落叶，凄凉地滚在地上。它们或许有个虫眼儿，或许有些斑点。看着地上那些满是泥土的苹果，我仿佛看到了我自己。人无完人，我想，不能苛求每一个苹果都长成果王。我把这些苹果都收到了我的袋子里。", "拎着袋子，我的目光搜索着被同学们“抛弃”的“不完美”苹果。走着走着，我遇到了我的好朋友。他笑着一把拽过我的袋子，瞅了一眼里面的苹果，眼疾手快地挑着捡着，把许多苹果都扔到地上：“你这都是什么苹果呀？都有毛病！”我赶忙摁住袋子：“难道不完美的苹果就一定要被遗弃吗？”他睁大眼睛看着我：“你为什么不在树上摘呢？有那么多好苹果！”我心中涌起一股莫名的情愫，仿佛是要为这些被忽视的苹果鸣不平：“你平时吃的苹果都完美无瑕吗？难道有一处不完美就要扔掉吗？我们只因为看到了一个斑点，就要抛弃一整个苹果吗？”我飞速拿回袋子，捡拾起那些苹果，就像捡拾起对自己的信心。走出校园，一场与“不完美”苹果的邂逅，让我说出了自己真正的心声。", "看着这些苹果，我仿佛看到了我自己。每个人都有不完美的地方，我们要学会接纳自己、欣赏自己。真正的自己，或许就藏于一些“斑斑点点”之后。"], "meta": "高铭淇 · 北京市陈经纶中学", "num": 1, "chars": 782}, {"title": "银杏林的没落", "author": "李新怡 · 莱州程郭学校初中部", "paras": ["深秋时节，天气渐冷，其他树叶早早干枯凋零，唯有银杏叶子，明黄透亮，招摇在枝头，随着飒爽的秋风，舞动它美丽的身体。", "上午的阳光穿透了银杏林，那叶子金黄金黄的，纯正的黄，黄到蓝天变得更蓝，白云变得更白，于是天底下就只剩下了高天流云和这满树的黄叶。片片叶子随风而落，遍地的黄叶，踩上去有种误入世外桃源，发现金矿的感觉。", "只是不巧，当我跟随着家人踩着环绕着小河和银杏林的木栈道，享受松木栈道带来的震颤感和咯吱声时，一个四岁左右的孩子，正把手中的彩色包装袋，随手丢进道边的湖泊中。几条小鱼儿以为来了什么新玩具，绕着包装袋打转、嬉戏。那个年轻的母亲非但没有教育孩子要有公德心、环保意识，反而随手也把手里的食品包装袋丢进了小河里，和孩子说笑着扬长而去。这让我非常不舒服，想制止但已来不及，于是只好愤愤地前行。", "往年这个时节，来银杏林观赏美景的游客很多，可是今年除了很多扛着“长枪短炮”的摄影爱好者，银杏林中游客寥寥。走入银杏林，一些老树上结的银杏果掉落在树下，被游客踩踏后，果肉发出阵阵恶臭。可是没有人捡拾，也没有人清扫。银杏林的恶臭让游客望而却步，那些一家人嬉戏踏秋的温馨场面不见了，那些吊床、儿童淘气堡也不见了，那些游客自带的帐篷也不见了，这没落的情景让人看了不免遗憾。", "沿着木栈道绕过银杏林再绕回去，就到了宽阔的主路上。主路是一条水泥路，路两边是附近村民摆的小摊，有卖一串串红辣椒、自己雕刻的寓意福禄寿喜的小葫芦等的，也有卖小米、花生、野蘑菇干、茄子干的，还有卖苹果、秋月梨、红山楂等水果的，更有卖气球、爆米花、糖葫芦的……很多年轻的夫妇带着孩子在买糖葫芦等零食，路上漫步的老人少，中年人也不多，我更是另类，在水泥路上来回走了几圈，最终买了糖葫芦和柿饼，算是这次没白来。", "往回走的水泥路有些地方开裂了，车行着很颠簸。其实先前挺喜欢这个地方，恰好在小城的边缘，美丽又不浮躁，安闲又不落后，但想想今天看到的一幕幕，却兴味索然，感觉以后不会再来了。究竟是什么原因让银杏林没落了？朋友们，你们能告诉我吗？"], "meta": "李新怡 · 莱州程郭学校初中部", "num": 2, "chars": 839}, {"title": "让自己勇敢一点", "author": "", "paras": ["走出校园，只要让自己勇敢一点，你会发现外面的世界很精彩。", "那是一个绿意浓浓、繁花盛开的盛夏，天空中不时吹来些许微风，让人感觉到游玩的舒爽和惬意。爸爸妈妈带着我，与他们的一些朋友一起去了本市著名的水上世界。", "到达水上世界后，曾经来过这里的李叔叔把我们带到一个很热闹的地方。这地方有条河道，河道水流很急，游人坐在河道中的船上，船会被带到非常陡的坡道，然后再快速下降，坐在船上的游人大都发出了惊叫声。一看这种场面，我当时就吓傻了。这时李叔叔说：“谁来玩‘激流勇进’？今天我请客。”王阿姨是个胆大的人，马上就站了出来。我正在进行着激烈的思想斗争：玩还是不玩？船在急流中飞快而去，王阿姨欢呼着：“好刺激啊！”看到我犹豫不决的样子，妈妈在一旁安慰我说：“不敢玩就算了，不要强求自己。”", "听了妈妈的话，我想打退堂鼓了，这时爸爸说：“儿子，让自己勇敢一点。”", "对，让自己勇敢一点。我暗暗重复着爸爸的话：作为一个男子汉，面对困难应该勇往直前，而不是选择逃避！我暗暗下定决心，于是眼一闭，心一横，登上了小船。小船到达坡道顶端那一刻，时间仿佛都凝固了。我的心提到了嗓子眼儿，牙关咬得紧紧的，呼呼的风声不绝于耳……我惊恐地闭上眼……小船终于停了下来，我长长地舒了一口气，回过头看了一眼，好像也没有那么可怕。", "这次“激流勇进”让我明白了一个道理：生活中，遇到困难、挫折时，要有一颗勇敢的心，让自己勇敢一点，你会发现，困难并不可怕，成功其实离你并不遥远。"], "meta": "", "num": 3, "chars": 608}]}]</script>
 <script>
-<!-- SECTION: DATA -->
-const CATEGORIES = [
-  { id:"qinqing", name:"亲情篇", icon:"🏡", color:"qinqing", tag:"亲情",
-    essays:[
-      { title:"花开不如期", author:"陶宸熠 · 北京大学附属中学", text:
-`八月到了，桂花没有开。
-
-我徘徊在院子门口，在桂花树的叶片间寻找着米黄色的花苞，想象着它能在一夜间爆出满树的芬芳。然而，今年的桂花树让我失望了。那密密的绿叶间点缀着一些不显眼的花苞，似乎失去了盛放的勇气。发生了什么呢？
-
-回忆翻滚——
-
-春光来临的时候，桂花树像往年一样冒出新芽，然后在时光里摇身一变，让满树的绿意和盛夏撞了个满怀。我满心期待，内心充满无限憧憬。如今，眼前的桂花树却像个还未开战就败下阵来的士兵，空有一身绿色的皮囊。
-
-"桂花不会开了。"
-"也许只是时候未到吧。"
-"往年的八月，它不都准时开吗？"
-"再等等，总会开的。"
-
-这几乎成了我和妈妈每一天的"固定台词"。开或者不开，我们各自坚持着自己的判断。一周过去了，桂花没有动静；半个月过去了，桂花依然没有开放……看着它的模样，我不禁想起了自己：渴望在学习上能"春风得意马蹄疾"，期盼成绩能"扶摇直上九万里"，而新学期开始我的成绩却依然平平……这棵桂花树，不正是我当下的写照吗？
-
-中秋夜，月光如洁白的水袖覆在门前的桂花树上，映出了一地青黛的影子。突然，我的鼻尖捕捉到了一丝淡淡的桂花香。我起先疑惑，旋而惊喜，桂花！我赶紧用眼睛在绿叶间搜寻，果然，在一个不起眼的枝头上，我发现了最先开放的几朵桂花。它们小巧的样子惹人怜爱，我为自己早些时候的怀疑而感到满心愧疚。我轻轻凑近它们，摘下一朵放在手心，细细嗅着，那淡淡的香气从鼻尖流淌到心尖。这迟来的桂花是想告诉我什么吗？
-
-我心神一荡：也许，花开不如期，但美好终将到达。花如此，人亦然。我何必因为当下的平凡而自我怀疑呢？我相信，只要面朝希望的大海，终会有梦想的花开！花开虽不如期，但梦想不会失约——这才是真正的少年心啊！` },
-
-      { title:"我们是一家人", author:"佚名", text:
-`家是圆心，爸爸、妈妈和我围着圆心走，一家人始终幸福美满。
-
-——清风摇曳梧桐树的时候——
-
-月亮又悄悄爬上了窗外的梧桐树，我靠在床头。是该听妈妈讲故事的时候了，可是妈妈又去晚督班了。妈妈是一名老师，每天兢兢业业，总有忙不完的事情。她每次回家，总是伴着匆匆的脚步声，脸上带着紧张的神情，有时怀里还抱着几本厚厚的书。
-
-"妈妈，你不爱我了吗？为什么不在我身边陪着我呢？"我赶忙拉住妈妈的手，她的手上还有白色的粉笔灰。"孩子……"妈妈哽咽了，转过头去，眼里饱含着透明的泪水。她摸了摸我的头，指了指窗外的月亮说："月儿圆的时候，妈妈就会回来。"
-
-每到夜晚，我就飞快地跑到窗前，不停地寻找那圆圆的月亮——妈妈回来的希望。在梧桐摇曳，月儿圆圆缺缺的岁月里，充满了等待的苦涩和团聚的欢乐。
-
-——星星点缀夜空的回家路——
-
-读初中时，我有时参加晚上的兴趣活动。为了节约时间，让我尽快回到家，爸爸担起了开车接我的任务，他推掉很多应酬，准时等我。看着熟悉又温暖的笑脸，吃着热乎乎的点心，与爸爸说说今天的烦恼和趣事，那条通往家的路上总是充满温馨欢乐。风里飘来槐花的清香，我望着车窗外，黑色的天幕上闪动着一颗颗明亮的星星，星星沿着它的轨迹运行，我们向着家的方向飞驰。
-
-——白米粥飘香的寒夜——
-
-去年寒假的最后两天，妈妈旅游要回来了，说好晚上十点到的，不知怎么延迟了。爸爸关好我的房门，叮嘱我早点睡觉，他自己就在客厅等着。我在半梦半醒间听到一些细碎的声音，是妈妈回来了？我推开房门，果然，客厅里摆满了大包小包。初春的夜里颇有寒意，黑暗的夜晚，家中客厅里亮着一盏橘红的灯，灯下，有两碗热腾腾的白米粥，桌边是我的爸爸妈妈。
-
-看见我，他们惊讶于我居然醒了，随即，爸爸又盛来一碗白米粥，我们一家三口就在寒夜的灯下，一人捧一碗白米粥吃起来，笑容像灯光一样温暖。这碗白米粥啊，特别香甜，特别温暖，一直暖到心窝里，因为，里面有爱的味道。
-
-一路走来，日月轮回，春秋变换，我们一家一直沿着同一个圆心在走，无论风雨，不管苦乐，因为，我们是一家人。` },
-
-      { title:"我们是一家人", author:"佚名", text:
-`家人的意义在于我们可以相互搀扶，共同去经历这丰富多彩的人生。
-
-——题记
-
-去年四月中旬，阴影笼罩了我的家。
-
-奶奶突发脑出血，抢救后虽性命无虞，却半瘫在床，失去自理能力。以往可以奔走在田野、厨房的人，如今连独自站立都成问题。从震惊到悲伤，种种情绪伴随着整个治疗过程，我清楚地知道：这是奶奶的不幸，更是我们家要共渡的难关。
-
-奶奶出院后，我们全家决定帮助奶奶重新站起来，让她能够下地走路。奶奶是左半边身体瘫痪，完全使不上力。带她去康复中心的路上，奶奶趴在爸爸的背上，左手只能无力地搭着，身体不自觉朝一边歪斜。到康复中心后，奶奶会经历一上午的针灸、按摩、协同锻炼。其中协同锻炼最为费力，需要有人在旁边搀扶着她，让她先下地站立，再慢慢从走几步到走一段路。
-
-奶奶第一次下地时，我、妈妈、弟弟三个人在旁边搀扶。我扶着右手，妈妈扶着奶奶最无力的左手，弟弟负责站在奶奶背后，用两只手扶正奶奶的腰。奶奶九十几斤的体重全部由我们三个人承担着。我们紧紧扶着她，心被奶奶那只使不上力的左脚牵绊着。奶奶走得不稳，颤颤巍巍、摇摇晃晃。她咬着牙，只走了几步，汗水就沾湿了额前的白发。"真跟小孩儿学走路一样……"她数次用颇为无奈的口吻这样叹息。
-
-可在我们小时候，她是我们强大的依靠，她用宽厚的手掌握着我们的手，牵着我们一步一步用脚探索这未知的天地。后来我们学会了奔跑，但时常摔倒，奶奶会心疼地扶起我们，边给我们拍土边说要用锄头把这块绊倒我们的土锄平。再后来，我们松开了奶奶的手，一个接一个奔向无边的广阔天地，那是奶奶未曾到过的地方。我们也会经历一些奶奶不曾体会的坎坷。我们回家不语忧愁，她却无声安慰，用一顿顿可口的饭菜，疗愈我们疲惫的身心。
-
-岁月可回首，前路犹可期。经过长时间的康复治疗，渐渐地，奶奶只需一人搀扶便可以行走。我记得那天夕阳正好，初夏的风轻柔拂过，奶奶和我一老一少，互相搀扶着，缓慢前进……
-
-有你同行，相互扶助，莫不静好。我们永远是这样相亲相爱的一家人。` },
-
-      { title:"粥香绵长，亲情未央", author:"佚名", text:
-`真正的亲情，从不在轰轰烈烈的表达里，而藏在日复一日细碎的陪伴中，沉淀成岁月里最温柔的暖意。
-
-清晨的天光还未完全穿透窗帘，整座城市尚陷在沉睡的静谧里，我家的厨房早已亮起一盏温柔的暖灯。那是奶奶又早早起身，为我熬一锅温热的小米粥。寒冬的清晨格外清冷，玻璃窗凝着薄薄的雾气，风从窗缝悄悄钻进屋子，带着刺骨的凉意。可灶台边，永远是温暖安稳的模样。
-
-奶奶佝偻着微微弯曲的脊背，站在灶台前，一手扶着锅沿，一手轻轻搅动锅中翻滚的米粥。银白色的发丝随意贴在额角，被氤氲的水汽濡湿，几缕碎发垂在眼前，她却顾不上整理。柴火温柔地跳动，锅里的米粒慢慢舒展、软糯，淡淡的米香一点点漫满整个房间，驱散了清晨所有的寒凉。
-
-我常常披着外套站在门口静静看着她。她的动作缓慢却娴熟，反复搅动，怕锅底糊掉，怕粥不够绵软，怕我入口不够温热。十几年如一日，无论寒冬酷暑，无论我上学早起或是疲惫低落，清晨的一碗热粥，永远准时等候在餐桌。她从不说挂念，从不讲深情的话语，却把所有的疼爱，都熬进了细细密密的粥粒里。
-
-每当捧起温热的白瓷碗，温热顺着指尖蔓延到心底。软糯的米粥入口清甜，熨帖了晨起的困倦，抚平了学习的焦躁。一碗简简单单的米粥，没有昂贵的滋味，却藏着世间最纯粹、最绵长的爱意。
-
-烟火寻常，粥香岁岁。平凡的朝夕里藏着最动人的亲情，温暖我的成长，温柔我的岁岁年年。` },
-
-      { title:"雨伞微倾，爱意满盈", author:"佚名", text:
-`亲情是藏在细微举动里的温柔，无需言说，却在风雨时刻，为我撑起一片永远晴朗的天地。
-
-深秋的午后，天色骤变。原本晴朗的天空瞬间被乌云遮蔽，狂风呼啸而过，树叶簌簌作响，细密的雨丝骤然坠落，转眼化作倾盆大雨。放学铃声响起，我站在教学楼门口，望着漫天雨幕满心焦灼。就在我不知所措时，人群尽头，我看见了撑伞等候的母亲。
-
-她站在风雨里，衣角被风吹得翻飞，眼神却始终紧紧望着教学楼的方向，在涌动的人群中，一眼锁定了我的身影。我快步冲进雨里，扑到伞下，母亲立刻将我揽在身侧，轻声问我冷不冷。
-
-并肩走在回家的路上，雨声淅沥，敲打伞面，发出细碎的声响。我无意间抬头，忽然发现头顶的雨伞始终稳稳向我这边倾斜。母亲的大半肩头暴露在风雨中，深色的外套早已被雨水浸透，贴在单薄的背上，发丝湿漉漉地贴在脸颊，微凉的雨水顺着发梢缓缓滑落。
-
-我心头骤然一酸，伸手轻轻摆正伞柄："妈妈，伞歪了。"母亲却笑着轻轻推回去，语气温柔又坚定："我没事，别淋着你。"短短的一句话，温柔地撞进心底。风雨再大，有她偏过来的伞，我便永远安稳无忧。
-
-漫漫归途，雨声未歇，倾斜的雨伞，遮住了所有风雨，留住了全部温柔。原来母爱从不是轰轰烈烈的奉献，只是一次次下意识的偏爱与守护。
-
-一伞微倾，藏尽深情。这无声的亲情，是岁月里最安稳的庇护，永远温暖明亮。` },
-
-      { title:"掌纹温热，父爱无声", author:"佚名", text:
-`世间最深沉的亲情，往往沉默无言。父亲笨拙温柔的守护，藏在粗糙的掌纹里，温暖我一路成长。
-
-我的父亲向来不善言辞，他从不会温柔絮叨，很少直白表达牵挂，却总在我需要的时候，默默撑起一片安稳的天地。上个周末，书桌的木质抽屉突然卡住，死死闭合，无论我如何用力推拉，始终纹丝不动。急躁之下，我满脸烦闷，忍不住轻轻叹气。
-
-父亲听见动静，默默走了过来。他没有责备我的毛躁，只是轻轻抬手示意我让开。他微微蹲下身子，宽厚的背影挡在灯光前，专注地打量着卡住的抽屉缝隙。常年劳作的手掌粗糙厚重，指腹布满细碎的薄茧，那是岁月和辛劳留下的痕迹。
-
-他小心翼翼捏住抽屉边缘，轻轻试探、微调力度，一点点调整错位的木板，动作轻柔又耐心。他屏住呼吸，慢慢推拉、调试，反复确认缝隙的位置。原本顽固卡死的抽屉，在他耐心的修整下，一点点恢复顺畅。
-
-修好的那一刻，他轻轻推拉两下确认无误，然后抬手，用粗糙的指尖轻轻拂去桌沿的浮尘，侧过头看向我，眼底是朴素又温柔的安心。他没有多说什么，只低声一句："遇事别急，慢慢来。"
-
-简简单单的一句话，没有华丽的辞藻，却瞬间抚平了我所有的焦躁。掌心残留的温热，透过空气传递过来，安稳又踏实。原来父爱从不用言语修饰，所有的牵挂、包容与守护，都藏在默默付出的细节里。
-
-父爱无言，温情有度。朴素的掌纹藏着最动人的亲情，成为我成长路上最坚定的力量。` },
-
-      { title:"一路阳光一路情", author:"佚名", text:
-`蓦然回首，才发现，原来我寻找的阳光一直照在我身上……
-
-——题记
-
-"要你管？烦不烦啊！"一脸不耐烦的我"砰"的一声摔上了房门，把妈妈关在屋外。
-
-发泄过后，我顿时失去了力气，靠着门滑坐到地上，泪水一颗一颗滑落。我是怎么了？我问自己。屋子里静悄悄的，没有人回答，只有几尾病恹恹的鱼在鱼缸里无力地摆动着尾巴。
-
-看着它们，白天发生的事浮上心头……
-
-我和我最好的朋友吵架了。前几天我借给她几本书，今天她却把涂得乱七八糟的书还给了我。我问她怎么回事，她说是她小表弟画的，不关她的事……就这样，我们吵了起来。
-
-闷闷不乐的我拖着沉重的脚步推开了家门。妈妈看见我，很自然地接过我的书包，关切地问我："上了一天学，累不累？"本来温暖的话语却让我感到一阵烦躁，我转过身来大声吼她："要你管？烦不烦啊！"看着妈妈意外的表情，我突然有些内疚。为了掩饰内心的慌乱，我摔上了房门……
-
-刚摔上房门，我就后悔了：我怎么能这样对待生我养我的妈妈？怎么能把怒气发泄在她身上呢？我劝自己：下一秒就去道歉。可是，眼看着时间一分一秒过去了，我还是开不了口……
-
-一夜无眠。
-
-优美的钢琴声响起，在这个寂静的早晨显得有些突兀。睡眼惺忪的我按停了还在响的闹钟，音乐顿时停止了。一阵香气适时地传来，一缕阳光透过窗帘的缝隙射进了房间，床头柜上放着一杯热气腾腾的牛奶，旁边还有一张便利贴："不管昨天发生了什么不开心的事情，都忘记它吧。希望今天的你是快乐的！——爱你的妈妈。"
-
-看着那仿佛还带着温度的字迹，我的眼睛湿润了……不知从什么时候起，我变得这么爱哭了……我迫不及待地打开房门，对着妈妈的背影喊道："妈妈，我会的！"
-
-何必苦苦寻觅阳光？在我们成长的道路上，父母的关爱就像阳光一样，一路陪伴，一路呵护，一直暖暖地照在我们身上！` },
-
-      { title:"这天，我回家晚了", author:"马可扬 · 北京大学附属中学", text:
-`我忍着疼抬起胳膊，手表上的指针已经指向我平时到家的时间。我双手推着自行车，在车流纵横的马路边缓缓前行，天色逐渐暗下来，我却不想迈向回家的那条路。
-
-冷酷的风刮过胳膊和腿上的伤痕，风吹起的尘土在伤口上作乐，我只能紧锁眉头继续向前走去。看似遥不可及的路途已被我静静走过，我已然出现在家门口，左右徘徊，欲进又止。
-
-我也不明白我为什么不进入家门，只是想到爸爸严厉的眼神和妈妈焦虑的表情，就觉得带着摔坏的自行车回家不太好。我做了一次深呼吸，坐在门口的台阶上，重新梳理事情的脉络，好像是上法庭前的罪犯准备为自己做最后一次辩驳。时间不知不觉过去，黄昏的太阳在朦朦胧胧间沉下。而时间愈是紧迫，家长的训斥必愈是强烈。每次当我鼓起勇气掏出钥匙时，我都会重新退缩，再度考量。
-
-夜幕降临，黑暗迫使我从犹豫不决的懦夫变成勇赴沙场的壮士。我踏入了这个我无比向往而又无比畏惧的家。
-
-门打开后，不待家中人讲一句话，我便先开了口："我有事，情况特殊，你们都走，离开客厅。"大概是太过于紧张，我嘴里只是磕绊蹦出几个词。说完，我悄悄溜进自己的房间，趴在门缝上确定客厅里绝对安全后，才蹑手蹑脚地走到客厅，从柜子中拿出碘酒和棉球，又蹑手蹑脚地回到房间，关紧门。
-
-不过一会儿，妈妈果不出所料地敲开房门，询问事件原委。我虽胆战心惊，却也无可奈何，只好向妈妈如实交代。
-
-"我知道你不想让我知道，摔了车妈妈不怪你，但是你得给我看看你摔哪了，要不然我放心不下……嗯，这得给你消消毒。"
-
-"我已经自己消过毒了，没事了。"
-
-"你这弄得不行，我给你拿酒精再清清创。"
-
-我的心咯噔了一下，预想中的呵斥没有出现，现实中温柔的话语，让我羞愧难当。我为我的犹豫而感到愧疚，为我对母爱的怀疑而感到羞耻。
-
-"我知道你在外面待着不敢回家，没事的。你要记住：我们永远是你能够依靠的避风港，这里永远是你温暖的家。"
-
-"给你把纱布裹上了。准备睡觉吧。"
-
-我躺下，看着那暖黄色的灯光，感觉疼痛在渐渐消失……
-
-这天，我回家晚了；但"家"，永远不嫌我回得晚。` },
-
-      { title:"这天，我回家晚了", author:"牟磊 · 北京大学附属中学", text:
-`夕阳斜斜地挂在天边，把天空染成了金红色。我骑着自行车，穿行在回家的路上，心中满是急切。五点半了，我必须在夜幕降临前赶回家。
-
-此时电话响了："淘儿啊，几点到家啊？""我现在就往家骑呢，别急，估计半个小时吧，你们先吃，不用管我。""那行，路上别贪玩，慢点骑啊。"
-
-挂断电话我就开始往家骑。路过公园时，我抬头望向天空，是风筝，顺着线往下看，便是一群孩子在你追我赶、争先恐后地抢着线轴。那风筝在空中翩翩起舞，仿佛是孩子们心中无忧无虑的梦想。不知不觉，我慢了下来，单脚踩在马路牙子上，心中涌起一阵儿时的回忆——那时的我，也曾如此天真烂漫，追逐着风筝，追逐着快乐。
-
-然而，现实却将我拉回。脚下一滑，我重重地摔在地上。疼痛瞬间传遍全身，我的手掌也被粗糙的地面划破了。我艰难地扶起车，顾不得被粗糙的柏油路面和锋利树枝划伤的手，简单用纸巾止住血，重新踏上回家的路。
-
-这时，第二通电话来了："淘儿啊，到哪了？我好看什么时候下面条。""摔了一跤，估计骑得会慢点，你们真不用等我，先吃吧。"我匆匆挂断电话，继续骑。
-
-夜色渐浓，华灯初上。我拖着疲惫的身体骑过了小区西门，远远地看见姥姥正站在门口焦急地张望。她瘦弱的身影在昏黄的灯光下显得格外单薄，仿佛一座雕塑，在时间的流逝中默默等待着我的归来。我推着车缓缓走近，只见姥姥双手紧握在一起，不时地抬头望向远方，眼神中充满了担忧。她的眉头紧锁，仿佛在思考着我为何迟迟未归。每当有行人经过，她都会急忙抬头查看，希望是她熟悉的模样。
-
-和她隔着一条马路，我拨通姥姥的电话，声音有些颤抖："姥姥，我回来了，刚才摔了一跤，手划破了，但没事，别担心。"电话那头，姥姥的声音带着责备和关切："怎么这么不小心啊，摔疼了吧？快点回来吧，我给你准备了热乎乎的饭菜。"
-
-挂断电话，我看到姥姥缓缓转过身来，她的脸上写满了担忧和疲惫，但眼中却闪烁着见到我后的喜悦。她快步走过来，接过我手中的车，又抢过我身上的包。我握着她那双因等待而变得冰凉的手，心中涌起一股暖流。
-
-"怎么骑车这么不小心，让姥姥担心着急。"姥姥虽然责备着，但语气中却满是关心和疼爱。她仔细地检查我的伤口，眼中满是心疼。我望着她，心中涌起一股暖流。
-
-或许就像史铁生说的那样："儿子的不幸在母亲那里总是加倍的。"外孙的不幸在姥姥那里又加了不知多少倍。那一刻，我再也压制不住我的情感，眼泪不由自主地流下来。
-
-那天，我回家晚了。但姥姥在灯下的等待，让我深刻感受到了家的温暖和家人的牵挂。无论多晚，总有一盏灯为我留着，总有一个人在等我。这份温暖和牵挂，是我前行路上最宝贵的财富。
-
-夜已深，星星点点的灯光在夜色中闪烁。我跟着姥姥的脚步，走进家门。那一刻，我明白了，家，永远是我最温暖的港湾。` },
-
-      { title:"这天，我回家晚了", author:"佚名", text:
-`那一次的经历我至今还牢牢记在心里，因为那是我回家最晚的一次。我为此感到非常后悔，但是我没有办法改变我已经犯下的错误，我只能让自己以后不再犯这样的错了。
-
-那天下午放学，同桌王×对我说："今晚我爸妈去加班，我有些害怕，你能陪我一起写作业吗？"接到朋友的邀请，我高兴极了，但仍是很犹豫——我的脑海里闪过爸爸平时叮嘱的话："放学后不能在外面玩，一定要回家！"但我看到王×那期待的目光，心便软了下来。就陪她写一会儿吧，就一会儿，爸爸要是知道我是为了帮助同学才晚回家，一定不会批评我的。
-
-一进王×的家，那摆设得整整齐齐的书，便映入了我的眼帘。在书架的旁边有个遇见亮光就会说话的海绵宝宝玩具。她答应我，写完作业就让我玩一会。我和她写完作业，一看表，已经8点了。啊！这么晚了爸爸会说我吗？唉，反正都晚了，何不在这里玩个够呢，玩一会儿海绵宝宝再说。就这样，我沉迷玩具，忘记了时间。
-
-当我走出王×家，星星已挂满了天空，道路上一片漆黑，隐隐约约传来怪叫声。那边的草丛中好像有一个东西，会不会是……我不敢再想，脚下的步子不由得加快了，只想赶快到家。
-
-来到了楼下，我的恐惧消失了，但心情却没有半点放松。爸爸会怎么做呢？是一脸愤怒的表情，还是要扬起大手掌打我呢？我真想像孙悟空一样，有七十二变，那样我就会拔下一根毫毛，让它变成我去见爸爸。幻想终究不能成为现实，我必须独自面对自己犯下的错。唉，爸爸要是打就打吧，也算是给自己一个教训。我敲了门，爸爸开门后一怔，随后一下子将我搂在怀里："宝贝，你上哪去了，担心死爸爸妈妈了。妈妈出去找你，现在还没有回来呢。"
-
-我支支吾吾地回答："我去同学家写作业，又玩了一小会儿。"爸爸说："以后晚回家一定要告诉我们，不要让家里人为你担心，好吗？"爸爸语气严肃，但并没有严厉批评我，而我心里却无法平静。我只顾着自己玩乐，竟没有顾及家里人的感受，我真是自私啊。
-
-这一次晚回家的经历让我明白了父母对我的爱。对不起，爸爸妈妈，我让你们担心了，我以后再也不会犯这种错误了。` },
-
-      { title:"餐桌前的谈话", author:"李瀚林 · 北京师范大学三帆中学朝阳学校", text:
-`"老伙计，多吃几块肉。"李奶奶拿起了筷子，夹了一块肉放在对面碗里。
-
-鞭炮声响，除夕夜里，万家灯火，邻里欢声笑语，屋内热气腾腾。
-
-"真是太好了，大家能在这样的日子里一起吃饭。"李奶奶脸上堆满了笑容。饭桌上有好几盘菜，都是老伴和儿子爱吃的，还没怎么动过。
-
-"妈，您放心，我们以后会常这样聚的。"儿子略显疲惫地说道，"您看起来瘦了，也多吃点肉啊。"
-
-李奶奶夹了一根青菜放在自己碗里："你也辛苦了，在外地工作这么久，也应该吃点好的啊。"
-
-李奶奶出神地回忆道："还记得从前，我还不怎么会做菜，只是做碗面条，你们就高兴得不行。那时的日子真是艰苦而快乐啊。"
-
-儿子眼眶有些湿润："我和我爸最爱吃您做的菜。任何一家餐馆也吃不到您做出来的那个味道。"
-
-老伴沉默不语，像是在默许。
-
-李奶奶继续说道："现在我退休了，慢慢学做菜了。这一大桌子菜都是我从网上学来的。虽然你爸病了，可是我知道他爱吃这些菜，像这盘红烧排骨，我现在也常给他做……"
-
-"妈！您该休息休息了。"儿子有些心疼地说道，"您别老这么辛苦地做菜了，我以后会常回家给您做饭的。"
-
-李奶奶的眼神黯淡了下来，嘟囔了一句："好吧，我等你以后回来。"
-
-屋子里只剩下碗筷碰撞的声音。
-
-就这样过了几分钟，儿子开口说道："我想您了，以后肯定会常回家看看的。"
-
-李奶奶慈爱地说道："你工作太忙了，要多注意休息。我相信你会回来陪我的。"
-
-"我爱您。"
-
-"我们也爱你。"
-
-李奶奶挂断了视频电话，屋子里一点儿声音也没有了，只剩下饭菜腾腾的热气。
-
-"老伙计，你盼望儿子回来吗？"李奶奶轻声问道。
-
-老伴在墙上的照片里看着李奶奶，默不作声。
-
-这世间存在着一种爱——你虽不在我身边，却是我一生一世的想念，我愿为你奉献一切！
-
-鞭炮声更加响了，灿烂的烟火把整个天空点缀得更亮了。"老伙计啊……"李奶奶又夹起一块肉，这次是放到了自己碗里。` },
-
-      { title:"餐桌前的谈话", author:"冯致远 · 北京师范大学三帆中学朝阳学校", text:
-`斑驳的瓦片，泛黄的板砖，屋外的米缸。我回望这陪伴我十余载的故土，心中满是不舍。明天，我将踏上前往陌生城市的旅程，那里将有高楼大厦和无数新奇的事物等待着我，但此刻的我，却对这里的一切充满了眷恋。
-
-我低头看着手中紧攥的悠悠球，它陪伴了我的整个童年，尽管已经买了很多年，却依然崭新如初，这得益于我的细心呵护。曾经，我凭借着这村里转得最快最久的悠悠球，成了孩子们中的小领袖，它承载了我童年的无数欢乐时光。
-
-我又抬起右手，手中是刚刚从奶奶柜子里悄悄取出的磁带。这是奶奶最珍爱的磁带，她每个下午都会坐在躺椅上，抱着录音机，听着磁带里咿咿呀呀的戏曲。然而，随着时间的流逝，磁带已经老旧，唱出的戏曲也时断时续。
-
-我走在乡间的小路上，心中思绪万千。看着悠悠球，不禁想起前两周我还跟奶奶唠叨悠悠球的轴承生锈了，转不快也转不久了，可惜村里没有卖这种悠悠球的。拐过弯，我来到了村里的旧物品回收站，最后看了一眼我的悠悠球，狠下心问："老板，这个能卖多少钱？"
-
-出来以后，我攥着手中仅有的二三十块钱，快步走向磁带铺。我想，虽然我可能永远无法理解戏曲的韵味，但奶奶每次听戏时那满足的表情，却深深印在我的心中。我想用这些钱为奶奶买一盘新的磁带，让她能够继续享受她钟爱的戏曲。
-
-夕阳剩下最后一丝余晖，天边火红火红的，我紧紧攥着新买的磁带，生怕它丢失。终于，我回到了家。
-
-"孙子，快来吃饭了！"刚推开院门，奶奶那熟悉的声音便传入耳中。
-
-餐桌上摆满了菜肴，奶奶为我夹了一块肉，温柔地说："孙子啊，你明天就要走了，要好好学习，不要贪玩。奶奶为你准备了礼物，希望你在外面也能快快乐乐的。"说着，奶奶从口袋中掏出一个小盒子。我打开一看，里面竟是我梦寐以求的悠悠球，是崭新的！
-
-我愣住了，泪水在眼眶中打转。
-
-看到我这样，奶奶疑惑道："怎么了，不喜欢吗？"
-
-我擦了擦鼻子："没有，奶奶，我真的很喜欢，我只是没想到，我刚把我的旧的悠悠球卖了。"
-
-"你当宝贝的悠悠球，怎么突然就卖了？"
-
-"我想给您买个礼物，我想着反正城里肯定还有各种各样的悠悠球。奶奶，不用担心我了，我给您准备了一个惊喜。"
-
-我掏出了磁带："奶奶，我给您买了个新的磁带，这里面录的戏就是您最喜欢听的那出，以后您再也不用听断断续续的戏了。"
-
-奶奶什么也没有说，一把把我搂在怀里。
-
-"我的孙儿啊，有了你，奶奶就是全天下最幸福的人啦！"
-
-"奶奶，您快听听吧，肯定跟在现场听一模一样。"我激动地跟奶奶说。
-
-我们坐在餐桌前，奶奶将磁带放入录音机中，悠扬的戏曲声响起。我虽听不懂戏曲的内容，但能感受到奶奶那满足和幸福的神情。这一刻，我觉得自己是世界上最幸福的人。
-
-月亮高高地悬挂在空中，院子里洒满了皎洁的月光，我已经忘了后面和奶奶说了什么，只记得吃了人生中最美味的一次晚餐。` }
-    ]
-  },
-  { id:"chengzhang", name:"成长篇", icon:"🌱", color:"chengzhang", tag:"成长",
-    essays:[
-      { title:"那一次，我真难忘", author:"张伊 · 北京师范大学三帆中学朝阳学校", text:
-`人们的品格在时光的沙漏中是不会蒙尘的金。
-
-——题记
-
-阳光透过窗帘洒下斑驳的光影，我注视着窗台上的照片，陷入了回忆。
-
-那次我和爸爸妈妈一起出游。我们背着行囊，在黄昏时来到一处山脚下。因为错过了直通宾馆的大巴，而我们在的地方离最近的城镇也有百余里，一时间我们束手无策。
-
-正在着急之际，妈妈看到不远处有个村庄，我们赶过去后，见到一位老人正在张罗着馄饨摊。他那佝偻的身体好似一座俯伏的山丘，大地色的皮肤在村头黄色路灯的照射下现出筋脉的痕迹。虽然满脸的皱纹诉说着他年岁已高的事实，但他那坚实的臂膀却透着一股老当益壮的干劲。他身着白背心，像是刚干完活，额头上有细密的汗珠。他了解到我们的困境，便招呼我们来吃馄饨，并邀请我们到他的家过夜。
-
-我们各点了一碗馄饨，爸爸刚准备掏钱，他却摆摆手，爽快地说道："没什么的，几碗馄饨而已，饿的话我再盛几碗。"
-
-这时，我看到他左小臂被全部截去。我不由得好奇他到底经历了什么，在这么寒冷的秋日，要一个人出来卖馄饨。
-
-馄饨皮薄馅鲜，入口鲜香无比，热乎的馄饨汤驱走了我们身体里的寒气。吃完馄饨后，爸爸问："老人家，这么冷的天还出来卖馄饨啊？"老人靠在摊铺前，长舒了一口气，将他的故事娓娓道来。
-
-他干这行三十多年了。某一日，他蹬着三轮车带他的妻儿去县城的餐馆吃饭，不料半路出了车祸，妻儿抢救无效双双离世。说到这里时，他伸出自己的断臂，眼中划过一丝惆怅："当时左臂伤得很严重，为了不恶化危及整条胳膊，只能截去了小臂。但我其实不在乎这只手，而是想着……既然我都半条腿迈进棺材了，更要用仅剩的力气为他人做些什么。"
-
-听着他的诉说，我心中泛起阵阵酸楚，失去了至亲和左小臂的老人，却依旧顽强地活着。
-
-天彻底黑了，老人带我们回了他家，那是个又矮又小的平屋，他给我们铺好了炕，温暖的炕让我们倍感温馨。
-
-次日临行之际，我们和老人拍了一张合影。他又往我们每人手里塞了一盒打包好的馄饨，而后目送我们离开。我回头看着老人矮小佝偻的身影，不禁热泪盈眶。
-
-回家后，我便将这张合影摆在了窗台上。时隔两年，我再次端详这张照片。我想，他大抵已经用勤劳致富，并在继续帮助那些有困难的人。老人没有沉浸在过去的伤痛中，而是勇敢地走向新生。他教会我勇于面对成长中的风雨，不畏艰难，努力取得成功。` },
-
-      { title:"那一次，我真感动", author:"佚名", text:
-`公交车是社会的一个小窗口，人们匆匆在此相聚，转眼又各奔东西，一切都平平常常。但有一件发生在公交车上的小事却让我难以忘怀。
-
-那是去年暑假的一个下午，正值下班高峰期，路上行人如织。公交车上，人声嘈杂，我不由得抱怨着："这个时间段车上的人可真够多的。"
-
-到了一个站点，车门刚一打开，一个抱孩子的年轻妈妈就被人们挤进了车厢，踉跄着站到了我和另一个男孩的座位旁边。我本想站起来让座，可又想到站着的难受滋味，于是就把脸扭向窗外。而坐在我旁边的那个男孩，却在这时碰了碰我，微笑着对我说："往里面挪一下，好吗？"我不满地瞥了他一眼，心想："你又不起来让出座位，你想干吗？"
-
-那位年轻妈妈抱着胖乎乎的小孩，不方便抓车厢顶上的拉环，只能抓着座椅靠背，费力地稳住身子。就在我犹豫之际，身边的男孩突然伸出瘦瘦的双手，向那位年轻的妈妈说："阿姨，我帮您抱着孩子吧！"我在心里暗笑："真虚伪，把座位让出来不就得了？"那位年轻妈妈笑了笑，没说什么。男孩有点尴尬地收回了手。真是自讨没趣。
-
-过了一会儿，男孩再次伸出了双手，说："阿姨，我帮您抱孩子吧！"那位年轻妈妈又冲他笑了笑，说："不用了，谢谢你。"又过了一会儿，男孩终于扶着椅背站起身来，说："来，阿姨，您坐这儿吧。""不用了，不用了。""没关系的，坐下吧。"说着，男孩硬是把抱小孩的年轻妈妈让到座位上，然后用手指轻刮了一下孩子的鼻尖，冲着孩子做了一个鬼脸，把孩子逗得咯咯笑。
-
-我暂时松了一口气，心里却越来越难受，虽然坐着，但裤子贴到了腿上，很不舒服，第一次体会到坐着比站着还难受的滋味。终于到站了，我站起来走到男孩旁边，准备逃离这个刺到我良心的地方。忽然，公交车猛地一颠簸，我没站稳，一脚踩在那男孩的脚上。我连忙向他道歉，可他竟没反应，有点茫然地看着我。我暗自纳闷："这人真怪！"
-
-车停稳了，人们蜂拥而下，男孩缓缓地挪向车门。我忍不住又看了他一眼，突然发现他的一条腿直直地朝前挪动着，还发出了轻微的金属响声。我愣住了："他，他原来是装着假肢的残疾人啊！"
-
-下车后，我目送男孩远去，觉得脸上热辣辣的，心里涌起的却是一股暖流……` },
-
-      { title:"那一次，我真明白了", author:"佚名", text:
-`正是因为有千万绿色的无私奉献，那红色才显得如此娇美。
-
-——题记
-
-"你们两个换一下吧。"那个星期天，二胡老师正为乐团比赛排位置，我被调到了首席座位的旁边，而他却坐在了首席。在这个班，我们明明是一起训练的，我的技巧也不比他差，为什么首席的位置不是我？凭什么让我给他当陪衬？看着他嘴角露出的笑容，我心中愤愤不平。
-
-训练还没结束，我便独自离开了。走在回家的路上，刺眼的阳光毫不留情地烘烤着大地，似乎在以热浪嘲讽着我的遭遇。耐不住这炎热，我走到树荫下歇脚。伞状的树冠遮住了太阳，为大地赢得一片阴凉。在这树荫下，天不再是那样的炎热，微风轻拂，让我感到一丝惬意。不经意抬头，繁茂的绿色映入我的眼帘。
-
-是翠绿的叶子。它们随着风飒飒作响，无休无止地摇曳着，仿佛在向我大声诉说着自己的命运：我们从出生起便附着在这棵大树的枝枝杈杈上，用尽自己的一生，接受着每一份阳光，制造着每一份营养，为大树成长和花朵绽放默默地奉献出自己的力量。红色花朵在绿叶映衬下显得更加娇美，大树在绿色叶片的装饰下也显得格外挺拔。骄阳下的行人都愿意躲到树下纳凉，躲过烈阳的炙烤，在绿叶营造的阴凉环境下欣赏红花的娇艳。
-
-看着看着，我顿悟了！
-
-在乐团中，数种乐器相互配合，才能合奏出和谐的乐章。正如同树干、红花与绿叶相互配合，才会有这样繁茂的景象。坐不坐在首席位上有什么重要的呢？一场成功的表演，首席固然重要，但每一个参与者，不正像绿叶之于大树，又怎能缺得了呢？
-
-想到这里，我没有一丝犹豫，快步走出了阴凉，转身又朝着训练基地跑去。嫉妒与不满早已被我抛在脑后，心中只剩下一个想法：我要履行好自己"绿叶"的职责！
-
-接下来的训练很辛苦，但也很欢乐。我知道，我是一枚小小的"绿叶"，正是你付出，我付出，我们才会奏响一曲曲打动人心的乐章。` },
-
-      { title:"让我试一试", author:"佚名", text:
-`"岱宗夫如何？齐鲁青未了。"琅琅的书声随风飘向窗外，也激荡起了我内心的波澜，诗歌里泰山的巍峨挺拔和秀丽编织出我对它的憧憬。
-
-"妈，带我去泰山好不好？我好想爬泰山啊……"我抓着妈妈的衣服不断地央求道。"泰山太高了，你还太小，等你长大再爬，好不好？"妈妈蹲下身试图劝服我。"您让我试一试好不好？"不知怎的，我好像有一份执念。在我的央求下，妈妈终于答应了，于是我站在了泰山脚下。
-
-我抬头向上看去，泰山只是静静地与我对望。在我眼中，泰山不孤傲，也不是生人勿近的样子，而是像一位整装的将军屹立在此，欢迎着我的到来。依旧是那身绿铠甲，依旧是那条云腰带。我迫不及待地向上爬去，期待这位"将军"带我领略他的"造化钟神秀"。
-
-没过多久，我感受到了"将军"的威严。疲惫替代了激动，我重重地喘着粗气，速度越来越慢，脚底板的疼痛越来越强烈。妈妈看出我体力不支了："要不我们坐个缆车？"我咬牙："您让我试一试。"或许是对巍峨泰山的尊重，又或许是给自己的挑战，抱着那一份执念，我选择继续攀登。
-
-山太高了，劳累和疼痛拉扯着我的理智，放弃的念头像气球一样不断膨胀。看着依旧不见尽头的阶梯，我头上的汗珠不断滴落，回头望着走过的阶梯，又何尝不是不见尽头呢？雨果说过："所谓活着的人，就是不断挑战的人，不断攀登命运峻峰的人。"看到妈妈担忧的眼神，我挤出了一个微笑："让我试一试，我可以的！"
-
-我试着调整呼吸，尽量找到适合自己的速度，看着越来越多的岩石露出来，我知道"将军"在向我敞开心扉。停留休息的频率不断增加，身边的景物来了又去，但我未曾放弃，依旧选择向上。
-
-我拖着精疲力竭的身体登上山顶，心中满满的自豪。这份成就感成了恢复体力最好的良药。"将军"教给我尝试和坚持的意义，但我知道，我学会的远不止这些。
-
-眺望远方，是"会当凌绝顶，一览众山小"的气魄；注重脚下，是"纸上得来终觉浅，绝知此事要躬行"的顿悟。` },
-
-      { title:"往事依依·祖父与书", author:"佚名", text:
-`年华似流水。十几年过去，不少事情已经模糊，有的搜索枯肠而不可得，但有几件与读书有关的往事，仍历历在目，至今记忆犹新。
-
-小时候，我住在祖父的老屋里。堂屋墙上挂着一幅《溪岸图》，据说是祖父年轻时从旧书摊上淘来的。这只是一幅普通的山水画，清晨看到，傍晚看到，一天少说看三四次，竟百看不厌。有时凝视久了，自己也仿佛走进了画中——群山莽莽，溪水潺潺，山脚下几间茅屋，篱笆外一树杏花开得正盛。"千里莺啼绿映红，水村山郭酒旗风"，画中那面斜挑的酒旗，仿佛正在风中猎猎作响。入了神，自然乐在其中。祖父的书架上还有一部线装《宋词选》，一翻开，就被那些长短句勾住了魂。"大江东去，浪淘尽，千古风流人物"，我仿佛看见浩浩江面上一个青衫身影迎风而立；"昨夜西风凋碧树，独上高楼，望尽天涯路"，又好像自己正站在一座孤楼上，天高地远，满目苍凉。那时读宋词，会不知不觉把眼前的一切都染上了词的颜色。以后年岁增长，也曾重读《宋词选》，虽然理解比小时候深入，但那种初读时"山奔海立"般的震撼，却再也找不回来了。后来才懂得，这就是形象思维的作用，生动的形象可以形成深刻的记忆。
-
-学生时代的生活乐趣，很大程度也来自读书。书，给我以广阔的天地，而其中编织我少年美丽的生活花环的，竟是那一本翻得卷了边的《古文观止》。
-
-老师入情入理的讲课，也在我心上雕镂下深刻的印象。语文老师教古文喜欢大声吟诵。记得一次教范仲淹的《岳阳楼记》，老师吟到"先天下之忧而忧，后天下之乐而乐"时，声音陡然拔高，双目炯炯，仿佛范公就站在讲台之上。此后我每次读到这两句，耳畔就响起老师那苍劲的吟诵声，一股浩然之气油然而生。
-
-老师常对我们说："多读书，读好书，能丰富知识，增添智慧，成为一个志趣高尚的人。"谆谆教诲铭刻在心，使我一生受用不尽。往事依依，那些与书相伴的日子，唤起我对知识的渴望，催我不断奋进。` },
-
-      { title:"往事依依·外婆与纺车", author:"佚名", text:
-`年华似流水。十几年过去，不少事情已经模糊，有的搜索枯肠而不可得，但有几件与外婆有关的往事，仍历历在目，至今记忆犹新。
-
-小时候，外婆家有一架老纺车。枣木的架子，铜制的锭子，外婆摇起来，"嗡嗡嗡嗡"，像一只老蜂在耳边哼唱。这只是一架普通的纺车，清晨摇，傍晚摇，一天少说摇两个时辰，我竟百听不厌。有时趴在炕沿看久了，自己也仿佛融进了那团棉絮里，跟着纺锤一圈圈转，"唧唧复唧唧，木兰当户织"，仿佛看见了木兰当窗理云鬓的模样。入了神，自然乐在其中。外婆的笸箩里还有一本夹鞋样的《千家诗》，封面早已磨没了，里面的纸被剪得七零八落，可残留的诗句却像种子一样落进了我心里。"春眠不觉晓，处处闻啼鸟"，是外婆家后院杏树上麻雀的叽叽喳喳；"小荷才露尖尖角，早有蜻蜓立上头"，是村口池塘里夏天的模样。那时听外婆念诗，会不知不觉把整个院子都装进了诗里。以后回到城里读书，也曾重读《千家诗》，虽然理解比小时候深入，但那种诗句与泥土、炊烟融在一起的温润，却再也找不回来了。后来才懂得，那是生活与文字在童年里最美的相遇。
-
-中学时代的生活乐趣，很大程度也来自读书。书，给我以广阔的天地，而其中编织我少年美丽的生活花环的，竟是那本从旧书摊上淘来的《边城》。
-
-老师入情入理的讲课，也在我心上雕镂下深刻的印象。语文老师曾讲过一句让我记到今天的话："文字是有温度的。你写风，风就吹在读者脸上；你写雨，雨就落在读者肩上。"此后我写作文，总想着要让自己笔下的字有温度、有呼吸。
-
-老师常对我们说："多读书，读好书，能丰富知识，增添智慧，成为一个志趣高尚的人。"谆谆教诲铭刻在心，使我一生受用不尽。往事依依，那些与外婆和书相伴的时光，唤起我对生活的热爱，催我不断奋进。` },
-
-      { title:"往事依依·父亲与书", author:"佚名", text:
-`年华似流水。十几年过去，不少事情已经模糊，有的搜索枯肠而不可得，但有几件与父亲有关的往事，仍历历在目，至今记忆犹新。
-
-小时候，父亲的书桌抽屉里锁着一本《傅雷家书》。这只是一本普通的书信集，父亲难得打开，可我总见他把钥匙小心翼翼地挂在腰间。一次趁他不在，我偷偷翻出来，就着窗外透进的阳光读了几页。"先做人，次为艺术家，再为音乐家，终为钢琴家"，这句话我半懂不懂，却莫名记在了心里。入了神，自然乐在其中。父亲的床头还放着一本翻旧了的《唐诗选》，每晚睡前他都要读上两页。有时我半夜醒来，还见他倚在床头，"星垂平野阔，月涌大江流"，他读得极慢，仿佛每一个字都要在舌尖上滚过才肯放出来。那声音在静夜里格外清晰，像溪水漫过卵石，像月光铺满大地。以后年龄增长，也曾重读《傅雷家书》，虽然理解比小时候深入，但那种偷偷翻书时心怦怦直跳的紧张与惊喜，却再也找不回来了。后来才懂得，那是一个少年第一次窥见父辈精神世界的悸动，而那份悸动本身，就是最深刻的记忆。
-
-学生时代的生活乐趣，很大程度也来自读书。书，给我以广阔的天地，而其中编织我少年美丽的生活花环的，竟是那本从父亲抽屉里"偷"来的《傅雷家书》。
-
-老师入情入理的讲课，也在我心上雕镂下深刻的印象。语文老师教鲁迅的《从百草园到三味书屋》时，忽然放下课本，讲起自己童年捉蟋蟀的趣事，讲着讲着，班上几个男生的眼睛都亮了。那一刻我明白了：好的文字，能唤醒每个人心里的百草园。
-
-老师常对我们说："多读书，读好书，能丰富知识，增添智慧，成为一个志趣高尚的人。"谆谆教诲铭刻在心，使我一生受用不尽。往事依依，那些与父亲和书相伴的岁月，唤起我对成长的思索，催我不断奋进。` },
-
-      { title:"往事依依·老槐树与诗", author:"佚名", text:
-`年华似流水。十几年过去，不少事情已经模糊，有的搜索枯肠而不可得，但有几件与老槐树有关的往事，仍历历在目，至今记忆犹新。
-
-小时候，巷口有一棵要三个孩子才能合抱的老槐树。这只是一棵普通的树，春天看它抽芽，夏天看它浓荫，秋天看它落叶，一天少说路过三四次，竟百看不厌。有时坐在树下发呆，自己也仿佛生了根、长了叶，和它一起呼吸，"绿树村边合，青山郭外斜"，竟品出了几分田园诗的意境。入了神，自然乐在其中。树下的石凳上，常有人留下一两本翻旧的杂志或小人书。有一回我拾到一本《诗经》，封面早没了，前几页也残缺不全，可"蒹葭苍苍，白露为霜"那几行字还在。我坐在石凳上，就着槐叶间漏下的光斑读了一遍又一遍，仿佛看见一条白雾茫茫的河，河对岸站着一个人，怎么也走不到他身边。那种朦朦胧胧的惆怅，至今说不清道不明，却深深印在了心里。以后年岁增长，也曾重读《诗经》全文，虽然理解比小时候深入，但那种初读时如坠云雾、似懂非懂的朦胧美感，却再也找不回来了。后来才懂得，有些文字不需要全懂，那种"在水一方"的怅惘本身，就是最动人的启蒙。
-
-中学时代的生活乐趣，很大程度也来自读书。书，给我以广阔的天地，而其中编织我少年美丽的生活花环的，竟是那本在树下拾到的、残缺的《诗经》。
-
-老师入情入理的讲课，也在我心上雕镂下深刻的印象。语文老师讲《蒹葭》那一课，没有分析段落大意，只让我们全班轻声吟诵。几十个少年的声音叠在一起，像风吹过芦苇，像露水滑过草叶。那堂课结束时，窗外正好起了雾，老师指着窗外说："看，那就是'在水一方'。"
-
-老师常对我们说："多读书，读好书，能丰富知识，增添智慧，成为一个志趣高尚的人。"谆谆教诲铭刻在心，使我一生受用不尽。往事依依，那棵老槐树和树下读诗的日子，唤起我对美的追寻，催我不断奋进。` },
-
-      { title:"往事依依·声音", author:"佚名", text:
-`年华似流水。十几年过去，不少事情已经模糊，有的搜索枯肠而不可得，但有几件与"声音"有关的往事，仍历历在目，至今记忆犹新。
-
-小时候，我家住在一条临街的老巷里。巷子里有一位修鞋的老人，每天清晨，他"笃笃笃"的敲鞋掌声便准时响起。这只是一个普通的声音，天晴响，天阴也响，一天少说听几十下，竟百听不厌。有时躺在床上听久了，自己也仿佛变成了一枚鞋掌，被那"笃笃"声一下一下敲进鞋底，踏踏实实地落在土地上。"长安一片月，万户捣衣声"，我虽没见过捣衣，却觉得那"笃笃"声和诗里的声音一样，都是寻常日子里最安稳的节拍。入了神，自然乐在其中。老人的修鞋摊旁，还常放着一台小收音机，咿咿呀呀地唱戏。有一回放的是《牡丹亭》，"良辰美景奈何天，赏心乐事谁家院"，我一个字也听不懂，却被那婉转的腔调勾住了，站在摊前听了整整一下午。以后年岁增长，也曾再听《牡丹亭》，虽然唱词全懂了，但那种囫囵吞枣却如痴如醉的专注，却再也找不回来了。后来才懂得，那是对声音本身最纯粹的迷恋，比听懂更重要。
-
-中学时代的生活乐趣，很大程度也来自"听"。广播里的评书、电视里的诗词大会、老师讲台上的吟诵，都是我的"书"。而其中最令我沉醉的，竟是语文课上老师用方言念《将进酒》时那种"黄河之水天上来"的气势。
-
-老师入情入理的讲课，也在我心上雕镂下深刻的印象。语文老师有一次用方言朗诵《将进酒》，念到"君不见高堂明镜悲白发"时，声音忽然低下去，像一滴墨落入深水。全班鸦雀无声，窗外的蝉鸣那一刻格外清晰。
-
-老师常对我们说："多读书，读好书，能丰富知识，增添智慧，成为一个志趣高尚的人。"谆谆教诲铭刻在心，使我一生受用不尽。往事依依，那些被声音点亮的岁月，唤起我对语言的敏感，催我不断奋进。` },
-
-      { title:"餐桌前的谈话", author:"佚名", text:
-`我家隔壁是家饭店，开了十几年，生意红火。从早到晚，顾客络绎不绝。
-
-因为爸妈下班晚，有时做饭来不及，我放学后便经常去这家店吃饭。这里的价钱不见得比别处便宜多少，生意却是这一带最好的，周围的老人都喜欢上这儿来。难道有专攻老年人的生意套路？我观察许久，也没见店里有对老人的"优惠"。
-
-有一天我刚来店里，便看见一位老人手里捏着一张发皱的五元纸币，颤颤巍巍地走来："来碗素面。"老板笑吟吟地盛了一大碗面，又舀了几大块牛肉，说："周叔，今天牛肉面不好卖，剩的多了，倒了也可惜，给您来一点儿吧？"老人一脸惊喜地道谢，端着面走了。老板还不忘扶他一把。一旁的我惊得睁大双眼：这家店牛肉面卖得极好，怎么会剩下？我满腹狐疑。
-
-几天后，我跟爸爸妈妈一起吃晚饭，忍不住在餐桌前说起这件事。"这是常有的事，我跟老板认识很久了，他人特别善良。"爸爸语气平淡，"有的老人无儿无女，有的子女不孝顺，吃不上饱饭。老板人厚道，能帮的就帮一把。"
-
-"那生活条件好的老人怎么也常来呢？"
-
-"应该不为别的，就图个舒服。有不少吃饭的地方，口味好，装修得也漂亮，大转桌红木椅，但是不接地气儿，老年人去了肯定不自在，也不好多待。在咱们家隔壁这家店这儿就不一样了，这里装修简单，但是温馨，老板人又客客气气的。老人约上几个老朋友一坐一上午，喝粥聊天。人老了没处去能在这儿打发时间，就够了。"妈妈微笑着告诉我。
-
-我听着妈妈的话，端着饭碗，想起上次在店里吃饭看到的情景：老板一边招待客人，一边时不时插上几句："是吗，白菜又涨价了？""考上大学了？好呀，大学生好！"平常寡言木讷的老人都健谈了不少，店里笑声一片。我突然意识到，这哪是一个小店，这分明是一个温暖的家。
-
-此时，饭店老板那瘦小的身形，在我心目中却伟岸起来了。
-
-"不求名与利，犹恐身心役……阴功暗心修，善行长日积。"是老板那十几年如一日的善意，让这些孤独的老人们有了欢笑和温暖。
-
-这次餐桌前的谈话，解开了我心中的疑团，也让我知道：一个人小小的善良之举，虽如烛火，但也能给他人带来温暖，也能照亮他人前行的路。` },
-
-      { title:"走出校园", author:"高铭淇 · 北京市陈经纶中学", text:
-`走出校园，在秋后的苹果园里，我捡起被同学抛弃的一个个苹果，也捡起了自己期中考试后暂时遗落的自信，收获了让我受益一生的道理——成长过程中，我们要学会接纳自己的瑕疵和缺点，接纳独一无二的自己。
-
-进入中学以来，我急切地渴望证明自己。过分地追求完美，让我时常处于焦虑和不安中，害怕自己的不足会被发现，害怕失败带来的嘲笑和否定。然而，尽管我付出了全部的努力，期中考试的成绩却并不如我所愿，我一度在深深的挫败感中沉沦。
-
-期中考试后，学校组织了"攀登·收获"的研学活动，带领我们走出校园，走进挂满苹果的果园。同学们兴高采烈地"开工"了：有的爬上树摘，有的拿着杆子够，有的拿坏苹果打……大家都抬头仰望着枝头完美无瑕的红苹果。我却发现地上有好多还不错的苹果，伴着落叶，凄凉地滚在地上。它们或许有个虫眼儿，或许有些斑点。看着地上那些满是泥土的苹果，我仿佛看到了我自己。人无完人，我想，不能苛求每一个苹果都长成果王。我把这些苹果都收到了我的袋子里。
-
-拎着袋子，我的目光搜索着被同学们"抛弃"的"不完美"苹果。走着走着，我遇到了我的好朋友。他笑着一把拽过我的袋子，瞅了一眼里面的苹果，眼疾手快地挑着捡着，把许多苹果都扔到地上："你这都是什么苹果呀？都有毛病！"我赶忙摁住袋子："难道不完美的苹果就一定要被遗弃吗？"他睁大眼睛看着我："你为什么不在树上摘呢？有那么多好苹果！"我心中涌起一股莫名的情愫，仿佛是要为这些被忽视的苹果鸣不平："你平时吃的苹果都完美无瑕吗？难道有一处不完美就要扔掉吗？我们只因为看到了一个斑点，就要抛弃一整个苹果吗？"我飞速拿回袋子，捡拾起那些苹果，就像捡拾起对自己的信心。走出校园，一场与"不完美"苹果的邂逅，让我说出了自己真正的心声。
-
-看着这些苹果，我仿佛看到了我自己。每个人都有不完美的地方，我们要学会接纳自己、欣赏自己。真正的自己，或许就藏于一些"斑斑点点"之后。` },
-
-      { title:"银杏林的没落", author:"李新怡 · 莱州程郭学校初中部", text:
-`深秋时节，天气渐冷，其他树叶早早干枯凋零，唯有银杏叶子，明黄透亮，招摇在枝头，随着飒爽的秋风，舞动它美丽的身体。
-
-上午的阳光穿透了银杏林，那叶子金黄金黄的，纯正的黄，黄到蓝天变得更蓝，白云变得更白，于是天底下就只剩下了高天流云和这满树的黄叶。片片叶子随风而落，遍地的黄叶，踩上去有种误入世外桃源、发现金矿的感觉。
-
-只是不巧，当我跟随着家人踩着环绕着小河和银杏林的木栈道，享受松木栈道带来的震颤感和咯吱声时，一个四岁左右的孩子，正把手中的彩色包装袋，随手丢进道边的湖泊中。几条小鱼儿以为来了什么新玩具，绕着包装袋打转、嬉戏。那个年轻的母亲非但没有教育孩子要有公德心、环保意识，反而随手也把手里的食品包装袋丢进了小河里，和孩子说笑着扬长而去。这让我非常不舒服，想制止但已来不及，于是只好愤愤地前行。
-
-往年这个时节，来银杏林观赏美景的游客很多，可是今年除了很多扛着"长枪短炮"的摄影爱好者，银杏林中游客寥寥。走入银杏林，一些老树上结的银杏果掉落在树下，被游客踩踏后，果肉发出阵阵恶臭。可是没有人捡拾，也没有人清扫。银杏林的恶臭让游客望而却步，那些一家人嬉戏踏秋的温馨场面不见了，那些吊床、儿童淘气堡也不见了，那些游客自带的帐篷也不见了，这没落的情景让人看了不免遗憾。
-
-沿着木栈道绕过银杏林再绕回去，就到了宽阔的主路上。主路是一条水泥路，路两边是附近村民摆的小摊，有卖一串串红辣椒、自己雕刻的寓意福禄寿喜的小葫芦等的，也有卖小米、花生、野蘑菇干、茄子干的，还有卖苹果、秋月梨、红山楂等水果的，更有卖气球、爆米花、糖葫芦的……很多年轻的夫妇带着孩子在买糖葫芦等零食，路上漫步的老人少，中年人也不多，我更是另类，在水泥路上来回走了几圈，最终买了糖葫芦和柿饼，算是这次没白来。
-
-往回走的水泥路有些地方开裂了，车行着很颠簸。其实先前挺喜欢这个地方，恰好在小城的边缘，美丽又不浮躁，安闲又不落后，但想想今天看到的一幕幕，却兴味索然，感觉以后不会再来了。究竟是什么原因让银杏林没落了？朋友们，你们能告诉我吗？` },
-
-      { title:"让自己勇敢一点", author:"佚名", text:
-`走出校园，只要让自己勇敢一点，你会发现外面的世界很精彩。
-
-那是一个绿意浓浓、繁花盛开的盛夏，天空中不时吹来些许微风，让人感觉到游玩的舒爽和惬意。爸爸妈妈带着我，与他们的一些朋友一起去了本市著名的水上世界。
-
-到达水上世界后，曾经来过这里的李叔叔把我们带到一个很热闹的地方。这地方有条河道，河道水流很急，游人坐在河道中的船上，船会被带到非常陡的坡道，然后再快速下降，坐在船上的游人大都发出了惊叫声。一看这种场面，我当时就吓傻了。这时李叔叔说："谁来玩'激流勇进'？今天我请客。"王阿姨是个胆大的人，马上就站了出来。我正在进行着激烈的思想斗争：玩还是不玩？船在急流中飞快而去，王阿姨欢呼着："好刺激啊！"看到我犹豫不决的样子，妈妈在一旁安慰我说："不敢玩就算了，不要强求自己。"
-
-听了妈妈的话，我想打退堂鼓了，这时爸爸说："儿子，让自己勇敢一点。"
-
-对，让自己勇敢一点。我暗暗重复着爸爸的话：作为一个男子汉，面对困难应该勇往直前，而不是选择逃避！我暗暗下定决心，于是眼一闭，心一横，登上了小船。小船到达坡道顶端那一刻，时间仿佛都凝固了。我的心提到了嗓子眼儿，牙关咬得紧紧的，呼呼的风声不绝于耳……我惊恐地闭上眼……小船终于停了下来，我长长地舒了一口气，回过头看了一眼，好像也没有那么可怕。
-
-这次"激流勇进"让我明白了一个道理：生活中，遇到困难、挫折时，要有一颗勇敢的心，让自己勇敢一点，你会发现，困难并不可怕，成功其实离你并不遥远。` }
-    ]
-  },
-  { id:"youqing", name:"友情篇", icon:"🤝", color:"youqing", tag:"友情",
-    essays:[
-      { title:"那一声怯怯的\"姐姐\"", author:"佚名", text:
-`世间声响万千，喧嚣嘈杂、热烈洪亮，唯独那个夏日午后的一声轻唤，轻轻落于心底，经年不散。那一声怯怯的"姐姐"，温柔了整个盛夏，也成为我岁月里最澄澈的温暖。
-
-去年盛夏，蝉鸣聒噪，我随母亲回到乡下外婆家。老树枝繁叶茂，浓密的绿荫遮盖了大半庭院，细碎的阳光穿过层层枝叶，在地面织出斑驳的光影。我铺一张凉席坐在树下，静静翻看着手中的书，享受夏日独有的慵懒与安宁。
-
-忽然，院门口传来细碎的响动。我抬眸望去，院门缝隙处探出一个小小的脑袋。小女孩睁着一双黑葡萄般澄澈的眼眸，怯生生地打量着我。她发丝微乱，身上的碎花裙子洗得发白，赤着的小脚微微蜷缩，局促又胆怯，像一只小心翼翼、随时会闪躲的林间小鹿。我放缓语调，温柔地朝她招手，邀她过来落座。她犹豫良久，才踏着细碎的步子，慢慢蹭到我身边。
-
-我轻声为她朗读《草房子》，温柔的字句流淌在微凉的风里。读到桑桑卧病的片段时，身旁的小姑娘忽然抬眸，澄澈的眼眸里盛满担忧，用细若蚊蚋的声音轻轻问道："姐姐，桑桑会好起来吗？"
-
-软糯轻柔的一声"姐姐"，轻飘飘落在我的心上，温柔得让人心头一颤。简单的两个字，盛满了全然的信任与依赖，纯粹又滚烫。我温柔抚摸她的头顶，轻声安抚她，告诉她一切皆会向好。她安心地靠在我的肩头，静静聆听书页间的温柔。
-
-后来我知晓，她叫阿瑶。父母常年在外务工，她留守乡间，少有人陪伴，性格怯懦内向。余下的假期时光里，我常常陪伴着她，教她识字读书，陪她奔赴田埂，追逐蜻蜓、采摘野花。
-
-离别那日，阿瑶将一张皱巴巴的纸条塞到我手中，纸上歪歪扭扭的字迹，藏着最真挚的期许："姐姐，我会好好读书。"回城之后，我们始终未曾断了联系。她每每取得进步，总会拍下奖状，发来软糯的语音与我分享喜悦。
-
-原来世间最好的相遇，从不是轰轰烈烈的邂逅，而是一场温柔的奔赴，一次纯粹的信任。那声怯怯的"姐姐"，是夏日最温柔的回音，让我明白：一场素未谋面的相识，足以成为温暖余生的珍贵馈赠。` },
-
-      { title:"琴房里的陌生人", author:"佚名", text:
-`人生路上，总有不期而遇的温暖。一次偶然的相逢，一句温柔的宽慰，便能拨开迷雾，治愈迷茫的时光。那个秋日午后，琴房里的相遇，让我读懂：热爱可抵岁月漫长，喜欢的事，慢慢来就好。
-
-那年，我满心期许备战数学竞赛，日夜刷题、反复钻研，熬过无数个挑灯夜读的夜晚。可全力以赴的奔赴，终以落选落幕。失利的挫败感裹挟着我，让我一蹶不振。那段日子，我消沉低落，满心迷茫，对热爱与坚持产生了怀疑。
-
-一个秋日午后，秋风微凉，我漫无目的地徘徊在校园。无意间，艺术楼一间常年紧锁的琴房虚掩着门，断断续续的琴声缓缓传出。我怀着好奇轻轻推门而入。逆光之中，一名身着白衬衫的少年端坐琴前，清瘦安静。见我闯入，他没有不悦，只是眉眼温和地笑了笑，露出浅浅的小虎牙，大方地邀我落座。
-
-他弹奏的是经典的《致爱丽丝》，琴声并不流畅，错音频频，却格外认真。他微微前倾身子，专注地盯着黑白琴键，轻声跟着旋律哼唱，沉浸在属于自己的一方天地里。阳光透过窗棂洒落，细碎的尘埃在光束中轻轻浮动，静谧又温柔。
-
-一曲终了，他坦然坦言，这首曲子他练习了整整两个月，依旧不够完美。他看出我眼底的低落，轻声劝慰："不用着急，喜欢的事，慢慢来就好。"他温柔耐心地教我识谱、练指法，笨拙的我弹出的旋律断断续续，却在琴声里暂时卸下了所有的焦虑与挫败，久违地展露笑颜。
-
-此后，每周六的琴房，成了我们专属的温柔秘境。我渐渐知晓，他心怀音乐梦想，立志考入音乐学院。纵然起步较晚、天赋平平，他却始终脚踏实地、默默坚持。他从未急于求成，始终相信，时光不负深耕之人。
-
-秋去冬来，时光匆匆。后来他如愿考入心仪的音乐学院，离别前，他在琴房窗台留下一张纸条，依旧是那句温柔的期许：喜欢的事，慢慢来。
-
-如今每当我指尖触碰琴键，弹奏熟悉的旋律，总会想起那个秋日午后的温柔相逢。那场平淡的相遇，没有轰轰烈烈的故事，却治愈了迷茫怯懦的我。
-
-人生从无一蹴而就的成功，所有美好都需要沉淀与等待。那场琴房里的相遇，如一束微光，照亮我前行的路，让我始终笃定：步履缓缓，初心不改，终会奔赴热爱。` },
-
-      { title:"雨夜的伞", author:"佚名", text:
-`世间温暖，往往藏在不期而遇的善意里。一场突如其来的夜雨，一把温柔递送的雨伞，一次素昧平生的相逢，让我懂得：陌生人间的温柔，最是治愈人心。
-
-那个夜晚，至今镌刻在我的记忆深处。晚自习结束，白日晴朗的天气骤然变脸，滂沱大雨倾泻而下，豆大的雨点砸落地面，溅起层层水雾，风声呼啸，裹挟着寒意扑面而来。
-
-校门口人潮涌动，同学们陆续被家长接走，喧闹的校园很快归于寂静，只留我孤身一人伫立廊下。我紧紧抱着怀中的书本，生怕雨水打湿，心底满是焦灼与无助。冰冷的晚风夹杂着雨丝拂过脸颊，心底的委屈与凉意层层蔓延。
-
-就在我手足无措、满心茫然之时，一道温柔的声音在身后响起。我蓦然回头，看见一位身着校服、高马尾利落清爽的学姐，手持一把墨绿色长柄伞，眉眼弯弯，笑意温柔，自带让人安心的力量。
-
-得知我没有带伞，她没有丝毫犹豫，径直将伞柄塞进我的手中，语气坚定又温柔："你拿去用，我家很近，跑几步就到了。"我连忙推辞，她却笑着报出自己的班级姓名，叮嘱我次日归还，随即头顶书包，义无反顾地冲进茫茫雨幕。冰冷的雨水瞬间打湿她的校服与发梢，背影却格外温暖耀眼。
-
-我握着温热的伞柄，撑着那把带着温度的雨伞，安然行走在雨夜之中。夜雨淅沥，伞下一方小小天地，隔绝了风雨寒凉，盛满了陌生人纯粹的善意。
-
-次日清晨，我准时前往初三教学楼归还雨伞。再次相逢，我们褪去陌生，相谈甚欢。意外发现，我们有着相同的爱好，同样痴迷于文学与经典书籍。走廊之上，我们畅聊书籍、畅谈热爱，寥寥数语，便拉近了彼此的距离。
-
-自此，一场雨夜相逢，让两个素不相识的人成为挚友。我们常常相约图书馆，静坐窗边，翻读书卷，静谧相伴，岁岁安然。那把老旧的墨绿色雨伞，我一直悉心珍藏。伞面虽历经风雨、渐渐陈旧，却承载着最纯粹的善意与温柔。
-
-原来人间最美的相遇，从不需要刻意安排。一场雨、一把伞、一份温柔的馈赠，便足以串联起两段平行的青春。那场雨夜的相逢，是青春里最温柔的馈赠，让我始终相信：世间温柔，无处不在，善意长存，温暖如初。` },
-
-      { title:"巷口的旧书摊", author:"佚名", text:
-`烟火寻常的街巷，藏着最动人的温柔；平淡朝夕的相逢，藏着最治愈的美好。我曾日日途经巷口，步履匆匆，从未驻足，直到那个失意黄昏，一场温柔的相遇，治愈了年少所有的委屈与迷茫。
-
-老街巷口，常年摆着一个朴素的旧书摊。一辆生锈的三轮车，满载各式各样的旧书，一位白发苍苍的老爷爷，每日黄昏准时出摊，静坐摊前，翻书度日。岁岁朝朝，平淡寻常，我始终行色匆匆，从未停留。
-
-那个秋日黄昏，我与挚友激烈争执，满心委屈与难过，红着眼眶独自归家。秋风萧瑟，暮色沉沉，昏黄的路灯拉长街巷的影子，也放大了我心底的低落。路过旧书摊时，老爷爷抬眸望向我，眉眼温和，眼底盛满善意，轻轻开口："小姑娘，过来坐坐吧，我的书能治愈心事。"
-
-温柔的话语，瞬间击溃了我所有的倔强。我缓步上前，蹲在书摊前，指尖轻轻拂过泛黄的书页，淡淡的墨香与旧纸的温润气息萦绕鼻尖。我的目光最终停留在一本老旧的《城南旧事》上，简约的封面，沉淀着岁月的质感。
-
-老爷爷看出我的偏爱，笑着将书赠予我，轻声宽慰："人与人相处，难免有磕碰，就像书页折角，轻轻抚平，依旧完好如初。不必耿耿于怀。"质朴的话语，温柔又通透，瞬间抚平了我心底的郁结。
-
-当夜，我细细品读《城南旧事》，在英子的故事里读懂聚散随缘、得失坦然。次日，我主动与好友和解，年少的别扭与隔阂，尽数烟消云散。
-
-此后，旧书摊成了我课余最爱的栖息地。每日放学，我总会驻足停留，陪老爷爷闲谈片刻。他曾是人民教师，饱读诗书，温柔通透，常常为我推荐好书，在书页扉页写下温柔寄语，教我读书，教我成长，教我温柔待人、从容处事。
-
-岁月流转，秋风依旧。不知从何时起，巷口的旧书摊悄然消失了。听闻老爷爷身体欠佳，被家人接往他乡安度晚年。如今我依旧日日途经这条老街，步履从容，心怀温柔。旧书摊早已不见踪影，可那段温柔的相遇、温暖的教诲，始终铭记于心。
-
-一场巷口相逢，一本旧书温情，治愈了年少迷茫。原来最珍贵的相遇，从不是轰轰烈烈的邂逅，而是平凡岁月里，一场温柔的救赎，一份岁岁绵长的成长。` },
-
-      { title:"新来的同桌", author:"佚名", text:
-`青春漫漫，岁月悠长，无数人途经我的青春，匆匆离去。唯有一场平淡温柔的同桌相逢，如清风入怀、星光落眸，丰盈了我的少年时光，成为青春里最珍贵的温柔印记。
-
-初秋，秋风送爽，崭新的学期悄然开启。安静的教室里，班主任领着一位陌生的女孩缓缓走入。她身形瘦小，低扎马尾，刘海轻垂，眉眼低垂，安静内敛，带着初来乍到的局促与腼腆。朴素干净的白衣，整齐简约的书包，处处透着温柔安静的气质。
-
-她轻轻落座，默默整理书本，全程安静无言，周身萦绕着淡淡的疏离感。起初的数日，我们鲜有交流。她沉默寡言，独来独往，课间静坐看书，从不参与嬉闹。班里同学对这位沉默的转学生颇多议论，而她始终淡然沉默，将自己小心翼翼地包裹起来。
-
-改变始于一节语文课。课堂之上，老师邀请同学分享心爱读物，教室瞬间鸦雀无声，气氛凝滞。就在此时，沉默的沈念缓缓抬手，从容起身。她声音轻柔却坚定，条理清晰地诉说着《活着》带给她的感悟。
-
-她所言的苦难与坚韧、平凡与从容，字字动人，句句入心。平淡的话语里，藏着远超同龄人的通透与温柔。话音落幕，教室掌声四起，我心底满是惊艳与动容。下课之后，我主动与她闲谈，惊喜地发现，我亦是《活着》的忠实读者。我们一见如故，畅谈书本感悟，聊聊作者笔下的人间百态。那一刻，她低垂的眼眸骤然亮起，眉眼舒展，露出了温柔浅浅的笑意。
-
-自此，我们慢慢熟络，成为朝夕相伴的同桌。我带她融入班级、嬉笑奔跑，她陪我品读诗书、沉淀心性。在我的陪伴下，她渐渐褪去怯懦，变得开朗明媚；在她的影响下，我学会沉静读书、静心成长。
-
-我曾问她，为何敢于主动举手发言。她温柔浅笑，答道："我看见你桌上的《活着》，便知道你一定懂我。"原来世间最好的相逢，是灵魂契合，是恰逢知己。
-
-阳光依旧洒满教室，书页翻飞，岁岁安然。那场初秋的温柔相遇，让两个陌生的少年彼此治愈、彼此成长。这场平凡的同桌相逢，是青春赠予我的温柔宝藏，让漫漫少年时光，温暖绵长，岁岁生辉。` },
-
-      { title:"藏在橘香里的友情", author:"佚名", text:
-`指尖轻触，金黄的表皮带着微凉的粗糙感，那是岁月沉淀下的纹理。指甲掐入果皮，"嗤"的一声轻响，清冽的香气瞬间迸发，如雾般弥漫。这熟悉的橘香，是一把钥匙，悄然打开了记忆的闸门，将我拉回那段被阳光浸透的午后时光。
-
-午后的教室静谧而慵懒。窗外的蝉鸣声嘶力竭，屋内却流淌着一种安宁的暖调。我的同桌是个爱笑的女孩，我们之间有个不成文的约定：每天带一个橘子，分享这份酸甜。
-
-一个深秋的午后，阳光透过斑驳的树影，在课桌上投下细碎的光斑。我小心翼翼地从书包里掏出那只圆润的橘子，它像个小太阳，温暖了微凉的空气。剥开果皮，嫩黄的橘瓣紧紧相拥，白色的橘络如丝如缕，缠绕着童年的纯真。我将橘瓣一分为二，一半推向她，一半留给自己。
-
-"干杯！"我们压低声音，举起手中的橘瓣轻轻相碰。那软软的触感，仿佛碰响了心底最清脆的风铃。橘瓣入口，薄皮破裂，汁水在舌尖炸裂，酸甜交织，顺着喉咙滑下，沁人心脾。我们小口咀嚼，细细剔除那些白色的筋络，眼神交汇间，满是无需多言的默契。偶尔抬头，看见老师趴在讲台上小憩，粉笔灰在光束中静静飞舞，空气中弥漫着橘子清香与淡淡书卷气的混合味道。那一刻，时间仿佛凝固，世界只剩下我们两人和这一瓣小小的甜蜜。
-
-如今，超市里的橘子品种繁多，包装精美，却再也找不回当年那份纯粹的甘甜。原来，香甜的从来不是食物本身，而是那份毫无保留的分享，是那段无忧无虑、有人相伴的时光。橘子易得，知音难寻；果味易散，情谊长存。
-
-每当秋风起，橘香再次萦绕鼻尖，我总会想起那个午后，想起那张笑脸，想起我们举着橘瓣"干杯"的模样。那不仅仅是一种味觉的记忆，更是一段关于友情、关于成长的温柔注脚。它在岁月的长河中，化作一抹永不褪色的金黄，温暖着我前行的路。
-
-时光匆匆，我们终将长大，各奔东西。但那份藏在橘子香里的旧时光，如同陈年的酒，愈久愈醇。它提醒我，在忙碌的生活中，别忘了停下脚步，去品味那些简单而真挚的美好，去珍惜身边每一个愿意与你分享"橘子"的人。因为，正是这些微小的瞬间，构成了生命中最动人的风景。` },
-
-      { title:"藏在桂香里的友情", author:"佚名", text:
-`秋风一过，满城桂花便开了。那香气不浓烈，却密密地、甜甜地漫过来，像一把细小的钥匙，轻轻一转，便打开了记忆深处那扇门。门后，是我和她共度的、浸在桂香里的秋天。
-
-那时，教室窗外有一排桂花树。每到课间，她总拉着我去树下捡桂花。她叫阿恬，笑起来眼睛弯弯的，像两枚刚剥开的橘瓣。地上铺着细细碎碎的金黄，我们蹲在树根旁，把完整的小花一粒粒收进掌心。她的掌心温热，桂花躺在里面，像一捧碎金。
-
-"回去做桂花书签。"她小声说，语气像在密谋一件大事。我们把桂花夹进字典，压在厚厚的作业本下。第二天翻开，花瓣薄而透明，香气却留住了。她把其中一页递给我，上面用铅笔写着："愿你闻见桂花，就想起我。"我笑她矫情，却把那张纸夹进了最喜欢的书里。
-
-最难忘的是那个午后。她从家里带来一小块桂花糕，用白纸包着，偷偷塞进我抽屉。午托老师趴在讲台上打盹，我们低头分食。糕体松软，桂香清甜，碎屑落在课桌上，像撒了一把小小的星星。她掰下一角，举起来，轻轻碰了碰我手中的那一角："干杯。"我们不敢笑出声，只把眼睛弯成月牙。窗外蝉声已远，风里全是桂花的甜香。
-
-后来小学毕业，她去了另一座城市。临别时，她送我一只小小的玻璃瓶，里面装着晒干的桂花。瓶身贴着标签："别忘了我。"我点头，却说不出话。
-
-如今，街边桂花年年开，桂花糕也随处可见，包装精致，味道却总像缺了什么。原来，缺的是那个陪我在树下捡花的人，是那段不必言说便彼此懂得的时光。桂香易散，友情长存。每当秋风再起，我总会在桂香里停一停，仿佛一回头，还能看见她举着桂花糕，笑着对我说："干杯。"` },
-
-      { title:"藏在薄荷糖里的友情", author:"佚名", text:
-`撕开那层银亮的锡纸，一股清凉的薄荷气便窜了出来，直冲鼻尖。那味道像一道微小的闪电，劈开岁月的幕布，把我带回蝉声轰鸣的夏天。那时，我和薄荷糖，和她，都在。
-
-她是转学来的，坐在我旁边，总爱在数学课上打瞌睡。老师的声音像催眠曲，她的脑袋一点一点，像小鸡啄米。我悄悄从笔袋里摸出一颗薄荷糖，推过"三八线"。她接过去，剥开，含进嘴里，整个人猛地一激灵。她转头看我，眼睛里有感激，也有狡黠。从那以后，薄荷糖成了我们之间的暗号。
-
-夏天午后，教室闷热，风扇吱呀转着，吹不散额角的汗。她总会带一盒薄荷糖，铁盒，圆圆的，摇起来哗啦响。下课铃一响，她就打开盒子，自己拿一颗，再递给我一颗。我们含着糖，走到走廊尽头，趴在栏杆上看操场。薄荷的凉意从舌尖漫到喉咙，像一阵小小的风，把困倦和烦躁都吹走了。
-
-有一次体育课跑完八百米，我瘫在树荫下，喉咙像着了火。她跑过来，蹲下，把一颗薄荷糖塞进我手心。糖纸被她的汗浸得有点潮。她说："快吃，凉快。"我剥开，放进嘴里，那清凉瞬间炸开，竟比水还解渴。我们肩并肩坐着，看阳光把树叶照得透亮，谁也没说话。
-
-毕业那天，她送我一个同样的铁盒，里面装满薄荷糖。盒底压着一张纸条："困了，就吃一颗。别忘了我。"我笑她连告别都带着凉意，却在转身时红了眼眶。
-
-如今，超市货架上的薄荷糖五花八门，有夹心的、有果味的，包装一个比一个漂亮。可含在嘴里，总觉得不够凉，也不够甜。原来，最好的味道，不是薄荷本身，而是她递来糖时的那份默契，是那个夏天我们共同含过的清凉。薄荷易化，情谊长存。每当困倦时，我仍会剥一颗薄荷糖，让那熟悉的气味，带我回到有她的教室。` },
-
-      { title:"藏在烤红薯里的友情", author:"佚名", text:
-`冬天的街头，只要闻到那股焦甜的香气，我就走不动路。烤红薯的炉子冒着白烟，红薯皮烤得皱皱的，裂开的地方淌出琥珀色的糖汁。那香气像一把暖烘烘的钥匙，一转，就打开了我小学门口的冬天。
-
-那时，我和阿禾是形影不离的朋友。放学后，我们总要在校门口那个老爷爷的烤红薯摊前站一会儿。零花钱不多，我们常常合买一个。阿禾把钱数了又数，递过去，接过那个滚烫的红薯，在手里倒来倒去，像捧着一只小刺猬。她掰开，金黄的瓤冒着热气，一人一半。她总把最甜、最软的心儿留给我，说自己喜欢挨着皮的那层。
-
-我们捧着红薯往家走，风刮得脸生疼，手心却暖乎乎的。咬一口，甜糯绵软，热气从喉咙一路暖到胃里。我们边走边吃，呼出的白气混在一起，分不清谁是谁的。有时她突然停下来，举起手里的红薯，轻轻碰一下我的："干杯！"我们笑得前仰后合，连路边的枯树都像在跟着摇晃。
-
-后来，阿禾搬家了。临走前，她跑到我家楼下，塞给我一个烤红薯。红薯还热着，隔着纸袋烫着我的手。她说："以后冬天，没人跟你分一个了。"我低头咬了一口，甜得发涩。
-
-如今，我依然会在冬天买烤红薯。摊主问要大的还是小的，我总说，一个。可一个人吃，再甜的瓤也像少了点滋味。我这才明白，烤红薯的暖，不只来自炭火，更来自那个愿意和你分食的人。红薯易凉，友情长存。每当寒风再起，我总会想起那个捧着红薯、笑着喊"干杯"的女孩。她像一团小小的火，藏在我记忆的冬天里，暖我至今。` }
-    ]
-  },
-  { id:"xiangxiang", name:"想象篇", icon:"✨", color:"xiangxiang", tag:"想象",
-    essays:[
-      { title:"假如我变成了一缕月光", author:"佚名", text:
-`假如我变成了一缕月光，只是为了让你的夜晚不那么漫长，悄悄地，我从窗棂的缝隙里溜进来，不惊动你。
-
-妈妈，你会找我吗？你会说："孩子，你在哪里呀？"我暗笑着，却不回答你。
-
-我要轻轻地，轻轻地落在你的枕边，趁你翻身的时候，吻一吻你疲惫的眼角。当你坐在灯下为我缝补那件磨破了袖口的外套，我会调皮地跃上你的针尖，在你的手指间跳着细碎的舞，让那根银针也闪着柔和的光。你一定会惊讶，今晚的灯怎么格外温柔。
-
-我要爬上你手边那杯渐渐凉去的茶，在杯沿上静静地坐着，看你低头沉思时垂下的发丝。那几根新添的白发，我会用最轻的光去抚摸它们，像小时候你用掌心抚过我的额头。
-
-当你起身去关窗，我就躲在窗帘的背后，看你望向夜空时，眼里有一片安静的湖。我会让湖面上浮起一层薄薄的银色的雾，像小时候你为我哼过的摇篮曲，软软的，远远的，却又一直都在。
-
-夜渐渐深了，你终于躺下。我就穿过窗纱，悄悄地，悄悄地覆在你的被子上，像小时候你为我掖好的那角棉被。我要在你的呼吸里，在你的梦里，安静地待上一整夜。
-
-但是，妈妈，当天边泛起第一丝鱼肚白，我就要变回来。变回那个睡在你身边、会踢被子、会在梦里咕哝着叫你的孩子。你会早早地醒来，看见我毛茸茸的脑袋歪在枕头上，呼吸均匀得像一只小兽。你会笑着叹一口气，伸手替我把被子拉好。
-
-妈妈，你要是问："昨晚睡得好吗？"我会揉着眼睛，笑着说："我梦见自己变成了一缕月光，去看了你好久好久呢。"
-
-那时你或许会轻轻地刮一下我的鼻子，说一句"傻孩子"。而我心里藏着一个秘密，藏着一整夜的温柔，像月光藏在云朵里那样，甜甜的，满满的，不说给你听。` },
-
-      { title:"假如我变成了一阵风", author:"佚名", text:
-`假如我变成了一阵风，只是为了让你的夏天不那么燥热，轻轻地，我从半开的窗户外溜进来，不惊动你。
-
-妈妈，你会找我吗？你会说："孩子，你在哪里呀？"我偷偷地笑着，却不回答你。
-
-我要悄悄地，悄悄地绕过你的背后，趁你低头择菜的时候，把你额前汗湿的碎发撩起来。当你坐在院子里那棵槐树下为我织那件过冬的毛衣，我会顽皮地钻进你的毛线团里，把绒线吹得滚来滚去，让你追着它跑两步，又笑着骂一声"这阵风真淘气"。
-
-我要爬上你晾衣的竹竿，让那些湿漉漉的床单鼓成一面面白帆，在你头顶上飘啊飘。你抬头看的时候，阳光正好穿过我的身体，洒在你微微眯起的眼睛里，碎碎的，暖暖的，像你笑起来时眼角的纹路。
-
-当你端着簸箕去晒谷场上扬麦子，我就等在谷壳和麦粒分开的地方，轻轻一吹——麦子沉甸甸地落回地面，谷壳却飘向远处的夕阳。你一定会眯着眼说："今天的风，真懂事啊。"
-
-黄昏时分，你坐在门槛上纳鞋底。我就穿过整片稻田，带着稻花的香味和青蛙的叫声，扑进你的怀里，像一个放学晚归的孩子。你把手里的针线搁一搁，自言自语："是不是要下雨了？"可我只是想亲亲你被日头晒红的脸颊。
-
-夜深了，你摇着蒲扇给我赶蚊子。我就停在蒲扇的边缘，一圈一圈地转，把凉意均匀地送给你。你打着哈欠，渐渐睡去，嘴角还挂着半句话。我便蜷在你的枕头边，做一场没有形状的梦。
-
-但是，妈妈，当天亮的时候，我又会变回来。变回那个会赖床、会把早饭吃得满脸米粒、会缠着你要两毛钱买冰棍的孩子。
-
-你推开门，清晨的风吹了你一脸。你会说："今天风真凉快。"而我坐在饭桌前，嘴里塞满了馒头，含含糊糊地笑。
-
-妈妈，你不知道，昨晚有一阵风，曾在你耳边说了一整夜"我爱你"。那是我，是我啊。` },
-
-      { title:"假如我变成了一棵桂花树", author:"佚名", text:
-`假如我变成了一棵桂花树，就长在你每天经过的路口，安安静静地站着，不惊动你。
-
-妈妈，你会认出我吗？你会说："这棵树真香啊。"我摇着满枝的花，沙沙地笑，却不回答你。
-
-秋天来的时候，我把小小的黄花一粒一粒地攒在枝头，攒了满满一树。那是你最喜欢的味道啊。每年桂花开，你都要摘一小捧，用白手帕包着，放在枕边，说梦里都是甜的。
-
-现在，我就站在你必经的路口。你每天清早去买菜，蓝布衫子从我身边经过。我就把最香的那一枝，轻轻地，轻轻地垂下来，碰一碰你的发梢。
-
-你一定会停下来，仰起头，眯着眼在花枝间找啊找。阳光透过叶缝，在你脸上洒下细碎的光斑。你伸出手，接住几粒飘落的桂花，放在鼻尖闻了闻，笑得像个小姑娘。那一刻，我多想把所有花瓣都撒下来，撒成一场金色的雨，落在你的肩头、发间、菜篮子里。
-
-风起的时候，我抖落一地桂花，铺成薄薄的香毯。你从上面走过，脚步轻轻的，像怕踩疼了什么。你哪里知道，我正偷偷地把香气往上送，让它们爬上你的衣襟，缠着你不肯走。
-
-傍晚你回来，天边烧着晚霞。远远地，你就看见路口那棵桂花树下，满地都是碎金。你说："今天落了好多花啊。"然后你放下菜篮，蹲下身，一粒一粒地捡。夕阳把你的影子拉得很长，长到我的树根这里。
-
-我多想弯下腰来，像小时候你抱我那样，抱一抱你。可我只是树啊，我只能让叶子轻轻地响，哗啦啦，哗啦啦，替我说那些说不出口的话。
-
-你捡了一小捧，用手帕仔细包好，放进口袋。你说："带回去给丫头闻闻，她最爱这味道。"妈妈，你可知道，你手里捧着的那捧花，就是你那棵会走路的桂花树，喊你回家呢。
-
-月亮升起来的时候，你关了灯。我就让香气从窗缝里钻进去，萦绕在你的枕边。你翻了个身，在梦里笑了一下。是不是梦到我了呢，妈妈？
-
-天亮了，我变回来，还是那个睡在你隔壁、头发乱糟糟的孩子。你推开门进来喊我起床，手里还捏着那块白手帕，桂花香散了一屋子。
-
-你笑着说："昨晚摘的桂花，香不香？"
-
-我凑过去闻了闻，使劲点头："香！是妈妈的味道。"
-
-你哪里知道，那棵树，就是我啊。` }
-    ]
-  }
-];
-
-<!-- SECTION: RENDER -->
-const TAG_MAP = { qinqing:"亲情", chengzhang:"成长", youqing:"友情", xiangxiang:"想象" };
-
-function renderSidebar() {
-  const container = document.getElementById('cat-container');
-  container.innerHTML = '';
-
-  // 统计同名标题，重名时在目录项下补作者/出处以便区分
-  const titleCount = {};
-  CATEGORIES.forEach(cat => cat.essays.forEach(e => {
-    titleCount[e.title] = (titleCount[e.title] || 0) + 1;
-  }));
-
-  CATEGORIES.forEach(cat => {
-    const section = document.createElement('div');
-    section.className = 'cat-section';
-
-    const header = document.createElement('div');
-    header.className = 'cat-header open';
-    header.addEventListener('click', () => toggleCat(header));
-    const icon = document.createElement('span');
-    icon.className = 'icon';
-    icon.textContent = cat.icon;
-    const name = document.createElement('span');
-    name.textContent = cat.name;
-    const cnt = document.createElement('span');
-    cnt.style.cssText = 'font-size:12px;color:var(--text-lighter);font-weight:400;margin-left:4px;';
-    cnt.textContent = '(' + cat.essays.length + ')';
-    const arrow = document.createElement('span');
-    arrow.className = 'arrow';
-    arrow.textContent = '▶';
-    header.append(icon, name, cnt, arrow);
-
-    const list = document.createElement('div');
-    list.className = 'cat-list open';
-
-    cat.essays.forEach((essay, i) => {
-      const eid = cat.id + '-' + i;
-      const item = document.createElement('div');
-      item.className = 'essay-item';
-      item.dataset.eid = eid;
-      item.dataset.search = (essay.title + ' ' + (essay.author || '')).toLowerCase();
-      const t = document.createElement('span');
-      t.textContent = essay.title;
-      item.appendChild(t);
-      if (titleCount[essay.title] > 1 && essay.author) {
-        const who = document.createElement('span');
-        who.className = 'who';
-        who.textContent = essay.author.split(' · ')[0];
-        item.appendChild(who);
-      }
-      item.addEventListener('click', () => scrollToEssay(eid));
-      list.appendChild(item);
+(function(){
+  const themes = JSON.parse(document.getElementById('essay-data').textContent);
+  const $ = s => document.querySelector(s);
+  const esc = s => s.replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+
+  /* ---------- 渲染 ---------- */
+  const nav = $('#nav'), wrap = $('#themes');
+  let navHTML = '', thHTML = '';
+  themes.forEach((t, ti) => {
+    const tid = 'theme-' + ti;
+    navHTML += `<div class="nav-theme" data-theme="${ti}">
+      <a href="#${tid}" class="nav-link" data-target="${tid}">
+        <span>${esc(t.theme)}</span><span class="cnt">${t.essays.length}篇</span></a>
+      <ul class="nav-essays">` +
+        t.essays.map((e, ei) => `<li><a href="#${tid}-e${ei}" data-target="${tid}-e${ei}">${esc(e.title)}</a></li>`).join('') +
+      `</ul></div>`;
+
+    let prompt = t.prompt ? `<div class="prompt-card"><b>【作文题目】</b>${esc(t.prompt).replace(/\n/g,'<br>')}</div>` : '';
+    const cards = t.essays.map((e, ei) => `
+      <details class="essay" id="${tid}-e${ei}" data-key="${esc((t.theme+' '+e.title+' '+e.meta+' '+e.paras.join(' ')).toLowerCase())}">
+        <summary>
+          <div class="no">${e.num}</div>
+          <div class="t-wrap">
+            <div class="e-title">${esc(e.title)}</div>
+            <div class="e-meta">${esc(e.meta || ('主题：'+t.theme))} · 约 ${e.chars} 字</div>
+          </div>
+          <div class="chev">▾</div>
+        </summary>
+        <div class="body">
+          ${e.paras.map((p, pi) => `<p${pi===0 && p.length<40 ? ' class="no-indent"':''}>${esc(p)}</p>`).join('')}
+          <div class="foot"><span>📌 主题：${esc(t.theme)}</span><span>✍️ 共 ${e.paras.length} 段 · 约 ${e.chars} 字</span></div>
+        </div>
+      </details>`).join('');
+    thHTML += `<section class="theme-block" id="${tid}">
+      <div class="theme-head">
+        <h3>${esc(t.theme)}</h3>
+        <span class="t-cnt">共 ${t.essays.length} 篇范文</span>
+        <div class="ops">
+          <button class="btn" data-op="expand" data-theme="${ti}">展开本主题</button>
+          <button class="btn" data-op="collapse" data-theme="${ti}">收起本主题</button>
+        </div>
+      </div>${prompt}${cards}</section>`;
+  });
+  nav.innerHTML = navHTML;
+  wrap.innerHTML = thHTML;
+
+  /* ---------- 主题筛选 chips ---------- */
+  const chips = $('#chips');
+  chips.innerHTML = '<button class="chip on" data-f="">全部主题</button>' +
+    themes.map((t, ti) => `<button class="chip" data-f="${ti}">${esc(t.theme)}</button>`).join('');
+  chips.addEventListener('click', e => {
+    const c = e.target.closest('.chip');
+    if (!c) return;
+    chips.querySelectorAll('.chip').forEach(x => x.classList.remove('on'));
+    c.classList.add('on');
+    const f = c.dataset.f;
+    input.value = '';
+    meta.textContent = '';
+    document.querySelectorAll('details.essay').forEach(d => {
+      d.classList.remove('hide');
+      d.querySelectorAll('.body p').forEach(p => { p.innerHTML = esc(rawStore.get(p)); });
     });
-
-    section.append(header, list);
-    container.appendChild(section);
-  });
-}
-
-function renderEssays() {
-  const container = document.getElementById('essay-container');
-  container.innerHTML = '';
-
-  CATEGORIES.forEach(cat => {
-    // 分类标题
-    const sec = document.createElement('div');
-    sec.className = 'section-title';
-    sec.id = 'sec-' + cat.id;
-    const bar = document.createElement('span');
-    bar.className = 'bar';
-    sec.appendChild(bar);
-    const secText = document.createElement('span');
-    secText.textContent = cat.icon + ' ' + cat.name;
-    sec.appendChild(secText);
-    container.appendChild(sec);
-
-    cat.essays.forEach((essay, ei) => {
-      const eid = cat.id + '-' + ei;
-
-      const card = document.createElement('div');
-      card.className = 'essay';
-      card.id = 'essay-' + eid;
-      card.dataset.eid = eid;
-
-      const tag = document.createElement('span');
-      tag.className = 'essay-tag tag-' + cat.tag;
-      tag.textContent = cat.name.replace('篇', '');
-      card.appendChild(tag);
-
-      const h = document.createElement('div');
-      h.className = 'essay-title';
-      h.textContent = essay.title;
-      card.appendChild(h);
-
-      if (essay.author) {
-        const au = document.createElement('div');
-        au.className = 'essay-author';
-        au.textContent = essay.author;
-        card.appendChild(au);
-      }
-
-      const body = document.createElement('div');
-      body.className = 'essay-body';
-      essay.text.split('\n\n').forEach(chunk => {
-        const txt = chunk.trim();
-        if (!txt) return;
-        const p = document.createElement('p');
-        p.textContent = txt;
-        body.appendChild(p);
-      });
-      card.appendChild(body);
-
-      container.appendChild(card);
+    document.querySelectorAll('.theme-block').forEach((tb, ti) => {
+      tb.style.display = (f === '' || String(ti) === f) ? '' : 'none';
     });
+    emptyTip.classList.remove('show');
   });
-}
 
-<!-- SECTION: INTERACTION -->
-function toggleCat(el) {
-  el.classList.toggle('open');
-  el.nextElementSibling.classList.toggle('open');
-}
-
-function scrollToEssay(eid) {
-  const target = document.getElementById('essay-' + eid);
-  if(target) {
-    target.scrollIntoView({behavior:'smooth', block:'start'});
-    document.querySelectorAll('.essay-item').forEach(i => i.classList.remove('active'));
-    document.querySelector(`.essay-item[data-eid="${eid}"]`)?.classList.add('active');
-  }
-  // Close sidebar on mobile
-  if(window.innerWidth <= 600) document.getElementById('sidebar').classList.remove('open');
-}
-
-function toggleSidebar() {
-  document.getElementById('sidebar').classList.toggle('open');
-}
-
-function toggleTheme() {
-  const cur = document.documentElement.getAttribute('data-theme');
-  if(cur === 'dark') {
-    document.documentElement.removeAttribute('data-theme');
-    document.getElementById('theme-btn').textContent = '🌙';
-  } else {
-    document.documentElement.setAttribute('data-theme','dark');
-    document.getElementById('theme-btn').textContent = '☀️';
-  }
-  try { localStorage.setItem('essay-theme', cur==='dark'?'light':'dark'); } catch(e){}
-}
-
-function adjustFont(dir) {
-  const root = document.documentElement;
-  const cur = parseInt(getComputedStyle(root).getPropertyValue('--base-size')) || 18;
-  let next = dir===0 ? 18 : Math.max(14, Math.min(24, cur + dir));
-  root.style.setProperty('--base-size', next + 'px');
-  try { localStorage.setItem('essay-fontsize', next); } catch(e){}
-}
-
-function filterEssays() {
-  const q = document.getElementById('search').value.trim().toLowerCase();
-  document.querySelectorAll('.essay-item').forEach(item => {
-    item.style.display = (!q || (item.dataset.search || '').includes(q)) ? '' : 'none';
+  /* ---------- 侧边栏交互 ---------- */
+  const sidebar = $('#sidebar'), mask = $('#mask');
+  $('#menuBtn').addEventListener('click', () => {
+    sidebar.classList.toggle('open');
+    mask.classList.toggle('show');
   });
-  // 搜索时隐藏没有任何命中项的分类，避免留下空壳
-  document.querySelectorAll('.cat-section').forEach(sec => {
-    if (!q) { sec.style.display = ''; return; }
-    const any = sec.querySelectorAll('.essay-item').length > 0
-      && [...sec.querySelectorAll('.essay-item')].some(i => i.style.display !== 'none');
-    sec.style.display = any ? '' : 'none';
+  mask.addEventListener('click', () => {
+    sidebar.classList.remove('open');
+    mask.classList.remove('show');
   });
-}
-
-// Progress bar
-function updateProgress() {
-  const st = document.documentElement.scrollTop || document.body.scrollTop;
-  const sh = (document.documentElement.scrollHeight - document.documentElement.clientHeight);
-  const pct = sh > 0 ? (st / sh * 100) : 0;
-  document.getElementById('progress-bar').style.width = pct + '%';
-  // Back to top
-  document.getElementById('back-top').classList.toggle('show', st > 400);
-}
-
-// Active essay tracking
-function trackActiveEssay() {
-  const scrollPos = window.scrollY + 100;
-  let activeId = null;
-  document.querySelectorAll('.essay').forEach(el => {
-    const top = el.offsetTop;
-    const bottom = top + el.offsetHeight;
-    if(scrollPos >= top && scrollPos < bottom) {
-      activeId = el.dataset.eid;
+  nav.addEventListener('click', e => {
+    const a = e.target.closest('a');
+    if (a) { sidebar.classList.remove('open'); mask.classList.remove('show'); }
+    const grp = e.target.closest('.nav-theme');
+    if (grp && !a) grp.classList.toggle('open');
+    if (a) {
+      const grp2 = a.closest('.nav-theme');
+      if (grp2) grp2.classList.add('open');
+      const id = a.dataset.target;
+      const el = document.getElementById(id);
+      if (el && el.tagName === 'DETAILS') el.open = true;
     }
   });
-  if(activeId) {
-    document.querySelectorAll('.essay-item').forEach(i => {
-      i.classList.toggle('active', i.dataset.eid === activeId);
-    });
-  }
-}
+  // 侧栏主题悬停展开（桌面）
+  document.querySelectorAll('.nav-theme > a').forEach(a => {
+    a.addEventListener('mouseenter', () => a.closest('.nav-theme').classList.add('open'));
+    a.addEventListener('mouseleave', () => a.closest('.nav-theme').classList.remove('open'));
+  });
 
-// Init
-window.addEventListener('scroll', () => { updateProgress(); trackActiveEssay(); });
-window.addEventListener('load', () => {
-  // Restore theme
-  try {
-    const saved = localStorage.getItem('essay-theme');
-    if(saved === 'dark') toggleTheme();
-    const savedSize = localStorage.getItem('essay-fontsize');
-    if(savedSize) document.documentElement.style.setProperty('--base-size', savedSize + 'px');
-  } catch(e){}
-  renderSidebar();
-  renderEssays();
-  const totalEl = document.getElementById('total-count');
-  if(totalEl) totalEl.textContent = '共 ' + CATEGORIES.reduce((s,c)=>s+c.essays.length,0) + ' 篇';
-  updateProgress();
-});
+  /* ---------- 展开/收起 ---------- */
+  document.addEventListener('click', e => {
+    const b = e.target.closest('button[data-op]');
+    if (!b) return;
+    const ti = b.dataset.theme;
+    const list = document.querySelectorAll(`#theme-${ti} details.essay:not(.hide)`);
+    list.forEach(d => d.open = b.dataset.op === 'expand');
+  });
+  $('#expandAll').addEventListener('click', () =>
+    document.querySelectorAll('details.essay:not(.hide)').forEach(d => d.open = true));
+  $('#collapseAll').addEventListener('click', () =>
+    document.querySelectorAll('details.essay').forEach(d => d.open = false));
+
+  /* ---------- 搜索 ---------- */
+  const input = $('#search'), meta = $('#searchMeta'), emptyTip = $('#emptyTip');
+  let timer = null;
+  const rawStore = new Map();
+  document.querySelectorAll('details.essay .body p').forEach(p => rawStore.set(p, p.textContent));
+
+  function doSearch(){
+    const q = input.value.trim().toLowerCase();
+    let shown = 0;
+    document.querySelectorAll('details.essay').forEach(d => {
+      const hit = !q || d.dataset.key.includes(q);
+      d.classList.toggle('hide', !hit);
+      if (hit) {
+        shown++;
+        if (q) d.open = true;
+        // 高亮
+        d.querySelectorAll('.body p').forEach(p => {
+          const raw = rawStore.get(p);
+          if (!q) { p.innerHTML = esc(raw); return; }
+          const idx = raw.toLowerCase().indexOf(q);
+          if (idx < 0) { p.innerHTML = esc(raw); return; }
+          let out = '', rest = raw, low = raw.toLowerCase(), pos = 0, from = 0;
+          while (true) {
+            const i = low.indexOf(q, from);
+            if (i < 0) break;
+            out += esc(raw.slice(from, i)) + '<mark>' + esc(raw.substr(i, q.length)) + '</mark>';
+            from = i + q.length;
+          }
+          out += esc(raw.slice(from));
+          p.innerHTML = out;
+        });
+      }
+    });
+    // 隐藏无匹配范文的主题（同时尊重主题筛选）
+    const activeChip = document.querySelector('.chip.on');
+    const activeF = activeChip ? activeChip.dataset.f : '';
+    document.querySelectorAll('.theme-block').forEach((tb, ti) => {
+      const any = tb.querySelector('details.essay:not(.hide)');
+      tb.style.display = (any && (activeF === '' || String(ti) === activeF)) ? '' : 'none';
+    });
+    meta.textContent = q ? `匹配 ${shown} 篇` : '';
+    emptyTip.classList.toggle('show', shown === 0);
+    if (!q) document.querySelectorAll('details.essay').forEach(d => d.open = false);
+  }
+  input.addEventListener('input', () => { clearTimeout(timer); timer = setTimeout(doSearch, 220); });
+
+  /* ---------- 返回顶部 & 滚动高亮 ---------- */
+  const toTop = $('#toTop');
+  toTop.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+  const navLinks = () => document.querySelectorAll('.nav-link, .nav-essays a');
+  window.addEventListener('scroll', () => {
+    toTop.classList.toggle('show', window.scrollY > 420);
+    // scrollspy
+    let cur = null;
+    document.querySelectorAll('.theme-block').forEach(tb => {
+      if (tb.getBoundingClientRect().top <= 130) cur = tb.id;
+    });
+    navLinks().forEach(a => a.classList.toggle('active', a.dataset.target === cur));
+    if (cur) {
+      const grp = document.querySelector(`.nav-theme [data-target="${cur}"]`);
+      if (grp) grp.closest('.nav-theme').classList.add('open');
+    }
+  }, {passive:true});
+
+  // 默认展开每主题第一篇
+  document.querySelectorAll('.theme-block').forEach(tb => {
+    const first = tb.querySelector('details.essay');
+    if (first) first.open = true;
+  });
+})();
 </script>
 </body>
 </html>
