@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>13-1 英语培优讲练 · 批注式阅读学案</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%232E4A6B'/%3E%3Cpath d='M9 23V11h5.2c2.6 0 4 1.2 4 3.4 0 2.3-1.6 3.5-4.2 3.5H11' stroke='%23FCFBF7' stroke-width='2.2' fill='none' stroke-linecap='round'/%3E%3Ccircle cx='22' cy='22' r='2.2' fill='%23A6362A'/%3E%3C/svg%3E">
+<style>
+:root{
+  --paper:#FCFBF7; --desk:#E7E4DB; --ink:#1D2833; --ink2:#54616D; --ink3:#7C8792;
+  --rule:#D9D5C9; --rule2:#EDEAE1;
+  --red:#A6362A; --red-bg:#F8E9E5; --blue:#2E4A6B; --blue-bg:#E9EEF4;
+  --sticky:#FBF1CB; --sticky-line:#E4CF8E; --green:#3D6B52;
+  --shadow:0 10px 26px rgba(40,44,36,.10);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--desk);
+  background-image:radial-gradient(rgba(0,0,0,.045) 1px,transparent 1px);
+  background-size:18px 18px;
+  color:var(--ink);
+  font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",system-ui,sans-serif;
+  font-size:16px;line-height:1.8;
+}
+
+/* ===== 顶部 ===== */
+.top{background:var(--blue);color:#fff;padding:22px 0 0;border-bottom:3px solid var(--red)}
+.top .inner{max-width:880px;margin:0 auto;padding:0 18px}
+.kicker{display:flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.18em;color:#C9D6E4;text-transform:none}
+.kicker .no{background:var(--red);color:#fff;letter-spacing:.1em;padding:2px 8px;border-radius:2px;font-weight:700}
+h1{font-family:"Songti SC","STSong","SimSun",Georgia,serif;font-size:26px;line-height:1.35;margin:10px 0 6px;letter-spacing:.02em}
+.sub{color:#C9D6E4;font-size:14px;max-width:660px;padding-bottom:18px}
+.tabs{background:#fff;position:sticky;top:0;z-index:40;border-bottom:1px solid var(--rule);box-shadow:0 2px 8px rgba(30,30,20,.06)}
+.chapter,.vsec{scroll-margin-top:58px}
+.tabs .row{max-width:880px;margin:0 auto;display:flex;gap:2px;overflow-x:auto;padding:0 12px;scrollbar-width:thin}
+.tabs a{flex:0 0 auto;text-decoration:none;color:var(--ink2);font-size:14px;font-weight:600;padding:12px 14px;border-bottom:2px solid transparent;white-space:nowrap}
+.tabs a:hover{color:var(--blue)}
+.tabs a.on{color:var(--red);border-bottom-color:var(--red)}
+
+/* ===== 纸张 ===== */
+.sheet{max-width:880px;margin:22px auto 60px;padding:0}
+.paper{background:var(--paper);box-shadow:var(--shadow);border:1px solid #CFCBBE;border-radius:4px;padding:26px 22px 30px}
+.margin-rule{position:relative}
+.margin-rule::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--red);opacity:.35}
+
+/* ===== 篇章 ===== */
+.chapter{margin:0 0 34px}
+.chapter:last-of-type{margin-bottom:0}
+.ch-head{border-bottom:2px solid var(--ink);padding-bottom:10px;margin-bottom:6px}
+.ch-tag{display:inline-block;font-size:12px;font-weight:700;color:#fff;background:var(--red);padding:2px 9px;border-radius:2px;letter-spacing:.08em;margin-bottom:10px}
+.ch-title{font-family:"Songti SC","STSong","SimSun",Georgia,serif;font-size:21px;line-height:1.4;letter-spacing:.01em}
+.ch-meta{display:grid;grid-template-columns:repeat(2,1fr);gap:0;margin:12px 0 0;border:1px solid var(--rule);border-right:none;border-bottom:none}
+.ch-meta div{border-bottom:1px solid var(--rule);border-right:1px solid var(--rule);padding:6px 10px;font-size:12.5px;color:var(--ink2);display:flex;gap:8px}
+.ch-meta b{color:var(--ink);font-weight:600;flex:0 0 auto}
+.ch-meta .stars{color:var(--red);letter-spacing:2px;font-size:12px}
+
+/* 原文 */
+.text{font-family:Georgia,"Times New Roman","Songti SC","SimSun",serif;font-size:17px;line-height:2.05;color:#20282C;margin:18px 0 4px}
+.para{position:relative;padding-left:30px;margin:16px 0}
+.para .pn{position:absolute;left:0;top:5px;font-family:Georgia,serif;font-size:12px;color:var(--red);font-weight:700;letter-spacing:.06em}
+.para-tools{display:flex;gap:8px;margin:0 0 6px}
+.btn-s{padding-left:30px;border:none;background:none;color:var(--blue);font:inherit;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;font-weight:600}
+.btn-s:hover{color:var(--red)}
+.btn-s svg{width:14px;height:14px;fill:currentColor}
+.blank{display:inline-block;min-width:66px;border-bottom:1.5px solid var(--ink2);text-align:center;font-family:inherit;font-size:15px;margin:0 3px}
+
+/* 生词 */
+button.vb{background:none;border:none;padding:0;font:inherit;color:var(--red);font-weight:600;border-bottom:1.5px dotted rgba(166,54,42,.75);cursor:pointer;line-height:inherit}
+button.vb:hover{background:var(--red-bg)}
+.vb.on{background:var(--red-bg);border-bottom-style:solid}
+
+/* 批注卡 */
+.note-card{margin:12px 0 4px 30px;background:var(--sticky);border:1px solid var(--sticky-line);border-left:4px solid var(--red);border-radius:3px;padding:14px 16px;box-shadow:0 4px 10px rgba(90,70,20,.10);animation:fade .16s ease;scroll-margin-top:60px}
+.note-card.tight{margin-left:0;margin-top:8px}
+.note-card .nc-top{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px;padding-bottom:8px;border-bottom:1px dashed var(--sticky-line);margin-bottom:8px;position:relative}
+.note-card .nc-x{margin-left:auto;border:none;background:none;color:var(--ink2);font-size:14px;line-height:1;cursor:pointer;padding:2px 4px;border-radius:2px}
+.note-card .nc-x:hover{background:var(--sticky-line);color:var(--ink)}
+.note-card .w{font-family:Georgia,serif;font-size:19px;font-weight:700;letter-spacing:.01em}
+.note-card .pos{font-size:11.5px;background:var(--blue);color:#fff;padding:1.5px 7px;border-radius:2px}
+.note-card .cn{font-weight:700;color:var(--red);margin-left:auto;font-size:15px}
+.note-card .line{font-size:13.5px;color:#3B3A31;margin:5px 0;display:flex;gap:6px}
+.note-card .line .k{flex:0 0 4.6em;color:var(--blue);font-weight:700;font-size:12px;letter-spacing:.02em;padding-top:2px}
+.note-card .eg{font-family:Georgia,serif;font-size:15px;margin-top:9px;padding-top:9px;border-top:1px dashed var(--sticky-line)}
+.note-card .egcn{font-size:12.5px;color:#5C5A4E;margin-top:2px}
+/* 义项 / 短语标签 / 多条例句 */
+.senses{display:flex;flex-wrap:wrap;gap:5px;margin:8px 0 4px}
+.sense{font-size:11.5px;background:var(--blue-bg);color:#26374A;padding:2px 7px;border-radius:2px;line-height:1.5}
+.sense b{color:var(--blue);font-weight:700;margin-right:3px}
+.chips{display:inline-flex;flex-wrap:wrap;gap:5px;vertical-align:top}
+.chip{font-size:11.5px;background:#fff;border:1px solid var(--sticky-line);border-radius:2px;padding:1px 6px;color:#3B3A31;line-height:1.6}
+.chip b{color:var(--blue);font-weight:700}
+.exs{margin-top:9px;padding-top:8px;border-top:1px dashed var(--sticky-line)}
+.ex-item{margin:6px 0}
+.ex-item .en{font-family:Georgia,serif;font-size:14.5px;color:#26313A}
+.ex-item .cn{font-size:11.5px;color:#6A6657}
+.spk{border:none;background:none;color:var(--blue);cursor:pointer;font-size:12px;padding:0 3px;vertical-align:1px}
+.spk:hover{color:var(--red)}
+.vcard .senses .sense{background:var(--blue-bg)}
+.vcard .chip{border-color:var(--rule2);background:#FBFAF5}
+.note-card .row{display:flex;gap:8px;margin-top:8px}
+.mini{border:1px solid var(--rule);background:#fff;border-radius:2px;padding:4px 10px;font:inherit;font-size:12px;color:var(--blue);cursor:pointer;display:inline-flex;align-items:center;gap:5px}
+.mini:hover{border-color:var(--blue)}
+.mini svg{width:12px;height:12px;fill:currentColor}
+
+/* 题目 */
+.qs{margin:22px 0 0;border-top:1px solid var(--rule);padding-top:16px}
+.qs h3{font-family:"Songti SC","SimSun",serif;font-size:15px;letter-spacing:.06em;color:var(--ink2);margin-bottom:12px}
+.q{margin:0 0 16px}
+.q .stem{display:flex;gap:9px;font-size:15.5px;line-height:1.75}
+.q .num{flex:0 0 22px;height:22px;border:1.5px solid var(--red);color:var(--red);border-radius:50%;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:3px}
+.opts{margin:8px 0 0 31px;display:grid;grid-template-columns:1fr;gap:2px;font-size:15px}
+.opts span{color:#2C343A}
+.opts .lab{color:var(--ink3);margin-right:6px;font-family:Georgia,serif}
+.ans{display:inline-flex;align-items:center;gap:8px;margin:8px 0 0 31px;font-size:13.5px;background:var(--red-bg);border-left:3px solid var(--red);padding:5px 12px}
+.ans b{color:var(--red);font-family:Georgia,serif}
+details{margin:6px 0 0 31px}
+details summary{cursor:pointer;list-style:none;font-size:13px;color:var(--blue);font-weight:600;display:inline-flex;align-items:center;gap:5px}
+details summary::-webkit-details-marker{display:none}
+details summary::before{content:"";width:0;height:0;border-left:5px solid currentColor;border-top:3.5px solid transparent;border-bottom:3.5px solid transparent;transition:transform .15s}
+details[open] summary::before{transform:rotate(90deg)}
+details .body{margin-top:8px;font-size:14px;color:#39434B;background:#fff;border:1px solid var(--rule2);padding:10px 12px;border-radius:2px}
+details .body p{margin:5px 0}
+
+/* 积累小栈 / 知识包 */
+.kit{margin:22px 0 0;border:1px solid var(--rule);border-radius:3px;background:#FFFDF6}
+.kit-h{display:flex;align-items:center;gap:8px;padding:9px 14px;border-bottom:1px solid var(--rule);background:#F6F3E8}
+.kit-h h4{font-family:"Songti SC","SimSun",serif;font-size:14px;letter-spacing:.06em;color:var(--ink)}
+.kit-h .badge{font-size:11px;color:var(--red);border:1px solid var(--red);border-radius:2px;padding:0 5px}
+.kit-b{padding:12px 14px}
+.kit-b .grp{font-size:12px;color:var(--red);font-weight:700;letter-spacing:.04em;margin:4px 0 6px}
+.kit-b ul{list-style:none;display:grid;grid-template-columns:1fr;gap:6px}
+.kit-b li{font-size:14px;display:flex;gap:8px;line-height:1.7}
+.kit-b li .i{color:var(--ink3);flex:0 0 1.4em}
+.kit-b li .en{font-family:Georgia,serif}
+.kit-b li .cn{color:var(--ink2)}
+.kit-b .sep{height:1px;background:var(--rule2);margin:12px 0}
+
+/* 逐段精讲 */
+.deep{margin:24px 0 0}
+.deep h4{font-family:"Songti SC","SimSun",serif;font-size:15px;letter-spacing:.06em;color:var(--ink2);margin-bottom:10px}
+.deep .item{position:relative;padding:0 0 0 16px;margin:0 0 14px;border-left:2px solid rgba(166,54,42,.28)}
+.deep .item .t{font-weight:700;font-size:14px;color:var(--blue);margin-bottom:3px}
+.deep .item .c{font-size:14px;color:#333C44;line-height:1.8}
+.deep .item .c em{font-style:normal;color:var(--red);font-weight:600}
+
+/* 文化小注 */
+.side{margin:18px 0 0;background:var(--blue-bg);border-left:3px solid var(--blue);padding:12px 15px;font-size:13.5px;color:#2B3846}
+.side b{color:var(--blue)}
+
+/* ===== 词汇总表 ===== */
+.vsec{margin:34px 0 0;border-top:2px solid var(--ink);padding-top:18px}
+.vsec h2{font-family:"Songti SC","SimSun",serif;font-size:20px;letter-spacing:.02em}
+.vsec .lead{font-size:13.5px;color:var(--ink2);margin:6px 0 12px}
+.tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:12px 0 4px}
+.tools input{flex:1 1 220px;min-width:0;font-size:16px;padding:9px 12px;border:1px solid var(--rule);border-radius:2px;background:#fff;font-family:inherit;color:var(--ink)}
+.tools input:focus{outline:2px solid var(--blue-bg);border-color:var(--blue)}
+.tools button{border:1px solid var(--blue);background:#fff;color:var(--blue);font:inherit;font-size:13px;padding:8px 12px;border-radius:2px;cursor:pointer;white-space:nowrap}
+.tools button.on{background:var(--blue);color:#fff}
+.count{font-size:12.5px;color:var(--ink3);margin:8px 0 0}
+.vgrid{display:grid;grid-template-columns:1fr;gap:10px;margin-top:12px}
+.more{grid-column:1/-1;border:1px dashed var(--rule);background:#fff;color:var(--blue);font:inherit;font-size:13px;padding:12px;border-radius:3px;cursor:pointer;transition:.15s}
+.more:hover{border-color:var(--blue);background:var(--blue-bg)}
+.more.ghost{border-style:solid;border-color:var(--rule2);color:var(--ink2)}
+.vcard{border:1px solid var(--rule);background:#fff;padding:12px 14px;border-radius:3px}
+.vcard .hd{display:flex;flex-wrap:wrap;align-items:baseline;gap:7px;border-bottom:1px dashed var(--rule);padding-bottom:7px}
+.vcard .wd{font-family:Georgia,serif;font-size:16.5px;font-weight:700}
+.vcard .ps{font-size:11px;background:var(--blue-bg);color:var(--blue);padding:1px 6px;border-radius:2px}
+.vcard .cz{color:var(--red);font-weight:700;font-size:14px;margin-left:auto}
+.vcard .cz.hide{color:#C9C6B9;letter-spacing:.15em;user-select:none}
+.vcard .lt{font-size:13px;color:#40484F;margin:5px 0;line-height:1.75}
+.vcard .lt .kk{color:var(--blue);font-weight:700;font-size:12px;margin-right:5px}
+.vcard .line{display:flex;gap:6px;font-size:13px;margin:5px 0;line-height:1.75}
+.vcard .line .k{flex:0 0 4.6em;color:var(--blue);font-weight:700;font-size:12px;padding-top:1px}
+.vcard .exs{border-top:1px dashed var(--rule)}
+.vcard .ex-item .en{font-size:13.5px}
+.vcard .spk{font-size:11px}
+.vcard .ex{font-family:Georgia,serif;font-size:13.5px;color:#2B343B;margin-top:6px}
+.vcard .excn{font-size:11.5px;color:var(--ink3)}
+.vcard .ft{display:flex;gap:8px;margin-top:8px}
+
+/* 回到顶部 */
+#top{position:fixed;right:16px;bottom:22px;width:42px;height:42px;border-radius:50%;border:1px solid var(--blue);background:#fff;color:var(--blue);font-size:17px;line-height:1;cursor:pointer;display:none;box-shadow:0 4px 14px rgba(30,40,50,.14);z-index:50}
+#top.on{display:block}
+#top:hover{background:var(--blue);color:#fff}
+
+/* 页脚 */
+.foot{max-width:880px;margin:0 auto 40px;padding:0 18px;color:#5D6259;font-size:12.5px;text-align:center}
+.foot .line{height:1px;background:#CFCBBE;margin:0 0 14px}
+
+/* ===== 响应式（窄屏优先，宽屏增强） ===== */
+@media (min-width:768px){
+  .paper{padding:38px 46px 46px}
+  h1{font-size:32px}
+  .ch-meta{grid-template-columns:repeat(4,1fr)}
+  .vgrid{grid-template-columns:repeat(2,1fr)}
+  .kit-b ul{grid-template-columns:repeat(2,1fr)}
+  .note-card{margin-left:30px}
+}
+@media (max-width:560px){
+  .kit-b li{flex-wrap:wrap}
+  .kit-b li .cn{flex:1 1 100%;margin-left:calc(1.4em + 8px);color:var(--ink2)}
+}
+@media (max-width:767px){
+  .paper{padding:20px 16px 26px;border-radius:0}
+  .sheet{margin:0}
+  .para{padding-left:22px}
+  .note-card{margin-left:0}
+  .deep .item{padding-left:12px}
+  .ans,details,.opts{margin-left:0}
+  .q .stem{font-size:15px}
+}
+@keyframes fade{from{opacity:0;transform:translateY(-3px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.note-card{animation:none}html{scroll-behavior:auto}}
+@media print{.tabs,.tools,.btn-s,.mini,.note-card{display:none}body{background:#fff}.paper{box-shadow:none;border:none}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="inner">
+    <div class="kicker"><span class="no">学案 13-1</span><span>UNIT 4 · ONCE UPON A TIME</span></div>
+    <h1>13-1 英语培优讲练 · 批注式阅读学案</h1>
+    <p class="sub">三篇培优选文：闵损孝亲、世界读书日、杨振宁传。原文带生词批注，点词即看“义项 + 用法 + 短语 + 近义辨析 + 多条例句”；每篇配完整答案、逐段精讲与积累小栈；文末附 103 条生词索引，支持检索、遮挡自测与朗读。</p>
+  </div>
+</header>
+
+<nav class="tabs" id="tabs">
+  <div class="row">
+    <a href="#c1" class="on">C 闵损孝亲</a>
+    <a href="#c2">D 世界读书日</a>
+    <a href="#c3">六选五 杨振宁</a>
+    <a href="#vocab">生词索引</a>
+  </div>
+</nav>
+
+<div class="sheet">
+<div class="paper">
+
+<!-- ============ 篇目 C ============ -->
+<section class="chapter" id="c1">
+  <div class="ch-head">
+    <span class="ch-tag">C · 阅读理解</span>
+    <h2 class="ch-title">Min Sun：以德报怨的孝子</h2>
+  </div>
+  <div class="ch-meta">
+    <div><b>主题</b>人与社会·历史故事</div>
+    <div><b>语篇</b>记叙文</div>
+    <div><b>词数</b>135</div>
+    <div><b>难度</b><span class="stars">★★★☆☆</span></div>
+  </div>
+
+  <div class="text">
+    <div class="para"><span class="pn">01</span>
+      <div class="para-tools"><button class="btn-s" data-say="Min Sun was a man in the State of Lu. He was a student of Confucius. Among all students of Confucius, he was famous for moral conduct."><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg>朗读本段</button></div>
+      <p>Min Sun was a man in the State of Lu. He was a student of Confucius. Among all students of Confucius, he [[be famous for|was famous for]] [[moral conduct]].</p>
+    </div>
+
+    <div class="para"><span class="pn">02</span>
+      <div class="para-tools"><button class="btn-s" data-say="Min Sun's mother passed away very early. Later his father took another wife. She gave birth to two sons. The stepmother wasn't good to Min Sun. In winter, two younger brothers wore winter clothes made of cotton, but Min Sun only wore clothes with reed catkins."><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg>朗读本段</button></div>
+      <p>Min Sun's mother [[pass away|passed away]] very early. Later his father took another wife. She [[give birth to|gave birth to]] two sons. The [[stepmother]] wasn't good to Min Sun. In winter, two younger brothers wore winter clothes made of [[cotton]], but Min Sun only wore clothes with [[reed catkins]].</p>
+    </div>
+
+    <div class="para"><span class="pn">03</span>
+      <div class="para-tools"><button class="btn-s" data-say="One day, Min Sun followed his father to go out. He accidentally dropped something onto the ground. Then his father hit him. The reed catkins flew out from the broken seam of the thin clothes, and then his father knew that his wife wasn't good to Min Sun."><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg>朗读本段</button></div>
+      <p>One day, Min Sun followed his father to go out. He [[accidentally]] [[drop|dropped]] something onto the ground. Then his father [[hit]] him. The reed catkins flew out from the broken [[seam]] of the [[thin]] clothes, and then his father knew that his wife wasn't good to Min Sun.</p>
+    </div>
+
+    <div class="para"><span class="pn">04</span>
+      <div class="para-tools"><button class="btn-s" data-say="After the father came back home, he wanted his wife to leave his home. Min Sun fell to his knees and asked his father to forgive the stepmother. He said, If Mother stays at home, only I myself have to feel cold. But if you drive Mother away, all three children will have to feel cold."><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg>朗读本段</button></div>
+      <p>After the father came back home, he wanted his wife to leave his home. Min Sun [[fall to one's knees|fell to his knees]] and asked his father to [[forgive]] the stepmother. He said, “If Mother stays at home, only I myself have to feel cold. But if you [[drive away|drive Mother away]], all three children will have to feel cold.”</p>
+    </div>
+
+    <div class="para"><span class="pn">05</span>
+      <div class="para-tools"><button class="btn-s" data-say="His father was deeply moved and took Min Sun's advice. The stepmother heard of this, felt sorry and began to be good to Min Sun. And she treated Min Sun as her own son."><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg>朗读本段</button></div>
+      <p>His father was [[deeply moved]] and [[take one's advice|took Min Sun's advice]]. The stepmother [[hear of|heard of]] this, [[feel sorry|felt sorry]] and began to be good to Min Sun. And she [[treat as|treated Min Sun as]] her own son.</p>
+    </div>
+  </div>
+
+  <div class="qs">
+    <h3>题目 · 完整解答</h3>
+
+    <div class="q">
+      <div class="stem"><span class="num">1</span><span>（新考法·细节组合题）What do we know about Min Sun?</span></div>
+      <div class="opts">
+        <span><i class="lab">①</i>He was Confucius' student.</span>
+        <span><i class="lab">②</i>He became a famous teacher.</span>
+        <span><i class="lab">③</i>He came from the State of Lu.</span>
+        <span><i class="lab">④</i>He wasn't friendly to his brothers.</span>
+        <span><i class="lab">A.</i>①②　　<i class="lab">B.</i>③④　　<i class="lab">C.</i>①③</span>
+      </div>
+      <div class="ans">答案 <b>C</b>（①③）</div>
+      <details><summary>解析</summary><div class="body"><p>第一段两句直接对应：He was a student of Confucius（①对）、a man in the State of Lu（③对）。②错：文中只说他在孔子学生中“以德行著名”，并未说成为名教师。④错：他甘愿自己受冻也要留住继母，正是为了两个弟弟，与兄弟关系融洽。</p><p>方法提示：细节组合题先把每个序号还原到原文定位，逐条打勾，再合并选项。</p></div></details>
+    </div>
+
+    <div class="q">
+      <div class="stem"><span class="num">2</span><span>How did Min Sun's father know that his wife wasn't good to Min Sun?</span></div>
+      <div class="opts">
+        <span><i class="lab">A.</i>He found that Min Sun had little to eat.</span>
+        <span><i class="lab">B.</i>He saw that Min Sun was in old clothes.</span>
+        <span><i class="lab">C.</i>He saw that the reed catkins flew out from the clothes.</span>
+      </div>
+      <div class="ans">答案 <b>C</b></div>
+      <details><summary>解析</summary><div class="body"><p>定位第三段：父亲打了闵损，衣服破口处的芦花飞了出来（The reed catkins flew out from the broken seam），父亲这才知道妻子虐待儿子——棉衣与芦花衣的差别暴露了真相。A、B 均为无据推断：文中未提吃不饱，也不是“旧衣服”，而是“芦花填充的薄衣”。</p></div></details>
+    </div>
+
+    <div class="q">
+      <div class="stem"><span class="num">3</span><span>Why did Min Sun want his stepmother to stay at home?</span></div>
+      <div class="opts">
+        <span><i class="lab">A.</i>Because he loved his brothers.</span>
+        <span><i class="lab">B.</i>Because his stepmother was kind.</span>
+        <span><i class="lab">C.</i>Because his stepmother was good at housework.</span>
+      </div>
+      <div class="ans">答案 <b>A</b></div>
+      <details><summary>解析</summary><div class="body"><p>第四段引语给出理由：留下继母，只我一人受冻；若把母亲赶走，三个孩子都要受冻（all three children will have to feel cold）。他考虑的是两个弟弟，因此选 A。B 与“继母对他不好”相反；C 文中未提。</p></div></details>
+    </div>
+
+    <div class="q">
+      <div class="stem"><span class="num">4</span><span>（新考法·推断人物特征题）Which is the best word to describe Min Sun?</span></div>
+      <div class="opts">
+        <span><i class="lab">A.</i>Strong.</span>
+        <span><i class="lab">B.</i>Kind.</span>
+        <span><i class="lab">C.</i>Smart.</span>
+      </div>
+      <div class="ans">答案 <b>B</b></div>
+      <details><summary>解析</summary><div class="body"><p>全文事件都指向“善良”：受虐待仍为继母求情、宁可自己受冻也为弟弟着想、最终以德感化继母。Strong（身体强壮）无据；Smart（聪明）虽他善于言辞，但文章重心在品德，故 B 最贴切。</p><p>推断人物特征题：抓“行为—动机—结果”三段链条，选能概括全部行为的词。</p></div></details>
+    </div>
+  </div>
+
+  <div class="kit">
+    <div class="kit-h"><h4>积累小栈</h4><span class="badge">答案</span></div>
+    <div class="kit-b">
+      <div class="grp">短语互译</div>
+      <ul>
+        <li><span class="i">1</span><span class="en">以……著名</span><span class="cn">→ <b>be famous for</b>（同义 be known for）</span></li>
+        <li><span class="i">2</span><span class="en">pass away</span><span class="cn">→ 去世（委婉说法，= die）</span></li>
+        <li><span class="i">3</span><span class="en">待在家里</span><span class="cn">→ <b>stay at home</b></span></li>
+        <li><span class="i">4</span><span class="en">hear of</span><span class="cn">→ 听说，得知（= hear about）</span></li>
+      </ul>
+      <div class="sep"></div>
+      <div class="grp">完成句子</div>
+      <ul>
+        <li><span class="i">5</span><span class="en">This T-shirt <b>is made of</b> silk and it feels very smooth.</span></li>
+        <li><span class="i">6</span><span class="en">The old man takes good care of his dog and <b>treats</b> it <b>as</b> a friend.</span></li>
+      </ul>
+      <div class="sep"></div>
+      <div class="grp">易错点</div>
+      <ul>
+        <li><span class="i">·</span><span class="en">be made of + 看得见材质（silk / wood）；be made from + 看不出原料（paper from wood）。</span></li>
+        <li><span class="i">·</span><span class="en">treat sb. as… 把某人当作……；句中 and 连接两个并列谓语，故用三单 treats。</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="deep">
+    <h4>逐段精讲</h4>
+    <div class="item"><div class="t">第 1 段 ｜ 人物名片：籍贯 + 师承 + 品行</div><div class="c">三句完成“定位”：国别（the State of Lu 鲁国）、身份（a student of Confucius 孔子弟子）、评价（<em>be famous for moral conduct</em> 以德行著名）。开篇即给出人物核心标签，为后文“以德报怨”埋下伏笔。<em>Among all students</em> 用 among 表“在……之中”，暗含比较范围。</div></div>
+    <div class="item"><div class="t">第 2 段 ｜ 冲突起点：继母偏心</div><div class="c">按时间推进：母亲早逝（passed away）→ 父亲续娶 → 继母生二子 → 待他不善。末句用 <em>but</em> 对比两种冬衣：弟弟穿 <em>clothes made of cotton</em>（棉花），闵损只穿 <em>clothes with reed catkins</em>（芦花）。made of 与 with 的差别正是后文破绽的物证，属“细节伏笔”。</div></div>
+    <div class="item"><div class="t">第 3 段 ｜ 真相暴露：一次意外</div><div class="c">情节转折段。动作链清晰：出门 → 失手掉落（accidentally dropped）→ 父打（hit）→ 破口飞出芦花（flew out from the broken seam）→ 父悟。四个连续动作全用一般过去时；<em>so…that</em> 未出现，但“行为—发现—结论”的因果由 and then 串联，是本篇最关键的推理句。</div></div>
+    <div class="item"><div class="t">第 4 段 ｜ 高潮：跪求留母</div><div class="c">人物性格最集中的一段。<em>fell to his knees</em>（跪下）、<em>asked…to forgive</em>（求原谅）写行动；引语用“if…only I… But if…all three children…”的对比句式，把自己与三个孩子放在天平两端，甘愿独自受冻。<em>drive Mother away</em> 中 drive away 是“赶走”，母亲一词大写表称呼。</div></div>
+    <div class="item"><div class="t">第 5 段 ｜ 结局：以德感人</div><div class="c">三方态度依次转变：父亲 <em>deeply moved</em> 并 <em>took his advice</em>（采纳建议）→ 继母 <em>heard of this, felt sorry</em> → <em>treated him as her own son</em>。结尾“待如亲生”与开头“待他不善”形成闭环，点明主旨：善良能化解怨恨。</div></div>
+  </div>
+
+  <div class="side"><b>文化小注：</b>闵损，字子骞，孔子弟子，以孝行著称，“二十四孝”中有“单衣顺母”（又称“芦衣顺母”）一则，即本文所记芦花衣故事。阅读此类传统故事时，注意“孝”在英文中常译为 <b>filial piety</b>，而文中并未直接出现该词，而是用事件呈现。</div>
+</section>
+
+<!-- ============ 篇目 D ============ -->
+<section class="chapter" id="c2">
+  <div class="ch-head">
+    <span class="ch-tag">D · 阅读理解</span>
+    <h2 class="ch-title">The Magic of World Book Day</h2>
+  </div>
+  <div class="ch-meta">
+    <div><b>主题</b>人与社会·世界节日</div>
+    <div><b>语篇</b>说明文</div>
+    <div><b>词数</b>168</div>
+    <div><b>难度</b><span class="stars">★★★★☆</span></div>
+  </div>
+
+  <div class="text">
+    <div class="para"><span class="pn">01</span>
+      <div class="para-tools"><button class="btn-s" data-say="23 April is World Book and Copyright Day. It was set up by UNESCO in 1995 to encourage people around the world to enjoy reading and respect the creators of books."><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg>朗读本段</button></div>
+      <p>23 April is World Book and [[copyright]] Day. It [[set up|was set up]] by UNESCO in 1995 to [[encourage]] people around the world to enjoy reading and [[respect]] the [[creator|creators]] of books.</p>
+    </div>
+
+    <div class="para"><span class="pn">02</span>
+      <div class="para-tools"><button class="btn-s" data-say="This special day was chosen to honour some of the world's most famous writers, like William Shakespeare and Miguel de Cervantes, who both passed away on this day. It also connects to a beautiful tradition from Catalonia, Spain, where a brave knight named George received a book as a gift, symbolizing courage and wisdom. Today, this tradition has become a custom where people exchange books and roses. The book stands for wisdom, and the rose stands for love."><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg>朗读本段</button></div>
+      <p>This special day was chosen to [[honour]] some of the world's most famous writers, like William Shakespeare and Miguel de Cervantes, who both [[pass away|passed away]] on this day. It also [[connect to|connects to]] a beautiful tradition from Catalonia, Spain, where a brave [[knight]] named George [[receive|received]] a book as a gift, [[symbolize|symbolizing]] [[courage]] and [[wisdom]]. Today, this tradition has become a [[custom]] where people [[exchange]] books and [[rose|roses]]. The book [[stand for|stands for]] wisdom, and the rose stands for love.</p>
+    </div>
+
+    <div class="para"><span class="pn">03</span>
+      <div class="para-tools"><button class="btn-s" data-say="On World Book Day, many schools and libraries hold fun activities to promote reading. These can include reading marathons, book fairs, and storytelling events. It's a day to remind us that books are like keys that open doors to new worlds. Through books, we can learn about animals, science, history, and different cultures."><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg>朗读本段</button></div>
+      <p>On World Book Day, many schools and libraries hold fun [[activity|activities]] to [[promote]] reading. These can [[include]] [[reading marathon|reading marathons]], [[book fair|book fairs]], and [[storytelling]] events. It's a day to [[remind]] us that books are like keys that open doors to new worlds. Through books, we can learn about animals, science, history, and different [[culture|cultures]].</p>
+    </div>
+  </div>
+
+  <div class="qs">
+    <h3>题目 · 完整解答</h3>
+
+    <div class="q">
+      <div class="stem"><span class="num">1</span><span>When was World Book and Copyright Day set up?</span></div>
+      <div class="opts">
+        <span><i class="lab">A.</i>23 April, 1995.</span>
+        <span><i class="lab">B.</i>7 October, 1926.</span>
+        <span><i class="lab">C.</i>23 April, 1930.</span>
+      </div>
+      <div class="ans">答案 <b>A</b></div>
+      <details><summary>解析</summary><div class="body"><p>首段第一、二句合并即可得：<b>23 April</b> is World Book and Copyright Day. It <b>was set up</b> by UNESCO in <b>1995</b>。两个日期信息（4 月 23 日、1995 年）都在 A 项中。B、C 属把“年份/日期”错配的干扰项。</p></div></details>
+    </div>
+
+    <div class="q">
+      <div class="stem"><span class="num">2</span><span>Why was 23 April chosen as the date for World Book Day?</span></div>
+      <div class="opts">
+        <span><i class="lab">A.</i>It is the birthday of William Shakespeare.</span>
+        <span><i class="lab">B.</i>It is the anniversary of the death of several famous writers.</span>
+        <span><i class="lab">C.</i>It is the birthday of Vicente Clavel Andrés.</span>
+      </div>
+      <div class="ans">答案 <b>B</b></div>
+      <details><summary>解析</summary><div class="body"><p>第二段首句：This special day was chosen to <b>honour</b>…writers, like Shakespeare and Cervantes, <b>who both passed away on this day</b>. “both passed away on this day”即“多位著名作家都在这一天逝世”，与 anniversary of the death 对应。A 把“逝世”偷换成“生日”；C 的 Vicente Clavel Andrés 文中未出现（他是西班牙推动读书日的倡议者，属背景知识干扰项）。</p></div></details>
+    </div>
+
+    <div class="q">
+      <div class="stem"><span class="num">3</span><span>What do people do on World Book Day?</span></div>
+      <div class="opts">
+        <span><i class="lab">A.</i>They hold reading marathons and book fairs.</span>
+        <span><i class="lab">B.</i>They exchange books and roses.</span>
+        <span><i class="lab">C.</i>Both A and B.</span>
+      </div>
+      <div class="ans">答案 <b>C</b></div>
+      <details><summary>解析</summary><div class="body"><p>需要跨段整合：第二段写传统习俗 <b>exchange books and roses</b>（B 项）；第三段写学校图书馆办 <b>reading marathons, book fairs</b>（A 项）。两者都是人们在这一天的活动，故选 C。遇到“A/B/两者都对”的选项，务必回原文逐项核对，两项都成立才选 C。</p></div></details>
+    </div>
+
+    <div class="q">
+      <div class="stem"><span class="num">4</span><span>What is the main idea of the passage?</span></div>
+      <div class="opts">
+        <span><i class="lab">A.</i>To explain the history and activities of World Book Day.</span>
+        <span><i class="lab">B.</i>To talk about the importance of copyright.</span>
+        <span><i class="lab">C.</i>To describe a book fair in Spain.</span>
+      </div>
+      <div class="ans">答案 <b>A</b></div>
+      <details><summary>解析</summary><div class="body"><p>三段结构恰好对应：起源（1995 年由 UNESCO 设立、为何选 4 月 23 日）→ 传统（西班牙赠书赠玫瑰的习俗）→ 活动（阅读马拉松、书展、故事会）与意义。A 概括最全。B 只是标题中的一个词（copyright），文中并未展开论述版权；C 只是第二段的一个细节。</p><p>主旨题判断法：能覆盖“全文各段”的选项才正确，只覆盖一段的是细节项。</p></div></details>
+    </div>
+  </div>
+
+  <div class="kit">
+    <div class="kit-h"><h4>积累小栈 · 集有所用</h4><span class="badge">原卷 9 + 补充 5</span></div>
+    <div class="kit-b">
+      <ul>
+        <li><span class="i">1</span><span class="en">World Book and Copyright Day</span><span class="cn">世界读书日（世界图书与版权日）</span></li>
+        <li><span class="i">2</span><span class="en">UNESCO</span><span class="cn">联合国教科文组织</span></li>
+        <li><span class="i">3</span><span class="en">respect the creators of books</span><span class="cn">尊重书籍创作者</span></li>
+        <li><span class="i">4</span><span class="en">honour famous writers</span><span class="cn">纪念 / 致敬著名作家</span></li>
+        <li><span class="i">5</span><span class="en">symbolize courage and wisdom</span><span class="cn">象征勇气与智慧</span></li>
+        <li><span class="i">6</span><span class="en">promote reading</span><span class="cn">推广 / 促进阅读</span></li>
+        <li><span class="i">7</span><span class="en">reading marathons</span><span class="cn">阅读马拉松</span></li>
+        <li><span class="i">8</span><span class="en">book fairs</span><span class="cn">书展；图书集市</span></li>
+        <li><span class="i">9</span><span class="en">remind us that…</span><span class="cn">提醒我们……（that 引导宾语从句）</span></li>
+      </ul>
+      <div class="sep"></div>
+      <div class="grp">补充拓展（原文出现但原卷未列）</div>
+      <ul>
+        <li><span class="i">10</span><span class="en">be set up</span><span class="cn">被建立 / 设立</span></li>
+        <li><span class="i">11</span><span class="en">connect to</span><span class="cn">与……相关联</span></li>
+        <li><span class="i">12</span><span class="en">stand for</span><span class="cn">代表，象征</span></li>
+        <li><span class="i">13</span><span class="en">exchange A for B</span><span class="cn">用 A 换 B（文中 exchange books and roses 互赠书与玫瑰）</span></li>
+        <li><span class="i">14</span><span class="en">open doors to new worlds</span><span class="cn">打开通往新世界的大门</span></li>
+      </ul>
+      <div class="sep"></div>
+      <div class="grp">读有所思 · What do books bring us?</div>
+      <ul>
+        <li><span class="i">·</span><span class="cn">参考回答：Books bring us knowledge and fun. They open doors to new worlds, and they help us understand people and cultures far away. Reading also makes us think and grow.</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="deep">
+    <h4>逐段精讲</h4>
+    <div class="item"><div class="t">第 1 段 ｜ 是什么：时间 + 设立者 + 目的</div><div class="c">说明文标准开头，一句话交代三个要素：日期（23 April）、名称（World Book and Copyright Day）、设立（was set up by UNESCO in 1995）。目的用不定式 <em>to encourage…and respect…</em> 并列两个动作。注意 <em>was set up</em> 是被动语态：节日“被设立”，主语不是人。</div></div>
+    <div class="item"><div class="t">第 2 段 ｜ 为什么：纪念意义 + 文化传统</div><div class="c">本段双线并进。第一条线“为什么是这一天”：纪念同一天逝世的两大文豪莎士比亚与塞万提斯，定语从句 <em>who both passed away on this day</em> 补充说明。第二条线“怎么过”：西班牙加泰罗尼亚的骑士赠书传说 → 演变为互赠书与玫瑰的习俗 → <em>The book stands for wisdom, and the rose stands for love</em> 用两个 stand for 对举收束，句式整齐，是本篇最值得背的句子。</div></div>
+    <div class="item"><div class="t">第 3 段 ｜ 怎么做：活动 + 意义</div><div class="c">先总说（hold fun activities to promote reading），再列举三类活动（reading marathons, book fairs, storytelling events）。末两句转入意义：<em>books are like keys that open doors to new worlds</em> 用比喻点题，<em>Through books, we can learn about…</em> 说明阅读带来的四类知识，与首段“enjoy reading”呼应，完成“节日—活动—价值”闭环。</div></div>
+  </div>
+
+  <div class="side"><b>文化小注：</b>世界读书日全称“世界图书与版权日”，1995 年 11 月由联合国教科文组织第 28 届大会确定，日期取 4 月 23 日——莎士比亚（1616 年 4 月 23 日逝世，生日按传统亦记为 4 月 23 日）与塞万提斯（1616 年 4 月 23 日逝世）均与此日相关。文中强调“both passed away on this day”，故答案取“逝世纪念日”而非“生日”。</div>
+</section>
+
+<!-- ============ 篇目 六选五 ============ -->
+<section class="chapter" id="c3">
+  <div class="ch-head">
+    <span class="ch-tag">二 · 阅读还原（六选五）</span>
+    <h2 class="ch-title">Yang Chen-Ning — A Great Scientist</h2>
+  </div>
+  <div class="ch-meta">
+    <div><b>主题</b>人与社会·人物传记</div>
+    <div><b>语篇</b>记叙文</div>
+    <div><b>词数</b>277</div>
+    <div><b>难度</b><span class="stars">★★★★☆</span></div>
+  </div>
+
+  <div class="text">
+    <div class="para"><span class="pn">01</span>
+      <div class="para-tools"><button class="btn-s" data-say="Yang Chen-Ning was a world-famous physicist and a Nobel Prize winner. He passed away in Beijing on 18 October, 2025, when he was 103 years old. As a member of the Chinese Academy of Sciences and a teacher at Tsinghua University, he was hailed as immortal in the university's notice because of his great contributions."><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg>朗读本段</button></div>
+      <p>Yang Chen-Ning was a world-famous [[physicist]] and a [[Nobel Prize]] [[winner]]. He [[pass away|passed away]] in Beijing on 18 October, 2025, when he was 103 years old. As a member of [[the Chinese Academy of Sciences]] and a teacher at Tsinghua University, <span class="blank">1</span> because of his great [[contribution|contributions]].</p>
+    </div>
+
+    <div class="para"><span class="pn">02</span>
+      <div class="para-tools"><button class="btn-s" data-say="Yang was born in Hefei, Anhui in 1922. He had a wonderful study life. First, he studied at famous universities in China. Later, he went to the US to learn more, and got his PhD from the University of Chicago. In 1957, he worked with his partner Tsung-Dao Lee and put forward the theory of parity non-conservation in weak interaction. For this great work, they won the Nobel Prize in Physics."><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg>朗读本段</button></div>
+      <p>Yang was born in Hefei, Anhui in 1922. He had a wonderful study life. First, he studied at famous universities in China. Later, <span class="blank">2</span>, and got his [[PhD]] from the University of Chicago. In 1957, he worked with his [[partner]] Tsung-Dao Lee and [[put forward]] the [[theory]] of [[parity non-conservation]] in [[weak interaction]]. <span class="blank">3</span>, they won the Nobel Prize in Physics. They became the first Chinese to get this prize. Yang's “Yang-Mills Theory” is also seen as an important part of [[modern physics]].</p>
+    </div>
+
+    <div class="para"><span class="pn">03</span>
+      <div class="para-tools"><button class="btn-s" data-say="Yang loved his motherland deeply. In 1971, he returned to China for the first time since 1945. After that, he helped build links between Chinese and American scientists. He gave advice on China's scientific development, raised money for Chinese scholars to study abroad, and in 1999, he went back to Tsinghua University."><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg>朗读本段</button></div>
+      <p>Yang loved his [[motherland]] deeply. In 1971, he [[return|returned]] to China for the first time since 1945. After that, he helped [[build links between]] Chinese and American scientists. He [[give advice on|gave advice on]] China's scientific development, [[raise money|raised money]] for Chinese [[scholar|scholars]] to study [[abroad]], and in 1999, <span class="blank">4</span>. He worked hard to [[train young talent]] and help develop [[basic scientific research]] in China.</p>
+    </div>
+
+    <div class="para"><span class="pn">04</span>
+      <div class="para-tools"><button class="btn-s" data-say="Yang Chen-Ning lived a long life of 103 years. He was a legend who explored the unknown and served his country. His spirit of seeking truth and loving his motherland will always encourage young people to work hard for science and national development."><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg>朗读本段</button></div>
+      <p>Yang Chen-Ning lived a long life of 103 years. He was a [[legend]] who [[explore the unknown|explored the unknown]] and [[serve one's country|served his country]]. <span class="blank">5</span> will always encourage young people to work hard for science and [[national development]].</p>
+    </div>
+  </div>
+
+  <div class="kit">
+    <div class="kit-h"><h4>备选选项</h4><span class="badge">6 选 5</span></div>
+    <div class="kit-b">
+      <ul>
+        <li><span class="i">A</span><span class="en">For this great work</span></li>
+        <li><span class="i">B</span><span class="en">he went to the US to learn more</span></li>
+        <li><span class="i">C</span><span class="en">He made great progress in his study</span></li>
+        <li><span class="i">D</span><span class="en">he went back to Tsinghua University</span></li>
+        <li><span class="i">E</span><span class="en">His spirit of seeking truth and loving his motherland</span></li>
+        <li><span class="i">F</span><span class="en">he was [[hail|hailed]] as “[[immortal]]” in the university's [[notice]]</span></li>
+      </ul>
+      <div class="sep"></div>
+      <div class="grp">提示</div>
+      <ul>
+        <li><span class="i">·</span><span class="cn">选项大小写保留原卷形式：以小写 he 开头的 B、D、F 只能插在句中（逗号后、并列谓语处），以大写开头的 A、C、E 才可能位于句首——这本身就是重要的排除线索。</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="qs">
+    <h3>答案 · 逐空解析</h3>
+    <div class="ans" style="margin-left:0">答案 <b>1. F　2. B　3. A　4. D　5. E</b>　｜　多余项：<b>C</b></div>
+
+    <div class="q" style="margin-top:14px">
+      <div class="stem"><span class="num">1</span><span>…a teacher at Tsinghua University, <b>1</b> because of his great contributions.</span></div>
+      <div class="ans">答案 <b>F</b>　he was hailed as “immortal” in the university's notice</div>
+      <details><summary>解析</summary><div class="body"><p>空前是 “As a member of… and a teacher at Tsinghua University,” 逗号后需要一个能接 because of… 的句子；空后 because of his great contributions 说明原因。F 项“在校方公告中被誉为‘不朽’”正好承接“清华教师”身份，且 <b>hailed as</b> 与 because of 构成“因……而被誉为”的完整逻辑。F 句首 <b>小写 he</b> 也提示它应插在句中（逗号后），不能独立成句开头。</p></div></details>
+    </div>
+
+    <div class="q">
+      <div class="stem"><span class="num">2</span><span>Later, <b>2</b>, and got his PhD from the University of Chicago.</span></div>
+      <div class="ans">答案 <b>B</b>　he went to the US to learn more</div>
+      <details><summary>解析</summary><div class="body"><p>空后 “and got his PhD from the University of Chicago” 明确指向美国芝加哥大学，因此前面必须是“去美国”。B 项 he went to the US to learn more 与 and got… 并列作谓语，时态一致（一般过去时）。C 项虽也讲求学，但与“芝加哥大学 / 美国”无衔接，属干扰项。</p></div></details>
+    </div>
+
+    <div class="q">
+      <div class="stem"><span class="num">3</span><span><b>3</b>, they won the Nobel Prize in Physics.</span></div>
+      <div class="ans">答案 <b>A</b>　For this great work</div>
+      <details><summary>解析</summary><div class="body"><p>前句刚讲完 1957 年提出“宇称不守恒”理论，空后是“他们获得诺贝尔物理学奖”。A 项 For this great work（因为这项伟大工作）用介词短语作原因状语，句首大写、后接逗号，形式与位置完全吻合。这类“原因状语开头”是六选五的常见衔接手段。</p></div></details>
+    </div>
+
+    <div class="q">
+      <div class="stem"><span class="num">4</span><span>…raised money for Chinese scholars to study abroad, and in 1999, <b>4</b>.</span></div>
+      <div class="ans">答案 <b>D</b>　he went back to Tsinghua University</div>
+      <details><summary>解析</summary><div class="body"><p>空在 and 连接的并列谓语末位，需一个完整句子；时间状语 in 1999 提示“某一年发生的事”。D 项“回到清华大学”与后文 “He worked hard to train young talent…”（在清华育人）顺承，也呼应首段“清华教师”身份。注意 D 首字母小写，正合句中位置。</p></div></details>
+    </div>
+
+    <div class="q">
+      <div class="stem"><span class="num">5</span><span><b>5</b> will always encourage young people to work hard for science and national development.</span></div>
+      <div class="ans">答案 <b>E</b>　His spirit of seeking truth and loving his motherland</div>
+      <details><summary>解析</summary><div class="body"><p>空后是谓语 will always encourage，因此空格处必须是<b>主语</b>，且为单数名词性成分。E 项以 His spirit… 开头（大写、单数），作主语，句意“他追求真理、热爱祖国的精神将永远激励年轻人”，与全文“爱国 + 求真”双主题完全契合。</p></div></details>
+    </div>
+
+    <div class="q">
+      <div class="stem"><span class="num">多</span><span>多余项判断：C. He made great progress in his study</span></div>
+      <div class="ans">多余项 <b>C</b></div>
+      <details><summary>解析</summary><div class="body"><p>C 看似能接“求学”话题，但第 2 空后紧跟 “and got his PhD from the University of Chicago”，必须有“赴美”这一信息才连贯；其余四空分别需要“身份评价（F）”“原因状语（A）”“归国任职（D）”“主语（E）”，C 均无法安放，故为多余项。六选五做题顺序：先定有强搭配的空（B、A、E），再用排除法处理剩余。</p></div></details>
+    </div>
+  </div>
+
+  <div class="kit">
+    <div class="kit-h"><h4>积累小栈 · 集有所用</h4><span class="badge">12 条</span></div>
+    <div class="kit-b">
+      <ul>
+        <li><span class="i">1</span><span class="en">a world-famous physicist</span><span class="cn">一位世界著名的物理学家</span></li>
+        <li><span class="i">2</span><span class="en">the Chinese Academy of Sciences</span><span class="cn">中国科学院</span></li>
+        <li><span class="i">3</span><span class="en">be hailed as…</span><span class="cn">被誉为……</span></li>
+        <li><span class="i">4</span><span class="en">great contributions</span><span class="cn">巨大贡献</span></li>
+        <li><span class="i">5</span><span class="en">go to the US to learn more</span><span class="cn">去美国深造</span></li>
+        <li><span class="i">6</span><span class="en">get one's PhD</span><span class="cn">获得博士学位</span></li>
+        <li><span class="i">7</span><span class="en">put forward</span><span class="cn">提出（理论、建议）</span></li>
+        <li><span class="i">8</span><span class="en">build links between A and B</span><span class="cn">在 A 与 B 之间建立联系</span></li>
+        <li><span class="i">9</span><span class="en">train young talent</span><span class="cn">培养青年人才</span></li>
+        <li><span class="i">10</span><span class="en">develop basic scientific research</span><span class="cn">发展基础科学研究</span></li>
+        <li><span class="i">11</span><span class="en">serve one's country</span><span class="cn">报效祖国</span></li>
+        <li><span class="i">12</span><span class="en">the spirit of seeking truth</span><span class="cn">追求真理的精神</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="deep">
+    <h4>逐段精讲</h4>
+    <div class="item"><div class="t">第 1 段 ｜ 总起：身份、逝世、评价</div><div class="c">开篇三句给出传记三要素：成就（physicist / Nobel Prize winner）、时间地点（18 October, 2025, Beijing, 103 岁）、评价（被清华公告誉为“不朽”）。<em>As a member of… and a teacher at…</em> 是介词短语作状语，交代双重身份；<em>be hailed as</em> 后接引号内的称号，是全篇情感基调词。</div></div>
+    <div class="item"><div class="t">第 2 段 ｜ 求学与科研：一条清晰时间线</div><div class="c">用 First → Later → In 1957 → For this great work 四个时间/逻辑标记串起一生学术脉络：国内名校 → 赴美芝加哥大学博士 → 与李政道提出宇称不守恒 → 获诺奖 → 杨-米尔斯理论。<em>put forward</em>（提出）、<em>be seen as</em>（被视为）是学术传记高频表达。首句 “the first Chinese to get this prize” 用不定式作后置定语。</div></div>
+    <div class="item"><div class="t">第 3 段 ｜ 爱国：1971 年后的三次行动</div><div class="c">主题句 Yang loved his motherland deeply 领起，接着以 1971 年首次回国为转折，列举三件事：搭建中美科学家联系、就科技发展建言、为中国学者出国筹款，并落在 1999 年回清华。<em>help build</em>、<em>gave advice on</em>、<em>raised money for</em> 三个动词短语并列，注意介词搭配各不相同。</div></div>
+    <div class="item"><div class="t">第 4 段 ｜ 总结：传奇与精神传承</div><div class="c">以 103 岁呼应首段年龄，用 <em>a legend who explored the unknown and served his country</em> 概括“求真 + 报国”两条主线，最后一句把精神主语化（His spirit… will always encourage…），由“写人”转为“励人”，是典型的人物传记收尾法。</div></div>
+  </div>
+
+  <div class="side"><b>识有所悟：</b>诺贝尔奖是以瑞典化学家诺贝尔的遗产设立的国际奖项，1901 年首次颁发，最初设物理学、化学、生理学或医学、文学、和平五个奖项，1968 年增设经济学奖。每年评选一次，获奖者来自世界各地，代表相关领域的最高成就。杨振宁与李政道因“宇称不守恒”理论获 1957 年诺贝尔物理学奖，是最早获此奖的中国人。</div>
+</section>
+
+<!-- ============ 生词索引 ============ -->
+<section id="vocab" class="vsec">
+  <h2>生词与短语索引</h2>
+  <p class="lead">按七年级词汇水平整理：每条含词性与义项、释义、用法说明、固定搭配与相关短语、词形变化、近义辨析、易错提醒，以及 2–3 条中英对照例句。可检索、可遮挡中文自测、可逐条朗读。</p>
+  <div class="tools">
+    <input id="q" type="search" placeholder="输入英文单词或中文释义检索…" autocomplete="off" aria-label="检索生词">
+    <button id="hideBtn" type="button">遮挡中文</button>
+    <button id="allBtn" type="button">精简解析</button>
+  </div>
+  <p class="count" id="count"></p>
+  <div class="vgrid" id="vgrid"></div>
+</section>
+
+<button id="top" type="button" aria-label="回到顶部">↑</button>
+
+<script>
+/* ===== 数据（构建时注入） ===== */
+const VOCAB = {"be famous for": {"pos": "短语", "cn": "以……而著名；因……闻名", "senses": ["be famous for 因特点/成就出名", "be famous as 以身份出名"], "usage": "be famous for + 名词/动名词，说明“因某方面而出名”，主语可以是人、地方或事物；文中 was famous for moral conduct 即“以德行著称”。", "coll": "be famous for sth. / be famous as sb. / be well-known for", "phrases": ["be famous as|作为……身份而闻名", "be known for|因……而闻名（同义，语气稍弱）", "become famous|成名", "world-famous|世界闻名的"], "form": "fame n. 名声；famous adj. 著名的；famously adv.（口语：famously good 极其出色）", "syn": "be famous for 强调“因特点或成就”；be famous as 强调“以某种身份”；be well-known 语气较弱、更口语；be noted for 偏书面，强调“著称”。", "note": "介词固定用 for（原因）或 as（身份），不能互换；不说 be famous by。", "examples": ["Min Sun was famous for his moral conduct.|闵损以德行著称。", "The town is famous for its old bridges.|这座小镇以古桥闻名。", "He became famous as a writer, not as a teacher.|他是作为作家而不是教师出的名。"]}, "moral conduct": {"pos": "名词短语", "cn": "德行；品行", "senses": ["moral adj. 道德的；有道德的", "conduct n. 行为；品行（重音在前）", "conduct v. 实施；引导（重音在后）"], "usage": "moral 为形容词“道德的”，conduct 作名词读 /ˈkɒndʌkt/，指“行为、品行”；合起来是不可数名词短语，常用 good / bad moral conduct 评价人品。", "coll": "good / bad moral conduct / moral standards / conduct oneself well", "phrases": ["moral standards|道德标准", "code of conduct|行为准则", "conduct oneself well|举止得体", "public morals|社会公德"], "form": "morality n. 道德；moralist n. 道德家；moral adj. 道德的（反义 immoral 不道德的）", "syn": "conduct 指“行为表现”；behaviour 偏“具体举止、待人接物”；character 指“品格整体”；virtue 指“美德（某一种）”。", "note": "conduct 作名词重音在前、作动词重音在后；moral 作名词时复数 morals 指“道德准则”。", "examples": ["His moral conduct moved everyone in the village.|他的德行感动了村里的每一个人。", "The school rewards students for good conduct.|学校奖励品行良好的学生。"]}, "pass away": {"pos": "短语动词", "cn": "去世；逝世", "senses": [], "usage": "委婉说法，相当于 die，多用于长辈、伟人或正式场合；不及物，不能带宾语，也不能用于被动。", "coll": "pass away peacefully / pass away at the age of 80", "phrases": ["pass on|去世（更含蓄）；传递", "pass by|路过", "pass out|昏倒；分发", "pass down|传下来"], "form": "pass → passed → passed；passing n. 去世（正式）", "syn": "die 直白中性；pass away 委婉庄重；pass on 更含蓄，也可指“传递”；be gone 口语“不在了”。", "note": "不及物动词，不能说 pass away sb.，也不能说 be passed away；注意与 pass by（路过）、pass out（昏倒）区分。", "examples": ["Both Shakespeare and Cervantes passed away on 23 April.|莎士比亚与塞万提斯都在 4 月 23 日逝世。", "His grandfather passed away at the age of ninety.|他的祖父九十岁时去世。"]}, "give birth to": {"pos": "短语", "cn": "生下；生育；催生；产生", "senses": ["give birth to a baby 生孩子", "give birth to an idea 产生想法（引申）"], "usage": "give birth to sb. 指“生下某人”，引申为“催生、产生（事物）”；birth 前不加冠词，to 后接宾语。", "coll": "give birth to a baby / give birth to a new idea", "phrases": ["be born|出生", "birth rate|出生率", "birthday|生日", "give rise to|引起（=cause）"], "form": "bear v. 生育（bore, born/borne）；birth n. 出生；birthplace n. 出生地", "syn": "give birth to 的主语是母亲；be born 的主语是新生儿；deliver 是医生“接生”；breed 多指动物“繁殖”。", "note": "birth 前不加冠词：give birth to，不说 give a birth to；引申义常接抽象名词（a plan, an idea）。", "examples": ["She gave birth to two sons after she married Min Sun's father.|她嫁给闵损的父亲后生了两个儿子。", "The new policy gave birth to many small companies.|新政策催生了许多小公司。"]}, "stepmother": {"pos": "名词", "cn": "继母；后妈", "senses": ["step- 前缀：继的、非血缘的"], "usage": "step- 前缀表示“继的、非亲生的”：stepmother 继母、stepfather 继父、stepson 继子。可数名词，前加 the/my 等限定词。", "coll": "one's stepmother / a kind stepmother / live with one's stepmother", "phrases": ["stepfather|继父", "stepbrother|继兄弟", "stepsister|继姐妹", "stepchild|继子女"], "form": "step- + mother；复数 stepmothers；step- 也可表示“台阶”（step n.）", "syn": "mother 亲生母亲；stepmother 继母；foster mother 养母（法律或抚养关系）；mother-in-law 婆婆/岳母。", "note": "不要用 second mother 表示“继母”；step- 与“台阶”同形，需按构词判断。", "examples": ["The stepmother wasn't good to Min Sun at first.|起初继母对闵损并不好。", "His stepmother treats him like her own child now.|他的继母现在待他如亲生。"]}, "cotton": {"pos": "名词", "cn": "棉花；棉布；棉制的", "senses": ["n. 棉花（作物或纤维，不可数）", "n. 棉布；棉织品", "adj. 棉制的（作定语）"], "usage": "不可数名词，指棉花或棉制的布料；作定语时表材质：cotton clothes 棉衣。", "coll": "made of cotton / cotton clothes / pick cotton / a cotton shirt", "phrases": ["cotton field|棉田", "cotton shirt|棉衬衫", "cotton wool|药棉（英式）", "pure cotton|纯棉"], "form": "cotton n./adj.；cottony adj. 棉絮般的；cotton candy 棉花糖（美式）", "syn": "cotton 棉花；wool 羊毛；silk 丝绸；linen 亚麻——都是材质名词，可用 made of 接。", "note": "作材质时不可数，不说 a cotton；口语中 cotton 还可指“棉签”（美式）。", "examples": ["His two younger brothers wore winter clothes made of cotton.|他的两个弟弟穿着棉花做的冬衣。", "This shirt is pure cotton and feels soft.|这件衬衫是纯棉的，手感柔软。"]}, "reed catkins": {"pos": "名词短语", "cn": "芦苇絮；芦花", "senses": ["reed n. 芦苇（可数）", "catkin n. 柔荑花序；絮（可数，常用复数）"], "usage": "reed 芦苇，catkin 指柳树、芦苇等的“絮、花穗”，常用复数 catkins。合起来指填充在衣服里的芦花，保暖性远不如棉花。", "coll": "reed catkins / willow catkins（柳絮）/ pick catkins", "phrases": ["willow catkins|柳絮", "reed bed|芦苇荡", "catkin-bearing plant|柔荑花序植物", "stuffed with catkins|用芦花填充"], "form": "reed → reeds；catkin → catkins；catkin 的词根与 cat（猫）无关", "syn": "catkin 是植物学“柔荑花序”；日常说柳絮、芦花多用 catkins；down 指“绒羽、软毛”；fluff 指“绒毛”。", "note": "文中“芦花衣”即用芦花填充的衣服，保暖差，是父亲识破真相的关键物证。", "examples": ["Min Sun only wore clothes filled with reed catkins.|闵损只穿着填了芦花的衣服。", "In spring, willow catkins fly in the air like snow.|春天，柳絮像雪一样在空中飞舞。"]}, "accidentally": {"pos": "副词", "cn": "偶然地；意外地；不小心地", "senses": [], "usage": "修饰动词，表示动作并非有意为之，常与 drop、break、meet 等搭配，位置多在动词后或句首。", "coll": "accidentally drop / accidentally break / accidentally meet sb.", "phrases": ["by accident|偶然地（=accidentally）", "by chance|碰巧", "on purpose|故意地（反义）", "accidental damage|意外损坏"], "form": "accident n. 事故；偶然 → accidental adj. → accidentally adv.", "syn": "accidentally 强调“无意”；by chance 强调“巧合”；unintentionally 偏书面，强调“非故意”。", "note": "不修饰“故意”的动作；句中位置灵活：He accidentally dropped it. / He dropped it accidentally.", "examples": ["He accidentally dropped something onto the ground.|他不小心把东西掉到了地上。", "I accidentally called the wrong number.|我不小心拨错了号码。"]}, "drop": {"pos": "动词 / 名词", "cn": "掉落；丢下；下降；一滴", "senses": ["v. 掉落；丢下", "v. 下降；减少", "n. 一滴；下降"], "usage": "及物/不及物均可：drop sth.（把某物掉下）、sth. drops（某物落下）。过去式、过去分词均为 dropped（双写 p）。", "coll": "drop sth. onto the ground / drop by / drop out / a drop of water", "phrases": ["drop by|顺道拜访", "drop out|退学；退出", "drop off|打盹；减少", "a drop of|一滴"], "form": "drop → dropped → dropped → dropping（双写 p）；droplet n. 小滴", "syn": "fall 不及物“落下”；drop 可及物，常含“失手”；decline 指“（数量）下降”，更正式；reduce 及物“减少”。", "note": "drop 双写 p；drop by 后不接 to；drop out of school 退学。", "examples": ["Be careful not to drop the glass onto the ground.|小心别把玻璃杯掉到地上。", "Prices dropped sharply last month.|上个月价格大幅下降。", "Drop by my office when you are free.|有空来我办公室坐坐。"]}, "hit": {"pos": "动词 / 名词", "cn": "打；击中；袭击；热门", "senses": ["v. 打；击；撞击", "v. （灾害、坏消息）袭击；使受打击", "n. 热门作品；点击量"], "usage": "及物动词，hit sb./sth.；过去式、过去分词均为 hit（不规则但三形同形）。也可作名词“热门作品、打击”。", "coll": "hit sb. on the head / hit the ball / a big hit / hit the market", "phrases": ["hit on|突然想到（=come up with）", "hit the road|出发", "a big hit|大热门", "hit back|反击"], "form": "hit → hit → hit → hitting（双写）；hitter n. 击球手", "syn": "hit 一次击打/击中；beat 反复打、击败；strike 更正式，可指“打击、罢工”；knock 指“敲、撞”。", "note": "hit sb. on the head（部位前用 on/in，不能用 his head 作宾语）；hit 三形同形。", "examples": ["Then his father hit him with a stick.|接着他父亲用棍子打了他。", "The storm hit the village at midnight.|暴风雨午夜袭击了村庄。", "Her new song is a big hit on the Internet.|她的新歌在网上非常火。"]}, "seam": {"pos": "名词", "cn": "接缝；缝线；裂缝", "senses": [], "usage": "指两块布缝合处的线或缝隙；broken seam 即“裂开的接缝”，是文中芦花飞出的位置。", "coll": "a broken seam / the seam of the trousers / come apart at the seams", "phrases": ["seam line|缝线", "seamless|无缝的；衔接自然的", "burst at the seams|胀裂；挤满"], "form": "seam n. → seams；seamless adj. 无缝的；seamstress n. 女裁缝", "syn": "seam 缝合线；stitch 一针/针脚；hole 洞；tear 撕开的口子。", "note": "文中 broken seam 不是“破洞”，而是“缝线裂开”；come apart at the seams 还可比喻“崩溃”。", "examples": ["The reed catkins flew out from the broken seam of his thin clothes.|芦花从他薄衣裂开的接缝里飞了出来。", "The seam of my coat has come open.|我外套的缝线裂开了。"]}, "thin": {"pos": "形容词", "cn": "薄的；瘦的；稀的", "senses": ["adj. 薄的（衣物、纸张）", "adj. 瘦的（人、动物）", "adj. 稀的（液体、头发、空气）"], "usage": "一词多义：形容衣物、纸张“薄”；形容人“瘦”；形容液体、头发“稀”。比较级 thinner，最高级 thinnest（双写 n）。", "coll": "thin clothes / thin hair / thin soup / thin air", "phrases": ["thin ice|薄冰；危险处境", "thin out|变稀疏；间苗", "grow thin|变瘦", "thin air|稀薄的空气"], "form": "thin → thinner → thinnest（双写 n）；thinly adv.；thinness n.", "syn": "thin 中性“薄/瘦”；slim 褒义“苗条”；skinny 贬义“皮包骨”；narrow 指宽度“窄”。", "note": "形容“瘦”时 thin 可能显得不礼貌，正式场合用 slim；thin 作动词表“变稀/间苗”。", "examples": ["He only wore a thin coat in the cold winter.|寒冬里他只穿了一件薄外套。", "The ice on the lake is too thin to skate on.|湖上的冰太薄，不能滑冰。", "She looks slim and healthy.|她看起来苗条又健康。"]}, "fall to one's knees": {"pos": "短语", "cn": "跪下；屈膝", "senses": [], "usage": "fall 为动作动词，to one's knees 表结果；one's 随主语变化（fall to his knees / fall to her knees）。", "coll": "fall to one's knees / go down on one's knees / kneel down", "phrases": ["kneel down|跪下", "on one's knees|跪着", "knee-deep|齐膝深的"], "form": "knee n. → knees；kneel v. → knelt / kneeled", "syn": "kneel 强调“跪着/跪下”的动作；fall to one's knees 强调“突然跪下”的瞬间；go down on one's knees 更文学化。", "note": "one's 随主语变化；介词用 to，不用 on（fall on one's knees 少见）。", "examples": ["Min Sun fell to his knees and begged his father to forgive his stepmother.|闵损跪下求父亲原谅继母。", "He fell to his knees and thanked the doctor.|他跪下感谢那位医生。"]}, "forgive": {"pos": "动词", "cn": "原谅；宽恕", "senses": [], "usage": "及物动词，forgive sb. (for sth.)；过去式 forgave，过去分词 forgiven。名词 forgiveness。", "coll": "forgive sb. for doing sth. / forgive and forget / beg sb.'s forgiveness", "phrases": ["forgive sb. for doing sth.|原谅某人做了某事", "beg sb.'s forgiveness|乞求原谅", "forgiveness|宽恕（名词）", "forgiving|宽容的"], "form": "forgive → forgave → forgiven → forgiving；forgiveness n. 宽恕", "syn": "forgive 语气重，含“不再追究、放下怨恨”；excuse 原谅小过失；pardon 多用于“赦免、原谅失礼”。", "note": "forgive 后不接 to do；名词 forgiveness 不可数。", "examples": ["He asked his father to forgive the stepmother.|他请求父亲原谅继母。", "She has never forgiven him for lying.|她从未原谅他撒谎。", "It is hard to forgive and forget.|原谅并忘怀是很难的。"]}, "drive away": {"pos": "短语动词", "cn": "赶走；驱逐；开车离开", "senses": ["v. 赶走（人、动物）", "v. 开车离开"], "usage": "可分离短语：drive sb. away（把某人赶走），代词作宾语须放中间 drive her away；也可不及物表示“开车离去”。", "coll": "drive sb./sth. away / drive her away / drive away slowly", "phrases": ["drive off|击退；开车走开", "drive out|驱逐", "drive sb. crazy|把某人逼疯", "drive through|开车穿过"], "form": "drive → drove → driven → driving；driver n. 司机", "syn": "drive away 赶走（人/动物）；drive off 击退或开车走开；expel 正式“驱逐出境”；chase away 追着赶走。", "note": "代词宾语放中间：drive her away，不说 drive away her。", "examples": ["If you drive Mother away, all three children will have to feel cold.|如果你把母亲赶走，三个孩子都得受冻。", "The farmer drove the birds away from the field.|农夫把鸟赶出了田地。"]}, "deeply moved": {"pos": "短语", "cn": "深受感动", "senses": [], "usage": "deeply 修饰情感类动词/分词，表示程度“深深地”；be deeply moved 常接 by sth. 说明被什么感动。", "coll": "be deeply moved by sth. / be deeply touched / move sb. deeply", "phrases": ["be moved to tears|感动得流泪", "a moving story|感人的故事", "move sb. deeply|深深打动某人", "deep feeling|深厚的感情"], "form": "move v. 使感动 → moved（人感到）→ moving（物令人）→ movement n. 运动", "syn": "moved 修饰人（感到感动）；moving 修饰事物（令人感动）；touched 更轻，偏“触动”；affected 中性“受到影响”。", "note": "不说 I am moving（错），应说 I am moved；The film is moving。", "examples": ["His father was deeply moved and took Min Sun's advice.|父亲深受感动，采纳了闵损的建议。", "We were deeply moved by the old man's story.|我们被老人的故事深深打动。", "It was a moving film about a mother's love.|那是一部关于母爱的感人电影。"]}, "take one's advice": {"pos": "短语", "cn": "采纳某人的建议", "senses": [], "usage": "advice 为不可数名词，不能说 an advice / advices；“一条建议”用 a piece of advice。take 可换 follow。", "coll": "take / follow one's advice / ask for advice / give sb. advice", "phrases": ["a piece of advice|一条建议", "advice on sth.|关于某事的建议", "advise sb. to do sth.|建议某人做某事", "take advice from sb.|听取某人的建议"], "form": "advise v. 建议 → advice n.（不可数）→ adviser n. 顾问", "syn": "advice 名词不可数；advise 动词；suggestion 可数；recommend 更正式“推荐”。", "note": "不说 an advice / advices；不说 suggest sb. to do（应 suggest doing 或 that 从句）。", "examples": ["His father took his advice and kept the stepmother at home.|父亲听从了他的建议，把继母留在了家里。", "Can you give me a piece of advice?|你能给我一条建议吗？"]}, "hear of": {"pos": "短语动词", "cn": "听说；得知", "senses": [], "usage": "hear of / hear about + 名词，表示“间接得知某事”；hear from sb. 则是“收到某人来信”。", "coll": "hear of sth. / hear about sth. / hear from sb.", "phrases": ["hear from|收到……的来信/消息", "hear about|听说（=hear of）", "hear sb. do/doing|听见某人做/正在做", "be heard of|被听说"], "form": "hear → heard → heard；hearing n. 听力；听证会", "syn": "hear 听见（声音）；hear of/about 听说（消息）；listen to 有意识地听。", "note": "hear of 不用于进行时表“正在听说”；hear from 后接人，不接事。", "examples": ["When the stepmother heard of this, she felt very sorry.|继母听说这件事后，感到非常惭愧。", "I have never heard of that writer.|我从未听说过那位作家。", "I heard from my cousin last week.|上周我收到了表弟的来信。"]}, "feel sorry": {"pos": "短语", "cn": "感到抱歉；感到难过；惋惜", "senses": [], "usage": "feel 为系动词，后接形容词 sorry；feel sorry for sb. 表示“同情某人”，feel sorry about sth. 表示“为某事后悔”。", "coll": "feel sorry for sb. / feel sorry about sth. / say sorry to sb.", "phrases": ["be sorry to do sth.|很抱歉做某事", "feel pity for|同情", "regret|后悔", "say sorry|道歉"], "form": "sorry adj. → sorrow n. 悲伤 → sorrowful adj. 悲伤的", "syn": "be sorry 多用于道歉；feel sorry for 多用于同情；regret 后悔（对已做之事）。", "note": "I'm sorry 后接 to do 表“遗憾要做”，接 for doing 表“为做过的事道歉”。", "examples": ["She felt sorry and began to be good to Min Sun.|她感到愧疚，开始善待闵损。", "I feel sorry for the children who have no books.|我为那些没有书的孩子感到难过。", "I'm sorry to keep you waiting.|对不起，让你久等了。"]}, "treat as": {"pos": "短语", "cn": "把……当作；对待……如……", "senses": [], "usage": "treat sb./sth. as + 名词，as 后接身份或用途；被动为 be treated as。", "coll": "treat sb. as a friend / be treated as… / treat sth. as a joke", "phrases": ["regard…as…|把……看作", "think of…as…|认为……是", "look on…as…|把……视为", "treat sb. to sth.|请某人吃……"], "form": "treat v. → treatment n. 治疗；对待 → treaty n. 条约", "syn": "treat as 强调“对待方式”；regard as 强调“看法”；consider…as 较正式，as 可省略。", "note": "as 后接名词或形容词；区分 treat（对待）与 treat sb. to（请客）。", "examples": ["She treated Min Sun as her own son.|她把闵损当作亲生儿子对待。", "Don't treat this problem as a joke.|别把这个问题当儿戏。", "He treated us to dinner.|他请我们吃了晚饭。"]}, "state": {"pos": "名词 / 动词", "cn": "国家；州；状态；陈述", "senses": ["n. 国家；政权", "n. （美国等）州", "n. 状态；状况", "v. 陈述；声明"], "usage": "文中 the State of Lu 指“鲁国”，此时首字母大写；美式英语中 state 也指“州”；in a good state 表“处于良好状态”。", "coll": "the State of Lu / a state of mind / in a poor state / state that…", "phrases": ["state-owned|国有的", "in a good state|状态良好", "state one's opinion|陈述观点", "the United States|美国"], "form": "state n./v. → statement n. 声明 → statesman n. 政治家 → stately adj. 庄严的", "syn": "country 泛指国家；state 强调“政权/州”；nation 强调“民族”；power 指“强国”。", "note": "指“鲁国”等古国时首字母大写；美式 state 常指“州”，不要一律译“国家”。", "examples": ["Min Sun was a man in the State of Lu.|闵损是鲁国人。", "The house is in a poor state.|这房子状况很差。", "Please state your name and age.|请写明你的姓名和年龄。"]}, "among": {"pos": "介词", "cn": "在……之中；……之一", "senses": [], "usage": "后接复数名词或集合名词，强调“三者以上之中”；among all students 即“在所有学生中”。", "coll": "among all the students / among friends / among other things", "phrases": ["among others|其中包括", "among other things|此外还有", "from among|从……之中", "among the best|名列前茅"], "form": "among prep.；amongst 英式变体，意思相同", "syn": "between 两者；among 三者以上；amid 书面，常接抽象事物（amid cheers 在欢呼声中）。", "note": "among 后接复数或集合名词；among us 我们当中。", "examples": ["Among all the students, he was the most modest.|在所有学生中，他最谦逊。", "She is among the best students in our class.|她是我们班最优秀的学生之一。", "The house stands among tall trees.|那座房子坐落在高树之间。"]}, "wife": {"pos": "名词", "cn": "妻子；夫人", "senses": [], "usage": "可数名词，复数 wives（f→ves）；one's wife 前用物主代词，不用 the wife 指自己妻子。", "coll": "his wife / husband and wife / take sb. as his wife", "phrases": ["husband and wife|夫妻", "housewife|家庭主妇", "ex-wife|前妻", "wife and children|妻儿"], "form": "wife → wives（f→ves）；husband n. 丈夫", "syn": "wife 妻子；spouse 配偶（正式）；partner 伴侣（未婚或同性）；fiancée 未婚妻。", "note": "复数是 wives，不是 wifes；指自己妻子用 my wife，不用 the wife。", "examples": ["Later his father took another wife.|后来他父亲又娶了一位妻子。", "He and his wife run a small bookshop.|他和妻子经营一家小书店。"]}, "ground": {"pos": "名词", "cn": "地面；场地；理由", "senses": ["n. 地面（室外）", "n. 场地；场地设施（复数 grounds）", "n. 理由；根据（常用 grounds）"], "usage": "文中 onto the ground 指“地面上”；复数 grounds 可指“场地、理由”。", "coll": "on the ground / onto the ground / grounds for… / school grounds", "phrases": ["playground|操场", "ground floor|一楼（英式）", "on the grounds that…|以……为理由", "ground water|地下水"], "form": "ground n.；ground v. 使停飞；grind 的过去式也是 ground", "syn": "ground 室外地面；floor 室内地板；earth 泥土、地球；land 陆地。", "note": "ground 作“理由”常用复数 grounds；ground 又是 grind 的过去式，注意词性。", "examples": ["He accidentally dropped the book onto the ground.|他不小心把书掉在了地上。", "The school has large grounds.|这所学校有很大的场地。", "He was fired on the grounds of being late.|他因迟到被解雇。"]}, "broken": {"pos": "形容词", "cn": "破的；断裂的；心碎的", "senses": ["adj. 破碎的；损坏的", "adj. （心）破碎的；沮丧的", "adj. （语言）不流利的"], "usage": "由 break 的过去分词转化而来，作定语或表语：a broken seam / The cup is broken。", "coll": "a broken seam / broken glass / a broken heart / broken English", "phrases": ["break down|出故障；崩溃", "break out|爆发", "break into|闯入", "break up|分手；解散"], "form": "break → broke → broken → breaking；breakage n. 破损", "syn": "broken 状态“已破”；breaking 正在破；broke 是 break 的过去式（口语也指“没钱”）。", "note": "broken 作定语放名词前：a broken cup；作表语 The cup is broken。", "examples": ["The reed catkins flew out from the broken seam.|芦花从裂开的接缝里飞了出来。", "He spoke broken English but we understood him.|他英语说得不流利，但我们能听懂。", "Her heart was broken after the accident.|事故之后她心碎了。"]}, "fly": {"pos": "动词 / 名词", "cn": "飞；飘；苍蝇", "senses": ["v. 飞；乘飞机", "v. （轻物）飘飞", "n. 苍蝇"], "usage": "过去式 flew，过去分词 flown；也可指“（絮、纸片）随风飘飞”，文中即此义。", "coll": "fly out / fly away / fly to Beijing / fly a kite", "phrases": ["fly away|飞走", "fly high|高飞；有雄心", "time flies|时光飞逝", "fly into a rage|勃然大怒"], "form": "fly → flew → flown → flying；fly n. 苍蝇（复数 flies）", "syn": "fly 飞；flow 流动（液体）；float 漂浮；soar 翱翔。", "note": "过去式是 flew，不是 flied（flied 只用于棒球“打高飞球”）；名词苍蝇复数为 flies。", "examples": ["The catkins flew out of the broken clothes.|芦花从破衣服里飞了出来。", "We flew to Shanghai last night.|我们昨晚飞往上海。", "Time flies when you are reading a good book.|读好书时时光飞逝。"]}, "wear": {"pos": "动词", "cn": "穿；戴；磨损；面带", "senses": ["v. 穿着；戴着（状态）", "v. 磨损；用旧", "v. 面带（表情）"], "usage": "过去式 wore，过去分词 worn；表示“穿着”的状态时用进行时或一般时均可，强调动作“穿上”则用 put on。", "coll": "wear a coat / wear glasses / wear a smile / wear out", "phrases": ["put on|穿上（动作）", "wear out|穿破；使疲惫", "take off|脱下", "be worn out|筋疲力尽"], "form": "wear → wore → worn → wearing；worn adj. 破旧的", "syn": "wear 状态；put on 动作；dress 后接人；be in 后接颜色/衣物。", "note": "过去式 wore、过去分词 worn 常考；wear out 既可指衣物“穿破”，也可指人“累垮”。", "examples": ["Two younger brothers wore warm cotton clothes.|两个弟弟穿着暖和的棉衣。", "She wears glasses when she reads.|她读书时戴眼镜。", "He wore a big smile at the party.|他在聚会上笑容满面。"]}, "winter": {"pos": "名词", "cn": "冬天；冬季", "senses": [], "usage": "季节名词，前用 in the winter / in winter；作定语 winter clothes 冬衣。", "coll": "in winter / last winter / winter clothes / a cold winter", "phrases": ["in the depth of winter|隆冬", "winter holiday|寒假", "winter sports|冬季运动", "winter sleep|冬眠"], "form": "winter n. → wintry adj. 寒冷的；winterize v. 做防寒处理", "syn": "winter 冬季；cold season 泛称；season 季节（搭配介词 in）。", "note": "季节前用 in，如 in winter；具体某年冬天 in the winter of 2020。", "examples": ["In winter, the two brothers wore cotton clothes.|冬天，两个弟弟穿着棉衣。", "We often go skating in winter.|冬天我们常去滑冰。"]}, "copyright": {"pos": "名词", "cn": "版权；著作权", "senses": ["n. 版权；著作权（可数/不可数）", "adj. 受版权保护的（copyrighted）"], "usage": "由 copy + right 构成，指对作品复制、发行的专有权利；常见 copyright law / hold the copyright。", "coll": "copyright law / hold the copyright / copyright owner / copyright protection", "phrases": ["copyright owner|版权所有者", "copyright law|版权法", "copyrighted material|受版权保护的材料", "intellectual property|知识产权"], "form": "copy v. 复制 → copyright n.；copyrighted adj. 受版权保护的", "syn": "copyright 版权；patent 专利；trademark 商标；intellectual property 知识产权（总称）。", "note": "版权自动产生，不需注册；文中节日全称 World Book and Copyright Day 强调“读书”与“尊重创作者”两面。", "examples": ["23 April is World Book and Copyright Day.|4 月 23 日是世界图书与版权日。", "You cannot copy this book because it is protected by copyright.|这本书受版权保护，不能复制。"]}, "set up": {"pos": "短语动词", "cn": "建立；设立；创办；安装", "senses": ["v. 建立（组织、机构）", "v. 安装；布置", "v. 使开始从事（set sb. up in business）"], "usage": "可分离：set up a school / set it up；文中用被动 was set up by…，强调“被设立”。", "coll": "set up a school / set up a company / be set up by / set up a tent", "phrases": ["set off|出发；引爆", "set out|出发；着手", "set aside|留出；搁置", "set up shop|开店"], "form": "set → set → set → setting（双写 t）；setup n. 设置（名词）", "syn": "set up 建立组织、机构；build 建造实体建筑；found 更正式“创立”；establish 最正式，多用于制度、关系。", "note": "可分离：代词放中间 set it up；名词 setup（设置）与动词 set up 拼写不同。", "examples": ["The day was set up by UNESCO in 1995.|这个节日由联合国教科文组织于 1995 年设立。", "They set up a small library in the village.|他们在村里建了一个小图书馆。", "It took us an hour to set up the tent.|我们花了一小时搭帐篷。"]}, "encourage": {"pos": "动词", "cn": "鼓励；激励；促进", "senses": ["v. 鼓励某人做某事", "v. 促进、助长（某种行为）"], "usage": "encourage sb. to do sth. 为最常考结构；也可 encourage sth.（促进某事，如 encourage reading）。", "coll": "encourage sb. to do sth. / be encouraged by / encourage reading", "phrases": ["encourage sb. to do sth.|鼓励某人做某事", "discourage sb. from doing|劝阻某人做某事", "encouragement|鼓励（名词）", "encouraging news|令人鼓舞的消息"], "form": "encourage v. → encouragement n. → encouraging adj. 鼓舞人心的 → encouraged adj. 受到鼓舞的", "syn": "encourage 鼓励（后接 to do）；inspire 激励（偏精神感召）；urge 敦促（语气强）；motivate 激发动力。", "note": "不接 doing：不说 encourage doing；反义 discourage sb. from doing（注意介词 from）。", "examples": ["The day encourages people around the world to enjoy reading.|这个节日鼓励世界各地的人们享受阅读。", "My teacher encouraged me to try again.|老师鼓励我再试一次。", "We were encouraged by the good news.|好消息让我们受到鼓舞。"]}, "respect": {"pos": "动词 / 名词", "cn": "尊重；尊敬；方面；问候", "senses": ["v. 尊重；遵守（规则、意愿）", "n. 尊重；敬意", "n. 方面（in this respect）", "n. 问候（respects）"], "usage": "作动词时及物，respect sb./sth.；作名词常为不可数，show respect for sb.，复数 respects 表“问候”。", "coll": "respect sb. / show respect for / in this respect / pay one's respects", "phrases": ["show respect for|对……表示尊重", "in many respects|在许多方面", "respect for the law|对法律的尊重", "with respect to|关于"], "form": "respect v./n. → respectful adj. 恭敬的 → respectable adj. 体面的 → respective adj. 各自的", "syn": "respect 尊重（人格、权利）；admire 钦佩（才能）；honour 致敬、授予荣誉；esteem 书面“敬重”。", "note": "respectful（恭敬的）、respectable（体面的）、respective（各自的）三词易混，注意词尾。", "examples": ["We should respect the creators of books.|我们应当尊重书籍的创作者。", "Students should show respect for their teachers.|学生应当尊敬老师。", "In this respect, the two plans are the same.|在这方面，两个方案是一样的。"]}, "creator": {"pos": "名词", "cn": "创作者；创造者", "senses": ["n. 创作者（作品、内容）", "n. the Creator 造物主（首字母大写）"], "usage": "由 create + -or 构成，指“创造某物的人”；宗教语境中 the Creator 指“造物主”，首字母大写。", "coll": "the creator of the story / content creator / the Creator", "phrases": ["content creator|内容创作者", "the Creator|造物主", "creation|创造；作品", "creative|有创造力的"], "form": "create v. 创造 → creator n. → creation n. → creative adj. → creativity n. 创造力", "syn": "creator 创作者；author 作者（多指文字作品）；inventor 发明者（技术、器物）；founder 创始人（机构）。", "note": "-or 多指人（creator, actor, inventor）；-ion 指抽象结果或作品（creation）。", "examples": ["Readers should thank the creators of the books they love.|读者应当感谢自己所爱书籍的创作者。", "She is a popular content creator online.|她是网上很受欢迎的内容创作者。"]}, "honour": {"pos": "动词 / 名词", "cn": "纪念；致敬；荣誉", "senses": ["v. 向……致敬；授予荣誉", "v. 履行（承诺）honour a promise", "n. 荣誉；荣幸"], "usage": "作动词 honour sb. (with sth.) 表“向某人致敬、授予荣誉”；作名词为不可数“荣誉”，复数 honours 表“优异成绩”。", "coll": "honour sb. with a prize / in honour of sb. / a great honour", "phrases": ["in honour of|为纪念/为向……致敬", "be honoured to do sth.|很荣幸做某事", "honour a promise|履行承诺", "honours degree|荣誉学位"], "form": "honour v./n. → honoured adj. 感到荣幸的 → honourable adj. 光荣的（美式 honor）", "syn": "honour 致敬、授予荣誉；celebrate 庆祝节日、事件；commemorate 正式“纪念（逝者、事件）”；memorize 记住。", "note": "英式 honour、美式 honor，同一词两种拼写；in honour of 后接人或事件。", "examples": ["The date was chosen to honour some of the world's most famous writers.|选择这个日期是为了纪念世界上一些最著名的作家。", "They held a party in honour of the old teacher.|他们举办聚会向那位老教师致敬。", "It is a great honour to speak here.|在这里发言是莫大的荣幸。"]}, "connect to": {"pos": "短语", "cn": "与……相联系；连接到", "senses": ["v. 物理连接；接到（电源、网络）", "v. 与……有关联"], "usage": "connect A to/with B 把 A 与 B 连接起来；connect to 也可指“（电源、网络）接通”。", "coll": "connect A with B / be connected to / connect to the Internet", "phrases": ["connect A with B|把 A 与 B 联系起来", "be connected with|与……有关", "connection|联系；连接", "in connection with|关于"], "form": "connect v. → connection n. → connected adj. → connector n. 连接器", "syn": "connect to 多指物理连接、关联到；connect with 多指与……产生共鸣、建立联系；link 强调“环节相扣”；relate 指“叙述/使有关联”。", "note": "connect A to B（接上）与 connect A with B（使有关）常可互换，但搭配习惯不同。", "examples": ["The day also connects to a beautiful tradition from Spain.|这个节日还与西班牙的一个美丽传统相关。", "Please connect the printer to your computer.|请把打印机连接到电脑上。", "The Internet connects us with the world.|互联网把我们与世界联系起来。"]}, "knight": {"pos": "名词", "cn": "骑士", "senses": ["n. 骑士（中世纪）", "n. 爵士（英国荣誉称号）", "v. 封……为爵士"], "usage": "中世纪欧洲的骑兵武士，常与 brave、armour（盔甲）、castle（城堡）同现；k 不发音。", "coll": "a brave knight / a knight in shining armour / be knighted", "phrases": ["a knight in shining armour|身披闪亮盔甲的骑士（喻救星）", "knighthood|骑士身份", "knight v.|封爵", "round table knight|圆桌骑士"], "form": "knight n. → knights；knighthood n. 骑士身份；knightly adj. 骑士般的", "syn": "knight 骑士；warrior 泛指战士；soldier 士兵；cavalier 骑士（文学化，含风度）。", "note": "k 不发音，与 night（夜晚）同音；knight 是荣誉身份，不是军衔。", "examples": ["A brave knight named George received a book as a gift.|一位名叫乔治的勇敢骑士收到一本书作为礼物。", "The knight rode across the bridge.|骑士骑马过桥。"]}, "receive": {"pos": "动词", "cn": "收到；接受；接待", "senses": ["v. 收到（客观）", "v. 接待；接见", "v. 接收（信号）"], "usage": "receive sth. from sb. 强调“客观收到”；接人时表“接待、接见”。", "coll": "receive a letter / receive sb. warmly / receive an award / receive signals", "phrases": ["receive a letter|收到一封信", "receive guests|接待客人", "receiver|接收器；听筒", "receipt|收据"], "form": "receive v. → receiver n. → receipt n. 收据 → reception n. 接待", "syn": "receive 客观“收到”；accept 主动“接受、答应”；take 侧重“拿走”；get 最口语。", "note": "receive 不接双宾语：不说 receive me a letter，应说 receive a letter from me。", "examples": ["He received a book as a birthday gift.|他收到一本书作为生日礼物。", "She received the guests at the door.|她在门口接待客人。", "I received your letter yesterday.|我昨天收到了你的信。"]}, "symbolize": {"pos": "动词", "cn": "象征；代表", "senses": [], "usage": "及物动词，symbolize + 抽象名词；文中用现在分词 symbolizing courage and wisdom 作伴随状语。", "coll": "symbolize peace / symbolize courage and wisdom / be symbolized by", "phrases": ["a symbol of|……的象征", "symbolic|象征性的", "be symbolized by|由……象征", "stand for|代表；象征"], "form": "symbol n. 象征 → symbolic adj. → symbolize v. → symbolism n. 象征主义", "syn": "symbolize 是动词“象征”；stand for 更口语；represent 更正式，可指“代表（群体）”；mean 指“意思是”。", "note": "symbolize 只作动词，名词是 symbol；不要写 symbole。", "examples": ["The book symbolizes courage and wisdom.|这本书象征着勇气与智慧。", "In many cultures, the dove symbolizes peace.|在许多文化中，鸽子象征和平。", "The red rose is a symbol of love.|红玫瑰是爱的象征。"]}, "courage": {"pos": "名词", "cn": "勇气；胆量", "senses": [], "usage": "不可数名词，常用 have the courage to do sth.；形容词 courageous。", "coll": "have the courage to do sth. / pluck up courage / lose courage / with courage", "phrases": ["have the courage to do sth.|有勇气做某事", "pluck up courage|鼓起勇气", "lose courage|失去勇气", "courageous|勇敢的"], "form": "courage n. → courageous adj. → courageously adv.；encourage v. 鼓励", "syn": "courage 面对危险仍敢行动（内在品质）；bravery 偏“勇敢的行为表现”；guts 口语“胆量”；nerve 口语“胆量、厚脸皮”。", "note": "不可数：不说 a courage，可说 a piece of courage 较少见，通常说 great courage。", "examples": ["The gift stands for courage and wisdom.|这份礼物代表勇气与智慧。", "It takes courage to speak in public.|当众讲话需要勇气。", "She finally plucked up courage to ask a question.|她终于鼓起勇气问了一个问题。"]}, "wisdom": {"pos": "名词", "cn": "智慧；明智；学问", "senses": [], "usage": "不可数名词；形容词 wise，副词 wisely；常用 the wisdom of… 表“……的智慧”。", "coll": "the wisdom of the ancients / wisdom teeth / with wisdom", "phrases": ["wisdom teeth|智齿", "conventional wisdom|普遍看法", "the wisdom of the ancients|古人的智慧", "wisely|明智地"], "form": "wise adj. → wisdom n. → wisely adv.；unwise adj. 不明智的", "syn": "wisdom 智慧（经验与判断）；knowledge 知识（知道多少）；intelligence 智力；insight 洞察力。", "note": "不可数；a word of wisdom 一条箴言（固定说法）。", "examples": ["Books give us both courage and wisdom.|书籍给予我们勇气与智慧。", "He is a man of great wisdom.|他是一位很有智慧的人。"]}, "custom": {"pos": "名词", "cn": "习俗；风俗；惯例；海关（复数）", "senses": ["n. 习俗；风俗（可数）", "n. 个人习惯（旧用法）", "n. 海关（复数 customs）", "adj. 定制的（custom-）"], "usage": "可数名词，指“一个群体长期形成的做法”；复数 customs 还可指“海关”。", "coll": "a local custom / traditional custom / customs officer / custom-made", "phrases": ["local custom|地方习俗", "customs officer|海关官员", "custom-made|定制的", "customer|顾客（形近词）"], "form": "custom n. → customs（海关）；customer n. 顾客；customize v. 定制", "syn": "custom 社会习俗（群体）；habit 个人习惯；tradition 世代相传的整体；practice 惯常做法（可褒可贬）。", "note": "customs 表“海关”时用复数、作专有概念；customer 是“顾客”，别误用成“习俗的人”。", "examples": ["Today people follow the custom of exchanging books and roses.|如今人们沿袭互赠书籍与玫瑰的习俗。", "It is a local custom to eat dumplings at the Spring Festival.|春节吃饺子是当地的习俗。", "The customs officers checked our bags.|海关人员检查了我们的行李。"]}, "exchange": {"pos": "动词 / 名词", "cn": "交换；交流；兑换", "senses": ["v. 交换（物品）", "v. 交流（观点、信息）", "v. 兑换（货币）", "n. 交换；交易所"], "usage": "exchange A for B（用 A 换 B）；exchange A with sb.（与某人交换 A）；in exchange for 作为交换。", "coll": "exchange gifts / exchange ideas / exchange A for B / in exchange for", "phrases": ["in exchange for|作为交换", "exchange rate|汇率", "exchange student|交换生", "exchange ideas|交流想法"], "form": "exchange v./n. → exchangeable adj.；stock exchange 证券交易所", "syn": "exchange 互换（双向）；change 改变（单向）；replace 替换旧的；swap 口语“交换”。", "note": "exchange 不接双宾语：exchange sth. with sb.；exchange A for B（用 A 换 B）注意介词。", "examples": ["People exchange books and roses on that day.|人们在那一天互赠书籍与玫瑰。", "We exchanged ideas about the plan.|我们就这个计划交换了意见。", "Can I exchange this shirt for a larger size?|我能把这件衬衫换成大一号的吗？"]}, "rose": {"pos": "名词", "cn": "玫瑰；玫瑰花", "senses": ["n. 玫瑰（花）", "v. rise 的过去式（上升）"], "usage": "可数名词，复数 roses；rose 也是 rise 的过去式，阅读时注意词性判断。", "coll": "a red rose / a bunch of roses / rose garden / the rose stands for love", "phrases": ["a bunch of roses|一束玫瑰", "rose garden|玫瑰园", "rose for love|象征爱的玫瑰", "rosy|玫瑰色的；乐观的"], "form": "rose n. → roses；rise v. → rose → risen（上升）", "syn": "rose 玫瑰；flower 花（总称）；bloom 花（盛开状态）；bouquet 花束。", "note": "与 rise 的过去式同形，需靠句法判断：The sun rose.（动词）/ a red rose.（名词）。", "examples": ["The rose stands for love, and the book stands for wisdom.|玫瑰代表爱，书籍代表智慧。", "He gave her a bunch of red roses.|他送给她一束红玫瑰。", "The sun rose at six this morning.|今天早上六点太阳升起。"]}, "stand for": {"pos": "短语动词", "cn": "代表；象征；主张；容忍（否定）", "senses": ["v. （符号、字母）代表", "v. 主张、支持", "v. 容忍（多用于否定 can't stand for）"], "usage": "不可分，stand for + 名词；也可指“容忍”（常否定：I won't stand for it）。", "coll": "stand for peace / stand for election / can't stand for", "phrases": ["stand out|突出；显眼", "stand by|支持；站在旁边", "stand up for|捍卫", "can't stand|无法忍受"], "form": "stand → stood → stood；standing adj. 长期的", "syn": "stand for 符号、字母代表某义（较口语）；represent 更正式，可指“代表某人/机构”；mean 指“意思是”；symbolize 指“象征”。", "note": "stand for 不用于被动；表示“代表”时主语常是字母、符号、标志。", "examples": ["What does the rose stand for? It stands for love.|玫瑰代表什么？它代表爱。", "UN stands for the United Nations.|UN 代表联合国。", "We should stand up for what is right.|我们应当捍卫正确的事。"]}, "activity": {"pos": "名词", "cn": "活动；活跃；活动力", "senses": ["n. （具体）活动（可数）", "n. 活跃；活动状态（不可数）"], "usage": "可数名词，指具体活动时用复数 activities（y→ies）；outdoor activities 户外活动。", "coll": "outdoor activities / after-class activities / take part in an activity / a range of activities", "phrases": ["outdoor activities|户外活动", "take part in|参加（活动）", "after-class activities|课外活动", "activity book|活动手册"], "form": "act v. 行动 → activity n. → active adj. → actively adv.", "syn": "activity 具体活动（可数）；event 事件/大型活动；programme 节目、方案；exercise 锻炼（不可数）/练习（可数）。", "note": "泛指“活动”常用复数 activities；不可数用法多见于“大脑/身体的活动”等抽象语境。", "examples": ["Schools hold many fun activities to promote reading.|学校举办许多有趣的活动来推广阅读。", "My favourite activity is swimming.|我最喜欢的活动是游泳。", "The town is full of activity in summer.|夏天这座小镇充满活力。"]}, "promote": {"pos": "动词", "cn": "促进；推广；晋升", "senses": ["v. 促进；推动（发展）", "v. 推广；宣传", "v. 提升（职位）"], "usage": "及物动词；promote reading 促进阅读；be promoted to 被提升为……。", "coll": "promote reading / promote sales / be promoted to manager", "phrases": ["promote reading|推广阅读", "be promoted to|被提升为", "promotion|晋升；促销", "promotional|促销的"], "form": "promote v. → promotion n. → promoter n. 发起人；赞助商", "syn": "promote 推动发展（中性、正式）；improve 改善质量；boost 大幅提升（数量、信心）；advertise 做广告。", "note": "promote sb. to + 职位；promotion 既可指“晋升”也可指“促销”。", "examples": ["The activities are organised to promote reading among students.|这些活动旨在促进学生阅读。", "The government is promoting the use of clean energy.|政府正在推广清洁能源的使用。", "She was promoted to manager last month.|她上个月被提升为经理。"]}, "include": {"pos": "动词", "cn": "包括；包含；使成为一员", "senses": ["v. 包括（整体含部分）", "v. 使……成为一员（include sb. in sth.）"], "usage": "及物动词，后接名词或动名词；including 为介词“包括”，后接名词。", "coll": "include sth. / including sb. / be included in / include sb. in the team", "phrases": ["including|包括（介词）", "included|被包括在内（后置）", "be included in|被包含在……中", "inclusive|包容的；包含在内的"], "form": "include v. → included adj. → including prep. → inclusion n. → inclusive adj.", "syn": "include 整体包含部分；contain 容器里装有；hold 容纳；involve 涉及（必不可少地包含）。", "note": "including 是介词，后接名词；included 常后置：Everyone, me included. 不说 including me included。", "examples": ["These activities include reading marathons and book fairs.|这些活动包括阅读马拉松和书展。", "Ten students were late, including Tom.|十个学生迟到了，包括汤姆。", "Please include me in your plan.|请把我列入你的计划。"]}, "reading marathon": {"pos": "名词短语", "cn": "阅读马拉松", "senses": [], "usage": "由 reading + marathon 构成的复合名词，指“长时间集中阅读的活动”；复数加 s 在 marathon 上。", "coll": "a reading marathon / join a reading marathon / hold a reading marathon", "phrases": ["reading marathon|阅读马拉松", "reading week|读书周", "book club|读书会", "readathon|阅读马拉松（口语缩合）"], "form": "marathon n. 马拉松 → marathons；reader n. 读者 → reading n. 阅读", "syn": "marathon 原指 42.195 公里赛跑，引申为“持久的活动”，如 shopping marathon（购物马拉松）。", "note": "复合名词复数只变中心词：reading marathons；不要写成 readings marathon。", "examples": ["Many libraries hold reading marathons on that day.|许多图书馆在那一天举办阅读马拉松。", "Our class joined a reading marathon last term.|上学期我们班参加了阅读马拉松。"]}, "book fair": {"pos": "名词短语", "cn": "书展；图书集市", "senses": [], "usage": "复合名词，复数 book fairs；fair 此处指“集市、博览会”，不是“公平”。", "coll": "a book fair / the annual book fair / at the book fair", "phrases": ["job fair|招聘会", "trade fair|贸易博览会", "fair trade|公平贸易", "World Book Fair|世界书展"], "form": "fair n. 集市/博览会；adj. 公平的；fairly adv. 相当；fairness n. 公平", "syn": "fair 多义：集市 / 公平的 / 晴朗的；exhibition 展览（更正式）；expo 博览会（大型）。", "note": "靠搭配判断词义：book fair 书展，fair price 公平的价格，fair weather 晴朗天气。", "examples": ["Students can buy cheap books at the book fair.|学生可以在书展上买到便宜的书。", "The city holds a book fair every autumn.|这座城市每年秋天举办书展。"]}, "storytelling": {"pos": "名词", "cn": "讲故事；叙述", "senses": ["n. 讲故事（活动、技艺，不可数）", "n. 叙述（方式）"], "usage": "不可数名词，指“讲故事的活动或技艺”；storyteller 讲故事的人。", "coll": "storytelling events / a storytelling competition / the art of storytelling", "phrases": ["storytelling event|讲故事活动", "storyteller|讲故事的人", "tell a story|讲故事", "story|故事"], "form": "story n. → storytelling n. → storyteller n.；storied adj. 有名的", "syn": "storytelling 指活动或技艺；telling stories 指具体动作；narration 书面“叙述”；anecdote 轶事。", "note": "作定语修饰 events 时用 storytelling（不说 telling-story events）；不可数，不加 s。", "examples": ["The library held a storytelling event for children.|图书馆为孩子们举办了一场讲故事活动。", "She is good at storytelling.|她很擅长讲故事。"]}, "remind": {"pos": "动词", "cn": "提醒；使想起", "senses": ["v. 提醒（某人做某事）", "v. 使想起"], "usage": "remind sb. of sth.（使某人想起某事）；remind sb. to do sth.（提醒某人做某事）；remind sb. that…（提醒……）。", "coll": "remind sb. of sth. / remind sb. to do sth. / remind sb. that…", "phrases": ["remind sb. of sth.|使某人想起某事", "remind sb. to do sth.|提醒某人做某事", "a reminder|提醒；提示", "remind sb. that…|提醒某人……"], "form": "remind v. → reminder n. 提醒；提示物 → reminded", "syn": "remind 提醒他人；remember 自己记得；memorize 背下来；warn 警告（有危险）。", "note": "不说 remind sb. sth.；of 后接名词，to do 表动作，that 从句表内容。", "examples": ["The day reminds us that books open doors to new worlds.|这一天提醒我们，书籍能打开通往新世界的大门。", "This song reminds me of my hometown.|这首歌让我想起家乡。", "Please remind me to call her tonight.|请提醒我今晚给她打电话。"]}, "culture": {"pos": "名词", "cn": "文化；文明；修养；（培养）", "senses": ["n. 文化（群体生活方式、艺术）", "n. 修养；素养", "n. （细菌等）培养物"], "usage": "可数/不可数均可；指“某群体的文化”时可数 a culture，复数 cultures。", "coll": "Chinese culture / different cultures / cultural differences / pop culture", "phrases": ["cultural differences|文化差异", "pop culture|流行文化", "culture shock|文化冲击", "cross-cultural|跨文化的"], "form": "culture n. → cultural adj. → culturally adv.；cultured adj. 有修养的", "syn": "culture 文化整体；civilization 文明（更大、含历史阶段）；custom 具体习俗；tradition 传承做法。", "note": "作“文化”常不可数，但 a culture / cultures 指“某种文化”，不要一概加 s。", "examples": ["Through books we can learn about different cultures.|通过书籍，我们可以了解不同的文化。", "Chinese culture has a long history.|中华文化历史悠久。", "He is a man of culture.|他是个有修养的人。"]}, "tradition": {"pos": "名词", "cn": "传统；惯例", "senses": [], "usage": "可数名词，a tradition of doing sth.；by tradition 按照传统。", "coll": "a family tradition / break with tradition / traditional Chinese culture / by tradition", "phrases": ["family tradition|家族传统", "break with tradition|打破传统", "traditional culture|传统文化", "by tradition|按照传统"], "form": "tradition n. → traditional adj. → traditionally adv.；traditionalist n. 守旧者", "syn": "tradition 世代相传的整体；custom 具体习俗；convention 社会惯例（可改）；habit 个人习惯。", "note": "a tradition of doing sth.（用 of + 动名词）；traditional 是形容词，不要与 tradition 混用。", "examples": ["The tradition comes from Catalonia, Spain.|这一传统来自西班牙的加泰罗尼亚。", "It is a family tradition to eat together on Sundays.|周日一起吃饭是家族传统。", "Traditional Chinese painting is famous around the world.|中国传统绘画世界闻名。"]}, "brave": {"pos": "形容词 / 动词", "cn": "勇敢的；勇敢面对", "senses": ["adj. 勇敢的；无畏的", "v. 勇敢面对（brave the storm）"], "usage": "形容人面对危险不退缩；名词 bravery；副词 bravely。", "coll": "a brave soldier / be brave enough to do sth. / brave the storm", "phrases": ["bravery|勇敢（名词）", "bravely|勇敢地", "brave the cold|冒着严寒", "put on a brave face|强作镇定"], "form": "brave adj. → bravely adv. → bravery n.；brave v. 勇敢面对", "syn": "brave 面对危险不退缩；bold 敢于冒险、大胆（可贬）；fearless 毫不畏惧；courageous 正式“有勇气的”。", "note": "brave 作动词时及物，如 brave the rain（冒雨）；名词是 bravery，不是 braveness。", "examples": ["A brave knight gave a book to a poor man.|一位勇敢的骑士把书送给了一个穷人。", "It was brave of you to speak out.|你敢于直言，真勇敢。", "They braved the snow to get home.|他们冒雪回家。"]}, "gift": {"pos": "名词", "cn": "礼物；天赋", "senses": ["n. 礼物", "n. 天赋；才能"], "usage": "可数名词；a gift for sth. 表“在某方面的天赋”；gifted 有天赋的。", "coll": "a birthday gift / a gift for music / gift shop / a gifted child", "phrases": ["a gift for|……的天赋", "gifted|有天赋的", "gift shop|礼品店", "exchange gifts|互赠礼物"], "form": "gift n. → gifted adj.；gift v. 赠予（正式）", "syn": "gift 礼物（较正式）；present 礼物（口语）；talent 天赋（只指才能）；donation 捐赠。", "note": "a gift for music（天赋）与 a gift of music（一份音乐礼物）含义不同，靠介词区分。", "examples": ["He received a book as a gift.|他收到一本书作为礼物。", "She has a gift for languages.|她有语言天赋。", "The gifted boy won the prize.|那个有天赋的男孩获奖了。"]}, "both": {"pos": "代词 / 限定词 / 连词", "cn": "两者都；两个都", "senses": ["pron. 两者都", "det. 两个的（both + 复数名词）", "conj. both…and… 既……又……"], "usage": "both + 复数名词；both of + the/物主代词 + 复数；位置在 be 后、实义动词前。", "coll": "both of them / both…and… / we both / both sides", "phrases": ["both…and…|既……又……", "both of|两者都", "both sides|双方", "either|两者之一"], "form": "both pron./det./conj.；neither 两者都不；either 两者之一", "syn": "both 两者；all 三者及以上；either 两者中任一个；neither 两者都不。", "note": "both 后接复数；both of us 作主语时谓语用复数；否定句用 neither，不用 both…not。", "examples": ["Both Shakespeare and Cervantes passed away on that day.|莎士比亚和塞万提斯都在那一天逝世。", "Both of my parents are teachers.|我父母都是老师。", "We both like reading.|我们俩都喜欢读书。"]}, "library": {"pos": "名词", "cn": "图书馆；藏书室；藏书", "senses": [], "usage": "可数名词，复数 libraries（y→ies）；school library 学校图书馆。", "coll": "a school library / borrow books from the library / library card / librarian", "phrases": ["school library|学校图书馆", "library card|借书证", "librarian|图书管理员", "public library|公共图书馆"], "form": "library n. → libraries；librarian n. 图书管理员", "syn": "library 图书馆（场所/机构）；bookstore 书店（卖书）；reading room 阅览室；archive 档案馆。", "note": "复数 libraries 变 y 为 i 加 es；librarian 是“图书管理员”，不是“图书馆的人”。", "examples": ["Many libraries hold reading activities.|许多图书馆举办阅读活动。", "I borrowed three books from the library.|我从图书馆借了三本书。"]}, "key": {"pos": "名词 / 形容词", "cn": "钥匙；关键；关键的；键", "senses": ["n. 钥匙", "n. 关键；答案（key to）", "adj. 关键的", "n. （钢琴、键盘的）键"], "usage": "作名词 a key to the door（用 to 不用 of）；作形容词“关键的”，如 a key role。", "coll": "a key to success / the key to the door / key words / a key role", "phrases": ["the key to|……的关键/答案", "key word|关键词", "key role|关键作用", "keyboard|键盘"], "form": "key n. → keys；key adj.；keyboard n. 键盘", "syn": "key to 后接名词/动名词，表“……的关键”；answer to 表“……的答案”；solution to 表“解决办法”。", "note": "the key to doing sth.（to 是介词，后接动名词）；key 作形容词时无比较级。", "examples": ["Books are like keys that open doors to new worlds.|书籍就像打开新世界大门的钥匙。", "Hard work is the key to success.|努力是成功的关键。", "He plays the keys very well.|他键盘乐器弹得很好。"]}, "through": {"pos": "介词 / 副词 / 形容词", "cn": "通过；穿过；凭借；自始至终", "senses": ["prep. 穿过（内部）", "prep. 凭借；通过（手段）", "adv. 从头到尾", "adj. 直达的（through train）"], "usage": "表“从内部穿过”（through the forest）或“凭借手段”（through books）；与 across（横过表面）不同。", "coll": "through books / walk through the park / all through the night / a through train", "phrases": ["go through|经历；仔细检查", "all through|自始至终", "through and through|完完全全", "be through with|完成；不再做"], "form": "through prep./adv./adj.；throughout prep. 遍及；贯穿", "syn": "through 穿过内部、贯穿；across 从一边到另一边（表面）；by 凭借方式/工具；over 越过上方。", "note": "through 表“手段”时相当于 by means of；口语 be through with 表“受够了”。", "examples": ["Through books, we can learn about animals and history.|通过书籍，我们可以了解动物与历史。", "The train went through a long tunnel.|火车穿过一条长隧道。", "We talked all through the night.|我们整夜都在交谈。"]}, "science": {"pos": "名词", "cn": "科学；理科；学科", "senses": ["n. 科学（总称，不可数）", "n. 一门学科（可数）"], "usage": "泛指“科学”时不可数；指“某门学科”时可数，如 a science；scientist 科学家。", "coll": "science and technology / a science subject / science fiction / social science", "phrases": ["science fiction|科幻小说", "scientist|科学家", "scientific|科学的", "social science|社会科学"], "form": "science n. → scientific adj. → scientist n. → scientifically adv.", "syn": "science 科学（知识体系）；technology 技术（应用）；knowledge 知识（知道的内容）。", "note": "science 泛指不可数；a science 指“一门科学”；scientific 是形容词，不要写成 scientifical。", "examples": ["We can learn about science and history from books.|我们可以从书里学到科学与历史知识。", "Science helps us understand the world.|科学帮助我们理解世界。", "Physics is a science.|物理学是一门科学。"]}, "history": {"pos": "名词", "cn": "历史；历史课；经历", "senses": ["n. 历史（不可数）", "n. 一段经历；病史（可数 a history of）"], "usage": "不可数，但指“一段经历、病史”时可数 a history of…。", "coll": "Chinese history / in history / a history of illness / make history", "phrases": ["in history|在历史上", "make history|创造历史", "historical|历史的", "historic|有历史意义的"], "form": "history n. → historical adj. 与历史有关的 → historic adj. 有重大历史意义的 → historian n. 历史学家", "syn": "historical 指“历史的、史学的”；historic 指“具有重大历史意义的”（a historic moment）。", "note": "history 与 story 同源但不同义；history 不可数，别加 a（a history of 除外）。", "examples": ["Books tell us the history of the world.|书籍向我们讲述世界的历史。", "This is a historic moment for our country.|这是我们国家具有历史意义的时刻。", "The book is based on historical facts.|这本书依据史实写成。"]}, "different": {"pos": "形容词", "cn": "不同的；各种各样的", "senses": ["adj. 不同的（be different from）", "adj. 各种各样的（different + 复数名词）"], "usage": "be different from 与……不同；different + 复数名词表“各种各样的”。", "coll": "be different from / different kinds of / in different ways / a different person", "phrases": ["be different from|与……不同", "make a difference|有影响；起作用", "difference|差别", "differently|不同地"], "form": "differ v. 不同 → difference n. → different adj. → differently adv.", "syn": "different 普通“不同”；various 多种多样（强调数量）；diverse 多样化（强调类型丰富）；distinct 明显不同的。", "note": "英式常用 different from；美式也用 different than；different to 见于英式口语。", "examples": ["We can learn about different cultures through reading.|通过阅读，我们可以了解不同的文化。", "His answer is different from mine.|他的答案和我的不同。", "Small changes can make a big difference.|小改变能带来大不同。"]}, "become": {"pos": "动词", "cn": "变成；成为；变得", "senses": ["v. 成为（+ 名词）", "v. 变得（+ 形容词）", "v. 发生（What became of…?）"], "usage": "系动词，后接名词（成为）或形容词（变得）；过去式 became，过去分词 become。", "coll": "become a teacher / become famous / become interested in / What became of…?", "phrases": ["become interested in|对……产生兴趣", "become aware of|意识到", "become of|（人/物）遭遇", "becoming|合适的（形容词）"], "form": "become → became → become → becoming；becoming adj. 相称的", "syn": "become 强调变化结果（正式）；get 更口语（get tired）；turn 强调颜色、性质转变；grow 强调逐渐变化。", "note": "become 后不接 to be：不说 become to be a teacher；become 不与一段时间连用（用 be）。", "examples": ["The tradition has become a popular custom today.|这一传统今天已成为一种受欢迎的习俗。", "She became a doctor at 26.|她 26 岁成为医生。", "It is becoming colder and colder.|天越来越冷了。"]}, "winner": {"pos": "名词", "cn": "获胜者；获奖者", "senses": [], "usage": "由 win + -er 构成；prize winner 获奖者，Nobel Prize winner 诺贝尔奖得主。", "coll": "the winner of the match / a Nobel Prize winner / the winner takes all", "phrases": ["prize winner|获奖者", "winning|获胜的；迷人的", "win over|争取过来", "winner's circle|优胜者圈"], "form": "win v. 获胜 → winner n. → winning adj. 获胜的 → winnings n. 奖金", "syn": "winner 赢的人；champion 冠军（赛事最高荣誉）；victor 战胜者（书面）；loser 失败者。", "note": "win 后接比赛、奖项（win the game / the prize），不接人；beat 后接对手。", "examples": ["He was a Nobel Prize winner in Physics.|他是诺贝尔物理学奖得主。", "She is the winner of the singing competition.|她是歌唱比赛的获胜者。", "Our team won the game yesterday.|我们队昨天赢了比赛。"]}, "physicist": {"pos": "名词", "cn": "物理学家", "senses": [], "usage": "由 physics + -ist 构成，指研究物理学的人；physicist 与 physician（内科医生）拼写相近，极易混淆。", "coll": "a famous physicist / a theoretical physicist / a Nobel Prize physicist", "phrases": ["theoretical physicist|理论物理学家", "physics|物理学", "physical|身体的；物理的", "physician|内科医生"], "form": "physics n. 物理学 → physicist n. → physical adj. → physically adv.", "syn": "physicist 物理学家；physician 内科医生；physique 体格——三词形近义远。", "note": "注意 -ist 指人；physical 是形容词“身体的/物理的”，不是“物理学家”。", "examples": ["Yang Chen-Ning was a world-famous physicist.|杨振宁是一位世界著名的物理学家。", "She wants to be a physicist like Marie Curie.|她想成为居里夫人那样的物理学家。"]}, "Nobel Prize": {"pos": "专有名词", "cn": "诺贝尔奖", "senses": [], "usage": "专有名词，首字母大写；奖项名前加 the：the Nobel Prize in Physics（诺贝尔物理学奖）。", "coll": "win the Nobel Prize / the Nobel Prize in Physics / Nobel Prize winner", "phrases": ["Nobel Prize in Physics|诺贝尔物理学奖", "Nobel laureate|诺贝尔奖得主", "award a prize|颁奖", "prize-giving ceremony|颁奖典礼"], "form": "Nobel n. 诺贝尔 → Nobel Prize；laureate n. 桂冠诗人；获奖者", "syn": "prize 奖、奖品；award 奖项、颁发；reward 报酬、悬赏；medal 奖牌。", "note": "奖项名前用 the；说“获得诺奖”用 win / receive / be awarded the Nobel Prize。", "examples": ["They won the Nobel Prize in Physics in 1957.|他们于 1957 年获得诺贝尔物理学奖。", "She was awarded the Nobel Prize for her research.|她因研究获得诺贝尔奖。"]}, "the Chinese Academy of Sciences": {"pos": "专有名词", "cn": "中国科学院", "senses": [], "usage": "机构名称，固定搭配，首字母大写；academy 指“研究院、学院”，sciences 用复数。", "coll": "a member of the Chinese Academy of Sciences / the Academy of Sciences", "phrases": ["academician|院士", "academic|学术的", "institute|研究所", "Chinese Academy of Engineering|中国工程院"], "form": "academy n. 研究院 → academic adj. 学术的 → academician n. 院士", "syn": "academy 研究院/学会；college 学院；institute 研究所；university 大学。", "note": "中国科学院简称 CAS；成员称 academician（院士），不叫 member of academy 的直译“学院成员”。", "examples": ["He was a member of the Chinese Academy of Sciences.|他是中国科学院院士。", "The Chinese Academy of Sciences is in Beijing.|中国科学院位于北京。"]}, "contribution": {"pos": "名词", "cn": "贡献；捐款；投稿", "senses": [], "usage": "make a contribution to sth./doing sth.（对……作出贡献），to 为介词，后接名词或动名词。", "coll": "make a contribution to / great contributions to science / a contribution of money", "phrases": ["make a contribution to|对……作出贡献", "contribute to|促成；捐献", "contributor|贡献者；投稿人", "contributory|促成的"], "form": "contribute v. 贡献 → contribution n. → contributor n.；contributing adj. 起作用的", "syn": "contribution 贡献（具体成果，可数）；devotion 奉献精神；dedication 专注、献身；effort 努力。", "note": "to 是介词，后接动名词：make a contribution to improving…；contribute to 中 to 同样为介词。", "examples": ["He made great contributions to modern physics.|他对现代物理学作出了巨大贡献。", "Everyone can make a contribution to protecting the environment.|每个人都能为保护环境作贡献。"]}, "PhD": {"pos": "名词", "cn": "博士学位；博士", "senses": [], "usage": "Doctor of Philosophy 的缩写，读作 /ˌpiː eɪtʃ ˈdiː/；get / receive a PhD 获得博士学位。", "coll": "get one's PhD / a PhD in physics / PhD student / do a PhD", "phrases": ["PhD student|博士生", "doctoral degree|博士学位", "master's degree|硕士学位", "postdoc|博士后"], "form": "PhD → PhDs（复数）；doctoral adj. 博士的；doctorate n. 博士学位", "syn": "PhD 博士学位；doctor 医生或博士（口语）；master 硕士；bachelor 学士。", "note": "PhD 是学位不是职业；说“读博”用 do / pursue a PhD，不用 study a PhD。", "examples": ["He got his PhD from the University of Chicago.|他在芝加哥大学获得博士学位。", "She is doing a PhD in chemistry.|她正在攻读化学博士学位。"]}, "partner": {"pos": "名词", "cn": "伙伴；搭档；伴侣", "senses": ["n. 搭档；合作者", "n. 伴侣（生活、舞蹈等）"], "usage": "指共同做某事的人，可数；business partner 生意伙伴，dance partner 舞伴。", "coll": "work with a partner / business partner / dance partner / partner with sb.", "phrases": ["business partner|生意伙伴", "partnership|合作关系", "dance partner|舞伴", "partner with|与……合作"], "form": "partner n. → partnership n. 合作关系 → partner v. 与……合作", "syn": "partner 合作共事（中性）；friend 朋友（情感）；colleague 同事（同单位）；ally 盟友（政治、军事）。", "note": "partner 不限于婚姻；business partner 是“合伙人”，不是“商业伴侣”。", "examples": ["He worked with his partner Tsung-Dao Lee.|他与搭档李政道一起工作。", "They are business partners.|他们是生意伙伴。", "Choose a partner and practise the dialogue.|选一个搭档练习对话。"]}, "put forward": {"pos": "短语动词", "cn": "提出（理论、建议、计划）", "senses": ["v. 提出（供讨论）", "v. 推荐（人选）", "v. 把（钟表）拨快"], "usage": "可分离：put forward a theory / put a theory forward；多用于观点、方案、候选人。", "coll": "put forward a theory / put forward a plan / put sb. forward / put the clock forward", "phrases": ["put off|推迟", "put up|举起；搭建；张贴", "put out|扑灭；生产", "put up with|忍受"], "form": "put → put → put → putting（双写 t）；input n./v. 输入", "syn": "put forward 提出（供讨论）；come up with 更口语“想出”；propose 正式“提议”；suggest 建议（后接 doing/从句）。", "note": "代词作宾语放中间：put it forward；put forward 不用于被动时常见于“理论被提出” → The theory was put forward。", "examples": ["They put forward the theory of parity non-conservation.|他们提出了宇称不守恒理论。", "He put forward a good plan at the meeting.|他在会上提出了一个好方案。", "May I put you forward as a candidate?|我可以推荐你当候选人吗？"]}, "theory": {"pos": "名词", "cn": "理论；学说；原理", "senses": ["n. 理论；学说（可数）", "n. 理论（与实践相对，不可数）"], "usage": "可数名词，复数 theories（y→ies）；in theory 理论上。", "coll": "in theory / a theory of… / put forward a theory / theory and practice", "phrases": ["in theory|理论上", "theory of relativity|相对论", "theoretical|理论的", "theorist|理论家"], "form": "theory n. → theories；theoretical adj. → theoretically adv.；theorist n.", "syn": "theory 系统化的解释（学术）；idea 想法；principle 原理、原则；hypothesis 假设（待验证）。", "note": "theory 可数，复数 theories；in theory 与 in practice 常对举。", "examples": ["His theory changed the world of physics.|他的理论改变了物理学界。", "In theory, the plan should work.|理论上，这个计划应该可行。", "Darwin's theory of evolution is famous.|达尔文的进化论很有名。"]}, "parity non-conservation": {"pos": "专有名词", "cn": "宇称不守恒", "senses": ["parity n. 宇称（物理学术语）", "non-conservation n. 不守恒（non- 表否定）"], "usage": "物理学专有术语：parity 宇称，non-conservation 不守恒（non- 表否定）。整体作 theory of 的宾语。", "coll": "the theory of parity non-conservation / in weak interaction", "phrases": ["parity|宇称；对等", "conservation law|守恒定律", "symmetry|对称性", "Nobel Prize in Physics|诺贝尔物理学奖"], "form": "conserve v. 保存 → conservation n. 守恒；保护；parity n. 对等", "syn": "conservation 守恒、保护；preservation 保存（使之不变质）；reservation 预订、保留。", "note": "这是固定学术译名，不能按字面译成“平等不保守”；non- 与 not 不同，non- 可直接构成名词。", "examples": ["They studied parity non-conservation in weak interaction.|他们研究了弱相互作用中的宇称不守恒。", "The theory of parity non-conservation won them the Nobel Prize.|宇称不守恒理论让他们获得了诺贝尔奖。"]}, "weak interaction": {"pos": "名词短语", "cn": "弱相互作用；弱力", "senses": [], "usage": "物理四大基本相互作用之一（另三种为引力、电磁力、强相互作用），weak 此处是术语“弱的”。", "coll": "weak interaction / strong interaction / electromagnetic interaction / gravitational interaction", "phrases": ["strong interaction|强相互作用", "electromagnetic interaction|电磁相互作用", "gravity|引力", "fundamental force|基本力"], "form": "weak adj. 弱的 → weaken v. 削弱 → weakness n. 弱点；weakly adv.", "syn": "weak 日常义“虚弱的”；物理术语固定译“弱（相互作用）”，不能译成“虚弱”。", "note": "术语中 weak 不作“身体虚弱”理解；interaction 指“相互作用”，与 reaction（反应）不同。", "examples": ["The theory explained weak interaction in a new way.|该理论以新的方式解释了弱相互作用。", "There are four fundamental interactions in nature.|自然界有四种基本相互作用。"]}, "modern physics": {"pos": "名词短语", "cn": "现代物理学", "senses": [], "usage": "modern 指“现代的”（约 20 世纪以来），现代物理学以相对论与量子力学为两大支柱。", "coll": "modern physics / modern history / modern art / modern technology", "phrases": ["modern art|现代艺术", "modern history|近代史", "modern technology|现代技术", "contemporary|当代的"], "form": "modern adj. 现代的 → modernity n. 现代性 → modernize v. 现代化 → modernization n.", "syn": "modern 现代的（与古代相对）；contemporary 同时代的、当代的（时间更近）；current 当前的。", "note": "modern physics 是学科名称，首字母一般小写；不要与 modern physics 的“现代”误作“时髦”。", "examples": ["Yang-Mills Theory is an important part of modern physics.|杨-米尔斯理论是现代物理学的重要组成部分。", "Modern physics began in the early twentieth century.|现代物理学始于二十世纪初。"]}, "motherland": {"pos": "名词", "cn": "祖国", "senses": [], "usage": "由 mother + land 构成，带感情色彩，常用于正式、抒情语境；a love for one's motherland。", "coll": "love one's motherland / serve the motherland / return to one's motherland", "phrases": ["homeland|家乡；国土", "fatherland|祖国（多见于德语国家）", "native land|故土", "patriotism|爱国主义"], "form": "motherland n.；mother tongue 母语（同用 mother- 构词）", "syn": "motherland 情感色彩强，多用于“祖国”；homeland 偏“故土、家园”，中性；native land 文学化“故土”。", "note": "motherland 可数，通常用 one's motherland；不必加 the。", "examples": ["He loved his motherland deeply all his life.|他一生深爱着自己的祖国。", "Many scientists returned to their motherland after 1949.|1949 年后许多科学家回到了祖国。"]}, "return": {"pos": "动词 / 名词", "cn": "返回；归还；回报；收益", "senses": ["v. 返回；回来", "v. 归还；退还", "v. 回报；回应", "n. 返回；收益；回报"], "usage": "return to + 地点（返回某地）；return sth. to sb.（把某物还给某人）；in return 作为回报。", "coll": "return to China / return the book / in return for / return a visit", "phrases": ["return to|返回", "in return|作为回报", "return ticket|往返票", "return a favour|报答"], "form": "return v./n. → returned → returning；returner n. 回归者", "syn": "return 返回（正式）；come back 回来（口语）；go back 回去；give back 归还。", "note": "return 本身含“回”，不说 return back（语义重复，属常见错误）；return 作名词表“回报”时不可数。", "examples": ["In 1971, he returned to China for the first time.|1971 年，他第一次回到中国。", "Please return the book to the library on time.|请按时把书还给图书馆。", "He gave me a gift in return for my help.|他送我一件礼物作为对我帮助的回报。"]}, "build links between": {"pos": "短语", "cn": "在……之间建立联系", "senses": [], "usage": "build links between A and B；link 可数，常用复数 links；也可 build a link with sb.。", "coll": "build links between A and B / build a bridge between / strengthen links", "phrases": ["build a bridge between|在……之间架起桥梁", "strengthen ties|加强联系", "close links|密切联系", "link up|连接起来"], "form": "link n./v. → links → linked → linkage n. 联系", "syn": "build links 逐步建立（过程）；connect 接通、关联（偏动作）；bridge the gap 弥合差距。", "note": "link 可数用复数 links；between 后接两者，among 用于多者。", "examples": ["He helped build links between Chinese and American scientists.|他帮助中美科学家之间建立联系。", "The two schools have built close links.|两所学校建立了密切联系。"]}, "give advice on": {"pos": "短语", "cn": "就……提出建议", "senses": [], "usage": "advice 不可数；give advice on sth.（就某方面给建议）；give sb. advice on sth.。", "coll": "give advice on / offer advice on / a piece of advice / take one's advice", "phrases": ["a piece of advice|一条建议", "advice on sth.|关于某事的建议", "advise sb. to do|建议某人做某事", "ask for advice|征求意见"], "form": "advise v. 建议 → advice n.（不可数）→ adviser n. 顾问 → advisory adj. 咨询的", "syn": "advice 名词不可数；advise 动词；suggest 后不接 to do，需接 doing 或从句。", "note": "不说 give me an advice；on 后接“方面”，about 后接“具体事情”。", "examples": ["He gave advice on China's scientific development.|他就中国的科学发展提出建议。", "The teacher gave us some advice on how to read faster.|老师就如何提高阅读速度给了我们建议。"]}, "raise money": {"pos": "短语", "cn": "筹款；募捐", "senses": ["v. 筹集（资金）", "v. 举起；提高；饲养（raise 的多义）"], "usage": "raise 及物，raise money for sth./sb.（为……筹款）；raise 另有“举起、饲养、提高”等义。", "coll": "raise money for / raise funds / raise money to do sth. / a fundraising event", "phrases": ["raise funds|筹集资金", "fundraising|筹款（活动）", "donate money|捐款", "collect money|募捐"], "form": "raise v. → raised → raising；fundraiser n. 筹款活动", "syn": "raise 及物“举起、筹集；提高”；rise 不及物“上升”，无宾语；lift 指“举起（物体）”。", "note": "raise 必须带宾语；rise 不带宾语：Prices rose.（价格上升）/ They raised prices.（他们提价）。", "examples": ["He raised money for Chinese scholars to study abroad.|他为中国的学者出国留学筹集资金。", "The students raised money for the sick child.|学生们为那个生病的孩子筹款。", "Please raise your hand if you have a question.|有问题请举手。"]}, "scholar": {"pos": "名词", "cn": "学者；奖学金获得者", "senses": [], "usage": "指“有学问的人”，可数；scholarship 奖学金，school 学校，三词形近。", "coll": "a famous scholar / a visiting scholar / a scholar of history", "phrases": ["scholarship|奖学金；学术研究", "scholarly|学术的；博学的", "visiting scholar|访问学者", "scholarly journal|学术期刊"], "form": "scholar n. → scholarly adj. → scholarship n. 奖学金；学问", "syn": "scholar 学者；student 学生；scientist 科学家（自然科学为主）；researcher 研究者。", "note": "scholar 与 school 同源但不同义；scholarship 既可指“奖学金”也可指“学问”。", "examples": ["Many young scholars went abroad with his help.|许多年轻学者在他的帮助下出国深造。", "He is a scholar of Chinese history.|他是一位中国历史学者。"]}, "abroad": {"pos": "副词", "cn": "在国外；到国外", "senses": ["adv. 到国外（动作）", "adv. 在国外（状态）"], "usage": "副词，不能加介词：go abroad（不加 to）；study abroad 留学。", "coll": "go abroad / study abroad / live abroad / travel abroad", "phrases": ["at home|在国内；在家", "overseas|海外的（地）", "foreign country|外国", "go overseas|出国"], "form": "abroad adv.；overseas adj./adv.；foreign adj. 外国的", "syn": "abroad 是副词，故不说 go to abroad；overseas 可作形容词或副词；foreign 修饰名词。", "note": "abroad 不表示“在国外某具体地点”，说 in the US 而非 in abroad。", "examples": ["He helped Chinese scholars study abroad.|他帮助中国学者到国外学习。", "She has lived abroad for ten years.|她已在国外生活十年。", "More and more students go abroad to study.|越来越多的学生出国留学。"]}, "train young talent": {"pos": "短语", "cn": "培养青年人才", "senses": ["train v. 培养；训练", "talent n. 人才（集合）；天赋"], "usage": "train 作动词“培养、训练”；talent 此处作集合名词“人才”，也可作可数“有才能的人”。", "coll": "train young talent / develop talent / a talented young man / talent training", "phrases": ["talent training|人才培养", "talented|有才能的", "talent show|才艺表演", "develop talent|培养人才"], "form": "talent n. → talented adj. → talentless adj.；train v. → training n. 训练", "syn": "talent 天赋/人才；ability 能力（可后天习得）；genius 天才（极高智力）；skill 技能。", "note": "talent 作“人才”集合名词时不可数；作“天赋”可数：a talent for music。", "examples": ["He worked hard to train young talent in China.|他努力在中国培养青年人才。", "The company runs a programme to train young talent.|公司开展青年人才培养项目。"]}, "basic scientific research": {"pos": "名词短语", "cn": "基础科学研究", "senses": ["basic adj. 基础的；根本的", "research n. 研究（不可数）"], "usage": "basic 指“基础的、根本的”；research 不可数，do research on sth.。", "coll": "basic research / applied research / do research on / scientific research", "phrases": ["applied research|应用研究", "do research on|对……进行研究", "researcher|研究者", "research findings|研究成果"], "form": "research n./v. → researcher n. → researched adj.；basic adj. → basically adv. 基本上", "syn": "research 不可数；study 可数（一项研究）；experiment 可数（一次实验）；investigation 调查。", "note": "research 不加 s（除指多份研究报告）；basic 与 fundamental 近义，后者更正式。", "examples": ["He helped develop basic scientific research in China.|他帮助中国发展基础科学研究。", "Basic research takes time and patience.|基础研究需要时间和耐心。"]}, "legend": {"pos": "名词", "cn": "传奇人物；传说；图例", "senses": ["n. 传说（故事）", "n. 传奇人物", "n. （地图、图表）图例"], "usage": "可数名词；指人时表“传奇式人物”，指故事时表“传说”，legendary 传奇的。", "coll": "a living legend / the legend of… / a legendary hero / map legend", "phrases": ["a living legend|活着的传奇", "legendary|传奇的", "myth|神话", "fable|寓言"], "form": "legend n. → legendary adj.；legend 与 legible（可读的）不同源", "syn": "legend 传说/传奇人物；fable 寓言（含道德教训）；myth 神话（解释世界起源）；tale 故事。", "note": "a legend 指人或故事；legend 作“图例”时多见于地图、图表。", "examples": ["He was a legend who explored the unknown.|他是一位探索未知的传奇人物。", "There is a legend about the old bridge.|关于这座古桥有一个传说。"]}, "explore the unknown": {"pos": "短语", "cn": "探索未知", "senses": [], "usage": "explore 及物“探索、勘察”；the unknown 形容词加 the 构成名词“未知事物”。", "coll": "explore the unknown / explore space / the unknown world", "phrases": ["the unknown|未知的事物", "exploration|探索", "explorer|探险者", "uncharted|未绘制的；未知的"], "form": "explore v. → exploration n. → explorer n. 探险者 → exploratory adj. 探索性的", "syn": "explore 实地或深入探究；discover 发现原本存在而未知的事物；investigate 调查事件。", "note": "the + 形容词表一类事物：the unknown 未知领域，the poor 穷人；unknown 也可作定语。", "examples": ["Scientists explore the unknown to help people live better.|科学家探索未知，让人们生活得更好。", "We explored the old town on foot.|我们步行游览了老城。"]}, "serve one's country": {"pos": "短语", "cn": "报效祖国；为国服务", "senses": ["serve v. 为……服务；招待", "serve v. 任职；服役"], "usage": "serve 及物“为……服务”；serve sb. 还可指“招待（顾客）”；service 名词。", "coll": "serve the people / serve one's country / serve in the army / serve as", "phrases": ["serve as|担任；充当", "serve in the army|服兵役", "service|服务；服役", "public servant|公务员"], "form": "serve v. → service n. → servant n. 仆人；公务员", "syn": "serve 及物，直接接宾语；serve for 多用于“任职于某机构某期限”；service 是名词。", "note": "serve 不接 for（除表时间）：serve the country，不说 serve for the country；serve as 表“担任”。", "examples": ["He served his country with all his life.|他毕生报效祖国。", "She served in the army for five years.|她在部队服役五年。", "This room serves as a library.|这间屋子用作图书馆。"]}, "national development": {"pos": "名词短语", "cn": "国家发展", "senses": [], "usage": "national 形容词“国家的、民族的”；development 不可数，常用 economic development。", "coll": "national development / economic development / social development / develop rapidly", "phrases": ["economic development|经济发展", "social development|社会发展", "developing country|发展中国家", "developed country|发达国家"], "form": "nation n. 国家；民族 → national adj. → nationality n. 国籍 → international adj. 国际的", "syn": "national 国家的；international 国际的；native 本地的、本土的；nationwide 全国范围的。", "note": "national 与 nation 词性不同；nationality 指“国籍”，不是“民族性”。", "examples": ["Young people should work hard for national development.|年轻人应当为国家发展而努力。", "Science and technology are important to national development.|科技对国家发展很重要。"]}, "hail": {"pos": "动词 / 名词", "cn": "赞誉；把……称赞为；招呼；冰雹", "senses": ["v. 赞誉；把……誉为（hail sb. as…）", "v. 招呼（hail a taxi）", "n. 冰雹"], "usage": "hail sb./sth. as… 把……誉为；文中用被动 be hailed as“被誉为”。hail 另有“下冰雹”之义。", "coll": "be hailed as a hero / hail a taxi / hail from（来自）", "phrases": ["be hailed as|被誉为", "hail a taxi|招手叫出租车", "hail from|来自（某地）", "hailstorm|冰雹"], "form": "hail v./n.；hailstone n. 冰雹块", "syn": "hail as 公开赞誉；regard as 认为；describe as 描述成；acclaim 热烈称赞（更文学）。", "note": "hail from 是“来自”，与“赞誉”义无关；注意 be hailed as 后接名词。", "examples": ["He was hailed as the greatest physicist of his time.|他被称为他那个时代最伟大的物理学家。", "The film was hailed as a masterpiece.|这部电影被誉为杰作。", "She hails from a small town in Anhui.|她来自安徽的一个小镇。"]}, "immortal": {"pos": "形容词 / 名词", "cn": "不朽的；永生的；不朽人物", "senses": ["adj. 不朽的（名声、作品）", "adj. 永生的（神话）", "n. 不朽的人物（常用复数）"], "usage": "im-（否定）+ mortal（会死的）→ 不朽的；多用于文学、艺术成就的赞誉。", "coll": "immortal works / immortal fame / the immortal", "phrases": ["immortality|不朽", "mortal|会死的；凡人", "eternal|永恒的", "everlasting|持久的"], "form": "mortal adj. 会死的 → immortal adj. → immortality n. 不朽 → immortalize v. 使不朽", "syn": "immortal 名声、作品不朽；eternal 时间上永恒无终；everlasting 持久不衰（多指事物）。", "note": "immortal 修饰“人”时是修辞（伟人不朽），不是“真的不死”；名词 the immortal 指“不朽者”。", "examples": ["The university called him immortal in its notice.|校方在公告中称他“不朽”。", "Shakespeare's works are immortal.|莎士比亚的作品是不朽的。"]}, "notice": {"pos": "名词 / 动词", "cn": "公告；通知；注意到", "senses": ["n. 公告；通知（可数）", "n. 注意（came to my notice）", "v. 注意到；觉察"], "usage": "作名词可数 a notice；作动词 notice sb./sth.，也可 notice sb. do/doing sth.。", "coll": "put up a notice / a notice board / notice sb. doing sth. / at short notice", "phrases": ["put up a notice|张贴通知", "notice board|布告栏", "take notice of|注意", "at short notice|临时通知"], "form": "notice n./v. → noticeable adj. 明显的 → noticeably adv.", "syn": "notice 无意间注意到；watch 有意识地观看；observe 更正式（观察）；spot 突然发现。", "note": "notice sb. do（看见全过程）/ doing（看见正在进行）；notice 不用于进行时表“正注意到”。", "examples": ["The notice on the school website was read by thousands of people.|学校网站上的这则公告被数千人阅读。", "I noticed a mistake in the notice.|我注意到通知里有个错误。", "She noticed him leaving the room.|她注意到他正离开房间。"]}, "member": {"pos": "名词", "cn": "成员；会员", "senses": [], "usage": "a member of… 某组织的一员；family member 家庭成员。", "coll": "a member of the team / family member / member state / staff member", "phrases": ["family member|家庭成员", "membership|会员资格", "member state|成员国", "team member|队员"], "form": "member n. → membership n. 会员资格；成员总数", "syn": "member 组织成员；staff 全体员工；partner 合作伙伴；participant 参与者。", "note": "a member of 后接组织；membership 不可数，指“会员身份/全体会员”。", "examples": ["He was a member of the Chinese Academy of Sciences.|他是中国科学院院士（成员）。", "She is a member of our reading club.|她是我们读书会的成员。"]}, "academy": {"pos": "名词", "cn": "研究院；学院；学会", "senses": [], "usage": "指学术机构，可数；the Chinese Academy of Sciences 中国科学院。", "coll": "an academy of sciences / a military academy / the Academy Awards", "phrases": ["academic|学术的", "academician|院士", "military academy|军事学院", "academy award|奥斯卡奖"], "form": "academy n. → academic adj. 学术的 → academically adv.；academician n. 院士", "syn": "academy 研究/学术团体；college 高等院校；institute 研究所；school 学校（泛指）。", "note": "academy 的形容词是 academic（学术的），不要用 academical；奥斯卡奖英文是 Academy Awards。", "examples": ["He joined the academy at the age of 35.|他 35 岁时加入该研究院。", "She studies at a military academy.|她在军事学院学习。"]}, "born": {"pos": "形容词 / 动词过去分词", "cn": "出生的；天生的", "senses": ["adj. 出生的（be born）", "adj. 天生的（a born writer）"], "usage": "be born in + 地点/时间；a born writer 天生的作家；bear 的过去分词。", "coll": "be born in 1922 / be born into a family / a born teacher / born and raised", "phrases": ["be born|出生", "birth|出生（名词）", "birthplace|出生地", "natural-born|天生的"], "form": "bear v. → bore → born（出生）/ borne（生育，用于完成时）", "syn": "be born 用被动结构表“出生”；birth 是名词；deliver 是“接生”。", "note": "born 只用于 be born，不用主动语态；borne 用于 have borne（生育）或“承担”。", "examples": ["Yang was born in Hefei, Anhui in 1922.|杨振宁 1922 年出生于安徽合肥。", "She was born into a doctor's family.|她出生在一个医生家庭。", "He is a born leader.|他是个天生的领导者。"]}, "university": {"pos": "名词", "cn": "大学", "senses": [], "usage": "可数名词，复数 universities；a university 用 a 不用 an（u 发 /juː/）。", "coll": "Tsinghua University / go to university / university student / at university", "phrases": ["go to university|上大学", "university student|大学生", "college|学院；大专", "campus|校园"], "form": "university n. → universities；university-level adj. 大学水平的", "syn": "university 综合性大学；college 学院、专科学校；institute 学院/研究所（理工多见）。", "note": "拼写用 a university（因读音以 /j/ 开头）；英式 go to university 不加 the。", "examples": ["He studied at famous universities in China.|他曾在中国多所著名大学学习。", "She teaches at a university in Beijing.|她在北京一所大学任教。"]}, "learn": {"pos": "动词", "cn": "学习；学到；得知", "senses": ["v. 学习（技能、知识）", "v. 得知；获悉", "v. 记住；背下"], "usage": "learn sth. / learn to do sth. / learn about sth.；过去式 learned 或 learnt。", "coll": "learn English / learn to swim / learn about / learn from", "phrases": ["learn from|向……学习", "learn about|了解", "learn by heart|背熟", "learner|学习者"], "form": "learn → learned / learnt → learned / learnt；learning n. 学习；学问", "syn": "learn 强调学会、学到；study 强调研究、攻读的过程；master 掌握（高水平）。", "note": "learn 不接 that 从句表“学习”，但可表“得知”：I learned that he had left.", "examples": ["Later he went to the US to learn more.|后来他赴美继续深造。", "We learn English at school.|我们在学校学英语。", "I learned that she had passed the exam.|我得知她通过了考试。"]}, "spirit": {"pos": "名词", "cn": "精神；心灵；情绪；烈酒", "senses": ["n. 精神；意志", "n. 心灵；灵魂", "n. 情绪（in high spirits）", "n. 烈酒（常用复数）"], "usage": "可数/不可数均可；the spirit of… ……的精神；in high spirits 情绪高涨。", "coll": "the spirit of seeking truth / team spirit / in high spirits / the spirit of the times", "phrases": ["team spirit|团队精神", "in high spirits|情绪高涨", "spirit of the age|时代精神", "spiritual|精神的"], "form": "spirit n. → spiritual adj. 精神的 → spirited adj. 精神饱满的；spiritless adj. 无精打采的", "syn": "spirit 精神、意志；mind 思维、头脑；soul 灵魂（宗教、情感）；mood 心情（一时）。", "note": "表“情绪”常用复数 spirits；表“精神”不可数：the spirit of the team。", "examples": ["His spirit of seeking truth will always encourage us.|他追求真理的精神将永远激励我们。", "The team showed great fighting spirit.|这支队伍表现出顽强的斗志。", "She was in high spirits after the good news.|听到好消息后她情绪高涨。"]}, "truth": {"pos": "名词", "cn": "真理；真相；事实", "senses": [], "usage": "不可数居多，tell the truth 说实话；复数 truths 表“多个真理”。", "coll": "tell the truth / seek truth / the truth about sth. / in truth", "phrases": ["tell the truth|说实话", "in truth|事实上", "the truth about|关于……的真相", "truthful|诚实的"], "form": "true adj. 真实的 → truth n. → truthful adj. 诚实的 → truly adv. 真正地", "syn": "truth 名词“真相”；true 形容词；truly 副词；reality 现实（客观存在）。", "note": "truth 通常不可数，故说 tell the truth，不说 tell a truth；复数 truths 指不同真理。", "examples": ["He spent his life seeking truth.|他毕生追求真理。", "Please tell me the truth.|请告诉我真相。", "In truth, nobody knew what had happened.|事实上，没人知道发生了什么。"]}, "explore": {"pos": "动词", "cn": "探索；勘探；探究", "senses": ["v. 探索（地区、空间）", "v. 探究（问题、可能性）"], "usage": "及物动词，explore + 地点/问题；名词 exploration，人 explorer。", "coll": "explore space / explore a new area / explore the possibility / explore for oil", "phrases": ["explore for|勘探（矿产）", "exploration|探索；勘探", "explorer|探险者", "exploratory|探索性的"], "form": "explore v. → exploration n. → explorer n. → exploratory adj.", "syn": "explore 实地或深入探究；search 搜寻具体目标；investigate 调查事件；probe 深入探究（书面）。", "note": "explore 是及物动词，需带宾语（explore the cave），不说 explore in the cave。", "examples": ["He liked to explore new ideas in physics.|他喜欢在物理学中探索新想法。", "They explored the cave with torches.|他们打着火把探索了山洞。", "We need to explore other possibilities.|我们需要探索其他可能性。"]}, "unknown": {"pos": "形容词 / 名词", "cn": "未知的；不出名的；未知事物", "senses": ["adj. 未知的；不明的", "adj. 不出名的；无名的", "n. the unknown 未知领域"], "usage": "un- + known；the unknown 指“未知领域”；unknown to sb. 不为某人所知。", "coll": "the unknown / an unknown writer / unknown to me / remain unknown", "phrases": ["the unknown|未知领域", "unknown to sb.|不为某人所知", "well-known|著名的", "remain unknown|仍然未知"], "form": "know v. → known adj. → unknown adj.；knowledge n. 知识", "syn": "unknown 不为人知；famous 反义；unfamiliar 不熟悉；unidentified 身份不明的。", "note": "unknown to sb. 是固定结构（不为某人所知），不是“对某人未知”的机械翻译。", "examples": ["Explorers are not afraid of the unknown.|探索者不惧怕未知。", "The writer was unknown before 2010.|这位作家在 2010 年前默默无闻。", "The cause of the fire remains unknown.|火灾原因仍然不明。"]}, "development": {"pos": "名词", "cn": "发展；开发；进展；新情况", "senses": ["n. 发展；成长（不可数）", "n. 新情况；进展（可数）", "n. 开发区；新建住宅区"], "usage": "不可数名词，常用 the development of…；develop 动词，developing/developed 形容词。", "coll": "economic development / the development of science / with the development of / a new development", "phrases": ["developing country|发展中国家", "developed country|发达国家", "research and development|研发", "development zone|开发区"], "form": "develop v. 发展 → development n. → developing adj. 发展中的 → developed adj. 发达的", "syn": "development 发展过程；growth 增长（数量）；progress 进步；advance 前进、进展。", "note": "development 泛指不可数，指“具体新情况”时可数 a development；developing 是“发展中的”。", "examples": ["Science plays an important role in national development.|科学在国家发展中起着重要作用。", "With the development of the Internet, we can learn anywhere.|随着互联网的发展，我们可以在任何地方学习。", "There has been a new development in the case.|案件有了新进展。"]}, "research": {"pos": "名词 / 动词", "cn": "研究；调查", "senses": [], "usage": "不可数名词，do research on sth.；作动词及物，research a problem。", "coll": "do research on / scientific research / research into / research findings", "phrases": ["do research on|对……进行研究", "research into|对……的调查", "researcher|研究者", "research centre|研究中心"], "form": "research n./v. → researcher n. → researched；researchable adj. 可研究的", "syn": "research 不可数（学术研究）；study 可数（一项研究）；experiment 可数（实验）；survey 调查（问卷）。", "note": "不说 a research / researches（除非指多份研究报告）；do research on 用介词 on。", "examples": ["He supported basic scientific research in China.|他支持中国的基础科学研究。", "She is doing research on climate change.|她正在研究气候变化。", "Their research findings were published last week.|他们的研究成果上周发表了。"]}, "talent": {"pos": "名词", "cn": "天赋；人才；有才能的人", "senses": ["n. 天赋；才能（可数/不可数）", "n. 人才（集合名词）", "n. 有才能的人（可数）"], "usage": "可数/不可数均可：a talent for music（天赋），young talent（青年人才，集合用法）。", "coll": "a talent for / young talent / talent show / develop one's talent", "phrases": ["a talent for|……的天赋", "talent show|才艺表演", "talented|有天赋的", "talent pool|人才库"], "form": "talent n. → talented adj. → talentless adj.；talented 比 gifted 更常用", "syn": "talent 与生俱来的才能；skill 后天练成的技能；ability 泛指的“能力”；gift 天赋（较正式）。", "note": "talent 表“人才”集合时不可数；表“天赋”可数：She has a talent for drawing.", "examples": ["The country needs more young talent in science.|国家需要更多科学领域的青年人才。", "He has a talent for music.|他有音乐天赋。", "The show gives young people a chance to show their talent.|这个节目给年轻人展示才华的机会。"]}};
+const VC = {};
+Object.keys(VOCAB).forEach(k => VC[k.toLowerCase()] = VOCAB[k]);
+
+/* ===== 标记解析 [[key|显示]] ===== */
+(function markUp(){
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+    acceptNode(n){
+      const p = n.parentElement;
+      if(!p) return NodeFilter.FILTER_REJECT;
+      if(p.closest('script,style,button.vb,.note-card')) return NodeFilter.FILTER_REJECT;
+      return n.nodeValue.indexOf('[[') >= 0 ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+    }
+  });
+  const nodes = [];
+  while(walker.nextNode()) nodes.push(walker.currentNode);
+  nodes.forEach(node => {
+    const text = node.nodeValue;
+    const frag = document.createDocumentFragment();
+    const re = /\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g;
+    let last = 0, m;
+    while((m = re.exec(text))){
+      if(m.index > last) frag.appendChild(document.createTextNode(text.slice(last, m.index)));
+      const key = m[1].trim();
+      const label = m[2] ? m[2] : key;
+      const b = document.createElement('button');
+      b.type = 'button'; b.className = 'vb'; b.dataset.w = key; b.textContent = label;
+      frag.appendChild(b);
+      last = re.lastIndex;
+    }
+    if(last < text.length) frag.appendChild(document.createTextNode(text.slice(last)));
+    node.parentNode.replaceChild(frag, node);
+  });
+})();
+
+/* ===== 朗读 ===== */
+let curU = null;
+function speak(text, lang){
+  if(!('speechSynthesis' in window)){ alert('当前浏览器不支持语音朗读'); return; }
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = lang || 'en-US'; u.rate = 0.92;
+  try{
+    const vs = window.speechSynthesis.getVoices() || [];
+    const ev = vs.find(v => /^en[-_]/i.test(v.lang));
+    if(ev) u.voice = ev;
+  }catch(err){}
+  u.onerror = function(){};
+  curU = u; window.speechSynthesis.speak(u);
+}
+
+/* ===== 词条渲染 ===== */
+const esc = s => String(s).replace(/"/g, '&quot;');
+function row(k, val, cls){
+  return val ? `<div class="line ${cls || ''}"><span class="k">${k}</span><span>${val}</span></div>` : '';
+}
+function sensesHTML(v){
+  if(!v.senses || !v.senses.length) return '';
+  return `<div class="senses">${v.senses.map(s => `<span class="sense">${s}</span>`).join('')}</div>`;
+}
+function chipsHTML(v){
+  if(!v.phrases || !v.phrases.length) return '';
+  const items = v.phrases.map(p => {
+    const i = p.indexOf('|');
+    const en = i > 0 ? p.slice(0, i) : p;
+    const cn = i > 0 ? p.slice(i + 1) : '';
+    return `<span class="chip"><b>${en}</b>${cn ? ' ' + cn : ''}</span>`;
+  }).join('');
+  return `<div class="line extra"><span class="k">短语</span><span class="chips">${items}</span></div>`;
+}
+function splitPair(s){
+  const i = s.indexOf('|');
+  return i > 0 ? [s.slice(0, i), s.slice(i + 1)] : [s, ''];
+}
+function exsHTML(v){
+  if(!v.examples || !v.examples.length) return '';
+  const items = v.examples.map(e => {
+    const [en, cn] = splitPair(e);
+    return `<div class="ex-item"><div class="en">${en} <button class="spk" type="button" data-say="${esc(en)}" aria-label="朗读例句">🔊</button></div><div class="cn">${cn}</div></div>`;
+  }).join('');
+  return `<div class="exs">${items}</div>`;
+}
+function examplesText(v){
+  return (v.examples || []).map(e => splitPair(e)[0]).join(' ');
+}
+function bodyHTML(k, v){
+  return sensesHTML(v)
+    + row('用法', v.usage)
+    + row('搭配', v.coll)
+    + chipsHTML(v)
+    + row('词形', v.form, 'extra')
+    + row('近义', v.syn, 'extra')
+    + row('易错', v.note, 'extra')
+    + exsHTML(v);
+}
+
+/* ===== 批注卡 ===== */
+document.addEventListener('click', function(e){
+  const vb = e.target.closest('button.vb');
+  if(vb){
+    const key = vb.dataset.w;
+    const info = VC[key.toLowerCase()];
+    if(!info) return;
+    const existing = document.querySelector('.note-card');
+    if(existing && existing.dataset.w === key){
+      existing.remove(); vb.classList.remove('on'); return;
+    }
+    document.querySelectorAll('.note-card').forEach(n => n.remove());
+    document.querySelectorAll('.vb.on').forEach(n => n.classList.remove('on'));
+    vb.classList.add('on');
+    const card = document.createElement('div');
+    card.className = 'note-card';
+    card.dataset.w = key;
+    card.innerHTML = `
+      <div class="nc-top"><span class="w">${key}</span><span class="pos">${info.pos}</span><span class="cn">${info.cn}</span><button class="nc-x" type="button" aria-label="关闭批注">✕</button></div>
+      ${bodyHTML(key, info)}
+      <div class="row">
+        <button class="mini" data-say="${esc(key)}">读单词</button>
+        <button class="mini" data-say="${esc(examplesText(info))}">读全部例句</button>
+      </div>`;
+    const anchor = vb.closest('p, li');
+    if(anchor){
+      if(anchor.tagName === 'LI') card.classList.add('tight');
+      anchor.after(card);
+    } else {
+      vb.after(card);
+    }
+    requestAnimationFrame(() => card.scrollIntoView({block:'start', behavior:'smooth'}));
+    speak(key);
+    return;
+  }
+  const say = e.target.closest('[data-say]');
+  if(say){ speak(say.dataset.say); return; }
+  const x = e.target.closest('.nc-x');
+  if(x){
+    const card = x.closest('.note-card');
+    const w = card ? card.dataset.w : '';
+    document.querySelectorAll('button.vb').forEach(b => { if(b.dataset.w === w) b.classList.remove('on'); });
+    if(card) card.remove();
+    return;
+  }
+  // 顶部导航高亮
+  const tab = e.target.closest('.tabs a');
+  if(tab){
+    document.querySelectorAll('.tabs a').forEach(a => a.classList.remove('on'));
+    tab.classList.add('on');
+  }
+});
+
+/* ===== 生词索引 ===== */
+const grid = document.getElementById('vgrid');
+let hideCN = false;
+
+function cardHTML(k, v){
+  const cls = hideCN ? ' hide' : '';
+  return `<div class="hd"><span class="wd">${k}</span><span class="ps">${v.pos}</span><span class="cz${cls}">${hideCN ? '••••' : v.cn}</span></div>
+    ${bodyHTML(k, v)}
+    <div class="ft"><button class="mini" data-say="${esc(k)}">读单词</button><button class="mini" data-say="${esc(examplesText(v))}">读例句</button></div>`;
+}
+
+let condensed = false;
+let limit = 24;
+function renderGrid(filter, keepLimit){
+  if(!keepLimit) limit = 24;
+  const kw = (filter || '').trim().toLowerCase();
+  const isEn = /^[a-z'\-\s]+$/.test(kw);
+  const re = isEn && kw ? new RegExp('(^|[^a-z])' + kw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '([^a-z]|$)') : null;
+  const hayOf = (k, v) => [k, v.cn, v.usage, v.coll, (v.senses || []).join(' '), (v.phrases || []).join(' '), v.syn || '', v.note || '', (v.examples || []).join(' ')].join(' ').toLowerCase();
+  const keys = Object.keys(VOCAB);
+  let list = !kw ? keys : keys.filter(k => {
+    const hay = hayOf(k, VOCAB[k]);
+    if(re) return re.test(hay) || k.toLowerCase().indexOf(kw) === 0;
+    return hay.indexOf(kw) >= 0;
+  });
+  // 英文查不到完整词时，退化为前缀匹配（如 fam → famous）
+  if(!list.length && re){
+    const pre = new RegExp('(^|[^a-z])' + kw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '[a-z]*');
+    list = keys.filter(k => pre.test(hayOf(k, VOCAB[k])));
+  }
+  const shown = list.slice(0, limit);
+  const rest = list.length - shown.length;
+  grid.innerHTML = shown.map(k => `<div class="vcard">${cardHTML(k, VOCAB[k])}</div>`).join('')
+    + (rest > 0 ? `<button class="more" type="button" id="more">显示更多（还剩 ${rest} 条）</button>` : '')
+    + (rest > 0 ? `<button class="more ghost" type="button" id="moreAll">展开全部 ${list.length} 条</button>` : '');
+  if(condensed) grid.querySelectorAll('.line.extra').forEach(el => { el.style.display = 'none'; });
+  const more = document.getElementById('more');
+  if(more) more.addEventListener('click', () => { limit += 24; renderGrid(document.getElementById('q').value, true); });
+  const moreAll = document.getElementById('moreAll');
+  if(moreAll) moreAll.addEventListener('click', () => { limit = list.length; renderGrid(document.getElementById('q').value, true); });
+  const c = document.getElementById('count');
+  c.textContent = kw
+    ? `匹配 ${list.length} / 共 ${keys.length} 条${rest > 0 ? `（已显示 ${shown.length} 条）` : ''}`
+    : `共 ${keys.length} 条生词与短语${rest > 0 ? `（已显示 ${shown.length} 条）` : ''}`;
+}
+
+renderGrid('');
+
+document.getElementById('q').addEventListener('input', function(){ renderGrid(this.value); });
+
+document.getElementById('hideBtn').addEventListener('click', function(){
+  hideCN = !hideCN;
+  this.classList.toggle('on', hideCN);
+  this.textContent = hideCN ? '显示中文' : '遮挡中文';
+  renderGrid(document.getElementById('q').value, true);
+});
+
+document.getElementById('allBtn').addEventListener('click', function(){
+  condensed = !condensed;
+  this.classList.toggle('on', condensed);
+  this.textContent = condensed ? '显示全部解析' : '精简解析';
+  document.querySelectorAll('.vcard').forEach(c => {
+    c.querySelectorAll('.line.extra').forEach(el => {
+      el.style.display = condensed ? 'none' : '';
+    });
+  });
+});
+
+/* ===== 回到顶部 ===== */
+(function(){
+  const t = document.getElementById('top');
+  window.addEventListener('scroll', () => t.classList.toggle('on', window.scrollY > 600), {passive:true});
+  t.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+})();
+
+/* ===== 顶部导航跟随滚动 ===== */
+(function(){
+  const secs = ['c1','c2','c3','vocab'].map(id => document.getElementById(id));
+  const links = Array.from(document.querySelectorAll('.tabs a'));
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if(en.isIntersecting){
+        const i = secs.indexOf(en.target);
+        links.forEach(a => a.classList.remove('on'));
+        if(links[i]) links[i].classList.add('on');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  secs.forEach(s => s && io.observe(s));
+})();
+</script>
+
+</div>
+</div>
+
+<footer class="foot"><div class="line"></div>13-1 培优讲练 · 依据所提供试卷整理，答案与解析供复习核对使用</footer>
+
+</body>
+</html>
