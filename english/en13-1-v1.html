@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>13-1 培优精读精讲 · 第13周周一 | Unit 4 Once upon a Time</title>
+<style>
+:root{
+  --paper:#faf9f6;--card:#ffffff;--ink:#1c1b19;--ink2:#454340;--muted:#8b877e;
+  --accent:#b3261e;--accent-soft:#fdf1ef;--ok:#1e7d43;--ok-soft:#eef7f0;
+  --line:#1c1b19;--hair:#e3e0d8;--stack:#f4f2ec;--pop:#fffdf8;
+  --serif:'Noto Serif SC','Songti SC','STSong',serif;
+  --sans:system-ui,-apple-system,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;
+  --mono:ui-monospace,'Cascadia Mono','Consolas',monospace;
+}
+body.dark{
+  --paper:#151412;--card:#1e1c19;--ink:#e8e4dc;--ink2:#c4bfb4;--muted:#8f8a7e;
+  --accent:#e06055;--accent-soft:#2c211e;--ok:#58b983;--ok-soft:#1d2a22;
+  --line:#e8e4dc;--hair:#35322c;--stack:#232019;--pop:#26231e;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.85;font-size:16px}
+#progress{position:fixed;top:0;left:0;height:3px;background:var(--accent);width:0;z-index:99;transition:width .1s}
+/* ============ 报头 ============ */
+.kicker{max-width:860px;margin:0 auto;padding:14px 20px 0;display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--muted);border-top:3px solid var(--line)}
+.hero{max-width:860px;margin:0 auto;padding:26px 20px 22px}
+.hero .no{font-family:var(--serif);font-size:15px;color:var(--accent);letter-spacing:.35em;font-weight:700}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,6vw,52px);font-weight:900;line-height:1.25;margin:8px 0 6px}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero .sub{font-family:var(--serif);font-size:19px;color:var(--ink2);margin-bottom:16px}
+.meta{display:flex;flex-wrap:wrap;gap:8px}
+.meta span{font-family:var(--mono);font-size:12px;color:var(--ink2);border:1px solid var(--hair);padding:4px 12px;border-radius:999px;background:var(--card)}
+/* ============ 工具栏 ============ */
+.toolbar{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--hair)}
+.tin{max-width:860px;margin:0 auto;padding:10px 20px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.tin .nav a{font-family:var(--mono);font-size:12px;color:var(--ink2);text-decoration:none;margin-right:14px;letter-spacing:.05em}
+.tin .nav a:hover{color:var(--accent)}
+.tin .sp{flex:1}
+.btn{font-family:var(--mono);font-size:12.5px;padding:6px 14px;border:1px solid var(--ink);background:var(--card);color:var(--ink);border-radius:999px;cursor:pointer;transition:.15s}
+.btn:hover{background:var(--ink);color:var(--paper)}
+body.dark .btn:hover{background:var(--ink);color:var(--paper)}
+/* ============ 章节 ============ */
+main{max-width:860px;margin:0 auto;padding:10px 20px 60px}
+section.chap{margin-top:56px}
+.chap-head{display:flex;align-items:baseline;gap:16px;border-top:2px solid var(--line);padding-top:18px}
+.chap-head .num{font-family:var(--serif);font-size:52px;font-weight:300;color:var(--accent);line-height:1}
+.chap-head .tt{font-family:var(--serif);font-size:26px;font-weight:900}
+.chap-head .cat{margin-left:auto;font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.1em}
+.dateline{font-family:var(--mono);font-size:12.5px;color:var(--ink2);margin:10px 0 18px;display:flex;flex-wrap:wrap;gap:4px 18px}
+.dateline b{color:var(--ink);font-weight:600}
+.passage{background:var(--card);border:1px solid var(--hair);border-left:3px solid var(--accent);padding:24px 26px;border-radius:0 6px 6px 0}
+.passage p{margin:10px 0;font-size:16.5px;color:var(--ink)}
+.passage .pt{font-family:var(--serif);font-weight:900;font-size:19px;margin-bottom:10px}
+/* 生词标注：红色点线 */
+.w{cursor:pointer;border-bottom:2px dotted var(--accent);padding-bottom:1px;color:var(--ink);font-weight:600;transition:.15s}
+.w:hover{background:var(--accent-soft);border-bottom-style:solid}
+.tag{color:var(--muted);font-size:.92em}
+/* 选项框（六选五备选） */
+.optbank{margin-top:16px;background:var(--stack);border:1px dashed var(--ink2);border-radius:6px;padding:14px 18px}
+.optbank .ob-t{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.15em;margin-bottom:8px}
+.optbank ol{list-style:none}
+.optbank li{margin:5px 0;font-size:15.5px}
+/* 答案空 */
+.blank{display:inline-block;cursor:pointer;vertical-align:baseline}
+.blank b{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:var(--accent);color:#fff;font-family:var(--mono);font-size:13px;margin:0 3px;transition:.15s}
+.blank i{display:none;font-style:normal;background:var(--ok-soft);color:var(--ok);font-family:var(--mono);font-size:14px;font-weight:700;padding:2px 10px;border-radius:5px;margin-left:4px;border:1px solid var(--ok)}
+body.showans .blank i{display:inline-block}
+.blank.open i{display:inline-block}
+body.showans .blank b{background:var(--ok)}
+/* 题目区 */
+.ques{margin-top:22px}
+.qitem{background:var(--card);border:1px solid var(--hair);border-radius:6px;padding:16px 20px;margin:12px 0}
+.qitem .qs{font-size:16px}
+.qitem .qs .qn{font-family:var(--mono);color:var(--accent);font-weight:700;margin-right:8px}
+.qitem .qs .qtag{font-size:12px;color:var(--muted);font-family:var(--mono);margin-left:6px}
+.opts{margin:8px 0 0 30px}
+.opts .op{margin:4px 0;font-size:15.5px;color:var(--ink2)}
+.opts .op b{font-family:var(--mono);color:var(--ink);margin-right:6px}
+.opts .op.right{color:var(--ok);font-weight:700}
+.opts .op.right b::after{content:' ✓';font-weight:900}
+body.showans .opts .op.right{display:list-item}
+.qitem .btn-ana{margin-top:10px;font-family:var(--mono);font-size:12.5px;color:var(--accent);background:none;border:1px dashed var(--accent);border-radius:999px;padding:4px 14px;cursor:pointer}
+.qitem .btn-ana:hover{background:var(--accent-soft)}
+.ana{display:none;margin-top:10px;border-top:1px dashed var(--hair);padding-top:10px}
+.ana.open{display:block}
+.ana li{margin:4px 0 4px 22px;font-size:14.5px;color:var(--ink2);list-style-type:square}
+.ana .key{font-family:var(--mono);color:var(--ok);font-weight:700}
+/* 积累小栈 */
+.stack{margin-top:22px;background:var(--stack);border-radius:6px;padding:18px 22px;border-top:3px solid var(--ink)}
+.stack .sh{font-family:var(--serif);font-weight:900;font-size:17px;display:flex;align-items:center;gap:8px}
+.stack .sh::before{content:'';width:10px;height:10px;background:var(--accent);border-radius:2px;display:inline-block}
+.stack .ss{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.1em;margin-left:8px;font-weight:400}
+.stack ol{margin:10px 0 4px 24px}
+.stack li{margin:5px 0;font-size:15px;color:var(--ink2)}
+.stack .gap{display:inline-block;min-width:90px;border-bottom:1px solid var(--ink2);color:var(--ok);font-weight:700;text-align:center;font-family:var(--mono);font-size:14px}
+body.showans .stack .gap::before{content:attr(data-a)}
+.stack .gap::before{content:''}
+.stack p.hint{font-size:13px;color:var(--muted);margin-top:8px}
+/* 译文 */
+details.trans{margin-top:16px;border:1px solid var(--hair);border-radius:6px;background:var(--card)}
+details.trans summary{cursor:pointer;font-family:var(--serif);font-weight:700;padding:12px 20px;list-style:none;display:flex;align-items:center;gap:8px}
+details.trans summary::before{content:'▸';color:var(--accent);transition:.2s}
+details.trans[open] summary::before{transform:rotate(90deg)}
+details.trans .tb{padding:0 22px 16px;font-size:15px;color:var(--ink2)}
+details.trans .tb p{margin:8px 0}
+/* 逐空解析（还原题） */
+.gap-ana{margin-top:14px}
+.gap-ana details{border:1px solid var(--hair);border-radius:6px;background:var(--card);margin:8px 0}
+.gap-ana summary{cursor:pointer;padding:10px 16px;font-family:var(--mono);font-size:13.5px;list-style:none}
+.gap-ana summary b{color:var(--accent);margin-right:8px}
+.gap-ana div.ab{padding:0 18px 12px;font-size:14.5px;color:var(--ink2)}
+.gap-ana div.ab p{margin:5px 0}
+/* 生词汇总 */
+.vocab-sec{margin-top:60px;border-top:2px solid var(--line);padding-top:18px}
+.vocab-sec h2{font-family:var(--serif);font-size:24px;font-weight:900}
+.vsearch{margin:14px 0;padding:9px 16px;width:100%;max-width:420px;font-size:15px;border:1px solid var(--hair);border-radius:999px;background:var(--card);color:var(--ink);outline:none}
+.vsearch:focus{border-color:var(--accent)}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;margin-top:14px}
+.vcard{background:var(--card);border:1px solid var(--hair);border-radius:6px;padding:12px 14px;position:relative;cursor:pointer;transition:.15s}
+.vcard:hover{border-color:var(--accent)}
+.vcard .ve{font-weight:700;font-size:15.5px}
+.vcard .vph{font-family:var(--mono);font-size:12px;color:var(--muted);margin-left:6px}
+.vcard .vpos{font-size:12px;color:var(--muted)}
+.vcard .vcn{font-size:14px;color:var(--ink2);margin:2px 0}
+.vcard .vex{font-size:12.5px;color:var(--muted);border-top:1px dashed var(--hair);margin-top:6px;padding-top:6px;font-style:italic}
+.vcard .vsyn{font-size:12.5px;color:var(--ink2);background:var(--accent-soft);border-radius:4px;padding:4px 8px;margin:6px 0 0;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.vcard .vphr{font-size:12.5px;color:var(--ink2);background:var(--ok-soft);border-radius:4px;padding:4px 8px;margin:6px 0 0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.vcard .vmore{font-size:11px;color:var(--accent);font-family:var(--mono);text-align:right;margin-top:6px;opacity:.8}
+.vcard .spk{position:absolute;top:8px;right:10px;border:none;background:var(--accent-soft);color:var(--accent);width:26px;height:26px;border-radius:50%;cursor:pointer;font-size:13px}
+.vcard .spk:hover{background:var(--accent);color:#fff}
+.vgrp{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.12em;margin:18px 0 8px;border-bottom:1px solid var(--hair);padding-bottom:4px}
+/* 弹窗 */
+#pop{position:fixed;z-index:100;background:var(--pop);color:var(--ink);border:1px solid var(--ink2);border-radius:10px;box-shadow:0 14px 44px rgba(0,0,0,.22);width:min(400px,92vw);padding:18px 20px;display:none}
+#pop .pw{font-family:var(--serif);font-size:21px;font-weight:900;display:flex;align-items:center;gap:10px}
+#pop .pph{font-family:var(--mono);font-size:13px;color:var(--muted);margin-left:2px}
+#pop .speak{border:none;background:var(--accent-soft);color:var(--accent);width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:14px}
+#pop .speak:hover{background:var(--accent);color:#fff}
+#pop .pcn{margin:6px 0 2px;font-size:16px}
+#pop .pnote{margin:8px 0 0;font-size:14px;color:var(--ink2);background:var(--stack);border-left:3px solid var(--accent);padding:8px 12px;border-radius:0 6px 6px 0}
+#pop .prow{margin:8px 0 0;font-size:13.5px;color:var(--ink2);line-height:1.65}
+#pop .psyn{background:var(--accent-soft);border-left:3px solid var(--accent);padding:7px 12px;border-radius:0 6px 6px 0}
+#pop .ppfr{background:var(--ok-soft);border-left:3px solid var(--ok);padding:7px 12px;border-radius:0 6px 6px 0}
+#pop .pex{margin-top:10px;font-size:14px;font-style:italic}
+#pop .pex em{display:block;font-style:normal;color:var(--muted);font-size:13px}
+#pop .pclose{position:absolute;top:6px;right:8px;border:none;background:none;font-size:17px;cursor:pointer;color:var(--muted)}
+/* footer */
+footer{max-width:860px;margin:0 auto;padding:20px;text-align:center;font-family:var(--mono);font-size:12px;color:var(--muted);border-top:1px solid var(--hair)}
+#backtop{position:fixed;right:22px;bottom:22px;width:44px;height:44px;border-radius:50%;border:1px solid var(--ink2);background:var(--card);color:var(--ink);cursor:pointer;font-size:17px;display:none;z-index:60}
+#backtop:hover{background:var(--ink);color:var(--paper)}
+/* 移动端 */
+@media(max-width:600px){
+  .passage{padding:16px}
+  .chap-head .num{font-size:38px}
+  .chap-head .tt{font-size:21px}
+  .opts{margin-left:8px}
+}
+/* 打印：浅色高对比 A4 */
+@media print{
+  .toolbar,#progress,#backtop,#pop,.vsearch{display:none!important}
+  body{background:#fff;color:#000;font-size:13.5px}
+  .hero h1{font-size:30px}
+  section.chap{margin-top:22px;page-break-inside:avoid}
+  .passage,.qitem,.stack,details.trans,.vcard{border:1px solid #999;box-shadow:none;background:#fff}
+  .w{border-bottom:1px solid #000}
+  .blank i{display:inline-block;border:1px solid #000;color:#000;background:#fff}
+  .opts .op.right{color:#000;font-weight:700}
+  details.trans{display:block}
+  details.trans summary{border-bottom:1px dashed #999}
+  a{text-decoration:none;color:#000}
+}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<header class="kicker"><span>英语培优 · 精读精讲</span><span>2026–2027 学年 · 七年级上</span><span>第 13 周 · 周一</span></header>
+<div class="hero">
+  <div class="no">UNIT 4 · ONCE UPON A TIME</div>
+  <h1>13-1 <em>培优</em>精读精讲</h1>
+  <div class="sub">历史故事 · 世界读书日 · 杨振宁 —— 3 篇精讲，逐题拆解</div>
+  <div class="meta">
+    <span>📑 3 个板块</span><span>✒️ 8 道选择 + 5 个还原空</span><span>🔤 54 条生词短语</span><span>📖 逐题解析</span><span>🔊 点击发音</span>
+  </div>
+</div>
+
+<div class="toolbar"><div class="tin">
+  <nav class="nav"><a href="#c1">壹·闵子骞</a><a href="#c2">贰·读书日</a><a href="#c3">叁·杨振宁</a><a href="#vocab">生词表</a></nav>
+  <span class="sp"></span>
+  <button class="btn" id="btnAll">显示全部释义</button>
+  <button class="btn" id="btnAns">显示全部答案</button>
+  <button class="btn" id="btnDark">夜间模式</button>
+  <button class="btn" id="btnPrint">打印</button>
+</div></div>
+
+<main>
+<!-- ================= 壹 · 闵子骞 ================= -->
+<section class="chap" id="c1">
+  <div class="chap-head"><span class="num">壹</span><span class="tt">阅读理解 C · 芦衣顺母</span><span class="cat">历史故事 · 记叙文</span></div>
+  <div class="dateline"><span>主题 <b>人与社会——历史故事</b></span><span>词数 <b>135</b></span><span>难度 <b>★★★☆☆</b></span><span>建议用时 <b>7′</b></span><span>正确率 <b>/4</b></span></div>
+  <article class="passage">
+    <p class="pt">Min Sun and the Reed Clothes</p>
+    <p>Min Sun was a man in the <span class="w" data-k="state">State</span> of Lu. He was a student of <span class="w" data-k="confucius">Confucius</span>. Among all students of Confucius, he was <span class="w" data-k="befamousfor">famous for</span> <span class="w" data-k="moral">moral</span> <span class="w" data-k="conduct">conduct</span><span class="tag">（德行）</span>.</p>
+    <p>Min Sun's mother <span class="w" data-k="passaway">passed away</span> early. Later his father took another wife. She gave birth to two sons. The <span class="w" data-k="stepmother">stepmother</span> wasn't good to Min Sun. In winter, two younger brothers wore winter clothes made of <span class="w" data-k="cotton">cotton</span>, but Min Sun only wore clothes with <span class="w" data-k="reedcattins">reed cattins</span><span class="tag">（芦苇）</span>.</p>
+    <p>One day, Min Sun followed his father to go out. He <span class="w" data-k="accidentally">accidentally</span><span class="tag">（偶然地）</span> dropped something onto the ground. Then his father hit him. The reed cattins flew out from the broken <span class="w" data-k="seam">seam</span><span class="tag">（接缝）</span> of the thin clothes, and then his father knew that his wife wasn't good to Min Sun.</p>
+    <p>After the father came back home, he wanted his wife to leave Min Sun's home. Min Sun fell to his <span class="w" data-k="knees">knees</span> and asked his father to <span class="w" data-k="forgive">forgive</span><span class="tag">（原谅）</span> the stepmother. He said, "If Mother stays at home, only I myself have to feel cold. But if you <span class="w" data-k="driveaway">drive</span> Mother <span class="w" data-k="driveaway2">away</span>, all three children will have to feel cold."</p>
+    <p>His father was deeply <span class="w" data-k="moved">moved</span> and took Min Sun's <span class="w" data-k="advice">advice</span>. The stepmother <span class="w" data-k="hearof">heard of</span> this, felt sorry and began to be good to Min Sun. And she <span class="w" data-k="treat">treated</span> Min Sun as her own son.</p>
+  </article>
+  <div class="ques" id="quesC"></div>
+  <div class="stack"><div class="sh">积累小栈<span class="ss">C 篇 · 短语与句式</span></div>
+    <ol>
+      <li>1. 以……著名 <span class="gap" data-a="be famous for"></span></li>
+      <li>2. pass away <span class="gap" data-a="去世；逝世"></span></li>
+      <li>3. 待在家里 <span class="gap" data-a="stay at home"></span></li>
+      <li>4. hear of <span class="gap" data-a="听说"></span></li>
+      <li>5. 这件 T 恤是丝做的，摸起来很光滑。<br>This T-shirt <span class="gap" data-a="is made of"></span> silk and it feels very smooth.</li>
+      <li>6. 老人悉心照顾他的狗，把它当作朋友对待。<br>The old man takes good care of his dog and <span class="gap" data-a="treats"></span> it <span class="gap" data-a="as"></span> a friend.</li>
+    </ol>
+    <p class="hint">📌 第 5 题考 be made of（看得出原料，物理变化）；第 6 题考 treat...as「把……当作」，也可用 regard...as。</p>
+  </div>
+  <details class="trans"><summary>参考译文 · 闵子骞与芦花衣</summary><div class="tb">
+    <p>闵子骞是鲁国人，是孔子的学生。在孔子的所有学生中，他以德行著称。</p>
+    <p>闵子骞的母亲很早就去世了。后来父亲又娶了一位妻子，她生了两个儿子。继母对闵子骞不好。冬天，两个弟弟穿着棉做的冬衣，闵子骞却只穿着芦苇絮的衣服。</p>
+    <p>一天，闵子骞随父亲出门，不小心把东西掉在地上。父亲打了他，芦苇絮从薄衣破裂的接缝处飞了出来，父亲这才知道妻子对闵子骞不好。</p>
+    <p>父亲回家后想让妻子离开闵家。闵子骞跪下来请求父亲原谅继母，说："如果母亲留在家里，只有我一个人受冷；但若把母亲赶走，三个孩子都要挨冻。"</p>
+    <p>父亲深受感动，听从了闵子骞的劝告。继母听说后十分懊悔，从此对闵子骞很好，把他当作亲儿子对待。</p>
+  </div></details>
+</section>
+
+<!-- ================= 贰 · 世界读书日 ================= -->
+<section class="chap" id="c2">
+  <div class="chap-head"><span class="num">贰</span><span class="tt">阅读理解 D · 世界读书日</span><span class="cat">文化节日 · 说明文</span></div>
+  <div class="dateline"><span>主题 <b>人与社会——世界节日</b></span><span>词数 <b>168</b></span><span>难度 <b>★★★☆☆</b></span><span>建议用时 <b>7′</b></span><span>正确率 <b>/4</b></span></div>
+  <article class="passage">
+    <p class="pt">The Magic of World Book Day</p>
+    <p>23 April is World Book and <span class="w" data-k="copyright">Copyright</span> Day. It was <span class="w" data-k="setup">set up</span> by <span class="w" data-k="unesco">UNESCO</span> in 1995 to <span class="w" data-k="encourage">encourage</span> people around the world to enjoy reading and respect the <span class="w" data-k="creator">creators</span> of books.</p>
+    <p>This special day was chosen to <span class="w" data-k="honour">honour</span> some of the world's most famous writers, like William Shakespeare and Miguel de Cervantes, who both passed away on this day. It also connects to a beautiful tradition from Catalonia, Spain, where a brave knight<span class="tag">（骑士）</span> named George received a book as a gift, <span class="w" data-k="symbolize">symbolizing</span> <span class="w" data-k="courage">courage</span> and <span class="w" data-k="wisdom">wisdom</span>. Today, this tradition has become a <span class="w" data-k="custom">custom</span> where people <span class="w" data-k="exchange">exchange</span> books and roses. The book <span class="w" data-k="standfor">stands for</span> wisdom, and the rose stands for love.</p>
+    <p>On World Book Day, many schools and libraries hold fun activities to <span class="w" data-k="promote">promote</span><span class="tag">（促进）</span> reading. These can include reading <span class="w" data-k="marathon">marathons</span>, <span class="w" data-k="bookfair">book fairs</span>, and storytelling events. It's a day to <span class="w" data-k="remind">remind</span> us that books are like keys that open doors to new worlds. Through books, we can learn about animals, science, history, and different cultures.</p>
+  </article>
+  <div class="ques" id="quesD"></div>
+  <div class="stack"><div class="sh">积累小栈<span class="ss">D 篇 · 读有所思 + 集有所用</span></div>
+    <ol>
+      <li>☆ 读有所思：What do books bring us? <span class="gap" data-a="Books bring us knowledge, joy and new worlds."></span></li>
+      <li>1. World Book and Copyright Day <span class="gap" data-a="世界图书日（世界图书与版权日）"></span></li>
+      <li>2. UNESCO <span class="gap" data-a="联合国教科文组织"></span></li>
+      <li>3. respect the creators of books <span class="gap" data-a="尊重书籍创作者"></span></li>
+      <li>4. honour famous writers <span class="gap" data-a="纪念/敬慕著名作家"></span></li>
+      <li>5. symbolize courage and wisdom <span class="gap" data-a="象征勇气与智慧"></span></li>
+      <li>6. promote reading <span class="gap" data-a="推广/促进阅读"></span></li>
+      <li>7. reading marathons <span class="gap" data-a="阅读马拉松"></span></li>
+      <li>8. book fairs <span class="gap" data-a="书展；图书集市"></span></li>
+      <li>9. remind us that... <span class="gap" data-a="提醒我们……（that 引导宾语从句）"></span></li>
+    </ol>
+    <p class="hint">📌 读有所思是开放题，答案不唯一：Books bring us knowledge, happiness and the whole world. They open doors to new worlds and help us grow.</p>
+  </div>
+  <details class="trans"><summary>参考译文 · 世界读书日的魔力</summary><div class="tb">
+    <p>4 月 23 日是世界图书与版权日。它由联合国教科文组织于 1995 年设立，旨在鼓励全世界的人享受阅读、尊重书籍创作者。</p>
+    <p>选定这一天是为了纪念一些世界最著名的作家，如威廉·莎士比亚和米格尔·德·塞万提斯——他们都是在这一天去世的。它还与西班牙加泰罗尼亚的一个美丽传统有关：一位名叫乔治的勇敢骑士得到一本书作为礼物，象征着勇气与智慧。如今这一传统已成习俗——人们互赠图书与玫瑰。书代表智慧，玫瑰代表爱。</p>
+    <p>在世界读书日，许多学校和图书馆举办有趣的活动来促进阅读，包括阅读马拉松、书展和讲故事活动。这一天提醒我们：书就像打开新世界大门的钥匙。通过书，我们可以了解动物、科学、历史和不同的文化。</p>
+  </div></details>
+</section>
+
+<!-- ================= 叁 · 杨振宁 ================= -->
+<section class="chap" id="c3">
+  <div class="chap-head"><span class="num">叁</span><span class="tt">阅读还原六选五 · 杨振宁</span><span class="cat">人物传记 · 记叙文</span></div>
+  <div class="dateline"><span>主题 <b>人与社会——人物传记</b></span><span>短篇填空·记叙文</span><span>词数 <b>277</b></span><span>难度 <b>★★★☆☆</b></span><span>建议用时 <b>7′</b></span><span>正确率 <b>/5</b></span></div>
+  <article class="passage">
+    <p class="pt">Yang Chen-Ning—A Great Scientist</p>
+    <p>Yang Chen-Ning was a <span class="w" data-k="worldfamous">world-famous</span> <span class="w" data-k="physicist">physicist</span> and a <span class="w" data-k="nobelprize">Nobel Prize</span> winner. He passed away in Beijing on 18 October, 2025, when he was 103 years old. As a member of the Chinese <span class="w" data-k="academy">Academy</span> of Sciences and a teacher at Tsinghua University, <span class="blank" data-n="1"><b>1</b><i>F</i></span> because of his great <span class="w" data-k="contribution">contributions</span>.</p>
+    <p>Yang was born in Hefei, Anhui in 1922. He had a wonderful study life. First, he studied at famous universities in China. Later, <span class="blank" data-n="2"><b>2</b><i>B</i></span>, and got his <span class="w" data-k="phd">PhD</span> from the University of Chicago. In 1957, he worked with his partner Tung-Dao Lee and <span class="w" data-k="putforward">put forward</span> the <span class="w" data-k="theory">theory</span> of parity non-conservation in weak <span class="w" data-k="interaction">interaction</span>. <span class="blank" data-n="3"><b>3</b><i>A</i></span>, they won the Nobel Prize in Physics. They became the first Chinese to get this prize. Yang's "Yang-Mills Theory" is also seen as an important part of modern physics.</p>
+    <p>Yang loved his <span class="w" data-k="motherland">motherland</span> deeply. In 1971, he returned to China for the first time since 1945. After that, he helped <span class="w" data-k="buildlinks">build links</span> between Chinese and American scientists. He gave advice on China's scientific development, <span class="w" data-k="raisemoney">raised money</span> for Chinese <span class="w" data-k="scholar">scholars</span> to study abroad, and in 1999, <span class="blank" data-n="4"><b>4</b><i>D</i></span>. He worked hard to train young <span class="w" data-k="talent">talent</span> and help develop basic scientific research in China.</p>
+    <p>Yang Chen-Ning lived a long life of 103 years. He was a <span class="w" data-k="legend">legend</span> who explored the unknown and served his country. <span class="blank" data-n="5"><b>5</b><i>E</i></span> will always encourage young people to work hard for science and national development.</p>
+    <div class="optbank"><div class="ob-t">备选选项 · SIX OPTIONS</div><ol>
+      <li><b>A.</b> For this great work</li>
+      <li><b>B.</b> he went to the US to learn more</li>
+      <li><b>C.</b> He made great progress in his study</li>
+      <li><b>D.</b> he went back to Tsinghua University</li>
+      <li><b>E.</b> His spirit of <span class="w" data-k="seek">seeking</span> truth and loving his motherland</li>
+      <li><b>F.</b> he was <span class="w" data-k="hailedas">hailed as</span> "<span class="w" data-k="immortal">immortal</span>" in the university's <span class="w" data-k="notice">notice</span></li>
+    </ol></div>
+  </article>
+  <div class="gap-ana" id="gapAnaY"></div>
+  <div class="stack"><div class="sh">积累小栈<span class="ss">叁 · 集有所用 + 识有所悟</span></div>
+    <ol>
+      <li>1. world-famous physicist <span class="gap" data-a="一位世界著名的物理学家"></span></li>
+      <li>2. the Chinese Academy of Sciences <span class="gap" data-a="中国科学院"></span></li>
+      <li>3. be hailed as... <span class="gap" data-a="被誉为……"></span></li>
+      <li>4. great contributions <span class="gap" data-a="巨大贡献"></span></li>
+      <li>5. go to the US to learn more <span class="gap" data-a="去美国深造"></span></li>
+      <li>6. get one's PhD <span class="gap" data-a="获得博士学位"></span></li>
+      <li>7. put forward <span class="gap" data-a="提出"></span></li>
+      <li>8. build links between A and B <span class="gap" data-a="在 A 和 B 之间建立联系"></span></li>
+      <li>9. train young talent <span class="gap" data-a="培养青年人才"></span></li>
+      <li>10. develop basic scientific research <span class="gap" data-a="发展基础科学研究"></span></li>
+      <li>11. serve one's country <span class="gap" data-a="报效祖国"></span></li>
+      <li>12. the spirit of seeking truth <span class="gap" data-a="追求真理的精神"></span></li>
+    </ol>
+    <p class="hint">☆ 识有所悟 · 诺贝尔奖：诺贝尔奖是以瑞典化学家诺贝尔的遗产设立的国际奖项，旨在表彰对人类做出杰出贡献的人。最初设物理学、化学、生理学或医学、文学与和平五个奖项，后来增设了经济学奖。每年评选一次，获奖者来自世界各地，代表了相关领域的最高成就。该奖项历史悠久，影响力极大，是全球公认的最高荣誉之一。</p>
+  </div>
+  <details class="trans"><summary>参考译文 · 杨振宁——伟大的科学家</summary><div class="tb">
+    <p>杨振宁是世界著名的物理学家、诺贝尔物理学奖得主。2025 年 10 月 18 日，他在北京逝世，享年 103 岁。作为中国科学院院士和清华大学教师，他因巨大贡献在大学的讣告中被誉为"不朽"。</p>
+    <p>杨振宁 1922 年生于安徽合肥，求学之路精彩纷呈。他先在中国著名大学学习，后来赴美深造，获芝加哥大学博士学位。1957 年，他与合作伙伴李政道提出弱相互作用中宇称不守恒理论，并因此获得诺贝尔物理学奖，成为最早获此奖的中国人。他的"杨-米尔斯理论"也被视为现代物理的重要组成部分。</p>
+    <p>杨振宁深深热爱祖国。1971 年，他自 1945 年后首次回国。此后，他助力搭建中美科学家之间的桥梁，为中国科学发展建言献策，为中国学者出国深造筹措经费，并于 1999 年回到清华大学。他努力培养青年人才，助力中国基础科学研究的发展。</p>
+    <p>杨振宁享年 103 岁。他是探索未知、报效祖国的传奇人物。他追求真理、热爱祖国的精神将永远激励年轻人为科学与国家发展而奋斗。</p>
+  </div></details>
+</section>
+
+<!-- ================= 生词汇总 ================= -->
+<section class="vocab-sec" id="vocab">
+  <h2>生词与短语 · 集总</h2>
+  <input class="vsearch" id="vsearch" type="text" placeholder="🔍 输入英文或中文筛选生词…">
+  <div id="vocabBox"></div>
+</section>
+</main>
+
+<footer>13-1 培优 · 精读精讲 | Unit 4 Once upon a Time | 单文件 · 离线可用 · 🐾</footer>
+<button id="backtop" title="回到顶部">↑</button>
+<div id="pop" role="dialog"></div>
+
+<script>
+const VOCAB = [
+{k:"state",g:"壹",en:"state",ph:"/steɪt/",pos:"n. / v.",cn:"州；国家；状态",senses:"n. ①州（美国行政单位）②国家；政府 ③状态 ｜ v. 陈述；声明",note:"the State of Lu 鲁国（古代诸侯国译作 state，大写表专有）；作动词时 state one's opinion 陈述观点。",syn:"country / nation / state 辨析：country 侧重国土（a beautiful country）；nation 侧重民族与国民；state 侧重政治政权（member states 成员国）。",phr:"the United States 美国；state of mind 心态；in a good state 处于良好状态",ex:"Min Sun was a man in the State of Lu.",exCn:"闵子骞是鲁国人。",ex2:"Water has three states: solid, liquid and gas.",ex2Cn:"水有固、液、气三种状态。"},
+{k:"confucius",g:"壹",en:"Confucius",ph:"/kənˈfjuːʃiəs/",pos:"n.",cn:"孔子",senses:"中国古代思想家、教育家，儒家学派创始人",note:"以 s 结尾的专名所有格只加撇号：Confucius' ideas 孔子的思想；相关词 Confucian 儒家的、Confucianism 儒家思想。",syn:"无严格近义；关联词 sage（圣人）：Confucius is regarded as a great sage（孔子被视为伟大的圣人）。",phr:"Confucius Institute 孔子学院；the Analects of Confucius《论语》；Confucius' wisdom 孔子的智慧",ex:"He was a student of Confucius.",exCn:"他是孔子的学生。",ex2:"Confucius' wisdom still influences us today.",exCn:"孔子的智慧至今仍影响着我们。"},
+{k:"befamousfor",g:"壹",en:"be famous for",ph:"",pos:"短语",cn:"因……而著名",senses:"—",note:"be famous for + 出名的原因（事物/特点）；be famous as + 出名的身份。本篇积累小栈第 1 题考点。",syn:"be known for（同义，书面常用）/ be famous as 辨析：Hangzhou is famous for the West Lake（以事物出名）；Hangzhou is famous as a beautiful city（以身份出名）。",phr:"be famous for 以……著名；be well known 众所周知；world-famous 世界闻名的",ex:"He was famous for moral conduct.",exCn:"他以德行著称。",ex2:"My hometown is famous for its tea.",exCn:"我的家乡以茶叶闻名。"},
+{k:"moral",g:"壹",en:"moral",ph:"/ˈmɒrəl/",pos:"adj. / n.",cn:"道德的；寓意",senses:"adj. ①道德的 ②品行端正的 ｜ n. 寓意；教训",note:"moral conduct 德行；n. 义常见于寓言结尾 The moral of the story is...（故事的寓意是……），阅读主旨题高频。",syn:"moral / ethic 辨析：moral 侧重个人品德与社会公德；ethic 侧重职业、行业伦理（work ethic 职业操守）。",phr:"moral conduct 德行；moral education 德育；draw a moral from... 从……中吸取教训",ex:"Among all students of Confucius, he was famous for moral conduct.",exCn:"在孔子的所有学生中，他以德行著称。",ex2:"Every story has a moral.",exCn:"每个故事都有寓意。"},
+{k:"conduct",g:"壹",en:"conduct",ph:"/ˈkɒndʌkt/",pos:"n. / v.",cn:"行为；品行；指挥；实施",senses:"n. /ˈkɒndʌkt/ 行为；品行 ｜ v. /kənˈdʌkt/ ①指挥（乐队）②实施；进行",note:"重音区分词性：名词重音在前 /ˈkɒndʌkt/，动词重音在后 /kənˈdʌkt/；conduct an experiment 做实验。",syn:"conduct / behavior 辨析：behavior 泛指行为表现（good behavior 表现好）；conduct 侧重道德层面的品行（moral conduct 德行）。",phr:"moral conduct 德行；conduct an experiment 进行实验；rules of conduct 行为准则",ex:"He was famous for moral conduct.",exCn:"他以德行著称。",ex2:"The scientist conducted an experiment last week.",exCn:"那位科学家上周做了一项实验。"},
+{k:"passaway",g:"壹",en:"pass away",ph:"",pos:"短语",cn:"去世；逝世",senses:"—",note:"die 的委婉说法，更礼貌庄重；本篇出现两次（闵母早逝、杨振宁逝世），人物传记类阅读高频。",syn:"die（直白）/ pass away（委婉庄重）/ lose one's life（死于事故灾难）辨析：写名人逝世、人物讣告用 pass away 更得体；die of illness 死于疾病、die from accidents 死于事故。",phr:"pass away 去世；pass by 路过；pass on 传递；pass down 传承",ex:"Min Sun's mother passed away early.",exCn:"闵子骞的母亲很早就去世了。",ex2:"Yang Chen-Ning passed away in Beijing on 18 October, 2025.",exCn:"杨振宁于 2025 年 10 月 18 日在北京逝世。"},
+{k:"stepmother",g:"壹",en:"stepmother",ph:"/ˈstepmʌðə/",pos:"n.",cn:"继母",senses:"—",note:"step- 前缀表「继/后」：stepfather 继父、stepson 继子、stepdaughter 继女、stepbrother 继兄弟；对比 mother-in-law 岳母/婆婆（姻亲）。",syn:"无严格近义；对比 adoptive mother（养母）：stepmother 是再婚带来的，adoptive mother 是收养的。",phr:"stepparent 继父母；stepfamily 继亲家庭；stepson 继子",ex:"The stepmother wasn't good to Min Sun.",exCn:"继母对闵子骞不好。",ex2:"In the end, she treated her stepson as her own child.",exCn:"最后她把继子当亲生孩子对待。"},
+{k:"cotton",g:"壹",en:"cotton",ph:"/ˈkɒtn/",pos:"n. / adj.",cn:"棉花；棉布；棉制的",senses:"n. ①棉花（植物）②棉布 ｜ adj. 棉制的",note:"clothes made of cotton 用 be made of（看得出原料）；材质词汇链：silk 丝、wool 羊毛、leather 皮革、gold 金。",syn:"be made of / be made from 辨析：made of 看得出原料（a table made of wood）；made from 看不出原料（paper is made from wood）——语法高频考点。",phr:"a cotton T-shirt 纯棉 T 恤；cotton clothes 棉衣；grow cotton 种棉花",ex:"In winter, two younger brothers wore winter clothes made of cotton.",exCn:"冬天，两个弟弟穿着棉做的冬衣。",ex2:"This T-shirt is made of silk, not cotton.",exCn:"这件 T 恤是丝做的，不是棉的。"},
+{k:"reedcattins",g:"壹",en:"reed cattins",ph:"",pos:"n.",cn:"芦苇（絮）",senses:"reed n. 芦苇；cattail n. 香蒲/芦苇穗",note:"原文印作 cattins，规范拼写是 cattails /ˈkætteɪlz/；芦苇絮填充衣物正是「芦衣顺母」典故的由来。",syn:"无近义；关联植物词：straw 稻草（straw hat 草帽）、feather 羽毛（down jackets 羽绒服的填充物）。",phr:"reeds by the river 河边的芦苇；reed field 芦苇荡",ex:"Min Sun only wore clothes with reed cattins.",exCn:"闵子骞只穿芦苇絮做的衣服。",ex2:"The wind blew through the reeds by the river.",exCn:"风吹过河边的芦苇。"},
+{k:"accidentally",g:"壹",en:"accidentally",ph:"/ˌæksɪˈdentəli/",pos:"adv.",cn:"偶然地；意外地",senses:"—",note:"accident n. 事故（by accident 偶然）→ accidentally adv.；副词修饰整个动作 dropped。反义：on purpose 故意地。",syn:"accidentally / by accident（偶然）vs on purpose / deliberately（故意）辨析：听力和完形常考这组反义对照——He broke it on purpose, not accidentally.（他是故意的，不是不小心）。",phr:"by accident 偶然；on purpose 故意；drop sth. accidentally 不小心掉了某物",ex:"He accidentally dropped something onto the ground.",exCn:"他不小心把东西掉在地上。",ex2:"I met my old friend by accident in the street.",exCn:"我在街上偶然遇到了老朋友。"},
+{k:"seam",g:"壹",en:"seam",ph:"/siːm/",pos:"n.",cn:"接缝；线缝",senses:"—",note:"与 seem（似乎）同音异义 /siːm/——听力与拼写高频易混词。",syn:"seam（接缝，名词）vs seem（似乎，动词）辨析：同音形近词；The bag seems old, and its seams are loose.（包看起来旧，缝线松了）一句可对照记。",phr:"a broken seam 破裂的接缝；split at the seams 沿接缝裂开",ex:"The reed cattins flew out from the broken seam of the thin clothes.",exCn:"芦苇絮从薄衣破裂的接缝处飞了出来。",ex2:"The bag seemed old, and its seams were loose.",exCn:"包看起来很旧，缝线都松了。"},
+{k:"knees",g:"壹",en:"fall to one's knees",ph:"",pos:"短语",cn:"跪下；跪倒",senses:"knee n. 膝盖",note:"one's 与主语一致（his knees / my knees）；身体部位短语链：nod one's head 点头、shake one's hand 握手、lose one's way 迷路。",syn:"kneel down（同义，kneel-knelt-knelt）/ fall to one's knees 辨析：两者都表跪下，fall to one's knees 更有画面感（因恳求或震撼而跌跪）。",phr:"fall to one's knees 跪下；kneel down 跪下；on one's knees 跪着；beg on one's knees 跪地恳求",ex:"Min Sun fell to his knees and asked his father to forgive the stepmother.",exCn:"闵子骞跪下请求父亲原谅继母。",ex2:"He knelt down to help the old man up.",exCn:"他跪下扶老人起来。"},
+{k:"forgive",g:"壹",en:"forgive",ph:"/fəˈɡɪv/",pos:"v.",cn:"原谅；宽恕",senses:"—",note:"不规则动词 forgive-forgave-forgiven；句型 forgive sb. for (doing) sth. 原谅某人（做）某事。",syn:"forgive / pardon / excuse 辨析：excuse 原谅小过失（Excuse me 打扰了）；pardon 较正式（I beg your pardon 请再说一遍）；forgive 从心里宽恕，程度最深、最走心。",phr:"forgive and forget 不念旧恶；forgive sb. for sth. 原谅某人某事；ask for forgiveness 请求原谅",ex:"Min Sun asked his father to forgive the stepmother.",exCn:"闵子骞请求父亲原谅继母。",ex2:"She forgave me for being late.",exCn:"她原谅了我迟到。"},
+{k:"driveaway",g:"壹",en:"drive",ph:"/draɪv/",pos:"v. / n.",cn:"驱赶；驾驶；迫使",senses:"v. ①驾驶 ②驱赶 ③迫使 ｜ n. 私人车道；驱动力",note:"本篇是「驱赶」义（drive...away）；drive sb. to do sth. 迫使某人做某事；drive 驾驶义为初中高频（drive a car）。",syn:"drive away（赶走）/ push（推）/ force（强迫）辨析：drive away 强调「使其离开」；force sb. to do 强迫做事。",phr:"drive away 赶走；drive a car 开车；drive sb. mad 使某人发疯；drive slowly 慢慢开车",ex:"If you drive Mother away, all three children will have to feel cold.",exCn:"如果你赶走母亲，三个孩子都要挨冻。",ex2:"My father drives to work every day.",exCn:"我父亲每天开车上班。"},
+{k:"driveaway2",g:"壹",en:"away",ph:"/əˈweɪ/",pos:"adv.",cn:"离开；远离；在别处",senses:"—",note:"方向副词：drive / run / go / throw / take away；be away from + 地点 = 离某地（有距离）。",syn:"away / off 辨析：off 更强调「脱离」（take off 脱下、起飞）；away 强调距离与方向（far away 遥远）。",phr:"run away 逃跑；give away 赠送；泄露；be away from 离……有……远；far away 遥远",ex:"But if you drive Mother away, all three children will have to feel cold.",exCn:"但如果你把母亲赶走，三个孩子都要挨冻。",ex2:"The school is two kilometers away from my home.",exCn:"学校离我家两公里。"},
+{k:"moved",g:"壹",en:"moved",ph:"/muːvd/",pos:"adj.",cn:"感动的",senses:"move v. ①移动 ②搬（家）③感动",note:"-ed 形容词修饰人（feel / be moved）；-ing 形容词修饰事物（a moving story 感人的故事）——非谓语形容词高频考点。",syn:"moved（人感到感动）/ moving（令人感动的）辨析 + 近义 touched：be touched by 深受触动。He was moved by the moving film.（他被这部感人的电影感动了）一句对照记。",phr:"be deeply moved 深受感动；be moved to tears 感动落泪；a moving film 一部感人的电影",ex:"His father was deeply moved and took Min Sun's advice.",exCn:"父亲深受感动，听从了闵子骞的劝告。",ex2:"It was such a moving movie that I was moved to tears.",exCn:"电影太感人了，我看得热泪盈眶。"},
+{k:"advice",g:"壹",en:"advice",ph:"/ədˈvaɪs/",pos:"n.（不可数）",cn:"建议；劝告",senses:"—",note:"不可数名词！一条建议 = a piece of advice（an advice ✗）；动词是 advise（拼写 c→s）；take one's advice 听从建议。",syn:"advice / suggestion 辨析：advice 不可数（give sb. some advice）；suggestion 可数（make a suggestion）——语法填空高频考点。",phr:"take one's advice 听从劝告；give sb. some advice on... 在某方面给某人建议；a piece of advice 一条建议",ex:"His father was deeply moved and took Min Sun's advice.",exCn:"父亲深受感动，听从了闵子骞的劝告。",ex2:"The teacher gave us some useful advice on learning English.",exCn:"老师给我们提了一些学英语的有用建议。"},
+{k:"hearof",g:"壹",en:"hear of",ph:"",pos:"短语",cn:"听说",senses:"—",note:"hear of 间接听说（知道有此人此事）；hear from 收到……的来信；hear 直接听见——三短语必分清。",syn:"hear / hear of / hear from 辨析：hear 直接听见（I heard a noise）；hear of 听说过（I've never heard of him 我从没听说过他）；hear from 收到来信（hear from my pen friend）。",phr:"hear of 听说；hear from 收到……来信；hear about 听说（详情）；hear sb. out 听某人把话说完",ex:"The stepmother heard of this, felt sorry and began to be good to Min Sun.",exCn:"继母听说了这件事，感到懊悔，开始对闵子骞好。",ex2:"I hear from my pen friend once a month.",exCn:"我每月收到笔友一封信。"},
+{k:"treat",g:"壹",en:"treat",ph:"/triːt/",pos:"v. / n.",cn:"对待；治疗；招待；请客",senses:"v. ①对待 ②治疗（病人）③招待 ｜ n. 款待；乐事",note:"treat...as 把……当作；treat the patient 给病人治疗；It's my treat. 我请客。积累小栈第 6 题考点。",syn:"treat...as / regard...as / consider...as 辨析：都表「把……当作」，treat 强调行为上的对待；regard / consider 强调看法与评价。",phr:"treat...as 把……当作；treat sb. well 善待某人；treat the patient 治疗病人；It's my treat. 我请客",ex:"And she treated Min Sun as her own son.",exCn:"她把闵子骞当作亲儿子对待。",ex2:"The doctor treated the boy's broken arm.",exCn:"医生给男孩治疗骨折的手臂。"},
+{k:"copyright",g:"贰",en:"copyright",ph:"/ˈkɒpiraɪt/",pos:"n. / adj.",cn:"版权",senses:"n. 版权 ｜ adj. 受版权保护的 ｜ v. 取得……的版权",note:"copy（复制）+ right（权利）合成词；© 符号即 copyright；节日全称 World Book and Copyright Day。",syn:"copyright（版权）/ authorship（作者身份）辨析：copyright 保护作品权利，authorship 指作者是谁；respect the copyright 尊重版权。",phr:"World Book and Copyright Day 世界图书与版权日；copyright law 版权法；break copyright law 违反版权法",ex:"23 April is World Book and Copyright Day.",exCn:"4 月 23 日是世界图书与版权日。",ex2:"Downloading pirated books breaks copyright law.",exCn:"下载盗版书违反版权法。"},
+{k:"unesco",g:"贰",en:"UNESCO",ph:"",pos:"n.（缩写）",cn:"联合国教科文组织",senses:"United Nations Educational, Scientific and Cultural Organization（联合国教育、科学及文化组织）",note:"缩写词全大写；同类缩写：UN 联合国、WHO 世界卫生组织、WTO 世界贸易组织、NBA 美职篮。",syn:"对比 UN（联合国）：UNESCO 是联合国下属专门机构，主管教育、科学、文化——名称里就含 Educational / Scientific / Cultural。",phr:"UNESCO World Heritage Sites 联合国教科文组织世界遗产；a UNESCO world heritage city 世界遗产城市",ex:"It was set up by UNESCO in 1995.",exCn:"它于 1995 年由联合国教科文组织设立。",ex2:"The Great Wall is a UNESCO World Heritage Site.",exCn:"长城是联合国教科文组织认定的世界遗产。"},
+{k:"setup",g:"贰",en:"set up",ph:"",pos:"短语",cn:"建立；设立",senses:"—",note:"= establish；set-set-set 三态同形；被动 was set up 表「被设立」；宾语常是组织、公司、学校。",syn:"set up / establish / found 辨析：set up 口语常用、大小机构均可；establish 正式（establish a company）；found 着重「奠基创立」（The PRC was founded in 1949）。",phr:"set up a company 开公司；set up a school 建学校；set out 出发；set off 动身；set aside 留出",ex:"It was set up by UNESCO in 1995.",exCn:"它于 1995 年由教科文组织设立。",ex2:"His grandfather set up a small shop fifty years ago.",exCn:"他祖父五十年前开了一家小商店。"},
+{k:"encourage",g:"贰",en:"encourage",ph:"/ɪnˈkʌrɪdʒ/",pos:"v.",cn:"鼓励；激励",senses:"—",note:"encourage sb. to do sth. 鼓励某人做某事；en-（使……）+ courage（勇气）= 使人勇敢；反义 discourage 使泄气。",syn:"encourage / inspire / support 辨析：encourage 鼓励（给予勇气去做）；inspire 激励、鼓舞（激发灵感与斗志）；support 支持（提供帮助）。",phr:"encourage sb. to do sth. 鼓励某人做某事；be encouraged by... 受到……鼓舞；encouraging words 鼓励的话",ex:"It was set up in 1995 to encourage people around the world to enjoy reading.",exCn:"它于 1995 年设立，旨在鼓励全世界的人享受阅读。",ex2:"My parents always encourage me to try new things.",exCn:"父母总是鼓励我尝试新事物。"},
+{k:"creator",g:"贰",en:"creator",ph:"/kriˈeɪtə/",pos:"n.",cn:"创造者；创作者",senses:"—",note:"create v. 创造 → creator n.（-or 表人）；同类构词：inventor 发明家、visitor 访客。",syn:"creator / author / writer 辨析：author 指书籍的作者；writer 泛指写作者；creator 泛指一切创作者（画家、程序员、发明者均可）。",phr:"the creators of books 书籍创作者；create a work of art 创作艺术作品；creative 有创造力的",ex:"...to encourage people to enjoy reading and respect the creators of books.",exCn:"……鼓励人们享受阅读、尊重书籍创作者。",ex2:"Walt Disney was the creator of Mickey Mouse.",exCn:"华特·迪士尼是米老鼠的创造者。"},
+{k:"honour",g:"贰",en:"honour",ph:"/ˈɒnə/",pos:"v. / n.",cn:"纪念；尊敬；荣誉",senses:"v. ①纪念；向……致敬 ②兑现（承诺）｜ n. 荣誉；荣幸",note:"英式拼写 honour（美式 honor）；in honour of 为了纪念……；It's my honour to...（做……是我的荣幸）口语高频。",syn:"honour / remember / respect 辨析：remember 记得；respect 尊重（对在世者）；honour 带公开致敬色彩，尤指纪念已故者——本篇正是纪念已故作家。",phr:"in honour of 为了纪念；It's an honour to do sth. 做某事很荣幸；win honour for... 为……赢得荣誉",ex:"This special day was chosen to honour some of the world's most famous writers.",exCn:"选定这一天是为了纪念一些世界最著名的作家。",ex2:"A party was held in honour of the visiting professor.",exCn:"为来访教授举行了欢迎会。"},
+{k:"symbolize",g:"贰",en:"symbolize",ph:"/ˈsɪmbəlaɪz/",pos:"v.",cn:"象征；代表",senses:"—",note:"symbol n. 象征 → symbolize v. → symbolic adj. 象征性的；symbolizing 现在分词作伴随状语（received a book, symbolizing...）。",syn:"symbolize / stand for / represent 辨析：三者都可表「代表」；symbolize 偏抽象象征（The dove symbolizes peace 鸽子象征和平）；stand for 还可解释缩写含义。",phr:"symbolize peace 象征和平；a symbol of... ……的象征；symbolic meaning 象征意义",ex:"He received a book as a gift, symbolizing courage and wisdom.",exCn:"他得到一本书作礼物，象征勇气与智慧。",ex2:"In China, the dragon symbolizes power and good luck.",exCn:"在中国，龙象征力量与好运。"},
+{k:"courage",g:"贰",en:"courage",ph:"/ˈkʌrɪdʒ/",pos:"n.（不可数）",cn:"勇气",senses:"—",note:"不可数名词；encourage（鼓励）一词里就藏着 courage——鼓励就是「给人勇气」；take courage 鼓起勇气。",syn:"courage / bravery / confidence 辨析：bravery 侧重临危不惧的行为表现；courage 强调内心的勇气（面对恐惧仍然去做）；confidence 是自信。",phr:"take courage 鼓起勇气；lose courage 失去勇气；have the courage to do sth. 有勇气做某事",ex:"He received a book as a gift, symbolizing courage and wisdom.",exCn:"他得到一本书作礼物，象征勇气与智慧。",ex2:"She had the courage to say no.",exCn:"她有勇气说不。"},
+{k:"wisdom",g:"贰",en:"wisdom",ph:"/ˈwɪzdəm/",pos:"n.（不可数）",cn:"智慧；才智",senses:"—",note:"wise adj. → wisdom n.（-dom 名词后缀：freedom 自由、kingdom 王国）；a wise man = a man of wisdom。",syn:"wisdom / intelligence / knowledge 辨析：knowledge 知识（可学得）；intelligence 智力（智商）；wisdom 智慧（运用知识做出正确判断的能力）——层次递进。",phr:"stand for wisdom 代表智慧；the wisdom of the ancients 古人的智慧；wisdom teeth 智齿",ex:"The book stands for wisdom, and the rose stands for love.",exCn:"书代表智慧，玫瑰代表爱。",ex2:"With wisdom and hard work, he solved the problem.",exCn:"凭智慧和努力，他解决了问题。"},
+{k:"custom",g:"贰",en:"custom",ph:"/ˈkʌstəm/",pos:"n.",cn:"习俗；风俗",senses:"n. ①习俗；惯例 ｜ customs n. 海关 ｜ adj. 定制的（custom-made）",note:"custom（社会群体习俗）vs habit（个人习惯）——高频易混；复数 customs 还可指海关（pass through customs 过海关）。",syn:"custom / habit / tradition 辨析：habit 个人习惯（a reading habit 阅读习惯）；custom 群体习俗（exchange books 互赠图书）；tradition 传统（代代相传的文化）。",phr:"a custom where... 一种……的习俗；local customs 当地风俗；follow the custom 遵循习俗",ex:"Today, this tradition has become a custom where people exchange books and roses.",exCn:"如今这一传统已成习俗——人们互赠图书与玫瑰。",ex2:"Reading before bed is my habit, but racing dragon boats is a Chinese custom.",exCn:"睡前读书是我的个人习惯，赛龙舟是中国习俗。"},
+{k:"exchange",g:"贰",en:"exchange",ph:"/ɪksˈtʃeɪndʒ/",pos:"v. / n.",cn:"交换；交流",senses:"v. 交换；交流 ｜ n. 交换；交易所",note:"exchange A for B 用 A 换 B；exchange sth. with sb. 与某人互换；exchange student 交换生。",syn:"exchange / change / swap 辨析：change 泛指改变（change one's mind）；exchange 强调双向互换（exchange gifts 互换礼物）；swap 是口语的「换」。",phr:"exchange books and roses 互赠图书与玫瑰；exchange student 交换生；in exchange for 作为交换；cultural exchange 文化交流",ex:"Today, this tradition has become a custom where people exchange books and roses.",exCn:"如今人们互赠图书与玫瑰。",ex2:"I exchanged my pen for a ruler with Tom.",exCn:"我用钢笔和汤姆换了把尺子。"},
+{k:"standfor",g:"贰",en:"stand for",ph:"",pos:"短语",cn:"代表；象征",senses:"—",note:"= represent；解释缩写也用它：UN stands for the United Nations；本篇正文 stand for 出现两次（书/玫瑰）。",syn:"stand for / represent / symbolize 辨析：represent 更正式（represent our school 代表学校参赛）；stand for 口语常用且可释缩写；symbolize 偏抽象象征。",phr:"stand for 代表；stand up 起立；stand out 脱颖而出；stand by 支持",ex:"The book stands for wisdom, and the rose stands for love.",exCn:"书代表智慧，玫瑰代表爱。",ex2:"What does \"PC\" stand for? It stands for \"personal computer\".",exCn:"「PC」代表什么？代表个人电脑。"},
+{k:"promote",g:"贰",en:"promote",ph:"/prəˈməʊt/",pos:"v.",cn:"促进；提升；推销",senses:"v. ①促进；推广 ②提拔（be promoted to manager 被提拔为经理）",note:"promote reading 促进阅读；词根 mot-（动）：motion 运动、motor 发动机；promotion n. 晋升/推广。",syn:"promote / encourage / improve 辨析：promote 侧重推动发展（promote reading）；encourage 鼓励人去做；improve 改善质量（improve skills）。",phr:"promote reading 促进阅读；be promoted to... 被提拔为……；promote cultural exchange 促进文化交流",ex:"Many schools and libraries hold fun activities to promote reading.",exCn:"许多学校和图书馆举办有趣的活动来促进阅读。",ex2:"He worked hard and was promoted to team leader.",exCn:"他努力工作，被提拔为组长。"},
+{k:"marathon",g:"贰",en:"reading marathon",ph:"",pos:"短语",cn:"阅读马拉松",senses:"marathon n. 马拉松赛跑（42.195 公里）",note:"marathon 引申为「长时间持续的活动」：a TV marathon 电视连播；marathon 也可作形容词（a marathon meeting 马拉松式会议）。",syn:"无近义；关联体育词链：marathon 马拉松、relay race 接力赛、long jump 跳远。",phr:"hold a reading marathon 举办阅读马拉松；run a full marathon 跑全程马拉松",ex:"These can include reading marathons, book fairs, and storytelling events.",exCn:"这些可以包括阅读马拉松、书展和讲故事活动。",ex2:"We held a reading marathon and read for three hours.",exCn:"我们办了阅读马拉松，连续读了三小时。"},
+{k:"bookfair",g:"贰",en:"book fair",ph:"",pos:"短语",cn:"书展；图书集市",senses:"fair n. ①展会；集市 ｜ adj. 公平的",note:"fair 一词多义：n. 集市（a book fair 书展）vs adj. 公平的（fair play 公平竞争）——一词多义高频考点。",syn:"fair（集市）/ market（市场）/ exhibition（展览）辨析：market 侧重买卖市场（supermarket）；exhibition 泛指各类展览（an art exhibition 画展）；fair 有「盛会」感。",phr:"hold a book fair 举办书展；a trade fair 商品交易会；job fair 招聘会；fair play 公平竞争",ex:"These can include reading marathons, book fairs, and storytelling events.",exCn:"这些可以包括阅读马拉松、书展和讲故事活动。",ex2:"I bought three picture books at the book fair.",exCn:"我在书展买了三本图画书。"},
+{k:"remind",g:"贰",en:"remind",ph:"/rɪˈmaɪnd/",pos:"v.",cn:"提醒；使想起",senses:"—",note:"三大句型：remind sb. that + 从句（本篇用法）；remind sb. of sth. 使某人想起；remind sb. to do sth. 提醒某人做某事。",syn:"remind / recall / remember 辨析：remind 是外部事物「使人想起」（The photo reminds me of...）；recall 是自己回忆起（I recall that day）；remember 记得。",phr:"remind sb. that... 提醒某人……；remind sb. of sth. 使某人想起；remind sb. to do sth. 提醒某人做某事",ex:"It's a day to remind us that books are like keys that open doors to new worlds.",exCn:"这一天提醒我们：书就像打开新世界大门的钥匙。",ex2:"The photo reminds me of my childhood.",exCn:"这张照片让我想起童年。"},
+{k:"worldfamous",g:"叁",en:"world-famous",ph:"",pos:"adj.",cn:"世界闻名的",senses:"—",note:"合成形容词，连字符必带；同类构词：world-class 世界级的、nationwide 全国性的、well-known 著名的。",syn:"world-famous / famous / well-known 辨析：程度递减——world-famous 世界闻名 > famous 著名 > well-known 知名（a well-known writer 一位知名作家）。",phr:"a world-famous physicist 世界著名的物理学家；world-class 世界级的；a world-famous university 世界名校",ex:"Yang Chen-Ning was a world-famous physicist.",exCn:"杨振宁是世界著名的物理学家。",ex2:"The world-famous Great Wall attracts millions of visitors.",exCn:"世界闻名的长城吸引数百万游客。"},
+{k:"physicist",g:"叁",en:"physicist",ph:"/ˈfɪzɪsɪst/",pos:"n.",cn:"物理学家",senses:"—",note:"physics 物理（学科名，虽以 s 结尾但是单数）→ physicist 物理学家；类比构词：science → scientist、art → artist、tour → tourist。",syn:"physicist / scientist / chemist 辨析：scientist 科学家（泛称）；physicist 物理学家；chemist 化学家——居里夫人两者皆是。",phr:"a great physicist 伟大的物理学家；study physics 学物理；physical education（PE）体育课",ex:"Yang Chen-Ning was a world-famous physicist.",exCn:"杨振宁是世界著名的物理学家。",ex2:"Madam Curie was both a physicist and a chemist.",exCn:"居里夫人既是物理学家也是化学家。"},
+{k:"nobelprize",g:"叁",en:"Nobel Prize",ph:"",pos:"n.（专有名词）",cn:"诺贝尔奖",senses:"源自瑞典化学家诺贝尔（Alfred Nobel）的遗产设立的国际奖项",note:"the Nobel Prize in Physics 诺贝尔物理学奖；固定搭配 win / get / receive the Nobel Prize；获奖者 the Nobel Prize winner。",syn:"prize / award 辨析：award 泛指各种奖项（win an award 获奖，奖品可以来自任何机构）；prize 侧重竞赛奖赏；Nobel Prize 是专名。",phr:"win the Nobel Prize 获得诺贝尔奖；the Nobel Prize winner 诺贝尔奖得主；the Nobel Prize in Physics 诺贝尔物理学奖",ex:"Yang Chen-Ning was a Nobel Prize winner.",exCn:"杨振宁是诺贝尔奖得主。",ex2:"They won the Nobel Prize in Physics in 1957.",exCn:"他们 1957 年获得了诺贝尔物理学奖。"},
+{k:"academy",g:"叁",en:"academy",ph:"/əˈkædəmi/",pos:"n.",cn:"科学院；研究院；学院",senses:"n. ①科学院；研究院 ②专科院校；学院",note:"the Chinese Academy of Sciences 中国科学院（缩写 CAS）；academic adj. 学术的；academic year 学年。",syn:"academy / college / university 辨析：university 综合大学；college 学院（系或独立学院）；academy 侧重研究院、专科院校（military academy 军事学院）。",phr:"the Chinese Academy of Sciences 中国科学院；academic research 学术研究；a military academy 军事学院",ex:"As a member of the Chinese Academy of Sciences and a teacher at Tsinghua University...",exCn:"作为中国科学院院士和清华大学教师……",ex2:"He studies at a military academy.",exCn:"他在一所军事学院学习。"},
+{k:"contribution",g:"叁",en:"contribution",ph:"/ˌkɒntrɪˈbjuːʃn/",pos:"n.",cn:"贡献",senses:"n. ①贡献 ②捐款；投稿",note:"contribute v. 贡献 → contribution n.；固定搭配 make great contributions to...（to 是介词，后接名词或 doing）——语法填空高频。",syn:"contribution / devotion / dedication 辨析：contribution 侧重做出的贡献（可数）；devotion 侧重全身心奉献（devotion to duty 忠于职守）；dedication 献身精神。",phr:"make great contributions to... 对……做出巨大贡献；contribute to 促成；有助于；a contribution to society 对社会的贡献",ex:"...because of his great contributions.",exCn:"……因为他的巨大贡献。",ex2:"Yuan Longping made great contributions to rice research.",exCn:"袁隆平为水稻研究做出了巨大贡献。"},
+{k:"hailedas",g:"叁",en:"be hailed as",ph:"",pos:"短语",cn:"被誉为",senses:"hail v. ①欢呼致敬 ②招呼（hail a taxi 打车）③下冰雹",note:"be hailed as「被动 + as + 名词」结构，比 be known as 庄重得多，多用于官方致敬；hail 另义「招呼」。",syn:"be hailed as / be praised as / be known as 辨析：be known as 中性描述「以……为人所知」；be praised as 被称赞为；be hailed as 被誉为（最庄重，常用于人物盖棺定论）。",phr:"be hailed as... 被誉为……；hail a taxi 打车；hail from 来自（某地）",ex:"He was hailed as \"immortal\" in the university's notice.",exCn:"他在大学讣告中被誉为「不朽」。",ex2:"The film was hailed as a masterpiece.",exCn:"这部电影被誉为杰作。"},
+{k:"immortal",g:"叁",en:"immortal",ph:"/ɪˈmɔːtl/",pos:"adj.",cn:"不朽的；永生的",senses:"adj. 不朽的；流芳百世的 ｜ n. 不朽者",note:"im-（不）+ mortal（死的）→ 不朽；反义 mortal 必死的；清华讣告用词，庄重程度极高——人物传记阅读的理解关键。",syn:"immortal / eternal / everlasting 辨析：immortal 侧重「精神、名声不朽」（immortal works 不朽之作）；eternal 常指时间上无始无终（eternal love 永恒的爱）；everlasting 永久的。",phr:"an immortal work 不朽之作；immortal spirit 不朽精神；immortal fame 流芳百世",ex:"He was hailed as \"immortal\" in the university's notice.",exCn:"他在大学讣告中被誉为「不朽」。",ex2:"Li Bai wrote many immortal poems.",exCn:"李白写了许多不朽诗篇。"},
+{k:"notice",g:"叁",en:"notice",ph:"/ˈnəʊtɪs/",pos:"n. / v.",cn:"通告；注意到",senses:"n. ①通告；告示 ②预先通知（a month's notice）｜ v. 注意到",note:"一词多义：本篇 university's notice 指讣告（去世通告）；动词 notice sb. do sth.（注意到全过程）/ notice sb. doing sth.（注意到正在做）。",syn:"notice / announcement / advertisement 辨析：announcement 公开宣布（make an announcement）；notice 张贴的告示；advertisement 广告。",phr:"take no notice of 不理会；put up a notice 张贴通知；notice sb. doing sth. 注意到某人在做某事",ex:"He was hailed as \"immortal\" in the university's notice.",exCn:"他在大学讣告中被誉为「不朽」。",ex2:"Did you notice the man leave the room?",exCn:"你注意到那个男人离开房间了吗？"},
+{k:"phd",g:"叁",en:"PhD",ph:"",pos:"n.（缩写）",cn:"博士学位",senses:"Doctor of Philosophy 哲学博士（泛指各学科博士学位）",note:"冠词用 a PhD（a PhD student 博士生）；get one's PhD from... 从……获博士学位；虽含 Philosophy，但泛指各学科博士。",syn:"学位链辨析：Bachelor 学士 → Master 硕士 → PhD 博士；a Master's degree 硕士学位、a Bachelor's degree 学士学位。",phr:"get one's PhD 获得博士学位；a PhD student 博士生；a PhD in physics 物理学博士",ex:"He got his PhD from the University of Chicago.",exCn:"他获得了芝加哥大学的博士学位。",ex2:"My sister is a PhD student in physics.",exCn:"我姐姐是物理学博士生。"},
+{k:"putforward",g:"叁",en:"put forward",ph:"",pos:"短语",cn:"提出（观点/理论/建议）",senses:"—",note:"put forward a theory / an idea / a proposal；put 家族：put off 推迟、put up 张贴、put out 扑灭、put on 穿上——完形高频。",syn:"put forward / come up with / raise 辨析：come up with 口语化「想出、提出」（come up with an idea）；put forward 更正式，用于理论、方案；raise 提出问题（raise a question）。",phr:"put forward a theory 提出理论；put forward a suggestion 提出建议；put off 推迟；put up 张贴；put out 扑灭",ex:"He worked with his partner Tung-Dao Lee and put forward the theory of parity non-conservation in weak interaction.",exCn:"他与合作伙伴李政道提出了弱相互作用中的宇称不守恒理论。",ex2:"She put forward a good idea at the meeting.",exCn:"她在会上提出了一个好主意。"},
+{k:"theory",g:"叁",en:"theory",ph:"/ˈθɪəri/",pos:"n.",cn:"理论；学说",senses:"n. ①理论；学说 ②看法；推测（my theory is that... 我的看法是……）",note:"theory n. → theoretical adj. 理论上的；in theory 理论上（反义 in practice 实际上）——写作论证高频。",syn:"theory / principle / law 辨析：law 科学定律（Law of Gravity 万有引力定律，已被验证）；theory 尚为成体系的学说（可继续发展）；principle 原理、原则。",phr:"Yang-Mills Theory 杨-米尔斯理论；in theory 理论上；the theory of relativity 相对论",ex:"Yang's \"Yang-Mills Theory\" is also seen as an important part of modern physics.",exCn:"杨-米尔斯理论也被视为现代物理的重要组成部分。",ex2:"In theory, the plan sounds perfect.",exCn:"理论上这个计划听起来很完美。"},
+{k:"interaction",g:"叁",en:"interaction",ph:"/ˌɪntərˈækʃn/",pos:"n.",cn:"相互作用；交流",senses:"n. ①（物理）相互作用 ②（人际）交流；互动",note:"inter-（互相）+ action（作用）；物理术语 weak interaction 弱相互作用；日常义 interaction with friends 与朋友的互动——一词两域。",syn:"interaction / communication / connection 辨析：communication 侧重信息传递（communication skills 沟通技巧）；interaction 侧重双向互动；connection 侧重关联。",phr:"weak interaction 弱相互作用；interaction with... 与……的互动；social interaction 社会交往",ex:"He put forward the theory of parity non-conservation in weak interaction.",exCn:"他提出了弱相互作用中的宇称不守恒理论。",ex2:"Children need more interaction with their parents.",exCn:"孩子需要更多与父母的互动。"},
+{k:"motherland",g:"叁",en:"motherland",ph:"/ˈmʌðəlænd/",pos:"n.",cn:"祖国",senses:"—",note:"mother + land 合成词；= homeland；同源词：mother tongue 母语；表达家国情怀的常用词。",syn:"motherland / homeland / home country 辨析：三义相近，motherland 感情色彩最浓（爱国语境首选）；homeland 还可指家乡、本土。",phr:"love one's motherland deeply 深深热爱祖国；serve one's motherland 报效祖国；return to one's motherland 回到祖国",ex:"Yang loved his motherland deeply.",exCn:"杨振宁深深热爱祖国。",ex2:"Overseas students miss their motherland a lot.",exCn:"海外学子十分想念祖国。"},
+{k:"buildlinks",g:"叁",en:"build links between",ph:"",pos:"短语",cn:"在……之间建立联系",senses:"link n. 联系；纽带 ｜ v. 连接",note:"build links between A and B 在 A 与 B 之间建立联系；link A with B 把 A 与 B 连接起来。",syn:"link / connection / bond 辨析：connection 一般联系（a connection between the two events）；link 可数的具体联系；bond 更强调情感纽带（family bond 亲情纽带）。",phr:"build links between... 在……之间建立联系；a weak link 薄弱环节；link A with B 把 A 与 B 连接",ex:"He helped build links between Chinese and American scientists.",exCn:"他助力搭建中美科学家之间的桥梁。",ex2:"The bridge links the two cities.",exCn:"这座桥连接了这两座城市。"},
+{k:"raisemoney",g:"叁",en:"raise money",ph:"",pos:"短语",cn:"筹钱；募集资金",senses:"raise v. ①筹集 ②举起 ③饲养；种植 ④提高",note:"raise 多义链：raise money 筹钱 / raise one's hand 举手 / raise cattle 养牛 / raise prices 涨价——一词多义完形高频。",syn:"raise（筹集）/ collect（收集）/ donate（捐赠）辨析：raise money 是发起募集（raise money for 为……筹款）；collect 收集（collect stamps 集邮）；donate 捐出（donate blood 献血）。",phr:"raise money for... 为……筹款；raise one's hand 举手；raise the price 提价；raise children 抚养孩子",ex:"He raised money for Chinese scholars to study abroad.",exCn:"他为中国学者出国深造筹措经费。",ex2:"The students raised money to help the sick girl.",exCn:"学生们筹钱帮助那个生病的女孩。"},
+{k:"scholar",g:"叁",en:"scholar",ph:"/ˈskɒlə/",pos:"n.",cn:"学者",senses:"—",note:"school（学校）词源同源 → scholar 学者；scholarship 双义：奖学金 + 学问；visiting scholar 访问学者。",syn:"scholar / professor / expert 辨析：professor 教授（职称）；expert 专家（某领域内行，an expert in...）；scholar 侧重做学术研究的人。",phr:"a visiting scholar 访问学者；win a scholarship 获得奖学金；a famous scholar 著名学者",ex:"He raised money for Chinese scholars to study abroad.",exCn:"他为中国学者出国深造筹措经费。",ex2:"The old scholar has read thousands of books.",exCn:"这位老学者读过数千本书。"},
+{k:"talent",g:"叁",en:"talent",ph:"/ˈtælənt/",pos:"n.",cn:"人才；天赋",senses:"n. ①人才（集体名词，不加 s）②天资；才能（have a talent for）",note:"train young talent 培养青年人才（集体名词不加 s）；have a talent for... 有……的天赋；talented adj. 有天赋的。",syn:"talent / gift / genius 辨析：gift 天赋（自然给的，a gift for music 音乐天赋）；talent 才能与人才两用；genius 天才（程度最高，Einstein was a genius）。",phr:"train young talent 培养青年人才；have a talent for music 有音乐天赋；a talent show 才艺表演",ex:"He worked hard to train young talent and help develop basic scientific research in China.",exCn:"他努力培养青年人才，助力中国基础科学研究的发展。",ex2:"She has a talent for drawing.",exCn:"她有绘画天赋。"},
+{k:"legend",g:"叁",en:"legend",ph:"/ˈledʒənd/",pos:"n.",cn:"传奇人物；传说",senses:"n. ①传奇人物 ②传说故事 ③（地图）图例",note:"a legend who... 定语从句修饰传奇人物；legendary adj. 传奇的；第三个义项「图例」是地图阅读小知识点。",syn:"legend / hero / pioneer 辨析：hero 英雄（强调英勇行为，a national hero 民族英雄）；legend 传奇（强调故事性与影响力）；pioneer 先驱（pioneer of science 科学先驱）。",phr:"a living legend 活着的传奇；ancient legends 古代传说；a map legend 地图图例",ex:"He was a legend who explored the unknown and served his country.",exCn:"他是探索未知、报效祖国的传奇人物。",ex2:"According to the legend, there is a dragon in the lake.",exCn:"传说湖里有一条龙。"},
+{k:"seek",g:"叁",en:"seek",ph:"/siːk/",pos:"v.",cn:"追求；寻求",senses:"v. ①追求（真理/理想）②寻求（帮助/建议）③寻找",note:"不规则动词 seek-sought-sought；seek truth 追求真理；seek for = look for；seek help/advice 寻求帮助/建议——书面语。",syn:"seek / look for / search for / hunt for 辨析：seek 书面正式（seek truth 追求真理）；look for 口语最常用；search for 系统搜寻（search for information 搜信息）；hunt for 四处寻找。",phr:"seek truth 追求真理；seek help 寻求帮助；seek advice 征求建议；hide-and-seek 捉迷藏",ex:"His spirit of seeking truth will always encourage young people to work hard for science.",exCn:"他追求真理的精神将永远激励年轻人为科学而奋斗。",ex2:"If you have problems, seek help from your teachers.",exCn:"有困难就向老师寻求帮助。"},
+];
+
+const V = {};
+VOCAB.forEach(o=>V[o.k]=o);
+
+/* ---- 选择题数据 ---- */
+const Q_C=[
+ {n:1,key:"C",tag:"新考法·细节组合题",sent:"What do we know about Min Sun?",
+  items:["①He was Confucius' student.","②He became a famous teacher.","③He came from the State of Lu.","④He wasn't friendly to his brothers."],
+  opts:["①②","③④","①③"],
+  ana:["定位首段：Min Sun was a man in the State of Lu（③✓）；He was a student of Confucius（①✓）。","②错：文中说 he was famous for moral conduct（以德行闻名），不是「成为著名教师」——偷换概念。","④错：他为弟弟们着想、要求留下继母，推不出「对兄弟不友好」。","答案：<span class='key'>C（①③）</span>。组合题要逐条回原文核对，排除法最快。"]},
+ {n:2,key:"C",tag:"细节理解题",sent:"How did Min Sun's father know that his wife wasn't good to Min Sun?",
+  opts:["A. He found that Min Sun had little to eat.","B. He saw that Min Sun was in old clothes.","C. He saw that the reed cattins flew out from the clothes."],
+  ana:["定位第三段：The reed cattins flew out from the broken seam of the thin clothes, and then his father knew...","父亲是「看到芦苇絮从破缝里飞出来」才知道真相。","A（没吃的）、B（旧衣服）均属无中生有——文中没提。","答案：<span class='key'>C</span>。细节题要找「then his father knew」的触发事件。"]},
+ {n:3,key:"A",tag:"推理判断题",sent:"Why did Min Sun want his stepmother to stay at home?",
+  opts:["A. Because he loved his brothers.","B. Because his stepmother was kind.","C. Because his stepmother was good at housework."],
+  ana:["定位第四段闵子骞的话：If Mother stays at home, only I myself have to feel cold. But if you drive Mother away, all three children will have to feel cold.","他挽留继母的直接理由是：赶走母亲，两个弟弟也要跟着挨冻——为弟弟们着想。","B、C 与文意相反（继母对他并不好），属反向干扰。","答案：<span class='key'>A</span>。这正体现了「芦衣顺母」中闵子骞的孝与友爱。"]},
+ {n:4,key:"B",tag:"新考法·推断人物特征题",sent:"Which is the best word to describe Min Sun?",
+  opts:["A. Brave.","B. Kind.","C. Smart."],
+  ana:["通读全文：他受虐待却不记恨，跪求父亲原谅继母、为全家人着想——核心品质是善良（kind）。","Brave（勇敢）文中没有体现；Smart（聪明）与故事主题无关。","答案：<span class='key'>B. Kind</span>。人物特征题要抓「反复出现的品质」，不是某一处细节。"]},
+];
+const Q_D=[
+ {n:1,key:"A",tag:"细节理解题",sent:"When was World Book and Copyright Day set up?",
+  opts:["A. 23 April, 1995.","B. 7 October, 1926.","C. 23 April, 1930."],
+  ana:["定位首段：23 April is World Book and Copyright Day. It was set up by UNESCO in 1995.","时间 = 1995 年（设立），日期 = 4 月 23 日。","B、C 属时间张冠李戴——原文找不到 1926/1930 的任何依据。","答案：<span class='key'>A. 23 April, 1995</span>。"]},
+ {n:2,key:"B",tag:"细节理解题",sent:"Why was 23 April chosen as the date for World Book Day?",
+  opts:["A. It is the birthday of William Shakespeare.","B. It is the anniversary of the death of several famous writers.","C. It is the birthday of Vicente Clavel Andres."],
+  ana:["定位第二段：chosen to honour some of the world's most famous writers, like William Shakespeare and Miguel de Cervantes, who both passed away on this day.","选 4 月 23 日是为了纪念这两位大作家——他们都在这一天去世（忌日），不是生日。","A 错：是忌日不是生日；C 错：文中根本没提 Vicente Clavel Andres，属无中生有。","答案：<span class='key'>B</span>。注意 honour + pass away 的逻辑链：纪念→去世→忌日。"]},
+ {n:3,key:"C",tag:"细节归纳题",sent:"What do people do on World Book Day?",
+  opts:["A. They hold reading marathons and book fairs.","B. They exchange books and roses.","C. Both A and B."],
+  ana:["第二段末：this tradition has become a custom where people exchange books and roses（B✓）。","第三段：hold fun activities... include reading marathons, book fairs（A✓）。","A、B 两项分别出现在两段，都正确 → 选 C（Both A and B）。","答案：<span class='key'>C</span>。「Both」型题目要确认两个分项各自有原文依据再选。"]},
+ {n:4,key:"A",tag:"主旨大意题",sent:"What is the main idea of the passage?",
+  opts:["A. To explain the history and activities of World Book Day.","B. To talk about the importance of copyright.","C. To describe a book fair in Spain."],
+  ana:["结构分析：首段（由来/设立）→ 二段（为何选这天/传统）→ 三段（有哪些活动）——覆盖「历史 + 活动」。","B 错：copyright 只是节日名称的一部分，全文没有展开讲版权；C 错：西班牙传统只是细节之一，不是主旨。","答案：<span class='key'>A</span>。主旨题用「结构归纳法」，细节项（C）和片面项（B）都是干扰。"]},
+];
+/* ---- 六选五逐空解析 ---- */
+const ANA_Y=[
+ {n:1,key:"F",t:"语境+大小写锁定",s:"As a member of the Chinese Academy of Sciences and a teacher at Tsinghua University, ___ because of his great contributions.",
+  a:["空格在逗号之后、小写语境中，只有 F（he was hailed as...）以小写开头能自然接续。","语义：作为中科院院士和清华教师，因巨大贡献在大学讣告中被誉为「不朽」——与前文「逝世」衔接。","C 虽语义相关但大写开头（He...），且「取得进步」与「逝世+贡献」语境不符。"]},
+ {n:2,key:"B",t:"时间线+动词衔接",s:"Later, ___, and got his PhD from the University of Chicago.",
+  a:["空格在 Later 之后、逗号后小写位置，需小写开头选项 → B 或 D。","后文 got his PhD from the University of Chicago（芝加哥大学）在美国，B（去美国深造）与留学路径吻合：先赴美学习→获博士。","D（回清华）与「去芝加哥读博」矛盾，属时间线错位。"]},
+ {n:3,key:"A",t:"因果关系+句首大写",s:"___, they won the Nobel Prize in Physics.",
+  a:["空格在句首、大写开头 → A 或 C 或 E。","前句提出理论（put forward the theory），后句获奖——A「For this great work（因此项伟大成就）」正是因果连接。","C「取得进步」力度不足且不衔接获奖；E 是「精神」主语，接 won the Nobel Prize 主语冲突（they）。"]},
+ {n:4,key:"D",t:"线索复现+时间锚点",s:"...raised money for Chinese scholars to study abroad, and in 1999, ___.",
+  a:["空格在 in 1999 之后，逗号后小写开头 → B 或 D；B 已用于第 2 空。","语义：为中国学者筹钱深造、1999 年回到清华大学——与本段「热爱祖国、报效祖国」主线一致。","1971 年首次回国 → 1999 年回清华（长期工作），时间线完整。"]},
+ {n:5,key:"E",t:"主语+全文升华",s:"___ will always encourage young people to work hard for science and national development.",
+  a:["空格是句子的主语，后面谓语是 will always encourage → 需要名词性大写主语 → E。","E「追求真理、热爱祖国的精神」正呼应全文两条主线：科学成就（求真）+ 报效祖国（爱国）。","多余项 C（He made great progress in his study）大写但作主语讲「学习进步」，与「激励年轻人」的升华句不合。"]},
+];
+
+/* ---- 渲染 ---- */
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");}
+function renderQ(box,Q){
+  let h='';
+  Q.forEach(q=>{
+    h+=`<div class="qitem" data-q="${q.n}"><div class="qs"><span class="qn">( ${q.n} )</span>${esc(q.sent)}<span class="qtag">${esc(q.tag)}</span></div>`;
+    if(q.items){h+=`<div class="opts">`;q.items.forEach(it=>h+=`<div class="op">${esc(it)}</div>`);h+=`</div>`;}
+    h+=`<div class="opts">`;
+    q.opts.forEach((o,i)=>{h+=`<div class="op${i===("ABCD".indexOf(q.key))?" right":""}"><b>${"ABC"[i]||String.fromCharCode(65+i)}.</b> ${esc(o)}</div>`;});
+    h+=`</div><button class="btn-ana" type="button">解析</button><ul class="ana">`;
+    q.ana.forEach(a=>h+=`<li>${a}</li>`);
+    h+=`</ul></div>`;
+  });
+  box.innerHTML=h;
+}
+renderQ(document.getElementById("quesC"),Q_C);
+renderQ(document.getElementById("quesD"),Q_D);
+
+function renderGapAna(){
+  let h='';
+  ANA_Y.forEach(g=>{
+    h+=`<details><summary><b>${g.n} — ${g.key}</b>（${esc(g.t)}）</summary><div class="ab"><p style="font-family:var(--mono);font-size:12.5px;color:var(--muted)">定位句：${esc(g.s)}</p>`;
+    g.a.forEach(x=>h+=`<p>· ${x}</p>`);
+    h+=`</div></details>`;
+  });
+  document.getElementById("gapAnaY").innerHTML=h;
+}
+renderGapAna();
+
+/* ---- 生词汇总 ---- */
+const GN={"壹":"壹 · 闵子骞（芦衣顺母）","贰":"贰 · 世界读书日","叁":"叁 · 杨振宁"};
+function renderVocab(filter){
+  const f=(filter||"").trim().toLowerCase();
+  let h='';
+  Object.keys(GN).forEach(g=>{
+    const list=VOCAB.filter(o=>o.g===g && (!f || o.en.toLowerCase().includes(f) || o.cn.includes(f)));
+    if(!list.length) return;
+    h+=`<div class="vgrp">${GN[g]}（${list.length}）</div><div class="vgrid">`;
+    list.forEach(o=>{
+      h+=`<div class="vcard" data-k="${esc(o.k)}" title="点击查看完整详解"><button class="spk" data-k="${esc(o.k)}" title="发音">🔊</button><span class="ve">${esc(o.en)}</span><span class="vph">${esc(o.ph)}</span><div class="vpos">${esc(o.pos)} · ${esc(o.cn)}</div>${o.syn?`<div class="vsyn">🔗 ${esc(o.syn)}</div>`:""}${o.phr?`<div class="vphr">🧩 ${esc(o.phr)}</div>`:""}<div class="vcn">💡 ${esc(o.note)}</div>${o.ex?`<div class="vex">${esc(o.ex)}<br>${esc(o.exCn)}</div>`:""}<div class="vmore">点击卡片查看完整详解 →</div></div>`;
+    });
+    h+=`</div>`;
+  });
+  if(!h) h=`<p style="color:var(--muted);margin-top:20px">没有匹配「${esc(filter)}」的生词。</p>`;
+  document.getElementById("vocabBox").innerHTML=h;
+}
+renderVocab("");
+
+/* ---- 弹窗 ---- */
+const pop=document.getElementById("pop");
+function openPop(el,k){
+  const o=V[k]; if(!o) return;
+  pop.innerHTML=`<button class="pclose" id="pclose">✕</button><div class="pw">${esc(o.en)}<span class="pph">${esc(o.ph)}</span><button class="speak" data-k="${esc(o.k)}">🔊</button></div><div class="pcn"><span class="vpos">${esc(o.pos)}</span> ${esc(o.cn)}</div>${o.senses&&o.senses!=="—"?`<div class="prow">📌 义项：${esc(o.senses)}</div>`:""}${o.note?`<div class="pnote">💡 用法：${esc(o.note)}</div>`:""}${o.syn?`<div class="prow psyn">🔗 近义词辨析：${esc(o.syn)}</div>`:""}${o.phr?`<div class="prow ppfr">🧩 短语搭配：${esc(o.phr)}</div>`:""}${o.ex?`<div class="pex">✎ ${esc(o.ex)}<em>${esc(o.exCn)}</em></div>`:""}${o.ex2?`<div class="pex">✎ ${esc(o.ex2)}<em>${esc(o.ex2Cn)}</em></div>`:""}`;
+  const r=el.getBoundingClientRect();
+  pop.style.display="block";
+  const pw=pop.offsetWidth,ph=pop.offsetHeight;
+  let x=Math.min(Math.max(10,r.left),window.innerWidth-pw-10);
+  let y=r.bottom+8; if(y+ph>window.innerHeight-10) y=Math.max(10,r.top-ph-8);
+  pop.style.left=x+"px"; pop.style.top=y+"px";
+  document.getElementById("pclose").onclick=()=>pop.style.display="none";
+}
+function closePop(){pop.style.display="none";}
+document.addEventListener("click",e=>{
+  const w=e.target.closest(".w");
+  if(w){openPop(w,w.dataset.k);return;}
+  const sp=e.target.closest(".spk,#pop .speak");
+  if(sp){speak(sp.dataset.k||sp.closest(".vcard,#pop").querySelector(".ve,.pw").textContent.split("/")[0].trim());return;}
+  const vc=e.target.closest(".vcard");
+  if(vc){const o=V[vc.dataset.k];if(o)openPop(vc,vc.dataset.k);return;}
+  if(!e.target.closest("#pop")) closePop();
+  const ba=e.target.closest(".btn-ana");
+  if(ba){ba.nextElementSibling.classList.toggle("open");return;}
+  const bl=e.target.closest(".blank");
+  if(bl){bl.classList.toggle("open");return;}
+});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closePop();});
+window.addEventListener("scroll",()=>{closePop();
+  const d=document.documentElement;
+  document.getElementById("progress").style.width=(d.scrollTop/(d.scrollHeight-d.clientHeight)*100||0)+"%";
+  document.getElementById("backtop").style.display=d.scrollTop>600?"block":"none";
+},{passive:true});
+document.getElementById("backtop").onclick=()=>window.scrollTo({top:0,behavior:"smooth"});
+
+/* ---- 发音 ---- */
+function speak(t){
+  if(!("speechSynthesis" in window)) return;
+  speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(t); u.lang="en-US"; u.rate=.9;
+  speechSynthesis.speak(u);
+}
+
+/* ---- 工具栏 ---- */
+const bodyCls=(c)=>document.body.classList.toggle(c);
+document.getElementById("btnAll").onclick=function(){const on=bodyCls("showall");this.textContent=on?"隐藏释义":"显示全部释义";};
+document.getElementById("btnAns").onclick=function(){const on=bodyCls("showans");this.textContent=on?"隐藏答案":"显示全部答案";document.querySelectorAll(".ana").forEach(x=>x.classList.toggle("open",on));};
+document.getElementById("btnDark").onclick=function(){const on=bodyCls("dark");this.textContent=on?"日间模式":"夜间模式";};
+document.getElementById("btnPrint").onclick=()=>window.print();
+document.getElementById("vsearch").addEventListener("input",e=>renderVocab(e.target.value));
+document.querySelectorAll(".ana").forEach(x=>{});
+</script>
+</body>
+</html>
