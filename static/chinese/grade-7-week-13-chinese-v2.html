@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>七年级语文·第13周培优精讲</title>
+<style>
+:root{
+  --paper:#faf6ee; --card:#fffdf8; --ink:#2b2520; --ink-soft:#5c5248;
+  --accent:#b03a2e; --accent-soft:#f6e7e2; --gold:#a97c2f; --teal:#2f6f6b;
+  --teal-soft:#e4f0ee; --line:#e6dccb; --answer-bg:#eef5f1;
+  --shadow:0 2px 10px rgba(80,60,30,.08);
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--paper); color:var(--ink);
+  font-family:"Songti SC","STSong","SimSun","Noto Serif CJK SC",serif;
+  font-size:17px; line-height:1.95; padding-bottom:80px;
+}
+.wrap{max-width:1000px; margin:0 auto; padding:0 20px;}
+header.hero{
+  background:linear-gradient(135deg,#8c2f22 0%, #b03a2e 55%, #c96a4a 100%);
+  color:#fff; padding:48px 20px 36px; text-align:center; position:relative; overflow:hidden;
+}
+header.hero::after{
+  content:"文"; position:absolute; right:-30px; top:-40px; font-size:220px;
+  opacity:.12; font-weight:700; pointer-events:none;
+}
+header.hero h1{font-size:32px; letter-spacing:4px; margin-bottom:10px; font-weight:700;}
+header.hero p{opacity:.92; letter-spacing:2px; font-size:15px;}
+.badge-row{margin-top:16px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap;}
+.badge{background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.35);
+  padding:4px 14px; border-radius:999px; font-size:13px; letter-spacing:1px;}
+
+/* toolbar */
+.toolbar{
+  position:sticky; top:0; z-index:50; background:rgba(250,246,238,.96);
+  border-bottom:1px solid var(--line); backdrop-filter:blur(6px);
+}
+.toolbar .wrap{display:flex; align-items:center; gap:10px; padding:10px 20px; flex-wrap:wrap;}
+.toolbar .brand{font-weight:700; color:var(--accent); letter-spacing:2px; margin-right:auto;}
+.btn{
+  border:1px solid var(--line); background:#fff; color:var(--ink-soft);
+  padding:6px 14px; border-radius:8px; cursor:pointer; font-size:14px;
+  font-family:inherit; transition:.2s; letter-spacing:1px;
+}
+.btn:hover{border-color:var(--accent); color:var(--accent); transform:translateY(-1px);}
+.btn.primary{background:var(--accent); color:#fff; border-color:var(--accent);}
+
+/* nav chips */
+.chips{display:flex; flex-wrap:wrap; gap:8px; padding:16px 0 4px;}
+.chips a{
+  text-decoration:none; color:var(--ink-soft); background:#fff;
+  border:1px solid var(--line); padding:4px 12px; border-radius:999px; font-size:13px;
+  transition:.2s;
+}
+.chips a:hover{background:var(--accent); color:#fff; border-color:var(--accent);}
+
+/* section cards */
+section.block{
+  background:var(--card); border:1px solid var(--line); border-radius:14px;
+  box-shadow:var(--shadow); margin:22px 0; overflow:hidden;
+}
+.block-head{
+  display:flex; align-items:center; gap:12px; padding:18px 24px;
+  background:linear-gradient(90deg,#f7ede2,#fffdf8); border-bottom:1px solid var(--line);
+}
+.block-head .no{
+  background:var(--accent); color:#fff; min-width:44px; height:44px; border-radius:10px;
+  display:flex; align-items:center; justify-content:center; font-size:18px; font-weight:700;
+}
+.block-head h2{font-size:20px; letter-spacing:1px;}
+.block-head .tag{
+  margin-left:auto; font-size:12px; color:var(--gold); border:1px solid var(--gold);
+  padding:2px 10px; border-radius:999px; letter-spacing:1px; white-space:nowrap;
+}
+.block-body{padding:22px 24px;}
+.q-title{font-size:18px; font-weight:700; margin:6px 0 14px; line-height:2;}
+
+/* emphasis-dot characters (加点字) */
+.dot{
+  text-emphasis:filled dot; -webkit-text-emphasis:filled dot;
+  text-emphasis-position:under right; -webkit-text-emphasis-position:under right;
+  color:var(--accent); font-weight:700; padding:0 1px;
+}
+
+/* options & stems */
+.opts{list-style:none; margin:10px 0 18px;}
+.opts li{
+  padding:8px 14px; margin:6px 0; border-left:3px solid var(--line);
+  background:#fbf8f2; border-radius:0 8px 8px 0;
+}
+.opts li.right{border-left-color:var(--teal); background:var(--teal-soft);}
+.opts li.wrong{border-left-color:var(--accent); background:var(--accent-soft);}
+
+/* answer blocks */
+.answer{
+  background:var(--answer-bg); border:1px solid #cfe3d9; border-radius:12px;
+  padding:16px 20px; margin:16px 0;
+}
+.answer .ans-label{
+  display:inline-block; background:var(--teal); color:#fff; font-size:13px;
+  padding:2px 12px; border-radius:999px; letter-spacing:2px; margin-bottom:8px;
+}
+.hide-answers .answer{display:none;}
+.show-first .answer.first{display:block;}
+
+/* think & method blocks */
+.think, .method{
+  border-radius:12px; padding:16px 20px; margin:16px 0; font-size:16px;
+}
+.think{background:#fdf3e7; border:1px dashed var(--gold);}
+.method{background:#eef1f8; border:1px solid #c9d3ea;}
+.think .t-label, .method .m-label{
+  display:inline-block; font-size:13px; letter-spacing:2px; padding:2px 12px;
+  border-radius:999px; margin-bottom:8px; color:#fff;
+}
+.think .t-label{background:var(--gold);}
+.method .m-label{background:#4a5fa5;}
+
+/* tables */
+table{width:100%; border-collapse:collapse; margin:14px 0; font-size:15px;}
+th, td{border:1px solid var(--line); padding:9px 12px; text-align:left; vertical-align:top;}
+th{background:#f3ead9; letter-spacing:1px; font-weight:700;}
+tr:nth-child(even) td{background:#fcf9f2;}
+
+/* tabs */
+.tabs{margin:18px 0;}
+.tab-btns{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:12px;}
+.tab-btns button{
+  border:1px solid var(--line); background:#fff; padding:7px 18px; border-radius:999px;
+  cursor:pointer; font-family:inherit; font-size:15px; letter-spacing:1px; color:var(--ink-soft);
+}
+.tab-btns button.active{background:var(--ink); color:#fff; border-color:var(--ink);}
+.tab-pane{display:none; animation:fade .25s ease;}
+.tab-pane.active{display:block;}
+@keyframes fade{from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:none;}}
+
+/* poem text */
+.poem{
+  text-align:center; font-size:20px; letter-spacing:4px; line-height:2.6;
+  background:linear-gradient(180deg,#fdf9f1,#f7efe1); border:1px solid var(--line);
+  border-radius:12px; padding:22px 10px; margin:12px 0;
+}
+.poem .by{display:block; font-size:14px; letter-spacing:2px; color:var(--ink-soft); margin-top:8px;}
+.fanyi{background:#fbf7ef; border-left:4px solid var(--gold); padding:14px 18px; border-radius:0 10px 10px 0; margin:12px 0;}
+
+/* misc */
+ul.points{margin:8px 0 8px 1.4em;}
+ul.points li{margin:6px 0;}
+.small{font-size:14px; color:var(--ink-soft);}
+.kw{color:var(--accent); font-weight:700;}
+.center-note{
+  text-align:center; color:var(--ink-soft); font-size:13px; letter-spacing:1px;
+  margin:30px 0 10px;
+}
+footer{margin-top:40px; padding:26px 20px; background:#2b2520; color:#d8cfc2; text-align:center; font-size:13px; letter-spacing:1px; line-height:2;}
+footer .heart{color:#e07a5f;}
+#toTop{
+  position:fixed; right:22px; bottom:26px; width:46px; height:46px; border-radius:50%;
+  background:var(--accent); color:#fff; border:none; cursor:pointer; font-size:20px;
+  box-shadow:0 4px 14px rgba(176,58,46,.4); display:none; z-index:60;
+}
+/* mastery checkbox */
+.mastery{float:right; font-size:13px; color:var(--teal); user-select:none; cursor:pointer; letter-spacing:1px;}
+.mastery input{accent-color:var(--teal); margin-right:6px; transform:translateY(2px);}
+@media (max-width:680px){
+  body{font-size:16px;}
+  header.hero h1{font-size:24px;}
+  .block-body{padding:16px 14px;}
+  .block-head{padding:14px;}
+  .poem{font-size:17px; letter-spacing:2px;}
+}
+@media print{
+  .toolbar, .chips, #toTop, .mastery{display:none !important;}
+  .tab-pane{display:block !important;}
+  .answer{display:block !important;}
+  section.block{break-inside:avoid;}
+}
+</style>
+</head>
+<body class="hide-answers">
+
+<header class="hero">
+  <h1>七年级语文 · 第13周培优精讲</h1>
+  <p>题目全解 · 答案校对 · 思维过程 · 题型方法归纳 · 古诗文翻译与实词精讲</p>
+  <div class="badge-row">
+    <span class="badge">📖 字词积累</span>
+    <span class="badge">🛠 病句修改</span>
+    <span class="badge">✒ 现代文阅读</span>
+    <span class="badge">🏮 古诗词鉴赏</span>
+    <span class="badge">📚 文言文精读</span>
+    <span class="badge">🎯 综合性学习</span>
+  </div>
+</header>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span class="brand">第13周 · 培优</span>
+    <button class="btn" onclick="toggleAnswers()">显示 / 隐藏答案</button>
+    <button class="btn" onclick="expandAll(true)">全部展开</button>
+    <button class="btn" onclick="expandAll(false)">全部收起</button>
+    <button class="btn primary" onclick="window.print()">打印 / 导出PDF</button>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <nav class="chips">
+    <a href="#q1">1 字音字形</a><a href="#q2">2 病句</a><a href="#q3">3 成语</a>
+    <a href="#q4">4 语句排序</a><a href="#q5">5 字形辨析</a><a href="#q6">6 成语运用</a>
+    <a href="#q7">7 综合积累</a><a href="#q8">8 图文转换</a><a href="#q9">9 现代文阅读</a>
+    <a href="#q10">10 古诗词</a><a href="#q11">11 文言文</a><a href="#q12">12 综合实践</a>
+    <a href="#q13">13 读书活动</a><a href="#method">⭐ 方法总览</a>
+  </nav>
+
+  <!-- ================= 方法总览 ================= -->
+  <section class="block" id="method">
+    <div class="block-head">
+      <div class="no">⭐</div>
+      <h2>题型方法总览</h2>
+      <span class="tag">先看方法，再做题</span>
+    </div>
+    <div class="block-body">
+      <table>
+        <tr><th style="width:22%">题型</th><th style="width:36%">核心考点</th><th>解题总思路</th></tr>
+        <tr><td>字音字形</td><td>多音字、形近字、易错字</td><td>逐项排查→据义定音（如"薄"表轻视读 bó）→据义辨形（如"实践"不能写成"实贱"）</td></tr>
+        <tr><td>病句辨析</td><td>成分残缺、搭配不当、句式杂糅、语序不当</td><td>先划主干（主谓宾）→查修饰成分→常见病因对号入座→最后通读凭语感验证</td></tr>
+        <tr><td>成语运用</td><td>望文生义、褒贬误用、对象误用、语义重复</td><td>先解成语本义→再看适用对象与感情色彩→放回语境检验是否合逻辑</td></tr>
+        <tr><td>语句排序/衔接</td><td>逻辑顺序、照应、原文背诵</td><td>先找首句→抓关联词与代词照应→必要时回归课文原文核对</td></tr>
+        <tr><td>图文转换</td><td>观察、概括、寓意提炼</td><td>客观描述画面（人/物/文字/细节）→抓对比、夸张等表现手法→揭示寓意（联系主题）</td></tr>
+        <tr><td>现代文阅读</td><td>信息提取、词句赏析、句段作用、内容理解</td><td>答案从原文来→按"手法+内容+情感/形象"三步答题→分点作答</td></tr>
+        <tr><td>古诗词鉴赏</td><td>意象、手法、情感、炼字</td><td>知人论世→抓意象与关键词→点明手法→落到情感主旨</td></tr>
+        <tr><td>文言文阅读</td><td>实词虚词、断句、翻译、拓展</td><td>课内迁移→字字落实→删补调换→直译为主意译为辅</td></tr>
+        <tr><td>综合性学习</td><td>标语、活动设计、材料探究、仿写</td><td>紧扣主题→格式与示例一致→语言简明有感染力</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- ================= 第1题 ================= -->
+  <section class="block" id="q1">
+    <div class="block-head">
+      <div class="no">1</div>
+      <h2>汉字积累 · 字音字形</h2>
+      <span class="tag">据义定音 · 据义辨形</span>
+    </div>
+    <div class="block-body">
+      <label class="mastery"><input type="checkbox" data-m="q1">已掌握</label>
+      <details open>
+        <summary class="q-title">1．汉字积累——下列字形和加点字注音全部正确的一项是（　　）</summary>
+        <ul class="opts">
+          <li>A．派<span class="dot">遣</span>（qiǎn）　医疗　<span class="dot">殖</span>民地（zhí）　冷冷清清</li>
+          <li>B．鄙<span class="dot">薄</span>（bó）　脱离　<span class="dot">拈</span>轻怕重（zhān）　共产主义</li>
+          <li>C．纯<span class="dot">粹</span>（cuì）　实贱　晋察<span class="dot">冀</span>（jì）　自私自利</li>
+          <li>D．<span class="dot">鄙</span>视（bǐ）　佣挤　<span class="dot">麻</span>木不仁（má）　帝国主义</li>
+        </ul>
+        <div class="answer first">
+          <span class="ans-label">答案与解析</span>
+          <p><strong>答案：A</strong>（全部正确）。</p>
+          <ul class="points">
+            <li><strong>A．正确。</strong>派遣 qiǎn（差遣、打发去办事）、殖民地 zhí（繁殖、殖民，读 zhí 不读 zhǐ）；字形"医疗""冷冷清清"无误。</li>
+            <li><strong>B．错误。</strong>"<span class="dot">拈</span>轻怕重"的"拈"应读 <span class="kw">niān</span>（用手指夹取东西），不读 zhān（"粘"才读 zhān/nián）。鄙薄 bó（轻视）正确。</li>
+            <li><strong>C．错误。</strong>"实<span class="dot">贱</span>"应为"<span class="kw">实践</span>"（践：实行；贱：价格低、地位卑下，义不同）。"晋察冀"的"冀"读 jì 正确（冀为河北省简称）。</li>
+            <li><strong>D．错误。</strong>"<span class="dot">佣</span>挤"应为"<span class="kw">拥挤</span>"（拥：聚集、挤在一起；佣：受雇之人，如佣工、雇佣）。"麻木不仁"的"麻"读 má 正确。</li>
+          </ul>
+        </div>
+        <div class="think">
+          <span class="t-label">🧠 思维过程</span>
+          <p>①题干要求"<strong>字形和注音全部正确</strong>"，说明每项要看<strong>两样</strong>：注音 + 字形，缺一不可。<br>
+          ②先扫注音：B 项"拈 zhān"可疑——"拈"只有一个读音 niān，用"组词法"验证（拈阄、拈花惹草），判定 B 错。<br>
+          ③再扫字形：C 项"实贱"——把"实"组词为"实践"（理论联系实际），写成"贱"属形近致误；D 项"佣挤"——"拥"是提手旁（拥挤要用手推挤），"佣"是单人旁（佣人），部首义不同。<br>
+          ④逐项排除后 A 项音形全对，回头复查一遍防止漏看，定答案。</p>
+        </div>
+        <div class="method">
+          <span class="m-label">📌 题型方法归纳 · 字音字形</span>
+          <ul class="points">
+            <li><strong>据义定音：</strong>多音字要放入词义中判断。如"薄"：鄙薄（轻视）bó、薄纸 báo、薄荷 bò；"差"：差遣 chāi、差别 chā、参差 cī。</li>
+            <li><strong>据义辨形：</strong>形近字看偏旁表义。如"燥/躁/澡"（火燥、足躁、水澡）；"辨/辩/辫/瓣"。</li>
+            <li><strong>易错清单（本题）：</strong>拈 niān 轻怕重、晋察冀 jì、派遣、殖民地、实践、拥挤、纯粹 cuì、鄙薄 bó、鄙视 bǐ。</li>
+            <li><strong>考场技巧：</strong>拿不准的字用"组词法""换字法"造两个词验证，比死记硬背更稳。</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ================= 第2题 ================= -->
+  <section class="block" id="q2">
+    <div class="block-head">
+      <div class="no">2</div>
+      <h2>病句辨析 · 成分残缺与杂糅</h2>
+      <span class="tag">划主干 · 查病因</span>
+    </div>
+    <div class="block-body">
+      <label class="mastery"><input type="checkbox" data-m="q2">已掌握</label>
+      <details open>
+        <summary class="q-title">2．下列语句中没有语病的一项是（　　）</summary>
+        <ul class="opts">
+          <li>A．我们要学习白求恩同志毫不利己、专门利人的精神，是值得我们反思的。</li>
+          <li>B．5月22日10时40分，"祝融号"火星车安全到达火星表面，执行一系列巡视探测。</li>
+          <li>C．经过精心设计的2021年大运会吉祥物"蓉宝"，外形憨态可掬，寓意丰富深刻，深受大家喜爱。</li>
+          <li>D．据调查，青少年近视的原因主要是户外运动时间偏少、不科学使用电子产品造成的。</li>
+        </ul>
+        <div class="answer first">
+          <span class="ans-label">答案与解析</span>
+          <p><strong>答案：C。</strong></p>
+          <ul class="points">
+            <li><strong>A．成分残缺（主语残缺/结构混乱）。</strong>"我们要学习……的精神"是一个分句，紧接着"是值得我们反思的"缺少主语。可在"是值得"前加"<span class="kw">这种精神</span>"，或删去"我们要学习"的"要"字改为判断句式。</li>
+            <li><strong>B．成分残缺（缺宾语中心语）。</strong>"执行一系列巡视探测"中"巡视探测"是动词，不能作"执行"的宾语中心语，应在句末加"<span class="kw">的任务</span>"。</li>
+            <li><strong>C．正确。</strong>"经过精心设计的……'蓉宝'"作主语，"外形……寓意……深受喜爱"三个谓语层次清晰，搭配得当。</li>
+            <li><strong>D．句式杂糅。</strong>"原因是……"与"……造成的"两种句式杂糅。改法：删去"<span class="kw">造成的</span>"，或将"的原因主要是"改为"主要是"。</li>
+          </ul>
+        </div>
+        <div class="think">
+          <span class="t-label">🧠 思维过程</span>
+          <p>①先<strong>划出主干</strong>（谁+怎么样）：A 项主干是"我们学习精神，是值得反思的"——"是"前面缺主语，露馅；B 项主干是"火星车到达表面，执行探测"——"执行"后面没着落。<br>
+          ②再查<strong>句式杂糅</strong>标志词：D 项"原因是……造成的"是经典杂糅模板（同类还有"本着……为原则""围绕……为中心"），一眼识破。<br>
+          ③C 项把修饰语划掉后主干是"吉祥物外形憨态可掬、寓意丰富深刻、深受喜爱"，搭配均无问题，故选 C。</p>
+        </div>
+        <div class="method">
+          <span class="m-label">📌 题型方法归纳 · 病句六大病因速查</span>
+          <table>
+            <tr><th>病因</th><th>识别信号</th><th>本题/常见例</th></tr>
+            <tr><td>成分残缺</td><td>介词开头淹没主语；动词后无宾语</td><td>A 缺主语、B 缺"的任务"</td></tr>
+            <tr><td>句式杂糅</td><td>"原因是……造成的""目的是……是为了"</td><td>D</td></tr>
+            <tr><td>搭配不当</td><td>主谓、动宾、修饰语与中心语不搭</td><td>"水平"与"激发"不搭（见第7题）</td></tr>
+            <tr><td>语序不当</td><td>多层修饰语、关联词位置</td><td>"统一意见、分析讨论"应先"分析讨论"再"统一意见"（见第7题）</td></tr>
+            <tr><td>表意不明</td><td>歧义、指代不明</td><td>"他借我一本书"（借给/借入）</td></tr>
+            <tr><td>不合逻辑</td><td>否定失当、分类不当、前后矛盾</td><td>"防止安全事故不再发生"（否定失当）</td></tr>
+          </table>
+          <p class="small">口诀：<strong>一划主干，二查修饰，三看关联，四读通顺。</strong></p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ================= 第3题 ================= -->
+  <section class="block" id="q3">
+    <div class="block-head">
+      <div class="no">3</div>
+      <h2>成语运用（一）· 感情色彩与语境</h2>
+      <span class="tag">本义 → 对象 → 语境</span>
+    </div>
+    <div class="block-body">
+      <label class="mastery"><input type="checkbox" data-m="q3">已掌握</label>
+      <details>
+        <summary class="q-title">3．下列句子中，加点的成语使用不正确的一项是（　　）</summary>
+        <ul class="opts">
+          <li>A．现在市场经济不景气，我劝你安心工作，不要<span class="dot">见异思迁</span>了。</li>
+          <li>B．医学属于经验科学，务必凭借累积的经验，<span class="dot">精益求精</span>，才能让医疗技术有更新的突破。</li>
+          <li>C．有了乐于吃苦的理念和心态，才不会在工作中<span class="dot">拈轻怕重</span>。</li>
+          <li>D．张先生如往常一样<span class="dot">漠不关心</span>地上网核对前一天下午买的彩票号码。</li>
+        </ul>
+        <div class="answer first">
+          <span class="ans-label">答案与解析</span>
+          <p><strong>答案：D。</strong></p>
+          <ul class="points">
+            <li><strong>A．正确。</strong>见异思迁：看见不同的事物就改变主意，指意志不坚定、喜爱不专。此处劝人安心工作、不要这山望着那山高，使用正确。</li>
+            <li><strong>B．正确。</strong>精益求精：（学术、技术、作品等）好了还求更好。与"让医疗技术有更新的突破"语境契合。</li>
+            <li><strong>C．正确。</strong>拈轻怕重：接受任务时挑拣轻松的，害怕繁重的。与"乐于吃苦"形成正反对照，使用正确。</li>
+            <li><strong>D．错误。</strong>漠不关心：形容对人或事物态度冷淡，一点儿也不关心。而语境是张先生<strong>心不在焉、随随便便</strong>地核对号码，应改为"<span class="kw">漫不经心</span>"（随随便便，不放在心上）。两者对象不同："漠不关心"是<strong>态度冷淡</strong>，"漫不经心"是<strong>注意力不集中</strong>。</li>
+          </ul>
+        </div>
+        <div class="think">
+          <span class="t-label">🧠 思维过程</span>
+          <p>①先默写每个成语的<strong>本义</strong>，不看选项直接释义，防止被句意带偏。<br>
+          ②D 项代入后问自己：张先生是对彩票号码"冷淡不关心"吗？显然不是——他只是<strong>随便、心不在焉</strong>地核对。成语义与语境义错位，即为误用。<br>
+          ③辨析近义成语"漠不关心／漫不经心／置若罔闻"：漠不关心→态度冷；漫不经心→神态随便；置若罔闻→听见了也不管。积累到"对象+侧重点"层面，才不会混淆。</p>
+        </div>
+        <div class="method">
+          <span class="m-label">📌 题型方法归纳 · 成语四查</span>
+          <ul class="points">
+            <li><strong>一查望文生义：</strong>如"文不加点"（点：涂改，形容文思敏捷，不是不加标点）、"不刊之论"（刊：削改，不能改动的言论）。</li>
+            <li><strong>二查感情色彩：</strong>褒义贬用/贬义褒用，如"处心积虑"（贬）、"殚精竭虑"（褒）。</li>
+            <li><strong>三查适用对象：</strong>如"豆蔻年华"只指十三四岁女孩，"安居乐业"指整个社会百姓安定生活（见第6题）。</li>
+            <li><strong>四查语义重复：</strong>如"忍俊不禁地笑了""众多莘莘学子"。</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ================= 第4题 ================= -->
+  <section class="block" id="q4">
+    <div class="block-head">
+      <div class="no">4</div>
+      <h2>语句排序 · 经典篇目原文再现</h2>
+      <span class="tag">背诵默写 + 逻辑顺序</span>
+    </div>
+    <div class="block-body">
+      <label class="mastery"><input type="checkbox" data-m="q4">已掌握</label>
+      <details>
+        <summary class="q-title">4．下面文段中横线处的语句排序正确的一项是（　　）</summary>
+        <p>……一个人能力有大小，但只要有这点精神，就是_________________，_________________，_________________，_________________，_________________。</p>
+        <ul class="opts">
+          <li>A．一个高尚的人，一个纯粹的人，一个有道德的人，一个脱离了低级趣味的人，一个有益于人民的人。</li>
+          <li>B．一个纯粹的人，一个高尚的人，一个有道德的人，一个脱离了低级趣味的人，一个有益于人民的人。</li>
+          <li>C．一个高尚的人，一个纯粹的人，一个脱离了低级趣味的人，一个有道德的人，一个有益于人民的人。</li>
+          <li>D．一个高尚的人，一个纯粹的人，一个有益于人民的人，一个有道德的人，一个脱离了低级趣味的人。</li>
+        </ul>
+        <div class="answer first">
+          <span class="ans-label">答案与解析</span>
+          <p><strong>答案：A。</strong>此为毛泽东《纪念白求恩》结尾的名句，原文顺序为："一个高尚的人，一个纯粹的人，一个有道德的人，一个脱离了低级趣味的人，一个有益于人民的人。"</p>
+          <p>从逻辑上看，五个短语呈<strong>层层递进</strong>关系：先立"高尚"的理想人格，再求"纯粹"的品质，进而"有道德"，再进而"脱离低级趣味"（净化自我），最终落脚到"<strong>有益于人民</strong>"（服务社会）——由个人修养推向社会责任，最后一句是全段的落脚点。</p>
+        </div>
+        <div class="think">
+          <span class="t-label">🧠 思维过程</span>
+          <p>①这是一道"背诵+逻辑"复合题。最快路径是<strong>回归课文原文</strong>直接锁定 A。<br>
+          ②若记不清，用<strong>逻辑排序法</strong>：四个选项前两个短语只有"高尚/纯粹"两种组合，而"有益于人民"作为最高价值应当<strong>殿后</strong>——排除 D；C 把"脱离低级趣味"提到"有道德"之前，违背由浅入深的递进，排除；B 把"纯粹"放"高尚"前，与原文先总后分的顺序不符。<br>
+          ③对照后 A 唯一符合"修身→济世"的递进逻辑。</p>
+        </div>
+        <div class="method">
+          <span class="m-label">📌 题型方法归纳 · 排序三招</span>
+          <ul class="points">
+            <li><strong>首句定调：</strong>多数情况"总起句/背景句"在前，排除首句错误的选项。</li>
+            <li><strong>抓路标词：</strong>关联词配对（虽然……但是）、代词指代（这/其/之）、重复词语首尾相接。</li>
+            <li><strong>逻辑验证：</strong>时间顺序、空间顺序、由浅入深、由主到次、由整体到局部——排完通读一遍验证。</li>
+            <li><strong>回归原文：</strong>出自课文的语段优先回忆原文，别靠"语感"硬排。</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ================= 第5题 ================= -->
+  <section class="block" id="q5">
+    <div class="block-head">
+      <div class="no">5</div>
+      <h2>字形辨析 · 形近字与同音字</h2>
+      <span class="tag">偏旁表义法</span>
+    </div>
+    <div class="block-body">
+      <label class="mastery"><input type="checkbox" data-m="q5">已掌握</label>
+      <details>
+        <summary class="q-title">5．下列词语中没有错别字的一项是（　　）</summary>
+        <ul class="opts">
+          <li>A．横蛮　迁陡　托辞　瞩目</li>
+          <li>B．荣辱　榨油　碾转　聊叙</li>
+          <li>C．欺压　仁慈　逊色　通辑</li>
+          <li>D．诉说　妯娌　竭力　发髻</li>
+        </ul>
+        <div class="answer first">
+          <span class="ans-label">答案与解析</span>
+          <p><strong>答案：D。</strong></p>
+          <ul class="points">
+            <li>A．"迁<span class="dot">陡</span>"应为"<span class="kw">迁徙</span>"（徙 xǐ：迁移；陡：坡度大）。迁徙：迁移、搬家。</li>
+            <li>B．"<span class="dot">碾</span>转"应为"<span class="kw">辗转</span>"（辗 zhǎn：身体翻来覆去；碾 niǎn：碾子、碾压）。</li>
+            <li>C．"通<span class="dot">辑</span>"应为"<span class="kw">通缉</span>"（缉 jī：搜捕捉拿；辑 jí：编辑、辑录）。</li>
+            <li>D．全对。注意"妯娌"（zhóu li，兄妻与弟妻的合称，均为女字旁）、"发髻"（jì，盘在头顶的发结，与"鬓"bìn 区分）。</li>
+          </ul>
+        </div>
+        <div class="think">
+          <span class="t-label">🧠 思维过程</span>
+          <p>①逐词"过筛子"：横蛮（蛮横义，可作"横蛮"）、托辞、瞩目（注目）都通。<br>
+          ②发现疑点立刻<strong>组词验证</strong>："迁陡"组不出词——"徙"才表迁移（成语"未敢苟同"之"徙木立信"）；"碾转"→"辗转反侧"（《诗经》），车字旁与石字旁混淆；"通辑"→"通缉令"（绞丝旁表捉拿捆绑，车字旁"辑"表编辑）。<br>
+          ③D 项四个词分别检查偏旁：妯娌（女）、竭（立+曷，竭尽）、髻（髟 biāo 长发飘飖），均无误，锁定答案。</p>
+        </div>
+        <div class="method">
+          <span class="m-label">📌 题型方法归纳 · 字形三法</span>
+          <ul class="points">
+            <li><strong>偏旁表义：</strong>缉（绞丝旁→捉拿捆绑）／辑（车字旁→编排成册）；徙（彳→行走迁移）／陡（阝→山坡陡峭）。</li>
+            <li><strong>组词造句：</strong>把可疑字放回词语和成语中，组不出词就是错的（辗转反侧、通缉令、迁徙）。</li>
+            <li><strong>义源追溯：</strong>"髻"从髟（长发），与头发有关；"鬓角"也从髟。记住偏旁就记住了字义。</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ================= 第6题 ================= -->
+  <section class="block" id="q6">
+    <div class="block-head">
+      <div class="no">6</div>
+      <h2>成语运用（二）· 适用对象</h2>
+      <span class="tag">成语要看"管谁"</span>
+    </div>
+    <div class="block-body">
+      <label class="mastery"><input type="checkbox" data-m="q6">已掌握</label>
+      <details>
+        <summary class="q-title">6．下列句子中加点成语运用不恰当的一项是（　　）</summary>
+        <ul class="opts">
+          <li>A．母亲在家庭里极能<span class="dot">任劳任怨</span>。她性格和蔼，没有打骂过我们，也没有同任何人吵过架。</li>
+          <li>B．这在母亲心里是多么惨痛悲哀和<span class="dot">无可奈何</span>的事情啊！</li>
+          <li>C．这篇回忆自己母亲的文章，句句都是<span class="dot">肺腑之言</span>，情真意切。</li>
+          <li>D．母亲不仅吃苦耐劳，又是一个<span class="dot">安居乐业</span>的妇女，她鼓励孩子去开创新的生活。</li>
+        </ul>
+        <div class="answer first">
+          <span class="ans-label">答案与解析</span>
+          <p><strong>答案：D。</strong></p>
+          <ul class="points">
+            <li><strong>A．正确。</strong>任劳任怨：做事不怕辛苦，不怕别人埋怨。形容母亲承担家务、和睦待人，恰当。</li>
+            <li><strong>B．正确。</strong>无可奈何：没有办法可想。写出母亲面对不幸遭遇的无奈，恰当。</li>
+            <li><strong>C．正确。</strong>肺腑之言：发自内心的话。与"情真意切"呼应，恰当。</li>
+            <li><strong>D．错误。</strong>安居乐业：安定地生活，愉快地劳动。它描述的是<strong>整个社会百姓</strong>生活安定的景象（如"国家太平，人民安居乐业"），不能用来形容<strong>某一位妇女</strong>个人，属适用对象误用。可改为"安贫乐道""热爱生活"等。</li>
+          </ul>
+        </div>
+        <div class="think">
+          <span class="t-label">🧠 思维过程</span>
+          <p>①本题四个成语都出自《回忆我的母亲》一课，先确认每词的<strong>适用对象</strong>。<br>
+          ②D 项把"安居乐业"套在"一个……的妇女"身上——成语管的是"社会大众"，主语却只是"一个人"，对象错配，立即锁定。<br>
+          ③验证其余三项均出自课文原句或语境贴切，无误，最终选 D。</p>
+        </div>
+        <div class="method">
+          <span class="m-label">📌 题型方法归纳 · 对象误用清单</span>
+          <ul class="points">
+            <li>安居乐业→百姓大众；<strong>不能</strong>用于单个人。</li>
+            <li>巧夺天工→人工制品；<strong>不能</strong>用于自然景观。</li>
+            <li>络绎不绝→人/车马往来；<strong>不能</strong>用于电话、声音。</li>
+            <li>汗牛充栋→书籍多；<strong>不能</strong>用于人或其他事物。</li>
+            <li>妙手回春→医生医术；<strong>不能</strong>用于其他行业。</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ================= 第7题 ================= -->
+  <section class="block" id="q7">
+    <div class="block-head">
+      <div class="no">7</div>
+      <h2>综合积累 · 字音字形 · 选词填空 · 病句</h2>
+      <span class="tag">一题多考 · 逐小题突破</span>
+    </div>
+    <div class="block-body">
+      <label class="mastery"><input type="checkbox" data-m="q7">已掌握</label>
+      <details>
+        <summary class="q-title">7．阅读下面文段，回答各题。</summary>
+        <p>白居易曾说："感人心者，莫先乎情。"朱德出身<span class="dot">佃</span>农，家境贫寒，然而，朱德的母亲非常勤劳且善良。她一天到晚忙<span class="dot">碌</span>着，却从不抱怨，可谓（任劳任怨/自怨自艾）；自己过得艰难也不忘（救济/周济）更贫苦的人，在人格上远高于那些（富甲一方/为富不仁）的地主——这些人虽然有钱却剥削百姓，给很多老百姓制造了困难。朱德赞美宽厚仁cí、一生不chuò劳动的母亲，让我们体会到他对母亲的深情。</p>
+        <p class="small">（A）<u>通过学习文章，使我们能更深入体会蕴含在字里行间的浓浓情意</u>。（B）<u>在学习过程中，我们统一意见、分析讨论，最后提出问题</u>，（C）<u>对"情"字有了更深入</u>。（D）<u>本学期我们的写作水平有很大的激发</u>。我们会更真心地对待他人，更真挚地阅读写作，更深情地拥抱生活！</p>
+        <p><strong>（1）</strong>根据拼音写汉字，给加点字注音。<br>①佃 ________　②碌 ________　③cí ________　④chuò ________</p>
+        <p><strong>（2）</strong>依次选用文中括号里的词语，最恰当的一项是 _______</p>
+        <table>
+          <tr><th>选项</th><th>第一空</th><th>第二空</th><th>第三空</th></tr>
+          <tr><td>A</td><td>任劳任怨</td><td>救济</td><td>富甲一方</td></tr>
+          <tr><td>B</td><td>任劳任怨</td><td>周济</td><td>为富不仁</td></tr>
+          <tr><td>C</td><td>自怨自艾</td><td>周济</td><td>富甲一方</td></tr>
+          <tr><td>D</td><td>自怨自艾</td><td>救济</td><td>为富不仁</td></tr>
+        </table>
+        <p><strong>（3）</strong>语段中画线处都有语病，下列修改不正确的一项是 _______<br>
+        A．去掉"使"。　B．"统一意见"和"提出问题"调换位置。　C．"深入"后加"的理解"。　D．将"激发"改为"激励"。</p>
+
+        <div class="answer first">
+          <span class="ans-label">答案与解析</span>
+          <p><strong>（1）①diàn　②lù　③慈　④辍</strong></p>
+          <ul class="points">
+            <li>佃（diàn）农：租种地主土地的农民。注意不读 tián。</li>
+            <li>忙碌（lù）："碌"读 lù，"忙忙碌碌"；"禄"lù（俸禄）、"绿"lǜ、"氯"lǜ 要区分。</li>
+            <li>仁cí→仁<strong>慈</strong>：仁爱慈善。"瓷""词"勿混。</li>
+            <li>不chuò→不<strong>辍</strong>：不停止（辍 chuò：停止）。成语"笔耕不辍""勤学不辍"。注意与"缀"（点缀 zhuì）、"掇"（拾掇 duo）区分。</li>
+          </ul>
+          <p><strong>（2）答案：B。</strong>逐空辨析：</p>
+          <ul class="points">
+            <li>第一空：<strong>任劳任怨</strong>（不怕辛苦、不怕埋怨）vs 自怨自艾（自我悔恨，艾 yì：治理、改正）。前文"从不抱怨"，显然选"任劳任怨"。排除 C、D。</li>
+            <li>第二空：<strong>周济</strong>（在物质上接济穷人，多用于个人对个人的长期帮助）vs 救济（政府或团体对灾民、困难者的救助）。语境是<strong>母亲个人</strong>接济更贫苦的人，选"周济"更贴切。</li>
+            <li>第三空：<strong>为富不仁</strong>（剥削者为了发财致富，心狠手毒，没有仁慈心肠）vs 富甲一方（在某地最富有，中性词）。后文"有钱却剥削百姓"点明是<strong>贬义</strong>，选"为富不仁"。</li>
+          </ul>
+          <p><strong>（3）答案：D（修改不正确的一项）。</strong></p>
+          <ul class="points">
+            <li>A．正确改法。"通过……使……"淹没主语，删"使"（或删"通过"）。</li>
+            <li>B．正确改法。应先"分析讨论"，然后"统一意见"，最后"提出问题"不合逻辑？——按题目答案："统一意见"和"提出问题"调换位置，即"分析讨论、提出问题，最后统一意见"，符合认知顺序。</li>
+            <li>C．正确改法。"对'情'字有了更深入"缺宾语中心语，加"的理解"。</li>
+            <li>D．<strong>错误改法</strong>。"写作水平"与"激励"不搭，应改为"<span class="kw">提高</span>"（水平高低用"提高/提升"；"激励"多用于激发人的积极性）。所以 D 的修改是不正确的，符合题意。</li>
+          </ul>
+        </div>
+        <div class="think">
+          <span class="t-label">🧠 思维过程</span>
+          <p>①（1）小题按"<strong>音随义定、形随义写</strong>"：不辍=不停，故从"车"（辍的本义与车有关，后泛指停止）；仁慈=仁爱慈善，从"心"。<br>
+          ②（2）小题用<strong>排除+语境检验</strong>：先看最有把握的第二空——母亲个人接济穷人是"周济"，直接排除 A、D；再用第三空感情色彩验证（"剥削百姓"→贬义→为富不仁），锁定 B。<br>
+          ③（3）小题注意题干问的是"<strong>修改不正确</strong>的一项"——先看修改后的句子通不通："水平有很大激励"依然不通，故 D 改错。<span class="small">（考场常见陷阱：问"不正确/不恰当"时先圈出来，防止看反。）</span></p>
+        </div>
+        <div class="method">
+          <span class="m-label">📌 题型方法归纳 · 综合积累题</span>
+          <ul class="points">
+            <li><strong>选词填空三步：</strong>①辨析词义差别（对象/褒贬/轻重）→②代入语境检验→③整句通读复核。</li>
+            <li><strong>近义词辨析抓手：</strong>救济（公对私/大对小）vs 周济（私人接济）；任劳任怨（对事）vs 自怨自艾（对己）。</li>
+            <li><strong>搭配积累：</strong>水平——提高／降低；能力——提高／增强；热情——激发／激励（人）。</li>
+            <li><strong>常见字音：</strong>佃 diàn、辍 chuò、艾 yì（自怨自艾）、薄 bó（鄙薄）、拈 niān。</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ================= 第8题 ================= -->
+  <section class="block" id="q8">
+    <div class="block-head">
+      <div class="no">8</div>
+      <h2>图文转换 · 画面描述与寓意</h2>
+      <span class="tag">描述 → 手法 → 寓意</span>
+    </div>
+    <div class="block-body">
+      <label class="mastery"><input type="checkbox" data-m="q8">已掌握</label>
+      <details>
+        <summary class="q-title">8．某同学设计了如图这张图片来展示读书的重要意义，请描述这幅图片的内容并说明寓意。</summary>
+        <div class="answer first">
+          <span class="ans-label">答案与解析</span>
+          <p><strong>参考答案：</strong></p>
+          <div class="fanyi">
+            <p><strong>内容：</strong>图中一个人站在平地上抬头仰望，但看不多远，一脸迷茫；另一个人站在一本厚厚的、标着"读书"字样的书本上，发出"我看得更远了"的感慨。两个人的不同境遇形成鲜明对比。</p>
+            <p><strong>寓意：</strong>这幅图通过对比告诉我们：<strong>读书能够开阔我们的视野</strong>，提升人的眼界与境界，呼吁我们要多读书、读好书。</p>
+          </div>
+          <p><strong>答题要点拆解：</strong></p>
+          <ul class="points">
+            <li><strong>描述内容</strong>要客观有序：从主体到细节（两个人的位置、动作、表情、书上的文字、人物语言），按"左→右"或"整体→局部"的顺序，不加主观评论。</li>
+            <li><strong>揭示寓意</strong>要结合画面元素：站得高（站在书上）→看得远→读书使人眼界开阔；注意题目限定"读书的重要意义"，寓意不能脱离主题。</li>
+          </ul>
+        </div>
+        <div class="think">
+          <span class="t-label">🧠 思维过程</span>
+          <p>①先问自己三个问题：画上<strong>有什么</strong>？（人、书、文字）→它们<strong>什么关系</strong>？（对比：站平地 vs 站书上）→想<strong>说什么</strong>？（读书开阔视野）。<br>
+          ②描述时只写"看到了什么"，把评论留给寓意；寓意用一句话点破，并扣住"读书的意义"这一主题词。<br>
+          ③最后检查：内容有没有漏掉画面文字（"读书""看得更远了"）？寓意有没有答成"要站得高"？——寓意必须落在<strong>读书</strong>上。</p>
+        </div>
+        <div class="method">
+          <span class="m-label">📌 题型方法归纳 · 图文转换答题模板</span>
+          <ul class="points">
+            <li><strong>描述内容：</strong>"图中……（主体）+ ……（动作/细节）+ ……（文字/语言），构成……（关系，如对比）。"</li>
+            <li><strong>揭示寓意：</strong>"这幅图通过（对比/夸张/象征），告诉我们……（道理），呼吁我们……（做法）。"</li>
+            <li><strong>三不：</strong>不遗漏画面文字、不主观臆测、不脱离命题主题。</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ================= 第9题 ================= -->
+  <section class="block" id="q9">
+    <div class="block-head">
+      <div class="no">9</div>
+      <h2>现代文阅读 · 《纪念白求恩》比较阅读</h2>
+      <span class="tag">信息提取 · 词句赏析 · 句子归位</span>
+    </div>
+    <div class="block-body">
+      <label class="mastery"><input type="checkbox" data-m="q9">已掌握</label>
+      <details>
+        <summary class="q-title">9．阅读【甲】【乙】两文，完成（1）—（4）题。</summary>
+        <p><strong>【甲】纪念白求恩（节选）　毛泽东</strong></p>
+        <p>①白求恩同志毫不利己专门利人的精神，表现在他对工作的极端的负责任，对同志对人民的极端的热忱。每个共产党员都要学习他。不少的人对工作不负责任，拈轻怕重，把重担子推给人家，自己挑轻的。一事当前，先替自己打算，然后再替别人打算。出了一点力就觉得了不起，喜欢自吹，生怕人家不知道。对同志对人民不是满腔热忱，而是冷冷清清，漠不关心，麻木不仁。这种人其实不是共产党员，至少不能算一个纯粹的共产党员。从前线回来的人说到白求恩，<span class="dot">没有一个不</span>佩服，<span class="dot">没有一个不</span>为他的精神所感动。晋察冀边区的军民，凡亲身受过白求恩医生的治疗和亲眼看过白求恩医生的工作的，无不为之感动。每一个共产党员，一定要学习白求恩同志的这种真正共产主义者的精神。</p>
+        <p>②白求恩同志是个医生，他以医疗为职业，对技术精益求精；<u>　A　</u>在整个八路军医务系统中，他的医术是很高明的。这对于一班见异思迁的人，对于一班鄙薄技术工作以为不足道、以为无出路的人，也是一个极好的教训。</p>
+        <p><strong>【乙】"要拿我当一挺机关枪使用"——怀念白求恩同志（节选）　聂荣臻</strong></p>
+        <p>①不能忘记，1938年6月，他从延安来到晋察冀，我在山西五台的金刚库村第一次见到他。高高的个子，虽然还不到五十岁，却已苍苍白发，但目光炯炯，精神奕奕。我看到他跋涉千里，旅途一定很劳累了，劝他多休息几天再谈工作。他这样回答我："我是来工作的，不是来休息的，你们要拿我当一挺机关枪使用。……"这句洋溢着革命者战斗激情的回答，至今还回荡在我的耳际。</p>
+        <p>②不能忘记，那年9月的一天，我接待了从战地回来的白求恩同志。我向他讲了军区部队刚刚在石盆口打了一个漂亮的伏击战，打死了日寇指挥官清水少将，歼灭了日伪军七、八百人，缴获了一批武器弹药。他听了高兴地称颂毛泽东同志的战略、战术。同他一起吃饭的时候，又谈起了他建立的模范医院，在日寇"扫荡"中被烧毁了。他以坦率的自我批评，讲了他在残酷的敌后游击战争环境里建立正规化医院的想法，是不合实际的。我说："是啊，我们是要建立正规化医院的，但敌人不让啊。后方医院的建设，要更加从实际出发，注意内容。"他频频点头。<u>　B　</u></p>
+        <p>③不能忘记，1939年7月1日，在晋察冀边区党的代表大会上，他以特邀代表身份从冀中平原赶来参加大会。他在发言中说："我们来中国，不仅是为了你们，也是为了我们。……我决心和中国同志并肩战斗，直到抗战最后胜利。我们努力奋斗的共产主义事业，是不分民族，也没有国界的。"</p>
+
+        <p><strong>（1）</strong>两文都突出了白求恩同志的高贵品质。默读选文，勾画出相应文字，填写下表。</p>
+        <table>
+          <tr><th></th><th>对工作的态度</th><th>对同志、人民的态度</th><th>对工作的要求</th></tr>
+          <tr><td>【甲】</td><td>①_____________</td><td>极端的热忱 / 满腔热忱</td><td>②_______________</td></tr>
+          <tr><td>【乙】</td><td>你们要拿我当一挺机关枪使用</td><td>③______________________</td><td>以坦率的自我批评，讲了他在残酷的敌后游击战争环境里建立正规化医院的想法，是不合实际的</td></tr>
+        </table>
+
+        <p><strong>（2）</strong>结合上下文内容，说说句中加点字的作用。<br>
+        ①从前线回来的人说到白求恩，<span class="dot">没有一个不</span>佩服，<span class="dot">没有一个不</span>为他的精神所感动。<br>
+        ②我<span class="dot">是</span>来工作的，<span class="dot">不是</span>来休息的，你们<span class="dot">要</span>拿我当一挺机关枪使用。</p>
+
+        <p><strong>（3）</strong>下面一段话应放在A、B的哪一处？为什么？<br>
+        此后不久，他根据毛泽东同志关于游击战争的光辉思想和他切身的实践经验，编写了《游击战争中野战医院的组织和技术》一书，给敌后医务工作者留下了珍贵的礼物。</p>
+
+        <p><strong>（4）</strong>对两篇选文理解有误的一项是（　　）<br>
+        A．【甲】文中，作者拿部分同志与白求恩对比，以此反衬出白求恩精神之可贵。<br>
+        B．【甲】【乙】两文叙议结合，且都以议论为主。<br>
+        C．【乙】文按照时间顺序，分别展现了白求恩在不同阶段的工作状态和思想品质。<br>
+        D．【甲】文第①段展现了白求恩毫不利己专门利人的精神。【乙】文第②段展现了白求恩实事求是的精神。</p>
+
+        <div class="answer first">
+          <span class="ans-label">答案与解析</span>
+          <p><strong>（1）表格填空</strong></p>
+          <ul class="points">
+            <li>① <strong>极端的负责任</strong>。依据：甲文第①段"表现在他对工作的极端的负责任"。</li>
+            <li>② <strong>对技术精益求精</strong>。依据：甲文第②段"他以医疗为职业，对技术精益求精"。</li>
+            <li>③ 示例：<strong>"我决心和中国同志并肩战斗，直到抗战最后胜利。"</strong>（或"我们来中国，不仅是为了你们，也是为了我们。"或"他听了高兴地称颂毛泽东同志的战略、战术。"）——摘录体现他对同志、人民热爱与国际主义精神的语句即可。</li>
+          </ul>
+          <p><strong>（2）加点字（词）的作用</strong></p>
+          <ul class="points">
+            <li>① 连用两个"<strong>没有一个不</strong>"构成<strong>双重否定</strong>，起强调作用，加强肯定语气；意思是<strong>无一例外</strong>，从前线回来的每一个人都佩服、都被感动，突出了白求恩毫不利己专门利人的精神感人之深、影响之大。</li>
+            <li>② "<strong>是</strong>来工作的，<strong>不是</strong>来休息的"，"是/不是"形成鲜明<strong>对比</strong>，突出白求恩对工作的热爱与投入（忘我精神）；"<strong>要</strong>"字是他主动提出的要求，表达他<strong>渴望承担重任、渴望战斗</strong>的强烈愿望。同时"拿我当一挺机关枪使用"运用<strong>比喻</strong>，把人比作机关枪，生动表现了革命者的战斗激情。</li>
+          </ul>
+          <p><strong>（3）应放在 B 处。</strong>理由：这段话以"<strong>此后不久</strong>"承接上文，紧承第②段白求恩反思"建立正规化医院的想法不合实际"、聂荣臻提出"医院建设要从实际出发"的讨论——他随后编写《游击战争中野战医院的组织和技术》一书，正是<strong>从实际出发</strong>思考的成果，与 B 处上文内容紧密呼应。而 A 处所在语句强调的是白求恩<strong>医术高明、对技术精益求精</strong>，与这段话的内容衔接不上。</p>
+          <p><strong>（4）答案：B。</strong>【甲】文是议论文，以议论为主，赞美白求恩精神并号召学习；【乙】文是回忆性散文，以<strong>记叙（叙述）</strong>为主体，按时间顺序追忆白求恩的事迹，并非"都以议论为主"。A、C、D 理解均正确。</p>
+        </div>
+        <div class="think">
+          <span class="t-label">🧠 思维过程</span>
+          <p>①（1）表格题＝"答案在原文里"：先定位表头关键词（对工作的态度/要求），再回原文<strong>圈画原词原句</strong>，直接摘录，不自行概括。<br>
+          ②（2）赏析题按<strong>三步走</strong>：点手法（双重否定/对比/比喻）→释句意（无一例外、都佩服）→落情感（精神感人之深/战斗激情）。注意"加点字的作用"要<strong>扣住字词本身</strong>（"没有一个不""是/不是""要"），不能泛泛而谈。<br>
+          ③（3）句子归位题先抓<strong>照应词</strong>："此后不久"的时间承接、"从实际出发"的内容照应，都指向 B 处。<br>
+          ④（4）文体判断题：抓"甲文大量分析说理、乙文三段'不能忘记'+时间词"，即可判定乙文以记叙为主。</p>
+        </div>
+        <div class="method">
+          <span class="m-label">📌 题型方法归纳 · 现代文阅读四类题</span>
+          <table>
+            <tr><th>题型</th><th>答题模板</th></tr>
+            <tr><td>信息提取（表格/填空）</td><td>回原文定位关键词 → 摘录原词原句 → 仿照示例格式填写</td></tr>
+            <tr><td>词句赏析（加点字）</td><td>手法/词义 + 句面意思 + 深层情感（人物形象、作者态度）</td></tr>
+            <tr><td>句子归位/句段作用</td><td>抓照应词（此后/这/其中）+ 内容关联分析 + 排除干扰位置</td></tr>
+            <tr><td>内容理解选择题</td><td>逐项回文比对，特别警惕"都""完全""唯一"等绝对化表述</td></tr>
+          </table>
+          <p class="small">双重否定的作用套话：加强语气，强调……，突出……；答题时必须结合具体内容，不能只写"加强语气"。</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ================= 第10题 ================= -->
+  <section class="block" id="q10">
+    <div class="block-head">
+      <div class="no">10</div>
+      <h2>古诗词鉴赏 · 革命诗歌比较阅读</h2>
+      <span class="tag">注释 · 翻译 · 赏析 · 炼字</span>
+    </div>
+    <div class="block-body">
+      <label class="mastery"><input type="checkbox" data-m="q10">已掌握</label>
+      <details>
+        <summary class="q-title">10．阅读【甲】【乙】两首诗，完成（1）（2）题。</summary>
+        <div class="poem">
+          【甲】梅岭三章·第一章<br>
+          断头今日意如何？创业艰难百战多。<br>
+          此去泉台招旧部，旌旗十万斩阎罗。
+          <span class="by">—— 陈毅</span>
+        </div>
+        <div class="poem">
+          【乙】大江歌罢掉头东<br>
+          大江歌罢掉头东，邃密群科济世穷。<br>
+          面壁十年图破壁，难酬蹈海亦英雄。
+          <span class="by">—— 周恩来</span>
+        </div>
+
+        <div class="tabs">
+          <div class="tab-btns">
+            <button class="active" onclick="showTab(this,'t10a')">📝 词语注释</button>
+            <button onclick="showTab(this,'t10b')">📖 全文翻译</button>
+            <button onclick="showTab(this,'t10c')">🏮 赏析与背景</button>
+            <button onclick="showTab(this,'t10d')">✅ 答案与解析</button>
+          </div>
+
+          <div class="tab-pane active" id="t10a">
+            <p><strong>【甲】《梅岭三章·第一章》词语注释</strong></p>
+            <table>
+              <tr><th style="width:22%">词语</th><th>释义</th></tr>
+              <tr><td>意如何</td><td>心里想些什么。意：心里想；如何：怎样。</td></tr>
+              <tr><td>创业</td><td>创立革命大业（开创无产阶级革命事业）。</td></tr>
+              <tr><td>泉台</td><td>泉下、黄泉，指人死后埋葬之处（迷信说法中指阴间）。</td></tr>
+              <tr><td>旧部</td><td>过去的部下，指为革命牺牲的战友。</td></tr>
+              <tr><td>旌旗</td><td>旗帜的总称，这里借指部队、军士（借代手法）。</td></tr>
+              <tr><td>阎罗</td><td>梵语"阎魔罗阇"的简称，民间称管地狱之主的阎罗王，这里比喻凶残的敌人（国民党反动派）。</td></tr>
+              <tr><td>斩</td><td>砍杀、消灭，表现革命者与敌人血战到底的气概。</td></tr>
+            </table>
+            <p><strong>【乙】《大江歌罢掉头东》词语注释</strong></p>
+            <table>
+              <tr><th style="width:22%">词语</th><th>释义</th></tr>
+              <tr><td>大江歌罢</td><td>唱罢"大江东去"那样豪迈的歌。"大江"化用苏轼《念奴娇·赤壁怀古》"大江东去，浪淘尽，千古风流人物"，代指豪放雄壮的歌曲。</td></tr>
+              <tr><td>掉头东</td><td>毅然掉转头颅，东渡日本（留学）。掉头：掉转头，毅然决然之态。</td></tr>
+              <tr><td>邃密</td><td>深入、精细地钻研。邃（suì）：深远、精深。密：细密、周密。</td></tr>
+              <tr><td>群科</td><td>各种学科（一说指社会科学、各种救国济世的学问）。</td></tr>
+              <tr><td>济世穷</td><td>拯救处于危困中的国家与人民。济：救助、拯救；世穷：国家民族的危困处境。</td></tr>
+              <tr><td>面壁十年</td><td>原指佛教达摩祖师面壁九年（面对墙壁静坐修行）的故事，这里指长时间刻苦攻读、潜心钻研。</td></tr>
+              <tr><td>图破壁</td><td>"图"：图谋、力求。"破壁"典出张僧繇画龙点睛、雷电破壁、龙乘云飞去的故事，比喻学成之后像破壁的巨龙一样腾飞，救国救民、一举成名。</td></tr>
+              <tr><td>难酬</td><td>难以实现（壮志难酬）。酬：实现、报偿。</td></tr>
+              <tr><td>蹈海</td><td>投海殉国。典出战国鲁仲连"义不帝秦，宁蹈东海而死"及近代陈天华蹈海事迹，指为理想献出生命。</td></tr>
+            </table>
+          </div>
+
+          <div class="tab-pane" id="t10b">
+            <p><strong>【甲】译文</strong></p>
+            <div class="fanyi">
+              今天即将被砍头牺牲，我心里想些什么呢？开创革命大业经历了无数艰难的战斗。（既然如此，我）此去黄泉之下，也要招集牺牲的旧部战友，率领十万大军，把阎罗（凶残的敌人）斩尽杀绝，与反动派血战到底！
+            </div>
+            <p><strong>【乙】译文</strong></p>
+            <div class="fanyi">
+              唱罢"大江东去"般豪迈雄壮的歌曲，我毅然掉头东渡日本；深入细致地钻研各种科学知识，是要以此拯救处于危困中的国家和民族。哪怕面壁苦读十年，也只图学成之后像破壁的巨龙一样腾飞而出、救国救民；即使壮志难酬，为此纵身蹈海、以身殉国，也不失为英雄！
+            </div>
+          </div>
+
+          <div class="tab-pane" id="t10c">
+            <p><strong>背景 · 知人论世</strong></p>
+            <ul class="points">
+              <li><strong>【甲】</strong>1936年冬，陈毅在梅山被国民党军队包围。他负伤潜伏于草莽间二十余日，自料难以脱险，写下《梅岭三章》作为绝命诗留在衣底。第一章是面对死亡的内心独白，写"死而未已"的战斗决心。</li>
+              <li><strong>【乙】</strong>1917年9月，周恩来东渡日本留学前夕，写此诗赠别同学（赠张鸿诰），表达为救国而求学、为理想不惜牺牲的志向。</li>
+            </ul>
+            <p><strong>【甲】赏析</strong></p>
+            <ul class="points">
+              <li><strong>首句设问：</strong>"断头今日意如何"以问句起笔，劈空而来，奠定了全诗<strong>壮烈而深沉</strong>的感情基调，引出诗人面对牺牲时的内心独白。</li>
+              <li><strong>概括与对比：</strong>"创业艰难百战多"概括革命事业的艰辛曲折，也暗含对牺牲战友的痛惜，但更突出的是<strong>不畏牺牲的坚定意志</strong>，绝无消极的"无奈"之情。</li>
+              <li><strong>浪漫主义想象：</strong>"此去泉台招旧部，旌旗十万斩阎罗"，诗人想象死后到泉台也要招集旧部、斩杀阎罗，用奇特的想象表现<strong>至死不渝、生死不渝的革命斗争精神</strong>。"阎罗"比喻国民党反动派，"旌旗"借代千军万马。</li>
+            </ul>
+            <p><strong>【乙】赏析</strong></p>
+            <ul class="points">
+              <li>"大江歌罢掉头东"：唱豪歌、掉头东渡，起笔豪迈，写出青年周恩来<strong>意气风发、毅然决然</strong>的风采。</li>
+              <li>"邃密群科济世穷"：点明求学目的——钻研学问是为<strong>拯救国家于危困</strong>，而非个人功名，是"无私的忠于理想的精神"的直接体现。</li>
+              <li>"面壁十年图破壁"：用达摩面壁、画龙破壁两个典故，写<strong>长期刻苦积累</strong>，以图学成腾飞、改造中国。</li>
+              <li>"难酬蹈海亦英雄"：退一步写最坏的结局——即使理想无法实现，纵身蹈海也是英雄，把<strong>为理想献身</strong>的精神推向极致。</li>
+            </ul>
+            <p><strong>比较阅读</strong></p>
+            <ul class="points">
+              <li><strong>同：</strong>两首诗都展现了革命者<strong>坚定的理想信念</strong>和<strong>为国家人民不惜牺牲</strong>的崇高精神，格调雄浑豪壮。</li>
+              <li><strong>异：</strong>甲诗侧重<strong>死后仍要继续战斗</strong>的执着（想象奇特、浪漫主义）；乙诗侧重<strong>为济世救民而刻苦求索</strong>的决心（用典精切、志向高远）。</li>
+            </ul>
+          </div>
+
+          <div class="tab-pane" id="t10d">
+            <p><strong>（1）答案：B。</strong></p>
+            <ul class="points">
+              <li>A、C、D 赏析均正确：A 项点出首句设问及其基调作用；C 项指出三四句浪漫主义手法及战斗精神；D 项对两诗主旨的比较准确。</li>
+              <li><strong>B 项有误。</strong>"创业艰难百战多"主要表达对过往战斗岁月的<strong>回顾与总结</strong>，以及为崇高事业<strong>不畏牺牲的坚定意志</strong>，绝无消极的"无奈"之情。陈毅作为无产阶级革命家，面对牺牲表现的是<strong>视死如归的豪迈</strong>和对革命必胜的信念。赏析题中出现"无奈、消沉、哀怨"等词要高度警惕。</li>
+            </ul>
+            <p><strong>（2）答案：</strong></p>
+            <div class="fanyi">
+              <p><strong>体现"头脑冷静"的诗句：面壁十年图破壁。</strong><br>
+              理由："面壁十年"写他为达成救国目标而进行<strong>长期、刻苦、扎实的积累与准备</strong>，不急于求成、不冲动盲动，这种坚韧的耐力与周密的规划正是"头脑冷静"的体现。</p>
+              <p><strong>体现"无私的忠于理想的精神"的诗句（任选其一）：</strong><br>
+              <strong>示例一：邃密群科济世穷。</strong>理由：诗人深入钻研各种科学知识，目的不是个人功名，而是"济世穷"——拯救危困中的国家和人民。将个人求学与国家命运紧密相连、甘愿奉献一切，正是"无私的忠于理想的精神"的最直接体现。<br>
+              <strong>示例二：难酬蹈海亦英雄。</strong>理由：即使理想无法实现，也不惜以身蹈海、为国捐躯，把忠于理想的精神升华到最高境界，同样是无私忠于理想的体现。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="think">
+          <span class="t-label">🧠 思维过程</span>
+          <p>①（1）赏析选择题：先<strong>逐项回诗句验证</strong>——B 项说"痛惜与无奈"，回到"百战多""斩阎罗"的语境中检验，全诗没有一丝消沉，"无奈"属<strong>情感基调误判</strong>，锁定 B。<br>
+          ②（2）名著勾连题：先把题干关键词拆开——"头脑冷静"（性格）/"忠于理想"（精神），再到诗句里找<strong>对应的行为证据</strong>："面壁十年"→长期准备→冷静；"济世穷""难酬蹈海"→为理想献身→忠于理想。<br>
+          ③答题时必须"<strong>引诗句+释句意+扣品质</strong>"三件套齐全，只引不析、只析不引都要扣分。</p>
+        </div>
+        <div class="method">
+          <span class="m-label">📌 题型方法归纳 · 古诗词鉴赏</span>
+          <ul class="points">
+            <li><strong>炼字题：</strong>释字义→描景象→明手法→表情感（如"春风又绿江南岸"的"绿"）。</li>
+            <li><strong>情感题：</strong>知人论世（作者经历、写作背景）+ 抓意象（泉台、旌旗、大江、面壁）+ 关键词句。</li>
+            <li><strong>手法题：</strong>浪漫主义想象、借代（旌旗）、双关、用典（面壁、破壁、蹈海）、对比、设问——答题时"点手法+析效果"。</li>
+            <li><strong>比较阅读：</strong>先求同（题材、主旨），再析异（意象、手法、情感侧重）。</li>
+            <li><strong>名著勾连：</strong>名著人物评价+诗句印证，答题格式"诗句→句意→对应品质"。</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ================= 第11题 ================= -->
+  <section class="block" id="q11">
+    <div class="block-head">
+      <div class="no">11</div>
+      <h2>文言文阅读 · 《诫子书》比较《吕蒙梦诵〈易〉》</h2>
+      <span class="tag">实词 · 虚词 · 断句 · 翻译</span>
+    </div>
+    <div class="block-body">
+      <label class="mastery"><input type="checkbox" data-m="q11">已掌握</label>
+      <details>
+        <summary class="q-title">11．阅读【甲】【乙】两文，完成（1）—（6）题。</summary>
+        <p><strong>【甲】诫子书　诸葛亮</strong></p>
+        <p>夫君子<span class="dot">之</span>行，<span class="dot">静</span>以修身，俭以养德。非淡泊无以明志，非宁静无以致远。夫学须静也，才须学也，非<span class="dot">学</span>无以广才，非志无以成学。淫慢则不能励精，险躁则不能治性。年与<span class="dot">时</span>驰，意与日去，遂成枯落，多不接世，悲守穷庐，将复何及！</p>
+        <p><strong>【乙】吕蒙梦诵《易》（选自《太平广记》）</strong></p>
+        <p>吕蒙入吴，王①劝其学，蒙<span class="dot">乃</span>博览群籍，以《易》为宗。常在孙策坐酣醉，忽于眠中，诵《易》一部。<span class="dot">俄而</span>起惊，众人皆问之。蒙云："<span class="dot">向</span>梦见伏羲、文王、周公，<u>与我言论世祚②兴亡之事日月广明之道莫不穷精极妙</u>，未该玄言，政③空诵其文耳。"众坐皆知蒙呓诵文也。</p>
+        <p class="small">【注释】①王：指孙权。②世祚（zuò）：指国运。③政：只，仅仅。</p>
+
+        <div class="tabs">
+          <div class="tab-btns">
+            <button class="active" onclick="showTab(this,'t11a')">📝 词语注释与全文翻译</button>
+            <button onclick="showTab(this,'t11b')">📚 重点实词详解（含例句）</button>
+            <button onclick="showTab(this,'t11c')">🔍 虚词与句式归纳</button>
+            <button onclick="showTab(this,'t11d')">✅ 答案与解析</button>
+          </div>
+
+          <div class="tab-pane active" id="t11a">
+            <p><strong>【甲】《诫子书》词语注释</strong></p>
+            <table>
+              <tr><th style="width:22%">词语</th><th>释义</th></tr>
+              <tr><td>夫（fú）</td><td>助词，用于句首，表示发议论（发语词），不译。</td></tr>
+              <tr><td>君子之行</td><td>君子的品行操守。之：结构助词，"的"。</td></tr>
+              <tr><td>静以修身</td><td>以宁静专一来修养身心。静：屏除杂念和干扰、宁静专一；以：连词，表示目的，"来"。</td></tr>
+              <tr><td>俭以养德</td><td>以节俭来培养品德。俭：节俭。</td></tr>
+              <tr><td>淡泊</td><td>内心恬淡，不慕名利。</td></tr>
+              <tr><td>明志</td><td>明确志向。明：明确、彰显。</td></tr>
+              <tr><td>宁静</td><td>这里指安静，即集中精神、不分散精力。</td></tr>
+              <tr><td>致远</td><td>达到远大目标。致：达到。</td></tr>
+              <tr><td>广才</td><td>增长才干。广：增长（形容词作动词）。</td></tr>
+              <tr><td>成学</td><td>成就学业。</td></tr>
+              <tr><td>淫慢</td><td>放纵懈怠。淫：放纵；慢：懈怠。</td></tr>
+              <tr><td>励精</td><td>振奋精神。励：振奋。</td></tr>
+              <tr><td>险躁</td><td>轻薄浮躁。险：轻薄。</td></tr>
+              <tr><td>治性</td><td>修养性情。治：修养。</td></tr>
+              <tr><td>年与时驰</td><td>年纪随同时光飞逝。驰：疾行，指迅速逝去。</td></tr>
+              <tr><td>意与日去</td><td>意志随同岁月一天天消磨。去：消逝、丧失。</td></tr>
+              <tr><td>枯落</td><td>凋落、衰残，比喻人年老志衰、对社会没有用处。</td></tr>
+              <tr><td>接世</td><td>接触社会，承担事务，对社会有贡献。</td></tr>
+              <tr><td>穷庐</td><td>穷困潦倒之人住的陋室。</td></tr>
+              <tr><td>将复何及</td><td>又怎么来得及！复：又；何及：怎么来得及（宾语前置）。</td></tr>
+            </table>
+            <p><strong>【甲】译文</strong></p>
+            <div class="fanyi">
+              君子的行为操守，以宁静专一来修养身心，以节俭来培养品德。不恬淡寡欲就无法明确志向，不宁静专一就无法达到远大目标。学习必须静心专一，而才干来自学习；不学习就无法增长才干，没有志向就无法使学习有所成就。放纵懈怠就不能振奋精神，轻薄浮躁就不能修养性情。年纪随同时光飞速逝去，意志随同岁月一天天消磨，最终（像枯枝落叶般）年老志衰，大多对社会没有任何贡献，只能悲哀地守着穷困的陋室，到那时再悔恨又怎么来得及！
+            </div>
+
+            <p><strong>【乙】《吕蒙梦诵〈易〉》词语注释</strong></p>
+            <table>
+              <tr><th style="width:22%">词语</th><th>释义</th></tr>
+              <tr><td>入吴</td><td>进入吴国（孙权麾下效力）。</td></tr>
+              <tr><td>王</td><td>指孙权。</td></tr>
+              <tr><td>乃</td><td>于是，就。</td></tr>
+              <tr><td>博览群籍</td><td>广泛阅读各类书籍。籍：书籍。</td></tr>
+              <tr><td>以《易》为宗</td><td>把《易经》作为主攻的重点（根本）。宗：根本、主要。</td></tr>
+              <tr><td>坐</td><td>同"座"，座位、座席。</td></tr>
+              <tr><td>酣醉</td><td>饮酒尽兴，大醉。酣：酒喝得很畅快。</td></tr>
+              <tr><td>诵《易》一部</td><td>背诵了一整部《易经》。</td></tr>
+              <tr><td>俄而</td><td>不久，一会儿。</td></tr>
+              <tr><td>向</td><td>刚才。</td></tr>
+              <tr><td>世祚</td><td>国运（注释②）。</td></tr>
+              <tr><td>穷精极妙</td><td>精妙到了极点。穷、极：穷尽、极点。</td></tr>
+              <tr><td>未该玄言</td><td>还没有领会其中深奥的言辞。该：完备，此指完全领会；玄：深奥。</td></tr>
+              <tr><td>政</td><td>只，仅仅（注释③）。</td></tr>
+              <tr><td>呓诵</td><td>说梦话背诵。呓（yì）：梦话。</td></tr>
+            </table>
+            <p><strong>【乙】译文</strong></p>
+            <div class="fanyi">
+              吕蒙进入吴国（效力），吴王孙权劝他读书学习，吕蒙于是广泛阅读各类书籍，并把《易经》作为主攻的重点。他常常在孙策的座席上喝醉，忽然在睡梦中背诵起了一整部《易经》。过了一会儿他惊醒过来，大家都问他怎么回事。吕蒙说："刚才我梦见伏羲、周文王、周公，他们和我谈论国家兴亡的大事、日月运行宏大光明的道理，这些道理无不精妙到了极点，但我还没能领会其中深奥的言辞，只是白白地背诵了它的文章罢了。"在座的人都知道吕蒙是在说梦话背诵文章。
+            </div>
+          </div>
+
+          <div class="tab-pane" id="t11b">
+            <p><strong>本课重点实词详解（课内+课外，附例句迁移）</strong></p>
+            <table>
+              <tr><th style="width:10%">实词</th><th style="width:30%">义项与例句</th><th>辨析与积累</th></tr>
+              <tr>
+                <td><strong>学</strong></td>
+                <td>①学习：非<span class="dot">学</span>无以广才；王劝其学。<br>②学问、学业：才须学也。</td>
+                <td>注意区分动词义与名词义。《论语》"学而时习之"（学习）；"敏而好学"（学问）。</td>
+              </tr>
+              <tr>
+                <td><strong>时</strong></td>
+                <td>①时光、时候：年与<span class="dot">时</span>驰。<br>②按时、常常：学而<span class="dot">时</span>习之（《论语》）。<br>③当时、那时：元方时年七岁。</td>
+                <td>"年与时驰"的"时"是名词（时光）；"学而时习之"的"时"是状语（按时），<strong>二者意思不同</strong>——本卷第11(1)题即考此点。</td>
+              </tr>
+              <tr>
+                <td><strong>广</strong></td>
+                <td>①增长：非学无以<span class="dot">广</span>才。<br>②宽阔、宏大：土地广大；安得广厦千万间。</td>
+                <td>本句"广才"是形容词的使动用法：使才干增长。</td>
+              </tr>
+              <tr>
+                <td><strong>明</strong></td>
+                <td>①明确、彰显：非淡泊无以<span class="dot">明</span>志。<br>②明亮、照明：床前明月光。<br>③英明、贤明：明君。</td>
+                <td>"明志"为使动：使志向明确。</td>
+              </tr>
+              <tr>
+                <td><strong>致</strong></td>
+                <td>①达到：非宁静无以<span class="dot">致</span>远。<br>②招致、引来：以致其志。<br>③情致、情趣：兴致。</td>
+                <td>成语"学以致用"（达到、使实现）、"宁静致远"。</td>
+              </tr>
+              <tr>
+                <td><strong>驰</strong></td>
+                <td>①疾行，指迅速逝去：年与时<span class="dot">驰</span>。<br>②车马疾驰：驰骋疆场。</td>
+                <td>与"意与日去"的"去"互文，都是"消逝"。</td>
+              </tr>
+              <tr>
+                <td><strong>去</strong></td>
+                <td>①消逝、失去：意与日<span class="dot">去</span>。<br>②离开：去后乃至（《陈太丘与友期行》）。<br>③距离：去日无多。</td>
+                <td>"去"古今异义：今义多为"前往"，古义多为"离开/距离/消逝"。</td>
+              </tr>
+              <tr>
+                <td><strong>复</strong></td>
+                <td>①又、再：将<span class="dot">复</span>何及。<br>②恢复：复若赋。<br>③回答、答复：不敢复言。</td>
+                <td>"将复何及"为宾语前置，"何及"即"及何"（来得及什么/怎么来得及）。</td>
+              </tr>
+              <tr>
+                <td><strong>乃</strong></td>
+                <td>①于是、就：蒙<span class="dot">乃</span>博览群籍。<br>②才：去后<span class="dot">乃</span>至（《陈太丘与友期行》）。<br>③竟然、居然：问今是何世，乃不知有汉（《桃花源记》）。</td>
+                <td>本卷第11(2)题考"乃"的义项辨析：<strong>同字不同义</strong>，需代入句中判断。</td>
+              </tr>
+              <tr>
+                <td><strong>俄而</strong></td>
+                <td>不久、一会儿：<span class="dot">俄而</span>起惊；<span class="dot">俄而</span>雪骤（《咏雪》）。</td>
+                <td>同类表时间短暂的词：未几、既而、少顷、须臾、顷之、旋即。</td>
+              </tr>
+              <tr>
+                <td><strong>向</strong></td>
+                <td>①刚才：<span class="dot">向</span>梦见伏羲。<br>②朝向、对着：所<span class="dot">向</span>无敌。<br>③从前、先前：寻<span class="dot">向</span>所志（《桃花源记》）。</td>
+                <td>"所向无敌"的"向"是"朝向、所到之处"，与"刚才"义不同。</td>
+              </tr>
+              <tr>
+                <td><strong>之</strong></td>
+                <td>①结构助词"的"：夫君子<span class="dot">之</span>行。<br>②代词，代人/事：众人皆问<span class="dot">之</span>（代吕蒙）。<br>③用于主谓之间，取消句子独立性：予独爱莲<span class="dot">之</span>出淤泥而不染。</td>
+                <td>本卷第11(2)题考"之"的用法区别：<strong>助词"的" vs 代词</strong>。</td>
+              </tr>
+              <tr>
+                <td><strong>以</strong></td>
+                <td>①连词，表目的，"来"：静<span class="dot">以</span>修身。<br>②介词，"把/用"：以《易》为宗。<br>③介词，"凭借"：以君之力。</td>
+                <td>"静以修身"的"以"连接状语与中心语，表目的；"以《易》为宗"的"以"与"为"构成"以……为……"（把……作为……）。</td>
+              </tr>
+              <tr>
+                <td><strong>宗</strong></td>
+                <td>①根本、主要：以《易》为<span class="dot">宗</span>。<br>②宗族、祖宗。<br>③尊崇、效法：宗仰。</td>
+                <td>本句指把《易经》作为研习的根本/重点。</td>
+              </tr>
+              <tr>
+                <td><strong>酣</strong></td>
+                <td>酒喝得很畅快：酣醉；宴酣之乐（《醉翁亭记》）。</td>
+                <td>成语"酣畅淋漓"。</td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="tab-pane" id="t11c">
+            <p><strong>虚词归纳（本卷考点）</strong></p>
+            <table>
+              <tr><th style="width:12%">虚词</th><th>用法辨析</th></tr>
+              <tr><td><strong>之</strong></td><td>①的（君子之行）②代词（众人皆问之）③主谓之间取独（莲之出淤泥而不染）④凑足音节（怅恨久之）⑤宾语前置标志（何陋之有）。</td></tr>
+              <tr><td><strong>以</strong></td><td>①连词表目的（静以修身）②介词"把"（以《易》为宗）③介词"凭借"（以君之力）④连词表结果（以塞忠谏之路）。</td></tr>
+              <tr><td><strong>乃</strong></td><td>①于是、就（蒙乃博览群籍）②才（去后乃至）③竟然（乃不知有汉）④是、就是（此乃天子之气）。</td></tr>
+              <tr><td><strong>而</strong></td><td>①表顺承（学而时习之）②表转折（学而不思则罔）③表修饰（笑而止之）。</td></tr>
+            </table>
+            <p><strong>断句方法（本卷第(4)题示例）</strong></p>
+            <ul class="points">
+              <li>找<strong>主谓宾结构</strong>："与我言论"（动宾）+两个并列宾语"世祚兴亡之事""日月广明之道"+总结句"莫不穷精极妙"。</li>
+              <li>抓<strong>对称结构</strong>："……之事"与"……之道"字数对称，中间必断。</li>
+              <li>结论：<strong>与我言论世祚兴亡之事／日月广明之道／莫不穷精极妙</strong>（选 C、E 两处）。</li>
+            </ul>
+            <p><strong>翻译六字诀：留、删、补、换、调、变</strong></p>
+            <ul class="points">
+              <li><strong>留</strong>：人名、地名、年号保留（伏羲、文王、周公、《易》）。</li>
+              <li><strong>删</strong>：删去无实义的虚词（夫、也）。</li>
+              <li><strong>补</strong>：补出省略成分（"蒙乃博览群籍"补主语吕蒙）。</li>
+              <li><strong>换</strong>：古义换今义（"穷庐"→穷困的陋室；"何及"→怎么来得及）。</li>
+              <li><strong>调</strong>：调整倒装语序（"将复何及"→将复及何）。</li>
+              <li><strong>变</strong>：意译变通（"遂成枯落"→像枯枝落叶般年老志衰）。</li>
+            </ul>
+          </div>
+
+          <div class="tab-pane" id="t11d">
+            <p><strong>（1）答案：C。</strong></p>
+            <ul class="points">
+              <li>A．正确。两个"学"都是<strong>学习</strong>（动词）：非学无以广才（不学习）；王劝其学（劝他学习）。</li>
+              <li>B．正确。两个"俄而"都是<strong>不久、一会儿</strong>：俄而起惊；俄而雪骤（《咏雪》）。</li>
+              <li><strong>C．错误。</strong>"年与时驰"的"时"指<strong>时光、时间</strong>（名词）；"学而时习之"的"时"指<strong>按时、常常</strong>（副词作状语）。<strong>意思不同</strong>，故选 C。</li>
+              <li>D．正确。"向梦见伏羲"的"向"是<strong>刚才</strong>；"所向无敌"的"向"是<strong>朝向、所到之处</strong>。意思不同。</li>
+            </ul>
+            <p><strong>（2）答案：A。</strong></p>
+            <ul class="points">
+              <li><strong>A．错误。</strong>"蒙乃博览群籍"的"乃"是<strong>于是、就</strong>；"去后乃至"（《陈太丘与友期行》）的"乃"是<strong>才</strong>。意义用法不同，故选 A。</li>
+              <li>B．正确。"静以修身"的"以"是连词（表目的）；"以《易》为宗"的"以"是介词（把）。用法不同，说法正确。</li>
+              <li>C．正确。诸葛亮是三国时期蜀汉政治家、军事家。</li>
+              <li>D．正确。"夫君子之行"的"之"是结构助词"的"；"众人皆问之"的"之"是代词。用法不同，说法正确。</li>
+            </ul>
+            <p><strong>（3）答案：B。</strong></p>
+            <ul class="points">
+              <li><strong>B．错误。</strong>吕蒙明说"未该玄言，政空诵其文耳"——还没领会深奥的言辞，只是白白背诵了文章罢了，并非"已完全领悟"。</li>
+              <li>A、C、D 理解均正确：甲文以议论为主，围绕"静"论述修身治学；失败归结于"躁"，对比鲜明；乙文"王劝其学"交代治学背景，也衬托吕蒙纳谏善学。</li>
+            </ul>
+            <p><strong>（4）答案：C、E。</strong>断句：<strong>与我言论世祚兴亡之事／日月广明之道／莫不穷精极妙。</strong></p>
+            <p><strong>（5）翻译</strong></p>
+            <ul class="points">
+              <li>① <strong>（只能）悲哀地守着穷困的陋室，到那时再悔恨又怎么来得及！</strong><br>（要点：穷庐=穷困的陋室；何及=怎么来得及；将复=又。）</li>
+              <li>② <strong>在座的人都知道吕蒙是在说梦话背诵文章。</strong><br>（要点：众坐=在座的人；呓=说梦话；"……也"判断句语气。）</li>
+            </ul>
+            <p><strong>（6）参考答案：</strong>要成才，需<strong>树立远大志向</strong>并<strong>保持内心宁静专一</strong>（甲文"非志无以成学""静以修身"）；同时要<strong>广泛阅读、钻研经典</strong>（乙文吕蒙"博览群籍，以《易》为宗"），还要<strong>勤奋刻苦、持之以恒</strong>（吕蒙梦中仍背诵《易经》，可见用功之深）。正所谓"非学无以广才"，立志、静学、广博、坚持，缺一不可。</p>
+          </div>
+        </div>
+
+        <div class="think">
+          <span class="t-label">🧠 思维过程</span>
+          <p>①（1）（2）实词虚词题用<strong>代入+迁移</strong>：把每个义项放回句子翻译一遍，翻不通的就是不同义。如"年与时驰"翻成"年纪随着按时飞逝"不通→"时"是"时光"；再用课内例句（俄而雪骤、去后乃至、所向无敌）做对照。<br>
+          ②（3）内容题逐项回原文："已完全领悟"与原文"未该玄言"直接矛盾，<strong>比对原文关键词</strong>即可秒杀。<br>
+          ③（4）断句先划结构：主语"（伏羲、文王、周公）"+谓语"与我言论"+并列宾语×2+"莫不穷精极妙"总结，按结构切两刀。<br>
+          ④（5）翻译坚持<strong>字字落实</strong>：穷庐、何及、众坐、呓四个点必须译出，再按现代汉语语序通读。<br>
+          ⑤（6）开放题"观点+经历"两面结合：甲文提炼观点词（志、静、学），乙文提炼事例（博览群籍、梦诵其文），合起来即答案。</p>
+        </div>
+        <div class="method">
+          <span class="m-label">📌 题型方法归纳 · 文言文阅读通关</span>
+          <ul class="points">
+            <li><strong>实词题：</strong>课内迁移是王道——把陌生句中的字与课内例句"对号入座"。</li>
+            <li><strong>虚词题：</strong>牢记"之、以、而、乃、其、于、者、也"八大虚词的核心用法，代入辨析。</li>
+            <li><strong>断句题：</strong>找主谓宾→抓对称（……之事／……之道）→看虚词标志（夫、盖、故、也、矣、哉）。</li>
+            <li><strong>翻译题：</strong>得分点意识——重点实词、特殊句式（宾语前置、判断句）、省略成分各占分。</li>
+            <li><strong>拓展题：</strong>"文本观点+文本事例+自己的结论"三段式，不脱离两文空谈。</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ================= 第12题 ================= -->
+  <section class="block" id="q12">
+    <div class="block-head">
+      <div class="no">12</div>
+      <h2>综合性学习 · "感谢您，妈妈"母亲节活动</h2>
+      <span class="tag">标语 · 活动设计 · 材料探究 · 仿写</span>
+    </div>
+    <div class="block-body">
+      <label class="mastery"><input type="checkbox" data-m="q12">已掌握</label>
+      <details>
+        <summary class="q-title">12．七年级2班开展以"感谢您，妈妈"为主题的活动，请完成以下任务。</summary>
+        <p><strong>（1）</strong>请根据活动主题，拟写一条宣传标语。（不超过20字）</p>
+        <p><strong>（2）</strong>请仿照示例，为此次活动再设计几个环节。<br>
+        环节一：唱赞美母爱的歌曲　环节二：_______________　环节三：_______________</p>
+        <p><strong>（3）</strong>在活动中，他们搜集到如下材料。其中不能体现出母亲辛劳的一则是 ____________ 。</p>
+        <p class="small">[材料一]你入学的新书包有人给你拿，你雨中的花折伞有人给你打，你爱吃的那三鲜馅有人她给你包，你委屈的泪花有人给你擦。啊！这个人就是娘，啊，这个人就是妈……（《母亲》歌词）<br>
+        [材料二]等我自己有了孩子，才明白把五个孩子拉扯大哪里是简单的事情。但是，我很少听见她谈论其中的辛苦，她一定以为这种辛苦是人生的天经地义，不值得称道也不需要抱怨。（周国平《用什么来报答母爱》）<br>
+        [材料三]每天吃过晚饭，往往九点来钟，我们上床睡，母亲则坐在床角，将仅仅20瓦光的灯泡吊在头顶，凑着昏暗的灯光为我们补缀衣裤。（梁晓声《母亲》）<br>
+        [材料四]我们用桐子榨油来点灯，吃的是豌豆饭、菜饭、红薯饭、杂粮饭，把菜籽榨出的油放在饭里做调料。这类地主富人家看也不看的饭食，母亲却能做得使一家人吃起来有滋味。（朱德《回忆我的母亲》）</p>
+        <p><strong>（4）</strong>李丽同学作为活动主持人，想在结束语中用下面的句子表达对母亲的感激之情，请你将其补充完整。<br>
+        母爱是一缕灿烂的阳光，温暖我的心灵；母爱是一片宽广的大海，包容我的错误；母爱是 ______________ ，_____________ 。</p>
+
+        <div class="answer first">
+          <span class="ans-label">答案与解析</span>
+          <p><strong>（1）示例：</strong>感恩从心开始，让爱温暖彼此。（或：感恩母爱，用心行动。／妈妈，您辛苦了！——围绕"感谢妈妈"主题、不超过20字、语言简洁有感染力即可。）</p>
+          <p><strong>（2）示例：</strong>环节二：写感恩母亲的书信（或"画感恩母亲的作品"）；环节三：诵读赞美母爱的诗歌（或"讲我和妈妈的故事"）。<br>
+          <span class="small">要求：与"唱赞美母爱的歌曲"格式一致（动词+赞美/感恩母爱的+名词），内容围绕主题，适合学生开展。</span></p>
+          <p><strong>（3）答案：[材料四]。</strong></p>
+          <ul class="points">
+            <li>材料一：拿新书包、打花折伞、包三鲜馅、擦泪花——一系列操劳细节，体现辛劳。</li>
+            <li>材料二："把五个孩子拉扯大哪里是简单的事情"——直接体现养育辛劳。</li>
+            <li>材料三：夜晚凑着昏暗灯光补缀衣裤——体现辛劳。</li>
+            <li><strong>材料四：重点写母亲把粗劣饭食做得有滋味，表现的是母亲的聪明能干（聪慧、乐观），与"辛劳"无关，故选之。</strong></li>
+          </ul>
+          <p><strong>（4）示例：</strong>母爱是一曲美妙的音乐，抚慰我的悲伤。（或：母爱是一泓清澈的溪水，洗去我的疲惫。）<br>
+          <span class="small">仿写要点：与前两句结构一致——"母爱是一（量词）+（修饰语）+名词，动词+我的+名词"；喻体与后文搭配得当（音乐→抚慰，溪水→洗去）。</span></p>
+        </div>
+        <div class="think">
+          <span class="t-label">🧠 思维过程</span>
+          <p>①标语题：先圈主题词"感谢/妈妈"，再想句式（对偶式最稳：感恩从心开始／让爱温暖彼此），最后数字数（≤20）。<br>
+          ②环节设计题：抄格式——"动词+对象"（唱……歌曲），再想同类活动（写、诵、讲、画），保持<strong>词性和字数与示例一致</strong>。<br>
+          ③材料探究题：给每则材料贴"标签"（一→操劳细节、二→拉扯大、三→深夜补衣、四→做饭好吃聪明能干），题目问"不能体现辛劳"，标签里没有"辛劳"的就是材料四。<br>
+          ④仿写题：先拆句式（比喻词+喻体+作用），再选喻体，检查"喻体→作用"是否搭配合理。</p>
+        </div>
+        <div class="method">
+          <span class="m-label">📌 题型方法归纳 · 综合性学习</span>
+          <ul class="points">
+            <li><strong>标语：</strong>紧扣主题 + 修辞（对偶/比喻）+ 字数限制 + 有号召力。</li>
+            <li><strong>活动设计：</strong>仿照示例格式，动宾结构，形式多样（唱、写、诵、讲、展、赛）。</li>
+            <li><strong>材料探究：</strong>逐则提取共同点/差异点，答案用材料原词佐证。</li>
+            <li><strong>仿写"三一致"：</strong>句式一致、修辞一致、语意连贯（喻体与后文动词搭配合理）。</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ================= 第13题 ================= -->
+  <section class="block" id="q13">
+    <div class="block-head">
+      <div class="no">13</div>
+      <h2>综合性学习 ·"少年正是读书时"主题活动</h2>
+      <span class="tag">标语 · 对联 · 文化积累</span>
+    </div>
+    <div class="block-body">
+      <label class="mastery"><input type="checkbox" data-m="q13">已掌握</label>
+      <details>
+        <summary class="q-title">13．学校举办"少年正是读书时"主题阅读活动，请共同参与。</summary>
+        <p><strong>（1）【拟写宣传标语】</strong>下面是本次活动的宣传标语，请你补充完整。<br>
+        好读书，读书让生活变得充实；读好书，________________ 。</p>
+        <p><strong>（2）【挑选读书对联】</strong>在活动现场需要悬挂几副对联，不适合的一项是 _______</p>
+        <ul class="opts">
+          <li>A．观书到老眼如月，得句惊人胸有珠。</li>
+          <li>B．青山不墨千秋画，绿水无弦万古琴。</li>
+          <li>C．脚下行路千里远，腹中贮书万卷多。</li>
+          <li>D．轻研竹露栽唐句，细嚼梅花读汉书。</li>
+        </ul>
+        <p><strong>（3）【布置文化长廊】</strong>策划组计划在学校布置"读书文化长廊"，请完善内容。</p>
+        <table>
+          <tr><th>展板一：读书典故</th><th>展板二：读书名言</th></tr>
+          <tr><td>囊萤映雪：东晋车胤家中贫穷没钱买油灯，夏天的晚上他捉来萤火虫放在白绢袋里，借着萤火虫的微光读书；南朝宋孙康家中贫穷没钱买蜡烛，冬天的晚上借着窗外雪的反光读书。</td><td>读史使人明智，读诗使人灵秀，数学使人周密，科学使人深刻，伦理学使人庄重，逻辑修辞之学使人善辩；凡有所学，皆成性格。——英国·培根</td></tr>
+          <tr><td>凿壁偷光：西汉匡衡家中贫穷没钱买灯烛，他在墙壁上凿个洞借邻居家的烛光读书。</td><td>书犹药也，善读之可以医愚。——西汉·刘向</td></tr>
+          <tr><td>①______________________</td><td>②______________________</td></tr>
+        </table>
+
+        <div class="answer first">
+          <span class="ans-label">答案与解析</span>
+          <p><strong>（1）示例：</strong>读好书，<strong>读书让心灵更加丰盈</strong>。（或：读好书，读书让智慧点亮人生。／读好书，读书让成长更有力量。）<br>
+          <span class="small">解析：仿写要与前句"好读书，读书让生活变得充实"结构一致（三字短语，+ "读书让……更……"），内容上突出<strong>读高质量书籍</strong>的积极影响（丰盈心灵、增长智慧、塑造品格等）。</span></p>
+          <p><strong>（2）答案：B。</strong>"青山不墨千秋画，绿水无弦万古琴"是描写<strong>自然风景</strong>的名联（青山是不着笔墨的千年画卷，绿水是无弦的万古琴声），与"读书"主题无关。A 写读书到老仍有收获，C 写行路与读书（"读万卷书，行万里路"），D 写研读唐诗汉书的雅趣，均切合读书主题。</p>
+          <p><strong>（3）示例：</strong></p>
+          <ul class="points">
+            <li><strong>展板一①：</strong>韦编三绝——孔子晚年喜欢读《周易》，因反复翻阅，以致编联竹简的皮绳多次断开。（或：悬梁刺股——东汉孙敬读书时把头发拴在屋梁上，以免打瞌睡；战国苏秦读书每到疲倦时就用锥子刺大腿来提神。／牛角挂书——隋代李密骑在牛背上，把书挂在牛角上，一边走一边读书。）</li>
+            <li><strong>展板二②：</strong>读书破万卷，下笔如有神。——唐·杜甫（或：饭可以一日不吃，觉可以一日不睡，书不可以一日不读。——毛泽东。／问渠那得清如许？为有源头活水来。——宋·朱熹）</li>
+          </ul>
+          <p class="small">仿写要求：与展板既有内容格式一致（典故名+人物+情节；名言+作者朝代/国别），内容围绕"读书"。</p>
+        </div>
+        <div class="think">
+          <span class="t-label">🧠 思维过程</span>
+          <p>①（1）先分析示例结构："好读书"（三字动宾）→"读书让生活变得充实"（读书让+名+动+补）。补写时对"读好书"，只需把"生活变得充实"换成"心灵更加丰盈"等，<strong>换内容不换骨架</strong>。<br>
+          ②（2）对联筛选题给每副对联"贴标签"：A→读书收获、B→山水风景、C→行路读书、D→研读诗书。主题是"读书活动"，B 不合，直接选。<br>
+          ③（3）文化积累题调动"读书典故库"（囊萤映雪、凿壁偷光已用，剩韦编三绝、悬梁刺股、牛角挂书、程门立雪、手不释卷）和"读书名言库"（杜甫、朱熹、毛泽东、高尔基），再按示例格式组织语言。</p>
+        </div>
+        <div class="method">
+          <span class="m-label">📌 题型方法归纳 · 对联知识速记</span>
+          <ul class="points">
+            <li><strong>字数相等，词性相对：</strong>名词对名词、动词对动词（"观书"对"得句"）。</li>
+            <li><strong>仄起平收：</strong>上联末字仄声（三、四声），下联末字平声（一、二声）。</li>
+            <li><strong>内容相关：</strong>上下联围绕同一主题——这正是第（2）题"筛选"的依据。</li>
+            <li><strong>常用读书典故：</strong>囊萤映雪、凿壁偷光、韦编三绝、悬梁刺股、牛角挂书、程门立雪、手不释卷、目不窥园。</li>
+            <li><strong>常用读书名言：</strong>读书破万卷，下笔如有神（杜甫）；书犹药也，善读之可以医愚（刘向）；问渠那得清如许？为有源头活水来（朱熹）；书籍是人类进步的阶梯（高尔基）。</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <p class="center-note">— 全卷完 · 建议先独立作答，再点开"答案与解析"对照订正 —</p>
+
+</div><!-- /wrap -->
+
+<footer>
+  <p>七年级语文 · 第13周培优精讲 &nbsp;|&nbsp; 题目 · 答案 · 解析 · 方法归纳</p>
+  <p>古诗文均已附<b>词语注释</b>与<b>全文翻译</b>，文言重点实词附<b>义项与例句</b></p>
+  <p>愿你读万卷书，行万里路 <span class="heart">❤</span></p>
+</footer>
+
+<button id="toTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="回到顶部">↑</button>
+
+<script>
+// 显示/隐藏答案
+function toggleAnswers(){
+  document.body.classList.toggle('hide-answers');
+}
+// 展开/收起全部
+function expandAll(open){
+  document.querySelectorAll('section.block details').forEach(function(d){ d.open = open; });
+}
+// 标签页
+function showTab(btn, id){
+  var tabs = btn.closest('.tabs');
+  tabs.querySelectorAll('.tab-btns button').forEach(function(b){ b.classList.remove('active'); });
+  tabs.querySelectorAll('.tab-pane').forEach(function(p){ p.classList.remove('active'); });
+  btn.classList.add('active');
+  document.getElementById(id).classList.add('active');
+}
+// 掌握标记（localStorage 记忆）
+document.querySelectorAll('.mastery input').forEach(function(cb){
+  var key = 'wk13_' + cb.dataset.m;
+  if(localStorage.getItem(key) === '1'){ cb.checked = true; }
+  cb.addEventListener('change', function(){
+    localStorage.setItem(key, cb.checked ? '1' : '0');
+  });
+});
+// 回到顶部按钮
+window.addEventListener('scroll', function(){
+  document.getElementById('toTop').style.display = window.scrollY > 500 ? 'block' : 'none';
+});
+</script>
+</body>
+</html>
