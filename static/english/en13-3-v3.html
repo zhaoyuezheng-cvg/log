@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>13-3 英语培优讲练 · 语法填空与阅读表达</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%232E4A6B'/%3E%3Cpath d='M9 23V11h5.2c2.6 0 4 1.2 4 3.4 0 2.3-1.6 3.5-4.2 3.5H11' stroke='%23FCFBF7' stroke-width='2.2' fill='none' stroke-linecap='round'/%3E%3Ccircle cx='22' cy='22' r='2.2' fill='%23A6362A'/%3E%3C/svg%3E">
+<style>
+:root{
+  --paper:#FCFBF7; --desk:#E7E4DB; --ink:#1D2833; --ink2:#54616D; --ink3:#7C8792;
+  --rule:#D9D5C9; --rule2:#EDEAE1;
+  --red:#A6362A; --red-bg:#F8E9E5; --blue:#2E4A6B; --blue-bg:#E9EEF4;
+  --sticky:#FBF1CB; --sticky-line:#E4CF8E; --green:#3D6B52;
+  --shadow:0 10px 26px rgba(40,44,36,.10);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--desk);
+  background-image:radial-gradient(rgba(0,0,0,.045) 1px,transparent 1px);
+  background-size:18px 18px;
+  color:var(--ink);
+  font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",system-ui,sans-serif;
+  font-size:16px;line-height:1.8;
+}
+
+/* ===== 顶部 ===== */
+.top{background:var(--blue);color:#fff;padding:22px 0 0;border-bottom:3px solid var(--red)}
+.top .inner{max-width:880px;margin:0 auto;padding:0 18px}
+.kicker{display:flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.18em;color:#C9D6E4;text-transform:none}
+.kicker .no{background:var(--red);color:#fff;letter-spacing:.1em;padding:2px 8px;border-radius:2px;font-weight:700}
+h1{font-family:"Songti SC","STSong","SimSun",Georgia,serif;font-size:26px;line-height:1.35;margin:10px 0 6px;letter-spacing:.02em}
+.sub{color:#C9D6E4;font-size:14px;max-width:660px;padding-bottom:18px}
+.tabs{background:#fff;position:sticky;top:0;z-index:40;border-bottom:1px solid var(--rule);box-shadow:0 2px 8px rgba(30,30,20,.06)}
+.chapter,.vsec{scroll-margin-top:58px}
+.tabs .row{max-width:880px;margin:0 auto;display:flex;gap:2px;overflow-x:auto;padding:0 12px;scrollbar-width:thin}
+.tabs a{flex:0 0 auto;text-decoration:none;color:var(--ink2);font-size:14px;font-weight:600;padding:12px 14px;border-bottom:2px solid transparent;white-space:nowrap}
+.tabs a:hover{color:var(--blue)}
+.tabs a.on{color:var(--red);border-bottom-color:var(--red)}
+
+/* ===== 纸张 ===== */
+.sheet{max-width:880px;margin:22px auto 60px;padding:0}
+.paper{background:var(--paper);box-shadow:var(--shadow);border:1px solid #CFCBBE;border-radius:4px;padding:26px 22px 30px}
+.margin-rule{position:relative}
+.margin-rule::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--red);opacity:.35}
+
+/* ===== 篇章 ===== */
+.chapter{margin:0 0 34px}
+.chapter:last-of-type{margin-bottom:0}
+.ch-head{border-bottom:2px solid var(--ink);padding-bottom:10px;margin-bottom:6px}
+.ch-tag{display:inline-block;font-size:12px;font-weight:700;color:#fff;background:var(--red);padding:2px 9px;border-radius:2px;letter-spacing:.08em;margin-bottom:10px}
+.ch-title{font-family:"Songti SC","STSong","SimSun",Georgia,serif;font-size:21px;line-height:1.4;letter-spacing:.01em}
+.ch-meta{display:grid;grid-template-columns:repeat(2,1fr);gap:0;margin:12px 0 0;border:1px solid var(--rule);border-right:none;border-bottom:none}
+.ch-meta div{border-bottom:1px solid var(--rule);border-right:1px solid var(--rule);padding:6px 10px;font-size:12.5px;color:var(--ink2);display:flex;gap:8px}
+.ch-meta b{color:var(--ink);font-weight:600;flex:0 0 auto}
+.ch-meta .stars{color:var(--red);letter-spacing:2px;font-size:12px}
+
+/* 原文 */
+.text{font-family:Georgia,"Times New Roman","Songti SC","SimSun",serif;font-size:17px;line-height:2.05;color:#20282C;margin:18px 0 4px}
+.para{position:relative;padding-left:30px;margin:16px 0}
+.para .pn{position:absolute;left:0;top:5px;font-family:Georgia,serif;font-size:12px;color:var(--red);font-weight:700;letter-spacing:.06em}
+.para-tools{display:flex;gap:8px;margin:0 0 6px}
+.btn-s{padding-left:30px;border:none;background:none;color:var(--blue);font:inherit;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;font-weight:600}
+.btn-s:hover{color:var(--red)}
+.btn-s svg{width:14px;height:14px;fill:currentColor}
+.blank{display:inline-block;min-width:66px;border-bottom:1.5px solid var(--ink2);text-align:center;font-family:inherit;font-size:15px;margin:0 3px}
+
+/* 生词 */
+button.vb{background:none;border:none;padding:0;font:inherit;color:var(--red);font-weight:600;border-bottom:1.5px dotted rgba(166,54,42,.75);cursor:pointer;line-height:inherit}
+button.vb:hover{background:var(--red-bg)}
+.vb.on{background:var(--red-bg);border-bottom-style:solid}
+
+/* 批注卡 */
+.note-card{margin:12px 0 4px 30px;background:var(--sticky);border:1px solid var(--sticky-line);border-left:4px solid var(--red);border-radius:3px;padding:14px 16px;box-shadow:0 4px 10px rgba(90,70,20,.10);animation:fade .16s ease;scroll-margin-top:60px}
+.note-card.tight{margin-left:0;margin-top:8px}
+.note-card .nc-top{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px;padding-bottom:8px;border-bottom:1px dashed var(--sticky-line);margin-bottom:8px;position:relative}
+.note-card .nc-x{margin-left:auto;border:none;background:none;color:var(--ink2);font-size:14px;line-height:1;cursor:pointer;padding:2px 4px;border-radius:2px}
+.note-card .nc-x:hover{background:var(--sticky-line);color:var(--ink)}
+.note-card .w{font-family:Georgia,serif;font-size:19px;font-weight:700;letter-spacing:.01em}
+.note-card .pos{font-size:11.5px;background:var(--blue);color:#fff;padding:1.5px 7px;border-radius:2px}
+.note-card .cn{font-weight:700;color:var(--red);margin-left:auto;font-size:15px}
+.note-card .line{font-size:13.5px;color:#3B3A31;margin:5px 0;display:flex;gap:6px}
+.note-card .line .k{flex:0 0 4.6em;color:var(--blue);font-weight:700;font-size:12px;letter-spacing:.02em;padding-top:2px}
+.note-card .eg{font-family:Georgia,serif;font-size:15px;margin-top:9px;padding-top:9px;border-top:1px dashed var(--sticky-line)}
+.note-card .egcn{font-size:12.5px;color:#5C5A4E;margin-top:2px}
+/* 义项 / 短语标签 / 多条例句 */
+.senses{display:flex;flex-wrap:wrap;gap:5px;margin:8px 0 4px}
+.sense{font-size:11.5px;background:var(--blue-bg);color:#26374A;padding:2px 7px;border-radius:2px;line-height:1.5}
+.sense b{color:var(--blue);font-weight:700;margin-right:3px}
+.chips{display:inline-flex;flex-wrap:wrap;gap:5px;vertical-align:top}
+.chip{font-size:11.5px;background:#fff;border:1px solid var(--sticky-line);border-radius:2px;padding:1px 6px;color:#3B3A31;line-height:1.6}
+.chip b{color:var(--blue);font-weight:700}
+.exs{margin-top:9px;padding-top:8px;border-top:1px dashed var(--sticky-line)}
+.ex-item{margin:6px 0}
+.ex-item .en{font-family:Georgia,serif;font-size:14.5px;color:#26313A}
+.ex-item .cn{font-size:11.5px;color:#6A6657}
+.spk{border:none;background:none;color:var(--blue);cursor:pointer;font-size:12px;padding:0 3px;vertical-align:1px}
+.spk:hover{color:var(--red)}
+.vcard .senses .sense{background:var(--blue-bg)}
+.vcard .chip{border-color:var(--rule2);background:#FBFAF5}
+.note-card .row{display:flex;gap:8px;margin-top:8px}
+.mini{border:1px solid var(--rule);background:#fff;border-radius:2px;padding:4px 10px;font:inherit;font-size:12px;color:var(--blue);cursor:pointer;display:inline-flex;align-items:center;gap:5px}
+.mini:hover{border-color:var(--blue)}
+.mini svg{width:12px;height:12px;fill:currentColor}
+
+/* 题目 */
+.qs{margin:22px 0 0;border-top:1px solid var(--rule);padding-top:16px}
+.qs h3{font-family:"Songti SC","SimSun",serif;font-size:15px;letter-spacing:.06em;color:var(--ink2);margin-bottom:12px}
+.q{margin:0 0 16px}
+.q .stem{display:flex;gap:9px;font-size:15.5px;line-height:1.75}
+.q .num{flex:0 0 22px;height:22px;border:1.5px solid var(--red);color:var(--red);border-radius:50%;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:3px}
+.opts{margin:8px 0 0 31px;display:grid;grid-template-columns:1fr;gap:2px;font-size:15px}
+.opts span{color:#2C343A}
+.opts .lab{color:var(--ink3);margin-right:6px;font-family:Georgia,serif}
+.ans{display:inline-flex;align-items:center;gap:8px;margin:8px 0 0 31px;font-size:13.5px;background:var(--red-bg);border-left:3px solid var(--red);padding:5px 12px}
+.ans b{color:var(--red);font-family:Georgia,serif}
+details{margin:6px 0 0 31px}
+details summary{cursor:pointer;list-style:none;font-size:13px;color:var(--blue);font-weight:600;display:inline-flex;align-items:center;gap:5px}
+details summary::-webkit-details-marker{display:none}
+details summary::before{content:"";width:0;height:0;border-left:5px solid currentColor;border-top:3.5px solid transparent;border-bottom:3.5px solid transparent;transition:transform .15s}
+details[open] summary::before{transform:rotate(90deg)}
+details .body{margin-top:8px;font-size:14px;color:#39434B;background:#fff;border:1px solid var(--rule2);padding:10px 12px;border-radius:2px}
+details .body p{margin:5px 0}
+
+/* 积累小栈 / 知识包 */
+.kit{margin:22px 0 0;border:1px solid var(--rule);border-radius:3px;background:#FFFDF6}
+.kit-h{display:flex;align-items:center;gap:8px;padding:9px 14px;border-bottom:1px solid var(--rule);background:#F6F3E8}
+.kit-h h4{font-family:"Songti SC","SimSun",serif;font-size:14px;letter-spacing:.06em;color:var(--ink)}
+.kit-h .badge{font-size:11px;color:var(--red);border:1px solid var(--red);border-radius:2px;padding:0 5px}
+.kit-b{padding:12px 14px}
+.kit-b .grp{font-size:12px;color:var(--red);font-weight:700;letter-spacing:.04em;margin:4px 0 6px}
+.kit-b ul{list-style:none;display:grid;grid-template-columns:1fr;gap:6px}
+.kit-b li{font-size:14px;display:flex;gap:8px;line-height:1.7}
+.kit-b li .i{color:var(--ink3);flex:0 0 1.4em}
+.kit-b li .en{font-family:Georgia,serif}
+.kit-b li .cn{color:var(--ink2)}
+.kit-b .sep{height:1px;background:var(--rule2);margin:12px 0}
+
+/* 逐段精讲 */
+.deep{margin:24px 0 0}
+.deep h4{font-family:"Songti SC","SimSun",serif;font-size:15px;letter-spacing:.06em;color:var(--ink2);margin-bottom:10px}
+.deep .item{position:relative;padding:0 0 0 16px;margin:0 0 14px;border-left:2px solid rgba(166,54,42,.28)}
+.deep .item .t{font-weight:700;font-size:14px;color:var(--blue);margin-bottom:3px}
+.deep .item .c{font-size:14px;color:#333C44;line-height:1.8}
+.deep .item .c em{font-style:normal;color:var(--red);font-weight:600}
+
+/* 文化小注 */
+.side{margin:18px 0 0;background:var(--blue-bg);border-left:3px solid var(--blue);padding:12px 15px;font-size:13.5px;color:#2B3846}
+.side b{color:var(--blue)}
+
+/* ===== 词汇总表 ===== */
+.vsec{margin:34px 0 0;border-top:2px solid var(--ink);padding-top:18px}
+.vsec h2{font-family:"Songti SC","SimSun",serif;font-size:20px;letter-spacing:.02em}
+.vsec .lead{font-size:13.5px;color:var(--ink2);margin:6px 0 12px}
+.tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:12px 0 4px}
+.tools input{flex:1 1 220px;min-width:0;font-size:16px;padding:9px 12px;border:1px solid var(--rule);border-radius:2px;background:#fff;font-family:inherit;color:var(--ink)}
+.tools input:focus{outline:2px solid var(--blue-bg);border-color:var(--blue)}
+.tools button{border:1px solid var(--blue);background:#fff;color:var(--blue);font:inherit;font-size:13px;padding:8px 12px;border-radius:2px;cursor:pointer;white-space:nowrap}
+.tools button.on{background:var(--blue);color:#fff}
+.count{font-size:12.5px;color:var(--ink3);margin:8px 0 0}
+.vgrid{display:grid;grid-template-columns:1fr;gap:10px;margin-top:12px}
+.more{grid-column:1/-1;border:1px dashed var(--rule);background:#fff;color:var(--blue);font:inherit;font-size:13px;padding:12px;border-radius:3px;cursor:pointer;transition:.15s}
+.more:hover{border-color:var(--blue);background:var(--blue-bg)}
+.more.ghost{border-style:solid;border-color:var(--rule2);color:var(--ink2)}
+.vcard{border:1px solid var(--rule);background:#fff;padding:12px 14px;border-radius:3px}
+.vcard .hd{display:flex;flex-wrap:wrap;align-items:baseline;gap:7px;border-bottom:1px dashed var(--rule);padding-bottom:7px}
+.vcard .wd{font-family:Georgia,serif;font-size:16.5px;font-weight:700}
+.vcard .ps{font-size:11px;background:var(--blue-bg);color:var(--blue);padding:1px 6px;border-radius:2px}
+.vcard .cz{color:var(--red);font-weight:700;font-size:14px;margin-left:auto}
+.vcard .cz.hide{color:#C9C6B9;letter-spacing:.15em;user-select:none}
+.vcard .lt{font-size:13px;color:#40484F;margin:5px 0;line-height:1.75}
+.vcard .lt .kk{color:var(--blue);font-weight:700;font-size:12px;margin-right:5px}
+.vcard .line{display:flex;gap:6px;font-size:13px;margin:5px 0;line-height:1.75}
+.vcard .line .k{flex:0 0 4.6em;color:var(--blue);font-weight:700;font-size:12px;padding-top:1px}
+.vcard .exs{border-top:1px dashed var(--rule)}
+.vcard .ex-item .en{font-size:13.5px}
+.vcard .spk{font-size:11px}
+.vcard .ex{font-family:Georgia,serif;font-size:13.5px;color:#2B343B;margin-top:6px}
+.vcard .excn{font-size:11.5px;color:var(--ink3)}
+.vcard .ft{display:flex;gap:8px;margin-top:8px}
+
+/* 回到顶部 */
+#top{position:fixed;right:16px;bottom:22px;width:42px;height:42px;border-radius:50%;border:1px solid var(--blue);background:#fff;color:var(--blue);font-size:17px;line-height:1;cursor:pointer;display:none;box-shadow:0 4px 14px rgba(30,40,50,.14);z-index:50}
+#top.on{display:block}
+#top:hover{background:var(--blue);color:#fff}
+
+/* 页脚 */
+.foot{max-width:880px;margin:0 auto 40px;padding:0 18px;color:#5D6259;font-size:12.5px;text-align:center}
+.foot .line{height:1px;background:#CFCBBE;margin:0 0 14px}
+
+/* ===== 响应式（窄屏优先，宽屏增强） ===== */
+@media (min-width:768px){
+  .paper{padding:38px 46px 46px}
+  h1{font-size:32px}
+  .ch-meta{grid-template-columns:repeat(4,1fr)}
+  .vgrid{grid-template-columns:repeat(2,1fr)}
+  .kit-b ul{grid-template-columns:repeat(2,1fr)}
+  .note-card{margin-left:30px}
+}
+@media (max-width:560px){
+  .kit-b li{flex-wrap:wrap}
+  .kit-b li .cn{flex:1 1 100%;margin-left:calc(1.4em + 8px);color:var(--ink2)}
+}
+@media (max-width:767px){
+  .paper{padding:20px 16px 26px;border-radius:0}
+  .sheet{margin:0}
+  .para{padding-left:22px}
+  .note-card{margin-left:0}
+  .deep .item{padding-left:12px}
+  .ans,details,.opts{margin-left:0}
+  .q .stem{font-size:15px}
+}
+@keyframes fade{from{opacity:0;transform:translateY(-3px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.note-card{animation:none}html{scroll-behavior:auto}}
+@media print{.tabs,.tools,.btn-s,.mini,.note-card{display:none}body{background:#fff}.paper{box-shadow:none;border:none}}
+
+/* ===== 13-3 追加样式 ===== */
+.bl{display:inline-block;min-width:64px;border-bottom:1px solid var(--ink2);text-align:center;margin:0 3px;text-indent:0}
+.qtask{background:#fff;border:1px solid var(--rule);border-left:3px solid var(--red);padding:12px 15px;margin:8px 0 4px;color:var(--ink)}
+.model{background:#FFFDF7;border:1px solid var(--rule);border-left:3px solid var(--blue);padding:14px 16px;margin:8px 0 6px;font-family:Georgia,"Times New Roman",serif;font-size:15.5px;line-height:1.9}
+.model p{margin:0 0 8px}
+.model .zh{font-family:"PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink2);font-size:13.5px;line-height:1.8;border-top:1px dashed var(--rule2);padding-top:9px;margin-top:10px}
+.typo-note{color:var(--red);font-size:.94em}
+.ans{display:block;line-height:1.75;padding:6px 12px}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="inner">
+    <div class="kicker"><span class="no">学案 13-3</span><span>UNIT 4 · ONCE UPON A TIME</span></div>
+    <h1>13-3 英语培优讲练 · 语法填空与阅读表达</h1>
+    <p class="sub">两篇培优题：寓言《金色的窗户》（语法填空 10 空）、名著《汤姆·索亚历险记》刷栅栏片段（阅读表达 5 题），另配“以读促写”。原文带生词批注，点词即看“义项 + 用法 + 搭配 + 近义辨析 + 多条例句”；每部分给出完整答案与逐段精讲，文末 75 条生词索引可检索、可遮挡、可朗读。</p>
+  </div>
+</header>
+
+<nav class="tabs" id="tabs">
+  <div class="row">
+    <a href="#c1" class="on">四 语法填空</a>
+    <a href="#c2">五 阅读表达</a>
+    <a href="#c3">以读促写</a>
+    <a href="#vocab">生词索引</a>
+  </div>
+</nav>
+
+<div class="sheet">
+<div class="paper">
+
+<!-- ============ 语法填空 ============ -->
+<section class="chapter" id="c1">
+  <div class="ch-head">
+    <span class="ch-tag">四 · 语法填空</span>
+    <h2 class="ch-title">The Golden Windows：自家的金窗户</h2>
+  </div>
+  <div class="ch-meta">
+    <div><b>主题</b>人与社会·寓言故事</div>
+    <div><b>语篇</b>记叙文</div>
+    <div><b>词数</b>219</div>
+    <div><b>难度</b><span class="stars">★★★☆☆</span></div>
+  </div>
+
+  <div class="text">
+    <div class="para"><span class="pn">01</span>
+      <div class="para-tools"><button class="btn-s" data-say="Once upon a time, there was a little boy. His parents were poor farmers. They couldn't pay for a worker, so the boy had to help. He worked hard."><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg>朗读本段</button></div>
+      <p>Once upon a time, there was a little boy. His parents were [[poor]] 1. <span class="bl"></span>(farmer). They couldn't [[pay for]] a [[worker]], 2. <span class="bl"></span> the boy [[have to|had to]] help. He worked hard.</p>
+    </div>
+
+    <div class="para"><span class="pn">02</span>
+      <div class="para-tools"><button class="btn-s" data-say="Every day, he had a one-hour rest at sunset. He used that time to climb to the top of a hill. There, he could see a house on another hill. It had golden windows. They were really bright and shone like diamonds."><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg>朗读本段</button></div>
+      <p>Every day, he had a [[one-hour]] [[rest]] at [[sunset]](日落). He [[use sth. to do|used that time]] 3. <span class="bl"></span> ([[climb]]) to the [[top]] of a [[hill]]. There, he could see 4. <span class="bl"></span> house on [[another]] hill. It had [[golden]](金色的) windows. They were really [[bright]] and [[shine|shone]] like [[diamond|diamonds]](钻石).</p>
+    </div>
+
+    <div class="para"><span class="pn">03</span>
+      <div class="para-tools"><button class="btn-s" data-say="One day, the boy's father said to him, You worked really hard, so you can take a day off. Try to learn something good."><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg>朗读本段</button></div>
+      <p>One day, the 5. <span class="bl"></span>(boy) father said to him, “You worked really hard, so you can [[take a day off]]. Try to [[learn]] something good.”</p>
+    </div>
+
+    <div class="para"><span class="pn">04</span>
+      <div class="para-tools"><button class="btn-s" data-say="The boy thanked his father. Then, he left home and walked to the far hill."><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg>朗读本段</button></div>
+      <p>The boy thanked his father. Then, he left home and walked to the [[far]] hill.</p>
+    </div>
+
+    <div class="para"><span class="pn">05</span>
+      <div class="para-tools"><button class="btn-s" data-say="He came to the house and knocked on the door, and a girl answered. He told the girl about the golden windows. The girl shook her head and said, We only have glass windows. Look there! That's the house with golden windows. She pointed at something far away."><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg>朗读本段</button></div>
+      <p>He 6. <span class="bl"></span>(come) to the house and [[knock on|knocked on]] the door, and a girl [[answer|answered]]. He told the girl about the golden windows. The girl [[shake one's head|shook her head]] and said, “We only have [[glass]] windows. Look there! That's the house 7. <span class="bl"></span> golden windows.” She [[point at|pointed]] at something far away.</p>
+    </div>
+
+    <div class="para"><span class="pn">06</span>
+      <div class="para-tools"><button class="btn-s" data-say="To his surprise, he saw his own house. He then thanked the girl and went back home quickly."><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg>朗读本段</button></div>
+      <p>To 8. <span class="bl"></span>(he) [[surprise]], he saw his [[own]] house. He then thanked the girl and went back home 9. <span class="bl"></span>(quick).</p>
+    </div>
+
+    <div class="para"><span class="pn">07</span>
+      <div class="para-tools"><button class="btn-s" data-say="Inside, he saw his family and smiled. He told them about what he experienced on that day. He also said, I have learnt a great lesson—our house has golden windows."><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg>朗读本段</button></div>
+      <p>[[Inside]], he saw his family and [[smile|smiled]]. He 10. <span class="bl"></span> ([[tell]]) them about what he [[experience|experienced]] on that day. He also said, “I have learnt a great [[lesson]]—our house has golden windows.”</p>
+    </div>
+  </div>
+
+  <div class="qs">
+    <h3>题目 · 完整解答（10 空）</h3>
+
+    <div class="q">
+      <div class="stem"><span class="num">1</span><span>(farmer) → <b>farmers</b></span></div>
+      <div class="ans">答案 <b>farmers</b>（复数）</div>
+      <details><summary>解析</summary><div class="body"><p>主语是 His parents（复数），作表语的名词要与主语在数上一致，故用复数 farmers。句意：他的父母是贫穷的农民。</p><p>判断思路：括号内给名词 → 看是否需要变复数、所有格或词性转换；本空前面没有冠词、主语为复数，直接变复数。</p></div></details>
+    </div>
+
+    <div class="q">
+      <div class="stem"><span class="num">2</span><span>无提示词 → <b>so</b></span></div>
+      <div class="ans">答案 <b>so</b>（因此）</div>
+      <details><summary>解析</summary><div class="body"><p>前句“他们雇不起工人”是原因，后句“男孩只好帮忙”是结果，两句为因果承接，用连词 so。若填 and（并列）或 but（转折）都与语义不符。</p><p>无提示词的填空先判断句子关系：并列（and/or/but）、因果（so/for）、转折（but/yet）、条件（if）。本句明显是“因—果”，so 最贴切。</p></div></details>
+    </div>
+
+    <div class="q">
+      <div class="stem"><span class="num">3</span><span>(climb) → <b>to climb</b></span></div>
+      <div class="ans">答案 <b>to climb</b>（动词不定式）</div>
+      <details><summary>解析</summary><div class="body"><p>结构为 use sth. to do sth.（用某物/某时间做某事），此处 used that time to climb，不定式表目的。若填 climbing 则破坏 use…to do 的固定搭配。</p><p>易混提醒：used to do 是“过去常常做”，be used to doing 是“习惯于做”，be used to do 是“被用来做”。本句 use 是实义动词“利用”，后接 to do 表目的。</p></div></details>
+    </div>
+
+    <div class="q">
+      <div class="stem"><span class="num">4</span><span>无提示词 → <b>a</b></span></div>
+      <div class="ans">答案 <b>a</b>（不定冠词）</div>
+      <details><summary>解析</summary><div class="body"><p>house 为单数可数名词，此处首次提到“另一座山上的一座房子”，非特指，用不定冠词 a。若填 the 则表示“那座房子”，与前文“首次出现”矛盾。</p><p>冠词判断：首次出现 + 泛指 → a/an；再次提到或双方已知 → the；不可数或复数泛指 → 零冠词。</p></div></details>
+    </div>
+
+    <div class="q">
+      <div class="stem"><span class="num">5</span><span>(boy) → <b>boy's</b></span></div>
+      <div class="ans">答案 <b>boy's</b>（名词所有格）</div>
+      <details><summary>解析</summary><div class="body"><p>“男孩的父亲”需用名词所有格：the boy's father。括号给名词，后接另一个名词 father，说明前一个名词要变所有格。</p><p>所有格规则：单数名词加 's；以 s 结尾的复数只加 '；并列所有格看是否共同拥有。</p></div></details>
+    </div>
+
+    <div class="q">
+      <div class="stem"><span class="num">6</span><span>(come) → <b>came</b></span></div>
+      <div class="ans">答案 <b>came</b>（一般过去时）</div>
+      <details><summary>解析</summary><div class="body"><p>全文讲述过去的故事，此处与并列谓语 knocked 一致，用一般过去时 came。</p><p>提示：and 连接的两个谓语时态要一致；叙事文的时间基准是过去，动词统一用过去式。</p></div></details>
+    </div>
+
+    <div class="q">
+      <div class="stem"><span class="num">7</span><span>无提示词 → <b>with</b></span></div>
+      <div class="ans">答案 <b>with</b>（带有；具有）</div>
+      <details><summary>解析</summary><div class="body"><p>the house with golden windows 意为“有金色窗户的那座房子”，with 短语作后置定语，表“带有、具有”。用 of 则成了“窗户的房子”，不合逻辑。</p><p>介词选择看搭配：a house with a garden（带花园的房子）、a girl with long hair（长发的女孩），with 表“拥有某特征”。</p></div></details>
+    </div>
+
+    <div class="q">
+      <div class="stem"><span class="num">8</span><span>(he) → <b>his</b></span></div>
+      <div class="ans">答案 <b>his</b>（形容词性物主代词）</div>
+      <details><summary>解析</summary><div class="body"><p>固定结构 to one's surprise（令某人惊讶的是），one's 要随主语变化，主语是 he，故用 his：To his surprise。</p><p>同类结构：to one's joy / to one's sadness / to one's disappointment，均用形容词性物主代词。</p></div></details>
+    </div>
+
+    <div class="q">
+      <div class="stem"><span class="num">9</span><span>(quick) → <b>quickly</b></span></div>
+      <div class="ans">答案 <b>quickly</b>（副词）</div>
+      <details><summary>解析</summary><div class="body"><p>修饰动词短语 went back home，要用副词 quickly。形容词 quick 只能修饰名词或作表语。</p><p>词性转换思路：括号给形容词，若修饰动词、形容词或全句，一般变副词（+ly）；若是系动词后作表语，则保持形容词。</p></div></details>
+    </div>
+
+    <div class="q">
+      <div class="stem"><span class="num">10</span><span>(tell) → <b>told</b></span></div>
+      <div class="ans">答案 <b>told</b>（一般过去时）</div>
+      <details><summary>解析</summary><div class="body"><p>与前文 smiled、experienced 同为过去发生的动作，用一般过去时 told。tell 的不规则变化为 tell → told → told。</p><p>注意 tell sb. about sth.（向某人讲述某事），本句 them 是间接宾语，about what he experienced 是介词短语作状语。</p></div></details>
+    </div>
+  </div>
+
+  <div class="kit">
+    <div class="kit-h"><h4>积累小栈 · 语法填空答题链</h4><span class="badge">方法</span></div>
+    <div class="kit-b">
+      <div class="grp">四步定答案</div>
+      <ul>
+        <li><span class="i">1</span><span class="en">看提示：有括号先定词性（名词→数/所有格；动词→时态/语态/非谓语；形容词→比较级/副词）。</span></li>
+        <li><span class="i">2</span><span class="en">看结构：无括号先判句子关系（并列、因果、转折、条件）或填介词、冠词、代词。</span></li>
+        <li><span class="i">3</span><span class="en">看搭配：use sth. to do、to one's surprise、the house with… 等固定结构优先。</span></li>
+        <li><span class="i">4</span><span class="en">看一致：主谓一致、时态一致（and 并列谓语）、数的一致（parents → farmers）。</span></li>
+      </ul>
+      <div class="sep"></div>
+      <div class="grp">本篇必背结构</div>
+      <ul>
+        <li><span class="i">·</span><span class="en"><b>use sth. to do sth.</b> 用某物做某事；<b>used to do</b> 过去常常；<b>be used to doing</b> 习惯于。</span></li>
+        <li><span class="i">·</span><span class="en"><b>to one's surprise</b> 令某人惊讶的是；<b>in surprise</b> 惊讶地。</span></li>
+        <li><span class="i">·</span><span class="en"><b>a house with golden windows</b>：with 短语作后置定语，表“带有”。</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="deep">
+    <h4>逐段精讲</h4>
+    <div class="item"><div class="t">第 1 段 ｜ 起笔：穷、雇不起人、孩子顶上</div><div class="c">三句交代背景：once upon a time 定下“故事”语体；poor farmers 说明家境；couldn't pay for a worker 是原因，so the boy had to help 是结果。<em>have to</em> 表客观“不得不”，比 must 更强调“被环境所迫”，为下文“拼命干活”铺垫。</div></div>
+    <div class="item"><div class="t">第 2 段 ｜ 唯一的休息：日落时爬上山看“金窗”</div><div class="c">这是全文的“眼”：a one-hour rest（一小时的休息）说明他终日劳作；use that time to climb（用那段时间爬山）写他对美的向往。<em>golden windows / bright / shone like diamonds</em> 三个描写把“远处的房子”写成理想世界的象征。<em>another hill</em> 的 another 表“另一座”，暗示距离与陌生。</div></div>
+    <div class="item"><div class="t">第 3 段 ｜ 父亲的话：给他一天假，让他“学点好的”</div><div class="c">take a day off（休一天假）是情节转折点：父亲看见了他的辛苦，也给了他“向外看”的机会。Try to learn something good 一句含蓄点题——他要学的不只是知识，还有“看见自己拥有的东西”。</div></div>
+    <div class="item"><div class="t">第 4 段 ｜ 出发：走向“远山”</div><div class="c">短句推进，节奏加快：thanked、left home、walked to the far hill。far 与前面的 another hill 呼应，写“理想看起来很远”。</div></div>
+    <div class="item"><div class="t">第 5 段 ｜ 到达与转折：玻璃窗 vs 金窗户</div><div class="c">knock on the door、a girl answered 是动作链；女孩 shook her head（摇头）后说 We only have glass windows，直接打破幻想。<em>That's the house with golden windows</em> 一句把“金窗”指向更远处——原来“金窗”永远在别处，这是寓言的第一次反转。<span class="typo-note">（原卷此处排作“Look therel”，应为“Look there!”，末尾的 l 是误植。）</span></div></div>
+    <div class="item"><div class="t">第 6 段 ｜ 第二次反转：金窗就在自己家</div><div class="c">To his surprise 是心理转折标记；he saw his own house 点明：从远处看，自家的窗户也在夕阳里发金光。quickly 一词写他急着回家验证与分享的心情。</div></div>
+    <div class="item"><div class="t">第 7 段 ｜ 收束：一句“教训”点题</div><div class="c">Inside、smiled、told them 写“回家—释然—分享”的闭环；our house has golden windows 是全文主旨句：幸福与美不在远方，而在你转身看见的地方。<em>lesson</em> 与开头 poor 形成对照：贫穷的家，也有金色的窗。</div></div>
+  </div>
+
+  <div class="side"><b>识有所悟：</b>“金窗户”是一个典型的寓言意象——同一扇窗，在近处是普通玻璃，在远处被夕阳镀成金色。文章用“远观—走近—回头”三次视角转换，说明“距离产生美”与“珍惜所有”两层意思。写作时可借鉴这种“视角反转”结构：先写向往远方，再写发现身边。</div>
+</section>
+
+<!-- ============ 阅读表达 ============ -->
+<section class="chapter" id="c2">
+  <div class="ch-head">
+    <span class="ch-tag">五 · 阅读表达</span>
+    <h2 class="ch-title">Tom Sawyer：把刷栅栏变成“美差”</h2>
+  </div>
+  <div class="ch-meta">
+    <div><b>主题</b>人与社会·文学名著</div>
+    <div><b>语篇</b>记叙文</div>
+    <div><b>词数</b>345</div>
+    <div><b>难度</b><span class="stars">★★★☆☆</span></div>
+  </div>
+
+  <div class="text">
+    <div class="para"><span class="pn">01</span>
+      <div class="para-tools"><button class="btn-s" data-say="Tom came out of his house with a brush and a big pot of white paint in his hand. He looked at the fence; it was three metres high and thirty metres long. He put his brush in the paint and painted some of the fence. He did it again. Then he stopped and looked at the fence, put down his brush and sat down. There were hours of work in front of him and he was the unhappiest boy in the village."><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg>朗读本段</button></div>
+      <p>Tom [[come out of|came out of]] his house with a [[brush]] and a big [[pot]] of white [[paint]] in his hand. He looked at the [[fence]]; it was three [[metre|metres]] high and thirty metres long. He put his brush in the paint and painted some of the fence. He did it again. Then he [[stop|stopped]] and looked at the fence, [[put down]] his brush and [[sit down|sat down]]. There were [[hour|hours]] of [[work]] [[in front of]] him and he was the [[unhappy|unhappiest]] boy in the [[village]].</p>
+    </div>
+
+    <div class="para"><span class="pn">02</span>
+      <div class="para-tools"><button class="btn-s" data-say="After ten minutes, Tom had an idea, a wonderful idea. He took up the brush again and began to work. He saw his friend Joe Harper in the street, but he didn't look at him. Joe had an apple in his hand. He came up to Tom and looked at the fence."><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg>朗读本段</button></div>
+      <p>After ten minutes, Tom had an [[idea]], a [[wonderful]] idea. He [[take up|took up]] the brush again and [[begin|began]] to work. He saw his friend Joe Harper in the [[street]], but he didn't look at him. Joe had an apple in his hand. He [[come up to|came up to]] Tom and looked at the fence.</p>
+    </div>
+
+    <div class="para"><span class="pn">03</span>
+      <div class="para-tools"><button class="btn-s" data-say="I am sorry, Tom. Tom said nothing. The paint brush moved up and down. Working for your aunt? said Joe. I'm going down to the river. I'm sorry you can't come with me. Tom put down his brush. You call this work? he said. Painting a fence? said Joe. Of course, it's work! Perhaps it is and perhaps it isn't. But I like it, said Tom. I can go to the river any day. I can't paint a fence very often."><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg>朗读本段</button></div>
+      <p>“I am sorry, Tom.” Tom said [[nothing]]. The paint brush moved [[up and down]]. “Working for your [[aunt]]?” said Joe. “I'm going down to the [[river]]. I'm sorry you can't come with me.” Tom put down his brush. “You call this work?” he said. “Painting a fence?” said Joe. “[[of course|Of course]], it's work!” “[[perhaps|Perhaps]] it is and perhaps it isn't. But I like it,” said Tom. “I can go to the river any day. I can't paint a fence very [[often]].”</p>
+    </div>
+
+    <div class="para"><span class="pn">04</span>
+      <div class="para-tools"><button class="btn-s" data-say="Joe watched Tom for about five minutes. Tom painted very slowly and carefully. He often stopped, moved back from the fence and looked at his work with a smile. Joe began to get very interested. Tom thought for a second and said, I'm sorry, Joe. You see, my aunt wants me to do it because I'm good at painting. My brother Sid wanted to paint too, but she said no. Oh, please, Tom. Just a little. I'm good at painting too. Hey, do you want some of my apple? No, Joe, I can't. OK, you can have all my apple! Tom gave Joe the brush. He did not smile, but for the first time that day he was a very happy boy. He sat down and ate Joe's apple."><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg>朗读本段</button></div>
+      <p>Joe [[watch|watched]] Tom for about five minutes. Tom painted very [[slowly]] and [[carefully]]. He often stopped, [[move back|moved back]] from the fence and looked at his work [[with a smile]]. Joe began to [[get]] very [[interested]]. Tom thought [[for a second]] and said, “I'm sorry, Joe. You see, my aunt wants me to do it because I'm [[be good at|good at]] painting. My brother Sid wanted to paint too, but she [[say no|said no]].” “Oh, please, Tom. [[just|Just]] a little. I'm good at painting too. Hey, do you want some of my apple?” “No, Joe, I can't—” “OK, you can have all my apple!” Tom gave Joe the brush. He did not smile, but [[for the first time]] that day he was a very happy boy. He sat down and ate Joe's apple.</p>
+    </div>
+  </div>
+
+  <div class="qs">
+    <h3>题目 · 完整解答（5 题）</h3>
+
+    <div class="q">
+      <div class="stem"><span class="num">1</span><span>Why did Tom feel unhappy at the beginning of the story?</span></div>
+      <div class="ans">答案示例 <b>Because the fence was very long and high, and he had hours of work to do alone.</b></div>
+      <details><summary>解析</summary><div class="body"><p>定位第 1 段：it was three metres high and thirty metres long；There were hours of work in front of him；he was the unhappiest boy in the village。三点都指向“活儿太多、太长、只有他一个人干”。</p><p>答题要点：① 引用具体数据（3 米高、30 米长）；② 点出“数小时的活儿”；③ 可补一句 he had to do it alone（姨妈让他干）。</p></div></details>
+    </div>
+
+    <div class="q">
+      <div class="stem"><span class="num">2</span><span>What did Tom do when he saw Joe Harper in the street?</span></div>
+      <div class="ans">答案示例 <b>He didn't look at Joe and went on painting the fence.</b></div>
+      <details><summary>解析</summary><div class="body"><p>定位第 2 段：“He saw his friend Joe Harper in the street, but he didn't look at him.”随后他“took up the brush again and began to work”。故意不看，是“欲擒故纵”的第一步——先让对方好奇。</p><p>注意题干问的是“看到乔时做了什么”，而不是“后来做了什么”，答案要落在 didn't look at him + kept painting 上。</p></div></details>
+    </div>
+
+    <div class="q">
+      <div class="stem"><span class="num">3</span><span>Why did Tom say “I like it” when talking about painting the fence?</span></div>
+      <div class="ans">答案示例 <b>Because he wanted Joe to think painting was fun, so that Joe would want to do it for him.</b></div>
+      <details><summary>解析</summary><div class="body"><p>表面答语是 But I like it，还补了一句 I can go to the river any day. I can't paint a fence very often——把“苦活”说成“难得的机会”。动机在后文揭晓：他假装享受，引乔上钩，最后用“刷栅栏的机会”换了乔的苹果。</p><p>“Why”题要答“目的”，常用 because he wanted sb. to do sth. / so that… 句式，不能只译原句。</p></div></details>
+    </div>
+
+    <div class="q">
+      <div class="stem"><span class="num">4</span><span>What did Joe give Tom in order to get the chance to paint the fence?</span></div>
+      <div class="ans">答案示例 <b>His apple (all of his apple).</b></div>
+      <details><summary>解析</summary><div class="body"><p>定位结尾：“OK, you can have all my apple!” Tom gave Joe the brush. 乔用“整个苹果”换来了刷栅栏的“机会”，交易完成，汤姆则 sat down and ate Joe's apple。</p><p>题干 in order to get the chance 提示答“交换物”，直接答 his apple 即可，不必展开。</p></div></details>
+    </div>
+
+    <div class="q">
+      <div class="stem"><span class="num">5</span><span>（新考法 · 开放性设问）What do you think of Tom? Give the reasons.</span></div>
+      <div class="ans">答案示例 <b>I think Tom is clever but not very honest. He turned a boring job into a “chance” and made Joe do it for an apple. It is smart, but tricking a friend is not good.</b></div>
+      <details><summary>解析</summary><div class="body"><p>开放题可按“观点 + 两三条理由 + 一句评价”作答，观点可正可负，只要理由来自文本。</p><p>正面：clever / smart / humorous / good at talking（他懂得人的心理，把苦差说成美差）。<br>负面：not honest / a little selfish（他骗了朋友，自己坐享其成）。<br>折中：smart but should be honest with friends（既承认聪明，也指出问题）。</p><p>语言支架：I think… / In my opinion… / because… / For example… / So I think…。</p></div></details>
+    </div>
+  </div>
+
+  <div class="kit">
+    <div class="kit-h"><h4>积累小栈 · 短语互译</h4><span class="badge">答案</span></div>
+    <div class="kit-b">
+      <div class="grp">英汉互译</div>
+      <ul>
+        <li><span class="i">1</span><span class="en">从……出来</span><span class="cn">→ <b>come out of</b></span></li>
+        <li><span class="i">2</span><span class="en">a pot of</span><span class="cn">→ 一罐/一锅……</span></li>
+        <li><span class="i">3</span><span class="en">put down</span><span class="cn">→ 放下；写下</span></li>
+        <li><span class="i">4</span><span class="en">在……前面</span><span class="cn">→ <b>in front of</b></span></li>
+        <li><span class="i">5</span><span class="en">take up</span><span class="cn">→ 拿起；开始从事；占据</span></li>
+        <li><span class="i">6</span><span class="en">up and down</span><span class="cn">→ 上上下下；来回地</span></li>
+        <li><span class="i">7</span><span class="en">come up to</span><span class="cn">→ 走向；来到……跟前</span></li>
+      </ul>
+      <div class="sep"></div>
+      <div class="grp">易错点</div>
+      <ul>
+        <li><span class="i">·</span><span class="en">in front of 指“外部前方”；in the front of 指“内部前部”（如车厢前部）。</span></li>
+        <li><span class="i">·</span><span class="en">come up to（走向某人）≠ come up with（想出主意），只差一个介词。</span></li>
+        <li><span class="i">·</span><span class="en">take up / put down 均为“动词 + 副词”，代词宾语放中间：take it up / put it down。</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="deep">
+    <h4>逐段精讲</h4>
+    <div class="item"><div class="t">第 1 段 ｜ 难题：3 米高、30 米长的栅栏</div><div class="c">开篇用具体数字（three metres high / thirty metres long）和 hours of work 把“苦差”量化；unhappiest boy in the village 用最高级写心情。动词链 came out of → looked at → put → painted → stopped → put down → sat down，一路写“越干越没劲”。</div></div>
+    <div class="item"><div class="t">第 2 段 ｜ 转念：一个“绝妙的主意”</div><div class="c">After ten minutes 说明他并非一开始就有办法；an idea, a wonderful idea 用同位语重复强调。关键动作是 didn't look at him——故意冷落，反而引起乔的注意。这是“心理战”的第一步。</div></div>
+    <div class="item"><div class="t">第 3 段 ｜ 交锋：把“工作”说成“享受”</div><div class="c">乔先示好（I am sorry, Tom.），汤姆只以刷子上下移动回应——用动作代替语言，显得专注而享受。随后“You call this work?”与“Of course, it's work!”形成反差；Tom 的 I like it 与“我可以天天去河边，却难得刷一次栅栏”是典型的价值重估：把稀缺性强加给苦活。</div></div>
+    <div class="item"><div class="t">第 4 段 ｜ 成交：一个苹果换来整面栅栏</div><div class="c">slowly and carefully、moved back、with a smile 三个细节表演“专业与热爱”，让乔 get very interested；再借“姨妈只让我刷、哥哥想刷都不行”抬高门槛（句末的 she 指前文的 my aunt）。最后 Just a little → all my apple，交易达成。结尾 He did not smile, but… he was a very happy boy 一句反讽收束：脸上不笑，心里得意。</div></div>
+  </div>
+
+  <div class="side"><b>识有所悟：</b>这段出自马克·吐温《汤姆·索亚历险记》（1876）。原著中汤姆被波莉姨妈罚刷栅栏，他用“这活儿不是谁都能干”的说法，让本村孩子拿小玩意换“刷几下”的机会，栅栏被刷了三层。它常被当作“工作与游戏之别”的经典例子：当一件事被看作“机会”而非“任务”，人们甚至会付钱去做。</div>
+</section>
+
+<!-- ============ 以读促写 ============ -->
+<section class="chapter" id="c3">
+  <div class="ch-head">
+    <span class="ch-tag">积累小栈 · 以读促写</span>
+    <h2 class="ch-title">写 2–3 个平凡日子里的“小美好”</h2>
+  </div>
+  <div class="ch-meta">
+    <div><b>任务</b>讲述美好瞬间</div>
+    <div><b>体裁</b>记叙 + 感受</div>
+    <div><b>篇幅</b>80–100 词</div>
+    <div><b>难度</b><span class="stars">★★★☆☆</span></div>
+  </div>
+
+  <div class="qtask">
+    <p><b>题目：</b>人生一路风景一路歌，珍惜每一个日出日落，保持着对生活的温度，才能发现生活之美。那些零零碎碎的小美好，藏匿在每一个平凡的日子里。认真生活，才能找到被人生偷藏起来的糖果。请你向你的同学们讲述你生活中的 2–3 个美好瞬间，并分享你的感受或收获。</p>
+  </div>
+
+  <div class="kit">
+    <div class="kit-h"><h4>写作框架</h4><span class="badge">三步</span></div>
+    <div class="kit-b">
+      <div class="grp">第一步 · 开头（1 句）</div>
+      <ul><li><span class="i">·</span><span class="en">点题：Life is full of small beautiful moments, and I'd like to share two of mine.</span></li></ul>
+      <div class="sep"></div>
+      <div class="grp">第二步 · 主体（2–3 个瞬间，每个 1–2 句）</div>
+      <ul>
+        <li><span class="i">1</span><span class="en">时间 + 地点 + 动作：One evening last month, my father and I watched the sunset on the roof.</span></li>
+        <li><span class="i">2</span><span class="en">细节 + 感受：The sky turned orange, and I felt warm and quiet inside.</span></li>
+        <li><span class="i">3</span><span class="en">第二个瞬间可写“人”：My little sister ran to me with a wild flower she picked.</span></li>
+      </ul>
+      <div class="sep"></div>
+      <div class="grp">第三步 · 结尾（1–2 句）</div>
+      <ul><li><span class="i">·</span><span class="en">升华：These moments are small, but they make ordinary days shine. / Beauty is not far away; it is around us.</span></li></ul>
+    </div>
+  </div>
+
+  <div class="kit">
+    <div class="kit-h"><h4>参考范文</h4><span class="badge">85 词</span></div>
+    <div class="model">
+      <p>Life is full of small beautiful moments. I'd like to share two of mine.</p>
+      <p>One evening last month, my father and I sat on the roof and watched the sunset. The sky turned orange, then pink, and the windows of our house began to shine like gold. We said nothing, but I felt warm and peaceful.</p>
+      <p>Another moment was at the school gate. My little sister ran to me with a wild flower in her hand and said, “This is for you!” Her smile was brighter than the flower.</p>
+      <p>These moments are small, but they light up my ordinary days. Beauty is not far away—it is right around us.</p>
+      <div class="zh">中文对照：生活里处处是细小的美好，我想分享属于我的两个。上个月的一个傍晚，我和爸爸坐在屋顶看日落，天空由橙转粉，我家的窗户开始像金子一样发亮。我们什么也没说，但我心里温暖而平静。另一个瞬间在校门口：妹妹举着一朵野花跑过来，说“送给你！”她的笑比花还亮。这些瞬间很小，却照亮了我平凡的日子——美不在远方，就在身边。</div>
+    </div>
+  </div>
+
+  <div class="kit">
+    <div class="kit-h"><h4>好词好句 · 可直接套用</h4><span class="badge">语料</span></div>
+    <div class="kit-b">
+      <div class="grp">写“景”</div>
+      <ul>
+        <li><span class="i">·</span><span class="en">the sky turned orange / the sun went down slowly / the windows shone like gold</span></li>
+        <li><span class="i">·</span><span class="en">a soft breeze touched my face（微风拂面）</span></li>
+      </ul>
+      <div class="sep"></div>
+      <div class="grp">写“感受”</div>
+      <ul>
+        <li><span class="i">·</span><span class="en">I felt warm and peaceful. / My heart was full. / I will never forget that moment.</span></li>
+        <li><span class="i">·</span><span class="en">It was small, but it meant a lot to me.</span></li>
+      </ul>
+      <div class="sep"></div>
+      <div class="grp">写“收获”</div>
+      <ul>
+        <li><span class="i">·</span><span class="en">Happiness hides in ordinary days. / Beauty is around us if we slow down and look.</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="deep">
+    <h4>评分要点（自评用）</h4>
+    <div class="item"><div class="t">内容</div><div class="c">是否写了 2–3 个<b>具体</b>的瞬间（有时间、地点、动作、细节），而不是笼统的“我很开心”。</div></div>
+    <div class="item"><div class="t">结构</div><div class="c">开头点题一句、主体分述、结尾升华一句；用 first / another / also 等连接词让层次清楚。</div></div>
+    <div class="item"><div class="t">语言</div><div class="c">时态统一用一般过去时叙述事件，感受用一般现在时；至少用 2 个感官细节（看到、听到、感觉到）。</div></div>
+    <div class="item"><div class="t">立意</div><div class="c">结尾要能回答“为什么这些小事美好”，点出“平凡日子里的温度”这一主题，避免只罗列事件。</div></div>
+  </div>
+</section>
+
+<!-- ============ 生词索引 ============ -->
+<section id="vocab" class="vsec">
+  <h2>生词与短语索引</h2>
+  <p class="lead">按七年级词汇水平整理：每条含词性与义项、释义、用法说明、固定搭配与相关短语、词形变化、近义辨析、易错提醒，以及 2–3 条中英对照例句。可检索、可遮挡中文自测、可逐条朗读。</p>
+  <div class="tools">
+    <input id="q" type="search" placeholder="输入英文单词或中文释义检索…" autocomplete="off" aria-label="检索生词">
+    <button id="hideBtn" type="button">遮挡中文</button>
+    <button id="allBtn" type="button">精简解析</button>
+  </div>
+  <p class="count" id="count"></p>
+  <div class="vgrid" id="vgrid"></div>
+</section>
+
+<button id="top" type="button" aria-label="回到顶部">↑</button>
+
+<script>
+const VOCAB = {"once upon a time": {"pos": "短语", "cn": "从前；很久以前", "senses": ["固定开头语，用于童话、寓言", "也说 long long ago（更口语）"], "usage": "传统故事的开头套语，相当于“从前”。写作时后面常用一般过去时，位置在句首，后接逗号。", "coll": "once upon a time, there was… / once upon a time in a small village", "phrases": ["long long ago|很久很久以前", "many years ago|许多年前", "in the old days|在过去"], "form": "once adv. 一次；曾经；upon prep. 在……之上", "syn": "once upon a time 是故事套语，不能拆开随意改写；long long ago 更口语，多用于口头讲述。", "note": "只用于讲述故事、传说，不能用于说明文、新闻；其后句子用过去时。", "examples": ["Once upon a time, there was a poor farmer and his son.|从前，有一个贫穷的农夫和他的儿子。", "Once upon a time, a little girl lived near the forest.|从前，一个小女孩住在森林附近。"]}, "poor": {"pos": "形容词", "cn": "贫穷的；可怜的同情的；差的", "senses": ["adj. 贫穷的（人、家庭、地区）", "adj. 可怜的；值得同情的", "adj. 差的；不擅长的（be poor at）"], "usage": "形容人“没有钱”，也可表“值得同情”。注意 the poor 表示“穷人（整体）”，是复数概念。", "coll": "a poor family / be poor at maths / the poor / poor eyesight", "phrases": ["the poor|穷人（整体）", "be poor at|不擅长", "poor health|身体差", "rich and poor|贫富"], "form": "poor adj. → poorly adv. 差地；poorness n.；反义 rich adj. 富有的", "syn": "poor 指“缺钱”，偏客观；needy 指“生活困难、需救济”；bad 泛指“坏”，不能代替 poor 表“穷”。", "note": "the poor 作主语时谓语用复数；be poor at 后接名词或动名词，不接 to do。", "examples": ["His parents were poor farmers.|他的父母是贫穷的农民。", "The family was too poor to buy books.|这家人太穷，买不起书。", "I am poor at drawing, but I love it.|我不擅长画画，但我喜欢画。"]}, "farmer": {"pos": "名词", "cn": "农民；农场主", "senses": ["n. 农民（种地的人）", "n. 农场主（拥有或经营农场）"], "usage": "由 farm + -er 构成，指从事农业的人；复数 farmers。近义词 peasant 带旧时代色彩，现代英语少用。", "coll": "a poor farmer / a farmer's son / work as a farmer / farmers market", "phrases": ["farmer's market|农贸市场", "farm|农场；耕种", "farming|农业；耕作", "peasant|农民（旧称）"], "form": "farm n./v. 农场；耕种 → farmer n. → farming n. 农业", "syn": "farmer 中性、现代通用；peasant 含“佃农、旧社会农民”色彩；gardener 指“园丁”。", "note": "复数加 s：farmers；注意 farmer's（单数所有格）与 farmers'（复数所有格）区别。", "examples": ["His parents were poor farmers.|他的父母是贫穷的农民。", "The farmer works from morning till night.|这位农民从早干到晚。", "My grandfather was a farmer all his life.|我祖父一辈子都是农民。"]}, "pay for": {"pos": "短语动词", "cn": "为……付款；支付……的费用；为……付出代价", "senses": ["v. 为某物付钱", "v. 为（过错）付出代价"], "usage": "pay for sth. 表示为买某物付钱；pay sb. 表示“付钱给某人”；引申 pay for sth. 可指“为某事承担后果”。", "coll": "pay for the book / pay for a worker / pay sb. for sth. / pay for what you did", "phrases": ["pay sb. money|付给某人钱", "pay back|偿还", "pay off|还清；奏效", "pay attention to|注意"], "form": "pay → paid → paid → paying；payment n. 付款；pay n. 工资", "syn": "pay for 强调“为物付费”；pay 后可直接跟钱数（pay 20 yuan）；cost 的主语是物；spend 的主语是人。", "note": "pay for 后接“物”，不接“人”；pay sb. 后接人，两者不能混：pay for the worker（为工人付费）。", "examples": ["They couldn't pay for a worker, so the boy had to help.|他们雇不起工人，所以男孩只好帮忙。", "Who will pay for the tickets?|谁来付门票钱？", "You will pay for your mistakes one day.|总有一天你要为自己的错误付出代价。"]}, "worker": {"pos": "名词", "cn": "工人；工作者；劳动者", "senses": ["n. 工人（体力劳动者）", "n. 工作者；职员（office worker）"], "usage": "可数名词，复数 workers；常与 factory、farm、hard 等搭配。", "coll": "a factory worker / a hard worker / office worker / farm worker", "phrases": ["hard worker|勤奋的人", "office worker|上班族", "social worker|社工", "worker ant|工蚁"], "form": "work v./n. 工作 → worker n. → working adj. 工作的", "syn": "worker 指“干活的人”；workman 偏“工匠、技工”；employee 指“雇员”（与雇主相对）；staff 是“全体职员”。", "note": "worker 可数，泛指一类人时用复数 workers；hard worker 指“勤奋的人”，不是“辛苦的工人”。", "examples": ["They couldn't pay for a worker.|他们雇不起一个工人。", "The workers built the bridge in two years.|工人们用两年建成了这座桥。", "She is a hard worker and never gives up.|她工作勤奋，从不放弃。"]}, "have to": {"pos": "短语", "cn": "不得不；必须", "senses": ["情态短语，表客观需要", "否定 don't have to 表“不必”"], "usage": "表示因客观情况而“不得不”，后接动词原形；过去式 had to，将来 will have to；否定 don't have to 意为“不必”（不是“禁止”）。", "coll": "have to help / had to leave / don't have to / will have to", "phrases": ["had to|不得不（过去）", "don't have to|不必", "must|必须（主观）", "be forced to|被迫"], "form": "have → had → had；第三人称 has to", "syn": "have to 偏客观“被迫、需要”；must 偏主观“自己认为必须”；don't have to 是“不必”，mustn't 是“禁止”。", "note": "否定式是 don't have to（不必），不是 haven't to；疑问用 Do you have to…?", "examples": ["They couldn't pay for a worker, so the boy had to help.|他们雇不起工人，男孩只好帮忙。", "I have to finish my homework tonight.|我今晚必须完成作业。", "You don't have to come if you are busy.|如果你忙，就不必来。"]}, "one-hour": {"pos": "形容词", "cn": "一小时的", "senses": ["复合形容词，作定语", "one hour 为名词短语"], "usage": "“数词-名词”用连字符构成复合形容词，作定语修饰名词，名词用单数：a one-hour rest（一小时的休息）。", "coll": "a one-hour rest / a two-hour walk / a ten-minute break", "phrases": ["a two-hour walk|两小时的步行", "a ten-minute break|十分钟的休息", "hourly|每小时的", "hour|小时"], "form": "hour n. 小时 → hourly adj./adv. 每小时的；one-hour 为复合形容词", "syn": "one-hour（定语，带连字符）与 one hour（名词短语）不同：a one-hour rest = a rest of one hour。", "note": "复合形容词中名词不加 s：a two-hour film，不说 a two-hours film。", "examples": ["Every day, he had a one-hour rest at sunset.|每天日落时他有一小时的休息。", "It is a two-hour train ride from here.|从这里坐火车要两小时。"]}, "rest": {"pos": "名词 / 动词", "cn": "休息；剩余部分；其余的人/物；倚靠", "senses": ["n. 休息（可数 a rest）", "n. the rest 剩余部分（谓语看所指）", "v. 休息；倚靠"], "usage": "作“休息”时可数：take a rest / have a rest；the rest 指“其余”，谓语单复数取决于所指内容。", "coll": "have a rest / take a rest / the rest of the day / rest on the bed", "phrases": ["have a rest|休息一下", "the rest of|其余的", "rest area|休息区", "rest on|倚靠；取决于"], "form": "rest n./v. → rested adj. 精神饱满的；restless adj. 不安的", "syn": "rest 指“短时间休息”；break 指“工间、课间休息”；relax 指“放松身心”；sleep 指“睡眠”。", "note": "have a rest 中 rest 可数，别漏 a；the rest 作主语时谓语随所指名词变化。", "examples": ["He had a one-hour rest at sunset.|日落时他休息一小时。", "Let's stop and have a rest.|我们停下来休息一下吧。", "The rest of the students are reading.|其余的学生在读书。"]}, "sunset": {"pos": "名词", "cn": "日落；傍晚", "senses": ["n. 日落（时刻、景象）", "n. 日落时的天空景色"], "usage": "由 sun + set 构成，指太阳落下的时刻，常用 at sunset（日落时）。反义 sunrise 日出。", "coll": "at sunset / a beautiful sunset / watch the sunset / from sunrise to sunset", "phrases": ["sunrise|日出", "at sunset|日落时", "sunset glow|晚霞", "dusk|黄昏"], "form": "set v. 落下 → sunset n.；sunrise n. 日出；sunset 也可作定语", "syn": "sunset 指“日落时刻/景象”；dusk 指“黄昏（天色将暗）”；evening 指“傍晚（时间段）”。", "note": "介词用 at：at sunset；不用 in sunset。", "examples": ["Every day, he rested at sunset.|每天日落时他休息。", "The sky turns red at sunset.|日落时天空变红。", "We watched the sunset from the hill.|我们在山上看日落。"]}, "use sth. to do": {"pos": "短语", "cn": "用某物做某事；利用……来……", "senses": ["use + 名词 + to do sth.", "use sth. for doing sth.（同义）"], "usage": "use 后接“被使用的东西”，再接 to do 表目的；也可用 for + 动名词。被动为 sth. is used to do。", "coll": "use time to climb / use a knife to cut / be used to do / use sth. for doing", "phrases": ["be used to do|被用来做", "be used for|用于", "make use of|利用", "used to do|过去常常（形近）"], "form": "use v./n. → useful adj. 有用的 → useless adj. 无用的 → user n. 使用者", "syn": "used to do 是“过去常常”，be used to doing 是“习惯于”，be used to do 是“被用来做”，三结构易混。", "note": "use sth. to do 中 to do 表目的；不要与 be used to doing（习惯于）混淆。", "examples": ["He used that time to climb to the top of a hill.|他用那段时间爬到山顶。", "We use water to clean the floor.|我们用水拖地。", "This machine is used to cut paper.|这台机器用来裁纸。"]}, "climb": {"pos": "动词 / 名词", "cn": "爬；攀登；上升", "senses": ["v. 爬（山、树、楼梯）", "v. （数量）上升", "n. 攀登（a climb）"], "usage": "及物/不及物均可：climb the hill（爬山）、climb up（向上爬）；b 不发音。", "coll": "climb a hill / climb up the tree / climb the stairs / prices climb", "phrases": ["climb up|向上爬", "climb down|爬下；让步", "climb over|翻越", "rock climbing|攀岩"], "form": "climb v./n. → climbed → climbing；climber n. 攀登者", "syn": "climb 指“手脚并用向上”；rise 指“自然上升”；go up 最口语；ascend 正式“登高”。", "note": "b 不发音；climb 后可直接接宾语（climb the hill），也可加 up 表方向。", "examples": ["He used that time to climb to the top of a hill.|他用那段时间爬到山顶。", "The boy climbed up the tree to pick apples.|男孩爬上树摘苹果。", "Prices have climbed again this year.|今年物价又上涨了。"]}, "top": {"pos": "名词 / 形容词", "cn": "顶部；顶端；最高的；最优秀的", "senses": ["n. 顶部（the top of…）", "adj. 最高的；顶级的", "n. （瓶、笔的）盖子"], "usage": "常用 the top of sth. 表“……的顶部”；at the top of 还可指“在……最前列”。", "coll": "the top of the hill / at the top of / top student / from top to bottom", "phrases": ["at the top of|在……顶部；在……前列", "from top to bottom|从上到下", "top student|优等生", "on top of|在……上面"], "form": "top n./adj. → topped adj.；top 也可作动词“超过”", "syn": "top 指“物体最高处”；summit 指“山顶、峰会”（正式）；peak 指“山峰、峰值”。", "note": "at the top of the hill（在山顶）；on top of the hill（在山上部表面），介词不同含义略异。", "examples": ["There, he could see a house on another hill from the top.|在山顶，他能看见另一座山上的房子。", "She is one of the top students in our class.|她是我们班的优等生之一。", "Please write your name at the top of the page.|请把名字写在页面顶端。"]}, "hill": {"pos": "名词", "cn": "小山；丘陵；斜坡", "senses": ["n. 小山（比 mountain 矮）", "n. 斜坡；土堆"], "usage": "可数名词，复数 hills；与 mountain（高山）程度不同，hill 一般较矮、较缓。", "coll": "climb a hill / on the hill / the top of the hill / a small hill", "phrases": ["mountain|高山", "hillside|山坡", "hilltop|山顶", "uphill|上坡的"], "form": "hill n. → hills；hilly adj. 多小山的", "syn": "hill 矮而缓；mountain 高而陡；slope 指“斜坡（面）”。", "note": "住在“山上”用 on the hill；在山顶用 at the top of the hill。", "examples": ["There, he could see a house on another hill.|在那儿，他能看见另一座山上的房子。", "The village lies at the foot of a hill.|村庄坐落在一座小山脚下。", "We walked up the hill slowly.|我们慢慢走上山坡。"]}, "another": {"pos": "限定词 / 代词", "cn": "另一个；再一个；又一个", "senses": ["det. 另一（+ 单数可数名词）", "pron. 另一个", "another + 数词 + 复数：再……个"], "usage": "another 后接单数可数名词；another three books 表“再来三本”；与 other（其他的，后接复数）不同。", "coll": "another hill / another day / another three books / one after another", "phrases": ["other|其他的（+复数）", "the other|（两者中）另一个", "others|其他人/物", "one another|互相"], "form": "another = an + other；others pron. 其他的人/物", "syn": "another 后接单数；other 后接复数或不可数；the other 指“两者中的另一个”。", "note": "another 不与复数名词直接连用（another books 错），需加数词：another two books。", "examples": ["There, he could see a house on another hill.|在那儿，他能看见另一座山上的房子。", "Would you like another cup of tea?|你想再来一杯茶吗？", "We stayed there for another three days.|我们在那儿又待了三天。"]}, "golden": {"pos": "形容词", "cn": "金色的；金制的；宝贵的（机会）", "senses": ["adj. 金色的（颜色）", "adj. 金制的；含金的", "adj. 极好的；宝贵的（golden chance）"], "usage": "由 gold + -en 构成，指“金色的、金黄的”，也可引申“宝贵的、黄金般的”。", "coll": "golden windows / golden hair / a golden chance / the golden age", "phrases": ["golden age|黄金时代", "golden chance|良机", "gold|黄金（名词）", "golden rule|黄金法则"], "form": "gold n./adj. 黄金；金制的 → golden adj. 金色的 → goldfish n. 金鱼", "syn": "golden 多指“金色、宝贵”；gold 作形容词指“金制的”（a gold ring 金戒指）。", "note": "gold ring（金戒指，材质）与 golden ring（金色戒指）不同，注意词形。", "examples": ["It had golden windows.|它有金色的窗子。", "The leaves turn golden in autumn.|秋天树叶变成金黄色。", "Don't miss this golden chance.|别错过这个良机。"]}, "bright": {"pos": "形容词", "cn": "明亮的；鲜艳的；聪明的", "senses": ["adj. 明亮的（光、颜色）", "adj. 鲜艳的", "adj. 聪明的（人）"], "usage": "多义词：修饰光、颜色表“明亮、鲜艳”；修饰人表“聪明”。副词 brightly。", "coll": "a bright light / bright colours / a bright student / shine bright", "phrases": ["brightly|明亮地", "brightness|亮度", "bright idea|好主意", "bright future|光明的前途"], "form": "bright adj. → brightly adv. → brightness n.；brighten v. 使明亮", "syn": "bright 指“光线强、颜色鲜”；light 指“重量轻、浅色”；clever 指“头脑灵”（更常用）。", "note": "bright 修饰人时是口语“聪明”，正式书面多用 clever / intelligent。", "examples": ["They were really bright and shone like diamonds.|它们非常明亮，像钻石一样闪耀。", "The room is bright and warm.|房间明亮又温暖。", "She is a bright girl with many interests.|她是个聪明、兴趣广泛的女孩。"]}, "shine": {"pos": "动词 / 名词", "cn": "闪耀；发光；照射；光泽", "senses": ["v. 发光；闪耀", "v. 照耀（太阳）", "n. 光泽（不可数）"], "usage": "不规则动词：shine → shone → shone（发光）；表示“擦亮”时用 shined。", "coll": "shine like diamonds / the sun shines / shine a light / shoes shine", "phrases": ["shine through|显露；表现出", "shine at|擅长于", "shiny|有光泽的", "sunshine|阳光"], "form": "shine → shone → shone → shining；shiny adj. 闪亮的", "syn": "shine 指“自身发光或反光”；glow 指“发出柔和的光”；sparkle 指“闪闪发光（点状）”。", "note": "过去式常考：shone（发光）；shined 只用于“擦亮（鞋子）”义。", "examples": ["They shone like diamonds in the sun.|它们在阳光下像钻石一样闪耀。", "The sun shines brightly in summer.|夏天阳光灿烂。", "He shined his shoes before the interview.|面试前他把鞋擦亮了。"]}, "diamond": {"pos": "名词", "cn": "钻石；金刚石；菱形", "senses": ["n. 钻石（宝石）", "n. 菱形；（扑克）方块"], "usage": "可数名词，复数 diamonds；常用 a diamond ring（钻戒）；扑克牌“方块”也用 diamonds。", "coll": "a diamond ring / shine like diamonds / diamond mine / the queen of diamonds", "phrases": ["diamond ring|钻戒", "diamond mine|钻石矿", "a rough diamond|未经雕琢的人（喻）", "diamond shape|菱形"], "form": "diamond n. → diamonds；diamond adj. 钻石的；菱形的", "syn": "diamond 钻石；jewel 宝石（总称）；gem 宝石（正式）；crystal 水晶。", "note": "拼写注意：diamond 三个音节，口语常被误读；作定语时表“钻石制的”。", "examples": ["They were really bright and shone like diamonds.|它们非常明亮，像钻石一样闪耀。", "She wears a small diamond ring.|她戴着一枚小钻戒。", "The stars looked like diamonds in the sky.|星星像天上的钻石。"]}, "take a day off": {"pos": "短语", "cn": "请一天假；休息一天", "senses": ["take + 时间 + off 休假", "take time off 泛指请假"], "usage": "off 在此表“离开工作”，take a day off 指“休一天假”；take time off 可指请一段时间的假。", "coll": "take a day off / take two days off / take time off work / ask for a day off", "phrases": ["take time off|请假", "day off|休息日", "ask for leave|请假", "off duty|下班"], "form": "take → took → taken；off adv./prep. 离开；休假", "syn": "take a day off 强调“请假一天”；have a day off 强调“本来就休息”；ask for leave 更正式。", "note": "off 是副词，不能说 take a day off from work? 可以加 from work；注意 a day 不能省略。", "examples": ["You worked really hard, so you can take a day off.|你干得很辛苦，可以休一天假。", "I want to take two days off next week.|下周我想请两天假。", "He took time off work to look after his mother.|他请假照顾母亲。"]}, "learn": {"pos": "动词", "cn": "学习；学会；得知", "senses": ["v. 学习（知识、技能）", "v. 得知；获悉", "v. 记住（learn by heart）"], "usage": "learn sth. / learn to do sth. / learn about sth.；过去式 learned 或 learnt。", "coll": "learn English / learn to swim / learn about / learn from sb.", "phrases": ["learn from|向……学习", "learn about|了解", "learn by heart|背熟", "learner|学习者"], "form": "learn → learned / learnt → learned / learnt；learning n. 学习；学问", "syn": "learn 强调“学会、学到”；study 强调“研究、攻读的过程”；master 指“熟练掌握”。", "note": "learn 后不接“人”作宾语表“教”，应说 teach sb.；learn 可接 that 从句表“得知”。", "examples": ["Try to learn something good.|尽量学点好的东西。", "We learn English at school.|我们在学校学英语。", "I learned that he had moved to Beijing.|我得知他已搬到了北京。"]}, "far": {"pos": "形容词 / 副词", "cn": "远的；遥远地；……得多", "senses": ["adj. 远的（far hill 远处的山）", "adv. 远地（walk far）", "adv. 表程度“远、大大”（far better）"], "usage": "可作定语（the far hill）或表语（It is far.）；比较级 farther/further，最高级 farthest/furthest。", "coll": "the far hill / far away / walk far / far better", "phrases": ["far away|遥远", "so far|到目前为止", "as far as|就……而言；远至", "far from|远离；远非"], "form": "far → farther / further → farthest / furthest；farther 多指距离，further 多指程度", "syn": "far 指“距离远”；distant 更正式、多作定语；remote 指“偏僻”。", "note": "far 作形容词多用于疑问、否定或修饰“远端”（the far side），肯定句常用 a long way。", "examples": ["Then, he left home and walked to the far hill.|然后他离家走向远处那座山。", "The school is far from my home.|学校离我家很远。", "This book is far better than that one.|这本书比那本好得多。"]}, "knock on": {"pos": "短语动词", "cn": "敲（门、窗）", "senses": ["knock on the door 敲门", "knock at the door 同义"], "usage": "knock 可作及物动词（knock the door）或加介词 on/at；knock on 更强调“敲击表面”。", "coll": "knock on the door / knock at the window / knock loudly / knock sb. down", "phrases": ["knock at|敲（门、窗）", "knock down|撞倒；拆毁", "knock out|击倒；淘汰", "knock into|撞上"], "form": "knock v./n. → knocked → knocking；knocker n. 门环", "syn": "knock 指“敲出声音”；hit 指“击打”；tap 指“轻敲”。", "note": "knock on/at the door 都可；注意 knock 后不直接接人表“敲门”。", "examples": ["He came to the house and knocked on the door.|他来到那所房子前敲门。", "Someone is knocking at the window.|有人在敲窗户。", "Please knock before you enter.|进来前请先敲门。"]}, "answer": {"pos": "动词 / 名词", "cn": "回答；应门；答案；回应", "senses": ["v. 回答（问题）", "v. 应门；接（电话）", "n. 答案；回答"], "usage": "多义动词：answer a question（回答问题）、answer the door（应门）、answer the phone（接电话）。", "coll": "answer the question / answer the door / answer the phone / the answer to", "phrases": ["answer the door|应门；开门", "answer the phone|接电话", "the answer to|……的答案", "answer back|顶嘴"], "form": "answer v./n. → answered → answering；answer n. 答案（可数）", "syn": "answer 的“答案”后用 to（the answer to the question），不用 of；reply 偏“答复（信件、话语）”。", "note": "answer the door 意为“去开门”，不译“回答门”；answer 后不接双宾语。", "examples": ["He knocked on the door, and a girl answered.|他敲门，一个女孩来开门。", "Can you answer this question?|你能回答这个问题吗？", "Who will answer the phone?|谁来接电话？"]}, "shake one's head": {"pos": "短语", "cn": "摇头（表示否定、不同意）", "senses": ["shake one's head 摇头（否定）", "nod one's head 点头（肯定）"], "usage": "shake 过去式 shook，过去分词 shaken；one's 随主语变化（shook her head）。", "coll": "shake one's head / shake hands with sb. / shake with cold", "phrases": ["nod one's head|点头", "shake hands|握手", "shake off|摆脱", "shake up|使震惊；重组"], "form": "shake → shook → shaken → shaking；shaky adj. 摇晃的", "syn": "shake one's head 表“否定、无奈”；nod 表“同意”；shake hands 是“握手”（双手，不加 s 于 hand）。", "note": "过去式是 shook，不是 shaked；shake hands 中 hands 用复数。", "examples": ["The girl shook her head and said, “We only have glass windows.”|女孩摇摇头说：“我们只有玻璃窗。”", "He shook his head when he heard the news.|听到这个消息时他摇了摇头。", "They shook hands and became friends.|他们握手成了朋友。"]}, "glass": {"pos": "名词", "cn": "玻璃；玻璃杯；眼镜（复数）", "senses": ["n. 玻璃（不可数）", "n. 玻璃杯（可数）", "n. 眼镜（glasses 复数）"], "usage": "作“玻璃（材料）”不可数；作“杯子”可数 a glass；复数 glasses 常指“眼镜”。", "coll": "glass windows / a glass of water / wear glasses / broken glass", "phrases": ["a glass of|一杯", "wear glasses|戴眼镜", "glass window|玻璃窗", "glassware|玻璃器皿"], "form": "glass n. → glasses（杯子/眼镜）；glassy adj. 玻璃般的", "syn": "glass（玻璃，不可数）与 a glass（一只杯子）数不同；glasses 常指“眼镜”。", "note": "“一副眼镜”用 a pair of glasses，谓语随 pair 变化。", "examples": ["We only have glass windows.|我们只有玻璃窗。", "Would you like a glass of water?|你想喝一杯水吗？", "He wears glasses when he reads.|他读书时戴眼镜。"]}, "point at": {"pos": "短语动词", "cn": "指向；指着", "senses": ["point at sb./sth. 指向（多含不礼貌意味）", "point to 指向/表明（较中性）"], "usage": "point at 常指“用手指着”，有时显得不礼貌；point to 可指“指向某方向”或“表明”。", "coll": "point at sth. / point to the north / point out / point at sb.", "phrases": ["point out|指出", "point to|指向；表明", "point of view|观点", "pointed|尖锐的"], "form": "point v./n. → pointed → pointing；point n. 点；要点", "syn": "point at 多含“指指点点”；point to 更中性，还可表“说明、表明”。", "note": "point at 后接被指的对象；point out 是“指出（问题）”，注意区分。", "examples": ["She pointed at something far away.|她指着远处的东西。", "Don't point at people; it is not polite.|不要用手指人，这不礼貌。", "The teacher pointed out my mistakes.|老师指出了我的错误。"]}, "to one's surprise": {"pos": "短语", "cn": "令某人惊讶的是", "senses": ["to one's surprise 令某人惊讶的是", "in surprise 惊讶地（方式）"], "usage": "to + one's + 情感名词，表“令某人……的是”，常用于句首作状语；one's 随主语变化（to his surprise）。", "coll": "to one's surprise / to my surprise / in surprise / a big surprise", "phrases": ["to one's joy|令某人高兴的是", "to one's regret|令某人遗憾的是", "in surprise|惊讶地", "surprised|感到惊讶的"], "form": "surprise n./v. → surprised adj. 感到惊讶的 → surprising adj. 令人惊讶的", "syn": "to one's surprise 作状语；be surprised at 表“对……感到惊讶”；surprised 修饰人，surprising 修饰物。", "note": "to one's surprise 中 to 不能换成 in；one's 随主语变化。", "examples": ["To his surprise, he saw his own house.|令他惊讶的是，他看见了自己的房子。", "To my surprise, she passed the exam easily.|令我惊讶的是，她轻松通过了考试。", "He looked at me in surprise.|他惊讶地看着我。"]}, "surprise": {"pos": "名词 / 动词", "cn": "惊讶；意外的事；使惊讶", "senses": ["n. 惊讶（不可数）", "n. 意外的事（可数）", "v. 使惊讶"], "usage": "可数/不可数均可：in surprise（惊讶地）、a surprise（一件意外的事）；动词 surprise sb.。", "coll": "in surprise / a big surprise / surprise sb. / be surprised at", "phrases": ["in surprise|惊讶地", "take sb. by surprise|使某人大吃一惊", "surprise party|惊喜派对", "surprisingly|出乎意料地"], "form": "surprise n./v. → surprised adj. → surprising adj. → surprisingly adv.", "syn": "surprised（人感到惊讶）；surprising（事物令人惊讶），与 interested/interesting 同理。", "note": "surprise 作名词表“惊讶”不可数，表“意外之事”可数；动词直接接人。", "examples": ["To his surprise, he saw his own house.|令他惊讶的是，他看见了自己的房子。", "The news came as a great surprise.|这消息让人十分意外。", "Her answer surprised all of us.|她的回答让我们都很吃惊。"]}, "own": {"pos": "形容词 / 动词", "cn": "自己的；拥有", "senses": ["adj. 自己的（one's own + 名词）", "v. 拥有；承认"], "usage": "形容词 own 强调“属于自己的”，常放在物主代词后：his own house；动词 own 表“拥有”。", "coll": "one's own house / of one's own / own a shop / own up to", "phrases": ["of one's own|属于自己的", "on one's own|独自；靠自己", "owner|所有者", "own up|承认（过错）"], "form": "own adj./v. → owner n. 主人 → ownership n. 所有权", "syn": "own（拥有）与 have（有）近义，own 更强调“所有权”（法律、财产）。", "note": "own 作形容词时必须前有物主代词（my own），不能单独修饰名词。", "examples": ["To his surprise, he saw his own house.|令他惊讶的是，他看见了自己的房子。", "She has her own room.|她有自己的房间。", "He owns two small shops.|他拥有两家小店。"]}, "quickly": {"pos": "副词", "cn": "快速地；迅速地", "senses": ["adv. 快速地（动作速度）", "adv. 迅速地（反应）"], "usage": "由 quick + -ly 构成，修饰动词，位置常在动词后或句末；比较级 more quickly。", "coll": "walk quickly / answer quickly / quickly finish / as quickly as possible", "phrases": ["as quickly as possible|尽快", "quick|快的（形容词）", "quicken|加快", "quick-witted|机智的"], "form": "quick adj. → quickly adv. → quickness n.；quicken v. 加快", "syn": "quickly 指“速度快”；fast 兼形容词/副词，更口语；soon 指“时间上不久之后”。", "note": "quickly 修饰动作；soon 修饰时间点，别混：He ran quickly.（跑得快）/ He will come soon.（很快来）。", "examples": ["He then thanked the girl and went back home quickly.|他谢过女孩，快步回家。", "Please answer as quickly as you can.|请尽快回答。", "She quickly finished her homework.|她很快做完了作业。"]}, "inside": {"pos": "介词 / 副词 / 名词", "cn": "在……里面；里面", "senses": ["prep. 在……里面（inside the house）", "adv. 在里面（go inside）", "n. 内部（the inside）"], "usage": "可作介词、副词、名词；作介词时后接宾语，作副词时不接宾语。", "coll": "inside the house / go inside / the inside of / inside out", "phrases": ["inside out|里外翻过来；彻底地", "inside information|内部消息", "outside|在外面", "indoor|室内的"], "form": "inside prep./adv./n./adj.；inside 与 within 近义，within 更正式", "syn": "inside 指“物理内部”；within 多指“范围、时间内”；indoors 是副词“在室内”。", "note": "inside 作介词直接接宾语，不加 of：inside the house（不说 inside of the house，口语偶见）。", "examples": ["Inside, he saw his family and smiled.|屋里，他看见家人，笑了。", "Let's go inside; it's raining.|我们进去吧，下雨了。", "The inside of the box is red.|盒子内部是红色的。"]}, "smile": {"pos": "动词 / 名词", "cn": "微笑；笑容", "senses": ["v. 微笑", "n. 微笑（可数）"], "usage": "smile at sb.（对某人微笑）；with a smile（面带微笑）；smile 表“不出声的笑”，laugh 表“出声地笑”。", "coll": "smile at sb. / with a smile / a big smile / smile back", "phrases": ["smile at|对……微笑", "with a smile|面带微笑", "smile back|回以微笑", "laugh|大笑"], "form": "smile v./n. → smiled → smiling；smiling adj. 微笑的", "syn": "smile 微笑（无声）；laugh 大笑（出声）；grin 露齿笑；chuckle 轻笑。", "note": "smile 可数：a smile；介词 at 表对象，to 较少用。", "examples": ["Inside, he saw his family and smiled.|屋里，他看见家人，笑了。", "She smiled at me and said hello.|她对我微笑并问好。", "He answered with a smile.|他微笑着回答。"]}, "tell": {"pos": "动词", "cn": "告诉；讲述；辨别", "senses": ["v. 告诉（tell sb. sth.）", "v. 讲述（tell a story）", "v. 辨别（tell A from B）"], "usage": "tell sb. sth. 或 tell sth. to sb.；tell sb. to do sth.（叫某人做某事）；tell A from B 辨别。", "coll": "tell sb. sth. / tell a story / tell sb. to do / tell A from B", "phrases": ["tell sb. to do sth.|叫某人做某事", "tell a lie|撒谎", "tell the truth|说实话", "tell apart|分辨"], "form": "tell → told → told → telling；teller n. 讲述者；出纳", "syn": "tell 后接“人 + 内容”；say 后接“内容”；speak 强调“说话能力、语言”；talk 强调“交谈”。", "note": "tell 可接双宾语，say 不可：tell me the news（对）/ say me the news（错）。", "examples": ["He told them about what he experienced on that day.|他向他们讲述那天的经历。", "Please tell me your name.|请告诉我你的名字。", "I can't tell the twins apart.|我分不清这对双胞胎。"]}, "experience": {"pos": "名词 / 动词", "cn": "经历；经验；体验", "senses": ["n. 经历（可数）", "n. 经验（不可数）", "v. 经历；体验"], "usage": "表“一次经历”可数（an experience）；表“经验（积累的能力）”不可数；动词 experience sth.。", "coll": "a wonderful experience / work experience / experience difficulties / learn from experience", "phrases": ["work experience|工作经验", "a lot of experience|丰富的经验", "experienced|有经验的", "in one's experience|据某人的经验"], "form": "experience n./v. → experienced adj. 有经验的 → inexperience n. 缺乏经验", "syn": "experience 表“经验”不可数（much experience）；表“经历”可数（a strange experience）。", "note": "不要写 an experience 表“经验”；“有经验的”用 experienced，不用 experience。", "examples": ["He told them about what he experienced on that day.|他向他们讲述那天的经历。", "It was a wonderful experience for me.|这对我来说是一次美妙的经历。", "She has ten years of teaching experience.|她有十年教学经验。"]}, "lesson": {"pos": "名词", "cn": "课；一节课；教训", "senses": ["n. 课（课本中的一课）", "n. 教训（可数）", "n. 榜样（teach sb. a lesson）"], "usage": "可数名词，复数 lessons；表“教训”时常与 learn、teach 搭配：learn a lesson（吸取教训）。", "coll": "learn a lesson / teach sb. a lesson / have lessons / take lessons", "phrases": ["learn a lesson|吸取教训", "teach sb. a lesson|给某人一个教训", "have a lesson|上课", "lesson plan|教案"], "form": "lesson n. → lessons；teach → teacher；learn → learner", "syn": "lesson 指“具体的一课、教训”；class 指“班级、课堂”；course 指“课程（系列）”。", "note": "learn a lesson 是“吸取教训”，不是“学一课”；teach sb. a lesson 常含“教训某人”的意味。", "examples": ["I have learnt a great lesson—our house has golden windows.|我得到了一个深刻的教训——我们家的窗户就是金色的。", "We have four lessons in the morning.|我们上午有四节课。", "That accident taught him a lesson.|那次事故给了他一个教训。"]}, "come out of": {"pos": "短语动词", "cn": "从……出来；由……产生", "senses": ["v. 从（房屋、房间）出来", "v. 由……得出；源自"], "usage": "come out of + 地点/来源，表示“从内部出来”；也可引申为“由……产生、源于”。", "coll": "come out of the house / come out of the room / come out of nowhere", "phrases": ["come out|出来；出版；结果是", "come in|进来", "come from|来自", "out of|从……里面出来"], "form": "come → came → come → coming；out adv. 向外", "syn": "come out of 强调“从内部走出”；get out of 更口语（下车、逃离）；leave 直接及物（leave the house）。", "note": "come out of 后必须接宾语；come out 单独使用表“出来、出版”。", "examples": ["Tom came out of his house with a brush.|汤姆拿着一把刷子从家里出来。", "The idea came out of a class discussion.|这个主意来自一次课堂讨论。", "She came out of the shop with a big bag.|她拎着大袋子从店里出来。"]}, "brush": {"pos": "名词 / 动词", "cn": "刷子；画笔；刷；轻擦", "senses": ["n. 刷子；画笔", "v. 刷；拂", "n. 灌木丛（美式）"], "usage": "多义名词：paint brush（画笔）、toothbrush（牙刷）；动词 brush sth. 表“刷、拂”。", "coll": "a paint brush / brush one's teeth / brush past sb. / a hair brush", "phrases": ["paint brush|画笔", "toothbrush|牙刷", "brush up|复习；温习", "brush aside|置之不理"], "form": "brush n./v. → brushes（复数）；brushed → brushing", "syn": "brush 刷子；pen 钢笔；pencil 铅笔；painter 画家", "note": "复数 brushes；brush up (on) 表“复习”，不是“刷上去”。", "examples": ["He came out with a brush and a big pot of white paint.|他拿着一把刷子和一大罐白漆出来。", "Brush your teeth twice a day.|每天刷两次牙。", "I need to brush up on my English.|我需要复习一下英语。"]}, "pot": {"pos": "名词", "cn": "罐；锅；一罐/一锅的量；花盆", "senses": ["n. 罐子；壶（油漆罐、咖啡壶）", "n. 锅（cooking pot）", "n. 一罐/一锅之量（a pot of）"], "usage": "可数名词，复数 pots；a pot of paint 即“一罐油漆”，a pot of soup 即“一锅汤”。", "coll": "a pot of paint / a cooking pot / a flower pot / a pot of soup", "phrases": ["a pot of|一罐/一锅", "flower pot|花盆", "teapot|茶壶", "pot plant|盆栽"], "form": "pot n. → pots；pot v. 把……栽入盆中", "syn": "pot 罐/锅；pan 平底锅；jar 广口瓶；can 金属罐（美式 trash can 垃圾桶）。", "note": "a pot of 后接不可数名词（paint, soup）或复数；pot 与 pan 形状不同，不能互译。", "examples": ["He had a big pot of white paint in his hand.|他手里拿着一大罐白漆。", "She made a pot of tea for us.|她给我们泡了一壶茶。", "There is a flower pot on the windowsill.|窗台上有一个花盆。"]}, "a pot of": {"pos": "名词短语", "cn": "一罐……；一锅……", "senses": ["量词短语，表“一罐/一锅的量”", "后接不可数名词或复数名词"], "usage": "名词 pot 作量词，表容器中的量；类似 a cup of、a bottle of、a piece of。", "coll": "a pot of paint / a pot of soup / two pots of tea", "phrases": ["a cup of|一杯", "a bottle of|一瓶", "a piece of|一片/一条", "a bowl of|一碗"], "form": "pot n. 罐 → pots；量词短语复数变 pot：two pots of", "syn": "a pot of 表“一罐的量”；a pot 单指“一个罐子”，不含“量”的意思。", "note": "量词短语变复数时只变量词：two pots of paint（不说 two pot of paints）。", "examples": ["He carried a big pot of white paint.|他拿着一大罐白漆。", "We need two pots of paint for the fence.|刷栅栏需要两罐漆。", "Mother cooked a pot of soup.|妈妈煮了一锅汤。"]}, "paint": {"pos": "名词 / 动词", "cn": "油漆；颜料；绘画；刷漆", "senses": ["n. 油漆；颜料（不可数）", "v. 刷漆；绘画", "v. 描绘（文字、画面）"], "usage": "作“油漆、颜料”不可数；动词 paint sth. 表“给……刷漆/画……”。", "coll": "white paint / paint the fence / paint a picture / wet paint", "phrases": ["paint a picture|画画", "wet paint|油漆未干", "painter|画家；油漆工", "painting|绘画；画作"], "form": "paint n./v. → painter n. → painting n. → painted adj. 彩绘的", "syn": "paint 指“用颜料涂、画”；draw 指“用线条画（铅笔、钢笔）”；colour 指“上色”。", "note": "paint 作名词不可数，不说 a paint；作动词可接双宾语：paint the wall white。", "examples": ["He put his brush in the paint and painted some of the fence.|他把刷子蘸上漆，刷了栅栏的一部分。", "They painted the wall white.|他们把墙刷成白色。", "She likes to paint pictures of flowers.|她喜欢画花卉。"]}, "fence": {"pos": "名词 / 动词", "cn": "栅栏；围栏；击剑", "senses": ["n. 栅栏；篱笆", "v. 围起（fence sth. in）", "n./v. 击剑"], "usage": "可数名词，指木、铁制的围栏；动词 fence 表“用栅栏围住”；击剑运动也称 fencing。", "coll": "paint the fence / a wooden fence / fence in / electric fence", "phrases": ["fence in|用栅栏围住", "fence off|隔开", "fencing|击剑", "sit on the fence|骑墙；观望"], "form": "fence n./v. → fences；fencing n. 击剑；栅栏材料", "syn": "fence 栅栏；wall 墙（砖石）；hedge 树篱；rail 栏杆。", "note": "sit on the fence 是习语“保持中立、观望”，不是“坐在栅栏上”。", "examples": ["It was three metres high and thirty metres long—the fence.|这道栅栏三米高、三十米长。", "The farmer fenced his garden.|农夫把园子围了起来。", "He is still sitting on the fence about the plan.|他对这个计划仍在观望。"]}, "metre": {"pos": "名词", "cn": "米（长度单位）", "senses": ["n. 米（英式拼写 metre）", "n. 美式拼写 meter"], "usage": "长度单位，缩写 m；英式 metre，美式 meter；复数 metres。", "coll": "three metres high / thirty metres long / a square metre / 100 metres", "phrases": ["meter|米（美式）；仪表", "centimetre|厘米", "kilometre|千米", "square metre|平方米"], "form": "metre n. → metres；metric adj. 公制的；meter 另有“仪表”义", "syn": "metre 英式拼写；meter 美式拼写，也可指“水表、电表”。", "note": "度量表达：数词 + metres + 形容词（three metres high），不用 metres' high。", "examples": ["It was three metres high and thirty metres long.|它有三米高、三十米长。", "He can jump two metres.|他能跳两米远。", "The room is about twenty square metres.|这房间大约二十平方米。"]}, "put down": {"pos": "短语动词", "cn": "放下；写下；记下；贬低", "senses": ["v. 放下（手中之物）", "v. 写下；记下", "v. 贬低；奚落"], "usage": "可分离短语：put sth. down / put it down；put down 还有“记下、写下”与“贬低”义。", "coll": "put down the brush / put down your name / put sb. down / put down roots", "phrases": ["put up|举起；张贴", "put off|推迟", "put on|穿上", "put away|收起来"], "form": "put → put → put → putting（双写 t）", "syn": "put down 放下；lay down 更正式“放下、规定”；set down 偏“写下、制定”。", "note": "代词宾语放中间：put it down；put down 表“贬低”时含贬义，慎用。", "examples": ["Then he stopped and put down his brush.|然后他停下来，放下了刷子。", "Put down your name on the paper.|把你的名字写在纸上。", "Don't put others down; everyone has strengths.|不要贬低别人，每个人都有长处。"]}, "sit down": {"pos": "短语动词", "cn": "坐下", "senses": ["v. 坐下（动作）", "v. 就座；坐下商议"], "usage": "不及物短语，后不接宾语；表“坐着”的状态用 be seated / sit。", "coll": "sit down please / sit down and rest / sit down to dinner", "phrases": ["stand up|站起来", "sit up|坐直；熬夜", "sit back|靠坐；放松", "seat|使就座（及物）"], "form": "sit → sat → sat → sitting（双写 t）；seat v. 使坐下（及物）", "syn": "sit 不及物；seat 及物（seat sb. / be seated）；sit down 是“坐下”的动作。", "note": "sit down 后不接宾语；请人坐也可说 Take a seat, please.", "examples": ["He put down his brush and sat down.|他放下刷子，坐了下来。", "Please sit down and have a cup of tea.|请坐下喝杯茶。", "We sat down to dinner at seven.|我们七点坐下吃晚饭。"]}, "hour": {"pos": "名词", "cn": "小时；时刻；（复数）工作时间", "senses": ["n. 小时（60 分钟）", "n. 时刻（整点）", "n. 工作时间（office hours）"], "usage": "可数名词，复数 hours；表“数小时的工作”用 hours of work；h 不发音。", "coll": "an hour / two hours / hours of work / office hours", "phrases": ["hours of|数小时的", "half an hour|半小时", "rush hour|高峰时间", "hourly|每小时的"], "form": "hour n. → hours；hourly adj./adv. 每小时的", "syn": "hour 小时；o'clock 表“整点”；time 泛指“时间”。", "note": "h 不发音，用 an hour；复数 hours 可指“长时间”。", "examples": ["There were hours of work in front of him.|他面前还有好几小时的活儿。", "I waited for an hour.|我等了一小时。", "The shop opens at nine o'clock.|商店九点开门。"]}, "work": {"pos": "名词 / 动词", "cn": "工作；劳动；作品；起作用", "senses": ["n. 工作（不可数）", "n. 作品（可数，多用 works）", "v. 工作；运转；起作用"], "usage": "作“工作”不可数（a lot of work）；作“作品”可数（the works of Shakespeare）；动词 work 表“工作、运转、奏效”。", "coll": "hours of work / hard work / work hard / works of art / work well", "phrases": ["work hard|努力工作", "at work|在工作", "work out|算出；锻炼", "out of work|失业"], "form": "work n./v. → worker n. → working adj. → workable adj. 可行的", "syn": "work 不可数（工作）；job 可数（一份职业）；task 可数（一项任务）。", "note": "work 作“工作”不加 s；works 表“作品、工厂”；work 作动词表“（机器）运转、奏效”。", "examples": ["There were hours of work in front of him.|他面前还有好几小时的活儿。", "She works in a hospital.|她在医院工作。", "The medicine worked well.|这药很有效。"]}, "in front of": {"pos": "短语介词", "cn": "在……前面（外部）", "senses": ["prep. 在……前面（外部前方）", "prep. 当着……的面"], "usage": "指在某物外部的前方；in the front of 指“在……内部的前部”（如教室前排）。", "coll": "in front of the house / in front of the class / in the front of the car", "phrases": ["in the front of|在……内部前部", "behind|在……后面", "ahead of|在……前面（位置/进度）", "front|前面"], "form": "front n./adj. 前面；前面的 → frontally adv.", "syn": "in front of 外部前方；in the front of 内部前部；before 多指“时间、顺序在前”。", "note": "注意定冠词：in front of the house（房前空地）vs in the front of the house（房子前部）。", "examples": ["There were hours of work in front of him.|他面前还有好几小时的活儿。", "A car stopped in front of our school.|一辆车停在我们学校前面。", "Don't use bad words in front of children.|不要当着孩子的面说脏话。"]}, "unhappy": {"pos": "形容词", "cn": "不快乐的；不高兴的；不满意的", "senses": ["adj. 不快乐的（心情）", "adj. 不满意的（be unhappy about/with）"], "usage": "un- + happy；比较级 unhappier，最高级 unhappiest；名词 unhappiness。", "coll": "feel unhappy / an unhappy boy / be unhappy about / unhappiest", "phrases": ["unhappiness|不快乐（名词）", "unhappily|不快乐地", "happy|快乐的", "sad|伤心的"], "form": "happy adj. → unhappy adj. → unhappiness n. → unhappily adv.", "syn": "unhappy 指“不快乐、不满意”；sad 指“悲伤（更重）”；upset 指“心烦意乱”。", "note": "最高级 unhappiest（y→i）；be unhappy about sth. 用 about/with。", "examples": ["He was the unhappiest boy in the village.|他是村里最不快乐的男孩。", "She felt unhappy about the result.|她对结果感到不满意。", "He looked unhappy all morning.|他一上午都闷闷不乐。"]}, "village": {"pos": "名词", "cn": "村庄；村子；（城市中的）社区", "senses": ["n. 村庄（乡村聚落）", "n. 生活区（城市中带设施的小区）"], "usage": "可数名词，复数 villages；villager 村民。", "coll": "a small village / in the village / village life / a fishing village", "phrases": ["villager|村民", "village life|乡村生活", "countryside|乡村（地区）", "town|城镇"], "form": "village n. → villages；villager n. 村民", "syn": "village 村庄；town 镇；city 城市；countryside 泛指乡村地区。", "note": "“在村里”用 in the village；village 可数，指多个村庄用 villages。", "examples": ["He was the unhappiest boy in the village.|他是村里最不快乐的男孩。", "My grandparents live in a small village.|我祖父母住在一个小村庄。", "The villagers are very friendly.|村民们非常友好。"]}, "idea": {"pos": "名词", "cn": "主意；想法；概念", "senses": ["n. 主意；想法（可数）", "n. 概念；理解（have no idea）", "n. 计划；打算"], "usage": "可数名词，常用 a good idea、have an idea；have no idea 表“不知道”。", "coll": "a good idea / have an idea / no idea / the idea of doing", "phrases": ["have no idea|不知道", "a good idea|好主意", "idea of|……的想法", "ideal|理想的（形近）"], "form": "idea n. → ideas；ideal adj. 理想的；n. 理想", "syn": "idea 指“想法、主意”；thought 指“思考、念头”；plan 指“具体计划”；opinion 指“意见”。", "note": "have no idea 后接从句表“不知道”；不说 a idea（用 an idea）。", "examples": ["Tom had an idea, a wonderful idea.|汤姆有了一个主意，一个绝妙的主意。", "That's a good idea!|那是个好主意！", "I have no idea where he is.|我不知道他在哪儿。"]}, "wonderful": {"pos": "形容词", "cn": "极好的；精彩的；令人惊叹的", "senses": ["adj. 极好的（事物、经历）", "adj. 令人惊叹的（景色、表演）"], "usage": "由 wonder + -ful 构成，语气强于 good，常修饰经历、表演、消息；副词 wonderfully。", "coll": "a wonderful idea / a wonderful day / wonderful news / look wonderful", "phrases": ["wonderfully|极好地", "wonder|奇迹；想知道", "great|很棒的", "perfect|完美的"], "form": "wonder n./v. → wonderful adj. → wonderfully adv.", "syn": "wonderful 强调“令人赞叹”；great 口语“很棒”；perfect 指“完美无缺”（语气更强）。", "note": "wonderful 修饰事物或经历；形容人“很好”更常说 kind / nice。", "examples": ["He had a wonderful idea.|他有了一个绝妙的主意。", "We had a wonderful time at the party.|我们在聚会上玩得很开心。", "The view from the hill is wonderful.|从山上看到的景色美极了。"]}, "take up": {"pos": "短语动词", "cn": "拿起；开始从事；占据（时间、空间）", "senses": ["v. 拿起（工具、物品）", "v. 开始从事（爱好、工作）", "v. 占据（时间、空间）"], "usage": "可分离：take up the brush / take it up；另义“开始做（爱好）”“占（时间、地方）”。", "coll": "take up the brush / take up painting / take up space / take up too much time", "phrases": ["take off|脱下；起飞", "take on|承担；呈现", "take over|接管", "take in|吸收；理解"], "form": "take → took → taken → taking；uptake n. 吸收", "syn": "take up 拿起/开始从事；pick up 拾起（更轻）；lift 举起（较重）。", "note": "代词宾语放中间：take it up；take up 表“占据”时主语常是事物。", "examples": ["He took up the brush again and began to work.|他又拿起刷子开始干活。", "She took up swimming last year.|她去年开始游泳。", "This table takes up too much space.|这张桌子占地方太多。"]}, "begin": {"pos": "动词", "cn": "开始；着手", "senses": ["v. 开始（begin to do / begin doing）", "v. 开始（事件、时期）"], "usage": "begin to do 与 begin doing 常可互换；进行时中或表心理活动时多用 to do。", "coll": "begin to work / begin doing / begin with / begin at nine", "phrases": ["begin with|以……开始", "to begin with|首先", "beginning|开始；开端", "start|开始（更口语）"], "form": "begin → began → begun → beginning（双写 n）；beginning n. 开端", "syn": "begin 与 start 近义；begin 稍正式，start 更口语；begin 后接 to do/doing 均可。", "note": "过去式 began、过去分词 begun；beginning 双写 n。", "examples": ["He took up the brush again and began to work.|他又拿起刷子开始干活。", "The class begins at eight.|八点开始上课。", "Let's begin with a song.|我们以一首歌开始吧。"]}, "street": {"pos": "名词", "cn": "街道；马路", "senses": ["n. 街道（城市中两旁有建筑的路）", "n. 街区（the people in the street）"], "usage": "可数名词，复数 streets；in the street（英式）/ on the street（美式）。", "coll": "in the street / across the street / street corner / a busy street", "phrases": ["in the street|在街上", "street corner|街角", "streetlight|路灯", "road|道路"], "form": "street n. → streets；street adj. 街头的", "syn": "street 指“城市街道（有建筑）”；road 指“道路（连接两地）”；avenue 指“大街（宽阔）”。", "note": "英式用 in the street，美式用 on the street；street 首字母大写用于地址。", "examples": ["He saw his friend Joe Harper in the street.|他在街上看见朋友乔·哈珀。", "The shop is across the street.|商店在街对面。", "Don't play in the busy street.|不要在有车的街上玩。"]}, "come up to": {"pos": "短语动词", "cn": "走向；来到……跟前；达到（标准）", "senses": ["v. 走近（某人）", "v. 达到（某水平、标准）"], "usage": "come up to sb. 表“走到某人跟前”；也可表“达到（要求）”，如 come up to the standard。", "coll": "come up to sb. / come up to the fence / come up to the standard", "phrases": ["come up with|想出（主意）", "come up|出现；被提出", "walk up to|走向", "go up to|走近"], "form": "come → came → come；up adv./prep. 向上；to prep. 朝向", "syn": "come up to 走向（人）；come up with 想出（主意），两短语只差一个介词，意义全变。", "note": "come up to 后接“人”或“标准”；不要与 come up with 混用。", "examples": ["He came up to Tom and looked at the fence.|他走到汤姆跟前，看着栅栏。", "A little girl came up to me and asked the way.|一个小女孩走到我跟前问路。", "His work has come up to the standard.|他的工作已达到标准。"]}, "nothing": {"pos": "代词 / 名词", "cn": "没有什么；无；零", "senses": ["pron. 没有什么", "n. 无关紧要的事（a nothing）"], "usage": "不定代词，作主语时谓语用单数；say nothing 表“沉默、什么也没说”。", "coll": "say nothing / nothing new / nothing but / have nothing to do", "phrases": ["nothing but|只是；只不过", "for nothing|免费；白费", "nothing else|没有别的", "say nothing|什么也不说"], "form": "no + thing；anything 用于否定、疑问；something 用于肯定", "syn": "nothing 本身含否定，谓语不再用 not：He said nothing.（不说 He didn't say nothing.）", "note": "nothing 作主语谓语用单数：Nothing is impossible.；双重否定要避免。", "examples": ["Tom said nothing.|汤姆什么也没说。", "There is nothing in the box.|盒子里什么也没有。", "He did nothing but wait.|他除了等什么也没做。"]}, "up and down": {"pos": "短语", "cn": "上上下下；来回地；起伏", "senses": ["adv. 上上下下（移动）", "adv. 来回地；四处"], "usage": "表方向反复：move up and down（上下移动）、walk up and down（来回踱步）。", "coll": "move up and down / walk up and down / jump up and down / look sb. up and down", "phrases": ["back and forth|来来回回", "here and there|到处", "up and down the street|沿街来回", "ups and downs|起伏；盛衰"], "form": "up adv. 向上；down adv. 向下", "syn": "up and down 表“反复上下/来回”；back and forth 表“前后往返”（水平方向多）。", "note": "up and down 中间不加 the；ups and downs（复数名词）指“人生的起伏”。", "examples": ["The paint brush moved up and down.|刷子上下移动。", "He walked up and down in the room.|他在房间里来回踱步。", "Life has its ups and downs.|人生有起有伏。"]}, "aunt": {"pos": "名词", "cn": "姑妈；姨妈；婶婶；舅妈", "senses": ["n. 父母的姐妹（姑妈、姨妈）", "n. 叔伯的妻子（婶婶、舅妈）", "n. 阿姨（对年长女性的称呼）"], "usage": "英语中 aunt 统称“父母的女性亲属”，不区分姑、姨、婶；复数 aunts；对应 uncle。", "coll": "my aunt / Aunt Mary / aunt and uncle / visit one's aunt", "phrases": ["uncle|叔叔；舅舅", "Aunt Mary|玛丽阿姨（称呼）", "cousin|表兄弟姐妹", "niece|侄女；外甥女"], "form": "aunt n. → aunts；uncle n. 叔叔", "syn": "aunt 不分父系母系；cousin 不分男女、表堂；niece/nephew 是“侄/甥”。", "note": "作称呼时首字母大写：Aunt Mary；泛称“一位阿姨”用 an aunt。", "examples": ["“Working for your aunt?” said Joe.|“在给你姨妈干活？”乔说。", "My aunt lives in the next village.|我姑妈住在邻村。", "Aunt Mary gave me a book.|玛丽阿姨送了我一本书。"]}, "river": {"pos": "名词", "cn": "河；江", "senses": ["n. 河流（较大，流入海或湖）", "n. 江河（比喻“洪流”）"], "usage": "可数名词，复数 rivers；in the river（在河里）、across the river（过河）。", "coll": "in the river / across the river / down the river / the Yellow River", "phrases": ["down the river|沿河而下", "river bank|河岸", "riverbed|河床", "stream|小溪"], "form": "river n. → rivers；riverside n./adj. 河边", "syn": "river 大河；stream 小溪；lake 湖；sea 海。", "note": "“在河里游泳”用 in the river；河名作专有名词要加 the（the Yellow River）。", "examples": ["I'm going down to the river.|我要下河去（河边）玩。", "The children swam in the river.|孩子们在河里游泳。", "A bridge crosses the river.|一座桥横跨这条河。"]}, "of course": {"pos": "短语", "cn": "当然；自然；当然可以", "senses": ["adv. 当然（表同意）", "adv. 自然（表理所当然）"], "usage": "口语常用，表“当然、理所当然”；回答请求时用 of course 显得热情，有时也显得“这不是明摆着吗”。", "coll": "of course not / of course you can / and of course", "phrases": ["of course not|当然不", "certainly|当然（更正式）", "sure|当然（美式口语）", "naturally|自然地"], "form": "course n. 课程；过程 → of course 固定短语", "syn": "of course 语气直接；certainly 更正式；sure 更口语；回答否定用 of course not。", "note": "of course 用于肯定回答；否定回答用 of course not，不用 of course no。", "examples": ["“Of course, it's work!”|“这当然是干活！”", "Of course you can join us.|你当然可以加入我们。", "“Will you help me?” “Of course.”|“你会帮我吗？”“当然。”"]}, "perhaps": {"pos": "副词", "cn": "也许；可能；大概", "senses": ["adv. 也许（不确定）", "adv. 可能（礼貌建议）"], "usage": "表“不确定”的推测，位置灵活（句首、句中、句末）；比 maybe 稍正式。", "coll": "perhaps it is / perhaps tomorrow / perhaps you are right", "phrases": ["maybe|也许（口语）", "possibly|可能", "probably|很可能（把握大）", "perhaps not|也许不"], "form": "perhaps adv.；maybe adv. 也许（口语，多用于句首）", "syn": "perhaps 与 maybe 近义，perhaps 稍正式；probably 表“很可能”（把握更大）；possibly 表“有可能”。", "note": "perhaps 不与否定词连用表“也许不”，应说 perhaps not。", "examples": ["Perhaps it is and perhaps it isn't.|也许是，也许不是。", "Perhaps she will come tomorrow.|也许她明天会来。", "Perhaps you should ask your teacher.|也许你该问问老师。"]}, "often": {"pos": "副词", "cn": "经常；常常", "senses": ["adv. 经常（频率）", "adv. 往往（表倾向）"], "usage": "频率副词，位置在实义动词前、be 动词后；比较级 more often，最高级 most often。", "coll": "very often / often go / how often / more often than not", "phrases": ["how often|多久一次", "more often than not|往往；多半", "every now and then|偶尔", "seldom|很少"], "form": "often adv. → oftener / more often（比较级）", "syn": "often 频率较高；usually 表“通常”；sometimes 表“有时”；seldom 表“很少”。", "note": "often 放实义动词前：He often goes there.（不说 He goes often there. 更自然）。", "examples": ["I can't paint a fence very often.|我不常有机会刷栅栏。", "She often reads in the evening.|她常在晚上读书。", "How often do you visit your grandparents?|你多久看望一次祖父母？"]}, "watch": {"pos": "动词 / 名词", "cn": "观看；注视；手表；看守", "senses": ["v. 观看（活动、比赛）", "v. 注视；留意（watch out）", "n. 手表"], "usage": "watch sb. do sth.（看全过程）或 watch sb. doing sth.（看正在进行）；也可作名词“手表”。", "coll": "watch TV / watch sb. do / watch out / a gold watch", "phrases": ["watch out|当心", "watch out for|留意", "watch over|看守；照看", "watch TV|看电视"], "form": "watch v./n. → watched → watching；watcher n. 观察者", "syn": "watch 指“观看动态事物（比赛、电视）”；see 指“看见”（结果）；look at 指“有意识地看着（静态）”。", "note": "watch sb. do（不加 to）；watch 后接 doing 表“正在做”。", "examples": ["Joe watched Tom for about five minutes.|乔看了汤姆大约五分钟。", "We watched a football match last night.|我们昨晚看了一场足球赛。", "Watch out! There is a car coming.|当心！有辆车开过来了。"]}, "slowly": {"pos": "副词", "cn": "缓慢地；慢慢地", "senses": ["adv. 缓慢地（速度低）", "adv. 逐渐地（变化慢）"], "usage": "由 slow + -ly 构成，修饰动词，位置在动词后或句首；比较级 more slowly。", "coll": "walk slowly / speak slowly / slowly change / more slowly", "phrases": ["slow|慢的（形容词）", "slow down|减速", "gradually|逐渐地", "quickly|快速地（反义）"], "form": "slow adj. → slowly adv.（口语也用 slow 作副词）→ slowness n.", "syn": "slowly 指速度慢；gradually 指“逐渐地”（变化过程）；late 指“迟”。", "note": "口语中 go slow 可用 slow 作副词，但书面规范用 slowly。", "examples": ["Tom painted very slowly and carefully.|汤姆刷得很慢、很仔细。", "Please speak more slowly.|请说慢一点。", "The train moved slowly out of the station.|火车缓缓驶出车站。"]}, "carefully": {"pos": "副词", "cn": "仔细地；小心地", "senses": ["adv. 仔细地（做事认真）", "adv. 小心地（避免危险）"], "usage": "由 careful + -ly 构成，修饰动词；比较级 more carefully；反义 carelessly。", "coll": "listen carefully / drive carefully / read carefully / more carefully", "phrases": ["careful|仔细的（形容词）", "careless|粗心的", "care|关心；小心", "carefulness|细心"], "form": "care v./n. → careful adj. → carefully adv. → careless adj. → carelessly adv.", "syn": "carefully 表“认真仔细”； cautiously 表“谨慎（防危险）”；closely 表“紧密地、密切地”。", "note": "carefully 修饰动作；careful 是形容词，修饰名词或作表语。", "examples": ["He painted very slowly and carefully.|他刷得很慢、很仔细。", "Please listen to the teacher carefully.|请认真听老师讲。", "Drive carefully on rainy days.|雨天要小心驾驶。"]}, "with a smile": {"pos": "短语", "cn": "面带微笑；微笑着", "senses": ["介词短语，作方式状语", "with + 抽象名词表“带着……的神情”"], "usage": "with + a/an + 情感名词，表伴随状态：with a smile（微笑着）、with a sigh（叹着气）。", "coll": "say with a smile / look at sb. with a smile / with a big smile", "phrases": ["with a sigh|叹着气", "with a laugh|笑着", "smile at|对……微笑", "in surprise|惊讶地"], "form": "smile n. 微笑（可数）→ smiles；smiling adj. 微笑的", "syn": "with a smile 表“带着笑容”（状态）；smiling 作定语表“微笑的”（特征）。", "note": "with a smile 中 a 不能省；同类结构 with + 抽象名词不加冠词（with courage）。", "examples": ["He looked at his work with a smile.|他微笑着看自己的作品。", "She said good morning with a smile.|她微笑着说了声早安。", "He told me the story with a smile.|他微笑着给我讲了这个故事。"]}, "get": {"pos": "动词", "cn": "得到；获得；变得；到达", "senses": ["v. 得到（get sth.）", "v. 变得（get + 形容词）", "v. 到达（get to）"], "usage": "多义高频动词：get sth.（得到）、get + adj.（变得）、get to + 地点（到达）、get sb. to do（让某人做）。", "coll": "get a gift / get tired / get to school / get sb. to do / get interested", "phrases": ["get up|起床", "get on|上车；进展", "get off|下车", "get along with|与……相处"], "form": "get → got → got / gotten（美式）→ getting（双写 t）", "syn": "get + adj. 表“变得”（口语）；become 更正式；turn 强调颜色、性质变化。", "note": "get to + 地点；home、here、there 前不加 to（get home）。", "examples": ["Joe began to get very interested.|乔开始变得非常感兴趣。", "I got a letter from my friend.|我收到朋友的一封信。", "It gets cold in November.|十一月天气变冷。"]}, "interested": {"pos": "形容词", "cn": "感兴趣的", "senses": ["adj. 感兴趣的（be interested in）", "adj. 有利害关系的（interested party）"], "usage": "修饰人，表“感到兴趣”；be interested in sth./doing sth.；令人感兴趣的用 interesting。", "coll": "be interested in / get interested / an interested look / interested party", "phrases": ["be interested in|对……感兴趣", "interesting|有趣的（修饰物）", "interest|兴趣；使感兴趣", "uninterested|不感兴趣的"], "form": "interest n./v. → interested adj.（人）→ interesting adj.（物）", "syn": "interested 修饰人（感到兴趣）；interesting 修饰物（令人感兴趣），与 surprised/surprising 同理。", "note": "介词固定用 in：be interested in music；不用 on/at。", "examples": ["Joe began to get very interested.|乔开始变得非常感兴趣。", "I am interested in history.|我对历史感兴趣。", "The book is very interesting.|这本书很有趣。"]}, "for a second": {"pos": "短语", "cn": "片刻；一会儿", "senses": ["for a second 片刻（= for a moment）", "second 也可指“秒”"], "usage": "second 作名词本义“秒”，引申“极短的时间”；for a second 表“一会儿”。", "coll": "think for a second / wait for a second / for a few seconds", "phrases": ["for a moment|片刻", "in a second|立刻", "second|秒；第二", "seconds|几秒"], "form": "second n. 秒；第二 → secondly adv. 第二", "syn": "for a second 表“很短的时间”；for a moment 同义；in a second 表“马上”。", "note": "second 作“片刻”时与“第二”同形，靠上下文判断；in a second 不加 for。", "examples": ["Tom thought for a second and said…|汤姆想了一会儿说……", "Wait for a second; I'll be right back.|等一下，我马上回来。", "He finished the work in a second.|他一下子就干完了。"]}, "be good at": {"pos": "短语", "cn": "擅长；善于", "senses": ["be good at sth./doing sth.", "反义 be poor at / be bad at"], "usage": "good at 后接名词或动名词，表“在某方面擅长”；比较级 better at。", "coll": "be good at painting / be good at maths / better at / good with", "phrases": ["be poor at|不擅长", "be good with|善于应付（人、物）", "do well in|在……做得好", "be better at|更擅长"], "form": "good adj. → better → best；well adv. 好地", "syn": "be good at 指“技能擅长”；do well in 指“（考试、比赛）成绩好”；be good with 指“善于对待”。", "note": "at 后接名词或动名词，不接 to do：good at drawing（不说 good at to draw）。", "examples": ["My aunt wants me to do it because I'm good at painting.|姨妈让我干这活儿，因为我擅长刷漆。", "She is good at English and maths.|她擅长英语和数学。", "He is good with children.|他很会和孩子相处。"]}, "say no": {"pos": "短语", "cn": "拒绝；说不", "senses": ["say no to sth. 拒绝某事", "say yes 同意"], "usage": "say no (to sth.) 表“拒绝”；say yes 表“同意、答应”；口语中也用 say no to drugs（对毒品说不）。", "coll": "say no to the plan / say no politely / say yes / say no to drugs", "phrases": ["say yes|同意", "say no to|拒绝", "refuse|拒绝（正式）", "turn down|拒绝（请求）"], "form": "say → said → said；refusal n. 拒绝", "syn": "say no 口语化；refuse 更正式（refuse to do）；turn down 指“拒绝提议、请求”。", "note": "say no 后接 to 表“对……说不”；单独 say no 表“拒绝”。", "examples": ["My brother Sid wanted to paint too, but she said no.|我哥哥西德也想刷，但她没同意。", "He said no to my invitation.|他拒绝了我的邀请。", "It's OK to say no when you are busy.|忙的时候拒绝是可以的。"]}, "just": {"pos": "副词 / 形容词", "cn": "只是；仅仅；刚刚；恰好；公正的", "senses": ["adv. 只是；仅仅", "adv. 刚刚（与完成时连用）", "adv. 恰好；正要", "adj. 公正的"], "usage": "多义副词：just a little（只要一点点）、just now（刚才）、just right（正好）；也可作形容词“公正的”。", "coll": "just a little / just now / just right / just in time / a just cause", "phrases": ["just now|刚才；眼下", "just in time|正好赶上", "just a minute|请稍等", "only|仅仅"], "form": "just adv./adj. → justice n. 公正 → justify v. 证明正当", "syn": "just 表“仅仅”时接近 only；just now 与一般过去时连用，just 与现在完成时连用表“刚刚”。", "note": "just now 用过去时；just 用于完成时（I have just finished）；口语 just 也可表“就、简直”。", "examples": ["“Oh, please, Tom. Just a little.”|“哦，求你了，汤姆，就一点点。”", "It's just a small problem.|这只是个小问题。", "I have just finished my homework.|我刚做完作业。"]}, "for the first time": {"pos": "短语", "cn": "第一次", "senses": ["for the first time 第一次（状语）", "It is the first time that… 句型"], "usage": "作时间状语，表“有生以来第一次”；注意与 the first time（连词，引导时间状语从句）区别。", "coll": "for the first time / for the first time in history / It is the first time that…", "phrases": ["the first time|第一次（引导从句）", "at first|起初", "first of all|首先", "firstly|首先"], "form": "first num./adv./n.；firstly adv. 首先", "syn": "for the first time 作状语；the first time 引导从句（The first time I saw him…）。", "note": "It is the first time that 后接现在完成时；for the first time 不与完成时强制搭配。", "examples": ["For the first time that day he was a very happy boy.|那天他第一次成了个非常快乐的男孩。", "I visited Beijing for the first time last year.|去年我第一次去北京。", "This is the first time that I have seen the sea.|这是我第一次见到大海。"]}, "stop": {"pos": "动词 / 名词", "cn": "停止；停下；车站", "senses": ["v. 停止（stop doing）", "v. 停下来（去做另一事，stop to do）", "n. 车站；停止"], "usage": "stop doing sth.（停止做某事）；stop to do sth.（停下来去做另一事）；名词 stop 表“车站”。", "coll": "stop working / stop to rest / bus stop / stop sb. from doing", "phrases": ["stop doing|停止做", "stop to do|停下来去做", "stop sb. from doing|阻止某人做", "bus stop|公交站"], "form": "stop → stopped → stopped → stopping（双写 p）；stoppage n. 停工", "syn": "stop doing 停止；stop to do 停下（去做别的）；prevent sb. from doing 阻止。", "note": "双写 p；stop to do 与 stop doing 意义完全不同，考试高频。", "examples": ["He often stopped, moved back from the fence and looked at his work.|他常常停下来，退后看看自己的活儿。", "Stop talking and listen to me.|别说话了，听我说。", "We stopped to buy some water.|我们停下来买水。"]}, "move back": {"pos": "短语动词", "cn": "后退；搬回；往回移动", "senses": ["v. 向后退", "v. 搬回（原处）"], "usage": "move 可加方向副词：move back（后退）、move forward（前进）、move away（搬走）。", "coll": "move back from the fence / move back home / move forward", "phrases": ["move forward|前进", "move away|搬走", "move on|继续前进", "move in|搬进"], "form": "move v. → moved → moving；movement n. 运动", "syn": "move back 后退；go back 回去；step back 后退一步（更具体）。", "note": "move back from sth. 表“从……往后退”；move back to 表“搬回某地”。", "examples": ["He moved back from the fence and looked at his work.|他从栅栏边退后，看看自己的活儿。", "The dog moved back when it saw us.|狗看见我们就后退了。", "They moved back to their hometown.|他们搬回了家乡。"]}};
+const VC = {};
+Object.keys(VOCAB).forEach(k => VC[k.toLowerCase()] = VOCAB[k]);
+
+/* ===== 标记解析 [[key|显示]] ===== */
+(function markUp(){
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+    acceptNode(n){
+      const p = n.parentElement;
+      if(!p) return NodeFilter.FILTER_REJECT;
+      if(p.closest('script,style,button.vb,.note-card')) return NodeFilter.FILTER_REJECT;
+      return n.nodeValue.indexOf('[[') >= 0 ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+    }
+  });
+  const nodes = [];
+  while(walker.nextNode()) nodes.push(walker.currentNode);
+  nodes.forEach(node => {
+    const text = node.nodeValue;
+    const frag = document.createDocumentFragment();
+    const re = /\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g;
+    let last = 0, m;
+    while((m = re.exec(text))){
+      if(m.index > last) frag.appendChild(document.createTextNode(text.slice(last, m.index)));
+      const key = m[1].trim();
+      const label = m[2] ? m[2] : key;
+      const b = document.createElement('button');
+      b.type = 'button'; b.className = 'vb'; b.dataset.w = key; b.textContent = label;
+      frag.appendChild(b);
+      last = re.lastIndex;
+    }
+    if(last < text.length) frag.appendChild(document.createTextNode(text.slice(last)));
+    node.parentNode.replaceChild(frag, node);
+  });
+})();
+
+/* ===== 朗读 ===== */
+let curU = null;
+function speak(text, lang){
+  if(!('speechSynthesis' in window)){ alert('当前浏览器不支持语音朗读'); return; }
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = lang || 'en-US'; u.rate = 0.92;
+  try{
+    const vs = window.speechSynthesis.getVoices() || [];
+    const ev = vs.find(v => /^en[-_]/i.test(v.lang));
+    if(ev) u.voice = ev;
+  }catch(err){}
+  u.onerror = function(){};
+  curU = u; window.speechSynthesis.speak(u);
+}
+
+/* ===== 词条渲染 ===== */
+const esc = s => String(s).replace(/"/g, '&quot;');
+function row(k, val, cls){
+  return val ? `<div class="line ${cls || ''}"><span class="k">${k}</span><span>${val}</span></div>` : '';
+}
+function sensesHTML(v){
+  if(!v.senses || !v.senses.length) return '';
+  return `<div class="senses">${v.senses.map(s => `<span class="sense">${s}</span>`).join('')}</div>`;
+}
+function chipsHTML(v){
+  if(!v.phrases || !v.phrases.length) return '';
+  const items = v.phrases.map(p => {
+    const i = p.indexOf('|');
+    const en = i > 0 ? p.slice(0, i) : p;
+    const cn = i > 0 ? p.slice(i + 1) : '';
+    return `<span class="chip"><b>${en}</b>${cn ? ' ' + cn : ''}</span>`;
+  }).join('');
+  return `<div class="line extra"><span class="k">短语</span><span class="chips">${items}</span></div>`;
+}
+function splitPair(s){
+  const i = s.indexOf('|');
+  return i > 0 ? [s.slice(0, i), s.slice(i + 1)] : [s, ''];
+}
+function exsHTML(v){
+  if(!v.examples || !v.examples.length) return '';
+  const items = v.examples.map(e => {
+    const [en, cn] = splitPair(e);
+    return `<div class="ex-item"><div class="en">${en} <button class="spk" type="button" data-say="${esc(en)}" aria-label="朗读例句">🔊</button></div><div class="cn">${cn}</div></div>`;
+  }).join('');
+  return `<div class="exs">${items}</div>`;
+}
+function examplesText(v){
+  return (v.examples || []).map(e => splitPair(e)[0]).join(' ');
+}
+function bodyHTML(k, v){
+  return sensesHTML(v)
+    + row('用法', v.usage)
+    + row('搭配', v.coll)
+    + chipsHTML(v)
+    + row('词形', v.form, 'extra')
+    + row('近义', v.syn, 'extra')
+    + row('易错', v.note, 'extra')
+    + exsHTML(v);
+}
+
+/* ===== 批注卡 ===== */
+document.addEventListener('click', function(e){
+  const vb = e.target.closest('button.vb');
+  if(vb){
+    const key = vb.dataset.w;
+    const info = VC[key.toLowerCase()];
+    if(!info) return;
+    const existing = document.querySelector('.note-card');
+    if(existing && existing.dataset.w === key){
+      existing.remove(); vb.classList.remove('on'); return;
+    }
+    document.querySelectorAll('.note-card').forEach(n => n.remove());
+    document.querySelectorAll('.vb.on').forEach(n => n.classList.remove('on'));
+    vb.classList.add('on');
+    const card = document.createElement('div');
+    card.className = 'note-card';
+    card.dataset.w = key;
+    card.innerHTML = `
+      <div class="nc-top"><span class="w">${key}</span><span class="pos">${info.pos}</span><span class="cn">${info.cn}</span><button class="nc-x" type="button" aria-label="关闭批注">✕</button></div>
+      ${bodyHTML(key, info)}
+      <div class="row">
+        <button class="mini" data-say="${esc(key)}">读单词</button>
+        <button class="mini" data-say="${esc(examplesText(info))}">读全部例句</button>
+      </div>`;
+    const anchor = vb.closest('p, li');
+    if(anchor){
+      if(anchor.tagName === 'LI') card.classList.add('tight');
+      anchor.after(card);
+    } else {
+      vb.after(card);
+    }
+    requestAnimationFrame(() => card.scrollIntoView({block:'start', behavior:'smooth'}));
+    speak(key);
+    return;
+  }
+  const say = e.target.closest('[data-say]');
+  if(say){ speak(say.dataset.say); return; }
+  const x = e.target.closest('.nc-x');
+  if(x){
+    const card = x.closest('.note-card');
+    const w = card ? card.dataset.w : '';
+    document.querySelectorAll('button.vb').forEach(b => { if(b.dataset.w === w) b.classList.remove('on'); });
+    if(card) card.remove();
+    return;
+  }
+  // 顶部导航高亮
+  const tab = e.target.closest('.tabs a');
+  if(tab){
+    document.querySelectorAll('.tabs a').forEach(a => a.classList.remove('on'));
+    tab.classList.add('on');
+  }
+});
+
+/* ===== 生词索引 ===== */
+const grid = document.getElementById('vgrid');
+let hideCN = false;
+
+function cardHTML(k, v){
+  const cls = hideCN ? ' hide' : '';
+  return `<div class="hd"><span class="wd">${k}</span><span class="ps">${v.pos}</span><span class="cz${cls}">${hideCN ? '••••' : v.cn}</span></div>
+    ${bodyHTML(k, v)}
+    <div class="ft"><button class="mini" data-say="${esc(k)}">读单词</button><button class="mini" data-say="${esc(examplesText(v))}">读例句</button></div>`;
+}
+
+let condensed = false;
+let limit = 24;
+function renderGrid(filter, keepLimit){
+  if(!keepLimit) limit = 24;
+  const kw = (filter || '').trim().toLowerCase();
+  const isEn = /^[a-z'\-\s]+$/.test(kw);
+  const re = isEn && kw ? new RegExp('(^|[^a-z])' + kw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '([^a-z]|$)') : null;
+  const hayOf = (k, v) => [k, v.cn, v.usage, v.coll, (v.senses || []).join(' '), (v.phrases || []).join(' '), v.syn || '', v.note || '', (v.examples || []).join(' ')].join(' ').toLowerCase();
+  const keys = Object.keys(VOCAB);
+  let list = !kw ? keys : keys.filter(k => {
+    const hay = hayOf(k, VOCAB[k]);
+    if(re) return re.test(hay) || k.toLowerCase().indexOf(kw) === 0;
+    return hay.indexOf(kw) >= 0;
+  });
+  // 英文查不到完整词时，退化为前缀匹配（如 fam → famous）
+  if(!list.length && re){
+    const pre = new RegExp('(^|[^a-z])' + kw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '[a-z]*');
+    list = keys.filter(k => pre.test(hayOf(k, VOCAB[k])));
+  }
+  const shown = list.slice(0, limit);
+  const rest = list.length - shown.length;
+  grid.innerHTML = shown.map(k => `<div class="vcard">${cardHTML(k, VOCAB[k])}</div>`).join('')
+    + (rest > 0 ? `<button class="more" type="button" id="more">显示更多（还剩 ${rest} 条）</button>` : '')
+    + (rest > 0 ? `<button class="more ghost" type="button" id="moreAll">展开全部 ${list.length} 条</button>` : '');
+  if(condensed) grid.querySelectorAll('.line.extra').forEach(el => { el.style.display = 'none'; });
+  const more = document.getElementById('more');
+  if(more) more.addEventListener('click', () => { limit += 24; renderGrid(document.getElementById('q').value, true); });
+  const moreAll = document.getElementById('moreAll');
+  if(moreAll) moreAll.addEventListener('click', () => { limit = list.length; renderGrid(document.getElementById('q').value, true); });
+  const c = document.getElementById('count');
+  c.textContent = kw
+    ? `匹配 ${list.length} / 共 ${keys.length} 条${rest > 0 ? `（已显示 ${shown.length} 条）` : ''}`
+    : `共 ${keys.length} 条生词与短语${rest > 0 ? `（已显示 ${shown.length} 条）` : ''}`;
+}
+
+renderGrid('');
+
+document.getElementById('q').addEventListener('input', function(){ renderGrid(this.value); });
+
+document.getElementById('hideBtn').addEventListener('click', function(){
+  hideCN = !hideCN;
+  this.classList.toggle('on', hideCN);
+  this.textContent = hideCN ? '显示中文' : '遮挡中文';
+  renderGrid(document.getElementById('q').value, true);
+});
+
+document.getElementById('allBtn').addEventListener('click', function(){
+  condensed = !condensed;
+  this.classList.toggle('on', condensed);
+  this.textContent = condensed ? '显示全部解析' : '精简解析';
+  document.querySelectorAll('.vcard').forEach(c => {
+    c.querySelectorAll('.line.extra').forEach(el => {
+      el.style.display = condensed ? 'none' : '';
+    });
+  });
+});
+
+/* ===== 回到顶部 ===== */
+(function(){
+  const t = document.getElementById('top');
+  window.addEventListener('scroll', () => t.classList.toggle('on', window.scrollY > 600), {passive:true});
+  t.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+})();
+
+/* ===== 顶部导航跟随滚动 ===== */
+(function(){
+  const secs = ['c1','c2','c3','vocab'].map(id => document.getElementById(id));
+  const links = Array.from(document.querySelectorAll('.tabs a'));
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if(en.isIntersecting){
+        const i = secs.indexOf(en.target);
+        links.forEach(a => a.classList.remove('on'));
+        if(links[i]) links[i].classList.add('on');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  secs.forEach(s => s && io.observe(s));
+})();
+</script>
+
+</div>
+</div>
+
+<footer class="foot"><div class="line"></div>13-3 培优讲练 · 依据所提供试卷整理，答案与解析供复习核对使用</footer>
+
+</body>
+</html>

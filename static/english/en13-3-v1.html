@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>13-3 培优精读精讲 · 第13周周三 | Unit 4 Once upon a Time</title>
+<style>
+:root{
+  --paper:#faf9f6;--card:#ffffff;--ink:#1c1b19;--ink2:#454340;--muted:#8b877e;
+  --accent:#b3261e;--accent-soft:#fdf1ef;--ok:#1e7d43;--ok-soft:#eef7f0;
+  --line:#1c1b19;--hair:#e3e0d8;--stack:#f4f2ec;--pop:#fffdf8;
+  --serif:'Noto Serif SC','Songti SC','STSong',serif;
+  --sans:system-ui,-apple-system,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;
+  --mono:ui-monospace,'Cascadia Mono','Consolas',monospace;
+}
+body.dark{
+  --paper:#151412;--card:#1e1c19;--ink:#e8e4dc;--ink2:#c4bfb4;--muted:#8f8a7e;
+  --accent:#e06055;--accent-soft:#2c211e;--ok:#58b983;--ok-soft:#1d2a22;
+  --line:#e8e4dc;--hair:#35322c;--stack:#232019;--pop:#26231e;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.85;font-size:16px}
+#progress{position:fixed;top:0;left:0;height:3px;background:var(--accent);width:0;z-index:99;transition:width .1s}
+.kicker{max-width:860px;margin:0 auto;padding:14px 20px 0;display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--muted);border-top:3px solid var(--line)}
+.hero{max-width:860px;margin:0 auto;padding:26px 20px 22px}
+.hero .no{font-family:var(--serif);font-size:15px;color:var(--accent);letter-spacing:.35em;font-weight:700}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,6vw,52px);font-weight:900;line-height:1.25;margin:8px 0 6px}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero .sub{font-family:var(--serif);font-size:19px;color:var(--ink2);margin-bottom:16px}
+.meta{display:flex;flex-wrap:wrap;gap:8px}
+.meta span{font-family:var(--mono);font-size:12px;color:var(--ink2);border:1px solid var(--hair);padding:4px 12px;border-radius:999px;background:var(--card)}
+.toolbar{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--hair)}
+.tin{max-width:860px;margin:0 auto;padding:10px 20px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.tin .nav a{font-family:var(--mono);font-size:12px;color:var(--ink2);text-decoration:none;margin-right:14px;letter-spacing:.05em}
+.tin .nav a:hover{color:var(--accent)}
+.tin .sp{flex:1}
+.btn{font-family:var(--mono);font-size:12.5px;padding:6px 14px;border:1px solid var(--ink);background:var(--card);color:var(--ink);border-radius:999px;cursor:pointer;transition:.15s}
+.btn:hover{background:var(--ink);color:var(--paper)}
+main{max-width:860px;margin:0 auto;padding:10px 20px 60px}
+section.chap{margin-top:56px}
+.chap-head{display:flex;align-items:baseline;gap:16px;border-top:2px solid var(--line);padding-top:18px}
+.chap-head .num{font-family:var(--serif);font-size:52px;font-weight:300;color:var(--accent);line-height:1}
+.chap-head .tt{font-family:var(--serif);font-size:26px;font-weight:900}
+.chap-head .cat{margin-left:auto;font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.1em}
+.dateline{font-family:var(--mono);font-size:12.5px;color:var(--ink2);margin:10px 0 18px;display:flex;flex-wrap:wrap;gap:4px 18px}
+.dateline b{color:var(--ink);font-weight:600}
+.passage{background:var(--card);border:1px solid var(--hair);border-left:3px solid var(--accent);padding:24px 26px;border-radius:0 6px 6px 0}
+.passage p{margin:10px 0;font-size:16.5px;color:var(--ink)}
+.passage .pt{font-family:var(--serif);font-weight:900;font-size:19px;margin-bottom:10px}
+.passage .req{font-family:var(--mono);font-size:12.5px;color:var(--muted);margin-bottom:12px;letter-spacing:.08em}
+.w{cursor:pointer;border-bottom:2px dotted var(--accent);padding-bottom:1px;color:var(--ink);font-weight:600;transition:.15s}
+.w:hover{background:var(--accent-soft);border-bottom-style:solid}
+.tag{color:var(--muted);font-size:.92em}
+.blank{display:inline-block;cursor:pointer;vertical-align:baseline}
+.blank b{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:var(--accent);color:#fff;font-family:var(--mono);font-size:13px;margin:0 3px;transition:.15s}
+.blank i{display:none;font-style:normal;background:var(--ok-soft);color:var(--ok);font-family:var(--mono);font-size:14px;font-weight:700;padding:2px 10px;border-radius:5px;margin-left:4px;border:1px solid var(--ok)}
+body.showans .blank i{display:inline-block}
+.blank.open i{display:inline-block}
+body.showans .blank b{background:var(--ok)}
+.ques{margin-top:22px}
+.qitem{background:var(--card);border:1px solid var(--hair);border-radius:6px;padding:16px 20px;margin:12px 0}
+.qitem .qs{font-size:16px}
+.qitem .qs .qn{font-family:var(--mono);color:var(--accent);font-weight:700;margin-right:8px}
+.qitem .qs .qtag{font-size:12px;color:var(--muted);font-family:var(--mono);margin-left:6px}
+.qitem .btn-ana{margin-top:10px;font-family:var(--mono);font-size:12.5px;color:var(--accent);background:none;border:1px dashed var(--accent);border-radius:999px;padding:4px 14px;cursor:pointer}
+.qitem .btn-ana:hover{background:var(--accent-soft)}
+.ana{display:none;margin-top:10px;border-top:1px dashed var(--hair);padding-top:10px}
+.ana.open{display:block}
+.ana li{margin:4px 0 4px 22px;font-size:14.5px;color:var(--ink2);list-style-type:square}
+.ana .key{font-family:var(--mono);color:var(--ok);font-weight:700}
+.stack{margin-top:22px;background:var(--stack);border-radius:6px;padding:18px 22px;border-top:3px solid var(--ink)}
+.stack .sh{font-family:var(--serif);font-weight:900;font-size:17px;display:flex;align-items:center;gap:8px}
+.stack .sh::before{content:'';width:10px;height:10px;background:var(--accent);border-radius:2px;display:inline-block}
+.stack .ss{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.1em;margin-left:8px;font-weight:400}
+.stack ol{margin:10px 0 4px 24px}
+.stack li{margin:5px 0;font-size:15px;color:var(--ink2)}
+.stack .gap{display:inline-block;min-width:90px;border-bottom:1px solid var(--ink2);color:var(--ok);font-weight:700;text-align:center;font-family:var(--mono);font-size:14px}
+body.showans .stack .gap::before{content:attr(data-a)}
+.stack .gap::before{content:''}
+.stack p.hint{font-size:13px;color:var(--muted);margin-top:8px}
+.stack .prompt{background:var(--card);border:1px solid var(--hair);border-radius:6px;padding:12px 16px;margin:10px 0;font-size:15px}
+details.trans{margin-top:16px;border:1px solid var(--hair);border-radius:6px;background:var(--card)}
+details.trans summary{cursor:pointer;font-family:var(--serif);font-weight:700;padding:12px 20px;list-style:none;display:flex;align-items:center;gap:8px}
+details.trans summary::before{content:'▸';color:var(--accent);transition:.2s}
+details.trans[open] summary::before{transform:rotate(90deg)}
+details.trans .tb{padding:0 22px 16px;font-size:15px;color:var(--ink2)}
+details.trans .tb p{margin:8px 0}
+.vocab-sec{margin-top:60px;border-top:2px solid var(--line);padding-top:18px}
+.vocab-sec h2{font-family:var(--serif);font-size:24px;font-weight:900}
+.vsearch{margin:14px 0;padding:9px 16px;width:100%;max-width:420px;font-size:15px;border:1px solid var(--hair);border-radius:999px;background:var(--card);color:var(--ink);outline:none}
+.vsearch:focus{border-color:var(--accent)}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;margin-top:14px}
+.vcard{background:var(--card);border:1px solid var(--hair);border-radius:6px;padding:12px 14px;position:relative;cursor:pointer;transition:.15s}
+.vcard:hover{border-color:var(--accent)}
+.vcard .ve{font-weight:700;font-size:15.5px}
+.vcard .vph{font-family:var(--mono);font-size:12px;color:var(--muted);margin-left:6px}
+.vcard .vpos{font-size:12px;color:var(--muted)}
+.vcard .vcn{font-size:14px;color:var(--ink2);margin:2px 0}
+.vcard .vsyn{font-size:12.5px;color:var(--ink2);background:var(--accent-soft);border-radius:4px;padding:4px 8px;margin:6px 0 0;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.vcard .vphr{font-size:12.5px;color:var(--ink2);background:var(--ok-soft);border-radius:4px;padding:4px 8px;margin:6px 0 0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.vcard .vex{font-size:12.5px;color:var(--muted);border-top:1px dashed var(--hair);margin-top:6px;padding-top:6px;font-style:italic}
+.vcard .vmore{font-size:11px;color:var(--accent);font-family:var(--mono);text-align:right;margin-top:6px;opacity:.8}
+.vcard .spk{position:absolute;top:8px;right:10px;border:none;background:var(--accent-soft);color:var(--accent);width:26px;height:26px;border-radius:50%;cursor:pointer;font-size:13px}
+.vcard .spk:hover{background:var(--accent);color:#fff}
+.vgrp{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.12em;margin:18px 0 8px;border-bottom:1px solid var(--hair);padding-bottom:4px}
+#pop{position:fixed;z-index:100;background:var(--pop);color:var(--ink);border:1px solid var(--ink2);border-radius:10px;box-shadow:0 14px 44px rgba(0,0,0,.22);width:min(400px,92vw);padding:18px 20px;display:none}
+#pop .pw{font-family:var(--serif);font-size:21px;font-weight:900;display:flex;align-items:center;gap:10px}
+#pop .pph{font-family:var(--mono);font-size:13px;color:var(--muted);margin-left:2px}
+#pop .speak{border:none;background:var(--accent-soft);color:var(--accent);width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:14px}
+#pop .speak:hover{background:var(--accent);color:#fff}
+#pop .pcn{margin:6px 0 2px;font-size:16px}
+#pop .prow{margin:8px 0 0;font-size:13.5px;color:var(--ink2);line-height:1.65}
+#pop .pnote{margin:8px 0 0;font-size:14px;color:var(--ink2);background:var(--stack);border-left:3px solid var(--accent);padding:8px 12px;border-radius:0 6px 6px 0}
+#pop .psyn{background:var(--accent-soft);border-left:3px solid var(--accent);padding:7px 12px;border-radius:0 6px 6px 0}
+#pop .ppfr{background:var(--ok-soft);border-left:3px solid var(--ok);padding:7px 12px;border-radius:0 6px 6px 0}
+#pop .pex{margin-top:10px;font-size:14px;font-style:italic}
+#pop .pex em{display:block;font-style:normal;color:var(--muted);font-size:13px}
+#pop .pclose{position:absolute;top:6px;right:8px;border:none;background:none;font-size:17px;cursor:pointer;color:var(--muted)}
+footer{max-width:860px;margin:0 auto;padding:20px;text-align:center;font-family:var(--mono);font-size:12px;color:var(--muted);border-top:1px solid var(--hair)}
+#backtop{position:fixed;right:22px;bottom:22px;width:44px;height:44px;border-radius:50%;border:1px solid var(--ink2);background:var(--card);color:var(--ink);cursor:pointer;font-size:17px;display:none;z-index:60}
+#backtop:hover{background:var(--ink);color:var(--paper)}
+@media(max-width:600px){
+  .passage{padding:16px}
+  .chap-head .num{font-size:38px}
+  .chap-head .tt{font-size:21px}
+}
+@media print{
+  .toolbar,#progress,#backtop,#pop,.vsearch{display:none!important}
+  body{background:#fff;color:#000;font-size:13.5px}
+  .hero h1{font-size:30px}
+  section.chap{margin-top:22px;page-break-inside:avoid}
+  .passage,.qitem,.stack,details.trans,.vcard{border:1px solid #999;box-shadow:none;background:#fff}
+  .w{border-bottom:1px solid #000}
+  .blank i{display:inline-block;border:1px solid #000;color:#000;background:#fff}
+  details.trans{display:block}
+  details.trans summary{border-bottom:1px dashed #999}
+  a{text-decoration:none;color:#000}
+}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<header class="kicker"><span>英语培优 · 精读精讲</span><span>2026–2027 学年 · 七年级上</span><span>第 13 周 · 周三</span></header>
+<div class="hero">
+  <div class="no">UNIT 4 · ONCE UPON A TIME</div>
+  <h1>13-3 <em>培优</em>精读精讲</h1>
+  <div class="sub">小金窗 · Tom 刷栅栏 —— 寓言与名著，2 篇精讲</div>
+  <div class="meta">
+    <span>📑 2 个板块</span><span>✒️ 10 个语法空 + 5 道问答</span><span>🔤 38 条生词短语 · 六层详解</span><span>📖 逐题解析</span><span>🔊 点击发音</span>
+  </div>
+</div>
+
+<div class="toolbar"><div class="tin">
+  <nav class="nav"><a href="#c1">壹·小金窗</a><a href="#c2">贰·Tom刷栅栏</a><a href="#vocab">生词表</a></nav>
+  <span class="sp"></span>
+  <button class="btn" id="btnAll">显示全部释义</button>
+  <button class="btn" id="btnAns">显示全部答案</button>
+  <button class="btn" id="btnDark">夜间模式</button>
+  <button class="btn" id="btnPrint">打印</button>
+</div></div>
+
+<main>
+<!-- ================= 壹 · 语法填空·小金窗 ================= -->
+<section class="chap" id="c1">
+  <div class="chap-head"><span class="num">壹</span><span class="tt">语法填空 · 小金窗</span><span class="cat">寓言故事 · 记叙文</span></div>
+  <div class="dateline"><span>主题 <b>人与社会——寓言故事</b></span><span>词数 <b>219</b></span><span>难度 <b>★★★☆☆</b></span><span>建议用时 <b>6′</b></span><span>正确率 <b>/10</b></span></div>
+  <article class="passage">
+    <p class="pt">The House with Golden Windows</p>
+    <p class="req">阅读下面短文，在空白处填入一个适当的单词或括号内单词的正确形式。</p>
+    <p><span class="w" data-k="onceuponatime">Once upon a time</span>, there was a little boy. His parents were poor <span class="blank" data-n="1"><b>1</b><i>farmers</i></span> (farmer). They couldn't <span class="w" data-k="payfor">pay for</span> a <span class="w" data-k="worker">worker</span>, <span class="blank" data-n="2"><b>2</b><i>so</i></span> the boy had to help. He worked hard.</p>
+    <p>Every day, he had a one-hour rest at <span class="w" data-k="sunset">sunset</span><span class="tag">（日落）</span>. He used that time <span class="blank" data-n="3"><b>3</b><i>to climb</i></span> (climb) to the top of a <span class="w" data-k="climb">hill</span>. There, he could see <span class="blank" data-n="4"><b>4</b><i>a</i></span> house on another hill. It had <span class="w" data-k="golden">golden</span><span class="tag">（金色的）</span> windows. They were really bright and <span class="w" data-k="shine">shone</span> like <span class="w" data-k="diamond">diamonds</span><span class="tag">（钻石）</span>.</p>
+    <p>One day, the <span class="blank" data-n="5"><b>5</b><i>the boy's</i></span> (boy) father said to him, "You worked really hard, so you can <span class="w" data-k="takeadayoff">take a day off</span>. Try to learn something good."</p>
+    <p>The boy thanked his father. Then, he left home and walked to the far hill.</p>
+    <p>He <span class="blank" data-n="6"><b>6</b><i>came</i></span> (come) to the house and <span class="w" data-k="knockon">knocked on</span> the door, and a girl <span class="w" data-k="answer">answered</span>. He told the girl about the golden windows. The girl <span class="w" data-k="shake">shook</span><span class="tag">（摇）</span> her head and said, "We only have glass windows. Look there! That's the house <span class="blank" data-n="7"><b>7</b><i>with</i></span> golden windows." She <span class="w" data-k="point">pointed</span><span class="tag">（指）</span> to something <span class="w" data-k="faraway">far away</span>.</p>
+    <p>To <span class="blank" data-n="8"><b>8</b><i>his</i></span> (he) <span class="w" data-k="toonessurprise">surprise</span>, he saw his own house. He then thanked the girl and went back home <span class="blank" data-n="9"><b>9</b><i>quickly</i></span> (quick).</p>
+    <p><span class="w" data-k="inside">Inside</span>, he saw his family and smiled. He <span class="blank" data-n="10"><b>10</b><i>told</i></span> (tell) them about what he <span class="w" data-k="experience">experienced</span> on that day. He also said, "I have learnt a great <span class="w" data-k="lesson">lesson</span>—our house has golden windows."</p>
+  </article>
+  <div class="stack"><div class="sh">积累小栈<span class="ss">以读促写 · 开放写作</span></div>
+    <div class="prompt">☆ 以读促写：人生一路风景一路歌，珍惜每一个日出日落，保持着对生活的温度，才能发现生活之美。那些零零碎碎的小美好，藏匿在每一个平凡的日子里。认真生活，才能找到被大人偷藏起来的糖果。请你向你的同学们讲述你生活中的 2~3 个美好瞬间，并分享你的感受或收获。</div>
+    <ol>
+      <li>参考范文：Last Sunday, I <span class="gap" data-a="watched the sunset"></span> with my family. The sky turned orange and red. I felt <span class="gap" data-a="warm and happy"></span>. Also, I helped my little brother with his homework. He thanked me <span class="gap" data-a="with a big smile"></span>. These small moments make my life beautiful.</li>
+    </ol>
+    <p class="hint">📌 开放写作：2~3 个美好瞬间（具体事件）+ 感受收获。参考句式：One day / Last Sunday, I...（叙事）；I felt...（感受）；I learnt that...（收获）。时态用一般过去时。</p>
+  </div>
+  <details class="trans"><summary>参考译文 · 有金色窗户的房子</summary><div class="tb">
+    <p>从前，有一个小男孩。他的父母是贫穷的农民。他们付不起工钱请工人，所以男孩不得不帮忙。他干活很卖力。</p>
+    <p>每天日落时分，他休息一小时。他用那段时间爬到一座小山顶上。在那里，他能看到另一座山上的一座房子。它有金色的窗户，真的很亮，像钻石一样闪耀。</p>
+    <p>一天，男孩的父亲对他说："你干活很努力，可以休息一天。试着学点有用的东西。"</p>
+    <p>男孩谢过父亲，然后离家步行去了那座远山。</p>
+    <p>他来到房子前敲了敲门，一个女孩应了门。他告诉女孩金色窗户的事。女孩摇摇头说："我们只有玻璃窗户。看那边！那才是有金色窗户的房子。"她指向远处的某个东西。</p>
+    <p>令他惊讶的是，他看到的正是自己的房子。他谢过女孩，很快回了家。</p>
+    <p>进屋后，他看到家人，笑了。他告诉他们那天的经历，还说："我学到了重要的一课——我们的房子有金色的窗户。"</p>
+  </div></details>
+</section>
+
+<!-- ================= 贰 · 阅读表达·Tom 刷栅栏 ================= -->
+<section class="chap" id="c2">
+  <div class="chap-head"><span class="num">贰</span><span class="tt">阅读表达 · Tom 刷栅栏</span><span class="cat">文学名著 · 记叙文</span></div>
+  <div class="dateline"><span>主题 <b>人与社会——文学名著</b></span><span>词数 <b>345</b></span><span>难度 <b>★★★★☆</b></span><span>建议用时 <b>10′</b></span><span>正确率 <b>/5</b></span></div>
+  <article class="passage">
+    <p class="req">阅读短文，根据短文内容回答下列问题。</p>
+    <p>Tom <span class="w" data-k="comeoutof">came out of</span> his house with a <span class="w" data-k="brush">brush</span> and a big <span class="w" data-k="potof">pot</span> of white <span class="w" data-k="paint">paint</span> in his hand. He looked at the <span class="w" data-k="fence">fence</span>; it was three <span class="w" data-k="metre">metres</span> high and thirty metres long. He put his brush in the paint and painted some of the fence. He did it again. Then he stopped and looked at the fence, put down his brush and sat down. There were hours of work <span class="w" data-k="infrontof">in front of</span> him and he was the <span class="w" data-k="unhappiest">unhappiest</span> boy in the village.</p>
+    <p>After ten minutes, Tom had <span class="w" data-k="haveanidea">an idea</span>, a wonderful idea. He <span class="w" data-k="takeup">took up</span> the brush again and began to work. He saw his friend Joe Harper in the street, but he didn't look at him. Joe had an apple in his hand. He <span class="w" data-k="comeupto">came up to</span> Tom and looked at the fence.</p>
+    <p>"I am sorry, Tom."</p>
+    <p>Tom said nothing. The paint brush moved <span class="w" data-k="upanddown">up and down</span>.</p>
+    <p>"Working for your <span class="w" data-k="aunt">aunt</span>?" said Joe. "I'm going down to the <span class="w" data-k="river">river</span>. I'm sorry you can't come with me."</p>
+    <p>Tom put down his brush. "You call this work?" he said. "Painting a fence?" said Joe.</p>
+    <p>"Of course, it's work!" "<span class="w" data-k="perhaps">Perhaps</span> it is and perhaps it isn't. But I like it," said Tom. "I can go to the river any day. I can't paint a fence very often."</p>
+    <p>Joe watched Tom for about five minutes. Tom painted very slowly and <span class="w" data-k="carefully">carefully</span>. He often stopped, moved back from the fence and looked at his work <span class="w" data-k="withasmile">with a smile</span>.</p>
+    <p>Joe began to get very <span class="w" data-k="getinterested">interested</span>. Tom thought <span class="w" data-k="forasecond">for a second</span> and said, "I'm sorry, Joe. You see, my aunt wants me to do it because I'm good at painting. My brother Sid wanted to paint too, but she said no."</p>
+    <p>"Oh, please, Tom. Just a little. I'm good at painting too. Hey, do you want some of my apple?" "No, Joe, I can't—"</p>
+    <p>"OK, you can have all my apple!" Tom gave Joe the brush. He did not smile, but for the first time that day he was a very happy boy. He <span class="w" data-k="sitdown">sat down</span> and ate Joe's apple.</p>
+  </article>
+  <div class="ques" id="quesE"></div>
+  <div class="stack"><div class="sh">积累小栈<span class="ss">短语互译 · 7 条</span></div>
+    <ol>
+      <li>1. 从……出来 <span class="gap" data-a="come out of"></span></li>
+      <li>2. a pot of <span class="gap" data-a="一罐/一壶"></span></li>
+      <li>3. put down <span class="gap" data-a="放下"></span></li>
+      <li>4. 在……前面 <span class="gap" data-a="in front of"></span></li>
+      <li>5. take up <span class="gap" data-a="拿起；开始从事"></span></li>
+      <li>6. up and down <span class="gap" data-a="上上下下；来来回回"></span></li>
+      <li>7. come up to <span class="gap" data-a="走到……跟前"></span></li>
+    </ol>
+    <p class="hint">📌 take up 多义：拿起（工具）/ 开始从事（爱好）/ 占据（时间空间）。put down 放下；put 家族还有 put off 推迟、put up 张贴。</p>
+  </div>
+  <details class="trans"><summary>参考译文 · Tom 刷栅栏（节选自马克·吐温《汤姆·索亚历险记》）</summary><div class="tb">
+    <p>汤姆拿着一把刷子和一大罐白漆走出家门。他看了看栅栏——三米高、三十米长。他把刷子蘸进漆里，刷了一部分，又刷了刷。然后他停下来，看看栅栏，放下刷子坐了下来。他面前还有几个小时的活，他是村里最不开心的男孩。</p>
+    <p>十分钟后，汤姆有了一个主意，一个绝妙的主意。他又拿起刷子开始干活。他看见朋友乔·哈珀在街上，却没有看他。乔手里拿着一个苹果。他走到汤姆跟前，看着栅栏。</p>
+    <p>"真遗憾，汤姆。"</p>
+    <p>汤姆什么也没说。画笔上下移动着。</p>
+    <p>"替你姑姑干活？"乔说，"我要去河边。真遗憾你不能一起去。"</p>
+    <p>汤姆放下刷子。"你管这叫干活？"他说。"刷栅栏？"乔说。</p>
+    <p>"当然是干活！""也许是，也许不是。可我喜欢，"汤姆说，"我哪天都能去河边。刷栅栏的机会可不常有。"</p>
+    <p>乔看了汤姆大约五分钟。汤姆刷得很慢、很仔细。他常常停下来，退后几步，微笑着看着自己的作品。</p>
+    <p>乔开始很感兴趣了。汤姆想了一会儿说："真遗憾，乔。你看，姑姑让我干这活是因为我擅长刷漆。我弟弟锡德也想刷，可她不让。"</p>
+    <p>"哦，求你了，汤姆。就刷一小会儿。我也擅长刷漆。嘿，想吃我的苹果吗？""不，乔，我不能——"</p>
+    <p>"好吧，你可以吃我全部的苹果！"汤姆把刷子给了乔。他没有笑，但那是当天他第一次非常开心。他坐下来，吃了乔的苹果。</p>
+    <p style="color:var(--muted);font-size:13px">💡 名著背景：本文改编自马克·吐温《汤姆·索亚历险记》（The Adventures of Tom Sawyer）经典片段——汤姆巧施妙计，让伙伴抢着替他刷栅栏，还赚了一个苹果。</p>
+  </div></details>
+</section>
+
+<!-- ================= 生词汇总 ================= -->
+<section class="vocab-sec" id="vocab">
+  <h2>生词与短语 · 集总</h2>
+  <input class="vsearch" id="vsearch" type="text" placeholder="🔍 输入英文或中文筛选生词…">
+  <div id="vocabBox"></div>
+</section>
+</main>
+
+<footer>13-3 培优 · 精读精讲 | Unit 4 Once upon a Time | 单文件 · 离线可用 · 🐾</footer>
+<button id="backtop" title="回到顶部">↑</button>
+<div id="pop" role="dialog"></div>
+
+<script>
+const VOCAB = [
+  /* ---- 壹 · 小金窗 ---- */
+  {k:"onceuponatime",g:"壹",en:"once upon a time",ph:"",pos:"短语",cn:"从前",senses:"—",note:"故事/寓言开篇套语，后接一般过去时；童话感最强的「从前」。",syn:"once upon a time / long long ago / once 辨析：once upon a time 童话开篇；long long ago 更强调「很久」；once 时间副词，口语。",phr:"once upon a time 从前；tell a story 讲故事；live happily 幸福地生活",ex:"Once upon a time, there was a little boy.",exCn:"从前，有一个小男孩。",ex2:"Long long ago, there was a king.",ex2Cn:"很久很久以前，有一位国王。"},
+  {k:"payfor",g:"壹",en:"pay for",ph:"",pos:"短语",cn:"为……付钱",senses:"pay-paid-paid；pay for sth. 为某物付钱；pay sb. for sth. 为某事付钱给某人",note:"pay 后接钱或人，for 后接物；四「花费」辨析是中考高频语法点。",syn:"pay for / spend on / cost / take 辨析：pay...for 花钱买（人作主语，I paid 20 yuan for it）；spend...on 花费（人作主语）；cost 值（物作主语，The book cost me 20 yuan）；take 常用 It takes sb. time to do。",phr:"pay for the worker 付工钱；pay the bill 付账；pay for sth. 为某物付钱",ex:"They couldn't pay for a worker.",exCn:"他们付不起工钱请工人。",ex2:"I paid twenty yuan for the book.",ex2Cn:"我花二十元买了这本书。"},
+  {k:"worker",g:"壹",en:"worker",ph:"/ˈwɜːkə/",pos:"n.",cn:"工人",senses:"work v./n. 工作 → worker n. 工人",note:"-er 表人构词：work→worker、teach→teacher、farm→farmer；a hard worker 勤奋的人。",syn:"worker / labourer 辨析：worker 泛指工人（factory worker）；labourer 体力劳动者，较正式。",phr:"a hard worker 勤奋的人；work hard 努力工作；factory worker 工厂工人",ex:"They couldn't pay for a worker, so the boy had to help.",exCn:"他们付不起工钱，男孩不得不帮忙。",ex2:"My uncle is a factory worker.",ex2Cn:"我叔叔是一名工厂工人。"},
+  {k:"sunset",g:"壹",en:"sunset",ph:"/ˈsʌnset/",pos:"n.",cn:"日落",senses:"sun+set 合成词；n. 日落；黄昏",note:"at sunset 在日落时分；反义 sunrise 日出；watch the sunset 看日落。",syn:"sunset / dawn 辨析：sunset 日落（黄昏）；dawn 黎明；sunrise 日出——一日三景可联记。",phr:"at sunset 在日落时分；watch the sunset 看日落；sunrise and sunset 日出日落",ex:"Every day, he had a one-hour rest at sunset.",exCn:"每天日落时分，他休息一小时。",ex2:"We watched the sunset on the beach.",ex2Cn:"我们在海边看了日落。"},
+  {k:"climb",g:"壹",en:"climb",ph:"/klaɪm/",pos:"v.",cn:"攀登；爬",senses:"climb-climbed-climbed；climb a hill 爬山",note:"climb to the top 爬到山顶；climb up 爬上去；climb down 爬下来。",syn:"climb / crawl / creep 辨析：climb 向上爬（山/树）；crawl 贴地爬行（婴儿/虫）；creep 悄悄地爬（蹑手蹑脚）。",phr:"climb to the top 爬到山顶；climb up 爬上去；climb a hill 爬山",ex:"He used that time to climb to the top of a hill.",exCn:"他用那段时间爬到山顶。",ex2:"They climbed the mountain last Sunday.",ex2Cn:"他们上周日爬了山。"},
+  {k:"golden",g:"壹",en:"golden",ph:"/ˈɡəʊldən/",pos:"adj.",cn:"金色的",senses:"gold n. 金子 adj. 金制的 → golden adj. 金色的；黄金般的",note:"golden windows 金色的窗户；golden 喻「宝贵的」（golden time 黄金时光）；gold 指材质。",syn:"gold / golden 辨析：gold 指金质的（gold medal 金牌，材质）；golden 金色的/黄金般的（golden hair 金发）——材质 vs 颜色。",phr:"golden windows 金色的窗户；golden time 黄金时光；gold medal 金牌",ex:"It had golden windows.",exCn:"它有金色的窗户。",ex2:"She has golden hair.",ex2Cn:"她有一头金发。"},
+  {k:"shine",g:"壹",en:"shine",ph:"/ʃaɪn/",pos:"v.",cn:"发光；照耀",senses:"shine-shone-shone（英式过去式）；v. 发光 n. 光泽",note:"文中 shone like diamonds 是明喻（simile），like 表「像」；shone 读 /ʃɒn/。",syn:"shine / light up 辨析：shine 自身发光（太阳/宝石 shine）；light up 点亮、照亮（The candles lit up the room）。",phr:"shine like diamonds 像钻石般闪耀；shine brightly 明亮地照耀",ex:"They were really bright and shone like diamonds.",exCn:"它们真的很亮，像钻石一样闪耀。",ex2:"The sun shone brightly in the sky.",ex2Cn:"太阳在天空中明亮地照耀。"},
+  {k:"diamond",g:"壹",en:"diamond",ph:"/ˈdaɪmənd/",pos:"n.",cn:"钻石",senses:"n. ①钻石（复数 diamonds）②（纸牌）方块",note:"shone like diamonds 明喻；diamond ring 钻戒；读音 /ˈdaɪmənd/。",syn:"diamond / jewel 辨析：diamond 钻石（矿物专称）；jewel 泛指宝石/珠宝（jewels 珠宝首饰）。",phr:"shone like diamonds 像钻石般闪耀；a diamond ring 钻戒",ex:"They shone like diamonds.",exCn:"它们像钻石一样闪耀。",ex2:"The necklace is made of diamonds.",ex2Cn:"这条项链是钻石做的。"},
+  {k:"takeadayoff",g:"壹",en:"take a day off",ph:"",pos:"短语",cn:"休息一天",senses:"off adv. 休息；离开",note:"take + 时间 + off 休假：take a day off 休一天、take three days off 休三天；take off 还有「脱下/起飞」两义。",syn:"take a day off / have a rest 辨析：take a day off 休一天假（整天）；have a rest 休息一下（片刻）。",phr:"take a day off 休息一天；take off 脱下；起飞；day off 休息日",ex:"You worked really hard, so you can take a day off.",exCn:"你干活很努力，可以休息一天。",ex2:"I want to take a day off next week.",ex2Cn:"我下周想休一天假。"},
+  {k:"knockon",g:"壹",en:"knock on",ph:"",pos:"短语",cn:"敲（门/窗）",senses:"knock v./n. 敲；敲击",note:"knock on/at the door 敲门（on 或 at 均可）；knock over 撞倒。",syn:"knock / hit / beat 辨析：knock 轻敲（门）；hit 打、击中；beat 连续打/跳动/打败。",phr:"knock on the door 敲门；knock at the window 敲窗；knock over 撞倒",ex:"He came to the house and knocked on the door.",exCn:"他来到房子前敲了敲门。",ex2:"Someone is knocking at the window.",ex2Cn:"有人在敲窗户。"},
+  {k:"answer",g:"壹",en:"answer",ph:"/ˈɑːnsə/",pos:"v. / n.",cn:"回答；应门；答案",senses:"v. ①回答 ②应（门/电话）｜ n. 答案",note:"a girl answered 一个女孩应了门；answer the door 应门；the answer to the question 问题的答案（to 不可换 of）。",syn:"answer / reply 辨析：answer 及物，直接接宾语（answer the door/phone）；reply 不及物，须加 to（reply to my letter）。",phr:"answer the door 应门；answer the phone 接电话；the answer to... 的答案",ex:"A girl answered.",exCn:"一个女孩应了门。",ex2:"He answered the phone quickly.",ex2Cn:"他迅速接了电话。"},
+  {k:"shake",g:"壹",en:"shake",ph:"/ʃeɪk/",pos:"v.",cn:"摇；摇动",senses:"shake-shook-shaken；v. 摇动；握手",note:"shake one's head 摇头（否定/不相信）；shake hands 握手——身体部位短语。",syn:"shake / nod 辨析：shake one's head 摇头（表示不同意）；nod one's head 点头（表示同意）——反义动作。",phr:"shake one's head 摇头；shake hands 握手；shake the bottle 摇瓶子",ex:"The girl shook her head and said...",exCn:"女孩摇摇头说……",ex2:"The dog shook its body.",ex2Cn:"狗抖了抖身子。"},
+  {k:"point",g:"壹",en:"point",ph:"/pɔɪnt/",pos:"v. / n.",cn:"指；指向",senses:"v. ①指向 ②指出 ｜ n. ①要点 ②观点 ③小数点",note:"point to 指向（方向）；point at 指着（具体对象）；point out 指出。",syn:"point to / point at 辨析：point to 指向远处（She pointed to the hill）；point at 指着近处对象（point at the map）——指向 vs 指着。",phr:"point to 指向；point out 指出；to the point 切题",ex:"She pointed to something far away.",exCn:"她指向远处的某个东西。",ex2:"He pointed at the map and told us the way.",ex2Cn:"他指着地图给我们指路。"},
+  {k:"toonessurprise",g:"壹",en:"to one's surprise",ph:"",pos:"短语",cn:"令某人惊讶的是",senses:"surprise n. 惊讶 v. 使惊讶 → surprised（人）/ surprising（物）",note:"to one's + 情感名词：to my joy 令我高兴的是、to her disappointment 令她失望的是——写作加分句式。",syn:"surprised / surprising 辨析同 moved/moving：人用 -ed（I was surprised），物用 -ing（surprising news）。",phr:"to one's surprise 令某人惊讶的是；be surprised at 对……惊讶；in surprise 惊讶地",ex:"To his surprise, he saw his own house.",exCn:"令他惊讶的是，他看到的正是自己的房子。",ex2:"To my surprise, she won the first prize.",ex2Cn:"令我惊讶的是，她得了一等奖。"},
+  {k:"experience",g:"壹",en:"experience",ph:"/ɪkˈspɪəriəns/",pos:"v. / n.",cn:"经历；经验",senses:"v. 经历 ｜ n. [c] 经历 ｜ n. [u] 经验",note:"「经历」可数、[u]「经验」不可数——一词两义可数性不同，语法填空考点。",syn:"experience / experiment 辨析：experience 经历/经验；experiment 实验——拼写相近易混（exp- 开头）。",phr:"rich experience 丰富的经验；interesting experiences 有趣的经历；teaching experience 教学经验",ex:"He told them about what he experienced on that day.",exCn:"他告诉他们那天的经历。",ex2:"She has much experience in teaching.",ex2Cn:"她教学经验丰富。"},
+  {k:"lesson",g:"壹",en:"lesson",ph:"/ˈlesn/",pos:"n.",cn:"教训；一课",senses:"n. ①教训 ②课；功课",note:"learn a great lesson 学到重要一课；give sb. a lesson 给某人教训；have lessons 上课。",syn:"lesson / class 辨析：lesson 课文/一节课/教训；class 班级/一堂课（时间概念）——I have an English lesson in my class。",phr:"learn a lesson 吸取教训；have a lesson 上课；give sb. a lesson 教训某人",ex:"I have learnt a great lesson—our house has golden windows.",exCn:"我学到了重要的一课——我们的房子有金色的窗户。",ex2:"The accident taught him a lesson.",ex2Cn:"这次事故给了他一个教训。"},
+  {k:"inside",g:"壹",en:"inside",ph:"/ˌɪnˈsaɪd/",pos:"prep. / adv. / n.",cn:"在……里面；在里面",senses:"prep. 在……里面 ｜ adv. 在里面 ｜ n. 里面（反义 outside）",note:"inside out 里面朝外（穿反衣服）；inside of 在……之内；反义 outside。",syn:"inside / outside 反义对举；indoor（室内的）/ outdoor（户外的）——内外成对记。",phr:"inside 在里面；inside out 里面朝外；the inside of... 的内部",ex:"Inside, he saw his family and smiled.",exCn:"进屋后，他看到家人，笑了。",ex2:"It is warm inside the house.",ex2Cn:"房子里面很暖和。"},
+  {k:"faraway",g:"壹",en:"far away",ph:"",pos:"短语",cn:"遥远",senses:"far adv./adj. 远的；away adv. 远离",note:"far away 遥远（表语/后置定语）；faraway 连写作形容词（a faraway place 遥远的地方）。",syn:"far away / faraway 辨析：分开写作表语（The hill is far away）；连写作定语（a faraway village）。",phr:"far away 遥远；far away from 远离",ex:"She pointed to something far away.",exCn:"她指向远处的某个东西。",ex2:"My dream is to visit a faraway land.",ex2Cn:"我的梦想是去一个遥远的地方看看。"},
+  /* ---- 贰 · Tom 刷栅栏 ---- */
+  {k:"brush",g:"贰",en:"brush",ph:"/brʌʃ/",pos:"n. / v.",cn:"刷子；画笔；刷",senses:"n. 刷子；画笔 ｜ v. 刷；刷牙",note:"a brush 一把刷子；brush one's teeth 刷牙；paintbrush 画笔（paint+brush 合成）。",syn:"brush / paintbrush 辨析：brush 泛指各类刷子（toothbrush 牙刷）；paintbrush 专指绘画用笔。",phr:"a brush 一把刷子；brush one's teeth 刷牙；paint brush 画笔",ex:"Tom came out of his house with a brush and a big pot of white paint.",exCn:"汤姆拿着一把刷子和一大罐白漆走出家门。",ex2:"He brushes his teeth twice a day.",ex2Cn:"他每天刷两次牙。"},
+  {k:"paint",g:"贰",en:"paint",ph:"/peɪnt/",pos:"n. / v.",cn:"油漆；粉刷；绘画",senses:"n. 油漆；涂料 ｜ v. ①粉刷 ②画画",note:"paint the fence 粉刷栅栏；painter 画家/油漆工；painting 绘画（名词）。",syn:"paint / draw 辨析：paint 用颜料画（油画/水彩）或刷漆；draw 用线条画（素描/铅笔画）。",phr:"white paint 白漆；paint the fence 粉刷栅栏；paint a picture 画画",ex:"He put his brush in the paint and painted some of the fence.",exCn:"他把刷子蘸进漆里，刷了一部分栅栏。",ex2:"She painted a beautiful picture of the lake.",ex2Cn:"她画了一幅美丽的湖景画。"},
+  {k:"potof",g:"贰",en:"a pot of",ph:"",pos:"短语",cn:"一罐/一壶……",senses:"pot n. 罐；壶；锅",note:"a pot of + 不可数名词（a pot of paint 一罐漆）；量词短语链：a cup of 一杯、a glass of 一玻璃杯。",syn:"a pot of / a cup of / a glass of 辨析：pot 罐/壶（大量）；cup 茶杯（带柄）；glass 玻璃杯（透明）。",phr:"a pot of paint 一罐漆；a pot of tea 一壶茶",ex:"Tom came out of his house with a big pot of white paint in his hand.",exCn:"汤姆手里拿着一大罐白漆走出家门。",ex2:"Grandma made a pot of tea for us.",ex2Cn:"奶奶给我们泡了一壶茶。"},
+  {k:"fence",g:"贰",en:"fence",ph:"/fens/",pos:"n.",cn:"栅栏；篱笆",senses:"n. 栅栏；篱笆",note:"文中 the fence 三米高、三十米长——汤姆的「苦差」；fence 音 /fens/。",syn:"fence / wall 辨析：fence 木栅栏/篱笆（透风透光）；wall 墙（砖石实心）——栅栏 vs 墙。",phr:"paint the fence 粉刷栅栏；the other side of the fence 栅栏的另一边",ex:"He looked at the fence; it was three metres high and thirty metres long.",exCn:"他看了看栅栏——三米高、三十米长。",ex2:"There is a white fence around the garden.",ex2Cn:"花园周围有一圈白色栅栏。"},
+  {k:"metre",g:"贰",en:"metre",ph:"/ˈmiːtə/",pos:"n.",cn:"米（长度单位）",senses:"metre（英式）= meter（美式）；three metres high 三米高",note:"数字 + metres long/wide/high 表长/宽/高；注意复数 s（three metres）。",syn:"metre / meter 辨析：英式 metre、美式 meter；千米 kilometre/kilometer——英美拼写对照。",phr:"three metres high 三米高；thirty metres long 三十米长",ex:"It was three metres high and thirty metres long.",exCn:"它三米高、三十米长。",ex2:"The bridge is 100 metres long.",ex2Cn:"这座桥长 100 米。"},
+  {k:"unhappiest",g:"贰",en:"unhappiest",ph:"/ʌnˈhæpiɪst/",pos:"adj.",cn:"最不开心的",senses:"happy → unhappy → unhappiest（多音节也可 most unhappy）",note:"un- 前缀表否定（unhappy 不开心）；the unhappiest boy in the village 村里最不开心的男孩——最高级前加 the。",syn:"unhappy / sad 辨析：unhappy 不开心（反 happy，程度较轻）；sad 悲伤（程度更深）；unhappiest 最高级。",phr:"the unhappiest boy 最不开心的男孩；feel unhappy 感到不开心",ex:"He was the unhappiest boy in the village.",exCn:"他是村里最不开心的男孩。",ex2:"She felt unhappy about the result.",ex2Cn:"她对结果感到不开心。"},
+  {k:"infrontof",g:"贰",en:"in front of",ph:"",pos:"短语",cn:"在……前面",senses:"—",note:"in front of（外部的前面）vs in the front of（内部的前部）——高频易混介词短语。",syn:"in front of / in the front of 辨析：in front of the house 房子前面（外部）；in the front of the house 房子前部（内部，如教室前排）——一字之差，位置不同。",phr:"in front of 在……前面；in the front of 在……前部",ex:"There were hours of work in front of him.",exCn:"他面前还有几个小时的活。",ex2:"There is a tree in front of the classroom.",ex2Cn:"教室前面有一棵树。"},
+  {k:"takeup",g:"贰",en:"take up",ph:"",pos:"短语",cn:"拿起；开始从事",senses:"—",note:"take up 三义：拿起（工具）/ 开始从事（爱好/工作）/ 占据（时间/空间）——文中是「拿起」。",syn:"take up / pick up 辨析：pick up 捡起/接人/顺带学会；take up 拿起/开始从事/占据——pick up 顺手、take up 有意。",phr:"take up the brush 拿起刷子；take up painting 开始从事绘画；take up time 占时间",ex:"He took up the brush again and began to work.",exCn:"他又拿起刷子开始干活。",ex2:"She took up the piano at the age of five.",ex2Cn:"她五岁开始学钢琴。"},
+  {k:"comeoutof",g:"贰",en:"come out of",ph:"",pos:"短语",cn:"从……出来",senses:"—",note:"come out of + 地点（从某处出来）；come out 单独用还表「出版/开花」。",syn:"come out of / get out of 辨析：come out of 自然出来；get out of 逃离/摆脱（get out of trouble 摆脱麻烦）——积累小栈第 1 题。",phr:"come out of 从……出来；come out 出来；出版",ex:"Tom came out of his house with a brush.",exCn:"汤姆拿着刷子从家里出来。",ex2:"She came out of the library with a book.",ex2Cn:"她拿着一本书从图书馆出来。"},
+  {k:"comeupto",g:"贰",en:"come up to",ph:"",pos:"短语",cn:"走到……跟前",senses:"—",note:"come up to sb. 走近某人；come 朝说话者来，go 离开说话者去——文中叙述者在 Tom 这边，故 Joe 用 came。",syn:"come up to / go up to 辨析：come 表「向叙述者/说话人方向来」；go 表「离开说话人去」——叙事视角决定动词。",phr:"come up to 走到……跟前；come over 过来",ex:"He came up to Tom and looked at the fence.",exCn:"他走到汤姆跟前，看着栅栏。",ex2:"The little boy came up to me and smiled.",ex2Cn:"小男孩走到我跟前，笑了。"},
+  {k:"upanddown",g:"贰",en:"up and down",ph:"",pos:"短语",cn:"上上下下；来来回回",senses:"—",note:"the paint brush moved up and down 刷子上下移动；walk up and down 走来走去——动作反复。",syn:"up and down / back and forth 辨析：up and down 上下/来回（纵向）；back and forth 来回（横向）——方向不同。",phr:"up and down 上上下下；move up and down 上下移动；walk up and down 走来走去",ex:"Tom said nothing. The paint brush moved up and down.",exCn:"汤姆什么也没说。画笔上下移动着。",ex2:"He walked up and down the room.",ex2Cn:"他在房间里走来走去。"},
+  {k:"perhaps",g:"贰",en:"perhaps",ph:"/pəˈhæps/",pos:"adv.",cn:"也许",senses:"—",note:"= maybe；perhaps 较正式，用于句首或句中；Perhaps it is and perhaps it isn't 套语式让步。",syn:"perhaps / maybe / probably 辨析：maybe 口语常用；perhaps 正式；probably 可能性较大（probably the best）——语气递进。",phr:"perhaps it is 也许是；perhaps not 也许不",ex:"\"Perhaps it is and perhaps it isn't. But I like it,\" said Tom.",exCn:"「也许是，也许不是。可我喜欢，」汤姆说。",ex2:"Perhaps he will come tomorrow.",ex2Cn:"也许他明天会来。"},
+  {k:"carefully",g:"贰",en:"carefully",ph:"/ˈkeəfəli/",pos:"adv.",cn:"仔细地",senses:"careful adj. 仔细的 → carefully adv.",note:"careful+ly → carefully；反义 carelessly 粗心地；listen carefully 认真听——课堂指令高频。",syn:"carefully / carelessly 反义对照；近义 attentively 专注地——细心 vs 粗心。",phr:"very carefully 非常仔细地；listen carefully 认真听；work carefully 仔细干活",ex:"Tom painted very slowly and carefully.",exCn:"汤姆刷得很慢、很仔细。",ex2:"Please listen carefully to the teacher.",ex2Cn:"请认真听老师讲课。"},
+  {k:"withasmile",g:"贰",en:"with a smile",ph:"",pos:"短语",cn:"微笑着",senses:"smile n./v. 微笑",note:"with a smile = smilingly；with 表伴随状态（with tears in his eyes 眼含泪水）。",syn:"smile / laugh 辨析：smile 微笑（不出声，嘴角上扬）；laugh 大笑（出声）——笑的程度不同。",phr:"with a smile 微笑着；smile at 对……微笑；with tears 流着泪",ex:"He often stopped, moved back from the fence and looked at his work with a smile.",exCn:"他常常停下来，退后几步，微笑着看着自己的作品。",ex2:"She greeted me with a smile.",ex2Cn:"她微笑着和我打招呼。"},
+  {k:"getinterested",g:"贰",en:"get interested",ph:"",pos:"短语",cn:"变得感兴趣",senses:"interest n. 兴趣 v. 使感兴趣 → interested/interesting",note:"be/get interested in 对……感兴趣（-ed 修饰人）；get + adj. 表状态变化（get interested 变得感兴趣）。",syn:"interested / interesting 辨析同 moved/moving：人用 -ed（Joe got interested），物用 -ing（an interesting story）。",phr:"get interested 变得感兴趣；be interested in 对……感兴趣",ex:"Joe began to get very interested.",exCn:"乔开始变得很感兴趣。",ex2:"He became interested in reading.",ex2Cn:"他变得对阅读感兴趣。"},
+  {k:"forasecond",g:"贰",en:"for a second",ph:"",pos:"短语",cn:"片刻；一会儿",senses:"second n. ①秒 ②第二",note:"for a second = for a moment 片刻；second 一词多义（second 第二/秒）；wait a second 等一下。",syn:"for a second / for a moment / for a while 辨析：second 最短（一秒）；moment 片刻；while 可长可短（a long while 很久）——时间长度递进。",phr:"for a second 片刻；wait a second 等一下；the second time 第二次",ex:"Tom thought for a second and said...",exCn:"汤姆想了一会儿说……",ex2:"Just wait a second, please.",ex2Cn:"请等一下。"},
+  {k:"aunt",g:"贰",en:"aunt",ph:"/ɑːnt/",pos:"n.",cn:"阿姨；姑姑；伯母",senses:"aunt 泛指姑/姨/婶/伯母；uncle 泛指叔/伯/舅/姑父",note:"Aunt + 名字（Aunt Mary 玛丽阿姨）；英语中 aunt 不细分姑姨——与中文亲属称谓不同。",syn:"aunt / auntie 辨析：auntie 是 aunt 的昵称，儿童口语用（Hi, Auntie!）；正式场合用 aunt。",phr:"my aunt 我的姑姑；Aunt Mary 玛丽阿姨",ex:"\"Working for your aunt?\" said Joe.",exCn:"「替你姑姑干活？」乔说。",ex2:"My aunt teaches Chinese in a middle school.",ex2Cn:"我姑姑在中学教语文。"},
+  {k:"river",g:"贰",en:"river",ph:"/ˈrɪvə/",pos:"n.",cn:"河；河流",senses:"n. 河；河流",note:"go down to the river 去河边；by the river 在河边；river 音 /ˈrɪvə/。",syn:"river / stream / lake 辨析：stream 小溪；river 河；lake 湖——水体大小递进。",phr:"go down to the river 去河边；by the river 在河边",ex:"I'm going down to the river. I'm sorry you can't come with me.",exCn:"我要去河边。真遗憾你不能一起去。",ex2:"We often swim in the river in summer.",ex2Cn:"夏天我们常在河里游泳。"},
+  {k:"haveanidea",g:"贰",en:"have an idea",ph:"",pos:"短语",cn:"有个主意",senses:"idea n. ①主意 ②想法",note:"have a good/wonderful idea 有好主意；have no idea 不知道（口语高频）；a wonderful idea 绝妙的主意。",syn:"have an idea / come up with an idea 辨析：have an idea 自然想到；come up with 强调「想出」（努力过程）——文中 a wonderful idea 是「灵光一现」。",phr:"have an idea 有个主意；a good idea 好主意；have no idea 不知道",ex:"After ten minutes, Tom had an idea, a wonderful idea.",exCn:"十分钟后，汤姆有了一个主意，一个绝妙的主意。",ex2:"I have a good idea for the weekend.",ex2Cn:"我对周末有个好主意。"},
+  {k:"sitdown",g:"贰",en:"sit down",ph:"",pos:"短语",cn:"坐下",senses:"sit v. 坐 → sit-sat-sat；seat n. 座位",note:"sit-sat-sat 不规则变化；反义 stand up 起立；take a seat 请坐（更礼貌）。",syn:"sit / seat 辨析：sit 坐（不及物，sit down）；seat 座位（名词）/ 使就座（及物，be seated 坐下）——及物与不及物。",phr:"sit down 坐下；stand up 起立；take a seat 请坐",ex:"He sat down and ate Joe's apple.",exCn:"他坐下来，吃了乔的苹果。",ex2:"Please sit down and have a rest.",ex2Cn:"请坐下休息一下。"},
+];
+const V = {};
+VOCAB.forEach(o=>V[o.k]=o);
+
+/* ---- 阅读表达（开放问答） ---- */
+const Q_E=[
+ {n:1,tag:"细节理解题",sent:"Why did Tom feel unhappy at the beginning of the story?",
+  ana:["参考答案：<span class='key'>Because he had to paint the fence alone and there were hours of work in front of him.</span>（因为他得独自刷栅栏，面前还有几个小时的活。）","定位首段：it was three metres high and thirty metres long... There were hours of work in front of him and he was the unhappiest boy in the village。","答题要点：工作量大（三米高、三十米长）+ 独自干活 + 时间漫长。用 Because... 完整回答。"]},
+ {n:2,tag:"细节理解题",sent:"What did Tom do when he saw Joe Harper in the street?",
+  ana:["参考答案：<span class='key'>He didn't look at him and said nothing. The paint brush moved up and down.</span>（他没有看他，什么也没说，画笔上下移动着。）","定位第二、四段：He saw his friend Joe Harper in the street, but he didn't look at him... Tom said nothing. The paint brush moved up and down。","答题要点：不看乔 + 沉默 + 慢慢刷——这是汤姆「欲擒故纵」计策的开始，故意装作没看见、很投入。"]},
+ {n:3,tag:"推理判断题",sent:"Why did Tom say \"I like it\" when talking about painting the fence?",
+  ana:["参考答案：<span class='key'>Because he wanted Joe to think painting was fun so that Joe would ask to paint it.</span>（因为他想让乔觉得刷漆有趣，这样乔就会主动要求刷——汤姆的妙计。）","定位：Of course, it's work!... But I like it... I can't paint a fence very often——汤姆故意说刷栅栏是难得的「乐事」。","深层理解：这是马克·吐温笔下的经典计谋——「物以稀为贵」心理，让干活显得像特权，别人就会抢着干。开放题也可答：He wanted to trick Joe into doing his work。"]},
+ {n:4,tag:"细节理解题",sent:"What did Joe give Tom in order to get the chance to paint the fence?",
+  ana:["参考答案：<span class='key'>All his apple.</span>（他全部的苹果。）","定位末段：OK, you can have all my apple! Tom gave Joe the brush... He sat down and ate Joe's apple。","答题要点：all his apple（整个苹果）——乔用苹果「换」到了刷栅栏的机会，汤姆反而坐享其成。"]},
+ {n:5,tag:"新考法·开放性设问",sent:"What do you think of Tom? Give the reasons.",
+  ana:["参考答案（开放，言之成理即可）：<span class='key'>I think Tom is clever and good at thinking. Because he had a wonderful idea to get Joe to paint the fence for him and even got Joe's apple.</span>","其他可接受角度：①naughty but clever（淘气但聪明）——他用小计谋逃避劳动；②lazy but smart（懒但机灵）——不愿干活却善于动脑；③a good storyteller/actor（好演员）——刷得慢、退后看、微笑，表演得像真的喜欢。","答题模板：观点（I think Tom is...）+ 理由（Because he...），引用文中行为作证据。"]},
+];
+
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");}
+function renderQE(box,Q){
+  let h='';
+  Q.forEach(q=>{
+    h+=`<div class="qitem"><div class="qs"><span class="qn">( ${q.n} )</span>${esc(q.sent)}<span class="qtag">${esc(q.tag)}</span></div><button class="btn-ana" type="button">答案与解析</button><ul class="ana">`;
+    q.ana.forEach(a=>h+=`<li>${a}</li>`);
+    h+=`</ul></div>`;
+  });
+  box.innerHTML=h;
+}
+renderQE(document.getElementById("quesE"),Q_E);
+
+/* ---- 生词汇总 ---- */
+const GN={"壹":"壹 · 小金窗（寓言故事）","贰":"贰 · Tom 刷栅栏（文学名著）"};
+function renderVocab(filter){
+  const f=(filter||"").trim().toLowerCase();
+  let h='';
+  Object.keys(GN).forEach(g=>{
+    const list=VOCAB.filter(o=>o.g===g && (!f || o.en.toLowerCase().includes(f) || o.cn.includes(f)));
+    if(!list.length) return;
+    h+=`<div class="vgrp">${GN[g]}（${list.length}）</div><div class="vgrid">`;
+    list.forEach(o=>{
+      h+=`<div class="vcard" data-k="${esc(o.k)}" title="点击查看完整详解"><button class="spk" data-k="${esc(o.k)}" title="发音">🔊</button><span class="ve">${esc(o.en)}</span><span class="vph">${esc(o.ph)}</span><div class="vpos">${esc(o.pos)} · ${esc(o.cn)}</div>${o.syn?`<div class="vsyn">🔗 ${esc(o.syn)}</div>`:""}${o.phr?`<div class="vphr">🧩 ${esc(o.phr)}</div>`:""}<div class="vcn">💡 ${esc(o.note)}</div>${o.ex?`<div class="vex">${esc(o.ex)}<br>${esc(o.exCn)}</div>`:""}<div class="vmore">点击卡片查看完整详解 →</div></div>`;
+    });
+    h+=`</div>`;
+  });
+  if(!h) h=`<p style="color:var(--muted);margin-top:20px">没有匹配「${esc(filter)}」的生词。</p>`;
+  document.getElementById("vocabBox").innerHTML=h;
+}
+renderVocab("");
+
+/* ---- 弹窗 ---- */
+const pop=document.getElementById("pop");
+function openPop(el,k){
+  const o=V[k]; if(!o) return;
+  pop.innerHTML=`<button class="pclose" id="pclose">✕</button><div class="pw">${esc(o.en)}<span class="pph">${esc(o.ph)}</span><button class="speak" data-k="${esc(o.k)}">🔊</button></div><div class="pcn"><span class="vpos">${esc(o.pos)}</span> ${esc(o.cn)}</div>${o.senses&&o.senses!=="—"?`<div class="prow">📌 义项：${esc(o.senses)}</div>`:""}${o.note?`<div class="pnote">💡 用法：${esc(o.note)}</div>`:""}${o.syn?`<div class="prow psyn">🔗 近义词辨析：${esc(o.syn)}</div>`:""}${o.phr?`<div class="prow ppfr">🧩 短语搭配：${esc(o.phr)}</div>`:""}${o.ex?`<div class="pex">✎ ${esc(o.ex)}<em>${esc(o.exCn)}</em></div>`:""}${o.ex2?`<div class="pex">✎ ${esc(o.ex2)}<em>${esc(o.ex2Cn)}</em></div>`:""}`;
+  const r=el.getBoundingClientRect();
+  pop.style.display="block";
+  const pw=pop.offsetWidth,ph=pop.offsetHeight;
+  let x=Math.min(Math.max(10,r.left),window.innerWidth-pw-10);
+  let y=r.bottom+8; if(y+ph>window.innerHeight-10) y=Math.max(10,r.top-ph-8);
+  pop.style.left=x+"px"; pop.style.top=y+"px";
+  document.getElementById("pclose").onclick=()=>pop.style.display="none";
+}
+function closePop(){pop.style.display="none";}
+document.addEventListener("click",e=>{
+  const w=e.target.closest(".w");
+  if(w){openPop(w,w.dataset.k);return;}
+  const sp=e.target.closest(".spk,#pop .speak");
+  if(sp){speak(sp.dataset.k||sp.closest(".vcard,#pop").querySelector(".ve,.pw").textContent.split("/")[0].trim());return;}
+  const vc=e.target.closest(".vcard");
+  if(vc){const o=V[vc.dataset.k];if(o)openPop(vc,vc.dataset.k);return;}
+  if(!e.target.closest("#pop")) closePop();
+  const ba=e.target.closest(".btn-ana");
+  if(ba){ba.nextElementSibling.classList.toggle("open");return;}
+  const bl=e.target.closest(".blank");
+  if(bl){bl.classList.toggle("open");return;}
+});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closePop();});
+window.addEventListener("scroll",()=>{closePop();
+  const d=document.documentElement;
+  document.getElementById("progress").style.width=(d.scrollTop/(d.scrollHeight-d.clientHeight)*100||0)+"%";
+  document.getElementById("backtop").style.display=d.scrollTop>600?"block":"none";
+},{passive:true});
+document.getElementById("backtop").onclick=()=>window.scrollTo({top:0,behavior:"smooth"});
+
+/* ---- 发音 ---- */
+function speak(t){
+  if(!("speechSynthesis" in window)) return;
+  speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(t); u.lang="en-US"; u.rate=.9;
+  speechSynthesis.speak(u);
+}
+
+/* ---- 工具栏 ---- */
+const bodyCls=(c)=>document.body.classList.toggle(c);
+document.getElementById("btnAll").onclick=function(){const on=bodyCls("showall");this.textContent=on?"隐藏释义":"显示全部释义";};
+document.getElementById("btnAns").onclick=function(){const on=bodyCls("showans");this.textContent=on?"隐藏答案":"显示全部答案";document.querySelectorAll(".ana").forEach(x=>x.classList.toggle("open",on));};
+document.getElementById("btnDark").onclick=function(){const on=bodyCls("dark");this.textContent=on?"日间模式":"夜间模式";};
+document.getElementById("btnPrint").onclick=()=>window.print();
+document.getElementById("vsearch").addEventListener("input",e=>renderVocab(e.target.value));
+</script>
+</body>
+</html>
