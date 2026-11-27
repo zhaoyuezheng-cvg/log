@@ -6,437 +6,491 @@
 <title>七年级主题作文范文集</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700;900&family=ZCOOL+XiaoWei&family=LXGW+WenKai:wght@300;400;700&display=swap" rel="stylesheet">
 <style>
-/* ========== CSS Variables ========== */
+/* ===== Design Tokens ===== */
 :root {
-  --bg-primary: #F7F3EE;
-  --bg-secondary: #FFFEF9;
-  --bg-sidebar: #2C2C2C;
-  --bg-sidebar-hover: #3A3A3A;
-  --text-primary: #3D3D3D;
-  --text-secondary: #6B6B6B;
-  --text-sidebar: #E8E0D4;
-  --text-sidebar-dim: #9A9A9A;
-  --accent: #C97B4D;
-  --accent-hover: #B8693F;
-  --accent-light: #F5E6D3;
-  --accent-glow: rgba(201, 123, 77, 0.3);
-  --border: #E8E0D4;
-  --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
-  --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
-  --shadow-lg: 0 8px 30px rgba(0,0,0,0.12);
-  --highlight-bg: #FFF3CD;
-  --highlight-text: #856404;
-  --essay-bg: #FFFEF9;
-  --header-bg: rgba(255,254,249,0.95);
-  --card-shadow: 0 3px 12px rgba(0,0,0,0.06);
-  --card-hover-shadow: 0 6px 24px rgba(0,0,0,0.10);
-  --sidebar-width: 280px;
-  --header-height: 64px;
+  --bg-page: #F9F5EF;
+  --bg-card: #FFFFFF;
+  --bg-elevated: #FFFCF5;
+  --bg-muted: #F3EDE4;
+  --bg-header: rgba(249,245,239,0.88);
+  --bg-sidebar: linear-gradient(180deg, #1C1917 0%, #292524 100%);
+  
+  --text-primary: #1C1917;
+  --text-secondary: #57534E;
+  --text-tertiary: #A8A29E;
+  
+  --accent: #B45309;
+  --accent-light: #FEF3C7;
+  --accent-glow: rgba(180,83,9,0.08);
+  --accent-border: #F59E0B;
+  
+  --highlight-yellow: #FEF9C3;
+  --highlight-green: #D1FAE5;
+  --highlight-pink: #FCE7F3;
+  --highlight-blue: #DBEAFE;
+  
+  --border-subtle: #E7E5E4;
+  --border-medium: #D6D3D1;
+  
+  --shadow-xs: 0 1px 3px rgba(28,25,23,0.04);
+  --shadow-sm: 0 2px 8px rgba(28,25,23,0.06);
+  --shadow-md: 0 4px 20px rgba(28,25,23,0.08);
+  --shadow-lg: 0 8px 40px rgba(28,25,23,0.12);
+  --shadow-xl: 0 20px 60px rgba(28,25,23,0.15);
+  
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  
+  --sidebar-w: 270px;
+  --header-h: 66px;
+  
+  --font-display: "ZCOOL XiaoWei", "Noto Serif SC", serif;
   --font-serif: "Noto Serif SC", "Songti SC", "SimSun", serif;
-  --font-sans: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-  --font-display: "ZCOOL XiaoWei", serif;
+  --font-kai: "LXGW WenKai", "KaiTi", "STKaiti", serif;
+  --font-sans: "PingFang SC", -apple-system, "Microsoft YaHei", sans-serif;
+  
   --base-size: 16px;
-  --line-height: 1.85;
-  --letter-spacing: 0.02em;
+  --lh-body: 2.0;
+  --ls-body: 0.04em;
+  
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 [data-theme="dark"] {
-  --bg-primary: #1A1A1A;
-  --bg-secondary: #242424;
-  --bg-sidebar: #141414;
-  --bg-sidebar-hover: #2A2A2A;
-  --text-primary: #E0D6C8;
-  --text-secondary: #9A9088;
-  --text-sidebar: #D4C8B8;
-  --text-sidebar-dim: #6A6A6A;
-  --accent: #D4956A;
-  --accent-hover: #C97B4D;
-  --accent-light: #2A2420;
-  --accent-glow: rgba(212, 149, 106, 0.25);
-  --border: #3A3A3A;
-  --shadow-sm: 0 2px 8px rgba(0,0,0,0.2);
-  --shadow-md: 0 4px 16px rgba(0,0,0,0.3);
-  --shadow-lg: 0 8px 30px rgba(0,0,0,0.4);
-  --highlight-bg: #3D3520;
-  --highlight-text: #FFD700;
-  --essay-bg: #242424;
-  --header-bg: rgba(36,36,36,0.95);
-  --card-shadow: 0 3px 12px rgba(0,0,0,0.2);
-  --card-hover-shadow: 0 6px 24px rgba(0,0,0,0.3);
+  --bg-page: #0C0A09;
+  --bg-card: #1C1917;
+  --bg-elevated: #292524;
+  --bg-muted: #1C1917;
+  --bg-header: rgba(12,10,9,0.88);
+  
+  --text-primary: #E7E5E4;
+  --text-secondary: #A8A29E;
+  --text-tertiary: #57534E;
+  
+  --accent: #F59E0B;
+  --accent-light: rgba(245,158,11,0.08);
+  --accent-glow: rgba(245,158,11,0.04);
+  --accent-border: #92400E;
+  
+  --highlight-yellow: rgba(254,249,195,0.08);
+  --highlight-green: rgba(209,250,229,0.06);
+  --highlight-pink: rgba(252,231,243,0.06);
+  --highlight-blue: rgba(219,234,254,0.06);
+  
+  --border-subtle: #292524;
+  --border-medium: #44403C;
+  
+  --shadow-xs: 0 1px 3px rgba(0,0,0,0.2);
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.25);
+  --shadow-md: 0 4px 20px rgba(0,0,0,0.3);
+  --shadow-lg: 0 8px 40px rgba(0,0,0,0.4);
+  --shadow-xl: 0 20px 60px rgba(0,0,0,0.5);
 }
 
-/* ========== Reset ========== */
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; font-size: var(--base-size); -webkit-text-size-adjust: 100%; }
-
+/* ===== Reset & Base ===== */
+*,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; font-size:var(--base-size); -webkit-text-size-adjust:100%; }
 body {
   font-family: var(--font-serif);
-  background: var(--bg-primary);
+  background: var(--bg-page);
   color: var(--text-primary);
-  line-height: var(--line-height);
-  letter-spacing: var(--letter-spacing);
-  transition: background 0.4s ease, color 0.4s ease;
+  line-height: var(--lh-body);
+  letter-spacing: var(--ls-body);
+  transition: background 0.4s, color 0.4s;
   overflow-x: hidden;
 }
+::selection { background:var(--accent); color:white; }
+::-webkit-scrollbar { width:5px; }
+::-webkit-scrollbar-track { background:transparent; }
+::-webkit-scrollbar-thumb { background:var(--border-medium); border-radius:3px; }
 
-/* ========== Progress Bar ========== */
+/* ===== Progress Bar ===== */
 #progressBar {
-  position: fixed; top: 0; left: 0; width: 0%; height: 3px;
-  background: linear-gradient(90deg, var(--accent), #E8A87C);
-  z-index: 10000; transition: width 0.1s linear;
-  box-shadow: 0 1px 3px var(--accent-glow);
+  position:fixed; top:0; left:0; width:0%; height:3px;
+  background:linear-gradient(90deg,#F59E0B,#D97706,#B45309);
+  z-index:10001; transition:width 0.06s linear;
+  border-radius:0 2px 2px 0;
 }
 
-/* ========== Header ========== */
+/* ===== Header ===== */
 .header {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
-  background: var(--header-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
-  height: var(--header-height);
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0 30px;
-  box-shadow: var(--shadow-sm);
-  transition: all 0.3s ease;
+  position:fixed; top:0; left:0; right:0; z-index:9999;
+  background:var(--bg-header);
+  backdrop-filter:blur(20px) saturate(180%);
+  -webkit-backdrop-filter:blur(20px) saturate(180%);
+  border-bottom:1px solid var(--border-subtle);
+  height:var(--header-h);
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0 28px;
+  transition:all 0.3s;
 }
-
+.header.scrolled { box-shadow:var(--shadow-sm); }
+.header-left { display:flex; align-items:center; gap:16px; }
 .header h1 {
-  font-family: var(--font-display);
-  font-size: 1.5rem; color: var(--accent);
-  font-weight: 700; letter-spacing: 2px; white-space: nowrap;
+  font-family:var(--font-display); font-size:1.35rem;
+  color:var(--accent); letter-spacing:3px; white-space:nowrap;
 }
+.header-controls { display:flex; align-items:center; gap:10px; }
 
-.header-controls { display: flex; align-items: center; gap: 12px; }
-
-/* Search */
-.search-box { position: relative; display: flex; align-items: center; }
+.search-box { position:relative; display:flex; align-items:center; }
 .search-box input {
-  padding: 8px 15px 8px 38px; border: 1.5px solid var(--border);
-  border-radius: 25px; width: 260px; font-size: 0.9rem;
-  font-family: var(--font-sans); background: var(--bg-primary);
-  color: var(--text-primary); transition: all 0.3s ease; outline: none;
+  padding:8px 34px 8px 36px; border:1.5px solid var(--border-subtle);
+  border-radius:26px; width:220px; font-size:0.86rem;
+  font-family:var(--font-sans); background:var(--bg-card);
+  color:var(--text-primary); transition:all 0.3s; outline:none;
 }
 .search-box input:focus {
-  border-color: var(--accent); width: 320px;
-  box-shadow: 0 0 0 3px var(--accent-glow);
+  border-color:var(--accent); width:290px;
+  box-shadow:0 0 0 3px var(--accent-glow);
 }
-.search-box::before {
-  content: "\2756"; position: absolute; left: 14px; top: 50%;
-  transform: translateY(-50%); font-size: 0.9rem;
-  color: var(--text-secondary); pointer-events: none;
+.search-box .si {
+  position:absolute; left:12px; top:50%; transform:translateY(-50%);
+  font-size:0.82rem; color:var(--text-tertiary); pointer-events:none;
 }
-.search-box .search-clear {
-  position: absolute; right: 12px; top: 50%;
-  transform: translateY(-50%); background: none; border: none;
-  color: var(--text-secondary); cursor: pointer; font-size: 1rem;
-  display: none; padding: 2px 6px; border-radius: 50%;
-  transition: all 0.2s;
+.search-box .sc {
+  position:absolute; right:10px; top:50%; transform:translateY(-50%);
+  background:none; border:none; color:var(--text-tertiary);
+  cursor:pointer; font-size:0.9rem; display:none; padding:2px 5px;
+  border-radius:50%; transition:all 0.2s;
 }
-.search-box .search-clear:hover { color: var(--accent); background: var(--accent-light); }
-.search-box .search-clear.show { display: block; }
+.search-box .sc:hover { color:var(--accent); background:var(--accent-light); }
+.search-box .sc.show { display:block; }
 
-/* Header Buttons */
-.header-btn {
-  background: none; border: 1.5px solid var(--border);
-  border-radius: 25px; padding: 6px 16px; cursor: pointer;
-  font-size: 0.85rem; color: var(--text-secondary);
-  font-family: var(--font-sans); transition: all 0.3s ease;
-  display: flex; align-items: center; gap: 5px; white-space: nowrap;
+.hdr-btn {
+  background:var(--bg-card); border:1.5px solid var(--border-subtle);
+  border-radius:26px; padding:6px 14px; cursor:pointer;
+  font-size:0.8rem; color:var(--text-secondary);
+  font-family:var(--font-sans); transition:all 0.25s;
+  display:flex; align-items:center; gap:5px; white-space:nowrap;
 }
-.header-btn:hover {
-  border-color: var(--accent); color: var(--accent); background: var(--accent-light);
-}
+.hdr-btn:hover { border-color:var(--accent); color:var(--accent); background:var(--accent-light); }
+.hdr-btn.active { border-color:var(--accent); color:var(--accent); background:var(--accent-light); }
 
-/* Font Size Controls */
 .font-controls {
-  display: flex; align-items: center; gap: 4px;
-  background: var(--bg-primary); border: 1.5px solid var(--border);
-  border-radius: 25px; padding: 4px 8px;
+  display:flex; align-items:center; gap:2px;
+  background:var(--bg-card); border:1.5px solid var(--border-subtle);
+  border-radius:26px; padding:3px 6px;
 }
 .font-btn {
-  background: none; border: none; width: 28px; height: 28px;
-  border-radius: 50%; cursor: pointer; font-size: 0.85rem;
-  color: var(--text-secondary); display: flex; align-items: center;
-  justify-content: center; transition: all 0.2s;
-  font-family: var(--font-sans);
+  background:none; border:none; width:25px; height:25px;
+  border-radius:50%; cursor:pointer; font-size:0.78rem;
+  color:var(--text-secondary); display:flex; align-items:center;
+  justify-content:center; transition:all 0.2s; font-family:var(--font-sans);
 }
-.font-btn:hover { background: var(--accent-light); color: var(--accent); }
-.font-size-display {
-  font-size: 0.8rem; color: var(--text-secondary);
-  min-width: 32px; text-align: center; font-family: var(--font-sans);
-}
+.font-btn:hover { background:var(--accent-light); color:var(--accent); }
+.font-size-display { font-size:0.72rem; color:var(--text-tertiary); min-width:26px; text-align:center; font-family:var(--font-sans); }
 
-/* Mobile Toggle */
 .mobile-toggle {
-  display: none; background: none; border: none;
-  font-size: 1.5rem; color: var(--text-primary);
-  cursor: pointer; padding: 5px; line-height: 1;
+  display:none; background:none; border:none; font-size:1.4rem;
+  color:var(--text-primary); cursor:pointer; padding:5px; line-height:1;
 }
 
-/* ========== Sidebar ========== */
+/* ===== Sidebar ===== */
 .sidebar {
-  position: fixed; top: 0; left: 0; bottom: 0;
-  width: var(--sidebar-width); background: var(--bg-sidebar);
-  color: var(--text-sidebar); overflow-y: auto; z-index: 9998;
-  padding-top: calc(var(--header-height) + 20px);
-  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+  position:fixed; top:0; left:0; bottom:0;
+  width:var(--sidebar-w); background:var(--bg-sidebar);
+  color:#FAFAF9; overflow-y:auto; z-index:9998;
+  padding-top:calc(var(--header-h) + 20px);
+  transition:transform 0.4s cubic-bezier(0.4,0,0.2,1);
+  scrollbar-width:thin; scrollbar-color:rgba(255,255,255,0.1) transparent;
 }
-.sidebar::-webkit-scrollbar { width: 5px; }
-.sidebar::-webkit-scrollbar-track { background: transparent; }
-.sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 3px; }
-
-.sidebar-header {
-  padding: 10px 20px 20px; border-bottom: 1px solid rgba(255,255,255,0.08);
-  margin-bottom: 10px;
-}
-.sidebar-header h2 {
-  font-family: var(--font-display); font-size: 1.15rem;
-  color: var(--accent); letter-spacing: 2px;
-}
-.sidebar ul { list-style: none; padding: 0 10px; }
-.sidebar li { margin-bottom: 2px; }
+.sidebar::-webkit-scrollbar { width:4px; }
+.sidebar::-webkit-scrollbar-thumb { background:rgba(255,255,255,0.1); border-radius:2px; }
+.sidebar-header { padding:10px 18px 18px; border-bottom:1px solid rgba(255,255,255,0.05); margin-bottom:8px; }
+.sidebar-header h2 { font-family:var(--font-display); font-size:1rem; color:var(--accent); letter-spacing:3px; opacity:0.9; }
+.sidebar-header .sidebar-stats { margin-top:6px; font-size:0.72rem; color:rgba(255,255,255,0.35); font-family:var(--font-sans); }
+.sidebar ul { list-style:none; padding:0 8px; }
+.sidebar li { margin-bottom:1px; }
 .sidebar li a {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 10px 16px; color: var(--text-sidebar-dim);
-  text-decoration: none; font-size: 0.9rem;
-  font-family: var(--font-sans); transition: all 0.25s ease;
-  border-left: 3px solid transparent;
-  border-radius: 0 8px 8px 0;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:10px 14px; color:rgba(255,255,255,0.5);
+  text-decoration:none; font-size:0.85rem; font-family:var(--font-sans);
+  transition:all 0.25s; border-left:3px solid transparent;
+  border-radius:0 var(--radius-sm) var(--radius-sm) 0; margin:0 2px;
 }
-.sidebar li a:hover {
-  background: var(--bg-sidebar-hover); color: var(--text-sidebar);
-  border-left-color: var(--accent);
-}
-.sidebar li a.active {
-  background: rgba(201, 123, 77, 0.15); color: var(--accent);
-  border-left-color: var(--accent); font-weight: 600;
-}
-.sidebar li a .essay-count {
-  background: rgba(255,255,255,0.1); padding: 1px 8px;
-  border-radius: 12px; font-size: 0.75rem;
-  color: var(--text-sidebar-dim); transition: all 0.2s;
-}
-.sidebar li a.active .essay-count,
-.sidebar li a:hover .essay-count {
-  background: rgba(201, 123, 77, 0.2); color: var(--accent);
-}
+.sidebar li a:hover { background:rgba(255,255,255,0.05); color:rgba(255,255,255,0.8); border-left-color:var(--accent); }
+.sidebar li a.active { background:rgba(180,83,9,0.12); color:var(--accent); border-left-color:var(--accent); font-weight:600; }
+.sidebar li a .ec { background:rgba(255,255,255,0.06); padding:1px 7px; border-radius:10px; font-size:0.68rem; color:rgba(255,255,255,0.35); }
+.sidebar li a.active .ec, .sidebar li a:hover .ec { background:rgba(180,83,9,0.15); color:var(--accent); }
 
-/* ========== Main ========== */
+/* ===== Main ===== */
 .main {
-  margin-left: var(--sidebar-width);
-  padding: calc(var(--header-height) + 30px) 40px 60px;
-  min-height: 100vh; max-width: 1200px;
+  margin-left:var(--sidebar-w);
+  padding:calc(var(--header-h) + 36px) 36px 80px;
+  min-height:100vh; max-width:calc(860px + var(--sidebar-w) + 100px);
 }
 
-/* ========== Theme Section ========== */
-.theme-section { margin-bottom: 60px; scroll-margin-top: calc(var(--header-height) + 30px); }
-
+/* ===== Theme Section ===== */
+.theme-section { margin-bottom:56px; scroll-margin-top:calc(var(--header-h) + 20px); }
 .theme-header {
-  position: relative; background: linear-gradient(135deg, var(--accent) 0%, #A85D3A 100%);
-  color: white; padding: 22px 30px; border-radius: 12px;
-  margin-bottom: 20px; box-shadow: var(--shadow-md); overflow: hidden;
+  position:relative;
+  background:linear-gradient(135deg,var(--accent) 0%,#7C2D12 60%,#451A03 100%);
+  color:white; padding:24px 28px; border-radius:var(--radius-lg);
+  margin-bottom:18px; box-shadow:var(--shadow-md); overflow:hidden;
 }
 .theme-header::before {
-  content: ""; position: absolute; top: 0; right: 0;
-  width: 100px; height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1));
-  transform: skewX(-15deg) translateX(30px);
+  content:""; position:absolute; top:-40%; right:-15%;
+  width:180px; height:180%;
+  background:radial-gradient(ellipse,rgba(255,255,255,0.06) 0%,transparent 70%);
 }
 .theme-header h2 {
-  font-family: var(--font-display); font-size: 1.4rem;
-  letter-spacing: 2px; position: relative; z-index: 1;
-  display: flex; align-items: center; gap: 10px;
+  font-family:var(--font-display); font-size:1.25rem;
+  letter-spacing:3px; position:relative; z-index:1;
+  display:flex; align-items:center; gap:10px;
 }
 .theme-header h2::before {
-  content: ""; display: inline-block;
-  width: 4px; height: 22px; background: rgba(255,255,255,0.6);
-  border-radius: 2px;
+  content:""; display:inline-block; width:3px; height:18px;
+  background:rgba(255,255,255,0.6); border-radius:2px;
+}
+.theme-header .theme-meta {
+  position:absolute; right:28px; top:50%; transform:translateY(-50%);
+  font-size:0.72rem; opacity:0.6; font-family:var(--font-sans);
+  background:rgba(255,255,255,0.1); padding:3px 10px; border-radius:16px;
 }
 
-/* ========== Essay Card ========== */
+/* ===== Essay Card ===== */
 .essay-card {
-  background: var(--essay-bg); border: 1px solid var(--border);
-  border-radius: 12px; margin-bottom: 20px;
-  box-shadow: var(--card-shadow); overflow: hidden;
-  transition: all 0.35s ease;
+  background:var(--bg-card); border:1px solid var(--border-subtle);
+  border-radius:var(--radius-lg); margin-bottom:16px;
+  box-shadow:var(--shadow-xs); overflow:hidden;
+  transition:all 0.4s cubic-bezier(0.4,0,0.2,1);
+  position:relative;
 }
-.essay-card:hover {
-  box-shadow: var(--card-hover-shadow); transform: translateY(-2px);
+.essay-card::after {
+  content:""; position:absolute; top:0; left:0; right:0; height:2px;
+  background:linear-gradient(90deg,var(--accent),transparent);
+  opacity:0; transition:opacity 0.3s;
 }
-.essay-card.search-hidden { display: none; }
-.theme-section.search-hidden { display: none; }
+.essay-card:hover { box-shadow:var(--shadow-md); transform:translateY(-2px); }
+.essay-card:hover::after { opacity:1; }
+.essay-card.is-open { box-shadow:var(--shadow-md); }
+.essay-card.is-open::after { opacity:1; }
+.essay-card.search-hidden { display:none; }
+.theme-section.search-hidden { display:none; }
 
-/* Essay Title Bar */
 .essay-title-bar {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 16px 24px; background: var(--bg-primary);
-  border-bottom: 1px solid var(--border); cursor: pointer;
-  transition: all 0.25s ease; user-select: none;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:16px 22px; background:var(--bg-elevated);
+  border-bottom:1px solid var(--border-subtle); cursor:pointer;
+  transition:all 0.25s; user-select:none;
 }
-.essay-title-bar:hover { background: var(--accent-light); }
-
+.essay-title-bar:hover { background:var(--accent-light); }
 .essay-title-bar h3 {
-  font-family: var(--font-sans); font-size: 1.05rem;
-  color: var(--text-primary); display: flex; align-items: center; gap: 10px; font-weight: 600;
+  font-family:var(--font-serif); font-size:0.98rem;
+  color:var(--text-primary); display:flex; align-items:center;
+  gap:10px; font-weight:600; line-height:1.3;
 }
 .essay-title-bar .essay-num {
-  display: inline-flex; align-items: center; justify-content: center;
-  width: 26px; height: 26px; background: var(--accent);
-  color: white; border-radius: 50%; font-size: 0.75rem;
-  font-weight: 700; flex-shrink: 0;
+  display:inline-flex; align-items:center; justify-content:center;
+  width:26px; height:26px; background:var(--accent); color:white;
+  border-radius:7px; font-size:0.7rem; font-weight:700; flex-shrink:0;
+  font-family:var(--font-sans); box-shadow:0 2px 5px rgba(180,83,9,0.15);
 }
 .essay-title-bar .author {
-  font-size: 0.82rem; color: var(--text-secondary);
-  font-weight: 400; font-family: var(--font-sans);
+  font-size:0.75rem; color:var(--text-tertiary); font-weight:400;
+  font-family:var(--font-sans); margin-left:2px;
 }
-.essay-title-bar .card-actions { display: flex; align-items: center; gap: 8px; }
+.essay-title-bar .card-actions { display:flex; align-items:center; gap:4px; }
 .card-action-btn {
-  background: none; border: none; cursor: pointer;
-  font-size: 1rem; color: var(--text-secondary);
-  padding: 4px; border-radius: 50%; transition: all 0.2s; line-height: 1;
+  background:none; border:none; cursor:pointer; font-size:0.9rem;
+  color:var(--text-tertiary); padding:4px 6px; border-radius:6px;
+  transition:all 0.2s; line-height:1;
+  display:flex; align-items:center; justify-content:center;
 }
-.card-action-btn:hover { color: var(--accent); background: var(--accent-light); }
-.card-action-btn.bookmarked { color: #E74C3C; }
-
+.card-action-btn:hover { color:var(--accent); background:var(--accent-light); }
+.card-action-btn.bookmarked { color:#E11D48; }
+.card-action-btn.speaking { color:var(--accent); animation:pulse 1.5s infinite; }
+@keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
 .essay-title-bar .toggle-icon {
-  font-size: 1.1rem; transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  color: var(--accent); line-height: 1;
+  font-size:0.95rem; transition:transform 0.4s var(--ease-spring);
+  color:var(--text-tertiary); line-height:1;
 }
-.essay-title-bar.open .toggle-icon { transform: rotate(180deg); }
+.essay-title-bar.open .toggle-icon { transform:rotate(180deg); color:var(--accent); }
 
 /* Essay Content */
-.essay-content { padding: 0; display: none; animation: slideDown 0.35s ease; }
-.essay-content.show { display: block; }
-
-@keyframes slideDown {
-  from { opacity: 0; transform: translateY(-8px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.essay-content .essay-body { padding: 24px 28px 28px; }
+.essay-content { max-height:0; overflow:hidden; transition:max-height 0.5s cubic-bezier(0.4,0,0.2,1); }
+.essay-content.show { max-height:100000px; transition:max-height 0.7s cubic-bezier(0,0,0.2,1); }
+.essay-content .essay-body { padding:22px 28px 28px; }
 
 .essay-content p {
-  margin-bottom: 14px; text-indent: 2em;
-  font-size: 1.02rem; line-height: var(--line-height);
-  color: var(--text-primary); transition: all 0.2s; position: relative;
+  margin-bottom:14px; text-indent:2em;
+  font-size:1.02rem; line-height:var(--lh-body);
+  color:var(--text-primary); padding:3px 6px 3px 0;
+  border-radius:4px; transition:all 0.2s;
+  position:relative;
 }
-.essay-content p:hover {
-  background: rgba(201, 123, 77, 0.04); border-radius: 4px; padding-left: 4px;
-}
-
-/* Quote styling */
-.essay-content p:has(> em) {
-  font-style: italic; color: var(--text-secondary);
-  border-left: 3px solid var(--accent); padding-left: 16px;
-  text-indent: 0; margin: 16px 0;
+.essay-content p:hover { background:var(--accent-glow); padding-left:6px; }
+.essay-content p.reading-current {
+  background:var(--accent-light); border-left:2px solid var(--accent);
+  padding-left:12px; margin-left:-8px; border-radius:0 6px 6px 0;
 }
 
-/* Highlight */
+/* Epigraph / 题记 */
+.essay-content .epigraph-style {
+  font-family:var(--font-kai); color:var(--text-secondary);
+  border-left:3px solid var(--accent); text-indent:0;
+  margin:16px 0 16px 8px; padding:12px 18px;
+  background:var(--accent-light); border-radius:0 var(--radius-sm) var(--radius-sm) 0;
+  font-size:0.92rem; line-height:1.8;
+}
+
+/* Highlight marks */
+mark.user-highlight {
+  background:var(--highlight-yellow); padding:1px 3px; border-radius:3px;
+  cursor:pointer; transition:all 0.2s; box-decoration-break:clone;
+}
+mark.user-highlight:hover { box-shadow:0 0 0 1px var(--accent-border); }
+mark.user-highlight[data-color="green"] { background:var(--highlight-green); }
+mark.user-highlight[data-color="pink"] { background:var(--highlight-pink); }
+mark.user-highlight[data-color="blue"] { background:var(--highlight-blue); }
 mark.search-highlight {
-  background: var(--highlight-bg); color: var(--highlight-text);
-  padding: 1px 3px; border-radius: 3px;
-  box-shadow: 0 0 0 1px rgba(201, 123, 77, 0.2);
+  background:var(--highlight-yellow); color:var(--accent);
+  padding:1px 3px; border-radius:3px;
+  box-shadow:0 0 0 1px rgba(180,83,9,0.12);
+  animation:hl-in 0.4s var(--ease-spring);
 }
+@keyframes hl-in { from{opacity:0;transform:scale(0.85);} to{opacity:1;transform:scale(1);} }
 
-::selection { background: var(--accent); color: white; }
+/* Essay meta */
+.essay-meta {
+  display:flex; align-items:center; gap:14px; padding:10px 28px 0;
+  font-size:0.75rem; color:var(--text-tertiary); font-family:var(--font-sans);
+}
+.essay-meta span { display:flex; align-items:center; gap:3px; }
 
-/* ========== Back to Top ========== */
+/* ===== Back to Top ===== */
 .back-to-top {
-  position: fixed; bottom: 30px; right: 30px;
-  background: var(--accent); color: white;
-  width: 48px; height: 48px; border-radius: 50%; border: none;
-  font-size: 1.2rem; cursor: pointer;
-  display: none; align-items: center; justify-content: center;
-  box-shadow: var(--shadow-md); transition: all 0.3s ease;
-  z-index: 9997; opacity: 0; transform: translateY(20px);
+  position:fixed; bottom:30px; right:30px;
+  background:var(--bg-card); color:var(--text-secondary);
+  width:44px; height:44px; border-radius:50%; border:1px solid var(--border-subtle);
+  font-size:1rem; cursor:pointer; display:none;
+  align-items:center; justify-content:center;
+  box-shadow:var(--shadow-md); transition:all 0.35s; z-index:9997;
+  opacity:0; transform:translateY(14px) scale(0.92);
 }
-.back-to-top.show { display: flex; opacity: 1; transform: translateY(0); }
-.back-to-top:hover {
-  background: var(--accent-hover); transform: translateY(-4px); box-shadow: var(--shadow-lg);
-}
+.back-to-top.show { display:flex; opacity:1; transform:translateY(0) scale(1); }
+.back-to-top:hover { background:var(--accent); color:white; border-color:var(--accent); transform:translateY(-3px) scale(1.05); box-shadow:var(--shadow-lg); }
 
-/* ========== Toast ========== */
+/* ===== Toast ===== */
 .toast {
-  position: fixed; bottom: 90px; left: 50%;
-  transform: translateX(-50%) translateY(20px);
-  background: var(--bg-sidebar); color: white;
-  padding: 10px 24px; border-radius: 25px;
-  font-size: 0.9rem; font-family: var(--font-sans);
-  box-shadow: var(--shadow-lg); opacity: 0;
-  pointer-events: none; transition: all 0.3s ease;
-  z-index: 10001; white-space: nowrap;
+  position:fixed; bottom:90px; left:50%;
+  transform:translateX(-50%) translateY(14px);
+  background:var(--text-primary); color:var(--bg-page);
+  padding:10px 24px; border-radius:24px;
+  font-size:0.85rem; font-family:var(--font-sans);
+  box-shadow:var(--shadow-lg); opacity:0;
+  pointer-events:none; transition:all 0.35s var(--ease-spring);
+  z-index:10002; white-space:nowrap;
 }
-.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+.toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
 
-/* ========== Overlay ========== */
+/* ===== Highlight Toolbar ===== */
+.hl-toolbar {
+  position:absolute; z-index:9999; display:none;
+  background:var(--bg-card); border:1px solid var(--border-subtle);
+  border-radius:var(--radius-md); padding:7px 10px;
+  box-shadow:var(--shadow-lg); gap:5px; align-items:center;
+  animation:tb-in 0.25s var(--ease-spring);
+}
+@keyframes tb-in { from{opacity:0;transform:translateY(3px) scale(0.95);} to{opacity:1;transform:translateY(0) scale(1);} }
+.hl-toolbar.show { display:flex; }
+.hl-color-btn {
+  width:22px; height:22px; border-radius:50%; border:2px solid transparent;
+  cursor:pointer; transition:all 0.15s;
+}
+.hl-color-btn:hover { transform:scale(1.2); }
+.hl-color-btn.sel { border-color:var(--text-primary); }
+.hl-color-btn[data-color="yellow"] { background:#FDE047; }
+.hl-color-btn[data-color="green"] { background:#86EFAC; }
+.hl-color-btn[data-color="pink"] { background:#F9A8D4; }
+.hl-color-btn[data-color="blue"] { background:#93C5FD; }
+.hl-remove-btn {
+  background:none; border:none; cursor:pointer; font-size:0.9rem;
+  color:var(--text-tertiary); padding:3px 6px; border-radius:5px;
+  transition:all 0.2s; margin-left:4px;
+}
+.hl-remove-btn:hover { color:#EF4444; }
+
+/* ===== Focus Mode ===== */
+.focus-overlay {
+  position:fixed; top:0; left:0; right:0; bottom:0;
+  background:rgba(12,10,9,0.92); z-index:9996;
+  display:none; opacity:0; transition:opacity 0.4s;
+  backdrop-filter:blur(6px);
+}
+.focus-overlay.show { display:block; opacity:1; }
+.focus-overlay .focus-hint {
+  position:absolute; bottom:36px; left:50%; transform:translateX(-50%);
+  color:rgba(255,255,255,0.4); font-size:0.8rem; font-family:var(--font-sans);
+}
+
+/* ===== Overlay ===== */
 .sidebar-overlay {
-  display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.5); z-index: 9997; opacity: 0;
-  transition: opacity 0.3s ease;
+  display:none; position:fixed; top:0; left:0; right:0; bottom:0;
+  background:rgba(0,0,0,0.45); z-index:9997; opacity:0; transition:opacity 0.3s;
 }
-.sidebar-overlay.show { display: block; opacity: 1; }
+.sidebar-overlay.show { display:block; opacity:1; }
 
-/* ========== Responsive ========== */
-@media (max-width: 900px) {
-  :root { --sidebar-width: 260px; }
-  .main { padding-left: 25px; padding-right: 25px; }
-  .search-box input { width: 200px; }
-  .search-box input:focus { width: 240px; }
+/* ===== Responsive ===== */
+@media(max-width:1024px){ :root{--sidebar-w:250px;} .main{padding-left:28px;padding-right:28px;} }
+@media(max-width:768px){
+  .sidebar{transform:translateX(-100%);}
+  .sidebar.open{transform:translateX(0);box-shadow:var(--shadow-xl);}
+  .main{margin-left:0;padding:calc(var(--header-h)+20px) 16px 60px;}
+  .mobile-toggle{display:block;}
+  .header{padding:0 14px;}
+  .header h1{font-size:1.1rem;letter-spacing:2px;}
+  .search-box input{width:130px;} .search-box input:focus{width:170px;}
+  .hdr-btn .bt{display:none;}
+  .font-controls{display:none;}
+  .theme-header{padding:18px 20px;} .theme-header h2{font-size:1.1rem;}
+  .theme-header .theme-meta{display:none;}
+  .essay-content .essay-body{padding:18px 18px 22px;}
+  .essay-title-bar{padding:13px 16px;}
 }
-@media (max-width: 768px) {
-  .sidebar { transform: translateX(-100%); }
-  .sidebar.open { transform: translateX(0); }
-  .main { margin-left: 0; padding: calc(var(--header-height) + 20px) 18px 50px; }
-  .mobile-toggle { display: block; }
-  .header h1 { font-size: 1.2rem; }
-  .search-box input { width: 160px; }
-  .search-box input:focus { width: 180px; }
-  .header-btn .btn-text { display: none; }
-  .font-controls { display: none; }
-  .theme-header h2 { font-size: 1.2rem; }
-  .essay-content .essay-body { padding: 18px 20px 22px; }
-  .essay-content p { font-size: 0.98rem; }
+@media(max-width:480px){
+  .search-box input{width:110px;padding:6px 28px 6px 30px;font-size:0.8rem;}
+  .essay-meta{gap:10px;}
 }
-@media (max-width: 480px) {
-  .header { padding: 0 15px; }
-  .search-box input { width: 140px; padding: 6px 12px 6px 32px; }
-  .header-btn { padding: 5px 10px; }
-  .essay-title-bar { padding: 14px 18px; }
-  .essay-content .essay-body { padding: 15px 16px 20px; }
-}
-@media print {
-  .header, .sidebar, .back-to-top, .sidebar-overlay { display: none !important; }
-  .main { margin-left: 0; padding: 0; }
-  .essay-card { break-inside: avoid; box-shadow: none; border: 1px solid #ccc; }
-  .essay-content { display: block !important; }
+@media print{
+  .header,.sidebar,.back-to-top,#progressBar,.card-actions,.toggle-icon,.sidebar-overlay{display:none!important;}
+  .main{margin-left:0;padding:0;max-width:100%;}
+  .essay-card{break-inside:avoid;box-shadow:none;border:1px solid #ddd;margin-bottom:14px;}
+  .essay-content{max-height:none!important;overflow:visible;}
+  .theme-header{background:#f5f5f5;color:#333;box-shadow:none;}
+  body{background:white;}
 }
 </style>
 </head>
 <body>
 <div id="progressBar"></div>
 
-<header class="header">
+<header class="header" id="mainHeader">
   <div class="header-left">
-    <button class="mobile-toggle" onclick="toggleSidebar()" aria-label="菜单">&#9776;</button>
+    <button class="mobile-toggle" onclick="toggleSidebar()">&#9776;</button>
     <h1>七年级主题作文范文集</h1>
   </div>
   <div class="header-controls">
     <div class="search-box">
-      <input type="text" id="searchInput" placeholder="搜索标题或内容..." oninput="handleSearch()">
-      <button class="search-clear" id="searchClear" onclick="clearSearch()">&#10005;</button>
+      <input type="text" id="searchInput" placeholder="搜索..." oninput="handleSearch()">
+      <span class="si">&#128269;</span>
+      <button class="sc" id="searchClear" onclick="clearSearch()">&#10005;</button>
     </div>
     <div class="font-controls">
-      <button class="font-btn" onclick="changeFontSize(-1)" title="减小字号">A-</button>
+      <button class="font-btn" onclick="changeFontSize(-1)" title="缩小">A<sup>-</sup></button>
       <span class="font-size-display" id="fontSizeDisplay">16</span>
-      <button class="font-btn" onclick="changeFontSize(1)" title="增大字号">A+</button>
+      <button class="font-btn" onclick="changeFontSize(1)" title="放大">A<sup>+</sup></button>
     </div>
-    <button class="header-btn" onclick="toggleTheme()" title="切换深色模式">
-      <span id="themeIcon">🌙</span>
-      <span class="btn-text">深色模式</span>
+    <button class="hdr-btn" onclick="toggleFocusMode()" title="沉浸模式">
+      <span>&#128065;</span><span class="bt">沉浸</span>
+    </button>
+    <button class="hdr-btn" onclick="toggleTheme()" title="深色模式">
+      <span id="themeIcon">&#127769;</span><span class="bt">深色</span>
     </button>
   </div>
 </header>
@@ -444,8 +498,10 @@ mark.search-highlight {
 <nav class="sidebar" id="sidebar">
   <div class="sidebar-header">
     <h2>主题导航</h2>
+    <div class="sidebar-stats">14个主题 · 50篇范文</div>
   </div>
   <ul id="themeNav">
+
     <li><a href="#theme1" onclick="closeSidebar()"><span>我们是一家人</span><span class="essay-count">3篇</span></a></li>
     <li><a href="#theme2" onclick="closeSidebar()"><span>那一次，我真……</span><span class="essay-count">3篇</span></a></li>
     <li><a href="#theme3" onclick="closeSidebar()"><span>难忘的成长经历</span><span class="essay-count">3篇</span></a></li>
@@ -459,13 +515,15 @@ mark.search-highlight {
     <li><a href="#theme11" onclick="closeSidebar()"><span>走出校园</span><span class="essay-count">3篇</span></a></li>
     <li><a href="#theme12" onclick="closeSidebar()"><span>遇见</span><span class="essay-count">5篇</span></a></li>
     <li><a href="#theme13" onclick="closeSidebar()"><span>难忘师恩</span><span class="essay-count">3篇</span></a></li>
+    <li><a href="#theme14" onclick="closeSidebar()"><span>少年正是读书时</span><span class="essay-count">4篇</span></a></li>
+  
   </ul>
 </nav>
 
 <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
 
+<main class="main" id="mainContent">
 
-<main class="main">
 <section class="theme-section" id="theme1">
   <div class="theme-header"><h2>一、我们是一家人</h2></div>
   
@@ -1378,388 +1436,288 @@ mark.search-highlight {
       <p>我不知道她是否读完那行文字，但那抹鲜亮的红色，永远珍藏在我的心底，如同一小片晴朗晴空。难忘师恩，难忘那把红伞，还有伞柄之上简短恳切的叮嘱。世间有一种温暖，是有人甘愿自己经受风雨，却笑着告诉你，他一切安好。</p></div></div>
   </div>
 </section>
+
+<section class="theme-section" id="theme14">
+  <div class="theme-header"><h2>十四、少年正是读书时</h2></div>
+  
+  <div class="essay-card" data-search="少年正是读书时 朝花夕拾 鲁迅 百草园 三味书屋 山海经 阅读 经典">
+    <div class="essay-title-bar" onclick="toggleEssay(this)"><h3><span class="essay-num">47</span>少年正是读书时 <span class="author"></span></h3>
+      <div class="card-actions">
+        <button class="card-action-btn bookmark-btn" onclick="event.stopPropagation(); toggleBookmark(this.closest('.essay-card'))" title="书签">♡</button>
+        <button class="card-action-btn speak-btn" onclick="event.stopPropagation(); speakText(this.closest('.essay-card').querySelector('.essay-content'))" title="朗读">▶</button>
+      </div>
+      <span class="toggle-icon">&#9662;</span>
+    </div>
+    <div class="essay-content"><div class="essay-body">
+      <p>青春的日子热闹又匆忙，可总有一段安静的时光，留给书页。我渐渐懂得：少年正是读书时，在文字里遇见过往，收获成长。</p>
+      <p>从前我总觉得名著晦涩难懂，拿到《朝花夕拾》，只看名字便提不起兴趣，把它压在书桌一角。直到一节语文课，老师讲起《从百草园到三味书屋》里的桑葚、皂荚树，我心里一动，回家翻出这本书。</p>
+      <p>傍晚，夕阳斜斜落在书桌上。我慢慢读下去，跟着鲁迅走进百草园。碧绿的菜畦，鸣蝉在树叶里长吟，轻捷的云雀忽然从草间直窜向云霄。我好像也蹲在泥墙根下，听蟋蟀弹琴，想象着美女蛇的故事。读到三味书屋，严厉的寿镜吾先生、大家偷偷画画的细节，又让我会心一笑。原来大文豪的童年，也和我们一样，有欢喜，有拘束。</p>
+      <p>往后的日子，我接着往下读。读《阿长与〈山海经〉》，起初厌烦阿长粗俗的规矩，读到她辛苦买来绘图的《山海经》时，心底忽然一暖。那一本粗糙的小书，藏着朴素又厚重的疼爱。我反复读了好几遍，鼻尖微微发酸。</p>
+      <p>这本书没有跌宕的情节，却像一杯温茶。它教会我读懂温情，读懂怀念，读懂藏在回忆里的喜怒哀乐。慢慢的，我不再害怕厚书，遇到难懂的句子，就停下来细细揣摩，在旁边写下自己的感受。读书不再是应付作业，而是一场温柔的相遇。</p>
+      <p>少年的眼界有限，脚步走不远，书籍却可以带我们跨越时光，和百年前的人对话。那些读过的文字，悄悄沉淀在心底，让我学会共情，学会观察生活里细碎的温暖。</p>
+      <p>少年正是读书时，一卷书香，伴我前行。我愿继续翻开书页，在一本本经典之中，慢慢丰盈自己的青春。</p>
+      </div></div>
+  </div>
+  
+  <div class="essay-card" data-search="少年正是读书时 西游记 孙悟空 三打白骨精 取经 坚持 名著">
+    <div class="essay-title-bar" onclick="toggleEssay(this)"><h3><span class="essay-num">48</span>少年正是读书时 <span class="author"></span></h3>
+      <div class="card-actions">
+        <button class="card-action-btn bookmark-btn" onclick="event.stopPropagation(); toggleBookmark(this.closest('.essay-card'))" title="书签">♡</button>
+        <button class="card-action-btn speak-btn" onclick="event.stopPropagation(); speakText(this.closest('.essay-card').querySelector('.essay-content'))" title="朗读">▶</button>
+      </div>
+      <span class="toggle-icon">&#9662;</span>
+    </div>
+    <div class="essay-content"><div class="essay-body">
+      <p>喧闹的课间，不少同学追逐嬉戏，而我常常捧着一本书静静品读。我始终记得：少年正是读书时，以经典为友，汲取前行的力量。</p>
+      <p>最早接触《西游记》，是看动画片，只喜欢神通广大的孙悟空。这个假期，我沉下心，翻开原著，才读懂故事背后藏着的道理。</p>
+      <p>灯下，我一字一句阅读。孙悟空大闹天宫时，桀骜张扬，敢和天地相争；可踏上取经路之后，他一路披荆斩棘。读到“三打白骨精”，我替他委屈。他火眼金睛识破妖魔，一心保护师父，却被唐僧误会、狠心赶走。合上书页，我心里愤愤不平，可转念一想，即便受尽委屈，当师父遇险，他依旧挺身而出。</p>
+      <p>唐僧师徒一行四人，各有缺点：唐僧固执心软，八戒贪吃懒惰，沙僧沉默寡言。可他们向着同一个目标，跨过火焰山，渡过通天河，历经九九八十一难，从未彻底放弃。读到最后一页，我忽然明白，取经取的从不止是经书，更是一路的坚持与坚守。</p>
+      <p>以前遇到一点难题，我总想退缩。一次长跑测试，跑到一半我气喘吁吁，想要停下放弃。脑海里忽然浮现出师徒四人翻山越岭的模样。他们面对那么多凶险都不曾放弃，我怎能轻易认输？我咬紧牙关，坚持跑到终点。</p>
+      <p>原来好书从不是遥远的故事，它会悄悄走进我的生活，在我想要放弃的时候提醒我坚持。书页翻过，墨香萦绕，孙悟空的勇敢、师徒四人的执着，都刻在了我的心里。</p>
+      <p>韶华易逝，时光不待人。少年正是读书时。在阅读经典的路上，我会带着这份勇敢与坚韧，不怕坎坷，向着自己的目标稳步向前。</p>
+      </div></div>
+  </div>
+  
+  <div class="essay-card" data-search="少年正是读书时 骆驼祥子 老舍 祥子 虎妞 珍惜 共情">
+    <div class="essay-title-bar" onclick="toggleEssay(this)"><h3><span class="essay-num">49</span>少年正是读书时 <span class="author"></span></h3>
+      <div class="card-actions">
+        <button class="card-action-btn bookmark-btn" onclick="event.stopPropagation(); toggleBookmark(this.closest('.essay-card'))" title="书签">♡</button>
+        <button class="card-action-btn speak-btn" onclick="event.stopPropagation(); speakText(this.closest('.essay-card').querySelector('.essay-content'))" title="朗读">▶</button>
+      </div>
+      <span class="toggle-icon">&#9662;</span>
+    </div>
+    <div class="essay-content"><div class="essay-body">
+      <p>青春的我们，生活安稳幸福，很难体会世间的万般辛苦。是书本，带我看见不一样的人间。少年正是读书时，在阅读中思考，慢慢读懂生活。</p>
+      <p>在老师的推荐下，我翻开老舍先生的《骆驼祥子》。起初，祥子鲜活的模样打动了我：他年轻、健壮，像一棵挺拔的树，一心想靠自己的力气，买一辆属于自己的洋车，做独立的劳动者。</p>
+      <p>我跟着文字，看着他省吃俭用，咬牙苦干三年，终于凑够钱买下新车。我跟着欣喜，仿佛那辆车，也是我期盼已久的礼物。可命运一次次打击他：新车被大兵抢走，辛苦攒下的积蓄被孙侦探敲诈，虎妞的离开、小福子的离世……一点一点碾碎了祥子心中的光。读到最后，曾经勤劳上进的祥子，变成麻木潦倒的行尸走肉，我心里闷闷的，很久说不出话。</p>
+      <p>合上书，窗外阳光正好，我坐在明亮的房间里读书，不必为温饱奔波。祥子也曾是满怀希望的少年，可黑暗的时代吞噬了他的梦想。对比之下，我更加珍惜现在的生活。我们拥有安稳的环境，有读书学习的机会，更不该虚度光阴，辜负眼前的美好。</p>
+      <p>这本书也让我懂得，追梦的路上难免有风雨。哪怕遇到挫折，也不能丢掉心底的希望。读书，让我跳出自己小小的世界，看见他人的苦难，生出一份共情，多一份思考。</p>
+      <p>书页静静摊开，文字无声，却有千钧力量。少年正是读书时。阅读教会我珍惜当下，心怀希望，在属于我的好时代里，努力追逐自己的梦想。</p>
+      </div></div>
+  </div>
+  
+  <div class="essay-card" data-search="少年正是读书时 海底两万里 凡尔纳 尼摩船长 鹦鹉螺 好奇 探索">
+    <div class="essay-title-bar" onclick="toggleEssay(this)"><h3><span class="essay-num">50</span>少年正是读书时 <span class="author"></span></h3>
+      <div class="card-actions">
+        <button class="card-action-btn bookmark-btn" onclick="event.stopPropagation(); toggleBookmark(this.closest('.essay-card'))" title="书签">♡</button>
+        <button class="card-action-btn speak-btn" onclick="event.stopPropagation(); speakText(this.closest('.essay-card').querySelector('.essay-content'))" title="朗读">▶</button>
+      </div>
+      <span class="toggle-icon">&#9662;</span>
+    </div>
+    <div class="essay-content"><div class="essay-body">
+      <p>世界辽阔，有无数风景我还未曾抵达。幸好有书，带我奔赴一场奇妙远航。少年正是读书时，跟着文字远航，看见大千世界。</p>
+      <p>一次逛书店，我被《海底两万里》的封面吸引，带回了家。一翻开书，我就被凡尔纳笔下的海底世界牢牢抓住。</p>
+      <p>跟随尼摩船长驾驶的“鹦鹉螺号”，我潜入幽深的大海。五彩斑斓的珊瑚王国，成群发光的水母，沉睡在海底的沉船，巨大的抹香鲸与章鱼搏斗……奇妙的画面在我脑海里不断浮现。我常常坐在书桌前读到入迷，连妈妈喊我吃饭都听不见。</p>
+      <p>最让我敬佩的是尼摩船长。他学识渊博，精通海洋里一切秘密；他冷静勇敢，面对风暴与巨兽从不慌乱。他藏在深海，守护着心中的正义。我一边阅读，一边惊叹作者超凡的想象力。一百多年前，潜水艇还没有普及，凡尔纳就已经在文字里描绘出深海航行的蓝图。</p>
+      <p>读完这本书，我对海洋、对科学充满好奇。我主动查找海洋生物的资料，看科普短片，常常和同学分享书里奇妙的情节。阅读打开了我的眼界，原来世界这么大，有无数奥秘等着我们去探索。读书，不仅仅是看故事，更是在心底种下好奇与热爱的种子。</p>
+      <p>少年的好奇心最珍贵。我们暂时无法远赴深海，遨游大洋，但书籍可以打破空间的限制，让我们跟着文字去探险，去畅想。那些新奇的见闻，拓宽我的视野，点燃我探索未知的热情。</p>
+      <p>青春正好，莫负书香。少年正是读书时。我愿继续在书页间启程，保持好奇，心怀热爱，去奔赴更多山海，探索更多未知。</p>
+      </div></div>
+  </div>
+</section>
+
+
 </main>
 
-
-<button class="back-to-top" id="backToTop" onclick="scrollToTop()" title="回到顶部">&#8679;</button>
-
+<button class="back-to-top" id="backToTop" onclick="scrollToTop()">&#8593;</button>
 <div class="toast" id="toast"></div>
 
+<div class="hl-toolbar" id="hlToolbar">
+  <button class="hl-color-btn" data-color="yellow" onclick="applyHL('yellow')" title="黄色"></button>
+  <button class="hl-color-btn" data-color="green" onclick="applyHL('green')" title="绿色"></button>
+  <button class="hl-color-btn" data-color="pink" onclick="applyHL('pink')" title="粉色"></button>
+  <button class="hl-color-btn" data-color="blue" onclick="applyHL('blue')" title="蓝色"></button>
+  <button class="hl-remove-btn" onclick="removeHL()" title="清除">&#10005;</button>
+</div>
+
+<div class="focus-overlay" id="focusOverlay">
+  <div class="focus-hint">按 ESC 退出沉浸模式</div>
+</div>
+
 <script>
-/* ========== Global State ========== */
-let currentFontSize = 16;
-let speechSynthesis = window.speechSynthesis;
-let currentUtterance = null;
-let isSpeaking = false;
+// ===== State =====
+let curFont=16, isSpeaking=false, focusMode=false, selRange=null;
+const synth=window.speechSynthesis;
 
-/* ========== Theme Toggle ========== */
-function toggleTheme() {
-  const html = document.documentElement;
-  const icon = document.getElementById('themeIcon');
-  if (html.getAttribute('data-theme') === 'dark') {
-    html.removeAttribute('data-theme');
-    icon.textContent = '\u{1F319}';
-    localStorage.setItem('theme', 'light');
-    showToast('已切换到浅色模式');
-  } else {
-    html.setAttribute('data-theme', 'dark');
-    icon.textContent = '\u{1F319}';
-    localStorage.setItem('theme', 'dark');
-    showToast('已切换到深色模式');
-  }
+// ===== Theme =====
+function toggleTheme(){
+  const h=document.documentElement, ic=document.getElementById('themeIcon');
+  const dark=h.getAttribute('data-theme')==='dark';
+  if(dark){h.removeAttribute('data-theme');ic.textContent='\u{1F319}';localStorage.setItem('e-theme','light');showToast('浅色模式');}
+  else{h.setAttribute('data-theme','dark');ic.textContent='\u2600\uFE0F';localStorage.setItem('e-theme','dark');showToast('深色模式');}
 }
+if(localStorage.getItem('e-theme')==='dark'){document.documentElement.setAttribute('data-theme','dark');document.getElementById('themeIcon').textContent='\u2600\uFE0F';}
 
-// Check saved theme
-if (localStorage.getItem('theme') === 'dark') {
-  document.documentElement.setAttribute('data-theme', 'dark');
-  document.getElementById('themeIcon').textContent = '\u2600\uFE0F';
-}
+// ===== Font =====
+function changeFontSize(d){curFont=Math.max(13,Math.min(24,curFont+d));document.documentElement.style.setProperty('--base-size',curFont+'px');document.getElementById('fontSizeDisplay').textContent=curFont;localStorage.setItem('e-font',curFont);}
+(function(){const s=localStorage.getItem('e-font');if(s){curFont=+s;document.documentElement.style.setProperty('--base-size',curFont+'px');document.getElementById('fontSizeDisplay').textContent=curFont;}})();
 
-/* ========== Font Size ========== */
-function changeFontSize(delta) {
-  currentFontSize = Math.max(14, Math.min(22, currentFontSize + delta));
-  document.documentElement.style.setProperty('--base-size', currentFontSize + 'px');
-  document.getElementById('fontSizeDisplay').textContent = currentFontSize;
-  localStorage.setItem('fontSize', currentFontSize);
-  showToast('字号: ' + currentFontSize + 'px');
-}
-
-// Load saved font size
-const savedSize = localStorage.getItem('fontSize');
-if (savedSize) {
-  currentFontSize = parseInt(savedSize);
-  document.documentElement.style.setProperty('--base-size', currentFontSize + 'px');
-  document.getElementById('fontSizeDisplay').textContent = currentFontSize;
-}
-
-/* ========== Sidebar ========== */
-function toggleSidebar() {
-  document.getElementById('sidebar').classList.toggle('open');
-  document.getElementById('sidebarOverlay').classList.toggle('show');
-}
-
-function closeSidebar() {
-  document.getElementById('sidebar').classList.remove('open');
-  document.getElementById('sidebarOverlay').classList.remove('show');
-}
-
-/* ========== Essay Toggle ========== */
-function toggleEssay(bar) {
-  bar.classList.toggle('open');
-  const content = bar.nextElementSibling;
-  content.classList.toggle('show');
-  
-  // Save state
-  const card = bar.closest('.essay-card');
-  const essayId = card ? Array.from(document.querySelectorAll('.essay-card')).indexOf(card) : -1;
-  if (essayId !== -1) {
-    const state = content.classList.contains('show');
-    localStorage.setItem('essay_' + essayId, state);
-  }
-}
-
-// Load saved essay states
-document.addEventListener('DOMContentLoaded', function() {
-  const cards = document.querySelectorAll('.essay-card');
-  cards.forEach(function(card, index) {
-    const savedState = localStorage.getItem('essay_' + index);
-    if (savedState === 'true') {
-      const bar = card.querySelector('.essay-title-bar');
-      const content = card.querySelector('.essay-content');
-      bar.classList.add('open');
-      content.classList.add('show');
-    }
-  });
-  
-  // Initialize bookmarks
-  initBookmarks();
-});
-
-/* ========== Search ========== */
-function handleSearch() {
-  const query = document.getElementById('searchInput').value.trim();
-  const clearBtn = document.getElementById('searchClear');
-  clearBtn.classList.toggle('show', query.length > 0);
-  
-  const cards = document.querySelectorAll('.essay-card');
-  const sections = document.querySelectorAll('.theme-section');
-  
-  if (query === '') {
-    // Clear search - show everything
-    cards.forEach(function(card) {
-      card.classList.remove('search-hidden');
-      unhighlightText(card);
-    });
-    sections.forEach(function(section) {
-      section.classList.remove('search-hidden');
-    });
-    return;
-  }
-  
-  const lowerQuery = query.toLowerCase();
-  
-  cards.forEach(function(card) {
-    const searchData = (card.getAttribute('data-search') || '').toLowerCase();
-    const title = (card.querySelector('.essay-title-bar h3') ? card.querySelector('.essay-title-bar h3').textContent : '').toLowerCase();
-    const paragraphs = card.querySelectorAll('.essay-content p');
-    let contentText = '';
-    paragraphs.forEach(function(p) { contentText += p.textContent.toLowerCase(); });
-    
-    const match = searchData.indexOf(lowerQuery) !== -1 || 
-                  title.indexOf(lowerQuery) !== -1 || 
-                  contentText.indexOf(lowerQuery) !== -1;
-    
-    if (match) {
-      card.classList.remove('search-hidden');
-      highlightText(card, query);
-      // Auto-expand matching cards
-      const bar = card.querySelector('.essay-title-bar');
-      const content = card.querySelector('.essay-content');
-      bar.classList.add('open');
-      content.classList.add('show');
-    } else {
-      card.classList.add('search-hidden');
-      unhighlightText(card);
-    }
-  });
-  
-  // Hide empty sections
-  sections.forEach(function(section) {
-    const visibleCards = section.querySelectorAll('.essay-card:not(.search-hidden)');
-    if (visibleCards.length === 0) {
-      section.classList.add('search-hidden');
-    } else {
-      section.classList.remove('search-hidden');
-    }
-  });
-}
-
-function clearSearch() {
-  document.getElementById('searchInput').value = '';
-  handleSearch();
-}
-
-/* ========== Text Highlight ========== */
-function highlightText(card, query) {
-  const paragraphs = card.querySelectorAll('.essay-content p');
-  paragraphs.forEach(function(p) {
-    if (p.querySelector('.search-highlight')) return; // Already highlighted
-    const text = p.textContent;
-    if (text.toLowerCase().indexOf(query.toLowerCase()) === -1) return;
-    
-    const regex = new RegExp('(' + query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
-    // Only replace in text nodes, not in existing HTML tags
-    let html = p.innerHTML;
-    // Simple approach: replace in innerHTML
-    html = html.replace(regex, '<mark class="search-highlight">$1</mark>');
-    p.innerHTML = html;
-  });
-}
-
-function unhighlightText(card) {
-  const marks = card.querySelectorAll('.essay-content mark.search-highlight');
-  marks.forEach(function(mark) {
-    const parent = mark.parentNode;
-    parent.replaceChild(document.createTextNode(mark.textContent), mark);
-    parent.normalize();
-  });
-}
-
-/* ========== Reading Progress ========== */
-window.addEventListener('scroll', function() {
-  const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-  const scrolled = (winScroll / height) * 100;
-  document.getElementById('progressBar').style.width = scrolled + '%';
-  
-  // Back to top button
-  const btn = document.getElementById('backToTop');
-  if (winScroll > 400) {
-    btn.classList.add('show');
-  } else {
-    btn.classList.remove('show');
-  }
-  
-  // Active sidebar link
+// ===== Scroll =====
+window.addEventListener('scroll',function(){
+  const y=window.pageYOffset;
+  const dh=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+  document.getElementById('progressBar').style.width=(dh>0?(y/dh)*100:0)+'%';
+  document.getElementById('mainHeader').classList.toggle('scrolled',y>20);
+  document.getElementById('backToTop').classList.toggle('show',y>500);
   updateActiveNav();
+},{passive:true});
+
+// ===== Sidebar =====
+function toggleSidebar(){document.getElementById('sidebar').classList.toggle('open');document.getElementById('sidebarOverlay').classList.toggle('show');}
+function closeSidebar(){document.getElementById('sidebar').classList.remove('open');document.getElementById('sidebarOverlay').classList.remove('show');}
+
+// ===== Essay Toggle =====
+function toggleEssay(bar){
+  const card=bar.closest('.essay-card'), content=bar.nextElementSibling;
+  const isOpen=bar.classList.contains('open');
+  bar.classList.toggle('open');content.classList.toggle('show');card.classList.toggle('is-open');
+  const cards=[...document.querySelectorAll('.essay-card')];
+  localStorage.setItem('e-open-'+cards.indexOf(card),!isOpen);
+}
+
+// ===== Search =====
+function handleSearch(){
+  const q=document.getElementById('searchInput').value.trim();
+  document.getElementById('searchClear').classList.toggle('show',q.length>0);
+  const cards=document.querySelectorAll('.essay-card'),secs=document.querySelectorAll('.theme-section');
+  if(!q){cards.forEach(c=>{c.classList.remove('search-hidden');unHL(c);});secs.forEach(s=>s.classList.remove('search-hidden'));return;}
+  const lo=q.toLowerCase();
+  cards.forEach(card=>{
+    const d=(card.getAttribute('data-search')||'').toLowerCase();
+    const t=(card.querySelector('h3')||{}).textContent||'';
+    const b=card.querySelector('.essay-body');
+    const bt=b?b.textContent.toLowerCase():'';
+    const m=d.includes(lo)||t.toLowerCase().includes(lo)||bt.includes(lo);
+    if(m){card.classList.remove('search-hidden');doHL(card,q);expandCard(card);}
+    else{card.classList.add('search-hidden');unHL(card);}
+  });
+  secs.forEach(s=>{const v=s.querySelectorAll('.essay-card:not(.search-hidden)');s.classList.toggle('search-hidden',v.length===0);});
+}
+function clearSearch(){document.getElementById('searchInput').value='';handleSearch();}
+function doHL(card,q){const ps=card.querySelectorAll('.essay-body p');const re=new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi');ps.forEach(p=>{if(p.querySelector('.search-highlight'))return;const t=p.textContent;if(!re.test(t))return;re.lastIndex=0;p.innerHTML=p.innerHTML.replace(re,'<mark class="search-highlight">$1</mark>');});}
+function unHL(card){card.querySelectorAll('mark.search-highlight').forEach(m=>{m.replaceWith(document.createTextNode(m.textContent));if(m.parentNode)m.parentNode.normalize();});}
+function expandCard(card){const bar=card.querySelector('.essay-title-bar'),c=card.querySelector('.essay-content');if(!c.classList.contains('show')){bar.classList.add('open');c.classList.add('show');card.classList.add('is-open');}}
+
+// ===== Active Nav =====
+function updateActiveNav(){
+  const secs=document.querySelectorAll('.theme-section'),links=document.querySelectorAll('#themeNav a');
+  let cur='';secs.forEach(s=>{if(window.pageYOffset>=s.offsetTop-120)cur=s.id;});
+  links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+cur));
+}
+
+// ===== Scroll Top =====
+function scrollToTop(){window.scrollTo({top:0,behavior:'smooth'});}
+
+// ===== TTS =====
+function speakText(btn){
+  const card=btn.closest('.essay-card'),content=card.querySelector('.essay-content');
+  if(isSpeaking){synth.cancel();isSpeaking=false;document.querySelectorAll('.speak-btn').forEach(b=>{b.textContent='\u25B6';b.classList.remove('speaking');});document.querySelectorAll('p.reading-current').forEach(p=>p.classList.remove('reading-current'));showToast('已停止');return;}
+  expandCard(card);
+  const paras=[...content.querySelectorAll('p')];if(!paras.length)return;
+  let i=0;synth.cancel();
+  function next(){
+    if(i>=paras.length){isSpeaking=false;btn.textContent='\u25B6';btn.classList.remove('speaking');paras.forEach(p=>p.classList.remove('reading-current'));showToast('朗读完成');return;}
+    paras.forEach(p=>p.classList.remove('reading-current'));
+    paras[i].classList.add('reading-current');
+    paras[i].scrollIntoView({behavior:'smooth',block:'center'});
+    const txt=paras[i].textContent.trim();
+    if(!txt){i++;next();return;}
+    const u=new SpeechSynthesisUtterance(txt);u.lang='zh-CN';u.rate=0.88;u.pitch=1;
+    const v=synth.getVoices().find(v=>v.lang.includes('zh'));if(v)u.voice=v;
+    u.onend=()=>{i++;next();};u.onerror=()=>{i++;next();};
+    synth.speak(u);
+  }
+  isSpeaking=true;btn.textContent='\u23F9';btn.classList.add('speaking');showToast('开始朗读...');next();
+}
+if(synth)synth.onvoiceschanged=()=>synth.getVoices();
+
+// ===== Focus Mode =====
+function toggleFocusMode(){
+  focusMode=!focusMode;
+  document.getElementById('focusOverlay').classList.toggle('show',focusMode);
+  document.body.style.overflow=focusMode?'hidden':'';
+  if(focusMode){
+    const oc=document.querySelectorAll('.essay-card.is-open');
+    if(oc.length){
+      const c=oc[oc.length-1];
+      Object.assign(c.style,{position:'fixed',top:'8vh',left:'50%',transform:'translateX(-50%)',width:'min(86vw,700px)',maxHeight:'84vh',overflow:'auto',zIndex:'9997',boxShadow:'var(--shadow-xl)'});
+      c.classList.add('focus-active');
+    }
+  }else{
+    document.querySelectorAll('.essay-card.focus-active').forEach(c=>{
+      Object.assign(c.style,{position:'',top:'',left:'',transform:'',width:'',maxHeight:'',overflow:'',zIndex:'',boxShadow:''});
+      c.classList.remove('focus-active');
+    });
+  }
+}
+
+// ===== Highlight =====
+document.addEventListener('mouseup',function(e){
+  const tb=document.getElementById('hlToolbar');
+  const sel=window.getSelection();
+  if(sel.toString().trim().length>0&&sel.toString().length<300){
+    const a=sel.anchorNode;
+    if(a&&a.parentElement&&a.parentElement.closest('.essay-body')){
+      const r=sel.getRangeAt(0),rect=r.getBoundingClientRect();
+      selRange=r.cloneRange();
+      tb.style.top=(rect.top+window.pageYOffset-40)+'px';
+      tb.style.left=(rect.left+window.pageXOffset+rect.width/2-70)+'px';
+      tb.classList.add('show');
+    }
+  }else{tb.classList.remove('show');}
+});
+document.addEventListener('mousedown',function(e){if(!e.target.closest('.hl-toolbar'))document.getElementById('hlToolbar').classList.remove('show');});
+function applyHL(color){
+  if(!selRange)return;const s=window.getSelection();s.removeAllRanges();s.addRange(selRange);
+  try{const m=document.createElement('mark');m.className='user-highlight';m.setAttribute('data-color',color);selRange.surroundContents(m);saveHL();}catch(e){}
+  document.getElementById('hlToolbar').classList.remove('show');showToast('已标注');
+}
+function removeHL(){
+  if(!selRange)return;const c=selRange.startContainer.parentElement;
+  if(c&&c.tagName==='MARK'&&c.classList.contains('user-highlight')){const p=c.parentNode;while(c.firstChild)p.insertBefore(c.firstChild,c);p.removeChild(c);p.normalize();saveHL();}
+  document.getElementById('hlToolbar').classList.remove('show');showToast('已清除标注');
+}
+function saveHL(){document.querySelectorAll('.essay-card').forEach((c,i)=>{const b=c.querySelector('.essay-body');if(b)localStorage.setItem('e-hl-'+i,b.innerHTML);});}
+function loadHL(){document.querySelectorAll('.essay-card').forEach((c,i)=>{const s=localStorage.getItem('e-hl-'+i);if(s){const b=c.querySelector('.essay-body');if(b)b.innerHTML=s;}});}
+
+// ===== Bookmarks =====
+function toggleBookmark(btn){
+  const card=btn.closest('.essay-card'),cards=[...document.querySelectorAll('.essay-card')],idx=cards.indexOf(card);
+  const bm=JSON.parse(localStorage.getItem('e-bm')||'[]'),pos=bm.indexOf(idx);
+  if(pos===-1){bm.push(idx);btn.classList.add('bookmarked');btn.innerHTML='&#9829;';showToast('已收藏');}
+  else{bm.splice(pos,1);btn.classList.remove('bookmarked');btn.innerHTML='&#9825;';showToast('取消收藏');}
+  localStorage.setItem('e-bm',JSON.stringify(bm));
+}
+function initBM(){const bm=JSON.parse(localStorage.getItem('e-bm')||'[]');const cards=document.querySelectorAll('.essay-card');bm.forEach(i=>{if(cards[i]){const b=cards[i].querySelector('.bookmark-btn');if(b){b.classList.add('bookmarked');b.innerHTML='&#9829';}}});}
+
+// ===== Toast =====
+function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200);}
+
+// ===== Keyboard =====
+document.addEventListener('keydown',function(e){
+  if((e.ctrlKey||e.metaKey)&&e.key==='k'){e.preventDefault();document.getElementById('searchInput').focus();}
+  if(e.key==='Escape'){if(focusMode){toggleFocusMode();return;}clearSearch();document.getElementById('searchInput').blur();document.getElementById('hlToolbar').classList.remove('show');}
 });
 
-/* ========== Active Navigation ========== */
-function updateActiveNav() {
-  const sections = document.querySelectorAll('.theme-section');
-  const navLinks = document.querySelectorAll('#themeNav a');
-  
-  let current = '';
-  sections.forEach(function(section) {
-    const sectionTop = section.offsetTop - 100;
-    if (window.pageYOffset >= sectionTop) {
-      current = section.getAttribute('id');
-    }
+// ===== Anchors =====
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'});closeSidebar();}));
+
+// ===== Init =====
+document.addEventListener('DOMContentLoaded',function(){
+  // Restore open states
+  const cards=document.querySelectorAll('.essay-card');
+  cards.forEach((c,i)=>{if(localStorage.getItem('e-open-'+i)==='true'){expandCard(c);}});
+  initBM(); loadHL();
+  // Add meta info
+  cards.forEach(card=>{
+    const body=card.querySelector('.essay-body');
+    if(!body)return;
+    const txt=body.textContent.replace(/\s/g,'');
+    const wc=txt.length,rt=Math.max(1,Math.round(wc/300));
+    const meta=document.createElement('div');meta.className='essay-meta';
+    meta.innerHTML='<span>\u{1F4C4}'+wc+'字</span><span>\u23F1'+rt+'分钟</span>';
+    body.parentNode.insertBefore(meta,body);
   });
-  
-  navLinks.forEach(function(link) {
-    link.classList.remove('active');
-    if (link.getAttribute('href') === '#' + current) {
-      link.classList.add('active');
-    }
-  });
-}
-
-/* ========== Scroll to Top ========== */
-function scrollToTop() {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-/* ========== Text-to-Speech ========== */
-function speakText(element) {
-  if (isSpeaking) {
-    speechSynthesis.cancel();
-    isSpeaking = false;
-    showToast('已停止朗读');
-    updateSpeakButtons(null);
-    return;
-  }
-  
-  // Get text from the essay content
-  let text = '';
-  const paragraphs = element.querySelectorAll('p');
-  paragraphs.forEach(function(p) {
-    text += p.textContent + ' ';
-  });
-  
-  if (!text.trim()) return;
-  
-  // Cancel any current speech
-  speechSynthesis.cancel();
-  
-  const utterance = new SpeechSynthesisUtterance(text);
-  utterance.lang = 'zh-CN';
-  utterance.rate = 0.9;
-  utterance.pitch = 1;
-  
-  // Try to find a Chinese voice
-  const voices = speechSynthesis.getVoices();
-  const chineseVoice = voices.find(function(v) {
-    return v.lang.includes('zh') || v.lang.includes('CN');
-  });
-  if (chineseVoice) {
-    utterance.voice = chineseVoice;
-  }
-  
-  utterance.onstart = function() {
-    isSpeaking = true;
-    updateSpeakButtons(element);
-  };
-  
-  utterance.onend = function() {
-    isSpeaking = false;
-    updateSpeakButtons(null);
-  };
-  
-  utterance.onerror = function() {
-    isSpeaking = false;
-    updateSpeakButtons(null);
-    showToast('朗读出错，请重试');
-  };
-  
-  speechSynthesis.speak(utterance);
-  currentUtterance = utterance;
-}
-
-function updateSpeakButtons(activeElement) {
-  document.querySelectorAll('.speak-btn').forEach(function(btn) {
-    if (activeElement && btn.closest('.essay-content') === activeElement) {
-      btn.innerHTML = '\u23F9';
-      btn.title = '停止朗读';
-    } else {
-      btn.innerHTML = '\u25B6';
-      btn.title = '朗读此文';
-    }
-  });
-}
-
-// Load voices
-if (speechSynthesis) {
-  speechSynthesis.onvoiceschanged = function() {
-    speechSynthesis.getVoices();
-  };
-}
-
-/* ========== Bookmarks ========== */
-function toggleBookmark(card) {
-  const cardId = Array.from(document.querySelectorAll('.essay-card')).indexOf(card);
-  const bookmarks = JSON.parse(localStorage.getItem('bookmarks') || '[]');
-  const index = bookmarks.indexOf(cardId);
-  
-  if (index === -1) {
-    bookmarks.push(cardId);
-    showToast('已添加到书签');
-  } else {
-    bookmarks.splice(index, 1);
-    showToast('已移除书签');
-  }
-  
-  localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
-  
-  // Update UI
-  const btn = card.querySelector('.bookmark-btn');
-  if (index === -1) {
-    btn.classList.add('bookmarked');
-    btn.innerHTML = '\u2665';
-  } else {
-    btn.classList.remove('bookmarked');
-    btn.innerHTML = '\u2661';
-  }
-}
-
-function initBookmarks() {
-  const bookmarks = JSON.parse(localStorage.getItem('bookmarks') || '[]');
-  const cards = document.querySelectorAll('.essay-card');
-  bookmarks.forEach(function(idx) {
-    if (cards[idx]) {
-      const btn = cards[idx].querySelector('.bookmark-btn');
-      if (btn) {
-        btn.classList.add('bookmarked');
-        btn.innerHTML = '\u2665';
-      }
-    }
-  });
-}
-
-/* ========== Toast ========== */
-function showToast(message) {
-  const toast = document.getElementById('toast');
-  toast.textContent = message;
-  toast.classList.add('show');
-  setTimeout(function() {
-    toast.classList.remove('show');
-  }, 2000);
-}
-
-/* ========== Smooth scroll for sidebar links ========== */
-document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
-  anchor.addEventListener('click', function(e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      closeSidebar();
-    }
-  });
-});
-
-/* ========== Keyboard shortcuts ========== */
-document.addEventListener('keydown', function(e) {
-  // Ctrl/Cmd + K = focus search
-  if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-    e.preventDefault();
-    document.getElementById('searchInput').focus();
-  }
-  // Escape = clear search
-  if (e.key === 'Escape') {
-    clearSearch();
-    document.getElementById('searchInput').blur();
-  }
 });
 </script>
 </body>
