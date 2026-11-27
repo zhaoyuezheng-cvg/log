@@ -1,0 +1,2400 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第13周 培优练习 · Unit 5 Happy Holiday ｜ 七年级英语话题阅读精讲</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400&family=Noto+Serif+SC:wght@400;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f7f2e8;
+  --paper-2:#fffdf7;
+  --paper-3:#f1e9da;
+  --ink:#201d18;
+  --ink-soft:#5c554a;
+  --ink-faint:#8b8377;
+  --rule:#ddd2bd;
+  --accent:#c2402c;
+  --accent-soft:#f4dcd4;
+  --teal:#1c5a51;
+  --teal-soft:#dcebe5;
+  --gold:#b98526;
+  --shadow:0 18px 40px -28px rgba(60,44,20,.55);
+  --radius:3px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:
+    radial-gradient(ellipse at 12% -10%, #fbf6ec 0%, transparent 55%),
+    radial-gradient(ellipse at 92% 8%, #f2e7d4 0%, transparent 48%),
+    var(--paper);
+  color:var(--ink);
+  font-family:"Source Serif 4","Noto Serif SC",Georgia,serif;
+  font-size:17px;
+  line-height:1.85;
+  -webkit-font-smoothing:antialiased;
+}
+body::after{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:9;
+  opacity:.5;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='0.22'/%3E%3C/svg%3E");
+}
+h1,h2,h3,h4{font-family:"Fraunces","Noto Serif SC",serif;font-weight:700;line-height:1.25;margin:0}
+p{margin:0 0 1em}
+a{color:var(--teal)}
+.mono{font-family:"DM Mono","Noto Serif SC",monospace}
+
+.progress{position:fixed;top:0;left:0;right:0;height:3px;background:transparent;z-index:120}
+.progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--gold))}
+.topbar{
+  position:sticky;top:0;z-index:110;
+  background:rgba(247,242,232,.92);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--rule);
+}
+.topbar-in{max-width:1220px;margin:0 auto;padding:10px 22px;display:flex;align-items:center;gap:18px}
+.brand{display:flex;align-items:center;gap:11px;flex-shrink:0}
+.brand .mark{
+  width:38px;height:38px;border:1.5px solid var(--ink);
+  display:grid;place-items:center;font-family:"DM Mono",monospace;font-size:13px;
+  letter-spacing:.02em;background:var(--ink);color:var(--paper);
+}
+.brand b{font-family:"Fraunces",serif;font-size:16px;letter-spacing:.01em;display:block;line-height:1.15}
+.brand small{font-family:"DM Mono",monospace;font-size:10.5px;color:var(--ink-faint);letter-spacing:.14em;text-transform:uppercase}
+.nav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;flex:1}
+.nav::-webkit-scrollbar{display:none}
+.nav a{
+  white-space:nowrap;text-decoration:none;color:var(--ink-soft);
+  font-family:"DM Mono",monospace;font-size:12px;letter-spacing:.05em;
+  padding:7px 12px;border:1px solid transparent;border-radius:99px;transition:.25s;
+}
+.nav a:hover{border-color:var(--rule);color:var(--ink);background:var(--paper-2)}
+.nav a.active{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.tools{display:flex;gap:8px;align-items:center;flex-shrink:0}
+.btn{
+  font-family:"DM Mono",monospace;font-size:11.5px;letter-spacing:.06em;
+  padding:9px 15px;border:1px solid var(--ink);background:transparent;color:var(--ink);
+  cursor:pointer;border-radius:99px;transition:.22s;white-space:nowrap;
+}
+.btn:hover{background:var(--ink);color:var(--paper)}
+.btn.solid{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn.solid:hover{background:#a5321f;border-color:#a5321f}
+.btn.ghost{border-color:var(--rule);color:var(--ink-soft)}
+.btn.ghost:hover{border-color:var(--ink);background:var(--ink);color:var(--paper)}
+.btn[aria-pressed="true"]{background:var(--teal);border-color:var(--teal);color:#fff}
+
+.hero{max-width:1220px;margin:0 auto;padding:70px 22px 40px;position:relative}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:56px;align-items:end}
+.eyebrow{
+  font-family:"DM Mono",monospace;font-size:11.5px;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:22px;
+  display:flex;align-items:center;gap:12px;
+}
+.eyebrow::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,var(--accent),transparent)}
+.hero h1{font-size:clamp(2.6rem,6.2vw,5.1rem);letter-spacing:-.022em;line-height:.98}
+.hero h1 em{font-style:italic;color:var(--accent);font-weight:400}
+.hero h1 .rule-word{position:relative;display:inline-block}
+.hero h1 .rule-word::after{
+  content:"";position:absolute;left:0;right:0;bottom:.07em;height:.11em;
+  background:var(--gold);opacity:.5;transform:rotate(-.6deg);
+}
+.hero-sub{margin-top:26px;font-size:1.06rem;color:var(--ink-soft);max-width:47ch}
+.hero-sub b{color:var(--ink)}
+.hero-note{margin-top:26px;display:flex;flex-wrap:wrap;gap:8px}
+.tag{
+  font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.06em;
+  padding:6px 12px;border:1px solid var(--rule);border-radius:99px;color:var(--ink-soft);
+  background:var(--paper-2);
+}
+.tag.hot{border-color:var(--accent);color:var(--accent)}
+.hero-aside{position:relative}
+.stat-card{
+  background:var(--ink);color:var(--paper);padding:28px 26px 24px;border-radius:var(--radius);
+  box-shadow:var(--shadow);
+}
+.stat-card h3{font-size:.95rem;letter-spacing:.16em;text-transform:uppercase;
+  font-family:"DM Mono",monospace;color:#c8bfae;font-weight:400;margin-bottom:18px}
+.stat-row{display:flex;justify-content:space-between;align-items:baseline;
+  padding:11px 0;border-bottom:1px dashed rgba(255,255,255,.18)}
+.stat-row:last-child{border-bottom:none}
+.stat-row .k{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.12em;color:#b7ad9c;text-transform:uppercase}
+.stat-row .v{font-family:"Fraunces",serif;font-size:1.55rem}
+.hero-num{
+  position:absolute;right:-6px;top:-118px;font-family:"Fraunces",serif;
+  font-size:12rem;line-height:.8;color:transparent;-webkit-text-stroke:1.4px var(--rule);
+  pointer-events:none;user-select:none;z-index:-1;
+}
+
+.toc{max-width:1220px;margin:26px auto 0;padding:0 22px}
+.toc-in{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);
+  border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden}
+.toc-item{background:var(--paper-2);padding:22px 20px;text-decoration:none;color:var(--ink);
+  display:block;transition:.28s;position:relative}
+.toc-item:hover{background:var(--paper-3);transform:translateY(-2px)}
+.toc-item .n{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.18em;color:var(--accent)}
+.toc-item h4{font-size:1.12rem;margin:8px 0 6px}
+.toc-item p{margin:0;font-size:.86rem;color:var(--ink-faint);line-height:1.6}
+
+section{scroll-margin-top:86px}
+.wrap{max-width:1220px;margin:0 auto;padding:0 22px}
+.sec-head{margin:82px 0 30px;display:flex;align-items:flex-end;gap:22px;flex-wrap:wrap}
+.sec-head .idx{
+  font-family:"Fraunces",serif;font-size:3.2rem;line-height:.85;color:var(--accent);
+  border-bottom:3px solid var(--accent);padding-bottom:6px;
+}
+.sec-head h2{font-size:clamp(1.65rem,3.4vw,2.45rem);letter-spacing:-.012em}
+.sec-head .desc{color:var(--ink-soft);font-size:.95rem;flex:1;min-width:220px}
+
+.passage{
+  background:var(--paper-2);border:1px solid var(--rule);border-radius:var(--radius);
+  box-shadow:var(--shadow);overflow:hidden;
+}
+.p-head{
+  padding:26px 30px 22px;border-bottom:1px solid var(--rule);
+  background:linear-gradient(180deg,var(--paper-3),var(--paper-2));
+  display:flex;gap:22px;align-items:flex-start;flex-wrap:wrap;
+}
+.p-badge{
+  width:62px;height:62px;flex-shrink:0;background:var(--ink);color:var(--paper);
+  display:grid;place-items:center;font-family:"Fraunces",serif;font-size:2rem;border-radius:2px;
+}
+.p-head .title{flex:1;min-width:250px}
+.p-head h3{font-size:1.42rem;letter-spacing:-.01em}
+.p-head .zh{color:var(--ink-soft);font-size:.92rem;margin-top:5px}
+.meta{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}
+.chip{
+  font-family:"DM Mono",monospace;font-size:10.5px;letter-spacing:.05em;
+  padding:5px 10px;border:1px solid var(--rule);border-radius:99px;color:var(--ink-soft);
+  background:var(--paper-2);
+}
+.chip b{color:var(--ink);font-weight:500}
+.stars{color:var(--gold);letter-spacing:.08em}
+
+.text-body{padding:34px 34px 12px;position:relative}
+.text-body p{
+  font-size:1.09rem;line-height:2.05;margin:0 0 1.15em;
+  text-align:justify;position:relative;padding-left:36px;
+}
+.text-body p .pn{
+  position:absolute;left:0;top:.32em;font-family:"DM Mono",monospace;
+  font-size:10.5px;color:var(--accent);letter-spacing:.05em;
+}
+.text-body p:first-of-type::first-letter{
+  font-family:"Fraunces",serif;font-size:3.15rem;line-height:.82;
+  float:left;padding:.06em .12em 0 0;color:var(--accent);font-weight:600;
+}
+.text-body em{font-style:italic}
+.zh-gloss{color:var(--ink-faint);font-size:.82em;font-family:"Noto Serif SC",serif}
+
+.w{
+  cursor:pointer;position:relative;
+  border-bottom:2px dotted var(--accent);
+  padding-bottom:1px;transition:.2s;
+  background:linear-gradient(180deg,transparent 62%,var(--accent-soft) 62%);
+}
+.w:hover,.w:focus-visible{
+  background:var(--accent);color:#fff;border-bottom-color:var(--accent);outline:none;border-radius:2px;
+}
+.w.active{background:var(--teal);color:#fff;border-bottom-color:var(--teal)}
+.w::after{
+  content:"";position:absolute;right:-7px;top:.28em;width:4px;height:4px;
+  border-radius:50%;background:var(--accent);
+}
+.w:hover::after{background:#fff}
+
+.read-row{display:flex;gap:9px;flex-wrap:wrap;padding:6px 34px 26px}
+.mini-btn{
+  font-family:"DM Mono",monospace;font-size:10.5px;letter-spacing:.08em;
+  border:1px solid var(--rule);background:var(--paper-2);color:var(--ink-soft);
+  padding:6px 12px;border-radius:99px;cursor:pointer;transition:.2s;
+}
+.mini-btn:hover{border-color:var(--teal);color:var(--teal);background:var(--teal-soft)}
+.mini-btn.reading{background:var(--accent);border-color:var(--accent);color:#fff}
+
+.notes{border-top:1px solid var(--rule);background:var(--paper-3)}
+details{border-bottom:1px solid var(--rule)}
+details summary{
+  list-style:none;cursor:pointer;padding:17px 34px;
+  font-family:"DM Mono",monospace;font-size:12px;letter-spacing:.12em;
+  display:flex;align-items:center;gap:12px;color:var(--ink);transition:.2s;
+}
+details summary::-webkit-details-marker{display:none}
+details summary:hover{background:rgba(194,64,44,.07);color:var(--accent)}
+details summary .arrow{
+  width:16px;height:16px;flex-shrink:0;border:1px solid currentColor;border-radius:50%;
+  display:grid;place-items:center;font-size:9px;transition:.25s;
+}
+details[open] summary .arrow{transform:rotate(90deg);background:var(--accent);color:#fff;border-color:var(--accent)}
+details .body{padding:4px 34px 22px;font-size:.97rem;color:var(--ink-soft)}
+details .body b{color:var(--ink)}
+details .body .quote{
+  border-left:3px solid var(--accent);padding:9px 16px;background:var(--paper-2);
+  margin:.7em 0;font-style:italic;color:var(--ink);font-size:.95rem;
+}
+.tbl{width:100%;border-collapse:collapse;margin:.8em 0;font-size:.92rem}
+.tbl th,.tbl td{border:1px solid var(--rule);padding:9px 12px;text-align:left}
+.tbl th{background:var(--paper-2);font-family:"DM Mono",monospace;font-size:10.5px;letter-spacing:.08em;font-weight:500}
+
+.quiz{padding:30px 34px 34px;border-top:1px solid var(--rule)}
+.quiz-title{
+  font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:20px;
+  display:flex;align-items:center;gap:12px;
+}
+.quiz-title::after{content:"";height:1px;flex:1;background:var(--rule)}
+.q{border:1px solid var(--rule);border-radius:var(--radius);padding:20px 22px;margin-bottom:16px;background:var(--paper-2);transition:.3s}
+.q:hover{border-color:var(--ink-faint);box-shadow:0 12px 26px -22px rgba(60,44,20,.7)}
+.q-head{display:flex;gap:14px;align-items:flex-start}
+.q-no{
+  width:32px;height:32px;flex-shrink:0;border-radius:50%;background:var(--ink);color:var(--paper);
+  display:grid;place-items:center;font-family:"DM Mono",monospace;font-size:13px;
+}
+.q-head p{margin:4px 0 0;font-size:1.05rem;font-weight:600;line-height:1.7}
+.q-tag{
+  display:inline-block;font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.08em;
+  background:var(--teal-soft);color:var(--teal);padding:3px 9px;border-radius:99px;margin-bottom:8px;
+}
+.opts{list-style:none;margin:15px 0 0;padding:0;display:grid;gap:9px}
+.opts li{
+  display:flex;gap:11px;align-items:flex-start;padding:9px 13px;border-radius:2px;
+  border:1px solid transparent;font-size:.99rem;line-height:1.75;cursor:default;transition:.2s;
+}
+.opts li:hover{background:var(--paper-3);border-color:var(--rule)}
+.opts .letter{
+  font-family:"DM Mono",monospace;font-size:11px;width:22px;height:22px;flex-shrink:0;
+  border:1px solid var(--rule);border-radius:50%;display:grid;place-items:center;color:var(--ink-soft);margin-top:3px;
+}
+.opts li.correct{background:var(--teal-soft);border-color:var(--teal)}
+.opts li.correct .letter{background:var(--teal);color:#fff;border-color:var(--teal)}
+.ans{
+  margin-top:16px;border-top:1px dashed var(--rule);padding-top:16px;
+  animation:slideDown .45s ease;
+}
+@keyframes slideDown{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+.ans-key{
+  display:inline-flex;align-items:center;gap:9px;background:var(--accent);color:#fff;
+  padding:5px 14px;border-radius:99px;font-family:"DM Mono",monospace;font-size:12px;
+  letter-spacing:.12em;margin-bottom:12px;
+}
+.ans h5{
+  font-family:"DM Mono",monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--accent);margin:15px 0 6px;font-weight:500;
+}
+.ans p{margin:0 0 4px;font-size:.965rem;color:var(--ink-soft)}
+.ans .quote{
+  border-left:3px solid var(--gold);background:var(--paper-3);padding:8px 14px;
+  font-style:italic;color:var(--ink);margin:.5em 0;font-size:.93rem;
+}
+.ans .wrong{color:var(--ink-faint)}
+.ans .wrong b{color:var(--ink-soft)}
+
+.bag{border-top:1px solid var(--rule);background:var(--paper-3);padding:28px 34px 32px}
+.bag-head{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+.bag-head .icon{
+  width:34px;height:34px;border:1.5px solid var(--ink);border-radius:3px;
+  display:grid;place-items:center;font-family:"DM Mono",monospace;font-size:11px;
+}
+.bag-head h4{font-size:1.18rem}
+.bag-sub{font-family:"DM Mono",monospace;font-size:10.5px;letter-spacing:.16em;color:var(--accent);margin-bottom:16px}
+.bag-grid{columns:2;column-gap:34px}
+.bag-item{
+  break-inside:avoid;padding:8px 0;border-bottom:1px dotted var(--rule);
+  display:flex;gap:11px;font-size:.945rem;line-height:1.75;
+}
+.bag-item .num{
+  font-family:"DM Mono",monospace;font-size:10.5px;color:var(--accent);
+  flex-shrink:0;width:22px;padding-top:3px;
+}
+.bag-item .en{font-weight:600}
+.bag-item .cn{color:var(--ink-soft)}
+.fill-in{
+  background:var(--paper-2);border:1px dashed var(--accent);padding:16px 18px;
+  margin-top:18px;border-radius:2px;font-size:.955rem;
+}
+.blank{
+  display:inline-block;min-width:88px;border-bottom:1.6px solid var(--ink);
+  margin:0 5px;vertical-align:baseline;
+}
+
+.gram-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px}
+.gram-card{
+  background:var(--paper-2);border:1px solid var(--rule);border-radius:var(--radius);
+  padding:24px 24px 20px;position:relative;overflow:hidden;transition:.3s;
+}
+.gram-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--ink-faint)}
+.gram-card .no{
+  font-family:"Fraunces",serif;font-size:2.6rem;color:var(--paper-3);
+  position:absolute;right:14px;top:2px;line-height:1;
+}
+.gram-card h4{font-size:1.12rem;margin-bottom:10px;position:relative}
+.gram-card .en{font-style:italic;color:var(--teal);font-size:.96rem;margin:8px 0}
+.gram-card p{font-size:.935rem;color:var(--ink-soft);margin:0 0 .55em}
+.gram-card .tip{
+  margin-top:12px;padding:10px 13px;background:var(--accent-soft);border-radius:2px;
+  font-size:.87rem;color:#8d3524;
+}
+
+.gloss-tools{
+  display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:22px;
+  background:var(--paper-2);border:1px solid var(--rule);padding:16px 18px;border-radius:var(--radius);
+}
+.search{
+  flex:1;min-width:230px;display:flex;align-items:center;gap:10px;
+  border:1px solid var(--rule);border-radius:99px;padding:9px 16px;background:var(--paper);
+}
+.search input{
+  border:none;background:transparent;outline:none;flex:1;font-family:"Source Serif 4",serif;
+  font-size:.98rem;color:var(--ink);
+}
+.filters{display:flex;gap:7px;flex-wrap:wrap}
+.filter{
+  font-family:"DM Mono",monospace;font-size:10.5px;letter-spacing:.09em;
+  padding:8px 14px;border-radius:99px;border:1px solid var(--rule);background:var(--paper);
+  cursor:pointer;color:var(--ink-soft);transition:.2s;
+}
+.filter:hover{border-color:var(--ink);color:var(--ink)}
+.filter.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.count{font-family:"DM Mono",monospace;font-size:11px;color:var(--ink-faint);letter-spacing:.08em}
+
+.gloss-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
+.g-card{
+  background:var(--paper-2);border:1px solid var(--rule);border-radius:var(--radius);
+  padding:20px 21px 18px;transition:.3s;position:relative;cursor:pointer;
+}
+.g-card:hover{border-color:var(--accent);box-shadow:0 20px 36px -28px rgba(120,50,20,.8);transform:translateY(-3px)}
+.g-card .top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.g-card h4{font-family:"Fraunces",serif;font-size:1.32rem;letter-spacing:-.01em;line-height:1.25}
+.g-card .ipa{font-family:"DM Mono",monospace;font-size:11px;color:var(--ink-faint);display:block;margin-top:3px}
+.g-card .src{
+  font-family:"DM Mono",monospace;font-size:9.5px;letter-spacing:.1em;padding:4px 9px;
+  border-radius:99px;background:var(--paper-3);color:var(--ink-soft);flex-shrink:0;
+}
+.g-card .src.phrase{background:var(--accent-soft);color:#a03524}
+.pos{
+  display:inline-block;font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.08em;
+  border:1px solid var(--teal);color:var(--teal);padding:2px 8px;border-radius:99px;margin:12px 0 8px;
+}
+.g-card .cn{font-size:1.02rem;font-weight:600;margin-bottom:4px}
+.g-card .ext{font-size:.9rem;color:var(--ink-soft);margin-bottom:10px}
+.g-row{display:flex;gap:9px;font-size:.9rem;line-height:1.75;padding:6px 0;border-top:1px dotted var(--rule)}
+.g-row .lbl{
+  font-family:"DM Mono",monospace;font-size:9.5px;letter-spacing:.11em;color:var(--accent);
+  flex-shrink:0;width:52px;padding-top:4px;text-transform:uppercase;
+}
+.g-row .val{color:var(--ink-soft);flex:1}
+.g-row .val em{font-style:italic;color:var(--ink)}
+.g-ex{margin-top:9px;padding:11px 13px;background:var(--paper-3);border-radius:2px;font-size:.885rem;line-height:1.8}
+.g-ex p{margin:0 0 6px}
+.g-ex p:last-child{margin:0}
+.g-ex .en{font-style:italic}
+.g-ex .cn{color:var(--ink-faint);font-family:"Noto Serif SC",serif}
+
+.overlay{
+  position:fixed;inset:0;background:rgba(32,29,24,.42);opacity:0;visibility:hidden;
+  transition:.35s;z-index:130;backdrop-filter:blur(2px);
+}
+.overlay.open{opacity:1;visibility:visible}
+.drawer{
+  position:fixed;top:0;right:0;height:100%;width:min(440px,92vw);z-index:140;
+  background:var(--paper-2);border-left:1px solid var(--rule);
+  transform:translateX(103%);transition:transform .42s cubic-bezier(.4,0,.2,1);
+  overflow-y:auto;box-shadow:-30px 0 60px -40px rgba(40,26,10,.7);
+}
+.drawer.open{transform:none}
+.drawer-head{
+  position:sticky;top:0;background:var(--paper-2);padding:22px 26px 16px;
+  border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;
+  align-items:flex-start;gap:14px;
+}
+.drawer-head .k{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.22em;color:var(--accent);text-transform:uppercase}
+.drawer-head h3{font-family:"Fraunces",serif;font-size:1.85rem;line-height:1.15;margin-top:6px}
+.drawer-head .ipa{font-family:"DM Mono",monospace;font-size:11.5px;color:var(--ink-faint)}
+.close{
+  width:34px;height:34px;border:1px solid var(--rule);background:transparent;border-radius:50%;
+  cursor:pointer;font-size:16px;line-height:1;color:var(--ink-soft);flex-shrink:0;transition:.22s;
+}
+.close:hover{background:var(--ink);color:var(--paper);border-color:var(--ink);transform:rotate(90deg)}
+.drawer-body{padding:20px 26px 44px}
+.drawer-body .big-cn{font-size:1.15rem;font-weight:600;margin-bottom:6px}
+.drawer-body .g-row{border-top:1px dotted var(--rule)}
+.drawer-actions{display:flex;gap:9px;margin:16px 0 4px;flex-wrap:wrap}
+
+footer{
+  margin-top:92px;border-top:1px solid var(--rule);background:var(--ink);color:#cfc6b6;
+}
+.foot-in{max-width:1220px;margin:0 auto;padding:52px 22px 42px;display:grid;
+  grid-template-columns:1.4fr 1fr 1fr;gap:38px}
+footer h4{font-family:"Fraunces",serif;font-size:1.45rem;color:var(--paper);margin-bottom:12px}
+footer p{font-size:.92rem;line-height:1.85}
+footer .k{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.2em;
+  text-transform:uppercase;color:#8f8676;margin-bottom:12px;display:block}
+footer ul{list-style:none;padding:0;margin:0}
+footer li{padding:5px 0;font-size:.92rem;border-bottom:1px dashed rgba(255,255,255,.12)}
+.foot-bottom{
+  border-top:1px solid rgba(255,255,255,.14);padding:18px 22px;text-align:center;
+  font-family:"DM Mono",monospace;font-size:10.5px;letter-spacing:.16em;color:#7d7464;
+}
+
+.totop{
+  position:fixed;right:22px;bottom:22px;width:48px;height:48px;border-radius:50%;
+  background:var(--accent);color:#fff;border:none;cursor:pointer;z-index:100;
+  opacity:0;visibility:hidden;transform:translateY(12px);transition:.32s;
+  font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.06em;
+}
+.totop.show{opacity:1;visibility:visible;transform:none}
+.totop:hover{background:var(--ink)}
+
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .75s ease,transform .75s cubic-bezier(.22,1,.36,1)}
+.reveal.in{opacity:1;transform:none}
+
+.toast{
+  position:fixed;left:50%;bottom:30px;transform:translate(-50%,26px);z-index:150;
+  background:var(--ink);color:var(--paper);padding:12px 22px;border-radius:99px;
+  font-family:"DM Mono",monospace;font-size:11.5px;letter-spacing:.08em;
+  opacity:0;visibility:hidden;transition:.34s;
+}
+.toast.show{opacity:1;visibility:visible;transform:translate(-50%,0)}
+
+@media(max-width:1080px){
+  .hero-grid{grid-template-columns:1fr;gap:36px}
+  .hero-num{display:none}
+  .toc-in{grid-template-columns:repeat(2,1fr)}
+  .foot-in{grid-template-columns:1fr 1fr}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .topbar-in{flex-wrap:wrap;gap:10px;padding:10px 15px}
+  .nav{order:3;width:100%;flex:none}
+  .tools{margin-left:auto}
+  .hero{padding:42px 15px 26px}
+  .hero h1{font-size:clamp(2.15rem,10vw,3.15rem)}
+  .toc{padding:0 15px}
+  .toc-in{grid-template-columns:1fr}
+  .wrap{padding:0 15px}
+  .sec-head{margin:56px 0 22px;gap:14px}
+  .sec-head .idx{font-size:2.35rem}
+  .p-head{padding:20px 18px 18px;gap:14px}
+  .p-badge{width:50px;height:50px;font-size:1.55rem}
+  .text-body{padding:22px 18px 6px}
+  .text-body p{padding-left:26px;font-size:1.02rem;line-height:1.95;text-align:left}
+  .read-row{padding:6px 18px 20px}
+  details summary{padding:15px 18px}
+  details .body{padding:2px 18px 18px}
+  .quiz{padding:22px 18px 26px}
+  .q{padding:17px 15px}
+  .q-head p{font-size:.99rem}
+  .bag{padding:22px 18px 26px}
+  .bag-grid{columns:1}
+  .gloss-grid{grid-template-columns:1fr}
+  .foot-in{grid-template-columns:1fr;gap:26px}
+  .drawer{width:100%;height:82vh;top:auto;bottom:0;border-left:none;
+    border-top:1px solid var(--rule);transform:translateY(103%);border-radius:14px 14px 0 0}
+  .drawer.open{transform:none}
+}
+@media print{
+  .topbar,.progress,.totop,.drawer,.overlay,.read-row,.gloss-tools{display:none!important}
+  .ans{display:block!important}
+  body{background:#fff}
+}
+</style>
+</head>
+<body>
+
+<div class="progress"><span id="bar"></span></div>
+
+<header class="topbar">
+  <div class="topbar-in">
+    <div class="brand">
+      <div class="mark">W13</div>
+      <div>
+        <b>Unit 5 · Happy Holiday</b>
+        <small>初中英语话题阅读 · 七年级上册</small>
+      </div>
+    </div>
+    <nav class="nav" id="nav">
+      <a href="#p-a">阅读 A</a>
+      <a href="#p-b">阅读 B</a>
+      <a href="#p-c">阅读 C</a>
+      <a href="#grammar">语法补充</a>
+      <a href="#glossary">生词汇总</a>
+      <a href="#proof">校对说明</a>
+    </nav>
+    <div class="tools">
+      <button class="btn ghost" id="readAll">朗读控制</button>
+      <button class="btn solid" id="toggleAll">展开全部解析</button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <div class="eyebrow">Week 13 · 培优练习 · 阅读理解精讲</div>
+      <h1>Happy<br><em>Holiday</em><br><span class="rule-word">三篇精读</span></h1>
+      <p class="hero-sub">
+        本次练习共收录 <b>三篇阅读理解</b>（A 说明文 / B 记叙文 / C 说明文），主题涵盖
+        <b>文化认同</b>、<b>丰富多样的生态</b> 与 <b>文化差异</b>。
+        页面完整保留原文段落结构与题号，提供<b>答案、解题思路、逐段与逐题解析</b>，
+        并按七年级词汇水平整理<b>生词与生短语</b>：原文中带下划线的词可点击展开释义与例句，支持语音朗读。
+      </p>
+      <div class="hero-note">
+        <span class="tag hot">原文下划线 = 可点击生词</span>
+        <span class="tag">逐题解析可展开</span>
+        <span class="tag">支持英文朗读</span>
+        <span class="tag">桌面 / 移动端自适应</span>
+      </div>
+    </div>
+    <div class="hero-aside">
+      <div class="hero-num">05</div>
+      <div class="stat-card">
+        <h3>Exercise Overview</h3>
+        <div class="stat-row"><span class="k">Passages</span><span class="v">3 篇</span></div>
+        <div class="stat-row"><span class="k">Questions</span><span class="v">11 题</span></div>
+        <div class="stat-row"><span class="k">Vocabulary</span><span class="v" id="statVocab">— 条</span></div>
+        <div class="stat-row"><span class="k">Grammar</span><span class="v">8 项</span></div>
+        <div class="stat-row"><span class="k">Level</span><span class="v">七年级上</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="toc">
+  <div class="toc-in reveal">
+    <a class="toc-item" href="#p-a">
+      <div class="n">PASSAGE A / 说明文</div>
+      <h4>歌曲《吉量》</h4>
+      <p>主题：人与社会——文化认同 · 词数 227 · 3 题</p>
+    </a>
+    <a class="toc-item" href="#p-b">
+      <div class="n">PASSAGE B / 记叙文</div>
+      <h4>扬州瘦西湖之行</h4>
+      <p>主题：人与自然——丰富多样的生态 · 词数 328 · 4 题</p>
+    </a>
+    <a class="toc-item" href="#p-c">
+      <div class="n">PASSAGE C / 说明文</div>
+      <h4>中澳假期对比</h4>
+      <p>主题：人与社会——文化差异 · 词数 216 · 4 题</p>
+    </a>
+    <a class="toc-item" href="#glossary">
+      <div class="n">VOCABULARY / 精讲</div>
+      <h4>生词与生短语汇总</h4>
+      <p>释义 · 词性 · 用法 · 例句 · 近反义 · 搭配</p>
+    </a>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- ================= PASSAGE A ================= -->
+<section id="p-a">
+  <div class="sec-head reveal">
+    <div class="idx">A</div>
+    <h2>阅读理解 A ｜ 吉量 Jiliang</h2>
+    <p class="desc">说明文 · 主题：人与社会——文化认同。文章介绍 2026 年央视春晚歌曲《吉量》如何把中国传统文化与现代音乐融合。</p>
+  </div>
+
+  <article class="passage reveal">
+    <div class="p-head">
+      <div class="p-badge">A</div>
+      <div class="title">
+        <h3>A Wonderful Song Called <em>Jiliang</em></h3>
+        <div class="zh">一首名为《吉量》的精彩歌曲 —— 传统文化与现代音乐的创造性融合</div>
+        <div class="meta">
+          <span class="chip">主题：<b>人与社会——文化认同</b></span>
+          <span class="chip">语言类型：<b>说明文</b></span>
+          <span class="chip">词数：<b>227</b></span>
+          <span class="chip">难度：<b class="stars">★★★☆☆</b></span>
+          <span class="chip">建议用时：<b>8′</b></span>
+          <span class="chip">正确率：<b>/ 3</b></span>
+          <span class="chip">原书标注：<b>答案见书后</b></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-body" id="text-a">
+      <p><span class="pn">[1]</span>On the night of 16 February, 2026, a wonderful song called <em>Jiliang</em> <span class="w" data-w="come-out">came out</span> on the CCTV Spring Festival Gala. The famous singer Zhou Shen and the "Guizhou 'Village T'" team sang it together.</p>
+      <p><span class="pn">[2]</span>This song is a <span class="w" data-w="creative">creative</span> work. It <span class="w" data-w="mix">mixes</span> <span class="w" data-w="traditional">traditional</span><span class="zh-gloss">（传统的）</span> Chinese culture with modern music together. It takes the <span class="w" data-w="magical">magical</span> horse "Jiliang" from the <span class="w" data-w="ancient">ancient</span> book <em>Shan Hai Jing</em> as its <span class="w" data-w="main-idea">main idea</span>, <span class="w" data-w="bring-life">bringing this magical animal to life</span> for people today.</p>
+      <p><span class="pn">[3]</span>The song uses traditional Chinese <span class="w" data-w="instrument">musical instruments</span> and beautiful pictures. It <span class="w" data-w="connect">connects</span> the <span class="w" data-w="myth">ancient myth</span><span class="zh-gloss">（神话）</span> of the sun tree with the bronze sacred tree<span class="zh-gloss">（青铜神树）</span> from Sanxingdui, creating a <em>dialogue</em><span class="zh-gloss">（对话）</span> between Bashu culture and ancient Chinese <span class="w" data-w="civilisation">civilisation</span><span class="zh-gloss">（文明）</span>. The <span class="w" data-w="performance">performance</span><span class="zh-gloss">（表演）</span> shows the spirit of the Chinese nation <span class="w" data-w="move-forward">moving forward</span>, and gives traditional culture new life today. It is <span class="w" data-w="not-only">not only a great artwork, but also</span> a way to <span class="w" data-w="respect">show respect for</span> our <span class="w" data-w="roots">roots</span>.</p>
+      <p><span class="pn">[4]</span>This song tells us that young Chinese musicians can create beautiful works by <span class="w" data-w="draw-from">drawing from</span> our rich culture. It <span class="w" data-w="encourage">encourages</span> us to love our traditional culture and use it to create new art. In the future, more young people will <span class="w" data-w="surely">surely</span> use music to show the beauty of China and share it with the world.</p>
+    </div>
+
+    <div class="read-row">
+      <button class="mini-btn read-para" data-target="text-a" data-para="1">朗读 第1段</button>
+      <button class="mini-btn read-para" data-target="text-a" data-para="2">朗读 第2段</button>
+      <button class="mini-btn read-para" data-target="text-a" data-para="3">朗读 第3段</button>
+      <button class="mini-btn read-para" data-target="text-a" data-para="4">朗读 第4段</button>
+      <button class="mini-btn read-passage" data-target="text-a">朗读 全文</button>
+      <button class="mini-btn stop-read">停止朗读</button>
+    </div>
+
+    <div class="notes">
+      <details open>
+        <summary><span class="arrow">▶</span>逐段精读解析（Paragraph Analysis）</summary>
+        <div class="body">
+          <p><b>第 1 段｜背景与事件。</b>交代歌曲《吉量》的亮相时间与场合：2026 年 2 月 16 日晚，歌曲 <b>came out</b>（推出、上演）于 CCTV Spring Festival Gala（央视春节联欢晚会），由歌手周深与贵州“村T”团队共同演唱。本段是典型的新闻式开头，先给“何时、何地、何人”。</p>
+          <p><b>第 2 段｜创作特点与核心立意。</b>点明作品的两大特征：一是 <b>mix ... with ...</b>，把中国传统文化与现代音乐融合；二是以古籍《山海经》中的神马“吉量”为 <b>main idea</b>（主题），并用 <b>bring ... to life</b> 说明作品让古老形象“活”在今天。</p>
+          <p><b>第 3 段｜表现形式与文化内涵。</b>先写“物”（traditional Chinese musical instruments 与画面），再写“意”：把太阳树神话与三星堆青铜神树 <b>connect ... with ...</b>，形成巴蜀文化与中华文明的对话；接着用 shows the spirit of the Chinese nation <b>moving forward</b> 说明表演的精神价值；最后用 <b>not only ... but also ...</b> 收束：既是艺术作品，也是对文化根源（roots）的尊重。</p>
+          <p><b>第 4 段｜启示与展望。</b>由“这一首歌”上升到“这一代人”：年轻音乐家可以 <b>draw from</b> 丰富文化进行创作；歌曲 <b>encourages</b> 我们热爱并运用传统文化；展望未来，更多年轻人会用音乐展示中国之美、与世界分享。</p>
+          <p><b>篇章结构总结：</b>事件引入（第 1 段）→ 创作立意（第 2 段）→ 形式与内涵（第 3 段）→ 启示与展望（第 4 段）。第 2 段的 main idea 一句是全文主题句，也是第 1 题的设题点。</p>
+        </div>
+      </details>
+      <details>
+        <summary><span class="arrow">▶</span>核心句式与长难句拆解</summary>
+        <div class="body">
+          <p class="quote">It takes the magical horse "Jiliang" from the ancient book Shan Hai Jing as its main idea, bringing this magical animal to life for people today.</p>
+          <p><b>结构：</b>主干是 "It takes ... as its main idea"（take ... as ... = 把……作为……）；句末 "bringing ..." 是现在分词短语作结果状语，表示“从而让这一神奇动物鲜活地来到今天的人们面前”。<b>译：</b>它以古籍《山海经》中的神马“吉量”为主题，让这一神奇动物在今天的人们面前鲜活起来。</p>
+          <p class="quote">It is not only a great artwork, but also a way to show respect for our roots.</p>
+          <p><b>结构：</b>not only ... but also ... 连接两个并列表语（a great artwork / a way to ...）。<b>译：</b>它不仅是一件优秀的艺术作品，也是向我们的文化根源表达敬意的一种方式。</p>
+          <p class="quote">This song tells us that young Chinese musicians can create beautiful works by drawing from our rich culture.</p>
+          <p><b>结构：</b>tell sb. + that 宾语从句；by + doing 表示“通过……方式”。<b>译：</b>这首歌告诉我们，年轻的中国音乐人可以通过汲取我们丰富的文化，创作出优秀的作品。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="quiz">
+      <div class="quiz-title">Questions · 题目与解析</div>
+
+      <div class="q" data-q="a1">
+        <div class="q-head">
+          <div class="q-no">1</div>
+          <div><p>What is the main idea of the song <em>Jiliang</em>?</p></div>
+        </div>
+        <ul class="opts">
+          <li data-opt="A"><span class="letter">A</span><span>Bashu food culture.</span></li>
+          <li data-opt="B"><span class="letter">B</span><span>The bronze tree from Sanxingdui.</span></li>
+          <li data-opt="C"><span class="letter">C</span><span>The magical horse from <em>Shan Hai Jing</em>.</span></li>
+        </ul>
+        <button class="mini-btn toggle-ans">显示答案与解析</button>
+        <div class="ans" hidden>
+          <div class="ans-key">答案：C</div>
+          <h5>解题思路 · 主旨题</h5>
+          <p>题干问歌曲的 <b>main idea（主题、主意）</b>，答案就在第 2 段主题句中，直接锁定即可。</p>
+          <h5>定位原文</h5>
+          <p class="quote">It takes the magical horse "Jiliang" from the ancient book Shan Hai Jing as its main idea ...</p>
+          <p>句中 "takes ... as its main idea" 与题干 "main idea" 完全对应，故选 <b>C</b>：来自《山海经》的神马“吉量”。</p>
+          <h5>选项辨析</h5>
+          <p class="wrong"><b>A.</b> Bashu food culture（巴蜀饮食文化）——文中提到的是 <i>Bashu culture</i> 与古蜀文明的对话，且是“文化”层面，不是“饮食”，属于偷换概念。</p>
+          <p class="wrong"><b>B.</b> The bronze tree from Sanxingdui（三星堆青铜神树）——第 3 段确实提到，但它只是歌曲所连接的一个元素，并非歌曲主旨，属于以偏概全。</p>
+        </div>
+      </div>
+
+      <div class="q" data-q="a2">
+        <div class="q-head">
+          <div class="q-no">2</div>
+          <div><p>Which of the following is <b>NOT</b> used in the song?</p></div>
+        </div>
+        <ul class="opts">
+          <li data-opt="A"><span class="letter">A</span><span>Old myth stories.</span></li>
+          <li data-opt="B"><span class="letter">B</span><span>Western classical music instruments.</span></li>
+          <li data-opt="C"><span class="letter">C</span><span>Traditional Chinese music instruments.</span></li>
+        </ul>
+        <button class="mini-btn toggle-ans">显示答案与解析</button>
+        <div class="ans" hidden>
+          <div class="ans-key">答案：B</div>
+          <h5>解题思路 · 否定细节题</h5>
+          <p>注意题干中的 <b>NOT</b>：要求选出歌曲中<b>没有</b>使用的元素。做法是逐项回到原文验证，把“使用了的”排除，剩下的即为答案。</p>
+          <h5>定位原文</h5>
+          <p class="quote">The song uses traditional Chinese musical instruments and beautiful pictures.</p>
+          <p class="quote">It connects the ancient myth of the sun tree with the bronze sacred tree from Sanxingdui ...</p>
+          <h5>选项辨析</h5>
+          <p class="wrong"><b>A.</b> Old myth stories（古老的神话故事）——第 2、3 段提到《山海经》与 ancient myth，<b>已使用</b>，排除。</p>
+          <p class="wrong"><b>C.</b> Traditional Chinese music instruments（中国传统乐器）——第 3 段首句明写 <i>uses traditional Chinese musical instruments</i>，<b>已使用</b>，排除。</p>
+          <p><b>B.</b> Western classical music instruments（西方古典乐器）——全文只说“与现代音乐（modern music）融合”，并未提及西方古典乐器，故为<b>未使用</b>的选项，符合题意。</p>
+        </div>
+      </div>
+
+      <div class="q" data-q="a3">
+        <div class="q-head">
+          <div class="q-no">3</div>
+          <div><p>What does the performance of <em>Jiliang</em> show?</p></div>
+        </div>
+        <ul class="opts">
+          <li data-opt="A"><span class="letter">A</span><span>The Chinese nation is moving forward.</span></li>
+          <li data-opt="B"><span class="letter">B</span><span>Traditional culture is disappearing.</span></li>
+          <li data-opt="C"><span class="letter">C</span><span>Western music is more important.</span></li>
+        </ul>
+        <button class="mini-btn toggle-ans">显示答案与解析</button>
+        <div class="ans" hidden>
+          <div class="ans-key">答案：A</div>
+          <h5>解题思路 · 细节理解题</h5>
+          <p>抓住题干关键词 <b>performance</b>，在第 3 段定位原句，比对选项与原文表述。</p>
+          <h5>定位原文</h5>
+          <p class="quote">The performance shows the spirit of the Chinese nation moving forward, and gives traditional culture new life today.</p>
+          <p>"the spirit of the Chinese nation moving forward"（中华民族奋进的精神）与选项 A "The Chinese nation is moving forward" 对应，故选 <b>A</b>。</p>
+          <h5>选项辨析</h5>
+          <p class="wrong"><b>B.</b> “传统文化正在消失”——与原文 "gives traditional culture new life today"（赋予传统文化新的生命）完全相反。</p>
+          <p class="wrong"><b>C.</b> “西方音乐更重要”——原文强调的是传统中国文化与现代音乐的融合，并未比较中西音乐的重要性，属无中生有。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bag">
+      <div class="bag-head">
+        <div class="icon">VOC</div>
+        <h4>积累小袋</h4>
+      </div>
+      <div class="bag-sub">ORIGINAL WORD LIST · 原书词汇表（1—17）</div>
+      <div class="bag-grid">
+        <div class="bag-item"><span class="num">1</span><span><span class="en">CCTV Spring Festival Gala</span> <span class="cn">央视春节联欢晚会</span></span></div>
+        <div class="bag-item"><span class="num">2</span><span><span class="en">come out</span> <span class="cn">出现；上演；推出</span></span></div>
+        <div class="bag-item"><span class="num">3</span><span><span class="en">traditional Chinese culture</span> <span class="cn">中国传统文化</span></span></div>
+        <div class="bag-item"><span class="num">4</span><span><span class="en">modern music</span> <span class="cn">现代音乐</span></span></div>
+        <div class="bag-item"><span class="num">5</span><span><span class="en">mix ... with ...</span> <span class="cn">把……和……混合/融合</span></span></div>
+        <div class="bag-item"><span class="num">6</span><span><span class="en">the ancient book</span> <span class="cn">古书</span></span></div>
+        <div class="bag-item"><span class="num">7</span><span><span class="en">take ... as ...</span> <span class="cn">以……作为……</span></span></div>
+        <div class="bag-item"><span class="num">8</span><span><span class="en">main idea</span> <span class="cn">主意；主题</span></span></div>
+        <div class="bag-item"><span class="num">9</span><span><span class="en">bring ... to life</span> <span class="cn">赋予……生机；使……鲜活</span></span></div>
+        <div class="bag-item"><span class="num">10</span><span><span class="en">musical instruments</span> <span class="cn">乐器</span></span></div>
+        <div class="bag-item"><span class="num">11</span><span><span class="en">connect ... with ...</span> <span class="cn">把……和……联系起来</span></span></div>
+        <div class="bag-item"><span class="num">12</span><span><span class="en">ancient myth</span> <span class="cn">神话故事</span></span></div>
+        <div class="bag-item"><span class="num">13</span><span><span class="en">Chinese civilisation</span> <span class="cn">中华文明</span></span></div>
+        <div class="bag-item"><span class="num">14</span><span><span class="en">the Chinese nation</span> <span class="cn">中华民族</span></span></div>
+        <div class="bag-item"><span class="num">15</span><span><span class="en">move forward</span> <span class="cn">前进；奋进</span></span></div>
+        <div class="bag-item"><span class="num">16</span><span><span class="en">draw from</span> <span class="cn">汲取；取自</span></span></div>
+        <div class="bag-item"><span class="num">17</span><span><span class="en">the beauty of China</span> <span class="cn">中国之美</span></span></div>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- ================= PASSAGE B ================= -->
+<section id="p-b">
+  <div class="sec-head reveal">
+    <div class="idx">B</div>
+    <h2>阅读理解 B ｜ Yangzhou &amp; the Slender West Lake</h2>
+    <p class="desc">记叙文 · 主题：人与自然——丰富多样的生态。作者按游览顺序记录国庆假期的扬州之行，重点描写瘦西湖、五亭桥与白塔。</p>
+  </div>
+
+  <article class="passage reveal">
+    <div class="p-head">
+      <div class="p-badge">B</div>
+      <div class="title">
+        <h3>My First Trip to Yangzhou</h3>
+        <div class="zh">我的第一次中国之行 —— 扬州瘦西湖游记</div>
+        <div class="meta">
+          <span class="chip">主题：<b>人与自然——丰富多样的生态</b></span>
+          <span class="chip">语言类型：<b>记叙文</b></span>
+          <span class="chip">词数：<b>328</b></span>
+          <span class="chip">难度：<b class="stars">★★★☆☆</b></span>
+          <span class="chip">建议用时：<b>6′</b></span>
+          <span class="chip">正确率：<b>/ 4</b></span>
+          <span class="chip">原书标注：<b>答案见书后</b></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-body" id="text-b">
+      <p><span class="pn">[1]</span>This is my first trip to China during the National Day holiday. It was a very wonderful <span class="w" data-w="experience">experience</span>. I got to the clean, <span class="w" data-w="lively">lively</span> city of Yangzhou with my family by plane in the morning. The hotel we stayed in was very comfortable and <span class="w" data-w="inexpensive">inexpensive</span>.</p>
+      <p><span class="pn">[2]</span>Yangzhou, an <span class="w" data-w="ancient">ancient</span> city, is in the eastern part of Jiangsu Province. There are lots of <span class="w" data-w="places">places of interest</span>. At first, we visited the Slender West Lake<span class="zh-gloss">（瘦西湖）</span>, one of the most famous <span class="w" data-w="places">tourist attractions</span> in China. It is <span class="w" data-w="such-that">such a beautiful lake that</span> nobody should miss it! The Slender West Lake is as beautiful as the West Lake in Hangzhou, but its shape is long and <span class="w" data-w="narrow">narrow</span>, so it has its name. Visiting the Slender West Lake is just like enjoying a Chinese painting. When we went boating, we saw many fish swimming and beautiful flowers in the sun. It just <span class="w" data-w="breath">took my breath away</span>. I <span class="w" data-w="cant-help">couldn't help picking</span> a flower, but my father said it was <span class="w" data-w="bad-for">bad to hurt</span> the flowers. Besides, the Slender West Lake is famous for the different kinds of <span class="w" data-w="fantastic">fantastic</span> ancient buildings. We walked along the Five-Pavilion Bridge<span class="zh-gloss">（五亭桥）</span> and enjoyed the ancient white tower next to it! The Five-Pavilion Bridge has a history of more than 200 years. The five <span class="w" data-w="pavilion">pavilions</span> are like five big <span class="w" data-w="lotus">lotus</span> flowers on the lake. There are 15 holes in the bridge. A beautiful view can be enjoyed on full-moon nights as "15 moons" will be <span class="w" data-w="reflected">reflected</span> on the water. Also, there are other popular places for visitors to enjoy, such as the Twenty-Four-Bridge <span class="w" data-w="scenic-area">Scenic Area</span> and the Ten Thousand Flowers Garden.</p>
+      <p><span class="pn">[3]</span>The Slender West Lake is not only famous for its beautiful views but also <span class="w" data-w="full-of">full of</span> Chinese culture. Many writers, painters and artists in ancient times were interested in the sights and left many poems, paintings, <span class="w" data-w="handwriting">handwriting</span> and music. <span class="w" data-w="while">While enjoying</span> the beauty of the Slender West Lake, visitors can also learn about interesting stories of Yangzhou.</p>
+    </div>
+
+    <div class="read-row">
+      <button class="mini-btn read-para" data-target="text-b" data-para="1">朗读 第1段</button>
+      <button class="mini-btn read-para" data-target="text-b" data-para="2">朗读 第2段</button>
+      <button class="mini-btn read-para" data-target="text-b" data-para="3">朗读 第3段</button>
+      <button class="mini-btn read-passage" data-target="text-b">朗读 全文</button>
+      <button class="mini-btn stop-read">停止朗读</button>
+    </div>
+
+    <div class="notes">
+      <details open>
+        <summary><span class="arrow">▶</span>逐段精读解析（Paragraph Analysis）</summary>
+        <div class="body">
+          <p><b>第 1 段｜出行与初印象。</b>点明时间（National Day holiday 国庆假期）与“第一次来中国”，评价这次经历 "a very wonderful experience"；写交通（by plane）与住宿（comfortable and <b>inexpensive</b>）。本段奠定全文<b>分享美好旅行</b>的感情基调，也回答了第 1 题的季节与第 4 题的写作意图。</p>
+          <p><b>第 2 段｜游览主线（瘦西湖 → 五亭桥 → 白塔 → 其他景点）。</b>先总写扬州是古城、<b>places of interest</b> 众多；再写瘦西湖“美如中国画”、湖形“长而窄”得名；接着写游船所见（鱼、花）、个人插曲（忍不住摘花被父亲劝阻）；然后重点写五亭桥：200 多年历史、五座亭如莲花、桥下 15 个桥孔、月夜“十五个月亮”倒映水中；最后列举二十四桥景区与万花园。</p>
+          <p><b>第 3 段｜文化内涵。</b>瘦西湖不仅以美景闻名，还 <b>be full of</b> 中国文化：古代文人墨客留下诗文、绘画、书法与音乐；游客在欣赏美景的同时还能了解扬州的故事。本段由“景”提升到“文化”，使文章不止于游记。</p>
+          <p><b>结构与人称：</b>第一人称（I / my family）、按<b>游览时间顺序</b>组织（at first → when we went boating → we walked along → also），并穿插<b>人物对话与感受</b>（my father said ... / It took my breath away），这是游记类记叙文的典型写法。</p>
+        </div>
+      </details>
+      <details>
+        <summary><span class="arrow">▶</span>核心句式与长难句拆解</summary>
+        <div class="body">
+          <p class="quote">It is such a beautiful lake that nobody should miss it!</p>
+          <p><b>结构：</b>such + (a/an) + 形容词 + 名词 + that 从句，“如此……以至于……”。可换写为 so beautiful a lake that ...。<b>译：</b>它是如此美丽的一个湖，任何人都不该错过它！</p>
+          <p class="quote">A beautiful view can be enjoyed on full-moon nights as "15 moons" will be reflected on the water.</p>
+          <p><b>结构：</b>含情态动词的被动语态 can be enjoyed（可以被欣赏）；as 引导原因状语从句（因为）；be reflected on the water（倒映在水面上）。<b>译：</b>在月圆之夜可以欣赏到美景，因为“15 个月亮”会倒映在水面上。</p>
+          <p class="quote">While enjoying the beauty of the Slender West Lake, visitors can also learn about interesting stories of Yangzhou.</p>
+          <p><b>结构：</b>while + 现在分词，是 "while they are enjoying ..." 的省略形式，主语与主句一致时可省略主语和 be 动词。<b>译：</b>在欣赏瘦西湖美景的同时，游客还能了解扬州有趣的故事。</p>
+          <p class="quote">I couldn't help picking a flower, but my father said it was bad to hurt the flowers.</p>
+          <p><b>结构：</b>can't help doing（忍不住做某事）；it is + adj. + to do（it 为形式主语）。<b>译：</b>我忍不住摘了一朵花，但爸爸说伤害这些花是不好的。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="quiz">
+      <div class="quiz-title">Questions · 题目与解析</div>
+
+      <div class="q" data-q="b1">
+        <div class="q-head">
+          <div class="q-no">1</div>
+          <div><p>During which season did the writer visit Yangzhou?</p></div>
+        </div>
+        <ul class="opts">
+          <li data-opt="A"><span class="letter">A</span><span>Spring.</span></li>
+          <li data-opt="B"><span class="letter">B</span><span>Summer.</span></li>
+          <li data-opt="C"><span class="letter">C</span><span>Autumn.</span></li>
+        </ul>
+        <button class="mini-btn toggle-ans">显示答案与解析</button>
+        <div class="ans" hidden>
+          <div class="ans-key">答案：C</div>
+          <h5>解题思路 · 推断题</h5>
+          <p>原文没有直接写“季节”单词，但给出了<b>时间线索</b>，需要结合常识推断。</p>
+          <h5>定位原文</h5>
+          <p class="quote">This is my first trip to China during the National Day holiday.</p>
+          <p>中国的 National Day（国庆节）是 10 月 1 日，假期在十月，属于<b>秋季（autumn）</b>，故选 <b>C</b>。</p>
+          <h5>选项辨析</h5>
+          <p class="wrong"><b>A. Spring / B. Summer</b>：文中出现的 "flowers in the sun" 是湖上景物描写，并不能证明季节；判断季节的关键依据是 National Day holiday。</p>
+        </div>
+      </div>
+
+      <div class="q" data-q="b2">
+        <div class="q-head">
+          <div class="q-no">2</div>
+          <div>
+            <span class="q-tag">新考法 · 细节组合题</span>
+            <p>What popular places of the Slender West Lake are mentioned in the passage?</p>
+            <p style="font-size:.94rem;font-weight:400;color:var(--ink-soft)">① The Five-Pavilion Bridge　② five big lotus flowers　③ 15 holes　④ the Twenty-Four-Bridge Scenic Area　⑤ the Ten Thousand Flowers Garden</p>
+          </div>
+        </div>
+        <ul class="opts">
+          <li data-opt="A"><span class="letter">A</span><span>①②④</span></li>
+          <li data-opt="B"><span class="letter">B</span><span>②④⑤</span></li>
+          <li data-opt="C"><span class="letter">C</span><span>①④⑤</span></li>
+        </ul>
+        <button class="mini-btn toggle-ans">显示答案与解析</button>
+        <div class="ans" hidden>
+          <div class="ans-key">答案：C（①④⑤）</div>
+          <h5>解题思路 · 细节组合题</h5>
+          <p>题干限定词是 <b>popular places</b>（受欢迎的<b>景点/地点</b>）。做题时先把 5 个备选逐一归类：属于“地点”的入选，属于“景物/构造/比喻”的排除，最后组合对照选项。</p>
+          <h5>逐项归类</h5>
+          <p>① The Five-Pavilion Bridge（五亭桥）——文中写 "We walked along the Five-Pavilion Bridge"，是<b>游览地点</b>，入选。</p>
+          <p>② five big lotus flowers（五朵大莲花）——原文是 "The five pavilions are like five big lotus flowers on the lake"，是形容亭子的<b>比喻</b>，不是地点，排除。</p>
+          <p>③ 15 holes（15 个桥孔）——"There are 15 holes in the bridge"，是桥的<b>构造特点</b>，不是地点，排除。</p>
+          <p>④ the Twenty-Four-Bridge Scenic Area（二十四桥景区）——地点，入选。</p>
+          <p>⑤ the Ten Thousand Flowers Garden（万花园）——地点，入选。</p>
+          <p>故组合为 ①④⑤，选 <b>C</b>。</p>
+        </div>
+      </div>
+
+      <div class="q" data-q="b3">
+        <div class="q-head">
+          <div class="q-no">3</div>
+          <div>
+            <span class="q-tag">新考法 · 跨学科知识题</span>
+            <p>According to the text, which sentence below can best show the views of Yangzhou?</p>
+          </div>
+        </div>
+        <ul class="opts">
+          <li data-opt="A"><span class="letter">A</span><span>青苔满阶砌，白鸟故迟留。</span></li>
+          <li data-opt="B"><span class="letter">B</span><span>莲花卧水风情在，塔影摇空禅意浓。</span></li>
+          <li data-opt="C"><span class="letter">C</span><span>故人西辞黄鹤楼，烟花三月下扬州。</span></li>
+        </ul>
+        <button class="mini-btn toggle-ans">显示答案与解析</button>
+        <div class="ans" hidden>
+          <div class="ans-key">答案：C</div>
+          <h5>解题思路 · 跨学科（古诗文理解）</h5>
+          <p>题目要求选出<b>最能表现扬州景色</b>的句子。判断依据有二：一是诗句中是否<b>直接点出扬州</b>，二是所写景物是否与本文的扬州风物相合。</p>
+          <h5>选项辨析</h5>
+          <p class="wrong"><b>A.</b> “青苔满阶砌，白鸟故迟留”写的是青苔、白鸟的清幽山林景象，与扬州无直接关联，排除。</p>
+          <p class="wrong"><b>B.</b> “莲花卧水风情在，塔影摇空禅意浓”写莲花、塔影，虽与文中“五亭桥如莲花”“白塔”意象相近，但只是<b>局部景物</b>描写，且未点明扬州，不能“best show the views of Yangzhou”。</p>
+          <p><b>C.</b> “故人西辞黄鹤楼，烟花三月下扬州”（李白《黄鹤楼送孟浩然之广陵》）既<b>直接点出“扬州”</b>，又以“烟花三月”描绘出扬州春日繁花如烟、水路明丽的整体景色，最符合题意。</p>
+        </div>
+      </div>
+
+      <div class="q" data-q="b4">
+        <div class="q-head">
+          <div class="q-no">4</div>
+          <div>
+            <span class="q-tag">新考法 · 写作意图题</span>
+            <p>What is the main purpose of the passage?</p>
+          </div>
+        </div>
+        <ul class="opts">
+          <li data-opt="A"><span class="letter">A</span><span>To introduce the history of Yangzhou.</span></li>
+          <li data-opt="B"><span class="letter">B</span><span>To share the writer's great trip to Yangzhou.</span></li>
+          <li data-opt="C"><span class="letter">C</span><span>To explain how to travel to Yangzhou cheaply.</span></li>
+        </ul>
+        <button class="mini-btn toggle-ans">显示答案与解析</button>
+        <div class="ans" hidden>
+          <div class="ans-key">答案：B</div>
+          <h5>解题思路 · 写作意图题</h5>
+          <p>写作意图要结合<b>文体</b>与<b>主要内容</b>判断：本文是第一人称的<b>游记（记叙文）</b>，按游览顺序记述“我”在扬州的美好旅行经历，字里行间充满赞叹（wonderful experience / took my breath away / fantastic），所以目的是<b>分享这次美好的扬州之行</b>。</p>
+          <h5>选项辨析</h5>
+          <p class="wrong"><b>A.</b> “介绍扬州历史”——文中只有五亭桥 "has a history of more than 200 years" 一句涉及历史，属于细节而非写作目的，以偏概全。</p>
+          <p class="wrong"><b>C.</b> “解释如何便宜地游扬州”——文中只提到酒店 inexpensive 一句，并未提供省钱攻略，无中生有。</p>
+          <p><b>B.</b> 与首句 "This is my first trip to China ... It was a very wonderful experience" 及全文记游内容一致，正确。</p>
+        </div>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- ================= PASSAGE C ================= -->
+<section id="p-c">
+  <div class="sec-head reveal">
+    <div class="idx">C</div>
+    <h2>阅读理解 C ｜ Golden Week &amp; Australian Holidays</h2>
+    <p class="desc">说明文 · 主题：人与社会——文化差异。通过一位澳大利亚人的视角，对比中国“黄金周”与澳大利亚的假日、年假与病假制度。</p>
+  </div>
+
+  <article class="passage reveal">
+    <div class="p-head">
+      <div class="p-badge">C</div>
+      <div class="title">
+        <h3>China's "Golden Week" and Holidays in Australia</h3>
+        <div class="zh">中国的“黄金周”与澳大利亚的假期制度对比</div>
+        <div class="meta">
+          <span class="chip">主题：<b>人与社会——文化差异</b></span>
+          <span class="chip">语言类型：<b>说明文</b></span>
+          <span class="chip">词数：<b>216</b></span>
+          <span class="chip">难度：<b class="stars">★★★★☆</b></span>
+          <span class="chip">建议用时：<b>7′</b></span>
+          <span class="chip">正确率：<b>/ 4</b></span>
+          <span class="chip">原书标注：<b>答案见书后</b></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-body" id="text-c">
+      <p><span class="pn">[1]</span>The first time I heard about China's "Golden Week<span class="zh-gloss">（黄金周）</span>" holiday, I was surprised. Everyone gets the same seven days off <span class="w" data-w="in-one-go">at one go</span>! And I had never heard of "<span class="w" data-w="makeup-day">make-up days</span><span class="zh-gloss">（调休）</span>". That's because holidays and leave are a bit different in my home country, Australia.</p>
+      <p><span class="pn">[2]</span>Australia has seven <span class="w" data-w="national-level">national-level</span> public holidays. And each Australian state and <span class="w" data-w="territory">territory</span><span class="zh-gloss">（领地）</span> also has a few special ones of their own added on. They celebrate local events.</p>
+      <p><span class="pn">[3]</span><span class="w" data-w="apart-from">Apart from</span> national holidays, <span class="w" data-w="full-time">full-time and part-time</span> workers in Australia get <span class="w" data-w="at-least">at least</span> 20 days of <span class="w" data-w="paid-leave">paid leave</span> a year. This doesn't <span class="w" data-w="matter">matter</span> how many years they have worked. You can also get even more leave if you have worked in the same company for many years. In China, the most <span class="w" data-w="annual-leave">annual leave</span><span class="zh-gloss">（年假）</span> you can get is 15 days. It's given to those who have worked for over 20 years.</p>
+      <p><span class="pn">[4]</span>In Australia, many people like to take a few weeks of leave <span class="w" data-w="in-one-go">in one go</span>. This way, you can get a nice, long holiday, <span class="w" data-w="especially">especially</span> around Christmas time and New Year's Eve. You can also "save" your leave. It will be <span class="w" data-w="added">added to</span> your leave next year. This is the same for <span class="w" data-w="sick-leave">sick leave</span>. Workers get 10 days of it a year.</p>
+    </div>
+
+    <div class="read-row">
+      <button class="mini-btn read-para" data-target="text-c" data-para="1">朗读 第1段</button>
+      <button class="mini-btn read-para" data-target="text-c" data-para="2">朗读 第2段</button>
+      <button class="mini-btn read-para" data-target="text-c" data-para="3">朗读 第3段</button>
+      <button class="mini-btn read-para" data-target="text-c" data-para="4">朗读 第4段</button>
+      <button class="mini-btn read-passage" data-target="text-c">朗读 全文</button>
+      <button class="mini-btn stop-read">停止朗读</button>
+    </div>
+
+    <div class="notes">
+      <details open>
+        <summary><span class="arrow">▶</span>逐段精读解析（Paragraph Analysis）</summary>
+        <div class="body">
+          <p><b>第 1 段｜惊讶：中澳假期的差异感。</b>作者以“第一次听说中国黄金周”切入，写出两点惊讶：一是 everyone gets the same seven days off <b>at one go</b>（一次放七天）；二是从没听说过 <b>make-up days</b>（调休）。末句点题：这是因为本国（澳大利亚）的 holidays and leave 有所不同。</p>
+          <p><b>第 2 段｜澳大利亚的公共假日。</b>全国性公共假日（national-level public holidays）共 7 天；此外各 state and territory（州和领地）会“add on”一些自己的假日，用于庆祝 local events（地方活动）。</p>
+          <p><b>第 3 段｜年假制度对比。</b>澳大利亚：<b>apart from</b> 公共假日外，全职与兼职员工每年<b>至少（at least）</b>有 20 天<b>带薪休假（paid leave）</b>，与工作年限无关；在同一公司工作多年还能拿到更多。中国：年假最多 15 天，且要工作 20 年以上才能拿到。</p>
+          <p><b>第 4 段｜休假方式与“存假”。</b>澳大利亚人喜欢 <b>in one go</b>（一次性）休几周，尤其在圣诞节与新年前后，从而获得 nice, long holiday；假期可以“save”（存），<b>be added to</b> 第二年的假期；病假（sick leave）同理，每年 10 天。</p>
+          <p><b>结构总结：</b>全文采用“总—分”与<b>对比说明</b>结构：第 1 段提出差异 → 第 2、3 段对比假日与年假 → 第 4 段说明休假习惯，属于典型的对比类说明文，主题句在第 1 段末句。</p>
+        </div>
+      </details>
+      <details>
+        <summary><span class="arrow">▶</span>核心句式与长难句拆解</summary>
+        <div class="body">
+          <p class="quote">The first time I heard about China's "Golden Week" holiday, I was surprised.</p>
+          <p><b>结构：</b>the first time 引导时间状语从句，“第一次……的时候”；be surprised 表“感到惊讶”（surprised 修饰人，surprising 修饰物）。<b>译：</b>第一次听说中国“黄金周”假期时，我感到很惊讶。</p>
+          <p class="quote">This doesn't matter how many years they have worked.</p>
+          <p><b>结构：</b>matter 作动词，意为“要紧、有关系”，常用于否定句；how many years they have worked 是宾语从句（现在完成时，表示“到现在为止工作了多少年”）。<b>译：</b>这与他们已经工作了多少年没有关系。</p>
+          <p class="quote">It's given to those who have worked for over 20 years.</p>
+          <p><b>结构：</b>被动语态 be given to；those who ... 是“那些……的人”，who 引导定语从句。<b>译：</b>它是给那些工作超过 20 年的人的。</p>
+          <p class="quote">You can also "save" your leave. It will be added to your leave next year.</p>
+          <p><b>结构：</b>save 加引号表示“存起来”的比喻用法；be added to 为一般将来时的被动语态（will be + 过去分词）。<b>译：</b>你还可以“存”假期，它会被加到你明年的假期里。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="quiz">
+      <div class="quiz-title">Questions · 题目与解析</div>
+
+      <div class="q" data-q="c1">
+        <div class="q-head">
+          <div class="q-no">1</div>
+          <div><p>What does the author find surprising about China's "Golden Week" holiday?</p></div>
+        </div>
+        <ul class="opts">
+          <li data-opt="A"><span class="letter">A</span><span>Everyone gets the same seven days off at one go.</span></li>
+          <li data-opt="B"><span class="letter">B</span><span>People can get more days of paid leave if they work for many years.</span></li>
+          <li data-opt="C"><span class="letter">C</span><span>There are no "make-up days" in China.</span></li>
+        </ul>
+        <button class="mini-btn toggle-ans">显示答案与解析</button>
+        <div class="ans" hidden>
+          <div class="ans-key">答案：A</div>
+          <h5>解题思路 · 细节理解题</h5>
+          <p>抓住题干中的 <b>surprising</b>，回第 1 段寻找作者“惊讶”的具体内容。</p>
+          <h5>定位原文</h5>
+          <p class="quote">Everyone gets the same seven days off at one go! And I had never heard of "make-up days".</p>
+          <p>选项 A "Everyone gets the same seven days off at one go" 与原文<b>逐字对应</b>，故选 <b>A</b>。</p>
+          <h5>选项辨析</h5>
+          <p class="wrong"><b>B.</b> “工作多年可获得更多带薪假”——这是第 3 段关于<b>澳大利亚</b>年假的说法（You can also get even more leave if ...），不是作者对中国黄金周的惊讶点。</p>
+          <p class="wrong"><b>C.</b> “中国没有调休”——原文是作者“从没听说过 make-up days”，恰恰说明中国<b>有</b>调休这一做法，选项表述与原文相反。</p>
+        </div>
+      </div>
+
+      <div class="q" data-q="c2">
+        <div class="q-head">
+          <div class="q-no">2</div>
+          <div><p>How many national-level public holidays does Australia have?</p></div>
+        </div>
+        <ul class="opts">
+          <li data-opt="A"><span class="letter">A</span><span>Seven.</span></li>
+          <li data-opt="B"><span class="letter">B</span><span>Eleven.</span></li>
+          <li data-opt="C"><span class="letter">C</span><span>Fifteen.</span></li>
+        </ul>
+        <button class="mini-btn toggle-ans">显示答案与解析</button>
+        <div class="ans" hidden>
+          <div class="ans-key">答案：A</div>
+          <h5>解题思路 · 数字细节题</h5>
+          <p>数字题要<b>逐字核对</b>，注意区分“全国性假日”与其他数字（20 天年假、15 天中国年假、10 天病假、200 年历史等干扰数字）。</p>
+          <h5>定位原文</h5>
+          <p class="quote">Australia has seven national-level public holidays.</p>
+          <p>seven = 7，对应选项 <b>A. Seven</b>。</p>
+          <h5>选项辨析</h5>
+          <p class="wrong"><b>B、C</b> 为文中其他数字的干扰项：20 天 paid leave、15 天 China's annual leave、10 天 sick leave，均与本题问的 national-level public holidays 无关。</p>
+        </div>
+      </div>
+
+      <div class="q" data-q="c3">
+        <div class="q-head">
+          <div class="q-no">3</div>
+          <div><p>What is the main idea of the passage?</p></div>
+        </div>
+        <ul class="opts">
+          <li data-opt="A"><span class="letter">A</span><span>The importance of taking long vacations.</span></li>
+          <li data-opt="B"><span class="letter">B</span><span>How Australians celebrate their national holidays.</span></li>
+          <li data-opt="C"><span class="letter">C</span><span>The differences between Australian holidays and China's Golden Week.</span></li>
+        </ul>
+        <button class="mini-btn toggle-ans">显示答案与解析</button>
+        <div class="ans" hidden>
+          <div class="ans-key">答案：C</div>
+          <h5>解题思路 · 主旨大意题</h5>
+          <p>主旨题要覆盖<b>全篇</b>而非某一段。本文四段全部围绕“中国与澳大利亚假期制度的不同”展开：黄金周与调休（第 1 段）、公共假日（第 2 段）、年假（第 3 段）、休假方式与病假（第 4 段），故主旨是<b>中澳假期差异</b>，选 <b>C</b>。</p>
+          <h5>选项辨析</h5>
+          <p class="wrong"><b>A.</b> “休长假的重要性”——只对应第 4 段部分内容，且文中并未论述其“重要性”，以偏概全。</p>
+          <p class="wrong"><b>B.</b> “澳大利亚人如何庆祝国庆”——文中没有介绍庆祝方式（只提到 celebrate local events 一句），且完全未涵盖中国一侧，覆盖不全。</p>
+        </div>
+      </div>
+
+      <div class="q" data-q="c4">
+        <div class="q-head">
+          <div class="q-no">4</div>
+          <div><p>Why do many Australians like to take a few weeks of leave in one go?</p></div>
+        </div>
+        <ul class="opts">
+          <li data-opt="A"><span class="letter">A</span><span>To save leave for the next year.</span></li>
+          <li data-opt="B"><span class="letter">B</span><span>To get more paid leave.</span></li>
+          <li data-opt="C"><span class="letter">C</span><span>To enjoy a long holiday.</span></li>
+        </ul>
+        <button class="mini-btn toggle-ans">显示答案与解析</button>
+        <div class="ans" hidden>
+          <div class="ans-key">答案：C</div>
+          <h5>解题思路 · 原因细节题</h5>
+          <p>题干问 <b>Why</b>（原因），定位第 4 段 "This way, you can get ..."，这正是“一次性休几周”带来的结果。</p>
+          <h5>定位原文</h5>
+          <p class="quote">In Australia, many people like to take a few weeks of leave in one go. This way, you can get a nice, long holiday ...</p>
+          <p>"get a nice, long holiday" 与选项 C "To enjoy a long holiday" 对应，选 <b>C</b>。</p>
+          <h5>选项辨析</h5>
+          <p class="wrong"><b>A.</b> “把假存到明年”——这是另一种做法（"save" your leave），与“一次性休几周”不是同一件事。</p>
+          <p class="wrong"><b>B.</b> “获得更多带薪假”——假期天数由制度规定（at least 20 days），休假方式并不会增加天数，属于因果倒置。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bag">
+      <div class="bag-head">
+        <div class="icon">VOC</div>
+        <h4>积累小袋</h4>
+      </div>
+      <div class="bag-sub">PHRASES &amp; SENTENCE · 短语互译 + 完成句子（含参考答案）</div>
+      <div class="fill-in">
+        <p style="margin-bottom:.5em"><b>★ 短语互译</b></p>
+        <div class="bag-grid" style="columns:2">
+          <div class="bag-item"><span class="num">1</span><span><span class="cn">连续地；一口气</span>　<b class="en">in one go / at one go</b></span></div>
+          <div class="bag-item"><span class="num">2</span><span><span class="en">apart from</span>　<b class="cn">除了……之外</b></span></div>
+          <div class="bag-item"><span class="num">3</span><span><span class="cn">带薪休假</span>　<b class="en">paid leave</b></span></div>
+          <div class="bag-item"><span class="num">4</span><span><span class="en">be added to</span>　<b class="cn">被添加到；被加到</b></span></div>
+        </div>
+        <p style="margin:16px 0 .4em"><b>★ 完成句子（参考答案）</b></p>
+        <p style="margin:0 0 .4em">5. 我的姐姐在一家公司工作。她每年能休几周的假去旅行。</p>
+        <p style="margin:0">My sister works in a company and she can
+          <span class="blank"></span><span class="blank"></span><span class="blank"></span> every year
+          <span class="blank"></span><span class="blank"></span><span class="blank"></span>.</p>
+        <p style="margin:.7em 0 0;font-size:.9rem;color:var(--ink-soft)">
+          <b>答案：</b>take a few weeks of leave ； to go travelling
+          （完整句：<i>My sister works in a company and she can take a few weeks of leave every year to go travelling.</i>）
+          <br><b>解析：</b>“休几周的假”对应原文短语 <i>take a few weeks of leave</i>；“去旅行”用动词不定式 <i>to go travelling</i> 作目的状语。句中情态动词 can 后接动词原形 take。
+        </p>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- ================= GRAMMAR ================= -->
+<section id="grammar">
+  <div class="sec-head reveal">
+    <div class="idx">04</div>
+    <h2>语法知识补充</h2>
+    <p class="desc">围绕三篇原文出现的重点句式，补充必要的语法知识与易错点，帮助把“读懂”变成“会用”。</p>
+  </div>
+
+  <div class="gram-grid">
+    <div class="gram-card reveal">
+      <div class="no">01</div>
+      <h4>such ... that 与 so ... that</h4>
+      <p class="en">It is such a beautiful lake that nobody should miss it!</p>
+      <p><b>such + (a/an) + 形容词 + 名词 + that</b> 从句；<b>so + 形容词/副词 + that</b> 从句。当中心词是可数名词单数时可互换：</p>
+      <p>such a beautiful lake = so beautiful a lake。</p>
+      <div class="tip">易错点：名词前有 many/much/few/little（表数量）时只能用 so：so many students、so little water。</div>
+    </div>
+
+    <div class="gram-card reveal">
+      <div class="no">02</div>
+      <h4>not only ... but also ... 并列结构</h4>
+      <p class="en">It is not only a great artwork, but also a way to show respect for our roots.</p>
+      <p>连接两个并列成分（表语、宾语、状语等）；连接两个<b>主语</b>时谓语<b>就近一致</b>：Not only I but also he <i>is</i> here.</p>
+      <div class="tip">拓展：not only 置于句首时，其所在分句部分倒装——Not only does he sing, but he also dances.</div>
+    </div>
+
+    <div class="gram-card reveal">
+      <div class="no">03</div>
+      <h4>while + 现在分词（省略结构）</h4>
+      <p class="en">While enjoying the beauty of the Slender West Lake, visitors can also learn about ...</p>
+      <p>当从句主语与主句主语一致、且从句含 be 动词时，可省略“主语 + be”：<b>while (they are) enjoying ...</b>。while 强调“在……期间”，与延续性动词连用。</p>
+      <div class="tip">对比：when 可接短暂性动词（When he arrived, ...）；while 还可表转折对比（I like tea while she likes coffee.）。</div>
+    </div>
+
+    <div class="gram-card reveal">
+      <div class="no">04</div>
+      <h4>as ... as 同级比较</h4>
+      <p class="en">The Slender West Lake is as beautiful as the West Lake in Hangzhou ...</p>
+      <p>结构：<b>as + 形容词/副词原级 + as</b>（和……一样……）；否定式 <b>not as/so ... as</b>（不如……）。</p>
+      <div class="tip">文中 but 后转折说明两湖不同之处（its shape is long and narrow），注意比较对象要一致。</div>
+    </div>
+
+    <div class="gram-card reveal">
+      <div class="no">05</div>
+      <h4>can't help doing 与 it is + adj. + to do</h4>
+      <p class="en">I couldn't help picking a flower, but my father said it was bad to hurt the flowers.</p>
+      <p><b>can't help doing</b> 忍不住做某事（= can't stop oneself doing）；<b>it is + 形容词 + (for sb.) + to do</b> 中 it 为形式主语，真正主语是后面的不定式。</p>
+      <div class="tip">同类表达：can't help but do（美式）；It's important for us to protect flowers.</div>
+    </div>
+
+    <div class="gram-card reveal">
+      <div class="no">06</div>
+      <h4>被动语态三处集中出现</h4>
+      <p class="en">can be enjoyed / will be reflected / will be added to / It's given to ...</p>
+      <p>被动语态结构：<b>be + 过去分词</b>。含情态动词：<b>can be done</b>；一般将来时：<b>will be done</b>；一般现在/过去时：<b>is/was done</b>。</p>
+      <div class="tip">判断依据：主语是动作的承受者时用被动；文中“美景被欣赏”“月亮被倒映”“假期被加到”都是典型被动。</div>
+    </div>
+
+    <div class="gram-card reveal">
+      <div class="no">07</div>
+      <h4>时态：一般过去时 vs 现在完成时</h4>
+      <p class="en">The first time I heard about ... , I was surprised. / those who have worked for over 20 years</p>
+      <p><b>一般过去时</b>叙述过去某个具体动作（heard, was, got, visited）；<b>现在完成时</b>强调从过去持续到现在或对现在有影响（have worked）。</p>
+      <div class="tip">时间标志：ago / last year / yesterday 用过去时；for + 时间段 / since / already / so far 常用完成时。</div>
+    </div>
+
+    <div class="gram-card reveal">
+      <div class="no">08</div>
+      <h4>数量表达与介词小结</h4>
+      <p class="en">at least 20 days / more than 200 years / over 20 years / in one go / apart from</p>
+      <p><b>at least</b> 至少；<b>more than / over</b> 超过；<b>at most</b> 至多；<b>in one go</b> 一次性、一口气；<b>apart from</b> 除……之外（既可表“还有”也可表“除……之外没有”，依语境判断）。</p>
+      <div class="tip">注意：apart from = besides（还有）/ except（除去），做题时看句中是否“包含”被除对象。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GLOSSARY ================= -->
+<section id="glossary">
+  <div class="sec-head reveal">
+    <div class="idx">05</div>
+    <h2>生词与生短语 · 集中汇总</h2>
+    <p class="desc">依据七年级词汇水平筛选，共 <b id="glossCount">—</b> 条。每条含：中文释义、词性、核心用法、拓展词义、例句、近反义辨析、常见搭配与相关短语。与原文下划线词条同源，点击词条也可查看。</p>
+  </div>
+
+  <div class="gloss-tools reveal">
+    <label class="search">
+      <span class="mono" style="font-size:11px;letter-spacing:.12em;color:var(--ink-faint)">SEARCH</span>
+      <input type="text" id="glossSearch" placeholder="输入英文或中文关键词，如：leave、鼓励、in one go">
+    </label>
+    <div class="filters" id="glossFilters">
+      <button class="filter on" data-f="all">全部</button>
+      <button class="filter" data-f="A">Passage A</button>
+      <button class="filter" data-f="B">Passage B</button>
+      <button class="filter" data-f="C">Passage C</button>
+      <button class="filter" data-f="phrase">短语 / 句型</button>
+      <button class="filter" data-f="word">单词</button>
+    </div>
+    <div class="count" id="glossShown">显示 — / —</div>
+  </div>
+
+  <div class="gloss-grid" id="glossGrid"></div>
+</section>
+
+<!-- ================= PROOF ================= -->
+<section id="proof">
+  <div class="sec-head reveal">
+    <div class="idx">06</div>
+    <h2>内容校对说明</h2>
+    <p class="desc">为保证学习资料准确一致，本页已做如下校对与一致性处理。</p>
+  </div>
+  <div class="gram-grid">
+    <div class="gram-card reveal">
+      <h4>原文与题目</h4>
+      <p>三篇原文的段落结构、题号、选项（含“新考法”标注）、“积累小袋”词条与页面标注信息（主题、语言类型、词数、难度、建议用时、正确率）均按原书可见内容保留；原文中的括号中文注释（如“传统的”“调休”）一并保留。</p>
+    </div>
+    <div class="gram-card reveal">
+      <h4>答案与解析</h4>
+      <p>每题答案均给出“解题思路 + 原文定位 + 选项辨析”，答案与解析结论、原文引文保持一致；推理型题目（如季节判断、写作意图）说明推断依据，不额外添加原文之外的事实。</p>
+    </div>
+    <div class="gram-card reveal">
+      <h4>词汇与标注</h4>
+      <p>原文下划线词条与文末汇总词条来自同一份词库数据，释义、词性、例句、搭配完全一致；词条释义以七年级词汇水平为标准，例句均附中文翻译，必要处补充语法说明。</p>
+    </div>
+    <div class="gram-card reveal">
+      <h4>使用提示</h4>
+      <p>建议先独立完成 3 篇阅读并记录正确率，再展开“答案与解析”对照订正；生词部分可先用朗读功能听读原文，再点击下划线词条逐个攻克，最后用文末汇总复习巩固。</p>
+    </div>
+  </div>
+</section>
+
+</div>
+</main>
+
+<footer>
+  <div class="foot-in">
+    <div>
+      <span class="k">Unit 5 · Happy Holiday</span>
+      <h4>第13周 培优练习 · 精讲学习资料</h4>
+      <p>面向七年级上册的话题阅读训练，聚焦“人与社会”“人与自然”主题语篇，融合阅读理解解题方法、词汇精讲与语法补充，可用于课堂精读、课后自学与考前复习。</p>
+    </div>
+    <div>
+      <span class="k">Contents</span>
+      <ul>
+        <li>阅读理解 A｜吉量 Jiliang（说明文 · 3 题）</li>
+        <li>阅读理解 B｜扬州瘦西湖之行（记叙文 · 4 题）</li>
+        <li>阅读理解 C｜中澳假期对比（说明文 · 4 题）</li>
+        <li>语法知识补充｜8 项重点句式</li>
+        <li>生词与生短语汇总｜含例句与搭配</li>
+      </ul>
+    </div>
+    <div>
+      <span class="k">Study Tips</span>
+      <ul>
+        <li>先读题干，再回原文定位</li>
+        <li>主旨题看首尾段与主题句</li>
+        <li>否定细节题圈出 NOT</li>
+        <li>数字题逐字核对，排除干扰数字</li>
+        <li>每天朗读一篇，练语感与发音</li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">WEEK 13 · JUNIOR ENGLISH READING · UNIT 5 HAPPY HOLIDAY · 精讲版学习资料</div>
+</footer>
+
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="drawer" aria-hidden="true">
+  <div class="drawer-head">
+    <div>
+      <div class="k">Vocabulary</div>
+      <h3 id="drawerWord">—</h3>
+      <div class="ipa" id="drawerIpa"></div>
+    </div>
+    <button class="close" id="drawerClose" aria-label="关闭">✕</button>
+  </div>
+  <div class="drawer-body" id="drawerBody"></div>
+</aside>
+
+<button class="totop" id="totop">TOP</button>
+<div class="toast" id="toast"></div>
+<script>
+/* =========================================================
+   词库数据（原文下划线词条 与 文末汇总 共用同一数据源，保证一致）
+   注：字符串内部一律使用中文引号，避免截断 JS 字符串
+   ========================================================= */
+var VOCAB = [
+{
+  id:"cctv", w:"CCTV Spring Festival Gala", ipa:"", pos:"n. 短语（专有名词）", src:"A", type:"phrase",
+  cn:"央视春节联欢晚会",
+  ext:"也常说 the Spring Festival Gala / the Spring Festival Eve Gala；CCTV 为中国中央电视台英文缩写。",
+  use:"节日晚会名称，前面通常加 the；在某晚\u201c播出/亮相\u201d常用 come out on ... / be shown on ...。",
+  ex:[
+    ["The song came out on the CCTV Spring Festival Gala.","这首歌在央视春晚上亮相。"],
+    ["My family watches the CCTV Spring Festival Gala together every year.","我们全家每年都一起看央视春晚。"]
+  ],
+  syn:"the Spring Festival Gala（春节晚会，用法更宽泛）",
+  ant:"—（专有名词，无反义词）",
+  col:"watch / perform on the CCTV Spring Festival Gala",
+  phr:"Spring Festival（春节）；Gala night（晚会之夜）"
+},
+{
+  id:"come-out", w:"come out", ipa:"", pos:"phr. v. 短语动词", src:"A", type:"phrase",
+  cn:"出现；上演；出版，推出",
+  ext:"拓展义：（太阳、星星）出来；（花）开放；（消息、真相）传出；（照片）拍得/冲洗清楚。",
+  use:"不及物动词短语，无被动语态，后面常接 on + 媒体/场合，或 in + 时间。",
+  ex:[
+    ["On the night of 16 February, 2026, a wonderful song called Jiliang came out on the CCTV Spring Festival Gala.","2026 年 2 月 16 日晚，一首名为《吉量》的精彩歌曲在央视春晚上亮相。"],
+    ["Her new book will come out next month.","她的新书下个月出版。"],
+    ["The sun came out after the rain.","雨后太阳出来了。"]
+  ],
+  syn:"appear（出现）；be published / be released（出版、发布）",
+  ant:"disappear（消失）；be withdrawn（撤回）",
+  col:"come out on TV / come out in 2026 / news come out",
+  phr:"come out of（从……出来）；come out with（说出，提出）"
+},
+{
+  id:"traditional", w:"traditional", ipa:"/trəˈdɪʃənl/", pos:"adj. 形容词", src:"A", type:"word",
+  cn:"传统的；习俗的",
+  ext:"拓展：tradition n. 传统、惯例；traditionally adv. 传统上。",
+  use:"traditional + 名词；也可作表语 be traditional。",
+  ex:[
+    ["It mixes traditional Chinese culture with modern music together.","它把中国传统文化与现代音乐融合在一起。"],
+    ["People eat traditional food at the Spring Festival.","人们在春节吃传统食物。"],
+    ["It is traditional to give children red packets.","给孩子压岁钱是一种传统。"]
+  ],
+  syn:"conventional（常规的）；customary（习惯上的）",
+  ant:"modern（现代的）；contemporary（当代的）",
+  col:"traditional culture / food / festival / music",
+  phr:"traditional Chinese culture（中国传统文化）；by tradition（按照传统）"
+},
+{
+  id:"creative", w:"creative", ipa:"/kriˈeɪtɪv/", pos:"adj. 形容词", src:"A", type:"word",
+  cn:"有创造力的；创造性的",
+  ext:"拓展：create v. 创造；creation n. 创造、作品；creativity n. 创造力；creator n. 创造者。",
+  use:"creative + 名词；be creative in (doing) sth.（在……方面有创意）。",
+  ex:[
+    ["This song is a creative work.","这首歌是一部富有创意的作品。"],
+    ["She is creative in painting.","她在绘画方面很有创造力。"],
+    ["We need creative ideas for the class show.","我们需要为班级演出想出有创意的点子。"]
+  ],
+  syn:"inventive（善于发明的）；imaginative（富有想象力的）",
+  ant:"unimaginative（缺乏想象力的）；dull（呆板的）",
+  col:"creative work / idea / thinking / mind",
+  phr:"creative work（创意作品）；creative thinking（创造性思维）"
+},
+{
+  id:"mix", w:"mix ... with ...", ipa:"/mɪks/", pos:"phr. 短语动词", src:"A", type:"phrase",
+  cn:"把……和……混合；融合",
+  ext:"拓展：mix v. 混合、交往；mixture n. 混合物；mixed adj. 混合的、复杂的。",
+  use:"mix A with B（把 A 与 B 混合）；mix sth. up（弄乱、混淆）；mix 在文中为一般现在时 mixes。",
+  ex:[
+    ["It mixes traditional Chinese culture with modern music together.","它把中国传统文化与现代音乐融合在一起。"],
+    ["You can mix the juice with water.","你可以把果汁和水混合。"],
+    ["Don't mix up the two words.","不要把这两个词弄混。"]
+  ],
+  syn:"combine（结合）；blend（融合，混合得更均匀）",
+  ant:"separate（分开）；divide（划分）",
+  col:"mix A with B / mix ... up / mix well",
+  phr:"mix up（混淆，弄乱）；get mixed up（搞混）；mixture of（……的混合）"
+},
+{
+  id:"magical", w:"magical", ipa:"/ˈmædʒɪkl/", pos:"adj. 形容词", src:"A", type:"word",
+  cn:"神奇的；有魔力的",
+  ext:"拓展：magic n. 魔法 / adj. 有魔力的；magician n. 魔术师；magically adv. 神奇地。",
+  use:"magical + 名词；也可作表语：The night was magical.",
+  ex:[
+    ["It takes the magical horse from the ancient book Shan Hai Jing.","它取材于古籍《山海经》中的神马\u201c吉量\u201d。"],
+    ["The little girl told us a magical story.","小女孩给我们讲了一个神奇的故事。"],
+    ["The city looks magical at night.","这座城市在夜晚看起来美极了。"]
+  ],
+  syn:"wonderful（美妙的）；amazing（令人惊叹的）",
+  ant:"ordinary（普通的）；common（常见的）",
+  col:"magical animal / power / night / story",
+  phr:"magical power（魔力）；a magical moment（美妙时刻）"
+},
+{
+  id:"ancient", w:"ancient", ipa:"/ˈeɪnʃənt/", pos:"adj. 形容词", src:"A/B", type:"word",
+  cn:"古代的；古老的",
+  ext:"拓展：ancient times（古代）；the ancient world（古代世界）。",
+  use:"ancient + 名词（book / city / building / myth）；与 old 的区别：old 指\u201c旧、年老\u201d，ancient 强调年代久远、属于古代。",
+  ex:[
+    ["It takes the horse from the ancient book Shan Hai Jing.","它取自古籍《山海经》中的神马。"],
+    ["Yangzhou is an ancient city in Jiangsu Province.","扬州是江苏省的一座古城。"],
+    ["People lived here in ancient times.","古代人们就居住在这里。"]
+  ],
+  syn:"old（旧的）；olden（古时的，多用于文学）",
+  ant:"modern（现代的）；recent（近期的）",
+  col:"ancient book / city / myth / buildings / times",
+  phr:"ancient times（古代）；ancient civilisation（古代文明）；in ancient times（在古代）"
+},
+{
+  id:"main-idea", w:"main idea", ipa:"", pos:"n. 短语名词", src:"A", type:"phrase",
+  cn:"主意；主题；主要意思",
+  ext:"在阅读理解题干中常表示\u201c（文章的）主旨大意\u201d。",
+  use:"the main idea of ...（……的主题/主旨）；what is the main idea of the passage? 是主旨题的固定问法。",
+  ex:[
+    ["It takes the magical horse as its main idea.","它以这匹神马为主题。"],
+    ["What's the main idea of the passage?","这篇文章的主旨是什么？"],
+    ["The main idea of the story is to be kind.","这个故事的主题是友善。"]
+  ],
+  syn:"topic（话题）；theme（主题）；key point（要点）",
+  ant:"detail（细节）",
+  col:"find / get / tell the main idea；the main idea of the text",
+  phr:"main idea question（主旨题）；topic sentence（主题句）"
+},
+{
+  id:"bring-life", w:"bring ... to life", ipa:"", pos:"phr. 短语动词", src:"A", type:"phrase",
+  cn:"赋予……生机；使……鲜活、生动",
+  ext:"拓展：come to life（苏醒过来；变得生动/逼真）。",
+  use:"bring sth. to life（使某物生动起来）；bring sb. to life（使某人恢复生机）。",
+  ex:[
+    ["...bringing this magical animal to life for people today.","……让这一神奇动物在今天的人们面前鲜活起来。"],
+    ["The pictures bring the story to life.","这些图画让故事变得生动。"],
+    ["At night, the city comes to life.","夜晚，这座城市热闹起来。"]
+  ],
+  syn:"make vivid（使生动）；enliven（使活跃）",
+  ant:"make dull（使乏味）",
+  col:"bring the story / character / history to life",
+  phr:"come to life（苏醒；变得生动）；bring sth. back to life（使恢复生机）"
+},
+{
+  id:"instrument", w:"musical instrument", ipa:"/ˈmjuːzɪkl ˈɪnstrəmənt/", pos:"n. 短语名词", src:"A", type:"phrase",
+  cn:"乐器",
+  ext:"拓展：instrument 还有\u201c仪器、工具、手段\u201d之意；musical adj. 音乐的、爱好音乐的。",
+  use:"play a musical instrument（弹奏乐器）；具体乐器前加 the：play the erhu / play the piano。",
+  ex:[
+    ["The song uses traditional Chinese musical instruments.","这首歌使用了中国传统乐器。"],
+    ["She can play three musical instruments.","她会演奏三种乐器。"],
+    ["A piano is a musical instrument.","钢琴是一种乐器。"]
+  ],
+  syn:"instrument（乐器，较正式）",
+  ant:"—（无常用反义词）",
+  col:"play / use a musical instrument；traditional Chinese musical instruments",
+  phr:"musical instrument（乐器）；musical（音乐剧）；music（音乐）"
+},
+{
+  id:"connect", w:"connect ... with ...", ipa:"/kəˈnekt/", pos:"phr. 短语动词", src:"A", type:"phrase",
+  cn:"把……和……联系起来；连接",
+  ext:"拓展：connect A to B（把 A 接到 B 上，多指物理连接）；connection n. 联系、连接；be connected with 与……有关。",
+  use:"connect sth. with sth.（把……与……联系起来）；connect 也可单独使用（连接、接通）。",
+  ex:[
+    ["It connects the ancient myth of the sun tree with the bronze sacred tree from Sanxingdui.","它把太阳树的古老神话与三星堆的青铜神树联系起来。"],
+    ["The bridge connects the two villages.","这座桥连接着两个村庄。"],
+    ["Please connect the phone to the computer.","请把手机连接到电脑上。"]
+  ],
+  syn:"link（把……连接起来）；join（连接，接合）",
+  ant:"separate（分开）；disconnect（断开）",
+  col:"connect A with / to B；connect with the world",
+  phr:"in connection with（与……有关）；make a connection（建立联系）"
+},
+{
+  id:"myth", w:"myth", ipa:"/mɪθ/", pos:"n. 名词（可数）", src:"A", type:"word",
+  cn:"神话；神话故事",
+  ext:"拓展义：荒诞的说法、错误的观念（a myth that ...）；mythology n. 神话（总称）、神话学。",
+  use:"ancient Greek myth；a myth about ...；常用复数 myths。",
+  ex:[
+    ["It connects the ancient myth of the sun tree with ...","它把太阳树的古老神话与……联系起来。"],
+    ["Many myths are about gods and heroes.","许多神话讲的是神与英雄的故事。"],
+    ["It is a myth that cats have nine lives.","说猫有九条命只是一种讹传。"]
+  ],
+  syn:"legend（传说，多指人间故事）；fable（寓言）",
+  ant:"fact（事实）；truth（真相）",
+  col:"ancient / Greek myth；a myth about ...",
+  phr:"ancient myth（神话故事）；in myth（在神话中）"
+},
+{
+  id:"civilisation", w:"civilisation", ipa:"/ˌsɪvəlaɪˈzeɪʃn/", pos:"n. 名词（可数/不可数）", src:"A", type:"word",
+  cn:"文明；文明社会",
+  ext:"美式拼写为 civilization；拓展：civilise v. 使文明；civilised adj. 文明的。",
+  use:"指社会发展到较高阶段的文明形态，如 ancient Chinese civilisation；与 culture 的区别：culture 范围更广（文化），civilisation 更强调文明形态与成就。",
+  ex:[
+    ["...creating a dialogue between Bashu culture and ancient Chinese civilisation.","……形成巴蜀文化与古代中华文明之间的对话。"],
+    ["Chinese civilisation has a long history.","中华文明历史悠久。"],
+    ["The city is part of an ancient civilisation.","这座城市属于一个古老的文明。"]
+  ],
+  syn:"culture（文化，范围更广）；society（社会）",
+  ant:"barbarism（野蛮状态）",
+  col:"ancient / human / Chinese civilisation",
+  phr:"Chinese civilisation（中华文明）；civilised society（文明社会）"
+},
+{
+  id:"performance", w:"performance", ipa:"/pəˈfɔːməns/", pos:"n. 名词（可数/不可数）", src:"A", type:"word",
+  cn:"表演；演出",
+  ext:"拓展义：表现、业绩（the performance of ...）；perform v. 表演、执行；performer n. 表演者。",
+  use:"give / put on a performance（进行演出）；a wonderful performance。",
+  ex:[
+    ["The performance shows the spirit of the Chinese nation moving forward.","这场表演展现了中华民族奋进的精神。"],
+    ["We enjoyed the wonderful performance.","我们欣赏了这场精彩的演出。"],
+    ["Her performance in the exam was good.","她考试表现很好。"]
+  ],
+  syn:"show（演出）；act（表演的一段）",
+  ant:"—（无常用反义词）",
+  col:"give / watch a performance；live performance；good performance",
+  phr:"performance art（行为艺术）；perform v.（表演，执行）"
+},
+{
+  id:"move-forward", w:"move forward", ipa:"", pos:"phr. 短语动词", src:"A", type:"phrase",
+  cn:"前进；进步；奋进",
+  ext:"拓展：move on（继续前进）；move up（提升）；move v. 移动、搬家、使感动。",
+  use:"move forward in / with sth.（在……方面前进）；moving forward 作后置定语/伴随状语。",
+  ex:[
+    ["The performance shows the spirit of the Chinese nation moving forward.","这场表演展现了中华民族奋进的精神。"],
+    ["We are moving forward step by step.","我们正在一步步向前。"],
+    ["It's time to move forward and try again.","是时候继续前进、再试一次了。"]
+  ],
+  syn:"advance（前进）；make progress（取得进步）",
+  ant:"fall behind（落后）；go backward（倒退）",
+  col:"move forward in / with ...；keep moving forward",
+  phr:"the Chinese nation moving forward（中华民族奋进）；move on（继续）"
+},
+{
+  id:"not-only", w:"not only ... but also ...", ipa:"", pos:"conj. 并列连词", src:"A", type:"phrase",
+  cn:"不仅……而且……",
+  ext:"拓展：both ... and ...（既……又……）；neither ... nor ...（既不……也不……）。",
+  use:"连接两个并列成分；连接两个主语时谓语与靠近的主语一致（就近原则）；not only 置于句首时其分句部分倒装。",
+  ex:[
+    ["It is not only a great artwork, but also a way to show respect for our roots.","它不仅是一件优秀的艺术作品，也是向我们的文化根源表达敬意的一种方式。"],
+    ["She not only sings but also dances.","她不仅会唱歌，还会跳舞。"],
+    ["Not only does he work hard, but he also helps others.","他不仅工作努力，还帮助他人。"]
+  ],
+  syn:"both ... and ...（既……又……）",
+  ant:"neither ... nor ...（既不……也不……）",
+  col:"not only ... but (also) ...",
+  phr:"就近原则：Not only I but also he is right."
+},
+{
+  id:"respect", w:"show respect for", ipa:"/rɪˈspekt/", pos:"phr. 短语（n./v.）", src:"A", type:"phrase",
+  cn:"尊敬；尊重；向……表达敬意",
+  ext:"拓展：respect 还可作动词\u201c尊重、遵守\u201d；respectful adj. 恭敬的；respected adj. 受尊敬的。",
+  use:"show respect for sb./sth.（尊重某人/某物）；respect sb. for sth.（因……尊重某人）；with respect（尊敬地）。",
+  ex:[
+    ["...a way to show respect for our roots.","……一种向我们的文化根源表达敬意的方式。"],
+    ["We should respect our teachers.","我们应该尊敬老师。"],
+    ["They show respect for the old.","他们尊敬老人。"]
+  ],
+  syn:"admire（钦佩）；honour（尊敬，敬重）",
+  ant:"disrespect（不尊重）；look down on（看不起）",
+  col:"show / have respect for；with respect；self-respect",
+  phr:"show respect for（尊重）；pay one's respects to（向……致敬）；in respect of（关于）"
+},
+{
+  id:"roots", w:"roots", ipa:"/ruːts/", pos:"n. 名词（常用复数）", src:"A", type:"word",
+  cn:"根；根源；（文化）根脉",
+  ext:"拓展：root 可数名词\u201c根、起源\u201d，也用复数 roots 表示\u201c血统、文化根源\u201d；root 还可作动词\u201c使扎根\u201d。",
+  use:"our cultural roots / one's roots；show respect for our roots（尊重我们的根源）。",
+  ex:[
+    ["It is a way to show respect for our roots.","这是一种向我们的文化根源表达敬意的方式。"],
+    ["Many overseas Chinese want to learn about their roots.","许多海外华人想了解自己的根。"],
+    ["The roots of the tree are deep.","这棵树的根很深。"]
+  ],
+  syn:"origin（起源）；source（源头）",
+  ant:"无常用反义词（可与 result\u201c结果\u201d相对理解）",
+  col:"cultural / family roots；deep roots；the root of ...",
+  phr:"root and branch（彻底地）；the root cause（根本原因）"
+},
+{
+  id:"draw-from", w:"draw from", ipa:"", pos:"phr. 短语动词", src:"A", type:"phrase",
+  cn:"从……汲取；取自",
+  ext:"draw 的常见义：画、绘制；拉、拖；吸引；提取（钱）；汲取（经验、灵感）。",
+  use:"draw lessons / inspiration / knowledge from ...（从……汲取教训/灵感/知识）；by drawing from ...（通过汲取……）。",
+  ex:[
+    ["...young Chinese musicians can create beautiful works by drawing from our rich culture.","……年轻的中国音乐人可以通过汲取我们丰富的文化创作出优秀作品。"],
+    ["We should draw lessons from our mistakes.","我们应该从错误中吸取教训。"],
+    ["She drew a picture of the lake.","她画了一幅湖的画。"]
+  ],
+  syn:"learn from（向……学习）；take from（取自）",
+  ant:"waste（浪费）",
+  col:"draw inspiration / lessons / knowledge from ...",
+  phr:"draw a picture（画画）；draw water（打水）；draw one's attention（吸引注意力）"
+},
+{
+  id:"encourage", w:"encourage", ipa:"/ɪnˈkʌrɪdʒ/", pos:"v. 动词（及物）", src:"A", type:"word",
+  cn:"鼓励",
+  ext:"拓展：encouragement n. 鼓励；encouraging adj. 令人鼓舞的；反义词 discourage（使气馁）。",
+  use:"encourage sb. to do sth.（鼓励某人做某事）；encourage sb. in sth.（在某方面鼓励某人）。",
+  ex:[
+    ["It encourages us to love our traditional culture.","它鼓励我们热爱自己的传统文化。"],
+    ["My teacher encouraged me to speak English.","老师鼓励我说英语。"],
+    ["Parents should encourage children to read.","家长应该鼓励孩子阅读。"]
+  ],
+  syn:"support（支持）；inspire（激励）",
+  ant:"discourage（使气馁）；prevent（阻止）",
+  col:"encourage sb. to do sth.；encourage reading / learning",
+  phr:"encourage sb. to do（鼓励某人做）；words of encouragement（鼓励的话）"
+},
+{
+  id:"surely", w:"surely", ipa:"/ˈʃʊəli/", pos:"adv. 副词", src:"A", type:"word",
+  cn:"肯定；无疑；当然",
+  ext:"拓展：sure adj./adv.（确信的）；be sure of / about（对……有把握）；be sure to do（务必做）；for sure（肯定）。",
+  use:"常置于 will / can 之后、动词之前，表示说话人的确信。",
+  ex:[
+    ["More young people will surely use music to show the beauty of China.","更多年轻人一定会用音乐展示中国之美。"],
+    ["She will surely come to the party.","她一定会来参加聚会。"],
+    ["This is surely the best answer.","这无疑是最好的答案。"]
+  ],
+  syn:"certainly（当然）；definitely（肯定地）",
+  ant:"maybe（也许）；perhaps（或许）",
+  col:"will surely do；surely not",
+  phr:"make sure（确保）；for sure（肯定）；be sure to do（务必）"
+},
+{
+  id:"experience", w:"experience", ipa:"/ɪkˈspɪəriəns/", pos:"n./v. 名词 / 动词", src:"B", type:"word",
+  cn:"n. 经历（可数）；经验（不可数）　v. 体验",
+  ext:"拓展：experienced adj. 有经验的；inexperience n. 缺乏经验。",
+  use:"a wonderful / great experience（一次美好的经历）；have experience in (doing) sth.（在……方面有经验）。",
+  ex:[
+    ["It was a very wonderful experience.","这是一次非常美妙的经历。"],
+    ["He has rich teaching experience.","他有丰富的教学经验。"],
+    ["We want to experience Chinese culture.","我们想体验中国文化。"]
+  ],
+  syn:"adventure（冒险经历，可数）",
+  ant:"inexperience（缺乏经验）",
+  col:"work / life / learning experience；experience life / culture",
+  phr:"a wonderful experience（一次美好经历）；from experience（根据经验）"
+},
+{
+  id:"lively", w:"lively", ipa:"/ˈlaɪvli/", pos:"adj. 形容词", src:"B", type:"word",
+  cn:"生机勃勃的；热闹的；生动的",
+  ext:"词形辨析：live v.（居住）/ adj.（现场直播的）；alive adj.（活着的，常作表语）；living adj.（活着的，常作定语）；life n.（生命）。",
+  use:"a lively city / class / discussion；作定语或表语均可。",
+  ex:[
+    ["I got to the clean, lively city of Yangzhou with my family.","我和家人来到了干净又充满活力的扬州城。"],
+    ["The market is lively in the morning.","早上的市场很热闹。"],
+    ["She gave a lively description of the trip.","她生动地描述了这次旅行。"]
+  ],
+  syn:"active（活跃的）；vivid（生动的）",
+  ant:"dull（沉闷的）；quiet（安静的）",
+  col:"lively city / class / discussion / description",
+  phr:"look lively（快点，麻利点，口语）"
+},
+{
+  id:"inexpensive", w:"inexpensive", ipa:"/ˌɪnɪkˈspensɪv/", pos:"adj. 形容词", src:"B", type:"word",
+  cn:"不贵的；实惠的",
+  ext:"构词：in-（否定前缀）+ expensive（昂贵的）；类似：inconvenient（不方便的）、incorrect（不正确的）。",
+  use:"inexpensive + 名词；be inexpensive；语气比 cheap 更委婉、中性。",
+  ex:[
+    ["The hotel we stayed in was very comfortable and inexpensive.","我们住的酒店既舒适又实惠。"],
+    ["This is an inexpensive way to travel.","这是一种省钱的旅行方式。"],
+    ["She bought an inexpensive gift for me.","她给我买了一份不贵的礼物。"]
+  ],
+  syn:"cheap（便宜的，可能带贬义）；reasonable（价格合理的）；affordable（负担得起的）",
+  ant:"expensive（昂贵的）；costly（费用高的）",
+  col:"inexpensive hotel / gift / way",
+  phr:"in- 否定前缀：inexpensive / inconvenient / independent"
+},
+{
+  id:"places", w:"places of interest / tourist attraction", ipa:"", pos:"n. 短语名词", src:"B", type:"phrase",
+  cn:"名胜；旅游景点",
+  ext:"interest 此处意为\u201c有趣之处\u201d；attraction 还有\u201c吸引力\u201d之意。",
+  use:"place of interest 的复数为 places of interest；tourist attraction 常用 one of the most famous ... attractions。",
+  ex:[
+    ["There are lots of places of interest in Yangzhou.","扬州有许多名胜古迹。"],
+    ["The Slender West Lake is one of the most famous tourist attractions in China.","瘦西湖是中国最著名的旅游景点之一。"],
+    ["The Great Wall is a place of interest.","长城是一处名胜。"]
+  ],
+  syn:"sight（名胜，常用复数 sights）；scenic spot（景点）",
+  ant:"—（无常用反义词）",
+  col:"places of interest；tourist attraction；famous / popular attraction",
+  phr:"places of interest（名胜古迹）；tourist（游客）；attract v.（吸引）"
+},
+{
+  id:"such-that", w:"such ... that ...", ipa:"", pos:"conj. 句型", src:"B", type:"phrase",
+  cn:"如此……以至于……",
+  ext:"so ... that ... 也表\u201c如此……以至于……\u201d，但修饰对象不同。",
+  use:"such + (a/an) + 形容词 + 名词 + that 从句；so + 形容词/副词 + that 从句。名词前有 many/much/few/little 时只能用 so。",
+  ex:[
+    ["It is such a beautiful lake that nobody should miss it!","它是如此美丽的一个湖，任何人都不该错过它！"],
+    ["He is such a kind boy that everyone likes him.","他是一个如此友善的男孩，人人都喜欢他。"],
+    ["She is so kind that everyone likes her.","她如此友善，人人都喜欢她。"]
+  ],
+  syn:"so ... that ...（可互换的等值结构）",
+  ant:"too ... to ...（太……而不能……，表否定结果）",
+  col:"such a + adj. + n. + that；so + adj./adv. + that",
+  phr:"such as（例如）；so that（以便，为了）"
+},
+{
+  id:"narrow", w:"narrow", ipa:"/ˈnærəʊ/", pos:"adj./v. 形容词 / 动词", src:"B", type:"word",
+  cn:"狭窄的；狭长的",
+  ext:"拓展义：narrow 还可作动词\u201c变窄、缩小\u201d；a narrow escape（死里逃生，险胜）为拓展用法。",
+  use:"a narrow street / river / shape；be long and narrow（又长又窄）。",
+  ex:[
+    ["Its shape is long and narrow, so it has its name.","它的形状又长又窄，因此而得名。"],
+    ["The road is too narrow for two cars.","这条路太窄，容不下两辆车。"],
+    ["The river narrows here.","河流在这里变窄了。"]
+  ],
+  syn:"slim（细长的）；thin（薄的、细的）",
+  ant:"wide（宽的）；broad（宽阔的）",
+  col:"narrow street / river / shape / bridge",
+  phr:"a narrow escape（死里逃生）；narrow down（缩小范围）"
+},
+{
+  id:"breath", w:"take one's breath away", ipa:"", pos:"phr. 习语", src:"B", type:"phrase",
+  cn:"令人惊叹；（美得）让人屏息",
+  ext:"拓展：breathtaking adj. 令人惊叹的；out of breath（上气不接下气）；take a deep breath（深呼吸）。",
+  use:"通常以\u201c事物\u201d作主语：The view took my breath away.；take 可用过去式 took。",
+  ex:[
+    ["When we went boating ... It just took my breath away.","当我们划船时……那景色简直让我惊叹不已。"],
+    ["The mountains took our breath away.","群山让我们惊叹不已。"],
+    ["The sunset is breathtaking.","日落美得令人屏息。"]
+  ],
+  syn:"amaze（使惊叹）；surprise greatly（使大为惊讶）",
+  ant:"bore（使厌烦）",
+  col:"take sb's breath away；breathtaking view / scenery",
+  phr:"out of breath（气喘吁吁）；take a deep breath（深呼吸）；hold one's breath（屏住呼吸）"
+},
+{
+  id:"cant-help", w:"can't help doing", ipa:"", pos:"phr. 句型", src:"B", type:"phrase",
+  cn:"忍不住做某事",
+  ext:"拓展：can't help but do（美式用法，忍不住做）；can't stand doing（无法忍受做）。",
+  use:"can't help (doing) sth. = can't stop oneself (doing) sth.，后接动词 -ing 形式。",
+  ex:[
+    ["I couldn't help picking a flower.","我忍不住摘了一朵花。"],
+    ["She can't help laughing.","她忍不住笑了起来。"],
+    ["We couldn't help admiring the view.","我们忍不住赞叹这景色。"]
+  ],
+  syn:"can't stop doing（忍不住做）；can't resist doing（忍不住做）",
+  ant:"keep from doing（克制不做）",
+  col:"can't help doing sth.；can't help but do",
+  phr:"can't help it（没办法）；can't help doing（忍不住做）"
+},
+{
+  id:"bad-for", w:"be bad for", ipa:"", pos:"phr. 短语", src:"B", type:"phrase",
+  cn:"对……有害",
+  ext:"拓展：be good for（对……有好处）；It's bad to do sth.（做某事不好）。",
+  use:"be bad for + 名词/代词；也可用 do harm to / be harmful to 替换。",
+  ex:[
+    ["My father said it was bad to hurt the flowers.","爸爸说伤害这些花是不好的。"],
+    ["Watching too much TV is bad for your eyes.","看太多电视对你的眼睛有害。"],
+    ["Smoking is bad for health.","吸烟有害健康。"]
+  ],
+  syn:"be harmful to（对……有害）；do harm to（对……造成伤害）",
+  ant:"be good for（对……有好处）；be helpful to（对……有帮助）",
+  col:"be bad for health / eyes / the environment",
+  phr:"be good / bad for（对……好/坏）；hurt v.（伤害）"
+},
+{
+  id:"fantastic", w:"fantastic", ipa:"/fænˈtæstɪk/", pos:"adj. 形容词", src:"B", type:"word",
+  cn:"极好的；奇异的",
+  ext:"拓展：fantasy n. 幻想、幻想作品；fantastically adv. 极其。",
+  use:"口语中常表\u201c棒极了\u201d；fantastic + 名词（view / building / time）。",
+  ex:[
+    ["The Slender West Lake is famous for the different kinds of fantastic ancient buildings.","瘦西湖以各种各样的奇妙古建筑而闻名。"],
+    ["We had a fantastic time in Yangzhou.","我们在扬州玩得非常开心。"],
+    ["The view from the top is fantastic.","从顶部看到的景色棒极了。"]
+  ],
+  syn:"wonderful（极好的）；amazing（令人惊叹的）",
+  ant:"terrible（糟糕的）；awful（很差的）；boring（无聊的）",
+  col:"fantastic view / buildings / time / job",
+  phr:"fantasy story（幻想故事）"
+},
+{
+  id:"pavilion", w:"pavilion", ipa:"/pəˈvɪliən/", pos:"n. 名词（可数）", src:"B", type:"word",
+  cn:"亭子；阁",
+  ext:"拓展：文中 Five-Pavilion Bridge 即\u201c五亭桥\u201d；pavilion 也可指展览馆（the China Pavilion 中国馆）。",
+  use:"pavilion 的复数为 pavilions；常用 five / garden / small pavilion。",
+  ex:[
+    ["The five pavilions are like five big lotus flowers on the lake.","五座亭子就像湖上的五朵大莲花。"],
+    ["We rested in a small pavilion by the lake.","我们在湖边的一座小亭子里休息。"],
+    ["There is a pavilion on the hill.","山上有一座亭子。"]
+  ],
+  syn:"gazebo（凉亭，西式）",
+  ant:"—（无常用反义词）",
+  col:"five / garden / small pavilion；the Five-Pavilion Bridge",
+  phr:"rest in a pavilion（在亭中休息）"
+},
+{
+  id:"lotus", w:"lotus", ipa:"/ˈləʊtəs/", pos:"n. 名词（可数）", src:"B", type:"word",
+  cn:"莲花；荷花",
+  ext:"拓展：lotus leaf 荷叶；lotus root 莲藕；在传统文化中常象征纯洁、吉祥。",
+  use:"lotus flower（莲花）；复数 lotuses；lotus 常作定语：lotus pond（荷塘）。",
+  ex:[
+    ["The five pavilions are like five big lotus flowers on the lake.","五座亭子就像湖上的五朵大莲花。"],
+    ["There are many lotus flowers in the lake in summer.","夏天湖里有许多荷花。"],
+    ["The lotus leaves are big and green.","荷叶又大又绿。"]
+  ],
+  syn:"water lily（睡莲）",
+  ant:"—（无常用反义词）",
+  col:"lotus flower / leaf / root / pond",
+  phr:"lotus flowers（荷花）；lotus leaf（荷叶）"
+},
+{
+  id:"reflected", w:"be reflected", ipa:"/rɪˈflekt/", pos:"phr. 被动语态", src:"B", type:"phrase",
+  cn:"被倒映；被反射；被反映",
+  ext:"reflect v. 反射、倒映；反映；reflection n. 倒影、反映、思考；reflect on（思考、反省）。",
+  use:"be reflected on/in + 表面（倒映在……）；主语是被倒映的对象。",
+  ex:[
+    ["The 15 moons will be reflected on the water.","15 个月亮将倒映在水面上。"],
+    ["The trees are reflected in the lake.","树木倒映在湖中。"],
+    ["Please reflect on your mistakes.","请反省你的错误。"]
+  ],
+  syn:"be mirrored in（倒映于）",
+  ant:"absorb（吸收）",
+  col:"be reflected in / on；reflect on（思考）",
+  phr:"reflection in the water（水中倒影）；reflect on（反省）"
+},
+{
+  id:"scenic-area", w:"scenic area", ipa:"", pos:"n. 短语名词", src:"B", type:"phrase",
+  cn:"景区；风景区",
+  ext:"辨析：scenery（风景，总称，不可数）；scene（场景、现场）；sight（景象、名胜）；view（视野、景色）；scenic adj. 风景优美的。",
+  use:"the ... Scenic Area（……景区）；scenic spot（景点）。",
+  ex:[
+    ["...such as the Twenty-Four-Bridge Scenic Area and the Ten Thousand Flowers Garden.","……比如二十四桥景区和万花园。"],
+    ["This is a famous scenic area in China.","这是中国著名的风景区。"],
+    ["We enjoyed the beautiful scenery along the way.","我们欣赏了沿途的美景。"]
+  ],
+  syn:"scenic spot（景点）；attraction（旅游景点）",
+  ant:"—（无常用反义词）",
+  col:"scenic area / spot / route；natural scenery",
+  phr:"scenic spot（景点）；scenery n.（风景）"
+},
+{
+  id:"full-of", w:"be full of", ipa:"", pos:"phr. 短语", src:"B", type:"phrase",
+  cn:"充满",
+  ext:"拓展：be filled with（装满，充满）；be covered with（被……覆盖）。",
+  use:"be full of + 名词；full 作形容词\u201c满的、充满的\u201d；be full = 吃饱。",
+  ex:[
+    ["The Slender West Lake is full of Chinese culture.","瘦西湖充满了中国文化。"],
+    ["The room is full of people.","房间里挤满了人。"],
+    ["She is always full of energy.","她总是精力充沛。"]
+  ],
+  syn:"be filled with（充满）；be rich in（富含）",
+  ant:"be short of（缺少）；be empty（空的）",
+  col:"be full of hope / energy / people；a full bag（满满的袋子）",
+  phr:"be filled with（充满）；full name（全名）；to the full（尽情地）"
+},
+{
+  id:"handwriting", w:"handwriting", ipa:"/ˈhændraɪtɪŋ/", pos:"n. 名词（不可数）", src:"B", type:"word",
+  cn:"书法；手写；笔迹",
+  ext:"构词：hand + writing；拓展：write v.；writer n.；written adj. 书面的。",
+  use:"good / bad handwriting（字写得好/差）；不可数名词，谓语用单数。",
+  ex:[
+    ["...left many poems, paintings, handwriting and music.","……留下了许多诗文、绘画、书法与音乐。"],
+    ["His handwriting is hard to read.","他的字迹很难认。"],
+    ["Please practise your handwriting.","请练习你的书写。"]
+  ],
+  syn:"calligraphy（书法艺术，更正式）",
+  ant:"printing（印刷体）",
+  col:"good / poor handwriting；Chinese handwriting",
+  phr:"handwriting practice（书写练习）；hand in（上交）"
+},
+{
+  id:"while", w:"while", ipa:"/waɪl/", pos:"conj./n. 连词 / 名词", src:"B", type:"word",
+  cn:"当……时候；然而；一会儿",
+  ext:"拓展义：for a while（一会儿）；all the while（一直）；worth one's while（值得花时间）。",
+  use:"while + 从句（延续性动词）；while + doing（省略主语和 be）；while 表对比（而、然而）。",
+  ex:[
+    ["While enjoying the beauty of the Slender West Lake, visitors can also learn about interesting stories of Yangzhou.","在欣赏瘦西湖美景的同时，游客还能了解扬州有趣的故事。"],
+    ["I like tea while my sister likes coffee.","我喜欢茶，而我姐姐喜欢咖啡。"],
+    ["Please wait for a while.","请等一会儿。"]
+  ],
+  syn:"when（当……时候）；as（当……时，随着）",
+  ant:"—（无常用反义词）",
+  col:"while doing；for a while；all the while",
+  phr:"for a while（一会儿）；after a while（过了一会儿）；while + 进行时"
+},
+{
+  id:"in-one-go", w:"in one go / at one go", ipa:"", pos:"phr. 短语", src:"C", type:"phrase",
+  cn:"一口气；一次性；连续地",
+  ext:"拓展：at a time（一次）；all at once（突然，同时）。",
+  use:"英式口语常用 in one go；修饰动词短语，表示\u201c一次性完成\u201d。",
+  ex:[
+    ["Everyone gets the same seven days off at one go!","大家一次就能连休同样的七天假！"],
+    ["Many people like to take a few weeks of leave in one go.","很多人喜欢一次性休几周假。"],
+    ["She finished the whole book in one go.","她一口气读完了整本书。"]
+  ],
+  syn:"at a time（一次）；all at once（同时）",
+  ant:"little by little（一点一点地）；step by step（一步步地）",
+  col:"do / take / finish sth. in one go",
+  phr:"go 短语：go on（继续）；go out（出去）；let's go（走吧）"
+},
+{
+  id:"makeup-day", w:"make-up day", ipa:"", pos:"n. 短语名词", src:"C", type:"phrase",
+  cn:"调休日；补班（补课）日",
+  ext:"make up 的常见义：补上、组成、编造、化妆、和好。",
+  use:"make-up 在此作定语（补的、调的）；make-up class（补课）；make-up exam（补考）。",
+  ex:[
+    ["And I had never heard of make-up days.","而且我从没听说过\u201c调休\u201d。"],
+    ["We have a make-up class on Saturday.","我们周六要补课。"],
+    ["She made up a story.","她编了一个故事。"]
+  ],
+  syn:"extra working day（额外工作日）",
+  ant:"day off（休息日）",
+  col:"make-up day / class / exam",
+  phr:"make up for（弥补）；make up one's mind（下定决心）；be made up of（由……组成）"
+},
+{
+  id:"national-level", w:"national-level", ipa:"", pos:"adj. 形容词", src:"C", type:"word",
+  cn:"国家级的",
+  ext:"构词：national（国家的）+ level（级别）；拓展：nation n. 国家、民族；national adj./n.；international adj. 国际的。",
+  use:"national-level + 名词（holiday / event / standard）。",
+  ex:[
+    ["Australia has seven national-level public holidays.","澳大利亚有七个全国性的公共假日。"],
+    ["This is a national-level competition.","这是一项国家级的比赛。"],
+    ["It is a national-level standard.","这是一个国家标准。"]
+  ],
+  syn:"national（全国性的）",
+  ant:"local-level（地方级的）；international（国际级的）",
+  col:"national-level holiday / event / standard",
+  phr:"national holiday（全国性假日）；local event（地方活动）"
+},
+{
+  id:"territory", w:"territory", ipa:"/ˈterətri/", pos:"n. 名词（可数）", src:"C", type:"word",
+  cn:"领土；领地；地区",
+  ext:"拓展：territorial adj. 领土的；territory 也可指\u201c（动物的）领地\u201d、\u201c（活动的）领域\u201d。",
+  use:"state and territory（州与领地）；常用复数 territories。",
+  ex:[
+    ["And each Australian state and territory also has a few special ones of their own added on.","而且澳大利亚的每个州和领地还会加上几个自己的特别假日。"],
+    ["The country has a large territory.","这个国家幅员辽阔。"],
+    ["Wolves are good at protecting their territory.","狼很擅长保护自己的领地。"]
+  ],
+  syn:"area（地区）；region（区域）；land（土地）",
+  ant:"—（无常用反义词）",
+  col:"state and territory；local territory",
+  phr:"state and territory（州和领地）；local events（地方活动）"
+},
+{
+  id:"apart-from", w:"apart from", ipa:"", pos:"prep. 短语介词", src:"C", type:"phrase",
+  cn:"除了……之外",
+  ext:"辨析：apart from 既可表示\u201c除……之外（还有）\u201d（= besides），也可表示\u201c除……之外（没有）\u201d（= except），由语境决定。",
+  use:"apart from + 名词/代词/doing；句首用逗号隔开。",
+  ex:[
+    ["Apart from national holidays, full-time and part-time workers in Australia get at least 20 days of paid leave a year.","除了全国性假日，澳大利亚的全职和兼职员工每年还有至少 20 天带薪休假。"],
+    ["Apart from English, he also learns Japanese.","除了英语，他还学日语。（还有）"],
+    ["We all went apart from Tom.","除了汤姆，我们都去了。（汤姆没去）"]
+  ],
+  syn:"besides（除……之外还有）；except（除……之外）；except for（除了……之外，用于细节修正）",
+  ant:"—（无常用反义词）",
+  col:"apart from sth. / doing sth.",
+  phr:"take ... apart（拆开）；fall apart（散架）；tell ... apart（区分）"
+},
+{
+  id:"at-least", w:"at least", ipa:"", pos:"adv. 短语", src:"C", type:"phrase",
+  cn:"至少",
+  ext:"拓展：at most（至多）；not in the least（一点也不）；last but not least（最后但同样重要的）。",
+  use:"at least + 数量/程度；用于修饰动词或数量词，表示最低限度。",
+  ex:[
+    ["...workers in Australia get at least 20 days of paid leave a year.","……澳大利亚的员工每年至少有 20 天带薪休假。"],
+    ["At least 30 students came.","至少来了 30 个学生。"],
+    ["It will take at least two hours.","至少要花两个小时。"]
+  ],
+  syn:"no less than（不少于）",
+  ant:"at most（至多）",
+  col:"at least + 数字；at least once（至少一次）",
+  phr:"at most（至多）；not in the least（一点也不）"
+},
+{
+  id:"paid-leave", w:"paid leave", ipa:"", pos:"n. 短语名词", src:"C", type:"phrase",
+  cn:"带薪休假",
+  ext:"leave n. 假期、许可；v. 离开、留下。常见假别：annual leave 年假、sick leave 病假、unpaid leave 无薪假。",
+  use:"get / take paid leave；on paid leave（在带薪休假中）。",
+  ex:[
+    ["...workers in Australia get at least 20 days of paid leave a year.","……澳大利亚员工每年至少有 20 天带薪休假。"],
+    ["She is on paid leave this week.","她这周在休带薪假。"],
+    ["He asked for two days' leave.","他请了两天假。"]
+  ],
+  syn:"holiday（假日）；vacation（假期）",
+  ant:"unpaid leave（无薪假）",
+  col:"paid / unpaid leave；take / ask for leave",
+  phr:"ask for leave（请假）；sick leave（病假）；annual leave（年假）"
+},
+{
+  id:"matter", w:"matter", ipa:"/ˈmætə(r)/", pos:"v./n. 动词 / 名词", src:"C", type:"word",
+  cn:"v. 要紧，有关系　n. 事情；问题",
+  ext:"拓展：no matter how / what（无论怎样/什么）；What's the matter?（怎么了？）；a matter of（……的问题）。",
+  use:"matter 作动词常用于否定句和疑问句：It doesn't matter. / What does it matter?",
+  ex:[
+    ["This doesn't matter how many years they have worked.","这与他们已经工作了多少年无关。"],
+    ["It doesn't matter if you are late.","你迟到也没关系。"],
+    ["What's the matter with you?","你怎么了？"]
+  ],
+  syn:"count（v. 有关系、重要）",
+  ant:"—（无常用反义词）",
+  col:"it doesn't matter；no matter how；What's the matter?",
+  phr:"no matter how / what / where（无论……）；a matter of time（时间问题）"
+},
+{
+  id:"annual-leave", w:"annual leave", ipa:"", pos:"n. 短语名词", src:"C", type:"phrase",
+  cn:"年假",
+  ext:"annual adj. 每年的、年度的；n. 年刊、年生植物；annually adv. 每年地。",
+  use:"annual + 名词（leave / report / meeting / plan）；get / take annual leave。",
+  ex:[
+    ["In China, the most annual leave you can get is 15 days.","在中国，你能拿到的年假最多是 15 天。"],
+    ["The company gives 10 days of annual leave.","公司给 10 天年假。"],
+    ["We have an annual meeting in December.","我们十二月开年会。"]
+  ],
+  syn:"yearly leave（每年的假期，较不常用）",
+  ant:"—（无常用反义词）",
+  col:"annual leave / report / meeting / plan",
+  phr:"annual leave（年假）；annually（每年）"
+},
+{
+  id:"added", w:"be added to", ipa:"/æd/", pos:"phr. 被动短语", src:"C", type:"phrase",
+  cn:"被添加到；被加到",
+  ext:"add v. 增加、加；addition n. 增加、加法；in addition (to)（另外，除……之外还）。",
+  use:"add sth. to sth.（把……加到……）；被动：be added to；add up（加起来）；add up to（总计）。",
+  ex:[
+    ["It will be added to your leave next year.","它会被加到你明年的假期里。"],
+    ["Please add some sugar to the coffee.","请往咖啡里加点糖。"],
+    ["Add up the numbers, please.","请把这些数字加起来。"]
+  ],
+  syn:"be put into（被放入）；increase（增加）",
+  ant:"be taken away from（从……拿走）；reduce（减少）",
+  col:"add A to B；add up（加起来）；add up to（总计）",
+  phr:"in addition（另外）；add up to（总计达）"
+},
+{
+  id:"sick-leave", w:"sick leave", ipa:"", pos:"n. 短语名词", src:"C", type:"phrase",
+  cn:"病假",
+  ext:"sick adj. 生病的、恶心的；illness / disease n. 疾病。注意 sick 可作定语（a sick boy），ill 通常作表语。",
+  use:"take / ask for sick leave（请病假）；on sick leave（在休病假）。",
+  ex:[
+    ["This is the same for sick leave. Workers get 10 days of it a year.","病假也一样。员工每年有 10 天病假。"],
+    ["He asked for sick leave yesterday.","他昨天请了病假。"],
+    ["She is at home on sick leave.","她在家休病假。"]
+  ],
+  syn:"sick day（病休日）",
+  ant:"paid leave（带薪假，类型不同）",
+  col:"take / ask for / be on sick leave",
+  phr:"sick leave（病假）；ask for leave（请假）"
+},
+{
+  id:"especially", w:"especially", ipa:"/ɪˈspeʃəli/", pos:"adv. 副词", src:"C", type:"word",
+  cn:"尤其；特别",
+  ext:"辨析：especially（尤其、特别是，表强调）；specially（专门地，表目的）。拓展：special adj. 特别的；especial adj. 特殊的（较少用）。",
+  use:"especially + 名词/介词短语/从句，强调\u201c特别是……\u201d。",
+  ex:[
+    ["...especially around Christmas time and New Year's Eve.","……尤其是在圣诞节和新年前后。"],
+    ["I love fruit, especially apples.","我喜欢水果，尤其是苹果。"],
+    ["This book is specially written for children.","这本书是专门为儿童写的。"]
+  ],
+  syn:"particularly（尤其）；mainly（主要地）",
+  ant:"generally（一般来说）；usually（通常）",
+  col:"especially + 名词；especially important / useful",
+  phr:"specially（专门地，注意与 especially 区分）"
+},
+{
+  id:"full-time", w:"full-time / part-time", ipa:"", pos:"adj./adv. 形容词 / 副词", src:"C", type:"word",
+  cn:"全职的 / 兼职的",
+  ext:"构词：full（全部）+ time（时间）；part（部分）+ time。拓展：full-timer n. 全职工作者。",
+  use:"full-time / part-time worker / job / student；work full-time / part-time（作副词时不加连字符）。",
+  ex:[
+    ["Full-time and part-time workers in Australia get at least 20 days of paid leave a year.","澳大利亚的全职和兼职员工每年至少有 20 天带薪休假。"],
+    ["She is a part-time worker in the shop.","她是这家店的兼职工。"],
+    ["He works part-time after school.","他放学后做兼职。"]
+  ],
+  syn:"（按工作时长区分的一对词）",
+  ant:"full-time 与 part-time 互为反义",
+  col:"full-time job / student；work part-time",
+  phr:"full name（全名）；full of（充满）"
+}
+];
+
+/* =========================================================
+   工具函数（不使用 $ / $$ 简写，避免转义问题）
+   ========================================================= */
+function sel(s, c) { return (c || document).querySelector(s); }
+function selAll(s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); }
+
+var toastEl = sel("#toast");
+var toastTimer = null;
+function toast(msg) {
+  toastEl.textContent = msg;
+  toastEl.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(function () { toastEl.classList.remove("show"); }, 2200);
+}
+
+/* =========================================================
+   语音朗读
+   ========================================================= */
+var TTS = {
+  supported: ("speechSynthesis" in window),
+  rate: 1,
+  currentBtn: null,
+  stop: function () {
+    if (this.supported) { window.speechSynthesis.cancel(); }
+    this.clearBtn();
+  },
+  clearBtn: function () {
+    if (this.currentBtn) { this.currentBtn.classList.remove("reading"); this.currentBtn = null; }
+  },
+  speak: function (text, btn) {
+    if (!this.supported) { toast("当前浏览器不支持语音朗读"); return; }
+    window.speechSynthesis.cancel();
+    this.clearBtn();
+    var u = new SpeechSynthesisUtterance(text.replace(/\s+/g, " ").trim());
+    u.lang = "en-US";
+    u.rate = this.rate;
+    u.pitch = 1;
+    var voices = window.speechSynthesis.getVoices();
+    var prefer = null;
+    for (var i = 0; i < voices.length; i++) {
+      if (/en-US|en_GB|en-GB/.test(voices[i].lang)) { prefer = voices[i]; break; }
+      if (!prefer && /^en/.test(voices[i].lang)) { prefer = voices[i]; }
+    }
+    if (prefer) { u.voice = prefer; }
+    var self = this;
+    u.onend = function () { self.clearBtn(); };
+    u.onerror = function () { self.clearBtn(); };
+    if (btn) { btn.classList.add("reading"); this.currentBtn = btn; }
+    window.speechSynthesis.speak(u);
+  }
+};
+if (TTS.supported) {
+  window.speechSynthesis.getVoices();
+  window.speechSynthesis.onvoiceschanged = function () { window.speechSynthesis.getVoices(); };
+}
+
+/* 段落朗读按钮 */
+selAll(".read-para").forEach(function (btn) {
+  btn.addEventListener("click", function () {
+    var box = document.getElementById(btn.getAttribute("data-target"));
+    var ps = selAll("p", box);
+    var idx = parseInt(btn.getAttribute("data-para"), 10) - 1;
+    if (ps[idx]) { TTS.speak(ps[idx].textContent, btn); }
+  });
+});
+selAll(".read-passage").forEach(function (btn) {
+  btn.addEventListener("click", function () {
+    var box = document.getElementById(btn.getAttribute("data-target"));
+    var texts = selAll("p", box).map(function (p) { return p.textContent; });
+    TTS.speak(texts.join(" "), btn);
+  });
+});
+selAll(".stop-read").forEach(function (btn) {
+  btn.addEventListener("click", function () { TTS.stop(); toast("已停止朗读"); });
+});
+
+sel("#readAll").addEventListener("click", function () {
+  if (!TTS.supported) { toast("当前浏览器不支持语音朗读"); return; }
+  var rate = prompt("设置朗读速度（0.5 - 1.5，当前 " + TTS.rate + "）", String(TTS.rate));
+  if (rate === null) { return; }
+  var r = parseFloat(rate);
+  if (!isNaN(r) && r >= 0.5 && r <= 1.5) {
+    TTS.rate = r;
+    toast("朗读速度已设为 " + r + "x");
+    TTS.stop();
+  } else {
+    toast("请输入 0.5 到 1.5 之间的数值");
+  }
+});
+
+/* =========================================================
+   生词抽屉
+   ========================================================= */
+var drawer = sel("#drawer");
+var overlay = sel("#overlay");
+
+function openDrawer(id, trigger) {
+  var item = null;
+  for (var i = 0; i < VOCAB.length; i++) {
+    if (VOCAB[i].id === id) { item = VOCAB[i]; break; }
+  }
+  if (!item) { return; }
+
+  selAll(".w.active").forEach(function (e) { e.classList.remove("active"); });
+  if (trigger) { trigger.classList.add("active"); }
+
+  sel("#drawerWord").textContent = item.w;
+  sel("#drawerIpa").textContent = item.ipa ? item.ipa + "  ·  " + item.pos : item.pos;
+
+  var html = "";
+  html += '<div class="pos">' + item.pos + '</div>';
+  html += '<div class="big-cn">' + item.cn + '</div>';
+  html += '<div class="g-row"><span class="lbl">拓展</span><span class="val">' + item.ext + '</span></div>';
+  html += '<div class="g-row"><span class="lbl">用法</span><span class="val">' + item.use + '</span></div>';
+  html += '<div class="g-row"><span class="lbl">近义</span><span class="val">' + item.syn + '</span></div>';
+  html += '<div class="g-row"><span class="lbl">反义</span><span class="val">' + item.ant + '</span></div>';
+  html += '<div class="g-row"><span class="lbl">搭配</span><span class="val">' + item.col + '</span></div>';
+  html += '<div class="g-row"><span class="lbl">短语</span><span class="val">' + item.phr + '</span></div>';
+  html += '<div class="g-ex">';
+  for (var j = 0; j < item.ex.length; j++) {
+    html += '<p><span class="en">' + item.ex[j][0] + '</span><br><span class="cn">' + item.ex[j][1] + '</span></p>';
+  }
+  html += '</div>';
+  html += '<div class="drawer-actions">';
+  html += '<button class="btn solid" id="drawerRead">朗读例句</button>';
+  html += '<button class="btn ghost" id="drawerReadWord">朗读词条</button>';
+  html += '</div>';
+
+  sel("#drawerBody").innerHTML = html;
+  drawer.classList.add("open");
+  overlay.classList.add("open");
+  drawer.setAttribute("aria-hidden", "false");
+
+  sel("#drawerRead").addEventListener("click", function () {
+    var sentences = item.ex.map(function (e) { return e[0]; });
+    TTS.speak(sentences.join(" "), this);
+  });
+  sel("#drawerReadWord").addEventListener("click", function () {
+    TTS.speak(item.w, this);
+  });
+}
+
+function closeDrawer() {
+  drawer.classList.remove("open");
+  overlay.classList.remove("open");
+  drawer.setAttribute("aria-hidden", "true");
+  selAll(".w.active").forEach(function (e) { e.classList.remove("active"); });
+}
+
+document.addEventListener("click", function (e) {
+  if (!e.target.closest) { return; }
+  var w = e.target.closest(".w");
+  if (w) {
+    openDrawer(w.getAttribute("data-w"), w);
+    return;
+  }
+  var gc = e.target.closest(".g-card[data-id]");
+  if (gc && !e.target.closest("button")) {
+    openDrawer(gc.getAttribute("data-id"), null);
+  }
+});
+sel("#drawerClose").addEventListener("click", closeDrawer);
+overlay.addEventListener("click", closeDrawer);
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Escape") { closeDrawer(); }
+});
+
+/* =========================================================
+   答案展开 / 收起
+   ========================================================= */
+function setAns(btn, show) {
+  var ans = btn.nextElementSibling;
+  if (!ans || !ans.classList.contains("ans")) { return; }
+  ans.hidden = !show;
+  btn.textContent = show ? "收起答案与解析" : "显示答案与解析";
+
+  var qBox = btn.closest(".q");
+  if (show) {
+    var key = ans.querySelector(".ans-key");
+    var letter = key ? key.textContent.replace("答案：", "") : "";
+    letter = letter.replace(/（[^）]*）/g, "").trim();
+    selAll(".opts li", qBox).forEach(function (li) {
+      var opt = li.getAttribute("data-opt");
+      if (opt) { li.classList.toggle("correct", letter.indexOf(opt) === 0); }
+    });
+  } else {
+    selAll(".opts li", qBox).forEach(function (li) { li.classList.remove("correct"); });
+  }
+}
+
+selAll(".toggle-ans").forEach(function (btn) {
+  btn.addEventListener("click", function () {
+    setAns(btn, btn.nextElementSibling.hidden);
+  });
+});
+
+sel("#toggleAll").addEventListener("click", function () {
+  var btns = selAll(".toggle-ans");
+  var anyHidden = btns.some(function (b) { return b.nextElementSibling.hidden; });
+  btns.forEach(function (b) { setAns(b, anyHidden); });
+  sel("#toggleAll").textContent = anyHidden ? "收起全部解析" : "展开全部解析";
+  if (anyHidden) { toast("已展开全部答案与解析"); }
+});
+
+/* =========================================================
+   词汇汇总
+   ========================================================= */
+var glossGrid = sel("#glossGrid");
+
+function renderGloss() {
+  var q = sel("#glossSearch").value.trim().toLowerCase();
+  var activeFilter = sel("#glossFilters .filter.on");
+  var f = activeFilter ? activeFilter.getAttribute("data-f") : "all";
+
+  var list = VOCAB.filter(function (v) {
+    var matchF = true;
+    if (f === "phrase") { matchF = (v.type === "phrase"); }
+    else if (f === "word") { matchF = (v.type === "word"); }
+    else if (f !== "all") { matchF = (v.src.indexOf(f) > -1); }
+
+    var hay = (v.w + " " + v.cn + " " + v.pos + " " + v.col + " " + v.phr).toLowerCase();
+    var matchQ = (!q || hay.indexOf(q) > -1);
+    return matchF && matchQ;
+  });
+
+  var html = "";
+  for (var i = 0; i < list.length; i++) {
+    var v = list[i];
+    html += '<div class="g-card reveal in" data-id="' + v.id + '">';
+    html += '<div class="top"><div><h4>' + v.w + '</h4>';
+    if (v.ipa) { html += '<span class="ipa">' + v.ipa + '</span>'; }
+    html += '</div><span class="src ' + (v.type === "phrase" ? "phrase" : "") + '">' + v.src + ' 篇 · ' + (v.type === "phrase" ? "短语" : "单词") + '</span></div>';
+    html += '<div class="pos">' + v.pos + '</div>';
+    html += '<div class="cn">' + v.cn + '</div>';
+    html += '<div class="ext">' + v.ext + '</div>';
+    html += '<div class="g-row"><span class="lbl">用法</span><span class="val">' + v.use + '</span></div>';
+    html += '<div class="g-row"><span class="lbl">近义</span><span class="val">' + v.syn + '</span></div>';
+    html += '<div class="g-row"><span class="lbl">反义</span><span class="val">' + v.ant + '</span></div>';
+    html += '<div class="g-row"><span class="lbl">搭配</span><span class="val">' + v.col + '</span></div>';
+    html += '<div class="g-row"><span class="lbl">短语</span><span class="val">' + v.phr + '</span></div>';
+    html += '<div class="g-ex">';
+    for (var j = 0; j < v.ex.length; j++) {
+      html += '<p><span class="en">' + v.ex[j][0] + '</span><br><span class="cn">' + v.ex[j][1] + '</span></p>';
+    }
+    html += '</div></div>';
+  }
+  glossGrid.innerHTML = html;
+  sel("#glossShown").textContent = "显示 " + list.length + " / " + VOCAB.length;
+}
+
+sel("#glossSearch").addEventListener("input", renderGloss);
+
+selAll("#glossFilters .filter").forEach(function (b) {
+  b.addEventListener("click", function () {
+    selAll("#glossFilters .filter").forEach(function (x) { x.classList.remove("on"); });
+    b.classList.add("on");
+    renderGloss();
+  });
+});
+
+sel("#glossCount").textContent = VOCAB.length;
+sel("#statVocab").textContent = VOCAB.length + " 条";
+renderGloss();
+
+/* =========================================================
+   滚动进度 / 导航高亮 / 显现动画 / 返回顶部
+   ========================================================= */
+var progressBar = sel("#bar");
+window.addEventListener("scroll", function () {
+  var h = document.documentElement.scrollHeight - window.innerHeight;
+  progressBar.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + "%";
+  sel("#totop").classList.toggle("show", window.scrollY > 700);
+}, { passive: true });
+
+sel("#totop").addEventListener("click", function () {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+var revealObs = new IntersectionObserver(function (entries) {
+  entries.forEach(function (e) {
+    if (e.isIntersecting) {
+      e.target.classList.add("in");
+      revealObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+selAll(".reveal").forEach(function (el) { revealObs.observe(el); });
+
+var navLinks = selAll("#nav a");
+var secObs = new IntersectionObserver(function (entries) {
+  entries.forEach(function (e) {
+    if (e.isIntersecting) {
+      navLinks.forEach(function (a) {
+        a.classList.toggle("active", a.getAttribute("href") === "#" + e.target.id);
+      });
+    }
+  });
+}, { rootMargin: "-45% 0px -50% 0px" });
+
+["p-a", "p-b", "p-c", "grammar", "glossary", "proof"].forEach(function (id) {
+  var el = document.getElementById(id);
+  if (el) { secObs.observe(el); }
+});
+
+selAll("details").forEach(function (d) {
+  d.addEventListener("toggle", function () {
+    if (d.open) {
+      var b = d.querySelector(".body");
+      if (b) {
+        b.style.animation = "slideDown .4s ease";
+        setTimeout(function () { b.style.animation = ""; }, 420);
+      }
+    }
+  });
+});
+</script>
+</body>
+</html>
