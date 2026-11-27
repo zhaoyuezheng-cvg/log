@@ -16,6 +16,7 @@ HTML 学习资料，按学科分类。
 - [11周5英语培优 v1（精读精讲）](/english/en11-5-v1.html)、[v2（互动讲练）](/english/en11-5-v2.html)、[v3（Mimo精讲合集）](/english/en11-5-v3.html)
 - [13周1英语培优 v1（精读精讲）](/english/en13-1-v1.html)、[v2（讲练学案）](/english/en13-1-v2.html)、[v3（Mimo精讲）](/english/en13-1-v3.html)
 - [13周3英语培优 v1（精读精讲）](/english/en13-3-v1.html)、[v2（Mimo讲解）](/english/en13-3-v2.html)、[v3（讲练与词汇互动）](/english/en13-3-v3.html)
+- [13周5英语培优 v1（精读精讲）](/english/en13-5-v1.html)、[v2（交互学习资料）](/english/en13-5-v2.html)、[v3（学习资料版）](/english/en13-5-v3.html)、[v4（Mimo版）](/english/en13-5-v4.html)
 - [8周1培优 v1](/english/en8_1.html)、[v2](/english/en8_1_v2.html)、[v3](/english/en8_1_v3.html)、[v4](/english/en8_1_v4.html)
 - [8周3培优 v1](/english/en8-3.html)、[v2](/english/en8-3-v2.html)、[v3](/english/en8-3-v3.html)
 - [8周4培优](/english/en8-4-v1.html)、[11月21日作业](/english/en-1121.html)、[10月21日作业](/english/en-1021-1.html)

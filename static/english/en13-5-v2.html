@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<title>Unit 5 · Happy Holiday｜第13周五培优学习资料</title>
+<style>
+:root{--bg:#f4f6fa;--paper:#fff;--ink:#1f2937;--muted:#64748b;--line:#e5eaf1;--blue:#315fba;--blue2:#eaf1ff;--teal:#087e8b;--gold:#a66a13;--shadow:0 10px 35px rgba(28,45,78,.08)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,"Segoe UI","Microsoft YaHei",Arial,sans-serif;line-height:1.72}
+a{color:var(--blue)}button{font:inherit;cursor:pointer}.shell{max-width:1180px;margin:auto;padding:24px 22px 60px}
+.hero{background:linear-gradient(125deg,#183d78,#3269b5 62%,#4b91a5);color:white;border-radius:24px;padding:34px 38px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;width:260px;height:260px;border:1px solid #ffffff30;border-radius:50%;right:-55px;top:-105px;box-shadow:0 0 0 28px #ffffff0d,0 0 0 58px #ffffff0a}
+.kicker{font-size:12px;letter-spacing:2px;text-transform:uppercase;opacity:.8}.hero h1{font-family:Georgia,serif;font-size:clamp(30px,5vw,48px);margin:8px 0 2px;line-height:1.2}.hero p{margin:10px 0 0;max-width:720px;color:#e4edff}.meta{display:flex;flex-wrap:wrap;gap:9px;margin-top:22px}.pill{border:1px solid #ffffff55;background:#ffffff16;border-radius:999px;padding:5px 12px;font-size:13px}
+.toolbar{position:sticky;top:0;z-index:10;margin:18px 0;background:#ffffffed;backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:15px;padding:10px;display:flex;gap:8px;flex-wrap:wrap;box-shadow:0 4px 18px #1c2d4e0a}
+.toolbar a,.toolbar button{border:0;text-decoration:none;background:#f0f4fa;color:#334155;border-radius:9px;padding:8px 12px;font-size:13px}.toolbar a:hover,.toolbar button:hover{background:var(--blue2);color:var(--blue)}
+.layout{display:grid;grid-template-columns:230px minmax(0,1fr);gap:22px;align-items:start}.side{position:sticky;top:86px;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:17px;box-shadow:var(--shadow)}.side strong{display:block;margin-bottom:8px}.side a{display:block;text-decoration:none;color:#536176;padding:6px 8px;border-radius:7px;font-size:13px}.side a:hover{background:var(--blue2);color:var(--blue)}
+main{min-width:0}.card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:25px 27px;margin-bottom:20px;box-shadow:var(--shadow)}h2{font-size:23px;margin:0 0 14px;color:#183d78}h3{font-size:18px;margin:24px 0 10px;color:#234b87}h4{font-size:15px;margin:14px 0 6px}.sub{color:var(--muted);font-size:13px}.section-tag{display:inline-block;background:var(--blue2);color:var(--blue);font-size:12px;padding:3px 9px;border-radius:999px;margin-bottom:8px}
+.source-note{background:#f8fafc;border-left:3px solid #7c9bd5;padding:11px 14px;border-radius:0 9px 9px 0;color:#536176;font-size:13px}
+.passage{font-family:Georgia,"Times New Roman",serif;font-size:16px;line-height:1.9;color:#263344}.passage p{margin:0 0 13px;text-indent:2em}.passage .question{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:14px;text-indent:0;margin:14px 0 6px}.options{font-family:Georgia,serif;font-size:15px;line-height:1.65;margin:0 0 13px 28px}.vocab{border-bottom:2px dotted #d18b28;background:linear-gradient(transparent 72%,#ffedbd 72%);cursor:pointer;color:inherit;padding:0 1px;border-radius:2px}.vocab:hover,.vocab:focus{background:#ffe6a3;outline:2px solid #f0c76a;outline-offset:2px}
+.speak{border:1px solid #cbd8ee;background:#f4f7fc;color:#315fba;border-radius:8px;padding:6px 10px;font-size:12px;margin:4px 0 10px}.speak:hover{background:var(--blue2)}
+.question-box{border:1px solid var(--line);border-radius:13px;padding:15px 17px;margin:12px 0}.qhead{display:flex;justify-content:space-between;gap:12px;align-items:center}.answer{background:#edf8f5;color:#087e66;border-radius:7px;padding:3px 9px;font-weight:700;font-size:13px;white-space:nowrap}.explain{display:none;border-top:1px dashed var(--line);margin-top:12px;padding-top:10px;font-size:14px}.question-box.open .explain{display:block}.toggle{border:0;background:none;color:var(--blue);font-size:13px;padding:4px}
+.translation{background:#f7f9fc;border-radius:10px;padding:12px 15px;margin:10px 0 16px;font-size:14px;color:#42526a}
+.keyline{display:grid;grid-template-columns:1fr 1fr;gap:10px}.keyline div{background:#f7f9fc;padding:12px;border-radius:10px;font-size:13px}
+.exercise{background:#fffaf0;border:1px solid #f2e4c5;border-radius:12px;padding:16px;margin-top:14px}.blank{border-bottom:1px solid #888;display:inline-block;min-width:80px}
+.vocab-tools{display:flex;gap:9px;flex-wrap:wrap;margin:12px 0}.vocab-tools input,.vocab-tools select{border:1px solid var(--line);border-radius:9px;padding:9px 11px;background:#fff;color:var(--ink);min-width:150px}
+.word-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.word{border:1px solid var(--line);border-radius:13px;padding:14px;background:#fff;scroll-margin-top:90px}.word h4{margin:0 0 4px;color:#234b87;font-size:17px}.word .pron{font:13px Georgia;color:#718096}.word p{margin:6px 0;font-size:13px}.word .label{color:#64748b;font-weight:700}.word .examples{background:#f7f9fc;border-radius:8px;padding:8px 10px;margin-top:8px}
+.glossary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.glossary button{border:1px solid var(--line);background:#f8fafc;border-radius:9px;text-align:left;padding:9px 11px;color:#334155}.glossary button b{color:#234b87;display:block}
+.modal{position:fixed;inset:0;background:#0f172a88;display:none;align-items:center;justify-content:center;padding:18px;z-index:30}.modal.show{display:flex}.modal-card{max-width:560px;width:100%;max-height:85vh;overflow:auto;background:#fff;border-radius:18px;padding:23px;box-shadow:0 25px 80px #0003}.modal-card h3{margin:0 0 5px;font-size:23px}.modal-close{float:right;border:0;background:#eef2f7;border-radius:50%;width:32px;height:32px}
+.footer{text-align:center;color:#718096;font-size:12px;padding:24px}
+@media(max-width:850px){.layout{grid-template-columns:1fr}.side{position:static;display:flex;gap:5px;flex-wrap:wrap}.side strong{width:100%}.side a{display:inline-block}.shell{padding:14px 12px 40px}.hero{padding:27px 23px}.card{padding:20px 17px}.word-grid{grid-template-columns:1fr}.glossary{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:480px){.passage{font-size:15px}.hero h1{font-size:31px}.keyline{grid-template-columns:1fr}.toolbar{top:0}.glossary{grid-template-columns:1fr 1fr}}
+@media print{body{background:#fff}.toolbar,.side,.speak,.toggle,.vocab-tools,.modal{display:none!important}.layout{display:block}.card{box-shadow:none;break-inside:avoid}.explain{display:block!important}.word-grid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="shell">
+<header class="hero">
+ <div class="kicker">WEEK 13 · FRIDAY ENRICHMENT</div>
+ <h1>Unit 5　Happy Holiday</h1>
+ <p>第13周五培优 · 七年级英语阅读理解精讲与词汇拓展</p>
+ <div class="meta"><span class="pill">3篇阅读 · 11道选择题</span><span class="pill">逐段翻译与解析</span><span class="pill">点击词汇交互注释</span><span class="pill">语音朗读</span></div>
+</header>
+<nav class="toolbar">
+ <a href="#overview">学习导航</a><a href="#passage-a">A · 歌曲与文化</a><a href="#passage-b">B · 扬州之旅</a><a href="#passage-c">C · 假期制度</a><a href="#vocabulary">词汇总表</a>
+ <button onclick="speakAll()">▶ 朗读当前文章</button><button onclick="stopSpeech()">■ 停止朗读</button><button onclick="window.print()">打印 / 保存 PDF</button>
+</nav>
+<div class="layout">
+<aside class="side"><strong>本页目录</strong>
+<a href="#overview">使用说明与答案速查</a><a href="#passage-a">A 阅读理解</a><a href="#a-analysis">A 逐题解析</a><a href="#passage-b">B 阅读理解</a><a href="#b-analysis">B 逐题解析</a><a href="#passage-c">C 阅读理解</a><a href="#c-analysis">C 逐题解析</a><a href="#c-exercise">短语与句子练习</a><a href="#grammar">语法归纳</a><a href="#vocabulary">生词短语总表</a></aside>
+<main>
+<section class="card" id="overview">
+ <span class="section-tag">HOW TO USE</span><h2>学习导航与答案速查</h2>
+ <p>建议按“先独立阅读—再核对答案—最后复盘词汇与依据”的顺序学习。点击英文原文中带下划线的词语，可查看释义、用法和例句；点击“朗读”可调用浏览器语音合成功能（需设备支持英语语音）。</p>
+ <div class="keyline"><div><b>A篇：Jiliang</b><br>1. C　2. B　3. A</div><div><b>B篇：Yangzhou</b><br>1. C　2. C　3. A　4. B</div><div><b>C篇：Holiday in Australia</b><br>1. A　2. A　3. C　4. C</div><div><b>C篇积累小袋</b><br>1. in one go　2. apart from<br>3. paid leave　4. be added to<br>5. take a few weeks off</div></div>
+ <p class="source-note">原文依据：上传文档第1—3页。原文中的少量专有名词、拼写及题目表述按扫描件保留；词汇讲解、翻译和语法拓展为学习辅助内容。B篇第3题所列诗句中，A项“莲花卧水风情在，塔影停云禅语浓”与湖面莲花、塔影的景物意象对应，故选A。</p>
+</section>
+
+<section class="card" id="passage-a">
+ <span class="section-tag">READING A</span><h2>A · A song about Chinese culture</h2>
+ <p class="sub">主题：人与社会——文化娱乐　语篇类型：说明文　词数：227　建议用时：8′　正确率：/3</p>
+ <button class="speak" onclick="speakSection('text-a')">▶ 朗读 A 篇原文</button>
+ <div class="passage" id="text-a">
+ <p>On the night of 16 February, 2026, a wonderful song called <span class="vocab" data-word="Jiliang">Jiliang</span> came out on the CCTV Spring Festival Gala. The famous singer Zhou Shen and the “Guizhou Village T” team sang it together.</p>
+ <p>This song is a <span class="vocab" data-word="creative">creative</span> work. It <span class="vocab" data-word="mix">mixes</span> <span class="vocab" data-word="traditional">traditional</span> Chinese culture with <span class="vocab" data-word="modern">modern</span> music together. It takes the magical horse “Jiliang” from the ancient book <i>Shan Hai Jing</i> as its <span class="vocab" data-word="main idea">main idea</span>, bringing this magical animal to life for people today.</p>
+ <p>The song uses traditional Chinese <span class="vocab" data-word="musical instrument">musical instruments</span> and beautiful pictures. It <span class="vocab" data-word="connect">connects</span> the ancient myth of the sun tree with the bronze sacred tree (青铜神树) from Sanxingdui, creating a <span class="vocab" data-word="dialogue">dialogue</span> between Bashu culture and ancient Chinese <span class="vocab" data-word="civilisation">civilisation</span>. The <span class="vocab" data-word="performance">performance</span> shows the spirit of the Chinese nation moving forward, and gives traditional culture new life today. It is not only a great artwork, but also a way to show respect for our roots.</p>
+ <p>This song tells us that young Chinese musicians can create beautiful works by <span class="vocab" data-word="draw from">drawing from</span> our rich culture. It encourages us to love our traditional culture and use it to create new art. In the future, more young people will surely use music to show the beauty of China and share it with the world.</p>
+ </div>
+ <h3>原文题目</h3>
+ <div class="passage">
+ <p class="question">(　　) 1. What is the main idea of the song <i>Jiliang</i>?</p><div class="options">A. Bashu food culture.<br>B. The bronze tree from Sanxingdui.<br>C. The magical horse from <i>Shan Hai Jing</i>.</div>
+ <p class="question">(　　) 2. Which of the following is NOT used in the song?</p><div class="options">A. Old myth stories.<br>B. Western classical music.<br>C. Traditional Chinese music instruments.</div>
+ <p class="question">(　　) 3. What does the performance of <i>Jiliang</i> show?</p><div class="options">A. The Chinese nation is moving forward.<br>B. Traditional culture is disappearing.<br>C. Western music is more important.</div>
+ </div>
+ <div class="translation"><b>全文参考译文</b><br>2026年2月16日晚，一首名为《吉量》的精彩歌曲在中央广播电视总台春节联欢晚会上亮相。著名歌手周深与“贵州村T”团队共同演唱了这首歌。<br>这首歌是一部富有创意的作品。它将中国传统文化与现代音乐融合在一起。歌曲以古籍《山海经》中的神奇神马“吉量”为主要创意，把这只神奇的动物鲜活地呈现在今天的人们面前。<br>歌曲运用了中国传统乐器和精美画面。它将太阳神树的古老神话与三星堆青铜神树联系起来，在巴蜀文化与中华古文明之间建立起对话。这场表演展现了中华民族不断向前的精神，也为传统文化赋予了当代生命。它不仅是一件优秀的艺术作品，也是一种表达对文化根脉敬意的方式。<br>这首歌告诉我们，年轻的中国音乐人可以从丰富的传统文化中汲取灵感，创作出优秀作品。它鼓励我们热爱传统文化，并用传统文化创作新的艺术作品。未来，一定会有更多年轻人用音乐展现中国之美，并与世界分享。</div>
+</section>
+<section class="card" id="a-analysis">
+ <span class="section-tag">ANSWER & EXPLANATION</span><h2>A篇逐题解析</h2>
+ <div class="question-box"><div class="qhead"><b>1. What is the main idea of the song Jiliang?</b><span class="answer">C</span></div><button class="toggle" onclick="toggleBox(this)">查看解题思路与选项分析 ▾</button><div class="explain"><p><b>定位：</b>第二段第二句：It takes the magical horse “Jiliang” from the ancient book Shan Hai Jing as its main idea. 意为“它以《山海经》中的神奇神马吉量为主要创意”。</p><p><b>思路：</b>题干询问歌曲的主要创意，直接对应 main idea。原文明确指出是《山海经》中的神奇神马。</p><p><b>排除：</b>A“巴蜀饮食文化”文中没有说歌曲以食物为主题；B“三星堆青铜树”只是歌曲使用的文化意象之一，并非 main idea。</p><p><b>技巧：</b>主旨/核心内容题优先寻找文章中明确概括主题的句子，注意区分“核心主题”和“细节素材”。</p></div></div>
+ <div class="question-box"><div class="qhead"><b>2. Which of the following is NOT used in the song?</b><span class="answer">B</span></div><button class="toggle" onclick="toggleBox(this)">查看解题思路与选项分析 ▾</button><div class="explain"><p><b>定位：</b>第三段提到 traditional Chinese musical instruments（中国传统乐器）、ancient myth（古代神话）和 bronze sacred tree（青铜神树）。</p><p><b>思路：</b>题目中的 NOT 表示“没有使用”。A项 old myth stories 对应 ancient myth；C项 traditional Chinese music instruments 对应原文；只有 B项 Western classical music（西方古典音乐）没有出现。</p><p><b>技巧：</b>遇到 NOT、EXCEPT 等否定词，先圈出否定词，再逐项回文定位，避免把“出现过”的选项误选。</p></div></div>
+ <div class="question-box"><div class="qhead"><b>3. What does the performance of Jiliang show?</b><span class="answer">A</span></div><button class="toggle" onclick="toggleBox(this)">查看解题思路与选项分析 ▾</button><div class="explain"><p><b>定位：</b>第三段：The performance shows the spirit of the Chinese nation moving forward.</p><p><b>思路：</b>原句与A项 The Chinese nation is moving forward（中华民族正在不断前进）语义一致。</p><p><b>排除：</b>B“传统文化正在消失”与原文 gives traditional culture new life（赋予传统文化新的生命）相反；C“西方音乐更重要”没有依据，且文章强调中国传统文化。</p><p><b>技巧：</b>同义替换是阅读理解常见考法：spirit ... moving forward 与 is moving forward 表达相同核心含义。</p></div></div>
+</section>
+
+<section class="card" id="passage-b">
+ <span class="section-tag">READING B</span><h2>B · A trip to Yangzhou</h2>
+ <p class="sub">主题：人与自我——丰富的生活　语篇类型：记叙文　词数：328　建议用时：8′　正确率：/4</p>
+ <button class="speak" onclick="speakSection('text-b')">▶ 朗读 B 篇原文</button>
+ <div class="passage" id="text-b">
+ <p>This is my first trip to China during the <span class="vocab" data-word="National Day holiday">National Day holiday</span>. It was a very wonderful <span class="vocab" data-word="experience">experience</span>. I got to the clean, lively city of Yangzhou with my family by plane in the morning. The hotel we stayed in was very <span class="vocab" data-word="comfortable">comfortable</span> and <span class="vocab" data-word="inexpensive">inexpensive</span>.</p>
+ <p>Yangzhou, an ancient city, is in the eastern part of Jiangsu Province. There are lots of places of <span class="vocab" data-word="interest">interest</span>. At first, we visited the Slender West Lake (瘦西湖), one of the most famous tourist attractions in China. It is such a beautiful lake that nobody should <span class="vocab" data-word="miss">miss</span> it! The Slender West Lake is as beautiful as the West Lake in Hangzhou, but its shape is long and narrow, so it has its name. Visiting the Slender West Lake is just like enjoying a Chinese painting. When we went boating, we saw many fish swimming and beautiful flowers in the sun. It just took my <span class="vocab" data-word="breath away">breath away</span>. I couldn't help picking a flower, but my father said it was bad to <span class="vocab" data-word="hurt">hurt</span> the flowers. Besides, the Slender West Lake is famous for the different kinds of fantastic ancient buildings. We walked along the Five-Pavilion Bridge (五亭桥) and enjoyed the ancient white tower next to it. The Five-Pavilion Bridge has a history of more than 200 years. The five pavilions are like five big lotus flowers on the lake. There are 15 holes in the bridge. A beautiful view can be enjoyed on full-moon nights as “15 moons” will be <span class="vocab" data-word="reflected">reflected</span> on the water. Also, there are other popular places for visitors to enjoy, such as the Twenty-Four-Bridge Scenic Area and the Ten Thousand Flowers Garden.</p>
+ <p>The Slender West Lake is not only famous for its beautiful views but also full of Chinese culture. Many writers, painters and artists in ancient times were interested in the sights and left many poems, paintings, handwriting and music. While enjoying the beauty of the Slender West Lake, visitors can also learn about interesting stories of Yangzhou.</p>
+ </div>
+ <h3>原文题目</h3>
+ <div class="passage">
+ <p class="question">(　　) 1. During which season did the writer visit Yangzhou?</p><div class="options">A. Spring.　 B. Summer.　 C. Autumn.</div>
+ <p class="question">(　　) 2.（新考法·细节组合题）What popular places of the Slender West Lake are mentioned in the passage?</p><div class="options">① the Five-Pavilion Bridge　② five big lotus flowers　③ 15 holes<br>④ the Twenty-Four-Bridge Scenic Area　⑤ the Ten Thousand Flowers Garden<br>A. ①②③　　B. ①②④　　C. ①④⑤</div>
+ <p class="question">(　　) 3.（新考法·跨学科知识题）According to the text, which sentence below can best show the views of Yangzhou?</p><div class="options">A. 莲花卧水风情在，塔影停云禅语浓。<br>B. 青苔满阶砌，白鸟故迟留。<br>C. 故人西辞黄鹤楼，烟花三月下扬州。</div>
+ <p class="question">(　　) 4.（新考法·写作意图题）What is the main purpose of the passage?</p><div class="options">A. To introduce the history of Yangzhou.<br>B. To share the writer's great trip to Yangzhou.<br>C. To explain how to travel to Yangzhou cheaply.</div>
+ </div>
+ <div class="translation"><b>全文参考译文</b><br>这是我第一次在国庆假期期间到中国旅行。这是一次非常美好的经历。早上，我和家人乘飞机来到了干净、充满活力的扬州。我们住的酒店非常舒适，而且价格不贵。<br>扬州是一座古城，位于江苏省东部。那里有许多名胜古迹。首先，我们参观了瘦西湖，它是中国最著名的旅游景点之一。它是如此美丽，谁都不应该错过！瘦西湖和杭州西湖一样美丽，但它的形状又长又窄，因此得名。游览瘦西湖就像欣赏一幅中国画。当我们乘船游览时，看到了许多游动的鱼和阳光下美丽的花朵。那景色真令人惊叹。我忍不住想摘一朵花，但父亲说这样做会伤害花朵。此外，瘦西湖还以各种精美的古建筑而闻名。我们沿着五亭桥漫步，欣赏了旁边古老的白塔。五亭桥已有200多年的历史。五座亭子就像湖面上五朵巨大的莲花。桥上有15个桥孔。在满月之夜，人们可以欣赏到美丽的景色，因为水面上会映出“15个月亮”。此外，游客还可以游览其他热门景点，例如二十四桥景区和万花园。<br>瘦西湖不仅以美丽的景色闻名，而且充满了中国文化。古代许多作家、画家和艺术家都对这里的景色感兴趣，并留下了许多诗歌、绘画、书法和音乐。游客在欣赏瘦西湖美景的同时，也能了解扬州有趣的故事。</div>
+</section>
+<section class="card" id="b-analysis">
+ <span class="section-tag">ANSWER & EXPLANATION</span><h2>B篇逐题解析</h2>
+ <div class="question-box"><div class="qhead"><b>1. During which season did the writer visit Yangzhou?</b><span class="answer">C · Autumn</span></div><button class="toggle" onclick="toggleBox(this)">查看解题思路与选项分析 ▾</button><div class="explain"><p><b>定位：</b>第一段出现 National Day holiday（国庆假期）。中国国庆节在10月，属于秋季。</p><p><b>思路：</b>文章没有直接写 autumn，而是通过节日时间进行常识推断。National Day holiday → October → autumn。</p><p><b>提醒：</b>这是“文本信息＋常识”推断题。不能只凭旅行景色猜季节，必须找到文中的时间线索。</p></div></div>
+ <div class="question-box"><div class="qhead"><b>2. What popular places of the Slender West Lake are mentioned?</b><span class="answer">C · ①④⑤</span></div><button class="toggle" onclick="toggleBox(this)">查看解题思路与选项分析 ▾</button><div class="explain"><p><b>定位：</b>第二段提到 Five-Pavilion Bridge、Twenty-Four-Bridge Scenic Area、Ten Thousand Flowers Garden。</p><p><b>逐项判断：</b>①五亭桥，是文中游览的地点；④二十四桥景区；⑤万花园，原文明确列为其他热门游览地点。②“五朵大莲花”是五座亭子的比喻，不是景点名称；③“15个桥孔”是桥的结构细节，不是景点。</p><p><b>技巧：</b>组合细节题要逐项核对“是否出现”以及“是否符合题干所说类别”，不能只看到原文有相同词就选。</p></div></div>
+ <div class="question-box"><div class="qhead"><b>3. Which sentence can best show the views of Yangzhou?</b><span class="answer">A</span></div><button class="toggle" onclick="toggleBox(this)">查看解题思路与选项分析 ▾</button><div class="explain"><p><b>定位：</b>文章重点描写瘦西湖的湖水、莲花般的亭子和白塔。A项“莲花卧水风情在，塔影停云禅语浓”写到水中莲花与塔影，与湖景最贴合。</p><p><b>排除：</b>B项“青苔满阶砌，白鸟故迟留”主要描写台阶青苔与白鸟；C项“故人西辞黄鹤楼，烟花三月下扬州”侧重友人春日启程前往扬州，并非直接描写本文所写的湖面景色。</p><p><b>跨学科提示：</b>读诗句要抓意象。莲花、湖水、塔影与瘦西湖景物相照应，因此选A。</p></div></div>
+ <div class="question-box"><div class="qhead"><b>4. What is the main purpose of the passage?</b><span class="answer">B</span></div><button class="toggle" onclick="toggleBox(this)">查看解题思路与选项分析 ▾</button><div class="explain"><p><b>思路：</b>文章以第一人称 I 讲述国庆期间和家人到扬州旅行的经历，重点介绍游览瘦西湖、五亭桥等景点时的所见所感，并提到扬州文化。</p><p><b>排除：</b>A“介绍扬州历史”只是涉及桥梁历史等局部内容；C“解释如何便宜地去扬州”与文章无关，文中虽提到酒店价格不贵，但不是写作目的。</p><p><b>技巧：</b>写作意图题要概括全文，而不是把某个细节当成主旨。</p></div></div>
+</section>
+
+<section class="card" id="passage-c">
+ <span class="section-tag">READING C</span><h2>C · Holidays in Australia and China</h2>
+ <p class="sub">主题：人与社会——文化差异　语篇类型：说明文　词数：216　建议用时：7′　正确率：/4</p>
+ <button class="speak" onclick="speakSection('text-c')">▶ 朗读 C 篇原文</button>
+ <div class="passage" id="text-c">
+ <p>The first time I heard about China's “Golden Week” (黄金周) holiday, I was surprised. Everyone gets the same seven days off in one go and I had never heard of “<span class="vocab" data-word="make-up day">make-up days</span>” (调休). That's because holidays and <span class="vocab" data-word="leave">leave</span> are a bit different in my home country, Australia.</p>
+ <p>Australia has seven national-level public holidays. And each Australian state and <span class="vocab" data-word="territory">territory</span> also has a few special ones of their own added on. They celebrate local events.</p>
+ <p>Apart from national holidays, full-time and part-time workers in Australia get at least 20 days of <span class="vocab" data-word="paid leave">paid leave</span> a year. This doesn't matter how many years they have worked. Also, you can get even more leave if you have worked in the same company for many years. In China, the most annual leave you can get is 15 days. It's given to those who have worked for over 20 years.</p>
+ <p>In Australia, many people like to take a few weeks of leave in one go. This way, you can get a nice, long holiday, especially around Christmas time and New Year's Eve. You can also “<span class="vocab" data-word="save">save</span>” your leave. It will be <span class="vocab" data-word="added to">added to</span> your leave next year. This is the same for sick leave. Workers get 10 days of sick leave a year.</p>
+ </div>
+ <h3>原文题目</h3>
+ <div class="passage">
+ <p class="question">(　　) 1. What does the author find surprising about China's “Golden Week” holiday?</p><div class="options">A. Everyone gets the same seven days off in one go.<br>B. People can get more days of paid leave if they work for many years.<br>C. There are no “make-up days” in China.</div>
+ <p class="question">(　　) 2. How many national-level public holidays does Australia have?</p><div class="options">A. Seven.　 B. Eleven.　 C. Fifteen.</div>
+ <p class="question">(　　) 3. What is the main idea of the passage?</p><div class="options">A. The importance of taking long vacations.<br>B. How Australians celebrate their national holidays.<br>C. The differences between Australian holidays and China's Golden Week.</div>
+ <p class="question">(　　) 4. Why do many Australians like to take a few weeks of leave in one go?</p><div class="options">A. To save leave for the next year.<br>B. To get more paid leave.<br>C. To enjoy a long holiday.</div>
+ </div>
+ <div class="translation"><b>全文参考译文</b><br>我第一次听说中国的“黄金周”假期时，感到很惊讶。每个人都能一次性连续休七天假，而且我以前从未听说过“调休”。这是因为在我的祖国澳大利亚，节假日和休假制度有些不同。<br>澳大利亚有七个国家层面的公共假日。澳大利亚的每个州和领地还会增加几个当地特有的假日，用来庆祝当地活动。<br>除了国家法定假日，澳大利亚的全职和兼职员工每年至少有20天带薪年假。无论他们工作了多少年，这一点都适用。此外，如果你在同一家公司工作很多年，还可能获得更多假期。在中国，最多可以享受15天年假，这一待遇给予工作超过20年的人。<br>在澳大利亚，许多人喜欢一次休上几个星期。这样就能拥有一段舒适而漫长的假期，尤其是在圣诞节和新年前后。你也可以把年假“存起来”，累积到下一年的假期中。病假也是如此。员工每年有10天病假。</div>
+</section>
+<section class="card" id="c-analysis">
+ <span class="section-tag">ANSWER & EXPLANATION</span><h2>C篇逐题解析</h2>
+ <div class="question-box"><div class="qhead"><b>1. What does the author find surprising about China's “Golden Week” holiday?</b><span class="answer">A</span></div><button class="toggle" onclick="toggleBox(this)">查看解题思路与选项分析 ▾</button><div class="explain"><p><b>定位：</b>第一段：Everyone gets the same seven days off in one go and I had never heard of “make-up days”.</p><p><b>思路：</b>作者明确说令自己惊讶的是“每个人都一次性连续休相同的七天”。所以选A。</p><p><b>排除：</b>B讲的是澳大利亚长期工作可能获得更多假期；C与原文意思相反，作者说自己在澳大利亚没有听说过调休，并不是中国没有调休。</p></div></div>
+ <div class="question-box"><div class="qhead"><b>2. How many national-level public holidays does Australia have?</b><span class="answer">A · Seven</span></div><button class="toggle" onclick="toggleBox(this)">查看解题思路与选项分析 ▾</button><div class="explain"><p><b>定位：</b>第二段第一句：Australia has seven national-level public holidays.</p><p><b>思路：</b>题干询问数量，原文直接给出 seven，选A。</p><p><b>技巧：</b>数字题注意区分 national-level public holidays（国家层面公共假日）与各州、领地额外增加的假日。</p></div></div>
+ <div class="question-box"><div class="qhead"><b>3. What is the main idea of the passage?</b><span class="answer">C</span></div><button class="toggle" onclick="toggleBox(this)">查看解题思路与选项分析 ▾</button><div class="explain"><p><b>思路：</b>文章从黄金周和调休谈起，接着介绍澳大利亚公共假日、带薪年假、年假累积及病假，核心是比较澳大利亚与中国假期制度的差异。</p><p><b>排除：</b>A“长假重要性”并非文章重点；B“澳大利亚人如何庆祝国家假日”只涉及第二段的局部信息。</p><p><b>技巧：</b>主旨题要覆盖全文多个段落，优先选择能统领各段内容的选项。</p></div></div>
+ <div class="question-box"><div class="qhead"><b>4. Why do many Australians like to take a few weeks of leave in one go?</b><span class="answer">C</span></div><button class="toggle" onclick="toggleBox(this)">查看解题思路与选项分析 ▾</button><div class="explain"><p><b>定位：</b>第四段：This way, you can get a nice, long holiday, especially around Christmas time and New Year's Eve.</p><p><b>思路：</b>一次休几周，目的是获得一段较长的假期，享受假期生活，故选C。</p><p><b>排除：</b>A“为下一年存假”是后一句提到的另一种做法，不是一次休几周的原因；B“获得更多带薪假”文中没有这样说。</p></div></div>
+</section>
+
+<section class="card" id="c-exercise">
+ <span class="section-tag">EXTRA PRACTICE</span><h2>C篇 · 积累小袋：短语互译与完成句子</h2>
+ <div class="exercise">
+ <h3>一、短语互译</h3>
+ <p>1. 连续地；一口气：<b>in one go</b></p>
+ <p>2. apart from：<b>除……之外；此外（根据语境）</b></p>
+ <p>3. 带薪休假：<b>paid leave</b></p>
+ <p>4. be added to：<b>被添加到；被加到</b></p>
+ <h3>二、完成句子</h3>
+ <p>5. 我的姐姐在一家公司工作。她每年能休几周的假去旅游。</p>
+ <p><b>My sister works in a company and she can take a few weeks off every year to go travelling.</b></p>
+ <p class="sub">说明：take time off = 休假；a few weeks = 几周；take a few weeks off = 休几周假。原题空格处应填 take a few weeks off。</p>
+ </div>
+</section>
+
+<section class="card" id="grammar">
+ <span class="section-tag">GRAMMAR NOTES</span><h2>三篇文章重点语法归纳</h2>
+ <h3>1. not only ... but also ...：不但……而且……</h3><p>第三篇/第一篇均涉及并列表达。例：The Slender West Lake is not only famous for its beautiful views but also full of Chinese culture. 瘦西湖不仅以美景闻名，而且充满中国文化。连接两个并列成分时，前后结构尽量保持一致。</p>
+ <h3>2. such ... that ...：如此……以至于……</h3><p>It is such a beautiful lake that nobody should miss it! 它是如此美丽的湖，以至于谁都不应该错过。常见结构：such + a/an + 形容词 + 可数名词单数 + that从句；so + 形容词/副词 + that从句。</p>
+ <h3>3. as ... as ...：和……一样……</h3><p>The Slender West Lake is as beautiful as the West Lake in Hangzhou. 瘦西湖和杭州西湖一样美。结构：as + 形容词/副词原级 + as；否定形式 not as/so ... as。</p>
+ <h3>4. can't help doing：忍不住做某事</h3><p>I couldn't help picking a flower. 我忍不住想摘一朵花。help在这里是“抑制、控制”的意思，后接动词-ing形式。注意：can't help (to) do 与 can't help doing 含义不同。</p>
+ <h3>5. be famous for / be famous as</h3><p>be famous for + 出名的原因；be famous as + 身份/职业。例：The lake is famous for its beautiful views. 这个湖以美景闻名。He is famous as a writer. 他作为作家而出名。</p>
+ <h3>6. while + doing：当……的时候</h3><p>While enjoying the beauty of the Slender West Lake, visitors can also learn ... 这里 While enjoying 是 While they are enjoying 的省略形式，主句和从句主语一致且从句含be动词时，可省略主语和be动词。</p>
+ <h3>7. 被动语态：be + 过去分词</h3><p>It will be added to your leave next year. 它将被累积到你下一年的假期中。一般将来时被动结构：will be + 过去分词。反映动作承受者是主语。</p>
+ <h3>8. 现在完成时与 for / since（拓展）</h3><p>文中 have worked 表示从过去开始并持续到现在的工作状态。常见结构 have/has + 过去分词；for + 一段时间，since + 时间点。例：I have worked here for five years. 我在这里工作五年了。</p>
+ <h3>9. 动词不定式作目的状语</h3><p>... use it to create new art. 用它来创造新的艺术。to do 可表示目的，相当于“为了……”。例：We went to the lake to enjoy the view. 我们去湖边欣赏风景。</p>
+</section>
+
+<section class="card" id="vocabulary">
+ <span class="section-tag">VOCABULARY BANK</span><h2>生词与生短语总表</h2>
+ <p class="sub">点击上方英文原文中的下划线词条查看释义。以下词汇按七年级学习者可能遇到的难度筛选；专有名词和文化词汇也作必要说明。</p>
+ <div class="vocab-tools"><input id="wordSearch" type="search" placeholder="搜索英文或中文释义…" oninput="filterWords()"><select id="wordGroup" onchange="filterWords()"><option value="all">全部词汇</option><option value="A">A篇</option><option value="B">B篇</option><option value="C">C篇</option><option value="phrase">重点短语</option></select></div>
+ <div class="word-grid" id="wordGrid"></div>
+ <h3>文中“积累小袋”词汇原样整理</h3>
+ <div class="glossary">
+ <button onclick="showWord('CCTV Spring Festival Gala')"><b>CCTV Spring Festival Gala</b>中央电视台春节联欢晚会</button>
+ <button onclick="showWord('come out')"><b>come out</b>出现；上演；出版</button>
+ <button onclick="showWord('traditional Chinese culture')"><b>traditional Chinese culture</b>中国传统文化</button>
+ <button onclick="showWord('modern music')"><b>modern music</b>现代音乐</button>
+ <button onclick="showWord('mix ... with ...')"><b>mix ... with ...</b>把……与……混合/融合</button>
+ <button onclick="showWord('the ancient book')"><b>the ancient book</b>古书</button>
+ <button onclick="showWord('take ... as ...')"><b>take ... as ...</b>以……作为……</button>
+ <button onclick="showWord('main idea')"><b>main idea</b>主旨；主题</button>
+ <button onclick="showWord('bring ... to life')"><b>bring ... to life</b>赋予……生机；使……鲜活</button>
+ <button onclick="showWord('musical instruments')"><b>musical instruments</b>乐器</button>
+ <button onclick="showWord('connect ... with ...')"><b>connect ... with ...</b>把……与……联系起来</button>
+ <button onclick="showWord('ancient myth')"><b>ancient myth</b>古代神话</button>
+ <button onclick="showWord('Chinese civilisation')"><b>Chinese civilisation</b>中华文明</button>
+ <button onclick="showWord('the Chinese nation')"><b>the Chinese nation</b>中华民族</button>
+ <button onclick="showWord('move forward')"><b>move forward</b>前进；奋进</button>
+ <button onclick="showWord('draw from')"><b>draw from</b>从……汲取；取自</button>
+ </div>
+</section>
+<footer class="footer">Unit 5 · Happy Holiday　|　第13周五培优英语学习资料<br>建议：读懂文章、说出依据、积累表达、隔天复测。</footer>
+</main>
+</div>
+</div>
+<div class="modal" id="wordModal" onclick="if(event.target===this)closeModal()"><div class="modal-card"><button class="modal-close" onclick="closeModal()">×</button><div id="modalContent"></div></div></div>
+<script>
+const words = [
+{w:"Jiliang",g:"A",pron:"/ˌdʒiːˈljɑːŋ/",pos:"专有名词",meaning:"吉量；《山海经》中的神奇神马。",use:"此处为歌曲名称，也是文章讨论的文化形象。",extra:"阅读时遇到拼音式专名，通常不要求翻译拆分，重点理解其在文中的指代。",ex:["The song Jiliang is based on a magical horse.","吉量这首歌以一匹神奇的神马为创意。"],syn:"无严格近义词；magical horse 神奇的马。",ant:"无反义词。",coll:"the song Jiliang；the magical horse Jiliang"},
+{w:"creative",g:"A",pron:"/kriˈeɪtɪv/",pos:"形容词 adj.",meaning:"有创造力的；有创意的。",use:"creative + 名词：creative work（创意作品）；be creative：有创造力。",extra:"名词 creativity 创造力；动词 create 创造；创造者 creator。",ex:["This is a creative idea.","She is good at creative writing.","这是一个有创意的想法。她擅长创意写作。"],syn:"imaginative 有想象力的；original 独创的。",ant:"uncreative 缺乏创意的；普通语境可用 unimaginative。",coll:"creative work；creative idea；creative person"},
+{w:"mix",g:"A",pron:"/mɪks/",pos:"动词/名词 v./n.",meaning:"混合；融合；混合物。",use:"mix A with B / mix A and B：把A和B混合；mix with：与……融合/交往。",extra:"mixing（现在分词）；mixture 混合物。",ex:["Mix the milk with water.","The song mixes old and new music.","把牛奶和水混合。这首歌融合了新旧音乐。"],syn:"combine 结合；blend 融合。",ant:"separate 分开；divide 分割。",coll:"mix ... with ...；mix well；a mix of"},
+{w:"traditional",g:"A",pron:"/trəˈdɪʃənl/",pos:"形容词 adj.",meaning:"传统的；惯例的。",use:"traditional + 名词：traditional culture/music/food。",extra:"tradition 名词“传统”；traditionally 副词“按照传统地”。",ex:["We should learn about traditional culture.","This is a traditional Chinese song.","我们应该了解传统文化。这是一首中国传统歌曲。"],syn:"old-fashioned（有时含过时意味）；customary 惯常的。",ant:"modern 现代的；new 新的。",coll:"traditional culture；traditional music；traditional festival"},
+{w:"modern",g:"A",pron:"/ˈmɒdn/",pos:"形容词 adj.",meaning:"现代的；近代的。",use:"modern + 名词：modern music/technology/city。",extra:"modernize 使现代化；modernisation 现代化。",ex:["Modern music is popular with young people.","We live in a modern city.","现代音乐很受年轻人欢迎。我们生活在一座现代化城市。"],syn:"present-day 当代的；current 当前的。",ant:"ancient 古代的；traditional 传统的（语境反义）。",coll:"modern life；modern music；modern technology"},
+{w:"main idea",g:"phrase",pron:"/ˌmeɪn aɪˈdɪə/",pos:"名词短语",meaning:"主要思想；主旨；中心意思。",use:"the main idea of ...：……的主旨；常用于阅读理解主旨题。",extra:"main 主要的；idea 想法。不要把main idea与某个细节(detail)混淆。",ex:["What is the main idea of the passage?","The main idea is to protect nature.","这篇文章的主旨是什么？主旨是保护自然。"],syn:"central idea 中心思想；theme 主题。",ant:"detail 细节（不是严格反义词）。",coll:"the main idea；main idea of the story"},
+{w:"musical instrument",g:"A",pron:"/ˈmjuːzɪkl ˈɪnstrəmənt/",pos:"名词短语",meaning:"乐器。",use:"复数 instruments；play + 乐器，表示演奏某种乐器时常在乐器前加the：play the piano。",extra:"musical 形容词“音乐的”；music 名词“音乐”；musician 名词“音乐家”。",ex:["The piano is a musical instrument.","He can play several musical instruments.","钢琴是一种乐器。他会演奏几种乐器。"],syn:"无完全同义词；instrument 乐器/器械（范围更广）。",ant:"无反义词。",coll:"play a musical instrument；traditional musical instruments"},
+{w:"connect",g:"A",pron:"/kəˈnekt/",pos:"动词 v.",meaning:"连接；联系；把……联系起来。",use:"connect A with/to B：把A与B连接/联系起来；be connected with：与……有关。",extra:"connection 名词“联系；连接”；connected 形容词“有关联的”。",ex:["This road connects two towns.","The story connects the past with the present.","这条路连接两个城镇。这个故事把过去和现在联系起来。"],syn:"link 联系；join 连接。",ant:"disconnect 断开；separate 分开。",coll:"connect ... with ...；connect to the Internet"},
+{w:"dialogue",g:"A",pron:"/ˈdaɪəlɒɡ/",pos:"名词 n.",meaning:"对话；交流。",use:"a dialogue between A and B：A与B之间的对话/交流。",extra:"英式拼写 dialogue；美式也常写 dialog。",ex:["The dialogue is easy to understand.","The film creates a dialogue between history and art.","这段对话很容易理解。这部电影建立了历史与艺术之间的交流。"],syn:"conversation 谈话；discussion 讨论。",ant:"monologue 独白。",coll:"have a dialogue；a dialogue between cultures"},
+{w:"civilisation",g:"A",pron:"/ˌsɪvəlaɪˈzeɪʃn/",pos:"名词 n.",meaning:"文明；文明社会。",use:"ancient Chinese civilisation：中华古文明。",extra:"英式拼写 civilisation；美式拼写 civilization。",ex:["China has a long history and a rich civilisation.","We learn about ancient civilisation at school.","中国有悠久的历史和灿烂的文明。我们在学校学习古代文明。"],syn:"culture 文化（含义不完全相同）；society 社会。",ant:"无简单反义词。",coll:"ancient civilisation；Chinese civilisation"},
+{w:"performance",g:"A",pron:"/pəˈfɔːməns/",pos:"名词 n.",meaning:"表演；演出；表现。",use:"give a performance：进行表演；the performance of：……的表演/表现。",extra:"perform 动词“表演；执行”；performer 表演者。",ex:["The performance was wonderful.","Her performance in the game was great.","这场演出很精彩。她在比赛中的表现很棒。"],syn:"show 演出；presentation 展示。",ant:"无直接反义词。",coll:"a live performance；give a performance；stage performance"},
+{w:"draw from",g:"phrase",pron:"/drɔː frəm/",pos:"动词短语",meaning:"从……中汲取；借鉴；取材于。",use:"draw from + 来源/经验/文化；文中 drawing from our rich culture 表示从丰富文化中汲取灵感。",extra:"draw的过去式/过去分词均为 drew/drawn。",ex:["Artists often draw from nature.","We can draw ideas from history.","艺术家常从自然中汲取灵感。我们可以从历史中汲取想法。"],syn:"learn from 向……学习；get inspiration from 从……获得灵感。",ant:"无固定反义词。",coll:"draw from experience；draw inspiration from"},
+{w:"come out",g:"phrase",pron:"/kʌm aʊt/",pos:"动词短语",meaning:"出现；出版；发行；（消息）传出。",use:"表示书、电影、歌曲发行时，主语通常是作品：The song came out last year.；也可表示太阳出来、花开放。",extra:"come out of 从……出来；come across 偶然遇见。",ex:["The new book comes out next week.","The sun came out after the rain.","新书下周出版。雨后太阳出来了。"],syn:"be published 出版；be released 发行。",ant:"无固定反义词；出版语境可用 be withdrawn 撤回。",coll:"a new song comes out；come out in 2026"},
+{w:"bring ... to life",g:"phrase",pron:"/brɪŋ ... tə laɪf/",pos:"动词短语",meaning:"使……恢复生机；使……鲜活起来；赋予……生命。",use:"bring + 人/事物 + to life；常用于艺术、故事、历史人物形象。",extra:"bring-brought-brought；bring ... back to life 使……复活。",ex:["The actor brings the character to life.","The film brings history to life.","演员把这个角色演活了。这部电影让历史鲜活起来。"],syn:"make ... vivid 使……生动；revive 使复苏。",ant:"kill 扼杀（具体语境）；make ... lifeless 使失去生气。",coll:"bring a story to life；bring history to life"},
+{w:"National Day holiday",g:"B",pron:"/ˈnæʃnəl deɪ ˈhɒlədeɪ/",pos:"名词短语",meaning:"国庆假期。",use:"during the National Day holiday：在国庆假期期间。",extra:"holiday 假期/节日；on holiday 在度假；summer holiday 暑假。",ex:["We visited Beijing during the National Day holiday.","国庆假期期间我们去了北京。"],syn:"National Day break（口语表达）。",ant:"无反义词。",coll:"during the holiday；the National Day holiday"},
+{w:"experience",g:"B",pron:"/ɪkˈspɪəriəns/",pos:"名词/动词 n./v.",meaning:"经历；经验；体验。",use:"have an experience（有一次经历）；experience作不可数名词时表示经验；作可数名词时表示具体经历。",extra:"experienced 形容词“有经验的”；experience life 体验生活。",ex:["It was a wonderful experience.","She has a lot of teaching experience.","那是一次美妙的经历。她有丰富的教学经验。"],syn:"（经历）event；（经验）knowledge。",ant:"无固定反义词。",coll:"a wonderful experience；life experience；work experience"},
+{w:"comfortable",g:"B",pron:"/ˈkʌmftəbl/",pos:"形容词 adj.",meaning:"舒适的；舒服的。",use:"feel comfortable；a comfortable room/seat。",extra:"comfort 名词“舒适”；comfortably 副词“舒服地”；uncomfortable 不舒服的。",ex:["The hotel room is comfortable.","Wear comfortable shoes when you travel.","酒店房间很舒适。旅行时穿舒适的鞋。"],syn:"pleasant 舒适愉快的；cozy 温馨舒适的。",ant:"uncomfortable 不舒服的。",coll:"comfortable bed；feel comfortable；comfortable clothes"},
+{w:"inexpensive",g:"B",pron:"/ˌɪnɪkˈspensɪv/",pos:"形容词 adj.",meaning:"不贵的；价钱合理的。",use:"inexpensive = not expensive；描述价格。",extra:"expense 名词“费用”；expensive 形容词“昂贵的”；in-常表示否定。",ex:["The hotel is clean and inexpensive.","We found an inexpensive restaurant.","这家酒店干净又不贵。我们找到了一家价格实惠的餐馆。"],syn:"cheap 便宜的（有时含质量差的意味）；low-cost 低成本的。",ant:"expensive 昂贵的。",coll:"inexpensive hotel；inexpensive food"},
+{w:"place of interest",g:"B",pron:"/pleɪs əv ˈɪntrəst/",pos:"名词短语",meaning:"名胜；景点。",use:"places of interest常用复数；a place of interest。",extra:"tourist attraction 旅游景点；interesting place 有趣的地方，范围更宽。",ex:["There are many places of interest in the city.","这座城市有许多名胜古迹。"],syn:"tourist attraction；sight。",ant:"无固定反义词。",coll:"visit places of interest；famous places of interest"},
+{w:"miss",g:"B",pron:"/mɪs/",pos:"动词 v.",meaning:"错过；思念；想念。",use:"miss a bus/train：错过公交/火车；miss sb：想念某人；miss doing：怀念做某事。",extra:"missing 失踪的/缺少的；miss也可作称呼“小姐”。",ex:["Don't miss the chance.","I miss my grandparents.","不要错过这个机会。我想念我的祖父母。"],syn:"（错过）fail to catch；（想念）long for。",ant:"catch 赶上；meet 遇见（视语境）。",coll:"miss the bus；miss a chance；miss home"},
+{w:"breath away",g:"B",pron:"/breθ əˈweɪ/",pos:"短语（take one's breath away）",meaning:"使某人惊叹；令某人屏息。",use:"正确固定搭配为 take one's breath away；文中 It took my breath away. 表示“它令我惊叹”。",extra:"breath 名词“呼吸”；breathe 动词“呼吸”，注意拼写不同。",ex:["The beautiful view took my breath away.","The singer's voice took our breath away.","美景令我惊叹。歌手的嗓音让我们赞叹不已。"],syn:"amaze 使惊讶；astonish 使震惊。",ant:"bore 使厌烦；disappoint 使失望。",coll:"take my breath away；a breathtaking view"},
+{w:"hurt",g:"B",pron:"/hɜːt/",pos:"动词/形容词 v./adj.",meaning:"使受伤；伤害；疼痛。",use:"hurt + 人/身体部位；hurt oneself：伤到自己；过去式和过去分词仍是 hurt。",extra:"hurtful 伤人的；injure通常指身体受伤，hurt还可指感情受伤。",ex:["Be careful not to hurt the flowers.","My leg hurts.","小心不要伤害花朵。我的腿疼。"],syn:"harm 伤害；injure 使受伤。",ant:"help 帮助；protect 保护。",coll:"hurt feelings；hurt yourself；hurt the plants"},
+{w:"reflect",g:"B",pron:"/rɪˈflekt/",pos:"动词 v.",meaning:"反射（光、影）；映出；反映；认真思考。",use:"be reflected on/in：被映在……上；reflect on：反思。",extra:"reflection 名词“倒影；反思”；reflective 反射的/沉思的。",ex:["The moon is reflected in the lake.","The report reflects the changes.","月亮倒映在湖中。这份报告反映了变化。"],syn:"show 显示；mirror 映照。",ant:"absorb 吸收（光线语境）。",coll:"be reflected in the water；reflect on a problem"},
+{w:"comfortable",g:"B",pron:"/ˈkʌmftəbl/",pos:"形容词 adj.",meaning:"舒适的。",use:"见前条。",extra:"uncomfortable 不舒服的。",ex:["The chair is comfortable.","这把椅子很舒服。"],syn:"pleasant。",ant:"uncomfortable。",coll:"comfortable chair"},
+{w:"territory",g:"C",pron:"/ˈterətri/",pos:"名词 n.",meaning:"领土；领地；（行政区划中的）领地/地区。",use:"state and territory：州和领地；territory常用于地理、政治语境。",extra:"territorial 领土的；territorial waters 领海。",ex:["Each state and territory has its own rules.","每个州和领地都有自己的规定。"],syn:"area 地区；region 区域（不完全等同）。",ant:"无固定反义词。",coll:"state and territory；national territory"},
+{w:"make-up day",g:"C",pron:"/ˈmeɪk ʌp deɪ/",pos:"名词短语",meaning:"补班/调休安排中的补休日或补班日；具体含义需看语境。",use:"原文 make-up days 指作者所说的调休安排。make-up作定语表示补上的、补做的。",extra:"make up可表示组成、编造、弥补、补做；make-up也可表示化妆品。",ex:["We have a make-up day after the holiday.","假期后有补班/补休日安排。"],syn:"replacement day（替代日期，依语境）。",ant:"无固定反义词。",coll:"make-up class；make-up exam；make-up day"},
+{w:"leave",g:"C",pron:"/liːv/",pos:"名词/动词 n./v.",meaning:"假期；休假；离开；留下。",use:"名词：annual leave（年假）、sick leave（病假）、paid leave（带薪假）；动词 leave for... 动身去……。",extra:"leave-left-left；leave school 离校/毕业（依语境）。",ex:["Workers get paid leave every year.","I leave home at seven.","员工每年享有带薪休假。我七点离家。"],syn:"（假期）time off；（离开）go away。",ant:"stay 留下（动词语境）。",coll:"annual leave；sick leave；take leave"},
+{w:"apart from",g:"phrase",pron:"/əˈpɑːt frəm/",pos:"介词短语",meaning:"除……之外；此外。",use:"可表示“除了……还包括”（= besides），也可表示“除……之外不包括”（= except for），需结合上下文判断。",extra:"besides强调“另外还有”；except强调“排除在外”。",ex:["Apart from English, she studies Chinese.","Apart from a little rain, the trip was great.","除了英语，她还学习中文。除了下了一点雨，这次旅行很棒。"],syn:"besides；except for（依语境）。",ant:"including 包括（部分语境）。",coll:"apart from holidays；apart from that"},
+{w:"paid leave",g:"phrase",pron:"/peɪd liːv/",pos:"名词短语",meaning:"带薪休假。",use:"paid是pay的过去分词作定语；paid leave通常不可数。",extra:"unpaid leave 无薪假；annual paid leave 带薪年假。",ex:["Full-time workers get paid leave.","She is on paid leave this week.","全职员工享有带薪休假。她本周在休带薪假。"],syn:"paid time off（常见表达）。",ant:"unpaid leave 无薪假。",coll:"take paid leave；paid annual leave"},
+{w:"in one go",g:"phrase",pron:"/ɪn wʌn ɡəʊ/",pos:"副词短语",meaning:"一口气；一次性地；连续地。",use:"常放在句末或动词后，表示一次完成，不分几次。",extra:"at one time可表示一次/同时；all at once强调一下子、同时。",ex:["I read the book in one go.","They took seven days off in one go.","我一口气读完了这本书。他们一次连续休了七天。"],syn:"at one time；all at once（依语境）。",ant:"little by little 一点一点地；in stages 分阶段地。",coll:"finish it in one go；seven days off in one go"},
+{w:"save",g:"C",pron:"/seɪv/",pos:"动词 v.",meaning:"节省；储存；保存；挽救。",use:"save money/time：省钱/省时间；save sth for later：把某物留到以后；save leave：积存假期。",extra:"save作名词可指体育比赛中的扑救（拓展）；safety 安全。",ex:["You can save your leave for next year.","We should save water.","你可以把假期留到明年。我们应该节约用水。"],syn:"keep 保存；store 储存。",ant:"waste 浪费；spend 花费（钱/时间）。",coll:"save money；save time；save your leave"},
+{w:"be added to",g:"phrase",pron:"/bi ˈædɪd tə/",pos:"被动语态短语",meaning:"被添加到；被加到；被计入。",use:"add A to B：把A加到B中；A be added to B：A被加入B。",extra:"add up 加起来；add up to 总计达；addition 名词“增加”。",ex:["The new days will be added to your leave.","Salt is added to the soup.","新增天数会计入你的假期。盐被加进汤里。"],syn:"be included in 被包含在……中。",ant:"be taken away from 从……扣除/拿走。",coll:"be added to the list；add ... to ..."},
+{w:"take a few weeks off",g:"phrase",pron:"/teɪk ə fjuː wiːks ɒf/",pos:"动词短语",meaning:"休几周假。",use:"take + 时间段 + off：休……时间的假；take a day off：休一天假。",extra:"off在此表示不上班/不上学；time off 休息时间。",ex:["My sister can take a few weeks off every year.","He took two days off last month.","我姐姐每年可以休几周假。他上个月休了两天假。"],syn:"have time off；be on leave。",ant:"work / stay at work 上班。",coll:"take a day off；take time off；take two weeks off"},
+{w:"full-time / part-time",g:"phrase",pron:"/ˌfʊl ˈtaɪm/ · /ˌpɑːt ˈtaɪm/",pos:"形容词/副词",meaning:"全职的/全职地；兼职的/兼职地。",use:"full-time worker 全职员工；part-time job 兼职工作。",extra:"full time作副词时也可不加连字符；part-time常作定语。",ex:["She is a full-time teacher.","He has a part-time job.","她是一名全职教师。他有一份兼职工作。"],syn:"full-time：permanent hours（非完全同义）；part-time：在部分工作时间工作。",ant:"full-time ↔ part-time。",coll:"full-time worker；part-time job"},
+{w:"annual leave",g:"phrase",pron:"/ˈænjuəl liːv/",pos:"名词短语",meaning:"年假。",use:"annual = yearly（每年的）；annual leave通常指员工每年享有的休假。",extra:"annual report 年度报告；annually 每年地。",ex:["Workers can get annual leave.","He has fifteen days of annual leave.","员工可以享受年假。他有15天年假。"],syn:"yearly leave。",ant:"无固定反义词。",coll:"take annual leave；days of annual leave"},
+{w:"sick leave",g:"phrase",pron:"/sɪk liːv/",pos:"名词短语",meaning:"病假。",use:"be on sick leave：在休病假；take sick leave：请病假。",extra:"sick形容词“生病的”；ill也表示生病的。",ex:["Workers get ten days of sick leave a year.","She is on sick leave.","员工每年有10天病假。她正在休病假。"],syn:"medical leave（医疗假，范围可能更广）。",ant:"无固定反义词。",coll:"take sick leave；be on sick leave"},
+{w:"lively",g:"B",pron:"/ˈlaɪvli/",pos:"形容词 adj.",meaning:"活泼的；热闹的；生气勃勃的。",use:"a lively city / discussion / child。",extra:"alive 活着的；live 现场直播的/活的（读音和用法不同）。",ex:["Yangzhou is a clean, lively city.","The class is lively today.","扬州是一座干净而充满活力的城市。今天课堂气氛很活跃。"],syn:"active 活跃的；energetic 精力充沛的。",ant:"quiet 安静的；dull 沉闷的。",coll:"a lively city；a lively discussion"},
+{w:"narrow",g:"B",pron:"/ˈnærəʊ/",pos:"形容词 adj.",meaning:"狭窄的；窄的。",use:"long and narrow：又长又窄；a narrow road：狭窄的道路。",extra:"narrowly 副词“勉强地；狭窄地”；narrow动词“使变窄”。",ex:["The lake is long and narrow.","The road is too narrow for a bus.","这座湖又长又窄。这条路太窄，公交车无法通过。"],syn:"thin 窄的（语境）；slim 细长的。",ant:"wide 宽的。",coll:"a narrow street；long and narrow"},
+{w:"lotus",g:"B",pron:"/ˈləʊtəs/",pos:"名词 n.",meaning:"莲；荷花。",use:"lotus flower：莲花；lotus flowers复数。",extra:"lotus root 莲藕；lotus leaf 荷叶。",ex:["The five pavilions look like lotus flowers.","五座亭子看起来像莲花。"],syn:"无常用近义词。",ant:"无反义词。",coll:"lotus flower；lotus leaf"},
+{w:"pavilion",g:"B",pron:"/pəˈvɪliən/",pos:"名词 n.",meaning:"亭；阁；临时展馆。",use:"five pavilions：五座亭子；Five-Pavilion Bridge：五亭桥。",extra:"建筑类词汇，常见于景点介绍。",ex:["There are five pavilions on the bridge.","桥上有五座亭子。"],syn:"gazebo（花园凉亭，含义接近）。",ant:"无反义词。",coll:"a garden pavilion；Five-Pavilion Bridge"},
+{w:"attraction",g:"B",pron:"/əˈtrækʃn/",pos:"名词 n.",meaning:"有吸引力的事物；景点；吸引。",use:"tourist attraction：旅游景点；be an attraction：是一处吸引人的地方。",extra:"attract 动词“吸引”；attractive 形容词“有吸引力的”。",ex:["The lake is a famous tourist attraction.","这座湖是著名旅游景点。"],syn:"sight 景点；place to visit 游览地。",ant:"无固定反义词。",coll:"tourist attraction；main attraction"},
+{w:"in the sun",g:"phrase",pron:"/ɪn ðə sʌn/",pos:"介词短语",meaning:"在阳光下。",use:"in the sun表示处于阳光照射下；晒太阳常说 sit in the sun。",extra:"sunlight 阳光；sunny 晴朗的。",ex:["The flowers look beautiful in the sun.","花朵在阳光下显得很美。"],syn:"under the sunlight。",ant:"in the shade 在阴凉处。",coll:"sit in the sun；dry in the sun"},
+{w:"be famous for",g:"phrase",pron:"/bi ˈfeɪməs fɔː/",pos:"形容词短语",meaning:"因……而闻名。",use:"be famous for + 出名的事物/原因；be famous as + 身份。",extra:"famous adj. 著名的；名词 fame 名声。",ex:["The lake is famous for its views.","扬州以美丽的风景而闻名。"],syn:"be well-known for。",ant:"be unknown for（不常用表达）。",coll:"be famous for its history；be famous as a singer"},
+{w:"full-moon night",g:"B",pron:"/ˌfʊl ˈmuːn naɪt/",pos:"名词短语",meaning:"满月之夜。",use:"full moon 满月；on a full-moon night 在满月之夜。",extra:"moonlight 月光；once in a blue moon 很少发生（习语）。",ex:["The lake is beautiful on a full-moon night.","满月之夜，这座湖很美。"],syn:"night of the full moon。",ant:"new-moon night 新月之夜。",coll:"a full moon；full-moon night"},
+{w:"poem / painting / handwriting",g:"B",pron:"/ˈpəʊɪm/ · /ˈpeɪntɪŋ/ · /ˈhændraɪtɪŋ/",pos:"名词 n.",meaning:"诗；绘画；书法/手写字。",use:"leave poems, paintings, handwriting and music：留下诗歌、绘画、书法和音乐作品。",extra:"poet 诗人；paint 画；handwrite 手写。",ex:["The writer left many poems.","这位作家留下了许多诗歌。"],syn:"poem：verse；painting：picture（不完全等同）。",ant:"无反义词。",coll:"write a poem；Chinese painting；beautiful handwriting"}
+,{w:"interest",g:"B",pron:"/ˈɪntrəst/",pos:"名词 n.",meaning:"兴趣；关注；吸引力。place of interest中的interest表示值得关注的事物，整体意为“名胜”。",use:"be interested in 对……感兴趣；places of interest 名胜。",extra:"interesting有趣的；interested感兴趣的。注意-ing描述事物，-ed描述人的感受。",ex:["There are many places of interest in Yangzhou.","I am interested in Chinese history.","扬州有许多名胜。我对中国历史感兴趣。"],syn:"attraction 吸引人的事物；attention 注意。",ant:"无固定反义词。",coll:"places of interest；be interested in"},
+{w:"reflected",g:"B",pron:"/rɪˈflektɪd/",pos:"动词过去分词",meaning:"被映出；被反射；反映。",use:"be reflected on/in：被映在……上；此处为一般将来时被动语态 will be reflected。",extra:"原形 reflect；过去式/过去分词 reflected；名词 reflection。",ex:["The moon was reflected in the water.","Her ideas are reflected in the book.","月亮倒映在水中。她的观点反映在这本书里。"],syn:"shown 显示；mirrored 映照。",ant:"absorbed 被吸收（光线语境）。",coll:"be reflected on the water；be reflected in"},
+{w:"CCTV Spring Festival Gala",g:"phrase",pron:"/ˌsiː siː tiː ˈviː sprɪŋ ˈfestɪvl ˈɡɑːlə/",pos:"专有名词短语",meaning:"中央广播电视总台春节联欢晚会；通常简称春晚。",use:"on the CCTV Spring Festival Gala：在春晚上。",extra:"Gala意为庆典、演出晚会；Spring Festival为春节。",ex:["The song came out on the CCTV Spring Festival Gala.","这首歌在央视春晚上亮相。"],syn:"Spring Festival Gala。",ant:"无反义词。",coll:"watch the Spring Festival Gala；on the Gala"},
+{w:"traditional Chinese culture",g:"phrase",pron:"/trəˈdɪʃənl tʃaɪˈniːz ˈkʌltʃə/",pos:"名词短语",meaning:"中国传统文化。",use:"traditional修饰culture；culture通常作不可数名词。",extra:"Chinese culture中国文化；cultural形容词“文化的”。",ex:["We should learn about traditional Chinese culture.","我们应该了解中国传统文化。"],syn:"Chinese cultural traditions。",ant:"modern culture（语境对比）。",coll:"protect traditional culture；traditional Chinese culture"},
+{w:"modern music",g:"phrase",pron:"/ˈmɒdn ˈmjuːzɪk/",pos:"名词短语",meaning:"现代音乐。",use:"music通常为不可数名词；a piece of music一段音乐。",extra:"musical形容词“音乐的”；musician音乐家。",ex:["The song mixes traditional culture with modern music.","这首歌把传统文化与现代音乐融合起来。"],syn:"contemporary music 当代音乐。",ant:"ancient music（不常用对举）；traditional music传统音乐。",coll:"listen to modern music；modern music"},
+{w:"mix ... with ...",g:"phrase",pron:"/mɪks ... wɪð .../",pos:"动词短语",meaning:"把……与……混合/融合。",use:"mix A with B；也可说 mix A and B together。",extra:"mix up混淆；mix well充分混合。",ex:["Mix the eggs with the milk.","The artist mixes old ideas with new ones.","把鸡蛋和牛奶混合。艺术家把旧想法与新想法融合。"],syn:"combine ... with ...；blend ... with ...。",ant:"separate A from B。",coll:"mix ... with ...；mix together"},
+{w:"the ancient book",g:"phrase",pron:"/ði ˈeɪnʃənt bʊk/",pos:"名词短语",meaning:"古书；古代典籍。",use:"ancient表示古代的、古老的；the ancient book Shan Hai Jing指古籍《山海经》。",extra:"ancient times古代；ancient history古代史。",ex:["Shan Hai Jing is an ancient book.","《山海经》是一部古代典籍。"],syn:"old book（含义较宽）。",ant:"modern book（现代书籍，语境对比）。",coll:"an ancient book；ancient Chinese books"},
+{w:"take ... as ...",g:"phrase",pron:"/teɪk ... æz .../",pos:"动词短语",meaning:"把……当作/视为……；以……作为……。",use:"take A as B；文中take the magical horse as its main idea。",extra:"regard A as B也表示把A视为B；think of A as B。",ex:["We take the story as a lesson.","The song takes the horse as its main idea.","我们把这个故事当作一个教训。这首歌以这匹神马为主要创意。"],syn:"regard ... as ...；consider ... as ...。",ant:"无固定反义词。",coll:"take ... as ...；take it as a chance"},
+{w:"connect ... with ...",g:"phrase",pron:"/kəˈnekt ... wɪð .../",pos:"动词短语",meaning:"把……与……联系起来。",use:"connect A with B；也可用 connect A to B 表示连接。",extra:"connection联系；be connected with与……有关。",ex:["The song connects an old myth with a bronze tree.","这首歌把一个古老神话与一棵青铜神树联系起来。"],syn:"link A with B。",ant:"separate A from B。",coll:"connect ideas；connect ... with ..."},
+{w:"ancient myth",g:"phrase",pron:"/ˈeɪnʃənt mɪθ/",pos:"名词短语",meaning:"古代神话。",use:"myth指神话故事；mythology指神话体系。",extra:"mythical形容词“神话中的”。",ex:["The story comes from an ancient myth.","这个故事源自一个古代神话。"],syn:"legend传说（含义接近但不完全相同）。",ant:"真实历史（real history，语境对比）。",coll:"an ancient myth；Greek mythology"},
+{w:"the Chinese nation",g:"phrase",pron:"/ðə tʃaɪˈniːz ˈneɪʃn/",pos:"名词短语",meaning:"中华民族。",use:"nation指民族、国家；the Chinese nation为固定表达。",extra:"national国家的；nationality国籍/民族身份。",ex:["The Chinese nation is moving forward.","中华民族正在不断前进。"],syn:"Chinese people（中国人民，语义侧重点不同）。",ant:"无固定反义词。",coll:"the Chinese nation；national spirit"},
+{w:"move forward",g:"phrase",pron:"/muːv ˈfɔːwəd/",pos:"动词短语",meaning:"向前移动；前进；取得进展。",use:"move forward with sth：继续推进某事。",extra:"move on继续前进/转移话题；forward向前。",ex:["We should move forward together.","The project is moving forward.","我们应该携手前进。项目正在推进。"],syn:"go ahead；make progress。",ant:"move backward后退；fall behind落后。",coll:"move forward；move forward with a plan"},
+{w:"the beauty of China",g:"phrase",pron:"/ðə ˈbjuːti əv ˈtʃaɪnə/",pos:"名词短语",meaning:"中国之美。",use:"beauty名词“美；美丽”；the beauty of... ……之美。",extra:"beautiful形容词；beautifully副词。",ex:["The song shows the beauty of China.","这首歌展现了中国之美。"],syn:"the charm of China（中国的魅力）。",ant:"无固定反义词。",coll:"the beauty of nature；the beauty of China"},
+{w:"be added to",g:"phrase",pron:"/bi ˈædɪd tə/",pos:"被动语态短语",meaning:"被添加到；被加到；被计入。",use:"add A to B：把A加到B中；A be added to B：A被加入B。",extra:"add up加起来；add up to总计达。",ex:["The days will be added to your leave.","这些天数将计入你的假期。"],syn:"be included in。",ant:"be taken away from。",coll:"be added to the list"}
+
+];
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function renderWords(){
+ const grid=document.getElementById('wordGrid'); if(!grid)return;
+ grid.innerHTML=words.map((x,i)=>`<article class="word" data-group="${x.g}" data-search="${esc((x.w+' '+x.meaning+' '+x.pos).toLowerCase())}" id="word-${i}"><h4>${esc(x.w)} <span class="pron">${esc(x.pron||'')}</span></h4><p><span class="label">词性：</span>${esc(x.pos)}　<span class="label">释义：</span>${esc(x.meaning)}</p><p><span class="label">核心用法：</span>${esc(x.use)}</p><p><span class="label">拓展：</span>${esc(x.extra)}</p><div class="examples"><span class="label">例句：</span>${x.ex.map(esc).join('<br>')}</div><p><span class="label">近义辨析：</span>${esc(x.syn)}</p><p><span class="label">反义辨析：</span>${esc(x.ant)}</p><p><span class="label">常见搭配：</span>${esc(x.coll)}</p></article>`).join('');
+}
+function filterWords(){const q=(document.getElementById('wordSearch').value||'').toLowerCase();const g=document.getElementById('wordGroup').value;document.querySelectorAll('#wordGrid .word').forEach(el=>{el.style.display=(el.dataset.search.includes(q)&&(g==='all'||el.dataset.group===g||(g==='phrase'&&el.dataset.group==='phrase')))?'':'none';});}
+function showWord(w){const x=words.find(z=>z.w===w)||words.find(z=>z.w.toLowerCase()===w.toLowerCase());if(!x){document.getElementById('modalContent').innerHTML=`<h3>${esc(w)}</h3><p>该词条已在原文“积累小袋”中列出。请结合所在句子理解其具体含义。</p>`;document.getElementById('wordModal').classList.add('show');return;}document.getElementById('modalContent').innerHTML=`<h3>${esc(x.w)}</h3><p class="sub">${esc(x.pron||'')} · ${esc(x.pos)}</p><p><b>中文释义：</b>${esc(x.meaning)}</p><p><b>核心用法：</b>${esc(x.use)}</p><p><b>拓展：</b>${esc(x.extra)}</p><p><b>例句：</b><br>${x.ex.map(esc).join('<br>')}</p><p><b>近义词辨析：</b>${esc(x.syn)}</p><p><b>反义词辨析：</b>${esc(x.ant)}</p><p><b>常见搭配：</b>${esc(x.coll)}</p>`;document.getElementById('wordModal').classList.add('show');}
+function closeModal(){document.getElementById('wordModal').classList.remove('show');}
+document.addEventListener('click',e=>{const t=e.target.closest('.vocab');if(t){showWord(t.dataset.word);}});
+function toggleBox(btn){const box=btn.closest('.question-box');box.classList.toggle('open');btn.textContent=box.classList.contains('open')?'收起解析 ▴':'查看解题思路与选项分析 ▾';}
+let utterance=null;
+function stopSpeech(){if('speechSynthesis'in window)window.speechSynthesis.cancel();}
+function speakText(text){if(!('speechSynthesis'in window)){alert('当前浏览器不支持语音朗读。');return;}stopSpeech();utterance=new SpeechSynthesisUtterance(text);utterance.lang='en-US';utterance.rate=.88;const voices=window.speechSynthesis.getVoices();const voice=voices.find(v=>v.lang==='en-US')||voices.find(v=>v.lang.startsWith('en'));if(voice)utterance.voice=voice;window.speechSynthesis.speak(utterance);}
+function speakSection(id){const el=document.getElementById(id);if(el)speakText(el.innerText);}
+function speakAll(){const ids=['text-a','text-b','text-c'];let best=document.getElementById(ids[0]),distance=Infinity;ids.forEach(id=>{const el=document.getElementById(id);const d=Math.abs(el.getBoundingClientRect().top-120);if(d<distance){distance=d;best=el;}});speakText(best.innerText);}
+renderWords();
+</script>
+</body>
+</html>
